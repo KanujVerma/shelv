@@ -48,3 +48,5 @@ supabase/.branches/
 .claude/
 .system_generated/
 *.log
+
+.local-artifacts/

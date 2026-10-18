@@ -1,5 +1,11 @@
 # Shelv Cross-Agent Context Sync Ledger
 
+## 2026-10-18 — isolated synthetic replay source integration
+
+The debug-only iOS module supplies explicitly started generated UIKit and local React Native replay probes. The shared root excludes ordinary customer routes, keeps customer activation hard off, and separates launch-only replay permission from anonymous usage consent. The local React Native transport intercepts requests in process without forwarding. Stop, exclusion, background and capture-window loss revoke volatile native admission.
+
+The build pins PostHog iOS 3.88.2 and applies a source-checked synchronous capture-admission hook through the Expo Podfile plugin; unknown SDK source or hook drift rejects installation. Durable offline and native test sources are included. [Replay boundaries and validation](INTERNAL_REPLAY_TESTING.md) describe the source contract and remaining gates. Exact-candidate checks and exact-head CI are required before merge; signed-device launch and hosted React Native playback acceptance remain separate.
+
 ## 2026-10-17 — scanner forward ACL and physical-erasure correction
 
 Compatibility review of merged PR 200 found inherited service-role ALL grants and a first-bind/profile-cascade deadlock. Both were reproduced locally with exact S1 defaults; bind/reserve yielded 40P01 in both controlled orderings. Forward `20261017193748_product_ingredient_accounting_guards.sql` narrows effective privileges on only the three scanner tables and admits the owner profile before root/session locks. All74 native-PG assertions pass, including direct alias mutation denial and service-role cascade erasure. New 12-pgTAP and deterministic CI coverage target the actual default-ACL/physical-delete gaps. The [forward correction handoff](SCANNER_INGREDIENT_ATTEMPTS_LOCAL.md#forward-correction-after-staging-compatibility-review) limits claims to bind/reserve and records the unchanged pre-existing text-only continuation ordering. Foundation SQL remains unchanged; hosted installation and recognition stay gated.

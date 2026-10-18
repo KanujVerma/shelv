@@ -1,3 +1,4 @@
+import {AppReplayPrivacyBoundary} from '@/src/components/privacy/AppReplayPrivacyBoundary';
 import { customerController, currentCustomerOwner, ownerPinnedLegacyGateway } from '@/src/presentation/personal-decision/customerGateway';
 import { bindCustomerOwnerLifecycle } from '@/src/presentation/personal-decision/customerController';
 import React, { useEffect, useState, useSyncExternalStore } from 'react';
@@ -25,6 +26,10 @@ import { refreshCustomerBootstrap, resolveCustomerBootstrap } from '@/src/servic
 import { resolveAuthRoute, getAuthRedirectRoute } from '@/src/utils/authRouting';
 
 export default function RootLayout() {
+  return <AppReplayPrivacyBoundary><RootLayoutContent /></AppReplayPrivacyBoundary>;
+}
+
+function RootLayoutContent() {
   useEffect(() => bindCustomerOwnerLifecycle(customerController, currentCustomerOwner, listener => useAuthStore.subscribe(listener), listener => useFreeAccessStore.subscribe(listener), () => ownerPinnedLegacyGateway.clear()), []);
   const router = useRouter();
   const segments = useSegments();
@@ -226,6 +231,10 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Protected guard={__DEV__ && publicEnvironment.buildFlavor === 'development' && !remoteEnabled && process.env.EXPO_PUBLIC_INTERNAL_REPLAY_TEST_ENABLED === 'true'}>
+          <Stack.Screen name="dev/replay-test" options={{ headerShown: false }} />
+          <Stack.Screen name="dev/replay-excluded" options={{ headerShown: false }} />
+        </Stack.Protected>
         <Stack.Protected guard={hostedScanner ? scannerEntry === 'auth' : (!localFreeIntegration && (!remoteEnabled || destination.type === 'AUTH_LOGIN'))}>
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         </Stack.Protected>
