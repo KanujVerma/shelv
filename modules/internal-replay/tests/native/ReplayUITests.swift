@@ -93,7 +93,7 @@ final class ReplayUITests: XCTestCase {
  /// Run separately with only the UIKit test gate enabled; actual-RN local gate off.
  func testLegacyUIKitLocalCapture() throws {
   tap("Open local recorder probe")
-  status("Recording off — Start required")
+  status("Recording off")
   tap("Start dummy recording"); status("Recording dummy screen"); settle(3)
   tap("Send queued dummy frames"); settle(2)
   tap("Stop recording"); status("Recording off")
