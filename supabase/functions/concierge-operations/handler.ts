@@ -1,16 +1,10 @@
-import type { ConciergeRpcCall } from '../../../src/contracts/ConciergePortal.ts';
+import type { ConciergeAuthenticatedPorts, ConciergeRpcCall } from '../../../src/contracts/ConciergePortal.ts';
 import { mapConciergeAdvisorView, mapConciergeClientView, mapConciergeWriteReceipt } from '../../../src/contracts/ConciergePortalMapping.ts';
 import { readUuid } from '../../../src/contracts/ConciergePortalValidation.ts';
 import { readConciergeJson } from './body.ts';
 import { buildConciergeRpc } from './commands.ts';
 
-export type ConciergePorts = {
-  allowedOrigins: readonly string[];
-  authenticate(token: string, signal?: AbortSignal): Promise<{ id: string; is_anonymous: boolean } | null>;
-  rpc(token: string, call: ConciergeRpcCall, signal?: AbortSignal): Promise<{
-    data: unknown; error: { message?: string; status?: number } | null;
-  }>;
-};
+export type ConciergePorts = ConciergeAuthenticatedPorts<ConciergeRpcCall>;
 const sqlErrors: Readonly<Record<string, number>> = {
   concierge_unauthorized: 401, concierge_forbidden: 403, concierge_invalid_input: 400,
   concierge_revision_conflict: 409, concierge_request_conflict: 409, concierge_intake_conflict: 409,

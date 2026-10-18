@@ -40,3 +40,29 @@ Do not expose this adapter as the complete concierge portal before additive serv
 Auth rejection is handled without caching; immediate revocation of an otherwise still-valid access JWT is not proven by this transport. Existing R1 rechecks user/deletion/advisor state but does not inspect `auth.sessions`. Any strict session-revocation requirement needs its own authoritative backend contract and acceptance.
 
 Private payment screenshots, manual bank confirmation/audit and separate service/product allocations belong to the payment feature. Check-in history and optional photos/questionnaires belong to the check-in/intake feature. Neither is added to these R1 payloads or logged. Product approval/payment/receipt must never be substituted for actual start. The advisor frontend consumes these typed contracts without changing the agreed client presentation.
+
+## Acknowledged feature interfaces (source contracts; SQL not implemented)
+
+Feature owners may implement validation, handlers and transports against injected `ConciergeAuthenticatedPorts<TheirRpcCall>`, exported from `src/contracts/ConciergePortal.ts`. `authenticate(token, signal)` verifies identity; `rpc(token, call, signal)` preserves that bearer. There is no separate client-provided advisor or entitlement flag and no invented local guard that grants access. Each SQL operation must recheck permanent identity, deletion fence, invitation/enrollment, target ownership and the required server-owned capability before processing or replay. Cancellation and historical access policy stay authoritative in SQL. Do not equate Sami's future view capability with write, bank-confirmation or publish capability.
+
+Payment owner exclusively owns `supabase/functions/concierge-payments/**` and `tests/concierge-payments*`. The proposed private `types.ts` and `contract.ts` shapes are accepted: immutable quote versions and integer allocations, unverified/confirmed/rejected claims, and receipts that distinguish service unlock from product ready-to-purchase. Accepted future RPCs:
+
+- `concierge_payment_view(p_client_id uuid)`.
+- `concierge_payment_write(p_client_id uuid, p_action text, p_expected_revision bigint, p_request_id uuid, p_payload jsonb)`, actions `issue_quote`, `submit_claim`, `confirm_payment`, `reject_claim`.
+- `concierge_payment_evidence_reserve(p_client_id uuid, p_request_id uuid, p_expected_revision bigint, p_quote_id uuid, p_quote_version integer, p_content_type text, p_size_bytes bigint, p_sha256 text)`; descriptor `{evidenceId,clientId,quoteId,quoteVersion,storagePath,contentType,sizeBytes,sha256,status:'reserved'|'uploaded'}`.
+- `concierge_payment_evidence_commit(p_evidence_id uuid, p_request_id uuid)`; receipt `{evidenceId,quoteId,quoteVersion,status:'uploaded_unverified'}`.
+- `concierge_payment_evidence_access(p_evidence_id uuid)`; freshly authorized descriptor for server Storage I/O.
+
+Private bucket: `concierge-payment-evidence`; immutable server path `clientId/quoteId/evidenceId.(jpg|png|webp)`. Reservation checks the current payment revision and immutable quote; evidence completion/access recheck the referenced reservation, actor and quote. Evidence completion does not confirm a bank payment or unlock a plan. Financial confirmation atomically checks the exact allocations/current quote and records the authorized advisor's bank-verification audit.
+
+Check-in owner exclusively owns `supabase/functions/concierge-checkins/**` and `tests/concierge-checkins*`. The RPC/payload/projection/receipt shapes proposed in that feature's README are accepted with these future names:
+
+- `concierge_checkin_read(p_client_id uuid)` and `concierge_checkin_advisor_read(p_client_id uuid)`; distinct explicit client and advisor projections.
+- `concierge_checkin_write(p_client_id uuid, p_action text, p_expected_revision bigint, p_request_id uuid, p_payload jsonb)`, actions `submit_report`, `set_next_checkin`, `add_meeting_note`, `reserve_photo`, `complete_photo`.
+- `concierge_checkin_photo_authorize(p_client_id uuid, p_photo_id uuid)`; freshly authorized descriptor for server Storage I/O.
+
+Private bucket: `concierge-checkin-photos`. Answers are bounded to 1000 Unicode code points, private meeting notes to 4000; `changes` may be empty, angles are front/left/right with at most one of each. Report submission atomically attaches only complete, unused, owner-bound photo references and never changes a routine. Optional pre-meeting uploads must not be locally blocked by an assumed routine-start or paid-through rule; the central phase/access guard will distinguish optional pre-meeting input from ongoing check-ins. Do not introduce an unapproved automatic service-expiry timer in a feature handler.
+
+Financial writes and check-in writes use separate feature revision streams, not the R1 plan revision. Check-in photo reserve/complete participate in the check-in stream. Payment evidence completion changes only its evidence state, not the financial quote/claim revision. Reserve and complete require distinct stable request UUIDs; preserve each phase's original arguments on exact retry. An uncertain upload retry must verify exact size/type/SHA256 of an existing immutable object, never treat a generic conflict as success. A new expected revision after a conflict is a new intent with a new request UUID, not a changed-payload replay.
+
+Both upload features use at most 5 MiB of validated JPEG/PNG/WebP bytes, non-upserting server Storage I/O after fresh bearer authorization, and signed reads of at most 60 seconds. Raw paths/descriptors, filenames and bytes are excluded from Edge client projections, analytics, replay, logs and model prompts. Shared schema, lifecycle/deletion integration, capability enforcement, route composition and local SQL acceptance remain core-owned. No accepted name above implies an installed RPC, bucket, credential, policy, migration or access grant.

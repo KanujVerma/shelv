@@ -47,3 +47,13 @@ export type ConciergeWriteRpc = {
 export type ConciergeRpcCall = { name: 'concierge_client_view'; args: Record<string, never> }
   | { name: 'concierge_advisor_view'; args: { p_client_id: string } } | ConciergeWriteRpc;
 export type ConciergeWriteReceipt = { revision: number; publishedVersion: number; operation: ConciergeWriteAction };
+
+/** Identity verification is not an enrollment, entitlement or advisor-capability grant.
+ * Every feature RPC must enforce those authoritative guards transactionally. */
+export type ConciergeVerifiedIdentity = { id: string; is_anonymous: boolean };
+export type ConciergeRpcReply = { data: unknown; error: { message?: string; status?: number } | null };
+export type ConciergeAuthenticatedPorts<Call> = {
+  allowedOrigins: readonly string[];
+  authenticate(token: string, signal?: AbortSignal): Promise<ConciergeVerifiedIdentity | null>;
+  rpc(token: string, call: Call, signal?: AbortSignal): Promise<ConciergeRpcReply>;
+};
