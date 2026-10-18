@@ -24,7 +24,7 @@ test('actual entrypoint registers, fails closed without configuration and uses o
     const opened = await serve(request());
     process.stdout.write(JSON.stringify({closedStatus:closed.status,closed:await closed.json(),openedStatus:opened.status,opened:await opened.json(),requestedEnv,paths}));
   `;
-  const result = spawnSync(process.execPath, ['--experimental-strip-types', '--input-type=module', '--eval', script], { encoding: 'utf8', env: { NODE_NO_WARNINGS: '1' } });
+  const result = spawnSync(process.execPath, ['--experimental-strip-types', '--input-type=module', '--eval', script], { encoding: 'utf8', env: { NODE_ENV: 'test', NODE_NO_WARNINGS: '1' } });
   assert.equal(result.status, 0, result.stderr);
   const output = JSON.parse(result.stdout);
   assert.equal(output.closedStatus, 503); assert.deepEqual(output.closed, { code: 'unavailable' });
