@@ -33,7 +33,8 @@
     "plugins": [
       "expo-router",
       "expo-dev-client",
-      "expo-font"
+      "expo-font",
+      "./plugins/with-internal-replay"
     ],
     "extra": {
       "router": {},

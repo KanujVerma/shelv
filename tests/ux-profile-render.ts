@@ -1,5 +1,5 @@
 /** Node-only component harness. Native hosts are inert; production choice/save handlers run unchanged. */
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -48,7 +48,7 @@ export function componentHarness(file: string, name: string, initialProps: Recor
       if (id.endsWith('/CatalogProductSearch')) return { CatalogProductSearch: ({ label, onSelect, onQueryChange }: { label?: string; onSelect: (product: { productId: string; brand: string; name: string }) => void; onQueryChange?: (query: string) => void }) => React.createElement('button', { label, onPress: () => onSelect({ productId: 'catalog-product', brand: 'CeraVe', name: 'Moisturizer' }), onQueryChange }) };
       if (id.startsWith('@/') || id.startsWith('.')) {
         const target = id.startsWith('@/') ? resolve(root, id.slice(2)) : resolve(dirname(path), id);
-        const full = /\.(tsx?|js)$/.test(target) ? target : target + (target.includes('/components/') ? '.tsx' : '.ts');
+        const full = /\.(tsx?|js)$/.test(target) ? target : [target+'.ts',target+'.tsx',resolve(target,'index.ts'),resolve(target,'index.tsx')].find(existsSync) ?? target+'.ts';
         return load(full);
       }
       return nativeRequire(id);

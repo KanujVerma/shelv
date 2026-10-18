@@ -1275,6 +1275,10 @@ test('Environment template: Lists only approved names and contains zero credenti
 
 test('Environment guard: Mobile source references only approved public variables', () => {
   const approved = new Set([
+    'EXPO_PUBLIC_INTERNAL_REPLAY_TEST_ENABLED',
+    'EXPO_PUBLIC_INTERNAL_APP_REPLAY_LOCAL_ENABLED',
+    'EXPO_PUBLIC_POSTHOG_HOST',
+    'EXPO_PUBLIC_POSTHOG_PROJECT_TOKEN',
     'EXPO_PUBLIC_BUILD_FLAVOR',
     'EXPO_PUBLIC_DEV_SUPABASE_LAN_URL',
     'EXPO_PUBLIC_SCANNER_RELEASE_ENABLED',
