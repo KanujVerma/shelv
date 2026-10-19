@@ -1,17 +1,22 @@
 import { readObject, readUuid, requireValue } from '../../../src/contracts/ConciergePortalValidation.ts';
+import type { ConciergeAuthenticatedPorts, ConciergeRpcCall } from '../../../src/contracts/ConciergePortal.ts';
 import { readConciergeJson } from './body.ts';
 import type { ConciergePorts } from './handler.ts';
 
-type Configuration = { supabaseUrl: string; publicKey: string; allowedOrigins: readonly string[]; fetch?: typeof globalThis.fetch };
+export type ConciergeTransportConfiguration = { supabaseUrl: string; publicKey: string; allowedOrigins: readonly string[]; fetch?: typeof globalThis.fetch };
 
 /** Native Auth/PostgREST transport. Configuration is server-owned, never request input. */
-export function createConciergeSupabasePorts(config: Configuration): ConciergePorts {
+export function createConciergeAuthenticatedPorts<Call extends { name: string; args: object }>(
+  config: ConciergeTransportConfiguration & { allowedRpcNames: readonly Call['name'][] },
+): ConciergeAuthenticatedPorts<Call> {
   let base: URL;
   const allowedOrigins = [...config.allowedOrigins];
+  const allowedRpcNames = new Set<string>(config.allowedRpcNames);
   try {
     base = new URL(config.supabaseUrl);
     requireValue(base.protocol === 'https:' && !base.username && !base.password && base.pathname === '/' && !base.search && !base.hash);
     requireValue(config.publicKey.trim().length > 0);
+    requireValue(allowedRpcNames.size > 0 && [...allowedRpcNames].every(name => /^concierge_[a-z0-9_]{1,90}$/.test(name)));
     for (const origin of allowedOrigins) {
       const url = new URL(origin);
       requireValue(['https:', 'http:'].includes(url.protocol) && url.origin === origin);
@@ -37,6 +42,7 @@ export function createConciergeSupabasePorts(config: Configuration): ConciergePo
       } catch { throw new Error('unavailable'); }
     },
     rpc: async (token, call, signal) => {
+      if (!allowedRpcNames.has(call.name)) throw new Error('unavailable');
       const response = await send(new URL(`/rest/v1/rpc/${call.name}`, base).href, { ...options(token, signal), method: 'POST', body: JSON.stringify(call.args) });
       // R1 returns complete immutable history without pagination or a SQL size cap.
       if (response.ok) return { data: await decode(response, Number.MAX_SAFE_INTEGER), error: null };
@@ -45,4 +51,10 @@ export function createConciergeSupabasePorts(config: Configuration): ConciergePo
       return { data: null, error: { status: response.status, ...(message === undefined ? {} : { message }) } };
     },
   };
+}
+
+/** Operations callers use this fixed server-owned RPC registry. */
+export function createConciergeSupabasePorts(config: ConciergeTransportConfiguration): ConciergePorts {
+  return createConciergeAuthenticatedPorts<ConciergeRpcCall>({ ...config,
+    allowedRpcNames: ['concierge_client_view', 'concierge_advisor_view', 'concierge_write', 'concierge_advisor_directory', 'concierge_advisor_write'] });
 }

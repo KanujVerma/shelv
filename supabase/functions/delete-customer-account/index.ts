@@ -3,6 +3,7 @@
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.39.8";
+import { cleanupConciergePrivateStorage } from "../concierge-operations/private-storage-cleanup.ts";
 
 const SKIN_PHOTO_BUCKET = "customer-skin-photos";
 const PRODUCT_EVIDENCE_BUCKET = "customer-product-evidence";
@@ -216,6 +217,25 @@ Deno.serve(async (req: Request) => {
       || skinVerification.paths.length > 0 || productVerification.paths.length > 0
     ) {
       console.error("delete-customer-account storage verification failed");
+      return jsonResponse({ code: "DELETION_FAILED", error: "Account deletion could not be completed" }, 500);
+    }
+
+    const conciergeCleaned = await cleanupConciergePrivateStorage(user.id, {
+      list: async (bucket, prefix, offset) => {
+        const { data, error } = await adminClient.storage.from(bucket).list(prefix, {
+          limit: PAGE_SIZE, offset, sortBy: { column: "name", order: "asc" },
+        });
+        return { error: Boolean(error), entries: (data ?? []).map((entry) => ({
+          name: entry.name, id: entry.id == null ? null : String(entry.id),
+        })) };
+      },
+      remove: async (bucket, paths) => {
+        const { error } = await adminClient.storage.from(bucket).remove(paths);
+        return !error;
+      },
+    });
+    if (!conciergeCleaned) {
+      console.error("delete-customer-account concierge storage cleanup failed");
       return jsonResponse({ code: "DELETION_FAILED", error: "Account deletion could not be completed" }, 500);
     }
 

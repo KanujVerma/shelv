@@ -63,15 +63,15 @@ test('advisor mapping has an explicit private projection and never spreads raw R
     draft: { intakeVersion: 1, recommendations: [{ ...recommendation }], advisorNote: 'Private draft note', secret: 'HIDDEN' }, otherClient: 'HIDDEN' };
   assert.deepEqual(mapConciergeAdvisorView(wire), {
     client: clientFixture(), intake: { version: 1, goal: 'Comfort', note: 'Advisor call notes' },
-    draft: { intakeVersion: 1, recommendations: [{ ...recommendation }], advisorNote: 'Private draft note' },
+    draft: { intakeVersion: 1, recommendations: [{ ...recommendation }], advisorNote: 'Private draft note' }, meetingNotes: [],
   });
-  assert.deepEqual(mapConciergeAdvisorView({ client: emptyClientFixture(), intake: null, draft: null }), { client: emptyClientFixture(), intake: null, draft: null });
+  assert.deepEqual(mapConciergeAdvisorView({ client: emptyClientFixture(), intake: null, draft: null }), { client: emptyClientFixture(), intake: null, draft: null, meetingNotes: [] });
 });
 
 test('SQL-valid Unicode text limits count code points, including astral characters', () => {
   const wire = { client: emptyClientFixture(), intake: { version: 1, goal: '🧴'.repeat(300), note: '🧴'.repeat(4000) },
     draft: { intakeVersion: 1, recommendations: [{ ...recommendation, rationale: '🧴'.repeat(4000) }], advisorNote: '🧴'.repeat(4000) } };
-  assert.deepEqual(mapConciergeAdvisorView(wire), wire);
+  assert.deepEqual(mapConciergeAdvisorView(wire), { ...wire, meetingNotes: [] });
   assert.throws(() => mapConciergeAdvisorView({ ...wire, intake: { ...wire.intake, goal: '🧴'.repeat(301) } }), /invalid_concierge_response/);
 });
 

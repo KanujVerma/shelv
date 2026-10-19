@@ -4,12 +4,18 @@ import { exactKeys, readArray, readDate, readIdentifier, readInteger, readObject
 /** Parse untrusted HTTP input. Advisor authority is deliberately not a request field. */
 export function buildConciergeRpc(value: unknown, verifiedOwnerId: string): ConciergeRpcCall {
   const b = readObject(value), owner = readUuid(verifiedOwnerId);
+  if (b.action === 'advisor_list') { exactKeys(b, ['action']); return { name: 'concierge_advisor_directory', args: {} }; }
   if (b.action === 'client_read') { exactKeys(b, ['action']); return { name: 'concierge_client_view', args: {} }; }
   if (b.action === 'advisor_read') { exactKeys(b, ['action', 'clientId']); return { name: 'concierge_advisor_view', args: { p_client_id: readUuid(b.clientId) } }; }
-  const advisor = b.action === 'save_draft' || b.action === 'publish';
+  const advisor = b.action === 'save_draft' || b.action === 'publish' || b.action === 'save_intake' || b.action === 'save_meeting_note';
   const common = ['action', 'requestId', 'expectedRevision', ...(advisor ? ['clientId'] : [])];
   const base = { p_client_id: advisor ? readUuid(b.clientId) : owner, p_expected_revision: readInteger(b.expectedRevision), p_request_id: readUuid(b.requestId) };
   switch (b.action) {
+    case 'save_meeting_note': {
+      exactKeys(b, [...common, 'kind', 'text']); requireValue(b.kind === 'notes' || b.kind === 'transcript');
+      return { name: 'concierge_advisor_write', args: { ...base, p_action: b.action, p_payload: { kind: b.kind, text: readText(b.text, 20000) } } };
+    }
+    case 'save_intake':
     case 'submit_intake': {
       exactKeys(b, [...common, 'goal', 'note', 'baseline']);
       const baseline = readArray(b.baseline, 50).map(value => {
@@ -17,7 +23,8 @@ export function buildConciergeRpc(value: unknown, verifiedOwnerId: string): Conc
         return { slot: readIdentifier(r.slot), productId: readIdentifier(r.productId) };
       });
       requireValue(baseline.length > 0 && new Set(baseline.map(r => r.slot)).size === baseline.length);
-      return { name: 'concierge_write', args: { ...base, p_action: b.action, p_payload: { goal: readText(b.goal, 300), note: readText(b.note, 4000, true), baseline } } };
+      const payload = { goal: readText(b.goal, 300), note: readText(b.note, 4000, true), baseline };
+      return b.action === 'save_intake' ? { name: 'concierge_advisor_write', args: { ...base, p_action: 'save_intake', p_payload: payload } } : { name: 'concierge_write', args: { ...base, p_action: 'submit_intake', p_payload: payload } };
     }
     case 'save_draft': {
       exactKeys(b, [...common, 'intakeVersion', 'recommendations', 'advisorNote']);

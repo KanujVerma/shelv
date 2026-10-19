@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { createConciergeSupabasePorts } from '../supabase/functions/concierge-operations/runtime.ts';
+import { createConciergeAuthenticatedPorts, createConciergeSupabasePorts } from '../supabase/functions/concierge-operations/runtime.ts';
 import { clientFixture, ownerId, recommendation } from './fixtures/concierge.ts';
 import { mapConciergeClientView } from '../src/contracts/ConciergePortalMapping.ts';
 
@@ -60,4 +60,18 @@ test('full valid publication history is preserved beyond the bounded Auth/error 
   const result = await p.rpc('token', { name: 'concierge_client_view', args: {} });
   assert.equal(result.error, null);
   assert.deepEqual(mapConciergeClientView(result.data), wire);
+});
+
+test('feature ports share bearer verification but can invoke only their configured RPC names', async () => {
+  type FeatureCall = { name: 'concierge_checkin_read' | 'concierge_checkin_write'; args: { p_client_id: string } };
+  const allowed: FeatureCall['name'][] = ['concierge_checkin_read'];
+  const seen: string[] = [];
+  const p = createConciergeAuthenticatedPorts<FeatureCall>({ supabaseUrl: 'https://staging.invalid', publicKey: 'public', allowedOrigins: [], allowedRpcNames: allowed,
+    fetch: async (url, init) => { assert.equal(new Headers(init!.headers).get('authorization'), 'Bearer user'); seen.push(String(url));
+      return Response.json(String(url).endsWith('/user') ? { id: ownerId, is_anonymous: false } : { revision: 1 }); } });
+  assert.deepEqual(await p.authenticate('user'), { id: ownerId, is_anonymous: false });
+  assert.deepEqual(await p.rpc('user', { name: 'concierge_checkin_read', args: { p_client_id: ownerId } }), { data: { revision: 1 }, error: null });
+  allowed.push('concierge_checkin_write');
+  await assert.rejects(p.rpc('user', { name: 'concierge_checkin_write', args: { p_client_id: ownerId } }), /unavailable/);
+  assert.deepEqual(seen, ['https://staging.invalid/auth/v1/user', 'https://staging.invalid/rest/v1/rpc/concierge_checkin_read']);
 });

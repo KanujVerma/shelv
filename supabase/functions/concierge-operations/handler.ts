@@ -1,5 +1,5 @@
 import type { ConciergeAuthenticatedPorts, ConciergeRpcCall } from '../../../src/contracts/ConciergePortal.ts';
-import { mapConciergeAdvisorView, mapConciergeClientView, mapConciergeWriteReceipt } from '../../../src/contracts/ConciergePortalMapping.ts';
+import { mapConciergeAdvisorDirectory, mapConciergeAdvisorView, mapConciergeClientView, mapConciergeWriteReceipt } from '../../../src/contracts/ConciergePortalMapping.ts';
 import { readUuid } from '../../../src/contracts/ConciergePortalValidation.ts';
 import { readConciergeJson } from './body.ts';
 import { buildConciergeRpc } from './commands.ts';
@@ -43,6 +43,7 @@ export async function handleConciergeRequest(request: Request, ports: ConciergeP
       const code = result.error.message ?? '';
       return Object.hasOwn(sqlErrors, code) ? error(sqlErrors[code], code) : error(503, 'unavailable');
     }
+    if (call.name === 'concierge_advisor_directory') return reply(200, mapConciergeAdvisorDirectory(result.data));
     if (call.name === 'concierge_client_view') return reply(200, mapConciergeClientView(result.data));
     if (call.name === 'concierge_advisor_view') return reply(200, mapConciergeAdvisorView(result.data));
     return reply(200, mapConciergeWriteReceipt(result.data, call.args.p_action));
