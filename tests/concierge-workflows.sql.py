@@ -414,6 +414,129 @@ class Workflows(unittest.TestCase):
         write(C,'write','receive',dict(version=1,recommendationId=second['id']),7)
         self.assertEqual(routine(),dict(moisturizer='replacement',cleanser='old-cleanser'))
 
+    def funded_product(self):
+        self.paid()
+        write(C,'write','decide',dict(version=1,recommendationId='replacement-v1',choice='approved',reason=''),3)
+        write(C,'payment_write','confirm_shipping_address',dict(address=self.address()),3)
+        quote=self.issue(4,0,True)
+        receipt,payload=self.claim_confirm(quote,5,0,1600)
+        return quote,receipt,payload
+
+    def test_24_product_obligation_cannot_be_funded_twice_before_receipt(self):
+        quote,receipt,payload=self.funded_product()
+        money=scalar("select money||jsonb_build_object('publicationVersion',publication_version,'shippingAddressVersion',shipping_address_version) from concierge.quotes where id="+lit(quote['quoteId']))
+        self.deny_write(A,'payment_write','issue_quote',money,7,'product_already_funded')
+        self.assertEqual(ok('select count(*) from concierge.product_orders'),'1')
+        self.assertEqual(ok('select count(*) from concierge.payment_confirmations where product_cents>0'),'1')
+        self.assertEqual(ok('select count(*) from concierge.receipts'),'0')
+        self.assertEqual(ok('select revision from concierge.payment_heads where client_id='+lit(C)),'7')
+
+    def test_25_funding_survives_republish_and_new_id_requires_new_approval(self):
+        self.funded_product()
+        write(A,'write','save_draft',dict(intakeVersion=1,recommendations=[dict(self.recommendation,rationale='Revised explanation')],advisorNote=''),4)
+        write(A,'write','publish',{},5)
+        money=dict(publicationVersion=2,serviceCents=0,servicePeriod=None,shippingAddressVersion=1,items=[dict(recommendationId='replacement-v1',quantity=1,unitPriceCents=1600,lineTotalCents=1600)],productSubtotalCents=1600,taxCents=0,shippingCents=0,productTotalCents=1600,totalCents=1600)
+        self.deny_write(A,'payment_write','issue_quote',money,7,'product_already_funded')
+        future=dict(self.recommendation,id='replacement-next-obligation')
+        write(A,'write','save_draft',dict(intakeVersion=1,recommendations=[future],advisorNote=''),6)
+        write(A,'write','publish',{},7)
+        state=call(C,'concierge_client_view',[])['plan']['itemStates'][0]
+        self.assertIsNone(state['choice'],'new purchase obligation must not inherit approval')
+        money['publicationVersion']=3;money['items'][0]['recommendationId']=future['id']
+        self.deny_write(A,'payment_write','issue_quote',money,7,'product_not_approved')
+        write(C,'write','decide',dict(version=3,recommendationId=future['id'],choice='approved',reason=''),8)
+        quote=write(A,'payment_write','issue_quote',money,7)
+        receipt,_=self.claim_confirm(quote,8,0,1600)
+        self.assertEqual(receipt['productOrderStatus'],'ready_to_purchase')
+        self.assertEqual(ok('select count(*) from concierge.product_orders'),'2')
+        self.assertEqual(ok("select count(distinct x->>'proposedProductId') from concierge.publications p cross join lateral jsonb_array_elements(p.recommendations)j(x)"),'1')
+
+    def test_26_complete_uses_reservation_fence_after_other_upload_and_advisor_write(self):
+        reserve=lambda angle,rev:write(C,'checkin_write','reserve_photo',dict(angle=angle,contentType='image/png',sizeBytes=100,sha256='a'*64),rev)
+        a=reserve('front',0);b=reserve('left',1)
+        for d in [a,b]:
+            ok("insert into storage.objects(bucket_id,name,metadata) values('concierge-checkin-photos',"+lit(d['path'])+",'{\"size\":100,\"mimetype\":\"image/png\"}')")
+        write(A,'checkin_write','set_next_checkin',dict(nextCheckinOn=self.today.isoformat()),2)
+        requests=[str(uuid.uuid4()),str(uuid.uuid4())]
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            receipts=list(pool.map(lambda pair:write(C,'checkin_write','complete_photo',dict(photoId=pair[0]['photoId']),pair[0]['revision'],request=pair[1]),zip([a,b],requests)))
+        self.assertEqual(sorted(r['revision'] for r in receipts),[4,5])
+        for d,request,receipt in zip([a,b],requests,receipts):
+            self.assertEqual(write(C,'checkin_write','complete_photo',dict(photoId=d['photoId']),d['revision'],request=request),receipt)
+        public=call(C,'concierge_checkin_read',[lit(C)])
+        self.assertEqual(public['revision'],5);self.assertEqual(public['nextCheckinOn'],self.today.isoformat())
+        self.assertEqual(ok("select count(*) from concierge.checkin_photos where state='complete'"),'2')
+
+    def test_27_completion_fence_and_request_identity_cannot_be_rebased(self):
+        d=write(C,'checkin_write','reserve_photo',dict(angle='front',contentType='image/png',sizeBytes=100,sha256='c'*64),0)
+        ok("insert into storage.objects(bucket_id,name,metadata) values('concierge-checkin-photos',"+lit(d['path'])+",'{\"size\":100,\"mimetype\":\"image/png\"}')")
+        write(A,'checkin_write','set_next_checkin',dict(nextCheckinOn=self.today.isoformat()),1)
+        payload=dict(photoId=d['photoId']);request=str(uuid.uuid4())
+        self.deny_write(C,'checkin_write','complete_photo',payload,2,'revision_conflict',request=request)
+        receipt=write(C,'checkin_write','complete_photo',payload,d['revision'],request=request)
+        write(A,'checkin_write','set_next_checkin',dict(nextCheckinOn=None),3)
+        self.assertEqual(write(C,'checkin_write','complete_photo',payload,d['revision'],request=request),receipt)
+        self.deny_write(C,'checkin_write','complete_photo',payload,4,'request_conflict',request=request)
+        self.deny_write(D,'checkin_write','complete_photo',payload,d['revision'])
+        ok("update concierge.enrollments set status='revoked' where client_id="+lit(C))
+        self.deny_write(C,'checkin_write','complete_photo',payload,d['revision'],request=request)
+        self.assertEqual(ok('select revision from concierge.checkin_heads where client_id='+lit(C)),'4')
+
+    def test_28_legacy_duplicate_quote_cannot_claim_or_confirm_and_rejection_remains_possible(self):
+        quote,_,_=self.funded_product()
+        duplicate=str(uuid.uuid4())
+        # Simulate an already-existing duplicate payable quote at upgrade time.
+        ok('insert into concierge.quotes(id,client_id,version,publication_version,shipping_address_version,money,created_by) select '+lit(duplicate)+',client_id,3,publication_version,shipping_address_version,money,created_by from concierge.quotes where id='+lit(quote['quoteId']))
+        ok('insert into concierge.quote_states values('+lit(duplicate)+",'payable');update concierge.payment_heads set quote_version=3 where client_id="+lit(C))
+        basis=dict(quoteId=duplicate,quoteVersion=3,serviceCents=0,productCents=1600,totalCents=1600,shippingAddressVersion=1)
+        self.deny_write(C,'payment_write','submit_claim',dict(**basis,evidenceId=None),7,'product_already_funded')
+        claim=str(uuid.uuid4())
+        ok('insert into concierge.claims(id,client_id,quote_id) values('+','.join(map(lit,[claim,C,duplicate]))+');insert into concierge.claim_states values('+lit(claim)+",'submitted_unverified')")
+        self.deny_write(A,'payment_write','confirm_payment',dict(**basis,claimId=claim,bankReceiptVerified=True),7,'product_already_funded')
+        rejection=write(A,'payment_write','reject_claim',dict(**basis,claimId=claim,reasonCode='duplicate_claim'),7)
+        self.assertEqual(rejection['status'],'rejected')
+        self.assertEqual(ok('select count(*) from concierge.product_orders'),'1')
+
+    def test_29_received_id_rename_preserves_valid_state_and_actual_start(self):
+        self.funded_product()
+        write(C,'write','receive',dict(version=1,recommendationId='replacement-v1'),4)
+        write(C,'write','start',dict(version=1,recommendationId='replacement-v1',startedOn=self.today.isoformat()),5)
+        write(A,'write','save_draft',dict(intakeVersion=1,recommendations=[dict(self.recommendation,id='renamed-received')],advisorNote=''),6)
+        write(A,'write','publish',{},7)
+        view=call(C,'concierge_client_view',[]);state=view['plan']['itemStates'][0]
+        self.assertEqual(state['choice'],'approved');self.assertTrue(state['received']);self.assertEqual(state['startedOn'],self.today.isoformat())
+        self.assertEqual(view['routine'][0]['productId'],'replacement')
+
+    def test_30_simultaneous_product_confirmation_applies_once_and_funding_guard_is_atomic(self):
+        self.paid()
+        write(C,'write','decide',dict(version=1,recommendationId='replacement-v1',choice='approved',reason=''),3)
+        write(C,'payment_write','confirm_shipping_address',dict(address=self.address()),3)
+        quote=self.issue(4,0,True)
+        basis=dict(quoteId=quote['quoteId'],quoteVersion=2,serviceCents=0,productCents=1600,totalCents=1600,shippingAddressVersion=1)
+        claim=write(C,'payment_write','submit_claim',dict(**basis,evidenceId=None),5)
+        payload=dict(**basis,claimId=claim['claimId'],bankReceiptVerified=True);request=str(uuid.uuid4())
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            receipts=list(pool.map(lambda _:write(A,'payment_write','confirm_payment',payload,6,request=request),range(2)))
+        self.assertEqual(receipts[0],receipts[1])
+        money=scalar("select money||jsonb_build_object('publicationVersion',publication_version,'shippingAddressVersion',shipping_address_version) from concierge.quotes where id="+lit(quote['quoteId']))
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results=list(pool.map(lambda _:invoke(A,'concierge_payment_write',[lit(C),lit('issue_quote'),'7',lit(uuid.uuid4()),lit(json.dumps(money))+'::jsonb']),range(2)))
+        for result in results:
+            self.assertNotEqual(result.returncode,0);self.assertIn('concierge_product_already_funded',result.stderr)
+        self.assertEqual(ok('select count(*) from concierge.product_orders'),'1')
+        self.assertEqual(ok('select revision from concierge.payment_heads where client_id='+lit(C)),'7')
+
+    def test_31_photo_reservation_metadata_is_immutable_and_revocation_blocks_completion(self):
+        d=write(C,'checkin_write','reserve_photo',dict(angle='front',contentType='image/png',sizeBytes=100,sha256='d'*64),0)
+        for column,value in [('reservation_revision','2'),('sha256',lit('e'*64)),('path',lit(C+'/forged.png'))]:
+            result=q('update concierge.checkin_photos set '+column+'='+value+' where id='+lit(d['photoId']))
+            self.assertNotEqual(result.returncode,0);self.assertIn('concierge_immutable',result.stderr)
+        ok("insert into storage.objects(bucket_id,name,metadata) values('concierge-checkin-photos',"+lit(d['path'])+",'{\"size\":100,\"mimetype\":\"image/png\"}')")
+        ok("update concierge.enrollments set status='revoked' where client_id="+lit(C))
+        self.deny_write(C,'checkin_write','complete_photo',dict(photoId=d['photoId']),d['revision'])
+        self.assertEqual(ok('select state from concierge.checkin_photos where id='+lit(d['photoId'])),'pending')
+        self.assertEqual(ok('select revision from concierge.checkin_heads where client_id='+lit(C)),'1')
+
 
 if __name__ == '__main__':
     if '--reset' in sys.argv:

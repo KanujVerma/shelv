@@ -90,7 +90,8 @@ create table concierge.checkin_heads (
 );
 create table concierge.checkin_photos (
  id uuid primary key default gen_random_uuid(), client_id uuid not null references concierge.cases on delete cascade,
- reserved_by uuid not null, path text not null unique, angle text not null check(angle in ('front','left','right')),
+ reserved_by uuid not null, reservation_revision bigint not null check(reservation_revision between 1 and 9007199254740991),
+ path text not null unique, angle text not null check(angle in ('front','left','right')),
  content_type text not null check(content_type in ('image/jpeg','image/png','image/webp')),
  size_bytes bigint not null check(size_bytes between 1 and 5242880), sha256 text not null check(sha256 ~ '^[a-f0-9]{64}$'),
  state text not null check(state in ('pending','complete')), created_at timestamptz not null default now()
@@ -286,7 +287,20 @@ declare u uuid;result jsonb;was_replay boolean;begin
  if not was_replay and p_action in ('publish','decide','receive') then
   update concierge.quote_states st set status='superseded' from concierge.quotes qq where qq.id=st.quote_id and qq.client_id=p_client_id and st.status='payable' and (qq.money->>'productTotalCents')::bigint>0;
  end if;
- if p_action='publish' and not was_replay then perform concierge.activate_service(p_client_id);end if;
+ if p_action='publish' and not was_replay then
+  -- A changed recommendation ID is a new purchase obligation. R1 carries choice
+  -- by slot/SKU; require fresh approval for renamed, unreceived items instead.
+  -- Received/started continuity remains governed by the existing R1 receipt.
+  update concierge.item_states st set choice=null,reason=null
+   from concierge.publications current_pub cross join lateral jsonb_array_elements(current_pub.recommendations)j(item)
+   join concierge.publications previous_pub on previous_pub.client_id=current_pub.client_id and previous_pub.version=current_pub.version-1
+   cross join lateral jsonb_array_elements(previous_pub.recommendations)old(item)
+   where current_pub.client_id=p_client_id and current_pub.version=(result->>'publishedVersion')::integer
+    and st.client_id=current_pub.client_id and st.version=current_pub.version and st.recommendation_id=j.item->>'id'
+    and old.item->>'slot'=j.item->>'slot' and old.item->>'proposedProductId'=j.item->>'proposedProductId' and old.item->>'id'<>j.item->>'id'
+    and not exists(select 1 from concierge.receipts r where r.client_id=p_client_id and r.slot=j.item->>'slot' and r.product_id=j.item->>'proposedProductId');
+  perform concierge.activate_service(p_client_id);
+ end if;
  return result;
 end $$;
 
@@ -308,6 +322,15 @@ declare u uuid:=concierge.actor();v jsonb;begin
   'shippingAddress',(select jsonb_build_object('version',version,'address',address) from concierge.shipping_addresses where client_id=p_client_id order by version desc limit 1),
   'shippingAddresses',(select coalesce(jsonb_agg(jsonb_build_object('version',version,'address',address) order by version),'[]') from concierge.shipping_addresses where client_id=p_client_id),
   'service',concierge.service_projection(p_client_id),'nextServicePeriod',concierge.invoice_period(p_client_id));
+end $$;
+-- Immutable confirmed quotes are the funding ledger. The common client lock
+-- serializes every financial write; the key is recommendation identity across
+-- publications, never a lifetime product/SKU key. Exact replay runs first.
+create function concierge.require_unfunded(c uuid,items jsonb) returns void language plpgsql set search_path='' as $$ begin
+ if exists(select 1 from concierge.payment_confirmations pc join concierge.quotes q on q.id=pc.quote_id
+  cross join lateral jsonb_array_elements(q.money->'items')funded(item)
+  join jsonb_array_elements(items)candidate(item) on candidate.item->>'recommendationId'=funded.item->>'recommendationId'
+  where pc.client_id=c and pc.product_cents>0) then perform concierge.fail('product_already_funded');end if;
 end $$;
 create function concierge.validate_quote(c uuid,p jsonb) returns void language plpgsql set search_path='' as $$
 declare r jsonb;published integer;service bigint;subtotal bigint:=0;products bigint;total bigint;tax bigint;shipping bigint;quantity bigint;unit bigint;line bigint;period jsonb;start_day date;end_day date;begin
@@ -341,6 +364,7 @@ declare r jsonb;published integer;service bigint;subtotal bigint:=0;products big
   if published=0 or concierge.integer(p,'shippingAddressVersion') is distinct from (select address_version from concierge.payment_heads where client_id=c) or not exists(select 1 from concierge.shipping_addresses a where a.client_id=c and a.version=(p->>'shippingAddressVersion')::integer and a.confirmed_by=c) then perform concierge.fail('publication_conflict');end if;
  elsif p->'shippingAddressVersion' is distinct from 'null'::jsonb then perform concierge.fail('invalid_input');end if;
  if subtotal<>concierge.integer(p,'productSubtotalCents') or tax not between 0 and 100000000 or shipping not between 0 and 100000000 or products<>subtotal+tax+shipping or products>100000000 or total<>service+products or total not between 1 and 100000000 or (jsonb_array_length(p->'items')=0 and (tax<>0 or shipping<>0)) then perform concierge.fail('invalid_input');end if;
+ perform concierge.require_unfunded(c,p->'items');
 end $$;
 create function concierge.validate_address(a jsonb) returns void language plpgsql set search_path='' as $$ begin
  perform concierge.keys(a,array['recipientName','line1','line2','city','region','postalCode','countryCode']);
@@ -383,6 +407,7 @@ declare u uuid;prior jsonb;h concierge.payment_heads;q concierge.quotes;cl conci
   if (p_payload->>'shippingAddressVersion')::integer is distinct from q.shipping_address_version or (q.shipping_address_version is not null and q.shipping_address_version<>h.address_version) then perform concierge.fail('publication_conflict');end if;
   service:=concierge.integer(p_payload,'serviceCents');products:=concierge.integer(p_payload,'productCents');total:=concierge.integer(p_payload,'totalCents');
   if service<>(q.money->>'serviceCents')::bigint or products<>(q.money->>'productTotalCents')::bigint or total<>(q.money->>'totalCents')::bigint then perform concierge.fail('invalid_input');end if;
+  if p_action in ('submit_claim','confirm_payment') then perform concierge.require_unfunded(p_client_id,q.money->'items');end if;
   if p_action='submit_claim' then
    if p_payload->'evidenceId' is distinct from 'null'::jsonb and not exists(select 1 from concierge.payment_evidence e where e.id=(p_payload->>'evidenceId')::uuid and e.client_id=p_client_id and e.quote_id=q.id and e.state='uploaded' and e.reserved_by=u) then perform concierge.fail('forbidden');end if;
    if exists(select 1 from concierge.claims c join concierge.claim_states s on s.claim_id=c.id where c.quote_id=q.id and s.status='submitted_unverified') then perform concierge.fail('request_conflict');end if;
@@ -481,6 +506,11 @@ end $$;
 create function public.concierge_checkin_advisor_read(p_client_id uuid) returns jsonb language plpgsql security definer set search_path='' as $$ begin
  perform concierge.access(p_client_id,'view');perform 1 from concierge.cases where client_id=p_client_id for share;return concierge.checkin_projection(p_client_id,true);
 end $$;
+create function concierge.photo_reservation_immutable() returns trigger language plpgsql set search_path='' as $$ begin
+ if (to_jsonb(new)-'state') is distinct from (to_jsonb(old)-'state') or old.state<>'pending' or new.state<>'complete' then perform concierge.fail('immutable');end if;
+ return new;
+end $$;
+create trigger checkin_photo_reservation_immutable before update on concierge.checkin_photos for each row execute function concierge.photo_reservation_immutable();
 create function concierge.photo_descriptor(p concierge.checkin_photos,revision bigint) returns jsonb language sql set search_path='' as $$
  select jsonb_build_object('revision',revision,'photoId',p.id,'ownerId',p.client_id,'bucket','concierge-checkin-photos','path',p.path,
   'angle',p.angle,'contentType',p.content_type,'sizeBytes',p.size_bytes,'sha256',p.sha256,'state',p.state);
@@ -493,7 +523,8 @@ declare u uuid;prior jsonb;h concierge.checkin_heads;p concierge.checkin_photos;
  prior:=concierge.workflow_begin(u,p_client_id,p_request_id,'checkin',p_action,p_expected_revision,p_payload);if prior is not null then return prior;end if;
  insert into concierge.checkin_heads(client_id) values(p_client_id) on conflict do nothing;
  select * into h from concierge.checkin_heads where client_id=p_client_id for update;
- if h.revision<>p_expected_revision then perform concierge.fail('revision_conflict');end if;
+ -- Completion is fenced to its immutable reservation, not unrelated writes.
+ if p_action<>'complete_photo' and h.revision<>p_expected_revision then perform concierge.fail('revision_conflict');end if;
  if p_action='submit_report' then
   perform concierge.keys(p_payload,array['comfort','consistency','changes','photoIds']);g:=concierge.txt(p_payload,'comfort',1000);n:=concierge.txt(p_payload,'consistency',1000);changes:=concierge.txt(p_payload,'changes',1000,true);
   if jsonb_typeof(p_payload->'photoIds') is distinct from 'array' then perform concierge.fail('invalid_input');end if;
@@ -514,12 +545,13 @@ declare u uuid;prior jsonb;h concierge.checkin_heads;p concierge.checkin_photos;
  elsif p_action='reserve_photo' then
   perform concierge.keys(p_payload,array['angle','contentType','sizeBytes','sha256']);angle:=concierge.txt(p_payload,'angle',5);mime:=concierge.txt(p_payload,'contentType',20);size:=concierge.integer(p_payload,'sizeBytes');digest:=concierge.txt(p_payload,'sha256',64);
   if angle not in ('front','left','right') or mime not in ('image/jpeg','image/png','image/webp') or size not between 1 and 5242880 or digest !~ '^[a-f0-9]{64}$' then perform concierge.fail('invalid_input');end if;
-  pid:=gen_random_uuid();insert into concierge.checkin_photos(id,client_id,reserved_by,path,angle,content_type,size_bytes,sha256,state)
-  values(pid,p_client_id,u,p_client_id::text||'/'||pid::text||case mime when 'image/jpeg' then '.jpg' when 'image/png' then '.png' else '.webp' end,angle,mime,size,digest,'pending') returning * into p;
+  pid:=gen_random_uuid();insert into concierge.checkin_photos(id,client_id,reserved_by,reservation_revision,path,angle,content_type,size_bytes,sha256,state)
+  values(pid,p_client_id,u,h.revision+1,p_client_id::text||'/'||pid::text||case mime when 'image/jpeg' then '.jpg' when 'image/png' then '.png' else '.webp' end,angle,mime,size,digest,'pending') returning * into p;
  else
   perform concierge.keys(p_payload,array['photoId']);pid:=(p_payload->>'photoId')::uuid;
   select * into p from concierge.checkin_photos where id=pid and client_id=p_client_id and reserved_by=u;
   if not found then perform concierge.fail('forbidden');end if;
+  if p.reservation_revision<>p_expected_revision then perform concierge.fail('revision_conflict');end if;
   if p.state<>'pending' then perform concierge.fail('request_conflict');end if;
   perform concierge.object_complete('concierge-checkin-photos',p.path,p.content_type,p.size_bytes);
   update concierge.checkin_photos set state='complete' where id=p.id;
