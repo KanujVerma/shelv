@@ -1,3 +1,4 @@
+import { mapConciergeClientViewV2, mapConciergeAdvisorViewV2 } from '../../../src/contracts/ConciergePresentationMapping.ts';
 import type { ConciergeAuthenticatedPorts, ConciergeRpcCall } from '../../../src/contracts/ConciergePortal.ts';
 import { mapConciergeAdvisorDirectory, mapConciergeAdvisorView, mapConciergeClientView, mapConciergeWriteReceipt } from '../../../src/contracts/ConciergePortalMapping.ts';
 import { readUuid } from '../../../src/contracts/ConciergePortalValidation.ts';
@@ -6,7 +7,7 @@ import { buildConciergeRpc } from './commands.ts';
 
 export type ConciergePorts = ConciergeAuthenticatedPorts<ConciergeRpcCall>;
 const sqlErrors: Readonly<Record<string, number>> = {
-  concierge_unauthorized: 401, concierge_forbidden: 403, concierge_invalid_input: 400,
+  concierge_content_version_required:409, concierge_unauthorized: 401, concierge_forbidden: 403, concierge_invalid_input: 400,
   concierge_revision_conflict: 409, concierge_request_conflict: 409, concierge_intake_conflict: 409,
   concierge_baseline_conflict: 409, concierge_publication_conflict: 409, concierge_draft_unavailable: 409,
   concierge_already_received: 409, concierge_already_started: 409, concierge_product_not_approved: 409,
@@ -43,6 +44,8 @@ export async function handleConciergeRequest(request: Request, ports: ConciergeP
       const code = result.error.message ?? '';
       return Object.hasOwn(sqlErrors, code) ? error(sqlErrors[code], code) : error(503, 'unavailable');
     }
+    if(call.name==='concierge_client_view_v2')return reply(200,mapConciergeClientViewV2(result.data));
+    if(call.name==='concierge_advisor_view_v2')return reply(200,mapConciergeAdvisorViewV2(result.data));
     if (call.name === 'concierge_advisor_directory') return reply(200, mapConciergeAdvisorDirectory(result.data));
     if (call.name === 'concierge_client_view') return reply(200, mapConciergeClientView(result.data));
     if (call.name === 'concierge_advisor_view') return reply(200, mapConciergeAdvisorView(result.data));

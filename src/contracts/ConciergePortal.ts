@@ -1,3 +1,4 @@
+import type { PresentationPayloads } from './ConciergePresentation.ts';
 /** Wire contract of concierge R1. Product IDs are opaque; private notes are advisor-only. */
 export type ConciergeRecommendation = {
   id: string; slot: string; currentProductId: string; proposedProductId: string;
@@ -29,7 +30,7 @@ export type ConciergeAdvisorView = {
   intake: { version: number; goal: string; note: string } | null;
   draft: { intakeVersion: number; recommendations: ConciergeRecommendation[]; advisorNote: string } | null;
 };
-export type ConciergePayloads = {
+export type ConciergePayloads = PresentationPayloads & {
   save_intake: { goal: string; note: string; baseline: { slot: string; productId: string }[] };
   save_meeting_note: { kind: 'notes' | 'transcript'; text: string };
   submit_intake: { goal: string; note: string; baseline: { slot: string; productId: string }[] };
@@ -42,16 +43,16 @@ export type ConciergePayloads = {
 export type ConciergeWriteAction = keyof ConciergePayloads;
 export type ConciergeWriteCommand = {
   [A in ConciergeWriteAction]: { action: A; requestId: string; expectedRevision: number }
-    & (A extends 'save_draft' | 'publish' | 'save_intake' | 'save_meeting_note' ? { clientId: string } : Record<never, never>)
-    & (A extends 'publish' ? Record<never, never> : ConciergePayloads[A])
+    & (A extends 'save_draft' | 'publish' | 'save_intake' | 'save_meeting_note' | keyof PresentationPayloads ? { clientId: string } : Record<never, never>)
+    & (A extends 'publish' | 'publish_v2' ? Record<never, never> : ConciergePayloads[A])
 }[ConciergeWriteAction];
-export type ConciergeCommand = { action: 'advisor_list' } | { action: 'client_read' } | { action: 'advisor_read'; clientId: string } | ConciergeWriteCommand;
+export type ConciergeCommand = { action:'client_read_v2' } | { action:'advisor_read_v2';clientId:string } | { action: 'advisor_list' } | { action: 'client_read' } | { action: 'advisor_read'; clientId: string } | ConciergeWriteCommand;
 export type ConciergeWriteRpc = {
-  [A in ConciergeWriteAction]: { name: A extends 'save_intake' | 'save_meeting_note' ? 'concierge_advisor_write' : 'concierge_write'; args: {
+  [A in ConciergeWriteAction]: { name: A extends keyof PresentationPayloads ? 'concierge_presentation_write' : A extends 'save_intake' | 'save_meeting_note' ? 'concierge_advisor_write' : 'concierge_write'; args: {
     p_client_id: string; p_action: A; p_expected_revision: number; p_request_id: string; p_payload: ConciergePayloads[A];
   } }
 }[ConciergeWriteAction];
-export type ConciergeRpcCall = { name: 'concierge_advisor_directory'; args: Record<string, never> } | { name: 'concierge_client_view'; args: Record<string, never> }
+export type ConciergeRpcCall = {name:'concierge_client_view_v2';args:Record<string,never>} | {name:'concierge_advisor_view_v2';args:{p_client_id:string}} | { name: 'concierge_advisor_directory'; args: Record<string, never> } | { name: 'concierge_client_view'; args: Record<string, never> }
   | { name: 'concierge_advisor_view'; args: { p_client_id: string } } | ConciergeWriteRpc;
 export type ConciergeWriteReceipt = { revision: number; publishedVersion: number; operation: ConciergeWriteAction };
 
