@@ -587,4 +587,3 @@ end $$;
 revoke all on all functions in schema concierge from public,anon,authenticated,service_role;
 revoke all on all sequences in schema concierge from public,anon,authenticated,service_role;
 commit;
-
