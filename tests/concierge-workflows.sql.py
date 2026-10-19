@@ -394,6 +394,26 @@ class Workflows(unittest.TestCase):
         self.assertTrue(receipt['serviceUnlocked'])
         self.assertEqual(call(C,'concierge_client_view',[])['plan']['version'],2)
 
+    def test_23_individual_receipt_and_start_keep_other_product_active(self):
+        second=dict(self.recommendation,id='cleanser-v1',slot='cleanser',currentProductId='old-cleanser',proposedProductId='new-cleanser',priceCents=800)
+        write(A,'advisor_write','save_intake',dict(goal='Comfort',note='',baseline=[dict(slot='moisturizer',productId='original'),dict(slot='cleanser',productId='old-cleanser')]),0)
+        write(A,'write','save_draft',dict(intakeVersion=1,recommendations=[self.recommendation,second],advisorNote=''),1)
+        write(A,'write','publish',{},2);service=self.issue();self.claim_confirm(service,1)
+        for rev,item in [(3,self.recommendation),(4,second)]:
+            write(C,'write','decide',dict(version=1,recommendationId=item['id'],choice='approved',reason=''),rev)
+        write(C,'payment_write','confirm_shipping_address',dict(address=self.address()),3)
+        money=dict(publicationVersion=1,serviceCents=0,servicePeriod=None,shippingAddressVersion=1,items=[dict(recommendationId=x['id'],quantity=1,unitPriceCents=x['priceCents'],lineTotalCents=x['priceCents']) for x in [self.recommendation,second]],productSubtotalCents=2400,taxCents=0,shippingCents=0,productTotalCents=2400,totalCents=2400)
+        quote=write(A,'payment_write','issue_quote',money,4);self.claim_confirm(quote,5,0,2400)
+        routine=lambda:{r['slot']:r['productId'] for r in call(C,'concierge_client_view',[])['routine']}
+        original=dict(moisturizer='original',cleanser='old-cleanser')
+        self.assertEqual(routine(),original)
+        write(C,'write','receive',dict(version=1,recommendationId=self.recommendation['id']),5)
+        self.assertEqual(routine(),original)
+        write(C,'write','start',dict(version=1,recommendationId=self.recommendation['id'],startedOn=self.today.isoformat()),6)
+        self.assertEqual(routine(),dict(moisturizer='replacement',cleanser='old-cleanser'))
+        write(C,'write','receive',dict(version=1,recommendationId=second['id']),7)
+        self.assertEqual(routine(),dict(moisturizer='replacement',cleanser='old-cleanser'))
+
 
 if __name__ == '__main__':
     if '--reset' in sys.argv:
