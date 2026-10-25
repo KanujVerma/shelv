@@ -7,6 +7,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 
 const target = JSON.parse(await readFile(new URL('../release/PRODUCTION-TARGET.json', import.meta.url), 'utf8'));
+const installedExports = { AdvisorSessionObject: { type: 'durable-object', storage: 'sqlite' } };
 const migrationInputs = Object.fromEntries(await Promise.all(target.pendingMigrationSources.map(async name => [name, await readFile(new URL('../../../' + name, import.meta.url))])));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const module = await import('../scripts/prepare-production-release.mjs').catch(error => {
@@ -46,7 +47,7 @@ async function fixture(run) {
   await put('src/contracts/Fixture.ts', 'export const value = "synthetic source fixture";');
   execFileSync('python3', ['-c', 'import pathlib,zipfile,sys\nr=pathlib.Path(sys.argv[1])\nwith zipfile.ZipFile(sys.argv[2],"w",zipfile.ZIP_DEFLATED) as z:\n for p in sorted(r.rglob("*")):\n  if p.is_file():z.write(p,p.relative_to(r).as_posix())', path.join(build, 'site'), path.join(build, 'portal.zip')]);
   manifest.zipSha256 = hash(await readFile(path.join(build, 'portal.zip')));
-  const readback = { observedAt: new Date().toISOString(), accountId: target.accountId, errors: [], project: { success: true, name: target.pages.project, productionBranch: 'main', canonicalDeployment: target.pages.baselineDeployment, compatibilityDate: target.compatibilityDate, compatibilityFlags: [...target.compatibilityFlags], flags: { ...target.enabledFlags }, durableObjectNamespaces: { ADVISOR_SESSIONS: { namespace_id: target.vault.namespaceId } } }, vault: { success: true, name: target.vault.script, compatibilityDate: target.compatibilityDate, compatibilityFlags: [...target.compatibilityFlags], bindings: target.vault.bindingInventory.map(binding => ({ ...binding, ...(target.enabledFlags[binding.name] ? { value: 'true' } : {}), ...(binding.type === 'durable_object_namespace' ? { namespaceId: target.vault.namespaceId, className: target.vault.className } : {}) })), observability: { enabled: false }, logpush: false, tailConsumers: [], placement: {}, tags: [], usageModel: 'standard' }, vaultDeployments: { success: true, items: [{ id: target.vault.baselineDeployment, versions: [{ version_id: target.vault.baselineVersion, percentage: 100 }] }] }, vaultLatestVersionId: target.vault.baselineVersion, privateExposure: { workersDev: false, previewUrls: false, routeScanComplete: true, customDomainScanComplete: true, routes: [], customDomains: [] } };
+  const readback = { observedAt: new Date().toISOString(), accountId: target.accountId, errors: [], project: { success: true, name: target.pages.project, productionBranch: 'main', canonicalDeployment: target.pages.baselineDeployment, compatibilityDate: target.compatibilityDate, compatibilityFlags: [...target.compatibilityFlags], flags: { ...target.enabledFlags }, durableObjectNamespaces: { ADVISOR_SESSIONS: { namespace_id: target.vault.namespaceId } } }, vault: { success: true, name: target.vault.script, compatibilityDate: target.compatibilityDate, compatibilityFlags: [...target.compatibilityFlags], bindings: target.vault.bindingInventory.map(binding => ({ ...binding, ...(target.enabledFlags[binding.name] ? { value: 'true' } : {}), ...(binding.type === 'durable_object_namespace' ? { namespaceId: target.vault.namespaceId, className: target.vault.className } : {}) })), observability: { enabled: false }, logpush: false, tailConsumers: [], placement: {}, tags: [], usageModel: 'standard', declaredExports: structuredClone(installedExports) }, vaultDeployments: { success: true, items: [{ id: target.vault.baselineDeployment, versions: [{ version_id: target.vault.baselineVersion, percentage: 100 }] }] }, vaultLatestVersionId: target.vault.baselineVersion, privateExposure: { workersDev: false, previewUrls: false, routeScanComplete: true, customDomainScanComplete: true, routes: [], customDomains: [] } };
   const buildManifestPath = path.join(build, 'BUILD-MANIFEST.json'), readbackPath = path.join(root, 'current-readback.json');
   const sync = async () => { await writeFile(buildManifestPath, JSON.stringify(manifest)); await writeFile(readbackPath, JSON.stringify(readback)); };
   await sync();
@@ -65,7 +66,7 @@ test('preparation binds generated files and preserves installed bindings without
     assert.equal(result.vaultUpload.metadata.bindings.length, 0);
     assert.deepEqual(result.vaultUpload.metadata.keep_bindings, target.vault.keepBindingTypes);
     assert.equal('migrations' in result.vaultUpload.metadata, false);
-    assert.equal('exports' in result.vaultUpload.metadata, false);
+    assert.deepEqual(result.vaultUpload.metadata.exports, target.vault.declaredExports);
     assert.equal(result.vaultUpload.metadata.observability.enabled, false);
     assert.match(result.pagesDeployment.worker.file, /frozen-build\/site\/_worker\.js$/);
     assert.equal('_worker.js' in result.pagesDeployment.staticAssets, false);
@@ -76,6 +77,28 @@ test('preparation binds generated files and preserves installed bindings without
     assert.ok(result.sqlMigrations.some(row => row.sourceFile.endsWith('20261025011331_concierge_no_current_products.sql') && row.sourceSha256 === '2076cef0e5a647d62eaa9b95e512687dab24b5cf696c4028e387409f34916adf'));
     assert.equal((await readFile(path.join(options.outputDirectory, 'RELEASE-PREPARATION.json'), 'utf8')).includes('secret-value'), false);
   } finally { globalThis.fetch = originalFetch; }
+}));
+
+test('preparation echoes only the exact already-installed Durable Object export', () => fixture(async ({ options, readback, sync }) => {
+  readback.vault.declaredExports = structuredClone(installedExports); await sync();
+  const result = await module.prepareProductionRelease(options);
+  assert.deepEqual(result.vaultUpload.metadata.exports, installedExports);
+  assert.equal('migrations' in result.vaultUpload.metadata, false);
+  assert.deepEqual(result.vaultUpload.metadata.bindings, []);
+}));
+
+for (const [label, exports] of [
+  ['missing declared export', undefined],
+  ['new class', { ...installedExports, AnotherObject: { type: 'durable-object', storage: 'sqlite' } }],
+  ['renamed class', { AnotherObject: { type: 'durable-object', storage: 'sqlite' } }],
+  ['deleted class', { AdvisorSessionObject: { type: 'durable-object', state: 'deleted' } }],
+  ['renamed tombstone', { AdvisorSessionObject: { type: 'durable-object', state: 'renamed', renamed_to: 'AnotherObject' } }],
+  ['transferred class', { AdvisorSessionObject: { type: 'durable-object', state: 'transferred', transferred_to: 'another-worker' } }],
+  ['storage drift', { AdvisorSessionObject: { type: 'durable-object', storage: 'legacy-kv' } }],
+]) test(`preparation refuses ${label} before emitting metadata`, () => fixture(async ({ options, readback, sync }) => {
+  readback.vault.declaredExports = exports; await sync();
+  await assert.rejects(module.prepareProductionRelease(options), /declared exports/);
+  await assert.rejects(access(options.outputDirectory));
 }));
 
 test('Edge source freeze includes transitive modules and detects a changed helper after approval', () => fixture(async ({ root, put }) => {

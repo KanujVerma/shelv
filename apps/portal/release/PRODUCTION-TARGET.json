@@ -90,6 +90,23 @@
       "observabilityEnabled": false,
       "logpush": false,
       "tailConsumers": []
+    },
+    "declaredExports": {
+      "AdvisorSessionObject": {
+        "type": "durable-object",
+        "storage": "sqlite"
+      }
+    },
+    "expectedExportsReconciliation": {
+      "created": [],
+      "updated": [],
+      "deleted": [],
+      "renamed": [],
+      "transferred": [],
+      "transfer_pending": [],
+      "warnings": [],
+      "info": [],
+      "removable_entries": []
     }
   },
   "constraints": {
@@ -126,11 +143,12 @@
   "apiEvidence": {
     "workerUpload": "https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/",
     "multipartMetadata": "https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/",
-    "keepBindingsMeaning": "Binding types retained from the previous upload, not binding names. Omit replacement binding values, migrations and declarative exports. Require latest uploaded version to equal expected deployed version.",
+    "keepBindingsMeaning": "Binding types retained from the previous upload, not binding names. Omit replacement binding values and Durable Object migrations. Echo only the exact installed declared exports; require all reconciliation arrays empty and latest uploaded version to equal the expected deployed version.",
     "checkedWranglerVersion": "4.151.2",
     "checkedWranglerImplementation": "node_modules/wrangler/wrangler-dist/cli.js keep_bindings construction",
     "pagesDeployment": "https://developers.cloudflare.com/api/resources/pages/subresources/projects/subresources/deployments/methods/create/",
-    "privateWorkerRouting": "workers.dev, preview URLs, custom domains and every account-zone route must remain absent/disabled."
+    "privateWorkerRouting": "workers.dev, preview URLs, custom domains and every account-zone route must remain absent/disabled.",
+    "installedExportsRequirement": "The code-only PUT was rejected with 100402 provisioned_class_missing_from_config when exports was omitted. Echoing the exact existing AdvisorSessionObject durable-object/sqlite export succeeded with every exports reconciliation array empty. This permits no new class, tombstone, transfer, storage change or namespace."
   },
   "pendingMigrationSha256": {
     "supabase/migrations/20261024230528_concierge_founder_admission.sql": "4f45572f8e6f7d04e1bb1c4316fd950ef517e78a282b0584ec1f8d239fd97197",

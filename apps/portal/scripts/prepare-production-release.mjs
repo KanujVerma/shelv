@@ -10,6 +10,7 @@ const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 const demand = (condition, message) => { if (!condition) throw new Error(message); };
 const json = async filename => JSON.parse(await readFile(filename, 'utf8'));
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+const stableMetadata = value => value && typeof value === 'object' && !Array.isArray(value) ? Object.fromEntries(Object.keys(value).sort().map(key => [key, stableMetadata(value[key])])) : value;
 
 function relativeName(name) {
   demand(typeof name === 'string' && name.length > 0 && !name.includes('\\') && !name.includes('\0') && !path.posix.isAbsolute(name) && name.split('/').every(part => part && part !== '.' && part !== '..' && !/^\.(?:env|dev\.vars)(?:\.|$)/.test(part) && !/\.(?:pem|key|p12|p8|private\.json)$/i.test(part)), 'Unsafe or private source path');
@@ -77,6 +78,8 @@ function validateReadback(readback, target) {
   const project = readback.project, vault = readback.vault;
   demand(project?.success === true && project.name === target.pages.project && project.productionBranch === target.pages.productionBranch && project.canonicalDeployment === target.pages.baselineDeployment, 'Pages target/deployment mismatch');
   demand(vault?.success === true && vault.name === target.vault.script, 'Private vault target mismatch');
+  const installedExport = { [target.vault.className]: { type: 'durable-object', storage: 'sqlite' } };
+  demand(same(stableMetadata(target.vault.declaredExports), stableMetadata(installedExport)) && same(stableMetadata(vault.declaredExports), stableMetadata(target.vault.declaredExports)), 'Private vault declared exports must exactly match the pinned installed class/storage; no new class, tombstone or transfer');
   for (const current of [project, vault]) demand(current.compatibilityDate === target.compatibilityDate && same(current.compatibilityFlags, target.compatibilityFlags), 'Compatibility settings mismatch');
   demand(same(project.flags, target.enabledFlags), 'Production Pages enabled flags must remain true');
   demand(project.durableObjectNamespaces?.[target.pages.namespaceBinding]?.namespace_id === target.vault.namespaceId, 'Pages namespace mismatch');
@@ -141,7 +144,7 @@ export async function prepareProductionRelease({ buildManifestPath, readbackPath
     ? await verifySupabaseFunctionSources({ repositoryRoot: repository, configuration: target.supabase, manifest: await json(functionSourcesPath) })
     : await collectSupabaseFunctionSources({ repositoryRoot: repository, configuration: target.supabase });
   const functionSourcesBytes = JSON.stringify(functionSources, null, 2) + '\n';
-  const metadata = { main_module: 'index.js', bindings: [], keep_bindings: target.vault.keepBindingTypes, compatibility_date: target.compatibilityDate, compatibility_flags: target.compatibilityFlags, usage_model: 'standard', logpush: false, tail_consumers: [], tags: [], observability: { enabled: false, logs: { enabled: false, invocation_logs: false, persist: false }, traces: { enabled: false, persist: false }, issues: { enabled: false } } };
+  const metadata = { main_module: 'index.js', bindings: [], keep_bindings: target.vault.keepBindingTypes, compatibility_date: target.compatibilityDate, compatibility_flags: target.compatibilityFlags, usage_model: 'standard', logpush: false, tail_consumers: [], tags: [], observability: { enabled: false, logs: { enabled: false, invocation_logs: false, persist: false }, traces: { enabled: false, persist: false }, issues: { enabled: false } }, exports: target.vault.declaredExports };
   const reserved = new Set(['_worker.js', '_routes.json', '_headers', '_redirects', 'functions-filepath-routing-config.json']);
   const result = {
     schemaVersion: 1,
@@ -188,11 +191,12 @@ export async function prepareProductionRelease({ buildManifestPath, readbackPath
       sha256: sha256(vault),
       moduleContentType: 'application/javascript+module',
       metadata,
+      expectedExportsReconciliation: target.vault.expectedExportsReconciliation,
       preserve: {
         bindingInventory: target.vault.bindingInventory,
         privateExposure: target.vault.privateExposure,
         secretValues: 'retain installed binding; never read, replace or serialize key material',
-        namespace: 'retain installed namespace, storage and class; no exports reconciliation or Durable Object migration',
+        namespace: 'retain installed namespace, storage and class; echo only exact installed exports, require no reconciliation effects, and send no Durable Object migration',
       },
     },
     sqlMigrations,

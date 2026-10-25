@@ -49,16 +49,30 @@ These three canonical files restore SQL already installed on the existing hosted
 
 All migration files are under `supabase/migrations/`. The historical local preview filename `20261020002348_concierge_advisor_preview_v2.sql` matches installed server version `20261020054405` exactly. Preserve that alias mapping; do not reapply the SQL or repair the old ledger to make filenames agree.
 
-Only these four new reviewed sources are pending hosted application:
+At release preparation, these four new reviewed sources were pending. The authorized execution produced the following source-to-server mapping:
 
-| Pending source file | SHA256 |
-| --- | --- |
-| `20261024230528_concierge_founder_admission.sql` | `4f45572f8e6f7d04e1bb1c4316fd950ef517e78a282b0584ec1f8d239fd97197` |
-| `20261024230829_concierge_checkin_replies.sql` | `539f882a4944a7a13959436e0775c22beb6d0ba4d0ce1cc5c7d83bb26d20f47b` |
-| `20261024234059_concierge_manual_payment_methods.sql` | `6ebf8543d4102451cdfc9138020b8d3f1b34afe2b71fccf9fe09f340117fe574` |
-| `20261025011331_concierge_no_current_products.sql` | `2076cef0e5a647d62eaa9b95e512687dab24b5cf696c4028e387409f34916adf` |
+| Release source file | SHA256 | Actual server version |
+| --- | --- | --- |
+| `20261024230528_concierge_founder_admission.sql` | `4f45572f8e6f7d04e1bb1c4316fd950ef517e78a282b0584ec1f8d239fd97197` | `20261025030725` |
+| `20261024230829_concierge_checkin_replies.sql` | `539f882a4944a7a13959436e0775c22beb6d0ba4d0ce1cc5c7d83bb26d20f47b` | `20261025030747` |
+| `20261024234059_concierge_manual_payment_methods.sql` | `6ebf8543d4102451cdfc9138020b8d3f1b34afe2b71fccf9fe09f340117fe574` | `20261025030748` |
+| `20261025011331_concierge_no_current_products.sql` | `2076cef0e5a647d62eaa9b95e512687dab24b5cf696c4028e387409f34916adf` | `20261025031419` (guard-only registration; see below) |
 
-Apply only those reviewed bytes through the supported migration tool after release approval. The tool has no caller-supplied version parameter: record `sourceFile + sourceSha256 → actualServerVersion` from each installation result/readback. Never blanket-push local history or repair historical aliases.
+The supported apply tool has no caller-supplied version parameter. Preserve `sourceFile + sourceSha256 → actualServerVersion` for each operation and the recovery exception below. Never blanket-push local history, repair historical aliases or reapply an already committed source merely because registration failed.
+
+### No-current-products registration recovery
+
+The first NoProducts attempt used the reviewed 17,050-byte source with SHA256 `2076cef0e5a647d62eaa9b95e512687dab24b5cf696c4028e387409f34916adf`. Its explicit source COMMIT completed the application DDL, then provider ledger insertion failed with `23505` because generated version `20261025030748` already belonged to manual payment methods. The NoProducts DDL was not replayed or rolled back.
+
+Exact installed state for all eight affected functions matched the native final-schema reference, including bodies/signatures, return types, volatility, definer/search-path/parallel settings, argument names and effective application-role EXECUTE permissions. A separate guard-only supported apply then registered this new attempt as `20261025031419`. The prior 75 ledger rows and the eight function bindings remained unchanged; the ledger count became 76.
+
+The ledger statement is the **5,200-byte registration guard**, SHA256 `b8939edf3940663e69a094eb064b559aaa8c5befb37aa8bd30a75379eca79f16`, not the original application DDL. Its exact text is retained as [operational evidence](../apps/portal/release/evidence/20261025031419_no_current_products_registration_guard.sql), outside the normal migrations directory. It asserts the expected ledger and installed function state, performs no application DDL/DML, and rejects repeat registration. Fresh-database replay continues to use the original canonical migration source; this exception is recovery of one new attempt, not historical ledger repair.
+
+### Existing Durable Object export metadata
+
+The initial code-only vault upload omitted declarative exports and was rejected with `100402 provisioned_class_missing_from_config`; no version/deployment changed. The corrected upload echoed only the already-installed declaration `AdvisorSessionObject: {type: "durable-object", storage: "sqlite"}`. It succeeded with all export-reconciliation arrays empty, preserving the namespace, storage, installed bindings and key. Corrected upload metadata SHA256 is `cb27b77636724bc1517d16c63ea15fb12e890fbf68c6ee069334e1136b99f5c3`.
+
+The preparer now requires sanitized readback of that exact pinned declaration and emits it alongside retained binding types. New classes, tombstones, renames, transfers and storage changes are rejected before metadata output. It sends no Durable Object migration and requires no reconciliation effects. The target descriptor retains the original release baseline IDs; actual deployment receipts are recorded separately rather than silently retargeting historical preparation.
 
 ## Reviewed Edge source capsule
 
@@ -73,7 +87,7 @@ The reviewed `SUPABASE-FUNCTION-SOURCES.json` has file SHA256 `c54497e67e320d031
 
 Shared files occur in more than one closure. Existing hosted JWT verification stays true for the first three; admission's explicit source configuration is also true. Per-file content/hash, function digest and aggregate bind the embedded upload contents. TypeScript 6.0.3 resolves the supported static ESM graph; unsupported CommonJS loaders and unresolvable references fail closed. Current closures contain no external npm/jsr imports. Deploy the embedded reviewed contents, not later mutable workspace reads.
 
-Application and release-tooling reviews passed, including both corrected release-guard findings. This is source-review approval, not Git publication or production-release authorization. Publication, migrations, function updates and portal deployment remain pending the concrete [release plan](PORTAL_RELEASE_PLAN.md).
+Application and release-tooling reviews passed, and the user subsequently authorized the bounded release. The reviewed source was published as commit `66f7a22510a9a6ac7753ce98e080325e83024552` in draft [PR 206](https://github.com/KanujVerma/shelv/pull/206), with exact-head CI green and no merge. This document records source and operational provenance; current deployment and hosted-acceptance outcomes remain in [portal acceptance](PORTAL_ACCEPTANCE.md) and the [release plan](PORTAL_RELEASE_PLAN.md).
 
 ## GitHub and private preservation
 
