@@ -1,6 +1,6 @@
 # Proposed portal release plan
 
-**Status: application and tooling reviews PASS; the user approved this bounded release scope with ‘u have approval go’. Publication and production execution are pending at this authorization checkpoint. Git merge is not included.** The prior pending-approval state remains part of the preparation history; this update records the subsequent authorization. The machine-readable target is `apps/portal/release/PRODUCTION-TARGET.json`; migration and Edge-source identities are canonical in [source provenance](PORTAL_SOURCE_PROVENANCE.md).
+**Status: the bounded release was approved, executed and verified. Git merge was not included and has not occurred.** [Release result](PORTAL_RELEASE_RESULT.md) records the deployed IDs, actual migration mapping, fresh hosted acceptance and separately approved internal-session cleanup. The plan below retains the reviewed scope and sequence; its frozen baseline remains historical input rather than current production. The machine-readable target is `apps/portal/release/PRODUCTION-TARGET.json`; source/capsule identities are canonical in [source provenance](PORTAL_SOURCE_PROVENANCE.md).
 
 ## Frozen candidate
 

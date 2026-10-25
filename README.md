@@ -11,7 +11,7 @@ npm --prefix apps/portal ci
 npm --prefix apps/portal run build
 ```
 
-See [founder operations](docs/CONCIERGE_FOUNDER_OPERATIONS.md), [acceptance and decisions](docs/PORTAL_ACCEPTANCE.md), and [deployment/source provenance](docs/PORTAL_SOURCE_PROVENANCE.md). A local build does not publish the portal or apply database changes.
+The current live release and fresh hosted verification are recorded in [release result](docs/PORTAL_RELEASE_RESULT.md). See [founder operations](docs/CONCIERGE_FOUNDER_OPERATIONS.md), [acceptance and decisions](docs/PORTAL_ACCEPTANCE.md), and [deployment/source provenance](docs/PORTAL_SOURCE_PROVENANCE.md). A local build does not publish the portal or apply database changes.
 
 ## Scanner application
 

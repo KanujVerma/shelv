@@ -2,7 +2,9 @@
 
 The current portal is a separate web application from the older scanner. Its deployed source had advanced beyond GitHub integration. This reconciliation imports the reviewed portal and its supporting source into `apps/portal/` on an isolated branch without changing the primary dirty checkout or historical release folders.
 
-## Pinned deployed release
+The completion release is now deployed and verified. [Release result](PORTAL_RELEASE_RESULT.md) owns current deployment IDs, source commits, actual migration versions, runtime coverage and hosted acceptance. The pinned archive below remains the preserved predecessor; do not rewrite its inventory to represent the new release.
+
+## Preserved deployed baseline before completion
 
 | Component | Identity |
 | --- | --- |

@@ -1,5 +1,13 @@
 # Shelv Cross-Agent Context Sync Ledger
 
+## 2026-10-24: portal deployed and fresh-client acceptance passed
+
+The complete human-led portal is live at portal.goshelv.com, Pages cf09be80-48bf-4b7a-99b2-fb17e0de15ae, mapped to application commit 66f7a22510a9a6ac7753ce98e080325e83024552. Operational correction 2663e976 preserves the exact existing SQLite export declaration and distinguishes committed no-products SQL from its guard-only provider registration. All three exact-head CI jobs passed at both commits. Draft PR 206 is published and unmerged; no merge was authorized.
+
+Fresh founder/client browser acceptance passed Add client, owned normal PKCE login, explicit-none intake, two plan publications, three manual methods with simulated gross confirmation, receipt, two explicit local-date Starts and preserved A-to-B history, photo/check-in, private media for both roles, public reply/private-note isolation, permission denial and normal owned-session logout. The current provider autoconfirm path also created one internal synthetic session; separate explicit approval expired only it and revoked its one refresh row. Zero active synthetic sessions/usable refresh rows remain. Nine baseline sessions, ten refresh rows and other clients' business heads remain unchanged. Exactly two emails were sent; Sami's personal sign-in and real funds/fulfillment were not exercised.
+
+[Release result](PORTAL_RELEASE_RESULT.md) owns actual rollout and hosted proof; [acceptance](PORTAL_ACCEPTANCE.md) owns product decisions and local checks. All 104 public assets match the frozen build. Independent live Alex/Maya preview review passed, including sampled Maya 390-pixel mobile. Retained generated records are SYNTHETIC DO NOT FULFILL and excluded from purchasing/shipping. The primary dirty checkout and private evidence remain preserved. The local preparation/authorization checkpoints below are historical and do not supersede this deployed result.
+
 ## 2026-10-24: portal completion candidate locally verified
 
 The human-led concierge portal candidate now includes founder Add client, client-visible written check-in replies with separate private notes, manual Zelle/Cash App/Apple Cash, explicitly confirmed no-current-products clients and later routine authoring, and the refined cream/forest-green presentation. Calls and messages remain normal contact; no self-service questionnaire, automated facial diagnosis or general chat was introduced. Service is $100 per calendar month, products separate. Only explicit client Start changes the active routine. The approved first-three-month dissatisfaction guarantee returns service fees actually paid through a manual process.

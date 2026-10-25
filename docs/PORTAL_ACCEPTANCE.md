@@ -2,7 +2,7 @@
 
 Owner: Kanuj
 
-The completion candidate is implemented and independently reviewed locally. The user approved the bounded release scope; publication and production execution are pending at this authorization checkpoint. A new hosted client journey remains required after execution. [Source provenance](PORTAL_SOURCE_PROVENANCE.md) records lineage, [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) records daily work, and [release plan](PORTAL_RELEASE_PLAN.md) records the proposed production actions.
+The agreed completion release is deployed at https://portal.goshelv.com and a fresh hosted synthetic journey has passed. [Release result](PORTAL_RELEASE_RESULT.md) records actual deployment/commit mappings, runtime evidence, cleanup and limitations. [Source provenance](PORTAL_SOURCE_PROVENANCE.md) records lineage; [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) records daily work. Draft PR 206 is published and unmerged; no Git merge was authorized.
 
 ## Agreed product behavior
 
@@ -23,13 +23,13 @@ The completion candidate is implemented and independently reviewed locally. The 
 | Area | Result | Scope and limit |
 | --- | --- | --- |
 | Source preservation | Original checkout preserved; 303 imported baseline files matched the reviewed import map; 97 public baseline assets matched live hashes. | Isolated branch starts at main 33e90b0208f8a84ba1fbcd4aef788a26cf378bc6. Original dirty checkout is outside this change. |
-| Founder admission | Independent specification and quality PASS. Final 50-migration Auth/PostgREST/SQL/Chrome fixture passed 15 checks fresh and 15 against retained resources. | Covers native identity creation, duplicate/retry/capability paths, empty initial state, client-owned login and session cleanup. No hosted grant or email was sent by this run. |
+| Founder admission | Independent specification and quality PASS. Final 50-migration Auth/PostgREST/SQL/Chrome fixture passed 15 checks fresh and 15 against retained resources. | Covers native identity creation, duplicate/retry/capability paths, empty initial state, client-owned login and session cleanup. These local checks sent no hosted email or grant; later hosted evidence is recorded separately. |
 | Fixture lineage | Independent review PASS. Database-side snapshot and full migration-ledger attestation precede acceptance; incompatible retained schemas are rejected. | Local fixture only. Older volumes are retained rather than erased. |
 | Written replies | Contract, native SQL and browser checks pass; independent specification and quality PASS. | Server author/time, append-only replies, report ownership, plain text, bounded Unicode, retry/conflict, private-note exclusion and late-session fences. |
 | Manual methods | Independent specification and quality PASS, including cross-version retries/collisions, immutable quote/evidence metadata and gross settlement. Seven enabled native SQL cases pass. | Legacy records remain readable without invented historical recipients. No real money or provider account operation was tested. |
 | Empty routine and later plans | Independent specification and quality PASS. Six enabled native SQL cases pass. | Confirmed none, explicit Start, none-to-A-to-B authoring, stale-basis conflict and explicit recovery preserve immutable history. |
 | Client parity and presentation | Synthetic client/browser checks pass for both plans; 54 rendered states at 320, 390 and 1440 pixels had no overflow, page errors or external requests. Additional admission/reply/payment states were inspected. | Fixture-backed rendering is separate from hosted data and real Storage acceptance. |
-| Portal and sessions | Portal suite 95/95; session runtime suite 141/141 at application freeze. Latest release-tooling fix passed 39/39 focused cases, including four added rejection cases. | Tooling checks overlap the earlier portal suite; these counts are not an aggregate. No application source changed after the application freeze. |
+| Portal and sessions | Portal suite 95/95; session runtime suite 141/141 at application freeze. The final release-tooling correction passed 47/47 focused cases, including the later existing-export rejection cases. | Tooling checks overlap the earlier portal suite; these counts are not an aggregate. No application source changed after the application freeze. |
 | Backend contracts | 40/40 pass against the actual shared synthetic-request factory. | Local contracts, not hosted provider execution. |
 | Database replay | All 50 local migrations replayed. All 31 pgTAP files and 701 assertions pass. | Historical hosted aliases must not be blanket-pushed or repaired. |
 | Root application | 1,170 unit checks pass, zero failures, 18 explicit opt-in skips, 1,188 total. App/test types and Expo web export pass. | Finance, empty-routine and reply SQL opt-ins ran separately enabled; two historical SQL opt-ins are not claimed. |
@@ -38,15 +38,13 @@ The completion candidate is implemented and independently reviewed locally. The 
 
 The original root Expo Auth configuration sends six-digit codes. An early admission attempt failed link extraction after four checks. This was a configuration mismatch, not a portal admission pass. The dedicated portal fixture subsequently passed fresh and retained runs without changing Expo settings.
 
-## Current production and remaining acceptance
+## Current production and completed hosted acceptance
 
-The unchanged production baseline is Pages deployment 13339bb7-3fd1-41df-af16-2735cce52cfb, with its pinned 99-file archive SHA256 3f6ecf472d8c8142754cf99df5b175b734c45d50d1861a23519fd4b5bb173595. Both client and advisor shared sessions are enabled. Read-only provider checks still match the reviewed baseline; refresh them immediately before any production action.
+The deployed application is commit 66f7a22510a9a6ac7753ce98e080325e83024552 on Pages cf09be80-48bf-4b7a-99b2-fb17e0de15ae. All 104 public files match the reviewed build. Both shared-session flags, the existing private namespace and key binding are preserved. Operational correction 2663e976 publishes the verified existing-export guard and actual migration-registration provenance without changing application bytes. All three exact-head CI jobs passed at both commits.
 
-A prior October 24 report records 18 passing hosted stages for an existing admitted synthetic client: authoring/publication, simulated service/product payments, decisions, receipt/Start, photo check-in, advisor review/date, privacy and logout. That historical response was a private note plus client-visible date. It does not verify this release's new admission, written replies, payment methods or empty-routine lifecycle.
+The new hosted journey passed founder Add client UI, normal founder/client login, confirmed-none authoring, two publications, all three manual methods with simulated gross receipt verification, receipt, two explicit local-date Starts, immutable history, photo/report, private media for both roles, written reply/private-note isolation, permission denials and owned local-scope logout. The approved separate cleanup expired one provider-created internal synthetic session and revoked its refresh token. Baseline provider sessions and other client heads remain unchanged. Exactly two login emails were sent; Sami's runtime sign-in and real funds/fulfillment were not exercised.
 
-The remaining gate is the approved release followed by a newly admitted synthetic client's normal hosted journey: founder setup, login, empty state, publication, decisions, all supported manual-method displays, simulated receipt verification, receipt/Start, later routine, photo check-in, written reply/private-note isolation, other-owner denial and logout. Retained synthetic data must say SYNTHETIC DO NOT FULFILL. No real funds, purchases, shipping or changes to real-client records belong to that test.
-
-The [release plan](PORTAL_RELEASE_PLAN.md) owns the four pending migrations, four function deployments, compatible runtime rollout and named capability/registry/test scope. The user approved this bounded publication/deployment scope; record actual execution and exact-head CI separately. Git merge is not included. Do not deploy a historical false-session configuration or restore a Zelle-only reader after method-bearing records exist.
+The [release result](PORTAL_RELEASE_RESULT.md) is canonical for actual hosted identities, the no-products timestamp-collision recovery and its distinct guard statement, the provider observability acknowledgement/readback limit, synthetic order exclusion and the preservation-compatible recovery boundary. Historical October 24 baseline reports remain baseline evidence, not the proof of this new release.
 
 ## Business evidence boundaries
 
