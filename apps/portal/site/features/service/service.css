@@ -1,1 +1,18 @@
-.shelv-service{max-width:1080px;margin:0 auto;padding:24px 0;color:var(--ink,#173c2d)}.service-card{padding:22px;margin:18px 0;border:1px solid #d9ded2;border-radius:12px;background:#fffdf7;overflow-wrap:anywhere}.service-card h3{margin-top:0}.service-record{border-top:1px solid #d9ded2;padding:16px 0}.service-record h4{margin:0 0 8px}.service-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:16px 0}.service-form h4,.service-form>button{grid-column:1/-1}.service-form label{display:flex;flex-direction:column;gap:7px;min-width:0;font-size:14px}.service-form input,.service-form textarea,.service-form select{box-sizing:border-box;width:100%;max-width:100%;border:1px solid #c9d2c5;border-radius:7px;background:#fffef9;padding:10px;color:#173c2d;font:inherit}.service-form textarea{min-height:100px;resize:vertical}.service-form input[type=checkbox]{width:20px;height:20px}.service-form small,.service-record small{font-size:12px;line-height:1.5;color:#5c6a60}.service-card details{margin:16px 0}.service-card summary{cursor:pointer;font-weight:600}.service-private{background:#eef1e8;border-left:3px solid #6f806c;padding:10px}.service-toolbar{display:flex;gap:10px}.service-error{color:#933a29}.service-status{min-height:24px}@media(max-width:600px){.shelv-service{padding:12px 0}.service-form{grid-template-columns:1fr}.service-card{padding:16px;margin:12px 0}}
+/* Reuse advisor panels, controls and forms; retain only service-specific layout. */
+.shelv-service{max-width:1080px;margin:0 auto;padding:24px 0}
+.service-card{margin:18px 0;overflow-wrap:anywhere}
+.service-record{border-top:1px solid var(--line);padding:16px 0}
+.service-record h4{margin:0 0 8px}
+.service-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:16px 0}
+.service-form h4,.service-form>button{grid-column:1/-1}
+.service-form label{min-width:0}
+.service-form input,.service-form textarea,.service-form select{min-width:0;max-width:100%}
+.service-form input:not([type=checkbox]),.service-form select{min-height:44px}
+.service-form textarea{min-height:100px}
+.service-form .service-checkbox{display:flex;align-items:center;gap:10px;min-height:44px}
+.service-form input[type=checkbox]{width:20px;height:20px;margin:0;flex:none}
+.service-card details{margin:16px 0}
+.shelv-service button,.service-card summary{min-height:44px}
+.service-toolbar{display:flex;gap:10px}
+.service-status{min-height:24px}
+@media(max-width:600px){.shelv-service{padding:12px 0}.service-form{grid-template-columns:1fr}.service-card{margin:12px 0}}
