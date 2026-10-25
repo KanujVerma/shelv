@@ -920,7 +920,7 @@ var azelaicUsage = usage2(["evening"], 3, azelaicHow, { morning: null, evening: 
 var hydroHow = ["Apply evenly to face and neck after cleansing, following the product label. Use it in place of your current moisturizer.", "In the morning, follow with sunscreen. Make this later change separately, after the treatment is settled. You don\u2019t need to buy it now."];
 var hydroUsage = usage2(["morning", "evening"], 4, hydroHow, { morning: "Hydro Boost in place of CeraVe; follow with sunscreen.", evening: "After cleansing, apply Hydro Boost in place of CeraVe." });
 var balmHow = ["On makeup days, use the balm in place of Bioderma, not alongside it.", "Follow the product label and avoid direct contact with eyes. Rinse off, then follow with your cleanser."];
-function createMayaPresentation() {
+export function createMayaPresentation() {
   const baselineRoutine = [
     { id: "maya-water-rinse", kind: "instruction", slot: null, productId: null, product: null, title: "Your usual water rinse", usage: usage2(["morning"], 1, ["Keep your morning water rinse. More cleansing isn\u2019t the goal."], { morning: "Keep your morning water rinse.", evening: null }) },
     ...[["moisturizer", moisturizerUsage], ["cleanser", cleanserUsage], ["remover", removerUsage], ["sunscreen", sunscreenUsage], ["makeup", usage2(["morning"], 6, ["Makeup is optional."], { morning: "Your usual makeup, if you want to wear it. Brand reference image; your shade is not recorded.", evening: null })]].map(([key, u]) => ({ id: "maya-baseline-" + key, kind: "product", slot: key === "remover" ? "makeup-removal" : key, productId: P[key].id, product: P[key], title: P[key].name, usage: u }))
@@ -939,4 +939,7 @@ function createMayaPresentation() {
 var mayaIdentity = { clientId: "00000000-0000-4000-8000-00000000a002", displayName: "Maya", avatar: "M", capabilities: { profile: true } };
 
 // src/main.js
-mountSyntheticCase(document.querySelector("#portal-root"), { identity: mayaIdentity, presentation: createMayaPresentation() });
+if(new URLSearchParams(location.search).get('guided')==='1'){
+ const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('../walkthrough/guide.css',import.meta.url).href;document.head.append(stylesheet);
+ const {mountGuidedMaya}=await import('../walkthrough/maya.js');mountGuidedMaya(document.querySelector('#portal-root'),{presentation:createMayaPresentation()});
+}else mountSyntheticCase(document.querySelector("#portal-root"), { identity: mayaIdentity, presentation: createMayaPresentation() });

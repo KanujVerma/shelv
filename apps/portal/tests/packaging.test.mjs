@@ -24,7 +24,7 @@ test('portable build includes both gateway audiences and preserves the supplied 
     await writeFile(path.join(sourceDir, 'index.html'), content);
     await writeFile(path.join(sourceDir, 'portal-config.json'), JSON.stringify({ advisorSharedSessions: true, clientSharedSessions: true }));
     const first = await module.buildPortal({ sourceDir, outputDir: path.join(directory, 'one') });
-    assert.deepEqual(first.gatewayRoutes, ['/api/client/*', '/api/advisor/*']);
+    assert.deepEqual(first.gatewayRoutes, ['/api/client/*', '/api/advisor/*', '/api/walkthroughs/*']);
     assert.equal(first.assetCount, 4);
     assert.equal(await readFile(path.join(sourceDir, 'index.html'), 'utf8'), content);
     assert.equal(first.assets['index.html'].sha256, hash(Buffer.from(content)));

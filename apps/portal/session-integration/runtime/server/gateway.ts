@@ -49,7 +49,7 @@ function clearCookies() { const headers = new Headers();
             const route = client ? url.pathname.replace('/api/client/', '/api/advisor/') : url.pathname;
             if (client) demand(env.CLIENT_SHARED_SESSIONS === 'true', 503, 'configuration_missing');
             const rawUpload = client && route === '/api/advisor/checkins/photos/upload';
-            const known = ['/api/advisor/session', '/api/advisor/auth/request', '/api/advisor/auth/complete', '/api/advisor/session/upgrade', '/api/advisor/logout', '/api/advisor/operations', '/api/advisor/payments', '/api/advisor/checkins', '/api/advisor/admission'];
+            const known = ['/api/advisor/session', '/api/advisor/auth/request', '/api/advisor/auth/complete', '/api/advisor/session/upgrade', '/api/advisor/logout', '/api/advisor/operations', '/api/advisor/payments', '/api/advisor/checkins', '/api/advisor/admission', ...(!client ? ['/api/advisor/walkthroughs'] : [])];
             const media = client ? /^\/api\/advisor\/media\/(photo|evidence)$/.test(route) : route==='/api/advisor/media/evidence';
             const preview = !client && /^\/api\/advisor\/preview\/(draft|published|payments|checkins|photo)$/.test(route);
             demand((known.includes(route) && !(client && route.endsWith('/session/upgrade'))) || preview || media || rawUpload, 404, 'not_found');

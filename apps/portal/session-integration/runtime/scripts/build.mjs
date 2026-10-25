@@ -14,7 +14,7 @@ export async function buildCandidate({ advisor = true, outdir = path.join(root, 
   await bundle('workers/session-vault/index.ts', path.join(outdir, 'vault/index.js'));
   if (advisor) {
     await bundle('server/advisor-candidate-gateway.ts', path.join(outdir, 'advisor-pages/_worker.js'));
-    await writeFile(path.join(outdir, 'advisor-pages/_routes.json'), JSON.stringify({ version: 1, include: ['/api/client/*', '/api/advisor/*'], exclude: [] }) + '\n');
+    await writeFile(path.join(outdir, 'advisor-pages/_routes.json'), JSON.stringify({ version: 1, include: ['/api/client/*', '/api/advisor/*', '/api/walkthroughs/*'], exclude: [] }) + '\n');
   }
   await writeFile(path.join(outdir, 'pages/_routes.json'), JSON.stringify({ version: 1, include: ['/api/client/*'], exclude: [] }) + '\n');
 }

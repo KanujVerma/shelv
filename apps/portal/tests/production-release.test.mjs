@@ -18,13 +18,15 @@ const edgeModule = await import('../scripts/supabase-function-sources.mjs').catc
   if (error.code === 'ERR_MODULE_NOT_FOUND') return null;
   throw error;
 });
-async function fixture(run) {
+async function fixture(run, { targetName = 'historical', gatewayRoutes: routesOverride } = {}) {
+  const selectedTarget = targetName === 'walkthroughs' ? JSON.parse(await readFile(new URL('../release/WALKTHROUGHS-TARGET.json', import.meta.url), 'utf8')) : target;
+  const gatewayRoutes = routesOverride ?? selectedTarget.gatewayRoutes ?? ['/api/client/*', '/api/advisor/*'];
   const root = await mkdtemp(path.join(tmpdir(), 'shelv-release-guard-'));
   const sourceRoot = path.join(root, 'apps/portal'), build = path.join(root, '.local-artifacts/frozen-build');
   const outputDirectory = path.join(root, '.local-artifacts/release-review');
   const source = { 'index.html': '<!doctype html><title>Local release fixture</title>', '_worker.js': 'historical baseline, never upload this source file', '_routes.json': JSON.stringify({ version: 1, include: ['/api/client/*', '/api/advisor/*'], exclude: [] }), 'portal-config.json': JSON.stringify({ clientSharedSessions: true, advisorSharedSessions: true }) };
-  const generated = { ...source, '_worker.js': 'export default {fetch(){return new Response("combined gateway")}};' };
-  const manifest = { schemaVersion: 1, sourceSnapshotUnchanged: true, productionDeploymentChanged: false, gatewayRoutes: ['/api/client/*', '/api/advisor/*'], sourceAssets: {}, runtimeSources: {}, assets: {}, assetCount: Object.keys(generated).length };
+  const generated = { ...source, '_routes.json':JSON.stringify({version:1,include:gatewayRoutes,exclude:[]}), '_worker.js': 'export default {fetch(){return new Response("combined gateway")}};' };
+  const manifest = { schemaVersion: 1, sourceSnapshotUnchanged: true, productionDeploymentChanged: false, gatewayRoutes, sourceAssets: {}, runtimeSources: {}, assets: {}, assetCount: Object.keys(generated).length };
   const put = async (relative, bytes) => { const p = path.join(root, relative); await mkdir(path.dirname(p), { recursive: true }); await writeFile(p, bytes); return p; };
   for (const [name, text] of Object.entries(source)) { await put('apps/portal/site/' + name, text); manifest.sourceAssets[name] = { bytes: Buffer.byteLength(text), sha256: hash(text) }; }
   for (const [name, text] of Object.entries(generated)) { await put('.local-artifacts/frozen-build/site/' + name, text); manifest.assets[name] = { bytes: Buffer.byteLength(text), sha256: hash(text) }; }
@@ -37,22 +39,22 @@ async function fixture(run) {
   const vault = 'export class AdvisorSessionObject {}; export default {fetch(){return new Response(null,{status:404})}};';
   await put('.local-artifacts/frozen-build/runtime/vault/index.js', vault);
   manifest.vault = { bytes: Buffer.byteLength(vault), sha256: hash(vault) };
-  for (const name of target.pendingMigrationSources) await put(name, migrationInputs[name]);
+  for (const name of selectedTarget.pendingMigrationSources) await put(name, migrationInputs[name] ?? await readFile(new URL('../../../' + name, import.meta.url)));
   await put('supabase/config.toml', '[functions.concierge-admission]\nenabled = true\nverify_jwt = true\nentrypoint = "./functions/concierge-admission/index.ts"\n');
-  await put('.local-artifacts/release-preflight/HOSTED-SOURCE-PREIMAGES.json', JSON.stringify(target.supabase.functions.filter(x => x.verifyJwtEvidence === 'preserve_hosted_true').map(x => ({ slug: x.name, version: 2, verifyJwt: true, bundleSha256: '1'.repeat(64) }))));
-  for (const fn of target.supabase.functions) {
+  await put(selectedTarget.supabase.hostedPreimages, JSON.stringify(selectedTarget.supabase.functions.filter(x => x.verifyJwtEvidence === 'preserve_hosted_true').map(x => ({ slug: x.name, version: 2, verifyJwt: true, bundleSha256: '1'.repeat(64) }))));
+  for (const fn of selectedTarget.supabase.functions) {
     await put(fn.entrypoint, 'import { value } from "./helper.ts"; export const handler = () => value;');
     await put(`supabase/functions/${fn.name}/helper.ts`, 'export {value} from "../../../src/contracts/Fixture.ts";');
   }
   await put('src/contracts/Fixture.ts', 'export const value = "synthetic source fixture";');
   execFileSync('python3', ['-c', 'import pathlib,zipfile,sys\nr=pathlib.Path(sys.argv[1])\nwith zipfile.ZipFile(sys.argv[2],"w",zipfile.ZIP_DEFLATED) as z:\n for p in sorted(r.rglob("*")):\n  if p.is_file():z.write(p,p.relative_to(r).as_posix())', path.join(build, 'site'), path.join(build, 'portal.zip')]);
   manifest.zipSha256 = hash(await readFile(path.join(build, 'portal.zip')));
-  const readback = { observedAt: new Date().toISOString(), accountId: target.accountId, errors: [], project: { success: true, name: target.pages.project, productionBranch: 'main', canonicalDeployment: target.pages.baselineDeployment, compatibilityDate: target.compatibilityDate, compatibilityFlags: [...target.compatibilityFlags], flags: { ...target.enabledFlags }, durableObjectNamespaces: { ADVISOR_SESSIONS: { namespace_id: target.vault.namespaceId } } }, vault: { success: true, name: target.vault.script, compatibilityDate: target.compatibilityDate, compatibilityFlags: [...target.compatibilityFlags], bindings: target.vault.bindingInventory.map(binding => ({ ...binding, ...(target.enabledFlags[binding.name] ? { value: 'true' } : {}), ...(binding.type === 'durable_object_namespace' ? { namespaceId: target.vault.namespaceId, className: target.vault.className } : {}) })), observability: { enabled: false }, logpush: false, tailConsumers: [], placement: {}, tags: [], usageModel: 'standard', declaredExports: structuredClone(installedExports) }, vaultDeployments: { success: true, items: [{ id: target.vault.baselineDeployment, versions: [{ version_id: target.vault.baselineVersion, percentage: 100 }] }] }, vaultLatestVersionId: target.vault.baselineVersion, privateExposure: { workersDev: false, previewUrls: false, routeScanComplete: true, customDomainScanComplete: true, routes: [], customDomains: [] } };
+  const readback = { observedAt: new Date().toISOString(), accountId: selectedTarget.accountId, errors: [], project: { success: true, name: selectedTarget.pages.project, productionBranch: 'main', canonicalDeployment: selectedTarget.pages.baselineDeployment, compatibilityDate: selectedTarget.compatibilityDate, compatibilityFlags: [...selectedTarget.compatibilityFlags], flags: { ...selectedTarget.enabledFlags }, durableObjectNamespaces: { ADVISOR_SESSIONS: { namespace_id: selectedTarget.vault.namespaceId } } }, vault: { success: true, name: selectedTarget.vault.script, compatibilityDate: selectedTarget.compatibilityDate, compatibilityFlags: [...selectedTarget.compatibilityFlags], bindings: selectedTarget.vault.bindingInventory.map(binding => ({ ...binding, ...(selectedTarget.enabledFlags[binding.name] ? { value: 'true' } : {}), ...(binding.type === 'durable_object_namespace' ? { namespaceId: selectedTarget.vault.namespaceId, className: selectedTarget.vault.className } : {}) })), observability: { enabled: false }, logpush: false, tailConsumers: [], placement: {}, tags: [], usageModel: 'standard', declaredExports: structuredClone(installedExports) }, vaultDeployments: { success: true, items: [{ id: selectedTarget.vault.baselineDeployment, versions: [{ version_id: selectedTarget.vault.baselineVersion, percentage: 100 }] }] }, vaultLatestVersionId: selectedTarget.vault.baselineVersion, privateExposure: { workersDev: false, previewUrls: false, routeScanComplete: true, customDomainScanComplete: true, routes: [], customDomains: [] } };
   const buildManifestPath = path.join(build, 'BUILD-MANIFEST.json'), readbackPath = path.join(root, 'current-readback.json');
   const sync = async () => { await writeFile(buildManifestPath, JSON.stringify(manifest)); await writeFile(readbackPath, JSON.stringify(readback)); };
   await sync();
-  const options = { buildManifestPath, readbackPath, outputDirectory, sourceRoot };
-  try { await run({ root, options, manifest, readback, sync, put }); } finally { await rm(root, { recursive: true, force: true }); }
+  const options = { buildManifestPath, readbackPath, outputDirectory, sourceRoot, targetName };
+  try { await run({ root, options, manifest, readback, sync, put, selectedTarget }); } finally { await rm(root, { recursive: true, force: true }); }
 }
 
 test('preparation binds generated files and preserves installed bindings without provider calls', () => fixture(async ({ options }) => {
@@ -262,3 +264,111 @@ test('omitted observability remains an explicit evidence gap rather than a disab
   assert.equal(result.readbackGaps.length, 1);
   assert.equal(result.vaultUpload.metadata.observability.enabled, false);
 }));
+
+
+test('historical target refuses a walkthrough gateway even when all generated hashes match', () => fixture(async ({ options, manifest, sync }) => {
+  manifest.gatewayRoutes = ['/api/client/*', '/api/advisor/*', '/api/walkthroughs/*']; await sync();
+  await assert.rejects(module.prepareProductionRelease(options), /build manifest|target.*routes/i);
+  await assert.rejects(access(options.outputDirectory));
+}, { gatewayRoutes: ['/api/client/*', '/api/advisor/*', '/api/walkthroughs/*'] }));
+
+test('walkthrough preparation records every pending hosted prerequisite without making provider calls', () => fixture(async ({ options, selectedTarget }) => {
+  const originalFetch = globalThis.fetch; globalThis.fetch = () => { throw Error('No provider request is permitted'); };
+  try {
+    const result = await module.prepareProductionRelease(options);
+    assert.equal(result.status, 'prepared_for_review_with_pending_prerequisites');
+    assert.equal(result.deploymentReady, false);
+    assert.equal(result.targetName, 'walkthroughs');
+    assert.equal(result.providerCalls, 0); assert.equal(result.providerWrites, 0);
+    assert.deepEqual(result.gatewayRoutes, ['/api/client/*', '/api/advisor/*', '/api/walkthroughs/*']);
+    assert.deepEqual(result.sqlMigrations.map(row => row.sourceFile), selectedTarget.pendingMigrationSources);
+    assert.equal(result.sqlMigrations.length, 2);
+    assert.deepEqual(result.releasePrerequisites, selectedTarget.releasePrerequisites);
+    assert.equal(result.releasePrerequisites.privateImport.initialShareGrants, 0);
+    assert.equal(result.releasePrerequisites.vaultSecret.keepBindingsDoesNotProvision, true);
+    assert.equal(result.vaultUpload.metadata.bindings.length, 0);
+    assert.equal(result.vaultUpload.preserve.bindingInventory.some(binding => binding.name === 'SUPABASE_WALKTHROUGH_KEY'), false);
+    assert.equal(result.installedMigrationProvenance.length, 4);
+    assert.equal(result.installedMigrationProvenance[3].actualServerVersion, '20261025031419');
+    assert.equal(result.targetBaselineEvidence.status, 'recorded_release_result_not_fresh_provider_readback');
+  } finally { globalThis.fetch = originalFetch; }
+}, { targetName: 'walkthroughs' }));
+
+for (const filename of ['20261025221028_concierge_service_workflows.sql', '20261025221043_concierge_private_walkthroughs.sql']) {
+  test(`walkthrough preparation rejects changed canonical migration ${filename}`, () => fixture(async ({ options, put }) => {
+    await put('supabase/migrations/' + filename, '-- changed after review');
+    await assert.rejects(module.prepareProductionRelease(options), /Pending migration source hash mismatch/);
+    await assert.rejects(access(options.outputDirectory));
+  }, { targetName: 'walkthroughs' }));
+}
+
+test('walkthrough preparation rejects missing canonical migration before emitting output', () => fixture(async ({ root, options, selectedTarget }) => {
+  await rm(path.join(root, selectedTarget.pendingMigrationSources[1]));
+  await assert.rejects(module.prepareProductionRelease(options), /ENOENT/);
+  await assert.rejects(access(options.outputDirectory));
+}, { targetName: 'walkthroughs' }));
+
+test('walkthrough target refuses the historical two-route gateway', () => fixture(async ({ options, manifest, sync }) => {
+  manifest.gatewayRoutes = ['/api/client/*', '/api/advisor/*']; await sync();
+  await assert.rejects(module.prepareProductionRelease(options), /build manifest|target.*routes/i);
+  await assert.rejects(access(options.outputDirectory));
+}, { targetName: 'walkthroughs' }));
+
+test('readback flag ordering does not invent production configuration drift', () => fixture(async ({ options, readback, sync }) => {
+  readback.project.flags = Object.fromEntries(Object.entries(readback.project.flags).reverse()); await sync();
+  const result = await module.prepareProductionRelease(options);
+  assert.equal(result.preparationOnly, true);
+}));
+
+test('walkthrough readback cannot omit an existing installed binding', () => fixture(async ({ options, readback, sync }) => {
+  readback.vault.bindings = readback.vault.bindings.filter(binding => binding.name !== 'SUPABASE_PUBLIC_KEY'); await sync();
+  await assert.rejects(module.prepareProductionRelease(options), /Installed binding inventory drift/);
+  await assert.rejects(access(options.outputDirectory));
+}, { targetName: 'walkthroughs' }));
+
+test('walkthrough review freezes the package but blocks deployment when exact-version export evidence is absent', () => fixture(async ({ options, readback, sync }) => {
+  delete readback.vault.declaredExports; await sync();
+  const result = await module.prepareProductionRelease(options);
+  assert.equal(result.status, 'blocked_pending_readback');
+  assert.equal(result.deploymentReady, false);
+  assert.equal(result.deploymentActions.status, 'blocked');
+  assert.equal(result.deploymentActions.providerWritesPermitted, false);
+  assert.match(result.readbackGaps.join(' '), /declared.export|exact.version/i);
+  assert.equal(result.vaultUpload.declaredExportsEvidence.source, 'recorded_target_only_not_current_readback');
+  assert.deepEqual(result.vaultUpload.metadata.exports, installedExports);
+  assert.ok(result.frozenBuildManifestSha256);
+  assert.equal(result.sqlMigrations.length, 2);
+  await access(path.join(options.outputDirectory, 'SUPABASE-FUNCTION-SOURCES.json'));
+}, { targetName: 'walkthroughs' }));
+
+test('walkthrough review remains blocked without complete private vault exposure scans', () => fixture(async ({ options, readback, sync }) => {
+  delete readback.privateExposure; await sync();
+  const result = await module.prepareProductionRelease(options);
+  assert.equal(result.status, 'blocked_pending_readback');
+  assert.match(result.readbackGaps.join(' '), /exposure|route.*domain/i);
+  assert.equal(result.deploymentActions.providerWritesPermitted, false);
+}, { targetName: 'walkthroughs' }));
+
+test('walkthrough preparation rejects a conflicting installed export rather than downgrading it to an evidence gap', () => fixture(async ({ options, readback, sync }) => {
+  readback.vault.declaredExports = { AdvisorSessionObject: { type: 'durable-object', storage: 'legacy-kv' } }; await sync();
+  await assert.rejects(module.prepareProductionRelease(options), /declared exports/);
+  await assert.rejects(access(options.outputDirectory));
+}, { targetName: 'walkthroughs' }));
+
+
+test('walkthrough target preserves hosted JWT verification for the already installed admission function', () => fixture(async ({ root, selectedTarget }) => {
+  assert.equal(selectedTarget.supabase.functions.find(fn => fn.name === 'concierge-admission').verifyJwtEvidence, 'preserve_hosted_true');
+  const frozen = await edgeModule.collectSupabaseFunctionSources({ repositoryRoot: root, configuration: selectedTarget.supabase });
+  assert.equal(frozen.functions.every(fn => fn.hostedBaseline?.verifyJwt === true), true);
+} , { targetName: 'walkthroughs' }));
+
+for (const [label, change] of [
+  ['public workers.dev', e => e.workersDev = true],
+  ['public preview URLs', e => e.previewUrls = true],
+  ['public vault route', e => e.routes = [{ pattern: '*example.invalid/*' }]],
+  ['public vault custom domain', e => e.customDomains = ['vault.example.invalid']],
+]) test(`walkthrough review cannot downgrade ${label} to missing evidence`, () => fixture(async ({ options, readback, sync }) => {
+  delete readback.vault.declaredExports; change(readback.privateExposure); await sync();
+  await assert.rejects(module.prepareProductionRelease(options), /Private vault exposure/);
+  await assert.rejects(access(options.outputDirectory));
+}, { targetName: 'walkthroughs' }));

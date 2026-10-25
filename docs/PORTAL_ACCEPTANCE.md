@@ -6,6 +6,16 @@ Business-policy update, 25 October 2026: [founder operations](CONCIERGE_FOUNDER_
 
 The agreed completion release is deployed at https://portal.goshelv.com and a fresh hosted synthetic journey has passed. [Release result](PORTAL_RELEASE_RESULT.md) records actual deployment/commit mappings, runtime evidence, cleanup and limitations. [Source provenance](PORTAL_SOURCE_PROVENANCE.md) records lineage; [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) records daily work. Draft PR 206 is published and unmerged; no Git merge was authorized.
 
+## Guided walkthrough and service candidate, 25 October 2026
+
+The local candidate on `codex/walkthroughs-service-20261025`, based on the decision head `45c5112cb5c7c420b38e965804933a3986050743`, implements the new walkthrough and service scope. It depends on draft PRs 206 and 207; neither dependency was merged by this work. Hosted acceptance below continues to describe the earlier release.
+
+The public guide is `/maya/?guided=1`. Private plans appear in the authenticated advisor **Walkthroughs** library with Open, guided start and explicit sharing controls. A generic `/walkthrough/` shell reads one immutable sanitized snapshot through a 32-byte fragment capability; the server stores only its digest and checks scope, availability, expiry and revocation on every read. Default expiry is 30 days and the canonical private store starts with zero grants. Guest plan decisions and story stages use independent in-memory adapters with no real payment destinations, account transport, uploads or messages.
+
+New authenticated service commands cover advisor-origin reviews without a client report, draft/publish active instructions, actual purchase-backed returns, cancellation and current final-plan export. Native PostgreSQL and handler checks exercise production SQL and response mappers; browser evidence uses isolated synthetic authorization and records. The four private inputs preserve founder-confirmed initial details, current external product research and separately authored follow-ups. They establish no new historical result or transaction.
+
+All four private journeys were rendered at 320, 390, 768 and 1440 pixels, including the full staged path, refresh, Restart, Explore, no-payment views and capability revocation. Sixteen journeys passed with no page errors, unexpected external traffic or page overflow. Public Maya guide checks also passed at those four widths. The [implementation handoff](handoffs/2026-10-25-walkthroughs-service.md) records final integration checks and remaining release authorization.
+
 ## Agreed product behavior
 
 - Consultations and skin review happen in person or on a call, with photos when useful. Founders enter the resulting context. No separate self-service intake form or automated facial diagnosis is required.

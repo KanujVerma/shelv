@@ -4,7 +4,7 @@ import { CredentialEnvelope } from '../../server/credential-envelope';
 import { SessionVault } from '../../server/session-vault';
 import { AuthFlow, flowExpiryDisposition, type FlowRecord, type SessionTarget } from '../../server/auth-flow';
 import { ClientProvider } from '../../server/client-upstream';
-import { SupabaseProvider } from '../../server/upstream';
+import { WalkthroughProvider, readWalkthroughWithKey } from '../../server/walkthrough-upstream';
 import { PORTAL_ORIGIN, safeError } from '../../server/policy';
 import type { VaultCommand, VaultResult } from '../../server/protocol';
 type Env = Omit<VaultBindings, 'ADVISOR_SESSIONS' | 'SESSION_IDLE_SECONDS' | 'SESSION_ABSOLUTE_SECONDS' | 'SESSION_FLOW_SECONDS' | 'CLIENT_SHARED_SESSIONS'> & {
@@ -16,6 +16,7 @@ type Env = Omit<VaultBindings, 'ADVISOR_SESSIONS' | 'SESSION_IDLE_SECONDS' | 'SE
     ADVISOR_SHARED_SESSIONS?: string;
     SUPABASE_PUBLIC_KEY?: string;
     ADVISOR_SESSION_KEYS?: string;
+    SUPABASE_WALKTHROUGH_KEY?: string;
 };
 type LimitRecord = {
     kind: 'limit';
@@ -55,7 +56,7 @@ export class AdvisorSessionObject extends DurableObject<Env> {
         }
         return { now: () => Date.now(), idleMs, absoluteMs, flowMs };
     }
-    #auth() { demand(this.env.PORTAL_ORIGIN === PORTAL_ORIGIN && this.env.SUPABASE_PUBLIC_KEY && this.env.ADVISOR_SESSION_KEYS, 503, 'configuration_missing'); return this.#audience === 'client' ? new ClientProvider(this.env.SUPABASE_PUBLIC_KEY) : new SupabaseProvider(this.env.SUPABASE_PUBLIC_KEY, undefined, 12000, this.env.ADVISOR_SHARED_SESSIONS === 'true'); }
+    #auth() { demand(this.env.PORTAL_ORIGIN === PORTAL_ORIGIN && this.env.SUPABASE_PUBLIC_KEY && this.env.ADVISOR_SESSION_KEYS, 503, 'configuration_missing'); return this.#audience === 'client' ? new ClientProvider(this.env.SUPABASE_PUBLIC_KEY) : new WalkthroughProvider(this.env.SUPABASE_PUBLIC_KEY, undefined, 12000, this.env.ADVISOR_SHARED_SESSIONS === 'true'); }
     #session() { if (!this.#vault)
         this.#vault = new SessionVault(this.#store<SessionRecord>('session'), new CredentialEnvelope(this.env.ADVISOR_SESSION_KEYS ?? '', this.ctx.id.toString()), this.#auth(), this.#limits()); return this.#vault; }
     #pending() { if (!this.#flow)
@@ -71,7 +72,7 @@ export class AdvisorSessionObject extends DurableObject<Env> {
         };
         return { initialize: (credentials, grant, remember, policy) => call<SessionView>({ type: 'session.initialize', credentials, grant, remember, policy }), view: () => call<SessionView>({ type: 'session.view' }), retire: () => call<void>({ type: 'session.retire' }) };
     }
-    #limit(scope: 'bootstrap' | 'otp' | 'auth') {
+    #limit(scope: 'bootstrap' | 'otp' | 'auth' | 'walkthrough') {
         const old = this.#read();
         if (old)
             demand(old.kind === 'limit', 503, 'unavailable');
@@ -81,7 +82,7 @@ export class AdvisorSessionObject extends DurableObject<Env> {
         counts[scope] = (counts[scope] ?? 0) + 1;
         daily[scope] = (daily[scope] ?? 0) + 1;
         this.#write({ ...r, audience: this.#audience, minute, counts, daily });
-        return { allowed: counts[scope] <= { bootstrap: 20, otp: 3, auth: 10 }[scope] && daily[scope] <= { bootstrap: 200, otp: 20, auth: 100 }[scope] };
+        return { allowed: counts[scope] <= { bootstrap: 20, otp: 3, auth: 10, walkthrough: 60 }[scope] && daily[scope] <= { bootstrap: 200, otp: 20, auth: 100, walkthrough: 1000 }[scope] };
     }
     async #schedule() {
         const r = this.#read();
@@ -96,6 +97,15 @@ export class AdvisorSessionObject extends DurableObject<Env> {
     async invoke(command: VaultCommand): Promise<VaultResult<unknown>> {
         try {
             this.#schema();
+            if (command.type === 'walkthrough.view') {
+                demand(command.audience === undefined && !this.#read() && /^[a-f0-9]{64}$/.test(command.digest), 403, 'forbidden');
+                demand(this.env.PORTAL_ORIGIN === PORTAL_ORIGIN, 503, 'configuration_missing');
+                return {ok:true,value:await readWalkthroughWithKey(this.env.SUPABASE_WALKTHROUGH_KEY ?? '',command.digest)};
+            }
+            if (command.type === 'limit' && command.scope === 'walkthrough') {
+                demand(command.audience === undefined,403,'forbidden');
+                const value=this.#limit(command.scope);await this.#schedule();return {ok:true,value};
+            }
             const audience = command.audience ?? 'advisor';
             demand(audience === 'advisor' || audience === 'client');
             const stored = this.#read();
@@ -143,7 +153,14 @@ export class AdvisorSessionObject extends DurableObject<Env> {
                     value = this.#session().logoutContext();
                     break;
                 case 'session.execute':
-                    value = await this.#session().execute(command.csrf, (credentials, capabilities) => auth.perform(credentials, capabilities, command.operation));
+                    value = await this.#session().execute(command.csrf, (credentials, capabilities) => {
+                        if(command.operation.kind === 'walkthrough') {
+                            demand(this.#audience === 'advisor' && auth instanceof WalkthroughProvider && capabilities.view,403,'forbidden');
+                            if(['share_create','share_revoke'].includes(command.operation.command.action))demand(capabilities.publish,403,'forbidden');
+                            return auth.performWalkthrough(credentials,command.operation.command);
+                        }
+                        return auth.perform(credentials, capabilities, command.operation);
+                    });
                     break;
                 case 'session.logout':
                     value = await this.#session().logout(command.csrf);

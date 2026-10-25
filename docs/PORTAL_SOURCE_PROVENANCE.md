@@ -1,5 +1,7 @@
 # Portal source provenance
 
+The new walkthrough/service candidate starts at decision head `45c5112cb5c7c420b38e965804933a3986050743` on `codex/walkthroughs-service-20261025`, stacked on PRs 206 and 207. The two forward migration sources are `20261025221028_concierge_service_workflows.sql` and `20261025221043_concierge_private_walkthroughs.sql`, generated with the installed Supabase CLI. Their final package hashes bind the reviewed sources. They are not installed server versions; preserve all historical alias and recovery records below. Private named authoring data and walkthrough payloads are not part of this public source capsule.
+
 The current portal is a separate web application from the older scanner. Its deployed source had advanced beyond GitHub integration. This reconciliation imports the reviewed portal and its supporting source into `apps/portal/` on an isolated branch without changing the primary dirty checkout or historical release folders.
 
 The completion release is now deployed and verified. [Release result](PORTAL_RELEASE_RESULT.md) owns current deployment IDs, source commits, actual migration versions, runtime coverage and hosted acceptance. The pinned archive below remains the preserved predecessor; do not rewrite its inventory to represent the new release.

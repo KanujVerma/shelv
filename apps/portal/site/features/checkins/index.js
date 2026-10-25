@@ -26,7 +26,7 @@ export function mountCheckinsPanel(element,options){
  function button(label,fn,write=false,primary=false){const b=node('button',label,primary?'checkin-button primary':'checkin-button');b.type='button';if(write)b.dataset.write='true';b.addEventListener('click',fn);return b;}
  const reload=button('Reload latest',()=>load('',true));
  append(root,append(node('header',undefined,'checkin-header'),append(node('div'),node('span','MEETING PREPARATION','checkin-eyebrow'),node('h2','Check-ins')),reload),status,retryBox,content);
- if(request.syntheticPreview===true)root.insertBefore(node('p','Synthetic preview · sample check-ins and dates.','checkin-muted'),status);
+ if(request.syntheticPreview===true&&options.showSampleDisclosure!==false)root.insertBefore(node('p','Synthetic preview · sample check-ins and dates.','checkin-muted'),status);
  function controls(){root.setAttribute('aria-busy',String(busy));root.querySelectorAll('button,input,textarea').forEach(control=>{
   control.disabled=busy||(control.dataset.write==='true'&&(!canWrite||draftState.writeLocked||draftState.pending!==null))||(control.dataset.discard==='true'&&(!draftState.hasUnsent()||draftState.pending!==null));});}
  function clearImages(){for(const image of images){image.removeAttribute('src');image.remove();}images.clear();for(const timer of timers)clearTimeout(timer);timers.clear();}

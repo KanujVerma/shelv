@@ -1,5 +1,14 @@
 # Shelv Cross-Agent Context Sync Ledger
 
+## 2026-10-25: private walkthrough and service candidate locally verified
+
+`codex/walkthroughs-service-20261025` implements the approved decision head45c5112 on the unmerged PR206/207 lineage. Guided Maya, the authenticated private Walkthroughs library, immutable scoped sharing and isolated client-style stages are implemented locally. Production command/schema paths now support reviews from conversations, active instruction revisions, actual purchase-backed returns, cancellation and safe current final-plan export. The four named inputs and source provenance remain private and absent from the static package; the canonical store starts with zero share grants.
+
+Root tests/types/web export, portal/session/backend checks, native SQL and rendered journeys passed. The full owned local reset replayed52migrations and all31pgTAPfiles/701assertions passed; local admission acceptance passed15checks and service/sharing smoke passed16. Independent findings were fixed and re-reviewed. [The implementation handoff](handoffs/2026-10-25-walkthroughs-service.md) records exact evidence, source hashes, private artifact locations and the coordinated release prerequisites. [Founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) remains canonical for business policy.
+
+The prior hosted Pages/vault release is unchanged. No new deployment, hosted founder permission or share grant, actual client change, message, payment or retailer action occurred. The scoped draft implementation PR is separate from activation approval. New SQL, vault-only reader credential, explicit live founder grants, private import and hosted synthetic acceptance must travel with the reviewed combined package; a static-only upload cannot deliver this release.
+
+
 ## 2026-10-25: four client walkthroughs move into the advisor dashboard with controlled sharing
 
 The latest founder instruction supersedes the four public static routes and initial-plan-only scope. All four walkthroughs belong in the authorized advisor dashboard, with complete client-style plans, natural check-ins, recorded reviews and follow-through using shared Alex/Maya components. The founder controls optional no-login sharing links; the pages are not publicly listed. Keep the client interface free of the rejected internal/sample labels while preserving source provenance privately. Do not mix walkthrough stages into real client records or claim them as actual outcomes.

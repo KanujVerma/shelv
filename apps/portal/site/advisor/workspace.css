@@ -50,3 +50,10 @@ dialog.client-dialog .client-dialog-header .close{position:static;flex:none}
 .advisor-admission-note,.advisor-admission-feedback{font-size:.875rem;line-height:1.5}.advisor-admission-confirmation{font-weight:600;color:var(--green,#3c5e44)}
 .advisor-admission .advisor-dialog-actions{flex-wrap:wrap}.advisor-admission>strong,.advisor-admission>p{overflow-wrap:anywhere}
 @media(max-width:600px){.advisor-admission{padding:1.5rem}.advisor-admission .advisor-dialog-actions button{flex:1}}
+
+.walkthrough-library{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;min-width:0}
+.walkthrough-library article{min-width:0;margin:0}
+.walkthrough-library input{width:100%;min-width:0;box-sizing:border-box}
+.walkthrough-library .advisor-header-buttons{flex-wrap:wrap}
+.walkthrough-library details p{overflow-wrap:anywhere}
+@media(max-width:760px){.client-portal .navigation>nav{display:flex;flex-wrap:wrap;min-width:0}.client-portal .navigation .nav-item{min-height:44px}}

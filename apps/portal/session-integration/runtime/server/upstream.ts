@@ -183,16 +183,16 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
     }
     async perform(credentials: Credentials, capabilities: Capabilities, operation: Operation): Promise<WireResponse> {
         demand(capabilities.view, 403, 'forbidden');
-        demand(operation.kind !== 'client-media' && operation.kind !== 'client-upload', 403, 'action_forbidden');
+        demand(operation.kind !== 'client-media' && operation.kind !== 'client-upload' && operation.kind !== 'walkthrough', 403, 'action_forbidden');
         let body: unknown;
         if (operation.kind === 'command') {
             parseCommand(operation.channel, operation.command);
             const action = operation.command.action;
-            if (action === 'publish_v2')
+            if (action === 'publish_v2' || action === 'publish_instruction_revision')
                 demand(capabilities.publish, 403, 'forbidden');
-            else if (action === 'confirm_payment' || action === 'reject_claim')
+            else if (action === 'confirm_payment' || action === 'reject_claim' || action === 'record_return_event' && ['retailer_funds_received','client_repaid'].includes(String(operation.command.status)))
                 demand(capabilities.confirmPayments, 403, 'forbidden');
-            else if (['save_intake_v2', 'save_draft_v2', 'save_meeting_note', 'issue_quote', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply'].includes(String(action)))
+            else if (['save_intake_v2', 'save_draft_v2', 'save_meeting_note', 'issue_quote', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply','record_review','save_instruction_draft','record_purchase','record_return_event','cancel_service'].includes(String(action)))
                 demand(capabilities.edit, 403, 'forbidden');
             if (action === 'advisor_photo_view') {
                 const clientId = uuid(operation.command.clientId), photoId = uuid(operation.command.photoId);
