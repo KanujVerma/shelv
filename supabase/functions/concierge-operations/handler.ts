@@ -1,3 +1,4 @@
+import {mapServiceReceipt,mapServiceView} from '../../../src/contracts/ConciergeService.ts';
 import { mapConciergePreview } from './preview.ts';
 import { mapConciergeClientViewV2, mapConciergeAdvisorViewV2 } from '../../../src/contracts/ConciergePresentationMapping.ts';
 import type { ConciergeAuthenticatedPorts, ConciergeRpcCall } from '../../../src/contracts/ConciergePortal.ts';
@@ -8,7 +9,7 @@ import { buildConciergeRpc } from './commands.ts';
 
 export type ConciergePorts = ConciergeAuthenticatedPorts<ConciergeRpcCall>;
 const sqlErrors: Readonly<Record<string, number>> = {
-  concierge_content_version_required:409, concierge_unauthorized: 401, concierge_forbidden: 403, concierge_invalid_input: 400,
+  concierge_instruction_conflict:409,concierge_return_ineligible:409,concierge_return_quantity_exceeded:409,concierge_refund_exceeded:409,concierge_return_transition:409,concierge_renewal_cancelled:409,concierge_purchase_conflict:409,concierge_content_version_required:409, concierge_unauthorized: 401, concierge_forbidden: 403, concierge_invalid_input: 400,
   concierge_revision_conflict: 409, concierge_request_conflict: 409, concierge_intake_conflict: 409,
   concierge_routine_basis_conflict:409, concierge_baseline_conflict: 409, concierge_publication_conflict: 409, concierge_draft_unavailable: 409,
   concierge_already_received: 409, concierge_already_started: 409, concierge_product_not_approved: 409,
@@ -49,6 +50,9 @@ export async function handleConciergeRequest(request: Request, ports: ConciergeP
       }
       return Object.hasOwn(sqlErrors, code) ? error(sqlErrors[code], code) : error(503, 'unavailable');
     }
+    if(call.name==='concierge_service_client_view')return reply(200,mapServiceView(result.data));
+    if(call.name==='concierge_service_advisor_view')return reply(200,mapServiceView(result.data,true));
+    if(call.name==='concierge_service_write')return reply(200,mapServiceReceipt(result.data,call.args.p_action));
     if(call.name==='concierge_advisor_preview_v2')return reply(200,mapConciergePreview(result.data,call.args));
     if(call.name==='concierge_client_view_v2')return reply(200,mapConciergeClientViewV2(result.data));
     if(call.name==='concierge_advisor_view_v2')return reply(200,mapConciergeAdvisorViewV2(result.data));

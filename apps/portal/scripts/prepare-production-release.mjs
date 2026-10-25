@@ -4,6 +4,8 @@ import { inflateRawSync } from 'node:zlib';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { collectSupabaseFunctionSources, verifySupabaseFunctionSources } from './supabase-function-sources.mjs';
+import { validateReleaseTarget } from './release-target-policy.mjs';
+import { verifyVaultUploadEvidence } from './release-vault-evidence.mjs';
 
 const portal = fileURLToPath(new URL('../', import.meta.url));
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -71,7 +73,8 @@ function verifyZip(bytes, inventory) {
   demand(same(found.sort(), Object.keys(inventory).sort()), 'ZIP inventory mismatch');
 }
 
-function validateReadback(readback, target) {
+function validateReadback(readback, target, { allowEvidenceGaps = false, installedEvidence = null } = {}) {
+  const gaps = [];
   demand(readback.accountId === target.accountId, 'Production account mismatch');
   demand(Array.isArray(readback.errors) && readback.errors.length === 0, 'Current readback contains errors');
   demand(Number.isFinite(Date.parse(readback.observedAt)) && Date.now() - Date.parse(readback.observedAt) <= target.constraints.readbackMaxAgeMinutes * 60000 && Date.parse(readback.observedAt) <= Date.now() + 60000, 'Current readback is stale or has an invalid time');
@@ -79,9 +82,12 @@ function validateReadback(readback, target) {
   demand(project?.success === true && project.name === target.pages.project && project.productionBranch === target.pages.productionBranch && project.canonicalDeployment === target.pages.baselineDeployment, 'Pages target/deployment mismatch');
   demand(vault?.success === true && vault.name === target.vault.script, 'Private vault target mismatch');
   const installedExport = { [target.vault.className]: { type: 'durable-object', storage: 'sqlite' } };
-  demand(same(stableMetadata(target.vault.declaredExports), stableMetadata(installedExport)) && same(stableMetadata(vault.declaredExports), stableMetadata(target.vault.declaredExports)), 'Private vault declared exports must exactly match the pinned installed class/storage; no new class, tombstone or transfer');
+  const exportMessage = 'Private vault declared exports must exactly match the pinned installed class/storage; no new class, tombstone or transfer';
+  demand(same(stableMetadata(target.vault.declaredExports), stableMetadata(installedExport)), exportMessage);
+  if (allowEvidenceGaps && !Object.hasOwn(vault, 'declaredExports') && !installedEvidence) gaps.push('Missing exact-version declared-export evidence. Provider settings omitted it; recorded target declarations are review metadata only until a coupled upload receipt or explicit readback proves the exact deployed version.');
+  else demand(same(stableMetadata(vault.declaredExports ?? installedEvidence?.declaredExports), stableMetadata(target.vault.declaredExports)), exportMessage);
   for (const current of [project, vault]) demand(current.compatibilityDate === target.compatibilityDate && same(current.compatibilityFlags, target.compatibilityFlags), 'Compatibility settings mismatch');
-  demand(same(project.flags, target.enabledFlags), 'Production Pages enabled flags must remain true');
+  demand(same(stableMetadata(project.flags), stableMetadata(target.enabledFlags)), 'Production Pages enabled flags must remain true');
   demand(project.durableObjectNamespaces?.[target.pages.namespaceBinding]?.namespace_id === target.vault.namespaceId, 'Pages namespace mismatch');
   demand(Array.isArray(vault.bindings), 'Missing sanitized binding inventory');
   const identity = bindings => bindings.map(binding => ({ name: binding.name, type: binding.type })).sort((a, b) => a.name.localeCompare(b.name));
@@ -94,28 +100,43 @@ function validateReadback(readback, target) {
     }
     if (binding.type === 'durable_object_namespace') demand(binding.namespaceId === target.vault.namespaceId && binding.className === target.vault.className && (!binding.scriptName || binding.scriptName === target.vault.script), 'Private vault namespace/class mismatch');
   }
-  const deployment = readback.vaultDeployments?.items?.[0];
-  demand(readback.vaultDeployments?.success === true && deployment?.id === target.vault.baselineDeployment && same(deployment.versions, [{ version_id: target.vault.baselineVersion, percentage: 100 }]), 'Private vault deployment/version mismatch');
+  const deployment = readback.vaultDeployments?.items?.[0] ?? (allowEvidenceGaps ? readback.vaultDeployment : null);
+  demand((readback.vaultDeployments?.success === true || (allowEvidenceGaps && Boolean(readback.vaultDeployment))) && deployment?.id === target.vault.baselineDeployment && same(deployment.versions, [{ version_id: target.vault.baselineVersion, percentage: 100 }]), 'Private vault deployment/version mismatch');
   demand(readback.vaultLatestVersionId === target.vault.baselineVersion, 'The latest uploaded version must equal the expected deployed version before keeping bindings');
   const exposure = readback.privateExposure;
-  demand(exposure?.workersDev === false && exposure.previewUrls === false && exposure.routeScanComplete === true && exposure.customDomainScanComplete === true && same(exposure.routes, []) && same(exposure.customDomains, []), 'Private vault exposure must remain disabled with complete route/domain evidence');
-  const observability = vault.observability;
+  const exposureMessage = 'Private vault exposure must remain disabled with complete route/domain evidence';
+  if (allowEvidenceGaps) {
+    for (const key of ['workersDev', 'previewUrls']) demand(exposure?.[key] === undefined || exposure[key] === false, exposureMessage);
+    for (const key of ['routes', 'customDomains']) demand(exposure?.[key] === undefined || same(exposure[key], []), exposureMessage);
+    if (!(exposure?.workersDev === false && exposure.previewUrls === false && exposure.routeScanComplete === true && exposure.customDomainScanComplete === true && same(exposure.routes, []) && same(exposure.customDomains, []))) gaps.push('Private vault exposure evidence is incomplete. Require current workers.dev/preview settings and complete account-zone route/custom-domain scans before any deployment action.');
+  } else demand(exposure?.workersDev === false && exposure.previewUrls === false && exposure.routeScanComplete === true && exposure.customDomainScanComplete === true && same(exposure.routes, []) && same(exposure.customDomains, []), exposureMessage);
+  const observability = vault.observability ?? installedEvidence?.observability;
   demand(!observability || (observability.enabled === false && ![observability.logs, observability.traces, observability.issues].some(value => value?.enabled === true)), 'Private vault observability must not be enabled');
   demand(vault.logpush === false && same(vault.tailConsumers, []), 'Private vault logging/tail exposure mismatch');
   demand(vault.usageModel === 'standard' && same(vault.placement, {}) && same(vault.tags, []) && !vault.limits && !vault.cacheOptions, 'Unreviewed private vault settings drift');
-  return observability ? [] : ['Cloudflare omitted observability in the supplied settings readback. Absence is not proof of disabled collection; the proposed upload explicitly disables it and action-time readback must confirm the approved state.'];
+  if (!observability) gaps.push('Cloudflare omitted observability in the supplied settings readback. Absence is not proof of disabled collection; the proposed upload explicitly disables it and action-time readback must confirm the approved state.');
+  return gaps;
 }
 
-export async function prepareProductionRelease({ buildManifestPath, readbackPath, outputDirectory, functionSourcesPath = null, sourceRoot = portal } = {}) {
+export async function prepareProductionRelease({ buildManifestPath, readbackPath, outputDirectory, functionSourcesPath = null, sourceRoot = portal, targetName = 'historical', vaultMetadataReceiptPath = null, vaultUploadReceiptPath = null } = {}) {
   demand(buildManifestPath && readbackPath && outputDirectory, 'Provide frozen build manifest, sanitized readback and a new ignored output directory');
   sourceRoot = path.resolve(sourceRoot);
   const repository = path.resolve(sourceRoot, '../..'), build = path.dirname(path.resolve(buildManifestPath)), output = path.resolve(outputDirectory);
   demand(output.startsWith(path.join(repository, '.local-artifacts') + path.sep) && !output.startsWith(build + path.sep) && output !== build, 'Release review output must be a separate ignored local-artifacts directory');
-  const target = await json(new URL('../release/PRODUCTION-TARGET.json', import.meta.url));
+  demand(['historical', 'walkthroughs'].includes(targetName), 'Unknown release target; use historical or walkthroughs');
+  const targetUrl = new URL(targetName === 'walkthroughs' ? '../release/WALKTHROUGHS-TARGET.json' : '../release/PRODUCTION-TARGET.json', import.meta.url);
+  const targetBytes = await readFile(targetUrl), target = JSON.parse(targetBytes);
+  const historicalTarget = targetName === 'historical' ? target : await json(new URL('../release/PRODUCTION-TARGET.json', import.meta.url));
+  const { gatewayRoutes, releasePrerequisites } = validateReleaseTarget({ target, targetName, historicalTarget });
   const [manifestBytes, readbackBytes] = await Promise.all([readFile(buildManifestPath), readFile(readbackPath)]);
   const manifest = JSON.parse(manifestBytes), readback = JSON.parse(readbackBytes);
-  const readbackGaps = validateReadback(readback, target);
-  demand(manifest.schemaVersion === 1 && manifest.sourceSnapshotUnchanged === true && manifest.productionDeploymentChanged === false && same(manifest.gatewayRoutes, ['/api/client/*', '/api/advisor/*']), 'Unreviewed build manifest');
+  demand(Boolean(vaultMetadataReceiptPath) === Boolean(vaultUploadReceiptPath), 'Provide both installed vault metadata and upload receipts together');
+  demand(targetName === 'walkthroughs' || !vaultMetadataReceiptPath, 'Installed upload receipts apply only to the explicit walkthrough target');
+  const installedEvidence = vaultMetadataReceiptPath ? verifyVaultUploadEvidence({
+    metadataBytes: await readFile(vaultMetadataReceiptPath), uploadResultBytes: await readFile(vaultUploadReceiptPath), target, readback,
+  }) : null;
+  const readbackGaps = validateReadback(readback, target, { allowEvidenceGaps: targetName === 'walkthroughs', installedEvidence });
+  demand(manifest.schemaVersion === 1 && manifest.sourceSnapshotUnchanged === true && manifest.productionDeploymentChanged === false && same(manifest.gatewayRoutes, gatewayRoutes), 'Unreviewed build manifest');
   await verifyFiles(path.join(sourceRoot, 'site'), manifest.sourceAssets, 'source');
   await verifyFiles(path.join(sourceRoot, 'session-integration/runtime'), manifest.runtimeSources, 'runtime source', false);
   const currentRuntimeNames = [];
@@ -126,7 +147,7 @@ export async function prepareProductionRelease({ buildManifestPath, readbackPath
   const config = JSON.parse(await safeRead(path.join(build, 'site'), 'portal-config.json'));
   demand(config.clientSharedSessions === true && config.advisorSharedSessions === true, 'Public build enabled flags must remain true');
   const routes = JSON.parse(await safeRead(path.join(build, 'site'), '_routes.json'));
-  demand(same(routes, { version: 1, include: ['/api/client/*', '/api/advisor/*'], exclude: [] }), 'Combined gateway routes mismatch');
+  demand(same(routes, { version: 1, include: gatewayRoutes, exclude: [] }), 'Combined gateway routes mismatch');
   const gateway = await safeRead(build, 'runtime/advisor-pages/_worker.js'), generatedRoutes = await safeRead(build, 'runtime/advisor-pages/_routes.json');
   demand(sha256(gateway) === manifest.assets['_worker.js']?.sha256 && sha256(generatedRoutes) === manifest.assets['_routes.json']?.sha256, 'Upload must use generated combined gateway output, not the historical site source');
   const vault = await safeRead(build, 'runtime/vault/index.js');
@@ -148,14 +169,17 @@ export async function prepareProductionRelease({ buildManifestPath, readbackPath
   const reserved = new Set(['_worker.js', '_routes.json', '_headers', '_redirects', 'functions-filepath-routing-config.json']);
   const result = {
     schemaVersion: 1,
-    status: readbackGaps.length ? 'prepared_for_review_with_readback_gap' : 'prepared_for_review',
+    status: releasePrerequisites ? (readbackGaps.length ? 'blocked_pending_readback' : 'prepared_for_review_with_pending_prerequisites') : readbackGaps.length ? 'prepared_for_review_with_readback_gap' : 'prepared_for_review',
+    targetName,
+    gatewayRoutes,
+    ...(releasePrerequisites ? { deploymentReady: false, deploymentActions: { status: 'blocked', providerWritesPermitted: false, reasons: [...Object.keys(releasePrerequisites), ...readbackGaps], revalidateImmediatelyBeforeEveryApprovedWrite: true }, releasePrerequisites, installedMigrationProvenance: target.installedMigrationProvenance, targetBaselineEvidence: target.baselineEvidence } : {}),
     preparationOnly: true,
     providerWrites: 0,
     providerCalls: 0,
     approvalGrantedByPreparation: false,
     frozenBuildManifestSha256: sha256(manifestBytes),
     sanitizedReadbackSha256: sha256(readbackBytes),
-    targetDescriptorSha256: sha256(await readFile(new URL('../release/PRODUCTION-TARGET.json', import.meta.url))),
+    targetDescriptorSha256: sha256(targetBytes),
     target: {
       accountId: target.accountId,
       origin: target.origin,
@@ -192,6 +216,7 @@ export async function prepareProductionRelease({ buildManifestPath, readbackPath
       moduleContentType: 'application/javascript+module',
       metadata,
       expectedExportsReconciliation: target.vault.expectedExportsReconciliation,
+      ...(releasePrerequisites ? { declaredExportsEvidence: installedEvidence ?? { source: Object.hasOwn(readback.vault, 'declaredExports') ? 'sanitized_current_readback' : 'recorded_target_only_not_current_readback', versionId: target.vault.baselineVersion, missingCoupledReceipt: !Object.hasOwn(readback.vault, 'declaredExports') } } : {}),
       preserve: {
         bindingInventory: target.vault.bindingInventory,
         privateExposure: target.vault.privateExposure,
@@ -220,7 +245,7 @@ export async function prepareProductionRelease({ buildManifestPath, readbackPath
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = new Map();
-  for (let index = 2; index < process.argv.length; index += 2) { demand(['--build-manifest', '--readback', '--output', '--function-sources'].includes(process.argv[index]) && process.argv[index + 1], 'Usage: node prepare-production-release.mjs --build-manifest PATH --readback PATH --output NEW_IGNORED_DIRECTORY [--function-sources APPROVED_CAPSULE]'); args.set(process.argv[index], process.argv[index + 1]); }
-  const result = await prepareProductionRelease({ buildManifestPath: args.get('--build-manifest'), readbackPath: args.get('--readback'), outputDirectory: args.get('--output'), functionSourcesPath: args.get('--function-sources') });
-  console.log(JSON.stringify({ status: result.status, providerCalls: 0, providerWrites: 0, preparationOnly: true, readbackGaps: result.readbackGaps }));
+  for (let index = 2; index < process.argv.length; index += 2) { demand(['--build-manifest', '--readback', '--output', '--function-sources', '--target', '--vault-metadata-receipt', '--vault-upload-receipt'].includes(process.argv[index]) && process.argv[index + 1], 'Usage: node prepare-production-release.mjs --build-manifest PATH --readback PATH --output NEW_IGNORED_DIRECTORY [--function-sources APPROVED_CAPSULE] [--target historical|walkthroughs] [--vault-metadata-receipt PATH --vault-upload-receipt PATH]'); args.set(process.argv[index], process.argv[index + 1]); }
+  const result = await prepareProductionRelease({ buildManifestPath: args.get('--build-manifest'), readbackPath: args.get('--readback'), outputDirectory: args.get('--output'), functionSourcesPath: args.get('--function-sources'), targetName: args.get('--target') ?? 'historical', vaultMetadataReceiptPath: args.get('--vault-metadata-receipt'), vaultUploadReceiptPath: args.get('--vault-upload-receipt') });
+  console.log(JSON.stringify({ status: result.status, providerCalls: 0, providerWrites: 0, preparationOnly: true, readbackGaps: result.readbackGaps, ...(result.releasePrerequisites ? { deploymentReady: false, pendingPrerequisites: Object.keys(result.releasePrerequisites) } : {}) }));
 }

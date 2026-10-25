@@ -1,10 +1,10 @@
 import {demand} from './types';
 import {object, exact, uuid, type Channel, type Operation} from './policy';
 export const clientActions: Record<Channel, readonly string[]> = {
-    operations: ['client_read_v2', 'client_read', 'decide', 'receive', 'start'],
+    operations: ['client_read_v2', 'client_read', 'decide', 'receive', 'start', 'service_client_read', 'request_return'],
     payments: ['client_read', 'submit_claim', 'confirm_shipping_address', 'evidence_url'],
     checkins: ['client_read', 'submit_report', 'photo_view'],
-    admission: []
+    admission: [], walkthroughs:[]
 };
 export function parseClientCommand(channel: Channel, value: unknown): Operation {
     const command = object(value);

@@ -1,5 +1,6 @@
 import {addressCommand,formatMoney,issueQuoteCommand,publicError,quoteRows} from './model.js';
 import {paymentViewWithMethods,methodLabels,methodAsset,recipientIdentifier,methodClaimCommand,methodConfirmationCommand,methodRejectionCommand,validateMethodReceipt} from './methods.js';
+import {SERVICE_COPY} from '../service/model.js';
 
 /** Buildless, isolated UI. Auth, capabilities, routes and authoritative state belong to the host/backend. */
 export function mountPaymentsPanel(element,options){
@@ -16,7 +17,7 @@ export function mountPaymentsPanel(element,options){
  const message=node('p','','payment-message');message.setAttribute('role','status');message.setAttribute('aria-live','polite');
  const content=node('div'),actions=node('div','','payment-actions');
  append(root,append(node('header'),node('h2',mode==='advisor'?'Payment review':'Payments'),button('Reload latest',()=>load())),message,content,actions);
- if(request.syntheticPreview===true)root.insertBefore(node('p','Synthetic preview · sample payment details.','payment-muted'),message);
+ if(request.syntheticPreview===true&&options.showSampleDisclosure!==false)root.insertBefore(node('p','Synthetic preview · sample payment details.','payment-muted'),message);
  const feedback=text=>{message.textContent=text;};
  const uid=()=>globalThis.crypto.randomUUID();
  function setBusy(value){busy=value;root.setAttribute('aria-busy',String(value));root.querySelectorAll('button,input,select,textarea').forEach(control=>{control.disabled=value||control.dataset.locked==='true'||Boolean(pending&&content.contains(control));});}
@@ -128,7 +129,7 @@ export function mountPaymentsPanel(element,options){
   content.replaceChildren();if(!view)return;
   const beforeQuote=mode==='client'&&!view.quotes.length;
   if(beforeQuote)content.append(append(node('section','','payment-card'),node('h3','No quote yet'),node('p','Your advisor hasn’t issued a final quote yet. Wait for the final amount before paying.','payment-muted')));
-  content.append(append(node('section',undefined,'payment-refund-policy'),node('h3','Service-fee refunds'),node('p','If you’re dissatisfied during your first three months, we’ll refund the service fees you’ve paid. Contact your advisor by phone or message. Product payments are handled separately. Your advisor arranges repayment manually and confirms it privately.','payment-muted')));
+  content.append(append(node('section',undefined,'payment-refund-policy'),node('h3','Service-fee refunds'),node('p',SERVICE_COPY.guarantee,'payment-muted'),node('p',SERVICE_COPY.guaranteeScope,'payment-muted'),node('p',SERVICE_COPY.productRefund,'payment-muted')));
   const serviceCopy={unpaid:'Service payment has not been confirmed.',pending_publication:'Service payment is confirmed. Your first month starts with the first plan publication.',active:'Your service is active for the confirmed coverage period.',expired:'The confirmed service period has ended.',cancelled:'Service is cancelled. Contact your advisor about access to your previous plan.'};if(!beforeQuote||view.service.status!=='unpaid')content.append(node('p',serviceCopy[view.service.status],'payment-notice'));
   content.append(shippingCard(beforeQuote));
   if(!view.quotes.length&&!beforeQuote)content.append(node('p',mode==='advisor'?'No final quotes issued yet.':'Your advisor has not issued a final quote yet.','payment-muted'));

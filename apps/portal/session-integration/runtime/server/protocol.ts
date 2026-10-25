@@ -2,8 +2,11 @@ import type { Credentials, SessionView, SessionPolicy } from './types';
 import type { LegacyPair } from './auth-flow';
 import type { Operation } from './policy';
 export type VaultCommand = ({
+    type: 'walkthrough.view';
+    digest: string;
+} | {
     type: 'limit';
-    scope: 'bootstrap' | 'otp' | 'auth';
+    scope: 'bootstrap' | 'otp' | 'auth' | 'walkthrough';
 } | {
     type: 'flow.bootstrap';
 } | {

@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 1,
+  "accountId": "67e25efe93cc743f3c0bdc1fb7cff1a7",
+  "origin": "https://portal.goshelv.com",
+  "compatibilityDate": "2026-10-20",
+  "compatibilityFlags": [
+    "nodejs_compat"
+  ],
+  "enabledFlags": {
+    "CLIENT_SHARED_SESSIONS": "true",
+    "ADVISOR_SHARED_SESSIONS": "true"
+  },
+  "pages": {
+    "project": "goshelv-portal",
+    "productionBranch": "main",
+    "baselineDeployment": "cf09be80-48bf-4b7a-99b2-fb17e0de15ae",
+    "namespaceBinding": "ADVISOR_SESSIONS"
+  },
+  "vault": {
+    "script": "goshelv-advisor-session-vault",
+    "baselineDeployment": "409a1418-3a6c-49e1-9f83-53b32a58b834",
+    "baselineVersion": "c2d75fda-74e5-4efe-8a5e-37ce5b1b7b8a",
+    "namespaceId": "a0a5b089755842dc8c6a62b4f164865b",
+    "className": "AdvisorSessionObject",
+    "secretBinding": "ADVISOR_SESSION_KEYS",
+    "bindingInventory": [
+      {
+        "name": "ADVISOR_SESSION_KEYS",
+        "type": "secret_text"
+      },
+      {
+        "name": "ADVISOR_SESSIONS",
+        "type": "durable_object_namespace"
+      },
+      {
+        "name": "ADVISOR_SHARED_SESSIONS",
+        "type": "plain_text"
+      },
+      {
+        "name": "CLIENT_BOOTSTRAP_DIAG_END_MS",
+        "type": "plain_text"
+      },
+      {
+        "name": "CLIENT_BOOTSTRAP_DIAG_START_MS",
+        "type": "plain_text"
+      },
+      {
+        "name": "CLIENT_REMEMBER_ABSOLUTE_SECONDS",
+        "type": "plain_text"
+      },
+      {
+        "name": "CLIENT_REMEMBER_IDLE_SECONDS",
+        "type": "plain_text"
+      },
+      {
+        "name": "CLIENT_SHARED_SESSIONS",
+        "type": "plain_text"
+      },
+      {
+        "name": "PORTAL_ORIGIN",
+        "type": "plain_text"
+      },
+      {
+        "name": "SESSION_ABSOLUTE_SECONDS",
+        "type": "plain_text"
+      },
+      {
+        "name": "SESSION_FLOW_SECONDS",
+        "type": "plain_text"
+      },
+      {
+        "name": "SESSION_IDLE_SECONDS",
+        "type": "plain_text"
+      },
+      {
+        "name": "SUPABASE_PUBLIC_KEY",
+        "type": "plain_text"
+      }
+    ],
+    "keepBindingTypes": [
+      "durable_object_namespace",
+      "plain_text",
+      "secret_text"
+    ],
+    "privateExposure": {
+      "workersDev": false,
+      "previewUrls": false,
+      "routes": [],
+      "customDomains": [],
+      "observabilityEnabled": false,
+      "logpush": false,
+      "tailConsumers": []
+    },
+    "declaredExports": {
+      "AdvisorSessionObject": {
+        "type": "durable-object",
+        "storage": "sqlite"
+      }
+    },
+    "expectedExportsReconciliation": {
+      "created": [],
+      "updated": [],
+      "deleted": [],
+      "renamed": [],
+      "transferred": [],
+      "transfer_pending": [],
+      "warnings": [],
+      "info": [],
+      "removable_entries": []
+    },
+    "installedUploadEvidence": {
+      "source": "retained_exact_version_release_execution",
+      "metadataSha256": "cb27b77636724bc1517d16c63ea15fb12e890fbf68c6ee069334e1136b99f5c3",
+      "uploadResultSha256": "97fdc6dfc3f415eebe258c77544447965ef0283ea8812b9cee99f11eca4c8441",
+      "versionId": "c2d75fda-74e5-4efe-8a5e-37ce5b1b7b8a",
+      "scriptEtag": "fc9481c0b264200c65d631471d5e396b9b22533dc994cab0ad4614afcae70d00"
+    }
+  },
+  "constraints": {
+    "preparationOnly": true,
+    "noProviderCalls": true,
+    "neverReadOrReplaceSecretValues": true,
+    "preserveEveryInstalledBinding": true,
+    "noNamespaceAllocationOrStorageMigration": true,
+    "noWranglerCandidateConfiguration": true,
+    "noPagesProjectConfigurationUpdate": true,
+    "deployOnlyFrozenGeneratedOutput": true,
+    "revalidateImmediatelyBeforeEveryApprovedProviderWrite": true,
+    "readbackMaxAgeMinutes": 30
+  },
+  "pendingMigrationSources": [
+    "supabase/migrations/20261025221028_concierge_service_workflows.sql",
+    "supabase/migrations/20261025221043_concierge_private_walkthroughs.sql"
+  ],
+  "migrationPolicy": {
+    "execution": "none",
+    "applyOnlyReviewedNewSourceFiles": true,
+    "recordMapping": [
+      "sourceFile",
+      "sourceSha256",
+      "actualServerVersion"
+    ],
+    "providerApplyToolHasVersionParameter": false,
+    "neverBlanketDbPushOrRepairHistoricalLedger": true,
+    "historicalMayaAndContextSql": "Existing server SQL restored exactly; not new pending migrations",
+    "previewLedgerAlias": "Local historical filename differs from hosted ledger version; content mapping must be retained"
+  },
+  "apiEvidence": {
+    "workerUpload": "https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/",
+    "multipartMetadata": "https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/",
+    "keepBindingsMeaning": "Binding types retained from the previous upload, not binding names. Omit replacement binding values and Durable Object migrations. Echo only the exact installed declared exports; require all reconciliation arrays empty and latest uploaded version to equal the expected deployed version.",
+    "checkedWranglerVersion": "4.151.2",
+    "checkedWranglerImplementation": "node_modules/wrangler/wrangler-dist/cli.js keep_bindings construction",
+    "pagesDeployment": "https://developers.cloudflare.com/api/resources/pages/subresources/projects/subresources/deployments/methods/create/",
+    "privateWorkerRouting": "workers.dev, preview URLs, custom domains and every account-zone route must remain absent/disabled.",
+    "installedExportsRequirement": "The code-only PUT was rejected with 100402 provisioned_class_missing_from_config when exports was omitted. Echoing the exact existing AdvisorSessionObject durable-object/sqlite export succeeded with every exports reconciliation array empty. This permits no new class, tombstone, transfer, storage change or namespace."
+  },
+  "pendingMigrationSha256": {
+    "supabase/migrations/20261025221028_concierge_service_workflows.sql": "5ebb75645abb8e1002a5a3c7bbc64e53b4bfe7e325a2dd63819ebd6d82671eec",
+    "supabase/migrations/20261025221043_concierge_private_walkthroughs.sql": "035fd8fa49b3c9ca0314769d24c72e61b83a3d883189588df90966e2f7c2f394"
+  },
+  "supabase": {
+    "projectRef": "snojlbqovlawewwqbviz",
+    "functions": [
+      {
+        "name": "concierge-operations",
+        "entrypoint": "supabase/functions/concierge-operations/index.ts",
+        "verifyJwtEvidence": "preserve_hosted_true",
+        "requiredVerifyJwt": true
+      },
+      {
+        "name": "concierge-payments",
+        "entrypoint": "supabase/functions/concierge-payments/index.ts",
+        "verifyJwtEvidence": "preserve_hosted_true",
+        "requiredVerifyJwt": true
+      },
+      {
+        "name": "concierge-checkins",
+        "entrypoint": "supabase/functions/concierge-checkins/index.ts",
+        "verifyJwtEvidence": "preserve_hosted_true",
+        "requiredVerifyJwt": true
+      },
+      {
+        "name": "concierge-admission",
+        "entrypoint": "supabase/functions/concierge-admission/index.ts",
+        "verifyJwtEvidence": "preserve_hosted_true",
+        "requiredVerifyJwt": true
+      }
+    ],
+    "sourceConfig": "supabase/config.toml",
+    "hostedPreimages": ".local-artifacts/walkthroughs/HOSTED-SOURCE-PREIMAGES.json",
+    "sourceClosure": "Pinned TypeScript AST, static ESM only; explicit local imports, exports and literal import() references. CommonJS modules/loaders are unsupported and rejected; npm/jsr specifiers are recorded without retrieval.",
+    "deploymentContent": "Deploy only the embedded reviewed source content, bound by per-file SHA256 and aggregate digest; do not reread mutable workspace files after approval."
+  },
+  "releaseKind": "private_walkthroughs",
+  "gatewayRoutes": [
+    "/api/client/*",
+    "/api/advisor/*",
+    "/api/walkthroughs/*"
+  ],
+  "baselineEvidence": {
+    "source": "docs/PORTAL_RELEASE_RESULT.md",
+    "status": "recorded_release_result_not_fresh_provider_readback",
+    "requiredBeforePreparation": "matching fresh sanitized provider readback",
+    "applicationSource": "66f7a22510a9a6ac7753ce98e080325e83024552"
+  },
+  "installedMigrationProvenance": [
+    {
+      "sourceFile": "supabase/migrations/20261024230528_concierge_founder_admission.sql",
+      "sourceSha256": "4f45572f8e6f7d04e1bb1c4316fd950ef517e78a282b0584ec1f8d239fd97197",
+      "actualServerVersion": "20261025030725",
+      "execution": "already installed; preserve mapping, never reapply or repair historical ledger"
+    },
+    {
+      "sourceFile": "supabase/migrations/20261024230829_concierge_checkin_replies.sql",
+      "sourceSha256": "539f882a4944a7a13959436e0775c22beb6d0ba4d0ce1cc5c7d83bb26d20f47b",
+      "actualServerVersion": "20261025030747",
+      "execution": "already installed; preserve mapping, never reapply or repair historical ledger"
+    },
+    {
+      "sourceFile": "supabase/migrations/20261024234059_concierge_manual_payment_methods.sql",
+      "sourceSha256": "6ebf8543d4102451cdfc9138020b8d3f1b34afe2b71fccf9fe09f340117fe574",
+      "actualServerVersion": "20261025030748",
+      "execution": "already installed; preserve mapping, never reapply or repair historical ledger"
+    },
+    {
+      "sourceFile": "supabase/migrations/20261025011331_concierge_no_current_products.sql",
+      "sourceSha256": "2076cef0e5a647d62eaa9b95e512687dab24b5cf696c4028e387409f34916adf",
+      "actualServerVersion": "20261025031419",
+      "execution": "already installed; preserve mapping, never reapply or repair historical ledger"
+    }
+  ],
+  "releasePrerequisites": {
+    "vaultSecret": {
+      "status": "pending_separately_approved_provisioning",
+      "name": "SUPABASE_WALKTHROUGH_KEY",
+      "type": "secret_text",
+      "destination": "private_vault_only",
+      "additive": true,
+      "keepBindingsDoesNotProvision": true,
+      "serializeSecretValue": false
+    },
+    "advisorGrants": {
+      "status": "pending_explicit_current_founder_grants",
+      "table": "walkthroughs.advisor_grants",
+      "principals": "authorized_founders_only",
+      "requiredPermissions": [
+        "active",
+        "can_view",
+        "can_share"
+      ],
+      "requiresLiveAdvisorPublishCapability": true,
+      "inferUserIds": false,
+      "preparationWritesPermissions": false
+    },
+    "privateImport": {
+      "status": "pending_separately_approved_hosted_import",
+      "caseCount": 4,
+      "immutableVersions": true,
+      "initialShareGrants": 0,
+      "source": "external_or_ignored_private_authoring_input",
+      "embedPayloadsInPublicArtifacts": false,
+      "enrollLiveClients": false
+    },
+    "coordinatedDeployment": {
+      "status": "pending_separate_authorization",
+      "components": [
+        "supabase_sql",
+        "supabase_edge",
+        "private_vault",
+        "pages_gateway",
+        "private_import",
+        "explicit_advisor_grants"
+      ],
+      "activationGate": "all_prerequisites_then_hosted_acceptance",
+      "staticOnlyRelease": false
+    },
+    "hostedAcceptance": {
+      "status": "pending_separately_authorized_synthetic_case",
+      "checks": [
+        "advisor",
+        "anonymous_valid_share",
+        "revoked",
+        "expired",
+        "client_isolation"
+      ],
+      "localTestsProveHostedAcceptance": false,
+      "issueRealShareGrantsDuringTests": false
+    }
+  }
+}

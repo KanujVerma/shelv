@@ -41,7 +41,7 @@ export async function buildPortal({ sourceDir = path.join(portal, 'site'), outpu
   for (const filename of ['_worker.js', '_routes.json']) await cp(path.join(runtime, 'advisor-pages', filename), path.join(site, filename));
   const assets = await inventory(site);
   const routes = JSON.parse(await readFile(path.join(site, '_routes.json'), 'utf8'));
-  if (JSON.stringify(routes.include) !== JSON.stringify(['/api/client/*', '/api/advisor/*'])) throw new Error('Both client and advisor gateway routes are required.');
+  if (JSON.stringify(routes.include) !== JSON.stringify(['/api/client/*', '/api/advisor/*', '/api/walkthroughs/*'])) throw new Error('Both client and advisor gateway routes are required.');
   const zipPath = path.join(outputDir, 'portal.zip');
   execFileSync('python3', ['-c', `from pathlib import Path
 import sys,zipfile

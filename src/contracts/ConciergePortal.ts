@@ -1,3 +1,4 @@
+import type {ServiceRpc,ServiceCommand} from './ConciergeService.ts';
 import type { PresentationPayloads } from './ConciergePresentation.ts';
 /** Wire contract of concierge R1. Product IDs are opaque; private notes are advisor-only. */
 export type ConciergeRecommendation = {
@@ -46,13 +47,13 @@ export type ConciergeWriteCommand = {
     & (A extends 'save_draft' | 'publish' | 'save_intake' | 'save_meeting_note' | keyof PresentationPayloads ? { clientId: string } : Record<never, never>)
     & (A extends 'publish' | 'publish_v2' ? Record<never, never> : ConciergePayloads[A])
 }[ConciergeWriteAction];
-export type ConciergeCommand = {action:'advisor_preview_read_v2';clientId:string;mode:'draft'|'published';expectedRevision:number|null} | { action:'client_read_v2' } | { action:'advisor_read_v2';clientId:string } | { action: 'advisor_list' } | { action: 'client_read' } | { action: 'advisor_read'; clientId: string } | ConciergeWriteCommand;
+export type ConciergeCommand = ServiceCommand | {action:'advisor_preview_read_v2';clientId:string;mode:'draft'|'published';expectedRevision:number|null} | { action:'client_read_v2' } | { action:'advisor_read_v2';clientId:string } | { action: 'advisor_list' } | { action: 'client_read' } | { action: 'advisor_read'; clientId: string } | ConciergeWriteCommand;
 export type ConciergeWriteRpc = {
   [A in ConciergeWriteAction]: { name: A extends keyof PresentationPayloads ? 'concierge_presentation_write' : A extends 'save_intake' | 'save_meeting_note' ? 'concierge_advisor_write' : 'concierge_write'; args: {
     p_client_id: string; p_action: A; p_expected_revision: number; p_request_id: string; p_payload: ConciergePayloads[A];
   } }
 }[ConciergeWriteAction];
-export type ConciergeRpcCall = {name:'concierge_advisor_preview_v2';args:{p_client_id:string;p_mode:'draft'|'published';p_expected_revision:number|null}} | {name:'concierge_client_view_v2';args:Record<string,never>} | {name:'concierge_advisor_view_v2';args:{p_client_id:string}} | { name: 'concierge_advisor_directory'; args: Record<string, never> } | { name: 'concierge_client_view'; args: Record<string, never> }
+export type ConciergeRpcCall = ServiceRpc | {name:'concierge_advisor_preview_v2';args:{p_client_id:string;p_mode:'draft'|'published';p_expected_revision:number|null}} | {name:'concierge_client_view_v2';args:Record<string,never>} | {name:'concierge_advisor_view_v2';args:{p_client_id:string}} | { name: 'concierge_advisor_directory'; args: Record<string, never> } | { name: 'concierge_client_view'; args: Record<string, never> }
   | { name: 'concierge_advisor_view'; args: { p_client_id: string } } | ConciergeWriteRpc;
 export type ConciergeWriteReceipt = { revision: number; publishedVersion: number; operation: ConciergeWriteAction };
 

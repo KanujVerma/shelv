@@ -1,5 +1,7 @@
 # Portal release result
 
+The 25 October walkthrough/service candidate is local and reviewable, not a new hosted release. It adds a combined third API route, two forward migrations, a vault-only guest reader prerequisite, explicit founder walkthrough grants and a private import. The production deployment recorded below remains unchanged. See [candidate acceptance](PORTAL_ACCEPTANCE.md#guided-walkthrough-and-service-candidate-25-october-2026) and [implementation handoff](handoffs/2026-10-25-walkthroughs-service.md) before applying any new package.
+
 Owner: Kanuj
 Verified: 25 October 2026 UTC, 24 October in Chicago
 Status: deployed and hosted acceptance passed

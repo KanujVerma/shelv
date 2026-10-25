@@ -94,6 +94,7 @@ function authChanged(state) {
 }
 
 async function featureRequestFor(kind,options,source=requests) {
+  if(kind==='service')return source.core;
   let featureRequest=source[kind];
   if(preview){
     options={...options,productLabels:{...previewControl?.productLabels,...options.productLabels}};
@@ -112,6 +113,7 @@ async function featureRequestFor(kind,options,source=requests) {
 }
 async function mountFeature(kind,element,options,source=requests) {
   const featureRequest=await featureRequestFor(kind,options,source);
+  if(kind==='service'){const module=await import('./features/service/index.js');return module.mountServicePanel(element,{...options,request:featureRequest});}
   if(preview)options={...options,productLabels:{...previewControl?.productLabels,...options.productLabels}};
   if(kind==='payments') {const module=await import('./features/payments/index.js');return module.mountPaymentsPanel(element,{...options,request:featureRequest,uploadEvidence:options.readOnly?undefined:source.uploadEvidence});}
   const module=await import('./features/checkins/index.js');return module.mountCheckinsPanel(element,{...options,request:featureRequest,uploadPhoto:options.readOnly?undefined:source.uploadPhoto,viewPhoto:options.readOnly?undefined:source.viewPhoto});
@@ -124,6 +126,15 @@ async function route() {
   const onSignOut=async()=>{if(preview){cleanup?.();cleanup=null;location.href=location.pathname;return;}await session.signOut();};
   try {
     if(previewTargetError)throw Object.assign(new Error('Invalid preview link'),{code:'invalid_preview_target',status:400});
+    if(params.has('walkthrough')){
+      if(sessionMode!=='cookie'||!requests.walkthroughs)throw Object.assign(new Error('Advisor access required'),{status:403});
+      const caseId=params.get('walkthrough'),versionId=params.get('version');
+      const authorize=async()=>{const result=await requests.walkthroughs({action:'open',caseId,...(versionId?{versionId}:{})});if(!result?.snapshot)throw Error('unavailable');return result.snapshot;};
+      const snapshot=await authorize(),module=await import('./walkthrough/viewer.js');if(current!==routeSequence)return;
+      root.innerHTML='<div class="advisor-panel"><a class="quiet" href="/?workspace=advisor#/advisor">← Walkthrough library</a></div><div id="advisor-walkthrough"></div>';
+      const viewer=module.mountWalkthroughViewer(root.querySelector('#advisor-walkthrough'),{snapshot,authorize,guided:params.get('guided')==='1'});
+      cleanup=()=>{viewer?.();root.replaceChildren();};return;
+    }
     if(advisorTarget){
       let envelope;
       if(advisorTarget.kind==='sample'){
@@ -149,8 +160,8 @@ async function route() {
     if(!path&&!preview){try{initialDirectory=await requests.core({action:'advisor_list'});path='#/advisor';}catch(error){if(error.status===403)path='#/client';else throw error;}}
     if(!path)path='#/advisor';
     if(preview){const banner=document.querySelector('#preview-banner'),query=esc('?'+params.toString());if(!path.startsWith('#/client'))advisorPreviewContext=true;banner.innerHTML=path.startsWith('#/client')?'Fictional sample · no real clients or transactions':`Fictional sample · advisor preview <a href="${query}#/advisor">Advisor</a><a href="${query}#/client">Client</a>`;}
-    if(path.startsWith('#/client')) {const module=await import('./client/view.js');if(current!==routeSequence)return;cleanup=await module.mountClientPortal(root,{request:requests.core,mountFeature,readPaymentStatus:async options=>(await featureRequestFor('payments',{clientId:previewClientId,mode:'client'}))({action:'client_read',schemaVersion:2},options),onSignOut,clientId:previewClientId,preview,draftState:preview?null:clientDraftForSession(),managerPreview:preview&&advisorPreviewContext});}
-    else {const module=await import('./advisor/workspace.js');if(current!==routeSequence)return;cleanup=module.mountAdvisorWorkspace(root,{request:requests.core,requestAdmission:requests.admission||null,mountFeature,onSignOut,preview,scenario:params.get('state')||'ready',initialDirectory});}
+    if(path.startsWith('#/client')) {const module=await import('./client/view.js');if(current!==routeSequence)return;cleanup=await module.mountClientPortal(root,{request:requests.core,mountFeature,readPaymentStatus:async options=>(await featureRequestFor('payments',{clientId:previewClientId,mode:'client'}))({action:'client_read',schemaVersion:2},options),onSignOut,clientId:previewClientId,preview,draftState:preview?null:clientDraftForSession(),managerPreview:preview&&advisorPreviewContext,serviceEnabled:!preview});}
+    else {const module=await import('./advisor/workspace.js');if(current!==routeSequence)return;cleanup=module.mountAdvisorWorkspace(root,{request:requests.core,requestAdmission:requests.admission||null,requestWalkthroughs:requests.walkthroughs||null,serviceEnabled:!preview,mountFeature,onSignOut,preview,scenario:params.get('state')||'ready',initialDirectory});}
   }catch(error){
     if(current!==routeSequence)return;
     if(advisorTarget||previewTargetError){
@@ -177,7 +188,7 @@ if(preview) {
     if(sessionMode==='cookie'){
       const {CookieAdvisorSession,createCookieRequest}=await import('./auth/advisor-cookie-session.js');
       session=createAdvisorSessionBridge({Cookie:CookieAdvisorSession,onState:authChanged});
-      requests={admission:session.requestFor(createCookieRequest,'admission'),core:session.requestFor(createCookieRequest,'operations'),payments:session.requestFor(createCookieRequest,'payments'),checkins:session.requestFor(createCookieRequest,'checkins')};
+      requests={admission:session.requestFor(createCookieRequest,'admission'),walkthroughs:session.requestFor(createCookieRequest,'walkthroughs'),core:session.requestFor(createCookieRequest,'operations'),payments:session.requestFor(createCookieRequest,'payments'),checkins:session.requestFor(createCookieRequest,'checkins')};
     }else if(sessionMode==='client-cookie'){
       const {CookieClientSession,createClientCookieRequest,createClientPhotoUpload}=await import('./auth/client-cookie-session.js');
       session=createAdvisorSessionBridge({Cookie:CookieClientSession,onState:authChanged});

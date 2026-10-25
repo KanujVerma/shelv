@@ -1,3 +1,4 @@
+import type {InstructionRevision} from './ConciergeService.ts';
 import type { ConciergeAdvisorView, ConciergeClientView, ConciergePayloads } from './ConciergePortal.ts';
 /** R2 is authored plain content. These snapshots never grant a purchase or activation. */
 export type Source = {label:string;url:string};
@@ -13,7 +14,7 @@ export type Card = {id:string;slot:string;kind:'replace'|'keep'|'finish_then_rep
 export type IntakePresentation = {schemaVersion:2;consultationSections:Section[];baselineRoutine:Step[];currentProductsStatus?:'none'|'recorded'};
 export type RoutineBasis = {products:{slot:string;productId:string;source:{kind:'baseline'|'activation';publicationVersion:number;recommendationId:string|null}}[]};
 export type Presentation = {schemaVersion:2;title:string;summary:string;preparedBy:string;preparedOn:string|null;sources:Source[];consultationSections:Section[];categoryCards:Card[];baselineRoutine:Step[];routineGuides:Guide[];routineBasis?:RoutineBasis;currentProductsStatus?:'none'|'recorded'};
-export type ActiveStep = Step & {source:{kind:'baseline'|'activation';publicationVersion:number;recommendationId:string|null};guides:Guide[]};
+export type ActiveStep = Step & {instructionRevision?:InstructionRevision;source:{kind:'baseline'|'activation';publicationVersion:number;recommendationId:string|null};guides:Guide[]};
 export type ClientViewV2 = Omit<ConciergeClientView,'plan'|'history'> & {schemaVersion:2;plan:(NonNullable<ConciergeClientView['plan']>&{presentation:Presentation|null})|null;history:(ConciergeClientView['history'][number]&{presentation:Presentation|null})[];activeRoutine:ActiveStep[]};
 export type AdvisorViewV2 = Omit<ConciergeAdvisorView,'client'|'intake'|'draft'> & {client:ClientViewV2;intake:(NonNullable<ConciergeAdvisorView['intake']>&{presentation:IntakePresentation|null})|null;draft:(NonNullable<ConciergeAdvisorView['draft']>&{presentation:Presentation|null})|null};
 export type PresentationPayloads = {
