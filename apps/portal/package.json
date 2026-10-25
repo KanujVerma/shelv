@@ -1,0 +1,26 @@
+{
+  "name": "@shelv/portal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.0"
+  },
+  "workspaces": [
+    "session-integration/runtime"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:session": "npm --prefix session-integration/runtime test",
+    "test:backend": "node --experimental-strip-types --test backend/tests/*.test.ts backend/source/tests/concierge-handler.test.ts backend/source/tests/concierge-runtime.test.ts",
+    "test:sql": "python3 backend/tests/preview.sql.py",
+    "typecheck:session": "npm --prefix session-integration/runtime run typecheck",
+    "verify:session-package": "node session-integration/runtime/scripts/verify-advisor-package.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "esbuild": "0.28.2",
+    "playwright-core": "1.64.1"
+  }
+}

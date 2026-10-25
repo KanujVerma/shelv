@@ -1,0 +1,29 @@
+# Manual payment methods
+
+Approved implementation: manual Zelle, Cash App and Apple Cash choices with exact server-owned recipients, founder receipt verification and immutable method provenance. Cash App destination is `$KanujVerma`, supplied by Kanuj. Existing approved Zelle destination remains. Apple Cash destination is the supplied phone 9257191334. Apple Pay remains deferred. Approved policy copy offers a refund of service fees paid if dissatisfied during the first three months, requested by phone/messages, with products separate and manual repayment/private confirmation; no refund ledger, transaction or cancellation effect is added. No hosted configuration, funds, emails, credentials, deployment or commits are authorized.
+
+## Recipient authority and eligibility
+
+Private versioned recipient definitions and separate operator-owned eligibility/status rows govern new quotes. Zelle uses the existing approved name/email/phone and supports service/product quotes. Cash App and Apple Cash are prepared with the supplied exact destinations, both components configurable and enabled=false until exact release configuration approval. Local candidate fixtures show all three methods. User-selected options are implemented despite previously disclosed provider-terms concerns; provider business eligibility is not claimed as verified and creates no additional code-authoring approval gate.
+
+Issuing a V2 quote snapshots every currently enabled recipient eligible for all its nonzero components. If none qualifies, issuance fails before superseding any quote. Recipient names/identifiers/URLs are never client or advisor quote payloads. Exact quote options remain immutable; availability for new transfers can be retired separately without rewriting history. Reads remain available when no method is currently enabled.
+
+## Versioned transactional adapter
+
+Use explicit `schemaVersion:2` browser commands and new guarded V2 read/write/evidence RPCs. Preserve legacy SQL implementations in private, non-executable cores; public V1 wrappers reject V2 records and V2 request identities explicitly rather than letting old clients drop method metadata and display Zelle. Original V1 bodies, request fingerprints and receipts are unchanged for historical records and exact authorized replays.
+
+V2 financial wrappers validate current authority and serialize the existing request/client locks. They store a separate full V2 intent fingerprint/receipt around the existing legacy financial transaction. Legacy money, address, publication, duplicate-funding and entitlement logic executes unchanged; method snapshot/claim binding and the V2 receipt commit atomically in the same transaction. No partial wrapper/core write can survive failure. Exact V2 replay checks current authority before returning the immutable extended receipt; changed method/body/revision conflicts.
+
+V2 quote fields: `contractVersion:2,paymentOptions:[{id,recipientVersion,recipient:{method:'zelle',name,email,phone}|{method:'cash_app',name,cashtag}|{method:'apple_cash',name,phone},available:boolean}]`. Historical quotes have contractVersion:1 and no invented recipient snapshot. V2 claims/receipts add `paymentOptionId` (null only for quote issuance); confirmation uses explicit `receiptVerified:true`. The internal legacy bank acknowledgement is only an adapter detail, not the Cash App user-facing meaning. Founder must check the actual selected receiving account and the client’s gross quoted payment; provider fees may reduce the net payout and are not silently added to client prices. Client sent claims/screenshots do not activate service, products, purchases, receipt or routine Start.
+
+Evidence reservation, digest, completion descriptor and claim bind one exact quote option. A screenshot cannot change methods or move across owners/quotes. Exact reserve/completion retries preserve IDs and bytes. New unavailable options fail closed; existing recorded claims remain readable/reviewable against their original snapshot. V2 public projections explicitly allow only needed fields. Historical Zelle recipient details are unknown unless recorded; current instructions may be shown only for still-payable legacy Zelle quotes, labeled as current instructions.
+
+## Browser and preview
+
+Use accessible method radio tiles with name and locally stored official-source brand assets, or polished text/neutral icons when actual marks are unavailable. No remote logo fetch, invented QR/account URL, dead payment button. Show exact frozen recipient and Copy controls. Multiple methods require deliberate selection. A selected option, amount and private screenshot remain immutable while a request is uncertain; cache uploads by quote/option. Wrong-option acknowledgements remain uncertain. Successful write followed by failed reload keeps further writes unavailable.
+
+Advisor confirmation displays method/recipient/amount and a fresh unchecked actual-receipt acknowledgement. Preserve confirmation capability independent of edit. Update payment-status reads, read-only preview envelopes and Alex/Maya fixtures to the same contract; keep historical product metadata, client plans, safety copy, service price and explicit Start behavior unchanged.
+
+## Verification
+
+TDD contracts, actual Edge handler/native SQL and desktop/mobile browser paths. Cover recipient injection, unconfigured/component-ineligible methods, legacy exact replay/history and explicit V1 upgrade errors, method-bound evidence/digests, owner/capability/revocation, stale/concurrent/double funding, wrong-option acknowledgements, uncertain response/reload locks, local assets and no outbound browser requests. Native SQL uses a task-owned isolated Unix-socket-only synthetic cluster and supports `CONCIERGE_TEST_PG_BIN`. Provider account eligibility and real money movement remain unverified external activation gates.

@@ -1,0 +1,12 @@
+{
+  "$schema":"node_modules/wrangler/config-schema.json",
+  "name":"goshelv-portal",
+  "pages_build_output_dir":"dist/pages",
+  "compatibility_date":"2026-10-20",
+  "compatibility_flags":["nodejs_compat"],
+  "vars":{"CLIENT_SHARED_SESSIONS":"false",
+    "CLIENT_REMEMBER_IDLE_SECONDS":"604800",
+    "CLIENT_REMEMBER_ABSOLUTE_SECONDS":"2592000",
+    "PORTAL_ORIGIN":"https://portal.goshelv.com"},
+  "durable_objects":{"bindings":[{"name":"ADVISOR_SESSIONS","class_name":"AdvisorSessionObject","script_name":"goshelv-advisor-session-vault"}]}
+}

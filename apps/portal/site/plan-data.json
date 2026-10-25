@@ -1,0 +1,43 @@
+{
+  "client": "Alex Morgan",
+  "date": "October 13, 2026",
+  "fictional": true,
+  "price": 16,
+  "priceIllustrative": true,
+  "summary": "One moisturizer change. Keep your cleanser and sunscreen; leave new treatments for later.",
+  "reasons": [
+    {
+      "title": "",
+      "body": "Your CeraVe moisturizes well, but it keeps stinging and you’ve started skipping it. I’d like you to try Vanicream Daily Facial in its place. It gives us a different moisturizing formula while keeping one product for morning and evening. The aim is to keep your cheeks comfortable without the stinging, heavy finish or makeup problems you’ve described."
+    }
+  ],
+  "cleanser": {
+    "name": "CeraVe Hydrating Facial Cleanser",
+    "decision": "Keep",
+    "reason": "You use this comfortably in the evening and report no leftover makeup. Your morning rinse already suits you; adding another wash would not address the problem you came in with.",
+    "review": "The current US ingredient list has no added fragrance and includes glycerin and ceramides. We found no recognizable PFAS ingredient names on that list; that is not a PFAS-free certification. With your good experience using it, there is no established ingredient-related reason to replace it. We would still compare an exact alternative’s price and size before deciding whether a lower-cost swap is worthwhile."
+  },
+  "sunscreen": {
+    "name": "Beauty of Joseon Relief Sun",
+    "decision": "Keep",
+    "reason": "It already sits well under your makeup and does not bother your skin. Changing it alongside the moisturizer would make it harder to tell which change helped.",
+    "review": "For swimming or outdoor sweating, use a water-resistant sunscreen. Your daily sunscreen’s SPF alone does not establish that protection during water or sweat exposure."
+  },
+  "treatments": {
+    "name": "No new treatment",
+    "decision": "No addition",
+    "reason": "You mentioned occasional dullness, but comfortable skin is the priority. Adding an active now would add cost and make it harder to identify what your skin tolerates.",
+    "review": "Once the basic routine is comfortable and consistent, we can revisit whether dullness still bothers you enough to justify another product."
+  },
+  "currentPriceIllustrative": 18,
+  "actions": [
+    "Keep your cleanser and sunscreen unchanged while trying it.",
+    "After the initial small-area test, notice how it feels when you apply it, whether your cheeks feel dry later, and how your makeup wears.",
+    "If it stings or irritates your skin, stop and let me know so we can reassess."
+  ],
+  "formulaExplanations": {
+    "niacinamide": "Vanicream leaves this out, which changes the formula you are trying. Your sunscreen contains niacinamide and you tolerate it, so I’m not asking you to avoid the ingredient everywhere. We’re looking for a moisturizer that feels comfortable, without assuming we know what caused the stinging.",
+    "squalane": "Squalane helps soften skin and contributes to how the lotion spreads and feels. CeraVe uses other emollients for these jobs. I’m choosing this different blend as a candidate for comfortable, soft-feeling cheeks without the thick cream you disliked. We’ll check how it wears through the day and under makeup; shine or pilling would count against it.",
+    "ceramides": "Ceramides help support the barrier that keeps moisture in your skin. Vanicream includes two additional types, giving it a different ceramide blend. I’m keeping ceramides in your replacement to maintain the moisturizing support you already like while trying a formula that may feel more comfortable. We’ll judge the result by how your cheeks feel later in the day, rather than the number of types on the label."
+  }
+}

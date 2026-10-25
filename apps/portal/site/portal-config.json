@@ -1,0 +1,9 @@
+{
+  "authUrl": "https://snojlbqovlawewwqbviz.supabase.co",
+  "publishableKey": "sb_publishable_ze6NlrjHNJTOsD4dBTafpg_QJZFSE45",
+  "operationsUrl": "https://snojlbqovlawewwqbviz.supabase.co/functions/v1/concierge-operations",
+  "paymentsUrl": "https://snojlbqovlawewwqbviz.supabase.co/functions/v1/concierge-payments",
+  "checkinsUrl": "https://snojlbqovlawewwqbviz.supabase.co/functions/v1/concierge-checkins",
+  "advisorSharedSessions": true,
+  "clientSharedSessions": true
+}

@@ -1,0 +1,29 @@
+.presentation-editor{--presentation-line:#e4e2d8;--presentation-muted:#697066;--presentation-ink:#25452f;display:grid;gap:16px;min-width:0;color:var(--ink,#252b24)}
+.presentation-editor .presentation-group{min-width:0;margin:0;border:1px solid var(--presentation-line);border-radius:12px;background:var(--paper,#fffef9);overflow:hidden}
+.presentation-editor>.presentation-group>summary{padding:20px 22px;font-size:14px;font-weight:500;color:var(--presentation-ink)}
+.presentation-editor summary{cursor:pointer;padding:14px 16px;font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+.presentation-editor summary::marker{color:var(--presentation-muted)}
+.presentation-editor summary:focus-visible{outline:2px solid #63806a;outline-offset:-3px;border-radius:8px}
+.presentation-editor .presentation-group[open]>summary{border-bottom:1px solid var(--presentation-line)}
+.presentation-editor .presentation-group-body{padding:18px;display:grid;gap:14px;min-width:0}
+.presentation-editor .presentation-group .presentation-group{background:#fff;border-radius:9px}
+.presentation-editor .presentation-group .presentation-group .presentation-group{background:#fafaf6}
+.presentation-editor .presentation-field{display:grid;gap:7px;min-width:0;margin:0;font-size:12px;font-weight:400}
+.presentation-editor .presentation-label{font-size:11px;font-weight:500;line-height:1.6;color:var(--presentation-ink)}
+.presentation-editor .presentation-field input,.presentation-editor .presentation-field select,.presentation-editor .presentation-field textarea{box-sizing:border-box;width:100%;min-width:0;max-width:100%;margin:0;border:1px solid #dcded3;border-radius:7px;background:#fff;padding:10px 12px;color:inherit;font:inherit;font-size:12px;line-height:1.65}
+.presentation-editor .presentation-field textarea{resize:vertical;min-height:80px}
+.presentation-editor .presentation-field input:focus,.presentation-editor .presentation-field select:focus,.presentation-editor .presentation-field textarea:focus{outline:2px solid #63806a;outline-offset:2px}
+.presentation-editor .presentation-field [aria-invalid=true]{border-color:#9b5947;background:#fff9f6}
+.presentation-editor .presentation-hint{display:block;margin:0;font-size:10px;font-weight:400;line-height:1.75;color:var(--presentation-muted);overflow-wrap:anywhere}
+.presentation-editor .presentation-button{justify-self:start;border:1px solid #cbd2c4;border-radius:7px;padding:8px 12px;font:inherit;font-size:10px;line-height:1.6;color:var(--presentation-ink);background:#f8faf3;cursor:pointer;max-width:100%;text-align:left}
+.presentation-editor .presentation-button:hover:enabled{background:#edf2e6;border-color:#8fa183}
+.presentation-editor .presentation-button:focus-visible{outline:2px solid #63806a;outline-offset:2px}
+.presentation-editor .presentation-button[data-action$=".remove"]{border-color:transparent;background:transparent;color:#795f50;padding-left:0}
+.presentation-editor .presentation-check{display:flex;align-items:center;gap:9px;cursor:pointer;line-height:1.7;font-size:11px}
+.presentation-editor .presentation-check>span{font-size:11px}
+.presentation-editor .presentation-check input[type=checkbox]{width:15px;height:15px;flex:none;padding:0;margin:0;accent-color:#25452f}
+.presentation-editor .presentation-periods{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px}
+.presentation-editor .presentation-periods label{margin:0;font-weight:400}
+.presentation-editor input:disabled,.presentation-editor textarea:disabled,.presentation-editor select:disabled{background:#f3f4ee;color:#697066;cursor:default;opacity:.8}
+.presentation-editor button:disabled{opacity:.5;cursor:default}
+@media(max-width:760px){.presentation-editor{gap:12px}.presentation-editor>.presentation-group>summary{padding:16px;font-size:13px}.presentation-editor .presentation-group-body{padding:12px;gap:12px}.presentation-editor summary{padding:12px}.presentation-editor .presentation-field input,.presentation-editor .presentation-field select,.presentation-editor .presentation-field textarea{font-size:16px;padding:9px 10px}.presentation-editor .presentation-button{font-size:11px;min-height:38px}.presentation-editor .presentation-check{font-size:12px}}

@@ -1,4 +1,21 @@
-# Shelv: Scanner-first personalized skincare product intelligence
+# Shelv
+
+## Concierge portal
+
+The consultation-led client and advisor portal lives in [apps/portal](apps/portal/README.md). Founders add clients, prepare plans from their calls, publish recommendations, verify manual payments and respond to check-ins. Clients review product decisions and explicitly start received products. The current portal direction is separate from the Expo scanner described below.
+
+Use Node.js 22.23.0 or newer. Install and build the portal with:
+
+```sh
+npm --prefix apps/portal ci
+npm --prefix apps/portal run build
+```
+
+See [founder operations](docs/CONCIERGE_FOUNDER_OPERATIONS.md), [acceptance and decisions](docs/PORTAL_ACCEPTANCE.md), and [deployment/source provenance](docs/PORTAL_SOURCE_PROVENANCE.md). A local build does not publish the portal or apply database changes.
+
+## Scanner application
+
+The remaining sections describe the separate scanner product and its historical paid hypothesis.
 
 Free Check helps a customer understand what Shelv actually knows about a skincare product and, when enough supported personal context exists, what that person should do with it and why. Shelv does not use a universal numerical compatibility, product-health, or ingredient score. “Personalized Yuka for skincare” is internal shorthand only, not customer-facing positioning.
 
@@ -13,15 +30,15 @@ The paid hypothesis is **$25/month Managed Skincare** for ongoing routine manage
 ## 1. Quick Start
 
 ### Prerequisites
-- Node.js 22+ (LTS)
+- Node.js 22.23.0+ (LTS)
 - npm 10+
 - iOS Simulator (macOS with Xcode) or Expo Go
 
 ### Local Setup
 ```bash
 # 1. Clone repository
-git clone https://github.com/KanujVerma/derive.git
-cd derive
+git clone https://github.com/KanujVerma/shelv.git
+cd shelv
 
 # 2. Install dependencies
 npm install

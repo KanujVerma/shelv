@@ -48,3 +48,6 @@ supabase/.branches/
 .claude/
 .system_generated/
 *.log
+
+# Local verification and portal packages
+/.local-artifacts/

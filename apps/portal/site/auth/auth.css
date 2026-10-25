@@ -1,0 +1,8 @@
+/* Narrow auth controls; existing client/advisor layouts remain unchanged. */
+#portal-root[hidden],#portal-auth-status[hidden]{display:none!important}
+#email-login .portal-remember{display:flex;align-items:center;gap:10px;min-height:44px;margin:18px 0;cursor:pointer}
+#email-login .portal-remember input{flex:0 0 17px;width:17px;height:17px;padding:0;margin:0;accent-color:#3b5845}
+#email-login .portal-remember span{font-size:.9rem;line-height:1.45}
+#email-login>.solid{min-height:44px}
+#email-login .portal-remember-guidance{margin:0 0 5px;font-size:.8rem;line-height:1.5;color:#706e68}
+#portal-auth-status .advisor-login-card>button{margin:8px 8px 0 0}

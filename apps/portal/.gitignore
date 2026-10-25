@@ -1,0 +1,12 @@
+node_modules/
+**/.dev.vars
+**/.dev.vars.*
+**/.wrangler/
+**/__pycache__/
+session-integration/candidate/
+session-integration/runtime/dist/
+session-integration/runtime/.test-build/
+session-integration/runtime/.combined-test-build/
+session-integration/runtime/evidence/
+backend/evidence/
+backend/fixture-pg-*/

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "cerave-hydrating-facial-cleanser.jpg",
+    "manufacturer": "CeraVe",
+    "product": "Hydrating Facial Cleanser",
+    "variant": "US regular nonfoaming cleanser, normal to dry skin, 12 fl oz / 355 mL pump bottle; not Cream-to-Foam",
+    "source_page": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser",
+    "image_url": "https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/us/skincare/cleansers/hydrating-facial-cleanser/photos/2025/hydrating-facial-cleanser_front.jpg?rev=0dbda3ea882842279d59341505ad4a93&w=500&hash=3518E104ABDCB3E8F097C0810EFFCFB6",
+    "width": 500,
+    "height": 625,
+    "retrieved_at": "2026-10-13T22:09:35Z",
+    "visually_verified": true,
+    "sha256": "306573b9c6e30a0306849a1ab475904bb2bbc9bab7e1ecb0f61cad0c37b1b6a6",
+    "provenance": "Image URL extracted from official manufacturer product page HTML; original unmodified image downloaded and visually inspected."
+  },
+  {
+    "file": "boj-relief-sun-rice-niacinamide.jpg",
+    "manufacturer": "Beauty of Joseon",
+    "product": "Relief Sun: Rice + Niacinamide SPF50+ PA++++",
+    "variant": "Original Relief Sun cream tube, current Rice + Niacinamide packaging on original rice-probiotics product page; not AquaFresh",
+    "source_page": "https://beautyofjoseon.com/products/relief-sun-rice-probiotics?country=PA",
+    "image_url": "https://beautyofjoseon.com/cdn/shop/files/03_0805__-_ROW.jpg?v=1787196277",
+    "width": 2000,
+    "height": 2000,
+    "retrieved_at": "2026-10-13T22:09:35Z",
+    "visually_verified": true,
+    "sha256": "b8073616002fc6cfe00f191bc8f28f7fdf7d1de3004d9317f8aa4a971f74e4bb",
+    "provenance": "Image URL extracted from official manufacturer product page HTML; original unmodified image downloaded and visually inspected."
+  }
+]

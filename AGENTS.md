@@ -2,7 +2,13 @@
 
 **Brand:** Use Shelv for customer-facing copy and the corrected shelf artwork. Follow [BRANDING.md](docs/BRANDING.md); preserve existing technical identifiers and historical evidence until a separately approved migration.
 
-## Product direction
+## Concierge portal scope (24 October 2026)
+
+The active web portal is Shelv's human-led skincare concierge. Consultations happen on calls; founders prepare and publish the client's plan. The service is $100 per month with products separate. Portal work follows [apps/portal/AGENTS.md](apps/portal/AGENTS.md), [portal acceptance](docs/PORTAL_ACCEPTANCE.md), and [source provenance](docs/PORTAL_SOURCE_PROVENANCE.md). The scanner direction below describes the separate Expo product and must not be used to replace the portal with a self-service questionnaire.
+
+Preserve deployed-source provenance and unrelated local work. Product approval and receipt never start a replacement; the client explicitly records Start. Alex and Maya share behavior and templates while retaining their individual plan content. Client-visible check-in replies and private advisor notes must have separate fields and authorization. No real funds, purchases, fulfillment, production permissions, or emails are authorized by a local test.
+
+## Scanner product direction
 
 Shelv's approved direction is **scanner-first personalized skincare product intelligence**. Free Check asks “Should I use this product?” and returns only supported facts and context-sensitive actions. The latest founder instruction for the six-hour scanner sprint is **free scanner only**, with existing signup, optional skincare context and Check; Plus/payment integration is parked, not a launch dependency. Plus remains an evaluated self-directed cross-product layer, not a live entitlement; `$25/month Managed Skincare` is a paid hypothesis, not validated pricing or activated hosted billing. No universal numerical compatibility, health, or product-quality score. See [SCANNER_RELEASE_ROUTING.md](docs/SCANNER_RELEASE_ROUTING.md), [MONETIZATION.md](docs/MONETIZATION.md) and [KANUJ_PORTFOLIO.md](docs/KANUJ_PORTFOLIO.md).
 

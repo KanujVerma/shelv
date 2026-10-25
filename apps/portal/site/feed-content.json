@@ -1,0 +1,137 @@
+{
+  "cleanser": {
+    "category": "Cleanser",
+    "name": "CeraVe Hydrating Facial Cleanser",
+    "decision": "Keep",
+    "reason": "This cleanser feels comfortable in the evening and leaves you without noticeable makeup residue. I’d keep it while we change your moisturizer. Your morning water rinse already suits you, and washing again makes your cheeks feel tighter, so there’s no extra cleansing step to add.",
+    "actions": [
+      "Keep using it in the evening, including after your indoor gym session.",
+      "Use the micellar water you already own first when heavier makeup needs it.",
+      "Let me know if cleansing starts to sting, leaves residue or makes your cheeks feel tighter."
+    ],
+    "facts": [
+      {
+        "title": "Glycerin",
+        "body": "The US formula lists glycerin, hyaluronic acid and three ceramides. Those fit the cleanser’s moisturizing purpose; your own comfort after washing matters more than the ingredient count.",
+        "ingredient": "glycerin"
+      },
+      {
+        "title": "No added fragrance",
+        "body": "CeraVe labels it free of added fragrance. That is useful formula information, but it cannot guarantee that a product will never irritate your skin."
+      },
+      {
+        "title": "Makeup removal",
+        "body": "The brand includes makeup removal among its uses. Keep your existing remover for heavier makeup rather than assuming one wash will remove everything you might wear."
+      },
+      {
+        "title": "No extra purchase",
+        "body": "You already have a cleanser that suits you. I’d finish it rather than add another bottle now. When it needs replacing, we can compare the price per amount against a specific alternative without changing a comfortable routine just for the sake of it."
+      }
+    ],
+    "sources": [
+      {
+        "label": "CeraVe ingredients and directions",
+        "url": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser"
+      }
+    ],
+    "key": "cleanser",
+    "factsTitle": "What matters for you",
+    "how": [
+      "Wet your skin with lukewarm water. Work the cleanser between your palms, then gently massage it over your face in circles.",
+      "Rinse thoroughly and pat dry gently. Follow with your moisturizer once the replacement has passed its initial small-area test."
+    ],
+    "howTitle": "How to use it",
+    "confirmLabel": "Keep product",
+    "subtitle": "Your evening cleanser",
+    "image": "assets/cerave-hydrating-facial-cleanser.jpg"
+  },
+  "sunscreen": {
+    "category": "Sunscreen",
+    "name": "Beauty of Joseon Relief Sun",
+    "productDetail": "Rice + Probiotics / Rice + Niacinamide · SPF50+ PA++++",
+    "decision": "Keep",
+    "reason": "You already like how Relief Sun feels and how it sits under makeup. I’d keep it so you can see how the new moisturizer works with the sunscreen you actually enjoy using. The main thing to plan for is your longer outdoor walks, especially if you’ll be sweating.",
+    "actions": [
+      "Keep your current sunscreen while testing the moisturizer beneath it.",
+      "Take sunscreen with you for longer outings so you can reapply.",
+      "For swimming or outdoor sweating, choose a water-resistant sunscreen and follow its label."
+    ],
+    "facts": [
+      {
+        "title": "Same sunscreen, updated name",
+        "body": "Beauty of Joseon says Rice + Probiotics was renamed Rice + Niacinamide without changing the formula or size. Both names can appear on genuine packaging during the changeover."
+      },
+      {
+        "title": "Niacinamide",
+        "body": "This formula contains niacinamide, and you’ve said this sunscreen feels comfortable. That’s a reason to avoid blaming that ingredient alone for the stinging with CeraVe PM; it doesn’t establish what caused it.",
+        "ingredient": "niacinamide"
+      },
+      {
+        "title": "Plan for sweat and sun",
+        "body": "The brand directs you to use a water-resistant sunscreen for swimming or sweating. Keep a hat and protective clothing in the plan too; sunscreen doesn’t make unlimited sun exposure safe."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Beauty of Joseon formula, naming update and directions",
+        "url": "https://beautyofjoseon.com/products/relief-sun-rice-probiotics?country=PA"
+      }
+    ],
+    "key": "sunscreen",
+    "factsTitle": "What matters for you",
+    "how": [
+      "After moisturizer, spread a generous, even layer over sun-exposed skin as your final morning skincare step, before makeup.",
+      "The brand directs reapplication at least every two hours. For swimming or sweating, follow your water-resistant sunscreen’s reapplication directions, including after towel drying."
+    ],
+    "howTitle": "How to use it",
+    "confirmLabel": "Keep product",
+    "subtitle": "Rice + Niacinamide · SPF50+ PA++++",
+    "image": "assets/boj-relief-sun-rice-niacinamide.jpg"
+  },
+  "treatments": {
+    "category": "Treatments",
+    "name": "No new treatment for now",
+    "decision": "No addition",
+    "reason": "You mentioned occasional dullness, but the repeated stinging is what’s making your routine difficult to use. I’d get the moisturizer working comfortably first. That keeps the routine within the steps you wanted and gives us a clearer view of whether anything else is worth adding.",
+    "actions": [
+      "Hold off on buying a brightening serum, exfoliant or retinoid during the moisturizer trial.",
+      "Notice comfort on application, how your cheeks feel later and how your makeup wears.",
+      "Once the routine feels comfortable and consistent, tell me whether dullness still bothers you."
+    ],
+    "facts": [
+      {
+        "title": "One change to evaluate",
+        "body": "Keeping the other products steady makes it easier to judge the moisturizer. Adding several products at once can also increase irritation, as the American Academy of Dermatology notes."
+      },
+      {
+        "title": "Comfort before another step",
+        "body": "Your goal is one moisturizer for morning and evening and fewer purchases. There’s no need to choose a separate treatment before we know whether you still want one."
+      },
+      {
+        "title": "A test has limits",
+        "body": "Trying a new product on a small area can help flag a reaction. It cannot identify the ingredient behind the stinging you’ve already experienced."
+      }
+    ],
+    "sources": [
+      {
+        "label": "AAD advice on introducing skincare products",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/anti-aging/maximize-anti-aging-products"
+      },
+      {
+        "label": "AAD small-area testing guidance",
+        "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/prevent-skin-problems/test-skin-care-products"
+      }
+    ],
+    "key": "treatments",
+    "factsTitle": "What we’re checking first",
+    "how": [
+      "There’s no treatment to apply. Follow the cleanser, moisturizer and sunscreen steps in your routine.",
+      "Before using the new moisturizer over your face, the AAD recommends testing a normal amount on a quarter-sized area on the underside of your arm or bend of your elbow twice daily for 7–10 days.",
+      "If the test causes a reaction, wash it off and stop using it. If irritation persists or worsens, seek a dermatologist’s advice."
+    ],
+    "howTitle": "What to do for now",
+    "confirmLabel": "Keep routine simple",
+    "subtitle": "Focus on comfort before adding another active",
+    "image": null
+  }
+}

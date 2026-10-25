@@ -197,3 +197,8 @@ entrypoint = "./functions/personal-context/index.ts"
 
 [functions.personal-decision]
 verify_jwt = false
+
+[functions.concierge-admission]
+enabled = true
+verify_jwt = true
+entrypoint = "./functions/concierge-admission/index.ts"
