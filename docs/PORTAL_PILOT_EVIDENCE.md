@@ -6,7 +6,9 @@ This document records the permitted pilot framing after the 25 October 2026 foun
 
 ## Public story
 
-The founders report serving four friends outside the portal at $25 per month, with all four continuing into the second month. Individual reported outcomes, actual use durations, photographs and written/verbal feedback records were not provided in this strategy review. Do not claim positive skin results or verified satisfaction from continuation alone. Constructed consultation scenarios are planning inputs, not evidence of those friends' individual histories or improvement.
+The founders report serving four friends outside the portal at $25 per month, with all four continuing into the second month. Individual reported outcomes, actual use durations, photographs and written/verbal feedback records were not provided in this strategy review. Do not claim positive skin results or verified satisfaction from continuation alone.
+
+Later founder clarification on 25 October confirms the supplied initial concerns, products, budgets and preferences as accurate consultation facts, with reconstructed dialogue; this supersedes the earlier description of those inputs as constructed scenarios. The founder also confirms permission to share their names and visible plan information, while choosing selective advisor-controlled links rather than public listing. This is founder confirmation, not an independent audit or proof of improvement. Newly authored check-ins and follow-ups are staged walkthrough content, not those clients' reported results. Raw notes and private screening data remain private.
 
 The next intake is limited to five new clients at $100 per month, with products separate. Keep friend pricing, current offer and total active support load distinct. One continuation at $25 does not establish demand at $100, longer-term retention or portal-driven outcomes.
 
