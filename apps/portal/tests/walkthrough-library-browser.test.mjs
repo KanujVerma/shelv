@@ -7,7 +7,7 @@ import {chromium} from 'playwright-core';
 
 const site=path.resolve(fileURLToPath(new URL('../site/',import.meta.url))),origin='http://localhost';
 let browser;
-before(async()=>{browser=await chromium.launch({channel:'chrome',headless:false,args:['--no-proxy-server','--disable-background-networking','--disable-quic','--host-resolver-rules=MAP * ~NOTFOUND']});});
+before(async()=>{browser=await chromium.launch({channel:'chrome',headless:process.env.PORTAL_TEST_HEADED!=='1',args:['--no-proxy-server','--disable-background-networking','--disable-quic','--host-resolver-rules=MAP * ~NOTFOUND']});});
 after(async()=>browser?.close());
 async function fixture(run){
     const context=await browser.newContext({viewport:{width:390,height:900},serviceWorkers:'block'});await context.setOffline(true);const unexpected=[],errors=[];
