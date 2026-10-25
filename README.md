@@ -11,7 +11,7 @@ npm --prefix apps/portal ci
 npm --prefix apps/portal run build
 ```
 
-The current live release and fresh hosted verification are recorded in [release result](docs/PORTAL_RELEASE_RESULT.md). See [founder operations](docs/CONCIERGE_FOUNDER_OPERATIONS.md), [acceptance and decisions](docs/PORTAL_ACCEPTANCE.md), and [deployment/source provenance](docs/PORTAL_SOURCE_PROVENANCE.md). A local build does not publish the portal or apply database changes.
+The current live release and fresh hosted verification are recorded in [release result](docs/PORTAL_RELEASE_RESULT.md). Read [current operating decisions and open questions](docs/CONCIERGE_FOUNDER_OPERATIONS.md) before concierge work; this is the shared source for the five-place intake, founder responsibilities, support, purchasing, refunds, referrals and requested demos. See [implementation acceptance](docs/PORTAL_ACCEPTANCE.md) and [deployment/source provenance](docs/PORTAL_SOURCE_PROVENANCE.md) for what actually exists. A local build does not publish the portal or apply database changes.
 
 ## Scanner application
 
@@ -146,3 +146,4 @@ Every PR must pass:
 1. `npm test` — Unit test suite (Safety classifier, routine invariants, ingredient intelligence, contract mocks).
 2. `npx tsc --noEmit` — Strict TypeScript compiler check across all routes and components.
 3. `EXPO_NO_TELEMETRY=1 npx expo export -p web` — Production bundle build.
+

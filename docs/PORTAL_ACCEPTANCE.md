@@ -2,6 +2,8 @@
 
 Owner: Kanuj
 
+Business-policy update, 25 October 2026: [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) is the canonical current register of agreed terms, responsibilities, requested work and unresolved questions. The implementation/test results below retain their original release scope; newly agreed policy is not evidence of new code or deployment.
+
 The agreed completion release is deployed at https://portal.goshelv.com and a fresh hosted synthetic journey has passed. [Release result](PORTAL_RELEASE_RESULT.md) records actual deployment/commit mappings, runtime evidence, cleanup and limitations. [Source provenance](PORTAL_SOURCE_PROVENANCE.md) records lineage; [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) records daily work. Draft PR 206 is published and unmerged; no Git merge was authorized.
 
 ## Agreed product behavior
@@ -10,13 +12,13 @@ The agreed completion release is deployed at https://portal.goshelv.com and a fr
 - Kanuj and Sami can add clients from the advisor portal through a separate admission permission. Duplicate handling preserves existing accounts; creation does not claim an email was sent. Clients use the normal portal login flow.
 - Written check-in replies are client-visible and separate from private advisor notes. Calls and messages remain normal contact. There is no general chat system or automatic reply notification.
 - Keep and elevate the cream, forest-green and editorial design across desktop and mobile. Remember me is an aligned checkbox and label without explanatory text below.
-- The current offer is $100 per calendar month, products separate. Zelle, Cash App and Apple Cash are founder-configured manual choices. Cash App is $KanujVerma; Apple Cash is (925) 719-1334; the existing Zelle destination stays. Apple Pay is deferred. These instructions do not establish provider merchant approval or move funds automatically.
+- The current offer is $100 per monthly service period anchored to first publication, month to month, products separate. Zelle, Cash App and Apple Cash are founder-configured manual choices. Cash App is $KanujVerma; Apple Cash is (925) 719-1334; the existing Zelle destination stays. Apple Pay is deferred. These instructions do not establish provider merchant approval or move funds automatically.
 - A final quote fixes eligible methods and recipient versions. Client claims and screenshots remain unverified evidence until a founder confirms the actual gross receipt. Renewal requires a new payment; there is no automatic charge.
 - Product approval, payment, receipt and Start are separate. Only explicit client Start activates a replacement. Prior routines and financial snapshots remain readable. Existing stop advice must not turn into advice to keep using an irritating product.
 - Alex and Maya share behavior, comparisons and clickable ingredient explanations, including optional and finish-then-switch choices. Their actual consultation-derived content remains distinct. No invented personalization or ingredient causation.
 - Founders can explicitly confirm that a client uses no skincare products. Confirmed none is distinct from unknown or unfinished authoring. No placeholder product or water-wash step is invented. Subsequent plans use the currently active routine as their authoring basis, preserving the original and activation history.
 - Check-in drafts survive in-app navigation, not reload or browser closure. Logout, owner change and replacement session clear drafts and reject late responses.
-- A dissatisfied client can request return of service fees actually paid during the first three months. Products are separate. Requests use calls/messages; repayment is manual to a privately confirmed client destination and needs actual return confirmation. No automatic refund, cancellation or refund ledger is introduced.
+- Updated operating policy: a dissatisfied client may request the service fees actually paid for the first three monthly periods, including earlier requests, through 30 calendar days after the third period ends. Initiate repayment within 48 elapsed hours once necessary repayment details are available. Products are separate; no fourth payment, photo or adherence threshold is required. Requests and repayments remain human-managed. The deployed UI still has older wording, and the requested return/cancellation improvements are not delivered by this documentation update.
 
 ## Verified local completion
 
@@ -50,4 +52,5 @@ The [release result](PORTAL_RELEASE_RESULT.md) is canonical for actual hosted id
 
 Referral partners are the audience, not salon-management software customers. Regent Cuts and Union Hair Parlor expressed interest; Field House said it would review the website. October 26 is a readiness target rather than a confirmed meeting time.
 
-The first-cohort story and public offer belong in [pilot framing](PORTAL_PILOT_EVIDENCE.md). Detailed source notes stay private and excluded from this public repository. Do not invent counts, payment records, dates, results or a referral rate. Do not add refund conditions such as mandatory photos, adherence thresholds or proof of a particular outcome.
+The first-cohort story and public offer belong in [pilot framing](PORTAL_PILOT_EVIDENCE.md). Detailed source notes stay private and excluded from this public repository. Do not invent counts, payment records, dates or results. The founders have now selected a $100 once-per-new-paying-client referral offer, with details in founder operations; that decision is not a signed partner agreement or implemented payout automation. Do not add refund conditions such as mandatory photos, adherence thresholds or proof of a particular outcome.
+

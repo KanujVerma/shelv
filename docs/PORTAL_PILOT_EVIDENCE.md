@@ -2,17 +2,19 @@
 
 Owner: Kanuj
 
-This document records the public product context. Detailed cohort verification and source records are maintained privately by the founders and are excluded from this public repository.
+This document records the permitted pilot framing after the 25 October 2026 founder clarification. Detailed client records and any later outcome evidence belong in private storage; their existence or verification is not established by this document. Current operating decisions are in [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md).
 
 ## Public story
 
-The initial four-person pilot had positive client experiences and all four renewed for the next month. The current offer is a second pilot with five places at $100 per month, with products separate. Keep the initial pilot and current offer distinct when describing the service. Do not imply measured longer-term retention or quantified clinical outcomes that have not been established.
+The founders report serving four friends outside the portal at $25 per month, with all four continuing into the second month. Individual reported outcomes, actual use durations, photographs and written/verbal feedback records were not provided in this strategy review. Do not claim positive skin results or verified satisfaction from continuation alone. Constructed consultation scenarios are planning inputs, not evidence of those friends' individual histories or improvement.
+
+The next intake is limited to five new clients at $100 per month, with products separate. Keep friend pricing, current offer and total active support load distinct. One continuation at $25 does not establish demand at $100, longer-term retention or portal-driven outcomes.
 
 Customer-facing language can tell that first-cohort story naturally. Internal verification terminology does not belong in the client portal. Use the actual cohort denominator when presenting a percentage, and verify the founders' source records when preparing a financial or cohort report.
 
 ## Service journey
 
-The live [goshelv.com](https://goshelv.com/) page describes a personal skin review, shelf review, morning/evening instructions, a first check-in around two weeks, later monthly check-ins, text replies within 24 hours and help with client-approved purchases. Alex and Maya are illustrative sample plans.
+The agreed service includes a personal skin review, shelf review, morning/evening instructions, a two-week review followed by reviews at the ends of months one, two and three, text replies within 24 hours and help with client-approved purchases. Alex and Maya are illustrative sample plans. Align the [landing page](https://goshelv.com/) with the current operating decisions; this documentation edit did not inspect or deploy a new landing version.
 
 Skin review happens in person or on a call, with photos reviewed when useful. The portal does not perform an automated facial assessment. Use that specific description when explaining the service.
 
@@ -23,3 +25,4 @@ The service-fee guarantee and manual repayment process are defined in [founder o
 Cloudflare Pages project goshelv-landing serves goshelv.com. Deployment fdd01b54-e204-403b-ae56-d9a6e257c60b was created on 20 October 2026 at 23:14 UTC. Provider metadata identifies an ad hoc upload without a Git source or commit hash; a branch label alone does not establish a source commit. Older Vercel-domain handoffs are historical.
 
 The live page supplies the current marketing context. A newer landing repository was not identified in available GitHub sources; that missing link does not block the portal. The landing page was not changed by this portal task.
+

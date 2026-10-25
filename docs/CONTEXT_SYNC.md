@@ -1,5 +1,15 @@
 # Shelv Cross-Agent Context Sync Ledger
 
+## 2026-10-25: concierge meeting decisions reconciled; combined demo goal awaiting answers
+
+[Founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) is the current shared source for concierge terms, roles, manual workflow and unresolved questions. The next intake is capped at five new clients. Kanuj owns skincare decisions; Sammy owns outreach and operations. Plans target 24 hours with a 48-hour maximum, personal responses are within 24 hours, and reviews are at two weeks and the ends of months one, two and three. The agreed service-fee request window includes 30 calendar days after the third period, with refund initiation within 48 hours. The founder-selected referral offer is $100 once per new paying client, retained after a genuine service refund. Purchasing, retailer-based returns, cancellation and final-plan handoff are recorded without claiming automation.
+
+The four original friends paid $25 outside the portal and continued into month two. Individual outcomes/feedback records have not been supplied. Pilot framing no longer converts continuation or constructed scenarios into positive-result evidence. This public repository must not receive the raw named consultation upload or sensitive case details while public identities/disclosure remain unresolved.
+
+Requested work now includes guided Maya, four additional de-identified initial-plan examples using shared components, return support, recording text/call reviews and revising active instructions. None is implemented by this docs change. Current reply creation requires a client report, and active instructions retain their Start-publication source; a demo must not fake those missing capabilities. Contact setup/coverage, diet boundaries, public case identities, product-refund pass-through timing and service geography remain open. The new combined goal will replace the earlier partial drafts after those answers.
+
+Documentation-only update based on portal branch `codex/portal-completion-20261024` at `b0db15c42b601ab2a23d2d2f9332da3dc8ba88a0`, proposed on `codex/concierge-decisions-20261025-a5207`. PR 206 remains unmerged; default main does not yet contain this stacked decision update. No application change, hosted test, deployment, message, purchase, refund or client-record mutation is claimed. [Release result](PORTAL_RELEASE_RESULT.md) remains the authority for the earlier deployed release.
+
 ## 2026-10-24: portal deployed and fresh-client acceptance passed
 
 The complete human-led portal is live at portal.goshelv.com, Pages cf09be80-48bf-4b7a-99b2-fb17e0de15ae, mapped to application commit 66f7a22510a9a6ac7753ce98e080325e83024552. Operational correction 2663e976 preserves the exact existing SQLite export declaration and distinguishes committed no-products SQL from its guard-only provider registration. All three exact-head CI jobs passed at both commits. Draft PR 206 is published and unmerged; no merge was authorized.
