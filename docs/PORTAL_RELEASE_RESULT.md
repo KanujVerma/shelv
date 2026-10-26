@@ -1,6 +1,35 @@
 # Portal release result
 
-## Current Maya tour update, 25 October 2026
+## Current task-first portal release, 26 October 2026
+
+Owner: Kanuj. The user explicitly authorized deploying [draft PR 209](https://github.com/KanujVerma/shelv/pull/209) for the updated demo and advisor dashboard, without merging. The reviewed package is live at [the Maya demo](https://portal.goshelv.com/maya/?guided=1) and [advisor sign-in](https://portal.goshelv.com/?workspace=advisor#/advisor). PR 209 remains draft and unmerged.
+
+| Component | Verified deployed identity |
+| --- | --- |
+| Deployment source | `7f3ba7a03d6168e7c5ec899578529ccddc9c6761`; final application source `2539d0729bffcb32318add72575a1e28168a1a9d` |
+| Production Pages | `018ec919-d9c4-4c8c-afb8-f10c9b2e1556`, successful at 23:08:21 UTC |
+| Package | 132 entries; provider manifest and all 129 public file hashes match the frozen package |
+| ZIP SHA-256 | `307472c8b6836ae5858d625cd6b0e36748cf8f8b32054967af38b862b2062875` |
+| Build manifest SHA-256 | `28a7318230dc4c11ef44a10af47af1190c43d002784d78cf8ac1b5b4fe24ea81` |
+| Combined gateway SHA-256 | `4c3be9b9326204bcf583ede4305b45939cbe21bd1b649595002e5c68171d4b16` |
+| Private vault deployment / version | `cae4f71c-6a0d-4869-adf1-1f9f2abb2354` / `209813af-a272-433e-b934-074ab1c4e5ab` at 100% |
+| Provider-returned vault module | 418,004 bytes; SHA-256 `12ccdf38776e434a5e53233cf3806d755e8cf50a1cd028e8989fe5dd73b99126` |
+| Vault code etag | `3d29d8fcbc1b67f4dd33d6e884f09927946f5c7509df4b0e7d47224672a00d51` |
+| Edge functions | Operations 7; payments 4, check-ins 4 and admission 2 unchanged; all JWT verification true |
+
+Only the reviewed own-name projection migration was applied, then the affected operations source closure, private vault and Pages package. [Source provenance](PORTAL_SOURCE_PROVENANCE.md) records its exact source hash and provider ledger alias. The migration ledger grew from 78 to 79 without replaying or repairing any historical entry. The existing read function retained its OID, owner, empty search path, security-definer setting and authenticated-only EXECUTE grant. All 17 provider-extracted operations runtime files matched the frozen closure after deployment; the other three functions were not redeployed.
+
+Production and preview Pages settings, both enabled shared-session flags, existing session durations and audience/CSRF boundaries were preserved. The existing namespace `a0a5b089755842dc8c6a62b4f164865b`, `AdvisorSessionObject` SQLite export, all installed binding values and both secret bindings were retained. No secret value was read or replaced. The exact existing export declaration was echoed with no Durable Object migration; all nine reconciliation arrays were empty. Private workers.dev, preview URLs, domains, logging, traces, tails and Logpush remain disabled. The newer Worker API independently confirms collection disabled; disabled subsettings can normalize differently from upload receipts.
+
+Hosted verification matched all 129 public assets. Independent public-browser review passed nine scoped groups with 19 screenshots at 320, 390 and 1440 pixels: Maya's seven-stage tour and Finish/replay, navigation, account disclosure, product detail/Back, ingredients, routine, actual HTML download/render/print and enabled advisor sign-in. All 96 browser requests were same-origin GETs, including one ordinary advisor-session bootstrap; no form was submitted and there were zero JavaScript or console errors. The isolated public browser's pending-flow cookie was cleared and its browser closed; the server flow retains its normal 600-second expiry.
+
+Nine separate bounded maintenance-advisor checks passed using one genuine existing-account password Auth session and the supported advisor-cookie upgrade. Only the retained **SYNTHETIC DO NOT FULFILL** client was opened. Task navigation, Back, refresh, payments/check-ins/service reads, 390-pixel layout, published read-only preview and product detail/reload/Back passed. Private walkthrough reads and all business writes were blocked in that verification browser. Normal cookie logout completed; the maintenance account returned to zero Auth sessions and founder session-ID set digests were unchanged. Twelve anonymous probes confirmed missing-CSRF and missing-session denial with no-store responses. No login email, client mutation, grant change, transaction or message occurred.
+
+Ordinary authenticated client-owner acceptance and email callback completion were not run. Local/native ownership, SQL and auth-continuation checks remain separate evidence in [UX delivery](PORTAL_UX_DELIVERY.md); the two optional environment-blocked HTTP/SQL checks remain explicitly limited there. [Acceptance](PORTAL_ACCEPTANCE.md) owns the detailed hosted scope.
+
+The immediate rollback remains Pages `17546896-f89f-4300-b9f8-252a4734984c`, with all 120 predecessor public files verified and its exact package retained. Prior raw vault bytes/version and the operations preimage are preserved privately. Recovery can restore those compatible readers while leaving the additive own-name projection installed. Preserve the ledger, immutable history, namespace, keys, sessions and business records; do not reset data or drop migrations. The reviewed deployment manifest, action receipts, raw hash reads and protected synthetic screenshots remain in ignored local evidence.
+
+## Historical Maya tour update, 25 October 2026
 
 The redesigned public [Maya demo](https://portal.goshelv.com/maya/?guided=1) is deployed from `b22436f58e32ea21668dd350269b46227669ab43` on Pages `17546896-f89f-4300-b9f8-252a4734984c`. It begins with a company-branded Shelv introduction, then seven anchored pop-ups with visible pointers and optional real overview, product, ingredient and routine interactions. Next never requires an action. The first visit shows the welcome; a generic browser preference prevents repeat auto-opening. X, Escape, Exit and Finish remove the tour completely, and a quiet **View tour** button explicitly replays it. An active same-tab refresh resumes its stop. If browser storage is blocked, the current document still supports dismissal/replay, but cross-reload persistence cannot be guaranteed.
 

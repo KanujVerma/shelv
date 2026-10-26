@@ -1,8 +1,8 @@
 # Portal UX delivery, 26 October 2026
 
-Owner: Kanuj. Candidate: [PR 209](https://github.com/KanujVerma/shelv/pull/209), `codex/shelv-ux-skill-pilot-20261026`.
+Owner: Kanuj. Delivery: [PR 209](https://github.com/KanujVerma/shelv/pull/209), `codex/shelv-ux-skill-pilot-20261026`.
 
-**Local UX candidate:** final application source is `2539d0729bffcb32318add72575a1e28168a1a9d`. All six independent findings are closed with specification/quality PASS for the correction waves. Exact verification scopes and the two environment-blocked optional checks are recorded below. The latest hosted release remains the separately recorded [release result](PORTAL_RELEASE_RESULT.md). No merge or deployment is part of this delivery.
+**Implemented and separately deployed:** final application source is `2539d0729bffcb32318add72575a1e28168a1a9d`. All six independent findings are closed with specification/quality PASS for the correction waves. Exact local verification scopes and the two environment-blocked optional checks are recorded below. The user subsequently authorized deploying source head `7f3ba7a03d6168e7c5ec899578529ccddc9c6761`; the [release result](PORTAL_RELEASE_RESULT.md) and [acceptance](PORTAL_ACCEPTANCE.md) record the actual 26 October deployment, public bytes, bounded synthetic advisor checks and remaining client-owner/email-callback limits. The local results below are not relabelled as hosted results. PR 209 remains draft and unmerged.
 
 ## 1. Navigation architecture
 
