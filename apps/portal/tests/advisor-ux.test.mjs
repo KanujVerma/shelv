@@ -27,7 +27,7 @@ async function fixture(width,run,{url='/__advisor#/advisor',history=false,servic
   await page.goto('http://localhost'+url);
   await page.evaluate(async({withHistory,service})=>{
    const [{mountAdvisorWorkspace},{createPreviewRequests},{mountCheckinsPanel},{createCheckinPreviewStore,createCheckinPreviewRequest},{mountPaymentsPanel},{createPaymentPreviewStore,createPaymentPreviewRequest}]=await Promise.all([import('/advisor/workspace.js'),import('/advisor/fixtures.js'),import('/features/checkins/index.js'),import('/features/checkins/fixtures.js'),import('/features/payments/index.js'),import('/features/payments/fixtures.js')]);
-   const source=createPreviewRequests(),stores=new Map(),paymentStores=new Map();window.__commands=[];window.__paymentCommands=[];window.__serviceCommands=[];window.__loseReply=false;window.__losePayment=false;window.__loseService=false;window.__publicationBump=0;
+   const source=createPreviewRequests(),stores=new Map(),paymentStores=new Map();window.__commands=[];window.__dateCommands=[];window.__paymentCommands=[];window.__serviceCommands=[];window.__loseReply=false;window.__loseNextDate=false;window.__losePayment=false;window.__loseService=false;window.__publicationBump=0;
    const {mountServicePanel}=await import('/features/service/index.js');const {createServicePreviewRequests}=await import('/features/service/fixtures.js');
    const serviceStores=new Map();
    const request=async command=>{const result=await source.core(command.clientId==='10000000-0000-4000-8000-000000000001'?{...command,clientId:source.clientId}:command);if(command.action==='advisor_list')result.clients[0].clientId='10000000-0000-4000-8000-000000000001';if(command.action==='advisor_read_v2'&&result.client.plan&&window.__publicationBump)result.client.plan.version+=window.__publicationBump;if(withHistory&&command.action==='advisor_read_v2'&&result.client.plan){result.client.history=[{...structuredClone(result.client.plan),version:1,publishedAt:'2026-10-01T12:00:00Z'}];result.client.plan.version=2;result.client.plan.publishedAt='2026-10-20T12:00:00Z';}return result;};
@@ -36,7 +36,7 @@ async function fixture(width,run,{url='/__advisor#/advisor',history=false,servic
     if(kind==='checkins'){
      if(!stores.has(options.clientId))stores.set(options.clientId,createCheckinPreviewStore());
      const source=createCheckinPreviewRequest({mode:'advisor',store:stores.get(options.clientId)});
-     const request=async command=>{if(command.action==='send_advisor_reply')window.__commands.push(structuredClone(command));const result=await source(command);if(command.action==='send_advisor_reply'&&window.__loseReply){window.__loseReply=false;throw {status:503};}return result;};
+     const request=async command=>{if(command.action==='send_advisor_reply')window.__commands.push(structuredClone(command));if(command.action==='set_next_checkin')window.__dateCommands.push(structuredClone(command));const result=await source(command);if(command.action==='send_advisor_reply'&&window.__loseReply){window.__loseReply=false;throw {status:503};}if(command.action==='set_next_checkin'&&window.__loseNextDate){window.__loseNextDate=false;throw {status:503};}return result;};
      return mountCheckinsPanel(host,{...options,request});
     }
     if(!paymentStores.has(options.clientId))paymentStores.set(options.clientId,createPaymentPreviewStore());
@@ -147,3 +147,23 @@ for(const width of [320,390,1440])test(`saved draft, revision-bound preview and 
  await task(page,'Plan history');assert.equal(await page.getByRole('heading',{name:'Plan version 1',exact:true}).count(),1);assert.equal(await page.getByRole('heading',{name:'Plan version 2',exact:true}).count(),1);await page.screenshot({path:path.join(artifacts,`history-${width}.png`),fullPage:true});
  await task(page,'Payments','shelv-payments');await page.screenshot({path:path.join(artifacts,`payments-${width}.png`),fullPage:true});
 }));
+for(const width of [320,390,1440]){
+ test(`refused browser traversal preserves directory and forward entries at ${width}px`,()=>fixture(width,async page=>{
+  await open(page);await task(page,'Check-ins','shelv-checkins');await page.getByLabel('Reply to client',{exact:true}).fill('Reply retained until accepted departure');await page.goBack();await page.locator('#intake-form').waitFor();
+  for(let attempt=0;attempt<2;attempt++){
+   page.once('dialog',dialog=>dialog.dismiss());await page.goBack();await page.waitForFunction(()=>new URL(location.href).searchParams.get('advisorTask')==='overview');
+   await page.goForward();await page.locator('.shelv-checkins[aria-busy="false"]').waitFor();assert.equal(await page.getByLabel('Reply to client',{exact:true}).inputValue(),'Reply retained until accepted departure');
+   await page.goBack();await page.locator('#intake-form').waitFor();
+  }
+  page.once('dialog',dialog=>dialog.accept());await page.goBack();await page.getByRole('button',{name:/Alex Morgan/}).waitFor();assert.equal(new URL(page.url()).searchParams.get('advisorClient'),null);
+  await page.goForward();await page.locator('#intake-form').waitFor();await task(page,'Check-ins','shelv-checkins');assert.equal(await page.getByLabel('Reply to client',{exact:true}).inputValue(),'');
+ }));
+ test(`next-date draft survives tasks, exact retry and guarded departure at ${width}px`,()=>fixture(width,async page=>{
+  await open(page);await task(page,'Check-ins','shelv-checkins');await page.getByLabel('Next check-in date',{exact:true}).fill('2026-11-15');await task(page,'Payments','shelv-payments');await task(page,'Check-ins','shelv-checkins');assert.equal(await page.getByLabel('Next check-in date',{exact:true}).inputValue(),'2026-11-15');
+  await page.evaluate(()=>window.__loseNextDate=true);await page.getByRole('button',{name:'Save next date',exact:true}).click();await page.getByRole('button',{name:'Retry same submission',exact:true}).waitFor();await task(page,'Payments','shelv-payments');await task(page,'Check-ins','shelv-checkins');await page.getByRole('button',{name:'Retry same submission',exact:true}).click();await page.locator('.shelv-checkins[aria-busy="false"]').waitFor();
+  const commands=await page.evaluate(()=>window.__dateCommands);assert.equal(commands.length,2);assert.deepEqual(commands[1],commands[0]);assert.equal(await page.evaluate(()=>{const event=new Event('beforeunload',{cancelable:true});window.dispatchEvent(event);return event.defaultPrevented;}),false,'Acknowledged date no longer counts as unsaved');
+  await page.getByLabel('Next check-in date',{exact:true}).fill('2026-11-20');page.once('dialog',dialog=>dialog.dismiss());await page.locator('#back-clients').click();assert.equal(await page.getByLabel('Next check-in date',{exact:true}).inputValue(),'2026-11-20');
+  page.once('dialog',dialog=>dialog.accept());await page.locator('#back-clients').click();await page.getByRole('button',{name:/Alex Morgan/}).waitFor();await open(page);await task(page,'Check-ins','shelv-checkins');assert.equal(await page.getByLabel('Next check-in date',{exact:true}).inputValue(),'2026-11-15','Confirmed departure clears only the unsaved local date');
+  await page.getByLabel('Next check-in date',{exact:true}).fill('2026-11-25');await page.evaluate(()=>{window.__dispose();window.__dispose=window.__mount();});await page.locator('.shelv-checkins[aria-busy="false"]').waitFor();assert.equal(await page.getByLabel('Next check-in date',{exact:true}).inputValue(),'2026-11-15','Workspace teardown clears the local date');
+ }));
+}

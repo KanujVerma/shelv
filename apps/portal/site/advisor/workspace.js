@@ -64,28 +64,28 @@ export function mountAdvisorWorkspace(root,{request,mountFeature,onSignOut,reque
   }
   function beforeLeave() {return !hasPending() || confirm('Leave these edits? Unsaved changes and pending retry information will be lost.');}
   function backToClients({restore=false}={}) {
-    if(isBusy()||!beforeLeave()){if(restore)recordNavigation(true);return false;}
+    if(isBusy()||!beforeLeave())return false;
     ++sequence;readController?.abort();cleanupFeature();clearTaskDrafts();selected=null;session=null;intakeIntent=null;meetingDraft=null;intakeUncertain=false;if(!restore)recordNavigation();void loadDirectory();return true;
   }
   function recordNavigation(replace=false){navigation.record({clientId:selected?.clientId||null,task:selected?activeTab:'overview'},{replace});}
   function selectTask(next,{restore=false}={}){
-    if(!availableTabs.includes(next)||!selected||!session)return;
-    if(next===activeTab)return;
-    if(isBusy()){if(restore)recordNavigation(true);return;}
+    if(!availableTabs.includes(next)||!selected||!session)return false;
+    if(next===activeTab)return true;
+    if(isBusy())return false;
     if(activeTab==='draft')readDraft();
     if(activeTab==='overview'&&(hasUnsavedNotes()||intakeIntent)){
-      if(!confirm('Discard unsaved consultation and meeting notes? Pending retry information will also be lost.')){if(restore)recordNavigation(true);return;}
+      if(!confirm('Discard unsaved consultation and meeting notes? Pending retry information will also be lost.'))return false;
       intakeIntent=null;meetingDraft=null;
     }
-    closeDialog();activeTab=next;if(!restore)recordNavigation();renderClient();
+    closeDialog();activeTab=next;if(!restore)recordNavigation();renderClient();return true;
   }
   async function restoreNavigation(target){
-    if(disposed||!directory)return;
-    if(!target.clientId){if(selected)backToClients({restore:true});return;}
-    if(target.clientId===selected?.clientId){selectTask(target.task,{restore:true});return;}
-    if(isBusy()||!beforeLeave()){recordNavigation(true);return;}
-    if(!directory.clients.some(client=>client.clientId===target.clientId)){recordNavigation(true);return;}
-    await openClient(target.clientId,{tab:target.task,replace:true,guard:false});
+    if(disposed||!directory)return false;
+    if(!target.clientId)return selected?backToClients({restore:true}):true;
+    if(target.clientId===selected?.clientId)return selectTask(target.task,{restore:true});
+    if(isBusy()||!beforeLeave())return false;
+    if(!directory.clients.some(client=>client.clientId===target.clientId))return false;
+    await openClient(target.clientId,{tab:target.task,replace:true,guard:false});return true;
   }
   async function loadDirectory() {
     const current=++sequence;readController?.abort();const controller=new AbortController();readController=controller;

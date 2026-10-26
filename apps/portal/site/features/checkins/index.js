@@ -70,6 +70,7 @@ export function mountCheckinsPanel(element,options){
     if(intent.command.action==='submit_report')draftState.reset();
     if(intent.command.action==='add_meeting_note')notesDraft.delete(intent.command.checkinId);
     if(intent.command.action==='send_advisor_reply')replyDraft.delete(intent.command.checkinId);
+    if(intent.command.action==='set_next_checkin')draftState.nextCheckinDraft=null;
     render();busy=false;await load(intent.command.action==='send_advisor_reply'?'Reply added to this check-in.':intent.command.action==='add_meeting_note'?'Private meeting note saved.':intent.command.action==='set_next_checkin'?'Next check-in date saved.':'Your report is ready for your advisor.',true);
    }
   }catch(error){if(disposed||draftState.closed)return;
@@ -128,7 +129,7 @@ export function mountCheckinsPanel(element,options){
  }
  function schedule(){
   const card=node('section',undefined,'checkin-card checkin-schedule');append(card,node('span','NEXT CHECK-IN','checkin-eyebrow'),node('h3',view.nextCheckinOn?displayDay(view.nextCheckinOn):'No check-in date yet'),node('p',mode==='advisor'?'Saving a date does not book a meeting.':'Arrange your meeting with your advisor by text or email. Saving a date here does not book the meeting.','checkin-muted'));
-  if(mode==='advisor'&&canWrite){const form=node('form'),f=field('Next check-in date',view.nextCheckinOn,{type:'date'});const save=button('Save next date',()=>{},true);save.type='submit';append(form,f.wrap,save);
+  if(mode==='advisor'&&canWrite){const form=node('form'),f=field('Next check-in date',draftState.nextCheckinDraft?.value??view.nextCheckinOn,{type:'date'});f.input.addEventListener('input',()=>{draftState.nextCheckinDraft=f.input.value===(view.nextCheckinOn||'')?null:{value:f.input.value};});const save=button('Save next date',()=>{},true);save.type='submit';append(form,f.wrap,save);
    form.addEventListener('submit',event=>{event.preventDefault();try{perform({kind:'write',command:nextDateCommand(clientId,f.input.value||null,view.revision,uid())});}catch{feedback('Choose a valid next check-in date.',true);}});card.append(form);
   }return card;
  }
