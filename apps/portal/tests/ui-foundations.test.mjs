@@ -158,3 +158,20 @@ test('destructive primary action retains its danger meaning on hover', async () 
   const hovered = await button.evaluate(element => ({background: getComputedStyle(element).backgroundColor, color: getComputedStyle(element).color}));
   assert.deepEqual(hovered, before, 'Hover must preserve the shared danger color and readable foreground');
 }));
+
+test('account disclosure stays inside the desktop sidebar and wraps long actions on every width', async () => fixture(async page => {
+  await page.evaluate(() => {
+    document.body.innerHTML = '<div class="portal client-portal"><aside class="navigation"><a class="wordmark" href="#">Shelv</a><nav><button class="nav-item">Your plan</button></nav><div class="client-profile-footer"><button class="account-trigger" aria-expanded="true" aria-controls="qa-account-menu">Alexandria Example</button><div class="account-menu" id="qa-account-menu"><button class="account-menu-item">Payments</button><button class="account-menu-item">Service and payment history for Alexandriaverylongname</button><button class="account-menu-item">Help</button></div></div></aside><main class="workspace"><h1>Daily routine</h1></main></div>';
+  });
+  for (const width of [1440, 390, 320]) {
+    await page.setViewportSize({width, height: 900});
+    const geometry = await page.evaluate(() => {
+      const menu = document.querySelector('.account-menu'), sidebar = document.querySelector('.navigation');
+      const box = menu.getBoundingClientRect(), parent = sidebar.getBoundingClientRect();
+      return {left: box.left, right: box.right, sidebarRight: parent.right, pageOverflow: document.documentElement.scrollWidth > innerWidth, actionsOverflow: [...menu.children].some(element => element.scrollWidth > element.clientWidth)};
+    });
+    assert.ok(geometry.left >= 0 && geometry.right <= width, `Account actions stay in the ${width}px viewport`);
+    if (width > 760) assert.ok(geometry.right <= geometry.sidebarRight, 'Desktop menu must not be clipped by the scrolling sidebar');
+    assert.equal(geometry.pageOverflow || geometry.actionsOverflow, false, `Long account actions wrap at ${width}px`);
+  }
+}, 1440));
