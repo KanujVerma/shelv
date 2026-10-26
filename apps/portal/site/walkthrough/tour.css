@@ -1,0 +1,35 @@
+/* Layout and tour affordances reuse the portal's palette, typography and controls. */
+.maya-tour-shell{display:block;min-height:100vh;background:var(--bg)}
+.maya-tour-shell>.walkthrough-portal,.maya-tour-shell .workspace{min-width:0}
+.anchored-tour-root{position:relative;z-index:30}
+.maya-tour-welcome.advisor-panel{width:min(500px,calc(100% - 24px));max-height:calc(100dvh - 24px);overflow:auto;padding:30px!important;background:var(--paper)}
+.maya-tour-welcome h2{padding-right:24px;margin:0 0 16px}
+.maya-tour-close.quiet{position:absolute;top:8px;right:8px;min-width:44px;min-height:44px;padding:0;font-size:24px;line-height:1;border-color:transparent;color:var(--muted);z-index:2}
+.maya-tour-welcome .advisor-eyebrow,.maya-tour-popover .advisor-eyebrow{padding-right:30px}
+.maya-tour-copy{min-height:0;overflow:auto;overscroll-behavior:contain;overflow-wrap:anywhere}
+.maya-tour-copy>p{font-size:13px;line-height:1.65;color:var(--muted);margin:12px 0}
+.maya-tour-meta{font-size:11px!important;color:var(--muted);line-height:1.6}
+.maya-tour-dialog-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.maya-tour-dialog-controls>*{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}
+.maya-tour-popover.advisor-panel{position:fixed;z-index:40;display:flex;flex-direction:column;gap:0;margin:0;box-shadow:0 6px 24px color-mix(in srgb,var(--ink) 14%,transparent);overflow:visible}
+.maya-tour-popover:focus{outline:2px solid var(--brand);outline-offset:3px}
+.maya-tour-popover h2{margin:0;padding-right:12px}
+.maya-tour-popover .advisor-eyebrow{margin:0 0 10px}
+.maya-tour-popover>.quiet:not(.maya-tour-close){align-self:start;min-height:44px;min-width:44px;margin-top:4px;max-width:100%;white-space:normal;text-align:left}
+.maya-tour-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:14px;flex:none}
+.maya-tour-controls button{min-height:44px;min-width:44px}
+.maya-tour-controls button:last-child{margin-left:auto}
+.maya-tour-end-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.maya-tour-end-links a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;max-width:100%;white-space:normal}
+.maya-tour-message{margin:12px 0 0;border-left:2px solid var(--line);padding-left:12px;font-size:12px;color:var(--muted)}
+.maya-tour-message p{margin:4px 0 0}
+.maya-tour-highlight{position:fixed;z-index:35;pointer-events:none;border:2px solid var(--brand);border-radius:12px;box-shadow:0 0 0 4px color-mix(in srgb,var(--paper) 85%,transparent)}
+.maya-tour-target{scroll-margin-top:100px}
+.maya-tour-pointer{position:absolute;width:14px;height:14px;transform:rotate(45deg);background:var(--paper);border:1px solid var(--line);pointer-events:none}
+.maya-tour-popover[data-side=top] .maya-tour-pointer{top:-8px;left:calc(var(--maya-tour-pointer-x,50%) - 7px);border-right:0;border-bottom:0}
+.maya-tour-popover[data-side=bottom] .maya-tour-pointer{bottom:-8px;left:calc(var(--maya-tour-pointer-x,50%) - 7px);border-left:0;border-top:0}
+.maya-tour-popover[data-side=left] .maya-tour-pointer{left:-8px;top:calc(var(--maya-tour-pointer-y,50%) - 7px);border-right:0;border-top:0}
+.maya-tour-popover[data-side=right] .maya-tour-pointer{right:-8px;top:calc(var(--maya-tour-pointer-y,50%) - 7px);border-left:0;border-bottom:0}
+.maya-tour-clearance{width:1px;pointer-events:none;flex:none}
+@media(max-width:599px){.maya-tour-welcome.advisor-panel{padding:26px 20px!important}.maya-tour-dialog-controls{flex-direction:column;align-items:stretch}.maya-tour-popover .maya-tour-copy>p{font-size:12px;line-height:1.55;margin:9px 0}.maya-tour-popover .advisor-eyebrow{margin-bottom:6px}.maya-tour-controls{gap:6px;margin-top:10px}.maya-tour-controls button{padding-left:13px;padding-right:13px}.maya-tour-popover>.quiet:not(.maya-tour-close){margin-top:0}}
+@media(prefers-reduced-motion:reduce){.maya-tour-popover,.maya-tour-highlight,.maya-tour-welcome{animation:none;transition:none;scroll-behavior:auto}}
