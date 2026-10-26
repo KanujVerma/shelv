@@ -8,7 +8,7 @@ export function createPortalDialog({document = globalThis.document, className = 
   const element = document.createElement('dialog');
   element.className = `${className} portal-dialog`.trim();
   document.body.append(element);
-  let active = false, disposed = false, opener = null, openerId = '', focusFallback = null;
+  let active = false, disposed = false, opener = null, openerId = '', focusFallback = null, focusOwner = null;
 
   function lockScroll() {
     const root = document.documentElement;
@@ -24,19 +24,24 @@ export function createPortalDialog({document = globalThis.document, className = 
   }
   function focus(target) {
     if (!target?.isConnected || target === document.body || target === document.documentElement || target.disabled || target.closest('[hidden],[inert]')) return false;
-    if (!target.matches('a[href],button,input,select,textarea,[tabindex]')) target.setAttribute('tabindex', '-1');
+    const temporaryTabIndex = !target.matches('a[href],button,input,select,textarea,[tabindex]');
+    if (temporaryTabIndex) target.setAttribute('tabindex', '-1');
     target.focus({preventScroll: true});
-    return document.activeElement === target;
+    const focused = document.activeElement === target;
+    if (!focused && temporaryTabIndex) target.removeAttribute('tabindex');
+    return focused;
   }
   function finishClose() {
     if (!active || element.open) return;
     active = false;
     unlockScroll();
-    const replacement = openerId ? document.getElementById(openerId) : null;
+    const replacement = openerId ? (focusOwner ? [...focusOwner.querySelectorAll('[id]')].find(target => target.id === openerId) : document.getElementById(openerId)) : null;
     if (!focus(opener) && !focus(replacement) && !focus(focusFallback)) {
-      focus(document.querySelector('[data-dialog-focus-fallback]') || document.querySelector('main h1,[role="main"] h1,.workspace h1') || document.querySelector('main,[role="main"]'));
+      // An inert or removed owner must not redirect focus into another portal.
+      const scope = focusOwner || document;
+      focus(scope.querySelector('[data-dialog-focus-fallback]') || scope.querySelector('h1') || (focusOwner ? focusOwner : document.querySelector('main,[role="main"]')));
     }
-    opener = null; openerId = ''; focusFallback = null;
+    opener = null; openerId = ''; focusFallback = null; focusOwner = null;
     onClose?.();
   }
   function close(reason = 'close') {
@@ -73,7 +78,8 @@ export function createPortalDialog({document = globalThis.document, className = 
     if (!active) {
       opener = trigger || document.activeElement;
       openerId = opener?.id || '';
-      focusFallback = opener?.closest('main,[role="main"],.workspace')?.querySelector('h1');
+      focusOwner = opener?.closest('.portal,.walkthrough-shell') || opener?.closest('.workspace') || opener?.closest('main,[role="main"]') || null;
+      focusFallback = focusOwner?.querySelector('h1');
     }
     element.replaceChildren();
     if (typeof content === 'string') element.innerHTML = content;

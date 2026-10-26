@@ -175,3 +175,26 @@ test('account disclosure stays inside the desktop sidebar and wraps long actions
     assert.equal(geometry.pageOverflow || geometry.actionsOverflow, false, `Long account actions wrap at ${width}px`);
   }
 }, 1440));
+
+test('a failed focus restore beneath another native modal leaves unrelated markup untouched', async () => fixture(async page => {
+  const result = await page.evaluate(() => {
+    const opener=document.querySelector('#opener');opener.focus();
+    const owned=window.dialogModule.createPortalDialog();owned.open({title:'Owned product detail',content:'<h2>Owned product detail</h2><p>Current instructions.</p>'});
+    opener.remove();const native=document.createElement('dialog');native.innerHTML='<h2>Other active modal</h2><button id="native-current">Stay here</button>';document.body.append(native);native.showModal();document.querySelector('#native-current').focus();
+    const before=document.querySelector('main').outerHTML;owned.close();
+    return {before,after:document.querySelector('main').outerHTML,nativeOpen:native.open,focused:document.activeElement.id,headingTabIndex:document.querySelector('main h1').getAttribute('tabindex')};
+  });
+  assert.equal(result.after,result.before,'Blocked focus must roll back any temporary tabindex on the unrelated fallback');
+  assert.equal(result.headingTabIndex,null);assert.equal(result.nativeOpen,true);assert.equal(result.focused,'native-current');
+}));
+
+test('sidebar openers restore only within their portal even with duplicate IDs elsewhere', async () => fixture(async page => {
+  const result=await page.evaluate(()=>{
+    document.body.innerHTML='<main id="unrelated"><h1>Unrelated plan</h1><button id="sidebar-opener">Unrelated matching ID</button></main><div class="portal client-portal"><aside><button id="sidebar-opener">Owned sidebar action</button></aside><main class="workspace"><h1>Owned plan</h1></main></div>';
+    const portal=document.querySelector('.portal'),unrelated=document.querySelector('#unrelated'),before=unrelated.outerHTML,original=portal.querySelector('#sidebar-opener');original.focus();
+    const modal=window.dialogModule.createPortalDialog();modal.open({title:'Account task',content:'<p>Owned account action.</p>',trigger:original});original.remove();const replacement=document.createElement('button');replacement.id='sidebar-opener';replacement.textContent='Owned replacement';portal.querySelector('aside').append(replacement);modal.close();const restoredReplacement=document.activeElement===replacement;
+    modal.open({title:'Account task',content:'<p>Owned account action.</p>',trigger:replacement});replacement.remove();modal.close();
+    return {before,after:unrelated.outerHTML,restoredReplacement,restoredHeading:document.activeElement===portal.querySelector('h1')};
+  });
+  assert.equal(result.restoredReplacement,true,'An unrelated duplicate ID cannot capture restored focus');assert.equal(result.restoredHeading,true,'Removed sidebar opener returns to its own portal heading');assert.equal(result.after,result.before);
+}));
