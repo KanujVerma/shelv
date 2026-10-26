@@ -1,8 +1,12 @@
 # Walkthroughs and service workflow handoff
 
+## Latest Maya tour update
+
+The public demo now uses the approved company introduction and anchored interactive tour. Application `b22436f58e32ea21668dd350269b46227669ab43` / Pages `17546896-f89f-4300-b9f8-252a4734984c` supersedes the earlier application/Pages identities below while preserving its vault/backend activation. First visit, seen preference, full Exit/Finish, quiet View tour replay and same-tab active refresh are implemented. Local validation passed 260 portal and 142 session tests; 12 actual hosted checks passed and all 120 public files matched. The ignored `.local-artifacts/maya-tour-v2/release/RESULT.json` binds package hashes and preservation; `qa-report.md`, `review-report.md` and `hosted/report.md` retain bounded evidence. No backend/private-data/Auth writes occurred. Earlier ordinary authenticated client/service-write gaps remain. Current public canonical records are linked in the release result.
+
 Owner: Kanuj. Date: 25 October 2026, America/Chicago.
 
-Activated application source: [44c3d371fe63aaf23a64b87d0ef459ecc85343d4](https://github.com/KanujVerma/shelv/commit/44c3d371fe63aaf23a64b87d0ef459ecc85343d4). Implementation branch: `codex/walkthroughs-service-20261025`. Base: `45c5112cb5c7c420b38e965804933a3986050743`, stacked on draft PRs [206](https://github.com/KanujVerma/shelv/pull/206) and [207](https://github.com/KanujVerma/shelv/pull/207). The user explicitly approved this activation. Neither dependency was merged. All three source CI jobs passed; the later documentation checkpoint has its own CI boundary.
+Original walkthrough activation source: [44c3d371fe63aaf23a64b87d0ef459ecc85343d4](https://github.com/KanujVerma/shelv/commit/44c3d371fe63aaf23a64b87d0ef459ecc85343d4). Implementation branch: `codex/walkthroughs-service-20261025`. Base: `45c5112cb5c7c420b38e965804933a3986050743`, stacked on draft PRs [206](https://github.com/KanujVerma/shelv/pull/206) and [207](https://github.com/KanujVerma/shelv/pull/207). The user explicitly approved this activation. Neither dependency was merged. All three source CI jobs passed; the later documentation checkpoint has its own CI boundary.
 
 [Founder operations](../CONCIERGE_FOUNDER_OPERATIONS.md) remains the single operating-policy record. [Acceptance](../PORTAL_ACCEPTANCE.md) owns checks and limits; [release result](../PORTAL_RELEASE_RESULT.md) owns current activation and the preserved earlier release. Private authoring inputs, consultation research, case payloads, grants and screenshots are intentionally outside public Git. Earlier local-only candidate claims are superseded by this activated status.
 
@@ -45,9 +49,9 @@ After fresh provider checks, the two exact forward migrations and four frozen Ed
 
 If recovery is needed after new data, disable affected new writes/sharing and preserve compatible readers, instruction/review/financial history, cancellation guards and pending administration. Do not revert to a legacy-only reader, remove migrations or drop data to make rollback convenient.
 
-## Current hosted provenance
+## Original activation provenance and retained backend
 
-Current Pages is `88ec5c96-3a0b-415c-8fca-03a2209dee11`. Final private-vault deployment/version is `21cb5045-e6ab-49f5-ae9d-f378d38f847c` / `eefca083-89af-47c1-8c3c-583d06988624`, code etag `a598c63657472805fd13a3be87534a4463808de94cece5d4055ee5e98d07664c`. Both shared-session flags remain true. The existing namespace, session key, SQLite class/export and prior bindings were retained; only the reader secret was added. Private workers.dev/previews/routes/domains remain disabled. Operations/payments/check-ins/admission are versions 6/4/4/2 respectively, all with JWT verification true and deployed source verified. Earlier Pages `cf09be80-48bf-4b7a-99b2-fb17e0de15ae` and vault `409a1418-3a6c-49e1-9f83-53b32a58b834` / `c2d75fda-74e5-4efe-8a5e-37ce5b1b7b8a` remain historical receipts, not the current target.
+The previous application used Pages `88ec5c96-3a0b-415c-8fca-03a2209dee11`. Final private-vault deployment/version is `21cb5045-e6ab-49f5-ae9d-f378d38f847c` / `eefca083-89af-47c1-8c3c-583d06988624`, code etag `a598c63657472805fd13a3be87534a4463808de94cece5d4055ee5e98d07664c`. Both shared-session flags remain true. The existing namespace, session key, SQLite class/export and prior bindings were retained; only the reader secret was added. Private workers.dev/previews/routes/domains remain disabled. Operations/payments/check-ins/admission are versions 6/4/4/2 respectively, all with JWT verification true and deployed source verified. Earlier Pages `cf09be80-48bf-4b7a-99b2-fb17e0de15ae` and vault `409a1418-3a6c-49e1-9f83-53b32a58b834` / `c2d75fda-74e5-4efe-8a5e-37ce5b1b7b8a` remain historical receipts, not the current target.
 
 Cloudflare GET omits declarative exports and observability. The preparer couples retained acknowledged upload metadata/result bytes to the fresh exact version and script etag; it labels that evidence source instead of inventing GET fields. Revalidate hosting state immediately before each approved write.
 

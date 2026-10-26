@@ -1,8 +1,14 @@
 # Portal source provenance
 
-## Current activated walkthrough/service source, 25 October 2026
+## Current Maya tour source, 25 October 2026
 
-The deployed application is [44c3d371fe63aaf23a64b87d0ef459ecc85343d4](https://github.com/KanujVerma/shelv/commit/44c3d371fe63aaf23a64b87d0ef459ecc85343d4), on `codex/walkthroughs-service-20261025` from decision head `45c5112cb5c7c420b38e965804933a3986050743` and the unmerged PR 206/207 lineage. All three exact-source CI jobs passed. This approved activation supersedes local-only candidate claims; it does not merge that lineage. Private named inputs, current private version identifiers, consultation notes, credentials and screenshots remain outside public Git and static assets.
+The current public application source is [b22436f58e32ea21668dd350269b46227669ab43](https://github.com/KanujVerma/shelv/commit/b22436f58e32ea21668dd350269b46227669ab43), on the existing `codex/walkthroughs-service-20261025` branch and unmerged PR 206/207/208 lineage. Pages `17546896-f89f-4300-b9f8-252a4734984c` serves the reviewed 123-entry package, with all 120 public files matched exactly. ZIP SHA-256 is `e5a4c04bee3213826155fc7c55aad72665e14d456915c01af5e56a6f59b10d49`; build manifest SHA-256 is `15d239c82ee1f56a2f0061d740ed9bdb4ba3e459ba94aa253db6d828896bbfd0`. The later release-record commit changes documentation only.
+
+This bounded update changes public Maya narration, anchored tour UI/preferences and optional shared-client controls. Private inputs are absent from source, runtime and ZIP scans. Generated gateway, routes and headers match the prior package byte-for-byte; vault source/deployment/version, Edge functions, migrations, grants and private stores are unchanged. [Release result](PORTAL_RELEASE_RESULT.md) owns exact release evidence; [acceptance](PORTAL_ACCEPTANCE.md) distinguishes current UI checks from retained backend evidence.
+
+## Walkthrough/service backend baseline and lineage, 25 October 2026
+
+The earlier application was [44c3d371fe63aaf23a64b87d0ef459ecc85343d4](https://github.com/KanujVerma/shelv/commit/44c3d371fe63aaf23a64b87d0ef459ecc85343d4), on `codex/walkthroughs-service-20261025` from decision head `45c5112cb5c7c420b38e965804933a3986050743` and the unmerged PR 206/207 lineage. All three exact-source CI jobs passed. This approved activation supersedes local-only candidate claims; it does not merge that lineage. Private named inputs, current private version identifiers, consultation notes, credentials and screenshots remain outside public Git and static assets.
 
 The source binds Pages `88ec5c96-3a0b-415c-8fca-03a2209dee11`, 120 package entries and ZIP SHA-256 `bfd214bc906411c127781d1ea868c1517b0d8251890dc98328e29527d329eb54`. All 117 public files matched their frozen bytes. The private-vault source SHA-256 is `ceb946c3843235c903b461488bef7dd6a5da7ba9d7b1e33c6e35c7039e75900e`. The final vault deployment/version is `21cb5045-e6ab-49f5-ae9d-f378d38f847c` / `eefca083-89af-47c1-8c3c-583d06988624`; its code etag `a598c63657472805fd13a3be87534a4463808de94cece5d4055ee5e98d07664c` stayed unchanged through the one additive private secret.
 

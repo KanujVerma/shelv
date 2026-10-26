@@ -6,9 +6,17 @@ Business-policy update, 25 October 2026: [founder operations](CONCIERGE_FOUNDER_
 
 The approved walkthrough/service release is deployed at [portal.goshelv.com](https://portal.goshelv.com), with bounded public, anonymous guest and dedicated maintenance-advisor acceptance passed on 25 October 2026, America/Chicago. Ordinary authenticated client-owner hosted acceptance was not run. [Release result](PORTAL_RELEASE_RESULT.md) records actual deployment/commit mappings and limitations. [Source provenance](PORTAL_SOURCE_PROVENANCE.md) records lineage; [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) records daily work. No Git merge occurred.
 
+## Current interactive Maya tour acceptance, 25 October 2026
+
+Application `b22436f58e32ea21668dd350269b46227669ab43` is live on Pages `17546896-f89f-4300-b9f8-252a4734984c`. All 120 public files matched the frozen 123-entry package, with zero private-name/identifier hits. Twelve actual hosted browser checks passed: first/repeat visits, complete dismissal, explicit replay, same-tab resume, history, optional real overview/product/routine interactions, nested ingredient details with usable Next, keyboard controls, shared styles, safe exploration and ordinary Alex/Maya. All seven anchors/pointers and 44px controls were checked at 320/390/768/1440. The generic private viewer remains covered locally; no actual private share was created for this UI update.
+
+Local verification passed 260 portal tests and 142 session tests, root 1,174 tests with 18 explicit opt-in skips, application/test types and Expo web export. Independent review reproduced and fixed ingredient-dialog replacement losing the callout; the original path and a 320×568 journey then passed. A generic local preference stores only a seen bit; the active bit/history marker allows same-tab refresh. Blocked storage still permits in-document exit/replay, with no claim of persistence across reload. No case identifiers, tokens or health answers are stored by this preference.
+
+The user's existing browser tab passed welcome → Start → full Exit → View tour and was left at the welcome. The hosted browser checks allowed only same-origin reads and blocked unexpected traffic or writes; separate anonymous negative API probes confirmed denial. Anonymous protected routes still deny access; no account, money, message, order, grant or real client record was changed. Gateway/routes/headers, live session flags/namespace and private-vault identity were preserved. Backend/service write limits in the retained activation evidence below remain unchanged.
+
 ## Guided walkthrough and service activation, 25 October 2026
 
-The activated application is `44c3d371fe63aaf23a64b87d0ef459ecc85343d4` on Pages `88ec5c96-3a0b-415c-8fca-03a2209dee11`. Its branch `codex/walkthroughs-service-20261025` starts at decision head `45c5112cb5c7c420b38e965804933a3986050743`, on the unmerged PR 206/207 lineage. This current activation supersedes prior local-only candidate claims. The completion-release evidence later in this file remains historical.
+The earlier walkthrough/service activation used `44c3d371fe63aaf23a64b87d0ef459ecc85343d4` on Pages `88ec5c96-3a0b-415c-8fca-03a2209dee11`. Its branch `codex/walkthroughs-service-20261025` starts at decision head `45c5112cb5c7c420b38e965804933a3986050743`, on the unmerged PR 206/207 lineage. That activation superseded prior local-only candidate claims. The completion-release evidence later in this file remains historical.
 
 The public guide is `/maya/?guided=1`. The authenticated **Walkthroughs** library and all four actual private plans passed the dedicated maintenance-advisor UI check. The deployed source provides Open, guided start and explicit sharing controls; authenticated sharing API acceptance used only the neutral test version. A generic `/walkthrough/` shell reads one immutable sanitized snapshot through a 32-byte fragment capability; the server stores only its digest and checks scope, availability, expiry and revocation on every read. Default expiry is 30 days. Guest plan decisions and story stages use independent in-memory adapters with no real payment destinations, account transport, uploads or messages.
 
@@ -65,7 +73,7 @@ The original root Expo Auth configuration sends six-digit codes. An early admiss
 
 ## Historical completion-release hosted acceptance
 
-The cf09be80/66f7a225 release below is the preserved predecessor to the current 88ec5c96/44c3d371 activation. Its positive authenticated journey is not a rerun against the current deployment.
+The cf09be80/66f7a225 release below is the preserved predecessor to the earlier 88ec5c96/44c3d371 activation. Its positive authenticated journey is not a rerun against the current deployment.
 
 The deployed application is commit 66f7a22510a9a6ac7753ce98e080325e83024552 on Pages cf09be80-48bf-4b7a-99b2-fb17e0de15ae. All 104 public files match the reviewed build. Both shared-session flags, the existing private namespace and key binding are preserved. Operational correction 2663e976 publishes the verified existing-export guard and actual migration-registration provenance without changing application bytes. All three exact-head CI jobs passed at both commits.
 

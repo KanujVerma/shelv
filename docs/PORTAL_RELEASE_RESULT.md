@@ -1,6 +1,24 @@
 # Portal release result
 
-## Current walkthrough and service activation, 25 October 2026
+## Current Maya tour update, 25 October 2026
+
+The redesigned public [Maya demo](https://portal.goshelv.com/maya/?guided=1) is deployed from `b22436f58e32ea21668dd350269b46227669ab43` on Pages `17546896-f89f-4300-b9f8-252a4734984c`. It begins with a company-branded Shelv introduction, then seven anchored pop-ups with visible pointers and optional real overview, product, ingredient and routine interactions. Next never requires an action. The first visit shows the welcome; a generic browser preference prevents repeat auto-opening. X, Escape, Exit and Finish remove the tour completely, and a quiet **View tour** button explicitly replays it. An active same-tab refresh resumes its stop. If browser storage is blocked, the current document still supports dismissal/replay, but cross-reload persistence cannot be guaranteed.
+
+Ordinary Maya/Alex and the authenticated private guide retain their existing behavior. The public guided clone uses Shelv/we narration and the portal's existing typography, buttons and panel styles. No new font, UI framework, client record, payment, message or share is introduced.
+
+| Release evidence | Verified result |
+| --- | --- |
+| Package | 123 entries; all 120 public files match the frozen build exactly |
+| ZIP SHA-256 | `e5a4c04bee3213826155fc7c55aad72665e14d456915c01af5e56a6f59b10d49` |
+| Build manifest SHA-256 | `15d239c82ee1f56a2f0061d740ed9bdb4ba3e459ba94aa253db6d828896bbfd0` |
+| Local validation | 260 portal and 142 session tests passed; root 1,174 passed with 18 explicit opt-in skips; application/test types and web export passed |
+| Browser validation | 12 actual hosted checks passed at 320/390/768/1440, including dismissal, replay, history/reload, full exit, actual ingredient drill-down and ordinary previews |
+| Independent review | No unresolved material findings; a nested ingredient-dialog reanchor regression was reproduced, fixed and independently rechecked |
+| Preservation | Gateway, route and header files are byte-identical to the previous release; vault deployment/version, namespace and both session flags are unchanged |
+
+No backend, SQL, Auth, credential, permission or private-data changes were deployed in this update. The earlier release's ordinary authenticated client-owner and hosted service-write limitations remain; those journeys were not rerun for this UI-only change. The backend activation baseline below is retained as historical application provenance and current backend identity.
+
+## Walkthrough and service backend activation baseline, 25 October 2026
 
 Owner: Kanuj. Verified: 25 October 2026, America/Chicago. The provider-assigned migration versions below use 26 October UTC.
 
