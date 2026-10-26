@@ -44,7 +44,8 @@ function clientView(value: unknown, allowAdditions=false): ConciergeClientView {
       productId: readIdentifier(r.productId), startedOn: readDate(r.startedOn) };
   });
   // Preserve the authoritative active routine. Approval/receipt are never activation.
-  return { revision: readInteger(v.revision), plan, history,
+  const account = v.account === undefined ? null : {displayName:readText(readObject(v.account).displayName,200)};
+  return { ...(account?{account}:{}), revision: readInteger(v.revision), plan, history,
     orderProposal: { kind: 'proposal', currency: 'USD', items, subtotalCents, payable: false, shippingAndTaxConfirmed: false }, routine, routineHistory };
 }
 

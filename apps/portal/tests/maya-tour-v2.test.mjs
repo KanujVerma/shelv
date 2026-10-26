@@ -47,15 +47,15 @@ const popup=page=>page.getByRole('region').filter({has:page.getByRole('button',{
 async function ready(page,url='/maya/?guided=1'){await page.goto(origin+url);await page.locator('[data-presentation-card]').first().waitFor();}
 async function start(page){await welcome(page).getByRole('button',{name:'Start tour',exact:true}).click();await popup(page).waitFor();}
 async function stage(page,index){
- const current=popup(page);await current.getByText(new RegExp(`(?:^| · )Step ${index+1} of 7$`)).waitFor();assert.equal(await page.getByRole('button',{name:'View tour',exact:true}).isVisible(),false,'The replay launcher stays quiet until the tour closes');return current;
+ const current=popup(page);await current.getByText(new RegExp(`(?:^| · )Step ${index+1} of 7$`)).waitFor();assert.equal(await page.locator('[data-view-tour]').isVisible(),false,'The replay launcher stays quiet until the tour closes');return current;
 }
 async function next(page,index){await (await stage(page,index)).getByRole('button',{name:'Next',exact:true}).click();await stage(page,index+1);}
 async function noTour(page){
  await page.waitForFunction(selector=>document.querySelectorAll(selector).length===0,visibleTour);
  assert.equal(await page.locator('.walkthrough-guide').count(),0,'Exit removes the permanent guide column');
- assert.equal(await page.getByRole('button',{name:'View tour',exact:true}).count(),1,'One quiet replay launcher remains');
- assert.equal(await page.getByRole('button',{name:'View tour',exact:true}).isVisible(),true);
- assert.equal(await page.getByRole('button',{name:'View tour',exact:true}).evaluate(e=>e.classList.contains('quiet')),true);
+ assert.equal(await page.locator('[data-view-tour]').count(),1,'One replay action remains in the account menu');
+ assert.equal(await page.locator('[data-view-tour]').isVisible(),false,'Replay stays secondary inside the closed account disclosure');
+ assert.equal(await page.locator('.account-trigger').isVisible(),true,'Account access remains discoverable');
  const geometry=await page.locator('.walkthrough-portal').evaluate(el=>{const p=el.getBoundingClientRect(),s=el.parentElement.getBoundingClientRect();return {left:p.left-s.left,width:p.width,shellWidth:s.width};});
  assert.ok(Math.abs(geometry.left)<=1&&Math.abs(geometry.width-geometry.shellWidth)<=2,JSON.stringify(geometry));
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
@@ -71,7 +71,7 @@ function assertGenericStorage(state){
 
 test('fresh guided Maya starts with a company welcome and an optional seven-stop tour',()=>fixture({},async page=>{
  await ready(page);const intro=welcome(page);await intro.waitFor();
- assert.equal(await page.getByRole('button',{name:'View tour',exact:true}).isVisible(),false);
+ assert.equal(await page.locator('[data-view-tour]').isVisible(),false);
  assert.equal(await popup(page).count(),0);assert.equal(await page.locator('.walkthrough-guide').count(),0);
  await intro.getByRole('button',{name:'Explore on my own',exact:true}).waitFor();await intro.getByRole('button',{name:'Close tour',exact:true}).waitFor();
  assert.match(await intro.innerText(),/Shelv|\bwe\b/i);assert.doesNotMatch(await intro.innerText(),/Kanuj researches|medical advice|guaranteed/i);
@@ -84,13 +84,13 @@ test('dismissal persists in this browser, replay is explicit, Exit clears histor
  await ready(page);await welcome(page).getByRole('button',{name:'Explore on my own',exact:true}).click();await noTour(page);
  await ready(page);await noTour(page);assert.equal(await page.getByRole('heading',{name:'See how Shelv works',exact:true}).count(),0);
  const another=await env.context.newPage();await ready(another);await noTour(another);await another.close();
- await page.getByRole('button',{name:'View tour',exact:true}).click();await welcome(page).waitFor();await welcome(page).getByRole('button',{name:'Close tour',exact:true}).click();await noTour(page);
- await page.getByRole('button',{name:'View tour',exact:true}).click();await welcome(page).waitFor();await start(page);await next(page,0);await next(page,1);
+ await page.locator('.account-trigger').click();await page.getByRole('button',{name:'Replay tour',exact:true}).click();await welcome(page).waitFor();await welcome(page).getByRole('button',{name:'Close tour',exact:true}).click();await noTour(page);
+ await page.locator('.account-trigger').click();await page.getByRole('button',{name:'Replay tour',exact:true}).click();await welcome(page).waitFor();await start(page);await next(page,0);await next(page,1);
  await (await stage(page,2)).getByRole('button',{name:'Exit tour',exact:true}).first().click();await noTour(page);
  assert.equal(new URLSearchParams(new URL(page.url()).hash.slice(1)).has('step'),false);
  await page.goBack();await noTour(page);assert.equal(await popup(page).count(),0);
  await page.reload();await page.locator('[data-presentation-card]').first().waitFor();await noTour(page);
- await page.getByRole('button',{name:'View tour',exact:true}).click();await welcome(page).waitFor();await page.keyboard.press('Escape');await noTour(page);
+ await page.locator('.account-trigger').click();await page.getByRole('button',{name:'Replay tour',exact:true}).click();await welcome(page).waitFor();await page.keyboard.press('Escape');await noTour(page);
  assertGenericStorage(await stored(page));
  const fresh=await localContext();try{await ready(fresh.page);await welcome(fresh.page).waitFor();fresh.assertSafe();}finally{await fresh.context.close();}
 }));
@@ -118,7 +118,7 @@ test('real overview and product interactions remain optional, and the finish lea
  }
  assert.ok(opened>=2,'The actual tour offers at least overview and product inspection');
  await noTour(page);
- await page.getByRole('button',{name:'Payments',exact:true}).click();await page.locator('.shelv-payments[aria-busy=false]').waitFor();
+ await page.locator('.account-trigger').click();await page.getByRole('button',{name:'Payments',exact:true}).click();await page.locator('.shelv-payments[aria-busy=false]').waitFor();
  assert.match(await page.locator('.walkthrough-portal').innerText(),/Nothing is charged or sent/);
  assert.equal(await page.locator('input[type=file],.payment-selected-recipient,a[href*="cash.app"],img[alt*="QR"]').count(),0);
  await page.getByRole('button',{name:'Check-ins',exact:true}).click();await page.locator('.shelv-checkins[aria-busy=false]').waitFor();assert.equal(await page.locator('.shelv-checkins textarea,.shelv-checkins input[type=file],.checkin-photo').count(),0);
@@ -127,7 +127,7 @@ test('real overview and product interactions remain optional, and the finish lea
 
 test('blocked browser storage still permits welcome, progress, Escape and exploration',()=>fixture({blockedStorage:true,reducedMotion:'reduce'},async page=>{
  await ready(page);await welcome(page).waitFor();await start(page);await next(page,0);await page.keyboard.press('Escape');await noTour(page);
- await page.getByRole('button',{name:'Plan overview',exact:true}).click();await page.locator('dialog.client-dialog[open]').getByRole('heading',{name:'Plan overview',exact:true}).waitFor();await page.keyboard.press('Escape');
+ await page.getByRole('button',{name:'About this plan',exact:true}).click();await page.locator('header h1').filter({hasText:'About this plan'}).waitFor();await page.locator('#client-detail-back').click();
 }));
 
 test('an optional real dialog keeps Next usable and closing it restores the original anchor',()=>fixture({width:390},async page=>{
@@ -152,14 +152,14 @@ test('tour Next remains usable after an ingredient drilldown replaces the owned 
 
 test('ordinary Maya and Alex keep their shared fonts and never auto-start this tour',()=>fixture({width:1440},async page=>{
  const fonts=()=>page.evaluate(()=>Object.fromEntries([['body',document.body],['heading',document.querySelector('header h1')],['button',document.querySelector('#download-plan')]].map(([key,el])=>[key,getComputedStyle(el).fontFamily])));
- await ready(page,'/maya/');assert.equal(await page.locator(visibleTour).count(),0);assert.equal(await page.getByRole('button',{name:'View tour',exact:true}).count(),0);const maya=await fonts();
- await ready(page,'/?preview=1&state=unapproved#/client');assert.equal(await page.locator(visibleTour).count(),0);assert.equal(await page.getByRole('button',{name:'View tour',exact:true}).count(),0);assert.deepEqual(await fonts(),maya);
+ await ready(page,'/maya/');assert.equal(await page.locator(visibleTour).count(),0);assert.equal(await page.locator('[data-view-tour]').count(),0);const maya=await fonts();
+ await ready(page,'/?preview=1&state=unapproved#/client');assert.equal(await page.locator(visibleTour).count(),0);assert.equal(await page.locator('[data-view-tour]').count(),0);assert.deepEqual(await fonts(),maya);
  await ready(page);await welcome(page).getByRole('button',{name:'Explore on my own',exact:true}).click();await noTour(page);assert.deepEqual(await fonts(),maya);
 }));
 
 test('the default authorized private viewer retains its existing guide and does not persist tour preferences',()=>fixture({width:1440},async page=>{
  await page.goto(origin+'/synthetic-private-viewer');const guide=page.getByRole('complementary',{name:'Walkthrough guide'});await guide.getByRole('heading',{name:'Synthetic private guide',exact:true}).waitFor();
- assert.equal(await page.locator(visibleTour).count(),0);assert.equal(await page.getByRole('button',{name:'View tour',exact:true}).count(),0);assert.deepEqual(await stored(page),{local:{},session:{}});
+ assert.equal(await page.locator(visibleTour).count(),0);assert.equal(await page.locator('[data-view-tour]').count(),0);assert.deepEqual(await stored(page),{local:{},session:{}});
  await guide.getByRole('button',{name:'Next',exact:true}).click();await guide.getByRole('heading',{name:'Synthetic next stop',exact:true}).waitFor();assert.deepEqual(await stored(page),{local:{},session:{}});
 }));
 
@@ -194,5 +194,5 @@ for(const width of [320,390,768,1440])test(`seven anchored stops remain visible 
  await page.keyboard.press('Escape');await noTour(page);assert.equal(await page.locator('.maya-tour-target').count(),0);
  await page.screenshot({path:path.join(artifacts,`maya-${width}-exited.png`)});
  await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await page.screenshot({path:path.join(artifacts,`maya-${width}-exited-header.png`)});
- await page.getByRole('button',{name:'View tour',exact:true}).click();await welcome(page).waitFor();await page.keyboard.press('Escape');await noTour(page);
+ await page.locator('.account-trigger').click();await page.getByRole('button',{name:'Replay tour',exact:true}).click();await welcome(page).waitFor();await page.keyboard.press('Escape');await noTour(page);
 }));

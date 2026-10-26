@@ -16,6 +16,8 @@ Client approval is a quote choice; payment, receipt and explicit Start remain se
 
 A plan title is not identity. Known sample/preview names are passed explicitly. Authenticated clients may receive only their own canonical enrollment display name through the existing guarded client read. Legacy responses use Your account. No email, auth metadata, new grant, permission or hosted migration application is introduced.
 
+Signed-out direct links retain only a known client view/product reference or advisor UUID/task through the existing authentication request. Every server boundary validates the relative root path and audience; the provider constructs the fixed portal origin. Foreign origins, fragments, credentials and unknown parameters are rejected. Product references resolve only against the signed-in owner's loaded plan. This is local implementation, not hosted email callback acceptance.
+
 ## Shared interface and copy
 
 Reuse semantic tokens for cream/forest-green colors, text, spacing, type, borders, radii and motion. Reuse current button/navigation/card/form primitives and one accessible dialog service. Client/advisor differences reflect different tasks, not separate visual systems. All substantial changes include keyboard, focus, mobile, error and retry checks.

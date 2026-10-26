@@ -1,3 +1,4 @@
+import {validatedReturnPath} from '../../server/navigation-return';
 import { DurableObject } from 'cloudflare:workers';
 import { demand, digest, SessionError, type RecordStore, type SessionRecord, type SessionView } from '../../server/types';
 import { CredentialEnvelope } from '../../server/credential-envelope';
@@ -129,7 +130,7 @@ export class AdvisorSessionObject extends DurableObject<Env> {
                     value = await this.#pending().restart(command.preserveSessionId);
                     break;
                 case 'flow.request':
-                    value = await this.#pending().request(command.csrf, command.email, command.remember === true && (this.#audience === 'client' || this.env.ADVISOR_SHARED_SESSIONS === 'true'));
+                    value = await this.#pending().request(command.csrf, command.email, command.remember === true && (this.#audience === 'client' || this.env.ADVISOR_SHARED_SESSIONS === 'true'),command.returnTo===undefined?undefined:validatedReturnPath(command.returnTo,this.#audience));
                     break;
                 case 'flow.complete':
                     value = await this.#pending().complete(command.csrf, command.code, command.existingId);

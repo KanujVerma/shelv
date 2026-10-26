@@ -1,3 +1,5 @@
+import {createPaymentPreviewStore,createPaymentPreviewRequest} from '../../../site/features/payments/fixtures.js';
+import {createCheckinPreviewStore,createCheckinPreviewRequest} from '../../../site/features/checkins/fixtures.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Miniflare,convertV4MiniflareOptions} from 'miniflare';
@@ -12,7 +14,7 @@ function token(){return [Buffer.from('{}').toString('base64url'),Buffer.from(JSO
 const ck=(r:any,k:string)=>{const v=(r.headers.get('set-cookie')??'').match(new RegExp(`${k}=([^;]+)`));assert.ok(v,`cookie missing ${k}`);return v[1];};
 const doName=(kind:string,id:string)=>`client:${kind}:${createHash('sha256').update(`client:${kind}:${id}`).digest('base64url')}`;
 export async function clientRuntime(){
- await buildCandidate();const preview=createPreviewRequests({scenario:'unapproved'});let enabled=true,privateLeak=false;const paths:string[]=[];let contextCalls=0;
+ await buildCandidate();const payments=createPaymentPreviewRequest({mode:'client',store:createPaymentPreviewStore()}),checkins=createCheckinPreviewRequest({mode:'client',store:createCheckinPreviewStore()});const preview=createPreviewRequests({scenario:'unapproved'});let enabled=true,privateLeak=false;const paths:string[]=[];let contextCalls=0;
  const user={id:owner,is_anonymous:false,aud:'authenticated',email:'synthetic@example.test',created_at:new Date().toISOString(),app_metadata:{},user_metadata:{}};
  const root=resolve('../candidate/site');
  const staticFetch=async(req:any)=>{if(new URL(req.url).pathname==='/portal-config.json')return Response.json({authUrl:supabase,publishableKey:'sb_publishable_synthetic',operationsUrl:supabase+'/functions/v1/concierge-operations',paymentsUrl:supabase+'/functions/v1/concierge-payments',checkinsUrl:supabase+'/functions/v1/concierge-checkins',clientSharedSessions:true,advisorSharedSessions:false});try{const path=resolve(root,'.'+new URL(req.url).pathname.replace(/\/$/,'/index.html'));assert.ok(path.startsWith(root+'/'));const bytes=await readFile(path);return new Response(bytes,{headers:{'Content-Type':({'.js':'text/javascript','.json':'application/json','.css':'text/css','.html':'text/html','.svg':'image/svg+xml'} as any)[extname(path)]??'application/octet-stream'}});}catch{return new Response('not found',{status:404});}};
@@ -23,6 +25,7 @@ export async function clientRuntime(){
   if(url.pathname.endsWith('/logout'))return new Response(null,{status:204});
   if(url.pathname.endsWith('/concierge_client_session_context')){contextCalls++;return enabled?Response.json({ownerId:owner,providerSessionId:ps,role:'client',sessionNotAfter:null,capabilities:{view:true,edit:false,publish:false,confirmPayments:false}}):Response.json({code:'session_ended'},{status:401});}
   if(url.pathname.endsWith('/concierge-operations')){const command=await req.json();const data=await preview.core(command);return Response.json(privateLeak?{...data,privateNotes:'PRIVATE_CANARY'}:data);}
+  if(url.pathname.endsWith('/concierge-payments')||url.pathname.endsWith('/concierge-checkins')){const command=await req.json();assert.equal(command.action,'client_read','Attention is read-only');return Response.json(await (url.pathname.endsWith('/concierge-payments')?payments:checkins)(command));}
   assert.fail('unexpected outbound '+url.pathname);
  };
  const raw:any={cf:false,logRequests:false,upstream:origin,workers:[
@@ -72,12 +75,12 @@ test('native Chrome checkbox-only client sign-in restores reload/new-tab/browser
   const context=await browser.newContext();await bind(context,f);const page=await context.newPage();await page.goto(origin+'/?workspace=client');
   await page.locator('#login-email').waitFor();assert.equal(await page.locator('.portal-remember').innerText(),'Remember me');assert.equal(await page.locator('#remember-guidance').count(),0);assert.equal(await page.locator('#remember-device').getAttribute('aria-describedby'),null);assert.equal(await page.locator('#remember-device').isChecked(),false);
   await page.locator('#remember-device').check();await page.locator('#login-email').fill('synthetic@example.test');await page.getByRole('button',{name:'Send sign-in link'}).click();await page.getByText(/on its way/).waitFor();
-  const callback=await context.newPage();await callback.goto(origin+'/?workspace=client&code=synthetic-browser-code');await callback.locator('#client-signout').waitFor();assert.ok(!callback.url().includes('code='));
-  await callback.reload();await callback.locator('#client-signout').waitFor();const tab=await context.newPage();await tab.goto(origin+'/');await tab.locator('#client-signout').waitFor();
+  const callback=await context.newPage();await callback.goto(origin+'/?workspace=client&code=synthetic-browser-code');await callback.locator('.account-trigger').waitFor();assert.ok(!callback.url().includes('code='));
+  await callback.reload();await callback.locator('.account-trigger').waitFor();const tab=await context.newPage();await tab.goto(origin+'/');await tab.locator('.account-trigger').waitFor();
   for(const p of [page,callback,tab]){const stores=await p.evaluate(()=>({local:{...localStorage},session:{...sessionStorage},cookie:document.cookie}));assert.doesNotMatch(JSON.stringify(stores),/synthetic-refresh|synthetic-signature|access_token|refresh_token|__Host-shelv_client/);}
   const state=await context.storageState();assert.ok(state.cookies.some((c:any)=>c.name==='__Host-shelv_client'&&c.httpOnly&&c.secure&&c.expires>Date.now()/1000));await context.close();
-  const returned=await browser.newContext({storageState:state});await bind(returned,f);const returning=await returned.newPage();await returning.goto(origin+'/');await returning.locator('#client-signout').waitFor();
-  const other=await returned.newPage();await other.goto(origin+'/');await other.locator('#client-signout').waitFor();await returning.locator('#client-signout').click();await returning.locator('#login-email').waitFor();await other.locator('#login-email').waitFor();
+  const returned=await browser.newContext({storageState:state});await bind(returned,f);const returning=await returned.newPage();await returning.goto(origin+'/');await returning.locator('.account-trigger').waitFor();
+  const other=await returned.newPage();await other.goto(origin+'/');await other.locator('.account-trigger').waitFor();await returning.locator('.account-trigger').click();await returning.locator('#client-signout').click();await returning.locator('#login-email').waitFor();await other.locator('#login-email').waitFor();
   await other.reload();await other.locator('#login-email').waitFor();assert.equal(f.paths.filter(p=>p.endsWith('/otp')).length,1);
   await returned.close();
  }finally{await browser.close();await f.mf.dispose();}
@@ -89,8 +92,8 @@ test('native Chrome process restart keeps only opted-in client cookie in its per
   try{
    context=await chromium.launchPersistentContext(profile,{channel:'chrome',headless:true});await bind(context,f);let page=await context.newPage();await page.goto(origin+'/?workspace=client');await page.locator('#login-email').waitFor();
    if(remember)await page.locator('#remember-device').check();await page.locator('#login-email').fill('synthetic@example.test');await page.getByRole('button',{name:'Send sign-in link'}).click();await page.getByText(/on its way/).waitFor();
-   await page.goto(origin+'/?workspace=client&code=synthetic-restart-code');await page.locator('#client-signout').waitFor();await context.close();
-   context=await chromium.launchPersistentContext(profile,{channel:'chrome',headless:true});await bind(context,f);page=await context.newPage();await page.goto(origin+'/');await page.locator(remember?'#client-signout':'#login-email').waitFor();
+   await page.goto(origin+'/?workspace=client&code=synthetic-restart-code');await page.locator('.account-trigger').waitFor();await context.close();
+   context=await chromium.launchPersistentContext(profile,{channel:'chrome',headless:true});await bind(context,f);page=await context.newPage();await page.goto(origin+'/');await page.locator(remember?'.account-trigger':'#login-email').waitFor();
   }finally{await context?.close();await rm(profile,{recursive:true,force:true});}
  }}finally{await f.mf.dispose();}
 });

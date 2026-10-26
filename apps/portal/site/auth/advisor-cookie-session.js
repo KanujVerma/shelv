@@ -1,3 +1,4 @@
+import {navigationReturnTo} from './navigation-return.js';
 const actions = { operations: ['advisor_preview_read_v2', 'advisor_list', 'advisor_read_v2', 'save_intake_v2', 'save_draft_v2', 'publish_v2', 'save_meeting_note', 'service_advisor_read', 'record_review', 'save_instruction_draft', 'publish_instruction_revision', 'record_purchase', 'record_return_event', 'cancel_service'], payments: ['advisor_read', 'issue_quote', 'confirm_payment', 'reject_claim', 'evidence_url'], checkins: ['advisor_read', 'advisor_photo_view', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply'], admission: ['capabilities','add_client','admission_status'], walkthroughs:['library','open','share_list','share_create','share_revoke'] };
 export class CookieSessionError extends Error {
     constructor(status, code = 'unavailable') { super(status === 401 ? 'Your session has ended. Sign in again.' : status === 403 ? 'You do not have access to this action.' : 'We could not complete this request.'); this.status = status; this.code = /^[a-z_]{1,60}$/.test(code) ? code : 'unavailable'; }
@@ -141,7 +142,7 @@ export class CookieAdvisorSession {
             throw new CookieSessionError(503);
         return { csrf: this._flow.csrf };
     }
-    async sendLink(email, _redirect, remember = false) { if (this._pendingAdvisorLogout()) await this._finishAdvisorLogout(); await this.prepareFlow(); return this._fetch('auth/request', { body: { email, remember: remember === true }, csrf: this._flow.csrf }); }
+    async sendLink(email, redirect, remember = false) { const returnTo=navigationReturnTo(redirect,this.audience); if (this._pendingAdvisorLogout()) await this._finishAdvisorLogout(); await this.prepareFlow(); return this._fetch('auth/request', { body: { email, remember: remember === true, ...(returnTo?{returnTo}:{}) }, csrf: this._flow.csrf }); }
     async complete(code) {
         if (this._pendingAdvisorLogout()) await this._finishAdvisorLogout();
         if (!this._flow) {
