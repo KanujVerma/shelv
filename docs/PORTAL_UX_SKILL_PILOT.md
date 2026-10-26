@@ -6,20 +6,63 @@
 
 The problem to solve is **whether an unfamiliar client or advisor can predict where to go and what each action means**, with minimal redundant reading. Keep the current cream/forest-green editorial visual system unless direct evidence shows a specific deficiency. Prioritize information architecture, a novice cognitive walkthrough, UX copy and observable browser journeys. An attractive redesign without lower friction is not success.
 
-### Shortlisted open-source methods and tools
+### The seven tools from the TikTok, verified against their original projects
 
-| Candidate | What it uniquely helps | Trial decision |
-| --- | --- | --- |
-| [mastepanoski information-architecture-audit](https://github.com/mastepanoski/claude-skills/tree/main/skills/information-architecture-audit) | Organization, labels, navigation and findability; redundancy inventory and potential routes | **Use method in the local ShelV skill** |
-| [mastepanoski cognitive-walkthrough](https://github.com/mastepanoski/claude-skills/tree/main/skills/cognitive-walkthrough) | Novice task-by-task: can users identify action, infer effect and see progress? | **Use method in the local ShelV skill** |
-| [Impeccable](https://github.com/pbakaus/impeccable) | `critique`, `clarify`, `distill`, `onboard` and browser refinement; useful when layout and language are visibly noisy | **Optional second-stage pilot** after task audit; review installer/hooks first |
-| [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) | Distinctive visual treatment and design coherence | **Defer** unless the audit finds a real visual-hierarchy or design-system problem |
+The video labels are shorthand. These are distinct categories: agent design judgment, design-system extraction, React component source, animation APIs/skills, browser interaction testing and motion recipes. **Do not install everything at once**: the portal is currently plain JavaScript, HTML and CSS; its current problem is wayfinding, next actions and copy. The [original project-native UX skill](../.claude/skills/shelv-ux-review/SKILL.md) stays first, and the [new, original design-polish skill](../.claude/skills/shelv-design-polish/SKILL.md) works after it. Neither is a vendored third-party skill.
 
-Rather than bulk-install overlapping prompts, the project now has one original, reviewable, provider-native `.claude/skills/shelv-ux-review/SKILL.md` whose tasks, business invariants and evidence standard are specific to this portal. This is a real Claude Code project skill, with no executable hook or dependency. The third-party packages above were **researched**, not installed or executed.
+| Video term → verified source | Actual capabilities | Fit for concierge portal | Pilot decision |
+| --- | --- | --- | --- |
+| **Taste Skill**: [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) | Anti-generic design judgment, layout/type/art direction and browser review. **Current v2.1 supports dashboards/app screens** (older descriptions saying “landing pages only” are outdated). | Useful for restrained hierarchy, but full art-direction run can overwrite established brand choices if unconstrained. | **Optional A/B visual trial** on one synthetic screen, with no automatic brand replacement. |
+| **designlang**: [Manavarya09/design-extract](https://github.com/Manavarya09/design-extract) | Extracts computed visual design system from a live public URL, outputting tokens/CSS/anatomy/motion, MCP and optional agent instructions. It does **not** simply copy an entire functioning website template. | Good for studying one reference's spacing, hierarchy and interaction patterns; weak for whether Shelv users can finish tasks. | **Reference-only, optional**. Never crawl private client data or permit generated instructions to overwrite repo rules. |
+| **React Bits**: [DavidHDev/react-bits](https://github.com/DavidHDev/react-bits) | Library of editable animated/interactive **React** components and backgrounds, with several source formats; current license is **MIT + Commons Clause**, not unqualified MIT. | Current concierge portal is vanilla JS/HTML/CSS. Adopting it directly adds React/runtime/porting cost and potential noise. | **Skip for current portal**. Consider later for an already-React surface where a concrete component is needed. |
+| **GSAP Skills**: [greensock/gsap-skills](https://github.com/greensock/gsap-skills) | Official agent instructions for GSAP core, timeline, ScrollTrigger, performance and frameworks, including vanilla JS. Skills do not install an animation into the app by themselves. | Technically compatible but overkill for plain portal navigation, simple dialog/CTA interactions and static plans. | **Defer** until a genuine complex timeline or state-sequenced interaction exists. |
+| **Playwright CLI**: [microsoft/playwright-cli](https://github.com/microsoft/playwright-cli) | Agent-readable browser commands to visit, click, type, inspect, screenshot, navigate Back/Forward and observe page state. | **Directly addresses the failure mode**: a code-only review can miss misleading entry screens and dead ends. The portal already has synthetic Playwright tests; CLI is an exploratory complement, not a replacement. | **First external tool trial**, isolated local synthetic browser session only. |
+| **Impeccable**: [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | `critique`, `clarify`, `distill`, `onboard`, `harden`, `audit` and deterministic anti-slop design checks. Supports plain HTML/CSS; optional automatic edit hooks launch/download its binary. | **Best direct visual/copy supplement** to the task-first walkthrough. Some generalized anti-patterns (e.g., fonts) may conflict with intentional Shelv tokens. | **First external design trial**, project-scoped, **hooks off**; evaluate and apply findings selectively. |
+| **Transition Skill**: [Jakubantalik/transitions.dev](https://github.com/Jakubantalik/transitions.dev) | Free, namespaced CSS recipes for modal, tab, dropdown, status and state transitions; reduced-motion fallbacks. Source has special reuse terms, see its license before copying whole library. | Good for a later **specific** state change; unnecessary as a blanket page-animation system. | **Optional small CSS trial** after navigation is correct, e.g. one modal or status transition. |
 
-If an advisor later decides to trial Impeccable in a local, reviewed working tree, start with `npx impeccable install --providers=claude --scope=project --no-hooks`. Its default hook path can independently launch or download a binary, so avoid accepting those hooks as part of an unattended setup. Review the actual resulting diff, run `/impeccable init` with current concierge context (not historical scanner direction), then try `/impeccable clarify` and `/impeccable distill` on one selected screen. Do not overwrite existing business/truth docs with generated descriptions.
+These are the identifiable source repos, **not evidence that the creator used their current versions**. "Transition skill" maps to the public Transitions.dev project, the closest matching maintained, named skill and motion/component library. The video did not include an author URL, so this particular mapping is a plausible identification rather than confirmed attribution.
 
-The original source skills may instead be trialed separately with `npx skills add mastepanoski/claude-skills --skill information-architecture-audit` and `npx skills add mastepanoski/claude-skills --skill cognitive-walkthrough`, after reviewing upstream files. Prefer a task-scoped comparison to importing their full library.
+#### Complementary UX-method skills, already synthesized here
+
+- [Information Architecture Audit](https://github.com/mastepanoski/claude-skills/tree/main/skills/information-architecture-audit): label consistency, organization, navigation and findability.
+- [Cognitive Walkthrough](https://github.com/mastepanoski/claude-skills/tree/main/skills/cognitive-walkthrough): step-by-step test of what a new user expects and discovers.
+- [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design): an additional visual design alternative, not a video-mentioned tool and **not currently necessary**.
+
+### Safe experiment order and commands
+
+**Phase 0: baseline (existing repo tooling).** Use one of the active portal branches, not the historical mobile-only `main` tree. Run the existing `apps/portal` test suite and synthetic browser harness to capture *current* user journeys at 320, 390 and 1440px. Record before screenshots and click paths. This documentation PR itself does not execute those commands.
+
+**Phase 1: task comprehension (project skills).** Use `shelv-ux-review` to map routes and identify the first misleading action; use `shelv-design-polish` to improve clarity, hierarchy and copy with no new framework or dependency. The skills are checked-in Claude Code project skills; no external install is required to read them.
+
+**Phase 2: use the real browser.** If the connected local coding agent lacks the standalone CLI, Microsoft documents:
+
+```sh
+npm install -g @playwright/cli@latest
+playwright-cli --help
+playwright-cli install --skills
+```
+
+This installs locally on the executing computer; the browser must remain in **synthetic, offline/intercepted fixture mode**. `playwright-cli` CLI exploration can validate that a user recognizes the correct affordance, but add reproducible existing-repo Playwright tests for each accepted change. Do not open personal or actual client sessions to demonstrate the tool.
+
+**Phase 3: trial Impeccable on one screen.** In a disposable copy/worktree, after reviewing the installer, invoke:
+
+```sh
+npx impeccable install --providers=claude --scope=project --no-hooks
+```
+
+Reload Claude Code, check installed files and any rule collisions, and initialize only after inspecting the diffs. Pilot `/impeccable critique`, `/impeccable clarify`, `/impeccable distill` and `/impeccable harden` on the same synthetic client plan view. Do **not** enable `/impeccable hooks on` until the team explicitly reviews the executable hook, its downloads, trust and optional telemetry. Never blindly accept broad changes to current type, color or business language.
+
+**Phase 4: optional controlled comparison.** Only after Phases 1–3, trial Taste Skill **separately**, on a synthetic copy of one already-implemented view:
+
+```sh
+npx skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend
+```
+
+Taste's current version requires Node 22+ and a browser for its own visual checks. Preserve forest-green/cream/editorial identity and client/advisor task structure. Compare before/after findability, visual hierarchy, text density and whether users can predict action outcomes. Treat source licenses, dependencies, external image retrieval, generated rules and unexpected file writes as things to review before committing.
+
+**Phase 5: references and motion only if needed.** For *public* design analysis, `npx designlang https://linear.app` is a representative command, not an instruction to copy Linear or overwrite Shelv's `AGENTS.md`. If a confirmed motion problem remains, use `npx skills add Jakubantalik/transitions.dev` only in the local trial, inspect the generated changes and apply one restrained CSS recipe with reduced-motion behavior. React Bits and GSAP do not enter the portal's dependency tree in this trial.
+
+**Guardrail:** A skill recommendation is not an executable dependency. Only `shelv-ux-review` and `shelv-design-polish` are committed here. External third-party plugin, executable, hook, npm install, CLI browser run or design extractor has **not** been installed or used. No actual user-completion percentages or hosted acceptance can be inferred from a source-based critique.
 
 ## Source-based findings to test, not reported bugs
 
