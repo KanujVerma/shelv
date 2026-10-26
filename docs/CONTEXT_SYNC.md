@@ -1,5 +1,11 @@
 # Shelv Cross-Agent Context Sync Ledger
 
+## 2026-10-25: interactive Maya tour deployed and verified
+
+The approved company-branded Maya redesign is deployed from `b22436f58e32ea21668dd350269b46227669ab43` on Pages `17546896-f89f-4300-b9f8-252a4734984c`. It introduces Shelv before the sample, uses seven anchored pop-ups with optional real portal details, auto-shows once per browser, fully exits and explicitly replays from a quiet View tour button. Active same-tab refresh resumes. Ordinary Maya/Alex and private guides remain intact. Portal typography/components are reused.
+
+All 120 public files match the frozen package; 12 actual hosted browser checks passed across four widths. Local validation passed 260 portal and 142 session tests, plus 1,174 root tests with 18 explicit opt-in skips, types and web export. Independent review's nested ingredient-dialog bug was fixed and rechecked. Gateway/routes/headers and vault/session identity are unchanged; no backend, SQL, credentials, permissions, private-data, share, payment or message changes occurred. [Release result](PORTAL_RELEASE_RESULT.md), [acceptance](PORTAL_ACCEPTANCE.md) and [source provenance](PORTAL_SOURCE_PROVENANCE.md) record the current release. Earlier backend acceptance limits remain. PR208 stays draft and unmerged.
+
 ## 2026-10-25: walkthrough/service activation deployed; public and guest checks passed
 
 The explicitly approved release is active at portal.goshelv.com from application source `44c3d371fe63aaf23a64b87d0ef459ecc85343d4`, Pages `88ec5c96-3a0b-415c-8fca-03a2209dee11`. All three source CI jobs passed. The final private-vault deployment/version is `21cb5045-e6ab-49f5-ae9d-f378d38f847c` / `eefca083-89af-47c1-8c3c-583d06988624`; its reviewed code was unchanged through the additive vault-only reader secret. Existing namespace, session key, SQLite class/export, old bindings and both shared-session flags were preserved. Private exposure remains disabled. This entry supersedes the local-only candidate status below; the earlier cf09be80/66f7a225 release remains historical.
