@@ -1,6 +1,56 @@
 # Portal release result
 
-The 25 October walkthrough/service candidate is local and reviewable, not a new hosted release. It adds a combined third API route, two forward migrations, a vault-only guest reader prerequisite, explicit founder walkthrough grants and a private import. The production deployment recorded below remains unchanged. See [candidate acceptance](PORTAL_ACCEPTANCE.md#guided-walkthrough-and-service-candidate-25-october-2026) and [implementation handoff](handoffs/2026-10-25-walkthroughs-service.md) before applying any new package.
+## Current walkthrough and service activation, 25 October 2026
+
+Owner: Kanuj. Verified: 25 October 2026, America/Chicago. The provider-assigned migration versions below use 26 October UTC.
+
+Status: deployed; public, anonymous guest and dedicated maintenance-advisor acceptance passed. Ordinary authenticated client hosted acceptance was not run because approved usable client credentials were unavailable.
+
+The explicitly approved walkthrough/service package is active at [portal.goshelv.com](https://portal.goshelv.com). This activation supersedes the local-only candidate status and the cf09be80/66f7a225 production baseline. The earlier completion release is preserved below as historical evidence. [Acceptance](PORTAL_ACCEPTANCE.md) records the current checks and their limits, [source provenance](PORTAL_SOURCE_PROVENANCE.md) records lineage, and [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) remains the single operating-policy record. No Git merge occurred.
+
+| Component | Actual activated identity |
+| --- | --- |
+| Application source | [44c3d371fe63aaf23a64b87d0ef459ecc85343d4](https://github.com/KanujVerma/shelv/commit/44c3d371fe63aaf23a64b87d0ef459ecc85343d4) |
+| Production Pages | `88ec5c96-3a0b-415c-8fca-03a2209dee11` |
+| Generated package | 120 entries; all 117 public files matched the frozen build exactly |
+| ZIP SHA-256 | `bfd214bc906411c127781d1ea868c1517b0d8251890dc98328e29527d329eb54` |
+| Build manifest SHA-256 | `06cc87c9525f23e190a44c421585b65bb2ec1578a4bfc4b4fe0a23e86957671f` |
+| Private vault deployment | `21cb5045-e6ab-49f5-ae9d-f378d38f847c` |
+| Private vault version | `eefca083-89af-47c1-8c3c-583d06988624` |
+| Vault source SHA-256 | `ceb946c3843235c903b461488bef7dd6a5da7ba9d7b1e33c6e35c7039e75900e` |
+| Vault code etag | `a598c63657472805fd13a3be87534a4463808de94cece5d4055ee5e98d07664c` |
+
+The reviewed vault code was installed before the additive `SUPABASE_WALKTHROUGH_KEY` secret. Secret provisioning created the final deployment/version above; the code etag remained unchanged. The selected legacy service-role credential passed the frozen reader's exact header-format probe with HTTP 200 and null for an unknown capability. Only the private vault received this secret. No credential value is in Pages, client assets or this record.
+
+Both shared-session flags remain true. The existing `ADVISOR_SESSIONS` namespace `a0a5b089755842dc8c6a62b4f164865b`, session-key binding, `AdvisorSessionObject` SQLite class/export and prior bindings were preserved. The sole binding addition is the walkthrough-reader secret. No namespace/storage migration or key replacement occurred. Private workers.dev, preview URLs, routes and domains remain disabled. Fresh version-specific readbacks independently confirmed the exact SQLite export and current module bytes against the frozen SHA-256. A newer Worker readback confirmed observability, logs and traces disabled. Some disabled observability subsettings normalized differently from the upload acknowledgement, so byte-for-byte subfield equality is not claimed. The older settings endpoint can omit those fields; omission alone is not proof. Retained acknowledgements remain provenance evidence.
+
+| Edge function | Actual deployed version | JWT verification |
+| --- | ---: | --- |
+| `concierge-operations` | 6 | true |
+| `concierge-payments` | 4 | true |
+| `concierge-checkins` | 4 | true |
+| `concierge-admission` | 2 | true |
+
+The four frozen source closures were deployed and verified. Only these two forward migrations were applied; all 76 prior ledger entries and historical source/server aliases were preserved, producing 78 entries:
+
+| Canonical source | Source SHA-256 | Actual hosted version |
+| --- | --- | --- |
+| `20261025221028_concierge_service_workflows.sql` | `5ebb75645abb8e1002a5a3c7bbc64e53b4bfe7e325a2dd63819ebd6d82671eec` | `20261026002240` |
+| `20261025221043_concierge_private_walkthroughs.sql` | `035fd8fa49b3c9ca0314769d24c72e61b83a3d883189588df90966e2f7c2f394` | `20261026002305` |
+
+Four approved private current versions were imported into a separate walkthrough namespace. Exactly two founder walkthrough grants were installed after matching the existing identity map and live permissions. The user subsequently authorized a separate Codex maintenance-advisor account and explicit grant. The three authorized principals are two human founders plus this maintenance advisor, which has no client-admission permission and establishes no founder status or skincare expertise. Existing founder credentials, sessions and grants were untouched. Live client case heads were unchanged. The four current private versions have never been shared. Anonymous acceptance used one neutral immutable synthetic version attached to an approved authoring case without changing its current-version pointer, plus two owned test grants: one expired and the other was revoked. Maintenance-advisor acceptance created one further grant for that same neutral version, verified exact-request retry and revoked it. Zero active share grants remain. No fifth case, customer Auth account or immutable-data cleanup bypass was created.
+
+Hosted public verification passed all 117 exact static files and 13 browser scenarios at 320, 390, 768 and 1440 pixels. Guided Maya and ordinary Alex/Maya behavior, shared typography/buttons, history/reload/navigation, generic unavailable responses and absence of account cookies passed. Actual anonymous guest checks passed valid access to the exact synthetic projection, expired/unknown/malformed generic denial, denial on five production write surfaces, two-context isolation, navigation/history and focus reauthorization that cleared an already-open viewer after revocation. Expiry was observed after the grant had expired; a valid-to-expired transition was not exercised. No limiter bypass was used.
+
+The dedicated maintenance advisor passed ten hosted checks using genuine own-account password Auth and the supported verified advisor-cookie upgrade. The correct identity and four-current-version library were checked; all four actual private plans opened through authenticated UI, with one different width per case (320, 390, 768 and 1440 pixels). Client admission was disabled and Add client absent. Missing-CSRF sharing was denied; Create, exact-request retry and Revoke passed through the authenticated management API for the neutral version. The guest request from that browser omitted account authority and read the exact immutable version; revocation then produced 404. An advisor cookie on the client API returned 401, proving audience denial, not positive client-owner acceptance. One conversation review was recorded through the Service UI on the retained synthetic client without a client form; server-supplied authorship and separate advisor-only notes passed. This created one synthetic service head/review, with zero real-human record writes. The account signed out through normal local-scope logout; its credentials remain private for later authorized maintenance. There were zero errors, unexpected egress or login emails.
+
+Ordinary authenticated client-owner acceptance was not run. Actual founder personal sign-in was not rerun or impersonated. No login bypass or password reset was used. Hosted instruction-revision, return and cancellation write journeys were not run; their native/local tests and deployed SQL/source are the evidence. An unusually long neutral fixture title overlapped metadata at 1440 pixels, so the guest result is not an unrestricted visual-polish signoff. No real money, order, retailer action or external message occurred. All three source CI jobs were green at `44c3d371`; the later documentation checkpoint has its own CI boundary.
+
+Retain compatible readers, cancellation guards, instruction/review/financial history and pending administration during recovery. Disable affected new writes/sharing and use a reviewed forward fix; do not remove migrations, delete immutable history or restore a legacy-only reader. Private activation, migration, public-byte/browser and guest receipts remain outside Git. The [implementation handoff](handoffs/2026-10-25-walkthroughs-service.md) records the continuation boundary.
+
+## Historical completion release, 24 October 2026 America/Chicago
+
+The following record is preserved from the prior release. Its deployment identities, ledger count, test counts and login-email history apply to that release and do not describe the current activation.
 
 Owner: Kanuj
 Verified: 25 October 2026 UTC, 24 October in Chicago
