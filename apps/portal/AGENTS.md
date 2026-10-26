@@ -1,5 +1,7 @@
 # Shelv portal
 
+Reuse the [portal UI system](../../docs/PORTAL_UI_SYSTEM.md) for shared components, semantic tokens, dialog/disclosure behavior, and necessary-copy review. Run `npm run check:ui` for CSS changes; do not increase legacy color budgets to bypass it. Every added explanatory sentence must serve a task, decision, real status, consequence, safety/privacy/financial meaning, or recovery.
+
 This subtree owns the consultation-led web portal. The current objective is the complete referral-partner demonstration using the existing cream, forest-green and editorial design. Consultation happens with the founders; a new questionnaire or scanner dependency is not required.
 
 - Edit `site/` and the supporting source here. Historical Codex release folders and the primary dirty checkout are reference inputs and must remain unchanged.

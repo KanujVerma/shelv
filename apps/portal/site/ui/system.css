@@ -1,0 +1,174 @@
+/* Canonical portal roles. Legacy aliases below preserve existing renderers. */
+:root {
+  --color-canvas: #f6f3ec;
+  --color-surface: #fffefb;
+  --color-surface-quiet: #eeebe3;
+  --color-surface-hover: #eeeee5;
+  --color-white: #fff;
+  --color-text: #171a18;
+  --color-text-muted: #626760;
+  --color-brand: #25452f;
+  --color-brand-hover: #193622;
+  --color-focus: #476b50;
+  --color-border: #dedbd2;
+  --color-control-border: #808a7d;
+  --color-success: #315b35;
+  --color-success-surface: #edf2e9;
+  --color-danger: #8e3c2f;
+  --color-danger-surface: #fff0eb;
+  --color-warning: #72501f;
+  --color-warning-surface: #fbf1df;
+  --color-backdrop: #15251e70;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --text-small: .8125rem;
+  --text-body: .9375rem;
+  --text-control: .875rem;
+  --text-input: 1rem;
+  --text-section: 1.125rem;
+  --text-title: 1.75rem;
+  --line-body: 1.6;
+  --line-heading: 1.25;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-strong: 600;
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --radius-control: .5rem;
+  --radius-panel: 1rem;
+  --radius-pill: 999px;
+  --border-default: 1px solid var(--color-border);
+  --border-control: 1px solid var(--color-control-border);
+  --shadow-overlay: 0 12px 32px #171a1826;
+  --focus-ring: 2px solid var(--color-focus);
+  --control-height: 44px;
+  --motion-fast: 150ms;
+  --motion-open: 200ms;
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --layout-content: 68rem;
+  --layout-reading: 72ch;
+  --layout-sidebar: 13rem;
+  --layout-dialog: 38rem;
+  --bg: var(--color-canvas);
+  --paper: var(--color-surface);
+  --soft: var(--color-canvas);
+  --ink: var(--color-text);
+  --muted: var(--color-text-muted);
+  --brand: var(--color-brand);
+  --green: var(--color-brand);
+  --line: var(--color-border);
+  --border: var(--color-control-border);
+  --advisor-muted: var(--color-text-muted);
+  --advisor-line: var(--color-border);
+}
+
+html {scrollbar-color: var(--color-control-border) var(--color-canvas);}
+body {font-family: var(--font-body);font-size: var(--text-body);line-height: var(--line-body);}
+::selection {background: var(--color-surface-quiet);color: var(--color-text);}
+:is(input,textarea) {caret-color: var(--color-brand);}
+:is(button,a,summary,input,select,textarea):focus-visible {outline: var(--focus-ring);outline-offset: 3px;}
+a {text-underline-offset: .18em;}
+:is(h1,h2,h3,h4) {overflow-wrap: anywhere;}
+
+/* Existing feature classes are compatibility aliases for the same primitives. */
+:is(.solid,.quiet,.payment-button,.checkin-button,.presentation-button) {
+  display: inline-flex;align-items: center;justify-content: center;gap: var(--space-2);
+  min-height: var(--control-height);max-width: 100%;padding: .625rem var(--space-4);
+  border: var(--border-control);border-radius: var(--radius-pill);
+  background: transparent;color: var(--color-brand);font: var(--weight-medium) var(--text-control)/1.4 var(--font-body);
+  text-decoration: none;text-align: center;white-space: normal;cursor: pointer;
+  transition: background-color var(--motion-fast) var(--ease-out),border-color var(--motion-fast) var(--ease-out);
+}
+:is(.solid,.payment-button.primary,.checkin-button.primary) {background: var(--color-brand);border-color: var(--color-brand);color: var(--color-white);}
+:is(.solid,.payment-button.primary,.checkin-button.primary):hover:enabled {background: var(--color-brand-hover);border-color: var(--color-brand-hover);}
+:is(.quiet,.payment-button:not(.primary),.checkin-button:not(.primary),.presentation-button):hover:enabled {background: var(--color-surface-hover);}
+:is(.solid,.quiet,.payment-button,.checkin-button,.presentation-button):disabled,
+:is(.solid,.quiet,.payment-button,.checkin-button,.presentation-button)[aria-disabled="true"] {opacity: .55;cursor: default;}
+:is(.destructive,.solid.destructive) {color: var(--color-white);background: var(--color-danger);border-color: var(--color-danger);}
+.quiet.destructive {background: transparent;color: var(--color-danger);border-color: var(--color-danger);}
+.text-button {display: inline-flex;align-items: center;gap: var(--space-2);border: 0;padding: var(--space-2) 0;background: transparent;color: var(--color-brand);font: var(--weight-medium) var(--text-control)/1.5 var(--font-body);text-decoration: underline;text-underline-offset: .2em;cursor: pointer;}
+.text-button.destructive {color: var(--color-danger);background: transparent;}
+.presentation-button[data-action$=".remove"] {border-color: transparent;background: transparent;color: var(--color-danger);}
+.nav-item {min-height: var(--control-height);font-size: var(--text-control);}
+.nav-item.active {background: var(--color-surface-quiet);color: var(--color-text);}
+.view-tabs button {min-height: var(--control-height);font-size: var(--text-control);}
+
+/* Form labels persist; validation and recovery remain next to their field. */
+:is(.advisor-tab-content,.advisor-dialog,.payment-field,.shelv-payments,.shelv-checkins,.presentation-editor) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),select,textarea) {
+  min-width: 0;max-width: 100%;min-height: var(--control-height);border: var(--border-control);
+  border-radius: var(--radius-control);background: var(--color-surface);color: var(--color-text);
+  font: var(--text-input)/1.5 var(--font-body);padding: .625rem var(--space-3);
+}
+:is(input,textarea)::placeholder {color: var(--color-text-muted);opacity: 1;}
+:is(.advisor-tab-content,.advisor-dialog,.shelv-payments,.shelv-checkins,.presentation-editor) :is(label,legend) {font-size: var(--text-control);}
+:is(input,select,textarea)[aria-invalid="true"] {border-color: var(--color-danger);background: var(--color-danger-surface);}
+:is(.advisor-field-hint,.presentation-hint,.payment-muted,.checkin-muted) {font-size: var(--text-small);line-height: var(--line-body);color: var(--color-text-muted);}
+
+:is(.advisor-notice,.payment-message:not(:empty),.payment-notice,.checkin-status,.ui-notice) {padding: var(--space-3) var(--space-4);border-radius: var(--radius-control);font-size: var(--text-control);line-height: var(--line-body);background: var(--color-success-surface);color: var(--color-success);overflow-wrap: anywhere;}
+:is(.advisor-notice.error,.ui-notice.error,.checkin-status[role="alert"]) {color: var(--color-danger);background: var(--color-danger-surface);}
+:is(.advisor-access-pill,.payment-badge,.ui-status) {font-size: var(--text-small);line-height: 1.5;color: var(--color-brand);background: var(--color-surface-quiet);border-radius: var(--radius-pill);padding: var(--space-1) var(--space-2);}
+:is(.advisor-empty,.checkin-empty,.ui-empty) {color: var(--color-text-muted);line-height: var(--line-body);}
+
+/* Native dialog owns trapping and background inertness. Utility owns lifecycle. */
+dialog.advisor-dialog.portal-dialog {width: min(var(--layout-dialog),calc(100% - var(--space-8)));max-height: calc(100dvh - var(--space-8));padding: var(--space-8)!important;overflow: auto;overscroll-behavior: contain;scrollbar-gutter: stable;border: var(--border-default);border-radius: var(--radius-panel);background: var(--color-canvas);color: var(--color-text);box-shadow: var(--shadow-overlay);}
+dialog.portal-dialog::backdrop {background: var(--color-backdrop);backdrop-filter: none;}
+dialog.portal-dialog h2 {font-size: 1.375rem;line-height: var(--line-heading);padding-inline-end: var(--space-8);}
+dialog.portal-dialog :is(p,li) {font-size: var(--text-body);}
+dialog.portal-dialog .close {display: inline-flex;align-items: center;justify-content: center;min-width: var(--control-height);min-height: var(--control-height);top: var(--space-2);right: var(--space-2);border: 0;background: var(--color-canvas);color: var(--color-text-muted);font-size: 1.625rem;border-radius: var(--radius-control);}
+.portal-dialog-header {position: sticky;top: calc(-1 * var(--space-8));z-index: 5;height: var(--space-8);margin-top: calc(-1 * var(--space-4));margin-inline-end: calc(-1 * var(--space-4));background: var(--color-canvas);}
+.portal-dialog-header .close {position: absolute;}
+.portal-dialog[open] {animation: portal-dialog-open var(--motion-open) var(--ease-out);}
+@keyframes portal-dialog-open {from {opacity: .7;transform: translateY(4px);} to {opacity: 1;transform: translateY(0);}}
+
+/* Reusable shell and detail composition, shared by live and synthetic clients. */
+.client-portal .client-profile-footer {position: relative;}
+.account-trigger {display: flex;align-items: center;gap: var(--space-3);width: 100%;min-height: var(--control-height);border: 0;border-radius: var(--radius-control);padding: var(--space-2);background: transparent;color: var(--color-text);font: var(--text-control)/1.4 var(--font-body);text-align: left;cursor: pointer;}
+.account-trigger:hover,.account-trigger[aria-expanded="true"] {background: var(--color-surface-quiet);}
+.account-trigger>span:not(.avatar) {min-width: 0;overflow-wrap: anywhere;}
+.account-menu {position: absolute;left: 0;bottom: calc(100% + var(--space-2));z-index: 20;display: grid;gap: var(--space-1);width: max(100%,15rem);max-width: calc(100vw - var(--space-8));padding: var(--space-2);background: var(--color-surface);border: var(--border-default);border-radius: var(--radius-panel);box-shadow: var(--shadow-overlay);}
+.account-menu-item {display: flex;align-items: center;gap: var(--space-2);min-height: var(--control-height);width: 100%;padding: var(--space-2) var(--space-3);border: 0;border-radius: var(--radius-control);background: transparent;color: var(--color-text);font: var(--text-control)/1.5 var(--font-body);text-align: left;text-decoration: none;cursor: pointer;}
+.account-menu-item:hover {background: var(--color-surface-hover);}
+.client-page-title {display: flex;flex-wrap: wrap;align-items: baseline;gap: var(--space-3);min-width: 0;}
+.client-page-title h1 {margin: 0;}
+.plan-actions {position: relative;}
+.plan-actions>summary {list-style: none;cursor: pointer;font-size: var(--text-control);min-height: var(--control-height);display: inline-flex;align-items: center;padding: var(--space-2) var(--space-3);}
+.plan-actions[open]>:not(summary) {position: relative;z-index: 10;}
+.plan-attention {display: flex;flex-wrap: wrap;align-items: center;gap: var(--space-2) var(--space-4);margin: var(--space-5) 0;padding-block: var(--space-3);border-block: var(--border-default);font-size: var(--text-control);}
+.plan-attention p {margin: 0;}
+.plan-history-list {list-style: none;margin: var(--space-4) 0;padding: 0;}
+:is(.plan-history-entry,.advisor-history-item) {padding-block: var(--space-4);border-bottom: var(--border-default);}
+:is(.plan-history-entry,.advisor-history-item)>:first-child {margin-top: 0;}
+.client-product-page {max-width: var(--layout-reading);margin-inline: auto;min-width: 0;}
+.client-product-page>header {align-items: start;flex-wrap: wrap;}
+.client-product-page h1 {font-size: var(--text-title);line-height: var(--line-heading);margin-bottom: var(--space-5);}
+.product-back {margin-bottom: var(--space-5);}
+.product-practical {margin-block: var(--space-6);}
+.product-practical :is(p,li) {font-size: var(--text-body);line-height: var(--line-body);}
+.product-secondary {margin-block: var(--space-6);border-top: var(--border-default);padding-top: var(--space-5);}
+.product-secondary>summary {cursor: pointer;font-size: var(--text-control);min-height: var(--control-height);padding-block: var(--space-2);}
+.routine-pending-link {display: inline-flex;align-items: center;min-height: var(--control-height);font-size: var(--text-control);color: var(--color-brand);}
+.advisor-examples {margin-top: var(--space-6);}
+.advisor-examples>summary {font-size: var(--text-control);cursor: pointer;min-height: var(--control-height);}
+.advisor-plan-history {display: grid;gap: var(--space-4);align-content: start;}
+.advisor-plan-history .advisor-history-item {margin: 0;}
+
+@media(max-width:760px) {
+  .client-portal .client-profile-footer {position: relative;display: block;grid-column: 2;grid-row: 1;padding: 0;margin: 0;}
+  .account-trigger {width: auto;}
+  .account-menu {left: auto;right: 0;top: calc(100% + var(--space-2));bottom: auto;}
+  dialog.advisor-dialog.portal-dialog {max-height: calc(100dvh - var(--space-6));width: calc(100% - var(--space-6));padding: var(--space-5)!important;}
+  .portal-dialog-header {top: calc(-1 * var(--space-5));}
+  .client-page-title {gap: var(--space-2);}
+  .client-product-page h1 {font-size: 1.5rem;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .portal-dialog[open] {animation: none;}
+  :is(.solid,.quiet,.payment-button,.checkin-button,.presentation-button) {transition: none;}
+  .advisor-spinner {animation: none;}
+}
