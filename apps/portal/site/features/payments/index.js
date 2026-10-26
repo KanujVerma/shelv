@@ -9,7 +9,7 @@ export function mountPaymentsPanel(element,options){
  if(!element||!['client','advisor'].includes(mode)||typeof request!=='function'||(productDescriptor!==undefined&&typeof productDescriptor!=='function'))throw Error('Invalid payments integration');
  const memory=options.taskState||{pending:null,quoteDraft:null,closed:false};
  const doc=element.ownerDocument,controller=new AbortController(),timers=new Set();let disposed=false,busy=false,view=null,generation=0;
- const uploads=new Map(),selectedOptions=new Map();
+ const retainClientAssets=mode==='client'&&Boolean(options.taskState),uploads=retainClientAssets?(memory.uploads||(memory.uploads=new Map())):new Map(),selectedOptions=retainClientAssets?(memory.selectedOptions||(memory.selectedOptions=new Map())):new Map();
  if(!doc.querySelector('link[data-shelv-payments]')){const link=doc.createElement('link');link.rel='stylesheet';link.href=new URL('./payments.css',import.meta.url).href;link.dataset.shelvPayments='';doc.head.append(link);}
  const root=doc.createElement('section');root.className='shelv-payments';root.setAttribute('aria-label','Payments');element.replaceChildren(root);
  const node=(tag,text,className)=>{const n=doc.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
@@ -155,5 +155,5 @@ export function mountPaymentsPanel(element,options){
   if(mode==='advisor'&&canWrite)content.append(issueForm());
   if(mode==='advisor'&&!canWrite&&!canConfirm)content.append(node('p','Read-only payment access. Payment confirmation and quote changes require separate permission.','payment-muted'));
  }
- load(undefined,true);const cleanup=()=>{disposed=true;generation++;controller.abort();for(const timer of timers)clearTimeout(timer);uploads.clear();if(!options.taskState){memory.pending=null;memory.quoteDraft=null;memory.closed=true;}if(root.parentNode===element)root.remove();};cleanup.hasPending=()=>Boolean(memory.pending);return cleanup;
+ load(undefined,true);const cleanup=()=>{disposed=true;generation++;controller.abort();for(const timer of timers)clearTimeout(timer);if(!retainClientAssets){uploads.clear();selectedOptions.clear();}if(!options.taskState){memory.pending=null;memory.quoteDraft=null;memory.closed=true;}if(root.parentNode===element)root.remove();};cleanup.hasPending=()=>Boolean(memory.pending);return cleanup;
 }

@@ -1,5 +1,5 @@
 import {portalLoginRedirect} from './auth/navigation-return.js';
-import {createCheckinDraftState} from './features/checkins/draft-state.js';
+import {createClientTaskState} from './client/task-state.js';
 import {useAdvisorCookies,createAdvisorSessionBridge} from './auth/advisor-session-bridge.js';
 import {useClientCookies} from './auth/client-cookie-session.js';
 import {readConfig,createRequest,createPhotoUpload,consumeCallback} from './advisor/api.js';
@@ -17,7 +17,7 @@ function releaseClientDraft(){clientDraftScope?.dispose();clientDraftScope=null;
 function clientDraftForSession(){
  const owner=session?.identity?.ownerId,generation=session?.generation;
  if(!owner||session?.status!=='ready'){releaseClientDraft();return null;}
- if(!clientDraftScope||clientDraftOwner!==owner||clientDraftGeneration!==generation){releaseClientDraft();clientDraftScope=createCheckinDraftState();clientDraftOwner=owner;clientDraftGeneration=generation;}
+ if(!clientDraftScope||clientDraftOwner!==owner||clientDraftGeneration!==generation){releaseClientDraft();clientDraftScope=createClientTaskState();clientDraftOwner=owner;clientDraftGeneration=generation;}
  return clientDraftScope;
 }
 const authStatus=document.createElement('div');authStatus.id='portal-auth-status';authStatus.hidden=true;document.body.append(authStatus);
@@ -162,7 +162,7 @@ async function route() {
     if(!path&&!preview){try{initialDirectory=await requests.core({action:'advisor_list'});path='#/advisor';}catch(error){if(error.status===403)path='#/client';else throw error;}}
     if(!path)path='#/advisor';
     if(preview){const banner=document.querySelector('#preview-banner'),query=esc('?'+params.toString());if(!path.startsWith('#/client'))advisorPreviewContext=true;banner.innerHTML=path.startsWith('#/client')?'Fictional sample · no real clients or transactions':`Fictional sample · advisor preview <a href="${query}#/advisor">Advisor</a><a href="${query}#/client">Client</a>`;}
-    if(path.startsWith('#/client')) {const module=await import('./client/view.js');if(current!==routeSequence)return;cleanup=await module.mountClientPortal(root,{request:requests.core,mountFeature,account:preview?{displayName:'Alex'}:null,readCheckinStatus:async options=>(await featureRequestFor('checkins',{clientId:previewClientId,mode:'client'}))({action:'client_read'},options),readPaymentStatus:async options=>(await featureRequestFor('payments',{clientId:previewClientId,mode:'client'}))({action:'client_read',schemaVersion:2},options),onSignOut,clientId:previewClientId,preview,draftState:preview?null:clientDraftForSession(),managerPreview:preview&&advisorPreviewContext,serviceEnabled:!preview});}
+    if(path.startsWith('#/client')) {const module=await import('./client/view.js');if(current!==routeSequence)return;cleanup=await module.mountClientPortal(root,{request:requests.core,mountFeature,account:preview?{displayName:'Alex'}:null,readCheckinStatus:async options=>(await featureRequestFor('checkins',{clientId:previewClientId,mode:'client'}))({action:'client_read'},options),readPaymentStatus:async options=>(await featureRequestFor('payments',{clientId:previewClientId,mode:'client'}))({action:'client_read',schemaVersion:2},options),onSignOut,clientId:previewClientId,preview,taskState:preview?null:clientDraftForSession(),managerPreview:preview&&advisorPreviewContext,serviceEnabled:!preview});}
     else {const module=await import('./advisor/workspace.js');if(current!==routeSequence)return;cleanup=module.mountAdvisorWorkspace(root,{request:requests.core,requestAdmission:requests.admission||null,requestWalkthroughs:requests.walkthroughs||null,serviceEnabled:!preview,mountFeature,onSignOut,preview,scenario:params.get('state')||'ready',initialDirectory});}
   }catch(error){
     if(current!==routeSequence)return;

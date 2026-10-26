@@ -3,7 +3,7 @@ import {createPortalDialog} from '../ui/dialog.js';
 import {defaultPlanTab,readClientLocation,clientLocationHref} from './navigation.js';
 import {downloadPlanDocument} from './plan-export.js';
 import {paymentViewWithMethods} from '../features/payments/methods.js';
-import {createCheckinDraftState} from '../features/checkins/draft-state.js';
+import {createClientTaskState} from './task-state.js';
 import {planCheckinContext} from './plan-context.js';
 import {wireProductIngredients} from './product-ingredients.js';
 import {createPreviewDisplayPlan} from '../preview/model.js';
@@ -20,18 +20,24 @@ const localCalendarDay = (date = new Date()) => `${date.getFullYear()}-${String(
 
 const itemPrice = cents => Number.isSafeInteger(cents) ? money(cents) : 'Price to be confirmed';
 
-export function mountClientPortal(root,{request,mountFeature,onSignOut,clientId=null,preview=false,readOnly=false,draft=null,previewLabel=null,managerPreview=false,avatar='A',capabilities={profile:true},productLabels={},draftState=null,readPaymentStatus=null,readCheckinStatus=null,onReady=null,now=()=>new Date(),showSampleDisclosure=true,manageHistory=true,serviceEnabled=false,tourControl=null,account=null}) {
+export function mountClientPortal(root,{request,mountFeature,onSignOut,clientId=null,preview=false,readOnly=false,draft=null,previewLabel=null,managerPreview=false,avatar='A',capabilities={profile:true},productLabels={},draftState=null,readPaymentStatus=null,readCheckinStatus=null,onReady=null,now=()=>new Date(),showSampleDisclosure=true,manageHistory=true,serviceEnabled=false,tourControl=null,account=null,taskState=null}) {
   let view=null,section='plan',planTab='recommendations',disposed=false,featureCleanup=null,pending=null,busy=false,sequence=0,readyNotified=false,interactionSuspended=false,productRef=null,accountOpen=false,paymentAttention=null,checkinAttention=null;
+  const ownsTaskState=!taskState,tasks=taskState||createClientTaskState(),scopeKey=tasks.navigationKey;
+  let navigationIndex=0,repairingHistory=false;
   const navigationKey='shelvClientNavigation',navigationScope=()=>location.pathname+'|'+(location.hash.startsWith('#/advisor')?'advisor':location.hash.startsWith('#/client')?'client':'');
   const mountedScope=navigationScope();
   const sections=()=>['plan','checkins','payments','about','history','product',...(serviceEnabled?['service']:[])];
-  const readNavigation=state=>{const entry=state?.[navigationKey];return manageHistory&&navigationScope()===mountedScope&&entry?.version===1&&entry.scope===mountedScope&&sections().includes(entry.section)&&['recommendations','routine'].includes(entry.planTab)?entry:null;};
-  const requested=readNavigation(history.state)||(manageHistory?readClientLocation(new URL(location.href)):null),restored=requested&&sections().includes(requested.section)?requested:null;if(restored){section=restored.section;planTab=restored.planTab;productRef=restored.productRef||null;}let explicitEntry=Boolean(restored);
-  function recordNavigation(push=false,{position=null}={}){if(!manageHistory)return;try{const state=history.state&&typeof history.state==='object'&&!Array.isArray(history.state)?history.state:{};const entry={version:1,scope:mountedScope,section,planTab,productRef,...(position||{})};history[push?'pushState':'replaceState']({...state,[navigationKey]:entry},'',clientLocationHref(location.href,entry));}catch{}}
-  function rememberPosition(trigger=null){recordNavigation(false,{position:{scrollY:window.scrollY,focusId:trigger?.id||null,focusProduct:trigger?.dataset.routineStep||null}});}
-  const historyChanged=event=>{const target=readNavigation(event.state)||readClientLocation(new URL(location.href));if(target)void openSection(target.section,{restore:true,planView:target.planTab,product:target.productRef,position:target});};
+  const sameDestination=(a,b)=>a?.section===b.section&&a?.planTab===b.planTab&&(a?.productRef||null)===(b?.productRef||null);
+  const readNavigation=state=>{const entry=state?.[navigationKey];if(!manageHistory||navigationScope()!==mountedScope||entry?.version!==1||entry.scope!==mountedScope||!sections().includes(entry.section)||!['recommendations','routine'].includes(entry.planTab))return null;return entry.scopeKey===scopeKey?entry:{section:entry.section,planTab:entry.planTab,productRef:entry.productRef||null};};
+  const requested=readNavigation(history.state)||(manageHistory?readClientLocation(new URL(location.href)):null),restored=requested&&sections().includes(requested.section)?requested:null;if(restored){section=restored.section;planTab=restored.planTab;productRef=restored.productRef||null;navigationIndex=Number.isSafeInteger(restored.index)?restored.index:0;}let explicitEntry=Boolean(restored);
+  function recordNavigation(push=false,{position=null}={}){if(!manageHistory)return;try{const state=history.state&&typeof history.state==='object'&&!Array.isArray(history.state)?history.state:{},destination={section,planTab,productRef},previous=readNavigation(state);if(push)navigationIndex++;const saved=!push&&previous?.scopeKey===scopeKey&&sameDestination(previous,destination)?previous:{};const entry={...saved,version:1,scope:mountedScope,scopeKey,index:navigationIndex,...destination,...(position||{})};history[push?'pushState':'replaceState']({...state,[navigationKey]:entry},'',clientLocationHref(location.href,entry));}catch{}}
+  function rememberPosition(trigger=null){const key=trigger?.dataset.routineStep,matches=key?[...root.querySelectorAll('[data-routine-step]')].filter(button=>button.dataset.routineStep===key):[];recordNavigation(false,{position:{scrollY:window.scrollY,focusId:trigger?.id||null,focusProduct:key||null,focusProductIndex:matches.indexOf(trigger)}});}
+  const historyChanged=async event=>{const target=readNavigation(event.state)||readClientLocation(new URL(location.href));if(repairingHistory){repairingHistory=false;return;}if(!target)return;const previousIndex=navigationIndex,accepted=await openSection(target.section,{restore:true,planView:target.planTab,product:target.productRef,position:target});if(accepted===false&&Number.isSafeInteger(target.index)&&target.index!==previousIndex){repairingHistory=true;history.go(previousIndex-target.index);}};
   const controller=new AbortController(),draftPlan=readOnly?createPreviewDisplayPlan(draft):null,displayPlan=()=>draftPlan||view?.plan;
-  const ownsCheckinDraft=!draftState,checkinDraft=draftState||createCheckinDraftState();
+  const checkinDraft=draftState||tasks.checkins;
+  const featurePending=()=>Boolean(featureCleanup?.hasPending?.()||tasks.payments.pending||tasks.service.pending||checkinDraft.pending);
+  const featureWriteBusy=()=>Boolean((featureCleanup?.hasPending?.()||(section==='checkins'?checkinDraft.pending:tasks[section]?.pending))&&root.querySelector('#client-feature [aria-busy="true"]'));
+  const hasUnsent=()=>Boolean(pending||featurePending()||tasks.hasUnsent()||checkinDraft.hasUnsent());
   const reviewState=new ClientReviewState(),{reviewed,expanded}=reviewState,presentation=()=>displayPlan()?.presentation?.schemaVersion===2?displayPlan().presentation:null;
   const dialogMarkup=html=>`<div class="client-dialog-header"><button class="close" data-close aria-label="Close dialog">×</button></div>${html}`;
   function showDialog(html){if(interactionSuspended||disposed)return dialog;const heading=document.createElement('div');heading.innerHTML=html;return modal.open({title:heading.querySelector('h2')?.textContent||'Plan details',content:dialogMarkup(html),trigger:document.activeElement});}
@@ -61,19 +67,19 @@ export function mountClientPortal(root,{request,mountFeature,onSignOut,clientId=
     if(accountOpen)root.querySelector('.account-menu button,.account-menu a')?.focus({preventScroll:true});
     $('#client-profile')?.addEventListener('click',()=>openSection('about'));
     root.querySelector('[data-view-tour]')?.addEventListener('click',()=>{closeAccount();tourControl.onClick();});refreshTourControl();
-    $('#client-signout')?.addEventListener('click',()=>{if(busy)return;if(pending&&!confirm('Leave before this update is confirmed? You’ll lose the option to retry the same update here.'))return;pending=null;onSignOut();});
+    $('#client-signout')?.addEventListener('click',()=>{if(busy||featureWriteBusy())return;if(hasUnsent()&&!confirm('Sign out and discard unsent changes and pending retry information?'))return;pending=null;tasks.dispose();if(draftState&&draftState!==tasks.checkins)draftState.dispose();onSignOut();});
   }
   async function openSection(next,{restore=false,planView=planTab,product=null,position=null,trigger=null}={}) {
-    if(disposed||!sections().includes(next)||!['recommendations','routine'].includes(planView))return;
-    if(busy){if(restore)recordNavigation();return;}
-    if(!view){if(restore){section=next;planTab=planView;}return;}
-    if(pending&&!confirm('Leave before this update is confirmed? You’ll lose the option to retry the same update here.')){if(restore)recordNavigation();return;}
-    if(!restore)rememberPosition(trigger||document.activeElement);const changed=section!==next||planTab!==planView||productRef!==product;if(restore&&!changed)return;
+    if(disposed||tasks.closed||!sections().includes(next)||!['recommendations','routine'].includes(planView))return false;
+    if(busy||featureWriteBusy())return false;
+    if(!view)return false;
+    if(pending&&!confirm('Leave before this update is confirmed? You’ll lose the option to retry the same update here.'))return false;
+    if(!restore)rememberPosition(trigger||document.activeElement);const changed=section!==next||planTab!==planView||productRef!==product;if(restore&&!changed)return true;if(restore&&Number.isSafeInteger(position?.index))navigationIndex=position.index;
     closeAccount();pending=null;++sequence;featureCleanup?.();featureCleanup=null;section=next;planTab=planView;productRef=product;explicitEntry=true;if(changed&&!restore)recordNavigation(true,{position:{fromPortal:true}});dialog.close();
     if(next==='plan')await load();else render();
-    if(disposed||section!==next||accountOpen)return;
-    window.scrollTo({top:restore&&position?position.scrollY||0:0,behavior:'instant'});if(restore&&position){const focus=position.focusId?document.getElementById(position.focusId):position.focusProduct?[...root.querySelectorAll('[data-routine-step]')].find(el=>el.dataset.routineStep===position.focusProduct):null;if(focus){focus.focus({preventScroll:true});return;}}const heading=$('.workspace>header h1');
-    if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
+    if(disposed||section!==next||accountOpen)return true;
+    window.scrollTo({top:restore&&position?position.scrollY||0:0,behavior:'instant'});if(restore&&position){const focus=position.focusId?document.getElementById(position.focusId):position.focusProduct?[...root.querySelectorAll('[data-routine-step]')].filter(el=>el.dataset.routineStep===position.focusProduct)[Math.max(0,position.focusProductIndex||0)]:null;if(focus){focus.focus({preventScroll:true});return true;}}const heading=$('.workspace>header h1');
+    if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}return true;
   }
   async function load() {
     frame('<div class="advisor-loading" role="status">Loading your plan…</div>');const current=++sequence;
@@ -182,13 +188,13 @@ export function mountClientPortal(root,{request,mountFeature,onSignOut,clientId=
   async function renderFeature() {
     const host=$('#client-feature');host.innerHTML=`<div class="advisor-loading" role="status">${section==='payments'?'Loading payment details…':section==='service'?'Loading service details…':'Loading check-ins…'}</div>`;
     const active=section,featureSequence=sequence;
-    try {const cleanup=await mountFeature(section,host,{clientId,mode:'client',...(section==='checkins'?{draftState:checkinDraft}:{}),planContext:planCheckinContext(view),canWrite:!readOnly,readOnly,showSampleDisclosure,now,clientView:view,getClientView:read,displayName:accountName(),productLabels:{...Object.fromEntries((view.plan?.recommendations||[]).map(item=>[item.id,catalog[item.proposedProductId]?.name||item.proposedProductId])),...productLabels},...(view.schemaVersion===2?{productDescriptor:(version,id)=>productDescriptor(view,version,id)}:{})});if(disposed||active!==section||featureSequence!==sequence)cleanup?.();else featureCleanup=cleanup;}
+    try {const cleanup=await mountFeature(section,host,{clientId,mode:'client',...(section==='checkins'?{draftState:checkinDraft}:section==='payments'?{taskState:tasks.payments}:section==='service'?{taskState:tasks.service}:{}),planContext:planCheckinContext(view),canWrite:!readOnly,readOnly,showSampleDisclosure,now,clientView:view,getClientView:read,displayName:accountName(),productLabels:{...Object.fromEntries((view.plan?.recommendations||[]).map(item=>[item.id,catalog[item.proposedProductId]?.name||item.proposedProductId])),...productLabels},...(view.schemaVersion===2?{productDescriptor:(version,id)=>productDescriptor(view,version,id)}:{})});if(disposed||active!==section||featureSequence!==sequence)cleanup?.();else featureCleanup=cleanup;}
     catch(error){if(disposed||active!==section||featureSequence!==sequence)return;host.innerHTML=`<div class="advisor-empty" role="alert"><h2>${section==='payments'?'Payments':section==='service'?'Your service':'Check-ins'} unavailable</h2><p>This section couldn’t load. Try again.</p><button class="quiet" id="retry-client-feature">Try again</button></div>`;host.querySelector('#retry-client-feature').onclick=renderFeature;}
   }
   const imageError=event=>{const img=event.target;if(img.tagName!=='IMG'||img.dataset.failed)return;img.dataset.failed='true';img.hidden=true;const label=document.createElement('span');label.className='product-image-placeholder';label.textContent='Image unavailable';label.setAttribute('role','img');label.setAttribute('aria-label',img.alt?img.alt+' · image unavailable':'Product image unavailable');img.after(label);};root.addEventListener('error',imageError,true);dialog.addEventListener('error',imageError,true);
   function navigate(next,planView){return next==='routine'?openSection('plan',{planView:'routine'}):openSection(next,{planView:planView||'recommendations'});}
-  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&accountOpen){event.preventDefault();closeAccount(true);}},{signal:controller.signal});document.addEventListener('pointerdown',event=>{if(accountOpen&&!event.target.closest('.client-profile-footer'))closeAccount();},{signal:controller.signal});if(manageHistory)window.addEventListener('popstate',historyChanged);load();
-  const cleanup=()=>{root.removeEventListener('error',imageError,true);dialog.removeEventListener('error',imageError,true);disposed=true;bannerObserver.disconnect();window.removeEventListener('resize',syncBanner);window.removeEventListener('popstate',historyChanged);controller.abort();++sequence;featureCleanup?.();if(ownsCheckinDraft)checkinDraft.dispose();modal.dispose();root.innerHTML='';};
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&accountOpen){event.preventDefault();closeAccount(true);}},{signal:controller.signal});document.addEventListener('pointerdown',event=>{if(accountOpen&&!event.target.closest('.client-profile-footer'))closeAccount();},{signal:controller.signal});const beforeUnload=event=>{if(hasUnsent()){event.preventDefault();event.returnValue='';}};window.addEventListener('beforeunload',beforeUnload);if(manageHistory)window.addEventListener('popstate',historyChanged);load();
+  const cleanup=()=>{root.removeEventListener('error',imageError,true);dialog.removeEventListener('error',imageError,true);disposed=true;bannerObserver.disconnect();window.removeEventListener('resize',syncBanner);window.removeEventListener('popstate',historyChanged);window.removeEventListener('beforeunload',beforeUnload);controller.abort();++sequence;featureCleanup?.();if(ownsTaskState)tasks.dispose();modal.dispose();root.innerHTML='';};
   // The caller can suspend this mount's body-level modal without affecting any
   // other portal or dialog. A successful check leaves it closed for reopening.
   cleanup.setInteractionSuspended=value=>{if(disposed)return;interactionSuspended=value===true;dialog.inert=interactionSuspended;if(interactionSuspended)dialog.close();};

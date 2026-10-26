@@ -86,12 +86,12 @@ function usageMarkup(usage, heading = 'When to use it', guides = []) {
   const instructions = list(usage.instructions).filter(instruction => !represented.has(instruction));
   const shorts = list(usage.periods).filter(period => usage.short?.[period]);
   if (!instructions.length && !shorts.length) return '';
-  return `<section class="product-how"><h3>${esc(heading)}</h3>${shorts.map(period => `<p><strong>${esc(title(period))}</strong> · ${plain(usage.short[period])}</p>`).join('')}${instructions.length ? `<ol>${instructions.map(instruction => `<li>${plain(instruction)}</li>`).join('')}</ol>` : ''}</section>`;
+  return `<section class="product-how">${heading?`<h3>${esc(heading)}</h3>`:''}${shorts.map(period => `<p><strong>${esc(title(period))}</strong> · ${plain(usage.short[period])}</p>`).join('')}${instructions.length ? `<ol>${instructions.map(instruction => `<li>${plain(instruction)}</li>`).join('')}</ol>` : ''}</section>`;
 }
 
 function directionsMarkup(usage, guides, {heading = 'How to use it', product = null} = {}) {
-  const excludedSources=new Set([safeContentUrl(product?.productUrl)].filter(Boolean));
-  return `<section class="client-product-guidance"><h3>${esc(heading)}</h3>${usageMarkup(usage, 'When to use it', guides)}${list(guides).map(guide=>{const html=guideMarkup({...guide,title:/^how to use it$/i.test(guide.title)?'Application steps':guide.title},4,{excludedSources,omitTitle:guide.title===heading});for(const source of list(guide.sources))excludedSources.add(safeContentUrl(source.url));return html;}).join('')}</section>`;
+  const excludedSources=new Set([safeContentUrl(product?.productUrl)].filter(Boolean)),separateGuide=list(guides).some(guide=>guide.title&&guide.title!==heading&&!/^how to use it$/i.test(guide.title));
+  return `<section class="client-product-guidance"><h3>${esc(heading)}</h3>${usageMarkup(usage, separateGuide?'When to use it':null, guides)}${list(guides).map(guide=>{const html=guideMarkup({...guide,title:/^how to use it$/i.test(guide.title)?'Application steps':guide.title},4,{excludedSources,omitTitle:guide.title===heading});for(const source of list(guide.sources))excludedSources.add(safeContentUrl(source.url));return html;}).join('')}</section>`;
 }
 
 function heroMarkup(card) {
