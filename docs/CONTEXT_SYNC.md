@@ -1,5 +1,11 @@
 # Shelv Cross-Agent Context Sync Ledger
 
+## 2026-10-26: task-first portal UX candidate, local verification
+
+[PR 209](https://github.com/KanujVerma/shelv/pull/209) reconciles the newer walkthrough/service/tour source through six exact SHA-preserving cherry-picks, then implements shared vanilla UI foundations, task-first client navigation, practical product pages, semantic HTML exports, account identity and advisor task/history/draft continuity. Final application source is `2539d0729bffcb32318add72575a1e28168a1a9d`. All six independent findings are closed with specification/quality PASS for advisor `d79e680`, client `163754e` and shared-focus `2539d07` correction waves. Exact local integration results, browser scope and the two environment-blocked optional HTTP/SQL cases are recorded in the delivery report.
+
+[UX delivery](PORTAL_UX_DELIVERY.md) owns the ten delivery items, bounded research/tool use, matched synthetic screenshots, exact checks and limits. [Source provenance](PORTAL_SOURCE_PROVENANCE.md) owns lineage and the local-only own-name migration; [UI system](PORTAL_UI_SYSTEM.md) owns reuse/copy rules. Founder operations remain canonical for business policy. The primary dirty checkout is preserved. No hosted migration, callback acceptance, real/private client access, provider transaction, message, permission change, merge or deployment occurred. Earlier deployed-release entries below retain their original scope.
+
 ## 2026-10-25: interactive Maya tour deployed and verified
 
 The approved company-branded Maya redesign is deployed from `b22436f58e32ea21668dd350269b46227669ab43` on Pages `17546896-f89f-4300-b9f8-252a4734984c`. It introduces Shelv before the sample, uses seven anchored pop-ups with optional real portal details, auto-shows once per browser, fully exits and explicitly replays from a quiet View tour button. Active same-tab refresh resumes. Ordinary Maya/Alex and private guides remain intact. Portal typography/components are reused.

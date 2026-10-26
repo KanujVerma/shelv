@@ -2,6 +2,10 @@
 
 Owner: Kanuj
 
+## Local UX candidate, 26 October 2026
+
+[UX delivery](PORTAL_UX_DELIVERY.md) records the task-first client/advisor candidate on [PR 209](https://github.com/KanujVerma/shelv/pull/209), including shared components/tokens, necessary-copy rules, matched synthetic screenshots, exact verification scopes and remaining gates. Application source is frozen at `2539d0729bffcb32318add72575a1e28168a1a9d`; all six independent findings are closed with specification/quality PASS for the scoped corrections. Local integration and browser results, including two environment-blocked optional HTTP/SQL cases, are recorded in the delivery report. This is not a hosted release. The deployed evidence below retains its original scope. [Founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) remains the operating-policy register.
+
 Business-policy update, 25 October 2026: [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) is the canonical current register of agreed terms, responsibilities, requested work and unresolved questions. The implementation/test results below retain their original release scope; newly agreed policy is not evidence of new code or deployment.
 
 The approved walkthrough/service release is deployed at [portal.goshelv.com](https://portal.goshelv.com), with bounded public, anonymous guest and dedicated maintenance-advisor acceptance passed on 25 October 2026, America/Chicago. Ordinary authenticated client-owner hosted acceptance was not run. [Release result](PORTAL_RELEASE_RESULT.md) records actual deployment/commit mappings and limitations. [Source provenance](PORTAL_SOURCE_PROVENANCE.md) records lineage; [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) records daily work. No Git merge occurred.

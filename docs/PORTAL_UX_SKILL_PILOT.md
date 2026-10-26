@@ -1,6 +1,10 @@
 # Shelv concierge portal: Claude UX skill pilot
 
-**Scope:** `apps/portal/` web concierge, on top of the Oct 25 concierge-decision branch. The scanner-first Expo mobile app is a separate surface. This is a source-grounded UX hypothesis and test plan, **not** a completed browser/usability study, code refactor, local Claude installation, PR merge or hosted release.
+**Scope:** `apps/portal/` web concierge, on top of the Oct 25 concierge-decision branch. The scanner-first Expo mobile app is a separate surface. The original pilot record below is a source-grounded hypothesis and experiment plan. Its historical preparation limits are preserved.
+
+## Execution update, 26 October 2026
+
+[UX delivery](PORTAL_UX_DELIVERY.md) records implementation and actual local synthetic browser evidence on [PR 209](https://github.com/KanujVerma/shelv/pull/209), frozen at application source `2539d07`. The native UX/polish skills and selected Impeccable/Taste prompt methods were used manually; the official interactive Playwright CLI ran through existing Playwright 1.64.1. Formal Impeccable detector and Taste inspector/lint/draw runs remain unrun. No third-party installer, global hooks, React or animation dependency was added. designlang/Transitions were research-only; React Bits/GSAP were deferred. All six independent findings are closed with specification/quality PASS for the scoped corrections; exact integrated results remain in the delivery record. The candidate has not been merged or deployed.
 
 ## Decision: task-first audit before visual polish
 
@@ -30,7 +34,7 @@ These are the identifiable source repos, **not evidence that the creator used th
 
 ### Safe experiment order and commands
 
-**Phase 0: baseline (existing repo tooling).** Use one of the active portal branches, not the historical mobile-only `main` tree. Run the existing `apps/portal` test suite and synthetic browser harness to capture *current* user journeys at 320, 390 and 1440px. Record before screenshots and click paths. This documentation PR itself does not execute those commands.
+**Phase 0: baseline (existing repo tooling).** Use one of the active portal branches, not the historical mobile-only `main` tree. Run the existing `apps/portal` test suite and synthetic browser harness to capture *current* user journeys at 320, 390 and 1440px. Record before screenshots and click paths. The original documentation-only pilot did not execute those commands.
 
 **Phase 1: task comprehension (project skills).** Use `shelv-ux-review` to map routes and identify the first misleading action; use `shelv-design-polish` to improve clarity, hierarchy and copy with no new framework or dependency. The skills are checked-in Claude Code project skills; no external install is required to read them.
 
@@ -62,7 +66,7 @@ Taste's current version requires Node 22+ and a browser for its own visual check
 
 **Phase 5: references and motion only if needed.** For *public* design analysis, `npx designlang https://linear.app` is a representative command, not an instruction to copy Linear or overwrite Shelv's `AGENTS.md`. If a confirmed motion problem remains, use `npx skills add Jakubantalik/transitions.dev` only in the local trial, inspect the generated changes and apply one restrained CSS recipe with reduced-motion behavior. React Bits and GSAP do not enter the portal's dependency tree in this trial.
 
-**Guardrail:** A skill recommendation is not an executable dependency. Only `shelv-ux-review` and `shelv-design-polish` are committed here. External third-party plugin, executable, hook, npm install, CLI browser run or design extractor has **not** been installed or used. No actual user-completion percentages or hosted acceptance can be inferred from a source-based critique.
+**Original pilot guardrail:** A skill recommendation is not an executable dependency. At preparation, only `shelv-ux-review` and `shelv-design-polish` were committed. No external third-party plugin, executable, hook, npm install, CLI browser run or design extractor had been installed or used by that documentation work. The dated execution update above carries later browser/method evidence. No actual user-completion percentages or hosted acceptance can be inferred from a source-based critique.
 
 ## Source-based findings to test, not reported bugs
 
@@ -108,6 +112,6 @@ Use a checked-out branch of `apps/portal` with Node >=22.23.0. Build or run the 
 
 > Use the project skill **shelv-ux-review** to inspect the current `apps/portal` branch. First perform a source-grounded information-architecture audit and novice cognitive walkthrough of Clients → Consultation → Plan draft → Preview and client Your plan → Recommendations → quote choice → Daily routine. Also review Check-ins and the sample-plan entry points. Rank confusing routes and redundant copy, with exact file evidence. Implement only the highest-value reversible navigation/copy fix after showing why it reduces confusion. Run synthetic browser clickthrough at 320, 390 and 1440px and relevant portal test/build commands, then report exactly what passed and what was not run. Keep the existing cream/forest-green editorial design and all commercial, clinical, payment, privacy and publication boundaries. Do not deploy, merge or touch real clients.
 
-## Current evidence boundary (Oct 26, 2026)
+## Original pilot-preparation boundary (Oct 26, 2026)
 
-Two original project-native Claude skills and portal agent instructions are prepared in GitHub on a **separate draft branch stacked on PR #207**; the seven third-party projects were researched but not installed. No local checkout, actual Claude run, browser observation, new user study, root/portal CI run, hosted change, release or merge was performed as part of preparing this documentation. Validate these steps before treating the skill as proven.
+Two original project-native Claude skills and portal agent instructions were prepared in GitHub on a **separate draft branch stacked on PR #207**; the seven third-party projects were researched but not installed. No local checkout, actual Claude run, browser observation, new user study, root/portal CI run, hosted change, release or merge was performed as part of preparing that documentation. The dated execution update above and delivery record carry later evidence; no user study or hosted UX release is implied.

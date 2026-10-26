@@ -1,6 +1,25 @@
 # Portal source provenance
 
-## Current Maya tour source, 25 October 2026
+## Local UX candidate lineage, 26 October 2026
+
+[PR 209](https://github.com/KanujVerma/shelv/pull/209), `codex/shelv-ux-skill-pilot-20261026`, began at `bc4568e4e3af0936fd027351002f65b77512e00d` on the unmerged PR 207/206 stack. It did not yet include the later PR 208 walkthrough/service/tour source. Six exact `cherry-pick -x` operations reconciled that source through `de698807e8affefad45f5355f078525990744a67`; their original SHA trailers are retained:
+
+| Original PR 208 commit | Reconciled PR 209 commit |
+| --- | --- |
+| `87ad5a9c1e467a3dbc8a2ecfa1edd9b8e266e410` | `dd31397` |
+| `0d5e6f784cb652fafef89f151b5c23e348d10798` | `93b3754` |
+| `44c3d371fe63aaf23a64b87d0ef459ecc85343d4` | `589602a` |
+| `db6b8e9e52d5cf28f8e82c4ccd3a75d505cebf95` | `202378f` |
+| `b22436f58e32ea21668dd350269b46227669ab43` | `c7ba4c4` |
+| `2901f6c150b184bf0e1db9ca15e2a01be4dfcfb2` | `de69880` |
+
+The local UX checkpoints are shared foundations `45b539b`, hover/menu corrections `457a243`/`fc43ffe`, advisor `038f82e`, client `e4baacd`, advisor correction `d79e680`, client correction `163754e` and final shared-focus correction `2539d0729bffcb32318add72575a1e28168a1a9d`. All six independent findings are closed with specification/quality PASS for the scoped corrections. [UX delivery](PORTAL_UX_DELIVERY.md) owns the changes, research revisions, screenshot provenance, verification results and limitations; it must not be read as a deployment receipt. The primary dirty checkout remains preserved.
+
+The final local build from `2539d07` has 132 packaged assets and client/advisor/walkthrough gateway routes. ZIP SHA-256: `307472c8b6836ae5858d625cd6b0e36748cf8f8b32054967af38b862b2062875`; vault SHA-256: `12ccdf38776e434a5e53233cf3806d755e8cf50a1cd028e8989fe5dd73b99126`. The final verification digest is `ac4f96f16c08d19bbc51c7a2673fe6bca743b5487e48164e3a1c1685463739ab`, covering `apps/portal/site` plus `session-integration/runtime/server` and `workers`; the exact Git commit separately identifies complete source. The build reports `productionDeploymentChanged:false`. Documentation-only commits do not replace this application freeze.
+
+Forward source `supabase/migrations/20261026185922_concierge_client_account_display_name.sql`, SHA-256 `ebfc7b5782bb95b0b9ad6c37044f53ce14e3f7973d2893809a3447f60dae5edd`, adds only the actor's optional enrollment display name to the existing guarded client read. It was tested locally and **not applied hosted**. Hosted callback acceptance for the bounded auth continuation is also unrun. No hosted application, permissions, business records or deployment were changed by this UX candidate.
+
+## Latest hosted Maya tour source, 25 October 2026
 
 The current public application source is [b22436f58e32ea21668dd350269b46227669ab43](https://github.com/KanujVerma/shelv/commit/b22436f58e32ea21668dd350269b46227669ab43), on the existing `codex/walkthroughs-service-20261025` branch and unmerged PR 206/207/208 lineage. Pages `17546896-f89f-4300-b9f8-252a4734984c` serves the reviewed 123-entry package, with all 120 public files matched exactly. ZIP SHA-256 is `e5a4c04bee3213826155fc7c55aad72665e14d456915c01af5e56a6f59b10d49`; build manifest SHA-256 is `15d239c82ee1f56a2f0061d740ed9bdb4ba3e459ba94aa253db6d828896bbfd0`. The later release-record commit changes documentation only.
 
