@@ -21,18 +21,22 @@ async function fixture(width,url,run){const context=await browser.newContext({vi
 async function appearance(page,selector,properties){return page.locator(selector).first().evaluate((e,keys)=>{const s=getComputedStyle(e);return Object.fromEntries(keys.map(k=>[k,s[k]]));},properties);}
 const typography=['fontFamily','fontSize','fontWeight','lineHeight','letterSpacing'],buttonStyle=[...typography,'borderRadius','backgroundColor','color','borderTopColor','borderTopWidth'],panelStyle=['backgroundColor','color','borderRadius','borderTopColor','borderTopWidth','paddingTop','paddingRight','paddingBottom','paddingLeft'],fieldStyle=[...typography,'borderRadius','backgroundColor','color','borderTopColor','borderTopWidth','paddingTop','paddingRight','paddingBottom','paddingLeft'];
 for(const width of [320,390,768,1440]){
- test(`guide reuses portal typography, buttons and message panels at ${width}px`,async()=>fixture(width,'/maya/?guided=1',async page=>{
-  await page.locator('[data-presentation-card] h2').first().waitFor();const guide=page.locator('.walkthrough-guide');
-  await page.evaluate(()=>{const h=document.createElement('h2');h.id='reference-portal-heading';h.textContent='Shared portal heading';document.querySelector('.walkthrough-portal .workspace').append(h);});
-  const heading=await appearance(page,'.walkthrough-guide h2',typography),portalHeading=await appearance(page,'#reference-portal-heading',typography);assert.deepEqual(heading,portalHeading);assert.equal(heading.fontFamily,(await appearance(page,'[data-presentation-card] h2',['fontFamily'])).fontFamily);await page.locator('#reference-portal-heading').evaluate(e=>e.remove());
-  const primary=await appearance(page,'.walkthrough-controls .solid',buttonStyle),portalPrimary=await appearance(page,'[data-approve].solid',buttonStyle);assert.deepEqual(primary,portalPrimary);
-  const secondary=await appearance(page,'.walkthrough-controls .quiet:not(:disabled)',buttonStyle),portalSecondary=await appearance(page,'#download-plan.quiet',buttonStyle);assert.deepEqual(secondary,portalSecondary);
+ test(`welcome and anchored callouts reuse portal typography, buttons and panels at ${width}px`,async()=>fixture(width,'/maya/?guided=1',async page=>{
+  await page.locator('[data-presentation-card] h2').first().waitFor();const welcome=page.getByRole('dialog',{name:'See how Shelv works'}),guide=page.locator('.maya-tour-popover');await welcome.waitFor();
+  await page.evaluate(()=>{const ref=document.createElement('section');ref.id='reference-panel';ref.className='advisor-panel';const heading=document.createElement('h2');heading.id='reference-portal-heading';heading.textContent='Shared portal heading';ref.append(heading);document.body.append(ref);});
+  const portalHeading=await appearance(page,'#reference-portal-heading',typography),welcomeHeading=await appearance(page,'.maya-tour-welcome h2',typography);assert.deepEqual(welcomeHeading,portalHeading);assert.equal(welcomeHeading.fontFamily,(await appearance(page,'[data-presentation-card] h2',['fontFamily'])).fontFamily);
+  const portalPrimary=await appearance(page,'[data-approve].solid',buttonStyle),welcomePrimary=await appearance(page,'.maya-tour-dialog-controls .solid',buttonStyle);assert.deepEqual(welcomePrimary,portalPrimary);
+  const portalSecondary=await appearance(page,'#download-plan.quiet',buttonStyle),welcomeSecondary=await appearance(page,'.maya-tour-dialog-controls .quiet',buttonStyle);assert.deepEqual(welcomeSecondary,portalSecondary);
+  for(const rect of await welcome.locator('button').evaluateAll(es=>es.map(e=>({width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height}))))assert.ok(rect.width>=44&&rect.height>=44);
+  await page.screenshot({path:path.join(out,`guide-welcome-${width}.png`)});await welcome.getByRole('button',{name:'Start tour',exact:true}).click();await guide.waitFor();
+  const heading=await appearance(page,'.maya-tour-popover h2',typography);assert.deepEqual(heading,portalHeading);
+  const primary=await appearance(page,'.maya-tour-controls .solid',buttonStyle);assert.deepEqual(primary,portalPrimary);
+  const secondary=await appearance(page,'.maya-tour-controls .quiet:not(:disabled)',buttonStyle);assert.deepEqual(secondary,portalSecondary);
+  const panel=await appearance(page,'.maya-tour-popover',panelStyle),sharedPanel=await appearance(page,'#reference-panel',panelStyle);assert.deepEqual(panel,sharedPanel);
   for(const rect of await guide.locator('button').evaluateAll(es=>es.map(e=>({width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height}))))assert.ok(rect.width>=44&&rect.height>=44);
-  await page.screenshot({path:path.join(out,`guide-${width}.png`)});
-  await page.evaluate(()=>{const p=new URLSearchParams(location.hash.slice(1));p.set('step','interim-question');location.hash=p.toString();});await page.locator('.walkthrough-message').first().waitFor();
-  await page.evaluate(()=>{const ref=document.createElement('section');ref.id='reference-panel';ref.className='advisor-panel';ref.textContent='Shared portal panel';document.body.append(ref);});
-  const messagePanel=await appearance(page,'.walkthrough-message',panelStyle),sharedPanel=await appearance(page,'#reference-panel',panelStyle);assert.deepEqual(messagePanel,sharedPanel);
-  await page.screenshot({path:path.join(out,`guide-message-${width}.png`)});await fs.writeFile(path.join(out,`guide-${width}-styles.json`),JSON.stringify({heading,portalHeading,primary,portalPrimary,secondary,portalSecondary,messagePanel,sharedPanel},null,2)+'\n');
+  await page.locator('#reference-panel').evaluate(e=>e.remove());await page.screenshot({path:path.join(out,`guide-${width}.png`)});
+  await page.evaluate(()=>{const p=new URLSearchParams(location.hash.slice(1));p.set('step','between-reviews');location.hash=p.toString();});await page.locator('.maya-tour-message').first().waitFor();assert.equal(await page.locator('.maya-tour-message').count(),2);
+  await page.screenshot({path:path.join(out,`guide-message-${width}.png`)});await fs.writeFile(path.join(out,`guide-${width}-styles.json`),JSON.stringify({welcomeHeading,heading,portalHeading,welcomePrimary,primary,portalPrimary,welcomeSecondary,secondary,portalSecondary,panel,sharedPanel},null,2)+'\n');
  }));
  test(`service reuses shared panels, form controls and buttons at ${width}px`,async()=>fixture(width,'/neutral-service-ui',async page=>{
   await page.locator('.shelv-service[aria-busy=false]').waitFor();await page.getByText('Record a conversation review',{exact:true}).click();const form=page.locator('.service-form').first();await form.locator('textarea').first().waitFor();

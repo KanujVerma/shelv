@@ -16,7 +16,7 @@ const localCalendarDay = (date = new Date()) => `${date.getFullYear()}-${String(
 
 const itemPrice = cents => Number.isSafeInteger(cents) ? money(cents) : 'Price to be confirmed';
 
-export function mountClientPortal(root,{request,mountFeature,onSignOut,clientId=null,preview=false,readOnly=false,draft=null,previewLabel=null,managerPreview=false,avatar='A',capabilities={profile:true},productLabels={},draftState=null,readPaymentStatus=null,onReady=null,now=()=>new Date(),showSampleDisclosure=true,manageHistory=true,serviceEnabled=false}) {
+export function mountClientPortal(root,{request,mountFeature,onSignOut,clientId=null,preview=false,readOnly=false,draft=null,previewLabel=null,managerPreview=false,avatar='A',capabilities={profile:true},productLabels={},draftState=null,readPaymentStatus=null,onReady=null,now=()=>new Date(),showSampleDisclosure=true,manageHistory=true,serviceEnabled=false,tourControl=null}) {
   let view=null,section='plan',planTab='recommendations',disposed=false,featureCleanup=null,pending=null,busy=false,sequence=0,readyNotified=false,interactionSuspended=false;
   const navigationKey='shelvClientNavigation',navigationScope=()=>location.pathname+'|'+(location.hash.startsWith('#/advisor')?'advisor':location.hash.startsWith('#/client')?'client':'');
   const mountedScope=navigationScope();
@@ -31,6 +31,10 @@ export function mountClientPortal(root,{request,mountFeature,onSignOut,clientId=
   const dialogMarkup=html=>`<div class="client-dialog-header"><button class="close" data-close aria-label="Close dialog">×</button></div>${html}`;
   function showDialog(html){if(interactionSuspended||disposed)return dialog;dialog.innerHTML=dialogMarkup(html);if(!dialog.open)dialog.showModal();dialog.querySelector('h2')?.focus();return dialog;}
   function productDetail(key){const p=presentation(),card=p?.categoryCards.find(card=>card.id===key);if(!card)return;showDialog(presentationCardDetail(card)+presentationGuidesMarkup(p.routineGuides.filter(guide=>guide.productId!==null&&guide.productId===(card.proposedProduct||card.currentProduct)?.id)));wireIngredientGuide(dialog,showDialog,()=>productDetail(key));return dialog;}
+  function openOverview(){return showDialog(presentationConsultationMarkup(presentation(),{includeProfile:capabilities.profile!==false}));}
+  function openRoutineProduct(key){const open=()=>{showDialog(presentationRoutineDetail(view,key));wireIngredientGuide(dialog,showDialog,open);return dialog;};return open();}
+  function selectCategory(group){if(busy||pending||interactionSuspended)return;const tabs=[...root.querySelectorAll('[data-category]')],tab=tabs.find(el=>el.dataset.category===group);if(!tab)return;tabs.forEach(el=>el.setAttribute('aria-pressed',String(el===tab)));const panel=[...root.querySelectorAll('.feed-item')].find(el=>el.id===group+'-panel');panel?.scrollIntoView({behavior:'instant',block:'start'});panel?.focus({preventScroll:true});}
+  function refreshTourControl(){if(!tourControl||disposed)return;const header=root.querySelector('.workspace>header');if(!header)return;let launcher=header.querySelector('[data-view-tour]');if(!launcher){let actions=header.querySelector('.header-actions');if(!actions){actions=document.createElement('div');actions.className='header-actions';header.append(actions);}launcher=document.createElement('button');launcher.type='button';launcher.className='quiet';launcher.dataset.viewTour='';launcher.textContent='View tour';launcher.addEventListener('click',()=>tourControl.onClick());actions.prepend(launcher);}launcher.hidden=tourControl.visible?.()===false;launcher.style.display=launcher.hidden?'none':'';}
   const $=s=>root.querySelector(s),read=()=>request({action:'client_read_v2'},{signal:controller.signal});
   const dialog=document.createElement('dialog');dialog.className='advisor-dialog client-dialog';document.body.append(dialog);
   dialog.addEventListener('click',event=>{if(event.target.dataset.close!==undefined)dialog.close();});
@@ -44,7 +48,8 @@ export function mountClientPortal(root,{request,mountFeature,onSignOut,clientId=
     root.innerHTML=`<div class="portal client-portal"><aside class="navigation"><a href="#/client" class="wordmark" aria-label="Shelv concierge"><img src="${new URL('../assets/shelv-mark.png',import.meta.url).href}" alt="Shelv" width="32" height="32"><span class="brand-copy"><b>Shelv</b><small>concierge</small></span></a><nav aria-label="Portal"><button id="client-plan" class="nav-item ${section==='plan'?'active':''}"><span aria-hidden="true">▤</span> Your plan</button><button id="client-checkins" class="nav-item ${section==='checkins'?'active':''}"><span aria-hidden="true">◷</span> Check-ins</button><button id="client-payments" class="nav-item ${section==='payments'?'active':''}"><span aria-hidden="true">○</span> Payments</button>${serviceEnabled?'<button id="client-service" class="nav-item">Your service</button>':''}${presentation()&&(presentation().summary||capabilities.profile!==false&&presentation().consultationSections?.length)?'<button id="client-profile" class="nav-item"><span aria-hidden="true">○</span> Plan overview</button>':''}</nav><div class="client-profile-footer"><div class="member" ${!presentation()?'hidden':''}><span class="avatar">${esc(avatar)}</span><div>${esc(presentation()?.title.replace(/[’']s plan$/,'')||'')}<small>Monthly concierge</small></div></div>${!preview?'<a class="quiet" href="https://derive-beta-site.vercel.app/support" target="_blank" rel="noopener noreferrer">Get help</a>':''}${!preview||managerPreview?`<button class="quiet advisor-signout" id="client-signout">${preview?'Exit preview':'Sign out'}</button>`:''}</div></aside><div class="workspace">${previewLabel||draftPlan?`<div class="plan-meta preview-label" role="note"><span data-preview-label>${esc(draftPlan?'Unpublished':previewLabel)}</span>${draftPlan?`<small data-preview-revision>Saved revision ${draft.savedRevision}</small>`:''}</div>`:''}${content}</div></div>`;
     for(const s of sections())$('#client-'+s).onclick=()=>openSection(s);
     if(!manageHistory)root.querySelector('.wordmark').onclick=event=>{event.preventDefault();void navigate('plan');};
-    $('#client-profile')?.addEventListener('click',()=>showDialog(presentationConsultationMarkup(presentation(),{includeProfile:capabilities.profile!==false})));
+    $('#client-profile')?.addEventListener('click',openOverview);
+    refreshTourControl();
     $('#client-signout')?.addEventListener('click',()=>{if(busy)return;if(pending&&!confirm('Leave before this update is confirmed? You’ll lose the option to retry the same update here.'))return;pending=null;onSignOut();});
   }
   async function openSection(next,{restore=false,planView=planTab}={}) {
@@ -61,7 +66,7 @@ export function mountClientPortal(root,{request,mountFeature,onSignOut,clientId=
   }
   async function load() {
     frame('<div class="advisor-loading" role="status">Loading your plan…</div>');const current=++sequence;
-    try {const result=await read();if(disposed||current!==sequence)return;reviewState.accept(result.plan);view=result;render();if(!readyNotified){readyNotified=true;onReady?.({navigate,downloadPlan});}}
+    try {const result=await read();if(disposed||current!==sequence)return;reviewState.accept(result.plan);view=result;render();if(!readyNotified){readyNotified=true;onReady?.({navigate,downloadPlan,openOverview,openProduct:productDetail,openRoutineProduct,openCart:showCart,closeDialog:()=>dialog.close(),getDialog:()=>dialog,selectCategory});}}
     catch(error){if(disposed||current!==sequence)return;frame(`<div class="advisor-empty" role="alert"><h1>${error.status===403?'Invitation access required':'Your plan couldn’t load'}</h1><p>${esc(error.message)}</p><button class="solid" id="retry-client-plan">Try again</button></div>`);$('#retry-client-plan').onclick=load;}
   }
   function render() {
@@ -86,7 +91,7 @@ export function mountClientPortal(root,{request,mountFeature,onSignOut,clientId=
         card?.scrollIntoView({block:'start',behavior:'instant'});card?.querySelector('button,input')?.focus({preventScroll:true});
       });
       content.querySelectorAll('[data-legacy-product]').forEach(button=>button.onclick=()=>{const open=()=>{showDialog(legacyRoutineProductDetail(view,button.dataset.legacySlot,button.dataset.legacyProduct));wireIngredientGuide(dialog,showDialog,open);return dialog;};open();});
-      content.querySelectorAll('[data-routine-step]').forEach(button=>button.onclick=()=>{const open=()=>{showDialog(presentationRoutineDetail(view,button.dataset.routineStep));wireIngredientGuide(dialog,showDialog,open);return dialog;};open();});
+      content.querySelectorAll('[data-routine-step]').forEach(button=>button.onclick=()=>openRoutineProduct(button.dataset.routineStep));
       content.querySelectorAll('[data-routine-product]').forEach(button=>button.onclick=()=>{const open=()=>{showDialog(routineProductDetail(view,button.dataset.routineProduct));wireIngredientGuide(dialog,showDialog,open);return dialog;};open();});return;
     }
     content.innerHTML=`<section id="decisions-view">${!readOnly&&plan.recommendations.length?`<p class="advisor-subtitle client-choice-context">${presentation()?.categoryCards.some(card=>card.kind==='optional_alternative')?'Optional alternatives can wait. Add a product to your cart only if you want it included in a quote.':'Approve a product to include it in a quote.'}</p>`:''}${presentation()?presentationFeedMarkup(presentation(),{reviewed,expanded,readOnly}):recommendationFeedMarkup(plan,{reviewed,expanded,readOnly})}</section>${presentation()?presentationSourcesMarkup(presentation().sources):''}`;
@@ -162,5 +167,5 @@ export function mountClientPortal(root,{request,mountFeature,onSignOut,clientId=
   // The caller can suspend this mount's body-level modal without affecting any
   // other portal or dialog. A successful check leaves it closed for reopening.
   cleanup.setInteractionSuspended=value=>{if(disposed)return;interactionSuspended=value===true;dialog.inert=interactionSuspended;if(interactionSuspended)dialog.close();};
-  cleanup.navigate=navigate;return cleanup;
+  cleanup.navigate=navigate;cleanup.refreshTourControl=refreshTourControl;return cleanup;
 }

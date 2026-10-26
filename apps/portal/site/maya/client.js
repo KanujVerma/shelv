@@ -940,6 +940,6 @@ var mayaIdentity = { clientId: "00000000-0000-4000-8000-00000000a002", displayNa
 
 // src/main.js
 if(new URLSearchParams(location.search).get('guided')==='1'){
- const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('../walkthrough/guide.css',import.meta.url).href;document.head.append(stylesheet);
+ for(const name of ['tour.css']){const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('../walkthrough/'+name,import.meta.url).href;document.head.append(stylesheet);}
  const {mountGuidedMaya}=await import('../walkthrough/maya.js');mountGuidedMaya(document.querySelector('#portal-root'),{presentation:createMayaPresentation()});
 }else mountSyntheticCase(document.querySelector("#portal-root"), { identity: mayaIdentity, presentation: createMayaPresentation() });
