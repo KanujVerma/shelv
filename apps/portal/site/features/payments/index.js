@@ -7,7 +7,8 @@ export function mountPaymentsPanel(element,options){
  const {clientId,mode,request,productLabels={},productDescriptor,readOnly=false}=options;
  const canWrite=!readOnly&&options.canWrite===true,canConfirm=!readOnly&&options.canConfirm===true;
  if(!element||!['client','advisor'].includes(mode)||typeof request!=='function'||(productDescriptor!==undefined&&typeof productDescriptor!=='function'))throw Error('Invalid payments integration');
- const doc=element.ownerDocument,controller=new AbortController(),timers=new Set();let disposed=false,busy=false,view=null,pending=null,generation=0;
+ const memory=options.taskState||{pending:null,quoteDraft:null,closed:false};
+ const doc=element.ownerDocument,controller=new AbortController(),timers=new Set();let disposed=false,busy=false,view=null,generation=0;
  const uploads=new Map(),selectedOptions=new Map();
  if(!doc.querySelector('link[data-shelv-payments]')){const link=doc.createElement('link');link.rel='stylesheet';link.href=new URL('./payments.css',import.meta.url).href;link.dataset.shelvPayments='';doc.head.append(link);}
  const root=doc.createElement('section');root.className='shelv-payments';root.setAttribute('aria-label','Payments');element.replaceChildren(root);
@@ -20,28 +21,28 @@ export function mountPaymentsPanel(element,options){
  if(request.syntheticPreview===true&&options.showSampleDisclosure!==false)root.insertBefore(node('p','Synthetic preview · sample payment details.','payment-muted'),message);
  const feedback=text=>{message.textContent=text;};
  const uid=()=>globalThis.crypto.randomUUID();
- function setBusy(value){busy=value;root.setAttribute('aria-busy',String(value));root.querySelectorAll('button,input,select,textarea').forEach(control=>{control.disabled=value||control.dataset.locked==='true'||Boolean(pending&&content.contains(control));});}
+ function setBusy(value){busy=value;root.setAttribute('aria-busy',String(value));root.querySelectorAll('button,input,select,textarea').forEach(control=>{control.disabled=value||control.dataset.locked==='true'||Boolean(memory.pending&&content.contains(control));});}
  function clearRetry(){actions.replaceChildren();}
- function retryControl(){clearRetry();if(!pending)return;append(actions,button('Retry same request',()=>perform(pending),true),button('Reload latest',()=>load()));}
+ function retryControl(){clearRetry();if(!memory.pending)return;append(actions,button('Retry same request',()=>perform(memory.pending),true),button('Reload latest',()=>load()));}
  async function perform(intent){
   const permitted=intent.command?.action==='confirm_payment'?mode==='advisor'&&canConfirm:canWrite;
-  if(disposed||busy||!permitted)return;if(pending&&pending!==intent){feedback('Retry the same request or reload the latest details before another action.');return;}pending=intent;setBusy(true);clearRetry();feedback('Saving…');
+  if(disposed||memory.closed||busy||!permitted)return;if(memory.pending&&memory.pending!==intent){feedback('Retry the same request or reload the latest details before another action.');return;}memory.pending=intent;setBusy(true);clearRetry();feedback('Saving…');
   try{
-   const result=await request(intent.command,{signal:controller.signal});if(disposed)return;
+   const result=await request(intent.command,{signal:controller.signal});if(disposed||memory.closed)return;
    if(intent.kind==='upload'){
     if(result?.status!=='uploaded_unverified'||result.quoteId!==intent.quoteId||typeof result.evidenceId!=='string'||intent.paymentOptionId&&(result.schemaVersion!==2||result.paymentOptionId!==intent.paymentOptionId))throw Error('invalid_response');
-    uploads.set(intent.uploadKey||intent.quoteId,result.evidenceId);feedback('Screenshot attached privately. Payment receipt is still unverified.');pending=null;render();
+    uploads.set(intent.uploadKey||intent.quoteId,result.evidenceId);feedback('Screenshot attached privately. Payment receipt is still unverified.');memory.pending=null;render();
    }else{
     validateMethodReceipt(intent.command,result);
-    pending=null;await load(intent.command.action==='confirm_payment'?'Payment receipt confirmed.':intent.command.action==='submit_claim'?'Marked as sent. Your advisor still needs to confirm receipt in the selected receiving account.':intent.command.action==='issue_quote'?'Final quote issued.':intent.command.action==='confirm_shipping_address'?(mode==='client'?'Shipping address confirmed. New product quotes can use this address.':'Shipping address confirmed. Product quotes require this address version.'):'Claim rejected.');
+    memory.pending=null;if(intent.command.action==='issue_quote')memory.quoteDraft=null;await load(intent.command.action==='confirm_payment'?'Payment receipt confirmed.':intent.command.action==='submit_claim'?'Marked as sent. Your advisor still needs to confirm receipt in the selected receiving account.':intent.command.action==='issue_quote'?'Final quote issued.':intent.command.action==='confirm_shipping_address'?(mode==='client'?'Shipping address confirmed. New product quotes can use this address.':'Shipping address confirmed. Product quotes require this address version.'):'Claim rejected.');
    }
-  }catch(error){if(disposed)return;feedback(publicError(error));if([400,401,403,409,413,415].includes(error?.status)){pending=null;clearRetry();}else retryControl();}
+  }catch(error){if(disposed||memory.closed)return;feedback(publicError(error));if([400,401,403,409,413,415].includes(error?.status)){memory.pending=null;clearRetry();}else retryControl();}
   finally{if(!disposed)setBusy(false);}
  }
- async function load(success){
-  if(disposed)return;const current=++generation;clearRetry();setBusy(true);if(!success)feedback('Loading payment details…');
-  try{const raw=await request(mode==='advisor'?{action:'advisor_read',clientId,schemaVersion:2}:{action:'client_read',schemaVersion:2},{signal:controller.signal});if(disposed||current!==generation)return;view=paymentViewWithMethods(raw,{recipientRequired:!readOnly});pending=null;render();feedback(success||'');}
-  catch(error){if(disposed||current!==generation)return;view=null;content.replaceChildren(node('p','Payment details could not load. Try Reload latest.','payment-muted'));feedback(success?success+' Reload latest to see the updated payment details.':publicError(error));if(pending)retryControl();}
+ async function load(success,preservePending=false){
+  if(disposed||memory.closed)return;const current=++generation;clearRetry();setBusy(true);if(!success)feedback('Loading payment details…');
+  try{const raw=await request(mode==='advisor'?{action:'advisor_read',clientId,schemaVersion:2}:{action:'client_read',schemaVersion:2},{signal:controller.signal});if(disposed||memory.closed||current!==generation)return;view=paymentViewWithMethods(raw,{recipientRequired:!readOnly});if(!preservePending)memory.pending=null;render();if(memory.pending)retryControl();feedback(success||'');}
+  catch(error){if(disposed||memory.closed||current!==generation)return;view=null;content.replaceChildren(node('p','Payment details could not load. Try Reload latest.','payment-muted'));feedback(success?success+' Reload latest to see the updated payment details.':publicError(error));if(memory.pending)retryControl();}
   finally{if(!disposed&&current===generation)setBusy(false);}
  }
  const field=(label,type='text',value='')=>{const wrap=node('label',undefined,'payment-field'),input=node('input');input.type=type;input.value=value;append(wrap,node('span',label),input);return {wrap,input};};
@@ -92,8 +93,8 @@ export function mountPaymentsPanel(element,options){
   }return card;
  }
  async function showEvidence(evidenceId,parent){
-  if(readOnly||disposed||busy)return;setBusy(true);feedback('Opening private screenshot…');
-  try{const result=await request({action:'evidence_url',evidenceId,schemaVersion:2},{signal:controller.signal});if(disposed)return;const url=new URL(result.signedUrl);if(result.evidenceId!==evidenceId||url.protocol!=='https:'||result.expiresInSeconds>60||result.expiresInSeconds<1)throw Error('invalid_response');
+  if(readOnly||disposed||memory.closed||busy)return;setBusy(true);feedback('Opening private screenshot…');
+  try{const result=await request({action:'evidence_url',evidenceId,schemaVersion:2},{signal:controller.signal});if(disposed||memory.closed)return;const url=new URL(result.signedUrl);if(result.evidenceId!==evidenceId||url.protocol!=='https:'||result.expiresInSeconds>60||result.expiresInSeconds<1)throw Error('invalid_response');
    parent.querySelector('.payment-evidence')?.remove();const holder=node('div','','payment-evidence'),image=node('img');image.alt='Private payment screenshot';image.referrerPolicy='no-referrer';image.src=url.href;
    append(holder,image,node('small','Private payment screenshot.'),button('Hide screenshot',()=>holder.remove()));parent.append(holder);const timer=setTimeout(()=>{holder.remove();timers.delete(timer);},result.expiresInSeconds*1000);timers.add(timer);feedback('');
   }catch(error){if(!disposed)feedback(publicError(error));}finally{if(!disposed)setBusy(false);}
@@ -111,20 +112,37 @@ export function mountPaymentsPanel(element,options){
   }return card;
  }
  function issueForm(){
-  const form=node('form','','payment-card payment-quote-form');append(form,node('h3','Issue final quote'),node('p','Use the current published plan and approved product recommendation IDs. All product, tax and shipping amounts must be final.','payment-muted'));
-  const publication=field('Published plan version (0 before first publication)','number');publication.input.min='0';publication.input.step='1';publication.input.required=true;
+  const context=options.quoteContext,canonical=Number.isSafeInteger(context?.publicationVersion)&&context.publicationVersion>=0&&Array.isArray(context.recommendations);
+  const basis=JSON.stringify({publicationVersion:canonical?context.publicationVersion:null,addressVersion:view.shippingAddress?.version??null});
+  const saved=memory.quoteDraft,changed=Boolean(saved&&saved.basis!==basis);
+  const form=node('form','','payment-card payment-quote-form');append(form,node('h3','Issue final quote'));
+  if(changed){append(form,node('p','The published plan or shipping address changed. Your unfinished amounts are preserved. Start a new quote against the current details before issuing.','payment-notice'),button('Start a new quote',()=>{memory.quoteDraft=null;render();}));}
+  const publication=field(canonical?'Published plan version':'Published plan version (0 before first publication)','number',String(canonical?context.publicationVersion:saved?.publicationVersion??''));publication.input.min='0';publication.input.step='1';publication.input.required=true;publication.input.readOnly=canonical;
   const startsWithPublication=()=>view.nextServicePeriod===null;
-  const service=field('Include monthly service · $100.00','checkbox');service.input.checked=view.service.status==='unpaid';if(view.service.status==='pending_publication')lock(service.input);const start=field('Service coverage starts','date',view.nextServicePeriod?.startOn??'');start.input.readOnly=true;
+  const service=field('Include monthly service · $100.00','checkbox');service.input.checked=saved?.service??view.service.status==='unpaid';if(view.service.status==='pending_publication')lock(service.input);const start=field('Service coverage starts','date',view.nextServicePeriod?.startOn??'');start.input.readOnly=true;
   const updatePeriod=()=>{start.input.required=service.input.checked&&!startsWithPublication();start.wrap.hidden=!start.input.required;};updatePeriod();service.input.addEventListener('change',updatePeriod);publication.input.addEventListener('change',updatePeriod);
-  form.append(node('p','Before the first publication, the first service month starts when the plan is published. For an existing plan, the server provides the next coverage date shown below. Republishing does not renew service.','payment-muted'));
+  form.append(node('p','The first service period starts with publication. Later service periods use the coverage date shown. Products, tax and shipping must be final.','payment-muted'));
   const lines=node('div','','payment-product-lines'),items=[];
-  const addLine=()=>{const line=node('div','','payment-product-line'),recommendation=field('Recommendation ID'),quantity=field('Quantity','number','1'),unit=field('Unit price in USD','text');quantity.input.min='1';quantity.input.max='100';quantity.input.step='1';for(const f of [recommendation,quantity,unit]){f.input.required=true;line.append(f.wrap);}unit.input.inputMode='decimal';const item={line,recommendation,quantity,unit};items.push(item);line.append(button('Remove',()=>{line.remove();items.splice(items.indexOf(item),1);}));lines.append(line);};
-  const tax=field('Final product tax in USD','text','0.00'),shipping=field('Final product shipping in USD','text','0.00');tax.input.inputMode=shipping.input.inputMode='decimal';
+  let capture=()=>{};
+  const eligible=canonical?context.recommendations.filter(item=>item.approved===true):[];
+  const addLine=(value={})=>{
+   const line=node('div','','payment-product-line'),recommendation=canonical?{wrap:node('label',undefined,'payment-field'),input:node('select')}:field('Recommendation ID');
+   if(canonical){append(recommendation.wrap,node('span','Product'),recommendation.input);const placeholder=node('option','Choose an approved product');placeholder.value='';recommendation.input.append(placeholder);for(const item of eligible){const option=node('option',item.label);option.value=item.id;recommendation.input.append(option);}if(value.recommendationId&&!eligible.some(item=>item.id===value.recommendationId)){const option=node('option','Previously selected product is no longer approved');option.value=value.recommendationId;option.disabled=true;recommendation.input.append(option);}}
+   if(canonical)recommendation.input.setAttribute('aria-label','Product');recommendation.input.value=value.recommendationId||'';
+   const quantity=field('Quantity','number',value.quantity||'1'),unit=field('Unit price in USD','text',value.unitPrice||'');quantity.input.min='1';quantity.input.max='100';quantity.input.step='1';for(const f of [recommendation,quantity,unit]){f.input.required=true;line.append(f.wrap);}unit.input.inputMode='decimal';const item={line,recommendation,quantity,unit};items.push(item);line.append(button('Remove',()=>{line.remove();items.splice(items.indexOf(item),1);capture();}));lines.append(line);
+  };
+  const tax=field('Final product tax in USD','text',saved?.tax??'0.00'),shipping=field('Final product shipping in USD','text',saved?.shipping??'0.00');tax.input.inputMode=shipping.input.inputMode='decimal';
   const final=field('Tax and shipping are final, including any zero amounts','checkbox');final.input.required=true;
-  append(form,publication.wrap,service.wrap,start.wrap,lines,button('Add product line',addLine),append(node('div','','payment-two-fields'),tax.wrap,shipping.wrap),final.wrap);
-  const submit=node('button','Issue final quote','payment-button primary');submit.type='submit';form.append(submit);
-  form.addEventListener('submit',event=>{event.preventDefault();if(busy||!canWrite)return;try{perform({command:{...issueQuoteCommand({publicationVersion:publication.input.value,service:service.input.checked,startOn:view.nextServicePeriod?.startOn??'',startsOnFirstPublication:startsWithPublication(),shippingAddressVersion:view.shippingAddress?.version??null,items:items.map(item=>({recommendationId:item.recommendation.input.value.trim(),quantity:item.quantity.input.value,unitPrice:item.unit.input.value})),tax:tax.input.value,shipping:shipping.input.value,finalCosts:final.input.checked},clientId,view.revision,uid()),schemaVersion:2}});}catch(error){feedback(publicError(error));}});return form;
+  const addProduct=button('Add product line',()=>{addLine();capture();});if(canonical&&!eligible.length)lock(addProduct);
+  append(form,publication.wrap,service.wrap,start.wrap,lines,addProduct,append(node('div','','payment-two-fields'),tax.wrap,shipping.wrap),final.wrap);
+  if(canonical&&!eligible.length)form.append(node('p','No approved products are available for this quote. Service can be quoted separately.','payment-muted'));
+  for(const item of saved?.items||[])addLine(item);
+  capture=()=>{memory.quoteDraft={basis:saved?.basis||basis,publicationVersion:publication.input.value,service:service.input.checked,items:items.map(item=>({recommendationId:item.recommendation.input.value,quantity:item.quantity.input.value,unitPrice:item.unit.input.value})),tax:tax.input.value,shipping:shipping.input.value};};
+  form.addEventListener('input',capture);form.addEventListener('change',capture);
+  const submit=node('button','Issue final quote','payment-button primary');submit.type='submit';if(changed)lock(submit);form.append(submit);
+  form.addEventListener('submit',event=>{event.preventDefault();if(busy||!canWrite||changed)return;try{const selected=items.map(item=>({recommendationId:item.recommendation.input.value.trim(),quantity:item.quantity.input.value,unitPrice:item.unit.input.value}));if(canonical&&selected.some(item=>!eligible.some(product=>product.id===item.recommendationId)))throw Error('invalid_input');perform({command:{...issueQuoteCommand({publicationVersion:publication.input.value,service:service.input.checked,startOn:view.nextServicePeriod?.startOn??'',startsOnFirstPublication:startsWithPublication(),shippingAddressVersion:view.shippingAddress?.version??null,items:selected,tax:tax.input.value,shipping:shipping.input.value,finalCosts:final.input.checked},clientId,view.revision,uid()),schemaVersion:2}});}catch(error){feedback(publicError(error));}});return form;
  }
+
  function render(){
   content.replaceChildren();if(!view)return;
   const beforeQuote=mode==='client'&&!view.quotes.length;
@@ -137,5 +155,5 @@ export function mountPaymentsPanel(element,options){
   if(mode==='advisor'&&canWrite)content.append(issueForm());
   if(mode==='advisor'&&!canWrite&&!canConfirm)content.append(node('p','Read-only payment access. Payment confirmation and quote changes require separate permission.','payment-muted'));
  }
- load();return()=>{disposed=true;generation++;controller.abort();for(const timer of timers)clearTimeout(timer);uploads.clear();pending=null;if(root.parentNode===element)root.remove();};
+ load(undefined,true);const cleanup=()=>{disposed=true;generation++;controller.abort();for(const timer of timers)clearTimeout(timer);uploads.clear();if(!options.taskState){memory.pending=null;memory.quoteDraft=null;memory.closed=true;}if(root.parentNode===element)root.remove();};cleanup.hasPending=()=>Boolean(memory.pending);return cleanup;
 }

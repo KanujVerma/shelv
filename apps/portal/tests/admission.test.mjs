@@ -41,7 +41,7 @@ for(const width of [1440,390]){
   await page.getByRole('button',{name:'Add client',exact:true}).click();await page.getByLabel('Client name',{exact:true}).fill('Synthetic Client');await page.getByLabel('Client email',{exact:true}).fill('client+demo@example.com');await page.locator('dialog[open]').getByRole('button',{name:'Add client',exact:true}).click();
   await page.getByText('No email has been sent.',{exact:true}).waitFor();assert.equal((await page.evaluate(()=>window.intents)).length,1);
   assert.equal(await page.getByLabel('Portal link',{exact:true}).inputValue(),'https://portal.goshelv.com/');await page.screenshot({path:path.join(artifacts,`added-${width}.png`),fullPage:true});
-  await page.getByRole('button',{name:'Open client',exact:true}).click();await page.getByRole('heading',{name:'Synthetic Client',exact:true}).waitFor();await page.getByRole('heading',{name:'Consultation notes',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Open client',exact:true}).click();await page.getByRole('heading',{name:'Synthetic Client',exact:true}).waitFor();await page.getByRole('heading',{name:'Private consultation notes',exact:true}).waitFor();
  }));
  test(`uncertain add preserves the exact request and duplicate opens without reset at ${width}px`,()=>fixture(width,'uncertain',async page=>{
   await page.getByRole('button',{name:'Add client',exact:true}).click();await page.getByLabel('Client name',{exact:true}).fill('Synthetic Client');await page.getByLabel('Client email',{exact:true}).fill('client@example.com');await page.locator('dialog[open]').getByRole('button',{name:'Add client',exact:true}).click();
