@@ -1,6 +1,25 @@
 # Portal source provenance
 
-The new walkthrough/service candidate starts at decision head `45c5112cb5c7c420b38e965804933a3986050743` on `codex/walkthroughs-service-20261025`, stacked on PRs 206 and 207. The two forward migration sources are `20261025221028_concierge_service_workflows.sql` and `20261025221043_concierge_private_walkthroughs.sql`, generated with the installed Supabase CLI. Their final package hashes bind the reviewed sources. They are not installed server versions; preserve all historical alias and recovery records below. Private named authoring data and walkthrough payloads are not part of this public source capsule.
+## Current activated walkthrough/service source, 25 October 2026
+
+The deployed application is [44c3d371fe63aaf23a64b87d0ef459ecc85343d4](https://github.com/KanujVerma/shelv/commit/44c3d371fe63aaf23a64b87d0ef459ecc85343d4), on `codex/walkthroughs-service-20261025` from decision head `45c5112cb5c7c420b38e965804933a3986050743` and the unmerged PR 206/207 lineage. All three exact-source CI jobs passed. This approved activation supersedes local-only candidate claims; it does not merge that lineage. Private named inputs, current private version identifiers, consultation notes, credentials and screenshots remain outside public Git and static assets.
+
+The source binds Pages `88ec5c96-3a0b-415c-8fca-03a2209dee11`, 120 package entries and ZIP SHA-256 `bfd214bc906411c127781d1ea868c1517b0d8251890dc98328e29527d329eb54`. All 117 public files matched their frozen bytes. The private-vault source SHA-256 is `ceb946c3843235c903b461488bef7dd6a5da7ba9d7b1e33c6e35c7039e75900e`. The final vault deployment/version is `21cb5045-e6ab-49f5-ae9d-f378d38f847c` / `eefca083-89af-47c1-8c3c-583d06988624`; its code etag `a598c63657472805fd13a3be87534a4463808de94cece5d4055ee5e98d07664c` stayed unchanged through the one additive private secret.
+
+| Forward source file | Source SHA-256 | Actual hosted ledger version |
+| --- | --- | --- |
+| `20261025221028_concierge_service_workflows.sql` | `5ebb75645abb8e1002a5a3c7bbc64e53b4bfe7e325a2dd63819ebd6d82671eec` | `20261026002240` |
+| `20261025221043_concierge_private_walkthroughs.sql` | `035fd8fa49b3c9ca0314769d24c72e61b83a3d883189588df90966e2f7c2f394` | `20261026002305` |
+
+These are the two new provider-assigned versions, dated 26 October UTC and recorded here as 25 October America/Chicago. All 76 preceding ledger rows were preserved; the current ledger has 78 entries. No old alias, installed source or guard-only registration below was reapplied or repaired.
+
+The current frozen Edge capsule file SHA-256 is `9b99bb23162e6945fb1bff8f760b6b88054b40fb3fd4bfd3077219739b6b4a63`, aggregate `052d4ce390a3cf7f0c9cf0e45512c90fcee383a2d611ca237955b711fec47b13`. Its 41 unique files form operations/payments/check-ins/admission closures of 20/31/24/23 files. Actual deployed versions are 6/4/4/2 respectively, all with JWT verification true. The deployment used frozen embedded contents and verified deployed source, rather than later mutable workspace reads.
+
+The existing namespace, SQLite class/export, session key and old bindings were preserved. The current provider-returned `index.js` module was independently hashed at 415,542 bytes and matched the frozen vault SHA-256; current version-specific exports also matched. Only `SUPABASE_WALKTHROUGH_KEY` was added in the private vault after the selected legacy service-role key passed the exact frozen header-format probe. The four approved private current versions were imported separately from live clients, with two founder grants matched to existing identities and permissions. Explicit user authorization then added one distinct Codex maintenance-advisor identity/grant with no admission permission, preserving the human founders and their sessions/grants. A separate neutral immutable acceptance version and test grants are retained as history; no current private version was shared and zero grants remain active. Dedicated-account Auth, the four-plan UI, neutral sharing API and one retained synthetic-client review passed. [Release result](PORTAL_RELEASE_RESULT.md) owns current deployment and preservation receipts; [acceptance](PORTAL_ACCEPTANCE.md) distinguishes the unrun ordinary client-owner and service-write journeys. No private account identifier or credential belongs in this public provenance.
+
+## Historical completion-release integration and preserved lineage
+
+The remaining records preserve the previous completion release and its earlier deployed baseline. Their identities, package counts, source capsules and migration aliases retain their original scope; they do not identify the current activation.
 
 The current portal is a separate web application from the older scanner. Its deployed source had advanced beyond GitHub integration. This reconciliation imports the reviewed portal and its supporting source into `apps/portal/` on an isolated branch without changing the primary dirty checkout or historical release folders.
 
