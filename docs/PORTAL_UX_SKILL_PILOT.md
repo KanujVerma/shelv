@@ -110,4 +110,4 @@ Use a checked-out branch of `apps/portal` with Node >=22.23.0. Build or run the 
 
 ## Current evidence boundary (Oct 26, 2026)
 
-A project skill file and instructions are prepared in GitHub on a **separate draft branch stacked on PR #207**. No local checkout, actual Claude run, browser observation, new user study, root/portal CI run, hosted change, release or merge was performed as part of preparing this documentation. Validate these steps before treating the skill as proven.
+Two original project-native Claude skills and portal agent instructions are prepared in GitHub on a **separate draft branch stacked on PR #207**; the seven third-party projects were researched but not installed. No local checkout, actual Claude run, browser observation, new user study, root/portal CI run, hosted change, release or merge was performed as part of preparing this documentation. Validate these steps before treating the skill as proven.
