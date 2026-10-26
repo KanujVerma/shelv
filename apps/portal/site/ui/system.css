@@ -86,7 +86,7 @@ a {text-underline-offset: .18em;}
   transition: background-color var(--motion-fast) var(--ease-out),border-color var(--motion-fast) var(--ease-out);
 }
 :is(.solid,.payment-button.primary,.checkin-button.primary) {background: var(--color-brand);border-color: var(--color-brand);color: var(--color-white);}
-:is(.solid,.payment-button.primary,.checkin-button.primary):hover:enabled {background: var(--color-brand-hover);border-color: var(--color-brand-hover);}
+:is(.solid,.payment-button.primary,.checkin-button.primary):not(.destructive):hover:enabled {background: var(--color-brand-hover);border-color: var(--color-brand-hover);}
 :is(.quiet,.payment-button:not(.primary),.checkin-button:not(.primary),.presentation-button):hover:enabled {background: var(--color-surface-hover);}
 :is(.solid,.quiet,.payment-button,.checkin-button,.presentation-button):disabled,
 :is(.solid,.quiet,.payment-button,.checkin-button,.presentation-button)[aria-disabled="true"] {opacity: .55;cursor: default;}

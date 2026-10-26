@@ -147,3 +147,14 @@ test('primary and quiet feature action aliases share accessible geometry and bra
   assert.equal(values[0].background, values[3].background);
   assert.equal(new Set(values.map(value => value.radius)).size, 1, 'Feature buttons use the shared action shape');
 }, 320));
+
+test('destructive primary action retains its danger meaning on hover', async () => fixture(async page => {
+  await page.evaluate(() => {
+    document.body.insertAdjacentHTML('beforeend', '<button class="solid destructive" id="remove-draft">Delete draft</button>');
+  });
+  const button = page.locator('#remove-draft');
+  const before = await button.evaluate(element => ({background: getComputedStyle(element).backgroundColor, color: getComputedStyle(element).color}));
+  await button.hover();
+  const hovered = await button.evaluate(element => ({background: getComputedStyle(element).backgroundColor, color: getComputedStyle(element).color}));
+  assert.deepEqual(hovered, before, 'Hover must preserve the shared danger color and readable foreground');
+}));
