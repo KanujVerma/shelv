@@ -8,3 +8,7 @@ The archived Colima profile was stopped during the audit. Current Shelv source, 
 | --- | ---: | --- |
 | `scratch-containers/derive-p4-recovery15-scratch.tar.gz` | 364785655 | `b5a0e9e2835a2492417d160023e679ba8ad18bb405815620ba23ce9c9c38c9d3` |
 | `scratch-containers/derive-p4-recovery17-scratch.tar.gz` | 366245047 | `b71fb6bf87df566499b1885cd6975c12a805d312cefb29fb89fdd2124081519e` |
+
+## Final local check
+
+At the final cleanup preflight, both scratch archive paths listed above were already absent, so the cleanup command removed neither one. The checksum entries remain as a historical inventory, not a restore copy. Database-volume backups, the source-preservation archive, and the portal rollback archive were present and retained.
