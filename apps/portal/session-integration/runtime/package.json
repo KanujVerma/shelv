@@ -1,0 +1,25 @@
+{
+  "name": "shelv-advisor-session-candidate",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.0"
+  },
+  "scripts": {
+    "test": "node scripts/test.mjs",
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "types": "WRANGLER_SEND_METRICS=false WRANGLER_LOG_PATH=.wrangler/types-vault.log wrangler types --config workers/session-vault/wrangler.jsonc --env-interface VaultBindings workers/session-vault/worker-configuration.d.ts --include-runtime false && WRANGLER_SEND_METRICS=false WRANGLER_LOG_PATH=.wrangler/types-gateway.log wrangler types --config pages.wrangler.jsonc --env-interface GatewayBindings server/gateway-configuration.d.ts --include-runtime false"
+  },
+  "dependencies": {
+    "@supabase/auth-js": "2.116.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261019.1",
+    "esbuild": "0.28.2",
+    "miniflare": "5.20261019.0-beta",
+    "typescript": "6.0.3",
+    "wrangler": "4.151.2"
+  }
+}

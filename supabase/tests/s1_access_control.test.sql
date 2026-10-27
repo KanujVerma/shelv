@@ -1,6 +1,6 @@
 begin;
 
-select plan(71);
+select plan(72);
 
 -- Schema, policy, privilege, auth-provisioning, and bucket invariants.
 select results_eq(
@@ -92,12 +92,25 @@ select results_eq(
     order by policyname
   $$,
   array[
+    'concierge_private_storage_deny:ALL:anon,authenticated',
     'customer_private_upload_deletion_fence:INSERT:authenticated',
     'customer_product_evidence_free_insert_granted:INSERT:authenticated',
     'customer_product_evidence_insert_own:INSERT:authenticated',
     'customer_skin_photos_insert_own:INSERT:authenticated'
   ],
-  'Storage has only the audited managed, free, and restrictive deletion-fence policies'
+  'Storage has only the audited managed, free, concierge, and deletion-fence policies'
+);
+
+select is(
+  (
+    select permissive::text
+    from pg_policies
+    where schemaname = 'storage'
+      and tablename = 'objects'
+      and policyname = 'concierge_private_storage_deny'
+  ),
+  'RESTRICTIVE'::text,
+  'The concierge private-bucket fence restricts existing policies rather than granting raw access'
 );
 
 select results_eq(

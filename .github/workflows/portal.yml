@@ -1,0 +1,87 @@
+name: Concierge portal
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: portal-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  portal:
+    name: Portal build and local journeys
+    runs-on: ubuntu-latest
+    env:
+      PGBIN: /usr/lib/postgresql/16/bin
+      NODE_BIN: node
+      WRANGLER_SEND_METRICS: "false"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.23.0
+          cache: npm
+          cache-dependency-path: apps/portal/package-lock.json
+
+      - name: Install portal dependencies
+        working-directory: apps/portal
+        run: npm ci
+
+      - name: Setup local Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: 2.121.0
+
+      - name: Install Chrome and browser dependencies
+        working-directory: apps/portal
+        run: npx playwright install --with-deps chrome
+
+      - name: Install native PostgreSQL fixture tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes postgresql-16
+
+      - name: Build combined client and advisor package
+        working-directory: apps/portal
+        run: npm run build
+
+      - name: Verify package and synthetic client journeys
+        working-directory: apps/portal
+        run: npm test
+
+      - name: Verify session types
+        working-directory: apps/portal
+        run: npm run typecheck:session
+
+      - name: Verify native session lifecycle and audience isolation
+        working-directory: apps/portal
+        run: npm run test:session
+
+      - name: Verify session package contracts
+        working-directory: apps/portal
+        run: npm run verify:session-package
+
+      - name: Verify backend contracts
+        working-directory: apps/portal
+        run: npm run test:backend
+
+      - name: Verify isolated native SQL workflows
+        working-directory: apps/portal
+        run: npm run test:sql
+
+      - name: Verify actual check-in reply handler against native SQL
+        run: CONCIERGE_REPLIES_NATIVE_SQL=1 CONCIERGE_TEST_PG_BIN="$PGBIN" node --experimental-strip-types --test tests/concierge-checkin-replies-native.test.ts
+
+      - name: Verify actual three-method payment handler against native SQL
+        run: CONCIERGE_METHODS_NATIVE_SQL=1 CONCIERGE_TEST_PG_BIN="$PGBIN" node --experimental-strip-types --test tests/concierge-payment-methods-native.test.ts
+
+      - name: Verify empty starting routines and follow-up plan updates
+        run: CONCIERGE_NONE_NATIVE_SQL=1 CONCIERGE_TEST_PG_BIN="$PGBIN" node --experimental-strip-types --test tests/concierge-no-current-products-native.test.ts
+
+      - name: Verify founder admission with local Auth, SQL and Chrome
+        run: node apps/portal/scripts/local-admission.mjs run --browser

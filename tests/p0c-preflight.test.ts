@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
+import { dirname, join } from 'node:path';
 import test from 'node:test';
 import { EXPECTED_PROJECT_REF, HOSTED_GATES, SOURCE_FILES, preflightHostedFreeReadiness } from '../scripts/preflight-hosted-free-readiness.mjs';
 
@@ -96,9 +98,47 @@ test('oversized source fails closed and the inventory reads only its fixed commi
   assert.doesNotMatch(Object.values(SOURCE_FILES).join(' '), /\.env|keychain|credentials/i);
 });
 
-test('real committed source has expected static shapes but cannot certify hosted release', async () => {
+test('Git provenance distinguishes a committed source snapshot from uncommitted source changes', async () => {
+  const cwd = mkdtempSync(join(tmpdir(), 'shelv-preflight-'));
+  const git = (...args: string[]) => {
+    const result = spawnSync('git', ['-c', 'core.hooksPath=/dev/null', '-c', 'commit.gpgsign=false', ...args], {
+      cwd, encoding: 'utf8', env: { ...process.env, GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_GLOBAL: '/dev/null',
+        GIT_AUTHOR_NAME: 'Synthetic Fixture', GIT_AUTHOR_EMAIL: 'fixture@example.invalid',
+        GIT_COMMITTER_NAME: 'Synthetic Fixture', GIT_COMMITTER_EMAIL: 'fixture@example.invalid' },
+    });
+    assert.equal(result.status, 0, result.stderr);
+  };
+  try {
+    for (const [path, text] of Object.entries(fixtures)) {
+      mkdirSync(dirname(join(cwd, path)), { recursive: true });
+      writeFileSync(join(cwd, path), text);
+    }
+    git('init', '--quiet');
+    git('add', '--', ...Object.values(SOURCE_FILES));
+    git('commit', '--quiet', '-m', 'Synthetic preflight source');
+    const committed = await preflightHostedFreeReadiness({ cwd });
+    assert.ok(committed.source.head);
+    assert.match(committed.source.head, /^[a-f\d]{40}$/);
+    assert.equal(committed.source.inspectedSourcesMatchHead, true);
+    writeFileSync(join(cwd, SOURCE_FILES.config), fixtures[SOURCE_FILES.config] + '\n# uncommitted fixture change\n');
+    const dirty = await preflightHostedFreeReadiness({ cwd });
+    assert.equal(dirty.source.head, committed.source.head);
+    assert.equal(dirty.source.inspectedSourcesMatchHead, false);
+    assert.equal(dirty.activation.ready, false);
+    git('add', '--', SOURCE_FILES.config);
+    git('commit', '--quiet', '-m', 'Synthetic committed fixture change');
+    const updated = await preflightHostedFreeReadiness({ cwd });
+    assert.notEqual(updated.source.head, committed.source.head);
+    assert.equal(updated.source.inspectedSourcesMatchHead, true);
+    assert.equal(updated.activation.ready, false);
+  } finally {
+    rmSync(cwd, { recursive: true, force: true });
+  }
+});
+
+test('real source has expected static shapes but cannot certify hosted release', async () => {
   const result = await preflightHostedFreeReadiness({ cwd: new URL('..', import.meta.url).pathname });
-  assert.equal(result.source.inspectedSourcesMatchHead, true);
+  assert.equal(typeof result.source.inspectedSourcesMatchHead, 'boolean');
   assert.equal(result.localSourceShapes.localAnonymousSignupConfigured, true);
   assert.equal(result.localSourceShapes.localDeleteGatewayJwtConfigured, true);
   assert.equal(result.localSourceShapes.privatePhotoGrantResourceGuard, 'STATIC_PRESENT');

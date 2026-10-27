@@ -1,0 +1,12 @@
+# Shelv portal
+
+This subtree owns the consultation-led web portal. The current objective is the complete referral-partner demonstration using the existing cream, forest-green and editorial design. Consultation happens with the founders; a new questionnaire or scanner dependency is not required.
+
+- Edit `site/` and the supporting source here. Historical Codex release folders and the primary dirty checkout are reference inputs and must remain unchanged.
+- `npm run build` packages the current site and generates the combined client/advisor gateway. Never revive the retired `session-integration/build-profile.mjs` migration or copy an older site over current work.
+- `site/_worker.js` and `site/_routes.json` retain the deployed baseline. Packaging regenerates these files in the output directory; it does not overwrite the source snapshot. Compare the build manifest with `provenance/DEPLOYED-20261024.json` when reviewing differences.
+- Keep provider credentials in the private session worker. Preserve audience, owner, live permission, CSRF, expiry, logout, private-storage and immutable-publication boundaries. A local package does not deploy services or apply SQL.
+- Root concierge functions/contracts are the integration source. `backend/source/` is the retained isolated SQL-test fixture dependency; reconcile both deliberately if their contract changes. SQL under `backend/proposals/` is not automatically applied by a build.
+- Use Node.js 22.23.0 or newer and the checked-in lockfiles. Install from this folder with `npm ci`. Generated packages and evidence belong under the repository's ignored `.local-artifacts/`, or the explicitly ignored runtime fixture directories.
+- Keep browser verification local and synthetic. Test interceptors must deny unexpected network traffic. Do not send login emails, create hosted sessions, mutate client records, change settings, deploy, commit or push without the applicable explicit authorization.
+- Verify affected portal tests, the combined package, and session types/runtime checks when their source changes. Report fixture evidence and hosted acceptance separately.

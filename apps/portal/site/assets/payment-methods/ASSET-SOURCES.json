@@ -1,0 +1,32 @@
+{
+  "purpose": "Referential payment method artwork from official sources; no provider integration or approval claim.",
+  "assets": [
+    {
+      "method": "zelle",
+      "file": "zelle.png",
+      "sha256": "07412d7de5d8354ea096f60782489d5567759a84f226e0fecdb5bbe2e9ec103f",
+      "sourcePage": "https://www.zelle.com/",
+      "sourceAsset": "https://www.zelle.com/themes/custom/zelle/images/zelle-logo-white.png",
+      "notes": "White wordmark with transparency. Preserve its full artwork and use a contrasting tile background. Official guidelines distinguish plain-text references from stylized/logo use; the latter is subject to a license grant. No such license or merchant/provider approval is established by this download. Do not claim permission, sponsorship or payment verification.",
+      "providerEligibilityVerified": false
+    },
+    {
+      "method": "cash_app",
+      "file": "cash_app.svg",
+      "sha256": "9933135a3860b02308c0635703338bebe065dfa62677a62e1615ec7cdf45be99",
+      "sourcePage": "https://cash.app/press/assets",
+      "sourceAsset": "https://cash-f.squarecdn.com/static/press-kits/logos-2025-06.zip",
+      "notes": "Original assets supplied in the official press kit. No separate license file was present in the archive. This collection establishes provenance, not merchant approval or a blanket trademark license. Preserve colors and proportions; the SVG icon is smallest for a small tile.",
+      "providerEligibilityVerified": false
+    },
+    {
+      "method": "apple_cash",
+      "file": "apple_cash.jpg",
+      "sha256": "0e098573ce2b4bfdd2709d03d78f9e37b788589514aa5858d31c71068774943f",
+      "sourcePage": "https://www.apple.com/apple-cash/",
+      "sourceAsset": "https://www.apple.com/v/apple-cash/g/images/overview/cash_hero_logo__3shzohux9cym_small_2x.jpg",
+      "notes": "164x48 opaque white-on-black JPEG, suitable at82x24 CSS pixels without enlarging it. This is an Apple Cash wordmark, not an Apple Pay acceptance badge. Apple trademark guidance reserves graphic-logo use to authorized contexts; no separate merchant logo license or approval was established here. Preserve the original image.",
+      "providerEligibilityVerified": false
+    }
+  ]
+}

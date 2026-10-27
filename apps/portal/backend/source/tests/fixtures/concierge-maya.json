@@ -1,0 +1,1222 @@
+{
+  "presentation": {
+    "schemaVersion": 2,
+    "title": "Maya’s plan",
+    "summary": "Let’s focus on the marks first. We’ll simplify your morning layers and introduce one treatment, while keeping the basics your skin already feels comfortable with. You don’t need to replace everything at once.",
+    "preparedBy": "Kanuj",
+    "preparedOn": "2026-10-20",
+    "sources": [],
+    "consultationSections": [],
+    "categoryCards": [
+      {
+        "id": "maya-card-moisturizer",
+        "slot": "moisturizer",
+        "kind": "optional_alternative",
+        "recommendationId": "maya-hydro-1",
+        "title": "Moisturizer",
+        "subtitle": "",
+        "rationaleTitle": "Why I’m keeping this for you",
+        "reasons": [
+          {
+            "title": "Why I’m keeping this for you",
+            "body": "Your CeraVe has felt comfortable for months, and your basic routine sits well under makeup. I’d keep that dependable part of your routine while we introduce the treatment. The pilling shows up on some serum mornings, so removing those extra layers is a better first test than assuming your moisturizer needs replacing."
+          },
+          {
+            "title": "Optional alternative",
+            "body": "When your current bottle runs out, this fragrance-free Water Cream is an option if you’d like to try a different moisturizer. It combines glycerin and hyaluronic acid with ceramide NP and other moisturizing lipids. I’d try it separately once the treatment is settled, and look for comfortable cheeks and good sunscreen and makeup wear. Your CeraVe already works comfortably, so this is a choice, not something you need to buy now."
+          }
+        ],
+        "actions": [],
+        "currentProduct": {
+          "id": "cerave-pm",
+          "name": "CeraVe PM Facial Moisturizing Lotion",
+          "brand": "CeraVe PM",
+          "variant": "Facial Moisturizing Lotion",
+          "sizeLabel": "3 fl oz",
+          "productUrl": "https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion",
+          "imageUrl": "assets/moisturizer.jpg",
+          "reference": "The brand lists ceramides, niacinamide and hyaluronic acid in this facial lotion.",
+          "displayPrice": {
+            "cents": 1499,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-13977966",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "CeraVe: product & ingredients"
+        },
+        "proposedProduct": {
+          "id": "neutrogena-hydro-boost-water-cream-6806486",
+          "name": "Neutrogena Hydro Boost Hyaluronic Acid Water Cream Fragrance Free",
+          "brand": "Neutrogena",
+          "variant": "Hydro Boost Hyaluronic Acid Water Cream Fragrance Free",
+          "sizeLabel": "1.7 fl oz / 50 mL",
+          "productUrl": "https://www.neutrogena.com/products/skincare/neutrogena-hydro-boost-water-cream-fragrance-free/6806486",
+          "imageUrl": "assets/hydro.jpg",
+          "reference": "Fragrance-free Water Cream, product 6806486. Reference offer: one 1.7 fl oz / 50 mL jar at Target, UPC 070501064863.",
+          "displayPrice": {
+            "cents": 1999,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-88452179",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "Neutrogena: product & ingredients"
+        },
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 4,
+          "short": {
+            "morning": "Keep your comfortable moisturizer beneath sunscreen.",
+            "evening": "Follow cleansing with your comfortable moisturizer."
+          },
+          "instructions": [
+            "Keep the moisturizer that feels comfortable, morning and evening."
+          ]
+        },
+        "comparisons": [
+          {
+            "label": "Niacinamide",
+            "currentText": "Contains it",
+            "proposedText": "Not in listed formula",
+            "significance": "Niacinamide is one ingredient you would remove with this switch.",
+            "ingredientGuideKey": "niacinamide",
+            "guideNote": null,
+            "sources": []
+          },
+          {
+            "label": "Barrier lipids",
+            "currentText": "Ceramides NP · AP · EOP\nCholesterol + phytosphingosine",
+            "proposedText": "Ceramide NP\nCholesterol/lanosterol esters\nFatty acids",
+            "significance": "Both contain ceramides; the number of types does not establish better performance.",
+            "ingredientGuideKey": null,
+            "guideNote": null,
+            "sources": []
+          },
+          {
+            "label": "Hydration & feel",
+            "currentText": "Glycerin + sodium hyaluronate\nLightweight lotion",
+            "proposedText": "Glycerin + sodium hyaluronate\nAmino acids · urea · betaine\nCream with a water-like feel",
+            "significance": "Shared hydration ingredients, with a different supporting blend and texture.",
+            "ingredientGuideKey": null,
+            "guideNote": null,
+            "sources": []
+          }
+        ],
+        "factsTitle": "Product reference",
+        "facts": [],
+        "how": {
+          "id": "maya-guide-moisturizer",
+          "productId": "neutrogena-hydro-boost-water-cream-6806486",
+          "title": "How to use Hydro Boost",
+          "intro": "",
+          "steps": [
+            {
+              "title": null,
+              "body": "Apply evenly to face and neck after cleansing, following the product label. Use it in place of your current moisturizer."
+            },
+            {
+              "title": null,
+              "body": "In the morning, follow with sunscreen. Make this later change separately, after the treatment is settled. You don’t need to buy it now."
+            }
+          ],
+          "careNote": null,
+          "sources": []
+        },
+        "sources": [],
+        "decisionLabels": {
+          "current": "KEEP",
+          "proposed": "OPTIONAL ALTERNATIVE"
+        }
+      },
+      {
+        "id": "maya-card-cleanser",
+        "slot": "cleanser",
+        "kind": "finish_then_replace",
+        "recommendationId": null,
+        "title": "Cleanser",
+        "subtitle": "",
+        "rationaleTitle": "Why I chose this for you",
+        "reasons": [
+          {
+            "title": "Why I chose this for you",
+            "body": "Your CeraVe cleanser is comfortable, so I’d finish the bottle first. For your next bottle, I’d try Aveeno Daily Moisturizing Facial Cleanser: $11.60 at Walmart for 12 fl oz, compared with $13.79 at Target for the same size. Both are fragrance-free. Aveeno uses a foaming oat-based formula instead of CeraVe’s creamier wash, but the saving only matters if it leaves your skin just as comfortable."
+          }
+        ],
+        "actions": [
+          "Finish your current cleanser, and make this switch separately from starting the treatment.",
+          "If Aveeno leaves your skin tight or irritated, the lower price isn’t a reason to keep using it."
+        ],
+        "currentProduct": {
+          "id": "cerave-hydrating-cleanser",
+          "name": "CeraVe Hydrating Facial Cleanser",
+          "brand": "CeraVe",
+          "variant": "Hydrating Facial Cleanser",
+          "sizeLabel": "12 fl oz / 355 mL",
+          "productUrl": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser",
+          "imageUrl": "assets/cleanser.jpg",
+          "reference": "A non-foaming facial cleanser with ceramides and hyaluronic acid.",
+          "displayPrice": {
+            "cents": 1379,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-13977968",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "CeraVe: product & ingredients"
+        },
+        "proposedProduct": {
+          "id": "aveeno-soothing-oat-cleanser",
+          "name": "Aveeno Daily Moisturizing Facial Cleanser, Soothing Oat",
+          "brand": "Aveeno",
+          "variant": "Daily Moisturizing Facial Cleanser, Soothing Oat",
+          "sizeLabel": "12 fl oz / 354 mL",
+          "productUrl": "https://www.aveeno.com/products/daily-moisturizing-facial-cleanser-soothing-oat",
+          "imageUrl": "assets/aveeno.jpg",
+          "reference": "Fragrance-free facial cleanser with soothing oat. Finish CeraVe first; this is a later cleanser option.",
+          "displayPrice": {
+            "cents": 1160,
+            "currency": "USD",
+            "sourceUrl": "https://www.walmart.com/ip/843259195",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "Aveeno: product & ingredients"
+        },
+        "usage": {
+          "periods": [
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": null,
+            "evening": "Finish CeraVe first. Try Aveeno separately after the treatment is settled."
+          },
+          "instructions": [
+            "Use your comfortable CeraVe cleanser in the evening. Finish this bottle before trying Aveeno."
+          ]
+        },
+        "comparisons": [
+          {
+            "label": "Texture",
+            "currentText": "Creamy\nNon-foaming",
+            "proposedText": "Gel\nFoaming",
+            "significance": "The most noticeable change during washing is the lather.",
+            "ingredientGuideKey": null,
+            "guideNote": null,
+            "sources": []
+          },
+          {
+            "label": "Moisturizing ingredients",
+            "currentText": "Glycerin + sodium hyaluronate\nCeramides NP · AP · EOP\nCholesterol",
+            "proposedText": "Glycerin + oat kernel flour\nNo ceramides or hyaluronic acid listed",
+            "significance": "Glycerin is shared; oat and the ceramide/hyaluronate blend distinguish the formulas.",
+            "ingredientGuideKey": null,
+            "guideNote": null,
+            "sources": []
+          },
+          {
+            "label": "Cleansing base",
+            "currentText": "Fatty alcohols + emulsifiers",
+            "proposedText": "Coco-glucoside + sodium cocoyl glutamate",
+            "significance": "The cleansers use different cleansing systems; neither ingredient list establishes greater gentleness.",
+            "ingredientGuideKey": null,
+            "guideNote": null,
+            "sources": []
+          }
+        ],
+        "factsTitle": "Product reference",
+        "facts": [],
+        "how": {
+          "id": "maya-guide-cleanser",
+          "productId": "aveeno-soothing-oat-cleanser",
+          "title": "How to make the later change",
+          "intro": "",
+          "steps": [
+            {
+              "title": null,
+              "body": "Finish CeraVe first. Avoid switching during the first days of the treatment trial."
+            },
+            {
+              "title": null,
+              "body": "Keep your morning water rinse."
+            },
+            {
+              "title": null,
+              "body": "Once you try Aveeno, follow its label, rinse thoroughly and judge it by comfort and removal of the day’s remaining products."
+            }
+          ],
+          "careNote": null,
+          "sources": []
+        },
+        "sources": [],
+        "decisionLabels": {
+          "current": "FINISH THIS BOTTLE",
+          "proposed": "WHEN YOUR BOTTLE RUNS OUT"
+        }
+      },
+      {
+        "id": "maya-card-makeup-removal",
+        "slot": "makeup-removal",
+        "kind": "optional_alternative",
+        "recommendationId": "maya-balm-1",
+        "title": "Makeup removal",
+        "subtitle": "",
+        "rationaleTitle": "Why I’m keeping Bioderma for you",
+        "reasons": [
+          {
+            "title": "Why I’m keeping Bioderma for you",
+            "body": "Your Bioderma is already taking your makeup off comfortably, so I’d keep it. There’s no reason to buy a cleansing oil just to add another step. Use a well-soaked soft pad and a light touch, then follow with your cleanser."
+          },
+          {
+            "title": "Optional alternative",
+            "body": "This balm is an option if you’d rather massage makeup off with your fingertips and rinse, instead of using cotton pads. Its oil-rich formula helps loosen makeup, then mixes with water so you can rinse it away. That could make stubborn makeup easier to remove with less repeated wiping. Your Bioderma already works comfortably, so I’d only switch if you prefer this method or find yourself rubbing to get makeup off."
+          }
+        ],
+        "actions": [
+          "Use it instead of Bioderma, then follow with your regular cleanser. You don’t need both makeup removers.",
+          "Look for easy removal without troublesome residue or irritation."
+        ],
+        "currentProduct": {
+          "id": "bioderma-sensibio-h2o",
+          "name": "Bioderma Sensibio H2O",
+          "brand": "Bioderma",
+          "variant": "Sensibio H2O",
+          "sizeLabel": "16.9 fl oz / 500 mL",
+          "productUrl": "https://www.bioderma.us/en/p/sensibio-h2o-micellar-water.html",
+          "imageUrl": "assets/remover.jpg",
+          "reference": "The brand describes Sensibio H2O as a micellar cleansing and makeup-removing water.",
+          "displayPrice": {
+            "cents": 2099,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-82287056",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "Bioderma: product & ingredients"
+        },
+        "proposedProduct": {
+          "id": "cerave-makeup-removing-balm",
+          "name": "CeraVe Makeup Removing Cleanser Balm",
+          "brand": "CeraVe",
+          "variant": "Makeup Removing Cleanser Balm",
+          "sizeLabel": "1.3 oz",
+          "productUrl": "https://www.cerave.com/skincare/cleansers/makeup-removing-cleanser-balm/",
+          "imageUrl": "assets/balm.jpg",
+          "reference": "A rinse-off makeup-removing balm. Use in place of micellar water, then follow with your cleanser; avoid direct contact with eyes.",
+          "displayPrice": {
+            "cents": 1169,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-85920760",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "CeraVe: product & ingredients"
+        },
+        "usage": {
+          "periods": [
+            "evening"
+          ],
+          "order": 1,
+          "short": {
+            "morning": null,
+            "evening": "On makeup days: balm in place of Bioderma; follow with cleanser."
+          },
+          "instructions": [
+            "Use the balm instead of Bioderma on makeup days, then follow with your cleanser. Follow the label; avoid direct contact with eyes."
+          ]
+        },
+        "comparisons": [
+          {
+            "label": "Cleansing base",
+            "currentText": "Water-based micellar formula\nPEG-6 caprylic/capric glycerides",
+            "proposedText": "Oil-rich balm\nEthylhexyl palmitate + PEG-20 glyceryl triisostearate",
+            "significance": "The texture changes from a micellar liquid to a balm that mixes with water.",
+            "ingredientGuideKey": null,
+            "guideNote": null,
+            "sources": []
+          },
+          {
+            "label": "Other ingredients",
+            "currentText": "Mannitol · xylitol · rhamnose\nCucumber extract",
+            "proposedText": "Jojoba oil\nCeramides NP · AP · EOP\nCholesterol",
+            "significance": "The added oils and barrier lipids do not establish better makeup removal.",
+            "ingredientGuideKey": null,
+            "guideNote": null,
+            "sources": []
+          },
+          {
+            "label": "Removal method",
+            "currentText": "Wipe with a well-soaked soft pad",
+            "proposedText": "Massage onto dry skin\nAdd water and rinse; no pad",
+            "significance": "The practical difference is a rinse-off massage instead of pad wiping.",
+            "ingredientGuideKey": null,
+            "guideNote": null,
+            "sources": []
+          }
+        ],
+        "factsTitle": "Product reference",
+        "facts": [],
+        "how": {
+          "id": "maya-guide-remover",
+          "productId": "cerave-makeup-removing-balm",
+          "title": "How to use the balm",
+          "intro": "",
+          "steps": [
+            {
+              "title": null,
+              "body": "On makeup days, use the balm in place of Bioderma, not alongside it."
+            },
+            {
+              "title": null,
+              "body": "Follow the product label and avoid direct contact with eyes. Rinse off, then follow with your cleanser."
+            }
+          ],
+          "careNote": null,
+          "sources": []
+        },
+        "sources": [],
+        "group": "cleanser",
+        "decisionLabels": {
+          "current": "KEEP",
+          "proposed": "OPTIONAL ALTERNATIVE"
+        }
+      },
+      {
+        "id": "maya-card-sunscreen",
+        "slot": "sunscreen",
+        "kind": "keep",
+        "recommendationId": null,
+        "title": "Sunscreen",
+        "subtitle": "",
+        "rationaleTitle": "Why I’m keeping this for you",
+        "reasons": [
+          {
+            "title": "Why I’m keeping this for you",
+            "body": "Your sunscreen works well with your basic routine. I’d keep it and focus on the serum layering that sometimes makes you use less of it. With the brown marks as our priority, I want sun protection to be the step you can apply properly, rather than the one you cut back to make makeup sit better."
+          }
+        ],
+        "actions": [
+          "Try the simpler morning routine without the two serums and notice how your usual makeup wears.",
+          "Apply generously as directed before going outdoors and reapply at least every 2 hours outdoors. For swimming or sweating, choose a water-resistant sunscreen; this bottle isn’t labeled for that use."
+        ],
+        "currentProduct": {
+          "id": "lrp-anthelios-uv-control-spf50",
+          "name": "La Roche-Posay Anthelios UV Control Sunscreen SPF 50",
+          "brand": "La Roche-Posay",
+          "variant": "Anthelios UV Control Sunscreen SPF 50",
+          "sizeLabel": "1.7 fl oz / 50 mL",
+          "productUrl": "https://www.laroche-posay.us/our-products/sun/face-sunscreen/anthelios-uv-control-sunscreen-spf-50-3606000622111.html",
+          "imageUrl": "assets/sunscreen.webp",
+          "reference": "Official US product reference: Anthelios UV Control Sunscreen SPF 50, 1.7 fl oz / 50 mL.",
+          "displayPrice": {
+            "cents": 3999,
+            "currency": "USD",
+            "sourceUrl": "https://www.laroche-posay.us/our-products/sun/face-sunscreen/anthelios-uv-control-sunscreen-spf-50-3606000622111.html",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "La Roche-Posay: product & ingredients"
+        },
+        "proposedProduct": null,
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 5,
+          "short": {
+            "morning": "Apply generously as directed before going outdoors. Reapply at least every 2 hours outdoors; use a water-resistant sunscreen for swimming or sweating.",
+            "evening": null
+          },
+          "instructions": [
+            "Apply generously as directed, 15 minutes before sun exposure. Reapply at least every 2 hours outdoors. For swimming or sweating, choose a water-resistant sunscreen."
+          ]
+        },
+        "comparisons": [],
+        "factsTitle": "Product reference",
+        "facts": [],
+        "how": {
+          "id": "maya-guide-sunscreen",
+          "productId": "lrp-anthelios-uv-control-spf50",
+          "title": "How to use it",
+          "intro": "",
+          "steps": [
+            {
+              "title": null,
+              "body": "Apply generously as directed, 15 minutes before sun exposure. Reapply at least every 2 hours outdoors. For swimming or sweating, choose a water-resistant sunscreen."
+            }
+          ],
+          "careNote": null,
+          "sources": []
+        },
+        "sources": []
+      },
+      {
+        "id": "maya-card-treatments",
+        "slot": "treatments",
+        "kind": "addition",
+        "recommendationId": "maya-azelaic-1",
+        "title": "Treatments",
+        "subtitle": "",
+        "rationaleTitle": "Why I chose this for you",
+        "reasons": [
+          {
+            "title": "Why I chose this for you",
+            "body": "The brown marks that linger after spots are your main concern. Azelaic acid can help reduce the excess pigment behind those marks, which is why I’d choose it over another exfoliating toner. This 10% product gives us an accessible starting option while we learn how your skin tolerates it. The stronger clinical evidence is for 15–20% formulations, so I wouldn’t promise the same results from this bottle. We’ll watch both comfort and gradual change in the marks before deciding what comes next."
+          }
+        ],
+        "actions": [
+          "Introduce it gradually using the routine guide. Keep the glycolic toner and other new actives out during this trial.",
+          "At our check-in, we’ll review application, irritation and the marks together. If progress stalls, we’ll reassess the plan rather than automatically increase the strength."
+        ],
+        "currentProduct": null,
+        "proposedProduct": {
+          "id": "ordinary-azelaic-10",
+          "name": "The Ordinary Azelaic Acid Suspension 10%",
+          "brand": "The Ordinary",
+          "variant": "Azelaic Acid Suspension 10%",
+          "sizeLabel": "30 mL",
+          "productUrl": "https://theordinary.com/en-us/azelaic-acid-suspension-10-exfoliator-100407.html",
+          "imageUrl": "assets/azelaic.png",
+          "reference": "Azelaic Acid Suspension 10% · 30 mL. Follow the manufacturer’s directions.",
+          "displayPrice": {
+            "cents": 1220,
+            "currency": "USD",
+            "sourceUrl": "https://theordinary.com/en-us/azelaic-acid-suspension-10-exfoliator-100407.html",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "The Ordinary: product & ingredients"
+        },
+        "usage": {
+          "periods": [
+            "evening"
+          ],
+          "order": 3,
+          "short": {
+            "morning": null,
+            "evening": "On trial nights only: patch test first and introduce gradually. Follow with moisturizer. Approval does not mean you have started."
+          },
+          "instructions": [
+            "Patch test first, following the manufacturer’s directions. Don’t use the product if the patch test causes redness, burning, itching, blistering or irritation.",
+            "After cleansing, let your skin dry. Apply a small amount in a thin layer to intact skin, avoiding eyes, lips and broken skin. Follow with your moisturizer.",
+            "First week: try two nonconsecutive evenings. If comfortable, try alternate evenings the next week, then work up to nightly only as tolerated. This is a gradual introduction, not a trial-validated optimal dose.",
+            "Keep glycolic toner out and don’t introduce a retinoid or another exfoliant at the same time.",
+            "If irritation develops, rinse off and stop. Seek advice if it persists. Get urgent help for swelling or breathing trouble."
+          ]
+        },
+        "comparisons": [],
+        "factsTitle": "Evidence & limits",
+        "facts": [],
+        "how": {
+          "id": "maya-guide-azelaic",
+          "productId": "ordinary-azelaic-10",
+          "title": "How to introduce it",
+          "intro": "",
+          "steps": [
+            {
+              "title": null,
+              "body": "Patch test first, following the manufacturer’s directions. Don’t use the product if the patch test causes redness, burning, itching, blistering or irritation."
+            },
+            {
+              "title": null,
+              "body": "After cleansing, let your skin dry. Apply a small amount in a thin layer to intact skin, avoiding eyes, lips and broken skin. Follow with your moisturizer."
+            },
+            {
+              "title": null,
+              "body": "First week: try two nonconsecutive evenings. If comfortable, try alternate evenings the next week, then work up to nightly only as tolerated. This is a gradual introduction, not a trial-validated optimal dose."
+            },
+            {
+              "title": null,
+              "body": "Keep glycolic toner out and don’t introduce a retinoid or another exfoliant at the same time."
+            },
+            {
+              "title": null,
+              "body": "If irritation develops, rinse off and stop. Seek advice if it persists. Get urgent help for swelling or breathing trouble."
+            }
+          ],
+          "careNote": null,
+          "sources": [
+            {
+              "label": "The Ordinary directions",
+              "url": "https://theordinary.com/en-us/azelaic-acid-suspension-10-exfoliator-100407.html"
+            }
+          ]
+        },
+        "sources": [
+          {
+            "label": "15% azelaic acid study",
+            "url": "https://link.springer.com/article/10.1007/s13555-024-01176-2"
+          },
+          {
+            "label": "20% azelaic acid study",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10199364/"
+          }
+        ]
+      },
+      {
+        "id": "maya-card-serums",
+        "slot": "serums",
+        "kind": "pause",
+        "recommendationId": null,
+        "title": "Your two serums",
+        "subtitle": "",
+        "rationaleTitle": "Why I’d pause these for now",
+        "reasons": [
+          {
+            "title": "Why I’d pause these for now",
+            "body": "You’ve been layering these on some mornings without a clear sense of what each adds. I’d pause both while we simplify the routine. Hyaluronic acid and niacinamide can be used together; this is about seeing whether those extra product layers are making sunscreen and makeup harder to wear."
+          }
+        ],
+        "actions": [
+          "Your moisturizer already provides hydration, so pausing a separate hydrating serum doesn’t mean leaving that need unmet.",
+          "If the simpler routine wears better, we can decide whether either serum earns a place back, one at a time."
+        ],
+        "currentProduct": {
+          "id": "ordinary-ha-b5",
+          "name": "The Ordinary Hyaluronic Acid 2% + B5 (with Ceramides)",
+          "brand": "The Ordinary",
+          "variant": "Hyaluronic Acid 2% + B5 (with Ceramides)",
+          "sizeLabel": "30 mL",
+          "productUrl": "https://theordinary.com/en-us/hyaluronic-acid-2-b5-serum-with-ceramides-100637.html",
+          "imageUrl": "assets/ha.png",
+          "reference": "A hydration-focused serum. Hyaluronic acid is a different ingredient category from the glycolic exfoliant.",
+          "displayPrice": {
+            "cents": 990,
+            "currency": "USD",
+            "sourceUrl": "https://theordinary.com/en-us/hyaluronic-acid-2-b5-serum-with-ceramides-100637.html",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "The Ordinary: product & ingredients"
+        },
+        "proposedProduct": {
+          "id": "ordinary-niacinamide-zinc",
+          "name": "The Ordinary Niacinamide 10% + Zinc 1%",
+          "brand": "The Ordinary",
+          "variant": "Niacinamide 10% + Zinc 1%",
+          "sizeLabel": "30 mL",
+          "productUrl": "https://theordinary.com/en-us/niacinamide-10-zinc-1-serum-100436.html",
+          "imageUrl": "assets/niacinamide.png",
+          "reference": "The brand lists niacinamide and zinc PCA in this water-based serum.",
+          "displayPrice": {
+            "cents": 600,
+            "currency": "USD",
+            "sourceUrl": "https://theordinary.com/en-us/niacinamide-10-zinc-1-serum-100436.html",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "The Ordinary: product & ingredients"
+        },
+        "usage": null,
+        "comparisons": [],
+        "factsTitle": "Product reference",
+        "facts": [],
+        "how": {
+          "id": "maya-guide-serums",
+          "productId": "ordinary-ha-b5",
+          "title": "What to do for now",
+          "intro": "",
+          "steps": [
+            {
+              "title": null,
+              "body": "Pause the separate hyaluronic acid and niacinamide serums while simplifying the morning layers."
+            },
+            {
+              "title": null,
+              "body": "If the simpler routine wears better, decide whether either serum earns a place back, one at a time."
+            }
+          ],
+          "careNote": null,
+          "sources": []
+        },
+        "sources": [],
+        "group": "treatments",
+        "decisionLabels": {
+          "current": "PAUSE",
+          "proposed": "PAUSE"
+        }
+      },
+      {
+        "id": "maya-card-exfoliant",
+        "slot": "exfoliant",
+        "kind": "leave_out",
+        "recommendationId": null,
+        "title": "Glycolic toner",
+        "subtitle": "",
+        "rationaleTitle": "Why I’d leave this out",
+        "reasons": [
+          {
+            "title": "Why I’d leave this out",
+            "body": "You stopped this after your cheeks felt hot and tight, and your basics have felt comfortable again since. I’d leave it out while we introduce azelaic acid. That experience doesn’t mean every ingredient called an acid will behave the same way, but it does tell me we should avoid several new treatments at once."
+          }
+        ],
+        "actions": [
+          "Don’t push through burning or peeling. Stop the new product if irritation develops and seek advice if it persists."
+        ],
+        "currentProduct": {
+          "id": "ordinary-glycolic-7",
+          "name": "The Ordinary Glycolic Acid 7% Exfoliating Toner",
+          "brand": "The Ordinary",
+          "variant": "Glycolic Acid 7% Exfoliating Toner",
+          "sizeLabel": "100 mL",
+          "productUrl": "https://theordinary.com/en-us/glycolic-acid-7-exfoliating-toner-100418.html",
+          "imageUrl": "assets/glycolic.png",
+          "reference": "A toner with 7% glycolic acid, an alpha hydroxy acid used for exfoliation.",
+          "displayPrice": {
+            "cents": 900,
+            "currency": "USD",
+            "sourceUrl": "https://theordinary.com/en-us/glycolic-acid-7-exfoliating-toner-100418.html",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "The Ordinary: product & ingredients"
+        },
+        "proposedProduct": null,
+        "usage": null,
+        "comparisons": [],
+        "factsTitle": "Product reference",
+        "facts": [],
+        "how": {
+          "id": "maya-guide-glycolic",
+          "productId": "ordinary-glycolic-7",
+          "title": "What to do for now",
+          "intro": "",
+          "steps": [
+            {
+              "title": null,
+              "body": "Keep the glycolic toner out while introducing azelaic acid. Don’t introduce a retinoid or another exfoliant at the same time."
+            }
+          ],
+          "careNote": null,
+          "sources": []
+        },
+        "sources": [],
+        "group": "treatments"
+      }
+    ],
+    "baselineRoutine": [
+      {
+        "id": "maya-water-rinse",
+        "kind": "instruction",
+        "slot": null,
+        "productId": null,
+        "product": null,
+        "title": "Your usual water rinse",
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 1,
+          "short": {
+            "morning": "Keep your morning water rinse.",
+            "evening": null
+          },
+          "instructions": [
+            "Keep your morning water rinse. More cleansing isn’t the goal."
+          ]
+        }
+      },
+      {
+        "id": "maya-baseline-moisturizer",
+        "kind": "product",
+        "slot": "moisturizer",
+        "productId": "cerave-pm",
+        "product": {
+          "id": "cerave-pm",
+          "name": "CeraVe PM Facial Moisturizing Lotion",
+          "brand": "CeraVe PM",
+          "variant": "Facial Moisturizing Lotion",
+          "sizeLabel": "3 fl oz",
+          "productUrl": "https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion",
+          "imageUrl": "assets/moisturizer.jpg",
+          "reference": "The brand lists ceramides, niacinamide and hyaluronic acid in this facial lotion.",
+          "displayPrice": {
+            "cents": 1499,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-13977966",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "CeraVe: product & ingredients"
+        },
+        "title": "CeraVe PM Facial Moisturizing Lotion",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 4,
+          "short": {
+            "morning": "Keep your comfortable moisturizer beneath sunscreen.",
+            "evening": "Follow cleansing with your comfortable moisturizer."
+          },
+          "instructions": [
+            "Keep the moisturizer that feels comfortable, morning and evening."
+          ]
+        }
+      },
+      {
+        "id": "maya-baseline-cleanser",
+        "kind": "product",
+        "slot": "cleanser",
+        "productId": "cerave-hydrating-cleanser",
+        "product": {
+          "id": "cerave-hydrating-cleanser",
+          "name": "CeraVe Hydrating Facial Cleanser",
+          "brand": "CeraVe",
+          "variant": "Hydrating Facial Cleanser",
+          "sizeLabel": "12 fl oz / 355 mL",
+          "productUrl": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser",
+          "imageUrl": "assets/cleanser.jpg",
+          "reference": "A non-foaming facial cleanser with ceramides and hyaluronic acid.",
+          "displayPrice": {
+            "cents": 1379,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-13977968",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "CeraVe: product & ingredients"
+        },
+        "title": "CeraVe Hydrating Facial Cleanser",
+        "usage": {
+          "periods": [
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": null,
+            "evening": "Finish CeraVe first. Try Aveeno separately after the treatment is settled."
+          },
+          "instructions": [
+            "Use your comfortable CeraVe cleanser in the evening. Finish this bottle before trying Aveeno."
+          ]
+        }
+      },
+      {
+        "id": "maya-baseline-remover",
+        "kind": "product",
+        "slot": "makeup-removal",
+        "productId": "bioderma-sensibio-h2o",
+        "product": {
+          "id": "bioderma-sensibio-h2o",
+          "name": "Bioderma Sensibio H2O",
+          "brand": "Bioderma",
+          "variant": "Sensibio H2O",
+          "sizeLabel": "16.9 fl oz / 500 mL",
+          "productUrl": "https://www.bioderma.us/en/p/sensibio-h2o-micellar-water.html",
+          "imageUrl": "assets/remover.jpg",
+          "reference": "The brand describes Sensibio H2O as a micellar cleansing and makeup-removing water.",
+          "displayPrice": {
+            "cents": 2099,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-82287056",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "Bioderma: product & ingredients"
+        },
+        "title": "Bioderma Sensibio H2O",
+        "usage": {
+          "periods": [
+            "evening"
+          ],
+          "order": 1,
+          "short": {
+            "morning": null,
+            "evening": "If wearing makeup: Bioderma preferred, or optional balm in its place. Use one makeup remover before your cleanser."
+          },
+          "instructions": [
+            "On makeup days, use one makeup remover before your cleanser. Use Bioderma with a well-soaked soft pad and a light touch. The balm is an optional alternative, not another step."
+          ]
+        }
+      },
+      {
+        "id": "maya-baseline-sunscreen",
+        "kind": "product",
+        "slot": "sunscreen",
+        "productId": "lrp-anthelios-uv-control-spf50",
+        "product": {
+          "id": "lrp-anthelios-uv-control-spf50",
+          "name": "La Roche-Posay Anthelios UV Control Sunscreen SPF 50",
+          "brand": "La Roche-Posay",
+          "variant": "Anthelios UV Control Sunscreen SPF 50",
+          "sizeLabel": "1.7 fl oz / 50 mL",
+          "productUrl": "https://www.laroche-posay.us/our-products/sun/face-sunscreen/anthelios-uv-control-sunscreen-spf-50-3606000622111.html",
+          "imageUrl": "assets/sunscreen.webp",
+          "reference": "Official US product reference: Anthelios UV Control Sunscreen SPF 50, 1.7 fl oz / 50 mL.",
+          "displayPrice": {
+            "cents": 3999,
+            "currency": "USD",
+            "sourceUrl": "https://www.laroche-posay.us/our-products/sun/face-sunscreen/anthelios-uv-control-sunscreen-spf-50-3606000622111.html",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "La Roche-Posay: product & ingredients"
+        },
+        "title": "La Roche-Posay Anthelios UV Control Sunscreen SPF 50",
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 5,
+          "short": {
+            "morning": "Apply generously as directed before going outdoors. Reapply at least every 2 hours outdoors; use a water-resistant sunscreen for swimming or sweating.",
+            "evening": null
+          },
+          "instructions": [
+            "Apply generously as directed, 15 minutes before sun exposure. Reapply at least every 2 hours outdoors. For swimming or sweating, choose a water-resistant sunscreen."
+          ]
+        }
+      },
+      {
+        "id": "maya-baseline-makeup",
+        "kind": "product",
+        "slot": "makeup",
+        "productId": "maybelline-fit-me",
+        "product": {
+          "id": "maybelline-fit-me",
+          "name": "Maybelline Fit Me Matte + Poreless",
+          "brand": "Maybelline",
+          "variant": "Fit Me Matte + Poreless",
+          "sizeLabel": "",
+          "productUrl": "https://www.maybelline.com/face-makeup/foundation-makeup/fit-me-matte-poreless-foundation",
+          "imageUrl": "assets/makeup.jpg",
+          "reference": "A liquid foundation with a matte finish. Your usual makeup appears after sunscreen in the morning routine. The reference image is not a match to your shade; that shade has not been recorded.",
+          "displayPrice": null,
+          "sourceLabel": "Maybelline: product & ingredients"
+        },
+        "title": "Maybelline Fit Me Matte + Poreless",
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 6,
+          "short": {
+            "morning": "Your usual makeup, if you want to wear it. Brand reference image; your shade is not recorded.",
+            "evening": null
+          },
+          "instructions": [
+            "Makeup is optional."
+          ]
+        }
+      }
+    ],
+    "routineGuides": [
+      {
+        "id": "maya-proposed-routine",
+        "productId": null,
+        "title": "Your proposed routine",
+        "intro": "These are proposed steps, not a record that you have received or started the treatment.",
+        "steps": [
+          {
+            "title": null,
+            "body": "Morning: water rinse, CeraVe PM, Anthelios UV Control SPF 50, then makeup if wanted. Pause the separate hyaluronic acid and niacinamide serums."
+          },
+          {
+            "title": null,
+            "body": "Evening: one makeup remover if wearing makeup, CeraVe cleanser, azelaic acid on trial nights, then CeraVe PM. Keep using CeraVe cleanser until it runs out; the balm is an alternative to Bioderma, not an extra step."
+          },
+          {
+            "title": null,
+            "body": "Patch test first, following the manufacturer’s directions. Don’t use the product if the patch test causes redness, burning, itching, blistering or irritation."
+          },
+          {
+            "title": null,
+            "body": "After cleansing, let your skin dry. Apply a small amount in a thin layer to intact skin, avoiding eyes, lips and broken skin. Follow with your moisturizer."
+          },
+          {
+            "title": null,
+            "body": "First week: try two nonconsecutive evenings. If comfortable, try alternate evenings the next week, then work up to nightly only as tolerated. This is a gradual introduction, not a trial-validated optimal dose."
+          },
+          {
+            "title": null,
+            "body": "Keep glycolic toner out and don’t introduce a retinoid or another exfoliant at the same time."
+          },
+          {
+            "title": null,
+            "body": "If irritation develops, rinse off and stop. Seek advice if it persists. Get urgent help for swelling or breathing trouble."
+          },
+          {
+            "title": null,
+            "body": "Aveeno is for after the cleanser bottle runs out. Hydro Boost is optional for a future moisturizer bottle. Make either change separately, once the treatment is settled."
+          }
+        ],
+        "careNote": null,
+        "sources": [
+          {
+            "label": "The Ordinary directions",
+            "url": "https://theordinary.com/en-us/azelaic-acid-suspension-10-exfoliator-100407.html"
+          }
+        ]
+      }
+    ]
+  },
+  "intakePresentation": {
+    "schemaVersion": 2,
+    "consultationSections": [],
+    "baselineRoutine": [
+      {
+        "id": "maya-water-rinse",
+        "kind": "instruction",
+        "slot": null,
+        "productId": null,
+        "product": null,
+        "title": "Your usual water rinse",
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 1,
+          "short": {
+            "morning": "Keep your morning water rinse.",
+            "evening": null
+          },
+          "instructions": [
+            "Keep your morning water rinse. More cleansing isn’t the goal."
+          ]
+        }
+      },
+      {
+        "id": "maya-baseline-moisturizer",
+        "kind": "product",
+        "slot": "moisturizer",
+        "productId": "cerave-pm",
+        "product": {
+          "id": "cerave-pm",
+          "name": "CeraVe PM Facial Moisturizing Lotion",
+          "brand": "CeraVe PM",
+          "variant": "Facial Moisturizing Lotion",
+          "sizeLabel": "3 fl oz",
+          "productUrl": "https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion",
+          "imageUrl": "assets/moisturizer.jpg",
+          "reference": "The brand lists ceramides, niacinamide and hyaluronic acid in this facial lotion.",
+          "displayPrice": {
+            "cents": 1499,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-13977966",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "CeraVe: product & ingredients"
+        },
+        "title": "CeraVe PM Facial Moisturizing Lotion",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 4,
+          "short": {
+            "morning": "Keep your comfortable moisturizer beneath sunscreen.",
+            "evening": "Follow cleansing with your comfortable moisturizer."
+          },
+          "instructions": [
+            "Keep the moisturizer that feels comfortable, morning and evening."
+          ]
+        }
+      },
+      {
+        "id": "maya-baseline-cleanser",
+        "kind": "product",
+        "slot": "cleanser",
+        "productId": "cerave-hydrating-cleanser",
+        "product": {
+          "id": "cerave-hydrating-cleanser",
+          "name": "CeraVe Hydrating Facial Cleanser",
+          "brand": "CeraVe",
+          "variant": "Hydrating Facial Cleanser",
+          "sizeLabel": "12 fl oz / 355 mL",
+          "productUrl": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser",
+          "imageUrl": "assets/cleanser.jpg",
+          "reference": "A non-foaming facial cleanser with ceramides and hyaluronic acid.",
+          "displayPrice": {
+            "cents": 1379,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-13977968",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "CeraVe: product & ingredients"
+        },
+        "title": "CeraVe Hydrating Facial Cleanser",
+        "usage": {
+          "periods": [
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": null,
+            "evening": "Finish CeraVe first. Try Aveeno separately after the treatment is settled."
+          },
+          "instructions": [
+            "Use your comfortable CeraVe cleanser in the evening. Finish this bottle before trying Aveeno."
+          ]
+        }
+      },
+      {
+        "id": "maya-baseline-remover",
+        "kind": "product",
+        "slot": "makeup-removal",
+        "productId": "bioderma-sensibio-h2o",
+        "product": {
+          "id": "bioderma-sensibio-h2o",
+          "name": "Bioderma Sensibio H2O",
+          "brand": "Bioderma",
+          "variant": "Sensibio H2O",
+          "sizeLabel": "16.9 fl oz / 500 mL",
+          "productUrl": "https://www.bioderma.us/en/p/sensibio-h2o-micellar-water.html",
+          "imageUrl": "assets/remover.jpg",
+          "reference": "The brand describes Sensibio H2O as a micellar cleansing and makeup-removing water.",
+          "displayPrice": {
+            "cents": 2099,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-82287056",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "Bioderma: product & ingredients"
+        },
+        "title": "Bioderma Sensibio H2O",
+        "usage": {
+          "periods": [
+            "evening"
+          ],
+          "order": 1,
+          "short": {
+            "morning": null,
+            "evening": "If wearing makeup: Bioderma preferred, or optional balm in its place. Use one makeup remover before your cleanser."
+          },
+          "instructions": [
+            "On makeup days, use one makeup remover before your cleanser. Use Bioderma with a well-soaked soft pad and a light touch. The balm is an optional alternative, not another step."
+          ]
+        }
+      },
+      {
+        "id": "maya-baseline-sunscreen",
+        "kind": "product",
+        "slot": "sunscreen",
+        "productId": "lrp-anthelios-uv-control-spf50",
+        "product": {
+          "id": "lrp-anthelios-uv-control-spf50",
+          "name": "La Roche-Posay Anthelios UV Control Sunscreen SPF 50",
+          "brand": "La Roche-Posay",
+          "variant": "Anthelios UV Control Sunscreen SPF 50",
+          "sizeLabel": "1.7 fl oz / 50 mL",
+          "productUrl": "https://www.laroche-posay.us/our-products/sun/face-sunscreen/anthelios-uv-control-sunscreen-spf-50-3606000622111.html",
+          "imageUrl": "assets/sunscreen.webp",
+          "reference": "Official US product reference: Anthelios UV Control Sunscreen SPF 50, 1.7 fl oz / 50 mL.",
+          "displayPrice": {
+            "cents": 3999,
+            "currency": "USD",
+            "sourceUrl": "https://www.laroche-posay.us/our-products/sun/face-sunscreen/anthelios-uv-control-sunscreen-spf-50-3606000622111.html",
+            "checkedOn": "2026-10-20",
+            "illustrative": true
+          },
+          "sourceLabel": "La Roche-Posay: product & ingredients"
+        },
+        "title": "La Roche-Posay Anthelios UV Control Sunscreen SPF 50",
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 5,
+          "short": {
+            "morning": "Apply generously as directed before going outdoors. Reapply at least every 2 hours outdoors; use a water-resistant sunscreen for swimming or sweating.",
+            "evening": null
+          },
+          "instructions": [
+            "Apply generously as directed, 15 minutes before sun exposure. Reapply at least every 2 hours outdoors. For swimming or sweating, choose a water-resistant sunscreen."
+          ]
+        }
+      },
+      {
+        "id": "maya-baseline-makeup",
+        "kind": "product",
+        "slot": "makeup",
+        "productId": "maybelline-fit-me",
+        "product": {
+          "id": "maybelline-fit-me",
+          "name": "Maybelline Fit Me Matte + Poreless",
+          "brand": "Maybelline",
+          "variant": "Fit Me Matte + Poreless",
+          "sizeLabel": "",
+          "productUrl": "https://www.maybelline.com/face-makeup/foundation-makeup/fit-me-matte-poreless-foundation",
+          "imageUrl": "assets/makeup.jpg",
+          "reference": "A liquid foundation with a matte finish. Your usual makeup appears after sunscreen in the morning routine. The reference image is not a match to your shade; that shade has not been recorded.",
+          "displayPrice": null,
+          "sourceLabel": "Maybelline: product & ingredients"
+        },
+        "title": "Maybelline Fit Me Matte + Poreless",
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 6,
+          "short": {
+            "morning": "Your usual makeup, if you want to wear it. Brand reference image; your shade is not recorded.",
+            "evening": null
+          },
+          "instructions": [
+            "Makeup is optional."
+          ]
+        }
+      }
+    ]
+  },
+  "baseline": [
+    {
+      "slot": "moisturizer",
+      "productId": "cerave-pm"
+    },
+    {
+      "slot": "cleanser",
+      "productId": "cerave-hydrating-cleanser"
+    },
+    {
+      "slot": "makeup-removal",
+      "productId": "bioderma-sensibio-h2o"
+    },
+    {
+      "slot": "sunscreen",
+      "productId": "lrp-anthelios-uv-control-spf50"
+    },
+    {
+      "slot": "makeup",
+      "productId": "maybelline-fit-me"
+    }
+  ],
+  "recommendations": [
+    {
+      "id": "maya-hydro-1",
+      "slot": "moisturizer",
+      "currentProductId": "cerave-pm",
+      "proposedProductId": "neutrogena-hydro-boost-water-cream-6806486",
+      "priceCents": 1999,
+      "currency": "USD",
+      "rationale": "Your CeraVe has felt comfortable for months, and your basic routine sits well under makeup. I’d keep that dependable part of your routine while we introduce the treatment. The pilling shows up on some serum mornings, so removing those extra layers is a better first test than assuming your moisturizer needs replacing."
+    },
+    {
+      "id": "maya-balm-1",
+      "slot": "makeup-removal",
+      "currentProductId": "bioderma-sensibio-h2o",
+      "proposedProductId": "cerave-makeup-removing-balm",
+      "priceCents": 1169,
+      "currency": "USD",
+      "rationale": "Your Bioderma is already taking your makeup off comfortably, so I’d keep it. There’s no reason to buy a cleansing oil just to add another step. Use a well-soaked soft pad and a light touch, then follow with your cleanser."
+    },
+    {
+      "id": "maya-azelaic-1",
+      "slot": "treatments",
+      "currentProductId": null,
+      "proposedProductId": "ordinary-azelaic-10",
+      "priceCents": 1220,
+      "currency": "USD",
+      "rationale": "The brown marks that linger after spots are your main concern. Azelaic acid can help reduce the excess pigment behind those marks, which is why I’d choose it over another exfoliating toner. This 10% product gives us an accessible starting option while we learn how your skin tolerates it. The stronger clinical evidence is for 15–20% formulations, so I wouldn’t promise the same results from this bottle. We’ll watch both comfort and gradual change in the marks before deciding what comes next."
+    }
+  ]
+}

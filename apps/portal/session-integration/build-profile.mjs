@@ -1,0 +1,1 @@
+throw new Error('Historical R2 composition is retired: it cannot regenerate the current portal. Run npm --prefix apps/portal run build from the repository root. The original migration source is preserved in the private Oct 24 preservation archive.');

@@ -9,5 +9,5 @@
       "@/*": ["./*"]
     }
   },
-  "exclude": ["node_modules", "tests", "dist", "dist-web", ".expo", "supabase"]
+  "exclude": ["node_modules", "tests", "dist", "dist-web", ".expo", "supabase", "apps/portal", ".local-artifacts", ".worktrees", ".superpowers"]
 }

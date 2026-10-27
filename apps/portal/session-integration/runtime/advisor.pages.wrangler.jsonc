@@ -1,0 +1,22 @@
+{
+  "name": "goshelv-portal",
+  "pages_build_output_dir": "dist/advisor-pages",
+  "compatibility_date": "2026-10-20",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "vars": {
+    "CLIENT_SHARED_SESSIONS": "false",
+    "ADVISOR_SHARED_SESSIONS": "false",
+    "PORTAL_ORIGIN": "https://portal.goshelv.com"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "ADVISOR_SESSIONS",
+        "class_name": "AdvisorSessionObject",
+        "script_name": "goshelv-advisor-session-vault"
+      }
+    ]
+  }
+}

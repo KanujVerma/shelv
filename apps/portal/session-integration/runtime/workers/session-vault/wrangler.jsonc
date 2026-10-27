@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "goshelv-advisor-session-vault",
+  "main": "index.ts",
+  "compatibility_date": "2026-10-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [],
+  "exports": { "AdvisorSessionObject": { "type": "durable-object", "storage": "sqlite" } },
+  "durable_objects": { "bindings": [{"name":"ADVISOR_SESSIONS","class_name":"AdvisorSessionObject"}] },
+  "vars": {
+    "CLIENT_SHARED_SESSIONS":"false",
+    "ADVISOR_SHARED_SESSIONS":"false",
+    "CLIENT_REMEMBER_IDLE_SECONDS":"604800",
+    "CLIENT_REMEMBER_ABSOLUTE_SECONDS":"2592000",
+    "PORTAL_ORIGIN":"https://portal.goshelv.com",
+    "SESSION_IDLE_SECONDS":"3600",
+    "SESSION_ABSOLUTE_SECONDS":"28800",
+    "SESSION_FLOW_SECONDS":"600"
+  },
+  "observability": {"enabled":false}
+}

@@ -1,0 +1,860 @@
+{
+  "provenance": "Explicit fictional approved Alex source from portal/dist/advisor/presentation-fixtures.js; no real client rows.",
+  "presentation": {
+    "schemaVersion": 2,
+    "title": "Alex’s plan",
+    "summary": "Replace the moisturizer first. Finish CeraVe cleanser, then try lower-cost Aveeno. Keep sunscreen and hold new treatments.",
+    "preparedBy": "Kanuj",
+    "preparedOn": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.vanicream.com/product/vanicream-daily-facial-moisturizer",
+        "label": "Vanicream"
+      },
+      {
+        "url": "https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion/",
+        "label": "CeraVe"
+      },
+      {
+        "url": "https://www.fda.gov/cosmetics/cosmetic-ingredients/and-polyfluoroalkyl-substances-pfas-cosmetics",
+        "label": "FDA: PFAS"
+      },
+      {
+        "url": "https://www.reddit.com/r/AusSkincare/comments/pbtxg5",
+        "label": "User comparison"
+      },
+      {
+        "url": "https://www.reddit.com/r/SkincareAddiction/comments/i6j7g2/review_vanicream_daily_facial_moisturizer/",
+        "label": "User experiences"
+      }
+    ],
+    "consultationSections": [
+      {
+        "title": "What you want to change",
+        "body": "CeraVe PM stings on your cheeks most times you apply it, so you sometimes skip it. Once it settles, it moisturizes adequately. Comfort comes first; occasional dullness is secondary."
+      },
+      {
+        "title": "What you have already tried",
+        "body": "A thick cream left a shiny finish and disrupted makeup. A previous gel felt pleasant initially but did not keep your cheeks comfortable until lunch."
+      },
+      {
+        "title": "Your everyday routine",
+        "body": "Morning water rinse, moisturizer, Beauty of Joseon sunscreen and light makeup. Evening CeraVe Hydrating Cleanser after the indoor gym; existing makeup remover when needed. Cleanser and sunscreen are comfortable."
+      },
+      {
+        "title": "Your preferences",
+        "body": "One moisturizer for morning and evening, under $25. No more than three morning steps and two evening steps. No requirement for natural ingredients."
+      },
+      {
+        "title": "Relevant history",
+        "body": "You report no known ingredient allergy, new exfoliant, retinoid or prescribed treatment, and no persistent rash or swelling. The cause of the stinging has not been established."
+      },
+      {
+        "title": "What success looks like",
+        "body": "Comfortable application, cheeks that stay comfortable, good wear under your existing sunscreen and makeup, and a routine you use consistently."
+      }
+    ],
+    "categoryCards": [
+      {
+        "id": "card-moisturizer",
+        "slot": "moisturizer",
+        "kind": "replace",
+        "recommendationId": "moisturizer-1",
+        "title": "Moisturizer",
+        "subtitle": "",
+        "rationaleTitle": "Why I chose this for you",
+        "reasons": [
+          {
+            "title": "Why I chose this for you",
+            "body": "Your CeraVe moisturizes well, but it keeps stinging and you’ve started skipping it. I’d like you to try Vanicream Daily Facial in its place. It gives us a different moisturizing formula while keeping one product for morning and evening. The aim is to keep your cheeks comfortable without the stinging, heavy finish or makeup problems you’ve described."
+          }
+        ],
+        "actions": [
+          "Keep your cleanser and sunscreen unchanged while trying it.",
+          "After the initial small-area test, notice how it feels when you apply it, whether your cheeks feel dry later, and how your makeup wears.",
+          "If it stings or irritates your skin, stop and let me know so we can reassess."
+        ],
+        "currentProduct": {
+          "id": "cerave-pm",
+          "name": "CeraVe PM Facial Moisturizing Lotion",
+          "brand": "CeraVe PM",
+          "variant": "Facial Moisturizing Lotion",
+          "sizeLabel": "3 fl oz",
+          "productUrl": "https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion/",
+          "imageUrl": "assets/cerave-pm-product-official.jpg",
+          "reference": null,
+          "displayPrice": {
+            "cents": 1800,
+            "currency": "USD",
+            "sourceUrl": null,
+            "checkedOn": null,
+            "illustrative": true
+          }
+        },
+        "proposedProduct": {
+          "id": "vanicream-daily",
+          "name": "Vanicream Daily Facial Moisturizer",
+          "brand": "Vanicream",
+          "variant": "Daily Facial Moisturizer",
+          "sizeLabel": "3 fl oz",
+          "productUrl": "https://www.vanicream.com/product/vanicream-daily-facial-moisturizer",
+          "imageUrl": "assets/vanicream-daily-facial-moisturizer-tube-3oz-official.jpg",
+          "reference": null,
+          "displayPrice": {
+            "cents": 1600,
+            "currency": "USD",
+            "sourceUrl": null,
+            "checkedOn": null,
+            "illustrative": true
+          }
+        },
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Introduce after the small-area test. Stop if it irritates your skin.",
+            "evening": "Introduce after the small-area test. Stop if it irritates your skin."
+          },
+          "instructions": [
+            "Before full-face use, test a small inner-arm area twice daily for 7–10 days using your normal amount. Stop if it irritates your skin.",
+            "After cleansing, gently pat your face and apply an even layer while your skin is slightly damp. Avoid getting it in your eyes.",
+            "Use the same moisturizer morning and evening. In the morning, follow with your sunscreen before makeup.",
+            "Notice how your cheeks feel later and how your usual sunscreen and makeup wear. Stop if it stings or irritates your skin and let me know."
+          ]
+        },
+        "comparisons": [
+          {
+            "label": "Niacinamide",
+            "currentText": "Contains it",
+            "proposedText": "Not in listed formula",
+            "significance": "Vanicream leaves this out, which changes the formula you are trying. Your sunscreen contains niacinamide and you tolerate it, so I’m not asking you to avoid the ingredient everywhere. We’re looking for a moisturizer that feels comfortable, without assuming we know what caused the stinging.",
+            "ingredientGuideKey": "niacinamide",
+            "guideNote": null,
+            "sources": []
+          },
+          {
+            "label": "Squalane",
+            "currentText": "Not in listed formula",
+            "proposedText": "Contains it",
+            "significance": "Squalane helps soften skin and contributes to how the lotion spreads and feels. CeraVe uses other emollients for these jobs. I’m choosing this different blend as a candidate for comfortable, soft-feeling cheeks without the thick cream you disliked. We’ll check how it wears through the day and under makeup; shine or pilling would count against it.",
+            "ingredientGuideKey": "squalane",
+            "guideNote": null,
+            "sources": []
+          },
+          {
+            "label": "Ceramides",
+            "currentText": "3 types\nNP · AP · EOP",
+            "proposedText": "5 types\nNP · AP · EOP\nNG · AS",
+            "significance": "Ceramides help support the barrier that keeps moisture in your skin. Vanicream includes two additional types, giving it a different ceramide blend. I’m keeping ceramides in your replacement to maintain the moisturizing support you already like while trying a formula that may feel more comfortable. We’ll judge the result by how your cheeks feel later in the day, rather than the number of types on the label.",
+            "ingredientGuideKey": "ceramides",
+            "guideNote": null,
+            "sources": []
+          }
+        ],
+        "factsTitle": "The formula differences that matter",
+        "facts": [],
+        "how": {
+          "id": "guide-moisturizer",
+          "productId": "vanicream-daily",
+          "title": "How to use it",
+          "intro": "",
+          "steps": [
+            {
+              "title": null,
+              "body": "Before full-face use, test a small inner-arm area twice daily for 7–10 days using your normal amount. Stop if it irritates your skin."
+            },
+            {
+              "title": null,
+              "body": "After cleansing, gently pat your face and apply an even layer while your skin is slightly damp. Avoid getting it in your eyes."
+            },
+            {
+              "title": null,
+              "body": "Use the same moisturizer morning and evening. In the morning, follow with your sunscreen before makeup."
+            },
+            {
+              "title": null,
+              "body": "Notice how your cheeks feel later and how your usual sunscreen and makeup wear. Stop if it stings or irritates your skin and let me know."
+            }
+          ],
+          "careNote": null,
+          "sources": [
+            {
+              "label": "Vanicream product page",
+              "url": "https://www.vanicream.com/product/vanicream-daily-facial-moisturizer"
+            }
+          ]
+        },
+        "sources": []
+      },
+      {
+        "id": "card-cleanser",
+        "slot": "cleanser",
+        "kind": "finish_then_replace",
+        "recommendationId": null,
+        "title": "Cleanser",
+        "subtitle": "Your evening cleanser",
+        "rationaleTitle": "Why I chose this for you",
+        "reasons": [
+          {
+            "title": "Why I chose this for you",
+            "body": "Your CeraVe cleanser feels comfortable, so I wouldn’t replace a bottle you can still use. Once it runs out, try Aveeno Daily Moisturizing Facial Cleanser. It costs less for the same amount, and keeping that saving is worthwhile if it leaves your cheeks just as comfortable. Let’s settle the moisturizer change first so we can judge each change separately."
+          }
+        ],
+        "actions": [
+          "Finish your CeraVe; there’s no cleanser to buy today.",
+          "When it needs replacing, try Aveeno on its own as your evening cleanser. Keep your morning water rinse.",
+          "Use your existing micellar water first on heavier-makeup days. If the new cleanser stings, leaves residue or makes your cheeks tighter, stop and let me know."
+        ],
+        "currentProduct": {
+          "id": "cerave-cleanser",
+          "name": "CeraVe Hydrating Facial Cleanser",
+          "brand": "CeraVe",
+          "variant": "Hydrating Facial Cleanser",
+          "sizeLabel": "12 fl oz / 355 mL",
+          "productUrl": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser",
+          "imageUrl": "assets/cerave-hydrating-facial-cleanser.jpg",
+          "reference": null,
+          "displayPrice": {
+            "cents": 1379,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-13977968",
+            "checkedOn": "2026-10-14",
+            "illustrative": true
+          }
+        },
+        "proposedProduct": {
+          "id": "aveeno-cleanser",
+          "name": "Aveeno Daily Moisturizing Facial Cleanser, Dry Skin",
+          "brand": "Aveeno",
+          "variant": "Daily Moisturizing Facial Cleanser",
+          "sizeLabel": "12 fl oz / 354 mL",
+          "productUrl": "https://www.aveeno.com/products/daily-moisturizing-facial-cleanser-soothing-oat",
+          "imageUrl": "assets/aveeno-daily-moisturizing-facial-cleanser-12oz.jpg",
+          "reference": null,
+          "displayPrice": {
+            "cents": 1160,
+            "currency": "USD",
+            "sourceUrl": "https://www.walmart.com/ip/843259195",
+            "checkedOn": "2026-10-14",
+            "illustrative": true
+          }
+        },
+        "usage": {
+          "periods": [
+            "evening"
+          ],
+          "order": 1,
+          "short": {
+            "morning": null,
+            "evening": "Finish CeraVe, then try Aveeno Daily Moisturizing Facial Cleanser once the moisturizer change is settled."
+          },
+          "instructions": [
+            "For now, keep using CeraVe in the evening. When the bottle is finished and the moisturizer change is settled, introduce Aveeno following its label.",
+            "Use lukewarm water, gently massage the cleanser over your face, rinse thoroughly and pat dry. Follow with your moisturizer.",
+            "Keep micellar water for heavier makeup that needs it; don’t add another cleanser every night."
+          ]
+        },
+        "comparisons": [],
+        "factsTitle": "Why this change makes sense",
+        "facts": [
+          {
+            "title": "Same size, lower price",
+            "body": "The 12 oz Aveeno is listed at $11.60 at Walmart; your 12 oz CeraVe is $13.79 at Target. That’s $2.19 less per bottle, about 16%. We’ll recheck stock and the total before ordering.",
+            "ingredientGuideKey": null,
+            "sources": []
+          },
+          {
+            "title": "A different cleansing formula",
+            "body": "Aveeno uses coco-glucoside and sodium cocoyl glutamate to cleanse, with glycerin and oat. CeraVe has a different blend with glycerin and ceramides. That gives us a reasonable lower-cost option to try, but doesn’t establish that it will be gentler or more moisturizing for you.",
+            "ingredientGuideKey": null,
+            "sources": []
+          },
+          {
+            "title": "What would make it worth keeping",
+            "body": "Your cheeks should feel comfortable after washing, your usual makeup should come off, and you shouldn’t need an extra wash. If those stay the same, you get the saving without adding another daily step.",
+            "ingredientGuideKey": null,
+            "sources": []
+          }
+        ],
+        "how": {
+          "id": "guide-cleanser",
+          "productId": "aveeno-cleanser",
+          "title": "How to use it",
+          "intro": "",
+          "steps": [
+            {
+              "title": null,
+              "body": "For now, keep using CeraVe in the evening. When the bottle is finished and the moisturizer change is settled, introduce Aveeno following its label."
+            },
+            {
+              "title": null,
+              "body": "Use lukewarm water, gently massage the cleanser over your face, rinse thoroughly and pat dry. Follow with your moisturizer."
+            },
+            {
+              "title": null,
+              "body": "Keep micellar water for heavier makeup that needs it; don’t add another cleanser every night."
+            }
+          ],
+          "careNote": null,
+          "sources": [
+            {
+              "label": "CeraVe product page",
+              "url": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser"
+            },
+            {
+              "label": "Aveeno product page",
+              "url": "https://www.aveeno.com/products/daily-moisturizing-facial-cleanser-soothing-oat"
+            }
+          ]
+        },
+        "sources": [
+          {
+            "label": "CeraVe product page",
+            "url": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser"
+          },
+          {
+            "label": "Aveeno product page",
+            "url": "https://www.aveeno.com/products/daily-moisturizing-facial-cleanser-soothing-oat"
+          }
+        ]
+      },
+      {
+        "id": "card-sunscreen",
+        "slot": "sunscreen",
+        "kind": "keep",
+        "recommendationId": null,
+        "title": "Sunscreen",
+        "subtitle": "Rice + Niacinamide · SPF50+ PA++++",
+        "rationaleTitle": "Why I’m keeping this for you",
+        "reasons": [
+          {
+            "title": "Why I’m keeping this for you",
+            "body": "You already like how Relief Sun feels and how it sits under makeup. I’d keep it so you can see how the new moisturizer works with the sunscreen you actually enjoy using. The main thing to plan for is your longer outdoor walks, especially if you’ll be sweating."
+          }
+        ],
+        "actions": [
+          "Keep your current sunscreen while testing the moisturizer beneath it.",
+          "Take sunscreen with you for longer outings so you can reapply.",
+          "For swimming or outdoor sweating, choose a water-resistant sunscreen and follow its label."
+        ],
+        "currentProduct": {
+          "id": "boj-relief-sun",
+          "name": "Beauty of Joseon Relief Sun",
+          "brand": "Beauty of Joseon",
+          "variant": "Relief Sun · Rice + Niacinamide",
+          "sizeLabel": "50 mL · SPF50+ PA++++",
+          "productUrl": "https://beautyofjoseon.com/products/relief-sun-rice-probiotics?country=PA",
+          "imageUrl": "assets/boj-relief-sun-rice-niacinamide.jpg",
+          "reference": null,
+          "displayPrice": null
+        },
+        "proposedProduct": null,
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 3,
+          "short": {
+            "morning": "Apply generously as the final skincare step, before makeup. Reapply at least every two hours outdoors; use a water-resistant sunscreen for swimming or sweating.",
+            "evening": null
+          },
+          "instructions": [
+            "After moisturizer, spread a generous, even layer over sun-exposed skin as your final morning skincare step, before makeup.",
+            "The brand directs reapplication at least every two hours. For swimming or sweating, follow your water-resistant sunscreen’s reapplication directions, including after towel drying."
+          ]
+        },
+        "comparisons": [],
+        "factsTitle": "What matters for you",
+        "facts": [
+          {
+            "title": "Same sunscreen, updated name",
+            "body": "Beauty of Joseon says Rice + Probiotics was renamed Rice + Niacinamide without changing the formula or size. Both names can appear on genuine packaging during the changeover.",
+            "ingredientGuideKey": null,
+            "sources": []
+          },
+          {
+            "title": "Niacinamide",
+            "body": "This formula contains niacinamide, and you’ve said this sunscreen feels comfortable. That’s a reason to avoid blaming that ingredient alone for the stinging with CeraVe PM; it doesn’t establish what caused it.",
+            "ingredientGuideKey": "niacinamide",
+            "sources": []
+          },
+          {
+            "title": "Plan for sweat and sun",
+            "body": "The brand directs you to use a water-resistant sunscreen for swimming or sweating. Keep a hat and protective clothing in the plan too; sunscreen doesn’t make unlimited sun exposure safe.",
+            "ingredientGuideKey": null,
+            "sources": []
+          }
+        ],
+        "how": {
+          "id": "guide-sunscreen",
+          "productId": "boj-relief-sun",
+          "title": "How to use it",
+          "intro": "",
+          "steps": [
+            {
+              "title": null,
+              "body": "After moisturizer, spread a generous, even layer over sun-exposed skin as your final morning skincare step, before makeup."
+            },
+            {
+              "title": null,
+              "body": "The brand directs reapplication at least every two hours. For swimming or sweating, follow your water-resistant sunscreen’s reapplication directions, including after towel drying."
+            }
+          ],
+          "careNote": null,
+          "sources": [
+            {
+              "label": "Beauty of Joseon formula, naming update and directions",
+              "url": "https://beautyofjoseon.com/products/relief-sun-rice-probiotics?country=PA"
+            }
+          ]
+        },
+        "sources": [
+          {
+            "label": "Beauty of Joseon formula, naming update and directions",
+            "url": "https://beautyofjoseon.com/products/relief-sun-rice-probiotics?country=PA"
+          }
+        ]
+      },
+      {
+        "id": "card-treatments",
+        "slot": "treatments",
+        "kind": "no_addition",
+        "recommendationId": null,
+        "title": "No new treatment for now",
+        "subtitle": "Focus on comfort before adding another active",
+        "rationaleTitle": "Why I’m holding off",
+        "reasons": [
+          {
+            "title": "Why I’m holding off",
+            "body": "You mentioned occasional dullness, but the repeated stinging is what’s making your routine difficult to use. I’d get the moisturizer working comfortably first. That keeps the routine within the steps you wanted and gives us a clearer view of whether anything else is worth adding."
+          }
+        ],
+        "actions": [
+          "Hold off on buying a brightening serum, exfoliant or retinoid during the moisturizer trial.",
+          "Notice comfort on application, how your cheeks feel later and how your makeup wears.",
+          "Once the routine feels comfortable and consistent, tell me whether dullness still bothers you."
+        ],
+        "currentProduct": null,
+        "proposedProduct": null,
+        "usage": null,
+        "comparisons": [],
+        "factsTitle": "What we’re checking first",
+        "facts": [
+          {
+            "title": "One change to evaluate",
+            "body": "Keeping the other products steady makes it easier to judge the moisturizer. Adding several products at once can also increase irritation, as the American Academy of Dermatology notes.",
+            "ingredientGuideKey": null,
+            "sources": []
+          },
+          {
+            "title": "Comfort before another step",
+            "body": "Your goal is one moisturizer for morning and evening and fewer purchases. There’s no need to choose a separate treatment before we know whether you still want one.",
+            "ingredientGuideKey": null,
+            "sources": []
+          },
+          {
+            "title": "A test has limits",
+            "body": "Trying a new product on a small area can help flag a reaction. It cannot identify the ingredient behind the stinging you’ve already experienced.",
+            "ingredientGuideKey": null,
+            "sources": []
+          }
+        ],
+        "how": {
+          "id": "guide-treatments",
+          "productId": null,
+          "title": "What to do for now",
+          "intro": "",
+          "steps": [
+            {
+              "title": null,
+              "body": "There’s no treatment to apply. Follow the cleanser, moisturizer and sunscreen steps in your routine."
+            },
+            {
+              "title": null,
+              "body": "Before using the new moisturizer over your face, the AAD recommends testing a normal amount on a quarter-sized area on the underside of your arm or bend of your elbow twice daily for 7–10 days."
+            },
+            {
+              "title": null,
+              "body": "If the test causes a reaction, wash it off and stop using it. If irritation persists or worsens, seek a dermatologist’s advice."
+            }
+          ],
+          "careNote": null,
+          "sources": [
+            {
+              "label": "AAD advice on introducing skincare products",
+              "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/anti-aging/maximize-anti-aging-products"
+            },
+            {
+              "label": "AAD small-area testing guidance",
+              "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/prevent-skin-problems/test-skin-care-products"
+            }
+          ]
+        },
+        "sources": [
+          {
+            "label": "AAD advice on introducing skincare products",
+            "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/anti-aging/maximize-anti-aging-products"
+          },
+          {
+            "label": "AAD small-area testing guidance",
+            "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/prevent-skin-problems/test-skin-care-products"
+          }
+        ]
+      }
+    ],
+    "baselineRoutine": [
+      {
+        "id": "water-rinse",
+        "kind": "instruction",
+        "slot": null,
+        "productId": null,
+        "product": null,
+        "title": "Your usual water rinse",
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 1,
+          "short": {
+            "morning": "No extra morning cleanse while this approach is comfortable for you.",
+            "evening": null
+          },
+          "instructions": [
+            "No extra morning cleanse while this approach is comfortable for you."
+          ]
+        }
+      },
+      {
+        "id": "baseline-moisturizer",
+        "kind": "product",
+        "slot": "moisturizer",
+        "productId": "cerave-pm",
+        "product": {
+          "id": "cerave-pm",
+          "name": "CeraVe PM Facial Moisturizing Lotion",
+          "brand": "CeraVe PM",
+          "variant": "Facial Moisturizing Lotion",
+          "sizeLabel": "3 fl oz",
+          "productUrl": "https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion/",
+          "imageUrl": "assets/cerave-pm-product-official.jpg",
+          "reference": null,
+          "displayPrice": {
+            "cents": 1800,
+            "currency": "USD",
+            "sourceUrl": null,
+            "checkedOn": null,
+            "illustrative": true
+          }
+        },
+        "title": "CeraVe PM Facial Moisturizing Lotion",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Stop the lotion that repeatedly stings.",
+            "evening": "Stop the lotion that repeatedly stings."
+          },
+          "instructions": [
+            "Stop the lotion that repeatedly stings. Keep the cleanser and sunscreen you already tolerate while testing the replacement."
+          ]
+        }
+      },
+      {
+        "id": "baseline-cleanser",
+        "kind": "product",
+        "slot": "cleanser",
+        "productId": "cerave-cleanser",
+        "product": {
+          "id": "cerave-cleanser",
+          "name": "CeraVe Hydrating Facial Cleanser",
+          "brand": "CeraVe",
+          "variant": "Hydrating Facial Cleanser",
+          "sizeLabel": "12 fl oz / 355 mL",
+          "productUrl": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser",
+          "imageUrl": "assets/cerave-hydrating-facial-cleanser.jpg",
+          "reference": null,
+          "displayPrice": {
+            "cents": 1379,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-13977968",
+            "checkedOn": "2026-10-14",
+            "illustrative": true
+          }
+        },
+        "title": "CeraVe Hydrating Facial Cleanser",
+        "usage": {
+          "periods": [
+            "evening"
+          ],
+          "order": 1,
+          "short": {
+            "morning": null,
+            "evening": "Finish CeraVe, then try Aveeno Daily Moisturizing Facial Cleanser once the moisturizer change is settled. Use your existing makeup remover first only when needed."
+          },
+          "instructions": [
+            "For now, keep using CeraVe in the evening. When the bottle is finished and the moisturizer change is settled, introduce Aveeno following its label.",
+            "Use lukewarm water, gently massage the cleanser over your face, rinse thoroughly and pat dry. Follow with your moisturizer.",
+            "Keep micellar water for heavier makeup that needs it; don’t add another cleanser every night."
+          ]
+        }
+      },
+      {
+        "id": "baseline-sunscreen",
+        "kind": "product",
+        "slot": "sunscreen",
+        "productId": "boj-relief-sun",
+        "product": {
+          "id": "boj-relief-sun",
+          "name": "Beauty of Joseon Relief Sun",
+          "brand": "Beauty of Joseon",
+          "variant": "Relief Sun · Rice + Niacinamide",
+          "sizeLabel": "50 mL · SPF50+ PA++++",
+          "productUrl": "https://beautyofjoseon.com/products/relief-sun-rice-probiotics?country=PA",
+          "imageUrl": "assets/boj-relief-sun-rice-niacinamide.jpg",
+          "reference": null,
+          "displayPrice": null
+        },
+        "title": "Beauty of Joseon Relief Sun",
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 3,
+          "short": {
+            "morning": "Apply generously as the final skincare step, before makeup. Reapply at least every two hours outdoors; use a water-resistant sunscreen for swimming or sweating.",
+            "evening": null
+          },
+          "instructions": [
+            "After moisturizer, spread a generous, even layer over sun-exposed skin as your final morning skincare step, before makeup.",
+            "The brand directs reapplication at least every two hours. For swimming or sweating, follow your water-resistant sunscreen’s reapplication directions, including after towel drying."
+          ]
+        }
+      }
+    ],
+    "routineGuides": [
+      {
+        "id": "application-moisturizer",
+        "productId": "vanicream-daily",
+        "title": "Using your moisturizer",
+        "intro": "Stop the lotion that repeatedly stings. Keep the cleanser and sunscreen you already tolerate while testing the replacement.",
+        "steps": [
+          {
+            "title": "Before full-face use",
+            "body": "Use a small test area on the inner arm twice daily for 7–10 days. Use the amount and thickness you would normally apply. Stop if redness, itching or swelling develops."
+          },
+          {
+            "title": "After cleansing",
+            "body": "Gently pat your face, leaving it slightly damp. You do not need an extra serum or a second moisturizer for this step."
+          },
+          {
+            "title": "Apply an even layer",
+            "body": "With clean hands, gently spread enough to cover your face comfortably. Avoid rubbing hard or getting product in your eyes. Follow the directions on your product’s label."
+          },
+          {
+            "title": "Finish your routine",
+            "body": "In the morning, follow with your current sunscreen as directed. In the evening, this is your final moisturizer. Check your cheeks later in the day and notice whether your usual sunscreen or makeup pills. These are the two things we want this change to get right."
+          }
+        ],
+        "careNote": "Stop if the product irritates your skin. Seek medical advice for concerning or persistent symptoms. A small-area test cannot guarantee that you will tolerate a product.",
+        "sources": [
+          {
+            "label": "AAD: testing a new product",
+            "url": "https://www.aad.org/public/everyday-care/skin-care-secrets/prevent-skin-problems/test-skin-care-products/"
+          }
+        ]
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "id": "moisturizer-1",
+      "slot": "moisturizer",
+      "currentProductId": "cerave-pm",
+      "proposedProductId": "vanicream-daily",
+      "priceCents": 1600,
+      "currency": "USD",
+      "rationale": "Your CeraVe moisturizes well, but it keeps stinging and you’ve started skipping it. I’d like you to try Vanicream Daily Facial in its place. It gives us a different moisturizing formula while keeping one product for morning and evening. The aim is to keep your cheeks comfortable without the stinging, heavy finish or makeup problems you’ve described."
+    }
+  ],
+  "baseline": [
+    {
+      "slot": "moisturizer",
+      "productId": "cerave-pm"
+    },
+    {
+      "slot": "cleanser",
+      "productId": "cerave-cleanser"
+    },
+    {
+      "slot": "sunscreen",
+      "productId": "boj-relief-sun"
+    }
+  ],
+  "intakePresentation": {
+    "schemaVersion": 2,
+    "consultationSections": [
+      {
+        "title": "What you want to change",
+        "body": "CeraVe PM stings on your cheeks most times you apply it, so you sometimes skip it. Once it settles, it moisturizes adequately. Comfort comes first; occasional dullness is secondary."
+      },
+      {
+        "title": "What you have already tried",
+        "body": "A thick cream left a shiny finish and disrupted makeup. A previous gel felt pleasant initially but did not keep your cheeks comfortable until lunch."
+      },
+      {
+        "title": "Your everyday routine",
+        "body": "Morning water rinse, moisturizer, Beauty of Joseon sunscreen and light makeup. Evening CeraVe Hydrating Cleanser after the indoor gym; existing makeup remover when needed. Cleanser and sunscreen are comfortable."
+      },
+      {
+        "title": "Your preferences",
+        "body": "One moisturizer for morning and evening, under $25. No more than three morning steps and two evening steps. No requirement for natural ingredients."
+      },
+      {
+        "title": "Relevant history",
+        "body": "You report no known ingredient allergy, new exfoliant, retinoid or prescribed treatment, and no persistent rash or swelling. The cause of the stinging has not been established."
+      },
+      {
+        "title": "What success looks like",
+        "body": "Comfortable application, cheeks that stay comfortable, good wear under your existing sunscreen and makeup, and a routine you use consistently."
+      }
+    ],
+    "baselineRoutine": [
+      {
+        "id": "water-rinse",
+        "kind": "instruction",
+        "slot": null,
+        "productId": null,
+        "product": null,
+        "title": "Your usual water rinse",
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 1,
+          "short": {
+            "morning": "No extra morning cleanse while this approach is comfortable for you.",
+            "evening": null
+          },
+          "instructions": [
+            "No extra morning cleanse while this approach is comfortable for you."
+          ]
+        }
+      },
+      {
+        "id": "baseline-moisturizer",
+        "kind": "product",
+        "slot": "moisturizer",
+        "productId": "cerave-pm",
+        "product": {
+          "id": "cerave-pm",
+          "name": "CeraVe PM Facial Moisturizing Lotion",
+          "brand": "CeraVe PM",
+          "variant": "Facial Moisturizing Lotion",
+          "sizeLabel": "3 fl oz",
+          "productUrl": "https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion/",
+          "imageUrl": "assets/cerave-pm-product-official.jpg",
+          "reference": null,
+          "displayPrice": {
+            "cents": 1800,
+            "currency": "USD",
+            "sourceUrl": null,
+            "checkedOn": null,
+            "illustrative": true
+          }
+        },
+        "title": "CeraVe PM Facial Moisturizing Lotion",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Stop the lotion that repeatedly stings.",
+            "evening": "Stop the lotion that repeatedly stings."
+          },
+          "instructions": [
+            "Stop the lotion that repeatedly stings. Keep the cleanser and sunscreen you already tolerate while testing the replacement."
+          ]
+        }
+      },
+      {
+        "id": "baseline-cleanser",
+        "kind": "product",
+        "slot": "cleanser",
+        "productId": "cerave-cleanser",
+        "product": {
+          "id": "cerave-cleanser",
+          "name": "CeraVe Hydrating Facial Cleanser",
+          "brand": "CeraVe",
+          "variant": "Hydrating Facial Cleanser",
+          "sizeLabel": "12 fl oz / 355 mL",
+          "productUrl": "https://www.cerave.com/skincare/cleansers/hydrating-facial-cleanser",
+          "imageUrl": "assets/cerave-hydrating-facial-cleanser.jpg",
+          "reference": null,
+          "displayPrice": {
+            "cents": 1379,
+            "currency": "USD",
+            "sourceUrl": "https://www.target.com/p/-/A-13977968",
+            "checkedOn": "2026-10-14",
+            "illustrative": true
+          }
+        },
+        "title": "CeraVe Hydrating Facial Cleanser",
+        "usage": {
+          "periods": [
+            "evening"
+          ],
+          "order": 1,
+          "short": {
+            "morning": null,
+            "evening": "Finish CeraVe, then try Aveeno Daily Moisturizing Facial Cleanser once the moisturizer change is settled. Use your existing makeup remover first only when needed."
+          },
+          "instructions": [
+            "For now, keep using CeraVe in the evening. When the bottle is finished and the moisturizer change is settled, introduce Aveeno following its label.",
+            "Use lukewarm water, gently massage the cleanser over your face, rinse thoroughly and pat dry. Follow with your moisturizer.",
+            "Keep micellar water for heavier makeup that needs it; don’t add another cleanser every night."
+          ]
+        }
+      },
+      {
+        "id": "baseline-sunscreen",
+        "kind": "product",
+        "slot": "sunscreen",
+        "productId": "boj-relief-sun",
+        "product": {
+          "id": "boj-relief-sun",
+          "name": "Beauty of Joseon Relief Sun",
+          "brand": "Beauty of Joseon",
+          "variant": "Relief Sun · Rice + Niacinamide",
+          "sizeLabel": "50 mL · SPF50+ PA++++",
+          "productUrl": "https://beautyofjoseon.com/products/relief-sun-rice-probiotics?country=PA",
+          "imageUrl": "assets/boj-relief-sun-rice-niacinamide.jpg",
+          "reference": null,
+          "displayPrice": null
+        },
+        "title": "Beauty of Joseon Relief Sun",
+        "usage": {
+          "periods": [
+            "morning"
+          ],
+          "order": 3,
+          "short": {
+            "morning": "Apply generously as the final skincare step, before makeup. Reapply at least every two hours outdoors; use a water-resistant sunscreen for swimming or sweating.",
+            "evening": null
+          },
+          "instructions": [
+            "After moisturizer, spread a generous, even layer over sun-exposed skin as your final morning skincare step, before makeup.",
+            "The brand directs reapplication at least every two hours. For swimming or sweating, follow your water-resistant sunscreen’s reapplication directions, including after towel drying."
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "verified_at": "2026-10-13",
+  "market": "United States",
+  "purpose": "Product comparison for a fictional client requesting a niacinamide-free moisturizer",
+  "pricing": "Quote needed. No retailer-specific current price has been verified for the selected sizes.",
+  "important_limits": [
+    "Ingredient lists can change. Check the ingredient list on the exact package before purchase or use.",
+    "Not listed means absent from the brand's published ingredient list; it is not laboratory testing or a trace-contamination guarantee.",
+    "No head-to-head superiority or guaranteed tolerability is established by these sources.",
+    "Ingredient counts, order and number of ceramide types do not establish relative concentration, performance or suitability.",
+    "These are moisturizers without labeled sun protection; do not present them as sunscreen.",
+    "CeraVe PM, Vanicream Daily Facial Moisturizer and the selected Hydro Boost Gel Cream are all fragrance-free. Fragrance removal is not a difference in this comparison."
+  ],
+  "products": [
+    {
+      "id": "cerave_pm_current",
+      "name": "CeraVe PM Facial Moisturizing Lotion",
+      "size": "3 fl oz / 89 mL",
+      "role": "Current product / comparison baseline",
+      "source_url": "https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion",
+      "image": "cerave-pm-product-official.jpg",
+      "image_source_url": "https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/us/skincare/2025/pm-facial-lotion/700x785/pm-facial-lotion-front-li-badge-700x785-v2.jpg?rev=cbb7009183c440bf88700493a280e336&w=500&hash=03A8D2F575124AFFDA3B08BA84A67C31",
+      "alternate_image": "cerave-pm-facial-moisturizing-lotion-3oz-official.jpg",
+      "alternate_image_source_url": "https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/us/skincare/2026/06/pm/700x785/lor2737_facial_moisturizer_pdp_refresh_pm_atf_700x785_asset12_rnd6.jpg?rev=18b2624c2603492d8aacb64839df6a68&w=900&hash=B556FCBD324D95689375EC2B73668A4B",
+      "inci": "Aqua / Water / Eau, Glycerin, Caprylic/Capric Triglyceride, Niacinamide, Cetearyl Alcohol, Potassium Phosphate, Ceramide NP, Ceramide AP, Ceramide EOP, Carbomer, Dimethicone, Ceteareth-20, Behentrimonium Methosulfate, Sodium Lauroyl Lactylate, Sodium Hyaluronate, Cholesterol, Phenoxyethanol, Disodium EDTA, Dipotassium Phosphate, Caprylyl Glycol, Phytosphingosine, Xanthan Gum, Polyglyceryl-3 Diisostearate, Ethylhexylglycerin",
+      "niacinamide": "Listed",
+      "fragrance": "Brand states free of added fragrance",
+      "texture": "Brand describes an ultra-lightweight, oil-free night lotion",
+      "relevant_characteristics": [
+        "Niacinamide is the decisive mismatch with the client's avoidance request; it is otherwise used for soothing and moisture-barrier support.",
+        "Glycerin and sodium hyaluronate attract water; three ceramides plus cholesterol and phytosphingosine support the barrier-lipid approach.",
+        "Dimethicone and caprylic/capric triglyceride help retain moisture and soften skin."
+      ]
+    },
+    {
+      "id": "vanicream_primary",
+      "name": "Vanicream Daily Facial Moisturizer",
+      "size": "3 fl oz / 89 mL",
+      "role": "Primary candidate",
+      "source_url": "https://www.vanicream.com/product/vanicream-daily-facial-moisturizer",
+      "image": "vanicream-daily-facial-moisturizer-tube-3oz-official.jpg",
+      "image_source_url": "https://www.vanicream.com/dynamic-media/product/images/dfm-at24g-front-2671-ret-crop.jpg?gravity=center&v=galleryMedia&k=x2aWStwub1EiEPfy%2F6dpew",
+      "alternate_image": "vanicream-daily-facial-moisturizer-3oz-official.jpg",
+      "alternate_image_source_url": "https://www.vanicream.com/dynamic-media/product/images/dfm-gp24c-group-2661-ret-crop.jpg?gravity=center&v=galleryMedia&k=4OmHIlIodbwJrIiLYPDUGg",
+      "inci": "Water, Squalane, Glycerin, Pentylene Glycol, Polyglyceryl-2 Stearate, Glyceryl Stearate, Stearyl Alcohol, Hyaluronic Acid, Ceramide EOP, Ceramide NG, Ceramide NP, Ceramide AS, Ceramide AP, Carnosine, Hydrogenated Lecithin, Phytosterols, Caprylyl Glycol, Polyacrylate Crosspolymer-11, 1,2-Hexanediol",
+      "niacinamide": "Not listed",
+      "fragrance": "Free of fragrance and masking fragrance on official packaging",
+      "texture": "Brand describes a rich but lightweight lotion, non-greasy and quick-absorbing",
+      "relevant_characteristics": [
+        "Removes niacinamide while retaining a ceramide-and-hyaluronic-acid moisturizing approach.",
+        "Squalane provides moisture-retaining conditioning; dimethicone is not listed, changing the emollient base from CeraVe PM.",
+        "Five ceramides are listed, alongside phytosterols and hydrogenated lecithin. This is a different lipid system, not evidence of better repair than three ceramides.",
+        "Glycerin, pentylene glycol and hyaluronic acid provide humectant hydration."
+      ],
+      "recommendation": "A reasonable first candidate because it meets the ingredient-avoidance preference while keeping a lotion and ceramide focus.",
+      "tradeoff": "The squalane-based feel differs from the current lotion. A good formula match cannot guarantee comfort, finish or individual tolerance."
+    },
+    {
+      "id": "neutrogena_alternative",
+      "name": "Neutrogena Hydro Boost Hyaluronic Acid Gel Cream Fragrance Free",
+      "size": "1.7 fl oz / 50 mL",
+      "role": "Alternative for a gel-cream preference",
+      "source_url": "https://www.neutrogena.com/products/skincare/neutrogena-hydro-boost-water-gel-fragrance-free-moisturizer/6806482",
+      "variant_warning": "The official legacy URL says water-gel-fragrance-free, but the current product title and package say Gel Cream Fragrance Free. Do not substitute Water Gel with Signature Fragrance, Water Cream, Water Cream+ or an international formula.",
+      "image": "neutrogena-hydro-boost-gel-cream-fragrance-free-1p7oz-official.jpg",
+      "image_source_url": "https://images.ctfassets.net/3zfcttr0ztpr/5O8Swx24E9RttwF0Sk4340/6fa170e65b4cb81d88bf542ba24edbfa/NTG_USA_US_70501064825_680648211_HB_Hyaluronic_Acid_Gel_FF_1p7oz_00000.webp?fm=jpg&q=80&w=1920",
+      "inci": "Water, Glycerin, Dimethicone, Cetearyl Olivate, Sorbitan Olivate, Sodium Hyaluronate, Serine, Glycine, Alanine, Threonine, Arginine, Proline, Lysine HCI, Glutamic Acid, Sodium PCA, PCA, Sodium Lactate, Urea, Sodium Chloride, Citric Acid, Betaine, Allantoin, Fructose, Maltose, Trehalose, Glucose, Pentylene Glycol, Synthetic Beeswax, Polyacrylate Crosspolymer-6, Dimethicone Crosspolymer, Dimethiconol, Ethylhexylglycerin, Caprylyl Glycol, Sodium Hydroxide",
+      "inci_note": "Lysine HCI spelling reproduced from the official page.",
+      "niacinamide": "Not listed",
+      "fragrance": "Brand states fragrance-free",
+      "texture": "Brand describes a lightweight, quick-absorbing gel cream for normal-to-dry skin",
+      "relevant_characteristics": [
+        "Omits niacinamide and retains dimethicone for slip, skin softening and moisture retention.",
+        "Glycerin and sodium hyaluronate are joined by amino acids, sodium PCA, urea and other natural-moisturizing-factor ingredients for water-binding hydration.",
+        "No ceramides, cholesterol or squalane are listed in this exact gel-cream formula."
+      ],
+      "recommendation": "A genuine alternative if the client prioritizes a water-like gel-cream texture over a ceramide lotion.",
+      "tradeoff": "It changes the moisturizing approach and omits the added ceramides found in both lotions. This does not prove lower hydration or worse barrier performance."
+    }
+  ],
+  "ingredient_role_sources": [
+    "https://www.vanicream.com/skin-basics/ingredients-and-functions",
+    "https://www.cerave.com/skincare/dimethicone",
+    "https://www.cerave.com/skincare/moisturizers/pm-facial-moisturizing-lotion",
+    "https://www.neutrogena.com/products/skincare/neutrogena-hydro-boost-water-gel-fragrance-free-moisturizer/6806482"
+  ],
+  "image_notes": "Actual official-brand assets, downloaded unchanged and visually checked. Product sizes are readable on the images. Attribute product imagery to the respective brands; do not imply endorsement."
+}

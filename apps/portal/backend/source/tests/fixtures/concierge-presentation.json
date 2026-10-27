@@ -1,0 +1,640 @@
+{
+  "presentation": {
+    "schemaVersion": 2,
+    "title": "Synthetic client plan",
+    "summary": "Authored summary",
+    "preparedBy": "Synthetic Advisor",
+    "preparedOn": "2026-10-13",
+    "sources": [
+      {
+        "label": "Public source",
+        "url": "https://example.com/source"
+      }
+    ],
+    "consultationSections": [
+      {
+        "title": "Public goals",
+        "body": "Explicitly authored for client"
+      }
+    ],
+    "baselineRoutine": [
+      {
+        "id": "water",
+        "kind": "instruction",
+        "slot": null,
+        "productId": null,
+        "product": null,
+        "title": "Water rinse",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Original morning note",
+            "evening": "Original evening note"
+          },
+          "instructions": [
+            "Authored instruction, unchanged until actual start."
+          ]
+        }
+      },
+      {
+        "id": "moisturizer",
+        "kind": "product",
+        "slot": "moisturizer",
+        "productId": "original",
+        "product": {
+          "id": "original",
+          "name": "Synthetic original",
+          "brand": "Fixture",
+          "variant": "Authored variant",
+          "sizeLabel": "50 ml",
+          "productUrl": "https://example.com/original",
+          "imageUrl": "assets/fixture.png",
+          "reference": null,
+          "displayPrice": null
+        },
+        "title": "Baseline original",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Original morning note",
+            "evening": "Original evening note"
+          },
+          "instructions": [
+            "Authored instruction, unchanged until actual start."
+          ]
+        }
+      },
+      {
+        "id": "cleanser",
+        "kind": "product",
+        "slot": "cleanser",
+        "productId": "cleanser-old",
+        "product": {
+          "id": "cleanser-old",
+          "name": "Synthetic cleanser-old",
+          "brand": "Fixture",
+          "variant": "Authored variant",
+          "sizeLabel": "50 ml",
+          "productUrl": "https://example.com/cleanser-old",
+          "imageUrl": "assets/fixture.png",
+          "reference": null,
+          "displayPrice": null
+        },
+        "title": "Baseline cleanser-old",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Original morning note",
+            "evening": "Original evening note"
+          },
+          "instructions": [
+            "Authored instruction, unchanged until actual start."
+          ]
+        }
+      },
+      {
+        "id": "sunscreen",
+        "kind": "product",
+        "slot": "sunscreen",
+        "productId": "sunscreen",
+        "product": {
+          "id": "sunscreen",
+          "name": "Synthetic sunscreen",
+          "brand": "Fixture",
+          "variant": "Authored variant",
+          "sizeLabel": "50 ml",
+          "productUrl": "https://example.com/sunscreen",
+          "imageUrl": "assets/fixture.png",
+          "reference": null,
+          "displayPrice": null
+        },
+        "title": "Baseline sunscreen",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Original morning note",
+            "evening": "Original evening note"
+          },
+          "instructions": [
+            "Authored instruction, unchanged until actual start."
+          ]
+        }
+      }
+    ],
+    "routineGuides": [
+      {
+        "id": "baseline-guide",
+        "productId": "original",
+        "title": "Authored guide",
+        "intro": "Intro",
+        "steps": [
+          {
+            "title": "Apply",
+            "body": "Plain instructions"
+          }
+        ],
+        "careNote": "Stop if uncomfortable.",
+        "sources": [
+          {
+            "label": "Reference",
+            "url": "https://example.com/reference"
+          }
+        ]
+      }
+    ],
+    "categoryCards": [
+      {
+        "id": "replacement-card",
+        "slot": "moisturizer",
+        "kind": "replace",
+        "recommendationId": "moisturizer-v2",
+        "title": "Synthetic moisturizer",
+        "subtitle": "",
+        "rationaleTitle": "Why this choice",
+        "reasons": [
+          {
+            "title": "Reason",
+            "body": "Advisor authored public rationale"
+          }
+        ],
+        "actions": [
+          "Keep the sequence simple."
+        ],
+        "currentProduct": {
+          "id": "original",
+          "name": "Synthetic original",
+          "brand": "Fixture",
+          "variant": "Authored variant",
+          "sizeLabel": "50 ml",
+          "productUrl": "https://example.com/original",
+          "imageUrl": "assets/fixture.png",
+          "reference": null,
+          "displayPrice": null
+        },
+        "proposedProduct": {
+          "id": "replacement",
+          "name": "Synthetic replacement",
+          "brand": "Fixture",
+          "variant": "Authored variant",
+          "sizeLabel": "50 ml",
+          "productUrl": "https://example.com/replacement",
+          "imageUrl": "assets/fixture.png",
+          "reference": null,
+          "displayPrice": null
+        },
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Original morning note",
+            "evening": "Original evening note"
+          },
+          "instructions": [
+            "Authored instruction, unchanged until actual start."
+          ]
+        },
+        "comparisons": [
+          {
+            "label": "Ceramides",
+            "currentText": "3 types\nNP / AP / EOP",
+            "proposedText": "5 types\nNP / AP / EOP / NG / AS",
+            "significance": "Authored personalized significance",
+            "ingredientGuideKey": "ceramides",
+            "guideNote": "Advisor note for this ingredient",
+            "sources": []
+          }
+        ],
+        "factsTitle": "What matters",
+        "facts": [
+          {
+            "title": "Fact",
+            "body": "Sourced public fact",
+            "ingredientGuideKey": "glycerin",
+            "sources": []
+          }
+        ],
+        "how": {
+          "id": "replacement-card-how",
+          "productId": "replacement",
+          "title": "Authored guide",
+          "intro": "Intro",
+          "steps": [
+            {
+              "title": "Apply",
+              "body": "Plain instructions"
+            }
+          ],
+          "careNote": "Stop if uncomfortable.",
+          "sources": [
+            {
+              "label": "Reference",
+              "url": "https://example.com/reference"
+            }
+          ]
+        },
+        "sources": []
+      },
+      {
+        "id": "deferred-card",
+        "slot": "cleanser",
+        "kind": "finish_then_replace",
+        "recommendationId": null,
+        "title": "Synthetic cleanser",
+        "subtitle": "",
+        "rationaleTitle": "Why this choice",
+        "reasons": [
+          {
+            "title": "Reason",
+            "body": "Advisor authored public rationale"
+          }
+        ],
+        "actions": [
+          "Keep the sequence simple."
+        ],
+        "currentProduct": {
+          "id": "cleanser-old",
+          "name": "Synthetic cleanser-old",
+          "brand": "Fixture",
+          "variant": "Authored variant",
+          "sizeLabel": "50 ml",
+          "productUrl": "https://example.com/cleanser-old",
+          "imageUrl": "assets/fixture.png",
+          "reference": null,
+          "displayPrice": null
+        },
+        "proposedProduct": {
+          "id": "cleanser-next",
+          "name": "Synthetic cleanser-next",
+          "brand": "Fixture",
+          "variant": "Authored variant",
+          "sizeLabel": "50 ml",
+          "productUrl": "https://example.com/cleanser-next",
+          "imageUrl": "assets/fixture.png",
+          "reference": null,
+          "displayPrice": null
+        },
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Original morning note",
+            "evening": "Original evening note"
+          },
+          "instructions": [
+            "Authored instruction, unchanged until actual start."
+          ]
+        },
+        "comparisons": [
+          {
+            "label": "Ceramides",
+            "currentText": "3 types\nNP / AP / EOP",
+            "proposedText": "5 types\nNP / AP / EOP / NG / AS",
+            "significance": "Authored personalized significance",
+            "ingredientGuideKey": "ceramides",
+            "guideNote": "Advisor note for this ingredient",
+            "sources": []
+          }
+        ],
+        "factsTitle": "What matters",
+        "facts": [
+          {
+            "title": "Fact",
+            "body": "Sourced public fact",
+            "ingredientGuideKey": "glycerin",
+            "sources": []
+          }
+        ],
+        "how": {
+          "id": "deferred-card-how",
+          "productId": "cleanser-next",
+          "title": "Authored guide",
+          "intro": "Intro",
+          "steps": [
+            {
+              "title": "Apply",
+              "body": "Plain instructions"
+            }
+          ],
+          "careNote": "Stop if uncomfortable.",
+          "sources": [
+            {
+              "label": "Reference",
+              "url": "https://example.com/reference"
+            }
+          ]
+        },
+        "sources": []
+      },
+      {
+        "id": "keep-card",
+        "slot": "sunscreen",
+        "kind": "keep",
+        "recommendationId": null,
+        "title": "Synthetic sunscreen",
+        "subtitle": "",
+        "rationaleTitle": "Why this choice",
+        "reasons": [
+          {
+            "title": "Reason",
+            "body": "Advisor authored public rationale"
+          }
+        ],
+        "actions": [
+          "Keep the sequence simple."
+        ],
+        "currentProduct": {
+          "id": "sunscreen",
+          "name": "Synthetic sunscreen",
+          "brand": "Fixture",
+          "variant": "Authored variant",
+          "sizeLabel": "50 ml",
+          "productUrl": "https://example.com/sunscreen",
+          "imageUrl": "assets/fixture.png",
+          "reference": null,
+          "displayPrice": null
+        },
+        "proposedProduct": null,
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Original morning note",
+            "evening": "Original evening note"
+          },
+          "instructions": [
+            "Authored instruction, unchanged until actual start."
+          ]
+        },
+        "comparisons": [
+          {
+            "label": "Ceramides",
+            "currentText": "3 types\nNP / AP / EOP",
+            "proposedText": "5 types\nNP / AP / EOP / NG / AS",
+            "significance": "Authored personalized significance",
+            "ingredientGuideKey": "ceramides",
+            "guideNote": "Advisor note for this ingredient",
+            "sources": []
+          }
+        ],
+        "factsTitle": "What matters",
+        "facts": [
+          {
+            "title": "Fact",
+            "body": "Sourced public fact",
+            "ingredientGuideKey": "glycerin",
+            "sources": []
+          }
+        ],
+        "how": {
+          "id": "keep-card-how",
+          "productId": "sunscreen",
+          "title": "Authored guide",
+          "intro": "Intro",
+          "steps": [
+            {
+              "title": "Apply",
+              "body": "Plain instructions"
+            }
+          ],
+          "careNote": "Stop if uncomfortable.",
+          "sources": [
+            {
+              "label": "Reference",
+              "url": "https://example.com/reference"
+            }
+          ]
+        },
+        "sources": []
+      },
+      {
+        "id": "no-addition",
+        "slot": "treatments",
+        "kind": "no_addition",
+        "recommendationId": null,
+        "title": "Synthetic treatments",
+        "subtitle": "",
+        "rationaleTitle": "Why this choice",
+        "reasons": [
+          {
+            "title": "Reason",
+            "body": "Advisor authored public rationale"
+          }
+        ],
+        "actions": [
+          "Keep the sequence simple."
+        ],
+        "currentProduct": null,
+        "proposedProduct": null,
+        "usage": null,
+        "comparisons": [
+          {
+            "label": "Ceramides",
+            "currentText": "3 types\nNP / AP / EOP",
+            "proposedText": "5 types\nNP / AP / EOP / NG / AS",
+            "significance": "Authored personalized significance",
+            "ingredientGuideKey": "ceramides",
+            "guideNote": "Advisor note for this ingredient",
+            "sources": []
+          }
+        ],
+        "factsTitle": "What matters",
+        "facts": [
+          {
+            "title": "Fact",
+            "body": "Sourced public fact",
+            "ingredientGuideKey": "glycerin",
+            "sources": []
+          }
+        ],
+        "how": {
+          "id": "no-addition-how",
+          "productId": null,
+          "title": "Authored guide",
+          "intro": "Intro",
+          "steps": [
+            {
+              "title": "Apply",
+              "body": "Plain instructions"
+            }
+          ],
+          "careNote": "Stop if uncomfortable.",
+          "sources": [
+            {
+              "label": "Reference",
+              "url": "https://example.com/reference"
+            }
+          ]
+        },
+        "sources": []
+      }
+    ]
+  },
+  "baseline": [
+    {
+      "slot": "moisturizer",
+      "productId": "original"
+    },
+    {
+      "slot": "cleanser",
+      "productId": "cleanser-old"
+    },
+    {
+      "slot": "sunscreen",
+      "productId": "sunscreen"
+    }
+  ],
+  "intakePresentation": {
+    "schemaVersion": 2,
+    "consultationSections": [
+      {
+        "title": "Public goals",
+        "body": "Explicitly authored for client"
+      }
+    ],
+    "baselineRoutine": [
+      {
+        "id": "water",
+        "kind": "instruction",
+        "slot": null,
+        "productId": null,
+        "product": null,
+        "title": "Water rinse",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Original morning note",
+            "evening": "Original evening note"
+          },
+          "instructions": [
+            "Authored instruction, unchanged until actual start."
+          ]
+        }
+      },
+      {
+        "id": "moisturizer",
+        "kind": "product",
+        "slot": "moisturizer",
+        "productId": "original",
+        "product": {
+          "id": "original",
+          "name": "Synthetic original",
+          "brand": "Fixture",
+          "variant": "Authored variant",
+          "sizeLabel": "50 ml",
+          "productUrl": "https://example.com/original",
+          "imageUrl": "assets/fixture.png",
+          "reference": null,
+          "displayPrice": null
+        },
+        "title": "Baseline original",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Original morning note",
+            "evening": "Original evening note"
+          },
+          "instructions": [
+            "Authored instruction, unchanged until actual start."
+          ]
+        }
+      },
+      {
+        "id": "cleanser",
+        "kind": "product",
+        "slot": "cleanser",
+        "productId": "cleanser-old",
+        "product": {
+          "id": "cleanser-old",
+          "name": "Synthetic cleanser-old",
+          "brand": "Fixture",
+          "variant": "Authored variant",
+          "sizeLabel": "50 ml",
+          "productUrl": "https://example.com/cleanser-old",
+          "imageUrl": "assets/fixture.png",
+          "reference": null,
+          "displayPrice": null
+        },
+        "title": "Baseline cleanser-old",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Original morning note",
+            "evening": "Original evening note"
+          },
+          "instructions": [
+            "Authored instruction, unchanged until actual start."
+          ]
+        }
+      },
+      {
+        "id": "sunscreen",
+        "kind": "product",
+        "slot": "sunscreen",
+        "productId": "sunscreen",
+        "product": {
+          "id": "sunscreen",
+          "name": "Synthetic sunscreen",
+          "brand": "Fixture",
+          "variant": "Authored variant",
+          "sizeLabel": "50 ml",
+          "productUrl": "https://example.com/sunscreen",
+          "imageUrl": "assets/fixture.png",
+          "reference": null,
+          "displayPrice": null
+        },
+        "title": "Baseline sunscreen",
+        "usage": {
+          "periods": [
+            "morning",
+            "evening"
+          ],
+          "order": 2,
+          "short": {
+            "morning": "Original morning note",
+            "evening": "Original evening note"
+          },
+          "instructions": [
+            "Authored instruction, unchanged until actual start."
+          ]
+        }
+      }
+    ]
+  }
+}

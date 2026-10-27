@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:'../..',testMatch:['session-integration/tests/browser/*.spec.mjs','regression-tests/browser/*.spec.mjs','tests/integration/browser/*.spec.mjs'],timeout:30000,expect:{timeout:6000},workers:1,reporter:[['list']],use:{baseURL:process.env.PORTAL_PREVIEW_BASE_URL,channel:'chrome',headless:true,trace:'off',screenshot:'off',video:'off'},outputDir:'../../evidence/client-remember/browser-output'});
