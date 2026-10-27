@@ -1,0 +1,129 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-serif: -apple-system-ui-serif, 'New York', 'Editorial New', Georgia, Cambria, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+
+  --color-canvas: #F6F3EC;
+  --color-surface: #FFFEFB;
+  --color-surface-elevated: #FFFFFF;
+  --color-ink: #171A18;
+  --color-muted: #626760;
+  --color-brand: #345447;
+  --color-brand-hover: #294439;
+  --color-sage: #E2EAE4;
+  --color-sage-dark: #2A463B;
+  --color-hairline: #EAE5DC;
+  --color-hairline-dark: #DDD7CB;
+
+  --color-caution: #8A6B2D;
+  --color-caution-bg: #FBF4E6;
+  --color-caution-border: #E8DCB8;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+}
+
+:root {
+  color-scheme: light;
+  --background: #F6F3EC;
+  --foreground: #171A18;
+}
+
+html {
+  background-color: #F6F3EC;
+  color: #171A18;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #F6F3EC;
+  color: #171A18;
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Restrained Apple Liquid Glass Chrome */
+.liquid-glass-bar {
+  background: rgba(246, 243, 236, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(234, 229, 220, 0.85);
+  box-shadow: 0 4px 24px -1px rgba(23, 26, 24, 0.05);
+}
+
+.liquid-glass-input {
+  background: rgba(255, 254, 251, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(218, 210, 198, 0.9);
+  box-shadow: 0 2px 12px rgba(23, 26, 24, 0.04), 0 1px 2px rgba(23, 26, 24, 0.02);
+}
+
+.liquid-glass-input:focus-within {
+  border-color: #345447;
+  box-shadow: 0 0 0 3px rgba(52, 84, 71, 0.15), 0 4px 20px rgba(23, 26, 24, 0.06);
+}
+
+.mineral-card {
+  background: #FFFEFB;
+  border: 1px solid #EAE5DC;
+  box-shadow: 0 1px 3px rgba(23, 26, 24, 0.02), 0 6px 24px -4px rgba(23, 26, 24, 0.03);
+}
+
+.mineral-card-interactive {
+  background: #FFFEFB;
+  border: 1px solid #EAE5DC;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mineral-card-interactive:hover {
+  border-color: #DDD6C9;
+  box-shadow: 0 4px 20px -2px rgba(23, 26, 24, 0.06);
+  transform: translateY(-1px);
+}
+
+/* Custom Text Selection */
+::selection {
+  background-color: #E2EAE4;
+  color: #171A18;
+}
+
+/* Caret Color */
+input, textarea {
+  caret-color: #345447;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Accessibility: Reduced Transparency Fallback */
+@media (prefers-reduced-transparency: reduce) {
+  .liquid-glass-bar {
+    background: #FFFEFB !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .liquid-glass-input {
+    background: #FFFEFB !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
