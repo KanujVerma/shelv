@@ -1,3 +1,4 @@
+import {validatedReturnPath} from './navigation-return';
 import {SupabaseProvider, claims, hasCredentials} from './upstream';
 import {demand, type Credentials, type AdvisorContext, type Capabilities} from './types';
 import {PORTAL_ORIGIN, SUPABASE_ORIGIN, object, uuid, type Operation} from './policy';
@@ -7,9 +8,9 @@ function privateFields(value: unknown): boolean {
     return !!value && typeof value === 'object' && Object.entries(value).some(([k,v]) => /^(private_?notes?|meeting_?notes?|transcript|draft|intake|advisor_?notes?)$/i.test(k) || privateFields(v));
 }
 export class ClientProvider extends SupabaseProvider {
-    async requestOtp(email: string) {
-        const {client, check, values} = this.sdk();
-        const {error} = await client.signInWithOtp({email, options:{shouldCreateUser:false,emailRedirectTo:`${PORTAL_ORIGIN}/?workspace=client`}});
+    async requestOtp(email: string, returnTo?:string) {
+        const path=validatedReturnPath(returnTo,'client'); const {client, check, values} = this.sdk();
+        const {error} = await client.signInWithOtp({email, options:{shouldCreateUser:false,emailRedirectTo:`${PORTAL_ORIGIN}${path}`}});
         check(error); return values();
     }
     async context(credentials: Credentials): Promise<AdvisorContext> {

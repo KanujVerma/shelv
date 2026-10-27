@@ -4,6 +4,8 @@
 
 ## Concierge portal scope (24 October 2026)
 
+For portal UI implementation, follow [the shared UI system](docs/PORTAL_UI_SYSTEM.md): reuse existing components and semantic tokens, use the common dialog lifecycle, and review each new explanatory sentence for necessary meaning. Do not create parallel visual or copy systems.
+
 The active web portal is Shelv's human-led skincare concierge. Consultations happen on calls; founders prepare and publish the client's plan. The service is $100 per month with products separate. Portal work follows [apps/portal/AGENTS.md](apps/portal/AGENTS.md), [portal acceptance](docs/PORTAL_ACCEPTANCE.md), and [source provenance](docs/PORTAL_SOURCE_PROVENANCE.md). The scanner direction below describes the separate Expo product and must not be used to replace the portal with a self-service questionnaire.
 
 Preserve deployed-source provenance and unrelated local work. Product approval and receipt never start a replacement; the client explicitly records Start. Alex and Maya share behavior and templates while retaining their individual plan content. Client-visible check-in replies and private advisor notes must have separate fields and authorization. No real funds, purchases, fulfillment, production permissions, or emails are authorized by a local test.

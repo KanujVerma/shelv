@@ -47,6 +47,7 @@ for(const width of [1440,390]){
   const pairs=page.locator('[data-presentation-card]').filter({has:page.locator('.formula-table')});
   assert.equal(await pairs.count(),item.pairs);
   for(const pair of await pairs.all()){
+   await pair.locator('[data-technical-detail] summary').click();
    assert.equal(await pair.getByRole('rowheader').count(),3,'Formula comparisons retain three ingredient rows');
    await pair.getByRole('rowheader').first().getByRole('button').click();
    await page.locator('dialog[open] h2').waitFor();assert.ok((await page.locator('dialog[open]').innerText()).length>120,'Ingredient explanation is populated');

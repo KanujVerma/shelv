@@ -1,4 +1,5 @@
-import {createCheckinDraftState} from './features/checkins/draft-state.js';
+import {portalLoginRedirect} from './auth/navigation-return.js';
+import {createClientTaskState} from './client/task-state.js';
 import {useAdvisorCookies,createAdvisorSessionBridge} from './auth/advisor-session-bridge.js';
 import {useClientCookies} from './auth/client-cookie-session.js';
 import {readConfig,createRequest,createPhotoUpload,consumeCallback} from './advisor/api.js';
@@ -16,7 +17,7 @@ function releaseClientDraft(){clientDraftScope?.dispose();clientDraftScope=null;
 function clientDraftForSession(){
  const owner=session?.identity?.ownerId,generation=session?.generation;
  if(!owner||session?.status!=='ready'){releaseClientDraft();return null;}
- if(!clientDraftScope||clientDraftOwner!==owner||clientDraftGeneration!==generation){releaseClientDraft();clientDraftScope=createCheckinDraftState();clientDraftOwner=owner;clientDraftGeneration=generation;}
+ if(!clientDraftScope||clientDraftOwner!==owner||clientDraftGeneration!==generation){releaseClientDraft();clientDraftScope=createClientTaskState();clientDraftOwner=owner;clientDraftGeneration=generation;}
  return clientDraftScope;
 }
 const authStatus=document.createElement('div');authStatus.id='portal-auth-status';authStatus.hidden=true;document.body.append(authStatus);
@@ -41,12 +42,12 @@ function login(message='') {
   ++routeSequence;
   cleanup?.();cleanup=null;
   restoreVisibility(false);
-  root.innerHTML=`<main class="advisor-login-shell"><a href="./" class="wordmark">shelv<span>concierge</span></a><section class="advisor-login-card"><h1>Your plan, together.</h1><p>Sign in with the email address on your invitation. We’ll send you a private sign-in link.</p>${advisorTarget?`<p id="preview-signin-guidance">${esc(advisorGuidance())}</p>`:''}${sessionMode==='client-cookie'?'<a class="quiet" href="?workspace=advisor#/advisor">Advisor sign-in</a>':''}<form id="email-login"><label for="login-email">Email address</label><input id="login-email" type="email" autocomplete="email" required placeholder="you@example.com" ${!config.enabled?'disabled':''}><label class="portal-remember"><input id="remember-device" type="checkbox" ${!config.enabled||!session?.storage.durableAvailable?'disabled':''}><span>Remember me</span></label><button class="solid" ${!config.enabled?'disabled':''}>Send sign-in link</button></form><p id="login-status" class="advisor-login-status" role="status">${esc(message||(!config.enabled?'This portal is being connected. Your invitation will work once setup is complete.':''))}</p>${sessionMode==='client-cookie'?'<a class="quiet" href="https://derive-beta-site.vercel.app/support" target="_blank" rel="noopener noreferrer">Get help with your invitation</a>':''}</section></main>`;
+  root.innerHTML=`<main class="advisor-login-shell"><a href="./" class="wordmark">Shelv</a><section class="advisor-login-card"><h1>Your plan, together.</h1><p>Sign in with the email address on your invitation. We’ll send you a private sign-in link.</p>${advisorTarget?`<p id="preview-signin-guidance">${esc(advisorGuidance())}</p>`:''}${sessionMode==='client-cookie'?'<a class="quiet" href="?workspace=advisor#/advisor">Advisor sign-in</a>':''}<form id="email-login"><label for="login-email">Email address</label><input id="login-email" type="email" autocomplete="email" required placeholder="you@example.com" ${!config.enabled?'disabled':''}><label class="portal-remember"><input id="remember-device" type="checkbox" ${!config.enabled||!session?.storage.durableAvailable?'disabled':''}><span>Remember me</span></label><button class="solid" ${!config.enabled?'disabled':''}>Send sign-in link</button></form><p id="login-status" class="advisor-login-status" role="status">${esc(message||(!config.enabled?'This portal is being connected. Your invitation will work once setup is complete.':''))}</p>${sessionMode==='client-cookie'?'<a class="quiet" href="https://derive-beta-site.vercel.app/support" target="_blank" rel="noopener noreferrer">Get help with your invitation</a>':''}</section></main>`;
   root.querySelector('#email-login').onsubmit=async event=>{
     event.preventDefault();const form=event.currentTarget,button=form.querySelector('button'),input=form.querySelector('#login-email');button.disabled=true;
     root.querySelector('#login-status').textContent='Requesting your sign-in link…';
     if(advisorTarget)previewTargetStore.put(advisorTarget);
-    try {await session.sendLink(input.value.trim(),`${location.origin}${location.pathname}${advisorTarget||params.get('workspace')==='advisor'||location.hash.startsWith('#/advisor')?'?workspace=advisor':''}`,form.querySelector('#remember-device').checked);root.querySelector('#login-status').textContent='If this email has been invited, a sign-in link is on its way. '+(advisorTarget?advisorGuidance():'Open it in this browser to continue.');input.value='';}
+    try {await session.sendLink(input.value.trim(),portalLoginRedirect(location,advisorTarget||params.get('workspace')==='advisor'||location.hash.startsWith('#/advisor')?'advisor':'client'),form.querySelector('#remember-device').checked);root.querySelector('#login-status').textContent='If this email has been invited, a sign-in link is on its way. '+(advisorTarget?advisorGuidance():'Open it in this browser to continue.');input.value='';}
     catch {root.querySelector('#login-status').textContent='We could not request a link. Wait a moment and try again.';}
     finally {button.disabled=false;}
   };
@@ -151,7 +152,8 @@ async function route() {
       const readonly=createReadOnlyPreviewRequests(envelope),module=await import('./client/view.js');
       if(current!==routeSequence)return;
       const label=advisorTarget.kind==='sample'?(advisorTarget.sampleId==='maya'?'Maya · Sample':'Alex · Sample'):advisorTarget.mode==='draft'?'Unpublished':'View as client · Read only';
-      cleanup=module.mountClientPortal(root,{request:readonly.core,mountFeature:(kind,element,options)=>mountFeature(kind,element,{...options,canWrite:false,readOnly:true},readonly),onSignOut,clientId:envelope.clientId,avatar:advisorTarget.sampleId==='maya'?'M':'A',readOnly:true,draft:envelope.draft,previewLabel:label});
+      const knownName=advisorTarget.kind==='sample'?(advisorTarget.sampleId==='maya'?'Maya':'Alex'):(await requests.core({action:'advisor_list'})).clients?.find(client=>client.clientId===envelope.clientId)?.displayName;if(current!==routeSequence)return;
+      cleanup=module.mountClientPortal(root,{account:{displayName:knownName},request:readonly.core,mountFeature:(kind,element,options)=>mountFeature(kind,element,{...options,canWrite:false,readOnly:true},readonly),onSignOut,clientId:envelope.clientId,avatar:advisorTarget.sampleId==='maya'?'M':'A',readOnly:true,draft:envelope.draft,previewLabel:label});
       previewTargetStore.clear();
       return;
     }
@@ -160,7 +162,7 @@ async function route() {
     if(!path&&!preview){try{initialDirectory=await requests.core({action:'advisor_list'});path='#/advisor';}catch(error){if(error.status===403)path='#/client';else throw error;}}
     if(!path)path='#/advisor';
     if(preview){const banner=document.querySelector('#preview-banner'),query=esc('?'+params.toString());if(!path.startsWith('#/client'))advisorPreviewContext=true;banner.innerHTML=path.startsWith('#/client')?'Fictional sample · no real clients or transactions':`Fictional sample · advisor preview <a href="${query}#/advisor">Advisor</a><a href="${query}#/client">Client</a>`;}
-    if(path.startsWith('#/client')) {const module=await import('./client/view.js');if(current!==routeSequence)return;cleanup=await module.mountClientPortal(root,{request:requests.core,mountFeature,readPaymentStatus:async options=>(await featureRequestFor('payments',{clientId:previewClientId,mode:'client'}))({action:'client_read',schemaVersion:2},options),onSignOut,clientId:previewClientId,preview,draftState:preview?null:clientDraftForSession(),managerPreview:preview&&advisorPreviewContext,serviceEnabled:!preview});}
+    if(path.startsWith('#/client')) {const module=await import('./client/view.js');if(current!==routeSequence)return;cleanup=await module.mountClientPortal(root,{request:requests.core,mountFeature,account:preview?{displayName:'Alex'}:null,readCheckinStatus:async options=>(await featureRequestFor('checkins',{clientId:previewClientId,mode:'client'}))({action:'client_read'},options),readPaymentStatus:async options=>(await featureRequestFor('payments',{clientId:previewClientId,mode:'client'}))({action:'client_read',schemaVersion:2},options),onSignOut,clientId:previewClientId,preview,taskState:preview?null:clientDraftForSession(),managerPreview:preview&&advisorPreviewContext,serviceEnabled:!preview});}
     else {const module=await import('./advisor/workspace.js');if(current!==routeSequence)return;cleanup=module.mountAdvisorWorkspace(root,{request:requests.core,requestAdmission:requests.admission||null,requestWalkthroughs:requests.walkthroughs||null,serviceEnabled:!preview,mountFeature,onSignOut,preview,scenario:params.get('state')||'ready',initialDirectory});}
   }catch(error){
     if(current!==routeSequence)return;

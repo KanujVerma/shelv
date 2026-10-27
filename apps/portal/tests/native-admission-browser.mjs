@@ -24,7 +24,7 @@ export async function runNativeAdmissionBrowser({admission,directory,readCase,em
   await page.locator('dialog[open]').getByRole('button',{name:'Add client',exact:true}).click();await page.getByText('No email has been sent.',{exact:true}).waitFor();
   assert.equal(await page.getByLabel('Portal link',{exact:true}).inputValue(),'https://portal.goshelv.com/');
   if(artifacts){await mkdir(artifacts,{recursive:true});await page.screenshot({path:path.join(artifacts,'native-add-client-390.png'),fullPage:true});}
-  await page.getByRole('button',{name:'Open client',exact:true}).click();await page.getByRole('heading',{name:'Synthetic Native Browser Client',exact:true}).waitFor();await page.getByRole('heading',{name:'Consultation notes',exact:true}).waitFor();assert.deepEqual(errors,[]);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  await page.getByRole('button',{name:'Open client',exact:true}).click();await page.getByRole('heading',{name:'Synthetic Native Browser Client',exact:true}).waitFor();await page.getByRole('heading',{name:'Private consultation notes',exact:true}).waitFor();assert.deepEqual(errors,[]);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   await page.evaluate(()=>window.dispose());await context.close();
  }finally{await browser.close();}
 }

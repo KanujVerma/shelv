@@ -11,6 +11,7 @@ export type ConciergeItemState = {
 };
 export type ConciergePublication = { version: number; recommendations: ConciergeRecommendation[] };
 export type ConciergeClientView = {
+  account?: {displayName: string};
   revision: number;
   plan: (ConciergePublication & { itemStates: ConciergeItemState[] }) | null;
   history: ConciergePublication[];

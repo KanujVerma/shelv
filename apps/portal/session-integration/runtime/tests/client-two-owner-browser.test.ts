@@ -1,3 +1,5 @@
+import {createPaymentPreviewStore,createPaymentPreviewRequest} from '../../../site/features/payments/fixtures.js';
+import {createCheckinPreviewStore,createCheckinPreviewRequest} from '../../../site/features/checkins/fixtures.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -48,6 +50,7 @@ async function stack() {
     build({absWorkingDir: runtimeRoot, entryPoints: ['server/client-gateway.ts'], bundle: true, format: 'esm', platform: 'browser', target: 'es2022', outfile: join(bundleDir, 'gateway.mjs'), external: ['cloudflare:workers'], legalComments: 'none'}),
     build({absWorkingDir: runtimeRoot, entryPoints: ['workers/session-vault/index.ts'], bundle: true, format: 'esm', platform: 'browser', target: 'es2022', outfile: join(bundleDir, 'vault.mjs'), external: ['cloudflare:workers'], legalComments: 'none'})
   ]);
+  const paymentReaders=owners.map(()=>createPaymentPreviewRequest({mode:'client',store:createPaymentPreviewStore()})),checkinReaders=owners.map(()=>createCheckinPreviewRequest({mode:'client',store:createCheckinPreviewStore()}));
   const previews = owners.map(() => createPreviewRequests({scenario: 'unapproved'}));
   const challenges = new Map<number, string>();
   const mismatch = new Set<number>();
@@ -80,6 +83,7 @@ async function stack() {
     if (url.pathname === '/rest/v1/rpc/concierge_client_session_context') {
       return Response.json({ownerId: owners[mismatch.has(index) ? 1 - index : index].id, providerSessionId: owners[index].session, role: 'client', sessionNotAfter: null, capabilities});
     }
+    if(url.pathname.endsWith('/concierge-payments')||url.pathname.endsWith('/concierge-checkins')){const command=await request.json();assert.equal(command.action,'client_read','Attention requests cannot mutate either owner');return Response.json(await (url.pathname.endsWith('/concierge-payments')?paymentReaders[index]:checkinReaders[index])(command));}
     assert.equal(url.pathname, '/functions/v1/concierge-operations');
     const command = await request.json();
     assert.equal(command.action, 'client_read_v2');
@@ -100,7 +104,7 @@ async function stack() {
   };
   const assets = async (request: any) => {
     const path = new URL(request.url).pathname;
-    if (path === '/portal-config.json') return Response.json({authUrl: providerOrigin, publishableKey: 'sb_publishable_synthetic', operationsUrl: providerOrigin + '/functions/v1/concierge-operations', clientSharedSessions: true, advisorSharedSessions: false});
+    if (path === '/portal-config.json') return Response.json({authUrl: providerOrigin, publishableKey: 'sb_publishable_synthetic', operationsUrl: providerOrigin + '/functions/v1/concierge-operations',paymentsUrl:providerOrigin+'/functions/v1/concierge-payments',checkinsUrl:providerOrigin+'/functions/v1/concierge-checkins', clientSharedSessions: true, advisorSharedSessions: false});
     if (path === '/__synthetic_blank.html') return new Response('<h1>PUBLIC SYNTHETIC HISTORY PAGE</h1>', {headers: {'Content-Type': 'text/html'}});
     const file = resolve(siteRoot, '.' + decodeURIComponent(path.replace(/\/$/, '/index.html')));
     assert.ok(file.startsWith(siteRoot + sep));
@@ -148,18 +152,19 @@ async function login(page: any, index: number) {
   await assertPlan(page, index);
   assert.equal(new URL(page.url()).searchParams.has('code'), false);
 }
-async function assertPlan(page: any, index: number) {
+async function assertPlan(page: any, index: number, inspectDetails=true) {
   await page.locator('header h1').waitFor();
   assert.equal(await page.locator('header h1').innerText(), owners[index].title);
   let body = await page.locator('body').innerText();
-  assert.ok(body.includes(owners[index].marker));
+  // Personal context is under About this plan; the shell identifies the plan by its title.
   assert.ok(!body.includes(owners[1 - index].marker), 'other owner plan marker is absent');
   assert.ok(!body.includes(owners[1 - index].title), 'other owner plan title is absent');
+  if(!inspectDetails)return;
   await page.locator('#client-profile').click();
-  body = await page.locator('dialog[open]').innerText();
+  await page.locator('header h1').filter({hasText:'About this plan'}).waitFor();body=await page.locator('body').innerText();
   assert.ok(body.includes(owners[index].marker), 'plan body belongs to the signed-in owner');
   assert.ok(!body.includes(owners[1 - index].marker));
-  await page.keyboard.press('Escape');
+  await page.locator('#client-detail-back').click();await page.locator('header h1').filter({hasText:owners[index].title}).waitFor();
 }
 async function sessionView(page: any) {
   return page.evaluate(async () => {
@@ -221,9 +226,9 @@ test('two authenticated clients keep distinct rendered plans through reload, con
     }));
     const a = returned[0].page, b = returned[1].page;
     await a.goto(origin + '/__synthetic_blank.html');
-    await a.goBack(); await assertPlan(a, 0);
+    await a.goBack(); await assertPlan(a, 0, false);
     await a.goForward(); assert.equal(await a.locator('h1').innerText(), 'PUBLIC SYNTHETIC HISTORY PAGE');
-    await a.goBack(); await assertPlan(a, 0); await assertPlan(b, 1);
+    await a.goBack(); await assertPlan(a, 0, false); await assertPlan(b, 1);
 
     const before = [...f.domainReads];
     for (const [page, other] of [[a, 1], [b, 0]] as const) {
@@ -234,7 +239,7 @@ test('two authenticated clients keep distinct rendered plans through reload, con
     }
     assert.deepEqual(f.domainReads, before, 'cross-owner selector attempts never dispatch a domain read');
 
-    await a.locator('#client-signout').click(); await assertSignedOut(a);
+    await a.locator('.account-trigger').click();await a.locator('#client-signout').click(); await assertSignedOut(a);
     const ended = await sessionView(a); assert.equal(ended.status, 401); assert.equal(ended.body.code, 'session_ended');
     await a.reload(); await assertSignedOut(a);
     await b.reload(); await assertPlan(b, 1);
@@ -277,7 +282,7 @@ test('a provider owner mismatch revokes only its client and suppresses a held pl
     const hold = f.holdRead(0); release = hold.release;
     const pending = operation(a, {action: 'client_read_v2'});
     await hold.entered;
-    await a.locator('#client-signout').click(); await assertSignedOut(a);
+    await a.locator('.account-trigger').click();await a.locator('#client-signout').click(); await assertSignedOut(a);
     release(); release = undefined;
     const late = await pending;
     assert.equal(late.status, 401);

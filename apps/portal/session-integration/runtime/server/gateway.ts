@@ -1,3 +1,4 @@
+import {validatedReturnPath} from './navigation-return';
 import { demand, digest, randomId, SessionError, type SessionView } from './types';
 import { PORTAL_ORIGIN, validateRequest, jsonBody, parseCommand, parsePreview, parseAdvisorEvidence, exact, safeError, readBounded, type Channel } from './policy';
 import { parseClientCommand, parseClientMedia, validateClientUpload } from './client-policy';
@@ -133,11 +134,12 @@ function clearCookies() { const headers = new Headers();
                 return json(result, 200, clearCookies());
             }
             if (route === '/api/advisor/auth/request') {
-                exact(body, client || Object.hasOwn(body, 'remember') ? ['email', 'remember'] : ['email']);
+                exact(body, [...(client || Object.hasOwn(body, 'remember') ? ['email', 'remember'] : ['email']),...(Object.hasOwn(body,'returnTo')?['returnTo']:[])]);
+                const returnTo=Object.hasOwn(body,'returnTo')?validatedReturnPath(body.returnTo,client?'client':'advisor'):undefined;
                 if (client || Object.hasOwn(body, 'remember')) demand(typeof body.remember === 'boolean');
                 demand(fid && typeof body.email === 'string', 401, 'flow_ended');
                 await throttle('otp');
-                return json(await dispatch('flow', fid, { type: 'flow.request', csrf, email: body.email, remember: body.remember === true }));
+                return json(await dispatch('flow', fid, { type: 'flow.request', csrf, email: body.email, remember: body.remember === true, ...(returnTo?{returnTo}:{}) }));
             }
             if (route === '/api/advisor/auth/complete' || route === '/api/advisor/session/upgrade') {
                 demand(fid, 401, 'flow_ended');

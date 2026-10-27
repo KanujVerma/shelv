@@ -1,3 +1,4 @@
+import {downloadDocumentText} from '../../client/plan-export.js';
 import {routineDisplayState} from '../../client/routine-state.js';
 import {serviceSchemas} from './schemas.js';
 export const SERVICE_COPY=Object.freeze({
@@ -33,7 +34,7 @@ export function finalPlanText(view,{displayName='Your'}={}){
  if(stops.length){lines.push('','STOP OR PAUSE');for(const row of stops){lines.push(row.label+' · '+row.product.name);const note=row.note||(row.label==='Stop'?'Stop using this product.':row.label==='Pause'?'Pause this product for now.':'Leave this product out of the current routine.');if(note)lines.push(note);}}
  lines.push('',SERVICE_COPY.response,SERVICE_COPY.departure,'Cosmetic routine support does not replace clinical care. Seek appropriate medical advice for persistent or worsening symptoms.');return lines.filter(x=>x!==null).join('\n');
 }
-export function downloadFinalPlan(view,options={}){const text=finalPlanText(view,options),url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='shelv-final-plan.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),0);return text;}
+export function downloadFinalPlan(view,options={}){const text=finalPlanText(view,options);downloadDocumentText({name:view.plan.presentation?.title||'Your final plan',version:view.plan.version,text,filename:'shelv-final-plan.html'});return text;}
 const publicReview=['id','channel','occurredOn','summary','reportedUse','decision','nextReviewOn','authorId','authorLabel','recordedAt'],publicPurchase=['id','quoteId','recommendationId','retailer','seller','productId','productName','quantity','unitPriceCents','taxCents','shippingCents','purchasedOn','deliveredOn','policy','recordedAt','recordedBy'];
 const pick=(v,keys)=>{ensure(v&&typeof v==='object');return Object.fromEntries(keys.map(k=>[k,structuredClone(v[k])]));};
 export function serviceView(value,{advisor=false}={}){ensure(value&&Number.isSafeInteger(value.revision)&&value.revision>=0);for(const k of ['reviews','instructions','purchases','returns'])ensure(Array.isArray(value[k]));const result={revision:value.revision,reviews:value.reviews.map(v=>pick(v,publicReview)),instructions:structuredClone(value.instructions),purchases:value.purchases.map(v=>pick(v,publicPurchase)),returns:structuredClone(value.returns),cancellation:value.cancellation?pick(value.cancellation,['id','kind','supportEndsOn','reason','recordedAt','recordedBy']):null};if(advisor)for(const k of ['privateNotes','instructionDrafts','privatePurchases','privateReturnEvents']){ensure(Array.isArray(value[k]));result[k]=structuredClone(value[k]);}return result;}

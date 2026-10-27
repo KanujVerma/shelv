@@ -1,5 +1,7 @@
 # Shelv portal
 
+Reuse the [portal UI system](../../docs/PORTAL_UI_SYSTEM.md) for shared components, semantic tokens, dialog/disclosure behavior, and necessary-copy review. Run `npm run check:ui` for CSS changes; do not increase legacy color budgets to bypass it. Every added explanatory sentence must serve a task, decision, real status, consequence, safety/privacy/financial meaning, or recovery.
+
 This subtree owns the consultation-led web portal. The current objective is the complete referral-partner demonstration using the existing cream, forest-green and editorial design. Consultation happens with the founders; a new questionnaire or scanner dependency is not required.
 
 - Edit `site/` and the supporting source here. Historical Codex release folders and the primary dirty checkout are reference inputs and must remain unchanged.
@@ -10,3 +12,7 @@ This subtree owns the consultation-led web portal. The current objective is the 
 - Use Node.js 22.23.0 or newer and the checked-in lockfiles. Install from this folder with `npm ci`. Generated packages and evidence belong under the repository's ignored `.local-artifacts/`, or the explicitly ignored runtime fixture directories.
 - Keep browser verification local and synthetic. Test interceptors must deny unexpected network traffic. Do not send login emails, create hosted sessions, mutate client records, change settings, deploy, commit or push without the applicable explicit authorization.
 - Verify affected portal tests, the combined package, and session types/runtime checks when their source changes. Report fixture evidence and hosted acceptance separately.
+
+## Task-first UX and interface copy (Claude)
+
+For edits to navigation, entry screens, labels, text density, client/advisor task sequences, previews or empty states, **first** use the repository-local Claude skill [shelv-ux-review](../../.claude/skills/shelv-ux-review/SKILL.md). For restrained visual hierarchy, anti-generic UI, motion or further copy polish **after the task review**, use [shelv-design-polish](../../.claude/skills/shelv-design-polish/SKILL.md). The [UX pilot matrix and seven-tool evaluation](../../docs/PORTAL_UX_SKILL_PILOT.md) contain source-grounded hypotheses to verify, not established user-testing results. External Taste Skill, Impeccable, Playwright CLI, designlang, React Bits, GSAP and Transitions.dev are not automatically installed by referencing them. Trace actual click destinations, distinguish first-time clients from advisors, and remove only copy that does not help a decision, establish trust or explain a consequence. Preserve current branding, founder terms, payment/receipt/Start boundaries and private notes. Make minimal reversible edits and verify with synthetic, network-intercepted browser journeys; do not claim live usability acceptance from a static audit.

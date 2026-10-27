@@ -2,11 +2,25 @@
 
 Owner: Kanuj
 
+## Current task-first UX acceptance, 26 October 2026
+
+[UX delivery](PORTAL_UX_DELIVERY.md) records the task-first client/advisor implementation on [PR 209](https://github.com/KanujVerma/shelv/pull/209), including shared components/tokens, necessary-copy rules, matched synthetic screenshots, exact local verification scopes and remaining gates. Application source is frozen at `2539d0729bffcb32318add72575a1e28168a1a9d`; all six independent findings are closed with specification/quality PASS for the scoped corrections. The user separately authorized deploying source head `7f3ba7a03d6168e7c5ec899578529ccddc9c6761`, now live on Pages `018ec919-d9c4-4c8c-afb8-f10c9b2e1556`. PR 209 stays draft and unmerged. [Founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) remains the operating-policy register.
+
+| Current hosted lane | Verified scope |
+| --- | --- |
+| Package and provider state | All 129 public file hashes and the provider asset manifest match the frozen 132-entry package. Pages production/preview settings, enabled session flags, namespace, private bindings and privacy controls were preserved. The private vault's provider-returned raw module matches its frozen hash. |
+| Independent public browser | Nine scoped groups passed at 320/390/1440 pixels, with 19 screenshots: the Maya tour's seven stages and Finish/replay, navigation/account disclosure, product detail/Back, full/focused ingredient details, routine and actual HTML download/render with 12 headings, 45 safe HTTPS links and a print control. Native printing/PDF export were not run. Enabled advisor sign-in rendered at all three widths without submission. All 96 requests were same-origin GETs, including one exact advisor-session bootstrap; no JavaScript or console errors/warnings occurred. The isolated pending-flow cookie was cleared and browser closed; its server flow retains the normal 600-second TTL. |
+| Dedicated maintenance advisor | Nine checks passed using one genuine existing-account password Auth session and one supported advisor-cookie upgrade. Only the retained labeled synthetic client was opened. Client/task navigation, Back, refresh, payment/check-in/service reads, 390-pixel layout and published read-only preview/product detail with reload/Back passed. No page errors or unexpected network occurred. |
+| Access boundaries and cleanup | Verification intercepted all business writes and private walkthrough calls before transport. Twelve anonymous probes passed: six missing-CSRF 403 denials and six valid-syntax, missing-session 401 denials, all no-store. Normal cookie sign-out completed; the newly owned maintenance Auth session count returned to zero and founder session-ID set digests matched the precheck. No credential value was printed, login email sent or business record changed. |
+| Not run | Ordinary authenticated client-owner acceptance, actual email callback completion, founder personal sign-in and business write journeys were not run. The own-name projection's source, owner/ACL/guard readback and local/native ownership checks are separate evidence; maintenance-advisor preview is not positive client-owner acceptance. Two optional environment-blocked local HTTP/SQL checks remain limited as recorded in UX delivery. |
+
+[Release result](PORTAL_RELEASE_RESULT.md) owns current provider identities, preservation and rollback. [Source provenance](PORTAL_SOURCE_PROVENANCE.md) records the single new own-name migration's exact source/server mapping and operations-only deployment. The earlier evidence below retains its original scope and is not counted again for this activation.
+
 Business-policy update, 25 October 2026: [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) is the canonical current register of agreed terms, responsibilities, requested work and unresolved questions. The implementation/test results below retain their original release scope; newly agreed policy is not evidence of new code or deployment.
 
 The approved walkthrough/service release is deployed at [portal.goshelv.com](https://portal.goshelv.com), with bounded public, anonymous guest and dedicated maintenance-advisor acceptance passed on 25 October 2026, America/Chicago. Ordinary authenticated client-owner hosted acceptance was not run. [Release result](PORTAL_RELEASE_RESULT.md) records actual deployment/commit mappings and limitations. [Source provenance](PORTAL_SOURCE_PROVENANCE.md) records lineage; [founder operations](CONCIERGE_FOUNDER_OPERATIONS.md) records daily work. No Git merge occurred.
 
-## Current interactive Maya tour acceptance, 25 October 2026
+## Historical interactive Maya tour acceptance, 25 October 2026
 
 Application `b22436f58e32ea21668dd350269b46227669ab43` is live on Pages `17546896-f89f-4300-b9f8-252a4734984c`. All 120 public files matched the frozen 123-entry package, with zero private-name/identifier hits. Twelve actual hosted browser checks passed: first/repeat visits, complete dismissal, explicit replay, same-tab resume, history, optional real overview/product/routine interactions, nested ingredient details with usable Next, keyboard controls, shared styles, safe exploration and ordinary Alex/Maya. All seven anchors/pointers and 44px controls were checked at 320/390/768/1440. The generic private viewer remains covered locally; no actual private share was created for this UI update.
 

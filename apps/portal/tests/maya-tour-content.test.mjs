@@ -41,7 +41,7 @@ test('the guided public plan renders company authorship without changing source 
   for(const key of ['id','slot','kind','recommendationId','actions','usage','how','facts','sources','decisionLabels'])assert.deepEqual(card[key],original[key],`${original.id}: ${key} retains the public source`);
   for(const key of ['currentProduct','proposedProduct'])assert.deepEqual(card[key],localProduct(original[key]),`${original.id}: ${key} keeps exact identity, links and reference price`);
   assert.deepEqual(card.comparisons?.map(({significance,...facts})=>facts),original.comparisons?.map(({significance,...facts})=>facts));
-  assert.equal(presentationCardDetail(card),presentationCardDetail({...original,currentProduct:localProduct(original.currentProduct),proposedProduct:localProduct(original.proposedProduct)}),'Rendered product details retain the exact approved identities, evidence and directions.');
+  assert.equal(presentationCardDetail(card),presentationCardDetail({...original,rationaleTitle:card.rationaleTitle,reasons:card.reasons,currentProduct:localProduct(original.currentProduct),proposedProduct:localProduct(original.proposedProduct)}),'Product details retain exact approved identities, evidence and directions; only the separately reviewed rationale authorship changes.');
  }
  assert.deepEqual(source,before,'A guided presentation never mutates the ordinary Maya source.');
  assert.equal(createMayaSample().clientView.plan.presentation.preparedBy,'Kanuj');

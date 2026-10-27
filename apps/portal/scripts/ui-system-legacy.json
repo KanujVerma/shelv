@@ -1,0 +1,81 @@
+{
+  "advisor/presentation-editor.css": {
+    "#8fa183": 1,
+    "#f3f4ee": 1,
+    "#fafaf6": 1
+  },
+  "advisor/workspace.css": {
+    "#545a53": 2,
+    "#59715d": 1,
+    "#714837": 1,
+    "#776f61": 1,
+    "#a28343": 1,
+    "#dce2d3": 1,
+    "#dfded3": 2,
+    "#dfe4d6": 1,
+    "#e3cbbf": 1,
+    "#e8ecdf": 1,
+    "#eef1e9": 2,
+    "#f0eee5": 1,
+    "#f0f3eb": 1,
+    "#f3f0e9": 1,
+    "#f5f4ef": 2,
+    "#f5f6ef": 1,
+    "#f9f8f3": 1,
+    "#faf1eb": 1
+  },
+  "auth/auth.css": {
+    "#3b5845": 1,
+    "#706e68": 1
+  },
+  "features/checkins/checkins.css": {
+    "#c3cbbf": 1
+  },
+  "features/payments/payments.css": {},
+  "features/service/service.css": {},
+  "maya/maya.css": {
+    "#6b7366": 1,
+    "#c9cbbf": 1,
+    "#feed": 1
+  },
+  "style.css": {
+    "#20382d13": 2,
+    "#294438": 2,
+    "#34553f": 1,
+    "#36503b": 1,
+    "#42674b": 1,
+    "#456844": 1,
+    "#46626b": 1,
+    "#47709a": 1,
+    "#486040": 1,
+    "#50614f": 1,
+    "#526765": 1,
+    "#526b50": 1,
+    "#526c4d": 1,
+    "#547c9a": 1,
+    "#558388": 1,
+    "#56705e": 1,
+    "#5d705b": 1,
+    "#71846a": 1,
+    "#788b72": 1,
+    "#8a5c0b": 2,
+    "#9cae9f": 2,
+    "#a45140": 3,
+    "#a8b8ae": 3,
+    "#b07a15": 2,
+    "#b9c6bd": 2,
+    "#d1dadb": 1,
+    "#d3dedb": 2,
+    "#d5b5ab": 2,
+    "#d6e0ce": 1,
+    "#d7dfd2": 1,
+    "#ddc58d": 1,
+    "#ead1c9": 1,
+    "#f6f3eced": 2,
+    "#fbefec": 1,
+    "#fefefe": 1,
+    "#fffdf7": 1
+  },
+  "walkthrough/guide.css": {},
+  "walkthrough/tour.css": {}
+}

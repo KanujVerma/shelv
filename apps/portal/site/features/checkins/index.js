@@ -8,7 +8,7 @@ export function mountCheckinsPanel(element,options){
  if(!element||!['client','advisor'].includes(mode)||typeof request!=='function')throw Error('Invalid check-in integration');
  const ownedDraft=!options.draftState,draftState=options.draftState||createCheckinDraftState();
  if(draftState.closed)throw Error('Check-in draft scope has ended');
- const doc=element.ownerDocument,controller=new AbortController(),timers=new Set(),images=new Set(),photos=draftState.photos,notesDraft=new Map(),replyDraft=new Map();
+ const doc=element.ownerDocument,controller=new AbortController(),timers=new Set(),images=new Set(),photos=draftState.photos,notesDraft=draftState.advisorNotes,replyDraft=draftState.advisorReplies;
  let disposed=false,busy=false,view=null,meetingNotes=[],generation=0;
  const draft=draftState.draft;
  const authoredQuestions=planContext?.questions&&typeof planContext.questions==='object'?planContext.questions:{};
@@ -25,7 +25,7 @@ export function mountCheckinsPanel(element,options){
  const feedback=(text,error=false)=>{status.setAttribute('role',error?'alert':'status');status.textContent=text;};
  function button(label,fn,write=false,primary=false){const b=node('button',label,primary?'checkin-button primary':'checkin-button');b.type='button';if(write)b.dataset.write='true';b.addEventListener('click',fn);return b;}
  const reload=button('Reload latest',()=>load('',true));
- append(root,append(node('header',undefined,'checkin-header'),append(node('div'),node('span','MEETING PREPARATION','checkin-eyebrow'),node('h2','Check-ins')),reload),status,retryBox,content);
+ append(root,append(node('header',undefined,'checkin-header'),append(node('div'),node('h2','Check-ins')),reload),status,retryBox,content);
  if(request.syntheticPreview===true&&options.showSampleDisclosure!==false)root.insertBefore(node('p','Synthetic preview · sample check-ins and dates.','checkin-muted'),status);
  function controls(){root.setAttribute('aria-busy',String(busy));root.querySelectorAll('button,input,textarea').forEach(control=>{
   control.disabled=busy||(control.dataset.write==='true'&&(!canWrite||draftState.writeLocked||draftState.pending!==null))||(control.dataset.discard==='true'&&(!draftState.hasUnsent()||draftState.pending!==null));});}
@@ -70,7 +70,8 @@ export function mountCheckinsPanel(element,options){
     if(intent.command.action==='submit_report')draftState.reset();
     if(intent.command.action==='add_meeting_note')notesDraft.delete(intent.command.checkinId);
     if(intent.command.action==='send_advisor_reply')replyDraft.delete(intent.command.checkinId);
-    render();busy=false;await load(intent.command.action==='send_advisor_reply'?'Reply sent to client.':intent.command.action==='add_meeting_note'?'Private meeting note saved.':intent.command.action==='set_next_checkin'?'Next check-in date saved.':'Your report is ready for your advisor.',true);
+    if(intent.command.action==='set_next_checkin')draftState.nextCheckinDraft=null;
+    render();busy=false;await load(intent.command.action==='send_advisor_reply'?'Reply added to this check-in.':intent.command.action==='add_meeting_note'?'Private meeting note saved.':intent.command.action==='set_next_checkin'?'Next check-in date saved.':'Your report is ready for your advisor.',true);
    }
   }catch(error){if(disposed||draftState.closed)return;
    if(intent.kind==='photo'){const state=photos.get(intent.upload.angle);if(state)state.status='failed';}
@@ -127,14 +128,14 @@ export function mountCheckinsPanel(element,options){
   });return form;
  }
  function schedule(){
-  const card=node('section',undefined,'checkin-card checkin-schedule');append(card,node('span','NEXT CHECK-IN','checkin-eyebrow'),node('h3',view.nextCheckinOn?displayDay(view.nextCheckinOn):'No check-in date yet'),node('p','Arrange your meeting with your advisor by text or email. Saving a date here does not book the meeting.','checkin-muted'));
-  if(mode==='advisor'&&canWrite){const form=node('form'),f=field('Next check-in date',view.nextCheckinOn,{type:'date',help:'Save the agreed date after arranging the meeting externally.'});const save=button('Save next date',()=>{},true);save.type='submit';append(form,f.wrap,save);
+  const card=node('section',undefined,'checkin-card checkin-schedule');append(card,node('span','NEXT CHECK-IN','checkin-eyebrow'),node('h3',view.nextCheckinOn?displayDay(view.nextCheckinOn):'No check-in date yet'),node('p',mode==='advisor'?'Saving a date does not book a meeting.':'Arrange your meeting with your advisor by text or email. Saving a date here does not book the meeting.','checkin-muted'));
+  if(mode==='advisor'&&canWrite){const form=node('form'),f=field('Next check-in date',draftState.nextCheckinDraft?.value??view.nextCheckinOn,{type:'date'});f.input.addEventListener('input',()=>{draftState.nextCheckinDraft=f.input.value===(view.nextCheckinOn||'')?null:{value:f.input.value};});const save=button('Save next date',()=>{},true);save.type='submit';append(form,f.wrap,save);
    form.addEventListener('submit',event=>{event.preventDefault();try{perform({kind:'write',command:nextDateCommand(clientId,f.input.value||null,view.revision,uid())});}catch{feedback('Choose a valid next check-in date.',true);}});card.append(form);
   }return card;
  }
  function history(){
   const section=node('section',undefined,'checkin-history');section.setAttribute('aria-label','Check-in history');append(section,node('h3','Check-in history'));
-  if(view.reports.length)section.append(node('p','Submitted check-ins to revisit before your meeting.','checkin-muted'));else section.append(node('p','Your submitted check-ins will appear here.','checkin-empty'));
+  if(!view.reports.length)section.append(node('p','No submitted check-ins yet.','checkin-empty'));
   for(const report of [...view.reports].reverse()){
    const card=node('article',undefined,'checkin-card');append(card,node('span',mode==='client'?'YOUR SUBMITTED CHECK-IN':'CLIENT REPORT','checkin-eyebrow'),node('h4',displayDay(report.submittedAt)));
    const list=node('dl');for(const [label,value] of [['Comfort',report.comfort],['Consistency',report.consistency],['Changes',report.changes||'No changes added.']])append(list,node('dt',label),node('dd',value));card.append(list);
@@ -143,15 +144,15 @@ export function mountCheckinsPanel(element,options){
    for(const reply of report.advisorReplies||[])append(publicReplies,append(node('article',undefined,'checkin-reply'),node('small','Your advisor · '+displayDay(reply.createdAt),'checkin-muted'),node('p',reply.reply,'checkin-reply-body')));
    if(!report.advisorReplies?.length)publicReplies.append(node('p','No advisor reply yet.','checkin-muted'));
    if(mode==='advisor'&&canWrite){
-    const form=node('form'),f=field('Reply to client',replyDraft.get(report.id)||'',{max:4000,required:true,help:'Visible to this client with their submitted check-in. Up to 4,000 characters. Private notes remain separate.'});
+    const form=node('form'),f=field('Reply to client',replyDraft.get(report.id)||'',{max:4000,required:true,help:'Visible to the client. Up to 4,000 characters.'});
     f.input.addEventListener('input',()=>{replyDraft.set(report.id,f.input.value);f.input.setCustomValidity(Array.from(f.input.value).length>4000?'Use 4,000 characters or fewer.':'');});const send=button('Send reply',()=>{},true,true);send.type='submit';append(form,f.wrap,send);
     form.addEventListener('submit',event=>{event.preventDefault();try{perform({kind:'write',command:replyCommand(clientId,report.id,f.input.value,view.revision,uid())});}catch{feedback('Add a reply with no more than 4,000 characters.',true);}});publicReplies.append(form);
    }card.append(publicReplies);
    if(mode==='advisor'){
-    const privateSection=node('section',undefined,'checkin-advisor-note');append(privateSection,node('h4','Private advisor meeting notes'),node('p','Visible to authorized advisors.','checkin-muted'));
+    const privateSection=node('section',undefined,'checkin-advisor-note');append(privateSection,node('h4','Private advisor meeting notes'));
     const notes=meetingNotes.filter(note=>note.checkinId===report.id);for(const note of notes)append(privateSection,node('small',displayDay(note.createdAt),'checkin-muted'),node('p',note.note));
     if(!notes.length)privateSection.append(node('p','No meeting notes yet.','checkin-muted'));
-    if(canWrite){const form=node('form'),f=field('Private meeting note',notesDraft.get(report.id)||'',{max:4000,required:true,help:'Record your meeting observations and decisions. Up to 4,000 characters.'});f.input.addEventListener('input',()=>notesDraft.set(report.id,f.input.value));const save=button('Save private note',()=>{},true);save.type='submit';append(form,f.wrap,save);
+    if(canWrite){const form=node('form'),f=field('Private meeting note',notesDraft.get(report.id)||'',{max:4000,required:true,help:'Up to 4,000 characters.'});f.input.addEventListener('input',()=>notesDraft.set(report.id,f.input.value));const save=button('Save private note',()=>{},true);save.type='submit';append(form,f.wrap,save);
      form.addEventListener('submit',event=>{event.preventDefault();try{perform({kind:'write',command:noteCommand(clientId,report.id,f.input.value,view.revision,uid())});}catch{feedback('Add a private note with no more than 4,000 characters.',true);}});privateSection.append(form);
     }card.append(privateSection);
    }section.append(card);
@@ -160,8 +161,8 @@ export function mountCheckinsPanel(element,options){
  function render(){clearImages();content.replaceChildren();if(!view)return;
   const top=node('div',undefined,'checkin-overview');top.append(schedule());
   if(mode==='client'&&canWrite)top.append(reportForm());else if(mode==='client')top.append(append(node('section',undefined,'checkin-card'),node('h3','Your check-in history'),node('p','You can read your existing reports. New check-ins are unavailable for this account.','checkin-muted')));
-  else top.append(append(node('section',undefined,'checkin-card checkin-prepare'),node('h3','Prepare for the meeting'),node('p','Review the client’s report and optional photos, then record private notes after your conversation.','checkin-muted'),node('p','Intake and meetings take place on Zoom or in person.','checkin-muted')));
+  else top.classList.add('checkin-overview-advisor');
   append(content,top,history());renderRetry();controls();
  }
- load('',true);return ()=>{disposed=true;generation++;controller.abort();clearImages();notesDraft.clear();replyDraft.clear();if(ownedDraft)draftState.dispose();root.remove();};
+ load('',true);return ()=>{disposed=true;generation++;controller.abort();clearImages();if(ownedDraft)draftState.dispose();root.remove();};
 }

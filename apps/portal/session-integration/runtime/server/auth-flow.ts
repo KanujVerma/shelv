@@ -34,7 +34,7 @@ export function flowExpiryDisposition(record: FlowRecord, now: number): 'pending
     return 'retire';
 }
 export interface FlowAuth {
-    requestOtp(email: string): Promise<Record<string, string>>;
+    requestOtp(email: string, returnTo?:string): Promise<Record<string, string>>;
     exchange(code: string, sdk: Record<string, string>): Promise<Credentials>;
     upgrade(pair: LegacyPair): Promise<Credentials>;
 }
@@ -97,7 +97,7 @@ export class AuthFlow {
             return { signedIn: false as const, csrf: r.csrf, flowExpiresAt: new Date(r.expiresAt).toISOString() };
         });
     }
-    async request(csrf: string, email: string, remember = false) {
+    async request(csrf: string, email: string, remember = false, returnTo?:string) {
         return this.serial(async () => {
             const r = this.live(csrf);
             demand(r.status === 'pending', 409, 'flow_replayed');
@@ -105,7 +105,7 @@ export class AuthFlow {
             const sessionPolicy: SessionPolicy | undefined = this.options.recheckContext ? {idleMs: (remember ? this.options.rememberedIdleMs : this.options.idleMs)!, absoluteMs: (remember ? this.options.rememberedAbsoluteMs : this.options.absoluteMs)!, policyId: `${this.options.policyAudience ?? 'client'}-${remember ? 'remember' : 'session'}-v1`, remembered: remember === true} : undefined;
             this.store.write({ ...r, status: 'requesting', remember:remember === true, ...(sessionPolicy ? {sessionPolicy} : {}) });
             try {
-                const sdk = await this.auth.requestOtp(email);
+                const sdk = await this.auth.requestOtp(email,returnTo);
                 this.fence(r);
                 const payload = await this.envelope.seal({ sdk }, 'pending');
                 const current = this.fence(r);

@@ -1,3 +1,4 @@
+import {navigationReturnTo} from './navigation-return.js';
 import {CookieAdvisorSession, CookieSessionError, createCookieRequest} from './advisor-cookie-session.js';
 export function useClientCookies(config,url,pendingPreview=false){
  return config?.clientSharedSessions===true && url.searchParams.get('preview')!=='1' && !pendingPreview && url.searchParams.get('workspace')!=='advisor' && !url.searchParams.has('advisorPreview') && !url.hash.startsWith('#/advisor');
@@ -17,10 +18,11 @@ export class CookieClientSession extends CookieAdvisorSession {
  async acquire(){if(this._hasPendingLogout()){this._end();throw new CookieSessionError(401);}return super.acquire();}
  async restore(){if(this._hasPendingLogout())await this._finishLogout();return super.restore();}
  async _finishLogout(){let result;try{result=await super.signOut();}catch(error){if(error.status!==401)throw error;}this.logoutPending=false;this.logoutPersisted=false;this._markCookie(false);try{globalThis.localStorage.removeItem(this.logoutKey);}catch{}this.channel?.postMessage({type:'logout-complete',id:this.logoutIntentId});return result;}
- async sendLink(email,_redirect,remember=false){
+ async sendLink(email,redirect,remember=false){
+  const returnTo=navigationReturnTo(redirect,'client');
   if(this._hasPendingLogout())await this._finishLogout();
   await this.prepareFlow();
-  return this._fetch('auth/request',{body:{email,remember:remember===true},csrf:this._flow.csrf});
+  return this._fetch('auth/request',{body:{email,remember:remember===true,...(returnTo?{returnTo}:{})},csrf:this._flow.csrf});
  }
  async upgrade(){throw new CookieSessionError(403,'action_forbidden');}
  async signOut(){this.logoutPending=true;this.logoutIntentId=crypto.randomUUID();this._markCookie(true);this.logoutPersisted=this._cookiePending();try{globalThis.localStorage.setItem(this.logoutKey,'1');this.logoutPersisted=true;}catch{}this.channel?.postMessage({type:'logout',id:this.logoutIntentId});return this._finishLogout();}

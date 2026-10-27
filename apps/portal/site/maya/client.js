@@ -573,7 +573,7 @@ function mountSyntheticCase(root, { identity, presentation }) {
   };
   return mountClientPortal(root, { request: fixture.core, mountFeature, onSignOut: () => {
     location.href = "../";
-  }, clientId: fixture.clientId, preview: true, avatar: identity.avatar, capabilities: identity.capabilities, productLabels: fixture.productLabels });
+  }, clientId: fixture.clientId, preview: true, account:{displayName:identity.displayName}, readCheckinStatus:options=>checkinRequest({action:'client_read'},options), avatar: identity.avatar, capabilities: identity.capabilities, productLabels: fixture.productLabels });
 }
 
 // src/approved-maya-data.js

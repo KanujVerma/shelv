@@ -52,9 +52,13 @@ function productCard(product, decision) {
 }
 
 function productDetailMarkup(product) {
-  if (!product) return '';
-  const price = validPrice(product.displayPrice) ? product.displayPrice : null;
-  return `<div class="client-routine-detail-product"><div class="detail-product-image">${productImage(product)}</div><div>${product.brand ? `<p>${plain(product.brand)}</p>` : ''}${product.variant ? `<p class="product-variant">${plain(product.variant)}</p>` : ''}<p>${plain(product.sizeLabel)}</p>${price ? `<p class="card-price">${link(price.sourceUrl, money(price.cents)) || esc(money(price.cents))}${price.illustrative ? '<small>Reference price</small>' : ''}</p>` : ''}${link(product.productUrl, `Product page ${lineIcon('arrow')}`, 'text-button')}${product.reference ? `<p class="product-reference">${plain(product.reference)}</p>` : ''}</div></div>${productIngredientsMarkup(product,{collapsible:true})}`;
+  if(!product)return '';
+  return `<div class="client-routine-detail-product"><div class="detail-product-image">${productImage(product)}</div><div>${product.brand?`<p>${plain(product.brand)}</p>`:''}${product.variant?`<p class="product-variant">${plain(product.variant)}</p>`:''}<p>${plain(product.sizeLabel)}</p></div></div>`;
+}
+function productBackgroundMarkup(product){
+  if(!product)return '';
+  const price=validPrice(product.displayPrice)?product.displayPrice:null;
+  return `<details class="product-secondary"><summary>Product background</summary>${product.reference?`<p>${plain(product.reference)}</p>`:''}${price?`<p>${link(price.sourceUrl,money(price.cents))||esc(money(price.cents))} · Reference price before tax and shipping</p>`:''}${link(product.productUrl,`Brand product page ${lineIcon('arrow')}`,'text-button')}</details>`;
 }
 
 function comparisonsMarkup(card) {
@@ -68,7 +72,7 @@ function factsMarkup(card) {
 }
 
 function rationaleMarkup(card) {
-  return `<div class="rationale"><h3>${plain(card.rationaleTitle)}</h3><div class="personal-note">${list(card.reasons).map(reason => `<p>${reason.title && reason.title !== card.rationaleTitle ? `<strong>${plain(reason.title)}</strong><br>` : ''}${rationaleTextMarkup(reason.body)}</p>`).join('')}${list(card.actions).length ? `<h4 class="actions-heading">What to do next</h4><ul class="consultation-actions">${card.actions.map(action => `<li>${plain(action)}</li>`).join('')}</ul>` : ''}</div>${comparisonsMarkup(card)}${factsMarkup(card)}</div>`;
+  return `<div class="rationale"><h3>${plain(card.rationaleTitle)}</h3><div class="personal-note">${list(card.reasons).map(reason => `<p>${reason.title && reason.title !== card.rationaleTitle ? `<strong>${plain(reason.title)}</strong><br>` : ''}${rationaleTextMarkup(reason.body)}</p>`).join('')}${list(card.actions).length ? `<h4 class="actions-heading">What to do next</h4><ul class="consultation-actions">${card.actions.map(action => `<li>${plain(action)}</li>`).join('')}</ul>` : ''}</div></div>`;
 }
 
 function guideMarkup(guide, heading = 2, {excludedSources = new Set(), omitTitle = false} = {}) {
@@ -82,12 +86,12 @@ function usageMarkup(usage, heading = 'When to use it', guides = []) {
   const instructions = list(usage.instructions).filter(instruction => !represented.has(instruction));
   const shorts = list(usage.periods).filter(period => usage.short?.[period]);
   if (!instructions.length && !shorts.length) return '';
-  return `<section class="product-how"><h3>${esc(heading)}</h3>${shorts.map(period => `<p><strong>${esc(title(period))}</strong> · ${plain(usage.short[period])}</p>`).join('')}${instructions.length ? `<ol>${instructions.map(instruction => `<li>${plain(instruction)}</li>`).join('')}</ol>` : ''}</section>`;
+  return `<section class="product-how">${heading?`<h3>${esc(heading)}</h3>`:''}${shorts.map(period => `<p><strong>${esc(title(period))}</strong> · ${plain(usage.short[period])}</p>`).join('')}${instructions.length ? `<ol>${instructions.map(instruction => `<li>${plain(instruction)}</li>`).join('')}</ol>` : ''}</section>`;
 }
 
 function directionsMarkup(usage, guides, {heading = 'How to use it', product = null} = {}) {
-  const excludedSources=new Set([safeContentUrl(product?.productUrl)].filter(Boolean));
-  return `<section class="client-product-guidance"><h3>${esc(heading)}</h3>${usageMarkup(usage, 'When to use it', guides)}${list(guides).map(guide=>{const html=guideMarkup({...guide,title:/^how to use it$/i.test(guide.title)?'Application steps':guide.title},4,{excludedSources,omitTitle:guide.title===heading});for(const source of list(guide.sources))excludedSources.add(safeContentUrl(source.url));return html;}).join('')}</section>`;
+  const excludedSources=new Set([safeContentUrl(product?.productUrl)].filter(Boolean)),separateGuide=list(guides).some(guide=>guide.title&&guide.title!==heading&&!/^how to use it$/i.test(guide.title));
+  return `<section class="client-product-guidance"><h3>${esc(heading)}</h3>${usageMarkup(usage, separateGuide?'When to use it':null, guides)}${list(guides).map(guide=>{const html=guideMarkup({...guide,title:/^how to use it$/i.test(guide.title)?'Application steps':guide.title},4,{excludedSources,omitTitle:guide.title===heading});for(const source of list(guide.sources))excludedSources.add(safeContentUrl(source.url));return html;}).join('')}</section>`;
 }
 
 function heroMarkup(card) {
@@ -101,8 +105,9 @@ function heroMarkup(card) {
 }
 
 function cardMarkup(card, done, readOnly = false) {
+  const technical=comparisonsMarkup(card)+factsMarkup(card);
   const controls = readOnly ? '' : bound(card) ? `<div class="client-decision-footer" data-controls="${esc(card.recommendationId)}"></div>` : `<button data-review="${esc(card.slot)}" class="${done ? 'quiet' : 'solid'}">${done ? 'Undo review' : 'Mark reviewed'}</button>`;
-  return `<article class="recommendation" data-presentation-card="${esc(card.id)}"${bound(card) ? ` data-plan-recommendation="${esc(card.recommendationId)}"` : ''}><div class="card-heading"><div class="category"><span class="category-mark" aria-hidden="true">◒</span><h2>${plain(card.kind === 'no_addition' ? title(card.slot) : card.title)}</h2></div>${card.subtitle ? `<p class="card-subtitle">${plain(card.subtitle)}</p>` : ''}</div>${heroMarkup(card)}${rationaleMarkup(card)}<div class="category-footer">${sourceLinks(card.sources)}<button class="text-button" data-plan-card="${esc(card.id)}">${card.kind === 'no_addition' ? 'What to do for now' : 'Product details'} ${lineIcon('arrow')}</button>${bound(card) ? '' : controls}</div>${bound(card) ? controls : ''}</article>`;
+  return `<article class="recommendation" data-presentation-card="${esc(card.id)}"${bound(card) ? ` data-plan-recommendation="${esc(card.recommendationId)}"` : ''}><div class="card-heading"><div class="category"><span class="category-mark" aria-hidden="true">◒</span><h2>${plain(card.kind === 'no_addition' ? title(card.slot) : card.title)}</h2></div>${card.subtitle ? `<p class="card-subtitle">${plain(card.subtitle)}</p>` : ''}</div>${heroMarkup(card)}${rationaleMarkup(card)}${bound(card)?controls:''}${technical?`<details class="product-secondary" data-technical-detail><summary>Compare formulas and ingredients</summary>${technical}</details>`:''}<div class="category-footer">${sourceLinks(card.sources)}<button class="text-button" data-plan-card="${esc(card.id)}">${card.kind === 'no_addition' ? 'What to do for now' : 'Product details'} ${lineIcon('arrow')}</button>${bound(card) ? '' : controls}</div></article>`;
 }
 
 /** Public R2 snapshot only. All cards start open, including arbitrary categories. */
@@ -129,7 +134,7 @@ export function presentationCardDetail(card, {product = null} = {}) {
   // concentrate on identifying the product and following its own directions.
   // Unbound future-bottle usage can describe the current product, not the future one.
   const usage = card.kind === 'finish_then_replace' && !bound(card) ? null : card.usage;
-  return `<h2 tabindex="-1">${plain(chosen?.name || card.title)}</h2>${productDetailMarkup(chosen)}${ownDirections ? directionsMarkup(usage,[card.how],{product:chosen,heading:card.kind==='no_addition'?'What to focus on instead':['pause','leave_out'].includes(card.kind)?'What to do for now':'How to use it'}) : ''}${sourceLinks(card.sources,'product-sources','div',new Set([chosen?.productUrl,...(ownDirections?list(card.how?.sources).map(source=>source.url):[])]))}`;
+  return `<h2 tabindex="-1">${plain(chosen?.name || card.title)}</h2>${productDetailMarkup(chosen)}<div class="product-practical">${ownDirections ? directionsMarkup(usage,[card.how],{product:chosen,heading:card.kind==='no_addition'?'What to focus on instead':['pause','leave_out'].includes(card.kind)?'What to do for now':'How to use it'}) : ''}${sourceLinks(card.sources,'product-sources','div',new Set([chosen?.productUrl,...(ownDirections?list(card.how?.sources).map(source=>source.url):[])]))}</div>${card.reasons?.length?`<details class="product-secondary"><summary>${plain(card.rationaleTitle)}</summary>${card.reasons.map(reason=>`<p>${rationaleTextMarkup(reason.body)}</p>`).join('')}</details>`:''}${productBackgroundMarkup(chosen)}${chosen?productIngredientsMarkup(chosen,{collapsible:true}):''}`;
 }
 
 /** The server's activeRoutine is the sole authority for what the client uses now. */
@@ -146,8 +151,9 @@ export function presentationRoutineMarkup(view) {
 
 export function presentationProposalsMarkup(view, {readOnly = false} = {}) {
   const {proposed} = routineDisplayState(view);
-  if (!proposed.length) return '';
-  return `<section class="advisor-panel routine-proposals"><h2>Proposed routine</h2><p>Review these changes before buying. Add a product to your daily steps only after it arrives and you record its actual start date.</p><ul>${proposed.map(row=>`<li><h3>${plain(row.card.proposedProduct.name)}</h3><span class="routine-proposal-status">${esc(row.label)}</span>${row.note?`<p>${esc(row.note)}</p>`:''}<p><button class="text-button" ${row.action==='review'&&!readOnly ? `data-review-proposal="${esc(row.card.id)}"` : `data-plan-card="${esc(row.card.id)}"`}>${row.action==='review'&&!readOnly ? 'Review choice' : 'Product details'} ${lineIcon('arrow')}</button></p></li>`).join('')}</ul></section>`;
+  const actionable=proposed.filter(row=>!['optional_alternative','finish_then_replace'].includes(row.card.kind)||view.plan?.itemStates?.some(item=>item.recommendationId===row.card.recommendationId&&item.received&&!item.startedOn));
+  if(!actionable.length)return '';
+  return `<section class="routine-pending-link"><h2>${actionable.length} pending ${actionable.length===1?'change':'changes'}</h2><button class="quiet" data-review-proposal="${esc(actionable[0].card.id)}">Review changes ${lineIcon('arrow')}</button></section>`;
 }
 
 function publishedPresentation(view, version) {
@@ -170,7 +176,7 @@ export function presentationRoutineDetail(view, stepId) {
   const card = sourceCard(view, step);
   // Display and directions always come from this active step. Only reasoning is
   // drawn from its immutable source publication; a later draft cannot replace it.
-  return `<h2 tabindex="-1">${plain(step.product?.name || step.title)}</h2>${productDetailMarkup(step.product)}${card ? `<section class="client-routine-reason"><h3>${plain(card.rationaleTitle)}</h3>${list(card.reasons).map(reason=>`<p>${rationaleTextMarkup(reason.body)}</p>`).join('')}</section>` : ''}${directionsMarkup(step.usage,step.guides,{product:step.product})}${card ? sourceLinks(card.sources,'product-sources','div',new Set([step.product?.productUrl,...list(step.guides).flatMap(guide=>list(guide.sources).map(source=>source.url))])) : ''}`;
+  return `<h2 tabindex="-1">${plain(step.product?.name || step.title)}</h2>${productDetailMarkup(step.product)}<div class="product-practical">${directionsMarkup(step.usage,step.guides,{product:step.product})}</div>${card ? `<details class="product-secondary"><summary>${plain(card.rationaleTitle)}</summary>${list(card.reasons).map(reason=>`<p>${rationaleTextMarkup(reason.body)}</p>`).join('')}</details>` : ''}${productBackgroundMarkup(step.product)}${productIngredientsMarkup(step.product,{collapsible:true})}${card ? sourceLinks(card.sources,'product-sources','div',new Set([step.product?.productUrl,...list(step.guides).flatMap(guide=>list(guide.sources).map(source=>source.url))])) : ''}`;
 }
 
 export function presentationConsultationMarkup(presentation, {includeProfile = true} = {}) {
@@ -261,7 +267,7 @@ export function presentationText(view) {
   if(proposed.length)lines.push('Proposed routine','These products are not daily steps until you receive them and record when you actually start.',...proposed.flatMap(row=>[row.card.proposedProduct.name,row.label,row.note]));
   const activeDetails=current.filter(step=>step.kind==='product');
   if(activeDetails.length)lines.push('Current product directions');
-  for(const step of activeDetails)lines.push(step.product?.name||step.title,...usageOnce(step.usage,step.guides,step.product),...list(step.guides).flatMap(guideOnce),...rationaleOnce(sourceCard(view,step)),'');
+  for(const step of activeDetails)lines.push(step.product?.name||step.title,...(step.instructionRevision?[`Instructions version ${step.instructionRevision.version} · effective ${step.instructionRevision.effectiveOn}`]:[]),...usageOnce(step.usage,step.guides,step.product),...list(step.guides).flatMap(guideOnce),...rationaleOnce(sourceCard(view,step)),'');
   lines.push('Initial product reference · follow the current routine above', ...list(presentation.baselineRoutine).flatMap(step => [step.title,...productText(step.product),...usageOnce(step.usage,step.guides,step.product),'']));
   const products=[...list(presentation.categoryCards).flatMap(card=>[card.currentProduct,card.proposedProduct]),...list(presentation.baselineRoutine).map(step=>step.product),...list(view.activeRoutine).map(step=>step.product)].filter(Boolean),seenFormulas=new Set();
   lines.push('Full ingredient lists');

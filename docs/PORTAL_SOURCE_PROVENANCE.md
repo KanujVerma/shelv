@@ -1,8 +1,43 @@
 # Portal source provenance
 
-## Current Maya tour source, 25 October 2026
+## Current UX deployment provenance, 26 October 2026
 
-The current public application source is [b22436f58e32ea21668dd350269b46227669ab43](https://github.com/KanujVerma/shelv/commit/b22436f58e32ea21668dd350269b46227669ab43), on the existing `codex/walkthroughs-service-20261025` branch and unmerged PR 206/207/208 lineage. Pages `17546896-f89f-4300-b9f8-252a4734984c` serves the reviewed 123-entry package, with all 120 public files matched exactly. ZIP SHA-256 is `e5a4c04bee3213826155fc7c55aad72665e14d456915c01af5e56a6f59b10d49`; build manifest SHA-256 is `15d239c82ee1f56a2f0061d740ed9bdb4ba3e459ba94aa253db6d828896bbfd0`. The later release-record commit changes documentation only.
+The user-authorized PR 209 deployment uses source head `7f3ba7a03d6168e7c5ec899578529ccddc9c6761`, retaining application freeze `2539d0729bffcb32318add72575a1e28168a1a9d`. [Release result](PORTAL_RELEASE_RESULT.md) owns the current Pages/vault identities, package hashes, preservation and recovery; [acceptance](PORTAL_ACCEPTANCE.md) owns hosted checks and limits. No Git merge occurred.
+
+| Exact forward source | SHA-256 | Actual hosted ledger version |
+| --- | --- | --- |
+| `20261026185922_concierge_client_account_display_name.sql` | `ebfc7b5782bb95b0b9ad6c37044f53ce14e3f7973d2893809a3447f60dae5edd` | `20261026230521` |
+
+The provider-assigned alias above is recorded without renaming the canonical migration or repairing the historical ledger. Only the signed-in actor's enrollment display name was added to the guarded read. Function OID `72612`, owner `postgres`, empty search path, security-definer setting and existing ACL were identical before and after; anon and service-role EXECUTE remain denied. All 78 prior migration entries were retained, producing 79.
+
+Fresh hosted source comparison found one existing runtime-file delta: `src/contracts/ConciergePortalMapping.ts` in `concierge-operations`, from SHA-256 `8076df4ac4c170060d0221edece62d6dff08b0c3e652196be7464a09aaa136e0` to `5cd13e35fef8bf55c0cb2746793c66fc9a058d7f13d84d2d41b76bbfa4940d99`. The conservative frozen closure includes 20 source files, including type-only dependencies omitted by provider runtime extraction. Operations version 7 returned all 17 runtime files with exact candidate contents; payments/check-ins/admission remained at versions 4/4/2. Every function retains JWT verification true.
+
+The frozen four-function source capsule SHA-256 is `f57ba14bcb4a2c52eb86d6298cd0f1b9e0d9642f37e7164d27425871f27c8904`, aggregate `20df93f2334c972fd61c323713e407c12dc39fb11b2ecbef622ada42a0230eae`; only its operations closure was deployed. Deployment manifest SHA-256 is `1e01fd2ad1f44384f181ffaa81aae8360f3fd939110311876ffe569cd6dfd505`. Vault metadata SHA-256 `cb27b77636724bc1517d16c63ea15fb12e890fbf68c6ee069334e1136b99f5c3` echoes the exact installed SQLite export with retained binding types and no lifecycle effects. Provider-returned module bytes independently match the candidate vault hash. Pages exposes its static-file manifest and deployment acknowledgement; the generated gateway hash is tied to the exact upload bytes, without claiming a provider raw-gateway download.
+
+Private rollback evidence preserves the immediate predecessor's exact package and all 120 verified public files, the raw 415,542-byte vault module with SHA-256 `ceb946c3843235c903b461488bef7dd6a5da7ba9d7b1e33c6e35c7039e75900e`, and all four hosted function preimages. Historical target descriptors below retain their original pins and were not rewritten for this deployment.
+
+## UX source lineage, 26 October 2026
+
+[PR 209](https://github.com/KanujVerma/shelv/pull/209), `codex/shelv-ux-skill-pilot-20261026`, began at `bc4568e4e3af0936fd027351002f65b77512e00d` on the unmerged PR 207/206 stack. It did not yet include the later PR 208 walkthrough/service/tour source. Six exact `cherry-pick -x` operations reconciled that source through `de698807e8affefad45f5355f078525990744a67`; their original SHA trailers are retained:
+
+| Original PR 208 commit | Reconciled PR 209 commit |
+| --- | --- |
+| `87ad5a9c1e467a3dbc8a2ecfa1edd9b8e266e410` | `dd31397` |
+| `0d5e6f784cb652fafef89f151b5c23e348d10798` | `93b3754` |
+| `44c3d371fe63aaf23a64b87d0ef459ecc85343d4` | `589602a` |
+| `db6b8e9e52d5cf28f8e82c4ccd3a75d505cebf95` | `202378f` |
+| `b22436f58e32ea21668dd350269b46227669ab43` | `c7ba4c4` |
+| `2901f6c150b184bf0e1db9ca15e2a01be4dfcfb2` | `de69880` |
+
+The local UX checkpoints are shared foundations `45b539b`, hover/menu corrections `457a243`/`fc43ffe`, advisor `038f82e`, client `e4baacd`, advisor correction `d79e680`, client correction `163754e` and final shared-focus correction `2539d0729bffcb32318add72575a1e28168a1a9d`. All six independent findings are closed with specification/quality PASS for the scoped corrections. [UX delivery](PORTAL_UX_DELIVERY.md) owns the changes, research revisions, screenshot provenance, verification results and limitations; it must not be read as a deployment receipt. The primary dirty checkout remains preserved.
+
+The final local build from `2539d07` has 132 packaged assets and client/advisor/walkthrough gateway routes. ZIP SHA-256: `307472c8b6836ae5858d625cd6b0e36748cf8f8b32054967af38b862b2062875`; vault SHA-256: `12ccdf38776e434a5e53233cf3806d755e8cf50a1cd028e8989fe5dd73b99126`. The final verification digest is `ac4f96f16c08d19bbc51c7a2673fe6bca743b5487e48164e3a1c1685463739ab`, covering `apps/portal/site` plus `session-integration/runtime/server` and `workers`; the exact Git commit separately identifies complete source. The build reports `productionDeploymentChanged:false`. Documentation-only commits do not replace this application freeze.
+
+Forward source `supabase/migrations/20261026185922_concierge_client_account_display_name.sql`, SHA-256 `ebfc7b5782bb95b0b9ad6c37044f53ce14e3f7973d2893809a3447f60dae5edd`, adds only the actor's optional enrollment display name to the existing guarded client read. It was first tested locally, then applied only under the separate deployment authorization recorded above. Hosted email callback acceptance for the bounded auth continuation remains unrun. The implementation candidate itself did not authorize hosted activation.
+
+## Historical Maya tour source, 25 October 2026
+
+The preceding public application source was [b22436f58e32ea21668dd350269b46227669ab43](https://github.com/KanujVerma/shelv/commit/b22436f58e32ea21668dd350269b46227669ab43), on the existing `codex/walkthroughs-service-20261025` branch and unmerged PR 206/207/208 lineage. Pages `17546896-f89f-4300-b9f8-252a4734984c` served the reviewed 123-entry package, with all 120 public files matched exactly. ZIP SHA-256 is `e5a4c04bee3213826155fc7c55aad72665e14d456915c01af5e56a6f59b10d49`; build manifest SHA-256 is `15d239c82ee1f56a2f0061d740ed9bdb4ba3e459ba94aa253db6d828896bbfd0`. The later release-record commit changed documentation only.
 
 This bounded update changes public Maya narration, anchored tour UI/preferences and optional shared-client controls. Private inputs are absent from source, runtime and ZIP scans. Generated gateway, routes and headers match the prior package byte-for-byte; vault source/deployment/version, Edge functions, migrations, grants and private stores are unchanged. [Release result](PORTAL_RELEASE_RESULT.md) owns exact release evidence; [acceptance](PORTAL_ACCEPTANCE.md) distinguishes current UI checks from retained backend evidence.
 

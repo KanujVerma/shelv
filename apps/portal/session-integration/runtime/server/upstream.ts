@@ -1,3 +1,4 @@
+import {validatedReturnPath} from './navigation-return';
 import { GoTrueClient, type Session } from '@supabase/auth-js';
 import { demand, decode, SessionError, type AuthProvider, type Credentials, type Capabilities, type AdvisorContext } from './types';
 import { PORTAL_ORIGIN, SUPABASE_ORIGIN, readBounded, parseCommand, object, safeCodes, uuid, type Operation } from './policy';
@@ -87,7 +88,7 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
             throw new SessionError(401, 'session_ended'); };
         return { client, check, values: () => Object.fromEntries(entries) };
     }
-    async requestOtp(email: string) { const { client, check, values } = this.sdk(); const { error } = await client.signInWithOtp({ email, options: { shouldCreateUser: false, emailRedirectTo: `${PORTAL_ORIGIN}/?workspace=advisor` } }); check(error); return values(); }
+    async requestOtp(email: string, returnTo?:string) { const path=validatedReturnPath(returnTo,'advisor'); const { client, check, values } = this.sdk(); const { error } = await client.signInWithOtp({ email, options: { shouldCreateUser: false, emailRedirectTo: `${PORTAL_ORIGIN}${path}` } }); check(error); return values(); }
     async exchange(code: string, storage: Record<string, string>) { const { client, check } = this.sdk(storage); const { data, error } = await client.exchangeCodeForSession(code); check(error); const credentials = cleanSession(data.session); await this.context(credentials); return credentials; }
     async upgrade(pair: LegacyPair) {
         const { client, check } = this.sdk();

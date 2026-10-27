@@ -16,6 +16,7 @@ export type VaultCommand = ({
     preserveSessionId?: string;
 } | {
     type: 'flow.request';
+    returnTo?: string;
     csrf: string;
     email: string;
 } | {
