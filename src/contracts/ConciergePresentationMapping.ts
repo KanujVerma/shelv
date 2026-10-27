@@ -1,7 +1,8 @@
+import {readInstructionRevision} from './ConciergeService.ts';
 import type { AdvisorViewV2, ClientViewV2, ActiveStep } from './ConciergePresentation.ts';
 import { mapConciergeAdvisorView, mapConciergeClientView } from './ConciergePortalMapping.ts';
 import { readArray, readIdentifier, readInteger, readObject, requireValue } from './ConciergePortalValidation.ts';
-import { readIntakePresentation, readPresentation, readPresentationShape, stepShape } from './ConciergePresentationValidation.ts';
+import { readIntakePresentation, readPresentation, readPresentationShape, stepShape, presentationShape } from './ConciergePresentationValidation.ts';
 
 // JSONB/PostgREST object key order is not a wire invariant.
 function canonical(value:unknown):string {
@@ -19,24 +20,31 @@ export function mapConciergeClientViewV2(value:unknown):ClientViewV2 {
   const publications=[...history,...(plan?[plan]:[])];
   const earliest=publications.find(p=>p.presentation!==null);
   const activeRoutine:ActiveStep[]=readArray(raw.activeRoutine,50).map(input=>{
-   const x=readObject(input),source=readObject(x.source);
+   const x=readObject(input),source=readObject(x.source),revision=x.instructionRevision===undefined?null:readInstructionRevision(x.instructionRevision);
    requireValue(source.kind==='baseline'||source.kind==='activation');
    const publicationVersion=readInteger(source.publicationVersion,1),recommendationId=source.recommendationId===null?null:readIdentifier(source.recommendationId);
    const step=readPresentationShape(Object.fromEntries(Object.keys(stepShape.fields!).map(k=>[k,x[k]])),stepShape) as Omit<ActiveStep,'source'|'guides'>;
    const snapshot=publications.find(p=>p.version===publicationVersion)?.presentation;requireValue(snapshot);
    if(source.kind==='baseline'){
     requireValue(recommendationId===null&&earliest?.version===publicationVersion);
-    const captured=snapshot.baselineRoutine.find(s=>s.id===step.id);requireValue(captured&&canonical(captured)===canonical(step));
+    const captured=snapshot.baselineRoutine.find(s=>s.id===step.id);requireValue(captured&&canonical(revision?{...captured,usage:step.usage}:captured)===canonical(step));
    }else{
     requireValue(step.kind==='product'&&recommendationId!==null);
     const card=snapshot.categoryCards.find(c=>c.recommendationId===recommendationId);
-    requireValue(card&&card.slot===step.slot&&card.proposedProduct?.id===step.productId&&canonical(card.proposedProduct)===canonical(step.product)&&canonical(card.usage)===canonical(step.usage));
+    requireValue(card&&card.slot===step.slot&&card.proposedProduct?.id===step.productId&&canonical(card.proposedProduct)===canonical(step.product)&&(revision!==null||canonical(card.usage)===canonical(step.usage)));
     requireValue(base.routineHistory.some(h=>h.version===publicationVersion&&h.recommendationId===recommendationId&&h.slot===step.slot&&h.productId===step.productId));
    }
    requireValue(step.kind==='instruction'?step.productId===null&&step.product===null&&step.slot===null:base.routine.some(r=>r.slot===step.slot&&r.productId===step.productId));
    const allowed=[...snapshot.routineGuides,...snapshot.categoryCards.map(c=>c.how)].filter(g=>g.productId===null||g.productId===step.productId);
-   const guides=readArray(x.guides,62).map(g=>{const candidate=allowed.find(a=>canonical(a)===canonical(g));requireValue(candidate);return structuredClone(candidate);});
-   return {...step,source:{kind:source.kind,publicationVersion,recommendationId},guides};
+   let guides=readArray(x.guides,62).map(g=>{if(revision)return readPresentationShape(g,presentationShape.fields!.routineGuides.item!) as ActiveStep['guides'][number];const candidate=allowed.find(a=>canonical(a)===canonical(g));requireValue(candidate);return structuredClone(candidate);});
+   if(revision){
+    requireValue(step.kind==='product'&&revision.slot===step.slot&&revision.productId===step.productId&&revision.source.kind===source.kind&&revision.source.publicationVersion===publicationVersion&&revision.source.recommendationId===recommendationId&&revision.planVersion<=(plan?.version??0)&&canonical(revision.usage)===canonical(step.usage));
+    const originalStart=source.kind==='activation'?base.routineHistory.find(h=>h.version===publicationVersion&&h.recommendationId===recommendationId&&h.slot===step.slot&&h.productId===step.productId)?.startedOn:null;
+    requireValue(revision.originalStartedOn===originalStart);
+    const expected=[{id:'instruction-'+revision.id,productId:step.productId,title:'Current reviewed instructions',intro:revision.reason,steps:revision.usage.instructions.map(body=>({title:null,body})),careNote:null,sources:[]}];
+    requireValue(canonical(guides)===canonical(expected));
+   }
+   return {...step,source:{kind:source.kind,publicationVersion,recommendationId},guides,...(revision?{instructionRevision:revision}:{})};
   });
   requireValue(new Set(activeRoutine.map(s=>s.id)).size===activeRoutine.length);
   requireValue(plan!==null||activeRoutine.length===0);

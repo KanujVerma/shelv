@@ -1,3 +1,4 @@
+import {buildServiceRpc} from '../../../src/contracts/ConciergeService.ts';
 import { readIntakePresentation, readPresentation } from '../../../src/contracts/ConciergePresentationValidation.ts';
 import type { ConciergeRpcCall } from '../../../src/contracts/ConciergePortal.ts';
 import { exactKeys, readArray, readDate, readIdentifier, readInteger, readObject, readRecommendations, readText, readUuid, recommendationKeys, requireValue } from '../../../src/contracts/ConciergePortalValidation.ts';
@@ -5,6 +6,7 @@ import { exactKeys, readArray, readDate, readIdentifier, readInteger, readObject
 /** Parse untrusted HTTP input. Advisor authority is deliberately not a request field. */
 export function buildConciergeRpc(value: unknown, verifiedOwnerId: string): ConciergeRpcCall {
   const b = readObject(value), owner = readUuid(verifiedOwnerId);
+  const service=buildServiceRpc(b,owner);if(service)return service;
   if (b.action === 'advisor_preview_read_v2') {
     exactKeys(b,['action','clientId','mode','expectedRevision']);
     requireValue(b.mode === 'draft' || b.mode === 'published');

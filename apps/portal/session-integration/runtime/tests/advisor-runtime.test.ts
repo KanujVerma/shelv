@@ -11,7 +11,9 @@ const origin='https://portal.goshelv.com',supabase='https://snojlbqovlawewwqbviz
 function token(){return [Buffer.from('{}').toString('base64url'),Buffer.from(JSON.stringify({iss:supabase+'/auth/v1',sub:owner,session_id:ps,role:'authenticated',is_anonymous:false,exp:Math.floor(Date.now()/1000)+3600})).toString('base64url'),'synthetic-signature'].join('.');}
 const ck=(r:any,k:string)=>{const v=(r.headers.get('set-cookie')??'').match(new RegExp(`${k}=([^;]+)`));assert.ok(v,`cookie missing ${k}`);return v[1];};
 const doName=(kind:string,id:string)=>`${kind}:${createHash('sha256').update(`${kind}:${id}`).digest('base64url')}`;
-export async function advisorRuntime(){
+export async function advisorRuntime({walkthroughSnapshot=null}:{walkthroughSnapshot?:unknown}={}){
+ let walkthroughAvailable=true;
+ const walkthroughKey=[Buffer.from('{}').toString('base64url'),Buffer.from(JSON.stringify({role:'service_role',sub:'fixture-walkthrough-reader'})).toString('base64url'),'synthetic-signature'].join('.');
  await buildCandidate({advisor:true});const preview=createPreviewRequests({scenario:'unapproved'});let enabled=true,privateLeak=false;const paths:string[]=[];let contextCalls=0;
  const user={id:owner,is_anonymous:false,aud:'authenticated',email:'synthetic@example.test',created_at:new Date().toISOString(),app_metadata:{},user_metadata:{}};
  const root=resolve('../candidate/site');
@@ -22,13 +24,15 @@ export async function advisorRuntime(){
   if(url.pathname.endsWith('/user'))return Response.json(user);
   if(url.pathname.endsWith('/logout'))return new Response(null,{status:204});
   if(url.pathname.endsWith('/concierge_advisor_session_context')){contextCalls++;return enabled?Response.json({ownerId:owner,providerSessionId:ps,role:'advisor',sessionNotAfter:null,capabilities:{view:true,edit:true,publish:true,confirmPayments:true}}):Response.json({code:'session_ended'},{status:401});}
+  if(url.pathname.endsWith('/walkthrough_capability_read')){assert.equal(req.headers.get('authorization'),'Bearer '+walkthroughKey);return Response.json(walkthroughAvailable?walkthroughSnapshot:null);}
+  if(url.pathname.endsWith('/walkthrough_advisor_command'))return Response.json({schemaVersion:1,entries:[]});
   if(url.pathname.endsWith('/concierge-admission')){const command=await req.json();assert.equal(command.action,'capabilities');return Response.json({canAddClient:false});}
   if(url.pathname.endsWith('/concierge-operations')){const command=await req.json();const data=await preview.core(command);return Response.json(privateLeak?{...data,privateNotes:'PRIVATE_CANARY'}:data);}
   assert.fail('unexpected outbound '+url.pathname);
  };
  const raw:any={cf:false,logRequests:false,upstream:origin,workers:[
   {name:'gateway',routes:['portal.goshelv.com/*'],modules:true,scriptPath:'dist/advisor-pages/_worker.js',compatibilityDate:'2026-10-20',compatibilityFlags:['nodejs_compat'],bindings:{PORTAL_ORIGIN:origin,CLIENT_SHARED_SESSIONS:'true',ADVISOR_SHARED_SESSIONS:'true'},durableObjects:{ADVISOR_SESSIONS:{className:'AdvisorSessionObject',scriptName:'vault',useSQLite:true}},serviceBindings:{ASSETS:staticFetch}},
-  {name:'vault',modules:true,scriptPath:'dist/vault/index.js',compatibilityDate:'2026-10-20',compatibilityFlags:['nodejs_compat'],durableObjects:{ADVISOR_SESSIONS:{className:'AdvisorSessionObject',useSQLite:true}},bindings:{PORTAL_ORIGIN:origin,SUPABASE_PUBLIC_KEY:'sb_publishable_synthetic',ADVISOR_SESSION_KEYS:JSON.stringify({active:'fixture',keys:{fixture:Buffer.alloc(32,23).toString('base64url')}}),SESSION_IDLE_SECONDS:'3600',SESSION_ABSOLUTE_SECONDS:'28800',SESSION_FLOW_SECONDS:'600',CLIENT_SHARED_SESSIONS:'true',ADVISOR_SHARED_SESSIONS:'true',CLIENT_REMEMBER_IDLE_SECONDS:'604800',CLIENT_REMEMBER_ABSOLUTE_SECONDS:'2592000'},outboundService:outbound}
+  {name:'vault',modules:true,scriptPath:'dist/vault/index.js',compatibilityDate:'2026-10-20',compatibilityFlags:['nodejs_compat'],durableObjects:{ADVISOR_SESSIONS:{className:'AdvisorSessionObject',useSQLite:true}},bindings:{PORTAL_ORIGIN:origin,SUPABASE_PUBLIC_KEY:'sb_publishable_synthetic',SUPABASE_WALKTHROUGH_KEY:walkthroughKey,ADVISOR_SESSION_KEYS:JSON.stringify({active:'fixture',keys:{fixture:Buffer.alloc(32,23).toString('base64url')}}),SESSION_IDLE_SECONDS:'3600',SESSION_ABSOLUTE_SECONDS:'28800',SESSION_FLOW_SECONDS:'600',CLIENT_SHARED_SESSIONS:'true',ADVISOR_SHARED_SESSIONS:'true',CLIENT_REMEMBER_IDLE_SECONDS:'604800',CLIENT_REMEMBER_ABSOLUTE_SECONDS:'2592000'},outboundService:outbound}
  ]};
  const mf=new Miniflare({...convertV4MiniflareOptions(raw),unsafeInspectDurableObjects:true,telemetry:{enabled:false}});
  const call=(path:string,body?:unknown,cookies='',csrf='',headers:Record<string,string>={})=>mf.dispatchFetch(origin+path,{method:body===undefined?'GET':'POST',headers:{Origin:origin,'Sec-Fetch-Site':'same-origin','CF-Connecting-IP':'192.0.2.77',Cookie:cookies,...(body===undefined?{}:{'Content-Type':'application/json','X-Shelv-CSRF':csrf}),...headers},...(body===undefined?{}:{body:JSON.stringify(body)})});
@@ -36,7 +40,7 @@ export async function advisorRuntime(){
  async function login(remember=false){const headers={'CF-Connecting-IP':`192.0.2.${nextIP++}`};const boot=await call('/api/advisor/session',undefined,'','',headers),pending=await boot.json() as any,fc='__Host-shelv_advisor_flow='+ck(boot,'__Host-shelv_advisor_flow');assert.equal(boot.status,200);
   const sent=await call('/api/advisor/auth/request',{email:'synthetic@example.test',remember},fc,pending.csrf,headers);assert.equal(sent.status,200,await sent.clone().text());
   const complete=await call('/api/advisor/auth/complete',{code:'synthetic-code'},fc,pending.csrf,headers);assert.equal(complete.status,200,await complete.clone().text());const session=await complete.json() as any,sid=ck(complete,'__Host-shelv_advisor');return {fc,sc:'__Host-shelv_advisor='+sid,sid,complete,session,pending};}
- return {mf,call,login,paths,disable:()=>enabled=false,leak:()=>privateLeak=true,contextCalls:()=>contextCalls};
+ return {mf,call,login,paths,denyWalkthrough:()=>walkthroughAvailable=false,disable:()=>enabled=false,leak:()=>privateLeak=true,contextCalls:()=>contextCalls};
 }
 
 async function bind(context:any,f:any){await context.route('**/*',async(route:any)=>{try{
@@ -86,4 +90,26 @@ test('failed advisor logout survives full Chrome restart as a token-free ending 
   await page.locator('#advisor-signout').click();await page.locator('#login-email').waitFor();assert.equal(await page.evaluate(()=>localStorage.getItem('shelv:advisor:signout-pending')),'1');assert.equal((await f.call('/api/advisor/session',undefined,'__Host-shelv_advisor='+sid)).status,200,'server logout acknowledgement is still pending');await context.close();
   context=await chromium.launchPersistentContext(profile,{channel:'chrome',headless:true});await bind(context,f);const returned=await context.newPage();await returned.goto(origin+'/?workspace=advisor');await returned.locator('#login-email').waitFor();assert.equal((await f.call('/api/advisor/session',undefined,'__Host-shelv_advisor='+sid)).status,401);assert.equal(await returned.evaluate(()=>localStorage.getItem('shelv:advisor:signout-pending')),null);assert.equal(f.paths.filter(p=>p.endsWith('/otp')).length,1);
  }finally{await context?.close();await f.mf.dispose();await rm(profile,{recursive:true,force:true});}
+});
+
+
+test('combined gateway capability reads stay independent of real sessions and writes; later revocation clears protected reads',async()=>{
+ const base=createPreviewRequests({scenario:'unapproved'}),view=await base.core({action:'client_read_v2'});
+ const presentation=structuredClone(view.plan.presentation);presentation.title='Example plan';
+ const snapshot={schemaVersion:1,caseId:'ec000000-0000-4000-8000-000000000011',versionId:'ec000000-0000-4000-8000-000000000012',presentation,stages:[{id:'overview',title:'A useful plan',section:'plan',day:'2026-10-25',body:'Keep useful basics.',messages:[]}]};
+ const f=await advisorRuntime({walkthroughSnapshot:snapshot});try{
+  const s=await f.login();const pathsBefore=f.paths.length;
+  const capability=Buffer.alloc(32,19).toString('base64url');
+  const read=()=>f.call('/api/walkthroughs/view',{audience:'walkthrough',token:capability},s.sc,'');
+  const first=await read();assert.equal(first.status,200,await first.clone().text());assert.deepEqual((await first.json()).snapshot,JSON.parse(JSON.stringify(snapshot)));
+  assert.match(first.headers.get('cache-control')??'',/no-store/);assert.equal(first.headers.get('referrer-policy'),'no-referrer');assert.equal(first.headers.get('set-cookie'),null);
+  assert.deepEqual(f.paths.slice(pathsBefore),['/rest/v1/rpc/walkthrough_capability_read'],'Guest read never consults an account session or auth provider');
+  const write=await f.call('/api/client/operations',{action:'request_return',audience:'walkthrough',token:capability},'',capability);assert.notEqual(write.status,200);
+  const management=await f.call('/api/advisor/walkthroughs',{action:'library'},'',capability);assert.equal(management.status,401);
+  assert.equal((await f.call('/api/advisor/walkthroughs',{action:'library'},s.sc,'wrong')).status,403);
+  assert.equal((await f.call('/api/advisor/walkthroughs',{action:'library'},s.sc,s.session.csrf)).status,200);
+  f.denyWalkthrough();const revoked=await read();assert.equal(revoked.status,404);assert.deepEqual(await revoked.json(),{code:'unavailable'});
+  assert.equal((await f.call('/api/advisor/session',undefined,s.sc)).status,200,'Walkthrough access does not change the existing signed-in account');
+  const bad=await f.call('/api/walkthroughs/view',{audience:'client',token:capability});assert.equal(bad.status,404);assert.deepEqual(await bad.json(),{code:'unavailable'});
+ }finally{await f.mf.dispose();}
 });

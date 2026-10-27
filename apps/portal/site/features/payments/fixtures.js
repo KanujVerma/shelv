@@ -3,10 +3,10 @@ import {nextMonth} from './model.js';
 const syntheticAddress={recipientName:'Synthetic Client',line1:'123 Example Lane',line2:'',city:'Example City',region:'CA',postalCode:'94500',countryCode:'US'};
 const recipients=[{method:'zelle',name:'Kanuj Verma',email:'kanuj.verma12@gmail.com',phone:'(925)719-1334'},{method:'cash_app',name:'Kanuj Verma',cashtag:'$KanujVerma'},{method:'apple_cash',name:'Kanuj Verma',phone:'(925)719-1334'}];
 export const previewPaymentOptions=()=>recipients.map(recipient=>({id:crypto.randomUUID(),recipientVersion:1,recipient:structuredClone(recipient),available:true}));
-export function createPaymentPreviewStore({publicationVersion=1,recommendationId='moisturizer-1',unitPriceCents=1600,onConfirmed,includeService=true,contractVersion=2}={}){
+export function createPaymentPreviewStore({publicationVersion=1,recommendationId='moisturizer-1',unitPriceCents=1600,onConfirmed,includeService=true,contractVersion=2,paymentOptionsFactory=previewPaymentOptions}={}){
  const period=includeService&&publicationVersion>0?{startOn:'2026-10-01',endOn:'2026-11-01'}:null;
  const shippingAddress={version:1,address:{...syntheticAddress}},products=publicationVersion>0?unitPriceCents:0;
- return {revision:0,shippingAddresses:[shippingAddress],quotes:[{id:'00000000-0000-4000-8000-000000000003',version:1,publicationVersion,status:'payable',currency:'USD',serviceCents:includeService?10000:0,servicePeriod:period,shippingAddressVersion:products?1:null,items:products?[{recommendationId,quantity:1,unitPriceCents,lineTotalCents:unitPriceCents}]:[],productSubtotalCents:products,taxCents:0,shippingCents:0,productTotalCents:products,totalCents:(includeService?10000:0)+products,contractVersion,paymentOptions:contractVersion===2?previewPaymentOptions():[]}],claims:[],shippingAddress,service:{status:'unpaid',period},nextServicePeriod:period,receipts:new Map(),evidence:new Map(),onConfirmed};
+ return {revision:0,includeService,paymentOptionsFactory,shippingAddresses:[shippingAddress],quotes:[{id:'00000000-0000-4000-8000-000000000003',version:1,publicationVersion,status:'payable',currency:'USD',serviceCents:includeService?10000:0,servicePeriod:period,shippingAddressVersion:products?1:null,items:products?[{recommendationId,quantity:1,unitPriceCents,lineTotalCents:unitPriceCents}]:[],productSubtotalCents:products,taxCents:0,shippingCents:0,productTotalCents:products,totalCents:(includeService?10000:0)+products,contractVersion,paymentOptions:contractVersion===2?paymentOptionsFactory():[]}],claims:[],shippingAddress,service:{status:'unpaid',period},nextServicePeriod:period,receipts:new Map(),evidence:new Map(),onConfirmed};
 }
 /** Synthetic quote preparation only. Reads cannot renew paid service or quote already-funded products. */
 export function syncPaymentPreviewProposal(state,view){
@@ -14,7 +14,7 @@ export function syncPaymentPreviewProposal(state,view){
  const funded=new Set(state.claims.filter(claim=>claim.status==='confirmed').flatMap(claim=>state.quotes.find(q=>q.id===claim.quoteId)?.items.map(item=>item.recommendationId)||[]));
  const items=proposal.items.filter(item=>!funded.has(item.id)).map(item=>{if(typeof item.id!=='string'||!Number.isSafeInteger(item.priceCents)||item.priceCents<=0)throw Error('invalid_preview_proposal');return {recommendationId:item.id,quantity:1,unitPriceCents:item.priceCents,lineTotalCents:item.priceCents};}).sort((a,b)=>a.recommendationId.localeCompare(b.recommendationId));
  if(new Set(items.map(item=>item.recommendationId)).size!==items.length)throw Error('invalid_preview_proposal');
- const publicationVersion=view.plan?.version||0,serviceCents=state.service.status==='unpaid'?10000:0,servicePeriod=serviceCents&&publicationVersion>0?(state.nextServicePeriod||state.quotes.at(-1)?.servicePeriod||null):null;
+ const publicationVersion=view.plan?.version||0,serviceCents=state.includeService!==false&&state.service.status==='unpaid'?10000:0,servicePeriod=serviceCents&&publicationVersion>0?(state.nextServicePeriod||state.quotes.at(-1)?.servicePeriod||null):null;
  const productSubtotalCents=items.reduce((sum,item)=>sum+item.lineTotalCents,0),money={serviceCents,servicePeriod,shippingAddressVersion:items.length?state.shippingAddress?.version||null:null,items,productSubtotalCents,taxCents:0,shippingCents:0,productTotalCents:productSubtotalCents,totalCents:serviceCents+productSubtotalCents};
  if(!Number.isSafeInteger(money.totalCents)||money.totalCents>100000000||items.length&&(!publicationVersion||money.shippingAddressVersion===null))throw Error('invalid_preview_proposal');
  const fingerprint=JSON.stringify({publicationVersion,...money});if(state.proposalFingerprint===fingerprint)return false;
@@ -23,7 +23,7 @@ export function syncPaymentPreviewProposal(state,view){
  if(initial){state.quotes[0]={...state.quotes[0],publicationVersion,...money};if(!publicationVersion){state.nextServicePeriod=null;state.service.period=null;}return false;}
  const payable=state.quotes.some(q=>q.status==='payable');if(!payable&&money.totalCents===0)return false;
  state.quotes=state.quotes.map(q=>q.status==='payable'?{...q,status:'superseded'}:q);
- if(money.totalCents>0)state.quotes.push({...state.quotes.at(-1),id:crypto.randomUUID(),version:Math.max(...state.quotes.map(q=>q.version),0)+1,status:'payable',currency:'USD',publicationVersion,...money,contractVersion:2,paymentOptions:previewPaymentOptions()});
+ if(money.totalCents>0)state.quotes.push({...state.quotes.at(-1),id:crypto.randomUUID(),version:Math.max(...state.quotes.map(q=>q.version),0)+1,status:'payable',currency:'USD',publicationVersion,...money,contractVersion:2,paymentOptions:(state.paymentOptionsFactory||previewPaymentOptions)()});
  state.revision++;return true;
 }
 function legacyStore(mode){
@@ -47,7 +47,7 @@ export function createPaymentPreviewRequest({mode='client',scenario='default',st
   let selected=state.quotes.find(item=>item.id===command.quoteId),claim=state.claims.find(item=>item.id===command.claimId),status,claimId=null;
   if(command.action==='issue_quote'){
    state.quotes=state.quotes.map(item=>item.status==='payable'?{...item,status:'superseded'}:item);const {action,clientId,requestId,expectedRevision,...amounts}=command;
-   selected={...copy(amounts),id:crypto.randomUUID(),version:Math.max(...state.quotes.map(item=>item.version),0)+1,status:'payable',currency:'USD',contractVersion:command.schemaVersion===2?2:1,paymentOptions:command.schemaVersion===2?previewPaymentOptions():[]};state.quotes.push(selected);status='payable';
+   selected={...copy(amounts),id:crypto.randomUUID(),version:Math.max(...state.quotes.map(item=>item.version),0)+1,status:'payable',currency:'USD',contractVersion:command.schemaVersion===2?2:1,paymentOptions:command.schemaVersion===2?(state.paymentOptionsFactory||previewPaymentOptions)():[]};state.quotes.push(selected);status='payable';
   }else{
    if(!selected||selected.status!=='payable'||selected.version!==command.quoteVersion||selected.serviceCents!==command.serviceCents||selected.productTotalCents!==command.productCents||selected.totalCents!==command.totalCents)return fail(409,'concierge_quote_stale');
    if(selected.contractVersion===2&&command.schemaVersion!==2)return fail(409,'concierge_payment_contract_upgrade_required');if(command.schemaVersion===2&&!selected.paymentOptions.some(o=>o.id===command.paymentOptionId&&(command.action!=='submit_claim'||o.available)))return fail(409,'concierge_payment_method_conflict');

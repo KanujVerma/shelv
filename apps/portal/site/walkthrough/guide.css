@@ -1,0 +1,17 @@
+/* The portal owns typography and component skins; this file owns guide layout. */
+.walkthrough-shell{display:grid;grid-template-columns:minmax(255px,310px) minmax(0,1fr);align-items:start;min-height:100vh;background:var(--bg)}
+.walkthrough-guide{position:sticky;top:0;padding:28px 22px;border-right:1px solid var(--line);max-height:100vh;overflow:auto;background:var(--bg);z-index:4}
+.walkthrough-guide h2{margin:10px 0 18px}
+.walkthrough-guide p{margin:12px 0}
+.walkthrough-message{margin:16px 0}
+.walkthrough-message p{margin:8px 0 0}
+.walkthrough-controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.walkthrough-controls button,.walkthrough-end-link{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}
+.walkthrough-end-link{display:flex;margin-top:10px}
+.walkthrough-portal{min-width:0;overflow:clip}
+.walkthrough-portal .portal{grid-template-columns:175px minmax(0,1fr)}
+.walkthrough-portal .workspace{min-width:0}
+.walkthrough-portal .navigation{width:auto}
+@media(max-width:1100px){.walkthrough-shell{grid-template-columns:255px minmax(0,1fr)}.walkthrough-portal .portal{grid-template-columns:1fr}.walkthrough-portal .navigation{position:relative;width:auto;min-height:auto;height:auto}.walkthrough-portal .navigation nav{display:flex;flex-wrap:wrap}.walkthrough-portal .navigation .member{display:none}.walkthrough-portal .workspace{margin:0}}
+@media(max-width:760px){.walkthrough-shell{display:block}.walkthrough-guide{position:relative;top:auto;max-height:none;padding:16px;border-right:0;border-bottom:1px solid var(--line)}.walkthrough-guide h2{margin:8px 0}.walkthrough-controls{margin-top:14px}.walkthrough-message{margin:12px 0}.walkthrough-portal .workspace{padding-left:14px;padding-right:14px}.walkthrough-portal .navigation{padding:12px 14px}.walkthrough-portal .navigation .brand-copy small{display:none}}
+@media(prefers-reduced-motion:reduce){.walkthrough-shell *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}

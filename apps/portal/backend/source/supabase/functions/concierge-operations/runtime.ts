@@ -56,5 +56,5 @@ export function createConciergeAuthenticatedPorts<Call extends { name: string; a
 /** Operations callers use this fixed server-owned RPC registry. */
 export function createConciergeSupabasePorts(config: ConciergeTransportConfiguration): ConciergePorts {
   return createConciergeAuthenticatedPorts<ConciergeRpcCall>({ ...config,
-    allowedRpcNames: ['concierge_advisor_preview_v2','concierge_client_view_v2','concierge_advisor_view_v2','concierge_presentation_write','concierge_client_view', 'concierge_advisor_view', 'concierge_write', 'concierge_advisor_directory', 'concierge_advisor_write'] });
+    allowedRpcNames: ['concierge_service_client_view','concierge_service_advisor_view','concierge_service_write','concierge_advisor_preview_v2','concierge_client_view_v2','concierge_advisor_view_v2','concierge_presentation_write','concierge_client_view', 'concierge_advisor_view', 'concierge_write', 'concierge_advisor_directory', 'concierge_advisor_write'] });
 }
