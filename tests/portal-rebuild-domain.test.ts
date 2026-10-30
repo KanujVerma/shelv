@@ -41,7 +41,19 @@ test('opaque legacy identities and complete R2 guidance survive the adapter',asy
  assert.deepEqual(adapted.content.products.find(p=>p.id===fixture.presentation.categoryCards[0].proposedProduct.id)?.imageUrl,fixture.presentation.categoryCards[0].proposedProduct.imageUrl);
  assert.deepEqual(adapted.content.decisions[0].guidance.comparisons,fixture.presentation.categoryCards[0].comparisons);
  assert.deepEqual(adapted.content.decisions[0].guidance.how,fixture.presentation.categoryCards[0].how);
+ assert.deepEqual(adapted.content.consultationSections,fixture.presentation.consultationSections);
+ assert.deepEqual(adapted.content.preparation,{by:fixture.presentation.preparedBy,on:fixture.presentation.preparedOn});
+ assert.deepEqual(adapted.content.routineGuides,fixture.presentation.routineGuides);
+ assert.deepEqual(adapted.content.routine[0].usage,fixture.presentation.baselineRoutine[0].usage);
+ assert.deepEqual(adapted.content.decisions[0].usage,fixture.presentation.categoryCards[0].usage);
+ assert.equal(adapted.content.context.products.state,'recorded');
  assert.deepEqual(readPlanContent(adapted.content),adapted.content);
+});
+test('R1 conversion retains exact identifiers and known price only in original financial content',()=>{
+ const legacy={version:4,recommendations:[{id:'old-decision',slot:'old-slot',currentProductId:'old-product',proposedProductId:'new-product',priceCents:2500,currency:'USD',rationale:'original rationale'}],presentation:null};
+ const adapted=adaptLegacyPlan(legacy,1);assert.deepEqual(adapted.original,legacy);assert.deepEqual(readPlanContent(adapted.content),adapted.content);
+ assert.equal(adapted.content.products.find(p=>p.id==='new-product')?.displayPrice,null);
+ assert.equal(adapted.content.decisions[0].id,'old-decision');assert.equal(adapted.content.decisions[0].slotId,'old-slot');
 });
 test('task grants have finite actions and explicit single client or draft scope',()=>{
  const command={schemaVersion:1,action:'grant_task_v1',requestId:id,agentActorId:id,providerSessionId:id,clientId:id,draftId:null,actions:['create_draft_v1','save_draft_v1'],sourceIds:[],expiresAt:'2026-11-01T00:00:00Z'};

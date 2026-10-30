@@ -1,6 +1,6 @@
 import {decisionKinds,taskActions} from './PortalRebuildValues.ts';
 export {decisionKinds,taskActions} from './PortalRebuildValues.ts';
-import type { Product as R2Product, Guide, Comparison, Fact as EvidenceFact, Source, Presentation } from './ConciergePresentation.ts';
+import type { Product as R2Product, Guide, Comparison, Fact as EvidenceFact, Source, Presentation, Usage } from './ConciergePresentation.ts';
 import type { ConciergeRecommendation } from './ConciergePortal.ts';
 import { readPlanContent, readLegacyPlan } from './PortalRebuildValidation.ts';
 
@@ -17,9 +17,9 @@ export type Goal = {id:ContentId;text:string;factIds:ContentId[]};
 export type PlanProduct = R2Product & {strength:Known<string>;category:Known<string>;identity:'possible_match'|'client_confirmed'|'unresolved';formula:'unknown'|'label_recorded'|'verified';factIds:ContentId[];guides:Guide[];evidence:EvidenceFact[]};
 export type Schedule = {periods:('morning'|'evening')[];days:{kind:'daily'}|{kind:'selected';weekdays:(1|2|3|4|5|6|7)[]};condition:string|null;asNeeded:boolean;stages:{id:ContentId;directions:string;minimumDaysFromActualStart:number|null;proceedOnlyWhen:string}[];anchor:'actual_start';automaticAdvance:false};
 export type DecisionKind=typeof decisionKinds[number];
-export type PlanDecision={id:ContentId;slotId:ContentId;recommendationId:ContentId|null;kind:DecisionKind;goalIds:ContentId[];currentProductIds:ContentId[];primaryProductId:ContentId|null;alternativeProductIds:ContentId[];reason:string;directions:string[];cautions:string[];limitations:string[];schedule:Schedule|null;factIds:ContentId[];guidance:{title:string;subtitle:string;rationaleTitle:string;reasons:{title:string;body:string}[];actions:string[];comparisons:Comparison[];factsTitle:string;facts:EvidenceFact[];how:Guide|null;sources:Source[];group:ContentId|null;decisionLabels:{current:string;proposed:string}|null}};
-export type RoutineStep={id:ContentId;slotId:ContentId;kind:'product'|'instruction';productId:ContentId|null;title:string;directions:string[];cautions:string[];schedule:Schedule};
-export type PlanContent={schemaVersion:1;title:string;summary:string;sources:Source[];context:{products:ProductContext;facts:ProvenanceFact[]};goals:Goal[];products:PlanProduct[];decisions:PlanDecision[];routine:RoutineStep[];followUp:{criteria:string[];authoredNotes:string[]}};
+export type PlanDecision={usage?:Usage|null;id:ContentId;slotId:ContentId;recommendationId:ContentId|null;kind:DecisionKind;goalIds:ContentId[];currentProductIds:ContentId[];primaryProductId:ContentId|null;alternativeProductIds:ContentId[];reason:string;directions:string[];cautions:string[];limitations:string[];schedule:Schedule|null;factIds:ContentId[];guidance:{title:string;subtitle:string;rationaleTitle:string;reasons:{title:string;body:string}[];actions:string[];comparisons:Comparison[];factsTitle:string;facts:EvidenceFact[];how:Guide|null;sources:Source[];group:ContentId|null;decisionLabels:{current:string;proposed:string}|null}};
+export type RoutineStep={usage?:Usage;id:ContentId;slotId:ContentId;kind:'product'|'instruction';productId:ContentId|null;title:string;directions:string[];cautions:string[];schedule:Schedule};
+export type PlanContent={schemaVersion:1;title:string;summary:string;preparation:{by:string|null;on:string|null};consultationSections:{title:string;body:string}[];routineGuides:Guide[];sources:Source[];context:{products:ProductContext;facts:ProvenanceFact[]};goals:Goal[];products:PlanProduct[];decisions:PlanDecision[];routine:RoutineStep[];followUp:{criteria:string[];authoredNotes:string[]}};
 export type SectionId='sources'|'context'|'decisions'|'routine'|'follow_up';
 export const planSections:readonly SectionId[]=['sources','context','decisions','routine','follow_up'];
 export type ExactTarget={draftId:UUID;clientId:UUID;contentRevision:Revision;assignmentRevision:Revision;contentHash:Hash};
@@ -62,25 +62,30 @@ export type PlanPolicyView={revision:number;ownerActorId:UUID;requireKanujApprov
 export type LegacyPlan={version:number;recommendations:ConciergeRecommendation[];presentation:Presentation|null};
 export type LegacyPlanAdapter={documentSchemaVersion:1|2;original:LegacyPlan;content:PlanContent};
 
-export function createEmptyPlanContent():PlanContent{return {schemaVersion:1,title:'',summary:'',sources:[],context:{products:{state:'unknown'},facts:[]},goals:[],products:[],decisions:[],routine:[],followUp:{criteria:[],authoredNotes:[]}};}
+export function createEmptyPlanContent():PlanContent{return {schemaVersion:1,title:'',summary:'',preparation:{by:null,on:null},consultationSections:[],routineGuides:[],sources:[],context:{products:{state:'unknown'},facts:[]},goals:[],products:[],decisions:[],routine:[],followUp:{criteria:[],authoredNotes:[]}};}
 /** Positive projection: raw fact provenance and private reference IDs never enter the document. */
 export function projectClientPlan(value:PlanContent):ClientPlanContent{
  const c=readPlanContent(value),allowed=new Set(c.context.facts.filter(f=>f.visibility==='client').map(f=>f.id));
  const refs=(ids:ContentId[])=>ids.filter(id=>allowed.has(id));
  const products=c.context.products.state==='none'&&!allowed.has(c.context.products.factId)?{state:'unknown' as const}:c.context.products;
- return {schemaVersion:1,title:c.title,summary:c.summary,sources:c.sources,context:{products,facts:c.context.facts.filter(f=>allowed.has(f.id)).map(f=>({id:f.id,kind:f.kind,text:f.text}))},goals:c.goals.map(g=>({...g,factIds:refs(g.factIds)})),products:c.products.map(p=>({...p,factIds:refs(p.factIds)})),decisions:c.decisions.map(d=>({...d,factIds:refs(d.factIds)})),routine:c.routine,followUp:c.followUp};
+ return {schemaVersion:1,title:c.title,summary:c.summary,preparation:c.preparation,consultationSections:c.consultationSections,routineGuides:c.routineGuides,sources:c.sources,context:{products,facts:c.context.facts.filter(f=>allowed.has(f.id)).map(f=>({id:f.id,kind:f.kind,text:f.text}))},goals:c.goals.map(g=>({...g,factIds:refs(g.factIds)})),products:c.products.map(p=>({...p,factIds:refs(p.factIds)})),decisions:c.decisions.map(d=>({...d,factIds:refs(d.factIds)})),routine:c.routine,followUp:c.followUp};
 }
 const schedule=(periods:('morning'|'evening')[]):Schedule=>({periods,days:{kind:'daily'},condition:null,asNeeded:false,stages:[],anchor:'actual_start',automaticAdvance:false});
 /** Keeps the validated complete original, and all content/slot/product IDs, for lossless historical rendering. */
 export function adaptLegacyPlan(value:unknown,version:1|2):LegacyPlanAdapter{
  const original=readLegacyPlan(value,version),p=original.presentation,c=createEmptyPlanContent();
  if(p){
-  c.title=p.title;c.summary=p.summary;c.sources=p.sources;
+  c.title=p.title;c.summary=p.summary;c.sources=p.sources;c.preparation={by:p.preparedBy,on:p.preparedOn};c.consultationSections=p.consultationSections;c.routineGuides=p.routineGuides;
   const products=new Map<string,PlanProduct>();
   const add=(product:R2Product|null)=>{if(product&&!products.has(product.id))products.set(product.id,{...product,strength:{state:'unknown'},category:{state:'unknown'},identity:'unresolved',formula:'unknown',factIds:[],guides:p.routineGuides.filter(g=>g.productId===product.id),evidence:[]});};
   p.baselineRoutine.forEach(s=>add(s.product));p.categoryCards.forEach(d=>{add(d.currentProduct);add(d.proposedProduct);});c.products=[...products.values()];
-  c.routine=p.baselineRoutine.map(s=>({id:s.id,slotId:s.slot??s.id,kind:s.kind,productId:s.productId,title:s.title,directions:s.usage.instructions,cautions:[],schedule:schedule(s.usage.periods)}));
-  c.decisions=p.categoryCards.map(d=>({id:d.id,slotId:d.slot,recommendationId:d.recommendationId,kind:d.kind,goalIds:[],currentProductIds:d.currentProduct?[d.currentProduct.id]:[],primaryProductId:d.proposedProduct?.id??null,alternativeProductIds:[],reason:d.reasons.map(r=>r.body).join('\n'),directions:d.usage?.instructions??[],cautions:[],limitations:[],schedule:d.usage?schedule(d.usage.periods):null,factIds:[],guidance:{title:d.title,subtitle:d.subtitle,rationaleTitle:d.rationaleTitle,reasons:d.reasons,actions:d.actions,comparisons:d.comparisons,factsTitle:d.factsTitle,facts:d.facts,how:d.how,sources:d.sources,group:d.group??null,decisionLabels:d.decisionLabels??null}}));
- }else c.decisions=original.recommendations.map(r=>({id:r.id,slotId:r.slot,recommendationId:r.id,kind:r.currentProductId?'replace':'addition',goalIds:[],currentProductIds:r.currentProductId?[r.currentProductId]:[],primaryProductId:r.proposedProductId,alternativeProductIds:[],reason:r.rationale,directions:[],cautions:[],limitations:[],schedule:null,factIds:[],guidance:{title:'',subtitle:'',rationaleTitle:'',reasons:[],actions:[],comparisons:[],factsTitle:'',facts:[],how:null,sources:[],group:null,decisionLabels:null}}));
+  if(p.currentProductsStatus==='none'){c.context.products={state:'none',factId:'legacy-current-products-none'};c.context.facts=[{id:'legacy-current-products-none',kind:'advisor_conclusion',visibility:'client',text:'no current products',sources:[],contradicts:[]}];}else if(p.baselineRoutine.some(s=>s.productId!==null)){c.context.products={state:'recorded',productIds:[...new Set(p.baselineRoutine.flatMap(s=>s.productId?[s.productId]:[]))]};}
+  c.routine=p.baselineRoutine.map(s=>({usage:s.usage,id:s.id,slotId:s.slot??s.id,kind:s.kind,productId:s.productId,title:s.title,directions:s.usage.instructions,cautions:[],schedule:schedule(s.usage.periods)}));
+  c.decisions=p.categoryCards.map(d=>({usage:d.usage,id:d.id,slotId:d.slot,recommendationId:d.recommendationId,kind:d.kind,goalIds:[],currentProductIds:d.currentProduct?[d.currentProduct.id]:[],primaryProductId:d.proposedProduct?.id??null,alternativeProductIds:[],reason:d.reasons.map(r=>r.body).join('\n'),directions:d.usage?.instructions??[],cautions:[],limitations:[],schedule:d.usage?schedule(d.usage.periods):null,factIds:[],guidance:{title:d.title,subtitle:d.subtitle,rationaleTitle:d.rationaleTitle,reasons:d.reasons,actions:d.actions,comparisons:d.comparisons,factsTitle:d.factsTitle,facts:d.facts,how:d.how,sources:d.sources,group:d.group??null,decisionLabels:d.decisionLabels??null}}));
+ }else {
+  const productIds=new Set(original.recommendations.flatMap(r=>[...(r.currentProductId?[r.currentProductId]:[]),r.proposedProductId]));
+  c.products=[...productIds].map(id=>({id,name:'',brand:null,variant:null,sizeLabel:'',productUrl:null,imageUrl:null,reference:null,displayPrice:null,strength:{state:'unknown'},category:{state:'unknown'},identity:'unresolved',formula:'unknown',factIds:[],guides:[],evidence:[]}));
+  c.decisions=original.recommendations.map(r=>({id:r.id,slotId:r.slot,recommendationId:r.id,kind:r.currentProductId?'replace':'addition',goalIds:[],currentProductIds:r.currentProductId?[r.currentProductId]:[],primaryProductId:r.proposedProductId,alternativeProductIds:[],reason:r.rationale,directions:[],cautions:[],limitations:[],schedule:null,factIds:[],guidance:{title:'',subtitle:'',rationaleTitle:'',reasons:[],actions:[],comparisons:[],factsTitle:'',facts:[],how:null,sources:[],group:null,decisionLabels:null}}));
+ }
  return {documentSchemaVersion:version,original,content:c};
 }
