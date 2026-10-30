@@ -1,0 +1,141 @@
+# portal rebuild acceptance matrix
+
+Owner: Kanuj. Initial inventory, 30 October 2026. All code/test paths below are implementation targets until an executed evidence link replaces `pending`. Existing historical tests do not prove rebuild acceptance. Statuses are separate: agreed, designed, implemented, locally tested, real isolated E2E, hosted verified, deployed.
+
+## D01-D48 traceability
+
+| Decision | Owner | Code target | Required verification | Evidence/status |
+| --- | --- | --- | --- | --- |
+| D01: One client experience | W0 | `apps/portal/src/ui/; shell/router` | foundation, navigation and visual tests | agreed; implementation/tests pending |
+| D02: Approved baseline, not a new design competition | W0 | `apps/portal/src/ui/; shell/router` | foundation, navigation and visual tests | agreed; implementation/tests pending |
+| D03: Full frontend rebuild, bounded backend changes | W0 | `apps/portal/src/ui/; shell/router` | foundation, navigation and visual tests | agreed; implementation/tests pending |
+| D04: Enforced consistency | W0 | `apps/portal/src/ui/; shell/router` | foundation, navigation and visual tests | agreed; implementation/tests pending |
+| D05: Brand and copy | W0 | `apps/portal/src/ui/; shell/router` | foundation, navigation and visual tests | agreed; implementation/tests pending |
+| D06: Icons have consistent meaning | W0 | `apps/portal/src/ui/; shell/router` | foundation, navigation and visual tests | agreed; implementation/tests pending |
+| D07: Desktop first, responsive before release | W0 | `apps/portal/src/ui/; shell/router` | foundation, navigation and visual tests | agreed; implementation/tests pending |
+| D08: Your plan is useful immediately | W3 | `apps/portal/src/features/plan/` | routine, product binding and navigation browser tests | agreed; implementation/tests pending |
+| D09: Proposals do not become actual use | W3 | `apps/portal/src/features/plan/` | routine, product binding and navigation browser tests | agreed; implementation/tests pending |
+| D10: Detail without a maze | W3 | `apps/portal/src/features/plan/` | routine, product binding and navigation browser tests | agreed; implementation/tests pending |
+| D11: Correct content binding | W3 | `apps/portal/src/features/plan/` | routine, product binding and navigation browser tests | agreed; implementation/tests pending |
+| D12: Check-ins & history | W4 | `apps/portal/src/features/history/` | report, amendment and projection tests | agreed; implementation/tests pending |
+| D13: Account | W6 | `apps/portal/src/features/account/` | profile/address and administration tests | agreed; implementation/tests pending |
+| D14: Plan lifecycle | W1/W2 | `src/contracts/PortalRebuild*; advisor feature` | draft, schema, agent API, import and review tests | agreed; implementation/tests pending |
+| D15: Guided, not forced | W1/W2 | `src/contracts/PortalRebuild*; advisor feature` | draft, schema, agent API, import and review tests | agreed; implementation/tests pending |
+| D16: Save incomplete work | W1/W2 | `src/contracts/PortalRebuild*; advisor feature` | draft, schema, agent API, import and review tests | agreed; implementation/tests pending |
+| D17: Unique cases use approved modules | W1/W2 | `src/contracts/PortalRebuild*; advisor feature` | draft, schema, agent API, import and review tests | agreed; implementation/tests pending |
+| D18: Schedules are authored | W1/W2 | `src/contracts/PortalRebuild*; advisor feature` | draft, schema, agent API, import and review tests | agreed; implementation/tests pending |
+| D19: External AI workflow | W1/W2 | `src/contracts/PortalRebuild*; advisor feature` | draft, schema, agent API, import and review tests | agreed; implementation/tests pending |
+| D20: Source and import truth | W1/W2 | `src/contracts/PortalRebuild*; advisor feature` | draft, schema, agent API, import and review tests | agreed; implementation/tests pending |
+| D21: First-publication gate | W1/W6 | `draft/publication server and SQL; service adapters` | gate, concurrency, approval, clocks and coverage tests | agreed; implementation/tests pending |
+| D22: Precise approval | W1/W6 | `draft/publication server and SQL; service adapters` | gate, concurrency, approval, clocks and coverage tests | agreed; implementation/tests pending |
+| D23: Sami and owner authority | W1/W6 | `draft/publication server and SQL; service adapters` | gate, concurrency, approval, clocks and coverage tests | agreed; implementation/tests pending |
+| D24: First publication starts clocks | W1/W6 | `draft/publication server and SQL; service adapters` | gate, concurrency, approval, clocks and coverage tests | agreed; implementation/tests pending |
+| D25: Review cadence and service access | W1/W6 | `draft/publication server and SQL; service adapters` | gate, concurrency, approval, clocks and coverage tests | agreed; implementation/tests pending |
+| D26: Product identity | W3/W5 | `plan feature; identity/use server` | identity, decisions and self-purchase tests | agreed; implementation/tests pending |
+| D27: Choice and self-purchase | W3/W5 | `plan feature; identity/use server` | identity, decisions and self-purchase tests | agreed; implementation/tests pending |
+| D28: No product margin | W5 | `orders feature; payment/quote server` | frozen quote, gross receipt and financial tests | agreed; implementation/tests pending |
+| D29: Quote and payment integrity | W5 | `orders feature; payment/quote server` | frozen quote, gross receipt and financial tests | agreed; implementation/tests pending |
+| D30: Delivery and actual use | W3/W5 | `plan/orders feature; use event server` | use reports, immutable orders and attribution tests | agreed; implementation/tests pending |
+| D31: Orders survive plan updates | W3/W5 | `plan/orders feature; use event server` | use reports, immutable orders and attribution tests | agreed; implementation/tests pending |
+| D32: Immutable meaningful history | W4 | `history feature; review/projection server` | no-change, amendments, restore and privacy tests | agreed; implementation/tests pending |
+| D33: Automatic notification scope | W1/W4 | `outbox/delivery server; notifications UI` | atomic enqueue, deduplication, retry and webhook tests | agreed; implementation/tests pending |
+| D34: Reliable event delivery | W1/W4 | `outbox/delivery server; notifications UI` | atomic enqueue, deduplication, retry and webhook tests | agreed; implementation/tests pending |
+| D35: Existing service terms preserved | W5/W6 | `account/orders feature; service policy` | service terms, guarantees, return/referral bookkeeping tests | agreed; implementation/tests pending |
+| D36: Service refund | W5/W6 | `account/orders feature; service policy` | service terms, guarantees, return/referral bookkeeping tests | agreed; implementation/tests pending |
+| D37: Product return and referral | W5/W6 | `account/orders feature; service policy` | service terms, guarantees, return/referral bookkeeping tests | agreed; implementation/tests pending |
+| D38: Cancellation | W6/W1 | `service/source/retention server; account feature` | access boundaries, export, deletion and scoped-source tests | agreed; implementation/tests pending |
+| D39: Source retention and access | W6/W1 | `service/source/retention server; account feature` | access boundaries, export, deletion and scoped-source tests | agreed; implementation/tests pending |
+| D40: Data use | W6/W1 | `service/source/retention server; account feature` | access boundaries, export, deletion and scoped-source tests | agreed; implementation/tests pending |
+| D41: Truth and scope | W3/W7 | `shared renderer; Maya adapter; private viewer` | demo isolation, five-stage tour and privacy tests | agreed; implementation/tests pending |
+| D42: Same renderer, isolated demo | W3/W7 | `shared renderer; Maya adapter; private viewer` | demo isolation, five-stage tour and privacy tests | agreed; implementation/tests pending |
+| D43: Model and agent rules | coordinator | `configuration; docs; ownership` | configuration parser, task receipts and docs integrity checks | agreed; implementation/tests pending |
+| D44: Parallel ownership | coordinator | `configuration; docs; ownership` | configuration parser, task receipts and docs integrity checks | agreed; implementation/tests pending |
+| D45: Documentation is a deliverable | coordinator | `configuration; docs; ownership` | configuration parser, task receipts and docs integrity checks | agreed; implementation/tests pending |
+| D46: Real verification | W7/coordinator | `integrated app; fixtures; cutover tooling` | real-auth full stack, migration, security, visual and secondary-flow tests | agreed; implementation/tests pending |
+| D47: Cutover, not destructive replacement | W7/coordinator | `integrated app; fixtures; cutover tooling` | real-auth full stack, migration, security, visual and secondary-flow tests | agreed; implementation/tests pending |
+| D48: Gaps are bounded | W7/coordinator | `integrated app; fixtures; cutover tooling` | real-auth full stack, migration, security, visual and secondary-flow tests | agreed; implementation/tests pending |
+
+## every approved screen
+
+Routes are designed targets, not existing working routes. Browser tests must assert real relevant state/network effects and navigation. A screenshot alone is insufficient.
+
+| Screen | Exact node | Target route/state | Required evidence | Status |
+| --- | --- | --- | --- | --- |
+| C01: your plan · morning | `498:85` | `/plan?routine=morning` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C01E: your plan · evening | `503:926` | `/plan?routine=evening` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C02: review a recommendation | `498:212` | `/plan/recommendations/:decisionId` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C02D: directions & evidence | `499:766` | `/plan/products/:productId/evidence` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C03: product details sheet | `499:151` | `/plan/products/:productId` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C03D: CeraVe PM reasoning | `503:1083` | `/plan/products/:productId/evidence` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C04: check-ins & history | `498:304` | `/history` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C05: send an update | `499:305` | `/history/new` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C06: orders · quote preparation | `499:446` | `/orders` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C06D: delivered, not started | `503:808` | `/orders/:orderId` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C07: record actual use | `499:584` | `/plan/products/:productId/use` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C07C: report a CeraVe PM change | `503:1174` | `/plan/products/:productId/use` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C08: account | `498:399` | `/account` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C08C: cancel service | `499:927` | `/account/cancel` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| C08R: read-only access | `504:621` | `/plan (read-only entitlement)` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| A00: clients | `503:449` | `/advisor/clients` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| A01: plans | `500:299` | `/advisor/plans` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| A02: plan editor | `500:383` | `/advisor/plans/:draftId/:section` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| A03: sources & agent changes | `500:500` | `/advisor/plans/:draftId/sources` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| A04: publication blocked | `500:592` | `/advisor/plans/:draftId/review` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| A04P: verify service payment | `503:672` | `/advisor/clients/:clientId (service payment)` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| A05: ready to publish | `500:686` | `/advisor/plans/:draftId/review` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| A06: published / notification failure | `500:779` | `/advisor/plans/:draftId/review (published)` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| A07: review a check-in | `500:846` | `/advisor/reviews/:reportId` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| A08: workspace permissions | `503:558` | `/advisor/permissions` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
+| D01: guided Maya | `503:1271` | `/maya?guided=1` | 1800x960 baseline comparison; task + recovery + keyboard | pending |
+
+## mandatory secondary variants
+
+| Flow | Required implementation and checks | Evidence/status |
+| --- | --- | --- |
+| sign-in/callback and deep-link recovery | Own normal session, allowlisted return, expired callback, logout/account-switch late-response rejection. | pending |
+| prepublication/empty client | Payment/preparation information only; no draft/private advice or fake widgets. | pending |
+| profile/address/contact verification | Shared forms, invalid/missing data, verified change and frozen-order address separation. | pending |
+| service payment and renewal | Actual coverage and eligible manual destination; claim versus gross receipt; no automatic publish/renewal charge. | pending |
+| final product quote/claim | Product/variant/seller/total/address/return/method version frozen; unknown terms block payability. | pending |
+| returns and service refunds | Eligibility and request/retailer funds/client repayment distinct; exact dates and access retained. | pending |
+| product mismatch and unreviewed use | yes/no/not sure, missing variant/photo correction, scoped upload and no fabricated activation. | pending |
+| save conflict/uncertain retry | Base/latest/proposed diff, preserve edits, exact idempotent retry and no false saved claim. | pending |
+| denied/unavailable source and upload failure | Authorization, expired signed URL, allowed MIME/size, retry and confirmed completion. | pending |
+| historical publication/report amendment | Clear read-only snapshot, original preserved, attributed correction and relevant advisor attention. | pending |
+| notification inbox and retry | Queued/accepted/delivered-if-known/failed/bounced/seen separated; retry without republishing/reset. | pending |
+| no-change review | Meaningful public conclusion and private notes separate, no unnecessary plan version. | pending |
+| cancellation/read-only/expired care | Support end, 30-day read-only end, final export; care writes denied, unfinished admin permitted. | pending |
+| difficult content | Long names/reasons, repeated categories, no products/purchase/proposal, unknown identity and missing images. | pending |
+| Maya guide all five stages | meet Maya, meaningful decision, daily use, follow-up, next step; Exit/Explore/Replay/Reset isolated. | pending |
+| responsive/accessibility | Approved desktop, narrower laptops, 320/390px, 200% zoom, keyboard, semantics and reduced motion. | pending |
+| private walkthrough compatibility | Existing scoped/revocable no-login grants preserved, no private source/static disclosure. | pending |
+
+## goal verification groups V01-V17
+
+| Group | Required proof | Environment/evidence |
+| --- | --- | --- |
+| V01: unassigned drafts | Incomplete create/save/read/assign; no Auth creation/duplicate client; one working assigned draft. | pending |
+| V02: agent content and imports | Same renderer, strict fields/code rejection, base revision diff and manual-edit preservation. | pending |
+| V03: publication gates | Deny missing payment/review/approval/authority, wrong client/revision and replay via legacy path. | pending |
+| V04: approval/concurrency | Content/reassignment invalidate; payment-only does not. Concurrent publish yields one version/start/outbox and same receipt. | pending |
+| V05: delivery failure | Committed access persists on email failure; retry only notification; draft/private edits silent. | pending |
+| V06: use versus commerce | Proposed/approved/paid/delivered absent from actual use; self-purchase without fake order. | pending |
+| V07: use truth | Stop/pause/different use, unknown dates, reporter/recorder/channel and correct advisor alerts. | pending |
+| V08: history/privacy | Optional photos/forms, immutable amendments, no-change review, no private notes/sources in client/export. | pending |
+| V09: financial snapshots | Quote/order/address freeze and reconciliation; claim, receipt, purchase, shipment, refund transfer separate. | pending |
+| V10: service boundaries | Calendar coverage, guarantee/refund dates, cancellation, 30-day read-only, final export and outstanding admin. | pending |
+| V11: authorization | Cross-client/source, signed expiry, session/logout/late response, CSRF and demo-write denial. | pending |
+| V12: navigation | Real Back/Forward/deep link, selected routine/product, scroll/focus and unsent work recovery. | pending |
+| V13: source lifecycle | MIME/size, upload failures/retry, confirmed storage, scoped access, retention/deletion and training denied. | pending |
+| V14: content extremes | Long content, multiple same-category products, none/unknown, no purchase/proposal and unavailable assets. | pending |
+| V15: visual/accessibility | Compare screenshots to exact frames, desktop/laptop/mobile, zoom, keyboard, screen-reader structure and reduced motion. | pending |
+| V16: five-stage demo | Shared renderer; no real email/payment/order/source writes; full exit/replay/reset. | pending |
+| V17: migration | Rehearse preserving IDs, historical publication/Start/coverage dates, receipts, instructions and private sharing. | pending |
+
+## execution requirements
+
+Every evidence entry records exact commit, command, result (including failures/skips), fixture/identity scope and artifact. At least one end-to-end lane uses real isolated Auth/PostgREST/persistence/permissions; test toasts and mocks alone do not count. Test email recipients/local sink only, never real clients. Independent Sol/xhigh review must examine integrated work and reproduce relevant cases, with no unresolved blocking/high findings. Re-run after corrections.
+
+Before substantial implementation completion run root `npm test`, `npx tsc --noEmit`, `npm run typecheck:tests`, `EXPO_NO_TELEMETRY=1 npx expo export -p web`; portal tests/build/UI checks, session types/runtime and affected backend tests. For database/auth/storage changes replay canonical migrations via isolated `supabase db reset`, run `supabase test db`, affected Edge/integration smoke and least-privilege/RLS checks. Inspect final diff and `git diff --check`. Exact-head CI must be green before any separately authorized merge.
+
+Human comprehension review and production release authorization remain release gates. Do not claim a human review from an agent test. External email/domain/hosted prerequisites and Wisconsin service-scope clearance are reported explicitly and never simulated as accomplished.

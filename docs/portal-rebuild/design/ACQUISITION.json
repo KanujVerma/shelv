@@ -1,0 +1,47 @@
+{
+  "capturedOn": "2026-10-30",
+  "sessionId": "fc266b30-cac3-4567-a1a7-9c3a689d0aad",
+  "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+  "records": [
+    {
+      "screen": "C01",
+      "nodeId": "498:85",
+      "path": "C01-498-85.png",
+      "width": 1440,
+      "height": 960,
+      "sha256": "4d9e25e9f16ca0c8d356075f5e84d1d86ae38d45d26ec65c40e0fe4c3a651caa",
+      "source": "native Figma get_design_context and get_screenshot",
+      "scope": "Approved fictional design only; no browser implementation verification.",
+      "bytes": 138983
+    }
+  ],
+  "remainingScreens": [
+    "C01E",
+    "C02",
+    "C02D",
+    "C03",
+    "C03D",
+    "C04",
+    "C05",
+    "C06",
+    "C06D",
+    "C07",
+    "C07C",
+    "C08",
+    "C08C",
+    "C08R",
+    "A00",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A04P",
+    "A05",
+    "A06",
+    "A07",
+    "A08",
+    "D01"
+  ],
+  "contextLocation": ".local-artifacts/portal-rebuild/design/C01.context.txt",
+  "temporaryAssetURLsCommitted": false
+}

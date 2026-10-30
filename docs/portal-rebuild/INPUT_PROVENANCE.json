@@ -1,0 +1,38 @@
+{
+  "importedOn": "2026-10-30",
+  "inputAttachmentId": "d632030a-18f7-4dec-a2c9-f5c0418c3fd5-75176878-daf3-4c4e-9b75-19eed27ea805-txt",
+  "sourceHead": "8ac0826f79b4299b0249c5e18003b6ce08593c60",
+  "files": {
+    "source/APPROVED_INPUT.txt": {
+      "bytes": 95388,
+      "sha256": "c45701f9f54fd2b1dbb09bbd7aa2b9b437e9059aa6032b6f39411fe2e7f6efbd"
+    },
+    "APPROVED_DESKTOP_SPEC.md": {
+      "bytes": 36823,
+      "sha256": "4ceafbaca13ab9324ea35e5e3cb94d09ba76178c9c5127a93da87c5b9c7e59a0"
+    },
+    "shelv_desktop_design_manifest.json": {
+      "bytes": 12642,
+      "sha256": "64e9c782657dc6d927ddf255bc983e863c89974c13418287fa980e9f5ed35307"
+    },
+    "APPROVED_DECISIONS.md": {
+      "bytes": 24755,
+      "sha256": "eefc74fcc1498cdbbe5ac21d4215cfb9c8936545a6dcc6437bf9e0dd98c21e60"
+    },
+    "SCREEN_MANIFEST.json": {
+      "bytes": 4300,
+      "sha256": "55a375ede66a3c9c13139d90246fbc096b6bd1a11cb8c2ce49d30ee8bb44519b"
+    }
+  },
+  "screenMapMatchesCompact": true,
+  "originalPreApprovalHashes": {
+    "shelv_desktop_review_spec.md": {
+      "sha256": "7108a0cf22e2cb5404ef7f3c79a39adb79db335ca8b7b711509e5008ec87fd7b"
+    },
+    "shelv_desktop_design_manifest.json": {
+      "sha256": "a2fd4160fe5260fde3a3b4d47ea9d819c9005cd3f3d4b50a466ae9d083788b22"
+    }
+  },
+  "originalPreApprovalBytesAvailable": false,
+  "scope": "Exact supplied appendices and attachment retained. Original pre-approval hashes are declared provenance only; those original byte streams were not supplied separately. No implementation or deployment claim."
+}

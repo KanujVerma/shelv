@@ -1,3 +1,9 @@
+# Approved portal rebuild, 30 October 2026
+
+The [approved rebuild record](portal-rebuild/README.md) now preserves the complete supplied specification/manifest/input with hashes, D01-D48, initial contracts, acceptance inventory, ownership and current execution status. Work is isolated on `kanuj/portal-rebuild-integration-20261030` from approved docs head `8ac0826`, atop main `d39a7d4`; unrelated dirty scanner work remains untouched. Fresh coordinator runtime Sol/xhigh is verified, and project/eight-role defaults are explicit.
+
+Prospective rebuild rules supersede publication-before-payment, manual-only notifications and the unspecified post-service window: exact human approval plus verified applicable first payment precede deliberate publication; durable email/portal events retry separately; 30-day post-support read-only access and final export are required. Historical release/hosted evidence and legacy dates/receipts are unchanged. Initial documentation/configuration is not runtime implementation or deployment. Continue from [CURRENT_STATUS](portal-rebuild/CURRENT_STATUS.md); no live business writes or production cutover are authorized.
+
 # Shelv Cross-Agent Context Sync Ledger
 
 ## 2026-10-26: PR 209 portal UX deployed, without merge

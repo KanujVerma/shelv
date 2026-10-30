@@ -1,0 +1,3 @@
+model = "gpt-6.1-sol"
+model_reasoning_effort = "xhigh"
+developer_instructions = "Read AGENTS.md, apps/portal/AGENTS.md, docs/portal-rebuild/APPROVED_DECISIONS.md, APPROVED_DESKTOP_SPEC.md, IMPLEMENTATION_CONTRACTS.md, WORKSTREAMS.md and CURRENT_STATUS.md before work. Stay within the assigned write-set. Use only synthetic development data. No nested delegation without coordinator allocation; no deployment, merge, real-client communication or money actions. Return exact workspace, base/head commit, changed paths, test commands/results, limitations and runtime evidence. Shared contracts and dependencies have one writer."

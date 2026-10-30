@@ -1,0 +1,387 @@
+{
+  "title": "shelv consolidated desktop review v1",
+  "date": "2026-10-30",
+  "status": "approved desktop implementation baseline; not production implementation or deployment authorization",
+  "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+  "pageId": "498:32",
+  "index": {
+    "nodeId": "504:797",
+    "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=504-797"
+  },
+  "stateBoard": {
+    "nodeId": "504:736",
+    "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=504-736",
+    "annotations": "Explicit implementation annotations are not customer-facing UI copy."
+  },
+  "screens": [
+    {
+      "code": "C01",
+      "title": "your plan · morning",
+      "nodeId": "498:85",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=498-85",
+      "purpose": "Combined home and plan. Actual morning instructions; proposals remain separate.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C01E",
+      "title": "your plan · evening",
+      "nodeId": "503:926",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=503-926",
+      "purpose": "Conditional makeup removal, cleanser and moisturizer. No unstarted treatment inserted.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C02",
+      "title": "review a recommendation",
+      "nodeId": "498:212",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=498-212",
+      "purpose": "Personal reasoning, evidence limits, essential cautions and independent product decisions.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C02D",
+      "title": "directions & evidence",
+      "nodeId": "499:766",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=499-766",
+      "purpose": "Source-derived azelaic guide and limitations, with a predictable return.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C03",
+      "title": "product details sheet",
+      "nodeId": "499:151",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=499-151",
+      "purpose": "CeraVe PM practical instructions and reasoning alongside the plan.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C03D",
+      "title": "CeraVe PM reasoning",
+      "nodeId": "503:1083",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=503-1083",
+      "purpose": "Product-specific evidence; does not send the user to a different product.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C04",
+      "title": "check-ins & history",
+      "nodeId": "498:304",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=498-304",
+      "purpose": "Meaningful dated events: client report, advisor decision, reason and next step.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C05",
+      "title": "send an update",
+      "nodeId": "499:305",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=499-305",
+      "purpose": "Goal-specific reports, comfort, actual use, optional notes and photos.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C06",
+      "title": "orders · quote preparation",
+      "nodeId": "499:446",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=499-446",
+      "purpose": "Payment unavailable until seller, total, address and return terms are confirmed.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C06D",
+      "title": "delivered, not started",
+      "nodeId": "503:808",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=503-808",
+      "purpose": "Recorded delivery and a separate explicit actual-use action.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C07",
+      "title": "record actual use",
+      "nodeId": "499:584",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=499-584",
+      "purpose": "Product match, action, actual date and acquisition route. Self-purchase supported.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C07C",
+      "title": "report a CeraVe PM change",
+      "nodeId": "503:1174",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=503-1174",
+      "purpose": "The same template for a product-specific pause/change report.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C08",
+      "title": "account",
+      "nodeId": "498:399",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=498-399",
+      "purpose": "Identity, address, contact preferences, service and privacy.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C08C",
+      "title": "cancel service",
+      "nodeId": "499:927",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=499-927",
+      "purpose": "Support end, read-only end, final plan and unresolved administration.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "C08R",
+      "title": "read-only access",
+      "nodeId": "504:621",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=504-621",
+      "purpose": "Post-service access is not continuing skincare support.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "A00",
+      "title": "clients",
+      "nodeId": "503:449",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=503-449",
+      "purpose": "Stable directory and client-work entry.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "A01",
+      "title": "plans",
+      "nodeId": "500:299",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=500-299",
+      "purpose": "Assigned and unassigned drafts, existing publications and template-based creation.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "A02",
+      "title": "plan editor",
+      "nodeId": "500:383",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=500-383",
+      "purpose": "Guided checklist with freely selectable sections, structured fields and preview.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "A03",
+      "title": "sources & agent changes",
+      "nodeId": "500:500",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=500-500",
+      "purpose": "Private sources and proposed structured changes; validation is not clinical approval.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "A04",
+      "title": "publication blocked",
+      "nodeId": "500:592",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=500-592",
+      "purpose": "Exact revision approved, but first service payment not verified.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "A04P",
+      "title": "verify service payment",
+      "nodeId": "503:672",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=503-672",
+      "purpose": "Human receipt verification is separate from approval and publication.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "A05",
+      "title": "ready to publish",
+      "nodeId": "500:686",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=500-686",
+      "purpose": "Assigned client, approved revision and verified payment; still a deliberate action.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "A06",
+      "title": "published / notification failure",
+      "nodeId": "500:779",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=500-779",
+      "purpose": "Publication persists; retry only the failed notification.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "A07",
+      "title": "review a check-in",
+      "nodeId": "500:846",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=500-846",
+      "purpose": "Public conclusion and separate private notes. A no-change review is valid.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "A08",
+      "title": "workspace permissions",
+      "nodeId": "503:558",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=503-558",
+      "purpose": "Owner-controlled Sami approval policy, independent agent authorization and source access.",
+      "viewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "code": "D01",
+      "title": "guided Maya",
+      "nodeId": "503:1271",
+      "url": "https://www.figma.com/design/WGbMylNV4rPoMw3r0nceaw?node-id=503-1271",
+      "purpose": "Same client screen plus a stable guide rail; no production actions.",
+      "viewport": {
+        "width": 1800,
+        "height": 960
+      }
+    }
+  ],
+  "sharedComponents": {
+    "buttonPrimary": "498:33",
+    "buttonSecondary": "498:35",
+    "buttonGhost": "498:37",
+    "tabInactive": "498:39",
+    "tabActive": "498:41",
+    "badgeNeutral": "498:43",
+    "badgePending": "498:45",
+    "badgeActive": "498:47",
+    "input": "499:143",
+    "textarea": "499:145",
+    "select": "499:147"
+  },
+  "icons": {
+    "arrow-left": "498:52",
+    "panels-top-left": "498:57",
+    "clock-3": "498:61",
+    "package": "498:67",
+    "user-round": "498:71",
+    "message-circle": "498:74",
+    "check": "498:77",
+    "x": "498:81",
+    "chevron-down": "498:84"
+  },
+  "foundations": {
+    "tokenCollection": "VariableCollectionId:442:33",
+    "textStylesPrefix": "Portal lab / ",
+    "implementation": "React + TypeScript, approved shadcn-based Shelv wrappers, lucide-react"
+  },
+  "prototype": {
+    "wiredControls": 143,
+    "kind": "frame navigation and staged state transitions",
+    "notImplemented": [
+      "live form editing",
+      "persistent user decisions",
+      "real payment verification",
+      "email delivery",
+      "source upload",
+      "full five-stage Maya tour",
+      "application permission enforcement"
+    ]
+  },
+  "validation": {
+    "screenCount": 26,
+    "textOutsideScreen": 0,
+    "topLevelScreenOverlaps": 0,
+    "nativeEditable": true,
+    "browserE2E": false,
+    "accessibilitySignoff": false,
+    "renderedReview": "Selected core client, recommendation, use form, history, advisor editor, publication, index and recovery views inspected. No full browser E2E or accessibility sign-off.",
+    "postFixHistoryBodyBottom": 902,
+    "postFixEditorBodyBottom": 826
+  },
+  "productionChanged": false,
+  "previousExplorationsChanged": false,
+  "primaryApprovalInvariant": {
+    "firstPublication": [
+      "assigned intended client",
+      "complete reviewed draft",
+      "human approval for exact client and publishable draft revision",
+      "verified first service payment",
+      "authorized deliberate publish command"
+    ],
+    "automaticOnPayment": false,
+    "notificationAtomicWithPublication": false,
+    "serviceClock": "first successful publication; later plan changes do not reset it",
+    "notificationMeaning": "External email delivery is not atomic with publication. Persist a deduplicated notification event/job durably with the business commit or equivalent transactional reliability; deliver asynchronously and retry without republishing."
+  },
+  "approval": {
+    "date": "2026-10-30",
+    "actor": "Kanuj",
+    "basis": "this looks great lets do it",
+    "scope": "consolidated desktop set and agreed prospective rebuild behavior",
+    "originalSourceSha256": "a2fd4160fe5260fde3a3b4d47ea9d819c9005cd3f3d4b50a466ae9d083788b22"
+  },
+  "executionRequirements": {
+    "coordinatorModel": "gpt-6.1-sol",
+    "subagentModel": "gpt-6.1-sol",
+    "reasoningEffort": "xhigh",
+    "maxConcurrentSubagents": 8,
+    "fallbackAllowed": false,
+    "runtimeVerificationRequired": true
+  }
+}
