@@ -29,7 +29,7 @@ const publisher=union(object({kind:en('human'),actorId:uuid}),object({kind:en('t
 const write={requestId:uuid,draftId:uuid,expectedContentRevision:rev,expectedAssignmentRevision:rev};
 const at={draftId:uuid,contentRevision:rev,assignmentRevision:rev};
 export const planCommandFields:Record<PlanCommand['action'],Record<string,PlanShape>>={
- list_plans_v1:{clientId:nullable(uuid),cursor:nullable(uuid),limit:{...positive,max:100}},read_draft_v1:{draftId:uuid},
+ list_plans_v1:{clientId:nullable(uuid),cursor:nullable({type:'cursor'}),limit:{...positive,max:100}},read_draft_v1:{draftId:uuid},
  create_draft_v1:{requestId:uuid,kind:en('care_plan'),templateVersionId:nullable(uuid)},save_draft_v1:{...write,kind:en('care_plan'),content:planContentShape},checkpoint_draft_v1:{...write,label:text(200)},assign_draft_v1:{...write,fromClientId:nullable(uuid),toClientId:uuid},
  compare_import_v1:{draftId:uuid,baseContentRevision:rev,baseAssignmentRevision:rev,content:planContentShape},apply_import_v1:{...write,baseContentRevision:rev,proposalHash:hash,content:planContentShape},
  validate_draft_v1:at,preview_draft_v1:at,review_section_v1:{...write,sectionId:en('sources','context','decisions','routine','follow_up'),sectionHash:hash},
@@ -48,6 +48,7 @@ export function readPlanShape(value:unknown,s:PlanShape):unknown{
  case 'identifier':return readIdentifier(value);case 'uuid':return readUuid(value);case 'integer':return readInteger(value,s.min,s.max);case 'date':return readDate(value);case 'url':return readPresentationUrl(value);case 'image':return readPresentationUrl(value,true);
  case 'boolean':requireValue(typeof value==='boolean');return value;
  case 'enum':requireValue(s.values!.includes(value as never));return value;
+ case 'cursor':{const c=readText(value,100);requireValue(/^(?:d:[0-9a-f-]{36}|p:[0-9a-f-]{36}:[0-9]{10})$/.test(c));return c;}
  case 'hash':{const h=readText(value,64);requireValue(/^[a-f0-9]{64}$/.test(h));return h;}
  case 'instant':{const t=readText(value,40);requireValue(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:Z|[+-]\d{2}:\d{2})$/.test(t)&&Number.isFinite(Date.parse(t)));return t;}
  default:throw Error('invalid_input');
