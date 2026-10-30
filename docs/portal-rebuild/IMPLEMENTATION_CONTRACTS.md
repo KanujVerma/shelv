@@ -16,6 +16,8 @@ Read [approved decisions](APPROVED_DECISIONS.md), [desktop specification](APPROV
 
 Proposed versioned rebuild contracts live in `src/contracts/PortalRebuild.ts` with strict validation in `PortalRebuildValidation.ts`. W1 owns them. W0 owns frontend adapters and shared primitives. A compatibility adapter reads R2 and preserves its immutable original; an explicit new-version conversion never rewrites a past publication.
 
+The [plan API v1 freeze](PLAN_API_V1.md) now pins the first backend slice after [W1 source reconciliation](research/W1_BACKEND.md). Its explicit refinements govern proposed report signatures: content IDs remain opaque; rich R2 imagery/guides/comparisons/evidence must survive; canonical publication IDs remain authoritative with a guarded V3 sidecar; activated-candidate legacy guidance bypasses deny. No runtime completion is claimed.
+
 | Record | Required identity and semantics |
 | --- | --- |
 | template | Stable template ID and schema version; reusable approved sections, never executable markup. |
@@ -95,5 +97,8 @@ All controls have shared focus/disabled/loading/empty/error/warning states, visi
 | I02 | Old policy conflicts with latest approved behavior | Prospective rebuild rules govern new candidate; preserve historical release facts. | D21-D25, D33-D34, D38, founder/UI cross-references. |
 | I03 | CLI defaults alone do not prove T3 workers | Project defaults plus eight role files; explicit T3 model/options and returned runtime evidence for each task. | D43-D44, workstream registry. |
 | I04 | Full frontend rebuild versus existing secure backend | React package within `apps/portal`, retained cookie/vault transport and canonical root contracts; compatible additive extensions after backend reconciliation. No backend replacement. | D03-D04, W0/W1 research and tests before adapter freeze. |
+| I05 | Rich multi-goal content does not fit required legacy single intake/price shape | Add V3 document discriminator/immutable sidecar to the same canonical publication key; nullable intake only for complete guarded V3 rows. Never fabricate intake/price or rewrite old rows. | D14-D22, D47; PLAN_API_V1; sidecar rollback/ACL/migration tests. |
+| I06 | Proposed new UUID-only product IDs would remap existing opaque identities and omitted rich product fields would lose approved content | Keep content IDs opaque; retain compatible R2 image/guide/comparison/evidence fields in the new typed model and lossless legacy adapter. | D11, D17-D20, D47; identity/roundtrip/renderer tests. |
+| I07 | New UI gate cannot prevent direct old RPC/review/instruction bypass | Server-owned candidate activation and persisted exact authority constraints across all guidance insert paths; no caller-controlled opt-out. Dormant legacy compatibility is separate evidence. | D21-D25; every-path SQL/RPC denial and rollback tests. |
 
 Every later material decision records problem, alternatives, chosen approach, rationale, affected contract and tests here. Statuses are separate: agreed, designed, implemented, locally tested, hosted verified, deployed.

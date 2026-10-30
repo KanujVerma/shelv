@@ -27,7 +27,12 @@
         "docs/portal-rebuild/research/W1_BACKEND.md"
       ],
       "statusAtDispatch": "running",
-      "verification": "T3 delegate_task returned exact provider/model/options; git worktree readback confirms workspace/base."
+      "verification": "T3 delegate_task returned exact provider/model/options; git worktree readback confirms workspace/base.",
+      "status": "completed",
+      "reportCommit": "f840c3480bf5d03e0a922d91dcd06b7fc38c8996",
+      "integratedCommit": "1426f17",
+      "reportPath": "docs/portal-rebuild/research/W1_BACKEND.md",
+      "verificationResult": "37 focused tests, zero skips/failures; no new backend behavior tested"
     },
     {
       "role": "W0 foundation",
