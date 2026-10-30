@@ -1,6 +1,7 @@
 /** Navigation identifies a view, never an authenticated owner or a permission. */
 export type RoutinePeriod = 'morning' | 'evening';
 export type EditorSection = 'sources' | 'client-context' | 'decisions' | 'routine' | 'follow-up' | 'review-publish';
+export type AdvisorClientTask = 'overview'|'draft'|'payments'|'checkins'|'history'|'service';
 export type PresentationMode = 'client' | 'advisor-preview' | 'public-demo' | 'private-walkthrough' | 'historical';
 export type PortalRoute =
   | {name: 'plan'; routine: RoutinePeriod}
@@ -10,7 +11,7 @@ export type PortalRoute =
   | {name: 'history-event'; eventId: string}
   | {name: 'history-version'; version: string}
   | {name: 'order'; orderId: string}
-  | {name: 'advisor-client'; clientId: string}
+  | {name: 'advisor-client'; clientId: string; task?: AdvisorClientTask}
   | {name: 'advisor-editor'; draftId: string; section: EditorSection}
   | {name: 'advisor-preview'; draftId: string}
   | {name: 'advisor-review'; reportId: string}
@@ -23,6 +24,7 @@ export const CLIENT_NAVIGATION = [
   {label: 'account', route: {name: 'account'}, icon: 'account'},
 ] as const;
 const sections = new Set<EditorSection>(['sources','client-context','decisions','routine','follow-up','review-publish']);
+const clientTasks = new Set<AdvisorClientTask>(['overview','draft','payments','checkins','history','service']);
 const simpleRoutes = {
   history: '/history', 'history-new': '/history/new', orders: '/orders', account: '/account',
   'account-service': '/account/service', 'account-cancel': '/account/cancel', notifications: '/notifications',
@@ -46,7 +48,9 @@ export function buildRoute(route: PortalRoute): string {
       return '/history/' + id(route.eventId);
     case 'history-version': return '/history/versions/' + id(route.version);
     case 'order': return '/orders/' + id(route.orderId);
-    case 'advisor-client': return '/advisor/clients/' + id(route.clientId);
+    case 'advisor-client':
+      if (route.task && !clientTasks.has(route.task)) throw new TypeError('invalid client task');
+      return '/advisor/clients/' + id(route.clientId) + (route.task?'?task='+route.task:'');
     case 'advisor-editor':
       if (!sections.has(route.section)) throw new TypeError('invalid editor section');
       return '/advisor/plans/' + id(route.draftId) + '/' + route.section;
@@ -76,8 +80,8 @@ function legacyRoute(url: URL): PortalRoute | null {
   }
   if (audience === 'advisor' && allowedQuery(url,['workspace','advisorClient','advisorTask'])) {
     const client=q.get('advisorClient'), task=q.get('advisorTask');
-    if (task && (!client || !['overview','draft','payments','checkins','history','service'].includes(task))) return null;
-    if (client && validId(client)) return {name:'advisor-client',clientId:client};
+    if (task && (!client || !clientTasks.has(task as AdvisorClientTask))) return null;
+    if (client && validId(client)) return {name:'advisor-client',clientId:client,...(task?{task:task as AdvisorClientTask}:{})};
     if (!client && !task) return {name:'advisor-clients'};
   }
   return null;
@@ -90,7 +94,7 @@ export function parseRoute(path: string): PortalRoute | null {
   if (url.origin !== 'https://portal.invalid') return null;
   if (url.pathname === '/') return legacyRoute(url);
   const isPlan=url.pathname === '/plan' || url.pathname.startsWith('/plan/');
-  if (!allowedQuery(url,isPlan ? ['routine'] : url.pathname === '/maya' ? ['stage'] : [])) return null;
+  if (!allowedQuery(url,isPlan ? ['routine'] : url.pathname === '/maya' ? ['stage'] : /^\/advisor\/clients\/[^/]+$/.test(url.pathname)?['task']:[])) return null;
   const routine=url.searchParams.get('routine') ?? 'morning';
   if (isPlan && !['morning','evening'].includes(routine)) return null;
   if (url.pathname === '/plan') return {name:'plan',routine:routine as RoutinePeriod};
@@ -108,7 +112,11 @@ export function parseRoute(path: string): PortalRoute | null {
   if (a==='history' && b==='versions' && parts.length===3) return {name:'history-version',version:c!};
   if (a==='history' && parts.length===2) return {name:'history-event',eventId:b!};
   if (a==='orders' && parts.length===2) return {name:'order',orderId:b!};
-  if (a==='advisor' && b==='clients' && parts.length===3) return {name:'advisor-client',clientId:c!};
+  if (a==='advisor' && b==='clients' && parts.length===3) {
+    const task=url.searchParams.get('task');
+    if(task && !clientTasks.has(task as AdvisorClientTask))return null;
+    return {name:'advisor-client',clientId:c!,...(task?{task:task as AdvisorClientTask}:{})};
+  }
   if (a==='advisor' && b==='reviews' && parts.length===3) return {name:'advisor-review',reportId:c!};
   if (a==='advisor' && b==='plans' && parts.length===4) {
     if (d==='preview') return {name:'advisor-preview',draftId:c!};

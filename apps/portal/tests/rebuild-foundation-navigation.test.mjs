@@ -9,7 +9,7 @@ test('all semantic routes roundtrip encoded identities and safe routine selectio
     ...['product','product-evidence','product-use'].map(name=>({name,productId:'card:cerave-pm',routine:'evening'})),
     {name:'history'}, {name:'history-new'}, {name:'history-event',eventId:'event:one'}, {name:'history-version',version:'v2'},
     {name:'orders'}, {name:'order',orderId:'quote:one'}, {name:'account'}, {name:'account-service'}, {name:'account-cancel'},
-    {name:'notifications'}, {name:'advisor-clients'}, {name:'advisor-client',clientId:'client:one'}, {name:'advisor-plans'},
+    {name:'notifications'}, {name:'advisor-clients'}, {name:'advisor-client',clientId:'client:one'}, {name:'advisor-client',clientId:'client:one',task:'draft'}, {name:'advisor-plans'},
     {name:'advisor-editor',draftId:'draft:one',section:'review-publish'}, {name:'advisor-preview',draftId:'draft:one'},
     {name:'advisor-review',reportId:'report:one'}, {name:'advisor-permissions'}, {name:'maya',stage:2},
   ];
@@ -31,6 +31,7 @@ test('retained client URL aliases map explicitly, with identified products kept 
   assert.deepEqual(parseRoute('/?workspace=client&clientView=routine&product=card%3Acerave'),{name:'product',productId:'card:cerave',routine:'morning'});
   assert.deepEqual(parseRoute('/?workspace=client&clientView=checkins'),{name:'history'});
   assert.deepEqual(parseRoute('/?workspace=advisor'),{name:'advisor-clients'});
+  assert.deepEqual(parseRoute('/?workspace=advisor&advisorClient=client%3Aone&advisorTask=draft'),{name:'advisor-client',clientId:'client:one',task:'draft'});
   assert.equal(parseRoute('/?workspace=client&ownerId=other'),null);
   assert.deepEqual(parentRoute({name:'product-evidence',productId:'card:cerave',routine:'evening'}),{name:'product',productId:'card:cerave',routine:'evening'});
 });
