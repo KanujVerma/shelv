@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {checkStyles} from './check-ui-system.mjs';
 import {createServer} from 'node:http';
 import {parseRoute} from '../src/navigation/routes.ts';
+import {writeEmittedNotices} from './emitted-notices.mjs';
 
 const portal=fileURLToPath(new URL('../',import.meta.url));
 const output=path.resolve(portal,'../../.local-artifacts/portal-rebuild/foundation');
@@ -27,6 +28,7 @@ if(findings.length) throw new Error('Rebuild colors must use semantic tokens: '+
 await mkdir(output,{recursive:true});
 await build({absWorkingDir:portal,tsconfig:'tsconfig.frontend.json',entryPoints:['src/main.tsx'],outdir:output,bundle:true,format:'esm',splitting:true,target:['es2022'],minify:false,metafile:true,entryNames:'foundation',chunkNames:'chunks/[name]',assetNames:'assets/[name]-[hash]',loader:{'.woff2':'file','.woff':'file'},legalComments:'linked'}).then(async result=>{
   await writeFile(path.join(output,'build-metadata.json'),JSON.stringify(result.metafile,null,2)+'\n');
+  await writeEmittedNotices(result.metafile,{workingDirectory:portal,outputDirectory:output});
 });
 await writeFile(path.join(output,'index.html'),'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><meta http-equiv="Content-Security-Policy" content="default-src \'self\'; connect-src \'none\'; img-src \'self\' data:; style-src \'self\' \'unsafe-inline\'; font-src \'self\'; script-src \'self\'; base-uri \'none\'; form-action \'none\'"><title>shelv · internal foundation preview</title><link rel="stylesheet" href="/foundation.css"></head><body><div data-foundation-preview></div><script type="module" src="/foundation.js"></script></body></html>');
 await mkdir(path.join(output,'licenses'),{recursive:true});

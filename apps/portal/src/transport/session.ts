@@ -4,12 +4,16 @@ import type {PresentationMode} from '../navigation/routes.ts';
  * The gateway and its factories remain responsible for cookies, CSRF, same-origin,
  * no-store, action allowlists, owner authorization and lease expiry. No URLs here.
  */
-export interface CookieLease {ownerId: string; localEpoch: number; csrf: string}
+export interface CookieLease {ownerId: string; localEpoch: number; csrf: string; idleExpiresAt?: string; absoluteExpiresAt?: string}
 export interface CookieSessionPort {
   readonly audience: 'client'|'advisor';
   readonly status: string;
   readonly generation: number;
   readonly identity: {ownerId: string; role: string} | null;
+  /** Retained cookie sessions expose their local epoch and clock. Read only:
+   * an offline error must still belong to the original, unexpired lease. */
+  readonly _epoch?: number;
+  now?: ()=>number;
   acquire(): Promise<CookieLease>;
   isCurrent(lease: CookieLease): boolean;
   signOut(): Promise<unknown>;
@@ -59,7 +63,13 @@ export function createSessionTransport(session: CookieSessionPort) {
         // Decoders are supplied by W1's versioned strict response contracts.
         return decode(value);
       } catch (error) {
-        const current=!ended && session.audience===audience && session.generation===startGeneration && session.isCurrent(lease);
+        // Real factories check the lease, then suspend on 503 before rethrowing.
+        // isCurrent intentionally rejects offline results, so only that error
+        // path may use the retained epoch/deadlines. Never accept a late success.
+        const live=session.isCurrent(lease);
+        const suspended=(error as {status?: unknown}|null)?.status===503 && suspendedLease(session,lease);
+        const current=!ended && session.audience===audience && session.identity?.role===audience &&
+          session.identity.ownerId===startOwner && session.generation===startGeneration && (live || suspended);
         sessionChanged();if (!current) throw new TransportError(401);
         throw safeError(error,kind);
       } finally {controllers.delete(controller);options.signal?.removeEventListener('abort',abort);}
@@ -81,6 +91,10 @@ export function createSessionTransport(session: CookieSessionPort) {
     async signOut() {ended=true;invalidate();return session.signOut();},
     dispose() {ended=true;invalidate();listeners.clear();},
   };
+}
+function suspendedLease(session: CookieSessionPort,lease: CookieLease): boolean {
+  return session.status==='offline' && session._epoch===lease.localEpoch && Number.isFinite(session._epoch) &&
+    (session.now?.() ?? Date.now())<Math.min(Date.parse(lease.idleExpiresAt ?? ''),Date.parse(lease.absoluteExpiresAt ?? ''));
 }
 function safeError(error: unknown, kind: OperationKind): TransportError {
   if (error instanceof TransportError) return error;

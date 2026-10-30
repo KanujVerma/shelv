@@ -552,6 +552,7 @@
     {
       "path": "page-498-32.metadata.xml",
       "kind": "native-design-reference",
+      "scope": "Selected-node response identifying D01 only; not an XML page tree or complete page metadata.",
       "bytes": 57,
       "sha256": "be3e13dcf4cb3524dcaeb431228e6629f3193eb30df811c63a578af6899b8ceb"
     },

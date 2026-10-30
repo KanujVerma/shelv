@@ -8,6 +8,15 @@ import {Icon} from './icons.tsx';
 
 const OverlayContext=createContext<ReturnType<typeof createOverlayCoordinator>|null>(null);
 const InsideOverlay=createContext(false);
+function restoreFocus(candidates: (HTMLElement|null|undefined)[]) {
+  for (const target of candidates) {
+    if (!target?.isConnected || target===document.body || target===document.documentElement ||
+        target.matches(':disabled') || target.closest('[hidden],[inert],[aria-hidden="true"]') || !target.getClientRects().length ||
+        ['hidden','collapse'].includes(getComputedStyle(target).visibility)) continue;
+    target.focus({preventScroll:true});
+    if (document.activeElement===target) return;
+  }
+}
 export function OverlayProvider({children}: {children: ReactNode}) {
   const [coordinator]=useState(createOverlayCoordinator);
   return <OverlayContext.Provider value={coordinator}>{children}</OverlayContext.Provider>;
@@ -42,8 +51,7 @@ function Overlay({kind,open,onOpenChange,title,description,children,trigger,canC
         onCloseAutoFocus={event=>{
           event.preventDefault();
           const original=opener.current;
-          const target=restoreFocusRef?.current ?? (original?.isConnected?original:original?.id?document.getElementById(original.id):null) ?? document.querySelector<HTMLElement>('[data-page-heading]');
-          target?.focus({preventScroll:true});
+          restoreFocus([restoreFocusRef?.current,original,original?.id?document.getElementById(original.id):null,document.querySelector<HTMLElement>('[data-page-heading]')]);
         }}>
         {kind==='sheet'?<><DialogPrimitive.Title className="shelv-visually-hidden">{title}</DialogPrimitive.Title><div className="shelv-sheet-back"><Icon name="arrow-left"/><Button variant="ghost" onClick={()=>requestClose('close')}>{backLabel}</Button></div></>:<div className="shelv-modal-heading"><DialogPrimitive.Title>{title}</DialogPrimitive.Title><Button variant="ghost" className="shelv-close" onClick={()=>requestClose('close')}><Icon name="close" size="small"/>close</Button></div>}
         {description?<DialogPrimitive.Description className="shelv-modal-description">{description}</DialogPrimitive.Description>:null}

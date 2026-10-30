@@ -70,3 +70,73 @@ test('demo operations are explicitly memory-only and have no cookie channel',asy
   const port=createDemoPort(input=>({selection:input.selection}));
   assert.equal(port.mode,'public-demo');assert.deepEqual(await port.execute({selection:'later'}),{selection:'later'});
 });
+
+async function retainedSession(audience, operation) {
+  const {CookieAdvisorSession,createCookieRequest}=await import('../site/auth/advisor-cookie-session.js');
+  const {CookieClientSession,createClientCookieRequest}=await import('../site/auth/client-cookie-session.js');
+  let now=Date.parse('2026-10-30T12:00:00Z'),ownerId='synthetic-a',csrf='synthetic-csrf';
+  const session=new (audience==='client'?CookieClientSession:CookieAdvisorSession)({
+    now:()=>now,locks:{request:async(_,options,run)=>run(options.signal)},
+    fetcher:async url=>url.endsWith('/session')?Response.json({signedIn:true,ownerId,generation:1,capabilities:{view:true},csrf,idleExpiresAt:'2026-10-30T12:10:00Z',absoluteExpiresAt:'2026-10-30T13:00:00Z'}):operation(),
+  });
+  await session.restore();
+  const transport=createSessionTransport(session);session.onState=()=>transport.sessionChanged();
+  transport.memory.set('unsent','synthetic unsent work');
+  let decoded=0;
+  const port=transport.bindCookieChannel(audience==='client'?createClientCookieRequest:createCookieRequest,'operations','write',value=>{decoded++;return value;});
+  return {session,transport,execute:()=>port.execute({action:audience==='client'?'decide':'save_draft_v2'}),get decoded(){return decoded;},
+    expire(){now=Date.parse('2026-10-30T13:01:00Z');},
+    async replace(sameOwner){ownerId=sameOwner?'synthetic-a':'synthetic-b';csrf='replacement-csrf';await session.restore();},
+    close(){transport.dispose();session.dispose();},
+  };
+}
+
+for(const audience of ['client','advisor']) {
+  for(const outage of ['503','network']) test(`retained ${audience} factory ${outage} suspension preserves uncertain writes and unsent memory`,async()=>{
+    const f=await retainedSession(audience,()=>{if(outage==='network')throw new TypeError('synthetic network loss');return Response.json({code:'unavailable'},{status:503});});
+    try {
+      await assert.rejects(f.execute(),error=>error.status===503&&error.outcome==='uncertain');
+      assert.equal(f.session.status,'offline');assert.equal(f.transport.memory.get('unsent'),'synthetic unsent work');assert.equal(f.decoded,0);
+      await assert.rejects(f.execute(),error=>error.status===503&&error.outcome==='uncertain');
+    } finally {f.close();}
+  });
+  for(const boundary of ['owner','same-owner-login','expiry','logout','audience','epoch']) test(`retained ${audience} factory rejects late results/errors after ${boundary}`,async()=>{
+    for(const fails of [false,true]) {
+      const pending=deferred(),f=await retainedSession(audience,()=>pending.promise);
+      try {
+        const result=f.execute();await new Promise(resolve=>setImmediate(resolve));
+        if(boundary==='owner'||boundary==='same-owner-login')await f.replace(boundary==='same-owner-login');
+        if(boundary==='expiry')f.expire();
+        if(boundary==='logout')f.session._end();
+        if(boundary==='audience')f.session.audience=audience==='client'?'advisor':'client';
+        if(boundary==='epoch')f.session._epoch++;
+        if(fails)pending.reject(new TypeError('synthetic network loss'));else pending.resolve(Response.json({revision:2}));
+        await assert.rejects(result,error=>error.status===401&&error.outcome==='session-ended');assert.equal(f.decoded,0);
+        if(['owner','same-owner-login','logout','audience','expiry'].includes(boundary))assert.equal(f.transport.memory.get('unsent'),undefined);
+      } finally {f.close();}
+    }
+  });
+  test(`retained ${audience} suspension cannot conceal an epoch, role or deadline change`,async()=>{
+    for(const boundary of ['epoch','role','expiry']) {
+      const f=await retainedSession(audience,()=>Response.json({code:'unavailable'},{status:503}));
+      try {
+        // The factory has checked the ready lease immediately before suspend.
+        // These synchronous observer changes precede the wrapper's catch.
+        f.session.onState=()=>{if(f.session.status==='offline') {
+          if(boundary==='epoch')f.session._epoch++;
+          if(boundary==='role')f.session.identity.role='other';
+          if(boundary==='expiry')f.expire();
+        }f.transport.sessionChanged();};
+        await assert.rejects(f.execute(),error=>error.status===401&&error.outcome==='session-ended');assert.equal(f.decoded,0);
+      } finally {f.close();}
+    }
+  });
+}
+
+test('offline suspension never permits a successful private result to be decoded',async()=>{
+  const f=await retainedSession('client',()=>Response.json({revision:2}));
+  try {
+    const port=f.transport.bind({kind:'read',invoke:async()=>{f.session.suspend();return {private:'synthetic'};},decode:()=>assert.fail('late private response decoded')});
+    await assert.rejects(port.execute({}),error=>error.status===401);
+  } finally {f.close();}
+});

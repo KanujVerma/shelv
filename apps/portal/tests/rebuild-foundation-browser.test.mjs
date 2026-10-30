@@ -5,10 +5,11 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {chromium} from 'playwright-core';
+import {build} from 'esbuild';
 import {parseRoute} from '../src/navigation/routes.ts';
 
 const portal=fileURLToPath(new URL('../',import.meta.url)),repository=path.resolve(portal,'../..');
-const built=path.join(repository,'.local-artifacts/portal-rebuild/foundation'),artifacts=path.join(repository,'.local-artifacts/portal-rebuild/w0/browser');
+const built=path.join(repository,'.local-artifacts/portal-rebuild/foundation'),artifacts=path.join(repository,'.local-artifacts/portal-rebuild/w0-fixes/browser');
 const origin='http://shelv-foundation.invalid';
 let browser;
 before(async()=>{
@@ -31,6 +32,88 @@ async function setup(width=1440,height=960,initial='/plan?routine=evening') {
   await page.goto(origin+initial);await page.getByRole('heading',{name:'shared controls',exact:true}).waitFor();await page.evaluate(()=>document.fonts.ready);
   return {page,context,unexpected,errors,async close(){await context.close();assert.deepEqual(errors,[]);assert.deepEqual(unexpected,[]);}};
 }
+
+// Actual shared components/navigator, isolated at the HTTP boundary only.
+async function probe(source,initial='/plan?routine=evening') {
+  const result=await build({absWorkingDir:portal,stdin:{contents:source,loader:'tsx',resolveDir:portal},tsconfig:'tsconfig.frontend.json',bundle:true,format:'esm',write:false});
+  const context=await browser.newContext({viewport:{width:1440,height:960},serviceWorkers:'block'}),errors=[],unexpected=[];
+  await context.route('**/*',async route=>{
+    const url=new URL(route.request().url());
+    if(url.origin!==origin || route.request().method()!=='GET') {unexpected.push(url.pathname);return route.abort();}
+    if(url.pathname==='/probe.js')return route.fulfill({body:result.outputFiles[0].text,contentType:'text/javascript'});
+    if(!parseRoute(url.pathname+url.search)){unexpected.push(url.pathname);return route.abort();}
+    return route.fulfill({body:'<!doctype html><html><body><div id="root"></div><script type="module" src="/probe.js"></script></body></html>',contentType:'text/html'});
+  });
+  const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  await page.goto(origin+initial);await page.waitForFunction(()=>window.regression);
+  return {page,async close(){await context.close();assert.deepEqual(errors,[]);assert.deepEqual(unexpected,[]);}};
+}
+
+test('direct/initial sheets and unusable or removed openers restore viable focus',async()=>{
+  const source=`import {StrictMode,useState,useRef} from 'react';import {createRoot} from 'react-dom/client';
+    import {OverlayProvider,Sheet} from './src/ui/overlay.tsx';
+    function App(){const [open,setOpen]=useState(location.search.includes('initial')), [mode,setMode]=useState('normal');const restore=useRef(null);
+      window.regression={open:()=>setOpen(true),mode:setMode};
+      return <OverlayProvider><h1 id="heading" data-page-heading tabIndex={-1}>plan</h1>
+        {mode!=='removed'&&<button key={mode.startsWith('replaced')?'replacement':'original'} id="opener" disabled={mode==='disabled'||mode==='replaced-disabled'} hidden={mode==='hidden'||mode==='replaced-hidden'} onClick={()=>setOpen(true)}>open</button>}
+        <button id="restore" ref={restore} disabled={mode==='restore-disabled'} hidden={mode==='restore-hidden'}>restore</button>
+        <Sheet open={open} onOpenChange={setOpen} title="focus regression" restoreFocusRef={mode.startsWith('restore-')?restore:undefined}><input aria-label="note"/></Sheet>
+      </OverlayProvider>;}createRoot(document.getElementById('root')).render(<StrictMode><App/></StrictMode>);`;
+  const records=[];
+  for(const mode of ['initial','programmatic','removed','replaced','disabled','hidden','replaced-disabled','replaced-hidden','restore-disabled','restore-hidden','restore-valid']) {
+    // Use a valid semantic route; initial-open selection is a test entry constant.
+    const f=await probe(source.replace("location.search.includes('initial')",mode==='initial'?'true':'false'));
+    try {
+      const {page}=f;
+      if(mode==='programmatic')await page.evaluate(()=>{document.activeElement?.blur();window.regression.open();});
+      else if(mode!=='initial')await page.locator('#opener').click();
+      await page.getByRole('dialog').waitFor();
+      if(!['initial','programmatic'].includes(mode))await page.evaluate(mode=>window.regression.mode(mode),mode);
+      await page.keyboard.press('Tab');assert.equal(await page.getByRole('dialog').locator(':focus').count(),1);
+      await page.keyboard.press('Escape');await page.getByRole('dialog').waitFor({state:'hidden'});
+      const expected=mode==='replaced'?'opener':mode==='restore-valid'?'restore':mode.startsWith('restore-')?'opener':'heading';
+      await page.waitForFunction(expected=>document.activeElement?.id===expected,expected,{timeout:3000});
+      records.push({mode,focused:await page.evaluate(()=>document.activeElement.id)});
+    } finally {await f.close();}
+  }
+  await fs.writeFile(path.join(artifacts,'focus-regressions.json'),JSON.stringify(records,null,2));
+});
+
+test('native Back/Forward preserves nonzero scroll and distinct focus repeatedly within session scope',async()=>{
+  const f=await probe(`import {StrictMode,useMemo,useEffect,useState} from 'react';import {createRoot} from 'react-dom/client';
+    import {createPortalNavigator} from './src/navigation/history.ts';import {NavigationProvider,usePortalNavigation} from './src/navigation/react.tsx';
+    function View(){const {route}=usePortalNavigation();return <main style={{height:4000}}><h1 id={route.name+'-heading'} tabIndex={-1} data-page-heading>{route.name}</h1><button id={route.name+'-focus'}>focus</button></main>;}
+    function App(){const [scope,setScope]=useState('synthetic-session-a');const nav=useMemo(()=>createPortalNavigator(window,{scopeKey:scope}),[scope]);useEffect(()=>()=>nav.dispose(),[nav]);
+      window.regression={nav,scope:setScope,unmount:()=>root.unmount()};return <NavigationProvider navigator={nav}><View/></NavigationProvider>;}
+    const root=createRoot(document.getElementById('root'));root.render(<StrictMode><App/></StrictMode>);`);
+  try {
+    const {page}=f,records=[];
+    async function position(id,y){await page.evaluate(({id,y})=>{document.getElementById(id).focus({preventScroll:true});scrollTo(0,y);},{id,y});await page.waitForFunction(y=>scrollY===y,y);}
+    async function restored(path,id,y){await page.waitForURL(origin+path);try{await page.waitForFunction(({id,y})=>document.activeElement?.id===id&&scrollY===y,{id,y},{timeout:3000});}catch(error){error.message+=JSON.stringify(await page.evaluate(()=>({path:location.pathname+location.search,y:scrollY,focus:document.activeElement.id,marker:history.state})));throw error;}records.push(await page.evaluate(()=>({path:location.pathname+location.search,y:scrollY,focus:document.activeElement.id})));}
+    await position('plan-focus',600);
+    await page.evaluate(()=>window.regression.nav.navigate({name:'product',productId:'card:one',routine:'evening'}));
+    await page.waitForURL('**/plan/products/**');await page.waitForFunction(()=>scrollY===0);
+    for(let round=0;round<2;round++) {
+      await position('product-focus',400+round*50);
+      // Focus/scroll events settle before using native history controls.
+      await page.waitForTimeout(40);
+      if(round===0)await page.evaluate(()=>window.regression.nav.back());else await page.goBack();
+      await restored('/plan?routine=evening','plan-focus',600+round*50);
+      await position('plan-focus',650+round*50);await page.waitForTimeout(40);
+      await page.goForward();await restored('/plan/products/card%3Aone?routine=evening','product-focus',400+round*50);
+    }
+    assert.equal(await page.evaluate(()=>history.scrollRestoration),'manual');
+    // Pending old-scope restore must be cancelled on teardown/replacement.
+    await page.evaluate(()=>{window.regression.nav.navigate({name:'product-use',productId:'card:one',routine:'evening'});window.regression.scope('synthetic-session-b');});
+    await page.waitForFunction(()=>history.state.shelvNavigation.scopeKey==='synthetic-session-b');
+    await page.goBack();await restored('/plan/products/card%3Aone?routine=evening','product-heading',0);
+    assert.deepEqual(await page.evaluate(()=>({local:localStorage.length,session:sessionStorage.length})),{local:0,session:0});
+    await page.evaluate(()=>{window.regression.nav.navigate({name:'product-use',productId:'card:one',routine:'evening'});window.regression.unmount();document.body.style.height='4000px';scrollTo(0,333);});
+    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+    assert.equal(await page.evaluate(()=>scrollY),333);assert.equal(await page.evaluate(()=>history.scrollRestoration),'auto');
+    await fs.writeFile(path.join(artifacts,'history-regressions.json'),JSON.stringify(records,null,2));
+  } finally {await f.close();}
+});
 
 test('rendered desktop shell preserves native sidebar, navigation, contact and topbar geometry',async()=>{
   const f=await setup();try {

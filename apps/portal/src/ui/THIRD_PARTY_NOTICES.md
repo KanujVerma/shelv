@@ -2,6 +2,8 @@
 
 The controls adapt the shadcn/ui Radix source to the approved shelv native tokens using CSS. No Tailwind runtime or alternate component library is introduced.
 
+The rebuild distribution also includes `licenses/emitted-packages.json` and verbatim legal files under `licenses/packages/` for every installed package contributing positive `bytesInOutput` to the esbuild output, including transitive code and bundled fonts. This source notice retains the manually adapted shadcn attribution and direct notices; it is not the emitted-closure inventory. Missing package legal files fail the build unless an exact package/version has a hash-checked retained original in `RETAINED_LICENSES.json`. The installed react-remove-scroll-bar 2.3.8 package omits its legal file; that registry identifies the retained upstream repository license and its acquisition limit.
+
 Source reference: https://github.com/shadcn-ui/ui/tree/main/apps/v4/registry/new-york-v4/ui (read 30 October 2026).
 
 ## shadcn/ui
