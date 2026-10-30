@@ -3,15 +3,17 @@
   "sessionId": "fc266b30-cac3-4567-a1a7-9c3a689d0aad",
   "fileKey": "WGbMylNV4rPoMw3r0nceaw",
   "pageId": "498:32",
-  "scope": "Approved fictional design only, not implementation acceptance.",
+  "scope": "Native fictional design references plus separately labeled synthetic implementation evidence; no final page/hosted acceptance.",
   "records": [
     {
       "path": "A00-503-449.context.txt",
+      "kind": "native-design-reference",
       "bytes": 16624,
       "sha256": "b066abcfb4f53655054b771b367d198cd42fcdf777e1b762f701194a4c628dab"
     },
     {
       "path": "A00-503-449.png",
+      "kind": "native-design-reference",
       "bytes": 55265,
       "sha256": "7b9bf25ab47647401b51cd7ab3358824014cf10d4ef964d4dc661891c6b290ee",
       "width": 1440,
@@ -19,11 +21,13 @@
     },
     {
       "path": "A01-500-299.context.txt",
+      "kind": "native-design-reference",
       "bytes": 20845,
       "sha256": "f6956e53a960e82bfc8b75dff01858cf8c18707a357c82f0157102c3571c19f9"
     },
     {
       "path": "A01-500-299.png",
+      "kind": "native-design-reference",
       "bytes": 75675,
       "sha256": "c98fd5cb5f346b3543ac4bc6df53376e7fbc041678db2799289cd76a4ac8ea53",
       "width": 1440,
@@ -31,11 +35,13 @@
     },
     {
       "path": "A02-500-383.context.txt",
+      "kind": "native-design-reference",
       "bytes": 29196,
       "sha256": "5b52c9027b802fb2f70467ffb5e6fdddb9e9dfc97dd311da4e7191eae244d2da"
     },
     {
       "path": "A02-500-383.png",
+      "kind": "native-design-reference",
       "bytes": 121839,
       "sha256": "3babea10fb5137c46d7bf798023bc4df09957b716bee591815c3b7e2b4d004bc",
       "width": 1440,
@@ -43,11 +49,13 @@
     },
     {
       "path": "A03-500-500.context.txt",
+      "kind": "native-design-reference",
       "bytes": 20929,
       "sha256": "1a9273f2a142fcf5cd225dc6de09ccf7db8585190ecd1b32afb288d2a8de3bf9"
     },
     {
       "path": "A03-500-500.png",
+      "kind": "native-design-reference",
       "bytes": 113468,
       "sha256": "19d73d6ccd02bda88e00f312906f74a782d666cbebdbe9ad07d6a42b05190229",
       "width": 1440,
@@ -55,11 +63,13 @@
     },
     {
       "path": "A04-500-592.context.txt",
+      "kind": "native-design-reference",
       "bytes": 23361,
       "sha256": "21f8da29e4d02373c062840f8225eb46037367f9dda696be6f12ece563d1e9db"
     },
     {
       "path": "A04-500-592.png",
+      "kind": "native-design-reference",
       "bytes": 104658,
       "sha256": "462051b9976fdd011336c1987fb1ffb363d081f112b2671c22563b0d2a859b42",
       "width": 1440,
@@ -67,11 +77,13 @@
     },
     {
       "path": "A04P-503-672.context.txt",
+      "kind": "native-design-reference",
       "bytes": 21526,
       "sha256": "9ac76a5215aa33a798f5e26b9a222132c5776440452f62dd7e0ecc79e448890c"
     },
     {
       "path": "A04P-503-672.png",
+      "kind": "native-design-reference",
       "bytes": 103870,
       "sha256": "1bd6fed611925898c3b02c00823c3a4f6ddabe312d25d496020bd5e7e90a2b8b",
       "width": 1440,
@@ -79,11 +91,13 @@
     },
     {
       "path": "A05-500-686.context.txt",
+      "kind": "native-design-reference",
       "bytes": 22868,
       "sha256": "75bfb00105d39bc52e2128fa7beb792094cf9377c413d5999d161e141a819ea1"
     },
     {
       "path": "A05-500-686.png",
+      "kind": "native-design-reference",
       "bytes": 103824,
       "sha256": "23bbaf719afbfac748478e27faaa0f2d4a70d40ad09bafaf7c010a74a3519821",
       "width": 1440,
@@ -91,11 +105,13 @@
     },
     {
       "path": "A06-500-779.context.txt",
+      "kind": "native-design-reference",
       "bytes": 17699,
       "sha256": "ed0107b6f177516adb32ecc9b42715619d4164c6c7484ea89dd74d2c00f60fdc"
     },
     {
       "path": "A06-500-779.png",
+      "kind": "native-design-reference",
       "bytes": 82345,
       "sha256": "8343662d08eb76240f5299956540bf4daf05e1858914288452053e1216f7911e",
       "width": 1440,
@@ -103,11 +119,13 @@
     },
     {
       "path": "A07-500-846.context.txt",
+      "kind": "native-design-reference",
       "bytes": 21097,
       "sha256": "920206edb9021fa00afde1c4f211d19712b6b778a28e7429ebea5c9f1e1203e6"
     },
     {
       "path": "A07-500-846.png",
+      "kind": "native-design-reference",
       "bytes": 89377,
       "sha256": "b276da9b6bbb99be2f4a6698cfe3293a77b282e5c97a0ab5744c6569f9338832",
       "width": 1440,
@@ -115,23 +133,33 @@
     },
     {
       "path": "A08-503-558.context.txt",
+      "kind": "native-design-reference",
       "bytes": 16895,
       "sha256": "989baf02e4977d0dc83a466e4275da0785ac5b85028022f7a15982f1027eeec1"
     },
     {
       "path": "A08-503-558.png",
+      "kind": "native-design-reference",
       "bytes": 105937,
       "sha256": "ec568dd09a6bade32ae4164dd302c3648f8846e74928a3dbe500231ad4d56537",
       "width": 1440,
       "height": 960
     },
     {
+      "path": "ASSETS.json",
+      "kind": "native-design-reference",
+      "bytes": 1646,
+      "sha256": "15db262e8e7497abb817c4b26d4b1e9a931be5509aabf9fee9ea1c5a904e93aa"
+    },
+    {
       "path": "C01-498-85.context.txt",
+      "kind": "native-design-reference",
       "bytes": 31750,
       "sha256": "b42efbbd32229ef0c659915be1ac5712b31f7a70fbad83eb5d4b697c790c1056"
     },
     {
       "path": "C01-498-85.png",
+      "kind": "native-design-reference",
       "bytes": 138983,
       "sha256": "4d9e25e9f16ca0c8d356075f5e84d1d86ae38d45d26ec65c40e0fe4c3a651caa",
       "width": 1440,
@@ -139,16 +167,19 @@
     },
     {
       "path": "C01.variables.json",
+      "kind": "native-design-reference",
       "bytes": 1508,
       "sha256": "693325764da955606f7d361c6581f94b4980e0da8a51a6e61a68b0adbb707077"
     },
     {
       "path": "C01E-503-926.context.txt",
+      "kind": "native-design-reference",
       "bytes": 29372,
       "sha256": "ab5d2c6c9dcca3e110c4cf4dfc404c10447824db07315c82668129778e093938"
     },
     {
       "path": "C01E-503-926.png",
+      "kind": "native-design-reference",
       "bytes": 132498,
       "sha256": "88694507cf76ff82b8fc85a47cc772b5081578d99dccf950dcaaa04fd93f6307",
       "width": 1440,
@@ -156,11 +187,13 @@
     },
     {
       "path": "C02-498-212.context.txt",
+      "kind": "native-design-reference",
       "bytes": 23796,
       "sha256": "c7da7a58bb08d536100360f039605dd989319ff4b30a2eb4e799a4acbaf65855"
     },
     {
       "path": "C02-498-212.png",
+      "kind": "native-design-reference",
       "bytes": 141880,
       "sha256": "8456f28090e882e752ebe3622a94f67085979a77be3edf6ac6efa3d7bb6060f8",
       "width": 1440,
@@ -168,11 +201,13 @@
     },
     {
       "path": "C02D-499-766.context.txt",
+      "kind": "native-design-reference",
       "bytes": 19408,
       "sha256": "f4dd4b223dd3065076af5bd4655f5aecb0b2ccf1f727911c8113485aaeced414"
     },
     {
       "path": "C02D-499-766.png",
+      "kind": "native-design-reference",
       "bytes": 124497,
       "sha256": "8af01dc5986b1f232aaa54dd8bd907e4647ab510776d0cab524052bae295afea",
       "width": 1440,
@@ -180,11 +215,13 @@
     },
     {
       "path": "C03-499-151.context.txt",
+      "kind": "native-design-reference",
       "bytes": 37105,
       "sha256": "e6606e46b556934c6c1c15c6ac20d00891f0c5b9f18af3e9c72082ddfc69e15d"
     },
     {
       "path": "C03-499-151.png",
+      "kind": "native-design-reference",
       "bytes": 149157,
       "sha256": "4ce45155f096c19e90d91ca29870728bda50a20d6f26d5096d444ec02d724d6c",
       "width": 1440,
@@ -192,11 +229,13 @@
     },
     {
       "path": "C03D-503-1083.context.txt",
+      "kind": "native-design-reference",
       "bytes": 15361,
       "sha256": "ba8ed55aa4971a76df21235fd1325cc47cec81b64f1df28b08be409bbd91434c"
     },
     {
       "path": "C03D-503-1083.png",
+      "kind": "native-design-reference",
       "bytes": 86822,
       "sha256": "c695e592b5b3d3c2364d5d4d4bb88bb4d8e37cfd5e2ef4ebc6dc104effab5ff3",
       "width": 1440,
@@ -204,11 +243,13 @@
     },
     {
       "path": "C04-498-304.context.txt",
+      "kind": "native-design-reference",
       "bytes": 24325,
       "sha256": "f518f6340d17d3f79a7b1d6dc11ccce89c0c2c7b1c66ad75c6785bd84c33684f"
     },
     {
       "path": "C04-498-304.png",
+      "kind": "native-design-reference",
       "bytes": 129305,
       "sha256": "97cd114498daf1c5539d1f0bc97fed31c2f03f2903910066543445d217e2b603",
       "width": 1440,
@@ -216,11 +257,13 @@
     },
     {
       "path": "C05-499-305.context.txt",
+      "kind": "native-design-reference",
       "bytes": 20730,
       "sha256": "4cc8d469f833d866e6d703c878573e935ef0012f018eebe11882aa842f70e7bd"
     },
     {
       "path": "C05-499-305.png",
+      "kind": "native-design-reference",
       "bytes": 89015,
       "sha256": "92cce9722c53a3c5770fc4e71b6add7d188d0327a2a8c24457ce9f3cd1786d9c",
       "width": 1440,
@@ -228,11 +271,13 @@
     },
     {
       "path": "C06-499-446.context.txt",
+      "kind": "native-design-reference",
       "bytes": 21424,
       "sha256": "abfad916f6e819c2b10f36005bb545dca74de806a291e80aad3376895b524a6a"
     },
     {
       "path": "C06-499-446.png",
+      "kind": "native-design-reference",
       "bytes": 100226,
       "sha256": "6dfee3223451a039d8788e297983edbcd0a5f95acf0346b6c64bc62170584400",
       "width": 1440,
@@ -240,11 +285,13 @@
     },
     {
       "path": "C06D-503-808.context.txt",
+      "kind": "native-design-reference",
       "bytes": 19755,
       "sha256": "d02afd57051a9131a3f2c49420d9fa5e92701ab97210564828ad51a93bf6fe01"
     },
     {
       "path": "C06D-503-808.png",
+      "kind": "native-design-reference",
       "bytes": 84706,
       "sha256": "22a1d26b2cecd02bd87bb6c455d64cc81fc79acd19e989c79f6a1617b19fabcd",
       "width": 1440,
@@ -252,11 +299,13 @@
     },
     {
       "path": "C07-499-584.context.txt",
+      "kind": "native-design-reference",
       "bytes": 24395,
       "sha256": "381d439cd5204192bd5b32f14f5bea8f2fd3e8955008d657b11e9288645aa5eb"
     },
     {
       "path": "C07-499-584.png",
+      "kind": "native-design-reference",
       "bytes": 97448,
       "sha256": "d54f05cadf2ba67157c6f8c3694b1c77cf8b879e0823939b7f272d42cccbfc02",
       "width": 1440,
@@ -264,11 +313,13 @@
     },
     {
       "path": "C07C-503-1174.context.txt",
+      "kind": "native-design-reference",
       "bytes": 23712,
       "sha256": "f1bc44aef2aa7dd7b4b04a5a937563d2f5c8c23e306ad07e459e6d06866c9f35"
     },
     {
       "path": "C07C-503-1174.png",
+      "kind": "native-design-reference",
       "bytes": 98256,
       "sha256": "27389dfa84c66856d3f7ee78450374f383820988316f3258fcf4fd67f3136e52",
       "width": 1440,
@@ -276,11 +327,13 @@
     },
     {
       "path": "C08-498-399.context.txt",
+      "kind": "native-design-reference",
       "bytes": 23227,
       "sha256": "38fa4c0e7e060819ecd93c3b384b147083c45fb78192f83d98fcc77eff2e53d3"
     },
     {
       "path": "C08-498-399.png",
+      "kind": "native-design-reference",
       "bytes": 115217,
       "sha256": "cacb17b2baf84991ea53551f4265262f73ce2f8e23a05ecef13308bda476d62c",
       "width": 1440,
@@ -288,11 +341,13 @@
     },
     {
       "path": "C08C-499-927.context.txt",
+      "kind": "native-design-reference",
       "bytes": 18465,
       "sha256": "4cac61e175a88365c112be7b031ff1ab6f2dba8271ac299ecbfe976be15045f9"
     },
     {
       "path": "C08C-499-927.png",
+      "kind": "native-design-reference",
       "bytes": 84387,
       "sha256": "39db04c810970c645a1892277804e6a4efe07391606596b7d6188d9571da477a",
       "width": 1440,
@@ -300,11 +355,13 @@
     },
     {
       "path": "C08R-504-621.context.txt",
+      "kind": "native-design-reference",
       "bytes": 15788,
       "sha256": "b7ae807bdba69d7b8bb0720385f63e5828fc5f469db7bcc77e8aaaadb65ec915"
     },
     {
       "path": "C08R-504-621.png",
+      "kind": "native-design-reference",
       "bytes": 78836,
       "sha256": "0df83226bd3bfad8be4099a8843bcf8ec8acb15cc854960ca9705d7c2441c0a4",
       "width": 1440,
@@ -312,11 +369,13 @@
     },
     {
       "path": "D01-503-1271.context.txt",
+      "kind": "native-design-reference",
       "bytes": 26640,
       "sha256": "150ddc9d0fb50609c56c29197411c983f6a5b936e31fb8b69685435f3bfd0233"
     },
     {
       "path": "D01-503-1271.png",
+      "kind": "native-design-reference",
       "bytes": 176619,
       "sha256": "ad27458f5160bdb3ea99b862f791caddcee00356d2d82f5aadc3c90bb238338b",
       "width": 1800,
@@ -324,16 +383,19 @@
     },
     {
       "path": "NATIVE_CAPTURE_SUMMARY.json",
+      "kind": "native-design-reference",
       "bytes": 9104,
       "sha256": "4125617b2e1adf2c3cea396a8f83426e05cb0c9d0e042d94a4c6424a8c2f04ba"
     },
     {
       "path": "S01-504-736.context.txt",
+      "kind": "native-design-reference",
       "bytes": 20742,
       "sha256": "128f23882e8452f91e14e0a68ed0611554796d5a2c7c46b8ea824063c750d771"
     },
     {
       "path": "S01-504-736.png",
+      "kind": "native-design-reference",
       "bytes": 235383,
       "sha256": "289d77d83c1c6fba0dae6ec058dd3ff5189ba5d543ef8d278f72a8949121e5e4",
       "width": 1800,
@@ -341,21 +403,63 @@
     },
     {
       "path": "W0.orchestrator-capabilities.json",
+      "kind": "runtime-receipt",
       "bytes": 8148,
       "sha256": "3348c97c7d7744c6fc7ab5665ccb6c8ca2af312a78dad195a4ded4701a7ead44"
     },
     {
       "path": "W0.thread-configuration.json",
+      "kind": "runtime-receipt",
       "bytes": 470,
       "sha256": "9e4ddbdfff2b850a5e2b3fef9530af00288a66d7c8f7c4ad81c4b37b5cd2f900"
     },
     {
+      "path": "W0_VERIFICATION.json",
+      "kind": "runtime-receipt",
+      "bytes": 4038,
+      "sha256": "b2f2db914fc6c1b3ade648f80aee6bfe7d5e45b9d9c8f38489ff7d9fca693fa4"
+    },
+    {
+      "path": "assets/C02-imgProductPhoto.png",
+      "kind": "native-product-asset",
+      "bytes": 114872,
+      "sha256": "118d93c1ad24efd48090a9e91d246eb87567471db99024b9eb9b89a8ae535df1",
+      "width": 800,
+      "height": 800
+    },
+    {
+      "path": "assets/C03-imgProductPhoto.png",
+      "kind": "native-product-asset",
+      "bytes": 128570,
+      "sha256": "af135b13a07dd0ab5e24e0c297ffd2243a85a65fb6d2bcaa7604fe707aef719d",
+      "width": 700,
+      "height": 700
+    },
+    {
+      "path": "assets/C03-imgProductPhoto1.png",
+      "kind": "native-product-asset",
+      "bytes": 114872,
+      "sha256": "118d93c1ad24efd48090a9e91d246eb87567471db99024b9eb9b89a8ae535df1",
+      "width": 800,
+      "height": 800
+    },
+    {
+      "path": "assets/imgProductPhoto.png",
+      "kind": "native-product-asset",
+      "bytes": 114872,
+      "sha256": "118d93c1ad24efd48090a9e91d246eb87567471db99024b9eb9b89a8ae535df1",
+      "width": 800,
+      "height": 800
+    },
+    {
       "path": "badgeActive-498-47.context.txt",
+      "kind": "native-design-reference",
       "bytes": 2334,
       "sha256": "6486288b108564a398d5d6e8950a3278a94040ec5e3f0f5c7f9c4a2d2ca6e7ca"
     },
     {
       "path": "badgeActive-498-47.png",
+      "kind": "native-design-reference",
       "bytes": 1156,
       "sha256": "6a6f3ce52cda3e9b2d62565bd7e532413ea033891f0648ba76434e1eb0a2662a",
       "width": 180,
@@ -363,11 +467,13 @@
     },
     {
       "path": "badgeNeutral-498-43.context.txt",
+      "kind": "native-design-reference",
       "bytes": 2334,
       "sha256": "277641a29ea17eb58713663b0b2d66ebb467861a50f06f0dee136b597d12d8f9"
     },
     {
       "path": "badgeNeutral-498-43.png",
+      "kind": "native-design-reference",
       "bytes": 1121,
       "sha256": "9d46c933c66cd97dc12af4373ebac80a4ae2c5fa2bc395b131281a13de4168d1",
       "width": 180,
@@ -375,11 +481,13 @@
     },
     {
       "path": "badgePending-498-45.context.txt",
+      "kind": "native-design-reference",
       "bytes": 2340,
       "sha256": "27de047808f7b86cdc40bd032983ebc5dd5ba7595d9a98c4fad9b12f5aa59ceb"
     },
     {
       "path": "badgePending-498-45.png",
+      "kind": "native-design-reference",
       "bytes": 1264,
       "sha256": "eb892a512d12ec4f8bf00b0bbc02835f998447099a98e91510cd5d26b4ca4890",
       "width": 180,
@@ -387,11 +495,13 @@
     },
     {
       "path": "buttonGhost-498-37.context.txt",
+      "kind": "native-design-reference",
       "bytes": 2301,
       "sha256": "2aac30031b347b69516cfcd72783633f36999138f3a391101f06344fe04d83ed"
     },
     {
       "path": "buttonGhost-498-37.png",
+      "kind": "native-design-reference",
       "bytes": 1273,
       "sha256": "c8522fb1ccf498f6aaa19b84bef84f6f6296c3d2e3aaa5a8271c38514a0d7712",
       "width": 204,
@@ -399,11 +509,13 @@
     },
     {
       "path": "buttonPrimary-498-33.context.txt",
+      "kind": "native-design-reference",
       "bytes": 2341,
       "sha256": "498c4f55250b34cc51e7edc567a3a61f174df31a87735118d53265e22c173d60"
     },
     {
       "path": "buttonPrimary-498-33.png",
+      "kind": "native-design-reference",
       "bytes": 1500,
       "sha256": "f1748e4baba8073077547a7302ccc0e1755efe618f21020f087cef2cc2a4477f",
       "width": 204,
@@ -411,11 +523,13 @@
     },
     {
       "path": "buttonSecondary-498-35.context.txt",
+      "kind": "native-design-reference",
       "bytes": 2410,
       "sha256": "ae29135956c6ad3f84a1aa2a45df58083b36e8710490255bf9f5b56678cf6b94"
     },
     {
       "path": "buttonSecondary-498-35.png",
+      "kind": "native-design-reference",
       "bytes": 1641,
       "sha256": "93a6f1d747ecb4d259cf343bb0b8979991b0e6c42c4d60db4a9f6063a429883b",
       "width": 204,
@@ -423,11 +537,13 @@
     },
     {
       "path": "input-499-143.context.txt",
+      "kind": "native-design-reference",
       "bytes": 2320,
       "sha256": "302bab22c9db36523d19b7db066eba0189848b58fc14585c5023d1810763377b"
     },
     {
       "path": "input-499-143.png",
+      "kind": "native-design-reference",
       "bytes": 727,
       "sha256": "0cf4c97a888863578ebe92996749b213857683628c034cbdc500b028254589af",
       "width": 480,
@@ -435,16 +551,77 @@
     },
     {
       "path": "page-498-32.metadata.xml",
+      "kind": "native-design-reference",
       "bytes": 59,
       "sha256": "8592fde028a46a4f8bf94a83a86f63f15e418e41cff761bcc8943ced562f25a1"
     },
     {
+      "path": "rendered/desktop-1440.png",
+      "kind": "implementation-synthetic-render",
+      "bytes": 101171,
+      "sha256": "fc0d19a4c1f0fc5cbcac00afe694891cdc8df91db1d12134670cb728188f42b7",
+      "width": 1440,
+      "height": 960
+    },
+    {
+      "path": "rendered/desktop-geometry.json",
+      "kind": "implementation-synthetic-render",
+      "bytes": 1244,
+      "sha256": "c17ced6fba444daa0fd28dcb0b502bb29e22bff7e54785e9c2b747f22565d512"
+    },
+    {
+      "path": "rendered/foundation-1280.png",
+      "kind": "implementation-synthetic-render",
+      "bytes": 131513,
+      "sha256": "11490e9e05bf110587723f8c8426566836dec8df7ae0cb66f01160fddada0983",
+      "width": 1280,
+      "height": 1456
+    },
+    {
+      "path": "rendered/foundation-320.png",
+      "kind": "implementation-synthetic-render",
+      "bytes": 111590,
+      "sha256": "d87fec833efa40a7c33bd9058b58abc4838f09769424ba7665efe14d6ecb5f3a",
+      "width": 320,
+      "height": 2609
+    },
+    {
+      "path": "rendered/foundation-390.png",
+      "kind": "implementation-synthetic-render",
+      "bytes": 113007,
+      "sha256": "6c35b6356d5be587d78bff102d56e591e7f5c1597697ddd5bd10c5ee1f4d8a08",
+      "width": 390,
+      "height": 2543
+    },
+    {
+      "path": "rendered/pixel-comparison.json",
+      "kind": "implementation-synthetic-render",
+      "bytes": 752,
+      "sha256": "6c8d94da65bcaf0234df3721cf8be6f8e68b89be7898fd9e74f96411d1df90e3"
+    },
+    {
+      "path": "rendered/responsive-geometry.json",
+      "kind": "implementation-synthetic-render",
+      "bytes": 229,
+      "sha256": "402ca2ed1c064b9b44b858027f5beac5e320e1e2f7947882da2a02cf6df9969c"
+    },
+    {
+      "path": "rendered/sheet-1440.png",
+      "kind": "implementation-synthetic-render",
+      "bytes": 90348,
+      "sha256": "5f258a9048f7090feb3561149663664a867a8f3be68aa7ec87ca78931717f330",
+      "width": 1440,
+      "height": 960
+    },
+    {
       "path": "select-499-147.context.txt",
+      "kind": "native-design-reference",
       "bytes": 2923,
       "sha256": "823efe50d4aec01e338af651b0d8cd1aff39e6f9c6643be2a9a466f340d4b818"
     },
     {
       "path": "select-499-147.png",
+      "kind": "native-design-reference",
       "bytes": 932,
       "sha256": "16d13bc083fa6cbc713c9169392eed96abe690c79c3a7a6c79653ce8fc53a8ab",
       "width": 480,
@@ -452,11 +629,13 @@
     },
     {
       "path": "shell-sidebar-498-86.context.txt",
+      "kind": "native-design-reference",
       "bytes": 5652,
       "sha256": "0d9b487bef0c5849b6c0988fa187e691034998c41189391c4c4a92f8abe10431"
     },
     {
       "path": "shell-sidebar-498-86.png",
+      "kind": "native-design-reference",
       "bytes": 11495,
       "sha256": "45242cd71fa698c2b01569d008a216dad80535a4e14b567c69ba141ab02ba6e3",
       "width": 224,
@@ -464,11 +643,13 @@
     },
     {
       "path": "shell-topbar-498-122.context.txt",
+      "kind": "native-design-reference",
       "bytes": 3186,
       "sha256": "ad27515689bab67941bc4ab76441e1db712fdbd82f9ade2eaf3b5e2c2b53b060"
     },
     {
       "path": "shell-topbar-498-122.png",
+      "kind": "native-design-reference",
       "bytes": 2765,
       "sha256": "977211abc9f6a89269b2d751f1f0ba55fa812fb053cd7570da42d12547c38cdb",
       "width": 1216,
@@ -476,11 +657,13 @@
     },
     {
       "path": "tabActive-498-41.context.txt",
+      "kind": "native-design-reference",
       "bytes": 2321,
       "sha256": "d14274d7a488a2bfc4f6a49a8296c670df37951d92e8b6f5a0a5dcfbe48f6658"
     },
     {
       "path": "tabActive-498-41.png",
+      "kind": "native-design-reference",
       "bytes": 1456,
       "sha256": "40a64d1b848492f7d211520931b3be2ccb5efcb1bdadbf5cd977758e123f0611",
       "width": 160,
@@ -488,11 +671,13 @@
     },
     {
       "path": "tabInactive-498-39.context.txt",
+      "kind": "native-design-reference",
       "bytes": 2326,
       "sha256": "5930ab77973787784d45a26d701cc0d9af7f23ebc2a251e741bb0f927eaa5089"
     },
     {
       "path": "tabInactive-498-39.png",
+      "kind": "native-design-reference",
       "bytes": 1554,
       "sha256": "08ea2cb3f1d87630cea97689fb8e8afddb8d1a0735611488e47584aa0e587f30",
       "width": 160,
@@ -500,22 +685,17 @@
     },
     {
       "path": "textarea-499-145.context.txt",
+      "kind": "native-design-reference",
       "bytes": 2335,
       "sha256": "6690fe4fd878ddc0df65bf136973b7d0b3d4186fd3cc25080a6a66bcfa9b7f4d"
     },
     {
       "path": "textarea-499-145.png",
+      "kind": "native-design-reference",
       "bytes": 990,
       "sha256": "39bdfbf343d504bf4ded80341887957472d3956190871b89ed04bf49253ada55",
       "width": 480,
       "height": 112
-    },
-    {
-      "path": "assets/imgProductPhoto.png",
-      "bytes": 114872,
-      "sha256": "118d93c1ad24efd48090a9e91d246eb87567471db99024b9eb9b89a8ae535df1",
-      "width": 800,
-      "height": 800
     }
   ],
   "remainingScreens": [],
