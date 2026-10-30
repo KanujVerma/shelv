@@ -39,7 +39,7 @@ The [machine-readable task ledger](TASKS.json) records exact task/thread/run IDs
 | --- | --- | --- | --- |
 | W1 backend reconnaissance | `t3-0e852b97` / `t3/w1-backend-recon` | Source/SQL/gateway reconciliation; only `research/W1_BACKEND.md`. | running at dispatch; result pending |
 | W0 foundation | `t3-128ab5a5` / `t3/portal-shared-foundation` | Shared UI/shell/navigation/typed transport, frontend package/config, design acquisition; no page/backend/gateway work. | running at dispatch; result pending |
-| W7 documentation review | `t3-3717c152` / `t3/w7-portal-docs-review` | Independent review of `8ac0826..9be041d`; only `research/W7_DOCS_REVIEW.md`. | running at dispatch; result pending |
+| W7 documentation review | `t3-3717c152` / `t3/w7-portal-docs-review` | Independent review of `8ac0826..9be041d`; only `research/W7_DOCS_REVIEW.md`. Report `4e64ba5` integrated as `6ac360f`. | completed; spec/quality PASS; no blocking/important findings |
 
 `delegate_task` uses `isolation=worktree` and starts from the parent committed head; uncommitted edits are not inherited. Exact settings are `providerInstanceId=codex`, `model=gpt-6.1-sol`, `options={reasoningEffort:xhigh,serviceTier:default}`. Review rounds each get a distinct stable client request ID and a new task ID; never continue a delegated review via ordinary thread send. Revalidate actual task handles before treating a worker as currently live.
 

@@ -12,7 +12,7 @@ Owner: Kanuj. Updated 30 October 2026. Full scope remains [GOAL.md](GOAL.md), th
 
 ## next unchecked work
 
-1. Integrate W7's completed initial checkpoint review: specification PASS, quality PASS, no blocking/important findings; minor stale C01 acquisition status corrected. Review report commit `4e64ba5` belongs to worker branch `t3/w7-portal-docs-review`.
+1. Initial checkpoint independent review is integrated at `6ac360f` from W7's report `4e64ba5`: specification PASS, quality PASS, no blocking/important findings. Minor stale C01 acquisition status is corrected. Continue backend/foundation integration rather than repeating that review.
 2. Reconcile running W1 backend and W0 foundation results before schema/adapter freeze. Coordinator owns preparing one isolated real Auth/PostgREST test environment and existing-suite baseline; no page workers guessing interfaces.
 3. Implement contracts and shared foundation, then real isolated vertical slice: unassigned draft, content, assignment, human review/approval, synthetic verified service payment, deliberate publish, client access/notification, decision review and return to routine.
 4. Parallelize remaining advisor/client/history/orders/account modules only after the shared boundary is stable. Complete all secondary states and five-stage Maya with same renderer.
@@ -20,6 +20,10 @@ Owner: Kanuj. Updated 30 October 2026. Full scope remains [GOAL.md](GOAL.md), th
 
 ## status and limits
 
-Requirements: agreed. Initial contract design: in progress. Implementation/local verification/real isolated end-to-end verification/hosted verification/deployment: not achieved. No application suite run yet on this branch. Human comprehension review, production authorization, email-domain/test-service prerequisites and external Wisconsin service-scope verification remain separate release gates. Finish safe independent implementation if an external prerequisite is unavailable; never manufacture acceptance.
+Requirements and phase-zero documentation: agreed, committed and independently reviewed. Contract/foundation work: in progress in W1/W0 worktrees; no implementation integrated yet. Rebuild local/E2E/hosted verification and deployment: not achieved.
+
+The [existing-application baseline evidence](evidence/BASELINE-20261030.json) passed on application source `9be041d`: portal344, session148, backend40 tests with zero skips/failures; root1,176 pass with18 explicit opt-in skips; root app/test and session types, UI guard, portal build and Expo web export. Native SQL suites12/15/12 passed. Real local Auth/PostgREST/browser journey passed15 cases with53 canonical migrations attested and zero real emails/hosted changes; the exact owned fixture is stopped with volumes retained. These baseline results do not prove any rebuild behavior. Heavy fixture resources remain coordinator-owned.
+
+Human comprehension review, production authorization, email-domain/test-service prerequisites and external Wisconsin service-scope verification remain separate release gates. Finish safe independent implementation if an external prerequisite is unavailable; never manufacture acceptance.
 
 Resume from live Git/status and this file, then inspect the active worker ledger before starting work. Do not duplicate active tasks. At coherent transitions update this file, execution log and acceptance evidence in the same slice.

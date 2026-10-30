@@ -94,7 +94,8 @@
       "specVerdict": "PASS",
       "qualityVerdict": "PASS",
       "blockingOrImportantFindings": 0,
-      "minorFindings": "Stale C01 persisted-baseline status corrected by coordinator."
+      "minorFindings": "Stale C01 persisted-baseline status corrected by coordinator.",
+      "integratedCommit": "6ac360f"
     }
   ]
 }
