@@ -5,7 +5,7 @@ import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {readPreparedPortalAdmissionFixture} from '../scripts/local-admission.mjs';
 import {validateRuntimeLineage} from '../scripts/local-admission-lineage.mjs';
-const fixture=await readPreparedPortalAdmissionFixture(),manifest=fixture.manifest;
+const fixture=await readPreparedPortalAdmissionFixture(undefined,process.env.SHELV_ADMISSION_FIXTURE_DIR),manifest=fixture.manifest;
 const dockerHost=process.env.DOCKER_HOST??'unix:///var/run/docker.sock';assert.ok(dockerHost.startsWith('unix:///'));
 const env={...process.env,DOCKER_HOST:dockerHost};delete env.DOCKER_CONTEXT;
 const container='supabase_db_'+fixture.projectId;

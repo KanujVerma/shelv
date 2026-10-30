@@ -1,4 +1,4 @@
-import {readFile,writeFile,mkdir,readdir,chmod,open,unlink} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,readdir,chmod,open,unlink,lstat} from 'node:fs/promises';
 import {existsSync,writeFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {createHash,randomUUID} from 'node:crypto';
@@ -10,8 +10,21 @@ const repoRoot=fileURLToPath(new URL('../../../',import.meta.url));
 const sourceConfig=new URL('../test-fixtures/admission/supabase/config.toml',import.meta.url);
 const projectPrefix='shelv-portal-admission',marker='shelv-portal-admission-fixture-v2';
 const sha=value=>createHash('sha256').update(value).digest('hex');
-export async function preparePortalAdmissionFixture(root=repoRoot){
- const directory=path.join(root,'.local-artifacts/portal-admission-fixture'),source=path.join(root,'supabase/migrations');
+async function fixtureDirectoryFor(root,selected){
+ assert.ok(selected===undefined||(typeof selected==='string'&&selected.trim().length>0),'A fixture directory is required');
+ const artifacts=path.resolve(root,'.local-artifacts'),directory=path.resolve(root,selected??'.local-artifacts/portal-admission-fixture');
+ assert.ok(directory.startsWith(artifacts+path.sep),'The fixture directory must be inside this checkout\'s .local-artifacts/');
+ const segments=path.relative(artifacts,directory).split(path.sep);let current=artifacts;
+ for(const segment of ['',...segments]){
+  if(segment)current=path.join(current,segment);
+  let entry;try{entry=await lstat(current);}catch(error){if(error.code==='ENOENT')break;throw error;}
+  assert.ok(!entry.isSymbolicLink(),'The fixture directory cannot contain a symlink');
+  assert.ok(entry.isDirectory(),'The fixture directory must contain only directory components');
+ }
+ return directory;
+}
+export async function preparePortalAdmissionFixture(root=repoRoot,selectedDirectory){
+ const directory=await fixtureDirectoryFor(root,selectedDirectory),source=path.join(root,'supabase/migrations');
  const manifestPath=path.join(directory,'PREPARED.json');
  if(existsSync(directory))assert.ok(existsSync(manifestPath),'Refusing an unmarked fixture directory');
  const previous=existsSync(manifestPath)?JSON.parse(await readFile(manifestPath,'utf8')):null;
@@ -35,8 +48,8 @@ export async function preparePortalAdmissionFixture(root=repoRoot){
  }
  return{directory,projectId,migrationCount:files.length,configSha256:manifest.configSha256,manifest};
 }
-export async function readPreparedPortalAdmissionFixture(root=repoRoot){
- const directory=path.join(root,'.local-artifacts/portal-admission-fixture'),manifest=JSON.parse(await readFile(path.join(directory,'PREPARED.json'),'utf8'));
+export async function readPreparedPortalAdmissionFixture(root=repoRoot,selectedDirectory){
+ const directory=await fixtureDirectoryFor(root,selectedDirectory),manifest=JSON.parse(await readFile(path.join(directory,'PREPARED.json'),'utf8'));
  assert.equal(manifest.marker,marker,'Refusing an unmarked fixture');assert.match(manifest.ownerId,/^[0-9a-f-]{36}$/);assert.equal(manifest.projectId,projectPrefix+'-'+manifest.ownerId.replaceAll('-','').slice(0,12),'Fixture project mismatch');
  assert.equal(sha(await readFile(path.join(directory,'supabase/config.toml'))),manifest.configSha256,'Prepared portal config drift');
  return{directory,projectId:manifest.projectId,migrationCount:Object.keys(manifest.migrations).length,configSha256:manifest.configSha256,manifest};
@@ -46,9 +59,10 @@ export async function withFixtureLock(directory,operation){
  try{handle=await open(file,'wx',0o600);await handle.writeFile(token);await handle.close();}catch{await handle?.close().catch(()=>{});throw Error('Fixture lifecycle is already locked; inspect the owning process before recovery');}
  try{return await operation();}finally{assert.equal(await readFile(file,'utf8'),token,'Fixture lock ownership changed');await unlink(file);}
 }
-async function run(mode,browser){
+async function run(mode,browser,selectedDirectory){
  assert.ok(['prepare','start','test','stop','run'].includes(mode),'Use prepare, start, test, stop or run');
- const fixture=mode==='stop'?await readPreparedPortalAdmissionFixture():await preparePortalAdmissionFixture(),directory=fixture.directory,projectId=fixture.projectId,manifest=fixture.manifest;
+ const prepare=()=>preparePortalAdmissionFixture(repoRoot,selectedDirectory);
+ const fixture=mode==='stop'?await readPreparedPortalAdmissionFixture(repoRoot,selectedDirectory):await prepare(),directory=fixture.directory,projectId=fixture.projectId,manifest=fixture.manifest;
  if(mode==='prepare'){console.log(JSON.stringify({directory,projectId,preparedMigrationCount:fixture.migrationCount,stage:'prepared_source_only',hostedChanges:false}));return;}
  await withFixtureLock(directory,async()=>{
  const dockerHost=process.env.DOCKER_HOST??'unix:///var/run/docker.sock';assert.ok(dockerHost.startsWith('unix:///'),'Only a local Docker socket is allowed');
@@ -89,20 +103,31 @@ async function run(mode,browser){
    assert.deepEqual(attestation,binding,'Database fixture binding differs from its local ownership receipt');
   }
   const runtime=validateRuntimeLineage(manifest,ledger,attestation);
-  await preparePortalAdmissionFixture(); // Canonical source must still match the frozen prepared bytes.
+  await prepare(); // Canonical source must still match this selected fixture's frozen prepared bytes.
   await writeFile(path.join(directory,'RUNTIME-VERIFIED.json'),JSON.stringify({...runtime,ownerId:manifest.ownerId,projectId,fresh:resourceState.fresh,at:new Date().toISOString()},null,2)+'\n');
   const raw=command('supabase',['status','--workdir',directory,'--output','json']);const status=JSON.parse(raw);assert.equal(status.API_URL,'http://127.0.0.1:57421');
   const credentials=path.join(directory,'status.private.json');await writeFile(credentials,JSON.stringify(status),{mode:0o600});await chmod(credentials,0o600);
-  Object.assign(env,{SHELV_ADMISSION_LOCAL_CONFIG:credentials,SHELV_ADMISSION_DB_CONTAINER:container,SHELV_ADMISSION_CALLBACK_URL:'http://127.0.0.1:57430/',SHELV_ADMISSION_REPORT:path.join(directory,'NATIVE-RESULT.json'),SHELV_ADMISSION_NATIVE_BROWSER:browser?'1':'0',SHELV_ADMISSION_UI_ARTIFACTS:path.join(directory,'screenshots'),SHELV_ADMISSION_BOOTSTRAP_DISPOSABLE:'1'});
+  Object.assign(env,{SHELV_ADMISSION_FIXTURE_DIR:directory,SHELV_ADMISSION_LOCAL_CONFIG:credentials,SHELV_ADMISSION_DB_CONTAINER:container,SHELV_ADMISSION_CALLBACK_URL:'http://127.0.0.1:57430/',SHELV_ADMISSION_REPORT:path.join(directory,'NATIVE-RESULT.json'),SHELV_ADMISSION_NATIVE_BROWSER:browser?'1':'0',SHELV_ADMISSION_UI_ARTIFACTS:path.join(directory,'screenshots'),SHELV_ADMISSION_BOOTSTRAP_DISPOSABLE:'1'});
   await command(process.execPath,['apps/portal/tests/admission-lineage-native.mjs'],'lineage-regression.log');
   await command(process.execPath,['tests/concierge-admission-bootstrap.mjs'],'bootstrap.log');
   if(mode!=='start')await command(process.execPath,['--experimental-strip-types','tests/concierge-admission-native.mjs'],'native.log');
-  await preparePortalAdmissionFixture(); // Do not report a newer source snapshot against this runtime.
+  await prepare(); // Do not report a newer source snapshot against this runtime.
   const result=mode==='start'?{status:'STARTED'}:JSON.parse(await readFile(path.join(directory,'NATIVE-RESULT.json'),'utf8'));
   console.log(JSON.stringify({mode,projectId,migrationCount:runtime.migrationCount,snapshotSha256:runtime.snapshotSha256,ledgerSha256:runtime.ledgerSha256,fresh:resourceState.fresh,status:result.status,cases:result.checks?.length??0,browser,hostedChanges:false,realEmails:0}));
  }finally{if(mode==='run'&&attemptedStart)await stop();}
  });
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){
- const mode=process.argv[2]??'run',browser=process.argv.includes('--browser');try{await run(mode,browser);}catch(error){console.error(error instanceof Error?error.message:'Local admission fixture failed');process.exitCode=1;}
+ try{
+  const [mode='run',...args]=process.argv.slice(2);let browser=false,selectedDirectory;
+  for(let i=0;i<args.length;i++){
+   if(args[i]==='--browser'){assert.ok(!browser,'Duplicate --browser option');browser=true;}
+   else if(args[i]==='--fixture-dir'){
+    assert.ok(selectedDirectory===undefined,'Duplicate --fixture-dir option');
+    assert.ok(typeof args[i+1]==='string'&&args[i+1].trim().length>0&&!args[i+1].startsWith('--'),'--fixture-dir requires a directory');
+    selectedDirectory=args[++i];
+   }else throw Error('Unknown fixture option: '+args[i]);
+  }
+  await run(mode,browser,selectedDirectory);
+ }catch(error){console.error(error instanceof Error?error.message:'Local admission fixture failed');process.exitCode=1;}
 }

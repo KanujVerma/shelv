@@ -23,6 +23,15 @@ node apps/portal/scripts/local-admission.mjs test --browser
 node apps/portal/scripts/local-admission.mjs stop
 ```
 
+For a changed schema, select a distinct prepared directory while keeping the baseline in place. The explicit `--fixture-dir` must be inside this checkout's `.local-artifacts/`; symlink components and paths outside that boundary are refused. Every lifecycle command must select the same directory. Its independent owner/project/volume and runtime attestation remain binding; selecting a path does not authorize adoption or reset of existing resources.
+
+```sh
+node apps/portal/scripts/local-admission.mjs prepare --fixture-dir .local-artifacts/portal-rebuild/plan-v1-fixture
+node apps/portal/scripts/local-admission.mjs run --fixture-dir .local-artifacts/portal-rebuild/plan-v1-fixture --browser
+```
+
+The default path and existing command behavior remain compatible. Prepared instances still use the fixture's fixed loopback ports, so run only one at a time. Stop the positively owned prior instance before starting another; no command removes volumes or changes another project. `stop --fixture-dir <path>` reads that selected ownership receipt even after canonical source has changed. A missing/duplicate path option fails before lifecycle work.
+
 Preparation records migration/config hashes and refuses an unmarked directory or changed snapshot rather than resetting prior data. Before starting or stopping, the runner checks the owner receipt, exact volume identity/creation time and container checkout labels. A lifecycle lock prevents overlapping commands from stopping another run. An unknown retained volume or foreign checkout fails before startup or cleanup.
 
 On a positively verified fresh volume, the runner verifies the actual migration ledger's versions/names and writes a private database-side fixture attestation containing its owner, prepared snapshot hash and applied-statement ledger hash. Reuse must match that database attestation and its local ownership receipt. Missing versions, same-version changed source content, changed applied statements and an unbound retained database are refused before admission bootstrap or acceptance writes. The success count comes from this verified runtime ledger, not the number of copied files. This is migration-lineage verification; it does not claim detection of arbitrary manual schema changes that do not alter that ledger.

@@ -43,6 +43,10 @@ The [machine-readable task ledger](TASKS.json) records exact task/thread/run IDs
 
 `delegate_task` uses `isolation=worktree` and starts from the parent committed head; uncommitted edits are not inherited. Exact settings are `providerInstanceId=codex`, `model=gpt-6.1-sol`, `options={reasoningEffort:xhigh,serviceTier:default}`. Review rounds each get a distinct stable client request ID and a new task ID; never continue a delegated review via ordinary thread send. Revalidate actual task handles before treating a worker as currently live.
 
+W0 completed at `eceecf186415fa9c7e6008605263d3e56e23cb16`, with 26 native baselines and shared foundation; its report records 362 passing portal tests, 18 new foundation cases and explicit limits. Source/evidence must be inspected and independently reviewed before acceptance. The attempted later steer found no running turn; `task_status` confirmed completed, so no duplicate task was started.
+
+W1 implementation is a new isolated task in `t3-e29f4f78`, branch `t3/portal-plan-backend-slice`, base `a7f4f36591a7965bcaa1ca3899c82f9b84fabe0c`. Exact task/thread/run/model/options are in TASKS.json. Typed seam `3c226a8` integrated as `7abaabc`; SQL/Edge work remains active. W1 alone owns migration allocation, currently `20261030223603_portal_rebuild_plan_v1.sql`. Coordinator owns `scripts/local-admission.mjs`, its focused fixture-path tests/lineage subprocess and fixture README for distinct owned snapshots; no overlapping worker edits.
+
 ## handoff obligation
 
 Return the exact starting/final commit, workspace, status, changed paths, decisions/contracts, executed commands/results, limitations, failing/skipped checks and evidence artifacts. Commit only explicitly owned work under the user's implementation authorization. Do not deploy, merge protected main, publish real advice, contact clients, change real permissions, move money or place orders. No private client inputs in source, tools, logs or screenshots. Separate configuration, local synthetic tests, real isolated auth/persistence, hosted verification and deployment claims.
