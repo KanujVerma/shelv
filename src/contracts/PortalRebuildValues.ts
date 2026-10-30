@@ -1,0 +1,2 @@
+export const decisionKinds=['keep','pause','leave_out','replace','finish_then_replace','addition','optional_alternative','no_addition'] as const;
+export const taskActions=['list_plans_v1','read_draft_v1','create_draft_v1','save_draft_v1','checkpoint_draft_v1','assign_draft_v1','compare_import_v1','apply_import_v1','validate_draft_v1','preview_draft_v1','publish_plan_v1','request_status_v1'] as const;
