@@ -61,32 +61,32 @@ Routes are designed targets, not existing working routes. Browser tests must ass
 
 | Screen | Exact node | Target route/state | Required evidence | Status |
 | --- | --- | --- | --- | --- |
-| C01: your plan · morning | `498:85` | `/plan?routine=morning` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C01E: your plan · evening | `503:926` | `/plan?routine=evening` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C02: review a recommendation | `498:212` | `/plan/recommendations/:decisionId` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C02D: directions & evidence | `499:766` | `/plan/products/:productId/evidence` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C03: product details sheet | `499:151` | `/plan/products/:productId` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C03D: CeraVe PM reasoning | `503:1083` | `/plan/products/:productId/evidence` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C04: check-ins & history | `498:304` | `/history` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C05: send an update | `499:305` | `/history/new` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C06: orders · quote preparation | `499:446` | `/orders` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C06D: delivered, not started | `503:808` | `/orders/:orderId` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C07: record actual use | `499:584` | `/plan/products/:productId/use` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C07C: report a CeraVe PM change | `503:1174` | `/plan/products/:productId/use` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C08: account | `498:399` | `/account` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C08C: cancel service | `499:927` | `/account/cancel` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| C08R: read-only access | `504:621` | `/plan (read-only entitlement)` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| A00: clients | `503:449` | `/advisor/clients` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| A01: plans | `500:299` | `/advisor/plans` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| A02: plan editor | `500:383` | `/advisor/plans/:draftId/:section` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| A03: sources & agent changes | `500:500` | `/advisor/plans/:draftId/sources` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| A04: publication blocked | `500:592` | `/advisor/plans/:draftId/review` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| A04P: verify service payment | `503:672` | `/advisor/clients/:clientId (service payment)` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| A05: ready to publish | `500:686` | `/advisor/plans/:draftId/review` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| A06: published / notification failure | `500:779` | `/advisor/plans/:draftId/review (published)` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| A07: review a check-in | `500:846` | `/advisor/reviews/:reportId` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| A08: workspace permissions | `503:558` | `/advisor/permissions` | 1440x960 baseline comparison; task + recovery + keyboard | pending |
-| D01: guided Maya | `503:1271` | `/maya?guided=1` | 1800x960 baseline comparison; task + recovery + keyboard | pending |
+| C01: your plan · morning | `498:85` | `/plan?routine=morning` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C01E: your plan · evening | `503:926` | `/plan?routine=evening` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C02: review a recommendation | `498:212` | `/plan/recommendations/:decisionId` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C02D: directions & evidence | `499:766` | `/plan/products/:productId/evidence` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C03: product details sheet | `499:151` | `/plan/products/:productId` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C03D: CeraVe PM reasoning | `503:1083` | `/plan/products/:productId/evidence` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C04: check-ins & history | `498:304` | `/history` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C05: send an update | `499:305` | `/history/new` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C06: orders · quote preparation | `499:446` | `/orders` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C06D: delivered, not started | `503:808` | `/orders/:orderId` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C07: record actual use | `499:584` | `/plan/products/:productId/use` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C07C: report a CeraVe PM change | `503:1174` | `/plan/products/:productId/use` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C08: account | `498:399` | `/account` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C08C: cancel service | `499:927` | `/account/cancel` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| C08R: read-only access | `504:621` | `/plan (read-only entitlement)` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| A00: clients | `503:449` | `/advisor/clients` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| A01: plans | `500:299` | `/advisor/plans` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| A02: plan editor | `500:383` | `/advisor/plans/:draftId/:section` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| A03: sources & agent changes | `500:500` | `/advisor/plans/:draftId/sources` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| A04: publication blocked | `500:592` | `/advisor/plans/:draftId/review` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| A04P: verify service payment | `503:672` | `/advisor/clients/:clientId (service payment)` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| A05: ready to publish | `500:686` | `/advisor/plans/:draftId/review` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| A06: published / notification failure | `500:779` | `/advisor/plans/:draftId/review (published)` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| A07: review a check-in | `500:846` | `/advisor/reviews/:reportId` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| A08: workspace permissions | `503:558` | `/advisor/permissions` | 1440x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
+| D01: guided Maya | `503:1271` | `/maya?guided=1` | 1800x960 baseline comparison; task + recovery + keyboard | native baseline acquired; final page/comparison pending |
 
 ## mandatory secondary variants
 

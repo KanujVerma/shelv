@@ -30,6 +30,8 @@ The W1 implementation must export its exact concrete types, empty-draft factory,
 
 Use a closed `PlanCommand` discriminated union through fixed SQL RPC `concierge_plan_command_v1(p_command jsonb)` and `supabase/functions/concierge-plans/`. Every command has API `schemaVersion:1`. Writes have a UUID `requestId`; actors/session/authority and recording times come from the server.
 
+Rich plan commands have a 500,000-byte JSON transport bound, aligned at direct Edge, gateway and retained cookie-factory layers. Legacy command channels retain 100,000 bytes. Raw recordings/uploads use separate bounded streaming paths, never this JSON allowance. Root `PortalRebuildValues.ts` owns the server limit and safe error namespace; browser protocol metadata carries the corresponding fixed bound. Functional oversized-draft/legacy-limit tests protect the distinction. Every plan response is finite-mapped with `mapPlanResult`; malformed success data cannot be treated as saved.
+
 | Action | Exact request-specific fields beyond schema/action | Result/guard |
 | --- | --- | --- |
 | `list_plans_v1` | `clientId: UUID|null`, `cursor: string|null`, `limit: number` | Scoped bounded directory. Unassigned work never implies client creation. |

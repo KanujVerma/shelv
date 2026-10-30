@@ -2,7 +2,7 @@
   "updatedOn": "2026-10-30",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
-  "allocatedWorkers": 1,
+  "allocatedWorkers": 0,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -70,7 +70,14 @@
       "status": "completed",
       "headCommit": "eceecf186415fa9c7e6008605263d3e56e23cb16",
       "reportPath": "docs/portal-rebuild/research/W0_FOUNDATION.md",
-      "independentReview": "pending"
+      "independentReview": "Changes required R1-R4; separate W0 fix active",
+      "integratedCommits": [
+        "5a5b26f",
+        "df28117",
+        "723b007",
+        "a1cdb3a",
+        "4dce8d8"
+      ]
     },
     {
       "role": "W7 documentation review",
@@ -139,12 +146,150 @@
       ],
       "statusAtDispatch": "running",
       "verification": "Exact T3 runtime response; git worktree readback confirms base/branch/workspace.",
-      "status": "running at latest checkpoint",
+      "status": "completed",
       "seamCommit": "3c226a8b098d7ae0001d885c2e00d8b1db275a9f",
       "integratedSeamCommit": "7abaabc",
       "allocatedMigrations": [
         "20261030223603_portal_rebuild_plan_v1.sql"
-      ]
+      ],
+      "followupCommit": "26a4e88df101ee2a8aacb5511f4bb3911cc0a4c8",
+      "integratedFollowupCommit": "e3fd12c",
+      "headCommit": "d6840ac8eae9be314ab7f1466e5f4373c308391b",
+      "integratedBackendCommit": "8134a11",
+      "integratedReportCommit": "5e25852",
+      "independentReview": "pending"
+    },
+    {
+      "role": "W7 fixture-path review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-fixture-review-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-fixture-review-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-fixture-review-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b37512ad",
+      "branch": "t3/review-fixture-path-slice",
+      "baseCommit": "e0c8d406138b23775aa9e76f5e5abd7be1df37e9",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_FIXTURE_REVIEW.md"
+      ],
+      "statusAtDispatch": "running",
+      "verification": "Exact T3 response and git worktree readback.",
+      "status": "completed",
+      "reportCommit": "5670069d38ed35b7808aa2a2288408682e119b10",
+      "integratedCommit": "763efb7",
+      "verdict": "spec/quality PASS; low Q1 coverage finding; explicit selected-path CI lane added"
+    },
+    {
+      "role": "W7 foundation review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-foundation-review-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-foundation-review-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-foundation-review-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-8fc197ed",
+      "branch": "t3/8fc197ed",
+      "baseCommit": "4dce8d845ad9898ea5e05b35f963a037db94fdd9",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_FOUNDATION_REVIEW.md"
+      ],
+      "statusAtDispatch": "running",
+      "verification": "Exact T3 response and git worktree readback.",
+      "status": "completed",
+      "reportCommit": "bd49bfa2f0c20c3db6ee87afa8bcbe92cbb79446",
+      "integratedCommit": "ec231df",
+      "verdict": "changes required: R1 P1, R2/R3/R4 P2; W0 fix task active"
+    },
+    {
+      "role": "W0 foundation fixes",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-fab317bf",
+      "branch": "t3/fix-rebuild-foundation",
+      "writeSet": [
+        "apps/portal/src/transport/session.ts",
+        "apps/portal/src/navigation/history.ts and minimal react lifecycle",
+        "apps/portal/src/ui/overlay*",
+        "apps/portal/scripts/build-rebuild.mjs and notices helper",
+        "foundation regression tests/licenses",
+        "docs/portal-rebuild/research/W0_FIXES.md",
+        "docs/portal-rebuild/design/W0_FIX_VERIFICATION.json",
+        "narrow W0 metadata scope corrections"
+      ],
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-foundation-fixes-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-foundation-fixes-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-foundation-fixes-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "baseCommit": "ec231df2e10671428ef7d98bbe80b6efedc1aa60",
+      "statusAtDispatch": "running",
+      "verification": "Exact T3 response; git worktree readback.",
+      "status": "completed",
+      "headCommit": "f0f56e8",
+      "integratedCommits": [
+        "0f4d6b7",
+        "e343fdd"
+      ],
+      "independentReview": "required R1-R4 re-review"
+    },
+    {
+      "role": "W3 vertical-slice client",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-bf4b30f8",
+      "branch": "t3/client-plan-vertical-slice",
+      "writeSet": [
+        "apps/portal/src/features/plan/",
+        "apps/portal/tests/rebuild-plan*",
+        "synthetic plan fixtures",
+        "docs/portal-rebuild/research/W3_VERTICAL_CLIENT.md"
+      ],
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-vertical-client-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-vertical-client-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-vertical-client-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "baseCommit": "ec231df2e10671428ef7d98bbe80b6efedc1aa60",
+      "statusAtDispatch": "running",
+      "verification": "Exact T3 response; git worktree readback.",
+      "status": "completed",
+      "headCommit": "b4f43f7084a4cd3330805e2cf9e7bd0f637dac06",
+      "integrationStatus": "pending, including strict frontend/shared-contract typing"
     }
   ]
 }

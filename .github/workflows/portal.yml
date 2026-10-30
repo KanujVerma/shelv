@@ -84,4 +84,4 @@ jobs:
         run: CONCIERGE_NONE_NATIVE_SQL=1 CONCIERGE_TEST_PG_BIN="$PGBIN" node --experimental-strip-types --test tests/concierge-no-current-products-native.test.ts
 
       - name: Verify founder admission with local Auth, SQL and Chrome
-        run: node apps/portal/scripts/local-admission.mjs run --browser
+        run: node apps/portal/scripts/local-admission.mjs run --fixture-dir .local-artifacts/portal-rebuild/ci-admission-fixture --browser

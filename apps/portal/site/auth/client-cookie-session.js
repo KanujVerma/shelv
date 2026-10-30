@@ -1,4 +1,5 @@
 import {navigationReturnTo} from './navigation-return.js';
+import {clientPlanActions} from './plan-actions.js';
 import {CookieAdvisorSession, CookieSessionError, createCookieRequest} from './advisor-cookie-session.js';
 export function useClientCookies(config,url,pendingPreview=false){
  return config?.clientSharedSessions===true && url.searchParams.get('preview')!=='1' && !pendingPreview && url.searchParams.get('workspace')!=='advisor' && !url.searchParams.has('advisorPreview') && !url.hash.startsWith('#/advisor');
@@ -6,7 +7,7 @@ export function useClientCookies(config,url,pendingPreview=false){
 export class CookieClientSession extends CookieAdvisorSession {
  constructor(options={}){
   super({...options,audience:'client'});
-  this.actions={operations:['client_read_v2','client_read','decide','receive','start','service_client_read','request_return'],payments:['client_read','submit_claim','confirm_shipping_address','evidence_url'],checkins:['client_read','submit_report','photo_view']};
+  this.actions={operations:['client_read_v2','client_read','decide','receive','start','service_client_read','request_return'],payments:['client_read','submit_claim','confirm_shipping_address','evidence_url'],checkins:['client_read','submit_report','photo_view'],plans:clientPlanActions};
   this.logoutKey='shelv:client:signout-pending';
   try{this.logoutPending=globalThis.localStorage.getItem(this.logoutKey)==='1';this.logoutPersisted=this.logoutPending;}catch{}
   try{this.channel=new BroadcastChannel('shelv-client-cookie-events');this.channel.addEventListener('message',e=>{if(e.data?.type==='logout'){this.logoutPending=true;this.logoutIntentId=e.data.id;try{this.logoutPersisted=globalThis.localStorage.getItem(this.logoutKey)==='1';}catch{this.logoutPersisted=this._cookiePending();}this._end();}else if(e.data?.type==='logout-complete'&&e.data.id===this.logoutIntentId){this.logoutPending=false;this.logoutPersisted=false;}});}catch{}

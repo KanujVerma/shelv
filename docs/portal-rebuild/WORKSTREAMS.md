@@ -38,14 +38,14 @@ The [machine-readable task ledger](TASKS.json) records exact task/thread/run IDs
 | Worker | Worktree / branch | Task and write-set | Dispatch state |
 | --- | --- | --- | --- |
 | W1 backend reconnaissance | `t3-0e852b97` / `t3/w1-backend-recon` | Source/SQL/gateway reconciliation; only `research/W1_BACKEND.md`. Report `f840c34` integrated as `1426f17`. | completed; 37 focused tests passed; no backend implementation |
-| W0 foundation | `t3-128ab5a5` / `t3/portal-shared-foundation` | Shared UI/shell/navigation/typed transport, frontend package/config, design acquisition; no page/backend/gateway work. | running at dispatch; result pending |
+| W0 foundation | `t3-128ab5a5` / `t3/portal-shared-foundation` | Shared UI/shell/navigation/typed transport, frontend package/config, design acquisition; no page/backend/gateway work. | completed/integrated; R1-R4 fix pass also integrated, re-review pending |
 | W7 documentation review | `t3-3717c152` / `t3/w7-portal-docs-review` | Independent review of `8ac0826..9be041d`; only `research/W7_DOCS_REVIEW.md`. Report `4e64ba5` integrated as `6ac360f`. | completed; spec/quality PASS; no blocking/important findings |
 
 `delegate_task` uses `isolation=worktree` and starts from the parent committed head; uncommitted edits are not inherited. Exact settings are `providerInstanceId=codex`, `model=gpt-6.1-sol`, `options={reasoningEffort:xhigh,serviceTier:default}`. Review rounds each get a distinct stable client request ID and a new task ID; never continue a delegated review via ordinary thread send. Revalidate actual task handles before treating a worker as currently live.
 
 W0 completed at `eceecf186415fa9c7e6008605263d3e56e23cb16`, with 26 native baselines and shared foundation; its report records 362 passing portal tests, 18 new foundation cases and explicit limits. Source/evidence must be inspected and independently reviewed before acceptance. The attempted later steer found no running turn; `task_status` confirmed completed, so no duplicate task was started.
 
-W1 implementation is a new isolated task in `t3-e29f4f78`, branch `t3/portal-plan-backend-slice`, base `a7f4f36591a7965bcaa1ca3899c82f9b84fabe0c`. Exact task/thread/run/model/options are in TASKS.json. Typed seam `3c226a8` integrated as `7abaabc`; SQL/Edge work remains active. W1 alone owns migration allocation, currently `20261030223603_portal_rebuild_plan_v1.sql`. Coordinator owns `scripts/local-admission.mjs`, its focused fixture-path tests/lineage subprocess and fixture README for distinct owned snapshots; no overlapping worker edits.
+W1 implementation in `t3-e29f4f78`, branch `t3/portal-plan-backend-slice`, completed at `d6840ac` from `a7f4f36`. Its typed/backend/report commits are integrated. Only migration `20261030223603_portal_rebuild_plan_v1.sql` was allocated; no active migration writer until coordinator assigns the next slice. Exact task/thread/run/model/options are in TASKS.json. Coordinator owns gateway/common protocol integration and selected-fixture lifecycle. W0 fix task in `t3-fab317bf` completed at `f0f56e8` and is integrated; re-review remains required. W3 first client slice in `t3-bf4b30f8` completed at `b4f43f7`, pending inspection/integration/strict type correction/independent review. Do not duplicate terminal implementations.
 
 ## handoff obligation
 

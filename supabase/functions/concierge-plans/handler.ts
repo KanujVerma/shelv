@@ -2,10 +2,10 @@ import type {ConciergeAuthenticatedPorts} from '../../../src/contracts/Concierge
 import type {PlanRpcCall} from '../../../src/contracts/PortalRebuild.ts';
 import {buildPlanRpc} from '../../../src/contracts/PortalRebuildValidation.ts';
 import {mapPlanResult} from '../../../src/contracts/PortalRebuildMapping.ts';
+import {planCommandMaxBytes,planErrorStatuses as errors} from '../../../src/contracts/PortalRebuildValues.ts';
 import {readUuid} from '../../../src/contracts/ConciergePortalValidation.ts';
 import {readConciergeJson} from '../concierge-operations/body.ts';
 export type PlanPorts=ConciergeAuthenticatedPorts<PlanRpcCall>;
-const errors:Readonly<Record<string,number>>={session_ended:401,unauthorized:401,forbidden:403,candidate_inactive:403,invalid_input:400,not_found:404,not_ready:400,revision_conflict:409,approval_conflict:409,request_conflict:409,import_conflict:409,source_conflict:409,basis_conflict:409,payment_required:409,publication_conflict:409,content_version_required:409,template_unavailable:409,incomplete_publication:503};
 export async function handlePlanRequest(request:Request,ports:PlanPorts):Promise<Response>{
  const headers:Record<string,string>={'content-type':'application/json','cache-control':'private, no-store, max-age=0',pragma:'no-cache',vary:'Origin'};
  const reply=(status:number,value:unknown)=>new Response(JSON.stringify(value),{status,headers});
@@ -19,7 +19,7 @@ export async function handlePlanRequest(request:Request,ports:PlanPorts):Promise
  try{
   const user=await ports.authenticate(bearer[1],request.signal);if(!user)return error(401,'unauthorized');
   try{readUuid(user.id);}catch{return error(401,'unauthorized');}if(user.is_anonymous!==false)return error(403,'forbidden');
-  try{call=buildPlanRpc(await readConciergeJson(request.body,500000));}catch(cause){if(cause instanceof Error&&cause.message==='too_large')return error(413,'too_large');return error(400,'invalid_input');}
+  try{call=buildPlanRpc(await readConciergeJson(request.body,planCommandMaxBytes));}catch(cause){if(cause instanceof Error&&cause.message==='too_large')return error(413,'too_large');return error(400,'invalid_input');}
   const result=await ports.rpc(bearer[1],call,request.signal);
   if(result.error){
    if(result.error.status===401)return error(401,'session_ended');if(result.error.status===403)return error(403,'forbidden');

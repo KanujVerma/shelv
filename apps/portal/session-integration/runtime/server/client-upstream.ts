@@ -3,6 +3,7 @@ import {SupabaseProvider, claims, hasCredentials} from './upstream';
 import {demand, type Credentials, type AdvisorContext, type Capabilities} from './types';
 import {PORTAL_ORIGIN, SUPABASE_ORIGIN, object, uuid, type Operation} from './policy';
 import {parseClientCommand, validateClientUpload} from './client-policy';
+import {mapPlanResponse} from './plan-policy';
 import type {WireResponse} from './protocol';
 function privateFields(value: unknown): boolean {
     return !!value && typeof value === 'object' && Object.entries(value).some(([k,v]) => /^(private_?notes?|meeting_?notes?|transcript|draft|intake|advisor_?notes?)$/i.test(k) || privateFields(v));
@@ -75,6 +76,7 @@ export class ClientProvider extends SupabaseProvider {
             }
             body=await this.edge(credentials,`concierge-${operation.channel}`,operation.command);
         }
+        if(operation.kind==='command'&&operation.channel==='plans')body=mapPlanResponse(body,operation.command);
         demand(!hasCredentials(body,credentials) && !privateFields(body),503,'unavailable');
         return {status:200,body};
     }
