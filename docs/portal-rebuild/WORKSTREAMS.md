@@ -33,7 +33,15 @@ Coordinator reserves `AGENTS.md`, `apps/portal/AGENTS.md`, `docs/portal-rebuild/
 
 ## task ledger
 
-No workers dispatched at initial documentation checkpoint. Each dispatch appends a row with role, task ID, child thread/run, verified provider/model/options, workspace, base/head, exact paths, test result and terminal/active state. `delegate_task` uses `isolation=worktree` and starts from the parent committed head; uncommitted edits are not inherited. Exact settings are `providerInstanceId=codex`, `model=gpt-6.1-sol`, `options={reasoningEffort:xhigh,serviceTier:default}`. Review rounds each get a distinct stable client request ID and a new task ID; never continue a delegated review via ordinary thread send.
+The [machine-readable task ledger](TASKS.json) records exact task/thread/run IDs, model/options, workspace/base and write-set for each dispatch. Initial checkpoint `9be041d` is pushed in [draft PR211](https://github.com/KanujVerma/shelv/pull/211), stacked on PR210. Three workers were then dispatched; all T3 responses returned provider `codex`, model `gpt-6.1-sol`, `reasoningEffort=xhigh`, `serviceTier=default`. Git worktree readback confirmed each separate checkout at `9be041d`.
+
+| Worker | Worktree / branch | Task and write-set | Dispatch state |
+| --- | --- | --- | --- |
+| W1 backend reconnaissance | `t3-0e852b97` / `t3/w1-backend-recon` | Source/SQL/gateway reconciliation; only `research/W1_BACKEND.md`. | running at dispatch; result pending |
+| W0 foundation | `t3-128ab5a5` / `t3/portal-shared-foundation` | Shared UI/shell/navigation/typed transport, frontend package/config, design acquisition; no page/backend/gateway work. | running at dispatch; result pending |
+| W7 documentation review | `t3-3717c152` / `t3/w7-portal-docs-review` | Independent review of `8ac0826..9be041d`; only `research/W7_DOCS_REVIEW.md`. | running at dispatch; result pending |
+
+`delegate_task` uses `isolation=worktree` and starts from the parent committed head; uncommitted edits are not inherited. Exact settings are `providerInstanceId=codex`, `model=gpt-6.1-sol`, `options={reasoningEffort:xhigh,serviceTier:default}`. Review rounds each get a distinct stable client request ID and a new task ID; never continue a delegated review via ordinary thread send. Revalidate actual task handles before treating a worker as currently live.
 
 ## handoff obligation
 

@@ -21,8 +21,8 @@ Files: `docs/portal-rebuild/`, project/eight-role config, root/portal instructio
 - [x] Verify fresh coordinator runtime, Git state, main/PR lineage and isolation.
 - [x] Read full supplied handoff and import exact input, approved specification and full manifest with hashes.
 - [x] Write initial contracts, D01-D48/26-screen/secondary acceptance inventory and ownership/status records.
-- [ ] Validate imported hashes/map, docs links, exact role model/effort, config parser and clean diff.
-- [ ] Commit this reviewable checkpoint and open/link a draft PR stacked on the approved docs branch. No merge.
+- [x] Validate imported hashes/map, docs links, exact role model/effort, config parser and clean diff.
+- [x] Commit this reviewable checkpoint and open/link draft PR211 stacked on the approved docs branch. No merge. Independent documentation review is running separately.
 
 ## task 2: reconcile contracts and acquire exact design foundation
 

@@ -1,0 +1,100 @@
+{
+  "updatedOn": "2026-10-30",
+  "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
+  "concurrencyLimit": 8,
+  "allocatedWorkers": 3,
+  "tasks": [
+    {
+      "role": "W1 backend reconnaissance",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-backend-recon-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-backend-recon-20261030-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-0e852b97",
+      "branch": "t3/w1-backend-recon",
+      "baseCommit": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
+      "writeSet": [
+        "docs/portal-rebuild/research/W1_BACKEND.md"
+      ],
+      "statusAtDispatch": "running",
+      "verification": "T3 delegate_task returned exact provider/model/options; git worktree readback confirms workspace/base."
+    },
+    {
+      "role": "W0 foundation",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-foundation-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-foundation-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-foundation-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-128ab5a5",
+      "branch": "t3/portal-shared-foundation",
+      "baseCommit": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
+      "writeSet": [
+        "apps/portal/src/{ui,shell,navigation,transport}/",
+        "apps/portal/src/main.tsx",
+        "apps/portal/package.json",
+        "apps/portal/package-lock.json",
+        "apps/portal frontend config",
+        "apps/portal/scripts/build-rebuild.mjs",
+        "apps/portal/tests/rebuild-foundation*",
+        "docs/portal-rebuild/design/",
+        "docs/portal-rebuild/research/W0_FOUNDATION.md"
+      ],
+      "statusAtDispatch": "running",
+      "verification": "T3 delegate_task exact response and git worktree readback."
+    },
+    {
+      "role": "W7 documentation review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-docs-review-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-docs-review-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-docs-review-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3717c152",
+      "branch": "t3/w7-portal-docs-review",
+      "baseCommit": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_DOCS_REVIEW.md"
+      ],
+      "statusAtDispatch": "running",
+      "verification": "T3 delegate_task exact response and git worktree readback.",
+      "status": "completed",
+      "reportCommit": "4e64ba53a484b9d7c30d15d1ff7be3f716a39288",
+      "reportPath": "docs/portal-rebuild/research/W7_DOCS_REVIEW.md",
+      "specVerdict": "PASS",
+      "qualityVerdict": "PASS",
+      "blockingOrImportantFindings": 0,
+      "minorFindings": "Stale C01 persisted-baseline status corrected by coordinator."
+    }
+  ]
+}
