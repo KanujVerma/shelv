@@ -73,6 +73,8 @@ Commands run from repository root unless marked portal cwd. All Node/npm command
 | Same serial Node flags, `tests/portal-care-contract.test.ts tests/portal-care-handler.test.ts` | **18/18**,0 failures/skips; strict DTO/handler-port checks, no SQL |
 | Portal `npm run typecheck:rebuild`; `npm run typecheck:session` | Both exit0, zero diagnostics; unchanged strict flags |
 | Portal `npm run build:rebuild`; `npm run check:ui` | Both exit0; semantic-color and retained11-sheet checks, no allowance change |
+| Portal `npm run build:application`, clean committed87f9145 source | Exit0, `sourceDirty:false`, `gatewayIncluded:false`; source and output hashes below |
+| Portal `npm run build` | Exit0,138 assets; retained package only, no activation/deployment. ZIP `2f2f3ec6bc9fe2f18f1cc08fa7d8e3bfb0537fd26646373114ac731e54df80ec`; Vault `97892eb7f9137280b44ea1b4a94ef47f3e8eaff9f7fb2413ff5ce8f23cceaa9a` |
 | `git diff --check`, owned-path/source/original-evidence audit | Pass before commit; exact source and artifact hashes retained |
 
 The first durable RED had2/13 passes and11 failures, including one helper selector that inspected the background plan's button instead of the selected dialog's loading button. The helper now uses the actual dialog control and waits for committed shell mode. Repeating RED **before production edits** gave11 actual missing-actor assertions. No old test or production guard changed. Existing root typeless-package and absent root Expo-base bundle warnings remain recorded; dependency realpaths also discover the retained package checkout's unchanged absent Expo-base configuration.
@@ -89,4 +91,22 @@ Fresh **new independent review** against the integrated fix remains required. Pa
 
 ## Completion receipt
 
-The containing owned implementation commit and subsequent clean-application-build evidence are recorded in the receipt below after the commit exists. The final report-only suffix changes no runtime/test bytes and is returned in the handoff.
+Implementation/test/report commit: **`87f9145a43f705722e8d1e6dac08764004967fff`**, direct child of requested7209091e. Exactly four owned files changed. Tested runtime/test bytes match this commit exactly; the final report-only receipt suffix changes no runtime/test bytes and is returned as the handoff head.
+
+Clean application candidate: **`sourceHead=87f9145a43f705722e8d1e6dac08764004967fff`, `sourceDirty:false`, `gatewayIncluded:false`**. Immutable `E/application-87f9145-provenance.json` SHA-256 **`785d283ce4843dd0d6089c60e7d75b7f6b07d35d44f9608b0857b617e734e6c3`**. JS **`fa59f528607484420ee8f6791401732b92b8489b5824d6ecb52412e650e87fd9`**, CSS **`8ff025516735f2c40d2eab512a51c04855b116b97c4e88aef5a601ac97656fef`**. All2,206 provenance inputs were inspected for foreign non-package source: none. Package realpaths may refer to the retained dependency directory; application source is this child. No CSS source changed. A candidate does not activate care or deploy its gateway.
+
+Both live runtime tools again verify Sol/xhigh/default with supported descriptors; `E/runtime-final.json` retains the result. Own source/original evidence/configuration hashes, exact commands, selected actual DOM/DTO/screenshot artifacts, raw diagnostics and release receipts are inventoried in the **58-entry** `E/evidence-manifest.json`, excluding itself and this report. Manifest SHA-256 **`5426e18d8cd006659ca16edadbaa3655961735606175509c6b32172b069721de`**.
+
+| Selected artifact | SHA-256 |
+| --- | --- |
+| Original unchanged attribution test | `a0671df6700daa669074fd02e673c2397da40e4bf437c6e01569dc915c4742e6` |
+| Original unchanged CU2 amendment test | `22d36dccb9c0007b9fc4b6165be9937e6a62c73afdc23bc35746b398bd908a99` |
+| Current UseFacts.tsx | `ee297736f27f2f24eb77ecb8baa78543b00a63c7e3d4b4d276e9db3ea6be23a8` |
+| New durable attribution test | `ff8a0d48e9816406055b4e206cff06fa17ed2b0f193a3cfd162c0b97bbc6dc8e` |
+| New attribution fixture helper | `3fa40f48d190a17cb47bcb08f3ad5a725e9907cd4accdc1d5f0dc57a43694cbd` |
+| Original RED log | `f27ff8507ac3d9a449e110ef234011ac83c6f87a9e979f5e33ca497fdd5d51d7` |
+| Input-only sensitivity log | `1b76f4910868534f2f4646a05eb470d3d2450551980f647053833c6d1941085d` |
+| Focused173 log | `89f5febe0865debc7b436769638ec3f2887d4c10a46b3432e63bad33de24be5f` |
+| Chrome release receipt | `56e11fdc533868a4826fbc9e0e34004397c76123e7abed24daa78879a29060ce` |
+
+Final source/scope, report links, whitespace and listed hashes were checked before the receipt commit. Only the assigned four paths differ from base. No push/PR/deploy/merge/live action. **Fresh independent CU3 review remains the parent's next acceptance step.**
