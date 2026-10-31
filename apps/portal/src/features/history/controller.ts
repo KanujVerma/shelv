@@ -37,6 +37,17 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
     function applies(c: ReturnType<typeof capture>) { return current() && epoch === c.epoch && ctx === c.context && ctx.session === c.session; }
     function permitted() { return current() && ctx.mode === 'client' && !!ctx.port; }
     function active() { return permitted() && state.phase === 'ready' && !state.readError && !state.loadingMore && state.version === null && state.view?.access === 'active' && state.view.currentGuidance?.mode === 'current_document'; }
+    /** A current private-history denial retires this feature's readable lease,
+     * not the actual cookie. Keep local intent and the original uncertain wire. */
+    function denyReadableHistory() {
+        epoch++;
+        readOwner = null;
+        detailOwner = null;
+        writeOwner = null;
+        set({ phase: 'denied', view: null, amendmentView: null, pages: [], loadingMore: false, checkingStatus: false,
+            readError: true, needsReview: true, mutation: state.pending ? 'uncertain' : state.mutation,
+            error: 'you do not currently have access to this record.' });
+    }
     async function execute(command: HistoryCommand): Promise<HistoryOutcome> {
         if (!ctx.port)
             return { state: 'rejected', status: 503, code: 'unavailable' };
@@ -135,6 +146,10 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
             if (authFailure(result))
                 return;
             if (result.state !== 'ok') {
+                if (result.state === 'rejected' && result.status === 403) {
+                    denyReadableHistory();
+                    return;
+                }
                 if (result.state === 'rejected' && result.status === 409) {
                     set({ readError: true, error: 'your record changed. reload the current record before continuing.' });
                     return;
@@ -304,8 +319,19 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
                 set({ error: 'check the report date, references and correction reason. your answers are retained.' });
         }
     }
-    async function retryExact() { if (!active() || state.mutation !== 'uncertain' || !state.pending || writeOwner)
-        return; await send(state.pending); }
+    async function retryExact() {
+        if (!active() || state.mutation !== 'uncertain' || !state.pending || writeOwner)
+            return;
+        const pending = state.pending, c = capture(), displayed = state.view, pages = state.pages;
+        // This explicit click may review only a basis already fetched for display.
+        // A changed/failed/retired recheck leaves the gate for another action.
+        if (state.needsReview)
+            await reviewCurrent();
+        if (!applies(c) || state.view !== displayed || state.pages !== pages || !active() || state.needsReview ||
+            state.pending !== pending || state.mutation !== 'uncertain' || writeOwner)
+            return;
+        await send(pending);
+    }
     async function checkStatus() {
         if (!permitted() || !state.pending || writeOwner)
             return;
@@ -342,9 +368,10 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
         }
     }
     async function reviewCurrent() {
-        if (!active() || !state.needsReview || state.pending)
+        if (!active() || !state.needsReview)
             return;
-        if (state.intent?.kind === 'amendment' && state.pages.at(-1)?.nextCursor !== null) {
+        const retainedPending = state.pending;
+        if (!retainedPending && state.intent?.kind === 'amendment' && state.pages.at(-1)?.nextCursor !== null) {
             set({ error: 'load the rest of your record before reviewing this correction.' });
             return;
         }
@@ -358,10 +385,10 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
                 return;
             const equal = same(basis.view, fresh.view) && same(basis.page?.heads, fresh.page.heads);
             let intent = state.intent;
-            if (equal && intent?.kind === 'new' && fresh.view.plan) {
+            if (equal && !retainedPending && intent?.kind === 'new' && fresh.view.plan) {
                 intent = { ...intent, body: { ...intent.body, publication: { version: fresh.view.plan.version, documentSchemaVersion: fresh.view.plan.documentSchemaVersion } } };
             }
-            if (equal && intent?.kind === 'amendment') {
+            if (equal && !retainedPending && intent?.kind === 'amendment') {
                 const id = intent.original.id;
                 const amendments = retainedPages.flatMap(p => p.entries.flatMap(e => e.kind === 'report_amendment' && e.original.id === id ? [e.amendment] : []));
                 const prior = new Set(amendments.map(a => a.previousAmendmentHeadId)), heads = amendments.filter(a => !prior.has(a.id));
@@ -372,11 +399,17 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
                 replacement.body.photoIds = [...new Set([...replacement.body.photoIds, ...photos])];
                 intent = { ...intent, expectedAmendmentHeadId: heads[0]?.id ?? null, retainedPhotoIds: clone(replacement.body.photoIds), replacement };
             }
-            set({ phase: 'ready', view: fresh.view, pages: equal ? retainedPages : [fresh.page], intent, needsReview: !equal, mutation: equal ? 'idle' : 'conflict', error: equal ? null : 'your record changed again. review the fetched record before continuing.' });
+            set({ phase: 'ready', view: equal ? basis.view : fresh.view, pages: equal ? retainedPages : [fresh.page], intent,
+                needsReview: !equal, mutation: retainedPending ? state.mutation : equal ? 'idle' : 'conflict',
+                error: equal ? null : 'your record changed again. review the fetched record before continuing.' });
         }
-        catch {
-            if (applies(c) && readOwner === token)
-                set({ phase: 'error', readError: true, error: 'current review could not be confirmed. retry the current record.' });
+        catch (error) {
+            if (applies(c) && readOwner === token) {
+                if ((error as {status?:number})?.status === 403)
+                    denyReadableHistory();
+                else
+                    set({ phase: 'error', readError: true, error: 'current review could not be confirmed. retry the current record.' });
+            }
         }
         finally {
             if (applies(c) && readOwner === token)

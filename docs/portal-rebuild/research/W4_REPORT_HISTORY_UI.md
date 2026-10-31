@@ -275,3 +275,64 @@ Final **236-file** ignored evidence manifest SHA-256: **`14d4390ab4d1756ee9ba9da
 | Sibling `w4-history-browser-final-receipts.log` | `d5d0e012b5b8180ed2ac86ed6f21f14dd9c00c673c6f5575d9728adde3a6c989` |
 
 The branch/worktree and all earlier source/import commits are preserved. No source work remains dirty at handoff; independent review and the separately owned App/backend/genuine/release gates remain open. No self-certified independent or full-goal verdict follows the author results.
+
+## RH1 response: current pagination denial, source phase
+
+31 October2026. **Source fix implemented and pure/actual SSR verified; Chrome verification and fresh independent R2 remain pending.** The frozen independent R1 gives specification/quality **CHANGES REQUIRED**, RH1/P2. This response does not edit that review or upgrade the old95/48 results into acceptance of the correction.
+
+### Resumed identity, review and exact reproduction
+
+Same0706 worktree/branch, actual clean base **`5aa860a8d529efd2ba35db2fb024acc5b575d5cb`**. New follow-up task **`node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw4-rh1-pagination-denial-fix-20261031`**, same child thread, actual run **ordinal3**. Original source/browser tasks remain terminal with their original evidence. Both live capabilities/configuration, supported descriptors, all eight role files/project defaults and actual Node22.23.0 rechecked before execution: **codex/gpt-6.1-sol/xhigh/default**, no substitution/configuration edit. Every Node/npm/compiler command again explicitly selects the pinned Node22 PATH.
+
+Read the **full** immutable independent report at **39364093e365288451c64ce82ed001783091a3d6**, `docs/portal-rebuild/research/W7_REPORT_HISTORY_REVIEW.md`, through `git show`; the coordinator's9e8b1d6b import is not adopted here. Read the exact foreign `source-probes.test.mjs`, `browser-probes.test.mjs`, `continuation403.json` and all three named source/browser/repeat logs in **`/Users/kanuj/.t3/worktrees/shelv/t3-7d85e3a7/.local-artifacts/portal-rebuild/w7-history-r1/`**. Parsed the actual JSON snapshot/HTML/wire/commands: ready + readError + retained private view/page, with the original pending command still exact. The source report and all six evidence files are copied unchanged into this checkout's ignored **`.local-artifacts/portal-rebuild/w4-history-rh1/original/`**, with original paths/bytes/SHA-256 in `foreign-originals.json`. No foreign code was executed or written.
+
+The **byte-identical** independent source script was copied to this checkout at the same relative depth, then executed **before production edits** with actual own retained session/factory/Root/controller/SSR. It reproduces **6 pass/1 intended fail**, `unchanged-source-red.log`: the private conclusion remains in HTML while the pending UUID/body equality assertions pass. Foreign source-probe SHA remains **2740269638a97ae96dfdd4d79591b4908727668bbfb72a70d02eb9949ba2be71**; foreign continuation JSON SHA **95033ffafd97616112c09812bc123cbfa052a731619f9943d8a34b0da5815140**. The same unchanged script runs after correction in a separate own sibling directory, preserving the RED outputs, and passes **7/7** (`unchanged-source-green.log`). These are source/SSR executions, not rerun foreign Chrome evidence.
+
+Applied receiving-code-review, systematic debugging/TDD, verification and the existing task-first recovery contract. RH1 is technically confirmed: `loadMore` passes a current403 through a statusless generic catch, reusing B2's readable-incomplete503/409 behavior. The current denial and an obsolete403 need different handling; no cookie logout or global403 change is appropriate.
+
+### Bounded controller change
+
+**Only `apps/portal/src/features/history/controller.ts` is authored in production.** No History UI/types, Wrapper/App/routes, shared shell/session/transport, Root contract/SQL/API/right/dependency/configuration or other-owner edit/import.
+
+After the existing captured context/epoch/read-token checks, an applicable continuation403 now:
+
+- retires this feature's readable view, all loaded pages and original-publication detail;
+- renders the **existing** denied/retry state, with no private record/form display;
+- advances the feature epoch and retires read/detail/write operation ownership, so old success/error/finally cannot restore private data, acknowledge the pending write or hold/release a newer busy owner;
+- preserves the actual live cookie, owner/generation/epoch/application boundary, session-memory intent, exact pending object/UUID/payload/wire and uncertainty; a previously saving in-flight request becomes uncertain rather than falsely failed/acknowledged;
+- keeps current401/session-end behavior, current503/409 readable-incomplete behavior, repeated-cursor refusal and obsolete403 fencing intact. A status403 remains a READ failure; direct write-forbidden behavior is not reclassified as a history-read denial.
+
+Denial marks the existing review gate. No exact retry can leave denied, failed-refresh, pending-refresh, restricted-mode or read-only state. A successful current V3 **and** matched history fetch must first supply a view for display. When that gate is present, an explicit **retry exact update** action may recheck that **already displayed** basis. It does not fetch unseen data and silently accept it: successful same-value recheck preserves the exact displayed view/page references; captured epoch/context/session/mode, current active access, pending-object identity and those view/page references must still match before sending. A changed basis is displayed with the gate retained and **no mutation**, requiring another deliberate action. A newer current read, unmount, mode/owner/CSRF change or failed recheck retires the attempt.
+
+Pending review never rebases the original command or its unsent capture to a new publication/report head/amendment head/photo set. The exact UUID/body/expected revision/source publication remain unchanged. Unsent work with **no** pending command retains the established deliberate current-review/new-command behavior. Positive immutable request status remains READ and may resolve a genuinely known receipt without a false clinical acknowledgement or restoring the denied readable projection. Errors/absence cannot discard pending work.
+
+### New durable source and prepared browser cases
+
+New owned `apps/portal/tests/rebuild-history-denial-helper.mjs` and `rebuild-history-denial.test.mjs` use actual ApplicationSession/cookie lease/CSRF/raw Review factory, canonical Root parser/mapper, HistoryPort/HistoryController and actual SSR. Only finite HTTP responses, delivery timing and a deterministic test UUID generator are supplied; no successful port/current predicate/session parser is replaced.
+
+Final **24/24** new source/SSR cases cover current403 with and without unsent/pending work; all readable view/page/detail retirement; actual cookie/admin-session continuity; exact pending reference/wire/status preservation; denied/error/absent statuses and failed/pending refresh; displayed stable fresh authority plus deliberate recheck/exact retry; newly discovered data requiring a second action; newer current-read ownership; unmount/remount; four restricted modes; actual CSRF replacement; read-only write denial; late original-publication detail/write/status responses; unsent new-UUID review;503/409 readable-incomplete controls; and positive immutable status resolution as READ.
+
+The corrected durable pre-edit run is **4 pass/9 intended fail**,0 cancelled (`durable-red-2.log`), then13/13 and expanded20/20/24/24 after correction. One earlier durable attempt was stopped through its **own execution session's Ctrl-C**: a probe waited for a recheck the old implementation never issued. The witness now races the actual read-entry signal against completion and asserts that the recheck begins before mutation completion; no sleeping, response/gate bypass or intended assertion weakening. That partial log is retained but not counted as completed RED acceptance. The independent unchanged6/1 reproduction remains the primary RH1 RED.
+
+New **`rebuild-history-denial-browser.test.mjs`** prepares four actual existing-module cases for a later explicit grant: current403 with/without exact pending work and recovered retry, obsolete403 against a held current read, and a retry recheck discovering unseen data that must wait for another action. It imports the actual existing browser helper/session/factory/controller/UI and controls only finite HTTP delivery. Its lost-response model commits the first synthetic request before503 so a later historical exact receipt can replay without rewriting the new head. **It has only been compiled, never launched.** No old95/48 assertion/helper edits were made in this source phase.
+
+### Source verification and current boundary
+
+`E3` is own ignored `.local-artifacts/portal-rebuild/w4-history-rh1/`. Node22 PATH is explicit in every command. Exact executions:
+
+| Command / scope | Result |
+| --- | --- |
+| Own byte-identical independent `source-probes.test.mjs`, Node strip-types/test/concurrency1 before production | **6 pass/1 intended fail**, pending exact wire preserved but denied private HTML remains; `unchanged-source-red.log` |
+| Same byte-identical script after correction in own sibling `w4-history-rh1-source-green/` | **7/7**,0 failures/skips; `unchanged-source-green.log` |
+| New `rebuild-history-denial.test.mjs`, `W4_RH1_SOURCE_RUN=durable-final-24`, Node strip-types/test/concurrency1 | **24/24**,0 failures/skips; `durable-final-24.log` |
+| Original explicit source95 command from the earlier receipt, unchanged original test assertions | **95/95**,0 failures/skips; `original95.log` |
+| Unchanged portal `typecheck:rebuild`; `typecheck:session` | Both exit0, zero diagnostics; `frontend-types.log`, `session-types.log` |
+| Existing strict/noUncheckedIndexedAccess forbidden-boundary/helper/entry compiler command | Exit0, `helper-types.log`; no relaxed flags or ignored diagnostics |
+| Source-only esbuild prepared denial browser test (Node/ESM/external packages) and actual existing browser entry (browser/ESM/fonts) | Both exit0; `prepared-browser-test/`, `prepared-module/`; **compilation only, not execution** |
+| Portal `build:rebuild` | Exit0, `rebuild-build.log`; source build, not App/backend activation |
+
+Counts overlap and do not supersede independent R1. The original48 browser checks remain historical at5aa/b495; they were **not rerun** against this correction. Existing Root dependency blockers remain the child's missing prerequisite, not a parent failure. No Root install or new Root suite/Expo success is claimed. Earlier photo/goal/publication/correction-actor/attention/public-positive guards and all modes remain unchanged and original source95 passes.
+
+**Source/pure/SSR only.** No Chrome/DOM/preview/process-resource inventory/polling, native/PG/Docker/provider/real Auth/credential/fixture/R7/R6/R4/R5/source-permission call. W3 owns sole Chrome under `coordinator-w3-v3-guidance-synthetic-chrome-9c5cac1b-20261031`; this task waits for a fresh separate grant after explicit release. No additional SDK/protocol/Wrapper/backend/advisor stack is adopted. Original exact96/88/Ef imports remain unchanged, and the independent39364093 report/foreign evidence remain immutable. No push/PR/merge/deploy, live client/message/permission/funds/order or memory write.
+
+The early coherent source commit is returned separately with its exact SHA and prepared-browser readiness. Source acceptance is author evidence only; actual browser RED/GREEN and a **fresh new independent R2** still follow. The full W4 feature objective and separately owned App/genuine/backend/full-goal gates remain active. Keep the same worktree and original evidence for continuation.
