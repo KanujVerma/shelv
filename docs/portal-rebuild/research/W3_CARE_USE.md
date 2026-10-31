@@ -108,4 +108,8 @@ No push, PR, merge, deploy, real client/source/permission action, communication,
 
 ## completion receipt
 
-The final handoff supplies exact owned implementation/report heads. Clean-head candidate/source hashes and the final evidence-manifest digest are appended after the authorized commits. No runtime/test source will change after the final 980 check above.
+Implementation/test/report commit: **`6b264169c0cf4cc286a60b0244fa17e9200cabe6`**. Early seam `795a90cc` is already parent-integrated. The final documentation-only suffix is returned as handoff head. No runtime/test source changed after the final 980 run.
+
+Clean implementation candidate: `sourceHead=6b264169c0cf4cc286a60b0244fa17e9200cabe6`, `sourceDirty:false`, `gatewayIncluded:false`; immutable provenance copy SHA-256 `b6abae7f33b5c0133d2e5e7e275fc2478788562159c6cdc20b24c0b761e24438`. Application JS `51112ed5d5bf958b61aab62792c94fc42b434592b9cff42f672cceec22e59589`, CSS `e69bed1810171c81ff17a9382f65e640e629fd5000a10d73bf9168ad51bc412e`. Combined 138-asset ZIP `5b37305297a24c48c1ceea66bac85a3add01ab00e0cbd62089405058bb556498`, Vault `c162df6ba1979ac23c87eefe0b678fd46ad1f2d17d25cf55f9b4564bf462d4e0`. Both clean-head builds exit0; no care activation or deployment.
+
+Evidence-manifest SHA-256 `91c59e3337c592ce2513880fae35f3e825ddefde2192c012a688ae30f20c3b41` inventories actual source/test hashes, 16 native references, 12 original runtime images and executed artifacts, excluding itself and the report. Both live runtime tools again verify Sol/xhigh/default; runtime-final.json and nine config hashes retained. Final source/diff/scope/whitespace checks pass. Parent retains Root-dependency checks, exact-head CI, canonical/genuine care acceptance and independent review. Chrome release above is unchanged.
