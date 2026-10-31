@@ -261,7 +261,7 @@
     "webExportLogSha256": "a0ffb0b7b0b68ae92360cd570a737de4d5207526fb2c30f27fe70560c76d580a"
   },
   "genuineGatewayVaultBrowser": {
-    "status": "MAIN13_PASS_INDEPENDENT_FOLLOWUPS_PENDING",
+    "status": "INDEPENDENT_MAIN13_H1_H2_PASS_SEPARATE_AR1_OPEN",
     "authorWorkspace": "/Users/kanuj/.t3/worktrees/shelv/t3-45beee69",
     "runId": "f1b451cd-4a8e-40eb-b05a-437584200544",
     "resultSha256": "b870b68602af015c42469748da9420b2064c7ca431fd82539c8d9014972f5541",
@@ -283,7 +283,7 @@
       "privateFactLeaks": 0
     },
     "scope": "Actual combined gateway/SQLite Vault/GoTrue PKCE/native operations-payments-plans/PostgREST/canonical SQL; test-bundle-only pinned loopback portal/provider origins",
-    "qualification": "Main13 author evidence retains W6-marker/credential coverage at2134695. H1/H2 author corrections integrated5574367/ad1b23e; fresh readonly4 covers both markers. C1 approval recovery and fresh independent dispositions remain open.",
+    "qualification": "Independent product-free main13 and readonly4 PASS at89527a8; separate approval recovery source review finds AR1/P2 definite status-denial path. Queued deliveries are not sent email; full remaining domains pending.",
     "hostedRequests": 0,
     "realFunds": 0,
     "realEmails": 0,
@@ -318,6 +318,62 @@
       "readonlyQueryStateSha256": "1623f148c413dcefefb1cf3997b1923ebf2bf34c064b18a799631cd1b0834e74",
       "custodyReturnUtc": "2026-10-31T04:10:03.675Z",
       "limits": "No main13 rerun or independent native replay; snapshots use distinct explicit queries and are not interchangeable."
+    },
+    "independentReview": {
+      "report": "research/W7_NATIVE_BROWSER_REVIEW.md",
+      "reportHead": "6d104b89a3ac6573b99e96df1b94c63e656ef3ff",
+      "integrationHead": "5690115",
+      "testedHead": "89527a8b4d3daba1aa494254648e20f902be6080",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-24d3a29e",
+      "specification": "PASS_SCOPED",
+      "quality": "PASS_SCOPED",
+      "mainRunId": "a2d426d7-d944-4174-9013-59da94346dd2",
+      "mainResultSha256": "948679c9de1f5ab5c31d94940a790e329dc96edc5843e1699c4fe63c0f8fd78e",
+      "mainGroups": 13,
+      "mainScan": {
+        "responses": 345,
+        "bodyBytes": 42873884,
+        "clientResponses": 31,
+        "safePreviewResponses": 2,
+        "advisorPrivateDraftResponses": 13,
+        "credentialLeaks": 0,
+        "privateFactLeaks": 0
+      },
+      "mainCleanup": {
+        "issued": 7,
+        "closed": 7,
+        "remainingSessions": 0,
+        "remainingRefreshTokens": 0,
+        "failures": 0
+      },
+      "readonlyRunId": "75af5db2-a6a5-4f12-acfc-35b684025c34",
+      "readonlyResultSha256": "2a69e2c89a4a9d393b015be048f74460b314bb96129fcfa8d65864387ff7747b",
+      "readonlyGroups": 4,
+      "readonlyScan": {
+        "responses": 145,
+        "bodyBytes": 22185638,
+        "clientResponses": 27,
+        "credentialLeaks": 0,
+        "privateFactLeaks": 0
+      },
+      "readonlyCleanup": {
+        "issued": 4,
+        "closed": 4,
+        "remainingSessions": 0,
+        "remainingRefreshTokens": 0,
+        "failures": 0
+      },
+      "nodeGroups": 8,
+      "cleanupProbes": 3,
+      "guards": 6,
+      "sourceTests": 402,
+      "bothStrictTypes": "PASS",
+      "h1": "ADDRESSED",
+      "h2": "ADDRESSED",
+      "sourceFilesPerHelper": 69,
+      "helperSourceReceiptSha256": "e967c25e413774972fff6e61c51abf1ba0bd2624ffc52984ee4a836673ae4435",
+      "custodyReturnUtc": "2026-10-31T04:24:17.847Z",
+      "limits": "Product-free slice. C1/AR1, full remaining flows, actual provider delivery and exact-head CI separately pending; counts overlap."
     }
   }
 }

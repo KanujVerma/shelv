@@ -2,7 +2,7 @@
   "updatedOn": "2026-10-30",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
-  "allocatedWorkers": 3,
+  "allocatedWorkers": 2,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -1169,15 +1169,20 @@
       ],
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-e39cb4b1",
       "branch": "t3/w1-remaining-api-reconciliation",
-      "status": "running",
+      "status": "completed",
       "role": "W1 remaining API reconciliation",
       "baseCommit": "97aa801f58471f8e657d00de1775da7f20f6ee29",
       "reportPath": "docs/portal-rebuild/research/W1_REMAINING_API.md",
       "writeSet": [
         "docs/portal-rebuild/research/W1_REMAINING_API.md"
       ],
-      "resources": "Read-only source/docs; no SQL/migration allocation, browser or Auth",
-      "verification": "Exact returned settings plus live thread/worktree readback"
+      "resources": "Terminal docs/source-only; no resource custody",
+      "verification": "Exact returned settings plus live thread/worktree readback",
+      "headCommit": "c3de01d9562a304ae008e045e3bf81d614a1e312",
+      "integratedCommits": [
+        "c32b624"
+      ],
+      "verdict": "Source-backed remaining-domain proposal;19 unchanged pure pass; no implementation/acceptance"
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-coupled-source-review-20261030-r1",
@@ -1287,13 +1292,19 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-24d3a29e",
       "branch": "t3/native-browser-review",
       "baseCommit": "ae5efe36f524017cb351c09947f68e502ff2a83d",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_NATIVE_BROWSER_REVIEW.md"
       ],
       "reportPath": "docs/portal-rebuild/research/W7_NATIVE_BROWSER_REVIEW.md",
-      "resources": "Exclusive bounded R4 native custody AND sole Chrome granted after W2 release; authorized b8bd5b3 cherry-pick only; no reset",
-      "verification": "Exact T3 returned options, thread/worktree/base readback; child both live tools confirmed Sol/xhigh/default"
+      "resources": "Native R4 and Chrome returned04:24:17.847UTC; whole sessions/refresh0, no Chrome/workerd; snapshots/helpers unchanged",
+      "verification": "Exact T3 returned options, thread/worktree/base readback; child both live tools confirmed Sol/xhigh/default",
+      "headCommit": "6d104b89a3ac6573b99e96df1b94c63e656ef3ff",
+      "implementationHead": "89527a8b4d3daba1aa494254648e20f902be6080",
+      "integratedCommits": [
+        "5690115"
+      ],
+      "verdict": "Scoped spec/quality PASS main13/readonly4/Node8/cleanup3/guard6; H1/H2 addressed; C1 excluded"
     },
     {
       "role": "W7 approval recovery review",
@@ -1315,13 +1326,85 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7b2812c5",
       "branch": "t3/review-approval-recovery",
       "baseCommit": "c2e5e92",
-      "status": "running",
+      "status": "completed",
       "reportPath": "docs/portal-rebuild/research/W7_APPROVAL_RECOVERY_REVIEW.md",
       "writeSet": [
         "docs/portal-rebuild/research/W7_APPROVAL_RECOVERY_REVIEW.md"
       ],
-      "resources": "Source/pure/SSR/types only; no Chrome until native review explicit release/grant; no native fixture",
-      "verification": "Exact T3 returned options plus thread/worktree/base readback; child live runtime tools confirmedSol/xhigh/default"
+      "resources": "Source-only terminal; no browser/native access",
+      "verification": "Exact T3 returned options plus thread/worktree/base readback; child live runtime tools confirmedSol/xhigh/default",
+      "headCommit": "2a23cd2056897b4dad75ee63b1e52cae8c74fcf0",
+      "integratedCommits": [
+        "2eecc69"
+      ],
+      "verdict": "CHANGES REQUIRED AR1/P2 definite status403 drops pending and leaves stale authority; original C1 and notice source scope addressed",
+      "parentImportedDocsException": "1279502e76784374fda21047d054283076722a96 adds only W1 report; production equalc2e5e92"
+    },
+    {
+      "role": "W2 status recovery fix",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-status-recovery-fix-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-status-recovery-fix-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-status-recovery-fix-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-6189bc49",
+      "branch": "t3/advisor-status-recovery",
+      "baseCommit": "c32b624cf27e30ad141398e5cea5b939d6ba24db",
+      "status": "running",
+      "reportPath": "docs/portal-rebuild/research/W2_STATUS_RECOVERY_FIX.md",
+      "writeSet": [
+        "apps/portal/src/features/advisor/controller.ts",
+        "apps/portal/src/features/advisor/types.ts if needed",
+        "apps/portal/tests/rebuild-advisor-status-recovery.test.mjs",
+        "apps/portal/tests/rebuild/advisor-status-browser.mjs",
+        "docs/portal-rebuild/research/W2_STATUS_RECOVERY_FIX.md"
+      ],
+      "resources": "Sole synthetic intercepted Chrome granted; no native Auth/DB custody",
+      "verification": "Exact T3 returned settings and live thread/worktree/base readback; each child must verify both live runtime tools"
+    },
+    {
+      "role": "W1 care use backend",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-care-use-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-care-use-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-care-use-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-caf2b712",
+      "branch": "t3/care-use-identity-backend",
+      "baseCommit": "8366dedd201a4eed224704eae185350be9aac1d4",
+      "status": "running",
+      "reportPath": "docs/portal-rebuild/research/W1_CARE_IMPLEMENTATION.md",
+      "writeSet": [
+        "src/contracts/PortalCare*.ts",
+        "src/contracts/PortalRebuild* narrow dependency seams",
+        "supabase/functions/concierge-care/",
+        "one new actual CLI-allocated canonical migration",
+        "tests/portal-care-*",
+        "supabase/tests/portal_care_*",
+        "docs/portal-rebuild/research/W1_CARE_IMPLEMENTATION.md"
+      ],
+      "resources": "Exclusive root care/dependency contracts and new forward migration; own Unix-only synthetic PG permitted; no parent R4/Chrome",
+      "verification": "Exact T3 returned settings and live thread/worktree/base readback; each child must verify both live runtime tools"
     }
   ]
 }

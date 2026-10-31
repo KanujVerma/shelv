@@ -114,23 +114,23 @@ Routes below retain the original designed targets; current canonical editor sect
 
 | Group | Required proof | Environment/evidence |
 | --- | --- | --- |
-| V01: unassigned drafts | Incomplete create/save/read/assign; no Auth creation/duplicate client; one working assigned draft. | pending |
-| V02: agent content and imports | Same renderer, strict fields/code rejection, base revision diff and manual-edit preservation. | pending |
-| V03: publication gates | Deny missing payment/review/approval/authority, wrong client/revision and replay via legacy path. | pending |
-| V04: approval/concurrency | Content/reassignment invalidate; payment-only does not. Concurrent publish yields one version/start/outbox and same receipt. | pending |
-| V05: delivery failure | Committed access persists on email failure; retry only notification; draft/private edits silent. | pending |
-| V06: use versus commerce | Proposed/approved/paid/delivered absent from actual use; self-purchase without fake order. | pending |
+| V01: unassigned drafts | Incomplete create/save/read/assign; no Auth creation/duplicate client; one working assigned draft. | Core backend/native Auth and independent genuine main13 PASS; complete secondary-state audit pending. |
+| V02: agent content and imports | Same renderer, strict fields/code rejection, base revision diff and manual-edit preservation. | Partial: strict typed imports/shared renderer and scoped agent backend tests; full source/template/task UI pending. |
+| V03: publication gates | Deny missing payment/review/approval/authority, wrong client/revision and replay via legacy path. | Server/API and genuine main13 pass within slice; separate AR1 UI authority recovery remains open. |
+| V04: approval/concurrency | Content/reassignment invalidate; payment-only does not. Concurrent publish yields one version/start/outbox and same receipt. | Backend R3/actual Auth concurrent publication pass; unchanged payment approval verified genuinely. AR1/UI full matrix pending. |
+| V05: delivery failure | Committed access persists on email failure; retry only notification; draft/private edits silent. | DB outbox/lease/retry scoped tests; genuine rows email+portal queued/attempts0. Actual dispatcher/webhook/inbox pending. |
+| V06: use versus commerce | Proposed/approved/paid/delivered absent from actual use; self-purchase without fake order. | Genuine choice/receipt/publication do not create Start; product-use/self-purchase/full commerce pending. |
 | V07: use truth | Stop/pause/different use, unknown dates, reporter/recorder/channel and correct advisor alerts. | pending |
 | V08: history/privacy | Optional photos/forms, immutable amendments, no-change review, no private notes/sources in client/export. | pending |
 | V09: financial snapshots | Quote/order/address freeze and reconciliation; claim, receipt, purchase, shipment, refund transfer separate. | pending |
 | V10: service boundaries | Calendar coverage, guarantee/refund dates, cancellation, 30-day read-only, final export and outstanding admin. | pending |
-| V11: authorization | Cross-client/source, signed expiry, session/logout/late response, CSRF and demo-write denial. | pending |
-| V12: navigation | Real Back/Forward/deep link, selected routine/product, scroll/focus and unsent work recovery. | pending |
+| V11: authorization | Cross-client/source, signed expiry, session/logout/late response, CSRF and demo-write denial. | Partial: backend R3, actual Auth/native11 and independent genuine main13/readonly4; new source/domain and private-demo cases pending. |
+| V12: navigation | Real Back/Forward/deep link, selected routine/product, scroll/focus and unsent work recovery. | First-slice canonical/app and genuine native Back/Forward/focus/scroll pass; remaining pages/unsent flow audit pending. |
 | V13: source lifecycle | MIME/size, upload failures/retry, confirmed storage, scoped access, retention/deletion and training denied. | pending |
 | V14: content extremes | Long content, multiple same-category products, none/unknown, no purchase/proposal and unavailable assets. | pending |
 | V15: visual/accessibility | Compare screenshots to exact frames, desktop/laptop/mobile, zoom, keyboard, screen-reader structure and reduced motion. | pending |
 | V16: five-stage demo | Shared renderer; no real email/payment/order/source writes; full exit/replay/reset. | pending |
-| V17: migration | Rehearse preserving IDs, historical publication/Start/coverage dates, receipts, instructions and private sharing. | pending |
+| V17: migration | Rehearse preserving IDs, historical publication/Start/coverage dates, receipts, instructions and private sharing. | Canonical55 reset/746 pgTAP and scoped legacy byte preservation pass; complete subsequent-domain upgrade/rollback rehearsal pending. |
 
 ## execution requirements
 
