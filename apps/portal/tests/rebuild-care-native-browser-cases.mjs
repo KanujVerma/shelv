@@ -14,7 +14,7 @@ export function careBrowserSyntheticContent() {
   const content=syntheticCareContent();
   content.context.facts.push({id:'private-second-marker',kind:'advisor_conclusion',visibility:'advisor_only',text:safePrivateMarkers[1],sources:[],contradicts:[]});
   content.routine=syntheticContent().routine;
-  content.routine.push({id:'care-product-step',slotId:'care-product-step',kind:'product',productId:'cerave-pm',title:'synthetic product instruction',directions:['software fixture only; no actual product use is requested'],cautions:['synthetic test, not skincare guidance'],schedule:structuredClone(content.decisions[0].schedule)});
+  content.routine.push({id:'care-product-step',slotId:content.decisions[0].slotId,kind:'product',productId:'cerave-pm',title:'synthetic product instruction',directions:['software fixture only; no actual product use is requested'],cautions:['synthetic test, not skincare guidance'],schedule:structuredClone(content.decisions[0].schedule)});
   return readPlanContent(content);
 }
 export async function bounded(promise) {let timer;try{return await Promise.race([promise,new Promise((_,reject)=>timer=setTimeout(()=>reject(Error('Care browser wait exceeded15s')),15000))]);}finally{clearTimeout(timer);}}
