@@ -145,9 +145,15 @@ try {
   const claim=await prepareSyntheticClaim(fixture,stack,cases.client);result.quoteId=claim.quoteId;result.claimId=claim.claimId;
   assert.ok(claim.temporarySessionIds.every(id=>stack.issued.get(id).closed));
   gate=await command(p,'advisor','plans',gateCommand);assert.equal(gate.value.approval.id,approvalId);
+  const delayedPayment=stack.hold('advisor_read');released=delayedPayment.release;
   await p.getByRole('button',{name:'refresh publication checks',exact:true}).click();
+  let paymentTimer;
+  try {await Promise.race([delayedPayment.entered,new Promise((_,reject)=>paymentTimer=setTimeout(()=>reject(Error('real payment read not entered')),15000))]);}finally{clearTimeout(paymentTimer);}
   phase='actual UI synthetic receipt confirmation';
   await p.getByRole('button',{name:'open payment verification',exact:true}).click();
+  await p.getByRole('heading',{name:'verify first service payment',exact:true}).waitFor();
+  // Preserve the actual native response unchanged; deliver its late single claim only after the UI opens.
+  delayedPayment.release();released=null;
   await p.getByRole('textbox',{name:'actual gross amount received'}).fill('100.00');
   await p.getByRole('combobox',{name:'receipt checked outside shelv'}).click();
   await p.getByRole('option',{name:'amount, recipient and transaction checked',exact:true}).click();
@@ -162,6 +168,10 @@ try {
   const snapshot=persisted(cases.client.id);assert.deepEqual(snapshot,{publications:1,events:1,deliveries:2,serviceStarts:1,reviewSchedules:1,starts:0});result.persistence=snapshot;
   const audit=await command(p,'advisor','plans',{schemaVersion:1,action:'read_advisor_publication_v1',clientId:cases.client.id,version:1});assert.equal(audit.status,200);assert.equal(audit.value.reviewSchedule.firstPublicationAt,audit.value.plan.publishedAt);
   result.publishedAt=audit.value.plan.publishedAt;
+  result.reviewSchedule=audit.value.reviewSchedule;
+  result.servicePeriods=JSON.parse(fixture.sql(`select jsonb_agg(jsonb_build_object('startsOn',starts_on,'endsOn',ends_on) order by claim_id) from concierge.service_periods where client_id='${cases.client.id}'`));
+  const chicagoDay=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Chicago',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(result.publishedAt));
+  assert.equal(result.servicePeriods[0].startsOn,chicagoDay);assert.equal(result.servicePeriods[0].endsOn,result.reviewSchedule.monthOneOn);
   pass('Deliberate UI publication commits exactly one immutable version/event, two queued outbox rows, real service/review dates and no Start');
   phase='client PKCE and decision';
   const client=await signIn(cases.client,'client',2),c=client.page;
