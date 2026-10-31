@@ -93,16 +93,20 @@ export function TextField({
     <Field label={label} hint={hint}>
       {long ? (
         <Textarea
-          disabled={disabled}
+          readOnly={disabled}
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => {
+            if (!disabled) onChange(e.target.value);
+          }}
           rows={4}
         />
       ) : (
         <Input
-          disabled={disabled}
+          readOnly={disabled}
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => {
+            if (!disabled) onChange(e.target.value);
+          }}
         />
       )}
     </Field>

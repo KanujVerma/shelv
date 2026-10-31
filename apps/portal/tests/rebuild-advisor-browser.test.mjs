@@ -123,7 +123,13 @@ for (const mode of ["view-only", "published"]) {
               .locator(
                 '[data-slot="input"], [data-slot="textarea"], [data-slot="select-trigger"], [data-slot="button"]:not([aria-controls])',
               )
-              .evaluateAll((elements) => elements.every((e) => e.disabled)),
+              .evaluateAll((elements) =>
+                elements.every((e) =>
+                  e.matches('input:not([type="checkbox"]), textarea')
+                    ? e.disabled || e.readOnly
+                    : e.disabled,
+                ),
+              ),
             true,
           );
           return body;
@@ -162,11 +168,15 @@ for (const mode of ["view-only", "published"]) {
           true,
         );
         assert.equal(
-          await product.getByLabel("guide title", { exact: true }).isDisabled(),
+          await product
+            .getByLabel("guide title", { exact: true })
+            .evaluate((e) => e.disabled || e.readOnly),
           true,
         );
         assert.equal(
-          await p.getByLabel("plan title", { exact: true }).isDisabled(),
+          await p
+            .getByLabel("plan title", { exact: true })
+            .evaluate((e) => e.disabled || e.readOnly),
           true,
         );
         assert.equal(
