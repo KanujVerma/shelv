@@ -4,35 +4,54 @@ import type { HistoryProps, ReportIntent } from './types.ts';
 import { Button, Badge, Field, Input, Textarea, StatusNotice, Icon } from '../../ui/index.ts';
 import { PageHeader, Panel } from '../../shell/PortalShell.tsx';
 import { Timeline, visibleHistory, ReportBody } from './Timeline.tsx';
-import type { HistoryFilter } from './Timeline.tsx';
+import {historyElementId} from './restoration.ts';
+import type {HistoryFilter,HistoryRestorationAnchor,HistoryRestorationAttempt,HistoryRestorationResult} from './restoration.ts';
 import './history.css';
 export function ClientHistory(props: HistoryProps) {
     const { controller, screen, navigation } = props;
     const state = useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot);
-    const [filter, setFilter] = useState<HistoryFilter>('all');
-    const scope = useRef({ controller, screen, navigation });
-    if (scope.current.controller !== controller || scope.current.screen !== screen || scope.current.navigation !== navigation)
-        scope.current = { controller, screen, navigation };
-    useEffect(() => () => { scope.current = { ...scope.current }; }, []);
+    const [localFilter, setLocalFilter] = useState<HistoryFilter>('all');
+    const filter=props.filter??state.timeline?.filter??localFilter;
+    const setFilter=(value:HistoryFilter)=>{controller.restoration?.setFilter(value);setLocalFilter(value);props.onFilterChange?.(value);};
+    const restoreRef=useRef<{owner:object;attempt:HistoryRestorationAttempt}|null>(null);
+    const delivered=useRef<HistoryRestorationResult|null>(null);
+    const scope = useRef({ controller, screen, navigation, version:props.restoration?.version, filter:props.filter, restore:!!props.restoration, onReady:props.restoration?.onReady, active:true });
+    if (scope.current.controller !== controller || scope.current.screen !== screen || scope.current.navigation !== navigation || scope.current.version!==props.restoration?.version || scope.current.filter!==props.filter || scope.current.restore!==!!props.restoration || scope.current.onReady!==props.restoration?.onReady)
+        {scope.current.active=false;scope.current = { controller, screen, navigation, version:props.restoration?.version, filter:props.filter, restore:!!props.restoration, onReady:props.restoration?.onReady, active:true };}
+    const renderedScope=scope.current;
+    useEffect(()=>{if(scope.current===renderedScope)renderedScope.active=true;return()=>{renderedScope.active=false;};},[renderedScope]);
+    useEffect(()=>{if(props.filter!==undefined)controller.restoration?.setFilter(props.filter);},[controller,props.filter]);
+    const restoreAPI=controller.restoration;
+    const restoreEnabled=!!props.restoration&&!!restoreAPI;
     useEffect(() => {
-        const s = controller.getSnapshot();
-        if (s.phase === 'idle' || screen === 'history')
-            void controller.load();
-    }, [controller, screen]);
+        if(scope.current!==renderedScope||!renderedScope.active)return;
+        const owner=renderedScope;
+        if(screen==='history'&&restoreEnabled&&restoreAPI){
+            const attempt=restoreAPI.restore(props.restoration?.version);
+            restoreRef.current={owner,attempt};
+        }else{const s=controller.getSnapshot();if(s.phase==='idle'||screen==='history')void controller.load();}
+        return()=>{if(restoreRef.current?.owner===owner){restoreRef.current.attempt.cancel();restoreRef.current=null;}};
+    }, [controller, screen, restoreEnabled, props.restoration?.version, restoreEnabled?props.filter:null, restoreEnabled?navigation:null]);
+    useEffect(()=>{
+        const result=state.timeline?.result;
+        if(scope.current!==renderedScope||!renderedScope.active||screen!=='history'||!props.restoration||!result||delivered.current===result||!controller.restoration?.isCurrent(result))return;
+        delivered.current=result;props.restoration.onReady(result);
+    },[controller,screen,state.timeline?.result,props.restoration,renderedScope]);
     useEffect(() => {
         if (screen === 'update' && state.phase === 'ready')
             controller.startReport();
     }, [controller, screen, state.phase]);
-    const retry = async () => { const captured = scope.current; await controller.load(); if (scope.current === captured && screen === 'update' && controller.getSnapshot().phase === 'ready')
+    const retry = async () => { const captured = scope.current; if(screen==='history'&&restoreEnabled&&restoreAPI){const attempt=restoreAPI.restore(props.restoration?.version);restoreRef.current={owner:captured,attempt};await attempt.ready;}else await controller.load(); if (scope.current === captured && captured.active && screen === 'update' && controller.getSnapshot().phase === 'ready')
         controller.startReport(); };
-    const update = () => { controller.startReport(); navigation.openUpdate(); };
-    const correct = async (event: ReportEvent) => { const captured = scope.current; await controller.startAmendment(event); const s = controller.getSnapshot(); if (scope.current === captured && s.phase === 'ready' && s.intent?.kind === 'amendment' && s.intent.original.id === event.id)
+    const update = () => { controller.restoration?.capture({kind:'update'});controller.startReport(); navigation.openUpdate(); };
+    const correct = async (event: ReportEvent,anchor?:HistoryRestorationAnchor) => { const captured = scope.current;controller.restoration?.capture(anchor??null); await controller.startAmendment(event); const s = controller.getSnapshot(); if (scope.current === captured && captured.active && s.phase === 'ready' && s.intent?.kind === 'amendment' && s.intent.original.id === event.id)
         navigation.openUpdate(); };
+    const version=(value:number,anchor?:HistoryRestorationAnchor)=>{controller.restoration?.capture(anchor??null);navigation.openVersion?.(value);};
     const labels = { actorLabel: props.actorLabel, productLabel: props.productLabel, goalLabel: props.goalLabel ?? ((id: string, pub: GoalReportBody['publication']) => state.view?.plan?.version === pub.version && state.view.plan.documentSchemaVersion === pub.documentSchemaVersion ? state.view.plan.content.goals.find(g => g.id === id)?.text ?? null : null) };
-    const write = state.phase === 'ready' && !state.readError && !state.loadingMore && state.version === null && state.view?.access === 'active' && state.view.currentGuidance?.mode === 'current_document';
+    const write = state.phase === 'ready' && !state.timeline?.restoring && !state.readError && !state.loadingMore && state.version === null && state.view?.access === 'active' && state.view.currentGuidance?.mode === 'current_document';
     const entries = state.pages.flatMap(p => p.entries), hasMore = state.pages.at(-1)?.nextCursor != null;
     return <div className="history-view" data-history-screen={screen}>
-    <PageHeader title={screen === 'history' ? 'check-ins & history' : state.intent?.kind === 'amendment' ? 'correct an update' : 'send an update'} description={screen === 'history' ? 'your updates, our decisions and what changed' : 'a short update before your check-in, or whenever something changes'} action={screen === 'history' ? props.onExport ? <Button variant="ghost" onClick={props.onExport}>download plan</Button> : undefined : <Button variant="ghost" onClick={navigation.back}><Icon name="arrow-left"/>back to history</Button>}/>
+    <PageHeader title={screen === 'history' ? 'check-ins & history' : state.intent?.kind === 'amendment' ? 'correct an update' : 'send an update'} description={screen === 'history' ? 'your updates, our decisions and what changed' : 'a short update before your check-in, or whenever something changes'} action={screen === 'history' ? props.onExport ? <Button variant="ghost" onClick={props.onExport}>download plan</Button> : undefined : <Button id="history-update-back" variant="ghost" onClick={navigation.back}><Icon name="arrow-left"/>back to history</Button>}/>
     {state.phase === 'ended' ? <StatusNotice tone="denied" title="your session changed">sign in again to open your record.</StatusNotice> : null}
     {state.phase === 'denied' ? <StatusNotice tone="denied" title="record access denied" action={<Button variant="secondary" onClick={()=>void retry()}>retry current record</Button>}>you do not currently have access to this record. any pending update is retained for this session.</StatusNotice> : null}
     {state.phase === 'idle' || state.phase === 'loading' ? <StatusNotice tone="loading" title="loading your record"/> : null}
@@ -46,10 +65,10 @@ export function ClientHistory(props: HistoryProps) {
       <div className="history-columns">
         <div className="history-stack">
           {screen === 'history' ? <>
-            <div className="history-filters" role="group" aria-label="filter history">{([['all', 'all activity'], ['checkins', 'check-ins'], ['changes', 'plan changes']] as const).map(([key, label]) => <Button key={key} variant={filter === key ? 'primary' : 'secondary'} aria-pressed={filter === key} onClick={() => setFilter(key)}>{label}</Button>)}</div>
-            <Panel className="history-record"><Timeline entries={entries} filter={filter} labels={labels} onAmend={write && !state.pending ? event => void correct(event) : undefined} onVersion={navigation.openVersion}/>
+            <div className="history-filters" role="group" aria-label="filter history">{([['all', 'all activity'], ['checkins', 'check-ins'], ['changes', 'plan changes']] as const).map(([key, label]) => <Button key={key} id={`history-filter-${key}`} variant={filter === key ? 'primary' : 'secondary'} aria-pressed={filter === key} onClick={() => setFilter(key)}>{label}</Button>)}</div>
+            <Panel className="history-record"><Timeline entries={entries} filter={filter} labels={labels} onAmend={write && !state.pending ? (event,anchor) => void correct(event,anchor) : undefined} onVersion={navigation.openVersion?version:undefined}/>
               {!entries.some(e => visibleHistory(e, filter)) ? <StatusNotice tone="empty" title={hasMore ? 'no matching activity in the loaded pages' : 'no activity to show yet'}>{hasMore ? 'load more to continue through your record.' : 'your future updates and published decisions will appear here.'}</StatusNotice> : null}
-              {hasMore && !state.readError ? <Button variant="secondary" busy={state.loadingMore} onClick={() => void controller.loadMore()}>load more activity</Button> : null}
+              {hasMore && !state.readError ? <Button id="history-load-more" variant="secondary" busy={state.loadingMore} onClick={() => void controller.loadMore()}>load more activity</Button> : null}
             </Panel>
           </> : <>
             <Feedback state={state} controller={controller}/>
@@ -58,7 +77,7 @@ export function ClientHistory(props: HistoryProps) {
           </>}
         </div>
         <aside className="history-stack" aria-label={screen === 'history' ? 'check-in context' : 'help with your update'}>
-          {screen === 'history' ? <>{state.view?.access!=='read_only'?<Panel className="history-next"><h2>next check-in</h2><p className="history-review-date">{state.view?.nextReviewOn ?? 'not scheduled'}</p><p>text, call or an update here. this date is not a booked appointment.</p>{write ? <Button onClick={update}>send an update</Button> : null}</Panel>:null}<Panel><h2>your record, in context</h2><p>reported use stays distinct from advice. corrections are added to the record; earlier versions stay available.</p></Panel></> : <Panel className="history-next"><h2>{write?'you don’t need perfect notes':'your unsent update'}</h2><p>{write?'tell us what you noticed. every answer is optional, and “not sure” is useful.':'your record is read-only. any unsent update remains in this session.'}</p>{write ? <p>we’ll review a sent update and reply within 24 hours.</p> : null}{props.onContact ? <Button variant="secondary" onClick={props.onContact}>text shelv</Button> : null}</Panel>}
+          {screen === 'history' ? <>{state.view?.access!=='read_only'?<Panel className="history-next"><h2>next check-in</h2><p className="history-review-date">{state.view?.nextReviewOn ?? 'not scheduled'}</p><p>text, call or an update here. this date is not a booked appointment.</p>{write ? <Button id={historyElementId({kind:'update'})} onClick={update}>send an update</Button> : null}</Panel>:null}<Panel><h2>your record, in context</h2><p>reported use stays distinct from advice. corrections are added to the record; earlier versions stay available.</p></Panel></> : <Panel className="history-next"><h2>{write?'you don’t need perfect notes':'your unsent update'}</h2><p>{write?'tell us what you noticed. every answer is optional, and “not sure” is useful.':'your record is read-only. any unsent update remains in this session.'}</p>{write ? <p>we’ll review a sent update and reply within 24 hours.</p> : null}{props.onContact ? <Button variant="secondary" onClick={props.onContact}>text shelv</Button> : null}</Panel>}
         </aside>
       </div>
     </> : null}
@@ -69,9 +88,9 @@ function Feedback({ state, controller }: {
     controller: HistoryProps['controller'];
 }) {
     if (state.mutation === 'uncertain')
-        return <StatusNotice tone="uncertain" title="update result uncertain" action={<div className="history-actions"><Button variant="secondary" busy={state.checkingStatus} onClick={() => void controller.checkStatus()}>check update status</Button>{state.view?.access === 'active' ? <Button variant="secondary" disabled={state.checkingStatus} onClick={() => void controller.retryExact()}>retry exact update</Button> : null}</div>}>{state.error ?? 'the original update is retained.'}</StatusNotice>;
+        return <StatusNotice tone="uncertain" title="update result uncertain" action={<div className="history-actions"><Button variant="secondary" busy={state.checkingStatus} onClick={() => void controller.checkStatus()}>check update status</Button>{state.view?.access === 'active' ? <Button variant="secondary" disabled={state.checkingStatus||state.timeline?.restoring} onClick={() => void controller.retryExact()}>retry exact update</Button> : null}</div>}>{state.error ?? 'the original update is retained.'}</StatusNotice>;
     if (state.needsReview)
-        return <StatusNotice tone="warning" title="review the current record" action={<Button variant="secondary" disabled={state.readError||state.loadingMore} onClick={() => void controller.reviewCurrent()}>i’ve reviewed this record</Button>}>{state.error ?? 'your unsent answers are retained. review this fetched record before sending again.'}</StatusNotice>;
+        return <StatusNotice tone="warning" title="review the current record" action={<Button variant="secondary" disabled={state.readError||state.loadingMore||state.timeline?.restoring} onClick={() => void controller.reviewCurrent()}>i’ve reviewed this record</Button>}>{state.error ?? 'your unsent answers are retained. review this fetched record before sending again.'}</StatusNotice>;
     if (state.mutation === 'no_observation')
         return <StatusNotice title="nothing was sent">there were no observations to record. add anything you noticed, or return to your history.</StatusNotice>;
     if (state.mutation === 'confirmed')

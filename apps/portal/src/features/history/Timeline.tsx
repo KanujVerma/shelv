@@ -4,7 +4,11 @@ import type { ProductRef, UseChange, AttributedUseEvent } from '../../../../../s
 import type { GoalReportBody, ReportEvent, ReportReplacement, ClientCareHistoryEntry, PublishedGuidance } from '../../../../../src/contracts/PortalReview.ts';
 import type { HistoryProps } from './types.ts';
 import { Badge, Button, Icon } from '../../ui/index.ts';
-import { historyKey } from './model.ts';
+import { historyKey,visibleHistory } from './model.ts';
+import {historyElementId} from './restoration.ts';
+import type {HistoryFilter,HistoryRestorationAnchor} from './restoration.ts';
+export type {HistoryFilter} from './restoration.ts';
+export {visibleHistory} from './model.ts';
 type Labels = Pick<HistoryProps, 'actorLabel' | 'productLabel' | 'goalLabel'>;
 export function known(value: Known<string>): string { return value.state === 'known' ? value.value : 'not recorded'; }
 function actor(id: string, labels: Labels) { return labels.actorLabel?.(id) ?? `account ${id}`; }
@@ -62,19 +66,19 @@ function Schedule({ value }: {
 export function HistoryEvent({ entry, labels, onAmend, onVersion }: {
     entry: ClientCareHistoryEntry;
     labels: Labels;
-    onAmend?: (event: ReportEvent) => void;
-    onVersion?: (version: number) => void;
+    onAmend?: (event: ReportEvent,anchor?:HistoryRestorationAnchor) => void;
+    onVersion?: (version: number,anchor?:HistoryRestorationAnchor) => void;
 }) {
     let body: ReactNode;
     switch (entry.kind) {
         case 'publication':
-            body = <><div className="history-meta"><Icon name="history" size="small"/> published by {actor(entry.recordedBy, labels)} · <time dateTime={entry.publishedAt}>{entry.publishedAt}</time></div><h3>plan version {entry.publication.version}</h3>{onVersion ? <Button variant="secondary" onClick={() => onVersion(entry.publication.version)}>open plan version {entry.publication.version}</Button> : null}</>;
+            body = <><div className="history-meta"><Icon name="history" size="small"/> published by {actor(entry.recordedBy, labels)} · <time dateTime={entry.publishedAt}>{entry.publishedAt}</time></div><h3>plan version {entry.publication.version}</h3>{onVersion ? <Button id={historyElementId({kind:'version',entryKey:historyKey(entry)})} variant="secondary" onClick={() => onVersion(entry.publication.version,{kind:'version',entryKey:historyKey(entry)})}>open plan version {entry.publication.version}</Button> : null}</>;
             break;
         case 'report':
-            body = <><h3>your update</h3><Occurrence event={entry.event} labels={labels}/><ReportBody replacement={originalBody(entry.event)} labels={labels}/>{onAmend ? <Button variant="secondary" onClick={() => onAmend(entry.event)}>add a correction</Button> : null}</>;
+            body = <><h3>your update</h3><Occurrence event={entry.event} labels={labels}/><ReportBody replacement={originalBody(entry.event)} labels={labels}/>{onAmend ? <Button id={historyElementId({kind:'correction',entryKey:historyKey(entry)})} variant="secondary" onClick={() => onAmend(entry.event,{kind:'correction',entryKey:historyKey(entry)})}>add a correction</Button> : null}</>;
             break;
         case 'report_amendment':
-            body = <><h3>report correction</h3><div className="history-original"><h4>original report</h4><Occurrence event={entry.original} labels={labels}/><ReportBody replacement={originalBody(entry.original)} labels={labels}/></div><h4>separate correction</h4><p className="history-meta">corrected by {actor(entry.amendment.amendedBy, labels)} · <time dateTime={entry.amendment.recordedAt}>{entry.amendment.recordedAt}</time></p><Text label="corrected occurrence">{known(entry.amendment.occurredOn)}</Text><Text label="reason">{entry.amendment.reason}</Text><ReportBody replacement={entry.amendment.replacement} labels={labels}/>{entry.amendment.attention ? <Text label="prior review">{entry.amendment.attention.priorReview.id} · {entry.amendment.attention.state}</Text> : null}{onAmend ? <Button variant="secondary" onClick={() => onAmend(entry.original)}>add another correction</Button> : null}</>;
+            body = <><h3>report correction</h3><div className="history-original"><h4>original report</h4><Occurrence event={entry.original} labels={labels}/><ReportBody replacement={originalBody(entry.original)} labels={labels}/></div><h4>separate correction</h4><p className="history-meta">corrected by {actor(entry.amendment.amendedBy, labels)} · <time dateTime={entry.amendment.recordedAt}>{entry.amendment.recordedAt}</time></p><Text label="corrected occurrence">{known(entry.amendment.occurredOn)}</Text><Text label="reason">{entry.amendment.reason}</Text><ReportBody replacement={entry.amendment.replacement} labels={labels}/>{entry.amendment.attention ? <Text label="prior review">{entry.amendment.attention.priorReview.id} · {entry.amendment.attention.state}</Text> : null}{onAmend ? <Button id={historyElementId({kind:'correction',entryKey:historyKey(entry)})} variant="secondary" onClick={() => onAmend(entry.original,{kind:'correction',entryKey:historyKey(entry)})}>add another correction</Button> : null}</>;
             break;
         case 'review_attention':
             body = <><h3>{entry.attention.state === 'resolved' ? 'correction reviewed' : 'earlier review needs attention'}</h3><Text label="prior published review">{entry.attention.priorReview.id}</Text><Text label="correction">{entry.amendmentId}</Text><Text label="report">{entry.event.id}</Text><p className="history-meta">recorded: {entry.recordedAt} · plan version {entry.publication.version}</p>{entry.attention.resolvedBy ? <Text label="resolved by published review">{entry.attention.resolvedBy.id}</Text> : <p>the earlier conclusion remains in your record.</p>}</>;
@@ -114,14 +118,12 @@ export function HistoryEvent({ entry, labels, onAmend, onVersion }: {
             break;
         }
     }
-    return <article className="history-event" data-event={historyKey(entry)}>{body}</article>;
+    return <article id={historyElementId({kind:'entry',entryKey:historyKey(entry)})} tabIndex={-1} className="history-event" data-event={historyKey(entry)}>{body}</article>;
 }
-export type HistoryFilter = 'all' | 'checkins' | 'changes';
-export function visibleHistory(entry: ClientCareHistoryEntry, filter: HistoryFilter) { return filter === 'all' || filter === 'checkins' && ['report', 'report_amendment', 'review_attention', 'legacy_review', 'legacy_reply'].includes(entry.kind) || filter === 'checkins' && entry.kind === 'guidance' && entry.guidance.body.kind !== 'instruction' || filter === 'changes' && (entry.kind === 'publication' || entry.kind === 'legacy_instruction' || entry.kind === 'guidance' && entry.guidance.body.kind === 'instruction'); }
 export function Timeline({ entries, filter, labels, onAmend, onVersion }: {
     entries: readonly ClientCareHistoryEntry[];
     filter: HistoryFilter;
     labels: Labels;
-    onAmend?: (event: ReportEvent) => void;
-    onVersion?: (version: number) => void;
+    onAmend?: (event: ReportEvent,anchor?:HistoryRestorationAnchor) => void;
+    onVersion?: (version: number,anchor?:HistoryRestorationAnchor) => void;
 }) { return <div className="history-timeline">{entries.filter(e => visibleHistory(e, filter)).map(e => <HistoryEvent key={historyKey(e)} entry={e} labels={labels} onAmend={onAmend} onVersion={onVersion}/>)}</div>; }

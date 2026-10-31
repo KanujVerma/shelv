@@ -25,6 +25,7 @@ export type HistoryRestorationResult=
     |(Available&{state:'fallback';reason:'basis_changed'|'version_changed'|'timeline_changed'|'anchor_unavailable'|'page_read_failed';anchorId:null})
     |{state:'unavailable';reason:'denied'|'session_ended'|'unavailable'|'superseded'|'restricted_mode';basis:null;loadedEntries:0;anchorId:null};
 export interface HistoryRestorationAttempt {
+    /** Data completion; ClientHistory.onReady is the after-commit UI signal. */
     ready:Promise<HistoryRestorationResult>;
     /** Cancels only this attempt, including its ready callback lease. */
     cancel():void;
@@ -57,6 +58,7 @@ export function isHistoryEntryKey(value:unknown):value is string {
     return Number.isSafeInteger(Number(value.slice('publication:'.length)));
 }
 export function historyElementId(anchor:HistoryRestorationAnchor):string {
+    if(!anchor||typeof anchor!=='object'||!['update','entry','correction','version'].includes(anchor.kind))throw new TypeError('invalid history anchor');
     if(anchor.kind==='update')return 'history-update-opener';
     if(!isHistoryEntryKey(anchor.entryKey))throw new TypeError('invalid history entry key');
     const prefix={entry:'history-entry:',correction:'history-correction-opener:',version:'history-version-opener:'} as const;
