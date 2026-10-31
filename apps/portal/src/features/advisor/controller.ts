@@ -66,7 +66,8 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
   const { session, ports, permissions } = options,
     listeners = new Set<() => void>(),
     controllers = new Set<AbortController>(),
-    readGenerations = new Map<string, number>();
+    readGenerations = new Map<string, number>(),
+    approvalContexts = new WeakMap<AdvisorWrite, number>();
   const restored = session.isCurrent()
     ? session.memory.get<AdvisorState>(memoryKey)
     : undefined;
@@ -112,11 +113,11 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       target = view?.target,
       local = state.local,
       pending = state.pending,
-      capabilities = JSON.stringify(permissions);
+      actorId = permissions.actorId;
     readGenerations.set(purpose, generation);
     // A read owns only this purpose, view, manual basis and operation. It never
     // acknowledges or cleans up a later write, including a retry of the same UUID.
-    return () =>
+    const owns = () =>
       live() &&
       start === epoch &&
       readGenerations.get(purpose) === generation &&
@@ -124,8 +125,14 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       state.view === view &&
       state.local === local &&
       state.pending === pending &&
-      (target == null || sameTarget(state.view?.target, target)) &&
-      capabilities === JSON.stringify(permissions);
+      (target == null || sameTarget(state.view?.target, target));
+    // The current app read may itself refresh target-bound mutation capabilities.
+    // Those flags do not identify the reader. Private delivery still requires
+    // the captured actor/session, current view permission and every read fence.
+    return Object.assign(
+      () => owns() && actorId === permissions.actorId && permissions.view,
+      { owns },
+    );
   }
   const deny = () =>
     emit({ notice: { kind: "denied", title: "action unavailable" } });
@@ -240,6 +247,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
   });
   function accept(command: AdvisorWrite, result: unknown) {
     const mapped = mapPlanResult(result, command);
+    const authority = contextGeneration;
     contextGeneration++;
     if (command.action === "approve_publication_v1") {
       const approval = mapped as Approval;
@@ -249,7 +257,15 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         approval.publisher.actorId !== permissions.actorId
       )
         throw Error("invalid_response");
-      if (state.context && sameTarget(state.view?.target, command.target))
+      // An immutable command receipt acknowledges that command. It cannot
+      // replace authority refreshed after the command began, even on exact
+      // retry/status recovery. Restored pending commands must refresh authority.
+      if (
+        approvalContexts.get(command) === authority &&
+        permissions.view &&
+        state.context &&
+        sameTarget(state.view?.target, command.target)
+      )
         emit({ context: { ...state.context, approval } });
     } else if (command.action === "publish_plan_v1") {
       const receipt = mapped as PublishReceipt;
@@ -321,6 +337,12 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
   async function execute(command: AdvisorWrite) {
     if (!live() || state.busy) return;
     readPlanCommand(command);
+    if (
+      command.action === "approve_publication_v1" &&
+      state.pending !== command &&
+      !approvalContexts.has(command)
+    )
+      approvalContexts.set(command, contextGeneration);
     const operation = ++operationGeneration;
     const current = () =>
       live() && operation === operationGeneration && state.pending === command;
@@ -519,6 +541,13 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         }
       } catch (e) {
         if (current()) fail(e);
+      } finally {
+        // A denied current open must end loading. An old open owns neither a
+        // newer open's busy state nor a later write's pending operation.
+        if (current.owns() && state.busy) {
+          emit({ busy: false });
+          if (!current()) deny();
+        }
       }
     },
     async create() {
