@@ -2,7 +2,7 @@
 
 > For agentic workers: use the relevant Superpowers implementation, debugging, review and verification workflows. Execute owned tasks against the approved specification; do not reopen its design decisions.
 
-Owner: Kanuj. Coordinator owns integration. Status: tasks 1-2 complete; task 3 implementation/fix/review and connected composition in progress. Existing slice signatures are pinned in PLAN_API_V1 and ADVISOR_READ_API_V1; the next bounded implementation is pinned in CARE_API_V1. Current evidence and limits are in CURRENT_STATUS and the task/review reports.
+Owner: Kanuj. Coordinator owns integration. Status: tasks1-3 complete within the independently accepted product-free vertical slice; task4 remaining-domain implementation is in progress. Full-goal acceptance remains open. Existing slice signatures are pinned in PLAN_API_V1 and ADVISOR_READ_API_V1; the next bounded implementation is pinned in CARE_API_V1. Current evidence and limits are in CURRENT_STATUS and the task/review reports.
 
 **Goal:** deliver the complete connected, tested portal matching all D01-D48 and 26 screens plus secondary states.
 
@@ -44,11 +44,11 @@ Files: W1-owned new shared types/validators, draft/publication/source/outbox mod
 - [x] Implement one transaction for gates, immutable version, first entitlement/service/review dates and outbox. Payment recording preserves unchanged content approval; persisted tests cover delivery lease/retry semantics. Actual email/webhook delivery remains task4/5 scope.
 - [x] Connect minimal editor and shared client renderer through existing authenticated transport. Verify actual database changes, not only success notices.
 - [x] Run isolated real Auth/PostgREST journey: create unassigned draft, populate, assign, review/approve, verify synthetic service receipt, deliberately publish, client read/durable notification rows, decision review, Back to current routine. Verify old IDs/dates/receipts unchanged.
-- [ ] Independent Sol/xhigh review and focused fix/re-review. Record exact head, fixture, commands/results and limitations in acceptance matrix before broader page fan-out.
+- [x] Independent Sol/xhigh review and focused fix/re-review. Record exact head, fixture, commands/results and limitations in acceptance matrix before broader page fan-out.
 
 ## next bounded care implementation
 
-CARE_API_V1 pins new actual use/identity and a bounded v2 read model, immutable amendments and explicit dependency rebasing. Its single root-contract/SQL writer can implement and publish an early strict seam while the independent first-slice status-recovery correction finishes. No remaining page workers start until that correction is independently accepted. Then shared client/report/history owners consume the committed DTOs rather than inventing parallel schemas. Raw sources/templates/guidance/commerce/account/delivery remain sequenced compatible domains, not presumed implemented by this API.
+CARE_API_V1 pins new actual use/identity and a bounded v2 read model, immutable amendments and explicit dependency rebasing. Its single root-contract/SQL writer can implement and publish an early strict seam while the independent first-slice status-recovery correction finishes. AR1 is now independently accepted in W7_STATUS_RECOVERY_R2. W3 C07/use renderer can consume the committed strict seam while W1 completes persisted care, with actual application activation still gated on connected acceptance. Then shared client/report/history owners consume the committed DTOs rather than inventing parallel schemas. Raw sources/templates/guidance/commerce/account/delivery remain sequenced compatible domains, not presumed implemented by this API.
 
 ## task 4: complete owned product modules
 

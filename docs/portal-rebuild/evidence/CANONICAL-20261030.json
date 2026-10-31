@@ -375,5 +375,54 @@
       "custodyReturnUtc": "2026-10-31T04:24:17.847Z",
       "limits": "Product-free slice. C1/AR1, full remaining flows, actual provider delivery and exact-head CI separately pending; counts overlap."
     }
+  },
+  "firstSliceStatusRecovery": {
+    "report": "research/W7_STATUS_RECOVERY_R2.md",
+    "reviewHead": "55a580e9081b561048bb145d427537c9c03948e8",
+    "integrationHead": "b920621",
+    "testedSource": "44f9f4d9ca4ed09e02ffef4b8578170a11eb65da",
+    "specification": "PASS_SCOPED",
+    "quality": "PASS_SCOPED",
+    "ar1": "ADDRESSED",
+    "portalTests": 907,
+    "sessionTests": 163,
+    "independentProbes": [
+      24,
+      69
+    ],
+    "explicitRecoveryBrowsers": 15,
+    "independentBrowserCases": 2,
+    "limits": "Intercepted UI/source; prior genuine Auth remains89527a8, no complete-goal/release claim."
+  },
+  "careCompositionCheckpoint": {
+    "strictSeamHeads": [
+      "7c9e2ef",
+      "b2cb2e7",
+      "98673f8",
+      "ebd0b3a",
+      "71c2a52"
+    ],
+    "transportHead": "75818ab",
+    "routeHead": "9e096ee",
+    "v2ControllerHead": "dbdec5c",
+    "fetchedIdentityFixHead": "c8de1bd",
+    "rootTests": {
+      "passed": 1206,
+      "skipped": 18,
+      "failed": 0,
+      "scope": "b2cb2e7 seam; newer specific/history/identity cases separately verified"
+    },
+    "transportTests": {
+      "session": 171,
+      "channelAndRetainedPlan": 19,
+      "portsAndControllerAndModels": 21,
+      "portal": 907,
+      "portalScope": "after care channel, before unused care ports/new form modules"
+    },
+    "policySourceSha256": "e091552ab66fb26a907c14d6942553a90b9cbbd415cba0177d817b40658976d7",
+    "migration": "20261031043655_portal_rebuild_care_use_v1.sql",
+    "migrationStatus": "Allocated/owned by W1, not integrated or replayed",
+    "careUiStatus": "Early seam3a65498; two intentionally red form cases pending W3 delivery",
+    "limits": "No current application v2 activation or connected care/SQL acceptance; protected R4 not changed."
   }
 }

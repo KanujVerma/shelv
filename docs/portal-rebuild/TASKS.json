@@ -1360,7 +1360,7 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-6189bc49",
       "branch": "t3/advisor-status-recovery",
       "baseCommit": "c32b624cf27e30ad141398e5cea5b939d6ba24db",
-      "status": "running",
+      "status": "completed",
       "reportPath": "docs/portal-rebuild/research/W2_STATUS_RECOVERY_FIX.md",
       "writeSet": [
         "apps/portal/src/features/advisor/controller.ts",
@@ -1369,8 +1369,15 @@
         "apps/portal/tests/rebuild/advisor-status-browser.mjs",
         "docs/portal-rebuild/research/W2_STATUS_RECOVERY_FIX.md"
       ],
-      "resources": "Sole synthetic intercepted Chrome granted; no native Auth/DB custody",
-      "verification": "Exact T3 returned settings and live thread/worktree/base readback; each child must verify both live runtime tools"
+      "resources": "Chrome released04:30:47UTC; all handles terminal; no native access",
+      "verification": "Exact T3 returned settings and live thread/worktree/base readback; each child must verify both live runtime tools",
+      "headCommit": "e7275ae55e69f869e6c442d97dee759080237c1b",
+      "implementationHead": "2838d7754e51ba73d820753bb8428b9e43b493fd",
+      "integratedCommits": [
+        "1b6db5a",
+        "44f9f4d"
+      ],
+      "verdict": "Author431source/24independent/54browser pass; independently accepted in W7 round2"
     },
     {
       "role": "W1 care use backend",
@@ -1403,8 +1410,100 @@
         "supabase/tests/portal_care_*",
         "docs/portal-rebuild/research/W1_CARE_IMPLEMENTATION.md"
       ],
-      "resources": "Exclusive root care/dependency contracts and new forward migration; own Unix-only synthetic PG permitted; no parent R4/Chrome",
-      "verification": "Exact T3 returned settings and live thread/worktree/base readback; each child must verify both live runtime tools"
+      "resources": "Exclusive root care/dependency SQL writer; own Unix-only synthetic PG, no parent R4/Chrome; native20 reported pass, final implementation pending",
+      "verification": "Exact T3 returned settings and live thread/worktree/base readback; each child must verify both live runtime tools",
+      "migrationFile": "supabase/migrations/20261031043655_portal_rebuild_care_use_v1.sql",
+      "earlySeamCommits": [
+        "408ccab81283917faa3391b0262953721f268fe3",
+        "4565e46073737b6fc1d774f9db28d37bc7a7caba",
+        "5c612b2cc459316813977b9ed96496ac87360c4e",
+        "d338ab10d4451794951d5b864b03ee5dab1d55b6",
+        "1a0154b98f29ca7c640c778de8c679e66eb35f3f"
+      ],
+      "integratedCommits": [
+        "7c9e2ef",
+        "b2cb2e7",
+        "98673f8",
+        "ebd0b3a",
+        "71c2a52"
+      ],
+      "verdict": "Strict seam/handler integrated and targeted tests pass; no persisted/actual Auth acceptance yet"
+    },
+    {
+      "role": "W7 status recovery round2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-status-review-20261030-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-status-review-20261030-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-status-review-20261030-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-121bd7aa",
+      "branch": "t3/verify-ar1-status-recovery",
+      "baseCommit": "44f9f4d9ca4ed09e02ffef4b8578170a11eb65da",
+      "status": "completed",
+      "reportPath": "docs/portal-rebuild/research/W7_STATUS_RECOVERY_R2.md",
+      "verification": "Exact returned settings/live thread/worktree/base; child both runtime tools confirm Sol/xhigh/default",
+      "headCommit": "55a580e9081b561048bb145d427537c9c03948e8",
+      "integratedCommits": [
+        "b920621"
+      ],
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_STATUS_RECOVERY_R2.md"
+      ],
+      "resources": "Chrome released04:46:00UTC; no native access; all handles terminal",
+      "verdict": "Scoped spec/quality PASS AR1 addressed, C1/notice retained; portal907/session163 and independent24/69/15+2 browser pass"
+    },
+    {
+      "role": "W3 care use UI",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-care-use-ui-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-care-use-ui-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-care-use-ui-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-6130843a",
+      "branch": "t3/client-care-use-projection",
+      "baseCommit": "71c2a525b13206b99025fe5dda30869a86d24f4a",
+      "status": "running",
+      "reportPath": "docs/portal-rebuild/research/W3_CARE_USE.md",
+      "verification": "Exact returned settings/live thread/worktree/base; child both runtime tools confirm Sol/xhigh/default",
+      "writeSet": [
+        "apps/portal/src/features/plan/",
+        "apps/portal/tests/rebuild-care-plan*",
+        "apps/portal/tests/rebuild-use*",
+        "apps/portal/tests/rebuild/care-*",
+        "docs/portal-rebuild/research/W3_CARE_USE.md"
+      ],
+      "resources": "Sole intercepted synthetic Chrome; actual app/session/care-port harness, no native/DB/Auth; forms and visual/boundary verification in progress",
+      "earlySeamCommits": [
+        "795a90cc547f79e3bad90a507a36996d5921873f"
+      ],
+      "integratedCommits": [
+        "3a65498"
+      ],
+      "parentAuthorizedImports": [
+        "dbdec5c250a4835ddb390624024cf650f573882e",
+        "c8de1bd2b6492c4a5761edb6effe6a127e0981bc"
+      ],
+      "verdict": "Early model6 green,2 new form browser cases intentionally red pending implementation; strict feature type seam composed"
     }
   ]
 }
