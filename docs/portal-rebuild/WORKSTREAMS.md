@@ -58,8 +58,13 @@ Return the exact starting/final commit, workspace, status, changed paths, decisi
 
 ## latest composition checkpoint
 
-Core care is independently accepted within W7_CARE_INTEGRATED_REVIEW at1011ae33. ParentRoot/native remains57/76b09; no sharednativegrant. R7helpersidle/coordinator-owned; R4/R6stopped/preserved; R5retiredsource-only. Full goalactive.
+Corecareindependentlyacceptedat1011; advisorCD3scopedPASS57d3/integration2924410c afterRoot4920, with genuinepublisher/rebaseandlargereportedprojectionreaderstillpending. ParentRoot/native remains57/76b09; newM58-M61backend/History/V3featuresareunintegrated. R7 idle/coordinator-owned, R4/R6stopped/preserved, R5retiredsource-only. Fullgoalactive.
 
-W1 sourceM58/M59/M60 isterminal6a815aaf/OwnPGstopped, awaitingnewcomposedindependentR2 afterR1RG1-RG3 plusadditionalRG4compatibilitycorrection. Allold59SQLfrozen. W3V3source9c5cac1b andW4historysource/browser5aa860a8 areterminal, notparentintegrated. TheirApp/defaultactivation/server/routesremaincoordinator-owned; no currentlyactiveclient-statewriter. W2terminal355 candidateisimportedwithprovenance; coordinatorboundedCD3fix4920 has source435/originalbrowser4/App19green, awaitingfreshR3. RootsharedCSSef7 hasactualW4zoomRED/GREEN373->320/320, separatefromclinicalchanges.
+| Active owner | Current exclusive scope | Resources |
+| --- | --- | --- |
+| W1 original7a7 follow-upordinal2 | RG5SQLinstructionstageidentity, actualM61CLIfile20261031161130, newtests/report; old60immutable | OWNmarkedUnixPGonly; noParent/reviewerPG/native/Chrome |
+| W3 original1026 follow-upordinal2 | sharedV3planfeature plusnarrowclient-stateV3, newbrowserregressions/report; Root96targetunchanged | SOLEsyntheticChromegrant9c after16:00:47return; no realAuth/DB/provider/nativefixture. FigmaAPIread-onlywithskillallowed |
+| W4 original0706 follow-upordinal3 | RH1currentpagination403denial display/controller/newregressions/report | SOURCEONLY, noChrome/DOM/process/fixturepollinguntilnewgrantafterW3release |
+| Coordinator | Integration/docs/sharedtransport/server/route/defaultcomposition; RootCD3fixfinished | NoChrome/nativegrant; no editsinclaimedplan/client-state/history/SQLpaths |
 
-W4ChromeRETURN14:51:36.119874UTC, coordinatorRootCD3ChromeRETURN15:00:39.744504UTC; no currentbrowsergrant. Nextreviewallocations andexactresourceownershipinTASKS.json supersedehistoricaltablesabove. Atmostthreechildrenpluscoordinator. IndependentreviewroundsNEWT3taskIDs/fullpriorbriefs/responses; no productionfixesbyreviewer. BackendreviewownnewPGonly; client/advisorreviewsserialsyntheticChrome, neverR7/credentials. Source-onlyW3willlaterresumeitsimplementationthreadunderfreshbrowsergrant. Preserveallworktrees/evidence andfiveoriginals.
+All3reviewroundsjustreturnedreport-onlyandresources: M58composedR2FAILRG5(RG1-RG4addressed/M59PASS), C04/C05R1FAILRH1(B1-B4closedscoped), advisorR3PASSCD3. Freshindependentreviewsaftercorrections, canonical61/genuinecoupledApp/serverandfullD01-D48/V01-V17remain. EveryreviewNEWT3taskwithfullpriorbriefs/findings/responses; implementationfollow-upssamethreadNEWtask IDsverifiedsettings. TASKS.json owns exacthandles/workspaces/model/options/source/grants; CURRENT_STATUS ownsstatus; EXECUTION_LOGownschronology. Allthreeoriginalimplementationworktrees/evidencepreserved. Atmostthreechildrenpluscoordinator;no nested.

@@ -2633,8 +2633,11 @@
       "writeSet": [
         "docs/portal-rebuild/research/W7_CARE_DEPENDENCIES_R3.md"
       ],
-      "verdict": "ReportedscopedPASS/CD3addressed/qualifiedCD1CD2closuresretained; fullreportintegrationpending. Originalsource1/browser4/source435/CD16/App19/paymentstatus32 andadjacentboundariespass.",
-      "resources": "SOLESyntheticChromeRETURN15:53:41.317909UTC; ownmatchingprocessesempty/finalpreviewnoTab/no postreturncalls. No native/genuine."
+      "verdict": "Scoped specification/qualityPASS CD3addressed/qualifiedCD1CD2retained. Full138-line reportread, no newmaterialfinding. Syntheticonly/genuineandlarge-projectionreader/fullgoalstillpending.",
+      "resources": "SOLESyntheticChromeRETURN15:53:41.317909UTC; ownmatchingprocessesempty/finalpreviewnoTab/no postreturncalls. No native/genuine.",
+      "integratedCommits": [
+        "2924410c"
+      ]
     },
     {
       "role": "W7 report history round1",
