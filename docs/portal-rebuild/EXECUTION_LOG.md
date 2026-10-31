@@ -183,3 +183,9 @@ W2advisorCaredependencies3d06af0 source385+121/types/UI pass, no browser/native,
 Pinned bounded V3 decisionGuidance array after source verified read views had only canonical choice/reason while v2 receipt held accepted snapshot. New per-state provenance must use actual latest publication/decision receipts acrossv1/v2, preserve choices, keep oldunrecordedbasis unbound, avoid counter/day/finance self-staleness, retain current fresh-write CAS and historical committed retry. Source tests/maxbytes/SQL remain W1 isolatedM58 responsibility; no parent import.
 
 W2 source frozen278714b7 with387/121source checks, no browser; later allocationexplicit. W6 first2genuine4group partials preservefailedrows andcleanup; no applicationverdict. SupportedMF5 existingDO inspection fixes only testobservation (fixed2SELECTs,no newdb,all predicates/defaultR4Node unchanged), readonlygenuinecontrol proves8physicaldb/6records/2encryptedactive/issuedtokenabsence andclosed2own sessions. Thirdmain73ba inprogress, exclusivecustody held; parentNOresourcecalls.
+
+## 31 October: complete author browser run and CS1 source proof finding
+
+Author d20e297e at8467 completes15realgroups,6ownsessionsclosed0/0 atmainfinal; care17/pub1/19queued andexplicitcareStart, nolegacyactivations. Sixpartials preserveallobserver/fixture/storage/locator/normalrestorequalifications. Resourcecustodyremainsheldforfinal209/prior24cf/allpriorcase/TLS/processaudit; no parentresourcecalls.
+
+FreshW7SOURCEONLYreview2001base/importedown8467harness, t3-0dbb6d1a, exactSolxhigh, findsCS1/P2 ignoredHTML/extraoutputacceptedbysourceattestor. Probeownfilesrestored, no nativeoractualauthoralteration/leakclaim. Parentauthorizedsource-onlyexactexpectedoutputset/HTML/meta/notices/provenance/assetbytefixAFTERexplicitresourceRETURN; codeApp/Root unchanged. New actualindependentreplayafterfix required, no fullgoalacceptance.

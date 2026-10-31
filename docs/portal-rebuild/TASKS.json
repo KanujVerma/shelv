@@ -2009,7 +2009,7 @@
         "apps/portal/tests/rebuild-care-native-stack.mjs explicit phase only",
         "docs/portal-rebuild/research/W6_CARE_BROWSER.md"
       ],
-      "resources": "EXCLUSIVE R7+soleChromeHELD. Read-only exactselectorcontrol ated38:old query2/strict rejection, scopedselectedbody1/success, actualserverreportedUUID/v1/unreviewed, owncase4hash042f0d1b unchanged, own1issued1closed0/0. Fifthmain nowruns, nooverallPASS; parentNOresources.",
+      "resources": "R7+Chrome STILLHELD pending finalaudit/explicitRETURN. Author d20e297e PASS15at8467,6issued6closed0/0 atmainfinal, care17/pub1/19queued/0legacyactivations(explicitCareStartoccurred). Sixpartials preserved. CS1sourceproofgap identified separately; authorfixSOURCEONLYafterreturn authorized, no actualalteration/leak asserted; independentcurrentchain pending.",
       "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required",
       "earlyCommits": [
         "41b3600514ca7fb6236e09324b4ecda2ef8d450a",
@@ -2044,7 +2044,15 @@
         "525aa1c0-6b1d-4c47-95c2-8a4b882b16eb",
         "ad58c220-2c33-4f0b-83cc-b17f3fbef387"
       ],
-      "overallBrowserAcceptance": "PENDING_FULL_RUN_AND_INDEPENDENT_REVIEW"
+      "overallBrowserAcceptance": "PENDING_FULL_RUN_AND_INDEPENDENT_REVIEW",
+      "authorGenuineRun": {
+        "runId": "d20e297e-29b9-4cd5-8a7d-fcd331247662",
+        "sourceHead": "8467c964fd6917eb5b70880b1581b78c235c59a5",
+        "groups": 15,
+        "issued": 6,
+        "closed": 6,
+        "status": "AUTHOR_SCOPED_FUNCTIONAL_PASS_SOURCE_PROOF_CS1_OPEN_FINAL_AUDIT_PENDING"
+      }
     },
     {
       "role": "W7 care app recovery round2",
@@ -2145,6 +2153,43 @@
       "headCommit": "47586ed342f0cee8e92c8323b94196da3abb93b6",
       "integrated": false,
       "verificationResult": "Author meaningful8pass3egressfailRED ->11/11guardGREEN,67focusedPASS, strictfrontend/session0; parentdiffinspectsonly9lineguard+newtests+report"
+    },
+    {
+      "role": "W7 current genuine care browser harness source review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-browser-source-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-browser-source-review-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-0dbb6d1a",
+      "branch": "t3/w7-care-browser-source-review",
+      "baseCommit": "2001f3b11a6b1460eb0628ea324ff610bd644421",
+      "reviewedAuthorHead": "8467c964fd6917eb5b70880b1581b78c235c59a5",
+      "authorizedOwnCheckoutImports": [
+        "cd09a21",
+        "e73d768",
+        "73ba16a",
+        "8537ce3",
+        "ed38a4f",
+        "545cfd9",
+        "8467c964"
+      ],
+      "status": "running",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_BROWSER_SOURCE_REVIEW.md"
+      ],
+      "resources": "SOURCE/pure/compileONLY; NO MF/Chrome/DB/Auth/R7/privatefixture/resources",
+      "finding": "CS1/P2 exact output/source correspondence gap: mutated ignoredHTML/extraoutput accepted intoASSETSproof. Ownrestoredsourceprobe; NOactualauthorHTMLalteration/leak asserted.",
+      "verification": "ExactT3returnedSol/xhigh/default; freshparentbothmodeltools/descriptors+eightpins; actualworktree readback; childbothlivechecks required"
     }
   ]
 }
