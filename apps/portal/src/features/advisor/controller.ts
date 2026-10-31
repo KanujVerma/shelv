@@ -958,7 +958,10 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         )
           accept(pending, result.receipt);
       } catch (e) {
-        if (current()) fail(e, true);
+        // A failed status read says nothing about the original write's outcome.
+        // Keep its exact uncertain intent and current read leases recoverable;
+        // only a committed receipt or private-session invalidation resolves it.
+        if (current()) fail(e);
       }
     },
     async retry() {
