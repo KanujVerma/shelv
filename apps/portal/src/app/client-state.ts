@@ -28,7 +28,8 @@ export function createClientPlanController(
       ended: false,
     },
     sequence = 0,
-    disposed = false;
+    disposed = false,
+    confirmedV3 = options.readVersion===3;
   const live = () => !disposed && !state.ended && session.isCurrent();
   function emit(patch: Partial<ClientPlanState>) {
     state = { ...state, ...patch };
@@ -54,10 +55,12 @@ export function createClientPlanController(
     },
     accept(view: ClientPlanReadView) {
       if (!live()) return;
+      if(confirmedV3&&view.schemaVersion!==3)throw new Error('invalid_view');
       const decoded = (view.schemaVersion===3?mapReviewResult(view,reviewCommand):view.schemaVersion===2?mapCareResult(view,careCommand):mapPlanResult(view,command)) as ClientPlanReadView;
       // Validation must not replace a fetched object that a deliberate-review
       // fence is bound to. Noncanonical input is rejected, never normalized here.
       if(!sameCareValue(decoded,view))throw new Error("invalid_view");
+      if(view.schemaVersion===3)confirmedV3=true;
       sequence++;
       emit({
         view,
@@ -73,15 +76,17 @@ export function createClientPlanController(
       emit({ loading: true, error: null });
       try {
         let view:ClientPlanReadView;
-        if(options.readVersion===3 || state.view?.schemaVersion===3){
+        if(confirmedV3 || state.view?.schemaVersion===3){
           if(!ports.review)throw new TransportError(503);
           view=mapReviewResult(await ports.review.execute(reviewCommand,{signal:controller.signal}),reviewCommand) as ClientPlanReadView;
         }else if(options.readVersion===2 || state.view?.schemaVersion===2){
           if(!ports.care)throw new TransportError(503);
           view=mapCareResult(await ports.care.execute(careCommand,{signal:controller.signal}),careCommand) as ClientPlanReadView;
         }else view=await ports.read.execute(command,{signal:controller.signal});
-        if (live() && start === sequence && !controller.signal.aborted)
+        if (live() && start === sequence && !controller.signal.aborted){
+          if(view.schemaVersion===3)confirmedV3=true;
           emit({ view, loading: false });
+        }
       } catch (error) {
         if (live() && start === sequence && !controller.signal.aborted) {
           const status = (error as { status?: number }).status;
