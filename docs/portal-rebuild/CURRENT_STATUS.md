@@ -64,3 +64,6 @@ New shared T1 blocks W3's final20th browser group: caller-canceling an obsolete 
 
 
 Latest R9 r4 observation: samebusiness67cf with explicit supportedlive-fixed-selects successfully completespost-rotationphysical/encrypted-envelope inspection. All24familypositives/eightgroupsstillactual, butmainFAILatWRONGharnessauth/logout404; actualportalrouteislogout. No acknowledgedlogoutoccurred, solateread200isnotaSourcebypass. Fiveclosed/tworotations14strings/whole0/0,232persistentfiles/489originalrowsacross105tables/core428a/native87/helper7/TLSunchanged+245newownrows (734total),17users/8cases. RETURN20:50:11.511Z. Ownroute-onlysourcecorrection+actualgatewayregressionauthorized, nonewRoot/backendchange; anotheractualproofneedsNEWpopulatedgrant. CurrentgenuinemainacceptanceisNOTPASS.
+
+
+T1 source candidate9e449/reportac83 is terminal107new/45retained/197source/34runtime-source/types/buildPASS, noresources. Exacttwo client-cookieJSfilesareoutsideactualGateway/Vaultcompileclosure/native87. A new independent Source R1 is active; Root has not imported or relabeled W3's19/20browser. Browser historyR3 nowownssolegrantasrecordedinTASKS. R4NodealsoRETURNED20:50:11.511Z, noactivenativegrant; nextactualattemptawaitssourcewrong-logoutroutefixandnewpopulatedbaseline.

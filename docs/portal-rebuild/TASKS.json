@@ -3574,7 +3574,7 @@
       "headCommit": "ceea56e238c6957b557556bbd7c49c1915acb604"
     },
     {
-      "role": "W0 shared cookie caller-cancellation T1 fix",
+      "role": "W0 caller-cancellation source fix",
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-cookie-cancellation-fix-20261031-r1",
       "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-cookie-cancellation-fix-20261031-r1",
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-cookie-cancellation-fix-20261031-r1:ordinal:1",
@@ -3590,10 +3590,13 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed-source-only",
       "resourceBoundary": "Source only actual cookie/application transport, no browser/native/DB. Only two retained clientJS files/new tests/report. Caller abort mustnotgloballysuspend; genuine timeout/malformed503/401 behavior retained.",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-2d6813cc",
-      "branch": "t3/fix-cookie-abort-suspension"
+      "branch": "t3/fix-cookie-abort-suspension",
+      "headCommit": "ac83b3d70332d458fe620d4c1c089deacd6a2657",
+      "implementationCommit": "9e449f51242065f903848a6fd9a15cc2501bfc1a",
+      "verificationResult": "107new/45retained/197source/34runtime-source/types/build pass; new independent source review pending before coupled browser."
     },
     {
       "role": "W7 history receipt review R3",
@@ -3649,6 +3652,29 @@
         "status": "returned",
         "returnedAt": "2026-10-31T20:50:11.511Z"
       }
+    },
+    {
+      "role": "W7 shared-cookie T1 source review R1",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-cookie-cancellation-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-cookie-cancellation-review-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-cookie-cancellation-review-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_COOKIE_CANCELLATION_REVIEW.md"
+      ],
+      "resourceBoundary": "No resources/browser/native; actual Source107/45/197/34 plus independent current-vs-caller abort controls."
     }
   ]
 }
