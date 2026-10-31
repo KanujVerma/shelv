@@ -5,6 +5,7 @@ export type AdvisorClientTask = 'overview'|'draft'|'payments'|'checkins'|'histor
 export type PresentationMode = 'client' | 'advisor-preview' | 'public-demo' | 'private-walkthrough' | 'historical';
 export type PortalRoute =
   | {name: 'plan'; routine: RoutinePeriod}
+  | {name: 'report-use'; routine: RoutinePeriod}
   | {name: 'recommendation'; decisionId: string; routine: RoutinePeriod}
   | {name: 'product' | 'product-evidence' | 'product-use'; productId: string; routine: RoutinePeriod}
   | {name: 'history' | 'history-new' | 'orders' | 'account' | 'account-service' | 'account-cancel' | 'notifications' | 'advisor-clients' | 'advisor-plans' | 'advisor-permissions'}

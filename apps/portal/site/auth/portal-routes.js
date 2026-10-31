@@ -35,6 +35,8 @@ function buildRoute(route) {
   switch (route.name) {
     case "plan":
       return "/plan" + routineQuery(route.routine);
+    case "report-use":
+      return "/plan/use" + routineQuery(route.routine);
     case "recommendation":
       return "/plan/recommendations/" + id(route.decisionId) + routineQuery(route.routine);
     case "product":
@@ -105,6 +107,7 @@ function parseRoute(path) {
   const routine = url.searchParams.get("routine") ?? "morning";
   if (isPlan && !["morning", "evening"].includes(routine)) return null;
   if (url.pathname === "/plan") return { name: "plan", routine };
+  if (url.pathname === "/plan/use") return { name: "report-use", routine };
   for (const [name, value] of Object.entries(simpleRoutes)) if (url.pathname === value) return { name };
   if (url.pathname === "/maya") {
     const stage = url.searchParams.get("stage") ?? "1";
@@ -147,6 +150,7 @@ function parentRoute(route) {
       return { name: "product", productId: route.productId, routine: route.routine };
     case "product":
     case "recommendation":
+    case "report-use":
       return { name: "plan", routine: route.routine };
     case "history-new":
     case "history-event":
