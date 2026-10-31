@@ -137,13 +137,20 @@ export async function connectedStack(fixture) {
         assert.equal(headers.apikey, undefined, 'Browser provider key forbidden');
         let action=null;
         if(url.pathname.startsWith('/api/')&&request.method()==='POST') {try {action=request.postDataJSON()?.action??null;}catch {}}
-        browserCalls.push({method:request.method(),path:url.pathname,action});
+        const call={method:request.method(),path:url.pathname,action,origin:headers.origin??null,fetchSite:headers['sec-fetch-site']??null,host:headers.host??null};browserCalls.push(call);
+        if(url.pathname.startsWith('/api/')&&!headers.origin) {
+          const frameOrigin=new URL(request.frame().url()).origin;
+          assert.equal(frameOrigin,portalOrigin,'Only the actual local app frame may supply omitted interception Origin');
+          headers.origin=frameOrigin;call.interceptedSameOriginHeaderRestored=true;
+        }
         headers['cf-connecting-ip']='192.0.2.'+(100+index);
         const response=await mf.dispatchFetch(request.url(),{method:request.method(),headers,body:request.postDataBuffer()??undefined});
         const resultHeaders=Object.fromEntries(response.headers);
         const cookies=response.headers.getSetCookie();
         if(cookies.length) resultHeaders['set-cookie']=cookies.join('\n');
         const bytes=Buffer.from(await response.arrayBuffer());
+        call.status=response.status;
+        if(url.pathname.startsWith('/api/')&&response.status>=400) {try {const code=JSON.parse(bytes).code;if(typeof code==='string'&&/^[a-z_]+$/.test(code))call.code=code;}catch {}}
         try {assertBrowserBytes(resultHeaders,bytes,[...issuedSecrets,...[fixture.config.PUBLISHABLE_KEY,fixture.config.ANON_KEY,fixture.config.SERVICE_ROLE_KEY].filter(key=>typeof key==='string'&&key.length>0)]);}
         catch(error) {browserScan.credentialLeaks++;throw error;}
         browserScan.responses++;browserScan.bodyBytes+=bytes.length;

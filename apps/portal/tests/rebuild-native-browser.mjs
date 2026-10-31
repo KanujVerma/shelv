@@ -107,13 +107,19 @@ try {
   assert.equal(new URL(p.url()).pathname,'/advisor/plans/'+draftId+'/preview');
   assert.ok(!(await p.locator('body').innerText()).includes('W6_PRIVATE_SYNTHETIC_ONLY'));
   await p.getByRole('tab',{name:'evening',exact:true}).click();
+  await p.getByRole('tab',{name:'evening',exact:true,selected:true}).waitFor();
+  await p.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  phase='preview initial scroll capture';
   await p.evaluate(()=>{document.getElementById('portal-content').focus({preventScroll:true});window.scrollTo({top:250,behavior:'instant'});});
   await p.waitForFunction(()=>scrollY===250&&history.state.shelvNavigation.restore.scrollY===250);
+  phase='preview recommendation entry';
   await p.getByRole('button',{name:'review recommendation',exact:true}).click();
   await p.getByRole('heading',{name:'synthetic no addition decision',exact:true}).waitFor();
+  phase='preview native Back scroll focus';
   await p.goBack();await p.getByRole('heading',{name:'draft routine',exact:true}).waitFor();
   await p.getByRole('tab',{name:'evening',exact:true,selected:true}).waitFor();
-  await p.waitForFunction(()=>scrollY===250&&document.activeElement?.id==='portal-content');
+  await p.waitForFunction(()=>scrollY===250&&document.activeElement?.hasAttribute('data-page-heading'));
+  phase='preview native Forward';
   await p.goForward();await p.getByRole('heading',{name:'synthetic no addition decision',exact:true}).waitFor();
   await p.goBack();await p.getByRole('heading',{name:'draft routine',exact:true}).waitFor();
   assert.ok(!JSON.stringify(await p.evaluate(()=>history.state)).includes('no-addition'));
@@ -178,6 +184,7 @@ try {
   const viewer=await signIn(cases.viewer,'advisor',4,false,'/advisor/clients');
   assert.equal(await viewer.page.getByRole('button',{name:'new plan',exact:true}).count(),0);
   const roleDenied=await command(viewer.page,'advisor','plans',{schemaVersion:1,action:'create_draft_v1',requestId:randomUUID(),kind:'care_plan',templateVersionId:null});assert.equal(roleDenied.status,403);
+  await new Promise(resolve=>setTimeout(resolve,1100)); // Honor the unchanged local GoTrue 1s email max_frequency.
   const freshViewer=await signIn(cases.viewer,'advisor',5,false,'/advisor/clients');
   // Revoke only the newly created explicitly owned synthetic viewer's grant.
   fixture.sql(`update concierge.advisors set active=false where user_id='${cases.viewer.id}'`);
@@ -188,8 +195,9 @@ try {
   const late=command(c,'client','plans',{schemaVersion:1,action:'read_client_plan_v1',version:null}).catch(()=>({status:0}));
   let holdTimer;
   try {await Promise.race([held.entered,new Promise((_,reject)=>holdTimer=setTimeout(()=>reject(Error('held request did not reach genuine backend')),15000))]);}finally{clearTimeout(holdTimer);}
+  const logoutCommitted=c.waitForResponse(response=>new URL(response.url()).pathname==='/api/client/logout'&&response.request().method()==='POST');
   await c.getByRole('button',{name:'sign out',exact:true}).click();
-  await c.getByRole('button',{name:'send sign-in link',exact:true}).waitFor();held.release();released=null;
+  await c.getByRole('button',{name:'send sign-in link',exact:true}).waitFor();assert.equal((await logoutCommitted).status(),200);held.release();released=null;
   assert.ok([401,403].includes((await late).status));assert.ok(!(await c.locator('body').innerText()).includes('synthetic browser verification plan'));
   phase='supported provider revocation';
   const otherSession=[...stack.issued.values()].find(x=>x.ownerId===cases.other.id&&!x.closed);assert.ok(otherSession);await closeProviderSession(fixture,otherSession);
@@ -204,7 +212,7 @@ try {
   result.status='FAIL';result.failure={phase,type:error.name};
   // Never preserve a callback URL or screenshot before it has been scrubbed.
   for(const context of contexts) for(const page of context.pages()) {
-    try {await page.evaluate(()=>{history.replaceState(null,'',location.pathname);});await writeFile(path.join(artifacts,'failure-dom.txt'),await page.locator('body').innerText(),{mode:0o600});}catch {}
+    try {result.failure.navigation=await page.evaluate(()=>({scrollY,focus:document.activeElement?.id,pageHeading:document.activeElement?.hasAttribute('data-page-heading'),restoreScroll:history.state?.shelvNavigation?.restore?.scrollY??null}));await page.evaluate(()=>{history.replaceState(null,'',location.pathname);});await writeFile(path.join(artifacts,'failure-dom.txt'),await page.locator('body').innerText(),{mode:0o600});}catch {}
   }
 } finally {
   released?.();
@@ -217,4 +225,5 @@ try {
   await writeFile(path.join(artifacts,'browser-result.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});
   if(result.runId)await writeFile(path.join(artifacts,'browser-result-'+result.runId+'.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});
 }
-console.log(JSON.stringify(result));if(result.status!=='PASS')process.exitCode=1;
+console.log(JSON.stringify({...result,calls:result.calls.length,browserCalls:result.browserCalls.length}));if(result.status!=='PASS')process.exitCode=1;
+  phase='preview editor opener';

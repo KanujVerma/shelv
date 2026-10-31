@@ -2,6 +2,8 @@
 
 Owner: Kanuj. Work in progress, 30 October 2026. This report is the sole allocated planning/evidence document for W6. No completed browser acceptance is claimed.
 
+**Latest:** genuine main browser chain reaches7 passing groups, then an actual payment-verification selection race blocks confirmation/publication. Independent genuine client read/isolation/revocation browser groups4/4 PASS. Chrome is closed and explicitly released to the parent; native R4/helper custody remains active, all helpers RUNNING, all fixture Auth session and refresh rows0. The main slice remains incomplete pending the parent-owned UI fix and a new browser grant. Earlier pre-browser sections below are dated milestones, not current absence claims.
+
 Starting source: `cdc00bd9b5a0a02e897d67885c368bcd3126fc3c`, clean branch `t3/native-browser-acceptance`, workspace `/Users/kanuj/.t3/worktrees/shelv/t3-45beee69`. Both live T3 capability/configuration tools verified `codex/gpt-6.1-sol/reasoningEffort=xhigh/serviceTier=default` before work.
 
 ## Implementation plan
@@ -103,3 +105,57 @@ Parent clarified the already-required byte-level boundary. Before **every** brow
 Every client API response and actual advisor `preview_draft_v1` response also excludes `W6_PRIVATE_SYNTHETIC_ONLY` in original headers/body bytes. Authorized actual advisor `read_draft_v1` response bytes must positively contain it. Separate actual client API-value/DOM assertions remain. Only counters/statuses/paths are recorded; no provider strings are emitted. The full browser scanner is prepared and still unexecuted.
 
 For the real view-only-role negative, source inspection shows ordinary plan-list authorization requires edit, while the existing client-directory view permits view. The prospective viewer signs in to existing `/advisor/clients`, a finite explicit allowed local callback path, then directly attempts a forbidden create. A second genuine viewer login permits an independent live role-revocation check rather than pretending an already ended session proves revocation. No permissions/context response is altered.
+
+## First genuine browser allocation and source exception
+
+Parent explicitly granted the sole serial Chrome allocation after W7 advisorR4 and W2 released it, and authorized only exact fix `ba829bcc30870ba8a2debf2d595a0f8c3ba7973d`. It is cherry-picked as `7652033` with identical controller/coupled-test/report bytes. This is the sole authorized production-source exception in this branch. No parent report-only/native-field commit was imported. Both live model tools again verified Sol/xhigh/default; initial `preview_status` returned unavailable/no tab. The expressly named repository installed-Chrome/Playwright-core interception workflow was used, one Chrome at a time, service workers/background network/DNS blocked.
+
+Actual assigned gate `approve:true` is preserved. No duplicate retry, forced false permission, invented context/domain response or source patch masked the W2 bug. Its supplied read fix allows the real assignment/read/review/approval sequence to proceed.
+
+### Actual main-chain progress and original byte scans
+
+At `7652033` plus only W6 test changes, run `435546b8-89e5-4b27-971f-ba910becb80f` reaches **7 groups PASS**:
+
+1. Actual advisor UI link request -> local Mailpit -> actual Auth Location -> app consumes/scrubs code once -> Secure HttpOnly SameSite cookie -> real SQLite Vault/context.
+2. Actual new unassigned draft, incomplete title save, reload/read confirms persistence and incomplete readiness.
+3. Unsupported/code import rejects; actual valid compare/apply persists the explicit private synthetic fact.
+4. Actual deliberate existing-client selection/assignment, with Auth count unchanged.
+5. Five exact sections deliberately reviewed through the actual UI; actual read confirms all reviewed and zero readiness issues.
+6. Actual exact-basis safe preview, evening routine, native Back/Forward,250px scroll, correct heading fallback and exact original routine-editor opener focus; no private fact in preview API bytes or DOM.
+7. Exact human UI approval; actual no-payment publication request returns409 `payment_required`; publication/event/outbox/service/review/Start counts remain0.
+
+Then actual temporary owner/client password sessions create frozen quote and sent claim through the **unmodified native Payment Edge**, not direct business SQL or fabricated responses. Both temporary sessions close independently, preserving the browser's other owner session. Run retains actual draft `cde575e9-75b8-4d41-919e-18ef0ddbd5e7`, client `44f98b3d-3c5d-4c26-8bdd-65e798597689`, approval `765c7623-a3bf-4e5d-ae4d-d6bd5cfe6169`, quote `4d740030-5a47-4d7c-bd8c-17361e5e725f`, claim `094dfaa7-57ef-41ca-9922-a00eee9f4e95`. All are synthetic and retained.
+
+That run scans **186 original browser responses**,20,522,746 body bytes, with **0 actual credential/provider-key hits**, **0 private-fact hits** in safe responses, **2 actual safe-preview responses** and **13 positive authorized advisor private draft responses**. No response is rewritten. Run cleanup is **3 issued/3 closed/0 session/0 refresh rows**. No W6 confirmation/publication/decision is counted as successful at this checkpoint.
+
+### New actual payment UI finding: parent-owned, unresolved
+
+Source: `apps/portal/src/features/advisor/AdvisorWorkspace.tsx`, `PaymentVerification` near980-1016. Concrete trigger: refresh publication checks after a new real quote/claim, then open payment verification while its actual payment read is pending. The component initializes `claimId` from the previous empty `claims[0]`, then retains `''` after the actual context contains exactly one claim. The claim selector appears only for more than one claim. UI remains **no applicable unverified claim available** after genuine `advisor_read`200, so the amount/receipt controls cannot appear.
+
+An additional read-only real password/native-Edge diagnostic confirms quote1 is `payable`, publication0, service10000, with its exact matching `submitted_unverified` claim and actual revision2. Diagnostic provider logout returns204 and actual session/refresh counts0. No payment or plan row is changed by that diagnostic. The exact new finding/minimal request was sent to the parent for bounded selection reconciliation and an actual-app regression. W6 authored **no production fix and no wait/retry/hardcoded selection workaround**. Main confirmation/publication/new-client-decision acceptance remains open.
+
+### Independent genuine client/negative browser evidence
+
+`tests/rebuild-native-readonly-browser.mjs` continues independently using the original published synthetic client's existing plan read-only and explicitly owned earlier W6 other/viewer cases. Successful run `b785118c-cccc-4246-9c7a-0483e790d6e4`: **4/4 groups PASS**,4 local emails,4 provider sessions issued/closed,0 remaining sessions/refresh rows:
+
+- Actual client app PKCE/cookie/live context/native entitled safe read and reload, private original canary absent from actual API/DOM, no Start.
+- Actual owner selector400, CSRF403 and cookie audience401; a distinct real owner receives only their own preparation state.
+- Genuine view-only human has no author control and create403; a separate fresh genuine session loses authority after revoking only that newly created owned viewer grant.
+- Actual UI server logout200 is acknowledged before releasing a held genuine backend reply, which returns401; supported provider logout invalidates another actual browser cookie.
+
+**145 original responses**/22,145,393 body bytes scanned, **0 actual credential/provider-key hits**, **0 private-fact hits**,27 client API responses. Root original case/publication/Start/service snapshot is unchanged before/after (this probe's serialization SHA-256 `1623f148c413dcefefb1cf3997b1923ebf2bf34c064b18a799631cd1b0834e74`). It uses different key names from the earlier Node snapshot, so the two hashes are not asserted equal across scripts. No client decision or original business record is mutated by this read-only probe. It does not replace the pending W6 new-plan publication/client decision chain.
+
+### Harness diagnoses, preserved rather than promoted
+
+- First two browser starts returned403 `origin_rejected` before Auth. Raw Playwright-intercepted GET metadata had no Origin/Fetch-Metadata/Host headers. The reused original bind already restores missing Origin. W6 now restores only that missing interception header after verifying actual `request.frame()` origin equals the exact local portal; existing headers are preserved and server predicates remain unchanged. No Auth token was issued in those two starts.
+- Preview's initial scroll setup needed the established render/animation-frame settling step. A later focus assertion incorrectly expected the programmatically focused main element to survive a click on an unnamed-ID navigation control. Actual canonical navigation correctly restored250px and its specified page-heading fallback. The corrected test asserts that fallback plus separately the exact real editor opener. No navigation source was changed.
+- A second viewer OTP hit actual429 because it was requested inside unchanged GoTrue `max_frequency="1s"`. The test honors1.1s; no provider limit/config change.
+- The first held-result probe released on local signed-out form display, before asynchronous actual server logout. The standalone raw diagnostic fetch has no app lease fence and can still lawfully return during that gap. The test now waits for the actual UI logout200 acknowledgment, then releases; actual held response401 passes. It does not fake a server logout or apply the late data to the app.
+
+All failed-attempt result/session ID receipts and synthetic rows remain retained. An early parent message misstated first-two-start identity totals; actual inventory is authoritative: **5 main attempts created15 new .invalid Auth users:10 clients/cases and5 view-only advisors**,3 assigned W6 drafts,1 approval,1 quote and1 sent claim at this checkpoint. No reset/cleanup erases them. Two own viewer grants were revoked by independent probes; owner policy and original grants remain unchanged.
+
+## Resource release checkpoint
+
+All Chrome contexts, Chrome processes, Miniflare instances and local runtime handles close through finally on every run. After the terminal independent PASS, `preview_status` again reports no tab and OS inventory reports `automationChromePids:[]`. Chrome was explicitly released to the parent immediately. Fresh positively attested R4 readback confirms **all** fixture `auth.sessions=0` and `auth.refresh_tokens=0`, and current plan/TLS/operations/payments helpers RUNNING. Native fixture custody remains with W6 pending continuation, with no ongoing browser or Miniflare handle.
+
+`custody-checkpoint.json` under child W6 artifacts records every main run's owned identity/draft/approval/quote/claim IDs, cleanup counts, all mode600 private fixture hashes and current helper/binding receipts. Key private-only SHA-256 values (no file contents): original retained plan environment `34dc168e746eec29a725b7d12e73a58ef714e7145db7d4ac765361b83eb41766`; adapted environment `884335815ca3a8cc9580f17d205a03dd757180d78e1549c53829e86a98fa3144`; native source receipt `9972ec159f35098481d068f004bc231906df0e0678215ea3b03bdd6a711383d8`; current helper receipt `eb37bd8c5b5d2f8d6010ee584bf1e841f01afef77173edb67fcfb4689753889f`; unchanged runtime binding file `f49e7bec77b56f3885cfc527efd023b94337aa814feabc1e10ebf946a40890e6`.
