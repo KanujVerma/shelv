@@ -95,14 +95,15 @@ export class CookieAdvisorSession {
             let data;
             try { data = await response.json(); }
             catch (error) {
-                // Known HTTP denials/failures still apply if their body is canceled.
-                if (!response.ok && callerAborted && error?.name === 'AbortError')
+                // Known HTTP denials/failures survive caller or deadline body cancellation.
+                if (!response.ok && controller.signal.aborted && error?.name === 'AbortError')
                     throw new CookieSessionError(response.status);
                 throw error;
             }
             if (!response.ok)
                 throw new CookieSessionError(response.status, data?.code);
-            if (callerAborted) throw new DOMException('The operation was aborted.', 'AbortError');
+            // A signal-ignoring fetcher/body cannot deliver success past either abort.
+            if (controller.signal.aborted) throw new DOMException('The operation was aborted.', 'AbortError');
             return data;
         }
         catch (error) {
