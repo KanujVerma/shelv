@@ -2004,14 +2004,14 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-13dc32db",
       "branch": "t3/care-browser-runner",
       "baseCommit": "80b58a47",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "apps/portal/tests/rebuild-care-native-browser*",
         "apps/portal/scripts/rebuild-care-native-fixture.mjs explicit phase only",
         "apps/portal/tests/rebuild-care-native-stack.mjs explicit phase only",
         "docs/portal-rebuild/research/W6_CARE_BROWSER.md"
       ],
-      "resources": "BOTH R7native+Chrome RETURNED11:14:53.715UTC; resultSHA3d63 verified15PASS/6closed0/0; all38per-stackclosed,209protected/priorNode24cf/7owncases+5diagnosticcontrols/35SQL/5helpers76/TLS verified byauthor. CurrentSOURCEONLYCS1fix; NO live resource/browser grant.",
+      "resources": "TERMINAL, bothcustodiesreturned11:14:53.715UTC, no postreturncalls. Parentverifiedresult15/hash andreturnreceipt, source43freshnamespace. Independent currentcare replay pending.",
       "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required",
       "earlyCommits": [
         "41b3600514ca7fb6236e09324b4ecda2ef8d450a",
@@ -2021,7 +2021,16 @@
       "integratedCommits": [
         "f8329830",
         "421190c2",
-        "26e07fec"
+        "26e07fec",
+        "f9ec61f9",
+        "60a5530c",
+        "104202b6",
+        "18a72303",
+        "f422540d",
+        "eaa89563",
+        "445f14f3",
+        "87ad602e",
+        "1011ae33"
       ],
       "authorizedAppImports": [
         "89dc442d -> d8ed1f9d",
@@ -2059,7 +2068,11 @@
       "resourceReturnSha256": "8571969eae82239f6809f7472aff96cb08b9af916b20feb12f4725bdf0a46382",
       "finalAuditSha256": "17526052eb637d0bb9d91283ee9aa8f9ea6c5a3d7314e32cad76b0bcbd36e739",
       "resultSha256": "3d63ab1ae6633f846e02c82680397682538c17470eff4447b9cf70fba6a2a5a6",
-      "parentVerified": "Actualresult/returnreceiptSHA andPASS15/cleanup6/554responses70519928bytesknownhits0; actualrecordedindexfa5eb6c equalsimmutable8467template. FullCS1outputsetstillopen."
+      "parentVerified": "Actualresult/returnreceiptSHA andPASS15/cleanup6/554responses70519928bytesknownhits0; actualrecordedindexfa5eb6c equalsimmutable8467template. FullCS1outputsetstillopen.",
+      "headCommit": "2a464087758763e05f066f8abc68d9cffb0a0098",
+      "executedHead": "8467c964fd6917eb5b70880b1581b78c235c59a5",
+      "sourceFixHead": "91900008e8a6338ea428077cf3c19eaef086ef33",
+      "sourceVerification": "Author43real/pure+retrospective83; parentfresh43PASS aftercorrectlyrejecting/preserving86stalegeneratedoutputs, fresh83build; no verifier/codeweakening."
     },
     {
       "role": "W7 care app recovery round2",
@@ -2221,16 +2234,76 @@
       ],
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d6691f48",
       "baseCommit": "47586ed342f0cee8e92c8323b94196da3abb93b6",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "OwnedadvisorcaredependenciesproductionpathsifbrowserREDprovesboundedfix",
         "apps/portal/tests/rebuild-advisor-dependencies-browser*",
         "apps/portal/tests/rebuild-app-browser.test.mjs ONLYfinitebackendnew2actionDTOsupport/all19assertionspreserved",
         "docs/portal-rebuild/research/W2_CARE_DEPENDENCIES.md"
       ],
-      "resources": "EXPLICIT SOLE SYNTHETIC Chrome afterW6return; NO native/R7/Auth/DB/resources",
+      "resources": "ChromeRELEASE11:53:23.401076UTC;27new/86retainedbrowser/source401/types/UI/cleanbuildPASS, no native/R7. Source notparentintegrated; NEWreviewworktree imports stack only.",
       "verification": "Fresh existingchildconfigSol/xhigh/default before resumedTask; bothchildtools/eightpinsagainrequired",
-      "scope": "ActualWorkspace/controller/cookie/Rootmapper/syntheticHTTP/keyboard3203901440; explicitrebase/no blind unavailableheads/exactretry/sourceauthorityretained; laternewindependentreviewrequired"
+      "scope": "ActualWorkspace/controller/cookie/Rootmapper/syntheticHTTP/keyboard3203901440; explicitrebase/no blind unavailableheads/exactretry/sourceauthorityretained; laternewindependentreviewrequired",
+      "headCommit": "36b3563588b934f8507d1023a426f828674a9b9f",
+      "sourceHead": "018583f8338d7b6ab77d3835013584efd42ba475",
+      "ownedCommits": [
+        "3d06af0",
+        "5d796c2",
+        "278714b",
+        "47586ed",
+        "018583f",
+        "36b3563"
+      ]
+    },
+    {
+      "role": "W7 current source and genuine care integrated review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-integrated-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-integrated-review-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-a9144683",
+      "baseCommit": "1011ae3316ce6186b4dd29537c5d4a48ec80679e",
+      "status": "running",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_INTEGRATED_REVIEW.md"
+      ],
+      "resources": "EXCLUSIVE R7nativeNODEonlyGRANT12:08:34.475UTC,218protected/all8priorcases unchanged/preAuth0/0 verified. grantINDEPENDENT-NODE-CUSTODY-GRANT.json/coordinator-r7-independent-node-8991e601-8ce2-44ed-b56b-cc393aee66b3. NOChrome/browser grant. Source43/82/independentCS1current12+old8467sensitivityPASS, actualNode11next; laterbrowsergrantsseparate.",
+      "verification": "ExactT3returnedmodel/options andliveworktree/base; freshparentbothmodeltools/descriptors/eightpinsbeforeDispatch; bothchildtools/eightpinsrequired"
+    },
+    {
+      "role": "W7 advisor care dependency source and synthetic browser review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-dependencies-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-dependencies-review-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-2db3684b",
+      "baseCommit": "1011ae3316ce6186b4dd29537c5d4a48ec80679e",
+      "status": "running",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_DEPENDENCIES_REVIEW.md"
+      ],
+      "resources": "SOLE SYNTHETICChromeGRANTED; NO R7/native/Auth/DB. Ownreviewcheckout imports exactW2sixstackthrough36b; parentfrontendNOTchanged. LateractualR7publisher/rebaseacceptance separate.",
+      "verification": "ExactT3returnedmodel/options andliveworktree/base; freshparentbothmodeltools/descriptors/eightpinsbeforeDispatch; bothchildtools/eightpinsrequired"
     }
   ]
 }
