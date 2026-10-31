@@ -472,6 +472,7 @@ export function AdvisorWorkspace({
           ) : null}
           {c.hasPreview ? (
             <Button
+              id="advisor-client-preview"
               variant="secondary"
               disabled={!canAct}
               onClick={() => void c.preview()}
@@ -576,6 +577,7 @@ export function AdvisorWorkspace({
             </p>
             {c.hasPreview ? (
               <Button
+                id="advisor-preview-open-plan"
                 variant="secondary"
                 disabled={!canAct}
                 onClick={() => void c.preview()}
@@ -864,6 +866,7 @@ function PublicationChecks({
             </Disclosure>
             {c.hasPreview ? (
               <Button
+                id="advisor-open-client-preview"
                 variant="secondary"
                 disabled={!s.view || c.dirty() || s.busy || !!s.pending}
                 onClick={() => void c.preview()}
