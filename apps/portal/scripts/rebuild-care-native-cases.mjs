@@ -27,9 +27,10 @@ export function syntheticCareContent() {
 }
 
 // Later grant only. Explicit fresh identities/cases and one new viewer permission, never policy repair/reset.
-export async function createCareCases(fixture) {
+export async function createCareCases(fixture,runId=randomUUID()) {
   selectCareFixture(fixture.selection);assert.equal(process.env.SHELV_REBUILD_CARE_NATIVE,'1');
-  const runId=randomUUID(),identities=[],area=path.join(fixture.directory,'edge/w6-care');
+  assert.match(runId,/^[0-9a-f-]{36}$/);
+  const identities=[],area=path.join(fixture.directory,'edge/w6-care');
   await mkdir(area,{recursive:true,mode:0o700});
   const file=path.join(area,'identities-'+runId+'.private.json');
   for(const kind of ['client','other','viewer']) {
@@ -37,7 +38,7 @@ export async function createCareCases(fixture) {
     const response=await fetch(providerOrigin+'/auth/v1/admin/users',{method:'POST',redirect:'manual',headers:{apikey:fixture.config.SERVICE_ROLE_KEY,authorization:'Bearer '+fixture.config.SERVICE_ROLE_KEY,'content-type':'application/json'},body:JSON.stringify({email:identity.email,password:identity.password,email_confirm:true}),signal:AbortSignal.timeout(15000)});
     assert.equal(response.status,200,'Explicit local synthetic identity setup required');
     const value=await response.json();assert.match(value.id,/^[0-9a-f-]{36}$/);identity.id=value.id;identities.push(identity);
-    await writeFile(file,JSON.stringify({runId,fixtureOwnerId:fixture.selection.ownerId,identities},null,2)+'\n',{mode:0o600});
+    await writeFile(file,JSON.stringify({runId,fixtureOwnerId:fixture.selection.ownerId,identities},null,2)+'\n',{mode:0o600,flag:identities.length===1?'wx':'w'});
     assert.equal(fixture.sql(`select count(*) from public.profiles where id='${identity.id}'`),'1','Actual Auth trigger must create the profile');
     // These inserts only initialize this newly returned Auth identity. No ON CONFLICT/UPDATE or old grant reset.
     if(kind==='viewer')fixture.sql(`begin;insert into concierge.advisors(user_id,active,can_view,can_edit,can_publish,can_confirm_payments) values('${identity.id}',true,true,false,false,false);insert into concierge.plan_principals(actor_id,kind) values('${identity.id}','human');commit;`);

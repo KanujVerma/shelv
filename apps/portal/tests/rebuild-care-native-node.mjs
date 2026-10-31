@@ -31,10 +31,13 @@ export async function runCareNativeProof({selection:rawSelection,grant}) {
   };
   try {
     fixture=await attestCareFixture(sourceRoot,selection,grant);
+    assert.equal(fixture.sql('select count(*) from auth.sessions'),'0','Parent fixture must begin with no existing sessions');
+    assert.equal(fixture.sql('select count(*) from auth.refresh_tokens'),'0','Parent fixture must begin with no existing refresh rows');
     await mkdir(area,{recursive:true,mode:0o700});
     result.fixture={ownerId:selection.ownerId,projectId:selection.projectId,snapshotSha256:selection.snapshotSha256,ledgerSha256:selection.ledgerSha256,sourceHashesSha256:selection.sourceHashesSha256};
     stack=await connectedCareStack(fixture,grant,sourceRoot);
-    const cases=await createCareCases(fixture);result.caseRunId=cases.runId;result.clientId=cases.client.id;result.otherId=cases.other.id;result.viewerId=cases.viewer.id;
+    phase='explicit synthetic identity setup';result.caseRunId=runId;
+    const cases=await createCareCases(fixture,runId);result.clientId=cases.client.id;result.otherId=cases.other.id;result.viewerId=cases.viewer.id;
     async function login(identity,audience,ip) {
       const client=nodeCookieClient(stack,audience,ip);let response=await client.request('session');assert.equal(response.status,200);assert.equal(response.value.signedIn,false);
       const flow=response.value.csrf,before=await mailSnapshot(),returnTo=audience==='client'?'/plan':'/advisor/clients';
