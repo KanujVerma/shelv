@@ -41,3 +41,5 @@ Develop with synthetic records in isolated environments. Preserve current auth, 
 The separate Wisconsin service-scope question and environment prerequisites remain explicit launch/runtime gates. They are not reasons to invent legal clearance, fake credentials, successful notifications or test results.
 
 Later founder clarifications are recorded in [approved decision addenda](DECISION_ADDENDA.md); the imported decision register/input/specification/manifest retain their original hashes.
+
+The next bounded [care API contract](CARE_API_V1.md) pins actual use/identity, bounded v2 views and dependency rebasing after the source-backed [remaining-domain reconciliation](research/W1_REMAINING_API.md). It is not an implemented endpoint or permission to bypass the first-slice review gate.
