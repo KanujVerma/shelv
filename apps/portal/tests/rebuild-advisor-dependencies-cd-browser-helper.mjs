@@ -20,6 +20,7 @@ export const portal = path.resolve(import.meta.dirname, ".."),
 export const artifacts = path.resolve(
   portal,
   "../../.local-artifacts/portal-rebuild/w2-care-dependencies-cd/browser",
+  process.env.SHELV_ADVISOR_CD_SOURCE_REF ? "red-36b" : "green-current",
 );
 const output = path.resolve(
   portal,
@@ -176,10 +177,11 @@ export function dependencyBackend(options = {}) {
       serviceEnd: "2026-11-30",
       originalStart: options.knownStart ? "2026-10-20" : null,
     },
-    hold(action, transform = (v) => v) {
+    hold(action, transform = (v) => v, predicate = () => true) {
       const h = {
         action,
         transform,
+        predicate,
         ready: deferred(),
         done: deferred(),
         used: false,
@@ -449,7 +451,9 @@ export function dependencyBackend(options = {}) {
   }
   s.respond = async (command, bytes) => {
     const result = clone(await execute(command)),
-      held = holds.find((h) => !h.used && h.action === command.action);
+      held = holds.find(
+        (h) => !h.used && h.action === command.action && h.predicate(command),
+      );
     if (held) {
       held.used = true;
       held.dto = clone(result);

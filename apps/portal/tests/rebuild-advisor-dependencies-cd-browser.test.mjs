@@ -117,6 +117,277 @@ for (const width of [1440, 390, 320])
     }
   });
 
+for (const status of [403, 503])
+  test(`late historical ${status} cannot erase manual B or its exact uncertain retry`, async () => {
+    const data = multiVersion(),
+      h = await openDependencyApp(browser, {
+        section: "client-context",
+        configure: configure(data),
+      });
+    try {
+      const { p, s } = h;
+      await ready(p);
+      const old = s.hold(
+        "read_advisor_publication_v2",
+        () => ({ status, body: { code: "unavailable" } }),
+        (c) => c.version === 1,
+      );
+      await button(p, "refresh current client information").click();
+      await old.ready;
+      const b = s.hold("save_draft_v1", (v) => ({
+        ...v,
+        untrustedExtra: true,
+      }));
+      await p
+        .getByRole("textbox", { name: "summary", exact: true })
+        .fill("CD MANUAL BUFFER B");
+      await b.ready;
+      const pending = s.calls.find((c) => c.command.action === "save_draft_v1");
+      old.release();
+      if (status === 503) {
+        await button(p, "check connection").click();
+        await button(p, "check connection").waitFor({ state: "hidden" });
+      }
+      assert.equal(
+        await p
+          .getByRole("textbox", { name: "summary", exact: true })
+          .inputValue(),
+        "CD MANUAL BUFFER B",
+      );
+      assert.equal(
+        await button(p, "save draft").getAttribute("aria-busy"),
+        "true",
+      );
+      b.release();
+      await p.getByText("result uncertain", { exact: true }).waitFor();
+      await button(p, "retry same request").click();
+      await p.getByText("saved", { exact: true }).waitFor();
+      const attempts = s.calls.filter(
+        (c) => c.command.action === "save_draft_v1",
+      );
+      assert.equal(attempts.length, 2);
+      assert.equal(attempts[1].bytes, pending.bytes);
+      assert.equal(s.f.getView().draft.content.summary, "CD MANUAL BUFFER B");
+      assert.equal(
+        s.calls.some(
+          (c) => c.command.action === "rebase_draft_dependencies_v1",
+        ),
+        false,
+      );
+    } finally {
+      await h.close();
+    }
+  });
+
+test("unmounted historical inspection cannot repopulate the prior panel on plans or reuse its cache", async () => {
+  const data = multiVersion(),
+    h = await openDependencyApp(browser, { configure: configure(data) });
+  try {
+    const { p, s } = h;
+    await ready(p);
+    const old = s.hold(
+      "read_advisor_publication_v2",
+      (v) => v,
+      (c) => c.version === 1,
+    );
+    await button(p, "refresh current client information").click();
+    await old.ready;
+    await p.getByRole("link", { name: "plans", exact: true }).click();
+    await p.getByRole("heading", { name: "plans", exact: true }).waitFor();
+    old.release();
+    assert.equal(
+      await button(p, "reports, product identity & corrections").count(),
+      0,
+    );
+    await p
+      .getByRole("button", {
+        name: "care plan · " + ids.draft.slice(0, 8),
+        exact: true,
+      })
+      .click();
+    await ready(p);
+    assert.equal(
+      s.calls.filter(
+        (c) =>
+          c.command.action === "read_advisor_publication_v2" &&
+          c.command.version === 1,
+      ).length,
+      3,
+    );
+    assert.equal(s.writes().length, 0);
+  } finally {
+    await h.close();
+  }
+});
+
+test("historical response after logout never restores prior private names or controls", async () => {
+  const data = multiVersion(),
+    h = await openDependencyApp(browser, { configure: configure(data) });
+  try {
+    const { p, s } = h;
+    await ready(p);
+    const old = s.hold(
+      "read_advisor_publication_v2",
+      (v) => v,
+      (c) => c.version === 1,
+    );
+    await button(p, "refresh current client information").click();
+    await old.ready;
+    await button(p, "sign out").click();
+    old.release();
+    await button(p, "send sign-in link").waitFor();
+    assert.equal(
+      await button(p, "reports, product identity & corrections").count(),
+      0,
+    );
+    assert.equal(await p.getByText(data.names[0], { exact: false }).count(), 0);
+    assert.equal(s.writes().length, 0);
+  } finally {
+    await h.close();
+  }
+});
+
+test("a current restrictive gate retires an old historical read and keeps acknowledgement unavailable", async () => {
+  const data = multiVersion(),
+    h = await openDependencyApp(browser, { configure: configure(data) });
+  try {
+    const { p, s } = h;
+    await ready(p);
+    const old = s.hold(
+      "read_advisor_publication_v2",
+      (v) => v,
+      (c) => c.version === 1,
+    );
+    await button(p, "refresh current client information").click();
+    await old.ready;
+    Object.assign(s.caps, {
+      edit: false,
+      review: false,
+      approve: false,
+      publish: false,
+    });
+    s.dependencyDenied = true;
+    await button(p, "refresh publication checks").click();
+    await p
+      .getByText("current client information could not be confirmed.", {
+        exact: false,
+      })
+      .waitFor();
+    old.release();
+    assert.equal(await button(p, "update draft basis").count(), 0);
+    assert.equal(await button(p, "publish plan").isDisabled(), true);
+    assert.equal(s.writes().length, 0);
+  } finally {
+    await h.close();
+  }
+});
+
+test("historical slot/name binding uses the exact old document instead of current same-ID descriptors", async () => {
+  const data = multiVersion({ renamedCurrent: true }),
+    ref = data.entries[0].event.product,
+    step = structuredClone(
+      data.historical.plan.content.routine.find(
+        (x) => x.productId === ref.productId,
+      ),
+    );
+  step.id = "historical-browser-slot";
+  step.slotId = "historical-evening-slot";
+  step.title = "historical evening moisturizer";
+  step.schedule.periods = ["evening"];
+  data.historical.plan.content.routine.push(step);
+  ref.slotId = step.slotId;
+  const h = await openDependencyApp(browser, {
+    width: 320,
+    configure: configure(data),
+  });
+  try {
+    await ready(h.p);
+    const { body } = await disclose(h.p),
+      headings = await body.locator("h4").allTextContents();
+    assert.ok(headings[0].includes(data.names[0]));
+    assert.ok(headings[0].includes("historical evening moisturizer"));
+    assert.ok(!headings[0].includes("CURRENT ONLY"));
+    await acknowledge(h.p);
+    assert.equal(await button(h.p, "update draft basis").isEnabled(), true);
+    assert.ok(
+      await h.p.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    );
+    assert.equal(h.s.writes().length, 0);
+  } finally {
+    await h.close();
+  }
+});
+
+test("a mismatched historical document schema is explicit and cannot borrow the current product name", async () => {
+  const data = multiVersion();
+  data.entries[0].event.product.publication.documentSchemaVersion = 2;
+  const h = await openDependencyApp(browser, {
+    width: 390,
+    configure: configure(data),
+  });
+  try {
+    await ready(h.p);
+    const { body } = await disclose(h.p);
+    assert.match(
+      await body.innerText(),
+      /referenced document format or version does not match/,
+    );
+    assert.match(
+      (await body.locator("h4").allTextContents())[0],
+      /unresolved plan product.*document format 2/,
+    );
+    assert.equal(await button(h.p, "update draft basis").isDisabled(), true);
+    assert.equal(h.s.writes().length, 0);
+  } finally {
+    await h.close();
+  }
+});
+
+test("actual owner/CSRF restore retires a held historical response before the new denied private scope", async () => {
+  const data = multiVersion(),
+    h = await openDependencyApp(browser, { configure: configure(data) });
+  try {
+    const { p, s } = h;
+    await ready(p);
+    const old = s.hold(
+      "read_advisor_publication_v2",
+      (v) => v,
+      (c) => c.version === 1,
+    );
+    await button(p, "refresh current client information").click();
+    await old.ready;
+    const gate = s.hold("read_advisor_gate_v1", () => ({
+      status: 503,
+      body: { code: "unavailable" },
+    }));
+    await button(p, "refresh publication checks").click();
+    await gate.ready;
+    gate.release();
+    await button(p, "check connection").waitFor();
+    const respond = s.respond;
+    s.respond = (...args) =>
+      s.owner === ids.actor
+        ? respond(...args)
+        : Promise.resolve({ status: 403, body: { code: "forbidden" } });
+    s.owner = ids.other;
+    s.csrf = "SYNTHETIC-CD-replaced-owner";
+    await button(p, "check connection").click();
+    await button(p, "check connection").waitFor({ state: "hidden" });
+    old.release();
+    await p.getByText("action unavailable", { exact: true }).waitFor();
+    assert.equal(
+      await button(p, "reports, product identity & corrections").count(),
+      0,
+    );
+    assert.equal(await p.getByText(data.names[0], { exact: false }).count(), 0);
+    assert.equal(s.writes().length, 0);
+  } finally {
+    await h.close();
+  }
+});
+
 for (const byteSplit of [false, true])
   test(`CD2 ${byteSplit ? "byte split" : "over100"}: complete history is not a complete effective projection`, async () => {
     const data = pagedReported({ byteSplit }),
