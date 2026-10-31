@@ -1,6 +1,8 @@
 import {validatedReturnPath} from './navigation-return';
 import {planCapability,mapPlanResponse} from './plan-policy';
 import {careCapability,mapCareResponse} from './care-policy';
+import {reviewCapability,mapReviewResponse,reviewTransportError} from './review-policy';
+import {guidanceCapabilities,mapGuidanceResponse,guidanceTransportError} from './guidance-policy';
 import { GoTrueClient, type Session } from '@supabase/auth-js';
 import { demand, decode, SessionError, type AuthProvider, type Credentials, type Capabilities, type AdvisorContext } from './types';
 import { PORTAL_ORIGIN, SUPABASE_ORIGIN, readBounded, parseCommand, object, safeCodes, uuid, type Operation } from './policy';
@@ -194,6 +196,8 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
             const action = operation.command.action;
             if(operation.channel==='plans')demand(capabilities[planCapability(action)],403,'forbidden');
             if(operation.channel==='care')demand(capabilities[careCapability(action)],403,'forbidden');
+            if(operation.channel==='reviews')demand(capabilities[reviewCapability(action)],403,'forbidden');
+            if(operation.channel==='guidance')for(const capability of guidanceCapabilities(action))demand(capabilities[capability],403,'forbidden');
             if (action === 'publish_v2' || action === 'publish_instruction_revision')
                 demand(capabilities.publish, 403, 'forbidden');
             else if (action === 'confirm_payment' || action === 'reject_claim' || action === 'record_return_event' && ['retailer_funds_received','client_repaid'].includes(String(operation.command.status)))
@@ -207,6 +211,9 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
             if(action==='evidence_url'){
                 const evidenceId=uuid(operation.command.evidenceId),v2=operation.command.schemaVersion===2,descriptor=await this.paymentEvidence(credentials,evidenceId,v2);
                 body={evidenceId,signedUrl:`${PORTAL_ORIGIN}/api/advisor/media/evidence?clientId=${descriptor.owner}&evidenceId=${evidenceId}&view=${crypto.randomUUID()}${v2?'&v=2':''}`,expiresInSeconds:descriptor.expiresInSeconds,...(v2?{schemaVersion:2,paymentOptionId:descriptor.paymentOptionId}:{})};
+            }else if(operation.channel==='reviews'||operation.channel==='guidance'){
+                try{body=await this.edge(credentials,operation.channel==='reviews'?'concierge-reviews':'concierge-guidance',operation.command);}
+                catch(error){return operation.channel==='reviews'?reviewTransportError(error,operation.command):guidanceTransportError(error,operation.command);}
             }else body = action === 'advisor_preview_read_v2'
                 ? await this.preview(credentials, operation.command.clientId, operation.command.mode, operation.command.expectedRevision)
                 : await this.edge(credentials, `concierge-${operation.channel}`, operation.command);
@@ -242,6 +249,8 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
         }
         if(operation.kind==='command'&&operation.channel==='plans')body=mapPlanResponse(body,operation.command);
         if(operation.kind==='command'&&operation.channel==='care')body=mapCareResponse(body,operation.command);
+        if(operation.kind==='command'&&operation.channel==='reviews')body=mapReviewResponse(body,operation.command);
+        if(operation.kind==='command'&&operation.channel==='guidance')body=mapGuidanceResponse(body,operation.command);
         demand(!hasCredentials(body, credentials), 503, 'unavailable');
         return { status: 200, body };
     }

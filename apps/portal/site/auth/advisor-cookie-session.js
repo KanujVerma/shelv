@@ -1,8 +1,8 @@
 import {navigationReturnTo} from './navigation-return.js';
 import {advisorPlanActions,PLAN_COMMAND_MAX_BYTES} from './plan-actions.js';
 import {advisorCareActions,CARE_COMMAND_MAX_BYTES} from './care-actions.js';
-import {REVIEW_COMMAND_MAX_BYTES} from './review-actions.js';
-const actions = { operations: ['advisor_preview_read_v2', 'advisor_list', 'advisor_read_v2', 'save_intake_v2', 'save_draft_v2', 'publish_v2', 'save_meeting_note', 'service_advisor_read', 'record_review', 'save_instruction_draft', 'publish_instruction_revision', 'record_purchase', 'record_return_event', 'cancel_service'], payments: ['advisor_read', 'issue_quote', 'confirm_payment', 'reject_claim', 'evidence_url'], checkins: ['advisor_read', 'advisor_photo_view', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply'], admission: ['capabilities','add_client','admission_status'], walkthroughs:['library','open','share_list','share_create','share_revoke'],plans:advisorPlanActions,care:advisorCareActions };
+import {advisorReviewActions,advisorGuidanceActions,REVIEW_COMMAND_MAX_BYTES} from './review-actions.js';
+const actions = { operations: ['advisor_preview_read_v2', 'advisor_list', 'advisor_read_v2', 'save_intake_v2', 'save_draft_v2', 'publish_v2', 'save_meeting_note', 'service_advisor_read', 'record_review', 'save_instruction_draft', 'publish_instruction_revision', 'record_purchase', 'record_return_event', 'cancel_service'], payments: ['advisor_read', 'issue_quote', 'confirm_payment', 'reject_claim', 'evidence_url'], checkins: ['advisor_read', 'advisor_photo_view', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply'], admission: ['capabilities','add_client','admission_status'], walkthroughs:['library','open','share_list','share_create','share_revoke'],plans:advisorPlanActions,care:advisorCareActions,reviews:advisorReviewActions,guidance:advisorGuidanceActions };
 export class CookieSessionError extends Error {
     constructor(status, code = 'unavailable') { super(status === 401 ? 'Your session has ended. Sign in again.' : status === 403 ? 'You do not have access to this action.' : 'We could not complete this request.'); this.status = status; this.code = /^[a-z_]{1,60}$/.test(code) ? code : 'unavailable'; }
 }
@@ -239,14 +239,20 @@ export function createCookieRequest(channel, session) {
     if (!Object.hasOwn(allowed, channel))
         throw new CookieSessionError(403, 'action_forbidden');
     return async (command, { signal } = {}) => {
+        const typedReview = channel === 'reviews' || channel === 'guidance';
+        if (typedReview && command instanceof FormData)
+            throw new CookieSessionError(403, 'action_forbidden');
         if (!command || typeof command !== 'object' || !allowed[channel].includes(command.action))
             throw new CookieSessionError(403, 'action_forbidden');
         const body = JSON.stringify(command);
-        if (new TextEncoder().encode(body).length > (channel==='plans'?PLAN_COMMAND_MAX_BYTES:channel==='care'?CARE_COMMAND_MAX_BYTES:channel==='reviews'?REVIEW_COMMAND_MAX_BYTES:100000))
+        if (new TextEncoder().encode(body).length > (channel==='plans'?PLAN_COMMAND_MAX_BYTES:channel==='care'?CARE_COMMAND_MAX_BYTES:typedReview?REVIEW_COMMAND_MAX_BYTES:100000))
             throw new CookieSessionError(413, 'too_large');
+        const payload = typedReview ? JSON.parse(body) : command;
         const lease = await session.acquire();
         try {
-            const data = await session._fetch(channel, { body: command, signal, csrf: lease.csrf });
+            if (typedReview && !session.isCurrent(lease)) throw new CookieSessionError(401);
+            if (typedReview && signal?.aborted) throw new CookieSessionError(503);
+            const data = await session._fetch(channel, { body: payload, signal, csrf: lease.csrf });
             if (!session.isCurrent(lease))
                 throw new CookieSessionError(401);
             return data;

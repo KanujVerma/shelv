@@ -1,6 +1,8 @@
 import {demand} from './types';
 import {parsePlanCommand} from './plan-policy';
 import {parseCareCommand} from './care-policy';
+import {parseReviewCommand} from './review-policy';
+import {reviewClientActions} from '../../../../../src/contracts/PortalReviewValues.ts';
 import {clientCareActions} from '../../../site/auth/care-actions.js';
 import {clientPlanActions} from '../../../site/auth/plan-actions.js';
 import {object, exact, uuid, type Channel, type Operation} from './policy';
@@ -8,11 +10,12 @@ export const clientActions: Record<Channel, readonly string[]> = {
     operations: ['client_read_v2', 'client_read', 'decide', 'receive', 'start', 'service_client_read', 'request_return'],
     payments: ['client_read', 'submit_claim', 'confirm_shipping_address', 'evidence_url'],
     checkins: ['client_read', 'submit_report', 'photo_view'],
-    admission: [], walkthroughs:[],plans:clientPlanActions,care:clientCareActions
+    admission: [], walkthroughs:[],plans:clientPlanActions,care:clientCareActions,reviews:reviewClientActions,guidance:[]
 };
 export function parseClientCommand(channel: Channel, value: unknown): Operation {
     if(channel==='plans')return {kind:'command',channel,command:parsePlanCommand(value,'client')};
     if(channel==='care')return {kind:'command',channel,command:parseCareCommand(value,'client')};
+    if(channel==='reviews')return {kind:'command',channel,command:parseReviewCommand(value,'client')};
     const command = object(value);
     demand(Object.hasOwn(clientActions, channel) && typeof command.action === 'string' && clientActions[channel].includes(command.action), 403, 'action_forbidden');
     demand(!Object.keys(command).some(k => /^(client_?id|owner_?id|user_?id|rpc(name)?|endpoint|url|upstream|function(name)?|headers|authorization|access_?token|refresh_?token)$/i.test(k)));

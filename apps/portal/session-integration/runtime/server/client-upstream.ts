@@ -5,6 +5,7 @@ import {PORTAL_ORIGIN, SUPABASE_ORIGIN, object, uuid, type Operation} from './po
 import {parseClientCommand, validateClientUpload} from './client-policy';
 import {mapPlanResponse} from './plan-policy';
 import {mapCareResponse} from './care-policy';
+import {mapReviewResponse,reviewTransportError} from './review-policy';
 import type {WireResponse} from './protocol';
 function privateFields(value: unknown): boolean {
     return !!value && typeof value === 'object' && Object.entries(value).some(([k,v]) => /^(private_?notes?|meeting_?notes?|transcript|draft|intake|advisor_?notes?)$/i.test(k) || privateFields(v));
@@ -75,10 +76,14 @@ export class ClientProvider extends SupabaseProvider {
                 if(descriptor.schemaVersion===2)demand(media==='evidence'&&(descriptor.paymentOptionId===null||typeof descriptor.paymentOptionId==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(descriptor.paymentOptionId)),503,'unavailable');
                 return {status:200,body:{[key]:id,signedUrl:`${PORTAL_ORIGIN}/api/client/media/${media}?id=${id}${media==='evidence'&&descriptor.schemaVersion===2?'&v=2':''}`,...(media==='photo'?{expiresIn:60}:{expiresInSeconds:60,...(descriptor.schemaVersion===2?{schemaVersion:2,paymentOptionId:descriptor.paymentOptionId}:{})})}};
             }
-            body=await this.edge(credentials,`concierge-${operation.channel}`,operation.command);
+            if(operation.channel==='reviews'){
+                try{body=await this.edge(credentials,'concierge-reviews',operation.command);}
+                catch(error){return reviewTransportError(error,operation.command);}
+            }else body=await this.edge(credentials,`concierge-${operation.channel}`,operation.command);
         }
         if(operation.kind==='command'&&operation.channel==='plans')body=mapPlanResponse(body,operation.command);
         if(operation.kind==='command'&&operation.channel==='care')body=mapCareResponse(body,operation.command);
+        if(operation.kind==='command'&&operation.channel==='reviews')body=mapReviewResponse(body,operation.command);
         demand(!hasCredentials(body,credentials) && !privateFields(body),503,'unavailable');
         return {status:200,body};
     }
