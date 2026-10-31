@@ -73,3 +73,25 @@ All browser contexts/processes/test sessions are closed. Final `preview_status` 
 Directly inspected the fresh actual app `advisor-editor-1440.png` from the unchanged first-open/preview/return journey: the real routine editor is visible with complete source-derived modules, normal shared controls and saved state. No pixel-match or full-portal visual acceptance is inferred. Original red loading failures are preserved in the unchanged app11 log.
 
 Parent owns canonical status/CONTEXT_SYNC, integration and fresh independent review. The delivery receipt supplies the exact commit after scoped validation; no self-referential head is invented here.
+
+## clean implementation checkpoint and continuation receipt
+
+**Implementation/test/report commit: `ba829bcc30870ba8a2debf2d595a0f8c3ba7973d`.** The worktree was clean at that head. A subsequent report-only receipt does not alter the tested controller/tests. Fresh clean-head frontend strict types, session strict types, UI guard and `npm run build:application` each exit0, recorded with exact argument arrays/timing in `clean-validation.json`. The candidate's `application-provenance.json` records that exact source head, `sourceDirty:false`, `gatewayIncluded:false`; SHA-256 `07f444b8216df3560d2b6417e8dba5713ff051568019bef6b86d20bbf8692b79`. This is an isolated candidate, no gateway/deployment change.
+
+Final live capabilities **and** thread configuration again independently verify codex/Sol/xhigh/default. Existing `index.ts`, controller options/types, app/transport and app95/11 test files have zero diff against the starting head. Only the three owned paths enter the implementation commit. Diff/staged whitespace checks and report links pass. The builder writes only ignored artifacts; no browser call occurs after release.
+
+| Retained evidence | SHA-256 |
+| --- | --- |
+| `source95-red.log` | `65fa27922d34042c643ddce5ab59ef78dd703187fd4e1afb550595f343857ca5` |
+| `app11-red.log` | `f1eb048949640b0fec6c1570c397f1a400ef7ba44c35b29eda325db50d2a032e` |
+| `approval-red.log` | `869bfd96046cb5d145aeb8cdb4a69b61faf57c9112114cf1f828ae6b0eb1f815` |
+| `source95-green.log` | `cff532a20a85321717137c6bd648ed53335bb8a04306b65b6d0970ff13d85bbb` |
+| `pure-final.log` | `afffd01a088e55aeb804542709016d216da6ea23774ab11e9b2eb0c4b70cc092` |
+| `browser-exact-source.log` | `cc14d124bf25fa3d9436b6cb17d1e157900ddb02707ebacb86adededd43b2388` |
+| `clean-validation.json` | `0b021e7580bfb0afaf8f5c2d041355ce1627ecb0f633bba507ce3180f759311c` |
+| `runtime-final.json` | `293a44232ab103f490b0fb3e71d5895409d938bde25177254b56aa4fb1bb7b62` |
+| `release.json` | `113351b4017f7aa789ecd0e06e1ebd61f893bfc5a35dbdbd1272d6d255a0170f` |
+
+`evidence-manifest.json` inventories all local diagnostic files and controller/test/export/type source bytes at the implementation checkpoint. No private inputs or credential bytes are included. All test/build handles are terminal. There is no uncommitted code or unresolved cross-owner request.
+
+**Next:** parent composes the implementation commit, preserves original report qualifications, grants the already-released Chrome allocation to W6 for its genuine journey, and commissions a fresh independent advisor/application review against the exact integrated head. Source/pure/intercepted browser evidence here does not close W6's genuine path or retroactively change any older R4 review.
