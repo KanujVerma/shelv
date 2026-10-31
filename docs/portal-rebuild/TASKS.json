@@ -2009,7 +2009,7 @@
         "apps/portal/tests/rebuild-care-native-stack.mjs explicit phase only",
         "docs/portal-rebuild/research/W6_CARE_BROWSER.md"
       ],
-      "resources": "EXCLUSIVE R7+soleChrome HELD. SupportedMF5 actualexistingDO storagecontrol passed8physical/6records/2encryptedactive/no newDBIDs. Thirdmain7groups thenfuture-fixture slotalignment8537; fourthmainad58c2209groups plusfirst4stepUUIDpipeline committed, only broadsheetheadinglocator ambiguous. Readonlyold/scopedlocatorcontrol andfreshmain pending; no productdefect/Root/App/SQL/native76change. Allpriorfailedcases/cleanup preserved, parentNOresourcecalls.",
+      "resources": "EXCLUSIVE R7+soleChromeHELD. Read-only exactselectorcontrol ated38:old query2/strict rejection, scopedselectedbody1/success, actualserverreportedUUID/v1/unreviewed, owncase4hash042f0d1b unchanged, own1issued1closed0/0. Fifthmain nowruns, nooverallPASS; parentNOresources.",
       "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required",
       "earlyCommits": [
         "41b3600514ca7fb6236e09324b4ecda2ef8d450a",
@@ -2036,7 +2036,8 @@
         "cd09a21e4caf0690cd79c91c6adf954e9e5ef264",
         "e73d768",
         "73ba16aefff81adbe36af8964a8859faed46a25f",
-        "8537ce3"
+        "8537ce3",
+        "ed38a4fb243cf53f3dce9a95257b1cbf66fa2d91"
       ],
       "partialMainRuns": [
         "425e9bb9-a09d-41c1-ac3f-70e18d77521d",
@@ -2112,6 +2113,34 @@
         "3d06af0c78b59332a1d55f113e7fb23a18e7bd69",
         "5d796c22029224116d7d720c053bf6c528e44605"
       ]
+    },
+    {
+      "role": "W2 dependency-port runtime closure implementation follow-up",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw2-dependency-port-runtime-allowlist-followup-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-care-dependencies-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d6691f48",
+      "baseCommit": "278714b708df2a88e5796fb2ef0ae82d31e76057",
+      "status": "running",
+      "writeSet": [
+        "apps/portal/src/app/ports.ts dependency-only actionguard",
+        "apps/portal/tests/rebuild-advisor-dependencies*",
+        "docs/portal-rebuild/research/W2_CARE_DEPENDENCIES.md"
+      ],
+      "resources": "Source-only; no Chrome/native/R7 or parent integration",
+      "verification": "Fresh existing-thread configuration Sol/xhigh/default checked before resumed implementation; both child tools/eightpins again required",
+      "scope": "Typed dependency port forwarded other otherwiseallowedPlan actions; close runtime toexact2withactualcookie/egress RED/GREEN. No extra privilege/server bypass asserted; original278sourceevidence preserved."
     }
   ]
 }
