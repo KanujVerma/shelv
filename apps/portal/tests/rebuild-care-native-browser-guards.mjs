@@ -63,3 +63,14 @@ test('browser failure metadata retains a finite method and numeric assertion fac
   const error=Object.assign(new Error('page.goto: https://127.0.0.1:57430/plan?code=PRIVATE_CALLBACK_VALUE'),{name:'TimeoutError',code:'PRIVATE_CREDENTIAL_VALUE',actual:'PRIVATE_ACTUAL',expected:'PRIVATE_EXPECTED'});
   const safe=m.careBrowserFailure(error);assert.deepEqual(safe,{name:'TimeoutError',method:'page.goto',code:null});assert.doesNotMatch(JSON.stringify(safe),/PRIVATE_|https:/);
 });
+
+test('SQLite observation is disabled by default and native Node; only granted care-browser enables two fixed SELECTs for existing own object IDs',async()=>{
+  const m=await import('./rebuild-care-native-browser-source.mjs');assert.equal(typeof m.careBrowserStoragePlan,'function');assert.equal(typeof m.careBrowserDatabaseId,'function');
+  assert.equal(m.careBrowserStoragePlan().enabled,false);assert.equal(m.careBrowserStoragePlan({care:true,purpose:'genuine-care-node'}).enabled,false);
+  const options={care:true,purpose:'genuine-care-browser',selection,grant,workspace},plan=m.careBrowserStoragePlan(options);
+  assert.equal(plan.enabled,true);assert.equal(plan.script,'vault');assert.equal(plan.className,'AdvisorSessionObject');assert.deepEqual(plan.queries,["SELECT name FROM sqlite_master WHERE type='table' AND name='session_record'",'SELECT json FROM session_record']);assert.equal(Object.isFrozen(plan.queries),true);
+  for(const patch of [{care:false},{grant:undefined},{grant:{...grant,purpose:'genuine-care-node'}},{workspace:parentRoot}])assert.throws(()=>m.careBrowserStoragePlan({...options,...patch}));
+  const dir='/synthetic/owned-stack',actor=dir+'/resources/do/vault-AdvisorSessionObject/'+'f'.repeat(64)+'.sqlite',metadata=dir+'/resources/do/vault-AdvisorSessionObject/metadata.sqlite',cache=dir+'/resources/cache/miniflare-CacheObject/metadata.sqlite',files=[actor,metadata,cache];
+  assert.equal(m.careBrowserDatabaseId(actor,dir,files),'f'.repeat(64));assert.equal(m.careBrowserDatabaseId(metadata,dir,files),null);assert.equal(m.careBrowserDatabaseId(cache,dir,files),null);
+  assert.throws(()=>m.careBrowserDatabaseId(actor,dir,[]));assert.throws(()=>m.careBrowserDatabaseId('/foreign/'+path.basename(actor),dir,files));const unknown=dir+'/resources/do/vault-AdvisorSessionObject/unknown.sqlite';assert.throws(()=>m.careBrowserDatabaseId(unknown,dir,[...files,unknown]));
+});

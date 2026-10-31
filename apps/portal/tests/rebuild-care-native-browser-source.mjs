@@ -7,6 +7,18 @@ import {sha} from '../scripts/rebuild-native-boundary.mjs';
 
 export const careBrowserPins=Object.freeze({purpose:'genuine-care-browser',applicationCommit:'18c78b7d',parentCommit:'80b58a4773b12435d19200a7cf7ba1e06bef067d',artifactDirectory:'w6-care-native-browser-r7'});
 export const careBrowserRoot=path.resolve(import.meta.dirname,'../../..');
+const storageQueries=Object.freeze(["SELECT name FROM sqlite_master WHERE type='table' AND name='session_record'",'SELECT json FROM session_record']);
+export function careBrowserStoragePlan({care=false,purpose,selection,grant,workspace}={}) {
+  if(purpose!=='genuine-care-browser')return Object.freeze({enabled:false});
+  assert.equal(care,true,'Inspection requires the explicit care-browser stack');requireCareCustody(selection,grant,workspace,purpose);
+  return Object.freeze({enabled:true,script:'vault',className:'AdvisorSessionObject',queries:storageQueries});
+}
+export function careBrowserDatabaseId(file,directory,existingFiles) {
+  assert.ok(existingFiles.includes(file),'Only actual pre-existing own database files can be inspected');assert.equal(path.resolve(file),file);assert.ok(file.startsWith(directory+path.sep));
+  const namespace=path.join(directory,'resources/do/vault-AdvisorSessionObject');
+  if(file===path.join(namespace,'metadata.sqlite')||file===path.join(directory,'resources/cache/miniflare-CacheObject/metadata.sqlite'))return null;
+  assert.equal(path.dirname(file),namespace,'Only the actual vault script/class namespace is inspectable');const id=path.basename(file,'.sqlite');assert.equal(path.basename(file),id+'.sqlite');assert.match(id,/^[0-9a-f]{64}$/,'Unknown files cannot bootstrap another object');return id;
+}
 
 export function careBrowserFailure(error) {
   const name=['Error','AssertionError','TimeoutError','TypeError','TransportError','AggregateError'].includes(error?.name)?error.name:'Error';
