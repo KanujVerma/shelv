@@ -37,3 +37,15 @@ test('distinct attention transitions use event identity, never stable attention 
   const base={kind:'review_attention',publication,amendmentId:id(1),event:{kind:'goal_report',id:id(2)},attention:{id:id(3),priorReview:{kind:'review',id:id(4)},state:'unresolved',resolvedBy:null},recordedAt:'2026-10-01T00:00:00Z'};
   assert.notEqual(historyKey({...base,eventId:id(5)}),historyKey({...base,eventId:id(6),attention:{...base.attention,state:'resolved',resolvedBy:{kind:'review',id:id(7)}}}));
 });
+test('corrections preserve the effective retained photo IDs after an earlier amendment',()=>{
+ const original={kind:'goal_report',id:id(40),body:{...body(),notes:'original',photoIds:[id(41)]},occurredOn:{state:'unknown'},channel:'portal',reportedBy:id(42),recordedBy:id(42),recordedAt:'2026-10-01T00:00:00Z'};
+ const i={kind:'amendment',original,expectedAmendmentHeadId:id(43),retainedPhotoIds:[id(41),id(44)],replacement:{kind:'goal_report',body:{...original.body,notes:'correction',photoIds:[id(41),id(44)]}},occurredOn:{state:'unknown'},reason:'preserve both actual photos'};
+ assert.deepEqual(buildReportCommand(i,3,id(45),[],[]).replacement.body.photoIds,[id(41),id(44)]);
+ i.replacement.body.photoIds=[];assert.throws(()=>buildReportCommand(i,3,id(46),[],[]));
+});
+test('actual Root history mapper allows a short continuation page and rejects UTF-8 page bodies over 400000 bytes',()=>{
+ const makeEvent=n=>({kind:'report',event:{kind:'goal_report',id:id(100+n),body:{...body(),notes:'x'.repeat(4000)},occurredOn:{state:'unknown'},channel:'portal',reportedBy:id(50),recordedBy:id(50),recordedAt:'2026-10-01T00:00:00Z'}});
+ const p=page();p.entries=[makeEvent(0)];p.nextCursor=`r:${'b'.repeat(64)}:${id(100)}`;
+ const command={schemaVersion:1,action:'read_care_history_v1',version:null,cursor:null,limit:100};assert.equal(mapReviewResult(p,command).entries.length,1);
+ const tooLarge=page();tooLarge.entries=Array.from({length:100},(_,n)=>makeEvent(n));assert.ok(new TextEncoder().encode(JSON.stringify(tooLarge)).length>400000);assert.throws(()=>mapReviewResult(tooLarge,command));
+});
