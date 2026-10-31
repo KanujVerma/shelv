@@ -115,7 +115,10 @@ export interface AdvisorGuidanceNavigation {
   onSelect(selection: AdvisorGuidanceSelection): void;
   onBack(): void;
 }
-export type AdvisorGuidanceOptions = { runtime: ApplicationSession };
+export type AdvisorGuidanceOptions = {
+  runtime: ApplicationSession;
+  context?: import("../../../app/advisor-guidance-context.ts").AdvisorGuidanceContextPort;
+};
 export type ExactGuidanceSelection = {
   target: GuidanceTarget;
   publisher: { kind: "human"; actorId: string };
