@@ -65,7 +65,8 @@ const memoryKey = "advisor:working-state";
 export function createAdvisorController(options: AdvisorControllerOptions) {
   const { session, ports, permissions } = options,
     listeners = new Set<() => void>(),
-    controllers = new Set<AbortController>();
+    controllers = new Set<AbortController>(),
+    readGenerations = new Map<string, number>();
   const restored = session.isCurrent()
     ? session.memory.get<AdvisorState>(memoryKey)
     : undefined;
@@ -103,6 +104,29 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     listeners.forEach((fn) => fn());
   };
   const unsubscribe = session.subscribeInvalidation(invalidate);
+  function beginRead(purpose: string) {
+    const generation = (readGenerations.get(purpose) ?? 0) + 1,
+      start = epoch,
+      operation = operationGeneration,
+      view = state.view,
+      target = view?.target,
+      local = state.local,
+      pending = state.pending,
+      capabilities = JSON.stringify(permissions);
+    readGenerations.set(purpose, generation);
+    // A read owns only this purpose, view, manual basis and operation. It never
+    // acknowledges or cleans up a later write, including a retry of the same UUID.
+    return () =>
+      live() &&
+      start === epoch &&
+      readGenerations.get(purpose) === generation &&
+      operation === operationGeneration &&
+      state.view === view &&
+      state.local === local &&
+      state.pending === pending &&
+      (target == null || sameTarget(state.view?.target, target)) &&
+      capabilities === JSON.stringify(permissions);
+  }
   const deny = () =>
     emit({ notice: { kind: "denied", title: "action unavailable" } });
   const dirty = () =>
@@ -196,10 +220,11 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       },
     });
   }
-  async function read(command: AdvisorCommand) {
-    return invoke(async (signal) =>
-      mapPlanResult(await ports.plans.execute(command, { signal }), command),
-    );
+  async function read(command: AdvisorCommand, current = live) {
+    return invoke(async (signal) => {
+      const result = await ports.plans.execute(command, { signal });
+      return current() ? mapPlanResult(result, command) : undefined;
+    });
   }
   function requireDraft() {
     const view = state.view;
@@ -320,10 +345,11 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     if (!target) return;
     const generation = ++contextGeneration,
       start = epoch,
-      operation = operationGeneration;
+      operation = operationGeneration,
+      applicable = beginRead("context");
     // Both success and failure belong to one ordered read of this exact view.
     const current = () =>
-      live() &&
+      applicable() &&
       start === epoch &&
       generation === contextGeneration &&
       operation === operationGeneration &&
@@ -421,32 +447,37 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     canPublish,
     async loadDirectory(cursor: string | null = null) {
       if (!permissions.view) return deny();
+      const current = beginRead("directory");
       try {
-        const result = await read({
-          schemaVersion: 1,
-          action: "list_plans_v1",
-          clientId: null,
-          cursor,
-          limit: 50,
-        });
-        if (result)
+        const result = await read(
+          {
+            schemaVersion: 1,
+            action: "list_plans_v1",
+            clientId: null,
+            cursor,
+            limit: 50,
+          },
+          current,
+        );
+        if (result && current())
           emit({
             directory: result as PlanDirectory,
             notice: state.needsComparison ? state.notice : null,
           });
       } catch (e) {
-        fail(e);
+        if (current()) fail(e, false, true);
       }
     },
     async loadClients() {
       if (!permissions.view) return deny();
+      const current = beginRead("clients");
       try {
         const result = await invoke((signal) =>
           ports.clients.execute({ action: "advisor_list" }, { signal }),
         );
-        if (result) emit({ clients: result });
+        if (result && current()) emit({ clients: result });
       } catch (e) {
-        fail(e);
+        if (current()) fail(e, false, true);
       }
     },
     async open(draftId: string) {
@@ -472,18 +503,22 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         busy: true,
         notice: null,
       });
+      const current = beginRead("open");
       try {
-        const result = await read({
-          schemaVersion: 1,
-          action: "read_draft_v1",
-          draftId,
-        });
-        if (result) {
+        const result = await read(
+          {
+            schemaVersion: 1,
+            action: "read_draft_v1",
+            draftId,
+          },
+          current,
+        );
+        if (result && current()) {
           const view = assertDraft(result as DraftView);
           emit({ view, local: view.draft.content, busy: false, save: "saved" });
         }
       } catch (e) {
-        fail(e);
+        if (current()) fail(e);
       }
     },
     async create() {
@@ -578,16 +613,21 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     async validate() {
       const view = requireDraft();
       if (!view || !stable()) return;
+      const current = beginRead("validation");
       try {
-        const result = (await read({
-          schemaVersion: 1,
-          action: "validate_draft_v1",
-          draftId: view.draft.id,
-          contentRevision: view.draft.contentRevision,
-          assignmentRevision: view.draft.assignmentRevision,
-        })) as PlanValidation | undefined;
+        const result = (await read(
+          {
+            schemaVersion: 1,
+            action: "validate_draft_v1",
+            draftId: view.draft.id,
+            contentRevision: view.draft.contentRevision,
+            assignmentRevision: view.draft.assignmentRevision,
+          },
+          current,
+        )) as PlanValidation | undefined;
         if (
           result &&
+          current() &&
           state.view &&
           sameDraft(state.view, view) &&
           ((result.target === null && view.target === null) ||
@@ -595,7 +635,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         )
           emit({ view: { ...view, issues: result.issues } });
       } catch (e) {
-        fail(e);
+        if (current()) fail(e, false, true);
       }
     },
     async compareImport(raw: string) {
@@ -618,18 +658,22 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       const view = requireDraft();
       if (!permissions.edit) return deny();
       if (!view || state.pending || state.busy) return;
+      const current = beginRead("comparison");
       try {
         const localAtStart = state.local,
           proposed = readPlanContent(content),
-          result = (await read({
-            schemaVersion: 1,
-            action: "compare_import_v1",
-            draftId: view.draft.id,
-            baseContentRevision: view.draft.contentRevision,
-            baseAssignmentRevision: view.draft.assignmentRevision,
-            content: proposed,
-          })) as PlanImportComparison | undefined;
-        if (result) {
+          result = (await read(
+            {
+              schemaVersion: 1,
+              action: "compare_import_v1",
+              draftId: view.draft.id,
+              baseContentRevision: view.draft.contentRevision,
+              baseAssignmentRevision: view.draft.assignmentRevision,
+              content: proposed,
+            },
+            current,
+          )) as PlanImportComparison | undefined;
+        if (result && current()) {
           assertDraft(result.latest);
           if (
             !sameContent(result.proposed, proposed) ||
@@ -644,7 +688,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
           });
         }
       } catch (e) {
-        fail(e);
+        if (current()) fail(e, false, true);
       }
     },
     async applyImport() {
@@ -727,16 +771,21 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     async preview() {
       const v = requireDraft();
       if (!v || !stable() || !options.onPreview) return;
+      const current = beginRead("preview");
       try {
-        const p = (await read({
-          schemaVersion: 1,
-          action: "preview_draft_v1",
-          draftId: v.draft.id,
-          contentRevision: v.draft.contentRevision,
-          assignmentRevision: v.draft.assignmentRevision,
-        })) as PlanPreview | undefined;
+        const p = (await read(
+          {
+            schemaVersion: 1,
+            action: "preview_draft_v1",
+            draftId: v.draft.id,
+            contentRevision: v.draft.contentRevision,
+            assignmentRevision: v.draft.assignmentRevision,
+          },
+          current,
+        )) as PlanPreview | undefined;
         if (
           p &&
+          current() &&
           state.view &&
           sameDraft(v, state.view) &&
           !dirty() &&
@@ -745,7 +794,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         )
           options.onPreview(p, v);
       } catch (e) {
-        fail(e);
+        if (current()) fail(e, false, true);
       }
     },
     async confirmPayment(claimId: string, gross: string, checked: boolean) {
@@ -800,10 +849,11 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       const pending = state.pending;
       if (!pending || state.busy) return;
       const operation = operationGeneration,
-        recovery = ++recoveryGeneration;
+        recovery = ++recoveryGeneration,
+        applicable = beginRead("recovery");
       // A retry starts another operation even though it reuses the same UUID.
       const current = () =>
-        live() &&
+        applicable() &&
         operation === operationGeneration &&
         recovery === recoveryGeneration &&
         state.pending === pending;
