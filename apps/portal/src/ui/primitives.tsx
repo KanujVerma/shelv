@@ -46,7 +46,7 @@ export function Select({value,onValueChange,options,placeholder='select an optio
     <SelectPrimitive.Trigger {...props} data-slot="select-trigger" className={clsx('shelv-input','shelv-select',className)}>
       <SelectPrimitive.Value placeholder={placeholder}/><SelectPrimitive.Icon asChild><Icon name="chevron-down" size="small"/></SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
-    <SelectPrimitive.Portal><SelectPrimitive.Content data-slot="select-content" position="popper" sideOffset={4} className="shelv-select-content">
+    <SelectPrimitive.Portal><div className="shelv-select-portal-plane"><SelectPrimitive.Content data-slot="select-content" position="popper" sideOffset={4} className="shelv-select-content">
       <SelectPrimitive.ScrollUpButton className="shelv-select-scroll"><Icon name="chevron-up" size="small"/></SelectPrimitive.ScrollUpButton>
       <SelectPrimitive.Viewport className="shelv-select-viewport">
         {options.map(option=><SelectPrimitive.Item key={option.value} value={option.value} disabled={option.disabled} className="shelv-select-option">
@@ -55,7 +55,7 @@ export function Select({value,onValueChange,options,placeholder='select an optio
         </SelectPrimitive.Item>)}
       </SelectPrimitive.Viewport>
       <SelectPrimitive.ScrollDownButton className="shelv-select-scroll"><Icon name="chevron-down" size="small"/></SelectPrimitive.ScrollDownButton>
-    </SelectPrimitive.Content></SelectPrimitive.Portal>
+    </SelectPrimitive.Content></div></SelectPrimitive.Portal>
   </SelectPrimitive.Root>;
 }
 export interface TabItem {value: string;label: string;content: ReactNode;disabled?: boolean}
