@@ -48,7 +48,13 @@ export function createGuidanceDecisionController(initial:GuidanceDecisionContext
  async function write(command:GuidanceDecisionCommand,retry:boolean){
   const op=begin();if(!op)return;const pending={...state,command,attemptedChoice:command.choice,reason:command.reason,phase:'saving' as const,error:null};emit(pending);
   let acknowledged=false;
-  try{const receipt=mapReviewResult(await op.ctx.port!.execute(command),command) as GuidanceDecisionReceipt;retainReceipt(command,receipt);if(!op.current())return;acknowledged=true;emit({...state,phase:'refreshing'});if(op.current())await confirm(op,command,receipt);}
+  try{if(!op.current()){
+    // No first dispatch occurred. Preserve its witness, but never overwrite a
+    // newer operation that a synchronous subscriber deliberately started.
+    op.finish();
+    if(operation===null&&state.command===command&&state.phase==='saving')emit({...state,phase:'uncertain'});
+    return;
+   }const receipt=mapReviewResult(await op.ctx.port!.execute(command),command) as GuidanceDecisionReceipt;retainReceipt(command,receipt);if(!op.current())return;acknowledged=true;emit({...state,phase:'refreshing'});if(op.current())await confirm(op,command,receipt);}
   catch(error){if(!op.current())return;const status=(error as {status?:number}).status??503;
    if(!retry&&!acknowledged&&status===409){emit({...pending,phase:'conflict',command:null,reviewBasis:null,error:409});try{if(!op.current())return;const next=await read(op.ctx);if(op.current()){emit({...state,reviewBasis:basis(op.ctx,next)});if(op.current())op.ctx.onViewChange?.(next);}}catch{/* A failed current read cannot unlock the rejected intent. */}}
    else if(!retry&&!acknowledged&&[400,403,404,413,415,429].includes(status))emit({...pending,command:null,phase:'denied',error:status});

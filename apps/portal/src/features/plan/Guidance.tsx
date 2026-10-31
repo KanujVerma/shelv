@@ -1,4 +1,4 @@
-import {createContext,useContext,useEffect,useState,useSyncExternalStore,useRef} from 'react';
+import {createContext,useContext,useEffect,useState,useSyncExternalStore} from 'react';
 import type {ReactNode} from 'react';
 import type {InstructionScope,InstructionDetail,ClientPlanViewV3} from '../../../../../src/contracts/PortalReview.ts';
 import type {PlanDecision} from '../../../../../src/contracts/PortalRebuild.ts';
@@ -9,8 +9,7 @@ import {createGuidanceHydrator,guidanceScopeKey} from './guidanceHydration.ts';
 import type {GuidanceHydrator} from './guidanceHydration.ts';
 import {productInstructionScopes,decisionInstructionScopes,instructionNeedsUseReview} from './guidancePresentation.ts';
 import {ScheduleContent} from './content.tsx';
-import {readCurrentPlan} from './care.ts';
-import {mapReviewResult} from '../../../../../src/contracts/PortalReviewMapping.ts';
+import {createGuidanceRetryController} from './guidanceRetry.ts';
 interface GuidanceContextValue {props:ClientPlanProps&{view:ClientPlanViewV3};hydrator:GuidanceHydrator|null;retrying:boolean;retry():void}
 const Context=createContext<GuidanceContextValue|null>(null);
 export const useGuidance=()=>useContext(Context);
@@ -30,20 +29,10 @@ export function GuidanceBoundary({props,scopes,children}:{props:ClientPlanProps;
 const idleSubscribe=()=>()=>{},idleSnapshot=()=>null;
 function GuidanceState({props,hydrator,scopeKey,children}:{scopeKey:string;props:ClientPlanProps&{view:ClientPlanViewV3};hydrator:GuidanceHydrator|null;children:ReactNode}){
  useSyncExternalStore(hydrator?.subscribe??idleSubscribe,hydrator?.getSnapshot??idleSnapshot,hydrator?.getSnapshot??idleSnapshot);
- const [retrying,setRetrying]=useState(false),[failed,setFailed]=useState(false);
- const latest=useRef({view:props.view,session:props.session,mode:props.mode,hydrator,scopeKey,epoch:0}),busy=useRef<object|null>(null);
- if(latest.current.view!==props.view||latest.current.session!==props.session||latest.current.mode!==props.mode||latest.current.hydrator!==hydrator||latest.current.scopeKey!==scopeKey){latest.current={view:props.view,session:props.session,mode:props.mode,hydrator,scopeKey,epoch:latest.current.epoch+1};busy.current=null;}
- useEffect(()=>()=>{latest.current.epoch++;busy.current=null;},[]);
- useEffect(()=>{setRetrying(false);setFailed(false);},[props.view,props.session,props.mode,hydrator,scopeKey]);
- function retry(){
-  if(busy.current||!props.session.isCurrent()||!props.onViewChange||!['client','historical'].includes(props.mode))return;
-  setRetrying(true);setFailed(false);const view=props.view,session=props.session,epoch=latest.current.epoch,operation={};busy.current=operation;const current=()=>session.isCurrent()&&latest.current.epoch===epoch&&busy.current===operation;
-  // The enclosing boundary instance is retired with the captured hydrator.
-  const historical=props.mode==='historical'||props.view.currentGuidance?.mode==='historical_document';
-  const command={schemaVersion:1,action:'read_client_plan_v3',version:props.view.plan!.version} as const;
-  const read=historical&&props.ports?.review?props.ports.review.execute(command).then(value=>mapReviewResult(value,command) as ClientPlanViewV3):readCurrentPlan(props);
-  void read.then(next=>{if(current()&&hydrator?.view===view&&hydrator.getSnapshot().phase!=='retired')props.onViewChange?.(next);}).catch(()=>{if(current()&&hydrator?.getSnapshot().phase!=='retired')setFailed(true);}).finally(()=>{if(busy.current===operation){busy.current=null;if(latest.current.epoch===epoch)setRetrying(false);};});
- }
+ const [controller]=useState(()=>createGuidanceRetryController({props,hydrator,scopeKey}));controller.context({props,hydrator,scopeKey});
+ const {retrying,failed}=useSyncExternalStore(controller.subscribe,controller.getSnapshot,controller.getSnapshot);
+ useEffect(()=>{controller.activate();return()=>controller.retire();},[controller]);
+ const retry=()=>{void controller.retry();};
  return <Context.Provider value={{props,hydrator,retrying,retry}}>{failed?<StatusNotice tone="error" title="current guidance unavailable">your recorded use and choices are retained.</StatusNotice>:null}{children}</Context.Provider>;
 }
 export function InstructionDirections({detail}:{detail:InstructionDetail}){
