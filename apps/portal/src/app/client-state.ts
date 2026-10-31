@@ -1,5 +1,6 @@
 import { mapPlanResult } from "../../../../src/contracts/PortalRebuildMapping.ts";
 import {mapCareResult} from "../../../../src/contracts/PortalCareMapping.ts";
+import {sameCareValue} from "../../../../src/contracts/PortalCareValidation.ts";
 import {TransportError} from "../transport/session.ts";
 import type {
   ClientPlanPorts,
@@ -52,9 +53,12 @@ export function createClientPlanController(
     accept(view: ClientPlanReadView) {
       if (!live()) return;
       const decoded = (view.schemaVersion===2?mapCareResult(view,careCommand):mapPlanResult(view,command)) as ClientPlanReadView;
+      // Validation must not replace a fetched object that a deliberate-review
+      // fence is bound to. Noncanonical input is rejected, never normalized here.
+      if(!sameCareValue(decoded,view))throw new Error("invalid_view");
       sequence++;
       emit({
-        view: decoded,
+        view,
         error: null,
         loading: false,
       });

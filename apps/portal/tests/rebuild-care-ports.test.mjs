@@ -14,7 +14,7 @@ async function fixture(t,audience='client'){
  let login={signedIn:true,ownerId:owner,generation:1,csrf:'care-csrf',capabilities:{view:true,edit:false,publish:false,confirmPayments:false},idleExpiresAt:new Date(Date.now()+3600000).toISOString(),absoluteExpiresAt:new Date(Date.now()+7200000).toISOString()};
  let data=preparation,status=200,hold=null;const calls=[];
  const runtime=createApplicationSession({audience,locks:{request:async(_n,_o,run)=>run()},fetcher:async(url,init)=>{
-  calls.push({url,init});assert.ok([`/api/${audience}/session`,`/api/${audience}/care`,`/api/${audience}/logout`].includes(url),'unexpected endpoint');
+  calls.push({url,init});assert.ok([`/api/${audience}/session`,`/api/${audience}/care`,`/api/${audience}/plans`,`/api/${audience}/logout`].includes(url),'unexpected endpoint');
   if(url.endsWith('/session'))return Response.json(login);
   if(url.endsWith('/logout'))return Response.json({signedOut:true});
   assert.equal(new Headers(init.headers).get('x-shelv-csrf'),login.csrf);
@@ -68,4 +68,16 @@ test('a confirmed v2 controller never falls back to a Start-only read when care 
 test('explicit future v2 activation reads care from its first load without changing the legacy default',async t=>{
  const f=await fixture(t),ports={...createClientPorts(f.runtime),care:createClientCarePort(f.runtime)},c=createClientPlanController(f.runtime.getSnapshot().boundary,ports,{readVersion:2});t.after(()=>c.dispose());await c.refresh();
  assert.equal(c.getSnapshot().view.schemaVersion,2);assert.equal(c.getSnapshot().error,null);assert.equal(f.calls.filter(x=>x.url.endsWith('/care')).length,1);
+});
+
+test('strict controller acceptance preserves the exact fetched v2 basis object',async t=>{
+ const f=await fixture(t),care=createClientCarePort(f.runtime),c=createClientPlanController(f.runtime.getSnapshot().boundary,{...createClientPorts(f.runtime),care});t.after(()=>c.dispose());
+ const fetched=await care.execute(read);c.accept(fetched);assert.equal(c.getSnapshot().view,fetched,'review basis must remain the successfully fetched object');
+ const before=c.getSnapshot().view;assert.throws(()=>c.accept({...fetched,privateNotes:'PRIVATE_CARE_CANARY'}));assert.equal(c.getSnapshot().view,before);
+});
+
+test('strict controller acceptance also preserves the fetched legacy view basis',async t=>{
+ const f=await fixture(t),{use:_u,latestPublicReview:_r,schemaVersion:_s,...body}=preparation;f.setData({...body,schemaVersion:1});
+ const ports=createClientPorts(f.runtime),c=createClientPlanController(f.runtime.getSnapshot().boundary,ports);t.after(()=>c.dispose());
+ const fetched=await ports.read.execute({schemaVersion:1,action:'read_client_plan_v1',version:null});c.accept(fetched);assert.equal(c.getSnapshot().view,fetched);
 });
