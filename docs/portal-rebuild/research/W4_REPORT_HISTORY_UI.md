@@ -587,3 +587,45 @@ Frozen **517-file** evidence manifest `E6/evidence-manifest.json`, SHA-256 **`c2
 | `clean-candidate/provenance.json` | `961ee0b23eb01fb6e8582b71a6af86d6eda95b4eea74181b4289e9c311004ced` |
 
 Ordinal6 is terminal with custody returned at19:58:16.345597UTC and a clean committed candidate. The original receipt and current review obligations remain separate, with all exact-retry/session/mode fences preserved. Parent owns new independent R3 and all remaining App/genuine/canonical/CI/full-goal gates. No new grant is inferred, no waiting loop and no self-accepted review verdict.
+
+## App restoration interface follow-up, source phase
+
+31 October2026. Bounded SOURCE-only follow-up from clean **01289534ce311df46ecc785326147bf3722a0ba1**, same0706 branch. Both live runtime tools/descriptors, all eight role/project pins and actualNode22.23.0 again verify codex/Sol/xhigh/default. No Chrome/DOM/preview/process/native/Root/R9/resource acquisition, nested work or shared-source import. Existing RH1/RH2 scoped R3 PASS3d753 remains preserved, not broadened.
+
+Read FULL frozen **f16363bea245d5986a1a20b67f5f2e6beb1e792b** W0_V3_HISTORY_COMPOSITION report and actual App ClientHistory/Application/composition/session/navigation/source/boundary/type inputs read-only. Nine exact Git-verified copies/hashes are in own ignored `.local-artifacts/portal-rebuild/w4-history-restoration/`; no foreign execution/write or App/T1/W3/shared import. W0's request is confirmed: filter is React-local, remount reads only page1 and feature update/correction/version buttons lack stable semantic IDs.
+
+Before any feature edit, three actual retained ApplicationSession/cookie/raw Review/Root/controller/SSR probes fail **0/3**, exit1: missing restoration methods, ignored controlled changes filter, and missing actual update/correction/publication opener IDs. Raw `before-edit-red.log` and source are preserved. No successful context/port is substituted. Applying the existing task-first UX workflow: returning clients need the actual filtered/paged history available before App restores focus/scroll; false current data or navigation preferences must never acknowledge current care.
+
+### Early optional typed seam and bounded implementation plan
+
+The early seam is an optional compile-safe contract, not an enabled restoration or acceptance claim. `HistoryController.restoration?`, `HistoryState.timeline?`, optional `HistoryProps.filter/onFilterChange/restoration` and exported types below preserve old consumers. `historyElementId`/`isHistoryEntryKey` supply closed semantic IDs from actual event/publication keys, rejecting labels/raw body/index keys. Pure IDs2/2 and unchanged portal strict compile pass before this interface checkpoint.
+
+Public types: `HistoryFilter`, `HistoryRestorationAnchor`, `HistoryRestorationBasis`, `HistoryTimelineMetadata`, `HistoryRestorationResult`, `HistoryRestorationAttempt`, `HistoryRestorationController`, `HistoryTimelineState`, `HistoryRestorationProps`. The optional controller object will implement:
+
+```ts
+setFilter(filter: HistoryFilter): void;
+capture(anchor?: HistoryRestorationAnchor | null): HistoryTimelineMetadata | null;
+restore(version?: number | null): HistoryRestorationAttempt;
+isCurrent(result: HistoryRestorationResult): boolean;
+// attempt.ready: Promise<HistoryRestorationResult>; attempt.cancel(): void
+```
+
+Metadata contains actual boundary key, filter, validated heads/public guidance snapshot/access/version, complete loaded event-key prefix and semantic anchor. It contains no report body/label/photo/cached response. Restore accepts no caller-supplied head/cursor/permission; it will re-read current V3/history and follow only fresh returned cursors, without a first100 limit. Exact matched prefix/complete extent produces restored; changed basis/version/prefix, unavailable opener, paging failure, denial/session/mode/supersession produces typed fresh/fallback/unavailable. No result acknowledges care or clears needsReview. Attempt cancellation owns its token so old unmount cleanup cannot cancel a newer operation.
+
+Implementation steps: add actual session-scoped preference/metadata and captured restore operation; replay required actual pages with existing fixed READs/positive Root mapping; wire controlled/default filter and opt-in restoration readiness in ClientHistory after render; give actual Timeline entry/correction/version controls stable IDs and capture their semantic anchor; verify remount, >100 variable pages, denial/head/cursor/503, stale/unmounted/replaced context and original pending/receipt authority cases through actual factory/controller/SSR. Parent alone owns canonical navigator/scroll/focus. Only owned history files, new restoration tests and this report will change.
+
+App usage sketch for the frozen successor (runtime implementation follows):
+
+```tsx
+<ClientHistory controller={history} screen="history" navigation={navigation}
+  restoration={{version: selectedVersion, onReady(result) {
+    if (!history.restoration?.isCurrent(result)) return;
+    // App applies its canonical saved scroll/focus only for state==='restored'.
+    // Otherwise App uses its typed fallback; check isCurrent again if deferred.
+    applyCanonicalHistoryContext(result);
+  }}} />
+```
+
+Omit controlled filter props to use the actual boundary-memory preference; supply `filter` plus `onFilterChange` to control it. No restoration prop means the existing loader path stays backward-compatible. The parent should consume the final frozen successor for runtime behavior, rather than treating this optional interface checkpoint as activation.
+
+Cross-owner qualification: f163's actual App boundary already adds retained server-generation comparison. This old0706 pinned App/session does not have that App-owned fix, and no import/edit is authorized. W4 uses actual `boundary.isCurrent()`/key/invalidation and never installs a substitute current predicate. Source controls cover actual owner/CSRF/logout/expiry/local-generation invalidation; server-generation-only composition must also be verified by the App owner against f163's authoritative boundary. No stronger Auth guarantee is invented here.

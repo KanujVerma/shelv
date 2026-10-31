@@ -1,3 +1,4 @@
+import type {HistoryFilter,HistoryTimelineState,HistoryRestorationController,HistoryRestorationProps} from './restoration.ts';
 import type { ClientCareHistoryPage, ClientCareHistoryEntry, ClientPlanViewV3, GoalReportBody, ReportEvent, ReportReplacement, ReviewCommand, ReportWriteReceipt, ReportNoopReceipt, PortalReviewOutcome, ReviewResult } from '../../../../../src/contracts/PortalReview.ts';
 import type { Known } from '../../../../../src/contracts/PortalRebuild.ts';
 import type { PlanSessionBoundary } from '../plan/types.ts';
@@ -34,6 +35,7 @@ export interface HistoryContext {
 }
 export type MutationState = 'idle' | 'saving' | 'uncertain' | 'conflict' | 'confirmed' | 'no_observation' | 'denied';
 export interface HistoryState {
+    timeline?:HistoryTimelineState;
     phase: 'idle' | 'loading' | 'ready' | 'error' | 'denied' | 'ended';
     view: ClientPlanViewV3 | null;
     amendmentView: ClientPlanViewV3 | null;
@@ -56,6 +58,9 @@ export interface HistoryNavigation {
     openVersion?(version: number): void;
 }
 export interface HistoryProps {
+    filter?:HistoryFilter;
+    onFilterChange?:(filter:HistoryFilter)=>void;
+    restoration?:HistoryRestorationProps;
     controller: HistoryController;
     screen: 'history' | 'update';
     navigation: HistoryNavigation;
@@ -67,6 +72,7 @@ export interface HistoryProps {
     productLabel?: (product: import('../../../../../src/contracts/PortalCare.ts').ProductRef) => string | null;
 }
 export interface HistoryController {
+    restoration?:HistoryRestorationController;
     getSnapshot(): HistoryState;
     subscribe(listener: () => void): () => void;
     setContext(context: HistoryContext): void;
