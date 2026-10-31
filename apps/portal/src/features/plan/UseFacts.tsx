@@ -1,5 +1,5 @@
 import {useEffect,useRef,useState} from 'react';
-import type {EffectiveUse,UseHistoryPage,UseHistoryEntry} from '../../../../../src/contracts/PortalCare.ts';
+import type {EffectiveUse,UseHistoryPage,UseHistoryEntry,UseChange} from '../../../../../src/contracts/PortalCare.ts';
 import {mapCareResult} from '../../../../../src/contracts/PortalCareMapping.ts';
 import type {ClientPlanProps} from './types.ts';
 import {Button,StatusNotice} from '../../ui/index.ts';
@@ -21,9 +21,10 @@ export function UseFacts({use,props}:{use:EffectiveUse;props?:ClientPlanProps}){
  <p className="plan-meta">{use.originalStart.state==='known'?`reported original start: ${use.originalStart.value}`:use.state==='using'||event?'actual start date not known':'start not recorded'}</p>
  {event?<p className="plan-meta">{event.recordedBy===event.reportedBy?'reported by client':'reported by client · recorded by advisor'} · {event.channel.replace('_',' ')} · {event.amendment?'original report · ':null}{event.occurredOn.state==='known'?`occurred ${event.occurredOn.value}`:'occurred date not known'} · recorded {event.recordedAt}</p>:null}
  {event?.amendment?<p className="plan-meta">correction recorded {event.amendment.amendedAt} · {event.amendment.occurredOn.state==='known'?`corrected occurred date ${event.amendment.occurredOn.value}`:'corrected occurred date not known'}</p>:null}
- {body?<><h4>original report</h4><ReportBody entry={full!}/>{body.amendment?<><h4>current correction</h4><p>{body.amendment.reason}</p><p>{body.amendment.replacement.change.kind.replaceAll('_',' ')}</p>{'details'in body.amendment.replacement.change?<p>{body.amendment.replacement.change.details}</p>:null}<p className="plan-meta">amended {body.amendment.amendedAt}</p></>:null}</>:null}
+ {body?<><h4>original report</h4><ReportBody entry={full!}/>{body.amendment?<><h4>current correction</h4><p>{body.amendment.reason}</p><ChangeBody change={body.amendment.replacement.change}/><p className="plan-meta">amended {body.amendment.amendedAt}</p></>:null}</>:null}
  {canRead&&event&&!body?<Button variant="ghost" disabled={loading} onClick={()=>void load(page?.nextCursor??null)}>{loading?'loading report':page?.nextCursor?'look in older reports':error?'retry report details':'view original report'}</Button>:null}
  {page&&!body&&!page.nextCursor?<p>the original report is unavailable in this history.</p>:null}{error?<p role="alert">report details unavailable. the current summary above is retained.</p>:null}
  </section>;
 }
-function ReportBody({entry}:{entry:UseHistoryEntry}){const e=entry.kind==='use'?entry.event:entry.kind==='reported_product'?entry.event.initialUse:null;if(!e)return null;return <><p>{e.change.kind.replaceAll('_',' ')}</p>{'details'in e.change&&e.change.details?<p>{e.change.details}</p>:null}{e.change.kind==='different'?<><p>frequency: {e.change.frequency.state==='known'?e.change.frequency.value:'not known'}</p><p>amount: {e.change.amount.state==='known'?e.change.amount.value:'not known'}</p></>:null}<p className="plan-meta">acquisition: {e.acquisition.replaceAll('_',' ')}</p></>;}
+function ChangeBody({change}:{change:UseChange}){return <><p>{change.kind.replaceAll('_',' ')}</p>{'details'in change&&change.details?<p>{change.details}</p>:null}{change.kind==='different'?<><p>frequency: {change.frequency.state==='known'?change.frequency.value:'not known'}</p><p>amount: {change.amount.state==='known'?change.amount.value:'not known'}</p></>:null}</>;}
+function ReportBody({entry}:{entry:UseHistoryEntry}){const e=entry.kind==='use'?entry.event:entry.kind==='reported_product'?entry.event.initialUse:null;if(!e)return null;return <><ChangeBody change={e.change}/><p className="plan-meta">acquisition: {e.acquisition.replaceAll('_',' ')}</p></>;}

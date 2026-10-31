@@ -1,6 +1,6 @@
 # W3 care/use and identity implementation
 
-31 October 2026. **Implemented and locally tested in the owned feature against the pinned care port. Fresh independent review, genuine connected care and canonical backend acceptance remain required.** No general application activation, complete-portal or release claim.
+31 October 2026. **Implemented and locally tested in the owned feature against the pinned care port. Fresh independent review, genuine connected care and canonical backend acceptance remain required.** No general application activation, complete-portal or release claim. **Later independent R1 found CU1/CU2; the bounded follow-up response below requires a fresh review. The980 figures describe frozen6b, not the later fix.**
 
 ## exact workspace, runtime and ownership
 
@@ -108,8 +108,60 @@ No push, PR, merge, deploy, real client/source/permission action, communication,
 
 ## completion receipt
 
-Implementation/test/report commit: **`6b264169c0cf4cc286a60b0244fa17e9200cabe6`**. Early seam `795a90cc` is already parent-integrated. The final documentation-only suffix is returned as handoff head. No runtime/test source changed after the final 980 run.
+Implementation/test/report commit: **`6b264169c0cf4cc286a60b0244fa17e9200cabe6`**. Early seam `795a90cc` is already parent-integrated. The final documentation-only suffix is returned as handoff head. For the frozen6b/e9 checkpoint, runtime/test source was unchanged between that980 run and those commits; the later CU1/CU2 changes are separately qualified below.
 
 Clean implementation candidate: `sourceHead=6b264169c0cf4cc286a60b0244fa17e9200cabe6`, `sourceDirty:false`, `gatewayIncluded:false`; immutable provenance copy SHA-256 `b6abae7f33b5c0133d2e5e7e275fc2478788562159c6cdc20b24c0b761e24438`. Application JS `51112ed5d5bf958b61aab62792c94fc42b434592b9cff42f672cceec22e59589`, CSS `e69bed1810171c81ff17a9382f65e640e629fd5000a10d73bf9168ad51bc412e`. Combined 138-asset ZIP `5b37305297a24c48c1ceea66bac85a3add01ab00e0cbd62089405058bb556498`, Vault `c162df6ba1979ac23c87eefe0b678fd46ad1f2d17d25cf55f9b4564bf462d4e0`. Both clean-head builds exit0; no care activation or deployment.
 
 Evidence-manifest SHA-256 `91c59e3337c592ce2513880fae35f3e825ddefde2192c012a688ae30f20c3b41` inventories actual source/test hashes, 16 native references, 12 original runtime images and executed artifacts, excluding itself and the report. Both live runtime tools again verify Sol/xhigh/default; runtime-final.json and nine config hashes retained. Final source/diff/scope/whitespace checks pass. Parent retains Root-dependency checks, exact-head CI, canonical/genuine care acceptance and independent review. Chrome release above is unchanged.
+
+## CU1/CU2 independent-review response,31 October2026
+
+**Implementation response, fresh independent review pending.** This is new owned work after frozen `6b264169` and report suffix `e9bffc75`; the parent's R1 source remains frozen. No Root DTO/action, backend, shared UI/navigation/transport, dependency or native change.
+
+Both live runtime tools were checked again before this follow-up and before finalization: codex/gpt-6.1-sol/xhigh/default, advertised xhigh/default descriptors, full-access/default interaction. Explicit Node22.23.0 remains selected; project/role pins are unchanged. Receiving-code-review, systematic debugging and TDD were applied. No nested agents.
+
+### reproduced original evidence
+
+Read the original reviewer files under `/Users/kanuj/.t3/worktrees/shelv/t3-ccbf1213/.local-artifacts/portal-rebuild/w7-care-client/` without modifying them. Copies under this checkout's ignored `w3-care-cu/` retain SHA-256 provenance:
+
+- `loss.test.mjs`: `94dcd390899094d0eb3ffc7d0c4b5cc9ec82c56f19d0497939404fae1b719126`.
+- `amendment.test.mjs`: `22d36dccb9c0007b9fc4b6165be9937e6a62c73afdc23bc35746b398bd908a99`.
+
+Before production edits, the unchanged copied scripts ran serially through actual app/session/care port/Root mapping/client controller: **0/3**, all intended failures, `w3-care-cu/original-red.log`. Both accepted note markers were absent from actual wires/history despite success; full correction had details/reason/time but lacked stored frequency/amount.
+
+### CU1/P2: accepted notes versus representable wire data
+
+Root's `started` change and descriptor-creation command have no notes field. The old always-visible textarea accepted text that these commands could not send. New descriptor creation also skipped a separate use command, so its captured `unreviewed_added.details` was not transmitted. This is a UI contract mismatch; no schema escape or artificial event is appropriate.
+
+The fresh textarea is now offered only for a supported use-change path. A shared capability predicate drives display and capture validation. Started today/earlier and new-descriptor-only creation do not offer optional notes, and capture refuses nonempty unsupported notes even if retained data is supplied programmatically. Paused/stopped/different details remain supported. An existing matched reported product can use `unreviewed_added` details on its exact UUID/version without recreating its descriptor.
+
+Switching an already-typed note to an unsupported action retains a read-only **unsent notes** draft, explains that it has not been sent and blocks fresh submission. Returning to a supported action restores the text; explicit **remove unsent notes** is the other local option. Nothing silently clears the text or places it in a misleading descriptor field.
+
+A pre-fix captured request remains immutable during uncertain recovery. Its exact UUID/payload/status/retry runs before later steps. Previously accepted unsupported text remains visible, and completing the supported server steps yields **notes not recorded**, not whole-report success. A restored old saved capture is qualified the same way. No second unreviewed event, notification or DTO field is fabricated. Removal after resolution is an explicit local withdrawal of those unsent notes and sends no mutation. Partial confirmed steps/actual server product refs remain intact; partially recorded captures cannot be silently restarted by field edits.
+
+### CU2/P2: complete correction rendering
+
+Original and correction paths now compose the same private `ChangeBody` renderer. It includes details and both known/unknown frequency and amount for `different`. Original report, correction reason/time and the current correction remain separate. Product-changing amendments still fetch by the original reference and do not relabel the original body's product/use data. No data mapper, amendment body, permission or event changed.
+
+### fresh tests and limits
+
+New durable files are `rebuild-use-notes-model.test.mjs`, `rebuild-use-notes-browser.test.mjs`, `rebuild-use-corrections.test.mjs` and `rebuild/care-notes-fixture.mjs`. They test capability rejection, supported wire/history persistence, action-switch retention/removal, existing reported identity/version, saved/uncertain pre-fix captures, exact legacy creation/Start retries, no masking events and complete original/correction fields across products.
+
+| Executed command / scope | Actual result |
+| --- | --- |
+| Unchanged copied `loss.test.mjs` and `amendment.test.mjs`, Node strip-types/test/concurrency1 | **0/3 RED**, expected assertions before edits. Original loss script assumes the now-unsupported textarea exists, so its old assertion is historical sensitivity; new acceptance checks honest field omission and retained drafts. |
+| New durable notes/model/correction files before edits | **6/19**,13 failures, `durable-red.log`; one was a fixture missing the existing required yes answer for different-use. Corrected input-only supported baseline then1/1;12 intended defects remained. |
+| New final durable files | **22/22**,0 failures/skips,11.735s, `durable-green-3.log`. Includes unchanged notes assertions plus two cross-product/unknown correction cases and a legacy Start case. |
+| `node --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-plan*.test.mjs apps/portal/tests/rebuild-use*.test.mjs apps/portal/tests/rebuild-care-plan-model.test.mjs apps/portal/tests/rebuild-care-ports.test.mjs .local-artifacts/portal-rebuild/w3-care-cu/amendment.test.mjs` | **153/153**,0 failures/skips,81.070s, `focused-final.log`: retained original58 plus affected use/ports/recovery/keyboard/state/geometry, new22 and the unchanged original correction repro. Counts overlap. |
+| Root care contract/handler tests, strip-types/test/concurrency1 | **15/15**,0 failures/skips,314ms, `root-care.log`. Pure DTO/handler-port evidence only. |
+| Portal strict frontend/session types | Both exit0, zero diagnostics; flags unchanged. |
+| Foundation build/color guard and UI check | Both exit0; no CSS or budgets changed. Clean committed application build is checked after the follow-up commit. |
+| Full980, full171 session runtime, root app/types/Expo, genuine/native/SQL/R6/CI | **Not rerun for this bounded follow-up.** Original980/171 retain their frozen-source scope. Root dependencies remain absent. No Root/native/R6 access or actual business action. |
+
+`durable-green-1.log` is18/19: the remaining new switch test had intentionally retained the earlier-date selection but provided no actual date. The test now explicitly chooses unknown; no date guard changed. `durable-green-2.log` is21/22: the new legacy Start fixture put channel before acquisition while the unchanged Root parser's captured wire orders it last. Only the literal historical fixture key order was corrected; exact-byte replay assertions remain. No old test or behavior expectation was weakened.
+
+The parent explicitly transferred sole Chrome only after the reviewer released it. First call was preview_status, no tab. Actual intercepted Chrome ran serially with the existing deny-by-default HTTP fixture and real cookie/session/Root mapper/controller. No successful port/current()/mapper substitution or new production testing hook.
+
+**Follow-up Chrome released 2026-10-31T07:24:08.173946Z**, immediately after153 terminal tests, before this response. Fresh inventory Chrome[]/host workerd[]/owned Node tests[], preview no tab, normal cleanup, no broad kill. Parent notified. No browser/DOM work follows release. No R6, native, backend, hosted or real-client action; W6 custody was untouched.
+
+All Root/source-doc gates remain active. Parent owns canonical status/context, fresh new review round, subsequent connected/canonical acceptance and activation. This response does not supersede the frozen R1 evidence or declare either finding independently accepted. The new owned commit and clean application provenance are returned in the follow-up handoff.

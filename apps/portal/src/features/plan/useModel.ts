@@ -13,8 +13,13 @@ export function occurrenceFor(form:UseForm,today:string):Known<string>{
  return{state:'known',value:day};
 }
 export const isStopping=(form:UseForm)=>form.action==='paused'||form.action==='stopped';
+export const needsReportedDescriptor=(form:UseForm,original:ProductRef|null)=>!original||form.differentProduct||form.action==='unreviewed_added'&&original.kind==='plan_product'||!isStopping(form)&&(form.match==='no'||form.match==='not_sure');
+export const canIncludeUseNotes=(form:UseForm,original:ProductRef|null)=>!form.action.startsWith('started_')&&!(form.action==='unreviewed_added'&&needsReportedDescriptor(form,original));
+/** Existing captures are judged by their actual recorded pipeline, not new form defaults. */
+export const captureHasUnsentNotes=(capture:CapturedUse)=>!!capture.form.details.trim()&&(capture.change.kind==='started'||capture.change.kind==='unreviewed_added'&&capture.descriptor!==null);
 export function captureUse(form:UseForm,original:ProductRef|null,publication:ClientPublicationRef,today:string):CapturedUse{
- const needsDescriptor=form.action==='unreviewed_added'||!original||form.differentProduct||!isStopping(form)&&form.match!=='yes';
+ const needsDescriptor=needsReportedDescriptor(form,original);
+ if(form.details.trim()&&!canIncludeUseNotes(form,original))throw new Error('these notes cannot be included with this action. choose a different action or remove the unsent notes.');
  if(original&&!form.match&&!isStopping(form))throw new Error('choose yes, no or not sure for the selected product.');
  if(needsDescriptor&&!form.name.trim())throw new Error('enter the name of the product you used. unknown variant and strength can stay blank.');
  if(form.action==='different'&&!form.details.trim())throw new Error('describe how you are using it differently.');
