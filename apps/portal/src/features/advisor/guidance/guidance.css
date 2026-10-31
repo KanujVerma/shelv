@@ -1,0 +1,114 @@
+/* A07 500:846 main/context geometry; shared wrappers and semantic tokens. */
+.advisor-guidance {
+  display: grid;
+  gap: var(--space-24);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.advisor-guidance h1 {
+  font-family: var(--font-body);
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 600;
+}
+.advisor-guidance h2 {
+  font-size: var(--text-heading);
+  line-height: var(--line-heading);
+  font-weight: 600;
+}
+.advisor-guidance h3,
+.advisor-guidance h4 {
+  font-size: var(--text-body);
+  line-height: var(--line-body);
+  font-weight: 600;
+}
+.advisor-guidance-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 736fr) minmax(280px, 376fr);
+  align-items: start;
+  gap: var(--space-24);
+}
+.advisor-guidance-fields {
+  display: grid;
+  gap: var(--space-16);
+  min-width: 0;
+  align-content: start;
+}
+.advisor-guidance .shelv-panel {
+  padding: var(--space-24);
+  background: var(--color-surface);
+  border-radius: var(--radius-12);
+  min-width: 0;
+}
+.advisor-guidance .advisor-guidance-private {
+  background: var(--color-warningBg);
+}
+.advisor-guidance-private h2 {
+  color: var(--color-warning);
+}
+.advisor-guidance-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+  min-width: 0;
+}
+.advisor-guidance .shelv-button {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.advisor-guidance p,
+.advisor-guidance li {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.advisor-guidance-meta {
+  color: var(--color-muted);
+  font-size: var(--text-label);
+  line-height: var(--line-label);
+}
+.advisor-guidance-history-entry {
+  display: grid;
+  gap: var(--space-12);
+  padding-block: var(--space-20);
+  border-top: 1px solid var(--color-line);
+  min-width: 0;
+}
+.advisor-guidance details {
+  min-width: 0;
+}
+.advisor-guidance summary {
+  cursor: pointer;
+  padding-block: var(--space-8);
+}
+.advisor-guidance fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.advisor-guidance label {
+  display: flex;
+  align-items: start;
+  gap: var(--space-8);
+}
+.advisor-guidance .advisor-guidance-stage {
+  display: grid;
+  gap: var(--space-12);
+  padding: var(--space-16);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-8);
+}
+@media (max-width: 1100px) {
+  .advisor-guidance-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .advisor-guidance .shelv-panel {
+    padding: var(--space-16);
+  }
+  .advisor-guidance-actions > .shelv-button {
+    width: 100%;
+  }
+}
