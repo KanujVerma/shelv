@@ -12,8 +12,8 @@ export function ClientHistory(props: HistoryProps) {
     const state = useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot);
     const [localFilter, setLocalFilter] = useState<HistoryFilter>('all');
     const filter=props.filter??state.timeline?.filter??localFilter;
-    const setFilter=(value:HistoryFilter)=>{controller.restoration?.setFilter(value);setLocalFilter(value);props.onFilterChange?.(value);};
-    const restoreRef=useRef<{owner:object;attempt:HistoryRestorationAttempt}|null>(null);
+    const setFilter=(value:HistoryFilter)=>{if(scope.current!==renderedScope||!renderedScope.active)return;controller.restoration?.setFilter(value);setLocalFilter(value);props.onFilterChange?.(value);};
+    const restoreRef=useRef<{active:boolean;attempt:HistoryRestorationAttempt|null}|null>(null);
     const delivered=useRef<HistoryRestorationResult|null>(null);
     const scope = useRef({ controller, screen, navigation, version:props.restoration?.version, filter:props.filter, restore:!!props.restoration, onReady:props.restoration?.onReady, active:true });
     if (scope.current.controller !== controller || scope.current.screen !== screen || scope.current.navigation !== navigation || scope.current.version!==props.restoration?.version || scope.current.filter!==props.filter || scope.current.restore!==!!props.restoration || scope.current.onReady!==props.restoration?.onReady)
@@ -25,12 +25,13 @@ export function ClientHistory(props: HistoryProps) {
     const restoreEnabled=!!props.restoration&&!!restoreAPI;
     useEffect(() => {
         if(scope.current!==renderedScope||!renderedScope.active)return;
-        const owner=renderedScope;
+        const owner:{active:boolean;attempt:HistoryRestorationAttempt|null}={active:true,attempt:null};
+        restoreRef.current=owner;
         if(screen==='history'&&restoreEnabled&&restoreAPI){
             const attempt=restoreAPI.restore(props.restoration?.version);
-            restoreRef.current={owner,attempt};
+            owner.attempt=attempt;
         }else{const s=controller.getSnapshot();if(s.phase==='idle'||screen==='history')void controller.load();}
-        return()=>{if(restoreRef.current?.owner===owner){restoreRef.current.attempt.cancel();restoreRef.current=null;}};
+        return()=>{owner.active=false;owner.attempt?.cancel();if(restoreRef.current===owner)restoreRef.current=null;};
     }, [controller, screen, restoreEnabled, props.restoration?.version, restoreEnabled?props.filter:null, restoreEnabled?navigation:null]);
     useEffect(()=>{
         const result=state.timeline?.result;
@@ -41,12 +42,12 @@ export function ClientHistory(props: HistoryProps) {
         if (screen === 'update' && state.phase === 'ready')
             controller.startReport();
     }, [controller, screen, state.phase]);
-    const retry = async () => { const captured = scope.current; if(screen==='history'&&restoreEnabled&&restoreAPI){const attempt=restoreAPI.restore(props.restoration?.version);restoreRef.current={owner:captured,attempt};await attempt.ready;}else await controller.load(); if (scope.current === captured && captured.active && screen === 'update' && controller.getSnapshot().phase === 'ready')
+    const retry = async () => { const captured = renderedScope; if(scope.current!==captured||!captured.active)return; if(screen==='history'&&restoreEnabled&&restoreAPI){const owner=restoreRef.current;if(!owner?.active)return;const attempt=restoreAPI.restore(props.restoration?.version);owner.attempt=attempt;await attempt.ready;}else await controller.load(); if (scope.current === captured && captured.active && screen === 'update' && controller.getSnapshot().phase === 'ready')
         controller.startReport(); };
-    const update = () => { controller.restoration?.capture({kind:'update'});controller.startReport(); navigation.openUpdate(); };
-    const correct = async (event: ReportEvent,anchor?:HistoryRestorationAnchor) => { const captured = scope.current;controller.restoration?.capture(anchor??null); await controller.startAmendment(event); const s = controller.getSnapshot(); if (scope.current === captured && captured.active && s.phase === 'ready' && s.intent?.kind === 'amendment' && s.intent.original.id === event.id)
+    const update = () => { if(scope.current!==renderedScope||!renderedScope.active)return;controller.restoration?.capture({kind:'update'});controller.startReport(); navigation.openUpdate(); };
+    const correct = async (event: ReportEvent,anchor?:HistoryRestorationAnchor) => { const captured = renderedScope;if(scope.current!==captured||!captured.active)return;controller.restoration?.capture(anchor??null); await controller.startAmendment(event); const s = controller.getSnapshot(); if (scope.current === captured && captured.active && s.phase === 'ready' && s.intent?.kind === 'amendment' && s.intent.original.id === event.id)
         navigation.openUpdate(); };
-    const version=(value:number,anchor?:HistoryRestorationAnchor)=>{controller.restoration?.capture(anchor??null);navigation.openVersion?.(value);};
+    const version=(value:number,anchor?:HistoryRestorationAnchor)=>{if(scope.current!==renderedScope||!renderedScope.active)return;controller.restoration?.capture(anchor??null);navigation.openVersion?.(value);};
     const labels = { actorLabel: props.actorLabel, productLabel: props.productLabel, goalLabel: props.goalLabel ?? ((id: string, pub: GoalReportBody['publication']) => state.view?.plan?.version === pub.version && state.view.plan.documentSchemaVersion === pub.documentSchemaVersion ? state.view.plan.content.goals.find(g => g.id === id)?.text ?? null : null) };
     const write = state.phase === 'ready' && !state.timeline?.restoring && !state.readError && !state.loadingMore && state.version === null && state.view?.access === 'active' && state.view.currentGuidance?.mode === 'current_document';
     const entries = state.pages.flatMap(p => p.entries), hasMore = state.pages.at(-1)?.nextCursor != null;
