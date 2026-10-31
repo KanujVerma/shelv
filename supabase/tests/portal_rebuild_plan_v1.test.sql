@@ -2,11 +2,12 @@
 -- also exercised with persisted rows by tests/portal-rebuild-native.py.
 begin;
 select plan(30);
-select has_column('concierge','publications','document_schema_version');
-select has_table('concierge','plan_documents');
-select has_table('concierge','plan_draft_private');
-select has_table('concierge','plan_task_grants');
-select has_table('concierge','plan_deliveries');
+-- Name casts select the schema-qualified overload, rather than (table, description).
+select has_column('concierge'::name,'publications'::name,'document_schema_version'::name,'canonical publication records retain their document schema version');
+select has_table('concierge'::name,'plan_documents'::name);
+select has_table('concierge'::name,'plan_draft_private'::name);
+select has_table('concierge'::name,'plan_task_grants'::name);
+select has_table('concierge'::name,'plan_deliveries'::name);
 select has_function('public','concierge_plan_command_v1',array['jsonb']);
 select ok(not has_table_privilege('authenticated','concierge.plan_draft_private','SELECT'),'no raw clinical provenance access');
 select ok(not has_table_privilege('service_role','concierge.plan_policy','UPDATE'),'no service-key policy mutation');
@@ -20,8 +21,8 @@ select ok(exists(select 1 from pg_trigger where tgname='plan_reply_barrier'),'ol
 select ok(not exists(select 1 from pg_tables t join pg_class c on c.relname=t.tablename join pg_namespace n on n.oid=c.relnamespace and n.nspname=t.schemaname where t.schemaname='concierge' and t.tablename like 'plan\_%' escape '\' and not c.relrowsecurity),'all plan tables enable RLS');
 select ok(not has_function_privilege('service_role','concierge.plan_claim_email_deliveries(integer)','EXECUTE'),'raw delivery helpers stay private');
 select ok(has_function_privilege('service_role','public.concierge_plan_delivery_claim_v1(integer)','EXECUTE'),'fixed service-only delivery RPC available');
-select has_table('concierge','plan_source_adoptions');
-select has_table('concierge','plan_legacy_adoptions');
+select has_table('concierge'::name,'plan_source_adoptions'::name);
+select has_table('concierge'::name,'plan_legacy_adoptions'::name);
 select ok(not has_table_privilege('authenticated','concierge.plan_legacy_adoptions','SELECT'),'retained private legacy snapshot is not a browser table');
 select ok(not has_table_privilege('service_role','concierge.plan_source_adoptions','INSERT'),'delivery service cannot transfer source scope');
 select throws_ok($$select public.concierge_plan_delivery_claim_v1(null)$$,'P0001','concierge_invalid_input','NULL cannot mean an unbounded batch');
