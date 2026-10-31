@@ -25,7 +25,7 @@ const writeShape=union(careReceiptShape,obj({receipt:careReceiptShape,product:re
 export const careResultShapes={receipt:careReceiptShape,created:obj({receipt:careReceiptShape,product:reportedProduct}),reported:obj({revision:rev,items:arr(careReportedUseShape),nextCursor:nil(cursor)}),history:obj({revision:rev,entries:arr(careHistoryEntryShape),nextCursor:nil(cursor)})};
 function sameProduct(a:ProductRef,b:ProductRef):boolean{return a.kind==='plan_product'&&b.kind==='plan_product'?sameCareValue(a.publication,b.publication)&&a.productId===b.productId:sameCareValue(a,b);}
 function validateEffective(s:EffectiveUse):void{
- if(s.latestEvent){const e=s.latestEvent;requireValue(sameProduct(e.amendment?.product??e.product,s.product));if(e.amendment)requireValue(e.amendment.eventId===e.eventId);}
+ if(s.latestEvent){const e=s.latestEvent;requireValue((sameProduct(e.amendment?.product??e.product,s.product)||((e.amendment?.product??e.product).kind==='plan_product'&&s.product.kind==='plan_product'&&((e.amendment?.product??e.product) as import('./PortalCare.ts').PlanProductRef).productId===s.product.productId)));if(e.amendment)requireValue(e.amendment.eventId===e.eventId);}
  if(s.identity)requireValue(sameProduct(s.identity.target.subject,s.product));
 }
 function mapWrite(value:unknown,requestId:string):CareWriteResult{

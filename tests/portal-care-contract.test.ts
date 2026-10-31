@@ -127,3 +127,16 @@ test('reported descriptor creation has one nested unreviewed original event and 
  assert.throws(()=>mapCareResult({...page,entries:[{kind:'reported_product',event:{...event,previousVersion:1}}]},command));
  const correction={...event,product:{...ref,version:2},previousVersion:1,reason:'correct descriptor',initialUse:null};assert.equal((mapCareResult({...page,revision:2,entries:[{kind:'reported_product',event:correction}]},readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:correction.product,cursor:null,limit:1})) as typeof page).entries.length,1);
 });
+test('compact current-use summary may retain another publication while identity remains exact',async()=>{
+ const {createEmptyPlanContent,projectClientPlan}=await import('../src/contracts/PortalRebuild.ts');
+ const {readFileSync}=await import('node:fs');
+ const p=JSON.parse(readFileSync(new URL('./fixtures/concierge-presentation.json',import.meta.url),'utf8')).presentation.categoryCards.find((c:{currentProduct:unknown})=>c.currentProduct).currentProduct;
+ const content=createEmptyPlanContent();content.products=[{...p,strength:{state:'unknown'},category:{state:'unknown'},identity:'unresolved',formula:'unknown',factIds:[],guides:[],evidence:[]}];
+ const original={kind:'plan_product',publication:{version:1,documentSchemaVersion:3},productId:p.id,slotId:'original-slot'},effective={...original,publication:{version:2,documentSchemaVersion:3},slotId:null};
+ const attr={eventId:id,sourcePublication:publication,occurredOn:unknown,recordedAt:'2026-01-01T00:00:00Z',reportedBy:id,recordedBy:id,channel:'portal'};
+ const state={product:effective,state:'stopped',originalStart:unknown,latestEvent:{...attr,product:original,changeKind:'stopped',acquisition:'self',identityEventId:null,originalActivationId:null,amendment:null},identity:null,contradiction:false};
+ const view={schemaVersion:2,access:'active',plan:{documentSchemaVersion:3,version:2,publishedAt:'2026-01-02T00:00:00Z',content:projectClientPlan(content)},decisionRevision:0,decisions:[],actualUse:[],nextReviewOn:null,use:{revision:1,planProducts:[state],reportedProducts:{items:[],nextCursor:null}},latestPublicReview:null},command=readCareCommand({schemaVersion:1,action:'read_client_plan_v2',version:2});
+ assert.deepEqual(mapCareResult(view,command),view);
+ assert.throws(()=>mapCareResult({...view,use:{...view.use,planProducts:[{...state,identity:{...attr,target:{subject:original,comparedWith:null},match:'yes'}}]}},command));
+ assert.throws(()=>mapCareResult({...view,use:{...view.use,planProducts:[{...state,latestEvent:{...state.latestEvent,product:{...original,productId:'other-id'}}}]}},command));
+});
