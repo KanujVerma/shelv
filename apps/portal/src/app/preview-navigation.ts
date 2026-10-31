@@ -17,9 +17,22 @@ export function createBrowserPreviewNavigation(
   draftId: string,
   isCurrent: () => boolean = () => true,
 ) {
+  return createBrowserPlanNavigation(win, navigator, {name:'advisor-preview',draftId}, isCurrent);
+}
+export function createBrowserHistoricalNavigation(
+  win: Window, navigator: PortalNavigator, version: number, isCurrent: () => boolean,
+) {
+  return createBrowserPlanNavigation(win, navigator, {name:'history-version',version:String(version)}, isCurrent);
+}
+function createBrowserPlanNavigation(
+  win: Window,
+  navigator: PortalNavigator,
+  outer: {name:'advisor-preview';draftId:string}|{name:'history-version';version:string},
+  isCurrent: () => boolean,
+) {
   type Entry = { route: PlanRoute; depth: number };
-  const outer = { name: "advisor-preview" as const, draftId };
   let initialParent = navigator.backDestination();
+  const initialPredecessor = (win.history.state as {shelvNavigation?:{predecessor?:{entryId?:string}}}|null)?.shelvNavigation?.predecessor?.entryId;
   const entries = new Map<string, Entry>(),
     listeners = new Set<() => void>();
   const id = () => {
@@ -33,11 +46,13 @@ export function createBrowserPreviewNavigation(
       depth: 0,
     },
     entryId = id(),
-    version = 0;
+    version = 0,
+    disposed = false;
+  const live = () => !disposed && isCurrent();
   entries.set(entryId, entry);
   const isOuter = () => {
     const route = parseRoute(win.location.pathname + win.location.search);
-    return route?.name === "advisor-preview" && route.draftId === draftId;
+    return !!route && buildRoute(route) === buildRoute(outer);
   };
   function emit(resetContext = false) {
     const token = ++version;
@@ -46,7 +61,7 @@ export function createBrowserPreviewNavigation(
     // Only a local fallback with no traversal needs its own fresh context.
     if (resetContext)
       win.requestAnimationFrame(() => {
-        if (token === version && listeners.size && isCurrent() && isOuter())
+        if (token === version && listeners.size && live() && isOuter())
           restoreNavigationContext(
             { scrollY: 0, focusKey: null },
             win.document,
@@ -55,7 +70,7 @@ export function createBrowserPreviewNavigation(
       });
   }
   function pop() {
-    if (!isCurrent() || !isOuter()) return;
+    if (!live() || !isOuter()) return;
     entryId = id();
     entry = entries.get(entryId) ?? {
       route: { name: "plan", routine: "morning" },
@@ -66,6 +81,7 @@ export function createBrowserPreviewNavigation(
   }
   return {
     getSnapshot: () => {
+      if (!live()) return entry.route;
       const current = id();
       if (isOuter() && current !== entryId) {
         entryId = current;
@@ -83,6 +99,7 @@ export function createBrowserPreviewNavigation(
       return entry.route;
     },
     subscribe(fn: () => void) {
+      if (!live()) return () => {};
       if (!listeners.size) win.addEventListener("popstate", pop);
       listeners.add(fn);
       return () => {
@@ -94,6 +111,7 @@ export function createBrowserPreviewNavigation(
       };
     },
     navigate(input: PlanRoute) {
+      if (!live()) return;
       const route = parseRoute(buildRoute(input));
       if (!route || !planNames.has(route.name))
         throw Error("invalid_preview_route");
@@ -120,6 +138,7 @@ export function createBrowserPreviewNavigation(
       return parentRoute(entry.route) as PlanRoute;
     },
     back() {
+      if (!live()) return;
       if (entry.depth > 0) {
         navigator.back();
       } else {
@@ -132,18 +151,25 @@ export function createBrowserPreviewNavigation(
       }
     },
     exit() {
+      if (!live()) return;
+      if (outer.name === 'history-version') {
+        if(initialPredecessor&&initialParent.name.startsWith('history'))win.history.go(-(entry.depth+1));
+        else navigator.navigate({name:'history'},{replace:true});
+        return;
+      }
       if (
         initialParent.name === "advisor-editor" &&
-        initialParent.draftId === draftId
+        initialParent.draftId === outer.draftId
       )
         win.history.go(-(entry.depth + 1));
       else
         navigator.navigate(
-          { name: "advisor-editor", draftId, section: "sources" },
+          { name: "advisor-editor", draftId:outer.draftId, section: "sources" },
           { replace: true },
         );
     },
     dispose() {
+      disposed = true;
       entry = {
         route: { name: "plan", routine: "morning" },
         depth: 0,

@@ -17,7 +17,7 @@ export interface CookieCapabilities {
 }
 export interface RetainedCookie extends CookieSessionPort {
   _epoch: number;
-  _view: (CookieLease & { capabilities: CookieCapabilities }) | null;
+  _view: (CookieLease & { capabilities: CookieCapabilities; generation: number }) | null;
   restore(): Promise<unknown>;
   complete(code: string): Promise<unknown>;
   sendLink(

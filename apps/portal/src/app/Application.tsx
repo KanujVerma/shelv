@@ -26,6 +26,9 @@ import { AdvisorWorkspace } from "../features/advisor/AdvisorWorkspace.tsx";
 import { createAdvisorController } from "../features/advisor/controller.ts";
 import type { AdvisorController } from "../features/advisor/types.ts";
 import { createClientPorts, createAdvisorPorts } from "./ports.ts";
+import { createClientComposition } from './client-composition.ts';
+import { ClientHistoryContent } from './ClientHistory.tsx';
+export { ClientHistoryContent } from './ClientHistory.tsx';
 import { createClientPlanController } from "./client-state.ts";
 import { bindPreview, loadPreview } from "./preview.ts";
 import type { PreviewRecord } from "./preview.ts";
@@ -339,6 +342,7 @@ function ConnectedRoute({
           runtime={runtime}
           boundary={boundary}
           route={route}
+          win={win}
           onSignOut={signOut}
         />
       )}
@@ -349,27 +353,34 @@ function ClientApplication({
   runtime,
   boundary,
   route,
+  win,
   onSignOut,
 }: {
   runtime: ApplicationSession;
   boundary: PlanSessionBoundary;
   route: PortalRoute;
+  win: Window;
   onSignOut(): void;
 }) {
-  const ports = useMemo(() => createClientPorts(runtime, { care: true }), [runtime]);
-  const [controller, setController] = useState<ReturnType<
-    typeof createClientPlanController
+  const [connection, setConnection] = useState<ReturnType<
+    typeof createClientComposition
   > | null>(null);
   useEffect(() => {
-    const c = createClientPlanController(boundary, ports, { readVersion: 2 });
-    setController(c);
-    void c.refresh();
+    const c = createClientComposition(runtime);
+    setConnection(c);
     return () => c.dispose();
-  }, [boundary, ports]);
-  return controller ? (
+  }, [runtime, boundary]);
+  const historyRoute = route.name.startsWith('history');
+  const planRoute = ['plan','recommendation','product','product-evidence','product-use','report-use'].includes(route.name);
+  useEffect(() => {
+    if (connection && planRoute) void connection.controller.refresh();
+  }, [connection, planRoute]);
+  return connection ? historyRoute ? (
+    <ClientHistoryContent connection={connection} boundary={boundary} route={route} win={win} onSignOut={onSignOut}/>
+  ) : (
     <ClientContent
-      controller={controller}
-      ports={ports}
+      controller={connection.controller}
+      ports={connection.ports}
       boundary={boundary}
       route={route}
       onSignOut={onSignOut}
@@ -393,6 +404,7 @@ export function ClientContent({
   route: PortalRoute;
   onSignOut(): void;
 }) {
+  const { navigator } = usePortalNavigation();
   const state = useSyncExternalStore(
     controller.subscribe,
     controller.getSnapshot,
@@ -462,6 +474,8 @@ export function ClientContent({
           view={state.view}
           ports={ports}
           onViewChange={controller.acceptFrom(state.view)}
+          onSendUpdate={ports.review ? () => {if(boundary.isCurrent())navigator.navigate({name:'history-new'});} : undefined}
+          onHistory={ports.review ? () => {if(boundary.isCurrent())navigator.navigate({name:'history'});} : undefined}
         />
       </>
     );

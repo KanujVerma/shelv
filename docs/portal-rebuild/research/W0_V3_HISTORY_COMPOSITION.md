@@ -1,6 +1,6 @@
 # W0 V3 and History source composition
 
-Status: source implementation in progress, 31 October 2026. No parent admission, browser, genuine, CI or release acceptance.
+Status: bounded source checkpoint, 31 October 2026. No parent admission, browser, genuine, CI or release acceptance.
 
 ## Runtime and ownership
 
@@ -14,12 +14,12 @@ All five originals match INPUT_PROVENANCE byte counts and SHA256, including the9
 
 Goal: compose accepted frozen V3 and History source modules through actual retained cookie factories, Root parsers/mappers and creation-bound ApplicationSession. Preserve actual fetched identity and owner fences.
 
-- [ ] Add source RED controls against missing App activation seam, canonical V3 care-route rendering and current-read denial retirement.
-- [ ] Export `createClientComposition(runtime)` from App-owned `client-composition.ts`. It returns actual `ports`, `controller`, `history` and disposal; never starts a read by itself. Review is exactly the existing five-action `createClientGuidancePort`; History is exactly `createHistoryPort` through the same raw request factory. Care remains the real13-action adapter.
-- [ ] Select V3 only in the actual client App. Start initial reads in the selected module, avoiding an eager unrelated plan fetch on History entry. Retained V2 composition callers remain valid.
-- [ ] Compose ClientHistory for C04/C05 with semantic links, version/history reads, original-publication corrections and shared navigator Back. Preserve session-memory intent; no new browser persistence or private URL fields.
-- [ ] Preserve CA1 route recognition before data, reject downgrade after V3 confirmation, retire a current403 readable lease and old async owners while retaining exact uncertain wires in existing feature memory.
-- [ ] Run bounded synthetic-HTTP source/SSR/controller tests, strict frontend/forbidden-export checks, old App source checks and write:false/application builders. Record exact clean candidate provenance and frozen-input comparisons.
+- [x] Add source RED controls against missing App activation seam, canonical V3 care-route rendering and current-read denial retirement.
+- [x] Export `createClientComposition(runtime)` from App-owned `client-composition.ts`. It returns actual `ports`, `controller`, `history` and disposal; never starts a read by itself. Review is exactly the existing five-action `createClientGuidancePort`; History is exactly `createHistoryPort` through the same raw request factory. Care remains the real13-action adapter.
+- [x] Select V3 only in the actual client App. Start initial reads in the selected module, avoiding an eager unrelated plan fetch on History entry. Retained V2 composition callers remain valid.
+- [x] Compose ClientHistory for C04/C05 with semantic links, version/history reads, original-publication corrections and shared navigator Back. Preserve session-memory intent; no new browser persistence or private URL fields.
+- [x] Preserve CA1 route recognition before data, reject downgrade after V3 confirmation, retire a current403 readable lease and old async owners while retaining exact uncertain wires in existing feature memory.
+- [x] Run bounded synthetic-HTTP source/SSR/controller tests, strict frontend/forbidden-export checks, old App source checks and write:false/application builders. Record exact clean candidate provenance and frozen-input comparisons.
 
 ## Source UX task map
 
@@ -59,3 +59,73 @@ T1 independent source R1 and V3 independent R2 are separate gates; source import
 New source RED:4 cases,1 retained identity control pass and3 intended failures (missing activation export, V3 care route unavailable, full403 retained readable view). Preserved `source-red.log` in own ignored evidence. Early GREEN4/4 and strict frontend pass. `createClientComposition(runtime)` is exported by `apps/portal/src/app/client-composition.ts`; returns `{ports, controller, history, dispose}` and performs zero eager reads. The App still needs the route mounting step. Existing V3 `accept` retains exact canonical supplied identity; App callback acceptance is now bound to the exact displayed view and controller operation generation. Current full403 retires readable view and rejects old accept callbacks until a new successful refresh.
 
 No cross-owner changes requested: semantic routes and all five-action/13-action ports exist. No feature/Root policy fix has been made. A Node strip-types import initially failed because the barrel also exports TSX; the seam imports the existing controller/port modules directly. This was a source wiring issue, not an additional product finding.
+
+## Source implementation checkpoint
+
+The actual `ClientApplication` now constructs the seam on its actual captured ApplicationSession boundary. It selects Review V3 for plan/recommendation/product/evidence/use routes and mounts `ClientHistoryContent` on existing History semantic URLs. Unavailable account/Commerce/notification pages start no unrelated plan read. A direct History entry does not eagerly start the plan controller: History itself reads current V3 plus the canonical history page and verifies its own heads. A selected historical document is a distinct explicit-version Review read, never a manufactured publication/use snapshot.
+
+`ClientHistoryContent` composes the existing C04/C05 component, selected immutable event rendering and read-only historical shared plan rendering. `createHistoryNavigation` maps update/version/Back to the canonical navigator. Historical interior navigation reuses the existing preview cursor implementation and canonical focus/scroll owner; internal product/evidence state stays in session memory. Exit from interior history goes back across its scoped entries to the actual History opener, with a same-app direct-entry fallback. Disposed cursors cannot restart navigation. No navigation/routes source or shared shell/overlay source changed.
+
+Current full plan403 retires its readable view and rejects its old accept callback. Successful canonical V3 refresh retains the exact port-supplied object; `accept` retains the exact supplied canonical object. `acceptFrom` is stable for the same displayed object and operation generation, and refuses obsolete callbacks. Existing F4/F5 fetched basis, token/epoch, mode, use/decision/publication identity and G1/G2 restrictions remain inside unchanged features. No historical receipt acknowledges newer current content. The actual session boundary now also compares the retained server `generation` alongside local generation, owner, audience/role, CSRF lease, epoch and expiry; changing server generation alone retires old App authority. Cookie/server/Vault lifecycle policy remains unchanged.
+
+Source connection disposal fences both success/error paths of its actual ports, retires controllers, and preserves existing History uncertain intent in actual session memory for same-session reconnection. Logout/owner/CSRF/generation/expiry clears that memory through the actual ApplicationSession. No manufactured boundary/current predicate, permissive port, successful BFF substitute, optimistic recorded label, new storage, source reader or upload capability was introduced. Existing Care13 remains the factual Stop/mismatch capability; decisions/reports do not require a fabricated purchase/payment/identity/photo.
+
+## Additional RED/GREEN and setup qualifications
+
+- C04/C05 App export/semantic navigation: two intended RED, then GREEN.
+- Historical selected-version activation: intended RED for absent creation method. The first positive synthetic DTO incorrectly marked the current publication historical; unchanged Root validation refused503. Correcting the DTO's actual current-publication reference gives GREEN; no mapper change.
+- Source disposal: intended RED because old ports remained callable, then GREEN with connection-owned fencing and retained uncertain wire.
+- Stable callback source: intended RED because each `acceptFrom` returned a new callback, then GREEN with exact object/generation caching.
+- Retained server generation: independently added own control fails at old ApplicationSession boundary, then passes with the extra App comparison. This does not mutate the shared cookie generation implementation.
+- Historical Back/Forward/exit: one intended RED after interior evidence, then GREEN. Nonzero250/650 scroll, exact opener and direct same-app fallback use actual navigator/cursor with plain objects, **no DOM/browser implementation**.
+- Disposed historical cursor: intended RED for restart through an old callback, then GREEN.
+- The first synthetic paginated page had nextCursor with zero entries, correctly refused by Root. The control now uses an actual immutable publication entry before its cursor. This is corrected test setup, not product RED.
+- The first direct invocation of the unchanged RPC-chain test used Node strip-only mode and failed before tests on an existing TypeScript parameter property. The retained loader points at foreign dependencies and was not used. New owned `rebuild-app-v3-history-rpc.test.mjs` compiles the unchanged test with own locked esbuild, `write:false`; its actual provider/handler/runtime/fixed-RPC control passes with finite injected HTTP and the no-network preload. No original test or compiler flag was weakened.
+
+## Current verification
+
+All Node commands select `/Users/kanuj/.nvm/versions/node/v22.23.0/bin` first. Own ignored evidence root `E` is `.local-artifacts/portal-rebuild/w0-v3-history/` in this worktree. Test HTTP is synthetic and finite; it preserves actual cookie factories, Root parsers/positive mappers and controller behavior. No final production page consumes a synthetic DTO.
+
+| Check | Actual result | Evidence |
+| --- | --- | --- |
+| New App source/SSR/navigation/forbidden-types/write:false build/RPC |34/34,0 failures/skips | E/final-own-source.log |
+| Existing App source/session/callback/continuation/preview/ports/render/start/Care composition/render and Care ports |64/64,0 failures/skips, repeated after final cursor changes | E/final-old-app-source.log |
+| Frozen V3 controller/port/hydration/decision/presentation/observation/SSR/G1G2 source; History port/factory/SSR/RH1/RH2; report model/controller |158/158,0 failures/skips | E/retained-feature-source.log |
+| Frozen T1 author107 plus unchanged raw client/advisor Review/Guidance requests45 |152/152,0 failures/skips | E/fixed-transport-current.log |
+| Strict production frontend |Exit0, zero diagnostics, skipLibCheck:false unchanged | E/final-typecheck.log |
+| Strict forbidden-export/capability probe plus unchanged W3 types |Exit0; expected compile errors enforced, part of new34 | E/types/ |
+| Shared UI color guard |Exit0;11 stylesheets | actual `npm --prefix apps/portal run check:ui` |
+| Actual App entry source build |write:false; no gateway/native/server execution; exact input/output hashes | E/source-build-provenance.json and source-build-metafile.json |
+| Protected correspondence |651 base files unchanged; W3 all23 feature files exacte093; W4 all8 feature files exact012; T1 both cookie modules exact9e449; all8 role pins and4 Review Root metadata blobs exact | E/frozen-inputs.json |
+| Diff scope/whitespace |`git diff --check` passes; own changes confined to App/new matching tests/this report after attributed imports | actual Git |
+
+These source counts have distinct scopes and are not a full-portal acceptance score. Existing MODULE_TYPELESS_PACKAGE_JSON warnings remain unsuppressed. No Root dependency install, package/lock/compiler/security-budget change.
+
+Reproduce from this checkout root with the explicit Node22 PATH:
+
+```sh
+node --experimental-strip-types --import ./tests/portal-review-no-network.mjs --test --test-concurrency=1 apps/portal/tests/rebuild-app-v3-history*.test.mjs
+node --experimental-strip-types --import ./tests/portal-review-no-network.mjs --test --test-concurrency=1 apps/portal/tests/rebuild-app-{state,session,callback,continuation,preview-context,ports,render,start,care-composition,care-render}.test.mjs apps/portal/tests/rebuild-care-ports.test.mjs
+node --experimental-strip-types --import ./tests/portal-review-no-network.mjs --test --test-concurrency=1 apps/portal/tests/rebuild-plan-guidance-{controller,port,hydration,decision,presentation,observation,ssr,context-source}.test.mjs apps/portal/tests/rebuild-history-{port,factory,ssr,denial,review-authority}.test.mjs apps/portal/tests/rebuild-reports-{controller,model}.test.mjs
+node --experimental-strip-types --import ./tests/portal-review-no-network.mjs --test --test-concurrency=1 apps/portal/tests/rebuild-cookie-cancellation.test.mjs apps/portal/tests/rebuild-review-request.test.mjs apps/portal/tests/rebuild-review-guidance-request.test.mjs
+npm --prefix apps/portal run typecheck:rebuild
+npm --prefix apps/portal run check:ui
+```
+
+## Frozen dependency and cross-owner handoff
+
+Latest parent steering supplies independent T1 R1 report **bec620f681a155f393779ddbd4b95dcdf29684d3**, read from that exact Git object only. No review commit or future source target was imported. Original T1 caller-aborted HTTP200 JSON has scoped PASS. **CK1/P2** known received401/403 plus internal body deadline is still mapped503/offline, and **CK2/P3** a signal-ignoring late200 can bypass the deadline at the injected seam; ordinary browser reachability remains unknown. Both are preexisting cookie-owner findings. This App owner makes no shared cookie fix, forced-ready workaround, automatic retry/restore or future-target substitution. The current composition remains frozen on9e449/ac83 and explicitly pending the owner's separate source follow-up and new independent review.
+
+**W4 interface request:** inspected `ClientHistory` keeps its filter only in React local state and has no controlled restoration API or stable IDs on its own update/correction/version opener buttons. Its loader also starts a fresh first page on History remount; exact paged-timeline scroll restoration after async reload cannot be established from this source pass. The App preserves the same C04/C05 instance where possible and uses canonical navigation, but does not reach inside feature state or mutate target files/DOM to force restoration. W4/coordinator should supply an explicit frozen successor interface if remount filter/page/opener restoration is required. App-owned new Back/load-more/all-history controls have stable IDs. No silent new W4 target or fake current authority is accepted.
+
+V3 independent R2 closure, updated T1 closure, new independent App source review and separately granted composed Chrome/genuine checks remain required before parent/default activation acceptance. Existing HistoryRH1/RH2 R3 scoped PASS is retained, not broadened. No account/Commerce/private-source/advisor-guidance composition or W2c7 policy workaround is included. Optional export/photo/contact capabilities are omitted where unavailable rather than represented as completed actions.
+
+## Terminal source handoff and skips
+
+Task request suffix: `portal-rebuild-w0-v3-history-composition-20261031-r1`. Live own thread read binds parent `d632030a-18f7-4dec-a2c9-f5c0418c3fd5`, subagent relationship and this worktree. Exact live run is `run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:1`, started2026-10-31T21:05:00.675Z. The parent's delegate task handle is not independently exposed by the child's thread/config read; retain the original parent delegate receipt rather than infer a taskId from a thread prefix.
+
+No Chrome/DOM/preview/process inventory, native/DB/Docker/Auth/credential/fixture/provider/live network resource was acquired, polled or retained. Only own portal install, finite source tests, SSR/plain-object navigation and write:false builders ran. W7/W6/Root grants confer no access here. No waits for an ungranted lane remain.
+
+Deliberately unrun: full Root npm/tests/test-types/Expo/iOS, full portal/session/runtime suites, package-emitting combined/gateway/Vault builders, browser/actual Application DOM/visual/responsive/native zoom/accessibility/human verification, genuine Auth/persistence/SQL/RLS/migrations/pgTAP, native87/R9/current-server checks, hosted behavior and exact-head CI. No App, genuine, CI, full-goal or release acceptance; no Root integration, push, PR, merge, deployment or live business action.
+
+Next step: parent preserves this exact source checkpoint, resolves the named frozen-owner/interface gates, and commissions a new independent App source review. A browser/genuine continuation requires a new explicit source target and resource grant. No continuation or resource re-use is implicit.

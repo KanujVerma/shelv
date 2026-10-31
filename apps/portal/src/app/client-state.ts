@@ -17,7 +17,7 @@ export interface ClientPlanState {
 export function createClientPlanController(
   session: PlanSessionBoundary,
   ports: ClientPlanPorts,
-  options: {readVersion?:1|2|3} = {},
+  options: {readVersion?:1|2|3; version?:number|null} = {},
 ) {
   const listeners = new Set<() => void>(),
     controllers = new Set<AbortController>();
@@ -31,6 +31,7 @@ export function createClientPlanController(
     disposed = false,
     confirmedV3 = options.readVersion===3,
     readable = true;
+  let acceptance: {owner:number;source:ClientPlanReadView;callback:(view:ClientPlanReadView)=>void}|null=null;
   const live = () => !disposed && !state.ended && session.isCurrent();
   function emit(patch: Partial<ClientPlanState>) {
     state = { ...state, ...patch };
@@ -47,7 +48,7 @@ export function createClientPlanController(
     version: null,
   };
   const careCommand={schemaVersion:1 as const,action:"read_client_plan_v2" as const,version:null};
-  const reviewCommand={schemaVersion:1 as const,action:"read_client_plan_v3" as const,version:null};
+  const reviewCommand={schemaVersion:1 as const,action:"read_client_plan_v3" as const,version:options.version??null};
   function accept(view: ClientPlanReadView) {
       if (!live() || !readable) return;
       if(confirmedV3&&view.schemaVersion!==3)throw new Error('invalid_view');
@@ -66,10 +67,13 @@ export function createClientPlanController(
     // Validation retains the exact supplied canonical object (F4/F5).
     accept,
     acceptFrom(source: ClientPlanReadView) {
+      if(acceptance?.owner===sequence&&acceptance.source===source)return acceptance.callback;
       const owner = sequence;
-      return (view: ClientPlanReadView) => {
+      const callback = (view: ClientPlanReadView) => {
         if (owner === sequence && state.view === source) accept(view);
       };
+      acceptance={owner,source,callback};
+      return callback;
     },
     async refresh() {
       if (!live()) return;
@@ -120,6 +124,7 @@ export function createClientPlanController(
       stop();
       listeners.clear();
       state = { view: null, loading: false, error: null, ended: true };
+      acceptance=null;
     },
   };
 }

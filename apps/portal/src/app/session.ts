@@ -25,6 +25,7 @@ export function createApplicationSession({
   let captured: {
     owner: string;
     generation: number;
+    serverGeneration: number;
     epoch: number;
     lease: CookieLease;
     boundary: PlanSessionBoundary;
@@ -51,6 +52,7 @@ export function createApplicationSession({
       cookie.audience !== audience ||
       cookie.identity.ownerId !== c.owner ||
       cookie.generation !== c.generation ||
+      cookie._view?.generation !== c.serverGeneration ||
       cookie._epoch !== c.epoch
     )
       return false;
@@ -87,6 +89,7 @@ export function createApplicationSession({
     const c = {
       owner: identity.ownerId,
       generation: cookie.generation,
+      serverGeneration: v.generation,
       epoch: cookie._epoch,
       lease: { ...v, localEpoch: cookie._epoch },
       boundary: null as unknown as PlanSessionBoundary,
