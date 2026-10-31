@@ -1954,7 +1954,10 @@
       "selectiveCompatibilityCommit": "7cdf86da2c83db4019826aac15921ee92846de68",
       "sharedFileClaim": "CHILD_ONLY upstream.ts exactonelegacyerroralias beforefinite safeCodes;9actualgatewayno-network+32retainedchecks. No parentnative76integration.",
       "readSeamExtension": "read_advisor_reported_products_v1{clientId,cursor,limit,expectedUseRevision,publicationVersion}; exactexisting400kReportedProductsPage/cursor/clientpubhead filters; HUMANVIEWbeforeafterlock/everypage/final; agentsdeny/privateeditnotgranted.",
-      "openCompatibilityIssue": "Plan JSONtransport500000 vs pg_column_size500000 internalstorage mismatch on489955/490188/507318specimen, nooldPlanedit; sourceNode/PGexactcompactUTF8+DoSguardFORWARDproposalpending. Source1.8Mmaxnotpersistedmaxacceptance."
+      "openCompatibilityIssue": "Plan JSONtransport500000 vs pg_column_size500000 internalstorage mismatch on489955/490188/507318specimen, nooldPlanedit; sourceNode/PGexactcompactUTF8+DoSguardFORWARDproposalpending. Source1.8Mmaxnotpersistedmaxacceptance.",
+      "latestSourceSeam": "30f40da954f5f9f3f4c96c320237ace0aecdd6e4",
+      "privateSourceManifestPin": "Private framed hash/count over all distinct exact validated sourceId/version/locator tuples and immutable inputs/content/amendment heads, including source-free input identities. Current max100000 from100 conversations*50facts*20locators; all live grant/version/delete/session checks remain outside hash and after waits. Source-only M58; no parent integration.",
+      "knownBudgetGap": "500000 compact Plan wire bytes can exceed old JSONB storage guard; no previous SQL edit/cap rise; forward proposal and trusted-ingress/raw-allocation distinction pending."
     },
     {
       "role": "W7 care application composition review",
@@ -2275,7 +2278,7 @@
       ],
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-a9144683",
       "baseCommit": "1011ae3316ce6186b4dd29537c5d4a48ec80679e",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_CARE_INTEGRATED_REVIEW.md"
       ],
@@ -2285,7 +2288,13 @@
       "independentBrowserRun": "80e9c361-78ef-4aaf-8732-2e86a2b0ccb4",
       "independentBrowserResultSha256": "6c8287c72f14f606360eea0bc16f7dbf2bdfb6b674a211a7eddf38e2b3e07386",
       "resourceReturnSha256": "b6c92b37195297a67f932a504fab877ebba1ef7b123bdce88f5353a30e675abf",
-      "parentVerified": "ActualreturnreceiptSHA/browserresultSHA/readPASS15/cleanup6/554responses70543802bytesknownhits0; 39literal+5dynamic/RLS12/rawACL0/helperEXEC0 countersattributedactualreviewreceipt; finalreportpending."
+      "parentVerified": "Actual return and browser result SHA/PASS15/cleanup6/554 responses70543802bytes knownhits0; full203-line report read and sole report commit imported. No source/test/runtime change.",
+      "headCommit": "f7cc2981010ffb515f1f32252538eedc0f0f7493",
+      "integratedCommits": [
+        "f1e9e911"
+      ],
+      "reportSha256": "43baac0d18da0cb6cfdf681b9f92c8cd0dde4bab229bb541008a29b0968e5361",
+      "verdict": "Separate scoped source/CS1, Node11/all13, first unchanged browser15, specification and quality PASS; no new material finding. Full goal/CI/release separate."
     },
     {
       "role": "W7 advisor care dependency source and synthetic browser review",
@@ -2342,6 +2351,37 @@
       "resources": "SOURCE/pure/SSR ONLY, noChrome/R7/nativegrant yet",
       "verification": "FreshchildconfigSol/xhigh/default beforeimplementationresume; bothlivechildtools/eightpinsagainrequired",
       "scope": "CD1authorizedexacthistoricalpub+schema identitycache/latefencesorblock; CD2currentreportedcontinuationblocksacktypedMissingReaderuntilReview15safeportfuture, no fakeownerclientpaging/ledgerinference. Parentfrontendunintegrated/newindependentR2required."
+    },
+    {
+      "role": "W4 optional goal reports and client history",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w4-report-history-ui-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w4-report-history-ui-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-0706fba8",
+      "branch": "t3/check-ins-history-updates",
+      "baseCommit": "f1e9e9113cd75012c27fa97432b63d488b4b0c89",
+      "status": "running",
+      "writeSet": [
+        "apps/portal/src/features/history/**",
+        "NEW apps/portal/tests/rebuild-history-* and rebuild-reports-*",
+        "docs/portal-rebuild/research/W4_REPORT_HISTORY_UI.md",
+        "Exact four new PortalReview contract blobs from30f40da9 in separate attributed import commit ONLY"
+      ],
+      "resources": "SOURCE/pure/SSR only; no Chrome/DOM/preview/native/DB/Auth/fixture/credential/resource polling or grant",
+      "verification": "Fresh coordinator capabilities/config descriptors and all8exactrolepins; actual T3 return model/options +worktree/base; both live child tools and8pins verified by child",
+      "contractPin": "30f40da954f5f9f3f4c96c320237ace0aecdd6e4; private sourceManifest subsequent W1 update outside client UI; no authored Root contract edits",
+      "scope": "C04/C05 optional goal report/no-op, public dated original/amendment/actor/attention/pagination, exact uncertain/status READ and409current deliberate recovery; no fake photoUUID/source/private note/Start/payment; App/ports/routes/backend reserved coordinator."
     }
   ]
 }
