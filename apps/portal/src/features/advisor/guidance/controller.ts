@@ -208,7 +208,14 @@ export function createAdvisorGuidanceController({
     manual = 0,
     authority = 0,
     pending: Pending | null = null;
+  let evidenceGeneration = 0;
   let dispatchOwner: Pending | null = null;
+  let activeWrite: {
+    intent: Pending;
+    cancel(): void;
+    mayHaveDispatched: boolean;
+    retry: boolean;
+  } | null = null;
   let contextStamp: {
     selection: AdvisorGuidanceSelection | null;
     draft: GuidanceDraftView | null;
@@ -258,7 +265,33 @@ export function createAdvisorGuidanceController({
     state = freeze(next);
     listeners.forEach((fn) => fn());
   }
-  function retireAuthority() {
+  function retireWrite(preserve?: Pending) {
+    const operation = activeWrite;
+    if (!operation || operation.intent === preserve) return;
+    activeWrite = null;
+    operation.cancel();
+    if (pending !== operation.intent) return;
+    if (operation.retry || operation.mayHaveDispatched) {
+      operation.intent.state = "uncertain";
+      emit({
+        saveState: "uncertain",
+        draftCurrent: false,
+        notice: "the result is uncertain. check its status before retrying.",
+      });
+    } else {
+      // The fixed raw factories await cookie acquisition before write egress.
+      // A cancellation in the initial JS turn is therefore known unsent.
+      pending = null;
+      emit({
+        saveState: "idle",
+        notice:
+          "the action was cancelled before it was sent. refresh the current information before trying again.",
+      });
+    }
+  }
+  function retireAuthority(preserveWrite?: Pending) {
+    if (!preserveWrite) evidenceGeneration++;
+    retireWrite(preserveWrite);
     contextPort?.invalidate();
     contextStamp = null;
     aborters.get("authority")?.abort();
@@ -303,6 +336,7 @@ export function createAdvisorGuidanceController({
     );
   }
   function cancelAll() {
+    retireWrite();
     aborters.forEach((c) => c.abort());
     aborters.clear();
     laneVersions.forEach((n, k) => laneVersions.set(k, n + 1));
@@ -408,10 +442,22 @@ export function createAdvisorGuidanceController({
       publication: state.publication,
       publicationCurrent: state.publicationCurrent,
       capabilities,
+      evidenceGeneration,
     };
     emit({ busy: [...new Set([...state.busy, lane])] });
     return {
       signal: controller.signal,
+      cancel() {
+        controller.abort();
+        if (
+          laneVersions.get(lane) === version &&
+          aborters.get(lane) === controller
+        ) {
+          aborters.delete(lane);
+          laneVersions.set(lane, version + 1);
+          emit({ busy: state.busy.filter((x) => x !== lane) });
+        }
+      },
       owns() {
         return (
           current() &&
@@ -428,6 +474,8 @@ export function createAdvisorGuidanceController({
         return (
           this.owns() &&
           pending === expected.pending &&
+          (lane !== "write" ||
+            evidenceGeneration === expected.evidenceGeneration) &&
           (lane === "publication" ||
             lane === "connection" ||
             (state.publication === expected.publication &&
@@ -543,7 +591,10 @@ export function createAdvisorGuidanceController({
       prior = more ? state.history : emptyHistory(),
       cursor = more ? prior.nextCursor : null,
       lease = capture("history");
-    emit({ acknowledged: false });
+    emit({
+      acknowledged: false,
+      history: { ...state.history, complete: false },
+    });
     try {
       const value = await adapters.review.execute(
         {
@@ -714,6 +765,7 @@ export function createAdvisorGuidanceController({
       selection = state.selection,
       snapshot = publication.currentGuidance.snapshot;
     if (publication.currentGuidance.instructionCount === 0) {
+      retireAuthority();
       emit({ instructions: { ...emptyInstructions(), complete: true } });
       return;
     }
@@ -1052,14 +1104,30 @@ export function createAdvisorGuidanceController({
     if (!retry && needsCurrentAuthority(command)) dispatchOwner = own;
     pending = own;
     const lease = capture("write");
+    const operation = {
+      intent: own,
+      cancel: () => lease.cancel(),
+      mayHaveDispatched: false,
+      retry,
+    };
+    activeWrite = operation;
     emit({
       saveState: command.action.includes("draft") ? "saving" : state.saveState,
       acknowledged: false,
       notice: null,
     });
     try {
+      if (!lease.valid()) {
+        retireWrite();
+        return;
+      }
       if (!retry && needsCurrentAuthority(command) && !authorityCurrent(own))
         throw new TransportError(409);
+      // This marks possibility after the initial synchronous turn, never an
+      // assertion of HTTP egress. Older uncertain attempts remain recoverable.
+      queueMicrotask(() => {
+        operation.mayHaveDispatched = true;
+      });
       const dispatched =
         family === "guidance"
           ? adapters.guidance.execute(own.command as GuidanceCommand, {
@@ -1068,7 +1136,7 @@ export function createAdvisorGuidanceController({
           : adapters.review.execute(own.command as AdvisorReviewCommand, {
               signal: lease.signal,
             });
-      retireAuthority();
+      retireAuthority(own);
       dispatchOwner = null;
       const result = await dispatched;
       if (!lease.valid()) return;
@@ -1098,6 +1166,7 @@ export function createAdvisorGuidanceController({
         failure(error, true);
       }
     } finally {
+      if (activeWrite === operation) activeWrite = null;
       if (dispatchOwner === own) dispatchOwner = null;
       lease.finish();
     }
@@ -1265,9 +1334,40 @@ export function createAdvisorGuidanceController({
               result.receipt,
               own.command as AdvisorReviewCommand,
             );
-      if (lease.valid())
-        acknowledge(receipt as GuidanceWriteResult | ReviewWriteResult, own);
-      else {
+      if (lease.valid() && pending === own) {
+        pending = null;
+        const matchesBuffer =
+          "body" in own.command &&
+          state.body !== null &&
+          sameCareValue(state.body, own.command.body);
+        const sameTarget =
+          "target" in own.command &&
+          sameCareValue(state.draft?.target, own.command.target);
+        emit({
+          lastReceipt: {
+            action: own.command.action,
+            requestId: own.command.requestId,
+            recordedAt:
+              "recordedAt" in receipt
+                ? receipt.recordedAt
+                : "publishedAt" in receipt
+                  ? receipt.publishedAt
+                  : "draft" in receipt
+                    ? receipt.draft.savedAt
+                    : null,
+          },
+          saveState:
+            sameTarget && matchesBuffer
+              ? "saved"
+              : state.saveState === "uncertain" || state.saveState === "saving"
+                ? "idle"
+                : state.saveState,
+          dirty: sameTarget && matchesBuffer ? false : state.dirty,
+          draftCurrent: sameTarget ? false : state.draftCurrent,
+          notice:
+            "the original request was recorded. refresh the current information before the next action.",
+        });
+      } else {
         // A committed original status can settle only its exact parked intent.
         // It cannot replace a newer selected draft, evidence or authority gate.
         const key = JSON.stringify(own.selection);

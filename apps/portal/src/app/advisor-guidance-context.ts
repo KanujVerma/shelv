@@ -202,6 +202,7 @@ export function createAdvisorGuidanceContext(
       const check = () => {
         guard(own, caps);
         if (options.signal?.aborted) throw new TransportError(503);
+        requireContext(request.snapshot.asOfDay === today());
       };
       check();
       async function policy() {
@@ -342,6 +343,7 @@ export function createAdvisorGuidanceContext(
           draft,
           publication,
         });
+        check();
         issued.set(result, { sequence: own, capabilities: caps });
         return result;
       } catch (error) {
