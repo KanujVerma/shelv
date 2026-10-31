@@ -15,6 +15,7 @@ const read={schemaVersion:1,action:'read_client_plan_v1',version:null};
 const preparation={schemaVersion:1,access:'preparation',plan:null,decisionRevision:0,decisions:[],actualUse:[],nextReviewOn:null};
 const savedDraft={draft:{id:draft,clientId:null,kind:'care_plan',state:'working',contentRevision:0,assignmentRevision:0,contentHash:'a'.repeat(64),content:createEmptyPlanContent(),savedAt:'2026-10-30T00:00:00Z',basis:{publicationVersion:null,useRevision:0},origin:{kind:'new',id:null}},target:null,sections:[],issues:[]};
 const view={view:true,edit:false,publish:false,confirmPayments:false};
+const exactTarget={draftId:draft,clientId:owner,contentRevision:1,assignmentRevision:1,contentHash:'a'.repeat(64)};
 const credentials={access_token:'synthetic-plan-access',refresh_token:'synthetic-plan-refresh',expires_at:9999999999,user:{id:owner},providerSessionId:draft};
 const rejects=(fn:()=>unknown,status:number)=>assert.throws(fn,error=>(error as {status?:number}).status===status);
 
@@ -113,4 +114,19 @@ test('only the richer plan protocol accepts bounded JSON above the retained 100K
  assert.equal((await call('plans',command)).status,401);
  assert.equal((await call('operations',command)).status,413);
  assert.equal((await call('plans',{...command,extra:'x'.repeat(500001)})).status,413);
+});
+
+for(const kind of ['gate','publication'] as const)test(`authoritative advisor ${kind} reads use view capability and stay outside the client channel`,async()=>{
+ const command=kind==='gate'?{schemaVersion:1,action:'read_advisor_gate_v1',target:exactTarget,publisher:{kind:'human',actorId:owner}}:{schemaVersion:1,action:'read_advisor_publication_v1',clientId:owner,version:null};
+ const result=kind==='gate'?{schemaVersion:1,clientId:owner,target:exactTarget,publisher:{kind:'human',actorId:owner},approval:null,publication:'first',coverage:'inactive',capabilities:{actorId:owner,view:true,edit:false,assign:false,review:false,approve:false,publish:false,confirmPayments:false},policy:{revision:1,ownerActorId:owner,requireKanujApproval:true}}:{schemaVersion:1,clientId:owner,version:1,plan:{documentSchemaVersion:3,version:1,publishedAt:'2026-10-30T00:00:00Z',content:createEmptyPlanContent()},decisionRevision:0,decisions:[],actualUse:[],nextReviewOn:null,reviewSchedule:null,clientAccess:{care:'ended',entitled:false,canRead:false,canWrite:false}};
+ const operation=parseCommand('plans',command);rejects(()=>parseClientCommand('plans',command),403);
+ const calls:unknown[]=[];let privateExtra=false;
+ const provider=new SupabaseProvider('sb_publishable_synthetic',async(url,init)=>{calls.push({url:String(url),body:JSON.parse(String(init?.body))});return Response.json(privateExtra?{...result,privateNotes:'PRIVATE_READ_CANARY'}:result);});
+ assert.deepEqual(await provider.perform(credentials,view,operation),{status:200,body:result});assert.equal(calls.length,1);
+ assert.deepEqual(calls[0],{url:'https://snojlbqovlawewwqbviz.supabase.co/functions/v1/concierge-plans',body:command});
+ await assert.rejects(provider.perform(credentials,{...view,view:false},operation),error=>(error as {status?:number}).status===403);assert.equal(calls.length,1);
+ privateExtra=true;await assert.rejects(provider.perform(credentials,view,operation),error=>(error as {status?:number}).status===503);
+ const emitted:string[]=[];const state={signedIn:true,ownerId:owner,generation:1,csrf:'csrf-plan',capabilities:view,idleExpiresAt:new Date(Date.now()+3600000).toISOString(),absoluteExpiresAt:new Date(Date.now()+7200000).toISOString()};
+ const session=new CookieAdvisorSession({locks:{request:async(_n:string,_o:unknown,run:()=>Promise<unknown>)=>run()},fetcher:async(url:string)=>{emitted.push(url);return Response.json(url.endsWith('/session')?state:result);}});
+ try{await session.restore();await createCookieRequest('plans',session)(command);assert.equal(emitted.at(-1),'/api/advisor/plans');}finally{session.dispose();}
 });
