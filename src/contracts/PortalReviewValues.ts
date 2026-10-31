@@ -1,5 +1,6 @@
 import type {ReviewCommand,GuidanceCommand} from './PortalReview.ts';
 import {planContentShape} from './PortalRebuildValidation.ts';
+import {requireValue} from './ConciergePortalValidation.ts';
 export const reviewCommandMaxBytes=500000;
 export const reviewResponseMaxBytes=1800000;
 export const reviewPageMaxBytes=400000;
@@ -13,9 +14,13 @@ export const reviewPhotosMax=100;
 export const reviewReferencesMax=100;
 export const conversationFactsMax=50;
 export const reviewSourcesPerFactMax=20;
+/** Only current conversation refs contribute locators; other closed input types carry none. */
+export const guidanceSourceLocationsMax=reviewReferencesMax*conversationFactsMax*reviewSourcesPerFactMax;
 export const reviewPageMax=100;
 /** A decision's actual product-ref union is bounded by the global document products. */
-export const reviewInstructionScopesMax=planContentShape.fields!.routine.max!+planContentShape.fields!.decisions.max!*planContentShape.fields!.products.max!;
+const routineMax=planContentShape.fields?.routine?.max,decisionMax=planContentShape.fields?.decisions?.max,productMax=planContentShape.fields?.products?.max;
+requireValue(routineMax!==undefined&&decisionMax!==undefined&&productMax!==undefined);
+export const reviewInstructionScopesMax=routineMax+decisionMax*productMax;
 export const reviewReadActions=['read_care_history_v1','read_advisor_care_history_v1','read_client_plan_v3','read_advisor_publication_v3','read_advisor_reported_products_v1','read_client_instruction_manifest_v1','read_advisor_instruction_manifest_v1','read_client_instruction_v1','read_advisor_instruction_v1','request_status_v1'] as const;
 export const guidanceReadActions=['read_guidance_draft_v1','request_status_v1'] as const;
 export const reviewClientActions=['submit_goal_report_v1','amend_report_v1','read_care_history_v1','read_client_plan_v3','read_client_instruction_manifest_v1','read_client_instruction_v1','record_decision_v2','request_status_v1'] as const;

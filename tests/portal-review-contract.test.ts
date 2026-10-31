@@ -18,7 +18,7 @@ const source={sourceId:id,sourceVersion:1,locator:{kind:'text',start:0,end:3}} a
 const conversation:ConversationBody={publication,occurredOn:unknown,channel:'call',clientReported:[{id:'reported-comfort',text:'felt dry',sources:[source]}],advisorConclusions:[],agentProposals:[],contradictions:[]};
 const body:GuidanceBody={kind:'review',publication,reportRefs:[{kind:'goal_report',id}],occurredOn:unknown,channel:'portal',clientReport:'felt dry',conclusion:'no change',rationale:'reviewed current report',changes:[],nextStep:'contact shelv if comfort changes',nextReviewOn:null};
 const target={draftId:id,clientId:other,kind:'review' as const,revision:1,contentHash:'a'.repeat(64),basisHash:'b'.repeat(64)} satisfies GuidanceTarget;
-const basis:GuidanceBasis={schemaVersion:1,publication,legacyBasis:{publicationVersion:1,useRevision:0},legacyBasisManifestHash:'e'.repeat(64),useHead:0,reportHead:1,instructionHead:0,references:[{event:{kind:'goal_report',id},amendmentHeadId:null}],sources:[]};
+const basis:GuidanceBasis={schemaVersion:1,publication,legacyBasis:{publicationVersion:1,useRevision:0},legacyBasisManifestHash:'e'.repeat(64),useHead:0,reportHead:1,instructionHead:0,references:[{event:{kind:'goal_report',id},amendmentHeadId:null}],sourceManifest:{schemaVersion:1,hash:'f'.repeat(64),count:0}};
 const publisher={kind:'human',actorId:third} as const;
 const approval:GuidanceApproval={id:third,target,scope:'review.publish',publisher,approvedBy:third,approvedAt:now,policyRevision:1,revokedAt:null,receiptId:null};
 const draft:GuidanceDraftView={target,body,capturedBasis:basis,currentBasis:basis,needsRebase:false,savedAt:now,recordedBy:third,review:null,approval:null,issues:[]};
@@ -235,7 +235,7 @@ test('recording timestamps reject impossible calendar days and non-JSON objects 
  const getter={...submit};Object.defineProperty(getter,'body',{enumerable:true,get(){throw Error('getter must not execute');}});assert.throws(()=>readReviewCommand(getter),/invalid_input/);
 });
 test('guidance basis cannot omit the retained legacy-use manifest even when new care heads are zero',()=>{
- const omitted={schemaVersion:1,publication,useHead:0,reportHead:1,instructionHead:0,references:basis.references,sources:[]};
+ const omitted={schemaVersion:1,publication,useHead:0,reportHead:1,instructionHead:0,references:basis.references,sourceManifest:basis.sourceManifest};
  assert.throws(()=>mapGuidanceResult({...draft,capturedBasis:omitted,currentBasis:omitted},readGuidanceCommand({schemaVersion:1,action:'read_guidance_draft_v1',draftId:id})));
 });
 test('empty and whitespace-only goal submissions return exact no-op receipts without a report or new head',()=>{
@@ -449,6 +449,15 @@ test('advisor reported-product paging is a closed safe READ with the retained po
  for(const delta of [{revision:1},{privateNote:'PRIVATE'},{sourceId:id}])assert.throws(()=>mapReviewResult({...page,...delta},command));
  assert.throws(()=>mapReviewResult({status:'committed',receipt:page},readReviewCommand({schemaVersion:1,action:'request_status_v1',requestId:id})));
 });
+test('private guidance basis uses a complete source manifest rather than a capped inline source list',()=>{
+ const {sources:_old,...rest}=basis as unknown as Record<string,unknown>;
+ const captured={...rest,sourceManifest:{schemaVersion:1,hash:'f'.repeat(64),count:101}};
+ const value={...draft,capturedBasis:captured,currentBasis:captured};const command=readGuidanceCommand({schemaVersion:1,action:'read_guidance_draft_v1',draftId:id});
+ assert.deepEqual(mapGuidanceResult(value,command),value);
+ for(const sourceManifest of [{schemaVersion:1,hash:'f'.repeat(64),count:-1},{schemaVersion:1,hash:'f'.repeat(64),count:100001},{schemaVersion:1,hash:'bad',count:101},{schemaVersion:1,hash:'f'.repeat(64),count:101,sources:[source]}])assert.throws(()=>mapGuidanceResult({...value,capturedBasis:{...captured,sourceManifest}},command));
+ assert.throws(()=>mapGuidanceResult({...value,capturedBasis:{...captured,sources:[source]}},command));
+ assert.throws(()=>mapReviewResult({...history,entries:[{kind:'guidance',guidance:{record:{kind:'review',id:other},body,publishedBy:third,publishedAt:now,originalStart:null,sourceManifest:captured.sourceManifest}}]},readReviewCommand(readHistory)));
+});
 
 // Compiler checks use actual imports with --strict and unchanged compiler settings.
 if(false){
@@ -464,5 +473,7 @@ if(false){
  const badDecision:Extract<ReviewCommand,{action:'record_decision_v2'}>={schemaVersion:1,action:'record_decision_v2',requestId:id,expectedDecisionRevision:0,publicationVersion:1,decisionId:'choice',choice:'approved',reason:null};
  // @ts-expect-error public consistency tokens never contain raw-source locators
  const badSnapshot:GuidanceReadSnapshot={publication,currentPublication:publication,useHead:0,reportHead:0,instructionHead:0,serviceRevision:0,decisionRevision:0,asOfDay:'2026-01-01',manifestHash:'a'.repeat(64),sourceId:id};
- void [badReport,badApproval,wrongKindApproval,badAmendment,badDecision,badSnapshot];
+ // @ts-expect-error the private manifest replaces a misleading partial inline source list
+ const badBasis:GuidanceBasis={...basis,sources:[]};
+ void [badReport,badApproval,wrongKindApproval,badAmendment,badDecision,badSnapshot,badBasis];
 }

@@ -45,7 +45,8 @@ const instructionUseShape=nil(obj({useRevision:rev,latestEventId:nil(uuid),amend
 export const instructionManifestEntryShape=obj({instructionId:uuid,version:pos,format:en('authored_schedule','legacy_usage'),scope:instructionScopeShape,contentHash:hash,effectiveOn:date,baseInstructionId:nil(uuid),baseInstructionVersion:rev,reviewedUseBasis:instructionUseShape,basisStatus:en('current','changed','legacy_unversioned'),originalStart:nil(day)});
 export const instructionManifestPageShape=obj({audience:en('client'),schemaVersion:en(1),snapshot:guidanceReadSnapshotShape,total:{...rev,max:reviewInstructionScopesMax},cursor:manifestCursor,items:arr(instructionManifestEntryShape,reviewPageMax),nextCursor:manifestCursor});
 export const advisorInstructionManifestPageShape=obj({...instructionManifestPageShape.fields!,audience:en('advisor'),clientId:uuid});
-const authoredInstructionShape=guidanceBodyShape.variants![1];
+const authoredInstructionShape=guidanceBodyShape.variants?.[1];
+requireValue(authoredInstructionShape!==undefined);
 export const instructionDetailShape=obj({audience:en('client'),schemaVersion:en(1),snapshot:guidanceReadSnapshotShape,item:instructionManifestEntryShape,content:union(obj({format:en('authored_schedule'),body:authoredInstructionShape}),obj({format:en('legacy_usage'),revision:legacyInstructionShape})),publishedBy:uuid,publishedAt:instant});
 export const advisorInstructionDetailShape=obj({...instructionDetailShape.fields!,audience:en('advisor'),clientId:uuid});
 export const currentGuidanceRefShape=obj({schemaVersion:en(1),mode:en('current_document','historical_document'),instructionSemantics:en('current_for_selected_publication'),snapshot:guidanceReadSnapshotShape,instructionCount:{...rev,max:reviewInstructionScopesMax}});

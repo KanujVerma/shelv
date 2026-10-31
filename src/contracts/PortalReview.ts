@@ -29,7 +29,8 @@ export type GuidanceBody=
  |{kind:'reply';publication:ClientPublicationRef;reportRef:ReportRef;reply:string;nextStep:string|null};
 export type GuidanceTarget<K extends GuidanceKind=GuidanceKind>={draftId:UUID;clientId:UUID;kind:K;revision:Revision;contentHash:Hash;basisHash:Hash};
 /** Captured private basis, independent of PlanDraft and its frozen basis/index semantics. */
-export type GuidanceBasis=Pick<DependencyBasisV2,'legacyBasis'|'legacyBasisManifestHash'|'useHead'|'reportHead'|'instructionHead'>&{schemaVersion:1;publication:ClientPublicationRef;references:{event:ReviewInputRef;amendmentHeadId:UUID|null}[];sources:SourceLocation[]};
+export type GuidanceSourceManifest={schemaVersion:1;hash:Hash;count:Revision};
+export type GuidanceBasis=Pick<DependencyBasisV2,'legacyBasis'|'legacyBasisManifestHash'|'useHead'|'reportHead'|'instructionHead'>&{schemaVersion:1;publication:ClientPublicationRef;references:{event:ReviewInputRef;amendmentHeadId:UUID|null}[];sourceManifest:GuidanceSourceManifest};
 export type GuidancePublisher=Extract<Publisher,{kind:'human'}>;
 export type GuidanceScope='review.publish'|'instruction.publish'|'reply.publish';
 export type GuidanceReview={id:UUID;target:GuidanceTarget;reviewedBy:UUID;reviewedAt:string};

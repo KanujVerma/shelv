@@ -3,7 +3,7 @@ import {readObject,requireValue,readDate} from './ConciergePortalValidation.ts';
 import {readPlanShape,planScheduleShape,planDependencyBasisShape,planCommandFields} from './PortalRebuildValidation.ts';
 import type {PlanShape} from './PortalRebuildValidation.ts';
 import {careObject as obj,careArray as arr,careEnum as en,careNull as nil,careUnion as union,careUuid as uuid,careRevision as rev,carePositive as pos,careBool as bool,careDay as day,careKnown as known,carePublication as publication,sameCareValue,careCommandFields,readCareCommand} from './PortalCareValidation.ts';
-import {reviewCommandMaxBytes,reviewBodyMaxBytes,conversationBodyMaxBytes,guidanceBodyMaxBytes,reviewTextMax,reviewComfortMax,reviewGoalsMax,reviewPhotosMax,reviewReferencesMax,conversationFactsMax,reviewSourcesPerFactMax,reviewPageMax} from './PortalReviewValues.ts';
+import {reviewCommandMaxBytes,reviewBodyMaxBytes,conversationBodyMaxBytes,guidanceBodyMaxBytes,reviewTextMax,reviewComfortMax,reviewGoalsMax,reviewPhotosMax,reviewReferencesMax,conversationFactsMax,reviewSourcesPerFactMax,reviewPageMax,guidanceSourceLocationsMax} from './PortalReviewValues.ts';
 
 export const reviewTextShape:PlanShape={type:'text',max:reviewTextMax,empty:false};
 const blank:PlanShape={...reviewTextShape,empty:true},legacyText:PlanShape={...reviewTextShape,max:1000};
@@ -25,7 +25,10 @@ export const conversationBodyShape=obj({publication,occurredOn:day,channel:en('t
 export const guidanceTargetShape=obj({draftId:uuid,clientId:uuid,kind:en('review','instruction','reply'),revision:pos,contentHash:{type:'hash'},basisHash:{type:'hash'}});
 export const guidancePublisherShape=obj({kind:en('human'),actorId:uuid});
 export const guidanceScopeShape=en('review.publish','instruction.publish','reply.publish');
-export const guidanceBasisShape=obj({schemaVersion:en(1),publication,legacyBasis:planDependencyBasisShape.fields!.legacyBasis,legacyBasisManifestHash:planDependencyBasisShape.fields!.legacyBasisManifestHash,useHead:rev,reportHead:rev,instructionHead:rev,references:arr(obj({event:reviewInputRefShape,amendmentHeadId:nil(uuid)}),reviewReferencesMax),sources:arr(reviewSourceLocationShape,reviewReferencesMax)});
+export const guidanceSourceManifestShape=obj({schemaVersion:en(1),hash:{type:'hash'},count:{...rev,max:guidanceSourceLocationsMax}});
+const legacyBasis=planDependencyBasisShape.fields?.legacyBasis,legacyBasisManifestHash=planDependencyBasisShape.fields?.legacyBasisManifestHash;
+requireValue(legacyBasis!==undefined&&legacyBasisManifestHash!==undefined);
+export const guidanceBasisShape=obj({schemaVersion:en(1),publication,legacyBasis,legacyBasisManifestHash,useHead:rev,reportHead:rev,instructionHead:rev,references:arr(obj({event:reviewInputRefShape,amendmentHeadId:nil(uuid)}),reviewReferencesMax),sourceManifest:guidanceSourceManifestShape});
 export const guidanceBodyShape=union(
  obj({kind:en('review'),publication,reportRefs:arr(reviewInputRefShape,reviewReferencesMax),occurredOn:day,channel,clientReport:blank,conclusion:blank,rationale:blank,changes:arr(blank,50),nextStep:blank,nextReviewOn:nil({type:'date'})}),
  obj({kind:en('instruction'),publication:obj({version:pos,documentSchemaVersion:en(3)}),slotId:identifier,productId:nil(identifier),baseInstructionId:nil(uuid),baseInstructionVersion:rev,useBasis:nil(obj({useRevision:rev,latestEventId:nil(uuid),amendmentHeadId:nil(uuid)})),directions:arr(blank,50),cautions:arr(blank,50),schedule:planScheduleShape,reason:blank,effectiveOn:{type:'date'},reviewId:nil(uuid)}),
@@ -109,7 +112,7 @@ export function checkConversation(body:ConversationBody):void{
 }
 function distinctReferences(refs:unknown[]):void{requireValue(new Set(refs.map(r=>JSON.stringify(r))).size===refs.length);}
 export function checkGuidanceBasis(basis:GuidanceBasis):void{
- basis.sources.forEach(checkSourceLocation);distinctReferences(basis.references.map(r=>r.event));
+ distinctReferences(basis.references.map(r=>r.event));
 }
 export function checkGuidanceBody(body:GuidanceBody):void{
  requireValue(reviewJsonBytes(body)<=guidanceBodyMaxBytes);
