@@ -247,3 +247,28 @@ npm --prefix apps/portal run check:ui
 Terminal finalization builds the actual App entry with **write:false** at the clean source commit, recording sourceHead/sourceDirty, all input/output hashes and full six-dependency blob correspondence in **E9/FINAL-HANDOFF.json** and **E9/source-build-provenance.json**. Oldf163 originals remain under E9/original-f163. Current task is the authoritative thread-send handle above; actual current run is **`run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:2`**, started2026-10-31T22:43:41.865Z. Parent/thread/workspace/task/run remain separate fields in the receipt.
 
 This is a **terminal bounded source checkpoint with an explicit cross-owner navigator gate**, not completed canonical restoration/default/Parent activation. Next parent action: supply an approved frozen entry-owned defer/replay/saved-context navigator interface or approved App-local adaptation, then commission new independent composed App+History restoration review. Any later Chrome/genuine phase needs a separate explicit source target and grant after W3 return. No browser wait, resource polling/borrowing, Root install/full suites/native/DB/Auth/credential/fixture/provider live work, push/PR/merge/deploy or live business action. Earlier full-suite/CI/release skips remain applicable; no resource was acquired or retained.
+
+## Canonical deferred History follow-up: approved shared owner scope
+
+New bounded source-only follow-up from verified clean **4bdbb55d520af71374d045856f19e1ef6c13b6ee**, same3cffb79f branch. Latest explicit instruction authorizes the one shared file `apps/portal/src/navigation/history.ts` in addition to the existing App/matching-test/report allocation. This supersedes the previous waiting-for-contract gate only; no browser/native/resource or other owner permission follows. Both live T3 model tools/descriptors again verify **codex/gpt-6.1-sol/xhigh/default**, project/default-subagent plus all8 role pins and actual explicitNode22.23.0 verify. No nested work or new imports. Cookiec9/W4 production57f8/source83/W3 runtime71 remain frozen; W3's separately reported R2/f72 residuals are not fixed, adopted or closed here.
+
+New ignored evidence root **E10 = `.local-artifacts/portal-rebuild/w0-canonical-history/`**. All62 prior own files, including the unchanged canonical pre-data diagnostic and previous f163 copies, are preserved/hash-inventoried in E10/original-4bdb and original-inventory.json. No foreign code/evidence is executed. The new intended requirement test fails2/3 before source edits: nondeferred immediate control passes, History performs forbidden effects before readiness and has no ticket. `E10/requirement-red.log` is distinct from the original passing diagnostic.
+
+### Early canonical API checkpoint
+
+The existing navigator now accepts optional pure **`deferRestoration(route)`** at creation. Omission retains immediate rAF restoration for existing/default callers. Deferred initial entry/navigation/pop creates an opaque frozen **NavigationRestorationTicket** before emit/render; canonical focus/scroll is entirely withheld. The navigator alone stores and reads its actual contexts/marker scroll/focus. No UI body/cursor/permission is added to browser history or persistent storage.
+
+`navigator.restoration` exports:
+
+```ts
+getSnapshot(): NavigationRestorationTicket | null;
+read(ticket): Readonly<NavigationRestore> | null;
+isCurrent(ticket): boolean;
+complete(ticket, mode: 'saved' | 'fallback', isCurrent: () => boolean): boolean;
+cancel(ticket): void;
+capture(): void;
+```
+
+Ticket context and identity are immutable and entry-owned. Operations bind the active navigator/window manual-mode owner, listening/disposed state, scope, canonical entry ID, exact path, restoration version and actual current marker fingerprint. `complete` rechecks the supplied App guard before queue and inside rAF; only canonical `restoreNavigationContext` applies the actual saved context or heading/top0 fallback. Its optional guard also prevents a focus callback's reentrant navigation from causing the old scroll. New completion ownership supersedes old queued completion, and notifications are rechecked after emit before any queue. Old cancel cannot affect a replacement ticket. Pending capture suppression preserves actual saved context; canceled unmount/outgoing capture cannot replace it with blank pre-data geometry, while a later deliberate current focus/scroll/capture can resume capture without an automatic focus.
+
+Source canonical10/10 and canonical+retained source24/24 pass; strict frontend passes. Tests include known780/opener Back, zero pre-data effects, unchanged immediate routes, same-path replacement, source-guard loss, two navigators/manual-mode ownership, notification/focus reentry, cancellation/remount and canonical context custody. The newer plain History model clones state at storage/read to model browser structured-clone boundaries. The first extra context-map probe passed on its initial aliasing plain-object model (`context-map-red.log`); it is a setup/control observation, **not a claimed product RED**. The primary intended pre-data requirement RED above remains actual. No DOM/browser/React StrictMode run is implied. Actual App ticket integration is the next owned step; no conceptual approval wait remains.
