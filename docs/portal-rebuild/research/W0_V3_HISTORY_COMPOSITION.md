@@ -129,3 +129,31 @@ No Chrome/DOM/preview/process inventory, native/DB/Docker/Auth/credential/fixtur
 Deliberately unrun: full Root npm/tests/test-types/Expo/iOS, full portal/session/runtime suites, package-emitting combined/gateway/Vault builders, browser/actual Application DOM/visual/responsive/native zoom/accessibility/human verification, genuine Auth/persistence/SQL/RLS/migrations/pgTAP, native87/R9/current-server checks, hosted behavior and exact-head CI. No App, genuine, CI, full-goal or release acceptance; no Root integration, push, PR, merge, deployment or live business action.
 
 Next step: parent preserves this exact source checkpoint, resolves the named frozen-owner/interface gates, and commissions a new independent App source review. A browser/genuine continuation requires a new explicit source target and resource grant. No continuation or resource re-use is implicit.
+
+## Final owned paths and source receipt
+
+Owned implementation commits begin with **c6add5e5174dcab796ba4e66be68ee89b67fe488** (early seam) and **57bff83485d6a566931003b631a25634710f8db8** (composition). Final self-review synchronously replaces the event-page correction scope when its controller/session/event changes during render, and retires it on cleanup; no old route callback is allowed to navigate a replacement event page. Source/SSR/type/build/old-App controls after this narrow scope cleanup pass **98/98**,0 failures/skips (`E/terminal-app-source.log`). Actual concurrent React/browser scheduling remains a later review/Chrome obligation.
+
+Own changed paths after the13 attributed imports, exactly:
+
+```text
+apps/portal/src/app/Application.tsx
+apps/portal/src/app/ClientHistory.tsx
+apps/portal/src/app/client-composition.ts
+apps/portal/src/app/client-state.ts
+apps/portal/src/app/preview-navigation.ts
+apps/portal/src/app/retained.ts
+apps/portal/src/app/session.ts
+apps/portal/tests/rebuild-app-v3-history-boundaries.test.mjs
+apps/portal/tests/rebuild-app-v3-history-build.test.mjs
+apps/portal/tests/rebuild-app-v3-history-helper.mjs
+apps/portal/tests/rebuild-app-v3-history-navigation.test.mjs
+apps/portal/tests/rebuild-app-v3-history-rpc.test.mjs
+apps/portal/tests/rebuild-app-v3-history-source.test.mjs
+apps/portal/tests/rebuild-app-v3-history-types.test.mjs
+docs/portal-rebuild/research/W0_V3_HISTORY_COMPOSITION.md
+```
+
+A terminal correspondence pass additionally confirms **all41 W3 non-App owned runtime/test/report files** equal exacte093 and **all5 T1 owned runtime/test/report files** equal exactac83. The W3-imported App client-state is deliberately extended only in the allocated App write-set and is not falsely claimed byte-identical. Parent History runtime remains byte-exact606/012. `E/frozen-inputs.json` binds every checked path to full author ref, Git blob and SHA256.
+
+Clean source build at57bff before the final scope cleanup has **2,229 inputs/15 in-memory outputs**, `sourceDirty:false`; its metadata SHA256 is `b2c578266fbefcbd85738ca32def79dfc241e09270236e33f0e3ac6d6c67babd`. Finalization repeats the write:false build on the terminal clean head and records the fresh full head, dirty flag, per-input/output hashes and manifest hashes in **E/source-build-provenance.json** and **E/FINAL-HANDOFF.json**. The final report-only/scope-cleanup commit hash is returned by the terminal handoff rather than embedding a self-referential commit hash here. All source commands are terminal; no resource is retained.

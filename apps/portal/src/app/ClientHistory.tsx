@@ -38,8 +38,10 @@ export function ClientHistoryContent({connection,boundary,route,win,onSignOut}:{
 function HistoryEntry({controller,boundary,eventId}:{controller:HistoryController;boundary:PlanSessionBoundary;eventId:string}) {
   const {navigator}=usePortalNavigation();
   const state=useSyncExternalStore(controller.subscribe,controller.getSnapshot,controller.getSnapshot);
-  const scope=useRef<object>({});
-  useEffect(()=>{scope.current={};void controller.load(null);return()=>{scope.current={};};},[controller,eventId]);
+  const scope=useRef({controller,boundary,eventId});
+  if(scope.current.controller!==controller||scope.current.boundary!==boundary||scope.current.eventId!==eventId)
+    scope.current={controller,boundary,eventId};
+  useEffect(()=>{void controller.load(null);return()=>{scope.current={...scope.current};};},[controller,eventId]);
   const entries=state.pages.flatMap(p=>p.entries).filter(e=>{const key=historyKey(e);return key===eventId||key.slice(key.indexOf(':')+1)===eventId;});
   const ready=state.phase==='ready';
   const writable=ready&&!state.readError&&!state.loadingMore&&state.version===null&&state.view?.access==='active'&&state.view.currentGuidance?.mode==='current_document'&&!state.pending;
