@@ -560,3 +560,30 @@ env PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH W4_BROWSER_RUN=rh2-o
 ```
 
 Scope stays synthetic actual module: callback navigation/public runtime restore/controller refresh are supplied by the finite host, not full Application/history/canonical-new-route/PKCE/native Back integration. Genuine Auth/Vault/Storage/provider/DB/PG/RLS/outbox/email, Root R9/W6 resources, Docker/Colima/native fixtures, hosted/canonical/CI/release, shared SelectS1 recertification, human/screen-reader/WCAG/clinical/business/full-goal acceptance remain outside this task. Original1440/1280/390/320, keyboard/disclosure/focus/long text, mechanical320 CSSzoom2 and native token/layout checks are retained52 evidence with their existing qualifications, not comprehensive new claims. No push/PR/merge/deploy/live-client/message/funds/order/permission/memory write. Parent owns fresh independent R3; no self-acceptance or idle waiting loop.
+
+### Frozen RH2 browser receipt
+
+Exact OWNED browser tests/report commit **`fd6a528b87869a91267048bb5d53ba689b810fcd`**, direct child of41a48c02. Three owned paths only: new review-authority browser sensitivity runner, its observer correction and this report. Runtime remains exact **606744c2a7fe63723ac807d74d18aedc39f397fb**; no production delta. Final suffix is documentation-only.
+
+A clean post-commit **source-only** build has sourceHead=fd6a528b/sourceDirty:false and matches all **2,222 input and48 output hashes** of the passing60 actual-module browser run. `E6/clean-candidate/provenance.json` records this correspondence; it is not a post-return browser execution.
+
+Frozen **517-file** evidence manifest `E6/evidence-manifest.json`, SHA-256 **`c2c25b81a12d27eb7205c8276690f3199791addc4322dd674e61d8d849d738c4`**, includes every first/corrected RED, first-current observer fault, current GREEN/final60, intermediate actual state/wire/PNG, return/runtime/source/strict/build/audit and clean bundle receipt. It excludes itself and this report. All prior236/85/306/931 entries remain unchanged. Selected final hashes:
+
+| E6 artifact | SHA-256 |
+| --- | --- |
+| `red-first.log` | `2b8d7e9d0691e8667ecb9783af473156a9c673487130b3a0efd3c8f9001b3267` |
+| `green-first.log` | `afe60505ace785cc62450a027125e2097178e7bf1d2882914237234c6a2f7455` |
+| `red-observer-corrected.log` | `63a353c6da1dbdc128a467d9e02479d6d48dd8a73d8f14da8e8981f2e6222442` |
+| `green-observer-corrected.log` | `3dadfc62b586aed956ad2400fde0d90c4193da889b2d525bb316650cd09f9ea9` |
+| `final-60.log` | `0169d1b6c1e41439747f713201fcb18add8d18788d3a7bf24df8d97bf76846f1` |
+| `browser-audit.json` | `dece020808aef63448e2dfac01ecff979ad6c59270f843844257615a29ef2940` |
+| `release-inventory.json` | `7598e860cfa9256a22b63f1cac8288f8b824b6e1a084f959e7392cb1cd2cf346` |
+| `actual-preview-release.json` | `9e10147b7022ffdf2ba4508e0c8b40e8d39911b32cbd2a2a859f3f156949b73f` |
+| `original95.log` | `1011a7e8b2560d8c50bb5ecfa9c080c2a22d16a86608b67d3cb14651d09aba22` |
+| `retained24.log` | `42bdaa7f4105d96ea5ac69dfb87965ba869c82d79504ea9cff895a401a469622` |
+| `source20.log` | `9d1dba7f1d15707d14cecd21036885fbcd348d6b059b6d11125711626390577f` |
+| `unchanged-r2-sixteen.log` | `8b3ed719015c5ed1f49ffdf2ef7b4bf2156b106158bb744934ee5b76e4cbf567` |
+| `unchanged-r1-seven.log` | `ccf2c81f488e1f578e9c772916d13d28f1df31bbc6fec096894ea111be459987` |
+| `clean-candidate/provenance.json` | `961ee0b23eb01fb6e8582b71a6af86d6eda95b4eea74181b4289e9c311004ced` |
+
+Ordinal6 is terminal with custody returned at19:58:16.345597UTC and a clean committed candidate. The original receipt and current review obligations remain separate, with all exact-retry/session/mode fences preserved. Parent owns new independent R3 and all remaining App/genuine/canonical/CI/full-goal gates. No new grant is inferred, no waiting loop and no self-accepted review verdict.
