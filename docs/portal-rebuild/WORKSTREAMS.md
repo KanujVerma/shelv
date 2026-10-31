@@ -52,3 +52,10 @@ W0 corrections and independent round 2 PASS are integrated. W2 advisor delivery 
 ## handoff obligation
 
 Return the exact starting/final commit, workspace, status, changed paths, decisions/contracts, executed commands/results, limitations, failing/skipped checks and evidence artifacts. Commit only explicitly owned work under the user's implementation authorization. Do not deploy, merge protected main, publish real advice, contact clients, change real permissions, move money or place orders. No private client inputs in source, tools, logs or screenshots. Separate configuration, local synthetic tests, real isolated auth/persistence, hosted verification and deployment claims.
+
+
+## latest composition checkpoint
+
+Current implementation workers and reviews are terminal; exact terminal heads/results and resource releases are in TASKS.json. Backend R3 and client R4 have scoped independent PASS. Advisor follow-up `f53d9ac`/`0aefaac` and application fixes `db1829a`/`0c1a2b0`/`3ff66a7` are composed; both require fresh independent review. The shared callback consumer exception was explicitly owned by W0 during its fix and is now returned. No active backend/migration/auth-source writer.
+
+The coordinator owns the single populated, positively attested parent R4 Auth fixture and native helpers. A future delegated native cookie/Vault verification task must receive explicit temporary custody and must not reset it, start a competing stack or adopt either old baseline. Chrome is released; subsequent review/test tasks receive one explicit allocation at a time. New source/role changes require a recorded one-writer claim. All settings remain actual Sol/xhigh/default, never native option loss. Full remaining-page fan-out waits for the genuine connected slice.
