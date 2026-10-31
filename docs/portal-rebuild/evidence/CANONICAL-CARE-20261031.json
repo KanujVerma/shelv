@@ -177,9 +177,11 @@
     "exportLogSha256": "16fa035b002950ab6159bc1b5a6832bce0ff606ec933821b58502247abb65c23"
   },
   "custody": {
-    "holder": "coordinator",
-    "R6": "Frozen56/evidence retained/RUNNING, no active writer",
-    "browser": "W7 care client R2 synthetic only"
+    "status": "RETURNED_R6_STOPPED_PRESERVED",
+    "backupSha256": "4c3949aa5aa326acf33f463d2cec449eb00dde2866fad696584afde560f4cc07",
+    "protectedFilesUnchanged": 205,
+    "helpersRetainedStopped": 5,
+    "volumesRetained": true
   },
   "genuineCare": {
     "status": "AUTHOR_NODE9_PASS_INDEPENDENT_PENDING",
@@ -236,8 +238,24 @@
   },
   "forwardFilterFix": {
     "migration": "20261031073004_portal_rebuild_care_history_filter_v1.sql",
-    "status": "ALLOCATED_NOT_IMPLEMENTED",
+    "status": "IMPLEMENTED_INDEPENDENT_REVIEW_PENDING",
     "earlier56Immutable": true,
-    "futureFixture": "canonical-plan-v1-r7 not yet prepared"
+    "futureFixture": "canonical-plan-v1-r7 reset57 PASS; pgTAP/native/genuine pending",
+    "authorHead": "e121a8774625746432773697bf1a75c0c6b22b13",
+    "integrationHead": "5ed04da7714c28d983a413d33269a086165b5c35",
+    "sha256": "26c9c403729343b1f3463002f26946fbdea81e73df2e13d7882bcf6cb2571caf"
+  },
+  "r7": {
+    "directory": ".local-artifacts/portal-rebuild/canonical-plan-v1-r7",
+    "ownerId": "39f4ba79-bdd5-4822-bc4d-c4412d70d732",
+    "projectId": "shelv-portal-admission-39f4ba79bdd5",
+    "migrationCount": 57,
+    "snapshotSha256": "9416c3d5d1694478f673798445e502adf212e71f48bbf07982974b166c94183c",
+    "ledgerSha256": "dd2224ee001be07a1f12898149498081cdd7430866500fd71bcb501806255b82",
+    "reset": "PASS",
+    "pgtap": "RUNNING",
+    "nativeHelpers": "NOT_CREATED",
+    "genuine": "NOT_RUN",
+    "applicationCareActivation": false
   }
 }

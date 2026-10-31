@@ -1,5 +1,5 @@
 {
-  "updatedOn": "2026-10-30",
+  "updatedOn": "2026-10-31",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
   "allocatedWorkers": 3,
@@ -1754,13 +1754,18 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7db09590",
       "branch": "t3/review-care-client-round2",
       "baseCommit": "54623e9145d28df4e749fb3502db9c33f18efe7a",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_CARE_CLIENT_R2.md"
       ],
       "reportPath": "docs/portal-rebuild/research/W7_CARE_CLIENT_R2.md",
-      "resources": "Sole intercepted synthetic Chrome; NO native/DB/Auth",
-      "verification": "Exact returned provider/options plus live thread/worktree/base; both runtime tools required"
+      "resources": "Chrome released, all handles closed; no native",
+      "verification": "Exact returned provider/options plus live thread/worktree/base; both runtime tools required",
+      "headCommit": "1982aae55d9edf7fdc45f2efce076304eeca9bc0",
+      "integratedCommits": [
+        "7209091e"
+      ],
+      "verdict": "CU1/CU2 addressed; NEW CU3/P2 missing correction actor, separately allocated"
     },
     {
       "role": "W1 care filtered history fix",
@@ -1782,7 +1787,7 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-08cf4447",
       "branch": "t3/care-history-filter-fix",
       "baseCommit": "54623e9145d28df4e749fb3502db9c33f18efe7a",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "supabase/migrations/20261031073004_portal_rebuild_care_history_filter_v1.sql",
         "tests/portal-care-history-filter-native.*",
@@ -1790,8 +1795,69 @@
         "docs/portal-rebuild/research/W1_CARE_HISTORY_FIX.md"
       ],
       "reportPath": "docs/portal-rebuild/research/W1_CARE_HISTORY_FIX.md",
-      "resources": "Sole newM57SQLwriter; only OWN Unix-only minimalPG, NO Docker/R6/Chrome",
-      "verification": "Exact returned provider/options plus live thread/worktree/base; both runtime tools required"
+      "resources": "Owned PG STOPPED; no R6/Chrome access",
+      "verification": "Exact returned provider/options plus live thread/worktree/base; both runtime tools required",
+      "headCommit": "e121a8774625746432773697bf1a75c0c6b22b13",
+      "integratedCommits": [
+        "5ed04da7"
+      ],
+      "verdict": "Author9new/26retained/11legacy/37focused PASS; M57 only,56 prior immutable; independent review pending"
+    },
+    {
+      "role": "W3 correction actor attribution",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-care-attribution-fix-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-care-attribution-fix-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-90e57503",
+      "branch": "t3/care-correction-actor-attribution",
+      "baseCommit": "7209091e",
+      "status": "running",
+      "writeSet": [
+        "apps/portal/src/features/plan/UseFacts.tsx",
+        "apps/portal/tests/rebuild-use-attribution.test.mjs",
+        "docs/portal-rebuild/research/W3_CARE_ATTRIBUTION_FIX.md"
+      ],
+      "reportPath": "docs/portal-rebuild/research/W3_CARE_ATTRIBUTION_FIX.md",
+      "resources": "Sole synthetic Chrome; NO native/Auth/DB",
+      "verification": "Exact requested/returned settings and fresh live thread/workspace, supported model descriptors; both child live tools required"
+    },
+    {
+      "role": "W7 independent M57 history filter review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-history-filter-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-history-filter-review-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d23ee91d",
+      "branch": "t3/care-history-filter-review",
+      "baseCommit": "5ed04da7",
+      "status": "running",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_HISTORY_FILTER_REVIEW.md"
+      ],
+      "reportPath": "docs/portal-rebuild/research/W7_CARE_HISTORY_FILTER_REVIEW.md",
+      "resources": "Own Unix-only PG; no R6/Chrome",
+      "verification": "Exact requested/returned settings and fresh live thread/workspace, supported model descriptors; both child live tools required"
     }
   ]
 }

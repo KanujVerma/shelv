@@ -157,3 +157,9 @@ IndependentNode0faea1c integrated54623e91: unchangedmain9PASSfirstattempt,11tota
 PreservefrozenreviewedM56d3/R6actualdata. ParentactualCLI2.121allocated20261031073004forward57, committed4d3e61b allocationcommentonly, notimplemented. NewW1fix t3-08cf4447ownsnewfile/testsONLY; all56earlierimmutable. NextcanonicalR7afterfix/review, W6sourceonlyno grants.
 
 W3CU1CU2baee/694 integrated9c32c56c/bc8b9423 (e9receipt9a824f72),153focused/Root15/strictbuilds pass. NewW7clientR2t3-7db09590 getssoleChrome, priorR1frozen. NoRootDTOextension/extrabusinessevent/provider call.All3allocatedchildrenSol/xhigh/default, no nested. ApplicationreadVersion2defaultnotactivated/fullgoalinprogress.
+
+## 31 October: forward history correction and frozen R6 preservation
+
+Integrated W1 e121a877 as5ed04da7, M57SHA26c9c403729343b1f3463002f26946fbdea81e73df2e13d7882bcf6cb2571caf; all56 prior SQL unchanged. Parent37 focused contract/actual-handler checks pass. Independent review t3-d23ee91d active. CU1/CU2 R2 closes originals but CU3 correction actor is newly allocated to W3 t3-90e57503 with sole synthetic Chrome.
+
+Coordinator positively audited frozen R6 lineage/wholeAuth0/0/all205 protected files/modes/five IDs+env+images/76 source files per Edge and TLS config. Mode600 full SQL backupSHA4c3949aa5aa326acf33f463d2cec449eb00dde2866fad696584afde560f4cc07; exact helpers stopped and explicit project stop retains volume creation identity. No --all/--no-backup, no data reset. R7 source-only prepare owner39f4ba79-bdd5-4822-bc4d-c4412d70d732/project39f4ba79bdd5/config9d1993fa7a793219b2db884ab42d781d30dd82fc39bc055b1a946661468b93cf/57 complete. Fresh local reset started; no current57 acceptance claimed. W6 source-only strict R7 update, no grant. Runtime both live tools stillSol/xhigh/default; freshfetch main d39a7d4, local41 ahead remote12d5b88 before this checkpoint.
