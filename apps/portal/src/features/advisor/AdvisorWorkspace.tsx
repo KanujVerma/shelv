@@ -20,6 +20,7 @@ import {
 } from "../../ui/index.ts";
 import {
   Disclosure,
+  AdvisorFields,
   ContextFields,
   DecisionsFields,
   FollowUpFields,
@@ -534,14 +535,13 @@ export function AdvisorWorkspace({
               validate draft
             </Button>
           </div>
-          <fieldset
+          <AdvisorFields
             disabled={
               !c.permissions.edit ||
               !!s.receipt ||
               view.draft.state !== "working" ||
               (!!s.pending && s.pending.action !== "save_draft_v1")
             }
-            className="advisor-fields"
           >
             {route.section === "client-context" ? (
               <ContextFields content={local} onChange={update} />
@@ -554,7 +554,7 @@ export function AdvisorWorkspace({
             ) : (
               <FollowUpFields content={local} onChange={update} />
             )}
-          </fieldset>
+          </AdvisorFields>
           {c.permissions.review && section.id ? (
             <Button
               disabled={!c.canReview() || activeReview?.reviewed}

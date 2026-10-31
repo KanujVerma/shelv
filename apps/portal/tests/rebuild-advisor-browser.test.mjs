@@ -89,6 +89,188 @@ async function setup(route = "/advisor/plans", width = 1440) {
   };
 }
 
+for (const mode of ["view-only", "published"]) {
+  test(`F3: ${mode} authorized guidance opens by keyboard while mutation controls remain disabled`, async () => {
+    for (const width of [1440, 390, 320]) {
+      const f = await setup(
+        `/advisor/plans/10000000-0000-4000-8000-000000000001/client-context?${mode}`,
+        width,
+      );
+      try {
+        const p = f.p;
+        await p.getByLabel("plan title", { exact: true }).waitFor();
+        const before = await p.evaluate(() =>
+          structuredClone(window.__advisor.c.getSnapshot().local),
+        );
+        const open = async (name) => {
+          const trigger = p.getByRole("button", { name, exact: true }).first();
+          assert.equal(await trigger.isEnabled(), true);
+          await trigger.focus();
+          await p.keyboard.press("Tab");
+          await p.keyboard.press("Shift+Tab");
+          assert.equal(
+            await trigger.evaluate((e) => e === document.activeElement),
+            true,
+          );
+          await p.keyboard.press("Enter");
+          assert.equal(await trigger.getAttribute("aria-expanded"), "true");
+          const body = p.locator(
+            `[id="${await trigger.getAttribute("aria-controls")}"]`,
+          );
+          assert.equal(await body.isVisible(), true);
+          assert.equal(
+            await body
+              .locator(
+                '[data-slot="input"], [data-slot="textarea"], [data-slot="select-trigger"], [data-slot="button"]:not([aria-controls])',
+              )
+              .evaluateAll((elements) => elements.every((e) => e.disabled)),
+            true,
+          );
+          return body;
+        };
+        const product = await open("directions, evidence & public sources");
+        assert.equal(
+          await product.getByLabel("guide title", { exact: true }).inputValue(),
+          "SYNTHETIC retained product guide",
+        );
+        assert.equal(
+          await product
+            .getByLabel("guide step 1", { exact: true })
+            .inputValue(),
+          "retained directions must remain readable",
+        );
+        assert.equal(
+          await product
+            .getByLabel("evidence title", { exact: true })
+            .inputValue(),
+          "SYNTHETIC evidence",
+        );
+        assert.equal(
+          await product
+            .getByLabel("evidence and limitations", { exact: true })
+            .inputValue(),
+          "retained uncertainty",
+        );
+        if (width === 1440)
+          await product.screenshot({
+            path: path.join(artifacts, `F3-${mode}-guidance-1440.png`),
+          });
+        assert.equal(
+          await product
+            .getByRole("button", { name: "add guide step" })
+            .isDisabled(),
+          true,
+        );
+        assert.equal(
+          await product.getByLabel("guide title", { exact: true }).isDisabled(),
+          true,
+        );
+        assert.equal(
+          await p.getByLabel("plan title", { exact: true }).isDisabled(),
+          true,
+        );
+        assert.equal(
+          await p
+            .getByRole("combobox", { name: "current products", exact: true })
+            .isDisabled(),
+          true,
+        );
+        await open("consultation conclusions");
+        await p.getByRole("button", { name: "decisions", exact: true }).click();
+        const decision = await open("client explanation, guides & evidence");
+        assert.equal(
+          await decision
+            .getByLabel("client decision title", { exact: true })
+            .inputValue(),
+          "Moisturizer",
+        );
+        assert.equal(
+          await decision
+            .getByLabel("guide title", { exact: true })
+            .inputValue(),
+          "How to use Hydro Boost",
+        );
+        assert.equal(
+          await p
+            .getByRole("button", { name: "add decision", exact: true })
+            .isDisabled(),
+          true,
+        );
+        await p.getByRole("button", { name: "routine", exact: true }).click();
+        const routine = await open("complete routine guides");
+        assert.equal(
+          await routine.getByLabel("guide title", { exact: true }).inputValue(),
+          "SYNTHETIC complete routine guide",
+        );
+        assert.equal(
+          await p
+            .getByRole("button", { name: "add routine step", exact: true })
+            .isDisabled(),
+          true,
+        );
+        assert.equal(
+          await p
+            .getByRole("button", { name: "morning", exact: true })
+            .first()
+            .isDisabled(),
+          true,
+        );
+        await p.getByRole("button", { name: "sources", exact: true }).click();
+        const sources = await open("retained private source locations");
+        assert.match(
+          await sources.innerText(),
+          /10000000-0000-4000-8000-000000000010.*version 1.*"page":7/,
+        );
+        assert.equal(
+          await p
+            .getByRole("button", { name: "add fact", exact: true })
+            .isDisabled(),
+          true,
+        );
+        assert.equal(
+          await p
+            .getByRole("button", { name: "save draft", exact: true })
+            .isDisabled(),
+          true,
+        );
+        assert.equal(
+          await p.evaluate(
+            () => document.documentElement.scrollWidth > innerWidth,
+          ),
+          false,
+        );
+        await p.evaluate(async () => {
+          const { c } = window.__advisor;
+          c.edit((v) => ({ ...v, title: "denied edit" }));
+          await c.save();
+          await c.assign("10000000-0000-4000-8000-000000000002");
+          await c.review("routine");
+          await c.approve();
+          await c.publish();
+          await c.confirmPayment(
+            "10000000-0000-4000-8000-000000000006",
+            "100.00",
+            true,
+          );
+        });
+        assert.deepEqual(
+          await p.evaluate(() => window.__advisor.c.getSnapshot().local),
+          before,
+        );
+        assert.equal(
+          await p.evaluate(
+            () =>
+              window.__advisor.f.calls.filter((c) => "requestId" in c).length,
+          ),
+          0,
+        );
+      } finally {
+        await f.close();
+      }
+    }
+  });
+}
+
 test("SYNTHETIC/DO NOT FULFILL: real draft directory creates an unassigned draft and free keyboard sections edit structured modules", async () => {
   const f = await setup();
   try {

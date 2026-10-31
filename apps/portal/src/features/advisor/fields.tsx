@@ -1,5 +1,6 @@
-import { useId, useState } from "react";
+import { createContext, useContext, useId, useState } from "react";
 import type { ReactNode } from "react";
+import type { ButtonProps } from "../../ui/index.ts";
 import type {
   PlanContent,
   PlanDecision,
@@ -24,6 +25,27 @@ import {
   Select,
   Icon,
 } from "../../ui/index.ts";
+
+// Read affordances never inherit mutation disabling. These adapters retain the
+// shared controls and their semantics, including Radix selects rendered in portals.
+const MutationDisabled = createContext(false);
+export function AdvisorFields({
+  disabled,
+  children,
+}: {
+  disabled: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <MutationDisabled.Provider value={disabled}>
+      <div className="advisor-fields">{children}</div>
+    </MutationDisabled.Provider>
+  );
+}
+function EditButton({ disabled, ...props }: ButtonProps) {
+  const mutationDisabled = useContext(MutationDisabled);
+  return <Button {...props} disabled={disabled || mutationDisabled} />;
+}
 
 /** Supporting sections compose the shared control layer. */
 export function Disclosure({
@@ -66,16 +88,22 @@ export function TextField({
   long?: boolean;
   hint?: ReactNode;
 }) {
+  const disabled = useContext(MutationDisabled);
   return (
     <Field label={label} hint={hint}>
       {long ? (
         <Textarea
+          disabled={disabled}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           rows={4}
         />
       ) : (
-        <Input value={value} onChange={(e) => onChange(e.target.value)} />
+        <Input
+          disabled={disabled}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+        />
       )}
     </Field>
   );
@@ -109,9 +137,11 @@ export function Choice<T extends string>({
   values: readonly T[];
   onChange: (value: T) => void;
 }) {
+  const disabled = useContext(MutationDisabled);
   return (
     <Field label={label}>
       <Select
+        disabled={disabled}
         value={value}
         options={values.map((value) => ({
           value,
@@ -138,9 +168,9 @@ function Module({
       <div className="advisor-module-heading">
         <h3>{title}</h3>
         {onRemove ? (
-          <Button variant="ghost" onClick={onRemove} disabled={disabled}>
+          <EditButton variant="ghost" onClick={onRemove} disabled={disabled}>
             remove
-          </Button>
+          </EditButton>
         ) : null}
       </div>
       {children}
@@ -163,13 +193,14 @@ export function ScheduleFields({
   value: Schedule;
   onChange: (v: Schedule) => void;
 }) {
+  const disabled = useContext(MutationDisabled);
   return (
     <div className="advisor-fields">
       <div>
         <p className="advisor-label">time of day</p>
         <div className="advisor-actions">
           {(["morning", "evening"] as const).map((period) => (
-            <Button
+            <EditButton
               key={period}
               variant="secondary"
               aria-pressed={s.periods.includes(period)}
@@ -183,7 +214,7 @@ export function ScheduleFields({
               }
             >
               {period}
-            </Button>
+            </EditButton>
           ))}
         </div>
       </div>
@@ -214,7 +245,7 @@ export function ScheduleFields({
             const day = (index + 1) as 1 | 2 | 3 | 4 | 5 | 6 | 7,
               selected = s.days.kind === "selected" ? s.days.weekdays : [];
             return (
-              <Button
+              <EditButton
                 key={day}
                 variant="secondary"
                 aria-pressed={selected.includes(day)}
@@ -231,7 +262,7 @@ export function ScheduleFields({
                 }
               >
                 {label}
-              </Button>
+              </EditButton>
             );
           })}
         </div>
@@ -278,6 +309,7 @@ export function ScheduleFields({
             hint="a minimum is not permission to advance automatically"
           >
             <Input
+              disabled={disabled}
               type="number"
               min={0}
               max={3650}
@@ -314,7 +346,7 @@ export function ScheduleFields({
           />
         </Module>
       ))}
-      <Button
+      <EditButton
         variant="secondary"
         onClick={() =>
           onChange({
@@ -332,7 +364,7 @@ export function ScheduleFields({
         }
       >
         add introduction stage
-      </Button>
+      </EditButton>
       <p className="advisor-muted">
         stages stay anchored to actual start and comfort. they never advance
         automatically.
@@ -371,12 +403,12 @@ export function SourceFields({
           />
         </Module>
       ))}
-      <Button
+      <EditButton
         variant="secondary"
         onClick={() => onChange([...value, { label: "", url: "" }])}
       >
         add public citation
-      </Button>
+      </EditButton>
     </div>
   );
 }
@@ -420,7 +452,7 @@ function EvidenceFields({
           />
         </Module>
       ))}
-      <Button
+      <EditButton
         variant="secondary"
         onClick={() =>
           onChange([
@@ -430,7 +462,7 @@ function EvidenceFields({
         }
       >
         add evidence
-      </Button>
+      </EditButton>
     </>
   );
 }
@@ -492,24 +524,24 @@ function GuideFields({
                     })
                   }
                 />
-                <Button
+                <EditButton
                   variant="ghost"
                   onClick={() =>
                     patch({ steps: guide.steps.filter((_, j) => i !== j) })
                   }
                 >
                   remove guide step
-                </Button>
+                </EditButton>
               </div>
             ))}
-            <Button
+            <EditButton
               variant="secondary"
               onClick={() =>
                 patch({ steps: [...guide.steps, { title: null, body: "" }] })
               }
             >
               add guide step
-            </Button>
+            </EditButton>
             <TextField
               label="care note"
               long
@@ -524,7 +556,7 @@ function GuideFields({
         );
       })}
       {value.length < max ? (
-        <Button
+        <EditButton
           variant="secondary"
           onClick={() =>
             onChange([
@@ -542,7 +574,7 @@ function GuideFields({
           }
         >
           add guide
-        </Button>
+        </EditButton>
       ) : null}
     </>
   );
@@ -587,9 +619,11 @@ function ProductSelect({
   content: PlanContent;
   onChange: (v: string | null) => void;
 }) {
+  const disabled = useContext(MutationDisabled);
   return (
     <Field label={label}>
       <Select
+        disabled={disabled}
         value={value ?? "__none"}
         options={[
           { value: "__none", label: "no product" },
@@ -620,7 +654,7 @@ function References({
       <div className="advisor-actions">
         {options.length ? (
           options.map((v) => (
-            <Button
+            <EditButton
               key={v.id}
               variant="secondary"
               aria-pressed={values.includes(v.id)}
@@ -633,7 +667,7 @@ function References({
               }
             >
               {v.label || "unnamed"} · {v.id.slice(0, 8)}
-            </Button>
+            </EditButton>
           ))
         ) : (
           <p className="advisor-muted">none recorded</p>
@@ -744,7 +778,7 @@ export function ContextFields({
           />
         </Module>
       ))}
-      <Button
+      <EditButton
         variant="secondary"
         onClick={() =>
           onChange({
@@ -754,7 +788,7 @@ export function ContextFields({
         }
       >
         add goal
-      </Button>
+      </EditButton>
       <h3>products</h3>
       {c.products.map((product, index) => {
         const patch = (p: Partial<PlanProduct>) =>
@@ -865,7 +899,7 @@ export function ContextFields({
           </Module>
         );
       })}
-      <Button
+      <EditButton
         variant="secondary"
         onClick={() =>
           onChange({
@@ -895,7 +929,7 @@ export function ContextFields({
         }
       >
         add product
-      </Button>
+      </EditButton>
       <Disclosure title="consultation conclusions">
         <div className="advisor-fields">
           {c.consultationSections.map((s, i) => (
@@ -938,7 +972,7 @@ export function ContextFields({
               />
             </Module>
           ))}
-          <Button
+          <EditButton
             variant="secondary"
             onClick={() =>
               onChange({
@@ -951,7 +985,7 @@ export function ContextFields({
             }
           >
             add conclusion
-          </Button>
+          </EditButton>
         </div>
       </Disclosure>
     </>
@@ -1044,7 +1078,7 @@ export function SourcesFields({
           </Module>
         );
       })}
-      <Button
+      <EditButton
         variant="secondary"
         onClick={() =>
           onChange({
@@ -1067,7 +1101,7 @@ export function SourcesFields({
         }
       >
         add fact
-      </Button>
+      </EditButton>
       <h3>public sources</h3>
       <SourceFields
         value={c.sources}
@@ -1124,7 +1158,7 @@ function ComparisonFields({
           </Module>
         );
       })}
-      <Button
+      <EditButton
         variant="secondary"
         onClick={() =>
           onChange([
@@ -1142,7 +1176,7 @@ function ComparisonFields({
         }
       >
         add comparison
-      </Button>
+      </EditButton>
     </>
   );
 }
@@ -1300,7 +1334,7 @@ export function DecisionsFields({
           </Module>
         );
       })}
-      <Button
+      <EditButton
         variant="secondary"
         onClick={() => {
           const id = identity();
@@ -1343,7 +1377,7 @@ export function DecisionsFields({
         }}
       >
         add decision
-      </Button>
+      </EditButton>
     </>
   );
 }
@@ -1413,7 +1447,7 @@ export function RoutineFields({
           </Module>
         );
       })}
-      <Button
+      <EditButton
         variant="secondary"
         onClick={() => {
           const id = identity();
@@ -1436,7 +1470,7 @@ export function RoutineFields({
         }}
       >
         add routine step
-      </Button>
+      </EditButton>
       <Disclosure title="complete routine guides">
         <div className="advisor-fields">
           <GuideFields
@@ -1489,7 +1523,7 @@ export function FollowUpFields({
           />
         </Module>
       ))}
-      <Button
+      <EditButton
         variant="secondary"
         onClick={() =>
           onChange({
@@ -1499,7 +1533,7 @@ export function FollowUpFields({
         }
       >
         add follow-up criterion
-      </Button>
+      </EditButton>
       <Lines
         label="follow-up guidance"
         value={c.followUp.authoredNotes}

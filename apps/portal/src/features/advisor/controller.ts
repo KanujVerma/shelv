@@ -83,7 +83,10 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         }
       : empty(),
     disposed = false,
-    epoch = 0;
+    epoch = 0,
+    contextGeneration = 0,
+    operationGeneration = 0,
+    recoveryGeneration = 0;
   const live = () => !disposed && !state.ended && session.isCurrent();
   const emit = (patch: Partial<AdvisorState>) => {
     if (!live()) return;
@@ -158,7 +161,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       controllers.delete(controller);
     }
   }
-  function fail(error: unknown, write = false) {
+  function fail(error: unknown, write = false, preserveBusy = false) {
     if (!live()) return;
     const status = (error as { status?: number } | null)?.status;
     if (status === 401) {
@@ -175,7 +178,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
               ? "uncertain"
               : "error";
     emit({
-      busy: false,
+      busy: preserveBusy ? state.busy : false,
       needsComparison:
         state.needsComparison || (status === 409 && state.view !== null),
       save: write ? (uncertain ? "uncertain" : "error") : state.save,
@@ -212,6 +215,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
   });
   function accept(command: AdvisorWrite, result: unknown) {
     const mapped = mapPlanResult(result, command);
+    contextGeneration++;
     if (command.action === "approve_publication_v1") {
       const approval = mapped as Approval;
       if (
@@ -292,6 +296,9 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
   async function execute(command: AdvisorWrite) {
     if (!live() || state.busy) return;
     readPlanCommand(command);
+    const operation = ++operationGeneration;
+    const current = () =>
+      live() && operation === operationGeneration && state.pending === command;
     emit({
       pending: command,
       busy: true,
@@ -302,15 +309,26 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     });
     try {
       const result = await read(command);
-      if (result !== undefined) accept(command, result);
+      if (result !== undefined && current()) accept(command, result);
     } catch (e) {
-      fail(e, true);
+      if (current()) fail(e, true);
     }
   }
   async function refreshContext() {
     const view = requireDraft(),
       target = view?.target;
     if (!target) return;
+    const generation = ++contextGeneration,
+      start = epoch,
+      operation = operationGeneration;
+    // Both success and failure belong to one ordered read of this exact view.
+    const current = () =>
+      live() &&
+      start === epoch &&
+      generation === contextGeneration &&
+      operation === operationGeneration &&
+      state.view === view &&
+      sameTarget(state.view?.target, target);
     try {
       const reads = await invoke((signal) =>
         Promise.all([
@@ -328,7 +346,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
           ),
         ]),
       );
-      if (!reads) return;
+      if (!reads || !current()) return;
       const [result, paymentResult] = reads;
       if (
         result.clientId !== target.clientId ||
@@ -352,8 +370,9 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       }
       emit({ context: { ...result, payments, approval } });
     } catch (e) {
+      if (!current()) return;
       emit({ context: null });
-      fail(e);
+      fail(e, false, true);
     }
   }
   async function executePayment(command: ConfirmPaymentCommand) {
@@ -364,12 +383,15 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       command.clientId !== state.view?.draft.clientId
     )
       return deny();
+    const operation = ++operationGeneration;
+    const current = () =>
+      live() && operation === operationGeneration && state.pending === command;
     emit({ pending: command, busy: true, notice: null });
     try {
       const receipt = await invoke((signal) =>
         ports.payments!.execute(command, { signal }),
       );
-      if (receipt) {
+      if (receipt && current()) {
         const call =
           command.schemaVersion === 2
             ? buildPaymentCallV2(command, permissions.actorId)
@@ -378,11 +400,11 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
           ? mapPaymentReceiptV2(receipt, call)
           : mapPaymentReceipt(receipt, call);
         await refreshContext();
-        if (!live()) return;
+        if (!current()) return;
         emit({ pending: null, busy: false });
       }
     } catch (e) {
-      fail(e, true);
+      if (current()) fail(e, true);
     }
   }
 
@@ -777,9 +799,18 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     async reconcile() {
       const pending = state.pending;
       if (!pending || state.busy) return;
+      const operation = operationGeneration,
+        recovery = ++recoveryGeneration;
+      // A retry starts another operation even though it reuses the same UUID.
+      const current = () =>
+        live() &&
+        operation === operationGeneration &&
+        recovery === recoveryGeneration &&
+        state.pending === pending;
       if (pending.action === "confirm_payment") {
         await refreshContext();
         if (
+          current() &&
           state.context?.payments.claims.some(
             (c) => c.id === pending.claimId && c.status === "confirmed",
           )
@@ -798,10 +829,15 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
           action: "request_status_v1",
           requestId: pending.requestId,
         });
-        if (result && "status" in result && result.status === "committed")
+        if (
+          current() &&
+          result &&
+          "status" in result &&
+          result.status === "committed"
+        )
           accept(pending, result.receipt);
       } catch (e) {
-        fail(e, true);
+        if (current()) fail(e, true);
       }
     },
     async retry() {
