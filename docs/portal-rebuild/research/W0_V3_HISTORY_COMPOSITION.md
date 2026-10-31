@@ -192,3 +192,58 @@ Early source RED: missing App scope causes2 intended failures plus one passing c
 Plain-object execution of the **actual unchanged** `createPortalNavigator` gives focus + scroll0 while `historyReady:false`, before any restoration data or committed onReady. Exact observation: `E9/canonical-pre-data-diagnostic.json`; passing diagnostic assertion is a reproduced gap, not restoration acceptance. The navigator's public methods expose no entry-owned defer/cancel/replay or saved-context read API. Its own pre-data rAF therefore cannot be made subject to W4's matching post-commit lease using the seven allocated App files alone without an unapproved Window/scheduler workaround or another navigation implementation.
 
 Requested a frozen canonical navigator successor or explicit approved App-local adaptation. No navigation/history.ts, shared contract or global scroll behavior is edited. App-owned after-commit scope work continues independently; full canonical after-commit restoration remains gated by that source contract and a new independent composed review. No browser/StrictMode scheduling or actual pixels are claimed.
+
+### App wiring and final source controls
+
+Early coherent checkpoint **56ffbdfd** is separate from the six imports. The current App-owned wiring changes only `ClientHistory.tsx` and `client-composition.ts`; Application/default selection, client-state, preview cursor, retained facade and generation-aware session remain byte-exactf163 in this follow-up. New/strengthened matching App tests and this report complete the owned write-set. No cookie, History feature, shared navigator, Root/server/schema/SQL/policy, W3/W2 or package/config edit.
+
+- C04/C05 now consume the pinned controlled filter and `restoration:{version,onReady}` props. Filter/props/navigation callbacks are memoized by actual controller, boundary, canonical route/entry and filter scope. W4 itself owns fresh restoration attempts; App does not inspect feature private fields, cached pages/cursors or rewrite published result witnesses.
+- Semantic update/correction/version actions use the exact feature semantic anchors. App's navigation wrapper captures actual scroll/focus before navigation and refuses stale future controls. Event-page correction captures before its asynchronous original-publication read, then rechecks the exact rendered scope/current boundary before navigation. Its loader cleanup cancels only its own restoration attempt; render ownership can reattach on StrictMode setup. Old cleanup does not cancel a new read or UI scope.
+- App deferred work checks exact attach owner, work generation, original actual boundary, canonical path/entry marker, captured controller/render source and `restoration.isCurrent(result)` inside rAF. Filter/source/route/same-path-entry replacement, current403, logout/owner/CSRF/epoch/generation/expiry, disposal or deliberate semantic capture prevents obsolete viewport work. No microtask/timeout sampling, global scroll change or result mutation.
+- A historical-version page also waits for the selected document's own actual after-commit view/error signal. A failed/unavailable document cannot supply exact old scroll. Both the W4 committed result and this layout signal are required before App queues its own callback. Ordinary actual missing targets use the current heading/top0 fallback; App never changes a feature `restored` witness to manufacture a different result.
+- Captured UI preferences contain only canonical entry/path, top and focus ID in actual boundary memory. History's own branded metadata remains the authority for validated basis/prefix/version/access. UI preferences cannot revive denied private data, clear clinical review or change pending command/publication/answer/photo/amendment references. The composed server-generation-only test proves the existing f163 boundary retires W4 state even when owner, CSRF, cookie local generation and epoch stay identical.
+
+The independent canonical pre-data callback gap remains **unfixed and outside this allocated write-set**. The App's guarded after-commit replay is implemented, but the unchanged navigator can still execute its own earlier callback. Therefore full canonical Back/Forward/scroll/focus completion is **not established**, even with the green App checks. The exact counterexample and source API request above are the required cross-owner handoff, not a silent second router or a claim that this gap has disappeared. No frozen successor/approved adaptation has been supplied in this task. The pending request does not confer any resource authority.
+
+Additional meaningful source RED/GREEN:
+
+| Control | Preserved RED | Current result |
+| --- | --- | --- |
+| Retired App semantic controls |1 intended failure: old navigation still pushes entries |guarded controls pass |
+| Historical document commit |1 intended failure: frame queued before selected document committed |waits for both actual committed sources |
+| Deliberate anchor capture during async correction |1 intended failure: earlier frame still moves viewport |work generation retires the old callback |
+| Unmarked/foreign marker |1 intended failure after the early seam |requires real current canonical marker |
+
+Raw own setup qualification: the first combined15 controls pass14/fail1 because the read-only probe reloaded page1 then attempted an unavailable third-page anchor; its capture returned null and left the prior active metadata intact, correctly producing restored. The corrected input loads the actual whole read-only extent and asserts successful source capture before testing active return. No expected gate/status, feature implementation or Root assertion is weakened. This setup mistake is separate from the above REDs and E8's preserved producer qualifications.
+
+### Terminal verification of this follow-up
+
+All source test/build/compiler commands use explicit Node22.23.0 and the no-network preload where applicable. Finite native Response/HTTP DTOs, actual cookie/raw Review/Root/W4/controller, actual App SSR and a plain-object navigator/viewport are the proof level. No DOM/browser implementation or successful production port/current predicate is substituted.
+
+| Scope | Result | Own evidence |
+| --- | --- | --- |
+| Current App source/SSR/plain navigation/build/types plus unchanged original App/session/callback/preview/Care controls |**117/117**,0 failures/skips; includes prior98 and19 new controls | E9/app-terminal-source.log |
+| Retained V3/History/report source plus new W4 restoration37/ID3 |**198/198**,0 failures/skips; prior158 preserved | E9/retained-feature-current.log |
+| T1 old107, new deadline104, raw request45 |**256/256**,0 failures/skips; prior152 preserved | E9/transport-current.log |
+| Strict frontend and stronger forbidden-authority/restoration type probe, including pinned W4 types |Exit0, zero diagnostics; old strict flags retained | E9/terminal-types.log; type probe inside117 |
+| Shared UI guard |Exit0, unchanged11 stylesheets | E9/ui-guard.log |
+| Frozen correspondence |651 protected base files plus all41 non-App W3 owned files, all12 W4 successor paths, exactc9 cookie/report/test and original34 own evidence files pass SHA checks;5 other App files remain exactf163 | E9/correspondence.json |
+| Source whitespace/scope |`git diff --check` passes; no other production write-set used | actual Git |
+
+The117 includes the **one passing diagnostic that demonstrates the canonical pre-data gap**. It is not117 acceptance obligations satisfied, full-portal acceptance or a new independent verdict. Original RH1/RH2 R3 scoped closure is retained. T1/CK1/CK2 R2 scoped PASS is parent-provided **92689fef224f4a7e04f9249cf0c577ca16f541d3**; ordinary CK2 global-fetch/browser reachability stays qualified. New restoration/composed App independent review remains pending.
+
+New controls reconstruct a true103-page filtered timeline through the actual current composed session/ports with fresh cursors, restore its stable actual anchor and known780 top only after onReady, refuse changed basis/prefix/version/unavailable opener/current403, preserve readonly-to-active needsReview after a legitimate status receipt, preserve exact pending wire, reject old queued callbacks after new route/same-path entry/filter/source disposal, isolate old attach cleanup, and clear private/pending/filter/UI memory on server-generation-only replacement. Actual StrictMode/React concurrent/browser scheduling, geometry, native Back/Forward and pixel/focus usability remain source hypotheses, not executed behavior.
+
+Reproduce the current bounded checks from this checkout root with `/Users/kanuj/.nvm/versions/node/v22.23.0/bin` first in PATH:
+
+```sh
+W4_RESTORATION_RUN=fresh-own-run node --experimental-strip-types --import ./tests/portal-review-no-network.mjs --test --test-concurrency=1 apps/portal/tests/rebuild-app-v3-history*.test.mjs apps/portal/tests/rebuild-app-{state,session,callback,continuation,preview-context,ports,render,start,care-composition,care-render}.test.mjs apps/portal/tests/rebuild-care-ports.test.mjs
+W4_RESTORATION_RUN=fresh-retained W4_RH1_SOURCE_RUN=fresh-retained W4_RH2_SOURCE_RUN=fresh-retained node --experimental-strip-types --import ./tests/portal-review-no-network.mjs --test --test-concurrency=1 apps/portal/tests/rebuild-plan-guidance-{controller,port,hydration,decision,presentation,observation,ssr,context-source}.test.mjs apps/portal/tests/rebuild-history-{port,factory,ssr,denial,review-authority,restoration,restoration-ids}.test.mjs apps/portal/tests/rebuild-reports-{controller,model}.test.mjs
+node --experimental-strip-types --import ./tests/portal-review-no-network.mjs --test --test-concurrency=1 apps/portal/tests/rebuild-cookie-cancellation{,-deadline}.test.mjs apps/portal/tests/rebuild-review-request.test.mjs apps/portal/tests/rebuild-review-guidance-request.test.mjs
+npm --prefix apps/portal run typecheck:rebuild
+npm --prefix apps/portal run check:ui
+```
+
+Terminal finalization builds the actual App entry with **write:false** at the clean source commit, recording sourceHead/sourceDirty, all input/output hashes and full six-dependency blob correspondence in **E9/FINAL-HANDOFF.json** and **E9/source-build-provenance.json**. Oldf163 originals remain under E9/original-f163. Current task is the authoritative thread-send handle above; actual current run is **`run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:2`**, started2026-10-31T22:43:41.865Z. Parent/thread/workspace/task/run remain separate fields in the receipt.
+
+This is a **terminal bounded source checkpoint with an explicit cross-owner navigator gate**, not completed canonical restoration/default/Parent activation. Next parent action: supply an approved frozen entry-owned defer/replay/saved-context navigator interface or approved App-local adaptation, then commission new independent composed App+History restoration review. Any later Chrome/genuine phase needs a separate explicit source target and grant after W3 return. No browser wait, resource polling/borrowing, Root install/full suites/native/DB/Auth/credential/fixture/provider live work, push/PR/merge/deploy or live business action. Earlier full-suite/CI/release skips remain applicable; no resource was acquired or retained.

@@ -19,8 +19,8 @@ const safeNavigationId = (value: unknown): value is string => typeof value === '
 type HistoryPosition = { path: string; scrollY: number; focusKey: string | null };
 /** App-owned UI lease. Feature results remain immutable; only the actual
  * after-commit onReady callback may queue this scope's viewport work. */
-export function createHistoryRestorationScope({controller,boundary,navigator,win}: {
-  controller: HistoryController; boundary: PlanSessionBoundary; navigator: PortalNavigator; win: Window;
+export function createHistoryRestorationScope({controller,boundary,navigator,win,waitForDocument=false}: {
+  controller: HistoryController; boundary: PlanSessionBoundary; navigator: PortalNavigator; win: Window; waitForDocument?:boolean;
 }) {
   const path = navigator.getSnapshot();
   const marker = () => {
@@ -29,22 +29,39 @@ export function createHistoryRestorationScope({controller,boundary,navigator,win
   };
   const entryId = marker()?.entryId;
   let disposed = false;
-  type Owner = {frames:Set<number>};
+  type Owner = {frames:Set<number>;work:number;documentReady:boolean;documentAvailable:boolean;pending:{result:HistoryRestorationResult;work:number}|null};
   let owner: Owner | null = null;
   const current = () => !disposed && !!owner && safeNavigationId(entryId) && boundary.isCurrent() && navigator.getSnapshot() === path && marker()?.entryId === entryId;
   const positions = () => boundary.memory.get<Record<string,HistoryPosition>>(historyPositionKey) ?? {};
   function capturePosition() {
     if (!current() || !safeNavigationId(entryId)) return;
+    owner!.work++;
     const id = win.document.activeElement?.id;
     boundary.memory.set(historyPositionKey,{...positions(),[entryId]:{path,scrollY:Math.max(0,win.scrollY),focusKey:safeNavigationId(id)?id:null}});
   }
   const saved = safeNavigationId(entryId) ? positions()[entryId] : undefined;
   const initial = marker()?.restore;
   const position: HistoryPosition | null = saved?.path === path ? saved : initial && typeof initial.scrollY === 'number' && Number.isFinite(initial.scrollY) && initial.scrollY >= 0 && (initial.focusKey === null || safeNavigationId(initial.focusKey)) ? {path,scrollY:initial.scrollY,focusKey:initial.focusKey} : null;
+  function onReady(result:HistoryRestorationResult) {
+    const captured=owner;
+    if(!captured||!current()||!controller.restoration?.isCurrent(result))return;
+    const work=++captured.work;
+    if(!captured.documentReady){captured.pending={result,work};return;}
+    const frame=win.requestAnimationFrame(()=>{
+      captured.frames.delete(frame);
+      if(owner!==captured||captured.work!==work||!current()||!controller.restoration?.isCurrent(result))return;
+      const exact=result.state==='restored'&&position&&captured.documentAvailable;
+      const focusKey=exact?(result.anchorId??position.focusKey):null;
+      const available=focusKey===null||!!win.document.getElementById(focusKey);
+      restoreNavigationContext(exact&&available?{scrollY:position!.scrollY,focusKey}:{scrollY:0,focusKey:null},win.document,win);
+    });
+    captured.frames.add(frame);
+  }
   return {
+    isCurrent:current,
     attach() {
       if(disposed)return () => {};
-      const captured:Owner={frames:new Set()};owner=captured;
+      const captured:Owner={frames:new Set(),work:0,documentReady:!waitForDocument,documentAvailable:true,pending:null};owner=captured;
       return () => {
         captured.frames.forEach(id=>win.cancelAnimationFrame?.(id));captured.frames.clear();
         if(owner===captured)owner=null;
@@ -60,31 +77,27 @@ export function createHistoryRestorationScope({controller,boundary,navigator,win
       if(!current())return;
       capturePosition();controller.restoration?.setFilter(filter);
     },
-    onReady(result:HistoryRestorationResult) {
-      const captured=owner;
-      if(!captured||!current()||!controller.restoration?.isCurrent(result))return;
-      const frame=win.requestAnimationFrame(()=>{
-        captured.frames.delete(frame);
-        if(owner!==captured||!current()||!controller.restoration?.isCurrent(result))return;
-        const exact=result.state==='restored'&&position;
-        const focusKey=exact?(result.anchorId??position.focusKey):null;
-        // The source witness proves an anchor should exist, not DOM geometry.
-        // Missing actual committed content takes the ordinary heading fallback.
-        const available=focusKey===null||!!win.document.getElementById(focusKey);
-        restoreNavigationContext(exact&&available?{scrollY:position.scrollY,focusKey}:{scrollY:0,focusKey:null},win.document,win);
-      });
-      captured.frames.add(frame);
+    onReady,
+    documentCommitted(available:boolean) {
+      if(!owner||!current())return;
+      owner.documentReady=true;owner.documentAvailable=available;
+      const pending=owner.pending;owner.pending=null;if(pending&&pending.work===owner.work)onReady(pending.result);
     },
     retire() { disposed=true;owner=null; },
   };
 }
 
-export function createHistoryNavigation(navigator: Pick<PortalNavigator, 'navigate'|'back'>): HistoryNavigation {
+export type AppHistoryRestorationScope = ReturnType<typeof createHistoryRestorationScope>;
+export function createHistoryNavigation(navigator: Pick<PortalNavigator, 'navigate'|'back'>, scope?: AppHistoryRestorationScope): HistoryNavigation {
+  const current=()=>!scope||scope.isCurrent();
+  const capture=()=>scope?.capturePosition();
   return {
-    openUpdate: () => navigator.navigate({ name: 'history-new' }),
-    back: () => navigator.back(),
+    openUpdate() {if(current()){capture();navigator.navigate({ name: 'history-new' });}},
+    back() {if(current()){capture();navigator.back();}},
     openVersion(version) {
+      if(!current())return;
       if (!Number.isSafeInteger(version) || version < 1) throw new TypeError('invalid version');
+      capture();
       navigator.navigate({ name: 'history-version', version: String(version) });
     },
   };
