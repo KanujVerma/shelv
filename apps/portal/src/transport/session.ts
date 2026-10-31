@@ -19,7 +19,7 @@ export interface CookieSessionPort {
   signOut(): Promise<unknown>;
 }
 export interface OperationPort<Input,Output> {execute(input: Input, options?: {signal?: AbortSignal}): Promise<Output>}
-export type CookieChannel = 'operations'|'payments'|'checkins'|'admission'|'walkthroughs'|'plans';
+export type CookieChannel = 'operations'|'payments'|'checkins'|'admission'|'walkthroughs'|'plans'|'care';
 export type CookieRequestFactory = (channel: CookieChannel, session: CookieSessionPort) => (command: unknown, options?: {signal?: AbortSignal})=>Promise<unknown>;
 export type OperationKind = 'read'|'write';
 export class TransportError extends Error {

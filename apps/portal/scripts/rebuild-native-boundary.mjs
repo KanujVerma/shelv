@@ -3,7 +3,7 @@ import {createHash} from 'node:crypto';
 
 export const portalOrigin = 'https://127.0.0.1:57430';
 export const providerOrigin = 'http://127.0.0.1:57421';
-export const policyHash = 'c31adceba6e4457183af460d5ebfa3ead1549a772ba7004757885c20607175fc';
+export const policyHash = 'e091552ab66fb26a907c14d6942553a90b9cbbd415cba0177d817b40658976d7';
 export const safePrivateMarkers = Object.freeze(['W6_PRIVATE_SYNTHETIC_ONLY','PRIVATE_REAL_AUTH_CANARY']);
 export const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 export function assertBrowserBytes(headers,bytes,forbidden) {

@@ -6,5 +6,5 @@ export const advisorPlanActions=Object.freeze([
  'compare_import_v1','apply_import_v1','validate_draft_v1','preview_draft_v1','review_section_v1',
  'approve_publication_v1','revoke_approval_v1','publish_plan_v1','restore_publication_v1','request_status_v1',
  'read_policy_v1','set_sami_approval_policy_v1','grant_task_v1','revoke_task_v1',
- 'read_advisor_gate_v1','read_advisor_publication_v1',
+ 'read_advisor_gate_v1','read_advisor_publication_v1','read_draft_dependencies_v1','rebase_draft_dependencies_v1',
 ]);

@@ -1,5 +1,6 @@
 import {validatedReturnPath} from './navigation-return';
 import {planCapability,mapPlanResponse} from './plan-policy';
+import {careCapability,mapCareResponse} from './care-policy';
 import { GoTrueClient, type Session } from '@supabase/auth-js';
 import { demand, decode, SessionError, type AuthProvider, type Credentials, type Capabilities, type AdvisorContext } from './types';
 import { PORTAL_ORIGIN, SUPABASE_ORIGIN, readBounded, parseCommand, object, safeCodes, uuid, type Operation } from './policy';
@@ -191,6 +192,7 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
             parseCommand(operation.channel, operation.command);
             const action = operation.command.action;
             if(operation.channel==='plans')demand(capabilities[planCapability(action)],403,'forbidden');
+            if(operation.channel==='care')demand(capabilities[careCapability(action)],403,'forbidden');
             if (action === 'publish_v2' || action === 'publish_instruction_revision')
                 demand(capabilities.publish, 403, 'forbidden');
             else if (action === 'confirm_payment' || action === 'reject_claim' || action === 'record_return_event' && ['retailer_funds_received','client_repaid'].includes(String(operation.command.status)))
@@ -238,6 +240,7 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
             return { status: 200, bytes: response.bytes, contentType: contentType! };
         }
         if(operation.kind==='command'&&operation.channel==='plans')body=mapPlanResponse(body,operation.command);
+        if(operation.kind==='command'&&operation.channel==='care')body=mapCareResponse(body,operation.command);
         demand(!hasCredentials(body, credentials), 503, 'unavailable');
         return { status: 200, body };
     }

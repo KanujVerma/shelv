@@ -64,7 +64,7 @@ jobs:
 
       - name: Verify approval recovery keyboard journeys
         working-directory: apps/portal
-        run: node --experimental-strip-types --test --test-concurrency=1 --test-timeout=15000 tests/rebuild/advisor-recovery-browser.mjs
+        run: node --experimental-strip-types --test --test-concurrency=1 --test-timeout=15000 tests/rebuild/advisor-recovery-browser.mjs tests/rebuild/advisor-status-browser.mjs
 
       - name: Verify session types
         working-directory: apps/portal
