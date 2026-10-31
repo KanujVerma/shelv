@@ -1928,14 +1928,29 @@
       "status": "running",
       "writeSet": [
         "src/contracts/PortalReview*.ts",
-        "tests/portal-review-contract.test.ts",
-        "docs/portal-rebuild/research/W1_REPORT_GUIDANCE_CONTRACTS.md"
+        "src/contracts/PortalRebuildValues.ts two bounded409keys",
+        "supabase/functions/concierge-reviews/*",
+        "supabase/functions/concierge-guidance/*",
+        "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+        "tests/portal-review*",
+        "supabase/tests/portal_reviews*",
+        "docs/portal-rebuild/research/W1_REPORT_GUIDANCE_CONTRACTS.md",
+        "docs/portal-rebuild/research/W1_REPORT_GUIDANCE_IMPLEMENTATION.md",
+        "supabase/functions/concierge-checkins/handler.ts only finitecontent_version_required409"
       ],
-      "resources": "Source-only seam; no SQL/migration/resource/browser until phase2 pin",
+      "resources": "Own new Unix-onlyPG only, no R7/Docker/Chrome; NO parent Root/native76 integration until genuinecare accepted",
       "verification": "Exact delegate_task settings and live thread/workspace readback; both child tools and eight pins required",
       "earlyCommit": "26f9ae3286a7878632ed7ffb058297bfbd2f9518",
-      "phase": "SOURCE_ONLY_CORRECTIVE_SEAM",
-      "pinStatus": "Do not integrate parent nativeclosure yet; refine empty report no-op and authoritative currentinstruction manifest/read projection before SQL"
+      "phase": "ISOLATED_PHASE2_IMPLEMENTATION",
+      "pinStatus": "Conceptual a977 wire intent pinned, Review14/Guidance9, no-op/currentV3 guidance snapshot/2550 paged exactscopes/decision2+versiongates; attentionevent clarification authorized, independent implementation review remains",
+      "earlyCommits": [
+        "26f9ae3286a7878632ed7ffb058297bfbd2f9518",
+        "a977b19048408607c5857ba98acf4fd79568ff98",
+        "9fcb17458c70fd770c961e03efc5f7224689df5d"
+      ],
+      "migration": "20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+      "migrationStatus": "CHILD_ONLY_ALLOCATED_EMPTY_THEN_IMPLEMENTING",
+      "phase2Clarifications": "Closed review_attention history event for ALL dependent publishedreview relationships, separate unique eventId vs stableattentionId and immutable resolution links; no action/right expansion. ExistingCheckinHandlerdictionary content_version_required409 authorized afteractualRED; importnamefaultsetup preserved."
     },
     {
       "role": "W7 care application composition review",
@@ -1956,12 +1971,17 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-dd64ac3a",
       "branch": "t3/review-care-app-composition",
       "baseCommit": "18c78b7d477f7d8fe9bc7ff950544ab0081f8008",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_CARE_APP_COMPOSITION_REVIEW.md"
       ],
-      "resources": "Sole synthetic Chrome; NO native/Auth/resources",
-      "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required"
+      "resources": "Chrome released08:53:44.613948UTC; all handlesclosed/no native",
+      "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required",
+      "headCommit": "2271ce597de52688dcaaa14945a3e23a9a9e0b1f",
+      "integratedCommits": [
+        "89dc442d"
+      ],
+      "verdict": "CHANGES REQUIRED CA1 first-read careURL recovery; source79/App13/11controls pass; separate correction5029825 and newR2"
     },
     {
       "role": "W6 genuine care browser",
@@ -1989,8 +2009,92 @@
         "apps/portal/tests/rebuild-care-native-stack.mjs explicit phase only",
         "docs/portal-rebuild/research/W6_CARE_BROWSER.md"
       ],
-      "resources": "SOURCE_ONLY; NO resource/browser/preview/credential grant until early source/phase guards ready and W7 releases",
-      "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required"
+      "resources": "EXCLUSIVE R7 native+soleChrome granted09:44:01.093UTC; custody HELD. Initial4genuinegroups/pass, clientHTTP200; actualCLI SQLiteCANTOPEN14 inspection blocker under bounded supportedMF5 fix, no product verdict. ParentNOresourcecallsaftertransfer.",
+      "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required",
+      "earlyCommits": [
+        "41b3600514ca7fb6236e09324b4ecda2ef8d450a",
+        "8dda40b",
+        "ef5a0be1a68620aa50179f4540cbfdf4093269ee"
+      ],
+      "integratedCommits": [
+        "f8329830",
+        "421190c2",
+        "26e07fec"
+      ],
+      "authorizedAppImports": [
+        "89dc442d -> d8ed1f9d",
+        "5029825 -> 0b71b543"
+      ],
+      "nativeGrant": "BROWSER-CUSTODY-GRANT.json/coordinator-r7-browser-native-7fcf584c-b163-4817-b923-1246e9951e62",
+      "chromeGrant": "BROWSER-CHROME-GRANT.json/coordinator-r7-browser-chrome-615542e9-a71c-4ad9-86f0-37234f3f6a05",
+      "protectedFileCount": 209,
+      "priorNodeCaseId": "90b338e9-b5a8-401a-83f1-503ac6224de3",
+      "priorNodeCaseSha256": "24cf79534e90514ebc42b4ff9462138873375241c2ed4d56fa0509585802cf8d",
+      "additionalOwnedCommit": "cd09a21e4caf0690cd79c91c6adf954e9e5ef264",
+      "additionalCommitIntegrated": false
+    },
+    {
+      "role": "W7 care app recovery round2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-app-composition-review-20261031-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-app-composition-review-20261031-r2",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-ec5dc7be",
+      "branch": "t3/care-app-composition-r2",
+      "baseCommit": "5029825a64b3ec63f14152e909b72d1e8095ef0c",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_APP_COMPOSITION_R2.md"
+      ],
+      "status": "completed",
+      "headCommit": "fb4e3da3b8fb290e19f5e945f1f5a290a30fcbc2",
+      "resources": "Chrome released09:27:08.367135UTC; emptyinventory/previewnoTab; no actualnative",
+      "verdict": "Scoped spec/quality PASS CA1addressed,no newfinding; source82/SSR7/App19/retained17/retry6, old18c3SSR+6Browser sensitivityfail; types/buildpass",
+      "verification": "ExactT3provider/model/options+liveworkspace/base; full priorbrief/newroundwithbothlive modelchecksrequired",
+      "integratedCommits": [
+        "b8b52f5c"
+      ]
+    },
+    {
+      "role": "W2 advisor care dependency review/rebase",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-care-dependencies-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-care-dependencies-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d6691f48",
+      "branch": "t3/advisor-care-dependency-rebase",
+      "baseCommit": "b8b52f5c",
+      "status": "running",
+      "writeSet": [
+        "apps/portal/src/features/advisor/types.ts/controller.ts/AdvisorWorkspace.tsx/newdependencyhelpers",
+        "apps/portal/src/app/ports.ts only optionalcare/dependencyports/new2fixedactions",
+        "apps/portal/tests/rebuild-advisor-dependencies*",
+        "docs/portal-rebuild/research/W2_CARE_DEPENDENCIES.md"
+      ],
+      "earlyCommit": "3d06af0c78b59332a1d55f113e7fb23a18e7bd69",
+      "integrated": false,
+      "resources": "SOURCE/pure/SSR only,385+121tests/types/UI PASS; NO browser/native/R7 grant; queuedafterW6",
+      "verification": "Exact returnedT3provider/options+liveworkspace/base; bothlivechildtools/eightpins verified",
+      "limits": "Actualuse/identity/reportedproduct reader only; unknownreport/instruction/legacybasis changesblockhonestlywithMissingDependencyReader; actualBrowser+independentreview+currentintegrationpending"
     }
   ]
 }
