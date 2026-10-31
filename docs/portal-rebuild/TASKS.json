@@ -2,7 +2,7 @@
   "updatedOn": "2026-10-31",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
-  "allocatedWorkers": 5,
+  "allocatedWorkers": 6,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -3818,7 +3818,7 @@
     {
       "role": "W0 shared cookie CK1/CK2 deadline correction",
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-cookie-deadline-ck1-ck2-fix-20261031",
-      "status": "running-source-only",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-2d6813cc",
       "writeSet": [
         "apps/portal/site/auth/advisor-cookie-session.js",
@@ -3840,14 +3840,17 @@
           "id": "serviceTier",
           "value": "default"
         }
-      ]
+      ],
+      "deliveryCommit": "c9cac46a088b5232dfcde5a88b84d9653ccb9a3e",
+      "verification": "Original ten0/10->10/10; independent178/new104/current107/45/197/34; both strict/builds/exact Gateway-Vault closure pass. Source only, fresh R2 allocated.",
+      "integrationCommit": "e3dbb47d8fe242f427182fbdb80554879a6984b6"
     },
     {
       "role": "W7 commerce contracts source review R4",
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-contracts-review-20261031-r4",
       "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-contracts-review-20261031-r4",
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-commerce-contracts-review-20261031-r4:ordinal:1",
-      "status": "running-source-only",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -3863,14 +3866,18 @@
       "writeSet": [
         "docs/portal-rebuild/research/W7_COMMERCE_CONTRACTS_R4.md"
       ],
-      "resourceBoundary": "Only five exact source proposal inputs89/613/cab/2e/603. No M63, resources or financial admission."
+      "resourceBoundary": "Only five exact source proposal inputs89/613/cab/2e/603. No M63, resources or financial admission.",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-9337f1b5",
+      "deliveryCommit": "c4099c26c6ed916f3dac45c0c2e570bf5c9b3533",
+      "verdict": "Source SPEC/completeness + quality scoped PASS on6 exact60332 blobs; no new material finding. No M63/genuine/financial/UI acceptance.",
+      "verification": "Baseline80; cab4 intended positive failures->current4; new12/retained33/strict; all62 migration/base paths preserved."
     },
     {
       "role": "W7 commerce UI source review R2",
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-ui-source-review-20261031-r2",
       "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-ui-source-review-20261031-r2",
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-commerce-ui-source-review-20261031-r2:ordinal:1",
-      "status": "running-source-only",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -3886,7 +3893,172 @@
       "writeSet": [
         "docs/portal-rebuild/research/W7_COMMERCE_UI_SOURCE_R2.md"
       ],
-      "resourceBoundary": "Only exact11 frozen W5 source/SDK inputs throughfd864bba; no browser/native/backend/resources. CU1-CU3 and cab currency/head regressions."
+      "resourceBoundary": "Only exact11 frozen W5 source/SDK inputs throughfd864bba; no browser/native/backend/resources. CU1-CU3 and cab currency/head regressions.",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-caa72471",
+      "deliveryCommit": "44c2f3d71fef4ffabe612f017b6e5d45425123e2",
+      "verdict": "CU1-CU3 scoped addressed; SPEC/quality FAIL CU4important first-write dispatch when actual cookie naturally offline during port hash/basis waits.",
+      "verification": "Current75+20/independent23 pass; CU4 actual-suspend4 failures/2 before-after controls. Source-only, no browser/financial acceptance."
+    },
+    {
+      "role": "W4 history remount restoration source",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw4-history-remount-restoration-source-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w4-report-history-ui-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w4-report-history-ui-20261031-r1:ordinal:7",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running-source-only",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-0706fba8",
+      "writeSet": [
+        "apps/portal/src/features/history/**",
+        "new restoration source tests",
+        "docs/portal-rebuild/research/W4_REPORT_HISTORY_UI.md"
+      ],
+      "resourceBoundary": "No browser/native/DB/Auth/fixture resource grant. Owned source/review only; no Parent activation."
+    },
+    {
+      "role": "W2 existing guidance authority source composition",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw2-guidance-existing-authority-composition-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-guidance-ui-source-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-guidance-ui-source-20261031-r1:ordinal:2",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running-source-only",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-8ddcfb34",
+      "writeSet": [
+        "apps/portal/src/app/advisor-guidance-context.ts (new only)",
+        "apps/portal/src/features/advisor/guidance/**",
+        "new context source tests",
+        "docs/portal-rebuild/research/W2_GUIDANCE_UI.md"
+      ],
+      "resourceBoundary": "No browser/native/DB/Auth/fixture resource grant. Owned source/review only; no Parent activation.",
+      "earlySeamCommit": "1cffb84a69f5504a034ac1efbb114e67f4dd5a4c"
+    },
+    {
+      "role": "W7 shared-cookie cancellation/deadline source review R2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-cookie-cancellation-review-20261031-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-cookie-cancellation-review-20261031-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-cookie-cancellation-review-20261031-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_COOKIE_CANCELLATION_R2.md"
+      ],
+      "resourceBoundary": "No browser/native/DB/Auth/fixture resource grant. Owned source/review only; no Parent activation.",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-61ee9503",
+      "deliveryCommit": "92689fef224f4a7e04f9249cf0c577ca16f541d3",
+      "integrationCommit": "6f13b82d4e9dfcc502d8dafc14e08b7beb52b239",
+      "verdict": "Source T1/CK1/CK2 and exercised preservation SPEC+quality scoped PASS; no new material finding. CK2 ordinary browser reachability unknown.",
+      "verification": "178/178 current; exact9e/ac83 intended0/10->10/10, author107/new104/own118+session2/45/197/34/strict/build and exactclosures pass."
+    },
+    {
+      "role": "W5 commerce CU4 offline-during-hash source correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw5-commerce-offline-hash-cu4-fix-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w5-commerce-ui-source-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w5-commerce-ui-source-20261031-r1:ordinal:4",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running-source-only",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b6ea9c3d",
+      "writeSet": [
+        "apps/portal/src/features/orders/port.ts",
+        "minimal owned controller if needed",
+        "new CU4 source tests",
+        "docs/portal-rebuild/research/W5_COMMERCE_UI.md"
+      ],
+      "resourceBoundary": "No browser/native/DB/Auth/fixture resource grant. Owned source/review only; no Parent activation."
+    },
+    {
+      "role": "W3 V3 current-cookie synthetic browser verification",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-v3-t1-current-browser-verification-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:5",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running-synthetic-browser",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
+      "writeSet": [
+        "owned W3 browser tests/helpers",
+        "docs/portal-rebuild/research/W3_V3_GUIDANCE.md"
+      ],
+      "chromeGrant": {
+        "grantId": "coordinator-w3-v3-cookie-current-synthetic-chrome-c9cac46a-20261031",
+        "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
+        "status": "granted"
+      },
+      "resourceBoundary": "Only sole installed Chrome/synthetic finite HTTP. No R9/native/DB/Auth/private resources, no Parent browser use."
     }
-  ]
+  ],
+  "parentVerification": {
+    "testedSourceHead": "299f6a3c",
+    "scope": "Accepted history integrated; later difference documentation only",
+    "checks": {
+      "rootTests": {
+        "pass": 1256,
+        "fail": 0,
+        "existingOptInSkip": 18
+      },
+      "rootAppTypes": 0,
+      "rootTestTypes": 0,
+      "expoWebExport": 0
+    },
+    "evidence": ".local-artifacts/portal-rebuild/root-history-checkpoint/"
+  },
+  "cookieImports": {
+    "9e449f51242065f903848a6fd9a15cc2501bfc1a": "947ae5fdb2456938e6cd1f70ac1e9002af8e1107",
+    "ac83b3d70332d458fe620d4c1c089deacd6a2657": "787b5d8ff127862e95a4fc80e4c6df6deda2e979",
+    "c9cac46a088b5232dfcde5a88b84d9653ccb9a3e": "e3dbb47d8fe242f427182fbdb80554879a6984b6",
+    "bec620f681a155f393779ddbd4b95dcdf29684d3": "944f2589240fe6a889f88714df6557c0297bd726",
+    "92689fef224f4a7e04f9249cf0c577ca16f541d3": "6f13b82d4e9dfcc502d8dafc14e08b7beb52b239"
+  }
 }
