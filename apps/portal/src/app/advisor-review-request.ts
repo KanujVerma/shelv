@@ -1,6 +1,6 @@
 import type {ApplicationSession} from './session.ts';
 import {advisorCookieRequest} from './retained.ts';
-import {TransportError,type OperationKind,type OperationPort} from '../transport/session.ts';
+import {TransportError,type OperationKind,type OperationPort,type OperationOptions} from '../transport/session.ts';
 // @ts-expect-error retained JavaScript protocol metadata, parity-tested against Root
 import {advisorReviewActions,advisorReviewReads,advisorGuidanceActions,advisorGuidanceReads,reviewErrorCodes,REVIEW_COMMAND_MAX_BYTES} from '../../site/auth/review-actions.js';
 
@@ -12,7 +12,7 @@ function createAdvisorRequest(runtime:ApplicationSession,channel:'reviews'|'guid
   if(runtime.cookie.audience!=='advisor'||runtime.cookie.identity?.role!=='advisor'||!boundary?.isCurrent()||runtime.getSnapshot().boundary!==boundary)throw new TransportError(401);
  };
  current();
- return{async execute(input,options){
+ return{async execute(input:unknown,options?:OperationOptions){
   current();let command:{schemaVersion:number;action:string};
   try{
    const wire=JSON.stringify(input);

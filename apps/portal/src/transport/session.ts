@@ -18,9 +18,11 @@ export interface CookieSessionPort {
   isCurrent(lease: CookieLease): boolean;
   signOut(): Promise<unknown>;
 }
-export interface OperationPort<Input,Output> {execute(input: Input, options?: {signal?: AbortSignal}): Promise<Output>}
+/** Local UI relevance only. This predicate can deny, never grant authority. */
+export interface OperationOptions {signal?: AbortSignal;isApplicable?:()=>boolean}
+export interface OperationPort<Input,Output> {execute(input: Input, options?: OperationOptions): Promise<Output>}
 export type CookieChannel = 'operations'|'payments'|'checkins'|'admission'|'walkthroughs'|'plans'|'care'|'reviews'|'guidance';
-export type CookieRequestFactory = (channel: CookieChannel, session: CookieSessionPort) => (command: unknown, options?: {signal?: AbortSignal})=>Promise<unknown>;
+export type CookieRequestFactory = (channel: CookieChannel, session: CookieSessionPort) => (command: unknown, options?: OperationOptions)=>Promise<unknown>;
 export type OperationKind = 'read'|'write';
 export class TransportError extends Error {
   readonly status: number;
@@ -45,23 +47,41 @@ export function createSessionTransport(session: CookieSessionPort) {
     sessionChanged();
     if (ended || !session.identity || session.audience!==audience || session.identity.role!==audience || !['ready','offline'].includes(session.status)) throw new TransportError(401);
   }
-  function bind<Input,Output>({kind,invoke,decode}: {kind: OperationKind; invoke: (input: Input,options: {signal: AbortSignal})=>Promise<unknown>; decode: (value: unknown)=>Output}): OperationPort<Input,Output> {
+  function bind<Input,Output>({kind,invoke,decode}: {kind: OperationKind; invoke: (input: Input,options: OperationOptions&{signal: AbortSignal})=>Promise<unknown>; decode: (value: unknown)=>Output}): OperationPort<Input,Output> {
     return {async execute(input,options={}) {
       accessible();if (session.status!=='ready') throw new TransportError(503,kind);
       const startGeneration=session.generation,startOwner=session.identity?.ownerId;
+      const isApplicable=options.isApplicable;
+      const applicability=(guard:()=>void)=>{
+        if(isApplicable===undefined)return;
+        guard();let applies=false;
+        try{applies=typeof isApplicable==='function'&&isApplicable()===true;}catch{/* Pure local denial; callback errors are never authority/errors from HTTP. */}
+        guard();if(!applies)throw new TransportError(503,kind);
+      };
+      applicability(()=>{
+        accessible();
+        if(ended||session.audience!==audience||session.identity?.role!==audience||session.identity.ownerId!==startOwner||session.generation!==startGeneration)throw new TransportError(401);
+        if(session.status!=='ready')throw new TransportError(503,kind);
+      });
       let lease: CookieLease;
       try {lease=await session.acquire();} catch (error) {sessionChanged();throw safeError(error,kind);}
       if (ended || session.generation!==startGeneration || session.identity?.ownerId!==startOwner || !session.isCurrent(lease)) {sessionChanged();throw new TransportError(401);}
+      const privateCurrent=()=>{
+        if(ended||session.audience!==audience||session.identity?.role!==audience||session.identity.ownerId!==startOwner||session.generation!==startGeneration||!session.isCurrent(lease)){sessionChanged();throw new TransportError(401);}
+      };
+      applicability(privateCurrent);
       const controller=new AbortController(),abort=()=>controller.abort();controllers.add(controller);
       if (options.signal?.aborted) controller.abort();
       options.signal?.addEventListener('abort',abort,{once:true});
       try {
         if (controller.signal.aborted) throw new TransportError(503,kind);
-        const value=await invoke(input,{signal:controller.signal});
+        applicability(privateCurrent);
+        const value=await invoke(input,{signal:controller.signal,...(isApplicable===undefined?{}:{isApplicable})});
         if (ended || session.audience!==audience || session.generation!==startGeneration || !session.isCurrent(lease)) throw new TransportError(401);
         if (controller.signal.aborted) throw new TransportError(503,kind);
+        applicability(privateCurrent);
         // Decoders are supplied by W1's versioned strict response contracts.
-        return decode(value);
+        const decoded=decode(value);applicability(privateCurrent);return decoded;
       } catch (error) {
         // Real factories check the lease, then suspend on 503 before rethrowing.
         // isCurrent intentionally rejects offline results, so only that error
@@ -71,6 +91,10 @@ export function createSessionTransport(session: CookieSessionPort) {
         const current=!ended && session.audience===audience && session.identity?.role===audience &&
           session.identity.ownerId===startOwner && session.generation===startGeneration && (live || suspended);
         sessionChanged();if (!current) throw new TransportError(401);
+        if(![401,403].includes((error as {status?:number}|null)?.status??0))applicability(()=>{
+          const live=session.isCurrent(lease),suspended=(error as {status?:unknown}|null)?.status===503&&suspendedLease(session,lease);
+          if(ended||session.audience!==audience||session.identity?.role!==audience||session.identity.ownerId!==startOwner||session.generation!==startGeneration||!(live||suspended)){sessionChanged();throw new TransportError(401);}
+        });
         throw safeError(error,kind);
       } finally {controllers.delete(controller);options.signal?.removeEventListener('abort',abort);}
     }};

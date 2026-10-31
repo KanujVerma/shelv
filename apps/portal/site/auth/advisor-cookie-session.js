@@ -1,10 +1,15 @@
+import {advisorCommerceActions,COMMERCE_COMMAND_MAX_BYTES} from './commerce-actions.js';
 import {navigationReturnTo} from './navigation-return.js';
 import {advisorPlanActions,PLAN_COMMAND_MAX_BYTES} from './plan-actions.js';
 import {advisorCareActions,CARE_COMMAND_MAX_BYTES} from './care-actions.js';
 import {advisorReviewActions,advisorGuidanceActions,REVIEW_COMMAND_MAX_BYTES} from './review-actions.js';
-const actions = { operations: ['advisor_preview_read_v2', 'advisor_list', 'advisor_read_v2', 'save_intake_v2', 'save_draft_v2', 'publish_v2', 'save_meeting_note', 'service_advisor_read', 'record_review', 'save_instruction_draft', 'publish_instruction_revision', 'record_purchase', 'record_return_event', 'cancel_service'], payments: ['advisor_read', 'issue_quote', 'confirm_payment', 'reject_claim', 'evidence_url'], checkins: ['advisor_read', 'advisor_photo_view', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply'], admission: ['capabilities','add_client','admission_status'], walkthroughs:['library','open','share_list','share_create','share_revoke'],plans:advisorPlanActions,care:advisorCareActions,reviews:advisorReviewActions,guidance:advisorGuidanceActions };
+const actions = { operations: ['advisor_preview_read_v2', 'advisor_list', 'advisor_read_v2', 'save_intake_v2', 'save_draft_v2', 'publish_v2', 'save_meeting_note', 'service_advisor_read', 'record_review', 'save_instruction_draft', 'publish_instruction_revision', 'record_purchase', 'record_return_event', 'cancel_service'], payments: ['advisor_read', 'issue_quote', 'confirm_payment', 'reject_claim', 'evidence_url'], checkins: ['advisor_read', 'advisor_photo_view', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply'], admission: ['capabilities','add_client','admission_status'], walkthroughs:['library','open','share_list','share_create','share_revoke'],plans:advisorPlanActions,care:advisorCareActions,reviews:advisorReviewActions,guidance:advisorGuidanceActions,commerce:advisorCommerceActions };
 export class CookieSessionError extends Error {
     constructor(status, code = 'unavailable') { super(status === 401 ? 'Your session has ended. Sign in again.' : status === 403 ? 'You do not have access to this action.' : 'We could not complete this request.'); this.status = status; this.code = /^[a-z_]{1,60}$/.test(code) ? code : 'unavailable'; }
+}
+// Local cancellation only, with no status/code/authority or wire representation.
+export class CookieRequestCancelled extends Error {
+    constructor() { super('The operation was cancelled.'); this.name = 'AbortError'; }
 }
 export class CookieAdvisorSession {
     constructor({ fetcher = (...args) => globalThis.fetch(...args), onState = () => { }, timeoutMs = 15000, now = () => Date.now(), locks = globalThis.navigator?.locks, audience = 'advisor' } = {}) {
@@ -79,7 +84,7 @@ export class CookieAdvisorSession {
             return this._coordinate(signal => this._transport(path, { ...options, signal }), options.signal);
         return this._transport(path, options);
     }
-    async _transport(path, { body, signal, csrf, headers = {} } = {}) {
+    async _transport(path, { body, signal, csrf, headers = {}, isApplicable } = {}) {
         let callerAborted = false;
         const controller = new AbortController(), timer = setTimeout(() => controller.abort(), this.timeoutMs), abort = () => {
             // Keep the first abort's provenance: a later caller cancellation
@@ -89,9 +94,19 @@ export class CookieAdvisorSession {
         if (signal?.aborted)
             abort();
         signal?.addEventListener('abort', abort, { once: true });
+        const applicable = () => {
+            if (isApplicable === undefined) return;
+            // A prior deadline/caller abort keeps C9's first-abort provenance.
+            if (controller.signal.aborted) throw new DOMException('The operation was aborted.', 'AbortError');
+            if (isApplicable() !== true) throw new CookieRequestCancelled();
+        };
         try {
             if (callerAborted) throw new DOMException('The operation was aborted.', 'AbortError');
-            const response = await this.fetcher(`/api/${this.audience}/${path}`, { method: body === undefined ? 'GET' : 'POST', headers: { ...headers, ...(body === undefined || body instanceof FormData || body instanceof Blob ? {} : { 'Content-Type': 'application/json' }), ...(csrf ? { 'X-Shelv-CSRF': csrf } : {}) }, ...(body === undefined ? {} : { body: body instanceof FormData || body instanceof Blob ? body : JSON.stringify(body) }), signal: controller.signal, credentials: 'same-origin', cache: 'no-store', redirect: 'error' });
+            const init = { method: body === undefined ? 'GET' : 'POST', headers: { ...headers, ...(body === undefined || body instanceof FormData || body instanceof Blob ? {} : { 'Content-Type': 'application/json' }), ...(csrf ? { 'X-Shelv-CSRF': csrf } : {}) }, ...(body === undefined ? {} : { body: body instanceof FormData || body instanceof Blob ? body : JSON.stringify(body) }), signal: controller.signal, credentials: 'same-origin', cache: 'no-store', redirect: 'error' };
+            // After serialization callbacks and actual acquire, immediately before fetch.
+            applicable();
+            const response = await this.fetcher(`/api/${this.audience}/${path}`, init);
+            if (response.ok) applicable();
             let data;
             try { data = await response.json(); }
             catch (error) {
@@ -104,10 +119,13 @@ export class CookieAdvisorSession {
                 throw new CookieSessionError(response.status, data?.code);
             // A signal-ignoring fetcher/body cannot deliver success past either abort.
             if (controller.signal.aborted) throw new DOMException('The operation was aborted.', 'AbortError');
+            applicable();
             return data;
         }
         catch (error) {
             if (callerAborted && error?.name === 'AbortError')
+                throw error;
+            if (error instanceof CookieRequestCancelled)
                 throw error;
             if (error instanceof CookieSessionError)
                 throw error;
@@ -193,6 +211,17 @@ export class CookieAdvisorSession {
         if (this.status === 'ready' && this._view && this.now() >= Math.min(Date.parse(this._view.idleExpiresAt), Date.parse(this._view.absoluteExpiresAt))) this._end();
         return this.status === 'ready' && lease?.localEpoch === this._epoch && lease.ownerId === this.identity?.ownerId && lease.csrf === this._view?.csrf;
     }
+    _applicability(lease, isApplicable, audience = this.audience) {
+        if (isApplicable === undefined) return undefined;
+        const current = () => {
+            if (this.audience !== audience || this.identity?.role !== audience || !this.isCurrent(lease)) throw new CookieSessionError(401);
+        };
+        return () => {
+            current();let applies = false;
+            try { applies = typeof isApplicable === 'function' && isApplicable() === true; } catch {}
+            current();return applies;
+        };
+    }
     _end() { clearTimeout(this._deadlineTimer); this._epoch++; this.generation++; this._view = null; this._flow = null; this.identity = null; this.status = 'signedout'; this._emit(); }
     suspend() { clearTimeout(this._deadlineTimer); this.status = 'offline'; this._emit(); }
     async _serverSignOut() {
@@ -245,25 +274,28 @@ export class CookieAdvisorSession {
 }
 export function createCookieRequest(channel, session) {
     const allowed = session.actions ?? actions;
+    const audience = session.audience;
     if (!Object.hasOwn(allowed, channel))
         throw new CookieSessionError(403, 'action_forbidden');
-    return async (command, { signal } = {}) => {
-        const typedReview = channel === 'reviews' || channel === 'guidance';
+    return async (command, { signal, isApplicable } = {}) => {
+        const typedReview = channel === 'reviews' || channel === 'guidance' || channel === 'commerce';
         if (typedReview && command instanceof FormData)
             throw new CookieSessionError(403, 'action_forbidden');
         if (!command || typeof command !== 'object' || !allowed[channel].includes(command.action))
             throw new CookieSessionError(403, 'action_forbidden');
         const body = JSON.stringify(command);
-        if (new TextEncoder().encode(body).length > (channel==='plans'?PLAN_COMMAND_MAX_BYTES:channel==='care'?CARE_COMMAND_MAX_BYTES:typedReview?REVIEW_COMMAND_MAX_BYTES:100000))
+        if (new TextEncoder().encode(body).length > (channel==='commerce'?COMMERCE_COMMAND_MAX_BYTES:channel==='plans'?PLAN_COMMAND_MAX_BYTES:channel==='care'?CARE_COMMAND_MAX_BYTES:typedReview?REVIEW_COMMAND_MAX_BYTES:100000))
             throw new CookieSessionError(413, 'too_large');
         const payload = typedReview ? JSON.parse(body) : command;
         const lease = await session.acquire();
+        const applicable = isApplicable === undefined ? undefined : session._applicability(lease, isApplicable, audience);
         try {
-            if (typedReview && !session.isCurrent(lease)) throw new CookieSessionError(401);
-            if (typedReview && signal?.aborted) throw new DOMException('The operation was aborted.', 'AbortError');
-            const data = await session._fetch(channel, { body: payload, signal, csrf: lease.csrf });
+            if ((typedReview || applicable) && !session.isCurrent(lease)) throw new CookieSessionError(401);
+            if ((typedReview || applicable) && signal?.aborted) throw new DOMException('The operation was aborted.', 'AbortError');
+            const data = await session._fetch(channel, { body: payload, signal, csrf: lease.csrf, ...(applicable ? {isApplicable:applicable} : {}) });
             if (!session.isCurrent(lease))
                 throw new CookieSessionError(401);
+            if (applicable && applicable() !== true) throw new CookieRequestCancelled();
             return data;
         }
         catch (error) {
