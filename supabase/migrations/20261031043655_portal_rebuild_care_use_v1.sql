@@ -173,6 +173,9 @@ declare e jsonb;first_start jsonb;ident jsonb;state text:=case when p->>'kind'='
   state:=case effective->'change'->>'kind' when 'started' then case when p->>'kind'='client_reported_product' then 'unreviewed' else 'using' end when 'paused' then 'paused' when 'stopped' then 'stopped' when 'different' then 'using_differently' else 'unreviewed' end;
   -- A newer-recorded backdated conflicting report remains explicit, never an automatic advice decision.
   select exists(select 1 from concierge.care_events ev cross join lateral (select concierge.care_use_event(ev) b) b cross join lateral (select coalesce(b.b->'amendment'->'replacement',b.b) x) x where ev.client_id=c and exists(select 1 from concierge.care_use_events ue where ue.event_id=ev.id) and concierge.care_use_candidate(c,x.x->'product',p) and coalesce((b.b->'amendment'->>'amendedAt')::timestamptz,ev.recorded_at)>coalesce((e->'amendment'->>'amendedAt')::timestamptz,(e->>'recordedAt')::timestamptz) and x.x->'change'->>'kind' is distinct from effective->'change'->>'kind') into contradiction;
+  -- Preserved actual Starts also participate in chronology. Keep the reported
+  -- stop/pause suppression; a conflict is for review, not automatic resumption.
+  contradiction:=contradiction or exists(select 1 from concierge.activations a where a.client_id=c and p->>'kind'='plan_product' and a.product_id=p->>'productId' and concierge.care_use_compatible(c,jsonb_build_object('kind','plan_product','publication',concierge.care_publication_ref(c,a.version),'productId',a.product_id,'slotId',a.slot),p) and a.started_on<=(clock_timestamp() at time zone 'America/Chicago')::date and effective->'change'->>'kind'<>'started' and a.started_on>(effective->'occurredOn'->>'value')::date);
  end if;
  select (payload-'answer')||jsonb_build_object('match',payload->'answer'->'match') into ident from concierge.care_events where client_id=c and kind='identity' and concierge.care_same_product(payload->'target'->'subject',p) order by revision desc limit 1;
  return jsonb_build_object('product',p,'state',state,'originalStart',start,'latestEvent',case when e is not null then concierge.care_use_summary(e) end,'identity',ident,'contradiction',contradiction);
@@ -405,10 +408,22 @@ end $$;
 alter function concierge.plan_client_view(uuid,integer) rename to plan_client_view_before_care_v1;
 alter function concierge.plan_advisor_publication(uuid,integer) rename to plan_advisor_publication_before_care_v1;
 create function concierge.care_v1_unsupported(c uuid,doc jsonb) returns boolean language plpgsql set search_path='' as $$
-declare p jsonb;s jsonb;begin
+declare p jsonb;s jsonb;ref jsonb;latest jsonb;a record;represented boolean;begin
  for p in select value from jsonb_array_elements(coalesce(doc->'content'->'products','[]')) loop
-  s:=concierge.care_effective_use(c,jsonb_build_object('kind','plan_product','publication',jsonb_build_object('version',doc->'version','documentSchemaVersion',doc->'documentSchemaVersion'),'productId',p->'id','slotId',null));
-  if (s->>'contradiction')::boolean or s->>'state' in ('paused','stopped','using_differently','unreviewed') or s->>'state'='using' and s->'latestEvent'<>'null'::jsonb and not exists(select 1 from concierge.activations where client_id=c and product_id=p->>'id') then return true;end if;
+  ref:=jsonb_build_object('kind','plan_product','publication',jsonb_build_object('version',doc->'version','documentSchemaVersion',doc->'documentSchemaVersion'),'productId',p->'id','slotId',null);
+  s:=concierge.care_effective_use(c,ref);
+  if (s->>'contradiction')::boolean or s->>'state' in ('paused','stopped','using_differently','unreviewed') then return true;end if;
+  represented:=false;
+  -- Match the actual retained v1 per-slot projection, not any same-ID row.
+  for a in select * from (select distinct on(slot) slot,product_id,started_on,version,id from concierge.activations where client_id=c and started_on<=(clock_timestamp() at time zone 'America/Chicago')::date order by slot,started_on desc,id desc) current_use where product_id=p->>'id' loop
+   if not concierge.care_use_compatible(c,jsonb_build_object('kind','plan_product','publication',concierge.care_publication_ref(c,a.version),'productId',a.product_id,'slotId',a.slot),ref) or s->>'state'<>'using' then return true;end if;
+   if s->'originalStart'=jsonb_build_object('state','known','value',a.started_on) then represented:=true;end if;
+  end loop;
+  if s->>'state'='using' then
+   if not represented then return true;end if;
+   latest:=case when s->'latestEvent'->'amendment'<>'null'::jsonb then s->'latestEvent'->'amendment' else s->'latestEvent' end;
+   if latest->>'changeKind'='started' and latest->'occurredOn' is distinct from s->'originalStart' then return true;end if;
+  end if;
  end loop;return false;
 end $$;
 create function concierge.plan_client_view(c uuid,v integer) returns jsonb language plpgsql set search_path='' as $$declare r jsonb;begin
