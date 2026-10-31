@@ -209,3 +209,26 @@ After release: original51 plus3 new source tests **54/54**, retained source/SSR/
 All Node commands use explicit Node22 PATH and `--test-concurrency=1`. The terminal command runs the four new browser files plus original `rebuild-plan-{browser,conflict,model,preview,recovery}.test.mjs`. The broader201 command additionally uses unchanged `rebuild-use*.test.mjs`. Exact expanded argv, times, source warnings, exits and normal owner process closure are in browser-terminal-run.json/focused-final-run.json. Source54 uses explicit controller/port/hydration/presentation/ssr/decision/observation files, avoiding a browser glob after return. Retained122 and strict commands are preserved in source-checks-final.json and the earlier receipt.
 
 Native DB/R7/R6/R4/R5/Docker/PG/Auth/provider/credentials/resources were never accessed or polled. No new server, App default, source grant, email, money/order, push/PR/merge/deploy or full-goal acceptance. Fresh independent NEW Sol/xhigh review must carry the entire original brief, all prior findings/responses, these fixes, the shared Select objection and exact source/evidence. Later genuine/canonical/backend/CI remain coordinator allocations.
+
+## Frozen follow-up completion receipt
+
+Owned implementation/tests/report: **82e387ea4baafc95275b0236e5d0f0f7d7a52528**. Separate attributed shared shell import: **537051eada80d8efce4d97e3d3c3f3c6f118717f**, original ef7b33fe7d2cb6e2fefff97f52248da293967ade, sole shell.css blob754e4c319fd7b99090bf331b27ed03c4a5ce2a0b. Final receipt-only commit is returned in the terminal answer; no tested runtime/test source changes follow82e387ea.
+
+Clean application build at82e387ea: sourceDirty:false, gatewayIncluded:false,2217 inputs. Provenance SHA256 **1769e97b76eeedbec22a64b01207c33433341dc3e0b7b8c6e4e495aa9a02728a**; JS **f73941a05cd105c1da475886210367d99893aed932d5334bd9040dbc384ace05**; CSS **e6984155db9cd4bc02a03effeaade3f08cfa36dd569208e31a5301cd5d455616**. Application and retained package builds exit0;139-asset ZIP8343da88945a6a4ac4ece5d10529fea8c4b3ec181f0608650bee0641a378c0af, Vault8e55c77529350971cd95902292d4be0efc07d6b796ac85b0d8c616153019d593. Earlier own ignored candidates were preserved before generating this clean candidate. No activation/deployment.
+
+Final browser evidence root: `.local-artifacts/portal-rebuild/w3-v3-guidance-browser/`. Frozen source17-path manifest: FROZEN-SOURCE.json. Follow-up evidence inventory **439 files / SHA256 a8320b88450df8b162cbdf360f551a83ec0509d167c0e6bf34651cfd3164c233**, excluding itself and this report. It retains raw RED/setup/GREEN, fresh native references, actual DTO/DOM/screenshots, serial argv/exits, cleanup and clean build receipts.
+
+Shared Select reproduction (requires a NEW future sole Chrome grant; it was last run before return): explicit Node22 PATH, `node --experimental-strip-types --test --test-concurrency=1 .local-artifacts/portal-rebuild/w3-v3-guidance-browser/select-zoom-crossowner.mjs`. It imports unchanged actual primitives through the owned finite browser helper. Actual intended rectangle assertion0/1: trigger(64,432,192,96), popper transform translate(64px,532px) -> physical(128,1064,384,632), stopped option(138,1358,364,94) against320x960, root320 and CSSzoom2. Pointer option clicks also timed out outside viewport in visual-green-1.log. Source-owned UI seams are `apps/portal/src/ui/primitives.tsx:49` and `apps/portal/src/ui/foundation.css:36`; W3 made no shared change. Root owns the investigation/fix. Exact probe, JSON, failing log and screenshot `shared-Select-pointer-placement-at-CSS-zoom2-stays-in-viewport.png` are retained; source54 and module117 do not close this residual.
+
+Selected SHA256 receipts:
+
+- select-zoom-crossowner.mjs: f1d7826309bcfa208cfba3030f278e6cf6d5ea8b7d8fa25ed4d2c99ae75c4fef
+- shared-select-crossowner.json: a31e55dda2fe6ae3d215d71d95948fb1f9d436d2bae4e669e4084a4b3ff2a73c
+- shared-select-crossowner-repeat.log: b46682b8493195cd6557ec8ef3de110f94d2e285facc738acb62ddc2d0bc9af0
+- browser-terminal.log: 0bdec1f9c6c36aec22ff0128a03e1b7f92a841c9dee0cd8daaf1f24080be0aa6
+- browser-terminal-run.json: bfe614d05f754de1474a3fa57d5b3e693a9fd764f167a6a83548a927b63f4f7b
+- CUSTODY-RETURN.json: 5f29134d112609e1fed4302f318e5c66b428d96ca87f44dd22c8d950868833cd
+- FINAL-OWN-INVENTORY.json: 572910af8886f9c78f695a2a68231e6b6eb5140e70decbe0d6f8ef0a8b81257d
+- FINAL-PREVIEW.json: 96169fe1dee6181ff52be69946238f45f0a1fe50de2cb43fb7db77a9c70979f0
+
+NEXT: coordinator imports/reviews only the bounded owned commits and commissions a fresh independent NEW Sol/xhigh review carrying the full source brief/reviews/responses, final source/evidence and Select residual. No resource grant remains live for this worker. Full App/genuine/backend/canonical/CI/full-goal acceptance is not claimed. Source slot is terminal; no further implementation/test scope is opened.
