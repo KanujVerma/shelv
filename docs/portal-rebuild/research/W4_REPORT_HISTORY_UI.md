@@ -406,3 +406,25 @@ env PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH node --experimental-
 ```
 
 Handoff: no production delta or unresolved owned implementation remains in this author phase; the tests/report checkpoint and a receipt-only suffix are returned separately. Same worktree, original imports and previous commits are preserved. **Next: coordinator commissions fresh independent R2 against the exact frozen candidate, carrying R1, fe707, this source/browser evidence and the original pending-review clarification.** Do not infer a new Chrome grant from these commands or an independent/full-goal verdict from author GREEN.
+
+### Frozen RH1 browser receipt
+
+Exact owned browser tests/report commit: **`a1a8402d0dfc914cfd54c5a4abae16ab0bdbe8e6`**, child of clean006b2ae5. Exactly three changed paths: new `apps/portal/tests/rebuild-history-denial-browser-run.mjs`, strengthened `apps/portal/tests/rebuild-history-denial-browser.test.mjs`, and this report. Production runtime remains exactfe707531;96/88/Ef imports remain separate and unchanged. The final suffix is documentation-only.
+
+A post-commit **source-only** rebuild has **sourceHead=a1a8402d / sourceDirty:false** and matches all **2,222 input hashes and48 actual JS/CSS/font output hashes** of the passing52 browser run. `E4/clean-candidate/provenance.json` records correspondence; no browser was relaunched after release.
+
+The frozen **306-file** ignored evidence manifest is `E4/evidence-manifest.json`, SHA-256 **`4f6d1079ac58a04dc37b940c961f2bdf1820e64b802cfede2d41d56356b69ba2`**. It covers all unique ordinal4 browser runs, source-check logs/SSR outputs, runtime/import/preservation audits, failed setup/classification evidence and the clean source bundle. It excludes itself and this report. Earlier236/85 evidence manifests remain byte-exact with zero entry mismatches. Selected final hashes:
+
+| Artifact in E4 | SHA-256 |
+| --- | --- |
+| `red-final-witness.log` | `9ddcfaf88dc90a4b1a84268d0c03f203da537c59d51141f1a03a2774e05840c8` |
+| `final-52.log` | `c897520045a0fa5ed67d8d1147469a49d2418f86e9e672b0ab0e869e449831c3` |
+| `source24.log` | `792686b7d8b5050398b66d1638ecda2d9d5107d3b8afb041308a36c3532aa169` |
+| `original95.log` | `affb54c5085ae7efe2ee65230a3dd4fb7e3be127286959f39cbe518d7937d98e` |
+| `unchanged-review7.log` | `49219a2b2a833b0a25a22a06466dafff3776f44dc47856cc2c0abf1e34b51a7e` |
+| `browser-audit.json` | `470478e9972c42ad242859a45abcc1167ea9fd128f5faf0cf4c43da241de807f` |
+| `release-inventory.json` | `c77ac3c9028060d2a3a5a09c8a7d482fe59be3a06159f71c6f495338c6aff403` |
+| `preview-release.json` | `12c9351857ae4743133046cf4e19d34ac22f9ff7c55e218dd4f625d59dbc50ce` |
+| `clean-candidate/provenance.json` | `03af8371d88d98415732605d7eee8f16ba9794d8b57c29899c7fd940fbf106ea` |
+
+The phase is terminal with a clean committed candidate and custody returned. Parent owns new independent R2 and the remaining App/backend/genuine/full-goal gates. Original exact-retry permission, fresh displayed basis and captured session/view/epoch/mode fences remain mandatory. No pending owned edit or waiting loop; no fresh grant is inferred.
