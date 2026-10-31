@@ -2,6 +2,14 @@
 
 Owner: Kanuj. Updated 31 October 2026. Integration branch `kanuj/portal-rebuild-integration-20261030`; latest application recovery `5029825a` (composition18c78b7d; Node report receipt80b58a47). Fresh fetch resolves main to `d39a7d4943209080df7c4cf97d85784f462758bf`. The unrelated dirty scanner checkout remains untouched. **The complete approved rebuild is in progress.**
 
+## latest custody and continuation
+
+**R7 native and Chrome custody returned11:14:53.715UTC.** W6 has SOURCEONLY CS1 work now; no live resource/browser grant. R7 is coordinator-owned and idle. W2 t3-d6691f48 has the explicit next SOLE SYNTHETIC Chrome grant, with no R7/Auth/DB right. W1 still works only in its isolated M58 branch; parentnative source remains57/76. Source-review taskW7R1 is terminaled12cf95/integration691b2f8c.
+
+Parent verified actual result SHA3d63ab1ae6633f846e02c82680397682538c17470eff4447b9cf70fba6a2a5a6:15PASS,6issued/6closed0/0,554 original responses/70519928 bytes/tested credential and private-marker hits0. Returnreceipt8571969eae82239f6809f7472aff96cb08b9af916b20feb12f4725bdf0a46382 verified; authorfinalaudit17526052eb637d0bb9d91283ee9aa8f9ea6c5a3d7314e32cad76b0bcbd36e739 attests209files, priorNode24cf, all7owncases+5diagnosticcontrols,38per-stackissued/closed,35SQLbodies/fivehelpers/source76/TLS/process/preview. No freshparentDB assertion follows that receipt. Parent also verifies actualrecordedindexHTML equals immutable8467templatefa5eb6c90dc47a2e6ff54c9c9e22b88ce835e92ba3275ea3000220698aa9caed. This partiallyqualifiesactualcodecorrespondence; CS1exactfulloutputproof remainsopen untilfix/newreview.
+
+Next: W6 archiveactual8467outputs, source-onlyCS1exactoutput/HTML/meta/notices/provenancefix/tampertests/finalreport; W2 serialsyntheticbrowserphase fordependencyreview/rebase; W1 isolatedreport/guidanceSQL/native. AfterCS1delivery, integrateonlyownedharnesscommits/newreport and allocateNEWindependentcurrentharness/genuinecare replay withnewworkspace-bound R7grant. Its initialNode/sourcephase mayrun separatelyfromW2syntheticChrome, actualbrowserwaitsexplicitserialhandoff. No fullcare/fullgoal/releaseacceptance yet.
+
 ## scope and authority
 
 The complete [approved input](source/APPROVED_INPUT.txt), [D01-D48](APPROVED_DECISIONS.md), [desktop specification](APPROVED_DESKTOP_SPEC.md), [26-screen manifest](shelv_desktop_design_manifest.json) and secondary states govern. [Contracts](IMPLEMENTATION_CONTRACTS.md), [acceptance](ACCEPTANCE_MATRIX.md), [plan](IMPLEMENTATION_PLAN.md), [execution log](EXECUTION_LOG.md) and [task ledger](TASKS.json) hold the detailed evidence. The five original imports and their hashes remain unchanged.
@@ -44,8 +52,8 @@ Recorded current Root care checkpoint:1213 pass/18 existing opt-in skips/0 failu
 
 ## continuation
 
-1. CN1 independent review and canonical57 are closed within scope; finish CU3 independent round3, preserving prior findings and raw qualifications.
-2. Canonical57 reset,35files/796pgTAP and official security SQL checks pass. Finish exact pinned native helpers; issue a new workspace-bound custody grant for genuine filtered client/advisor history and retained main care tests.
+1. CN1, CU1-CU3 and CA1 scoped reviews are closed. CS1 harnessproof correction/newreview and genuine independentcare replay remain.
+2. R7 canonical57/35files796/securitychecks and exact5nativehelpers are ready. AuthorNode11/all13 and browser15 pass with recordedlimitations. Preserve returnedresources; freshindependentgrant onlyafterCS1fix.
 3. Candidate v2 app composition is implemented and synthetic application checks pass. Execute genuine care browser plus fresh independent integrated review; no full-care/release acceptance yet.
 4. W1 t3-7a7cac7e implements the pinned report/conversation/guidance platform in isolation: Phase1 26f9ae/a977, actual handler seam9fcb, Review14/Guidance9, noop/currentV3 instruction manifest/details/2550 explicit scopes/decision2 and compatibility gates. Child-only actualCLI logicalM58 is20261031091520_portal_rebuild_reviews_guidance_v1.sql; parent remains57/76source, no integration during current genuine-care phases. Continue remaining reports/conversations/public-private guidance/amendments/history, source upload/consent/access/deletion/templates, commerce/fulfillment/returns/refunds, account/coverage/renewal/cancellation/privacy/export, actual delivery/webhooks/inbox/retry, agent enrollment and all five shared Maya/private walkthrough stages.
 5. Complete D01-D48/screens/secondary/V01-V17, exact-source preservation, responsive/keyboard/zoom/human checks, full suites, exact-head CI and reviewed cutover/rollback artifacts. External email/domain/enrollment, representative-human comprehension and Wisconsin service-scope prerequisites remain separate release gates.

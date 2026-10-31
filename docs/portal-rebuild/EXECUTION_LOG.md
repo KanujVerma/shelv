@@ -189,3 +189,9 @@ W2 source frozen278714b7 with387/121source checks, no browser; later allocatione
 Author d20e297e at8467 completes15realgroups,6ownsessionsclosed0/0 atmainfinal; care17/pub1/19queued andexplicitcareStart, nolegacyactivations. Sixpartials preserveallobserver/fixture/storage/locator/normalrestorequalifications. Resourcecustodyremainsheldforfinal209/prior24cf/allpriorcase/TLS/processaudit; no parentresourcecalls.
 
 FreshW7SOURCEONLYreview2001base/importedown8467harness, t3-0dbb6d1a, exactSolxhigh, findsCS1/P2 ignoredHTML/extraoutputacceptedbysourceattestor. Probeownfilesrestored, no nativeoractualauthoralteration/leakclaim. Parentauthorizedsource-onlyexactexpectedoutputset/HTML/meta/notices/provenance/assetbytefixAFTERexplicitresourceRETURN; codeApp/Root unchanged. New actualindependentreplayafterfix required, no fullgoalacceptance.
+
+## 31 October: explicit author resource return and next browser allocation
+
+W6 returnedbothR7+Chrome11:14:53.715UTC. Parentreadactualownreturnreceipt8571969e...6382/result3d63...a5a6 andverifiedPASS15/cleanup6of6/554responses70519928bytesknownhits0; recordedHTMLfa5eb6c matchesimmutable8467template, notfullCS1setclosure. Authorfinalaudit17526052...e739 attests209files/prior24cf/all7cases+5controls/38persessionsclosed/35SQL/helpers76/TLS/process/preview. ParentnoDBqueriesneeded. W6 nowSOURCEONLYCS1fix/archiveactualoutput83; noresourcegrant.
+
+W2existingthreadconfigurationfreshSol/xhigh/default, newimplementationbrowserTaskthread-send:w2-care-dependencies-browser-phase grantedSOLEsyntheticChromeonly, noR7/Auth. W1source7cdfselectivecompatibility reviewed:oneCheckin409key+oneexactprefixedversionaliasbeforefinite lookup,9gateway/32retainedno-networkchecks; remainschildonly, M58SQLinprogress. Newactualgenuineindependentreview afterCS1delivery/newgrants stillrequired.

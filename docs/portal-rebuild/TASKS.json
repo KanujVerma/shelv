@@ -1950,7 +1950,9 @@
       ],
       "migration": "20261031091520_portal_rebuild_reviews_guidance_v1.sql",
       "migrationStatus": "CHILD_ONLY_ALLOCATED_EMPTY_THEN_IMPLEMENTING",
-      "phase2Clarifications": "Closed review_attention history event for ALL dependent publishedreview relationships, separate unique eventId vs stableattentionId and immutable resolution links; no action/right expansion. ExistingCheckinHandlerdictionary content_version_required409 authorized afteractualRED; importnamefaultsetup preserved.; bounded V3 decisionGuidance per canonical state pinned: actual latest v1/v2 receipt revision, no fabricated legacy snapshot, stable clinical manifest excludes day/counter/finance/private notes; live full-head/day CAS for freshwrites and historical committed receipts. Source vectors/SQL pending."
+      "phase2Clarifications": "Closed review_attention history event for ALL dependent publishedreview relationships, separate unique eventId vs stableattentionId and immutable resolution links; no action/right expansion. ExistingCheckinHandlerdictionary content_version_required409 authorized afteractualRED; importnamefaultsetup preserved.; bounded V3 decisionGuidance per canonical state pinned: actual latest v1/v2 receipt revision, no fabricated legacy snapshot, stable clinical manifest excludes day/counter/finance/private notes; live full-head/day CAS for freshwrites and historical committed receipts. Source vectors/SQL pending.",
+      "selectiveCompatibilityCommit": "7cdf86da2c83db4019826aac15921ee92846de68",
+      "sharedFileClaim": "CHILD_ONLY upstream.ts exactonelegacyerroralias beforefinite safeCodes;9actualgatewayno-network+32retainedchecks. No parentnative76integration."
     },
     {
       "role": "W7 care application composition review",
@@ -2009,7 +2011,7 @@
         "apps/portal/tests/rebuild-care-native-stack.mjs explicit phase only",
         "docs/portal-rebuild/research/W6_CARE_BROWSER.md"
       ],
-      "resources": "R7+Chrome STILLHELD pending finalaudit/explicitRETURN. Author d20e297e PASS15at8467,6issued6closed0/0 atmainfinal, care17/pub1/19queued/0legacyactivations(explicitCareStartoccurred). Sixpartials preserved. CS1sourceproofgap identified separately; authorfixSOURCEONLYafterreturn authorized, no actualalteration/leak asserted; independentcurrentchain pending.",
+      "resources": "BOTH R7native+Chrome RETURNED11:14:53.715UTC; resultSHA3d63 verified15PASS/6closed0/0; all38per-stackclosed,209protected/priorNode24cf/7owncases+5diagnosticcontrols/35SQL/5helpers76/TLS verified byauthor. CurrentSOURCEONLYCS1fix; NO live resource/browser grant.",
       "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required",
       "earlyCommits": [
         "41b3600514ca7fb6236e09324b4ecda2ef8d450a",
@@ -2052,7 +2054,12 @@
         "issued": 6,
         "closed": 6,
         "status": "AUTHOR_SCOPED_FUNCTIONAL_PASS_SOURCE_PROOF_CS1_OPEN_FINAL_AUDIT_PENDING"
-      }
+      },
+      "resourceReturn": "2026-10-31T11:14:53.715Z",
+      "resourceReturnSha256": "8571969eae82239f6809f7472aff96cb08b9af916b20feb12f4725bdf0a46382",
+      "finalAuditSha256": "17526052eb637d0bb9d91283ee9aa8f9ea6c5a3d7314e32cad76b0bcbd36e739",
+      "resultSha256": "3d63ab1ae6633f846e02c82680397682538c17470eff4447b9cf70fba6a2a5a6",
+      "parentVerified": "Actualresult/returnreceiptSHA andPASS15/cleanup6/554responses70519928bytesknownhits0; actualrecordedindexfa5eb6c equalsimmutable8467template. FullCS1outputsetstillopen."
     },
     {
       "role": "W7 care app recovery round2",
@@ -2195,6 +2202,35 @@
         "691b2f8c"
       ],
       "verdict": "SOURCEspec/quality CHANGES_REQUIRED CS1/P2; noadditionalmaterialfinding. Pure23/sourceSSR82/compile/types pass; noactualnative/browser/resourceverdict."
+    },
+    {
+      "role": "W2 advisor care dependency browser implementation phase",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw2-care-dependencies-browser-phase-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-care-dependencies-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d6691f48",
+      "baseCommit": "47586ed342f0cee8e92c8323b94196da3abb93b6",
+      "status": "running",
+      "writeSet": [
+        "OwnedadvisorcaredependenciesproductionpathsifbrowserREDprovesboundedfix",
+        "apps/portal/tests/rebuild-advisor-dependencies-browser*",
+        "apps/portal/tests/rebuild-app-browser.test.mjs ONLYfinitebackendnew2actionDTOsupport/all19assertionspreserved",
+        "docs/portal-rebuild/research/W2_CARE_DEPENDENCIES.md"
+      ],
+      "resources": "EXPLICIT SOLE SYNTHETIC Chrome afterW6return; NO native/R7/Auth/DB/resources",
+      "verification": "Fresh existingchildconfigSol/xhigh/default before resumedTask; bothchildtools/eightpinsagainrequired",
+      "scope": "ActualWorkspace/controller/cookie/Rootmapper/syntheticHTTP/keyboard3203901440; explicitrebase/no blind unavailableheads/exactretry/sourceauthorityretained; laternewindependentreviewrequired"
     }
   ]
 }
