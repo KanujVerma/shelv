@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
+import {readFile,writeFile,unlink,mkdtemp,rename} from 'node:fs/promises';
 import path from 'node:path';
 import {requireCareBrowserAuthorization,validateCareBrowserApplication,careBrowserPins} from './rebuild-care-native-browser-source.mjs';
 import {requireCareCustody,attestCareFixture,careNativePins} from '../scripts/rebuild-care-native-fixture.mjs';
@@ -46,9 +46,15 @@ test('new browser content preserves the retained descriptor and private projecti
 test('candidate evidence binds exact clean head, all source bytes and all emitted bytes without a gateway',()=>{
   const head='b'.repeat(40),source='actual source bytes',asset=Buffer.from([0,255,1]),output=Buffer.from('actual output');
   const provenance={schemaVersion:1,candidate:true,gatewayIncluded:false,sourceHead:head,sourceDirty:false,entry:'apps/portal/src/main.tsx',template:'apps/portal/src/app/index.html',inputs:[{source:'apps/portal/src/main.tsx',bytes:Buffer.byteLength(source),sha256:sha(source)}],assets:[{source:'docs/portal-rebuild/design/asset.png',output:'assets/approved/asset.png',bytes:asset.length,sha256:sha(asset)}]};
-  const evidence={provenance,head,dirty:false,inputs:{'apps/portal/src/main.tsx':Buffer.from(source),'docs/portal-rebuild/design/asset.png':asset},outputs:{'application.js':output,'assets/approved/asset.png':asset}};
+  const declared={'application.js':output,'assets/approved/asset.png':asset,'index.html':Buffer.from('<!doctype html><html></html>'),'build-metadata.json':Buffer.from('{"fresh":"compiler"}\n'),'licenses/emitted-packages.json':Buffer.from('{"fresh":"notices"}\n'),'licenses/packages/example/LICENSE':Buffer.from('original notice'),'fonts/example.woff2':Buffer.from([0,1,2,3]),'application-provenance.json':Buffer.from(JSON.stringify(provenance,null,2)+'\n')};
+  const expected={provenance:structuredClone(provenance),outputs:declared};
+  const evidence={provenance,head,dirty:false,expected,outputs:{...declared}};
   assert.equal(validateCareBrowserApplication(evidence).sourceHead,head);
-  for(const patch of [{head:'c'.repeat(40)},{dirty:true},{provenance:{...provenance,sourceDirty:true}},{provenance:{...provenance,gatewayIncluded:true}},{inputs:{...evidence.inputs,'apps/portal/src/main.tsx':Buffer.from('stale')}},{outputs:{...evidence.outputs,'assets/approved/asset.png':Buffer.from('stale')}},{outputs:{...evidence.outputs,'_worker.js':output}}])assert.throws(()=>validateCareBrowserApplication({...evidence,...patch}));
+  for(const patch of [{head:'c'.repeat(40)},{dirty:true},{expected:undefined},{provenance:{...provenance,sourceDirty:true}},{provenance:{...provenance,gatewayIncluded:true}},{provenance:{...provenance,inputs:[{...provenance.inputs[0],sha256:sha('stale')}]}},{provenance:{...provenance,assets:[...provenance.assets,{source:'caller-extra',output:'extra.txt',bytes:1,sha256:sha('x')}]}},{outputs:{...evidence.outputs,'extra.txt':output}},{outputs:{...evidence.outputs,'_worker.js':output}}])assert.throws(()=>validateCareBrowserApplication({...evidence,...patch}));
+  for(const file of Object.keys(declared)){
+    assert.throws(()=>validateCareBrowserApplication({...evidence,outputs:{...declared,[file]:Buffer.from('changed')}}),'Changed HTML/meta/provenance/notices/font/asset/code must refuse');
+    const missing={...declared};delete missing[file];assert.throws(()=>validateCareBrowserApplication({...evidence,outputs:missing}),'Every expected file is required');
+  }
   assert.equal(careBrowserPins.applicationCommit,'18c78b7d');
 });
 
@@ -75,3 +81,22 @@ test('SQLite observation is disabled by default and native Node; only granted ca
   assert.equal(m.careBrowserDatabaseId(actor,dir,files),'f'.repeat(64));assert.equal(m.careBrowserDatabaseId(metadata,dir,files),null);assert.equal(m.careBrowserDatabaseId(cache,dir,files),null);
   assert.throws(()=>m.careBrowserDatabaseId(actor,dir,[]));assert.throws(()=>m.careBrowserDatabaseId('/foreign/'+path.basename(actor),dir,files));const unknown=dir+'/resources/do/vault-AdvisorSessionObject/unknown.sqlite';assert.throws(()=>m.careBrowserDatabaseId(unknown,dir,[...files,unknown]));
 });
+
+// Explicit source-only real-files opt-in. No browser, Miniflare, fixture or Auth.
+// The caller must first build the current committed clean application candidate.
+if(process.env.SHELV_REBUILD_CARE_BROWSER_CORRESPONDENCE==='1') {
+  const {attestCareBrowserApplication}=await import('./rebuild-care-native-browser-source.mjs');
+  const directory=path.resolve(import.meta.dirname,'../../../.local-artifacts/portal-rebuild/application'),sourceArea=path.resolve(import.meta.dirname,'../../../.local-artifacts/portal-rebuild/w6-care-native-browser-r7/source');
+  let baseline;
+  await test('real source correspondence accepts exactly the clean declared83-file candidate',async()=>{baseline=await attestCareBrowserApplication();assert.equal(Object.keys(baseline.outputs).length,83);assert.equal(baseline.sourceDirty,false);assert.equal(baseline.gatewayIncluded,false);});
+  assert.ok(baseline,'Positive clean baseline is required before tamper sensitivity');
+  const critical=['index.html','build-metadata.json','application-provenance.json','licenses/emitted-packages.json',Object.keys(baseline.outputs).find(p=>p.startsWith('licenses/packages/')),Object.keys(baseline.outputs).find(p=>p.startsWith('fonts/')&&p.endsWith('.woff2')),Object.keys(baseline.outputs).find(p=>p.startsWith('assets/approved/')),'application.js'];
+  assert.ok(critical.every(Boolean));
+  for(const relative of critical) {
+    await test('real source correspondence refuses changed '+relative,async()=>{const file=path.join(directory,relative),original=await readFile(file);try{await writeFile(file,Buffer.concat([original,Buffer.from('\nOWN SOURCE-ONLY BYTE TAMPER\n')]));await assert.rejects(attestCareBrowserApplication());}finally{await writeFile(file,original);}});
+    await test('real source correspondence refuses missing '+relative,async()=>{const file=path.join(directory,relative),holding=await mkdtemp(path.join(sourceArea,'cs1-held-')),saved=path.join(holding,'original');await rename(file,saved);try{await assert.rejects(attestCareBrowserApplication());}finally{await rename(saved,file);}});
+  }
+  await test('real source correspondence refuses an ignored extra without trusting directory inventory',async()=>{const extra=path.join(directory,'own-cs1-extra.txt');let created=false;try{await writeFile(extra,'OWN EXTRA OUTPUT, NO PRIVATE DATA\n',{flag:'wx'});created=true;await assert.rejects(attestCareBrowserApplication());}finally{if(created)await unlink(extra);}});
+  await test('real source correspondence refuses self-declared extra provenance input/asset',async()=>{const file=path.join(directory,'application-provenance.json'),original=await readFile(file),value=JSON.parse(original);value.inputs.push({source:'docs/portal-rebuild/README.md',bytes:1,sha256:sha('x')});value.assets.push({source:'docs/portal-rebuild/README.md',output:'caller-added.txt',bytes:1,sha256:sha('x')});try{await writeFile(file,JSON.stringify(value,null,2)+'\n');await assert.rejects(attestCareBrowserApplication());}finally{await writeFile(file,original);}});
+  await test('real source correspondence restores the exact clean output digest set after all probes',async()=>{const after=await attestCareBrowserApplication();assert.deepEqual(after.outputs,baseline.outputs);assert.equal(after.provenanceSha256,baseline.provenanceSha256);});
+}

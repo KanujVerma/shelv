@@ -41,25 +41,22 @@ export function requireCareBrowserAuthorization({selection,grant,chromeGrant},wo
   return {selection:selected,purpose:careBrowserPins.purpose,grantId:grant.grantId,chromeGrantId:chromeGrant.grantId};
 }
 
-export function validateCareBrowserApplication({provenance,head,dirty,inputs,outputs}) {
+export function validateCareBrowserApplication({provenance,head,dirty,outputs,expected}) {
   assert.match(head,/^[0-9a-f]{40}$/);assert.equal(dirty,false,'Run from a clean committed checkout');
+  assert.ok(expected?.provenance&&expected?.outputs,'Fresh compiler/builder-derived expected outputs are required');
   assert.equal(provenance.schemaVersion,1);assert.equal(provenance.candidate,true);assert.equal(provenance.gatewayIncluded,false);
   assert.equal(provenance.sourceHead,head);assert.equal(provenance.sourceDirty,false,'Rebuild candidate after the source commit');
   assert.equal(provenance.entry,'apps/portal/src/main.tsx');assert.equal(provenance.template,'apps/portal/src/app/index.html');
-  assert.ok(provenance.inputs.length>0);assert.ok(provenance.assets.length>0);
-  const sources=new Set(),emitted=new Set();
-  for(const item of [...provenance.inputs,...provenance.assets]) {
-    assert.ok(!sources.has(item.source),'Duplicate source provenance');sources.add(item.source);
-    const bytes=inputs[item.source];assert.ok(Buffer.isBuffer(bytes),'Missing source bytes');
-    assert.equal(bytes.length,item.bytes);assert.equal(sha(bytes),item.sha256,'Candidate source correspondence failed');
-    if(item.output){const bytes=outputs[item.output];assert.ok(Buffer.isBuffer(bytes));assert.equal(bytes.length,item.bytes);assert.equal(sha(bytes),item.sha256);}
-  }
+  assert.equal(expected.provenance.sourceHead,head);
+  const canonical=value=>Array.isArray(value)?value.map(canonical):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(k=>[k,canonical(value[k])])):value;
+  assert.equal(sha(JSON.stringify(canonical(provenance))),sha(JSON.stringify(canonical(expected.provenance))),'Candidate provenance differs from fresh exact source/asset declarations');
+  assert.deepEqual(Object.keys(outputs).sort(),Object.keys(expected.outputs).sort(),'Candidate must have exactly the compiler/builder-declared output set');
   for(const [relative,bytes] of Object.entries(outputs)) {
     assert.ok(!path.isAbsolute(relative)&&!relative.split('/').includes('..'));assert.ok(Buffer.isBuffer(bytes));
     assert.ok(!/(?:^|\/)(?:_worker\.js|_routes\.json|.*\.private\..*|SELECTION\.json)$/.test(relative),'No gateway or private resource file in ASSETS');
-    emitted.add(relative);
+    const declared=expected.outputs[relative];assert.ok(Buffer.isBuffer(declared));assert.equal(bytes.length,declared.length,'Candidate byte length differs: '+relative);assert.equal(sha(bytes),sha(declared),'Candidate bytes differ: '+relative);
   }
-  assert.ok(emitted.has('application.js'));
+  assert.ok(Object.hasOwn(outputs,'application.js'));
   return {sourceHead:head,sourceDirty:false,gatewayIncluded:false,inputs:provenance.inputs.length,assets:provenance.assets.length,outputs:Object.fromEntries(Object.entries(outputs).sort(([a],[b])=>a.localeCompare(b)).map(([file,bytes])=>[file,{bytes:bytes.length,sha256:sha(bytes)}])),provenanceSha256:sha(JSON.stringify(provenance))};
 }
 
@@ -69,23 +66,12 @@ export async function attestCareBrowserApplication(root=careBrowserRoot) {
   const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
   const head=git('rev-parse','HEAD'),dirty=git('status','--porcelain')!=='';
   git('merge-base','--is-ancestor',careBrowserPins.parentCommit,head);
+  assert.equal(dirty,false,'Run from a clean committed checkout');
   const directory=path.join(root,'.local-artifacts/portal-rebuild/application');
-  const provenance=JSON.parse(await readFile(path.join(directory,'application-provenance.json'),'utf8')),inputs={},outputs={};
-  for(const item of [...provenance.inputs,...provenance.assets]) {
-    const file=path.resolve(root,item.source);assert.ok(file.startsWith(root+path.sep),'Candidate source must be inside this checkout');
-    const stat=await lstat(file);assert.ok(stat.isFile()&&!stat.isSymbolicLink());inputs[item.source]=await readFile(file);
-  }
-  async function visit(dir,prefix='') {for(const e of await readdir(dir,{withFileTypes:true})) {assert.ok(!e.isSymbolicLink());const relative=prefix+e.name,file=path.join(dir,e.name);if(e.isDirectory())await visit(file,relative+'/');else{assert.ok(e.isFile());outputs[relative]=await readFile(file);}}}
+  const {expectedCareBrowserApplication}=await import('./rebuild-care-native-browser-compile.mjs'),expected=await expectedCareBrowserApplication({sourceHead:head}),outputs=Object.create(null);
+  async function visit(dir,prefix='') {for(const e of await readdir(dir,{withFileTypes:true})) {assert.ok(!e.isSymbolicLink());const relative=prefix+e.name,file=path.join(dir,e.name);if(e.isDirectory())await visit(file,relative+'/');else{assert.ok(e.isFile());assert.ok(Object.hasOwn(expected.outputs,relative),'Undeclared candidate output: '+relative);outputs[relative]=await readFile(file);}}}
   await visit(directory);
-  const receipt=validateCareBrowserApplication({provenance,head,dirty,inputs,outputs});
-  const metadata=JSON.parse(outputs['build-metadata.json']);
-  for(const key of Object.keys(metadata.outputs))assert.ok(Object.hasOwn(outputs,path.relative(directory,path.resolve(root,'apps/portal',key))),'Missing actual emitted file');
-  const {compileCareBrowserApplication}=await import('./rebuild-care-native-browser-compile.mjs');
-  const compiled=await compileCareBrowserApplication();
-  for(const file of compiled.outputFiles) {
-    const relative=path.relative(directory,file.path);assert.ok(Object.hasOwn(outputs,relative));
-    assert.equal(sha(outputs[relative]),sha(file.contents),'Served bundle differs from current write:false compilation');
-  }
-  assert.equal(Object.keys(compiled.metafile.inputs).length+1,provenance.inputs.length);
-  return {...receipt,directory};
+  assert.ok(outputs['application-provenance.json'],'Missing generated provenance');
+  const provenance=JSON.parse(outputs['application-provenance.json']),receipt=validateCareBrowserApplication({provenance,head,dirty,outputs,expected});
+  return {...receipt,directory,expectedDirectory:expected.expectedDirectory};
 }
