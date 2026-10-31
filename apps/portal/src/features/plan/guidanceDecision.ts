@@ -75,7 +75,12 @@ export function createGuidanceDecisionController(initial:GuidanceDecisionContext
    }catch(error){if(op.current())emit({...state,phase:'conflict',error:(error as {status?:number}).status??503});}
    finally{op.finish();}
   },
-  retire(){epoch++;operation=null;if(state.phase==='saving'||state.phase==='refreshing')state={...state,phase:'uncertain'};},
+  retire(){
+   epoch++;operation=null;if(state.phase==='saving'||state.phase==='refreshing')state={...state,phase:'uncertain'};
+   // A spent access/review context must survive leaving the recommendation.
+   // Retain only an actual intent or restriction; no background server command.
+   if(live()&&ctx.mode==='client'&&(state.command||state.attemptedChoice||state.phase==='conflict'))ctx.session.memory.set(ledgerKey,{...ctx.session.memory.get<Record<string,GuidanceDecisionIntent>>(ledgerKey),[initial.decision.id]:state});
+  },
   dispose(){disposed=true;epoch++;operation=null;stop();listeners.clear();},
  };
 }
