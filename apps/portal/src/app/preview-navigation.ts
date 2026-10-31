@@ -1,6 +1,5 @@
 import { buildRoute, parseRoute, parentRoute } from "../navigation/routes.ts";
 import { restoreNavigationContext } from "../navigation/history.ts";
-import type { NavigationRestore } from "../navigation/history.ts";
 import type { PlanRoute } from "../features/plan/types.ts";
 const planNames = new Set([
   "plan",
@@ -18,7 +17,7 @@ export function createBrowserPreviewNavigation(
   draftId: string,
   isCurrent: () => boolean = () => true,
 ) {
-  type Entry = { route: PlanRoute; depth: number; context: NavigationRestore };
+  type Entry = { route: PlanRoute; depth: number };
   const outer = { name: "advisor-preview" as const, draftId };
   let initialParent = navigator.backDestination();
   const entries = new Map<string, Entry>(),
@@ -32,7 +31,6 @@ export function createBrowserPreviewNavigation(
   let entry: Entry = {
       route: { name: "plan", routine: "morning" },
       depth: 0,
-      context: { scrollY: 0, focusKey: null },
     },
     entryId = id(),
     version = 0;
@@ -41,19 +39,20 @@ export function createBrowserPreviewNavigation(
     const route = parseRoute(win.location.pathname + win.location.search);
     return route?.name === "advisor-preview" && route.draftId === draftId;
   };
-  function capture() {
-    entry.context = {
-      scrollY: Math.max(0, win.scrollY),
-      focusKey: win.document.activeElement?.id ?? null,
-    };
-  }
-  function emit() {
+  function emit(resetContext = false) {
     const token = ++version;
     listeners.forEach((fn) => fn());
-    win.requestAnimationFrame(() => {
-      if (token === version && listeners.size && isCurrent() && isOuter())
-        restoreNavigationContext(entry.context, win.document, win);
-    });
+    // The canonical navigator captures and restores every history traversal.
+    // Only a local fallback with no traversal needs its own fresh context.
+    if (resetContext)
+      win.requestAnimationFrame(() => {
+        if (token === version && listeners.size && isCurrent() && isOuter())
+          restoreNavigationContext(
+            { scrollY: 0, focusKey: null },
+            win.document,
+            win,
+          );
+      });
   }
   function pop() {
     if (!isCurrent() || !isOuter()) return;
@@ -61,7 +60,6 @@ export function createBrowserPreviewNavigation(
     entry = entries.get(entryId) ?? {
       route: { name: "plan", routine: "morning" },
       depth: 0,
-      context: { scrollY: 0, focusKey: null },
     };
     entries.set(entryId, entry);
     emit();
@@ -78,7 +76,6 @@ export function createBrowserPreviewNavigation(
           entry = {
             route: { name: "plan", routine: "morning" },
             depth: 0,
-            context: { scrollY: 0, focusKey: null },
           };
           entries.set(current, entry);
         }
@@ -100,14 +97,12 @@ export function createBrowserPreviewNavigation(
       const route = parseRoute(buildRoute(input));
       if (!route || !planNames.has(route.name))
         throw Error("invalid_preview_route");
-      capture();
       const depth = entry.depth + 1;
       navigator.navigate(outer);
       entryId = id();
       entry = {
         route: route as PlanRoute,
         depth,
-        context: { scrollY: 0, focusKey: null },
       };
       entries.set(entryId, entry);
       emit();
@@ -126,16 +121,14 @@ export function createBrowserPreviewNavigation(
     },
     back() {
       if (entry.depth > 0) {
-        capture();
         navigator.back();
       } else {
         entry = {
           route: parentRoute(entry.route) as PlanRoute,
           depth: 0,
-          context: { scrollY: 0, focusKey: null },
         };
         entries.set(entryId, entry);
-        emit();
+        emit(true);
       }
     },
     exit() {
@@ -154,7 +147,6 @@ export function createBrowserPreviewNavigation(
       entry = {
         route: { name: "plan", routine: "morning" },
         depth: 0,
-        context: { scrollY: 0, focusKey: null },
       };
       version++;
       win.removeEventListener("popstate", pop);

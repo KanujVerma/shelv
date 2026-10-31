@@ -5,6 +5,7 @@ import {prepareApplication} from '../src/app/bootstrap.ts';
 import {CookieAdvisorSession} from '../site/auth/advisor-cookie-session.js';
 import {CookieClientSession} from '../site/auth/client-cookie-session.js';
 import {createAdvisorSessionBridge} from '../site/auth/advisor-session-bridge.js';
+import {PortalSession} from '../site/auth/session.js';
 
 const keys=['token_hash','type','error','error_code','error_description','code','access_token','refresh_token','expires_at','expires_in','token_type','provider_token','provider_refresh_token'];
 function consume(path) {
@@ -58,6 +59,19 @@ test('retained cookie consumers reject bad shared callbacks before complete or r
       assert.equal(requests,0);assert.equal(coordinates,0);assert.equal(bridge.status,'initial');
     } finally {bridge.dispose();}
   }
+});
+test('retained R2 Auth session refuses invalid shared callbacks before SDK initialization or exchange',async()=>{
+  let requests=0;
+  const session=new PortalSession({enabled:true,authUrl:'https://auth.invalid',operationsUrl:'https://auth.invalid/operations',publishableKey:'sb_publishable_synthetic'},
+    async()=>{requests++;throw Error('unexpected network');},
+    {restore:false,channelFactory:null,tab:()=>undefined,durable:()=>undefined});
+  try {
+    for(const path of ['/plan#provider_token=SYNTHETIC','/plan?code=a&code=b','/plan#refresh_token=','/plan?error_description=SYNTHETIC']) {
+      await assert.rejects(session.accept(consume(path).callback),e=>e.status===401);
+      assert.equal(session.status,'signedout');assert.equal(session.token,null);
+    }
+    assert.equal(requests,0);assert.equal(session.storage.current,null);
+  } finally {session.dispose();}
 });
 test('shared callback preserves supported kind/type values and validates retained navigation',()=>{
   for(const type of ['email','signup','invite','magiclink','recovery','email_change']) {

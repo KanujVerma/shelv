@@ -21,6 +21,29 @@ Direct actual-function tests were written and run before production edits: **0/4
 
 Ignored evidence: `.local-artifacts/portal-rebuild/w0-app-fixes/callback-red.log` and `callback-green.log`. Strict frontend typecheck passes with original flags. Browser callbacks, retained session suite and final combined verification remain pending.
 
-## Remaining work
+Early shared-consumer seam: **`db1829ab1f35de23b0102fd02bb096d9881aa3f1`**, reported immediately to the parent with unchanged exports and red/green evidence. A further actual retained `PortalSession` negative test confirms rejection before SDK initialization/exchange, with zero fetches/current credentials. Its pre-existing SDK lock-deprecation notice remains unchanged. No synthetic JWT was made or accepted as genuine Auth evidence.
 
-A1 canonical preview-context regression/fix and A2 post-await applicability regression/fix are in progress. Native browser validation requires the parent's explicit allocation. Genuine Auth/Vault/Edge/database/hosted acceptance and a fresh independent review remain separate gates. No push/PR/merge/deploy, real client/source/email/funds/order or database/Auth fixture action is authorized or performed.
+## A1: one owner for preview history restoration
+
+The actual canonical navigator plus actual cursor regression failed with native Forward `scrollY=0`, expected `600`. The cursor's duplicate `Entry.context` and traversal restoration are removed; the canonical navigator remains the single owner of history capture/restore. Only the cursor's no-history parent fallback restores fresh zero context. Product/evidence routes still live only in session memory indexed by the original opaque markers. No shared history/UI change or seam request is needed by current pure evidence.
+
+The new pure model asserts product `250`/focus `product-focus`, evidence `600`/focus `evidence-focus`, three repeated native Back/Forward cycles, two-entry traversal, evening routine, predictive BackDestination, exact routine editor exit/opener, re-entry morning reset, refresh/session replacement and cancellation of old frames. RED **1/2 pass**, the expected Forward assertion fails. GREEN focused cursor/state group **5/5 pass**. This is plain-object history/event/viewport execution of the actual source, not DOM/browser acceptance. Browser geometry/timing/focus remains pending allocation.
+
+## A2: post-transport application continuations
+
+Verified the report's four internal `_accept` variants using actual session/cookie/factory/transport/root mapping and finite fetch responses, at microtask offset12. Unassigned old results fulfilled and restored capabilities; assigned old results rejected401 after restoring view/publish. The fix retires `selectionSequence`, clears selected target on invalidation, and checks creation-boundary applicability and abort after awaits before selection/reset, capability mutation and private return. Gate/context, client read/decision, directory/payment and publication continuations receive the same post-await check. Existing transport fences remain intact.
+
+All four now reject401, keep all seven permissions false, clear old private intent in both boundary/transport memory and refuse subsequent old-port requests without network. A lawful new adapter works under the new owner/login. Post-transport draft/gate aborts reject503 without changing the permission snapshot. A reversion check against the original base records **6 failures /1 pass** for the expanded seven cases; restored source passes **7/7**, and the original ports plus new continuation group passes **21/21**. Original reverse draft/gate ordering and uncertain manual work still pass.
+
+Ordinary `runtime.restore()` offsets1-24 do not reproduce post-invalidation permission restoration. The direct `_accept` control is an explicitly labeled internal diagnosis. One initial test wrongly required a caller's later `.then` handler to run before any subsequent invalidation; an already fulfilled promise cannot promise that. The corrected ordinary sweep asserts cleared permissions after all real restore/operation continuations settle. No ordinary browser reachability, server authorization bypass or private-data disclosure is claimed.
+
+## Scoped verification and remaining work
+
+- Original nine-file source/SSR/build group plus four new app test files: **95/95 pass**, zero failures/skips. This overlaps the original79 and must not be added to it.
+- Affected retained session group: actual `auth-flow`, `adapter`, `client-adapter`, `client-transport`, `navigation-return`, `advisor-logout`: **44/44 pass**, zero failures/skips. Bundles use normal runtime tsconfig and its ignored `.test-build/w0-app-fixes`, with candidate/site copied from this checkout's retained source. An initial output-location mistake caused two package-resolution harness errors; rerunning in the normal runtime location resolves them without source or dependency changes.
+- Strict frontend and retained-session typechecks, UI guard and isolated application build pass with original flags. No CSS change; UI guard checks11 retained stylesheets.
+- Browser tests are authored but not executed before the explicit parent grant. Original app9 plus added nonzero native-context/callback cases are the pending target. No Chrome/DOM resource has been opened.
+
+Ignored evidence under `.local-artifacts/portal-rebuild/w0-app-fixes/`: `preview-red.log`, `preview-green.log`, `continuation-red.log`, `continuation-red-expanded.log`, `continuation-green-expanded.log`, `focused-source.log`, `retained-session.log`, callback logs. Exact browser/source heads and final evidence will be recorded after the pending allocation.
+
+Genuine Auth/Vault/Edge/database/hosted acceptance and a fresh independent review remain separate gates. No push/PR/merge/deploy, real client/source/email/funds/order or database/Auth fixture action is authorized or performed. Unrelated feature/foundation findings and author responses remain preserved under their existing owners.

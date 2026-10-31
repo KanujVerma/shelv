@@ -29,7 +29,11 @@ import type {
 } from "../features/advisor/types.ts";
 import type { ClientPlanPorts } from "../features/plan/types.ts";
 import { TransportError } from "../transport/session.ts";
-import type { CookieChannel, OperationPort } from "../transport/session.ts";
+import type {
+  CookieChannel,
+  OperationKind,
+  OperationPort,
+} from "../transport/session.ts";
 import { advisorCookieRequest, clientCookieRequest } from "./retained.ts";
 import type { ApplicationSession } from "./session.ts";
 const advisorActions = new Set<PlanCommand["action"]>([
@@ -78,9 +82,10 @@ function audience(runtime: ApplicationSession, expected: "client" | "advisor") {
 function capturedSession(runtime: ApplicationSession) {
   const boundary = runtime.getSnapshot().boundary;
   if (!boundary?.isCurrent()) throw new TransportError(401);
-  return () => {
+  return (options?: { signal?: AbortSignal }, kind: OperationKind = "read") => {
     if (runtime.getSnapshot().boundary !== boundary || !boundary.isCurrent())
       throw new TransportError(401);
+    if (options?.signal?.aborted) throw new TransportError(503, kind);
   };
 }
 function channel<I, O>(
@@ -127,18 +132,21 @@ export function createClientPorts(
     read: {
       async execute(input, options) {
         current();
-        return (await plan(
+        const result = (await plan(
           runtime,
           input,
           new Set(["read_client_plan_v1"]),
           options,
         )) as ClientPlanView;
+        current(options);
+        return result;
       },
     },
     decision: {
       async execute(input, options) {
         current();
         await plan(runtime, input, new Set(["record_decision_v1"]), options);
+        current(options, "write");
       },
     },
   };
@@ -186,6 +194,8 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
   reset(true);
   const stop = runtime.transport.subscribeInvalidation(() => {
     gateSequence++;
+    selectionSequence++;
+    selected = null;
     Object.assign(permissions, {
       view: false,
       edit: false,
@@ -215,6 +225,7 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
       new Set(["read_advisor_gate_v1"]),
       options,
     )) as AdvisorGateView;
+    current(options);
     if (sequence !== gateSequence || key !== targetKey(selected))
       throw new TransportError(409);
     if (result.capabilities.actorId !== actorId) throw new TransportError(503);
@@ -222,6 +233,7 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
     return result;
   }
   async function select(view: DraftView, options?: { signal?: AbortSignal }) {
+    current(options);
     selected = view.target;
     gateSequence++;
     reset(selected === null);
@@ -239,13 +251,16 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
     plans: {
       async execute(input, options) {
         current();
+        const kind = reads.has(input.action) ? "read" : "write";
         const selection = selecting.has(input.action)
           ? ++selectionSequence
           : null;
         if (selection !== null) gateSequence++;
         const result = await plan(runtime, input, advisorActions, options);
+        current(options, kind);
         if ("draft" in result && selection === selectionSequence)
           await select(result, options);
+        current(options, kind);
         return result;
       },
     },
@@ -255,7 +270,7 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
         const command = structuredClone(input);
         if (command.action !== "advisor_list") throw new TransportError(403);
         buildConciergeRpc(command, actorId);
-        return channel(
+        const result = await channel(
           runtime,
           "operations",
           "read",
@@ -263,6 +278,8 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
           mapConciergeAdvisorDirectory,
           options,
         );
+        current(options);
+        return result;
       },
     },
     context: {
@@ -275,6 +292,7 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
         )
           throw new TransportError(409);
         const result = await gate(input.target, options);
+        current(options);
         return {
           clientId: result.clientId,
           approval: result.approval,
@@ -290,7 +308,7 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
         if (command.action !== "advisor_read" || command.schemaVersion !== 2)
           throw new TransportError(403);
         buildPaymentCallV2(command, actorId);
-        return channel(
+        const result = await channel(
           runtime,
           "payments",
           "read",
@@ -298,6 +316,8 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
           (value) => mapPaymentViewV2(value),
           options,
         );
+        current(options);
+        return result;
       },
     },
     payments: {
@@ -309,7 +329,7 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
           command.schemaVersion === 2
             ? buildPaymentCallV2(command, actorId)
             : buildPaymentCall(command, actorId);
-        return channel(
+        const result = await channel(
           runtime,
           "payments",
           "write",
@@ -330,6 +350,8 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
           },
           options,
         );
+        current(options, "write");
+        return result;
       },
     },
   };
@@ -339,12 +361,14 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
   > = {
     async execute(input, options) {
       current();
-      return (await plan(
+      const result = (await plan(
         runtime,
         input,
         new Set(["read_advisor_publication_v1"]),
         options,
       )) as AdvisorPublicationView;
+      current(options);
+      return result;
     },
   };
   return { ports, permissions, publication, dispose: stop };
