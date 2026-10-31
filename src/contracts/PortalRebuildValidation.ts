@@ -28,10 +28,13 @@ const target=object({draftId:uuid,clientId:uuid,contentRevision:rev,assignmentRe
 const publisher=union(object({kind:en('human'),actorId:uuid}),object({kind:en('task_agent'),actorId:uuid,taskGrantId:uuid}));
 const write={requestId:uuid,draftId:uuid,expectedContentRevision:rev,expectedAssignmentRevision:rev};
 const at={draftId:uuid,contentRevision:rev,assignmentRevision:rev};
+export const planDependencyBasisShape=object({schemaVersion:en(2),legacyBasis:object({publicationVersion:nullable(positive),useRevision:rev}),legacyBasisManifestHash:hash,useHead:rev,reportHead:rev,instructionHead:rev,references:array(object({event:object({kind:en('legacy_report','goal_report','conversation','use','identity','reported_product','review','reply','instruction'),id:{type:'text',max:100,empty:false}}),amendmentHeadId:nullable(uuid)}),100)});
+export const planDependenciesShape=object({...at,captured:planDependencyBasisShape,current:planDependencyBasisShape,needsRebase:bool,affectedSections:array(en('sources','context','decisions','routine','follow_up'),5,0,true)});
 export const planCommandFields:Record<PlanCommand['action'],Record<string,PlanShape>>={
  list_plans_v1:{clientId:nullable(uuid),cursor:nullable({type:'cursor'}),limit:{...positive,max:100}},read_draft_v1:{draftId:uuid},
  create_draft_v1:{requestId:uuid,kind:en('care_plan'),templateVersionId:nullable(uuid)},save_draft_v1:{...write,kind:en('care_plan'),content:planContentShape},checkpoint_draft_v1:{...write,label:text(200)},assign_draft_v1:{...write,fromClientId:nullable(uuid),toClientId:uuid,legacyAdoption:{...object({strategy:en('adopt_legacy'),expectedCaseRevision:rev}),optional:true}},
  compare_import_v1:{draftId:uuid,baseContentRevision:rev,baseAssignmentRevision:rev,content:planContentShape},apply_import_v1:{...write,baseContentRevision:rev,proposalHash:hash,content:planContentShape},
+ read_draft_dependencies_v1:at,rebase_draft_dependencies_v1:{...write,expectedHeads:object({useHead:rev,reportHead:rev,instructionHead:rev}),expectedLegacyBasis:object({publicationVersion:nullable(positive),useRevision:rev}),expectedLegacyBasisManifestHash:hash},
  validate_draft_v1:at,preview_draft_v1:at,review_section_v1:{...write,sectionId:en('sources','context','decisions','routine','follow_up'),sectionHash:hash},
  approve_publication_v1:{requestId:uuid,target,scope:en('care_plan.publish'),publisher},revoke_approval_v1:{requestId:uuid,approvalId:uuid,expectedPolicyRevision:rev},publish_plan_v1:{requestId:uuid,target,approvalId:uuid,firstServiceClaimId:nullable(uuid)},
  read_advisor_gate_v1:{target,publisher},read_advisor_publication_v1:{clientId:uuid,version:nullable(positive)},

@@ -35,6 +35,8 @@ export type TaskAction=typeof taskActions[number];
 export type PlanCommand={schemaVersion:1}&(
  |{action:'list_plans_v1';clientId:UUID|null;cursor:string|null;limit:number}
  |{action:'read_draft_v1';draftId:UUID}
+ |{action:'read_draft_dependencies_v1';draftId:UUID;contentRevision:Revision;assignmentRevision:Revision}
+ |({action:'rebase_draft_dependencies_v1';expectedHeads:{useHead:Revision;reportHead:Revision;instructionHead:Revision};expectedLegacyBasis:{publicationVersion:number|null;useRevision:Revision};expectedLegacyBasisManifestHash:Hash}&DraftWrite)
  |{action:'create_draft_v1';requestId:UUID;kind:'care_plan';templateVersionId:UUID|null}
  |({action:'save_draft_v1';kind:'care_plan';content:PlanContent}&DraftWrite)
  |({action:'checkpoint_draft_v1';label:string}&DraftWrite)

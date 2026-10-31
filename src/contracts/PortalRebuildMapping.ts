@@ -1,3 +1,5 @@
+import type {DraftDependenciesView} from './PortalCare.ts';
+import {planDependenciesShape} from './PortalRebuildValidation.ts';
 import type {PlanCommand,PlanContent,ClientPlanContent,DraftView,ExactTarget,Approval,PublishReceipt,ClientPlanView,PlanPolicyView,ReadinessIssue,UUID,AdvisorGateView,AdvisorPublicationView} from './PortalRebuild.ts';
 import {planContentShape,readPlanShape,readPlanContent,readLegacyPlan} from './PortalRebuildValidation.ts';
 import type {PlanShape} from './PortalRebuildValidation.ts';
@@ -26,9 +28,10 @@ export type PlanValidation={target:ExactTarget|null;issues:ReadinessIssue[]};
 export type PlanPreview=PlanValidation&{mode:'advisor-preview';published:false;content:ClientPlanContent};
 export type PlanImportComparison={baseContentRevision:number;baseAssignmentRevision:number;latest:DraftView;proposed:PlanContent;stale:boolean;proposalHash:string};
 export type PlanDecisionReceipt={requestId:UUID;decisionRevision:number;publicationVersion:number;decisionId:string;choice:'approved'|'deferred'|'declined';reason:string|null};
-export type PlanBusinessResult=DraftView|Approval|PublishReceipt|ClientPlanView|AdvisorGateView|AdvisorPublicationView|PlanPolicyView|PlanDirectory|PlanValidation|PlanPreview|PlanImportComparison|PlanDecisionReceipt|{checkpointId:UUID;target:ExactTarget|null}|{approvalId:UUID;revoked:true}|{grantId:UUID;revoked?:true};
+export type PlanBusinessResult=DraftDependenciesView|DraftView|Approval|PublishReceipt|ClientPlanView|AdvisorGateView|AdvisorPublicationView|PlanPolicyView|PlanDirectory|PlanValidation|PlanPreview|PlanImportComparison|PlanDecisionReceipt|{checkpointId:UUID;target:ExactTarget|null}|{approvalId:UUID;revoked:true}|{grantId:UUID;revoked?:true};
 export type PlanResult=PlanBusinessResult|{status:'absent'}|{status:'committed';receipt:PlanBusinessResult};
 const shapes:Record<Exclude<PlanCommand['action'],'request_status_v1'>,PlanShape>={
+ read_draft_dependencies_v1:planDependenciesShape,rebase_draft_dependencies_v1:draftView,
  create_draft_v1:draftView,save_draft_v1:draftView,read_draft_v1:draftView,assign_draft_v1:draftView,apply_import_v1:draftView,review_section_v1:draftView,restore_publication_v1:draftView,
  compare_import_v1:obj({baseContentRevision:rev,baseAssignmentRevision:rev,latest:draftView,proposed:planContentShape,stale:bool,proposalHash:hash}),
  checkpoint_draft_v1:obj({checkpointId:uuid,target:nil(target)}),validate_draft_v1:obj({target:nil(target),issues}),preview_draft_v1:obj({mode:en('advisor-preview'),published:en(false),target:nil(target),content:clientContent,issues}),
@@ -47,11 +50,12 @@ export function mapPlanResult(value:unknown,command:PlanCommand):PlanResult{
   if(v.status==='absent')return readPlanShape(v,obj({status:en('absent')})) as {status:'absent'};
   requireValue(v.status==='committed'&&Object.keys(v).length===2&&Object.hasOwn(v,'receipt'));
   // Stored receipts have the same finite response union; status cannot turn arbitrary JSON into trusted content.
-  for(const [action,shape] of Object.entries(shapes)){if(action==='read_advisor_gate_v1'||action==='read_advisor_publication_v1')continue;try{return {status:'committed',receipt:readPlanShape(v.receipt,shape) as PlanBusinessResult};}catch{/* next strict result */}}
+  for(const [action,shape] of Object.entries(shapes)){if(action==='read_advisor_gate_v1'||action==='read_advisor_publication_v1'||action==='read_draft_dependencies_v1')continue;try{return {status:'committed',receipt:readPlanShape(v.receipt,shape) as PlanBusinessResult};}catch{/* next strict result */}}
   throw Error('invalid_input');
  }
  const shape=shapes[command.action];requireValue(shape);
  const result=readPlanShape(value,shape) as PlanBusinessResult;
+ if(command.action==='read_draft_dependencies_v1'){const r=result as DraftDependenciesView;requireValue(r.draftId===command.draftId&&r.contentRevision===command.contentRevision&&r.assignmentRevision===command.assignmentRevision);}
  if('draft' in result){readPlanContent(result.draft.content);if('draftId' in command)requireValue(result.draft.id===command.draftId);}
  if(command.action==='record_decision_v1'){const r=result as PlanDecisionReceipt;requireValue(r.requestId===command.requestId&&r.decisionId===command.decisionId&&r.publicationVersion===command.publicationVersion&&r.choice===command.choice);}
  if(command.action==='publish_plan_v1'){const r=result as PublishReceipt;requireValue(r.requestId===command.requestId&&r.target.contentHash===command.target.contentHash&&r.target.clientId===command.target.clientId&&r.target.draftId===command.target.draftId);}
