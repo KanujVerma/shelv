@@ -81,7 +81,7 @@ export async function runCareNativeProof({selection:rawSelection,grant}) {
     const part=name=>dayParts.find(p=>p.type===name).value;assert.equal(initial.service_periods[0].starts_on,part('year')+'-'+part('month')+'-'+part('day'));
     assert.equal(Date.parse(initial.plan_review_schedule[0].first_publication_at),Date.parse(published.publishedAt));
     const clockHash=sha(JSON.stringify([initial.service_periods,initial.plan_review_schedule]));
-    const moneyHash=sha(JSON.stringify([initial.quotes,initial.claims,initial.payment_confirmations,initial.product_orders]));
+    const moneyHash=sha(JSON.stringify(initial.finance));
     const documentHash=sha(JSON.stringify(initial.plan_documents));
     pass('Actual service-only frozen quote/claim/gross synthetic receipt preserves approval and no clocks until deliberate first publication');
     const read=()=>call(client,'care','read_client_plan_v2',{version:null});
@@ -117,7 +117,7 @@ export async function runCareNativeProof({selection:rawSelection,grant}) {
     const photoHead=(await read()).use.revision;
     assert.deepEqual(await call(client,'care','report_identity_v1',{requestId:randomUUID(),expectedUseRevision:photoHead,target:{subject:corrected,comparedWith:product()},answer:{match:'yes',reportedName:null,variant:unknown(),strength:unknown(),labelPhotoIds:[randomUUID()]},sourcePublication:pub(1),occurredOn:unknown(),channel:'portal'},409),{code:'photo_unavailable'});
     assert.equal((await read()).use.revision,photoHead);
-    const afterReports=careCaseSnapshot(fixture,cases.client.id);assert.equal(sha(JSON.stringify([afterReports.quotes,afterReports.claims,afterReports.payment_confirmations,afterReports.product_orders])),moneyHash);assert.equal(afterReports.activations.length,0);assert.equal(afterReports.care_events.length,afterReports.useHead);assert.equal(afterReports.care_attention.length,afterReports.useHead);
+    const afterReports=careCaseSnapshot(fixture,cases.client.id);assert.equal(sha(JSON.stringify(afterReports.finance)),moneyHash);assert.equal(afterReports.activations.length,0);assert.equal(afterReports.care_events.length,afterReports.useHead);assert.equal(afterReports.care_attention.length,afterReports.useHead);
     assert.equal(afterReports.plan_events.filter(e=>e.source_kind==='care').length,afterReports.useHead);
     pass('Server UUID/version reported descriptor, same-event nested unreviewed creation, no/not-sure, append-only product-changing amendment and real human reporter/recorder attribution; no finance/order/legacy Start');
     phase='bounded actual history pages';
@@ -166,7 +166,8 @@ export async function runCareNativeProof({selection:rawSelection,grant}) {
     const lateResult=await bounded(late);assert.ok(!lateResult.failed);assert.equal(lateResult.value.status,401);
     const fresh=await login(cases.client,'client',5),issued=[...stack.issued.values()].filter(s=>s.ownerId===cases.client.id&&!s.closed).at(-1);assert.ok(issued);await closeProviderSession(fixture,issued);await call(fresh,'care','read_client_plan_v2',{version:null},401);
     pass('Actual owner-selector/CSRF/audience/cross-owner/event-scope/view-only/live grant revocation, acknowledged logout held care401 and supported provider revocation');
-    const final=careCaseSnapshot(fixture,cases.client.id);assert.equal(sha(JSON.stringify([final.service_periods,final.plan_review_schedule])),clockHash);assert.equal(final.activations.length,0);assert.ok(final.plan_deliveries.every(d=>d.status==='queued'&&d.attempts===0));assert.deepEqual(stack.errors,[]);
+    const final=careCaseSnapshot(fixture,cases.client.id);assert.equal(sha(JSON.stringify([final.service_periods,final.plan_review_schedule])),clockHash);assert.equal(sha(JSON.stringify(final.finance)),moneyHash);assert.equal(final.activations.length,0);assert.ok(final.plan_deliveries.every(d=>d.status==='queued'&&d.attempts===0));assert.deepEqual(stack.errors,[]);
+    for(const table of ['publications','plan_documents','plan_publication_receipts'])assert.deepEqual(final[table].find(row=>row.version===1),initial[table][0],'Original first publication/receipt/document must remain unchanged');
     result.rows={careEvents:final.care_events.length,useHead:final.useHead,attention:final.care_attention.length,planEvents:final.plan_events.length,deliveries:final.plan_deliveries.length,publications:final.publications.length,legacyStarts:0};result.committedSnapshotSha256=sha(JSON.stringify(final));
     await writeFile(path.join(area,'snapshot-'+runId+'.private.json'),JSON.stringify(final,null,2)+'\n',{mode:0o600});
     result.status='PASS';
