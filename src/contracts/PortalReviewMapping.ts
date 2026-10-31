@@ -12,6 +12,7 @@ import type {PortalReviewErrorCode} from './PortalReviewValues.ts';
 const attribution={occurredOn:day,channel:en('portal','text','call','video','in_person'),reportedBy:uuid,recordedBy:uuid,recordedAt:instant};
 export const reportEventShape=union(obj({kind:en('goal_report'),id:uuid,body:goalReportBodyShape,...attribution}),obj({kind:en('legacy_report'),id:uuid,body:legacyReportBodyShape,...attribution}));
 export const reportAmendmentShape=obj({id:uuid,event:reviewReportRefShape,previousAmendmentHeadId:nil(uuid),replacement:reportReplacementShape,occurredOn:day,reason:reviewTextShape,amendedBy:uuid,recordedAt:instant,attention:nil(obj({id:uuid,priorReview:reviewPriorReviewShape,state:en('unresolved','resolved'),resolvedBy:nil(reviewPriorReviewShape)}))});
+export const reviewAttentionEventShape=obj({kind:en('review_attention'),eventId:uuid,publication,amendmentId:uuid,event:reviewReportRefShape,attention:{...reportAmendmentShape.fields!.attention!,nullable:false},recordedAt:instant});
 const privateNoteShape=obj({id:uuid,reviewEvent:privateNoteSubjectShape,note:reviewTextShape,recordedBy:uuid,recordedAt:instant});
 export const guidanceReviewShape=obj({id:uuid,target:guidanceTargetShape,reviewedBy:uuid,reviewedAt:instant});
 export const guidanceApprovalShape=obj({id:uuid,target:guidanceTargetShape,scope:guidanceScopeShape,publisher:guidancePublisherShape,approvedBy:uuid,approvedAt:instant,policyRevision:rev,revokedAt:nil(instant),receiptId:nil(uuid)});
@@ -28,8 +29,11 @@ export const reportNoopReceiptShape=obj({requestId:uuid,action:en('submit_goal_r
 export const guidanceDecisionReceiptShape=obj({requestId:uuid,action:en('record_decision_v2'),snapshot:guidanceReadSnapshotShape,decisionRevision:pos,publicationVersion:pos,decisionId:{type:'identifier'},choice:en('approved','deferred','declined'),reason:nil({...reviewTextShape,max:1000,empty:true})});
 const reviewWriteShape=union(reportWriteReceiptShape,privateNoteReceiptShape,reportNoopReceiptShape,guidanceDecisionReceiptShape);
 const publishedShape=obj({record:reviewOutputRefShape,body:guidanceBodyShape,publishedBy:uuid,publishedAt:instant,originalStart:nil(day)});
-export const clientCareHistoryEntryShape=union(...careHistoryEntryShape.variants!,obj({kind:en('publication'),publication,publishedAt:instant,recordedBy:uuid}),obj({kind:en('report'),event:reportEventShape}),obj({kind:en('report_amendment'),original:reportEventShape,amendment:reportAmendmentShape}),obj({kind:en('guidance'),guidance:publishedShape}));
-export const advisorCareHistoryEntryShape=union(...clientCareHistoryEntryShape.variants!,obj({kind:en('conversation'),event:obj({id:uuid,body:conversationBodyShape,reportedBy:uuid,recordedBy:uuid,recordedAt:instant})}),obj({kind:en('private_note'),note:privateNoteShape}));
+export const legacyInstructionShape=obj({id:uuid,version:pos,slot:{type:'identifier'},productId:{type:'identifier'},planVersion:pos,usage:stepShape.fields!.usage as PlanShape,reason:reviewTextShape,reviewId:nil(uuid),effectiveOn:{type:'date'},source:obj({kind:en('baseline','activation'),publicationVersion:pos,recommendationId:nil({type:'identifier'})}),originalStartedOn:nil({type:'date'}),authorId:uuid,createdAt:instant});
+export const legacyReviewShape=obj({channel:en('text','call','video','in_person'),occurredOn:{type:'date'},summary:reviewTextShape,reportedUse:reviewTextShape,decision:reviewTextShape,nextReviewOn:nil({type:'date'}),id:uuid,authorId:uuid,authorLabel:{type:'text',max:200,empty:false},recordedAt:instant});
+export const legacyHistoryEntryShape=union(obj({kind:en('legacy_review'),review:legacyReviewShape,publication:en(null)}),obj({kind:en('legacy_instruction'),revision:legacyInstructionShape}),obj({kind:en('legacy_reply'),id:uuid,report:reviewReportRefShape,reply:reviewTextShape,recordedBy:uuid,recordedAt:instant,publication:en(null)}));
+export const clientCareHistoryEntryShape=union(...careHistoryEntryShape.variants!,...legacyHistoryEntryShape.variants!,obj({kind:en('publication'),publication,publishedAt:instant,recordedBy:uuid}),obj({kind:en('report'),event:reportEventShape}),obj({kind:en('report_amendment'),original:reportEventShape,amendment:reportAmendmentShape}),reviewAttentionEventShape,obj({kind:en('guidance'),guidance:publishedShape}));
+export const advisorCareHistoryEntryShape=union(...clientCareHistoryEntryShape.variants!,obj({kind:en('conversation'),event:obj({id:uuid,body:conversationBodyShape,reportedBy:uuid,recordedBy:uuid,recordedAt:instant})}),obj({kind:en('private_note'),note:privateNoteShape}),obj({kind:en('legacy_review_note'),reviewId:uuid,note:{...reviewTextShape,empty:true}}));
 const pageFields={schemaVersion:en(1),version:nil(pos),heads:obj({useHead:rev,reportHead:rev,instructionHead:rev,serviceRevision:rev,publicationVersion:nil(pos)}),nextCursor:nil({type:'text',max:104,empty:false})};
 export const clientCareHistoryPageShape=obj({...pageFields,audience:en('client'),entries:arr(clientCareHistoryEntryShape,reviewPageMax)});
 export const advisorCareHistoryPageShape=obj({...pageFields,audience:en('advisor'),clientId:uuid,entries:arr(advisorCareHistoryEntryShape,reviewPageMax)});
@@ -41,11 +45,11 @@ const instructionUseShape=nil(obj({useRevision:rev,latestEventId:nil(uuid),amend
 export const instructionManifestEntryShape=obj({instructionId:uuid,version:pos,format:en('authored_schedule','legacy_usage'),scope:instructionScopeShape,contentHash:hash,effectiveOn:date,baseInstructionId:nil(uuid),baseInstructionVersion:rev,reviewedUseBasis:instructionUseShape,basisStatus:en('current','changed','legacy_unversioned'),originalStart:nil(day)});
 export const instructionManifestPageShape=obj({audience:en('client'),schemaVersion:en(1),snapshot:guidanceReadSnapshotShape,total:{...rev,max:reviewInstructionScopesMax},cursor:manifestCursor,items:arr(instructionManifestEntryShape,reviewPageMax),nextCursor:manifestCursor});
 export const advisorInstructionManifestPageShape=obj({...instructionManifestPageShape.fields!,audience:en('advisor'),clientId:uuid});
-const legacyInstructionShape=obj({id:uuid,version:pos,slot:identifier,productId:identifier,planVersion:pos,usage:stepShape.fields!.usage as PlanShape,reason:reviewTextShape,reviewId:nil(uuid),effectiveOn:date,source:obj({kind:en('baseline','activation'),publicationVersion:pos,recommendationId:nil(identifier)}),originalStartedOn:nil(date),authorId:uuid,createdAt:instant});
 const authoredInstructionShape=guidanceBodyShape.variants![1];
 export const instructionDetailShape=obj({audience:en('client'),schemaVersion:en(1),snapshot:guidanceReadSnapshotShape,item:instructionManifestEntryShape,content:union(obj({format:en('authored_schedule'),body:authoredInstructionShape}),obj({format:en('legacy_usage'),revision:legacyInstructionShape})),publishedBy:uuid,publishedAt:instant});
 export const advisorInstructionDetailShape=obj({...instructionDetailShape.fields!,audience:en('advisor'),clientId:uuid});
 export const currentGuidanceRefShape=obj({schemaVersion:en(1),mode:en('current_document','historical_document'),instructionSemantics:en('current_for_selected_publication'),snapshot:guidanceReadSnapshotShape,instructionCount:{...rev,max:reviewInstructionScopesMax}});
+export const decisionGuidanceShape=arr(obj({decisionId:identifier,recordedDecisionRevision:nil(pos),acceptedSnapshot:nil(guidanceReadSnapshotShape),basisStatus:en('current','stale','legacy_unbound')}),50);
 const publicReviewShape=nil(obj({reviewId:uuid,publicationVersion:pos,publishedAt:instant,occurredOn:day,conclusion:reviewTextShape,rationale:reviewTextShape,nextStep:reviewTextShape,nextReviewOn:nil(date)}));
 
 function checkApproval(approval:GuidanceApproval):void{requireValue(approval.scope===`${approval.target.kind}.publish`);}
@@ -85,9 +89,14 @@ function checkHistory(page:ClientCareHistoryPage|AdvisorCareHistoryPage,command:
    case 'publication':publicationVersion=entry.publication.version;key=`publication:${publicationVersion}`;break;
    case 'report':checkReportEvent(entry.event);publicationVersion=entry.event.kind==='goal_report'?entry.event.body.publication.version:null;key=`report:${entry.event.id}`;break;
    case 'report_amendment':checkAmendment(entry.original,entry.amendment);publicationVersion=entry.original.kind==='goal_report'?entry.original.body.publication.version:null;key=`amendment:${entry.amendment.id}`;break;
+   case 'review_attention':requireValue((entry.attention.state==='resolved')===(entry.attention.resolvedBy!==null));publicationVersion=entry.publication.version;key=`attention_event:${entry.eventId}`;break;
    case 'conversation':checkConversation(entry.event.body);publicationVersion=entry.event.body.publication.version;key=`conversation:${entry.event.id}`;break;
    case 'private_note':key=`note:${entry.note.id}`;break;
-   case 'guidance':checkPublished(entry.guidance);publicationVersion=entry.guidance.body.publication.version;key=`guidance:${entry.guidance.record.id}`;break;
+   case 'legacy_review_note':key=`legacy_review_note:${entry.reviewId}`;break;
+   case 'guidance':checkPublished(entry.guidance);publicationVersion=entry.guidance.body.publication.version;key=`public_${entry.guidance.record.kind}:${entry.guidance.record.id}`;break;
+   case 'legacy_review':key=`public_review:${entry.review.id}`;break;
+   case 'legacy_instruction':publicationVersion=entry.revision.planVersion;key=`public_instruction:${entry.revision.id}`;break;
+   case 'legacy_reply':key=`public_reply:${entry.id}`;break;
    case 'amendment':care.push(entry);publicationVersion=entry.amendment.replacement.product.kind==='plan_product'?entry.amendment.replacement.product.publication.version:null;key=`use_amendment:${entry.amendment.id}`;break;
    default:care.push(entry);publicationVersion=entry.event.sourcePublication?.version??null;key=`${entry.kind}:${entry.event.eventId}`;
   }
@@ -137,12 +146,14 @@ function checkInstructionDetail(detail:InstructionDetail):void{
  }
 }
 function mapPlanV3(value:unknown,command:Extract<ReviewCommand,{action:'read_client_plan_v3'|'read_advisor_publication_v3'}>):ClientPlanViewV3|AdvisorPublicationViewV3{
- const raw=readObject(value);requireValue(raw.schemaVersion===3&&Object.hasOwn(raw,'currentGuidance')&&Object.hasOwn(raw,'latestPublicReview'));
- const {schemaVersion:_schema,currentGuidance,latestPublicReview,...rest}=raw;
+ const raw=readObject(value);requireValue(raw.schemaVersion===3&&Object.hasOwn(raw,'currentGuidance')&&Object.hasOwn(raw,'latestPublicReview')&&Object.hasOwn(raw,'decisionGuidance'));
+ const {schemaVersion:_schema,currentGuidance,latestPublicReview,decisionGuidance,...rest}=raw;
  const base=mapCareResult({...rest,schemaVersion:2,latestPublicReview:null},command.action==='read_client_plan_v3'?{schemaVersion:1,action:'read_client_plan_v2',version:command.version}:{schemaVersion:1,action:'read_advisor_publication_v2',clientId:command.clientId,version:command.version}) as import('./PortalCare.ts').ClientPlanViewV2|import('./PortalCare.ts').AdvisorPublicationViewV2;
  const latest=readReviewShape(latestPublicReview,publicReviewShape) as ClientPlanViewV3['latestPublicReview'];
  const guidance=currentGuidance===null?null:readReviewShape(currentGuidance,currentGuidanceRefShape) as CurrentGuidanceRef;
- const result={...base,schemaVersion:3 as const,currentGuidance:guidance,latestPublicReview:latest} as ClientPlanViewV3|AdvisorPublicationViewV3;
+ const provenance=readReviewShape(decisionGuidance,decisionGuidanceShape) as ClientPlanViewV3['decisionGuidance'];
+ requireValue(provenance.length===base.decisions.length&&new Set(provenance.map(x=>x.decisionId)).size===provenance.length&&provenance.every(x=>base.decisions.some(d=>d.decisionId===x.decisionId)));
+ const result={...base,schemaVersion:3 as const,currentGuidance:guidance,latestPublicReview:latest,decisionGuidance:provenance} as ClientPlanViewV3|AdvisorPublicationViewV3;
  if(!result.plan){requireValue(guidance===null&&latest===null);return result;}
  requireValue(guidance!==null);const snapshot=guidance.snapshot;
  requireValue(sameCareValue(snapshot.publication,{version:result.plan.version,documentSchemaVersion:result.plan.documentSchemaVersion})&&snapshot.useHead===result.use.revision&&snapshot.decisionRevision===result.decisionRevision);
@@ -150,6 +161,11 @@ function mapPlanV3(value:unknown,command:Extract<ReviewCommand,{action:'read_cli
  if(snapshot.publication.version===snapshot.currentPublication.version)requireValue(sameCareValue(snapshot.publication,snapshot.currentPublication));
  requireValue(guidance.instructionCount<=instructionScopes(result).length);
  if(latest)requireValue(latest.publicationVersion===snapshot.publication.version);
+ for(const item of provenance){
+  if(item.recordedDecisionRevision!==null)requireValue(item.recordedDecisionRevision<=result.decisionRevision);
+  if(item.basisStatus==='legacy_unbound')requireValue(item.acceptedSnapshot===null);
+  else {requireValue(item.acceptedSnapshot!==null&&item.recordedDecisionRevision===item.acceptedSnapshot.decisionRevision+1&&sameCareValue(item.acceptedSnapshot.publication,snapshot.publication)&&sameCareValue(item.acceptedSnapshot.publication,item.acceptedSnapshot.currentPublication));requireValue((item.basisStatus==='current')===(item.acceptedSnapshot.manifestHash===snapshot.manifestHash));}
+ }
  return result;
 }
 /** Complete head-bound manifest; absence of a required page is not "no instruction". */
@@ -184,6 +200,7 @@ export function bindInstructionForScope(view:ClientPlanViewV3|AdvisorPublication
 export function mapReviewResult(value:unknown,command:ReviewCommand):ReviewResult{
  requireValue(reviewJsonBytes(value)<=reviewResponseMaxBytes);
  if(command.action==='read_client_plan_v3'||command.action==='read_advisor_publication_v3')return mapPlanV3(value,command);
+ if(command.action==='read_advisor_reported_products_v1')return mapCareResult(value,{schemaVersion:1,action:'read_reported_products_v1',cursor:command.cursor,limit:command.limit,expectedUseRevision:command.expectedUseRevision,publicationVersion:command.publicationVersion}) as import('./PortalCare.ts').ReportedProductsPage;
  if(command.action==='read_client_instruction_manifest_v1'||command.action==='read_advisor_instruction_manifest_v1'){
   requireValue(reviewJsonBytes(value)<=reviewPageMaxBytes);const page=readReviewShape(value,command.action==='read_advisor_instruction_manifest_v1'?advisorInstructionManifestPageShape:instructionManifestPageShape) as InstructionManifestPage;
   if(command.action==='read_advisor_instruction_manifest_v1')requireValue('clientId'in page&&page.clientId===command.clientId);

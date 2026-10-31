@@ -122,6 +122,13 @@ test('history preserves full original plus separately attributed amendment and e
  for(const change of [{amendedBy:undefined},{event:{kind:'goal_report',id:third}},{attention:{...amendment.attention,state:'resolved',resolvedBy:null}}])assert.throws(()=>mapReviewResult({...history,entries:[{kind:'report_amendment',original,amendment:{...amendment,...change}}]},command));
  assert.throws(()=>mapReviewResult({...history,entries:history.entries.slice(0,1),nextCursor:'arbitrary'},command));
  assert.throws(()=>mapReviewResult({...history,version:2},command));
+ const attentionEntry={kind:'review_attention',eventId:third,publication,amendmentId:third,event:{kind:'goal_report',id},attention:amendment.attention,recordedAt:now};
+ const many={...history,entries:[...history.entries,attentionEntry,{...attentionEntry,eventId:other,attention:{...amendment.attention,id:other,priorReview:{kind:'review',id:other}}}]};
+ assert.deepEqual(mapReviewResult(many,command),many,'every dependent review has its own immutable paginated attention relationship');
+ const resolved={...attentionEntry,eventId:'10000000-0000-4000-8000-000000000004',attention:{...amendment.attention,state:'resolved',resolvedBy:{kind:'review',id:'10000000-0000-4000-8000-000000000005'}},recordedAt:'2026-01-02T00:00:00Z'};
+ const withResolution={...many,entries:[...many.entries,resolved]};assert.deepEqual(mapReviewResult(withResolution,command),withResolution);
+ assert.deepEqual(mapReviewResult({...history,entries:[resolved]},command),{...history,entries:[resolved]},'resolution retains relationship identity on its own page');
+ assert.throws(()=>mapReviewResult({...many,entries:[...many.entries,{...resolved,eventId:third}]},command));
 });
 test('client history rejects private conversation/note/source and advisor envelopes at every depth',()=>{
  const command=readReviewCommand(readHistory);
@@ -249,7 +256,7 @@ test('new v3 read preserves the immutable plan and carries an explicit bounded i
  const {createEmptyPlanContent,projectClientPlan}=await import('../src/contracts/PortalRebuild.ts');
  const snapshot={publication,currentPublication:publication,useHead:0,reportHead:0,instructionHead:0,serviceRevision:0,decisionRevision:0,asOfDay:'2026-01-01',manifestHash:'a'.repeat(64)};
  const currentGuidance={schemaVersion:1,mode:'current_document',instructionSemantics:'current_for_selected_publication',snapshot,instructionCount:0};
- const view={schemaVersion:3,access:'active',plan:{documentSchemaVersion:3,version:1,publishedAt:now,content:projectClientPlan(createEmptyPlanContent())},decisionRevision:0,decisions:[],actualUse:[],nextReviewOn:null,use:{revision:0,planProducts:[],reportedProducts:{items:[],nextCursor:null}},latestPublicReview:null,currentGuidance};
+ const view={schemaVersion:3,access:'active',plan:{documentSchemaVersion:3,version:1,publishedAt:now,content:projectClientPlan(createEmptyPlanContent())},decisionRevision:0,decisions:[],actualUse:[],nextReviewOn:null,use:{revision:0,planProducts:[],reportedProducts:{items:[],nextCursor:null}},latestPublicReview:null,decisionGuidance:[],currentGuidance};
  const command=readReviewCommand({schemaVersion:1,action:'read_client_plan_v3',version:1});
  assert.deepEqual(mapReviewResult(view,command),view);
  assert.throws(()=>mapReviewResult({...view,currentGuidance:{...currentGuidance,snapshot:{...snapshot,useHead:1}}},command));
@@ -269,7 +276,7 @@ async function instructionFixture(){
  const schedule={periods:['evening' as const],days:{kind:'daily' as const},condition:null,asNeeded:false,stages:[],anchor:'actual_start' as const,automaticAdvance:false as const};
  const content=createEmptyPlanContent();content.routine=[{id:'rinse',slotId:'rinse',kind:'instruction',productId:null,title:'rinse',directions:['use water'],cautions:[],schedule}];
  const snapshot:GuidanceReadSnapshot={publication,currentPublication:publication,useHead:0,reportHead:0,instructionHead:1,serviceRevision:1,decisionRevision:0,asOfDay:'2026-01-01',manifestHash:'a'.repeat(64)};
- const view:ClientPlanViewV3={schemaVersion:3,access:'active',plan:{documentSchemaVersion:3,version:1,publishedAt:now,content:projectClientPlan(content)},decisionRevision:0,decisions:[],actualUse:[],nextReviewOn:null,use:{revision:0,planProducts:[],reportedProducts:{items:[],nextCursor:null}},latestPublicReview:null,currentGuidance:{schemaVersion:1,mode:'current_document',instructionSemantics:'current_for_selected_publication',snapshot,instructionCount:1}};
+ const view:ClientPlanViewV3={schemaVersion:3,access:'active',plan:{documentSchemaVersion:3,version:1,publishedAt:now,content:projectClientPlan(content)},decisionRevision:0,decisions:[],actualUse:[],nextReviewOn:null,use:{revision:0,planProducts:[],reportedProducts:{items:[],nextCursor:null}},latestPublicReview:null,decisionGuidance:[],currentGuidance:{schemaVersion:1,mode:'current_document',instructionSemantics:'current_for_selected_publication',snapshot,instructionCount:1}};
  const item:InstructionManifestEntry={instructionId:id,version:1,format:'authored_schedule',scope:{publication,slotId:'rinse',productId:null},contentHash:'b'.repeat(64),effectiveOn:'2024-02-29',baseInstructionId:null,baseInstructionVersion:0,reviewedUseBasis:null,basisStatus:'current',originalStart:null};
  const page:InstructionManifestPage={schemaVersion:1,audience:'client',snapshot,total:1,cursor:null,items:[item],nextCursor:null};
  const detail:InstructionDetail={schemaVersion:1,audience:'client',snapshot,item,content:{format:'authored_schedule',body:{kind:'instruction',publication,slotId:'rinse',productId:null,baseInstructionId:null,baseInstructionVersion:0,useBasis:null,directions:['rinse gently'],cautions:[],schedule,reason:'reviewed practical change',effectiveOn:'2024-02-29',reviewId:null}},publishedBy:third,publishedAt:now};
@@ -326,13 +333,13 @@ test('source-valid max document/use/reported page and all2550 explicit scopes st
  const gap=498000-bytes(content)-80;assert.ok(gap>0);content.consultationSections.push({title:'last',body:'🧴'.repeat(Math.min(4000,Math.floor(gap/4)))});
  assert.ok(bytes(content)>480000&&bytes(content)<500000);readPlanContent(content);
  assert.equal(content.routine.length,planContentShape.fields!.routine.max);assert.equal(content.decisions.length,planContentShape.fields!.decisions.max);assert.equal(content.products.length,planContentShape.fields!.products.max);
- const snapshot:GuidanceReadSnapshot={publication,currentPublication:publication,useHead:1,reportHead:1,instructionHead:1,serviceRevision:1,decisionRevision:1,asOfDay:'2026-01-01',manifestHash:'a'.repeat(64)};
+ const snapshot:GuidanceReadSnapshot={publication,currentPublication:publication,useHead:1,reportHead:1,instructionHead:1,serviceRevision:1,decisionRevision:50,asOfDay:'2026-01-01',manifestHash:'a'.repeat(64)};
  const states=content.products.map(p=>{const ref={kind:'plan_product' as const,publication,productId:p.id,slotId:null},originalRef={...ref,slotId:'s'.repeat(100)};return {product:ref,state:'paused' as const,originalStart:unknown,contradiction:false,identity:{eventId:id,target:{subject:originalRef,comparedWith:originalRef},match:'not_sure' as const,sourcePublication:publication,occurredOn:unknown,recordedAt:now,reportedBy:other,recordedBy:third,channel:'call' as const},latestEvent:{eventId:id,product:originalRef,changeKind:'started' as const,sourcePublication:publication,occurredOn:unknown,recordedAt:now,reportedBy:other,recordedBy:third,channel:'call' as const,acquisition:'self' as const,identityEventId:id,originalActivationId:'9'.repeat(19),amendment:{id:third,eventId:id,previousAmendmentHeadId:id,product:ref,changeKind:'paused' as const,sourcePublication:publication,occurredOn:unknown,acquisition:'self' as const,identityEventId:id,amendedBy:third,amendedAt:now}}};});
  const descriptor={name:'🧴'.repeat(200),brand:{state:'known' as const,value:'🧴'.repeat(200)},variant:{state:'known' as const,value:'🧴'.repeat(200)},strength:{state:'known' as const,value:'🧴'.repeat(200)},sizeLabel:{state:'known' as const,value:'🧴'.repeat(200)},labelPhotoIds:[]};
  const rows=[] as ClientPlanViewV3['use']['reportedProducts']['items'];
  for(let i=0;i<100;i++){const row={product:{kind:'client_reported_product' as const,reportedProductId:`10000000-0000-4000-8000-${String(i+10).padStart(12,'0')}`,version:1},descriptor,state:'unreviewed' as const,originalStart:unknown,latestEvent:null,identity:null,contradiction:false};if(bytes({items:[...rows,row],nextCursor:`c:${'a'.repeat(64)}:${id}`})>399900)break;rows.push(row);}
  assert.ok(rows.length>1&&rows.length<100);
- const view:ClientPlanViewV3={schemaVersion:3,access:'read_only',plan:{documentSchemaVersion:3,version:1,publishedAt:now,content:projectClientPlan(content)},decisionRevision:1,decisions:content.decisions.map(d=>({decisionId:d.id,choice:'approved',reason:'🧴'.repeat(1000)})),actualUse:Array.from({length:1000},(_,i)=>({slot:'old'+String(i).padStart(97,'0'),productId:'old-product'+'p'.repeat(89),startedOn:'2024-02-29',publicationVersion:1})),nextReviewOn:null,use:{revision:1,planProducts:states,reportedProducts:{items:rows,nextCursor:`c:${'a'.repeat(64)}:${id}`}},latestPublicReview:{reviewId:id,publicationVersion:1,publishedAt:now,occurredOn:unknown,conclusion:'🧴'.repeat(4000),rationale:'🧴'.repeat(4000),nextStep:'🧴'.repeat(4000),nextReviewOn:null},currentGuidance:{schemaVersion:1,mode:'current_document',instructionSemantics:'current_for_selected_publication',snapshot,instructionCount:2550}};
+ const view:ClientPlanViewV3={schemaVersion:3,access:'read_only',plan:{documentSchemaVersion:3,version:1,publishedAt:now,content:projectClientPlan(content)},decisionRevision:50,decisions:content.decisions.map(d=>({decisionId:d.id,choice:'approved',reason:'🧴'.repeat(1000)})),decisionGuidance:content.decisions.map((d,i)=>({decisionId:d.id,recordedDecisionRevision:i+1,acceptedSnapshot:{...snapshot,decisionRevision:i},basisStatus:'current'})),actualUse:Array.from({length:1000},(_,i)=>({slot:'old'+String(i).padStart(97,'0'),productId:'old-product'+'p'.repeat(89),startedOn:'2024-02-29',publicationVersion:1})),nextReviewOn:null,use:{revision:1,planProducts:states,reportedProducts:{items:rows,nextCursor:`c:${'a'.repeat(64)}:${id}`}},latestPublicReview:{reviewId:id,publicationVersion:1,publishedAt:now,occurredOn:unknown,conclusion:'🧴'.repeat(4000),rationale:'🧴'.repeat(4000),nextStep:'🧴'.repeat(4000),nextReviewOn:null},currentGuidance:{schemaVersion:1,mode:'current_document',instructionSemantics:'current_for_selected_publication',snapshot,instructionCount:2550}};
  assert.ok(bytes(view)<1800000&&bytes(view)>1400000);const read=readReviewCommand({schemaVersion:1,action:'read_client_plan_v3',version:1});assert.deepEqual(mapReviewResult(view,read),view);
  const omitted={...view,use:{...view.use,planProducts:states.slice(1)}};assert.throws(()=>mapReviewResult(omitted,read));assert.equal(view.use.planProducts.filter(p=>p.state==='paused').length,50);
  const scopes=instructionScopes(view);assert.equal(scopes.length,2550);assert.equal(scopes.length,reviewInstructionScopesMax);
@@ -383,6 +390,64 @@ test('new decision write binds the exact current guidance snapshot and returns o
  const status=readReviewCommand({schemaVersion:1,action:'request_status_v1',requestId:id});assert.deepEqual(mapReviewResult({status:'committed',receipt},status),{status:'committed',receipt});
  assert.deepEqual(decodePortalReviewResponse('review',parsed,200,{unexpected:'success'}),{state:'uncertain',status:503,code:'uncertain',retry:parsed});
  assert.deepEqual(decodePortalReviewResponse('review',parsed,409,{code:'guidance_version_required'}),{state:'rejected',status:409,code:'guidance_version_required'});
+});
+test('decision acknowledgement provenance is bounded to actual choices and stable clinical content, not counter/day/bookkeeping',async()=>{
+ const {view,snapshot}=await instructionFixture();
+ const current={...snapshot,decisionRevision:1};
+ const acknowledgement={decisionId:'selected',recordedDecisionRevision:1,acceptedSnapshot:snapshot,basisStatus:'current'};
+ const chosen={...view,decisionRevision:1,decisions:[{decisionId:'selected',choice:'approved',reason:null}],currentGuidance:{...view.currentGuidance!,snapshot:current},decisionGuidance:[acknowledgement]};
+ const read=readReviewCommand({schemaVersion:1,action:'read_client_plan_v3',version:1});
+ assert.deepEqual(mapReviewResult(chosen,read),chosen);
+ const {decisionGuidance:_missing,...missing}=chosen;assert.throws(()=>mapReviewResult(missing,read));
+ for(const decisionGuidance of [[],[acknowledgement,acknowledgement],[{...acknowledgement,decisionId:'untouched'}],[{...acknowledgement,acceptedSnapshot:null}]])assert.throws(()=>mapReviewResult({...chosen,decisionGuidance},read));
+ const later={...chosen,decisionRevision:2,currentGuidance:{...chosen.currentGuidance,snapshot:{...current,decisionRevision:2,asOfDay:'2026-01-02',serviceRevision:20}}};assert.deepEqual(mapReviewResult(later,read),later);
+ const changed={...later,currentGuidance:{...later.currentGuidance,snapshot:{...later.currentGuidance.snapshot,manifestHash:'d'.repeat(64)}}};assert.throws(()=>mapReviewResult(changed,read));
+ const stale={...changed,decisionGuidance:[{...acknowledgement,basisStatus:'stale'}]};assert.deepEqual(mapReviewResult(stale,read),stale);assert.equal(stale.decisions[0].choice,'approved');
+ const legacy={...later,decisionGuidance:[{...acknowledgement,acceptedSnapshot:null,recordedDecisionRevision:2,basisStatus:'legacy_unbound'}]};assert.deepEqual(mapReviewResult(legacy,read),legacy);
+ const unprovable={...legacy,decisionGuidance:[{...legacy.decisionGuidance[0],recordedDecisionRevision:null}]};assert.deepEqual(mapReviewResult(unprovable,read),unprovable);
+ assert.throws(()=>mapReviewResult({...chosen,decisionGuidance:[{...acknowledgement,acceptedSnapshot:{...snapshot,publication:{...publication,version:2},currentPublication:{...publication,version:2}}}]},read));
+ const historical={...chosen,currentGuidance:{...chosen.currentGuidance,mode:'historical_document',snapshot:{...current,currentPublication:{...publication,version:2}}}};assert.deepEqual(mapReviewResult(historical,read),historical);
+});
+test('legacy public review and reply retain exact original fields with unknown publication rather than fake linkage',()=>{
+ const review={id,channel:'call',occurredOn:'2024-02-29',summary:'actual legacy summary',reportedUse:'actual client use report',decision:'no change',nextReviewOn:null,authorId:third,authorLabel:'Review with your advisor',recordedAt:now};
+ const page={...history,entries:[{kind:'legacy_review',publication:null,review},{kind:'legacy_reply',id:other,report:{kind:'legacy_report',id},reply:'actual old reply',recordedBy:third,recordedAt:now,publication:null}]};
+ assert.deepEqual(mapReviewResult(page,readReviewCommand(readHistory)),page);
+ assert.throws(()=>mapReviewResult({...page,entries:[{...page.entries[0],review:{...review,privateNote:'PRIVATE'}}]},readReviewCommand(readHistory)));
+ assert.throws(()=>mapReviewResult({...page,version:1},readReviewCommand({...readHistory,version:1})));
+});
+test('mixed history has one public event per canonical record and preserves actual legacy instruction version',()=>{
+ const review={id:other,channel:'call',occurredOn:'2024-02-29',summary:'legacy summary',reportedUse:'legacy use',decision:'legacy decision',nextReviewOn:null,authorId:third,authorLabel:'Review with your advisor',recordedAt:now};
+ const instruction={id,version:2,slot:'moisturizer',productId:'CeraVe_PM',planVersion:2,usage:{periods:['evening'],order:1,short:{morning:null,evening:'original short'},instructions:['original instructions']},reason:'original reason',reviewId:null,effectiveOn:'2024-02-29',source:{kind:'activation',publicationVersion:1,recommendationId:'original-decision'},originalStartedOn:'2024-02-20',authorId:third,createdAt:now};
+ const entry={kind:'legacy_instruction',revision:instruction};
+ const page={...history,version:2,entries:[entry]};
+ assert.deepEqual(mapReviewResult(page,readReviewCommand({...readHistory,version:2})),page);
+ assert.throws(()=>mapReviewResult({...page,version:1},readReviewCommand({...readHistory,version:1})));
+ assert.throws(()=>mapReviewResult({...page,entries:[entry,{...entry,revision:{...instruction,version:3}}]},readReviewCommand({...readHistory,version:2})));
+ const mixed={...history,entries:[{kind:'legacy_review',publication:null,review},{kind:'guidance',guidance:{record:{kind:'review',id:other},body,publishedBy:third,publishedAt:now,originalStart:null}}]};
+ assert.throws(()=>mapReviewResult(mixed,readReviewCommand(readHistory)));
+});
+test('legacy review notes retain empty text with unknown attribution only in unfiltered private history',()=>{
+ const entry={kind:'legacy_review_note',reviewId:id,note:''};
+ const page={...history,audience:'advisor',clientId:other,entries:[entry,{...entry,reviewId:third,note:'PRIVATE_LEGACY_NOTE'}]};
+ const command=readReviewCommand({...readHistory,action:'read_advisor_care_history_v1',clientId:other});
+ assert.deepEqual(mapReviewResult(page,command),page);
+ for(const injected of [{recordedBy:id},{recordedAt:now},{publication}, {authorId:third}])assert.throws(()=>mapReviewResult({...page,entries:[{...entry,...injected}]},command));
+ assert.throws(()=>mapReviewResult({...page,entries:[entry,entry]},command));
+ assert.throws(()=>mapReviewResult({...page,version:1},readReviewCommand({...command,version:1})));
+ assert.throws(()=>mapReviewResult({...history,entries:[entry]},readReviewCommand(readHistory)));
+});
+test('advisor reported-product paging is a closed safe READ with the retained positive current-state page',()=>{
+ const request={schemaVersion:1,action:'read_advisor_reported_products_v1',clientId:other,cursor:null,limit:100,expectedUseRevision:2,publicationVersion:1};
+ const command=readReviewCommand(request),page={revision:2,items:[],nextCursor:null};
+ assert.deepEqual(command,request);assert.deepEqual(mapReviewResult(page,command),page);
+ assert.equal(buildReviewRpc(command).name,'concierge_review_command_v1');
+ assert.equal(portalReviewAccess('review',command.action,'human'),'READ');
+ for(const audience of ['client','task_agent'] as const)assert.equal(portalReviewAccess('review',command.action,audience),'DENY');
+ for(const delta of [{limit:0},{limit:101},{clientId:null},{expectedUseRevision:null},{publicationVersion:0},{cursor:`r:${'a'.repeat(64)}:${id}`},{requestId:id}])assert.throws(()=>readReviewCommand({...request,...delta}));
+ const cursor=`c:${'a'.repeat(64)}:${id}`;assert.equal((readReviewCommand({...request,cursor}) as typeof request).cursor,cursor);
+ assert.equal((readReviewCommand({...request,publicationVersion:null}) as typeof request).publicationVersion,null);
+ for(const delta of [{revision:1},{privateNote:'PRIVATE'},{sourceId:id}])assert.throws(()=>mapReviewResult({...page,...delta},command));
+ assert.throws(()=>mapReviewResult({status:'committed',receipt:page},readReviewCommand({schemaVersion:1,action:'request_status_v1',requestId:id})));
 });
 
 // Compiler checks use actual imports with --strict and unchanged compiler settings.

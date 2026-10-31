@@ -2,7 +2,7 @@ import type {ReviewCommand,ReviewRpcCall,GuidanceCommand,GuidanceRpcCall,GoalRep
 import {readObject,requireValue,readDate} from './ConciergePortalValidation.ts';
 import {readPlanShape,planScheduleShape,planDependencyBasisShape,planCommandFields} from './PortalRebuildValidation.ts';
 import type {PlanShape} from './PortalRebuildValidation.ts';
-import {careObject as obj,careArray as arr,careEnum as en,careNull as nil,careUnion as union,careUuid as uuid,careRevision as rev,carePositive as pos,careBool as bool,careDay as day,careKnown as known,carePublication as publication,sameCareValue} from './PortalCareValidation.ts';
+import {careObject as obj,careArray as arr,careEnum as en,careNull as nil,careUnion as union,careUuid as uuid,careRevision as rev,carePositive as pos,careBool as bool,careDay as day,careKnown as known,carePublication as publication,sameCareValue,careCommandFields,readCareCommand} from './PortalCareValidation.ts';
 import {reviewCommandMaxBytes,reviewBodyMaxBytes,conversationBodyMaxBytes,guidanceBodyMaxBytes,reviewTextMax,reviewComfortMax,reviewGoalsMax,reviewPhotosMax,reviewReferencesMax,conversationFactsMax,reviewSourcesPerFactMax,reviewPageMax} from './PortalReviewValues.ts';
 
 export const reviewTextShape:PlanShape={type:'text',max:reviewTextMax,empty:false};
@@ -43,6 +43,7 @@ export const reviewCommandFields:Record<ReviewCommand['action'],Record<string,Pl
  append_private_review_note_v1:{...write,clientId:uuid,reviewEvent:privateNoteSubjectShape,note:reviewTextShape},
  read_care_history_v1:page,read_advisor_care_history_v1:{...page,clientId:uuid},request_status_v1:write
  ,read_client_plan_v3:{version:nil(pos)},read_advisor_publication_v3:{clientId:uuid,version:nil(pos)},
+ read_advisor_reported_products_v1:{...careCommandFields.read_reported_products_v1,clientId:uuid},
  read_client_instruction_manifest_v1:manifestRead,read_advisor_instruction_manifest_v1:{...manifestRead,clientId:uuid},
  read_client_instruction_v1:instructionRead,read_advisor_instruction_v1:{...instructionRead,clientId:uuid},
  record_decision_v2:{...planCommandFields.record_decision_v1,expectedDecisionRevision:{...rev,max:Number.MAX_SAFE_INTEGER-1},snapshot:guidanceReadSnapshotShape}
@@ -129,7 +130,8 @@ function parseCommand<T extends {action:string}>(value:unknown,fields:Record<str
 }
 export function readReviewCommand(value:unknown):ReviewCommand{
  const command=parseCommand<ReviewCommand>(value,reviewCommandFields);
- if('cursor'in command&&command.cursor!==null)requireValue(validReviewCursor(command.cursor));
+ if(command.action==='read_advisor_reported_products_v1')readCareCommand({schemaVersion:1,action:'read_reported_products_v1',cursor:command.cursor,limit:command.limit,expectedUseRevision:command.expectedUseRevision,publicationVersion:command.publicationVersion});
+ else if('cursor'in command&&command.cursor!==null)requireValue(validReviewCursor(command.cursor));
  if(command.action==='submit_goal_report_v1'){checkGoalReport(command.body);checkPast(command.occurredOn);}
  if(command.action==='amend_report_v1'){
   requireValue(command.event.kind===command.replacement.kind);checkPast(command.occurredOn);

@@ -47,3 +47,11 @@ test('retained Checkin handler must expose finite version-required instead of lo
  const response=await handleCheckinsRequest(req({action:'client_read'}),{...ports,storage,rpc:async()=>({data:null,error:{message:'concierge_content_version_required'}})});
  assert.equal(response.status,409);assert.deepEqual(await response.json(),{code:'content_version_required',retryable:false});
 });
+test('advisor current reported-product page uses the Review RPC and malformed READ output stays unavailable',async()=>{
+ const command={schemaVersion:1,action:'read_advisor_reported_products_v1',clientId:id,cursor:null,limit:100,expectedUseRevision:2,publicationVersion:null};
+ const page={revision:2,items:[],nextCursor:null};let calls=0;
+ const response=await handleReviewRequest(req(command),{...ports,rpc:async(_token,call)=>{calls++;assert.equal(call.name,'concierge_review_command_v1');assert.deepEqual(call.args.p_command,command);return {data:page,error:null};}});
+ assert.equal(response.status,200);assert.deepEqual(await response.json(),page);assert.equal(calls,1);
+ const bad=await handleReviewRequest(req(command),{...ports,rpc:async()=>({data:{...page,privateNote:'PRIVATE'},error:null})});
+ assert.equal(bad.status,503);assert.deepEqual(await bad.json(),{code:'unavailable'});
+});
