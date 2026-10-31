@@ -110,3 +110,28 @@ Current implementation/test source is **`5d796c22029224116d7d720c053bf6c528e4460
 The initial stalled source-test worker was positively identified by its exact known Node/script arguments and this worktree's cwd, then terminated by that one PID. This bounded own-source cleanup made no browser/native/fixture inventory or lifecycle call. Both cleanup receipts are retained; no broad kill occurred. All final finite source/type/build commands returned terminal results. Browser/fixture custody remains wholly untouched and unclaimed.
 
 Selected accepted logs under the evidence root are `source387-final.log`, `source-checks-final.json`, `adjacent-source.log`, `frontend-types-final.log`, `session-types-final.log`, `ui.log`, `build-clean5d796c2.log`, `runtime.json`, `source-boundary.json`, and the copied clean5d provenance. Earlier RED/setup logs remain separate. Parent was notified at both implementation checkpoints. The worker remains live waiting for explicit browser authority, with no automatic resource polling.
+
+## bounded implementation follow-up: close the runtime dependency port
+
+Starting clean source **`278714b708df2a88e5796fb2ef0ae82d31e76057`**, same workspace/branch. The parent identified a contract-quality defect: `ports.dependencies.execute` had only a TypeScript action restriction and forwarded otherwise-valid runtime Plan commands to the broader plans port. This did not establish extra privilege or a server bypass; the same advisor already holds that broader port. The original387/121/build evidence and source checkpoint above remain frozen historical results. This is an implementation follow-up, not an independent review round.
+
+Both live model tools again verify codex/Sol/xhigh/default and supported descriptors. Project/default-subagent settings and all eight role TOMLs are freshly parsed and hashed. All Node/npm commands explicitly use Node22.23.0; no dependency/config change. Applied review-reception, systematic debugging, TDD and verification guidance.
+
+The only production change replaces that forwarding expression with an explicit runtime guard for **only** `read_draft_dependencies_v1` and `rebase_draft_dependencies_v1`. Other actions fail with `TransportError(403)` before egress. Accepted actions continue through the unchanged broad port's captured-session, strict `readPlanCommand`/`mapPlanResult`, operation-kind and selection paths. `careRead`, global allowlists, permissions, existing tests and every other production statement remain byte-identical to278.
+
+New test file: `apps/portal/tests/rebuild-advisor-dependencies-runtime-seam.test.mjs`. Actual application cookie/factory/transport/Root mapping execute; only finite HTTP DTOs/fault delivery and the existing synthetic backend reducer are supplied. Before the fix, **8 pass/3 fail**, zero skips/cancelled: otherwise-valid `read_draft_v1`, `list_plans_v1` and `validate_draft_v1` visibly egress through the dependency port. The draft read additionally emits its normal gate read. Correct intended assertions reject this behavior. After the fix, **11/11** pass, zero skips/cancelled: those actions emit nothing through dependencies and still work through the ordinary plans port. Legitimate read/rebase decode, unchanged text/new revision/selection, HTTP503 and malformed200 READ-rejected versus WRITE-uncertain outcomes, strict extras/UUID/schema rejection without egress, and creation-bound CSRF replacement denial remain verified. Malformed allowed-action payloads retain the existing parser's `invalid_input` behavior; it is not replaced with another parser.
+
+Evidence root: `.local-artifacts/portal-rebuild/w2-care-dependency-seam/`. `red.log`, `green.log`, `focused-source.log`, strict-type logs, `checks.json`, `runtime.json`, `pins.json` and the final scope/hash receipts are retained separately from the original checkpoint evidence.
+
+Executed command uses `/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node --experimental-strip-types --test --test-timeout=10000 --test-concurrency=1` on:
+
+```text
+apps/portal/tests/rebuild-advisor-dependencies-runtime-seam.test.mjs
+apps/portal/tests/rebuild-advisor-dependencies.test.mjs
+apps/portal/tests/rebuild-app-ports.test.mjs
+apps/portal/tests/rebuild-care-ports.test.mjs
+```
+
+Result **67/67**, zero failures/skips/cancelled. Explicit Node22 `npm --prefix apps/portal run typecheck:rebuild` and `typecheck:session` both exit0 with unchanged strict flags. Exact argv/exits/timing are in `checks.json`. Only the tiny `ports.ts` guard, the new test and this appended report enter the follow-up commit. Diff/scope/whitespace checks precede the returned commit SHA.
+
+No browser/Chrome/DOM/preview/native/R7/credential/resource inspection or polling, parent integration, permission/Root/careRead/global-action change, push/PR/merge/deployment or live business action. No broad/full browser, application build, Root/native/DB or CI suite is rerun for this bounded guard; the original evidence keeps its original source. W6 retains genuine R7 and sole Chrome. The worker remains available for the later separately granted serial synthetic browser phase; independent current-source/browser acceptance remains open.

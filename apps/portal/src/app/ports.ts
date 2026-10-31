@@ -370,7 +370,14 @@ export function createAdvisorPorts(runtime: ApplicationSession, options: { care?
   };
   if (care) {
     ports.dependencies = {
-      execute: (input, options) => ports.plans.execute(input, options),
+      execute(input, options) {
+        if (
+          input?.action !== "read_draft_dependencies_v1" &&
+          input?.action !== "rebase_draft_dependencies_v1"
+        )
+          throw new TransportError(403);
+        return ports.plans.execute(input, options);
+      },
     };
     ports.careRead = {
       execute(input, options) {
