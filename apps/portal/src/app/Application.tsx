@@ -356,12 +356,12 @@ function ClientApplication({
   route: PortalRoute;
   onSignOut(): void;
 }) {
-  const ports = useMemo(() => createClientPorts(runtime), [runtime]);
+  const ports = useMemo(() => createClientPorts(runtime, { care: true }), [runtime]);
   const [controller, setController] = useState<ReturnType<
     typeof createClientPlanController
   > | null>(null);
   useEffect(() => {
-    const c = createClientPlanController(boundary, ports);
+    const c = createClientPlanController(boundary, ports, { readVersion: 2 });
     setController(c);
     void c.refresh();
     return () => c.dispose();
@@ -403,7 +403,7 @@ export function ClientContent({
     "recommendation",
     "product",
     "product-evidence",
-  ].includes(route.name);
+  ].includes(route.name) || state.view?.schemaVersion === 2 && ["product-use", "report-use"].includes(route.name);
   let content: ReactNode;
   if (!supported)
     content = (
@@ -491,7 +491,7 @@ function AdvisorApplication({
     controller: AdvisorController;
   } | null>(null);
   useEffect(() => {
-    const adapter = createAdvisorPorts(runtime);
+    const adapter = createAdvisorPorts(runtime, { care: true });
     const controller = createAdvisorController({
       session: boundary,
       permissions: adapter.permissions,
@@ -559,6 +559,7 @@ function AdvisorApplication({
           clientId={route.clientId}
           controller={connection.controller}
           publication={connection.adapter.publication}
+          adapterCare={connection.adapter.care}
           boundary={boundary}
         />
       );
@@ -587,11 +588,13 @@ function AdvisorClientRecovery({
   clientId,
   controller,
   publication,
+  adapterCare,
   boundary,
 }: {
   clientId: string;
   controller: AdvisorController;
   publication: ReturnType<typeof createAdvisorPorts>["publication"];
+  adapterCare: ReturnType<typeof createAdvisorPorts>["care"];
   boundary: PlanSessionBoundary;
 }) {
   const [audit, setAudit] = useState(false);
@@ -637,6 +640,7 @@ function AdvisorClientRecovery({
           key={clientId}
           clientId={clientId}
           read={publication}
+          care={adapterCare}
           session={boundary}
         />
       ) : null}

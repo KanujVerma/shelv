@@ -1,6 +1,6 @@
 # care application composition checkpoint
 
-Owner: Kanuj. 31 October 2026. Source seam only; actual Application still defaults to v1. Care activation and genuine browser acceptance remain pending.
+Owner: Kanuj. 31 October 2026. The candidate application now composes v2 client care reads and canonical v2 advisor audit; synthetic application verification is in progress. Genuine care browser, independent composition and release acceptance remain pending.
 
 The app factories now accept explicit `{care:true}` and create the existing audience-bound `createClientCarePort` or `createAdvisorCarePort`. Legacy callers retain their default v1 composition. No second transport/parser, fallback or new action was added. The controller can select v2 on its first read with the already-pinned `readVersion:2` option. It preserves the confirmed v2 view on 409/503 and never falls back to a Start-only read. Advisor ports retain their finite advisor-only action set.
 
@@ -9,3 +9,13 @@ Meaningful pre-production RED: new four-case actual session/cookie/factory/contr
 Next composition owns Application.tsx/PublicationAudit.tsx only as needed: explicitly select v2 client first read, support report-use/product-use routes, preserve shared renderer/actual access/readonly and exact fetched-basis recovery; canonical advisor publication read must use v2 after care events and must never fabricate ClientPlanView entitlement. Add real application browser regressions after the current independent CU3 reviewer releases Chrome, then genuine care acceptance with a new explicit R7 grant. Do not treat component harnesses or the factory seam as that result.
 
 Backend CN1 is independently addressed by M57. Parent fresh R7 reset57 and canonical35files/796assertions pass; official advisor SQL securityWARN/ERROR0. Source snapshots, credentials and resource custody remain separately recorded. No production activation, deployment, merge or live action.
+
+## application composition and verification
+
+Application explicitly selects the audience-bound care factories and `readVersion:2`; both care routes compose the existing ClientPlan/UseReport renderer only for v2. Legacy factory consumers and v1 SSR stay compatible. Canonical advisor audit uses `read_advisor_publication_v2` through its own finite care port, with actual client access and the shared read-only UseFacts summary. It never fabricates a client entitlement or provides care-write controls.
+
+Four new actual-cookie/controller/Root-mapper/component SSR cases were0/4 meaningful RED before wiring;4/4 GREEN afterward.45 focused source/SSR/factory/controller regressions pass, strict frontend types0. Actual application intercepted installed-Chrome13/13 passes: the retained11 journeys plus direct care stop/unknown occurrence/notes/receipt/v2 reread/reload/current-state and readonly general route. The finite fake backend now supplies strict v2 read envelopes and one synthetic Stop reducer; assertions expect the deliberate new actions and preserve all prior publication/decision/no-Start/focus/scroll/logout/callback checks. This is not genuine SQL acceptance. First12/13 failed only because the new assertion selected identical background and dialog headings; scoping it to the selected dialog fixed the probe, with no production change.
+
+Full current portal suite passed **1030/1030**,0fail/skip,374.093s, serial installed-Chrome/Node. Session171/171 passes,0fail/skip. Current root `npm test`, application types, test types and Expo web export all exit0; Root1213pass/18existingoptinskips/0fail,162 TAP groups; exact command exits/log hashes are in ignored root-care-app-checks.json. No Root contracts/migrations/native source changed during W6's separate R7 Node custody. W6 author actual11/all13-care-actions succeeds, custody returned; its browser phase is source-only until a fresh grant. CU3 is independently addressed by W7_CARE_CLIENT_R3. No deployment, merge or live action.
+
+Chrome explicitly released **2026-10-31T08:37:24.251322Z**, all contexts/own test processes terminal, fresh Chrome/workerd inventories empty, preview no tab. No browser/DOM calls follow release. Source/test code is frozen for this checkpoint; subsequent clean builder/provenance receipt will not alter those bytes. Fresh independent application composition and genuine browser verification remain required.

@@ -7,7 +7,7 @@ import { chromium } from "playwright-core";
 import { fixture, ids, stamp } from "./rebuild/advisor-fixture.mjs";
 import { mayaPlan } from "./rebuild/plan-fixture.mjs";
 import { projectClientPlan } from "../../../src/contracts/PortalRebuild.ts";
-import { parseRoute } from "../src/navigation/routes.ts";
+import { parseRoute, buildRoute } from "../src/navigation/routes.ts";
 const portal = path.resolve(import.meta.dirname, ".."),
   output = path.resolve(
     portal,
@@ -29,6 +29,10 @@ const localImages = new Map(
     }),
 );
 let browser;
+async function selectCare(page,label,value) {
+  await page.getByRole("combobox",{name:label,exact:true}).click();
+  await page.getByRole("option",{name:value,exact:true}).click();
+}
 before(async () => {
   await fs.mkdir(artifacts, { recursive: true });
   execFileSync(process.execPath, ["scripts/build-portal-app.mjs"], {
@@ -59,6 +63,8 @@ function state() {
   return {
     f,
     view,
+    careRevision: 0,
+    reportedUse: new Map(),
     calls: [],
     signedIn: true,
     csrf: "SYNTHETIC-csrf",
@@ -135,6 +141,23 @@ async function setup(initial = "/plan", width = 1440, s = state()) {
       if (endpoint === "auth/request" && request.method() === "POST") {
         assert.equal(request.headers()["x-shelv-csrf"], "SYNTHETIC-flow");
         return route.fulfill({ json: { sent: true } });
+      }
+      if (endpoint === "care" && request.method() === "POST") {
+        if (s.failure) return route.fulfill({status:s.failure,json:{code:"unavailable"}});
+        const careView = view => ({...view,schemaVersion:2,use:{revision:s.careRevision,planProducts:(view.plan?.content.products??[]).map(product=>({product:{kind:"plan_product",publication:{version:view.plan.version,documentSchemaVersion:view.plan.documentSchemaVersion},productId:product.id,slotId:null},state:"not_reported",originalStart:{state:"unknown"},latestEvent:null,identity:null,contradiction:false,...s.reportedUse.get(product.id)})),reportedProducts:{items:[],nextCursor:null}},latestPublicReview:null});
+        if (audience === "client" && command.action === "read_client_plan_v2") {
+          assert.deepEqual(command,{schemaVersion:1,action:"read_client_plan_v2",version:null});
+          if(s.hold)await new Promise(resolve=>s.release=resolve);
+          return route.fulfill({json:careView(s.view)});
+        }
+        if (audience === "advisor" && command.action === "read_advisor_publication_v2" && s.publication) return route.fulfill({json:careView(s.publication)});
+        if (audience === "client" && command.action === "report_product_use_v1") {
+          assert.equal(command.change.kind,"stopped");assert.equal(command.expectedUseRevision,s.careRevision);
+          s.careRevision++;
+          s.reportedUse.set(command.product.productId,{state:"stopped",latestEvent:{eventId:command.requestId,product:command.product,changeKind:"stopped",occurredOn:command.occurredOn,channel:command.channel,reportedBy:ids.actor,recordedBy:ids.actor,recordedAt:stamp,sourcePublication:command.sourcePublication,acquisition:command.acquisition,identityEventId:null,originalActivationId:null,amendment:null}});
+          return route.fulfill({json:{requestId:command.requestId,event:{kind:"use",id:command.requestId},revision:s.careRevision,recordedAt:stamp,notificationEventId:null}});
+        }
+        throw Error("unexpected finite care command "+command.action);
       }
       if (endpoint === "plans" && request.method() === "POST") {
         if (s.failure)
@@ -379,7 +402,7 @@ test("actual client app reads/decides through fixed cookie ports and restores pr
       1,
     );
     assert.equal(
-      f.s.calls.filter((c) => c.command?.action === "read_client_plan_v1")
+      f.s.calls.filter((c) => c.command?.action === "read_client_plan_v2")
         .length,
       2,
     );
@@ -877,7 +900,7 @@ test("canonical publication audit preserves ended client access and real envelop
       /full history and restore controls are not connected yet/,
     );
     assert.equal(
-      s.calls.filter((c) => c.command?.action === "read_advisor_publication_v1")
+      s.calls.filter((c) => c.command?.action === "read_advisor_publication_v2")
         .length,
       1,
     );
@@ -1047,4 +1070,39 @@ test("actual startup rejects partial, empty, duplicate, mixed and oversized call
   } finally {
     await f.close();
   }
+});
+
+test("real application v2 care composition records stop and keeps its confirmed state across reload", async () => {
+  const f=await setup(buildRoute({name:"product-use",productId:"cerave-pm",routine:"evening"}),390);
+  try {
+    const p=f.page;
+    await p.getByRole("group",{name:"is this your product?",exact:true}).waitFor();
+    await selectCare(p,"what changed?","stopped");
+    await selectCare(p,"when did this happen?","date not known");
+    await p.getByRole("textbox",{name:"anything we should know? (optional)",exact:true}).fill("synthetic actual-app stop note");
+    await p.getByRole("button",{name:"record change",exact:true}).click();
+    await p.getByText("use report recorded",{exact:true}).waitFor();
+    const writes=f.s.calls.filter(c=>c.command?.action==="report_product_use_v1");
+    assert.equal(writes.length,1);assert.equal(writes[0].endpoint,"care");
+    assert.deepEqual(writes[0].command.change,{kind:"stopped",details:"synthetic actual-app stop note"});
+    assert.deepEqual(writes[0].command.occurredOn,{state:"unknown"});assert.equal(writes[0].command.identityEventId,null);
+    await p.reload();
+    await p.getByRole("button",{name:"back to product",exact:true}).click();
+    await p.getByRole("dialog").waitFor();await p.getByRole("dialog").getByText("reported stopped",{exact:true}).waitFor();
+    assert.deepEqual(f.s.view.actualUse,[]);
+    assert.equal(f.s.calls.filter(c=>c.command?.action==="report_product_use_v1").length,1);
+    assert.equal(f.s.calls.some(c=>c.command?.action==="read_client_plan_v1"),false);
+    assert.equal(f.s.calls.some(c=>c.endpoint==="payments"),false);
+  } finally { await f.close(); }
+});
+
+test("real application general care route respects read-only access without a write",async()=>{
+  const s=state();s.view.access="read_only";
+  const f=await setup(buildRoute({name:"report-use",routine:"evening"}),320,s);
+  try{
+    await f.page.getByText("this view cannot record care changes.",{exact:true}).waitFor();
+    assert.equal(await f.page.getByRole("button",{name:"record change",exact:true}).count(),0);
+    assert.equal(s.calls.some(c=>["report_product_use_v1","create_reported_product_v1","report_identity_v1"].includes(c.command?.action)),false);
+    assert.equal(s.calls.some(c=>c.command?.action==="read_client_plan_v1"),false);
+  }finally{await f.close();}
 });

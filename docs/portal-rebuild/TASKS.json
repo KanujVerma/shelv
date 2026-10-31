@@ -1585,7 +1585,7 @@
         "92b2447aee18e691d54cc2b86707b41ac953ad63",
         "24837c36552944404f2eb017fd65800aa6190269"
       ],
-      "resources": "SOURCE ONLY; no R6/Chrome custody. Await actualM57/hash and future R7 selection/grant, no R4/R5/R6 adoption or resource calls.",
+      "resources": "R7 Node custody returned,7issued7closed0/0,205protectedfiles unchanged; source-only genuine care browser preparation; NO resource/browser grant",
       "verdict": "Genuine Node9/9 PASS at92b2447 runf67a47ed; actualPKCE/Vault/nativeCare/SQL, not browser/UI acceptance; independent fresh harness/chain review required",
       "integratedCommits": [
         "3f1cdf9b",
@@ -1598,7 +1598,10 @@
         "7c9bb1f0",
         "0201d90e"
       ],
-      "custodyGrantFile": ".local-artifacts/portal-rebuild/canonical-plan-v1-r6/edge/care/NODE-CUSTODY-GRANT.json"
+      "custodyGrantFile": ".local-artifacts/portal-rebuild/canonical-plan-v1-r6/edge/care/NODE-CUSTODY-GRANT.json",
+      "r7SourceCommit": "3a0e120b0ac0fcdde1a219a12af2ae74977c5d0d",
+      "r7IntegrationCommit": "3f3af1d9",
+      "r7Result": "Author actual11groups/all13positiveCareActions PASS; exactfiltered8/3/1/1 client/advisor, currentreport commit pending, independentgenuineR7 remains"
     },
     {
       "role": "W1 care legacy fixes",
@@ -1889,12 +1892,17 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-ed98972d",
       "branch": "t3/w7-care-client-round3-review",
       "baseCommit": "0755c554",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_CARE_CLIENT_R3.md"
       ],
-      "resources": "Sole synthetic Chrome; no native/Auth/DB",
-      "verification": "Exact delegate_task settings and live thread/workspace readback; both child tools and eight pins required"
+      "resources": "Chrome released08:14:54.620UTC; all handles closed; no native",
+      "verification": "Exact delegate_task settings and live thread/workspace readback; both child tools and eight pins required",
+      "headCommit": "5929162f5f6c8a8517a9b1920e760fa9f882f18e",
+      "integratedCommits": [
+        "48ea2c7d"
+      ],
+      "verdict": "Scoped spec/quality PASS CU3 addressed,CU1/CU2remainaddressed;173focused/9independent/22retained/47foundation/171session/46pure/3SSR"
     },
     {
       "role": "W1 report and guidance strict contracts",
@@ -1922,7 +1930,10 @@
         "docs/portal-rebuild/research/W1_REPORT_GUIDANCE_CONTRACTS.md"
       ],
       "resources": "Source-only seam; no SQL/migration/resource/browser until phase2 pin",
-      "verification": "Exact delegate_task settings and live thread/workspace readback; both child tools and eight pins required"
+      "verification": "Exact delegate_task settings and live thread/workspace readback; both child tools and eight pins required",
+      "earlyCommit": "26f9ae3286a7878632ed7ffb058297bfbd2f9518",
+      "phase": "SOURCE_ONLY_CORRECTIVE_SEAM",
+      "pinStatus": "Do not integrate parent nativeclosure yet; refine empty report no-op and authoritative currentinstruction manifest/read projection before SQL"
     }
   ]
 }

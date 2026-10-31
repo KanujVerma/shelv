@@ -174,7 +174,17 @@
     "testTypes": "PASS",
     "expoWeb": "PASS",
     "testLogSha256": "2a60022e9b2fbfc923bd4bb891675396b0e0454d9389ed1f1890645df77223e1",
-    "exportLogSha256": "16fa035b002950ab6159bc1b5a6832bce0ff606ec933821b58502247abb65c23"
+    "exportLogSha256": "16fa035b002950ab6159bc1b5a6832bce0ff606ec933821b58502247abb65c23",
+    "currentCandidate": {
+      "tests": {
+        "pass": 1213,
+        "existingOptInSkips": 18,
+        "fail": 0
+      },
+      "appTypes": 0,
+      "testTypes": 0,
+      "webExport": 0
+    }
   },
   "custody": {
     "status": "RETURNED_R6_STOPPED_PRESERVED",
@@ -209,7 +219,15 @@
     "afterReceiptSha256": "39485506115df928adc388a5244944fb2c7c359d7a932ea3522d3b6350db8e96",
     "limits": "Genuine Node HTTP/cookie jar, not Chrome enforcement/application UI; author evidence not independently accepted. First content-readiness failure preserved; no predicate/Root workaround."
   },
-  "ui": "CU1/CU2 changes required; W3 fixes, new independent review needed",
+  "ui": {
+    "cu1": "INDEPENDENTLY_ADDRESSED",
+    "cu2": "INDEPENDENTLY_ADDRESSED",
+    "cu3": "INDEPENDENTLY_ADDRESSED",
+    "report": "research/W7_CARE_CLIENT_R3.md",
+    "integration": "48ea2c7d",
+    "applicationComposition": "Candidate_v2_1030portal_171session_13app_browser_PASS",
+    "genuineBrowser": "NOT_RUN"
+  },
   "priorR4": "STOPPED, full private SQL backup+volumes/helpers/source/evidence retained, original snapshots unchanged",
   "priorR5": "RETIRED_SOURCE_ONLY/no containers/volumes",
   "productionDeployment": false,
@@ -262,9 +280,14 @@
       "assertions": 796,
       "log": "canonical-plan-v1-r7/pgtap-care-r7.private.log"
     },
-    "nativeHelpers": "NOT_CREATED",
+    "nativeHelpers": {
+      "status": "RUNNING",
+      "count": 5,
+      "sourceFilesPerEdge": 76,
+      "sourceHashesSha256": "b09d1edfc6ba7f8cd064c76adb59be01981a6f00186f8f9663475c6d18812c54"
+    },
     "genuine": "NOT_RUN",
-    "applicationCareActivation": false,
+    "applicationCareActivation": "CANDIDATE_ONLY_SYNTHETIC_VERIFIED_GENUINE_BROWSER_PENDING",
     "security": {
       "method": "Official v2.121.0 advisor SQL, positively owned Docker psql, transaction rolled back",
       "securityWarnErrorCount": 0,
@@ -278,6 +301,21 @@
       "sessionsClosed": 1,
       "remainingSessions": 0,
       "remainingRefreshTokens": 0
+    },
+    "genuineNode": {
+      "status": "AUTHOR_SCOPED_PASS",
+      "groups": 11,
+      "positiveCareActions": 13,
+      "runId": "93f015e8-1d0a-40cb-84e5-160d87cf5a64",
+      "sourceHead": "3a0e120b0ac0fcdde1a219a12af2ae74977c5d0d",
+      "resultSha256": "c27a9c719880890ec6f3b5a1f8da620c35d0896305447635fbcaa494800e085b",
+      "issued": 7,
+      "closed": 7,
+      "remainingSessions": 0,
+      "remainingRefreshTokens": 0,
+      "protectedFilesUnchanged": 205,
+      "custodyReturnedAt": "2026-10-31T08:27:51.710Z",
+      "returnReceiptSha256": "04d8252a8e9890438dba3ca0427ddb67d6a63242ed7c16f27eb74f169dc7bf4f"
     }
   }
 }
