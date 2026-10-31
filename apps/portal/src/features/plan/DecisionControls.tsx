@@ -38,24 +38,33 @@ export function PendingDecisionReviews({props,selectedDecisionId,onReview,inPlan
 }
 function PendingReview({props,id,intent,onReview,inPlan}:{props:ClientPlanProps;id:string;intent:Intent;onReview:()=>void;inPlan:boolean}) {
     const [state,setState]=useState(intent),[loading,setLoading]=useState(false),[failed,setFailed]=useState(false);
-    const scope=useReviewScope(),alive=useRef(true),busy=useRef(false),context=useRef({view:props.view,mode:props.mode,epoch:0});
-    if(context.current.view!==props.view || context.current.mode!==props.mode)context.current={view:props.view,mode:props.mode,epoch:context.current.epoch+1};
+    const scope=useReviewScope(),alive=useRef(true),busy=useRef<object|null>(null),context=useRef({view:props.view,mode:props.mode,session:props.session,epoch:0});
+    if(context.current.view!==props.view || context.current.mode!==props.mode || context.current.session!==props.session){
+        context.current={view:props.view,mode:props.mode,session:props.session,epoch:context.current.epoch+1};
+        // Retire obsolete ownership without waiting for its read to settle.
+        // The captured epoch still denies its result, even on an exact-object return.
+        busy.current=null;
+    }
     const epoch=context.current.epoch,current=()=>alive.current&&props.session.isCurrent()&&context.current.epoch===epoch;
     useEffect(()=>{alive.current=true;return()=>{alive.current=false;};},[]);
-    useEffect(()=>{setLoading(false);},[props.view,props.mode]);
+    useEffect(()=>{setLoading(false);},[props.view,props.mode,props.session]);
     const port=decisionPort(props),reviewable=isReviewable(props,scope,state.reviewBasis);
     const removed=!props.view.plan?.content.decisions.some(d=>d.id===id);
     async function refresh(acknowledge:boolean) {
         if(!port||busy.current||!current())return;
         const basis=state.reviewBasis,canAcknowledge=acknowledge&&isReviewable(props,scope,basis);
-        busy.current=true;setLoading(true);setFailed(false);
+        const operation={},ownsOperation=()=>current()&&busy.current===operation;
+        busy.current=operation;setLoading(true);setFailed(false);
         try {
             const authoritative=await port.read.execute({schemaVersion:1,action:'read_client_plan_v1',version:null});
-            if(!current())return;
+            if(!ownsOperation())return;
             const next:Intent={...state,command:null,phase:canAcknowledge&&basis&&sameFetchedRevision(basis,authoritative)?'idle':'conflict',reviewBasis:fetchedBasis(props,scope,authoritative)};
             remember(props,id,next);setState(next);props.onViewChange?.(authoritative);
-        } catch {if(current())setFailed(true);}
-        finally {busy.current=false;if(current())setLoading(false);}
+        } catch {if(ownsOperation())setFailed(true);}
+        finally {
+            // An obsolete finally must never release a newer operation's lock.
+            if(busy.current===operation){busy.current=null;if(current())setLoading(false);}
+        }
     }
     if(state.phase!=='conflict')return null;
     return <StatusNotice tone="warning" title="plan changed" action={!inPlan ? <Button variant="secondary" onClick={onReview}>review latest plan</Button> : <div className="plan-stack">
