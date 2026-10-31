@@ -9,6 +9,9 @@ import {snapshotDigest, attestFreshRuntime} from '../scripts/local-admission-lin
 assert.equal(process.env.SHELV_REBUILD_CARE_NATIVE_GUARDS, '1', 'Explicit pure care guard opt-in required');
 const root = path.resolve(import.meta.dirname, '../../..');
 const parentRoot = '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030';
+// Authorization test metadata must not become valid merely because this test runs in the parent checkout.
+const syntheticChildWorkspace = '/synthetic/shelv/w6-care-child-workspace';
+const foreignDirectory = '/synthetic/shelv/foreign-directory';
 const ownerId = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa';
 const directory = parentRoot + '/.local-artifacts/portal-rebuild/canonical-plan-v1-r6';
 const projectId = 'shelv-portal-admission-aaaaaaaaaaaa';
@@ -35,14 +38,15 @@ function runtime() {
 
 test('R6 selection is explicit, current56 and does not adopt old R4 or caller-selected paths',()=>{
   assert.equal(selected().migrationCount,56);
-  for(const patch of [undefined,{directory:directory.replace('r6','r4')},{directory:directory.replace('r6','r5')},{purpose:'w6-care-native-r5'},{ownerId:'d5c39897-0583-4056-8056-000000000000',projectId:'shelv-portal-admission-d5c398970583'},{parentRoot:root},{ownerId:'6214c384-1fb3-4aad-b5a8-9dd9042345a3'},{projectId:'shelv-portal-admission-6214c3841fb3'},{migrationCount:55},{directory:directory+'/../canonical-plan-v1-r6'},{unexpected:true}]) {
+  for(const patch of [undefined,{directory:directory.replace('r6','r4')},{directory:directory.replace('r6','r5')},{purpose:'w6-care-native-r5'},{ownerId:'d5c39897-0583-4056-8056-000000000000',projectId:'shelv-portal-admission-d5c398970583'},{parentRoot:foreignDirectory},{directory:foreignDirectory},{ownerId:'6214c384-1fb3-4aad-b5a8-9dd9042345a3'},{projectId:'shelv-portal-admission-6214c3841fb3'},{migrationCount:55},{directory:directory+'/../canonical-plan-v1-r6'},{unexpected:true}]) {
     assert.throws(()=>selectCareFixture(patch===undefined?undefined:{...clone(selection),...patch}));
   }
 });
 test('care grant is separate from selection and binds parent, fixture, workspace and phase',()=>{
-  const grant={format:1,parentThreadId:'d632030a-18f7-4dec-a2c9-f5c0418c3fd5',purpose:'genuine-care-node',workspace:root,directory,ownerId,projectId,snapshotSha256:selection.snapshotSha256,grantId:'synthetic-unit-only'};
-  assert.doesNotThrow(()=>requireCareCustody(selected(),grant,root));
-  for(const patch of [null,{purpose:'genuine-care-browser'},{ownerId:actorId},{workspace:parentRoot},{snapshotSha256:sha('different')},{parentThreadId:'other'},{grantId:''}])assert.throws(()=>requireCareCustody(selected(),patch===null?null:{...grant,...patch},root));
+  const grant={format:1,parentThreadId:'d632030a-18f7-4dec-a2c9-f5c0418c3fd5',purpose:'genuine-care-node',workspace:syntheticChildWorkspace,directory,ownerId,projectId,snapshotSha256:selection.snapshotSha256,grantId:'synthetic-unit-only'};
+  assert.doesNotThrow(()=>requireCareCustody(selected(),grant,syntheticChildWorkspace));
+  for(const patch of [null,{purpose:'genuine-care-browser'},{ownerId:actorId},{workspace:foreignDirectory},{workspace:parentRoot},{snapshotSha256:sha('different')},{parentThreadId:'other'},{grantId:''}])assert.throws(()=>requireCareCustody(selected(),patch===null?null:{...grant,...patch},syntheticChildWorkspace));
+  assert.throws(()=>requireCareCustody(selected(),{...grant,workspace:parentRoot},parentRoot),'Matching parent workspace remains explicitly disallowed');
 });
 test('source attestation rejects old55, wrong bytes, mismatched snapshot/config and foreign source',()=>{
   assert.doesNotThrow(()=>validateCareSource(selected(),{manifest,config,migrations,sourceHashes}));
@@ -54,7 +58,7 @@ test('source attestation rejects old55, wrong bytes, mismatched snapshot/config 
 });
 test('runtime attestation rejects replaced volume, wrong owner/workdir/ledger/helper/source and missing DB',()=>{
   assert.doesNotThrow(()=>validateCareRuntime(selected(),runtime()));
-  const variants=[r=>r.volume.CreatedAt='different',r=>r.volume.Labels['com.supabase.cli.project']='foreign',r=>r.binding.ownerId=actorId,r=>r.binding.workdirSha256=sha(root),r=>r.ledger.pop(),r=>r.containers=[],r=>r.containers[0].State.Running=false,r=>r.helperInspections.care.Id='a'.repeat(64),r=>r.helperInspections.care.Config.Labels['shelv.fixture.owner']=actorId,r=>r.helperInspections.care.Config.Labels['shelv.fixture.workdir']=root,r=>r.helperInspections.care.Config.Image='edge-runtime:latest',r=>r.helperInspections.tls.Config.Image='nginx:latest',r=>r.helperInspections.care.Config.Env[0]='CONCIERGE_ALLOWED_ORIGINS=https://foreign.invalid',r=>r.helperInspections.care.HostConfig.PortBindings['9000/tcp'][0].HostIp='0.0.0.0',r=>r.helperInspections.care.State.Running=false,r=>r.sourceHashes.extra=sha('drift')];
+  const variants=[r=>r.volume.CreatedAt='different',r=>r.volume.Labels['com.supabase.cli.project']='foreign',r=>r.binding.ownerId=actorId,r=>r.binding.workdirSha256=sha(foreignDirectory),r=>r.ledger.pop(),r=>r.containers=[],r=>r.containers[0].State.Running=false,r=>r.helperInspections.care.Id='a'.repeat(64),r=>r.helperInspections.care.Config.Labels['shelv.fixture.owner']=actorId,r=>r.helperInspections.care.Config.Labels['shelv.fixture.workdir']=foreignDirectory,r=>r.helperInspections.care.Config.Image='edge-runtime:latest',r=>r.helperInspections.tls.Config.Image='nginx:latest',r=>r.helperInspections.care.Config.Env[0]='CONCIERGE_ALLOWED_ORIGINS=https://foreign.invalid',r=>r.helperInspections.care.HostConfig.PortBindings['9000/tcp'][0].HostIp='0.0.0.0',r=>r.helperInspections.care.State.Running=false,r=>r.sourceHashes.extra=sha('drift')];
   for(const mutate of variants){const r=clone(runtime());mutate(r);assert.throws(()=>validateCareRuntime(selected(),r));}
 });
 test('native helper plan is fresh R6 only, locked unmodified care entry, finite TLS RPC and loopback57443',()=>{
