@@ -687,3 +687,29 @@ A final actual-source case exposes one more readiness-witness gap: a caller coul
 The core implementation checkpoint is **05442a41b510e08acf7c59a6183973c9615a6b57**, following optional seam **c91cb71ea2611b908ff9e1ec763008f22950b742**. The result-integrity follow-up and final receipt are returned separately so source provenance is explicit. A local final inventory predicate initially expected every new test basename to start `restoration-`, omitting the main `restoration.test.mjs`; the actual twelve owned paths were verified and the inventory predicate corrected. Its initial imprecise note and accurate qualification are retained. No product assertion or ownership permission was relaxed.
 
 Final source self-review separates the effect's attempt owner from the render/callback source. An inline replacement onReady callback can retire a render without recreating the loader effect; retry handles therefore belong to the effect owner, and cleanup cancels its latest handle regardless of callback identity. Old handlers also check their captured render source before starting filter/retry/update/correction/version work. Old cleanup still calls only its own token-scoped cancel and cannot release a newer attempt. Strict compiler and **47/47** focused source/SSR (restoration37 plus retained SSR10) pass in `render-owner-types.log` / `render-owner-source.log`. This is source review plus actual controller/SSR evidence, not a claim that concurrent React/DOM scheduling was executed.
+
+### Frozen restoration source handoff
+
+Exact owned chain after012: early API **`c91cb71ea2611b908ff9e1ec763008f22950b742`**; core implementation **`05442a41b510e08acf7c59a6183973c9615a6b57`**; immutable result witness **`2262f97185818f76965ca14c18bf867e30cfd57d`**; final mounted-effect source **`57f8b6391dbdc5fca8914c4269ef506c2e51a5f5`**. The final suffix is report-only. All targets/transport/shell imports remain separate and exact. Twelve total owned paths are listed with exact Git blobs/SHA256 in `E8/source-audit.json`.
+
+Clean57f8 source-only actual module build: **2,223 inputs/48 outputs**, sourceDirty:false, browserRun:null, `E8/final-source-candidate/provenance.json`. Original mutation/status/review Root protocol and wire behavior retain the tested source scope; no App/browser/rights activation follows this compiler result.
+
+Final **283-file** evidence manifest `E8/evidence-manifest.json` SHA-256 **`e010f61592bbe433cf1c50aa3140444f37cdb7e2634e9756e5e9ed793917a90e`** includes raw before-edit/mid/final source cases, setup faults, exact read-only composition/R3 copies, typed API probes, strict/build/source bundles, preservation and blob audits. It excludes itself and this report. Intermediate stage indexes/source audits are retained with their stage names; the final manifest is authoritative for current artifact paths. Selected final hashes:
+
+| E8 artifact | SHA-256 |
+| --- | --- |
+| `before-edit-red.log` | `66168d743c93a2e44f706062cf5334cef40f72242c77bc47d5c1d89151617812` |
+| `unchanged-before-three.log` | `6ff13d47eb16ad1cd95e1c5eb6c7123154d50dcc62c01392dfa06dafce5fced2` |
+| `result-mutation-red.log` | `c965c0109f32b6bcc09da706f5ca7e34280d91c48d181cde6d296159d15698f7` |
+| `final37.log` | `ad7f07753bea0af71d3db45764bc6273dc0b10719c20ce50561d515915722435` |
+| `ids-final.log` | `86f860f72b42a49ea8874e921ec3f49aea8efe3332470ad9bf06de872e50d285` |
+| `render-owner-source.log` | `10577b1a67b4e47ad554754d210f5584834d31210fd0b69e61faa9b289b6593f` |
+| `original95-final.log` | `536bfaf211841df2e4dda7ed7f113a4e1808c650fd72584062d2d9c5365e1100` |
+| `retained24-final.log` | `4bb0120aac8566bcafc05a6cb0de7a1bf4eed229bb3280d92a448b0e753bfefd` |
+| `retained20-final.log` | `24dbe90d78dab62328c0eb96670191314c509daee11081c8156fd42115e8ead4` |
+| `review23-final.log` | `2a52d4d7549fd6c599ae7b8c9336d10d20d62c26a8051f3e1aae57e530e2b0a7` |
+| `source-audit.json` | `c199748324a0ec709f216cb551463adccaaebbe6a23eac5ef1b320cd882ccebb` |
+| `preservation-audit.json` | `b44c892e43b69a72bc10454972b0f871a24252c1f12d5edaf839a0c4369644fd` |
+| `final-source-candidate/provenance.json` | `be46d4b21137cbf904f05269724468249d71869240759971dd566fec446757ab` |
+
+The ordinal7 source task is terminal with a clean committed candidate. New restoration source37 + ID3, unchanged before-edit3, retained95/24/20 and review7+16 pass; final focused37+SSR10 passes47. Strict frontend/session/helper/forbidden-input checks, UI guard and builds pass with unchanged flags. No resources were acquired or retained. Parent should consume the four owned implementation commits and report suffix, adapt exactf163 through a new source task, then obtain new review/browser grants. Actual canonical scroll/focus/Back/Forward and server-generation-only composition remain unverified here. No independent/full-goal acceptance, waiting loop or implied resource permission.
