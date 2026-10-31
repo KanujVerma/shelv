@@ -67,3 +67,10 @@ Current R6 (temporary exclusive W7 independent Node custody after W6 return): ca
 
 
 Independent care Node/harness review now runs in t3-ee51c8b5 from exact0201d90e, Sol/xhigh/default, with a new same-schema workspace-bound NODE-REVIEW-CUSTODY-GRANT.json. Parent verified0sessions/refresh before transfer and will not mutate R6 during this custody. No Chrome/browser/reset/helper change permitted; W3 alone has synthetic Chrome for CU1/CU2 fixes. Author Node code/report bc6d/92b/248 is integrated6bfe/7c9b/0201 with exact9-group/cleanup limits. W3 reports22 durable fix cases green, final owned fix commit/review still pending. Full remaining goal active. User ETA was a rough2-4 more days for full implementation/verification, not an acceptance or release promise.
+
+
+Latest continuation: independent genuine Node review0faea1c integrated54623e91 repeats main9/9 and additional recording/pagination/unfiltered history, but finds **CN1/P2**: SQLNULL in exact-product care_history_page predicate lets unrelated same-client rows through, strictmapperreturns503 foractualclient+advisorfilteredhistory. No cross-client leak/mapperweakening. R6returned07:26:55.022039UTC,11/11sessionsclosedwhole0/0,205protectedfiles unchanged,5helpers/source76exact. TreatR6asFROZEN56evidence; no livepatch/source-rebind/reset.
+
+ActualCLIallocated newforward57 **20261031073004_portal_rebuild_care_history_filter_v1.sql**, currently allocationcomment only; new W1 t3-08cf4447 exclusively fills it/tests, all56priorSQLincludingM56d3immutable. Fresh corrected canonical uses R7 afterfix/review; do notprepareagainstempty57oroverwriteR6. W6source-only awaitsactualnewfile/hash/selection, no native/browsergrant.
+
+CU1/CU2 UI-onlyfixbaee+receipt694 integrated9c32c56c/bc8b9423 afterfinal6b/e9.153focused/Root15/types/buildpass, old980scope remains6b. Fresh W7UIR2 t3-7db09590 ownssoleChrome, no native; W3terminal/released. W1newfilter+W7UIR2+W6standby are3activechildren. Currentapplicationstillv1; no CareUIactivationuntilCUreviews/CN1/newcanonical/genuinecarebrowser gates. Fullremaininggoalreport/guidance/source/template/commerce/account/delivery/demo modules remain pending.

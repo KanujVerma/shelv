@@ -148,3 +148,12 @@ W3 finalowned6b264169 integrated5f59b726, author980/session171. New UIreview51c6
 ## 2026-10-31: independent genuine-care review allocation
 
 Final authorNode bc6d578/92b2447/24837c3 integrated6bfe892c/7c9bb1f0/0201d90e. ActualPASS9 result94456006... opened/hashverified;7successful/10phase sessionsallclosed,0sessions/refresh,99protectedfiles unchanged,5helpers/76sourcefilesexact, custodyreturned07:03UTC. No browserclaim. New W7reviewt3-ee51c8b5/source0201d90e gets exclusive R6Nodecustody via newgrantpurpose/workspace, afterparentfresh0/0 read. Parent/W6 no resourcewritesduringreview; newgenuine replay+source/harnessindependentreviewpending. W3CU1/CU2notes/correctionUI-onlyfix22durablegreenreported, focusedchecks/finalcommit/newreviewpending; soleChromealreadytransferredfromreviewer. No otherbackendwriter or nestedtask.
+
+
+## 2026-10-31: genuine filtered-history finding and forward fix allocation
+
+IndependentNode0faea1c integrated54623e91: unchangedmain9PASSfirstattempt,11totalownedsessionsclosed0/0; extra record_client_unreviewed/read_reported_products controls andunfilteredadvisorhistoryPASS. Exactproducthistoryfails503forclient+advisorbecauseM56ORpredicateSQLNULLretains7unrelatedsameclientrows. StrictRootmapperfailsclosed; CN1/P2 no crossclientleak. Fullreceiptreturn07:26:55.022039UTC SHAae07ec3e...,205protectedfiles/source/helpersunchanged. No subsequentreviewerresourcecalls.
+
+PreservefrozenreviewedM56d3/R6actualdata. ParentactualCLI2.121allocated20261031073004forward57, committed4d3e61b allocationcommentonly, notimplemented. NewW1fix t3-08cf4447ownsnewfile/testsONLY; all56earlierimmutable. NextcanonicalR7afterfix/review, W6sourceonlyno grants.
+
+W3CU1CU2baee/694 integrated9c32c56c/bc8b9423 (e9receipt9a824f72),153focused/Root15/strictbuilds pass. NewW7clientR2t3-7db09590 getssoleChrome, priorR1frozen. NoRootDTOextension/extrabusinessevent/provider call.All3allocatedchildrenSol/xhigh/default, no nested. ApplicationreadVersion2defaultnotactivated/fullgoalinprogress.

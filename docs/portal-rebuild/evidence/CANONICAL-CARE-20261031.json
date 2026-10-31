@@ -177,8 +177,9 @@
     "exportLogSha256": "16fa035b002950ab6159bc1b5a6832bce0ff606ec933821b58502247abb65c23"
   },
   "custody": {
-    "holder": "coordinator after explicit W6 Node return",
-    "browserGranted": false
+    "holder": "coordinator",
+    "R6": "Frozen56/evidence retained/RUNNING, no active writer",
+    "browser": "W7 care client R2 synthetic only"
   },
   "genuineCare": {
     "status": "AUTHOR_NODE9_PASS_INDEPENDENT_PENDING",
@@ -213,5 +214,30 @@
   "merged": false,
   "realEmails": 0,
   "realFunds": 0,
-  "limits": "No current care genuine UI, provider delivery, full-goal or exact-head CI acceptance."
+  "limits": "No current care genuine UI, provider delivery, full-goal or exact-head CI acceptance.",
+  "independentGenuineNode": {
+    "report": "research/W7_CARE_GENUINE_NODE_REVIEW.md",
+    "sourceHead": "0201d90e53179966888c0cfb2dcbcfe56bed5fb7",
+    "reportHead": "0faea1c882be9c0813c58f04a5a88ef06ca104f1",
+    "integrationHead": "54623e91",
+    "mainGroups": 9,
+    "mainStatus": "PASS_SCOPED",
+    "overall": "CHANGES_REQUIRED_CN1_P2",
+    "finding": "SQLNULL product filter retains unrelated same-client history; strictmapper returns503 forclient+advisor",
+    "additionalControls": "Human unreviewed record/pagination/unfiltered history pass",
+    "issued": 11,
+    "closed": 11,
+    "remainingSessions": 0,
+    "remainingRefreshTokens": 0,
+    "protectedFilesUnchanged": 205,
+    "custodyReturned": "2026-10-31T07:26:55.022039Z",
+    "returnReceiptSha256": "ae07ec3e27625777e0df9a6e9762aafa9eb66bfa8ac38b850854019ddf87f15e",
+    "noBrowser": true
+  },
+  "forwardFilterFix": {
+    "migration": "20261031073004_portal_rebuild_care_history_filter_v1.sql",
+    "status": "ALLOCATED_NOT_IMPLEMENTED",
+    "earlier56Immutable": true,
+    "futureFixture": "canonical-plan-v1-r7 not yet prepared"
+  }
 }

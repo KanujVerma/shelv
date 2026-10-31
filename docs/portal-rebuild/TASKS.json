@@ -1484,7 +1484,7 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-6130843a",
       "branch": "t3/client-care-use-projection",
       "baseCommit": "71c2a525b13206b99025fe5dda30869a86d24f4a",
-      "status": "running",
+      "status": "completed",
       "reportPath": "docs/portal-rebuild/research/W3_CARE_USE.md",
       "verification": "Exact returned settings/live thread/worktree/base; child both runtime tools confirm Sol/xhigh/default",
       "writeSet": [
@@ -1494,20 +1494,23 @@
         "apps/portal/tests/rebuild/care-*",
         "docs/portal-rebuild/research/W3_CARE_USE.md"
       ],
-      "resources": "Sole synthetic Chrome regranted after W7 CU1/CU2 review release; no R6/native/DB/Auth access",
+      "resources": "Chrome released07:24:08UTC; no native access; all handles terminal",
       "earlySeamCommits": [
         "795a90cc547f79e3bad90a507a36996d5921873f"
       ],
       "integratedCommits": [
         "3a65498",
-        "5f59b726"
+        "5f59b726",
+        "9a824f72",
+        "9c32c56c",
+        "bc8b9423"
       ],
       "parentAuthorizedImports": [
         "dbdec5c250a4835ddb390624024cf650f573882e",
         "c8de1bd2b6492c4a5761edb6effe6a127e0981bc"
       ],
-      "verdict": "CU1/CU2 UI-only fixes ongoing;22 durable cases green reported, focused retained/repro verification pending final commit/new review; DTOs unchanged",
-      "headCommit": "6b264169c0cf4cc286a60b0244fa17e9200cabe6"
+      "verdict": "CU1/CU2 UI-only baee fixed,153focused/Root15/types/build pass; freshR2review active",
+      "headCommit": "6944690900640edbd643030c394e30b5a6a892b0"
     },
     {
       "role": "W7 care backend review",
@@ -1582,7 +1585,7 @@
         "92b2447aee18e691d54cc2b86707b41ac953ad63",
         "24837c36552944404f2eb017fd65800aa6190269"
       ],
-      "resources": "SOURCE ONLY waiting later care-browser grant; no current R6 custody/Chrome; W7 independent Node review owns R6",
+      "resources": "SOURCE ONLY; no R6/Chrome custody. Await actualM57/hash and future R7 selection/grant, no R4/R5/R6 adoption or resource calls.",
       "verdict": "Genuine Node9/9 PASS at92b2447 runf67a47ed; actualPKCE/Vault/nativeCare/SQL, not browser/UI acceptance; independent fresh harness/chain review required",
       "integratedCommits": [
         "3f1cdf9b",
@@ -1718,13 +1721,77 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-ee51c8b5",
       "branch": "t3/independent-node-care-review",
       "baseCommit": "0201d90e53179966888c0cfb2dcbcfe56bed5fb7",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_CARE_GENUINE_NODE_REVIEW.md"
       ],
       "reportPath": "docs/portal-rebuild/research/W7_CARE_GENUINE_NODE_REVIEW.md",
-      "resources": "Exclusive R6 independent genuine-care-node custody via NODE-REVIEW-CUSTODY-GRANT.json; NO Chrome/browser/DOM or resets/helper changes",
-      "verification": "Exact returned settings plus live workspace/base and both child tools Sol/xhigh/default"
+      "resources": "R6NODEcustodyreturned07:26:55.022039UTC;11/11closedwhole0/0; no browser; all handles terminal",
+      "verification": "Exact returned settings plus live workspace/base and both child tools Sol/xhigh/default",
+      "headCommit": "0faea1c882be9c0813c58f04a5a88ef06ca104f1",
+      "integratedCommits": [
+        "54623e91"
+      ],
+      "verdict": "Main9PASS/extra record+pagination+unfiltered controlsPASS; CN1/P2 exactproducthistorySQLNULL\u2192unrelatedsameclientrows\u2192strict503 requiresforwardfix"
+    },
+    {
+      "role": "W7 care client round2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-client-review-20261031-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-client-review-20261031-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-care-client-review-20261031-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7db09590",
+      "branch": "t3/review-care-client-round2",
+      "baseCommit": "54623e9145d28df4e749fb3502db9c33f18efe7a",
+      "status": "running",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_CLIENT_R2.md"
+      ],
+      "reportPath": "docs/portal-rebuild/research/W7_CARE_CLIENT_R2.md",
+      "resources": "Sole intercepted synthetic Chrome; NO native/DB/Auth",
+      "verification": "Exact returned provider/options plus live thread/worktree/base; both runtime tools required"
+    },
+    {
+      "role": "W1 care filtered history fix",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-care-history-filter-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-care-history-filter-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-care-history-filter-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-08cf4447",
+      "branch": "t3/care-history-filter-fix",
+      "baseCommit": "54623e9145d28df4e749fb3502db9c33f18efe7a",
+      "status": "running",
+      "writeSet": [
+        "supabase/migrations/20261031073004_portal_rebuild_care_history_filter_v1.sql",
+        "tests/portal-care-history-filter-native.*",
+        "supabase/tests/portal_care_history_filter_v1.test.sql",
+        "docs/portal-rebuild/research/W1_CARE_HISTORY_FIX.md"
+      ],
+      "reportPath": "docs/portal-rebuild/research/W1_CARE_HISTORY_FIX.md",
+      "resources": "Sole newM57SQLwriter; only OWN Unix-only minimalPG, NO Docker/R6/Chrome",
+      "verification": "Exact returned provider/options plus live thread/worktree/base; both runtime tools required"
     }
   ]
 }
