@@ -182,3 +182,82 @@ Harness qualifications are retained separately: the first320 long-text check sam
 Prior F1/F2/F3/generic leases, lawful first assigned-open upgrade, C1/AR1/status/manual-notice dispositions remain qualified. A2 ordinary-restore/browser reachability is not newly established; the original pending-after-valid-ack assertion remains incorrect. Current401/private-boundary invalidation is preserved. View-only tests use only authorized finite projections; M56's actual dependency edit guard remains, and403 honestly blocks rebasing. Synthetic restriction/lookup faults do not establish genuine server revocation or a privilege bypass.
 
 Retained native A02 `500:383` was directly viewed alongside current synthetic full-text captures. Shared cream/forest tokens, wrappers, typography and controls remain; old editor geometry/read-only cases pass. The new required dependency panel is not in the canned frame, and no whole-frame pixel match or human usability/accessibility sign-off is claimed. Final screenshot/provenance/resource-return receipt follows after the last clean-source run.
+
+### final clean-source browser and custody receipt
+
+Implementation/test commit **`018583f8338d7b6ab77d3835013584efd42ba475`** was clean before the final actual-Application run. Explicit Node22 command:
+
+```text
+node --experimental-strip-types --test --test-timeout=45000 --test-concurrency=1
+  apps/portal/tests/rebuild-advisor-dependencies-browser.test.mjs
+```
+
+**27/27 pass**, zero failures/skips/cancelled,22.700s, at that exact clean head. Per-run `execution-1793447436379.json` records `dirty:false` and source SHA-256 values; `cases-1793447436379.jsonl` records27 contexts opened/27 normally closed, zero unexpected requests/page errors and exact synthetic request UUID/transport hashes. Only specifically injected403/409/503 console failures are accepted. Actual installed Chrome is **156.0.8078.79**, channel chrome/headless, one serial process per test file.
+
+The builder in that clean run also exits0: `sourceHead:018583f8338d7b6ab77d3835013584efd42ba475`, `sourceDirty:false`, `gatewayIncluded:false`. Copied original provenance `application-provenance-clean018583f.json` SHA **`6c6c410753524215ccde692898ad818bfd2a365d011e021001e0000b87e0d8a5`**. This is an isolated candidate, not parent integration or deployment. The current ready-state viewport was compared with retained native A05 `500:686` after browser closure using local image files only; new facts/statuses differ appropriately from its staged first-publication example. No screenshot substitutes for the functional assertions above.
+
+**CHROME EXPLICITLY RELEASED `2026-10-31T11:53:23.401076Z`.** Final bounded own process inventory11:52:57.568377Z has automated Chrome[], own workerd[], own Node tests[]. Final preview has `tabId:null`. All final test handles are terminal and all contexts/browsers close normally. No server/listener was started by this finite-intercept workflow. No broad kill, native/fixture call or custody adoption occurred. Release was promptly sent to the parent; no browser/preview/process/resource call follows release. Subsequent image viewing is local-file-only. Parent has acknowledged release and requires terminal handoff.
+
+Retained86 command, explicit Node22 and `--experimental-strip-types --test --test-timeout=60000 --test-concurrency=1`, ran these unchanged-assertion files serially:
+
+```text
+apps/portal/tests/rebuild-app-browser.test.mjs
+apps/portal/tests/rebuild-advisor-browser.test.mjs
+apps/portal/tests/rebuild-advisor-followup-browser.test.mjs
+apps/portal/tests/rebuild-advisor-payment-context.test.mjs
+apps/portal/tests/rebuild/advisor-recovery-browser.mjs
+apps/portal/tests/rebuild/advisor-status-browser.mjs
+```
+
+Fresh source401 exact argv plus frontend/session/UI commands are retained in `checks.json`; the path-only retained SSR adaptation is documented separately. Counts overlap prior evidence and must not be summed into full-portal acceptance. All original387/121/67 logs/manifests keep their original source and meaning.
+
+### ordered owned development commits and integration boundary
+
+All work starts at **`b8b52f5c439ca082b8576acdf2cde6c24027981d`**. Ordered owned commits:
+
+1. `3d06af0c78b59332a1d55f113e7fb23a18e7bd69`: dependency review/rebase implementation and first source evidence.
+2. `5d796c22029224116d7d720c053bf6c528e44605`: route/selection retirement and additional source/SSR controls.
+3. `278714b708df2a88e5796fb2ef0ae82d31e76057`: frozen source checkpoint report.
+4. `47586ed342f0cee8e92c8323b94196da3abb93b6`: closed runtime two-action dependency seam, meaningful actual-cookie RED/GREEN.
+5. `018583f8338d7b6ab77d3835013584efd42ba475`: browser-found payment continuation correction, new27 browser/new3 source cases and narrow old App fixture adaptation.
+6. This final report-only containing commit: exact SHA returned in the terminal handoff; it changes no tested runtime/test bytes.
+
+The complete owned range changes only these16 paths:
+
+```text
+apps/portal/src/app/ports.ts
+apps/portal/src/features/advisor/AdvisorWorkspace.tsx
+apps/portal/src/features/advisor/DependencyReview.tsx
+apps/portal/src/features/advisor/controller.ts
+apps/portal/src/features/advisor/dependencies.ts
+apps/portal/src/features/advisor/types.ts
+apps/portal/tests/rebuild-advisor-dependencies-browser-helper.mjs
+apps/portal/tests/rebuild-advisor-dependencies-browser.test.mjs
+apps/portal/tests/rebuild-advisor-dependencies-helper.mjs
+apps/portal/tests/rebuild-advisor-dependencies-payment-source.test.mjs
+apps/portal/tests/rebuild-advisor-dependencies-runtime-seam.test.mjs
+apps/portal/tests/rebuild-advisor-dependencies-ssr-entry.tsx
+apps/portal/tests/rebuild-advisor-dependencies-ssr.test.mjs
+apps/portal/tests/rebuild-advisor-dependencies.test.mjs
+apps/portal/tests/rebuild-app-browser.test.mjs
+docs/portal-rebuild/research/W2_CARE_DEPENDENCIES.md
+```
+
+`source-audit.json` proves all19 App test bodies byte-identical and reserved Root/session/Application/ports/shared-plan/UI/routes/status files unchanged during the browser phase. The original two-action seam remains closed. No Root/native76/genuine helper or isolated M58 import, package/lock/config change, existing-assertion weakening, parent integration, push/PR/merge/deployment, real client/source/permission/money/message/order action or nested agent.
+
+**Still open:** a NEW independent review of current source and synthetic browser behavior after parent integration; actual R7 core publisher/dependency rebase acceptance; full Root/portal/session/Expo/native/reset/pgTAP/RLS/Storage/hosted/CI/release checks; exhaustive accessibility/zoom/reduced-motion/human comprehension and clinical/legal/business acceptance. No genuine SQL, Auth/Vault/Edge/PostgREST effects, actual financial/service clocks, source rights or notification delivery are established by these intercepted journeys. R7 remains idle/coordinator-owned, W6's CS1 correction remains separate, and the next live lease is parent-allocated. Missing report/instruction/opaque-context readers continue to block, as required. No execution-choice or additional permission request is necessary from this completed worker.
+
+Selected evidence SHA-256 values under the browser evidence root:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| browser27-clean018583f.log | `38e75ada7a72a06b9ee6db1c5447952a6d6a10bf8b826b972b9d458ad7a3dda9` |
+| retained-browser.log | `e4e4ab137e0399b121fbc0012db3be4c75f83f2cb8c182308ac067c1e75b2f7e` |
+| source401.log | `f7c8e290cfde919a765adc9ebf5f62d467ac1855ad3e68e19076f17ac4ef7185` |
+| checks.json | `14f604730b62a6de11c056947cad9cf70d41529af17d04c647e60fa25ad097ac` |
+| release.json | `1827754d779d56c3fcf5286bee6efb0c8d720ccaea7bc5eb75c28f0e0cd25a93` |
+| source-audit.json | `563d78c6958bdb815e8c55afbd36d25a7b1ab524feab78bca5d3c010df86f7c0` |
+| payment-continuation-assertion-red.log | `dd1249b8350fd673b81baf82e2f1645c0918c21f1e71f033353470d90efa222f` |
+| payment-continuation-green.log | `db30a83641baf0b339b120347fc653e9ed74c73514158aedf0dceff9c02c09f3` |
+
+The ignored final manifest inventories all raw setup/RED/green logs, runtime/descriptors/pins, actual command receipts, source/copy audits, transport hashes, local screenshots, clean provenance and custody receipt. Report hashes/scope/whitespace are checked before the report-only commit. No further browser execution occurs after the explicit release.
