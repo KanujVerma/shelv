@@ -50,6 +50,14 @@ jobs:
         working-directory: apps/portal
         run: npm run build
 
+      - name: Verify strict React application types
+        working-directory: apps/portal
+        run: npm run typecheck:rebuild
+
+      - name: Build isolated React application candidate
+        working-directory: apps/portal
+        run: npm run build:application
+
       - name: Verify package and synthetic client journeys
         working-directory: apps/portal
         run: npm test

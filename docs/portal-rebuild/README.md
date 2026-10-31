@@ -39,3 +39,5 @@ Coordinator, workers, reviewers, explorers, testers and nested/resumed agents: `
 Develop with synthetic records in isolated environments. Preserve current auth, privacy, money/history safeguards and private walkthrough sharing. No production cutover, live emails to clients, retail purchases, money movement or publication of real advice from this handoff alone. Prepare a verified preview, migration/rollback plan and independent test/review evidence, then obtain the required release authorization.
 
 The separate Wisconsin service-scope question and environment prerequisites remain explicit launch/runtime gates. They are not reasons to invent legal clearance, fake credentials, successful notifications or test results.
+
+Later founder clarifications are recorded in [approved decision addenda](DECISION_ADDENDA.md); the imported decision register/input/specification/manifest retain their original hashes.

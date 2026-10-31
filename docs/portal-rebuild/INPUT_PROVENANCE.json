@@ -34,5 +34,15 @@
     }
   },
   "originalPreApprovalBytesAvailable": false,
-  "scope": "Exact supplied appendices and attachment retained. Original pre-approval hashes are declared provenance only; those original byte streams were not supplied separately. No implementation or deployment claim."
+  "scope": "Exact supplied appendices and attachment retained. Original pre-approval hashes are declared provenance only; those original byte streams were not supplied separately. No implementation or deployment claim.",
+  "postImportAddenda": [
+    {
+      "file": "DECISION_ADDENDA.md",
+      "bytes": 669,
+      "sha256": "bc8327415370fcc99e2f8899bfbd1b791fc58553c561c8d6f161309f9c8dee3c",
+      "approvedOn": "2026-10-30",
+      "source": "Explicit founder answer in this thread: Advisor deletes them manually",
+      "scope": "Audio/transcripts on drafts where service never starts; approved12-month post-service rule remains"
+    }
+  ]
 }
