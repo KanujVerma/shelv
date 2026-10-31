@@ -19,21 +19,22 @@ export function GuidanceBoundary({props,scopes,children}:{props:ClientPlanProps;
  const keys=JSON.stringify(scopes.map(guidanceScopeKey));
  useEffect(()=>{
   if(props.view.schemaVersion!==3)return;
-  const h=createGuidanceHydrator({view:props.view,mode:props.mode,session:props.session,port:props.ports?.review});setHydrator(h);void h.load(scopes);
+  const h=createGuidanceHydrator({view:props.view,mode:props.mode,session:props.session,port:props.ports?.review});setHydrator(h);
   return()=>h.dispose();
- },[props.view,props.mode,props.session,props.ports?.review,keys]);
+ },[props.view,props.mode,props.session,props.ports?.review]);
+ const h=props.view.schemaVersion===3&&hydrator?.view===props.view&&hydrator.session===props.session&&hydrator.mode===props.mode&&hydrator.getSnapshot().phase!=='retired'?hydrator:null;
+ useEffect(()=>{if(h)void h.observe(scopes);},[h,keys]);
  if(props.view.schemaVersion!==3)return children;
- const h=hydrator?.view===props.view&&hydrator.session===props.session&&hydrator.mode===props.mode&&hydrator.getSnapshot().phase!=='retired'?hydrator:null;
- return <GuidanceState props={{...props,view:props.view}} hydrator={h}>{children}</GuidanceState>;
+ return <GuidanceState props={{...props,view:props.view}} hydrator={h} scopeKey={keys}>{children}</GuidanceState>;
 }
 const idleSubscribe=()=>()=>{},idleSnapshot=()=>null;
-function GuidanceState({props,hydrator,children}:{props:ClientPlanProps&{view:ClientPlanViewV3};hydrator:GuidanceHydrator|null;children:ReactNode}){
+function GuidanceState({props,hydrator,scopeKey,children}:{scopeKey:string;props:ClientPlanProps&{view:ClientPlanViewV3};hydrator:GuidanceHydrator|null;children:ReactNode}){
  useSyncExternalStore(hydrator?.subscribe??idleSubscribe,hydrator?.getSnapshot??idleSnapshot,hydrator?.getSnapshot??idleSnapshot);
  const [retrying,setRetrying]=useState(false),[failed,setFailed]=useState(false);
- const latest=useRef({view:props.view,session:props.session,mode:props.mode,hydrator,epoch:0}),busy=useRef<object|null>(null);
- if(latest.current.view!==props.view||latest.current.session!==props.session||latest.current.mode!==props.mode||latest.current.hydrator!==hydrator){latest.current={view:props.view,session:props.session,mode:props.mode,hydrator,epoch:latest.current.epoch+1};busy.current=null;}
+ const latest=useRef({view:props.view,session:props.session,mode:props.mode,hydrator,scopeKey,epoch:0}),busy=useRef<object|null>(null);
+ if(latest.current.view!==props.view||latest.current.session!==props.session||latest.current.mode!==props.mode||latest.current.hydrator!==hydrator||latest.current.scopeKey!==scopeKey){latest.current={view:props.view,session:props.session,mode:props.mode,hydrator,scopeKey,epoch:latest.current.epoch+1};busy.current=null;}
  useEffect(()=>()=>{latest.current.epoch++;busy.current=null;},[]);
- useEffect(()=>{setRetrying(false);setFailed(false);},[props.view,props.session,props.mode]);
+ useEffect(()=>{setRetrying(false);setFailed(false);},[props.view,props.session,props.mode,hydrator,scopeKey]);
  function retry(){
   if(busy.current||!props.session.isCurrent()||!props.onViewChange||!['client','historical'].includes(props.mode))return;
   setRetrying(true);setFailed(false);const view=props.view,session=props.session,epoch=latest.current.epoch,operation={};busy.current=operation;const current=()=>session.isCurrent()&&latest.current.epoch===epoch&&busy.current===operation;

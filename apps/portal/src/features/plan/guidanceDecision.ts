@@ -10,6 +10,12 @@ export interface GuidanceDecisionContext {view:ClientPlanViewV3;decision:PlanDec
 type Basis={view:ClientPlanViewV3;session:PlanSessionBoundary;mode:PresentationMode;token:object;epoch:number;snapshot:GuidanceReadSnapshot};
 export interface GuidanceDecisionIntent {phase:'idle'|'saving'|'refreshing'|'uncertain'|'conflict'|'saved'|'acknowledged'|'denied';command:GuidanceDecisionCommand|null;attemptedChoice:GuidanceDecisionCommand['choice']|null;reason:string|null;reviewBasis:Basis|null;error:number|null}
 export const guidanceIntentKey=(session:PlanSessionBoundary)=>`plan-guidance-intents:${session.key}:client`;
+export type GuidanceDecisionLedger=Record<string,GuidanceDecisionIntent>;
+const intentListeners=new WeakMap<PlanSessionBoundary,Set<()=>void>>();
+export const emptyGuidanceIntents:GuidanceDecisionLedger={};
+export function subscribeGuidanceIntents(session:PlanSessionBoundary,listener:()=>void){let set=intentListeners.get(session);if(!set){set=new Set();intentListeners.set(session,set);}set.add(listener);const stop=session.subscribeInvalidation(listener);return()=>{set!.delete(listener);stop();};}
+function storeGuidanceIntent(session:PlanSessionBoundary,ledgerKey:string,id:string,value:GuidanceDecisionIntent){session.memory.set(ledgerKey,{...session.memory.get<GuidanceDecisionLedger>(ledgerKey),[id]:value});intentListeners.get(session)?.forEach(fn=>fn());}
+
 /** The sole V3 decision intent. Same canonical choice ledger on the server;
  * only exact pending request/basis/recovery state lives in session memory here. */
 export function createGuidanceDecisionController(initial:GuidanceDecisionContext){
@@ -20,7 +26,7 @@ export function createGuidanceDecisionController(initial:GuidanceDecisionContext
  let state=prior?{...prior,phase:prior.phase==='saving'||prior.phase==='refreshing'?'uncertain' as const:prior.phase}:empty();
  const endedState=empty();
  const live=()=>!disposed&&ctx.session===initial.session&&ctx.session.isCurrent();
- function emit(next:GuidanceDecisionIntent){if(!live())return;state=next;if(ctx.mode==='client')ctx.session.memory.set(ledgerKey,{...ctx.session.memory.get<Record<string,GuidanceDecisionIntent>>(ledgerKey),[initial.decision.id]:state});listeners.forEach(fn=>fn());}
+ function emit(next:GuidanceDecisionIntent){if(!live())return;state=next;if(ctx.mode==='client')storeGuidanceIntent(ctx.session,ledgerKey,initial.decision.id,state);listeners.forEach(fn=>fn());}
  const writable=()=>live()&&ctx.mode==='client'&&ctx.view.access==='active'&&ctx.view.currentGuidance?.mode==='current_document'&&!!ctx.port&&!!ctx.onViewChange;
  function begin(){if(operation||!live())return null;const op={},captured=ctx,start=epoch;operation=op;return{ctx:captured,current:()=>live()&&operation===op&&epoch===start,finish(){if(operation===op)operation=null;}};}
  async function read(c:GuidanceDecisionContext){if(!c.port)throw Error('unavailable');const command={schemaVersion:1,action:'read_client_plan_v3',version:null} as const;return mapReviewResult(await c.port.execute(command),command) as ClientPlanViewV3;}
@@ -79,7 +85,7 @@ export function createGuidanceDecisionController(initial:GuidanceDecisionContext
    epoch++;operation=null;if(state.phase==='saving'||state.phase==='refreshing')state={...state,phase:'uncertain'};
    // A spent access/review context must survive leaving the recommendation.
    // Retain only an actual intent or restriction; no background server command.
-   if(live()&&ctx.mode==='client'&&(state.command||state.attemptedChoice||state.phase==='conflict'))ctx.session.memory.set(ledgerKey,{...ctx.session.memory.get<Record<string,GuidanceDecisionIntent>>(ledgerKey),[initial.decision.id]:state});
+   if(live()&&ctx.mode==='client'&&(state.command||state.attemptedChoice||state.phase==='conflict'))storeGuidanceIntent(ctx.session,ledgerKey,initial.decision.id,state);
   },
   dispose(){disposed=true;epoch++;operation=null;stop();listeners.clear();},
  };

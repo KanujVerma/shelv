@@ -28,5 +28,9 @@ export function guidedRoutineFor(view:ClientPlanViewV3,period:'morning'|'evening
  return rows.filter(step=>{const scope={publication:view.currentGuidance!.snapshot.publication,slotId:step.slotId,productId:step.productId},s=hydrator?.scope(scope);
   const detail=s?.state==='instruction'&&s.detail.item.basisStatus!=='changed'?s.detail:null;
   return (detail?detail.content.format==='authored_schedule'?detail.content.body.schedule.periods:detail.content.revision.usage.periods:step.schedule.periods).includes(period);
- });
+ }).sort((a,b)=>order(a)-order(b));
+ function order(step:typeof rows[number]){
+  const value=hydrator?.scope({publication:view.currentGuidance!.snapshot.publication,slotId:step.slotId,productId:step.productId});
+  return value?.state==='instruction'&&value.detail.content.format==='legacy_usage'?value.detail.content.revision.usage.order:step.usage?.order??view.plan!.content.routine.indexOf(step);
+ }
 }

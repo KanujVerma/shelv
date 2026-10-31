@@ -127,3 +127,85 @@ Root `npm test`, app/test tsc and Expo web/iOS exports were **not run**: Root no
 The final ignored evidence manifest records hashes for raw RED/GREEN/setup logs, scope/old tests/native catalogs, live runtime/thread/configuration, strict/build receipts and clean candidates. It excludes itself and this report. All logs remain local and synthetic; source-only means no real identity, credential, permission, source, email, money or order action.
 
 Final ignored evidence inventory: 70 files, SHA256 **f6a6edd7007b6aa23764e2776bc00fc504be57a3160a185687eb08aeef304806**. Final report/scope/hash/whitespace audit passes before the report-only commit. No runtime/test bytes changed after the51/122 checks.
+
+# Follow-up2: actual synthetic Chrome implementation and verification
+
+31 October2026. **New implementation follow-up; the original9c5cac1b source-only task remains completed with its historical evidence.** This phase adds bounded author browser verification and corrections. Fresh independent review, actual new-server/Auth/persistence/canonical integration, CI and full-goal acceptance remain required.
+
+## Follow-up identity, grant and exact imports
+
+- Same workspace `/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d`, branch `t3/plan-v3-guidance-hydration`, clean starting base **9c5cac1bf49b6469d7ae05ad8e741f8c6de56487**.
+- NEW follow-up task ID: `node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-v3-guidance-browser-phase-20261031`, read from the coordinator's task registry without writing it.
+- Same backing thread: `thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1`.
+- Actual run **ordinal2**: `run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:2`, started16:10:11.437UTC. Actual parent remains d632030a-18f7-4dec-a2c9-f5c0418c3fd5.
+- Both fresh live model tools, initially and after source work, establish codex/gpt-6.1-sol/reasoningEffort=xhigh/serviceTier=default, with supported descriptors. Project defaults and all8 role TOMLs are exact. No nested agents or runtime/config changes. Every Node/npm/compiler invocation prepends `/Users/kanuj/.nvm/versions/node/v22.23.0/bin`; actual v22.23.0 is recorded by the serial execution receipts.
+- Explicit SOLE SERIAL synthetic Chrome grant: **coordinator-w3-v3-guidance-synthetic-chrome-9c5cac1b-20261031**, exact1026 workspace. Prior W4 release16:00:47UTC was coordinator-attributed authorization, not an independently probed resource. First browser tool was preview_status:available:false/tabId:null. The named installed-Chrome/Playwright-core finite HTTP workflow then ran.
+- ONLY permitted shared import: original **ef7b33fe7d2cb6e2fefff97f52248da293967ade**, cherry-picked with attribution as **537051ea**, exactly one shell.css file. Verified Git blob **754e4c319fd7b99090bf331b27ed03c4a5ce2a0b**. No shell authorship or other parent import. Root4 contracts remain exact96db032f; client-state remains exact9c. Parent backend61/62, W0 transport changes and native fixtures were not imported or activated.
+
+**Publisher clarification supersedes the earlier source-phase dependency wording.** The actual PublicReviewSummary intentionally has no publisher and D32 does not require one in that summary. It remains unattributed; no preparer/name is inferred. Actual full PublishedGuidance/InstructionDetail retain publishedBy. A future request for a named summary publisher would need its own authoritative projection, but it is **not an acceptance blocker or required DTO/backend expansion here**.
+
+## Native design acquisition and comparisons
+
+Figma-design-to-code guidance preceded read-only high-fidelity context/screenshots, session **66e2c5b9-d700-469f-b3be-b7df6361855f**, exact file **WGbMylNV4rPoMw3r0nceaw**, page498:32. C01 498:85, C01E503:926, C02 498:212, C02D499:766, C03 499:151, C03D503:1083, C07 499:584, C07C503:1174 and state board504:736 were acquired and inspected. Initial C01 and C03D context timeouts are retained; subsequent exact-node calls returned full context and screenshots. No Figma writes, design reopening, new imagery or source-asset changes. Temporary asset URLs are removed from local text references and never used at runtime.
+
+Actual1440/1280/390/320 screenshots were inspected against those targets and retained references. Native desktop assertions include routine(264,196,744), sheet(904,72,536,888), C03D(264,162,736), exact decoded selected-product assets and the C03 photo88x112. C02 keeps its different100x128 native photo. Source-length proper names, all original rich content, actual reported-use/provenance, new verified instruction metadata and truthful not-scheduled dates explain height/content differences. No pixel-identical or entire-screen/full-portal visual acceptance is asserted.
+
+## Reproduced owned defects and bounded fixes
+
+All material production fixes below have actual installed-Chrome intended-behavior RED and checked-in regressions. No successful port, authority/current predicate, Root parser/mapper or permission implementation is replaced.
+
+| Finding | Actual RED | Owned correction and GREEN |
+| --- | --- | --- |
+| Pending review notice not refreshed after navigation | valid read-only-return restriction persists in memory but plan link never appears; readonly-notice-red0/1 | session-bound subscription for the existing V3 intent ledger; retirement/emit notifies the plan projection. Gate/command semantics unchanged; same test1/1 |
+| Obsolete guidance retry leaves current button disabled | new product context's retry remains disabled behind old held read; retry-context-red0/1, true versus false | retire exact retry owner on scope context and reset visual loading. Old result/error/finally cannot release current busy state; test1/1 plus held-old/current overlap |
+| Manifest discarded/restarted on same-view navigation | broad focused109/110 had current-directions unavailable after opening a product during large manifest work; deterministic navigation RED2 start cursors versus1 | retain one hydrator/manifest/cache per exact owner/view/snapshot/mode/port. Observe visible scopes separately; retire queued/results/errors by visibility epoch and exact job key. Current details remain globally bounded3, cache150; same-scope roundtrip gets a fresh job before old403 settles. Targeted tests pass |
+| Field ordering strands routine cache lookup | actual controller accepts the original canonically equivalent object with reordered publication fields, but routine directions never appear; scope-order-red0/1 | primitive publication-version/schema/slot/product cache tuple, preserving original fetched object identity; same browser test1/1 |
+| V3 evening order and legacy usage order | evening shows moisturizer before remover/cleanser; explicit array assertion fails. Valid legacy Usage.order1 fully loads but sunscreen remains behind moisturizer | after period selection, sort by verified legacy Usage.order or the original authored order. No PlanContent/ID/publication/Start mutation. Both intended browser tests2/2; source immutability assertion |
+| C07 narrow CSS zoom form overflow | actual320 CSS zoom2 root width564; both390/320 fail no-overflow before own fix | explicit bounded form grid track, wrapping identity/match controls and bounded legend. Document-width/keyboard factual submission now passes at390/320; no content hiding or budget increase |
+| C03 asset slot mismatch | actual100x128 versus native88x112 | desktop sheet-scoped88x112 photo and20px native gap; C02 stays100x128. Exact geometry/asset/Back regression passes |
+
+Pending-action copy now says **review this choice**, avoiding a claim that an uncertain/rejected intent was committed. All controls continue to use shared wrappers/Lucide/tokens. New production changes are only6 owned plan files; no app/default/route/session/transport/Root/API/right/package/flag/SQL change accompanies them.
+
+## Final exercised browser scope
+
+The actual prepared entry uses ApplicationSession, actual cookie class/Web Locks/CSRF/leases/abort behavior, createClientReviewRequest, the strict5-action adapter, Root parsing/positive mapping, real client-state.accept and the shared renderer. Only finite synthetic HTTP/data and fixture UI inputs are controlled. This is module/shell/navigation composition, **not full Application activation or real opaque provider-cookie/Auth/persistence acceptance**.
+
+**Terminal browser117/117,0 failures/skips:**59 new actual-Chrome groups plus all original58 unchanged. Earlier broader focused201/201,0 skips includes the then57 new groups, original58 and86 retained use/notes/corrections/attribution tests. That201 source precedes the two final V3 ordering regressions/fix; it is not relabeled current-head full coverage. Final117 reruns all affected V3 and original58 after the last changes. Counts overlap.
+
+Exercised: complete/incomplete/byte-variable manifests; only full absence permits baseline; exact relevant bodies and malformed/hash/schema/slot/publication/start/head/day/cursor/stage refusal;2550 actual explicitly declared references with all50 paused facts and51 selected-product detail bodies rather than2550; one full120000-byte body in actual DOM;3 current-context detail concurrency; cache/scope/view/owner/CSRF retirement and late403; current/historical selected publication and no instruction carry; known/unknown reported Start and original dates; actual recorded choice/reason and current/stale/legacy_unbound; explicit same-choice reack; exact decision2/snapshot/new deliberate UUID after409; current fetched-object identity; historical receipt without fresh authority; uncertain exact UUID/body/snapshot/wire through status403/409/503/absence/malformed, real public restore after suspension and exact retry; no decision1/Start/finance effects; factual Stop/identity/unknown-date Start/history independent of manifest/choice; confirmedV3 rereads always Review3, including absent Review capability retaining the Care intent; malicious preview/live props ignored, public/demo/private-walkthrough no live guidance/writes; native Back/Forward/Escape/evening/opener and unsent factual answers excluded from URL/history/persistent storage; long text, keyboard and actual reduced-motion spinner behavior.
+
+The59 new cases are in the four `rebuild-plan-guidance-{browser,retirement-browser,layout-browser,budget-browser}.test.mjs` files with finite HTTP helpers. The old58 files/helpers and old use tests are untouched. The new3 source observation tests supplement, rather than edit, original51.
+
+## Cross-owner issue: shared Select pointer placement under CSS zoom2
+
+**Unresolved outside this write-set.** After the owned form fix, actual document width is320/320 at CSS zoom2, but opening the shared Radix Select places its popper outside the viewport. A separate unchanged intended viewport assertion fails0/1, and the earlier pointer-choice cases time out. At320x960:
+
+- actual trigger(64,432,192,96);
+- popper transform translate(64px,532px) yields physical(128,1064,384,632);
+- stopped option(138,1358,364,94), outside viewport.
+
+Exact source seams: `apps/portal/src/ui/primitives.tsx:49` SelectPrimitive.Portal/Content and `apps/portal/src/ui/foundation.css:36` trigger-width/content positioning. Request the shared UI owner normalize portal coordinates/width for CSS zoom and independently review it. No shared primitive/Shell fix is authored here. Reproduction **select-zoom-crossowner.mjs**, JSON, screenshot and failing logs are retained in the ignored browser evidence. Its first diagnostic queried an accessibility-hidden trigger after modal opening; corrected only that diagnostic locator, then the intended rectangle assertion fails.
+
+The durable owned zoom cases explicitly exercise document reflow and keyboard selection/submission, with actual option focus awaited. They do **not** claim pointer-popup success.100% pointer/keyboard paths pass. Native browser zoom, comfortable layout for every extreme, WCAG/screen-reader/human acceptance and full V15 remain unclaimed. This measured cross-owner issue must remain visible in acceptance; it is not hidden by a forced click, layout clipping or a weaker product assertion.
+
+## Setup/probe qualifications, not product RED
+
+- An added helper navigator hook initially followed a view-null return;18 tests reported a teardown hook error. Moving that test-helper hook before the early return removed it. Product code was unchanged for that correction.
+- Preview probe initially waited for a morning-only revised direction while starting in evening. Historical-to-current probe initially expected a spent access/review gate to unlock immediately. Corrected those inputs/expectations to the actual requirements, retaining mode/write/no-carry checks.
+- One max-body specimen used3900-character fills and a final string above the existing4000 limit. SDK correctly refused it. Valid29x4000 fills produce exactly120000 bytes and pass actual DOM preservation.
+- A capability-withdrawal probe interrupted ongoing hydration and reached uncertainty before Care egress; the final missing-capability case starts with the optional prop absent, isolating that requirement. It proves factual Stop writes, Review3-only recovery, exact Care status receipt and retained notes without a fake port or permission.
+- First CSS-zoom keyboard typeahead raced Radix's opening-focus effect; the helper now waits for actual option focus before typing and for the actual focused stopped option before Enter. No wait changes authority or acknowledgement.
+- The first legacy order probe used invalid order0; the retained parser's range is1..50. Correcting only the synthetic input to1 then reproduced the real wrong sequence before the owned fix.
+- Two ignored diagnostic relative paths initially had an extra parent segment. Corrected own imports before execution; those setup failures are not defect sensitivity.
+
+Raw failures, successful controls and corrected runs remain separate. Full synthetic HTTP payloads and DOM observations are not promoted to real backend/authorization/privacy acceptance.
+
+## Custody return and source-only terminal checks
+
+**EXPLICIT SOLE CHROME RETURN at2026-10-31T17:52:29UTC**, immediately after terminal117 and before hashes/report/Git. Grant reference above. All browser/context/test handles closed normally; no broad kill. Final known-owner inventory17:52:28.952699UTC checks2224 tracked Chrome PIDs and30 known test Node PIDs across runs: **ownChrome[] / ownTestNodes[]**, no MF used. Final preview:available:false/tabId:null. W4 was explicitly told the lane is released. No later browser/DOM/preview/process-inventory/Figma call occurred. Later filesystem image/hash/source/build/Git operations do not acquire that lane.
+
+After release: original51 plus3 new source tests **54/54**, retained source/SSR/protocol/RootCare **122/122**, strict frontend/session and extended real consumer/types/helper compile exit0, UI guard/rebuild build exit0. Original8 files covering58 tests remain byte-identical to284c04e, original51 assertion files are exact9c, client-state is exact9c, all4 Root blobs exact96db032f, shell import exact754e4c3,9 model/role pins exact. Root node_modules is actually absent; root full tests/app types/test types/Expo and iOS are skipped without a Root install. No broad980 or full session/runtime/browser repetition is claimed. No budgets/compiler flags or dependencies changed.
+
+All Node commands use explicit Node22 PATH and `--test-concurrency=1`. The terminal command runs the four new browser files plus original `rebuild-plan-{browser,conflict,model,preview,recovery}.test.mjs`. The broader201 command additionally uses unchanged `rebuild-use*.test.mjs`. Exact expanded argv, times, source warnings, exits and normal owner process closure are in browser-terminal-run.json/focused-final-run.json. Source54 uses explicit controller/port/hydration/presentation/ssr/decision/observation files, avoiding a browser glob after return. Retained122 and strict commands are preserved in source-checks-final.json and the earlier receipt.
+
+Native DB/R7/R6/R4/R5/Docker/PG/Auth/provider/credentials/resources were never accessed or polled. No new server, App default, source grant, email, money/order, push/PR/merge/deploy or full-goal acceptance. Fresh independent NEW Sol/xhigh review must carry the entire original brief, all prior findings/responses, these fixes, the shared Select objection and exact source/evidence. Later genuine/canonical/backend/CI remain coordinator allocations.

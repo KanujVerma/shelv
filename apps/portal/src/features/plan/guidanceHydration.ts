@@ -6,7 +6,7 @@ import type {ClientGuidancePort} from './guidancePort.ts';
 import type {PlanSessionBoundary} from './types.ts';
 import type {PresentationMode} from '../../navigation/routes.ts';
 
-export const guidanceScopeKey=(s:InstructionScope)=>JSON.stringify([s.publication,s.slotId,s.productId]);
+export const guidanceScopeKey=(s:InstructionScope)=>JSON.stringify([s.publication.version,s.publication.documentSchemaVersion,s.slotId,s.productId]);
 export type GuidanceScopeState={state:'baseline'}|{state:'instruction';detail:InstructionDetail}|{state:'pending'}|{state:'error';status:number};
 export interface GuidanceHydrationState {
  phase:'idle'|'manifest'|'ready'|'error'|'retired';
@@ -24,7 +24,8 @@ export function createGuidanceHydrator({view,session,mode,port}:{view:ClientPlan
  if(!sameCareValue(parsed,view))throw new TransportError(503);
  const reference=view.currentGuidance,allowed=instructionScopes(view),listeners=new Set<()=>void>(),abort=new AbortController();
  let retired=false,state:GuidanceHydrationState={phase:'idle',manifest:null,details:new Map(),errors:new Map(),error:null};
- let manifestWork:Promise<void>|null=null,active=0;
+ let manifestWork:Promise<void>|null=null,active=0,visibilityEpoch=0,shownKey:string|null=null;
+ let visibleScopes:Set<string>|null=null;
  const pending=new Map<string,Promise<void>>(),queue:(()=>void)[]=[];
  const live=()=>!retired&&session.isCurrent();
  const emit=(patch:Partial<GuidanceHydrationState>)=>{if(live()){state={...state,...patch};listeners.forEach(fn=>fn());}};
@@ -54,37 +55,44 @@ export function createGuidanceHydrator({view,session,mode,port}:{view:ClientPlan
   })();return manifestWork;
  }
  function drain(){while(active<3&&queue.length){const run=queue.shift()!;run();}}
- function detail(scope:InstructionScope):Promise<void>{
-  const key=guidanceScopeKey(scope);if(state.details.has(key))return Promise.resolve();const old=pending.get(key);if(old)return old;
+ function detail(scope:InstructionScope,visibility:number):Promise<void>{
+  const key=guidanceScopeKey(scope),jobKey=`${visibility}:${key}`;if(state.details.has(key))return Promise.resolve();const old=pending.get(jobKey);if(old)return old;
   const item=state.manifest?.find(x=>sameCareValue(x.scope,scope));if(!item)return Promise.resolve();
   const work=new Promise<void>(resolve=>{
    const run=()=>{
-    if(!live()){resolve();return;}
+    if(!live()||visibility!==visibilityEpoch||visibleScopes&&!visibleScopes.has(key)){pending.delete(jobKey);resolve();return;}
     active++;
     void (async()=>{try{
      if(!port||!reference)throw new TransportError(503);
      const command={schemaVersion:1,action:'read_client_instruction_v1',snapshot:reference.snapshot,instructionId:item.instructionId,version:item.version,contentHash:item.contentHash} as const;
      const body=mapReviewResult(await port.execute(command,{signal:abort.signal}),command) as InstructionDetail;
-     if(!live())return;
+     if(!live()||visibility!==visibilityEpoch||visibleScopes&&!visibleScopes.has(key))return;
      const joined=bindInstructionForScope(view,state.manifest!,scope,body);if(!joined)throw new TransportError(503);
      const details=new Map(state.details),errors=new Map(state.errors);details.delete(key);details.set(key,joined);errors.delete(key);
      while(details.size>150)details.delete(details.keys().next().value!);
      emit({details,errors});
-    }catch(error){if(live()){const status=statusOf(error);if([401,403,409].includes(status)){emit({phase:'error',manifest:null,details:new Map(),errors:new Map(),error:status});}else{const errors=new Map(state.errors);errors.set(key,status);emit({errors});}}}
-    finally{active--;pending.delete(key);resolve();drain();}})();
+    }catch(error){if(live()&&visibility===visibilityEpoch&&(!visibleScopes||visibleScopes.has(key))){const status=statusOf(error);if([401,403,409].includes(status)){emit({phase:'error',manifest:null,details:new Map(),errors:new Map(),error:status});}else{const errors=new Map(state.errors);errors.set(key,status);emit({errors});}}}
+    finally{active--;pending.delete(jobKey);resolve();drain();}})();
    };
    queue.push(run);
-  });pending.set(key,work);drain();return work;
+  });pending.set(jobKey,work);drain();return work;
+ }
+ async function load(scopes:InstructionScope[]){
+  if(scopes.length>150||scopes.some(s=>!validScope(s)))throw new TransportError(400);
+  if(!live())return;const visibility=visibilityEpoch;
+  await manifest();if(!live()||state.manifest===null||visibility!==visibilityEpoch)return;
+  await Promise.all([...new Map(scopes.map(s=>[guidanceScopeKey(s),s])).values()].map(scope=>detail(scope,visibility)));
  }
  return {
   view,session,mode,
   getSnapshot:()=>state,
   subscribe(fn:()=>void){listeners.add(fn);return()=>listeners.delete(fn);},
-  async load(scopes:InstructionScope[]){
+  async load(scopes:InstructionScope[]){return load(scopes);},
+  async observe(scopes:InstructionScope[]){
    if(scopes.length>150||scopes.some(s=>!validScope(s)))throw new TransportError(400);
-   if(!live())return;
-   await manifest();if(!live()||state.manifest===null)return;
-   await Promise.all([...new Map(scopes.map(s=>[guidanceScopeKey(s),s])).values()].map(detail));
+   const keys=scopes.map(guidanceScopeKey),next=JSON.stringify([...new Set(keys)].sort());
+   if(next!==shownKey){shownKey=next;visibleScopes=new Set(keys);visibilityEpoch++;}
+   return load(scopes);
   },
   scope(scope:InstructionScope):GuidanceScopeState {
    if(!live()||!validScope(scope))return{state:'error',status:401};

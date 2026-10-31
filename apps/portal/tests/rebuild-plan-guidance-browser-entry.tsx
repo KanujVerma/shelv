@@ -1,7 +1,10 @@
 // Prepared source only. A later fresh coordinator grant is required for Chrome.
 import React,{useState,useSyncExternalStore} from 'react';
 import {createRoot} from 'react-dom/client';
-import {ClientPlan,createClientGuidancePort} from '../src/features/plan/index.ts';
+import {ClientPlan,UnpublishedPlanPreview,createClientGuidancePort} from '../src/features/plan/index.ts';
+import type {PlanPreview} from '../../../src/contracts/PortalRebuildMapping.ts';
+import type {PlanRoute} from '../src/features/plan/types.ts';
+import {parseRoute} from '../src/navigation/routes.ts';
 import type {ClientPlanReadView} from '../src/features/plan/types.ts';
 import type {PresentationMode} from '../src/navigation/routes.ts';
 import {createApplicationSession} from '../src/app/session.ts';
@@ -18,10 +21,14 @@ const session=runtime.getSnapshot().boundary;if(!session)throw Error('synthetic 
 const ports={...createClientPorts(runtime,{care:true}),review:createClientGuidancePort({request:createClientReviewRequest(runtime),session,mode:'client'})};
 const controller=createClientPlanController(session,ports,{readVersion:3});await controller.refresh();
 const navigator=createPortalNavigator(window,{scopeKey:session.key});
-const harness={runtime,controller,navigator,applied:[] as ClientPlanReadView[],setView:(view:ClientPlanReadView)=>controller.accept(view),setMode:(_mode:PresentationMode)=>{}};
+const harness={runtime,controller,navigator,applied:[] as ClientPlanReadView[],ports,previewCalls:0,setUnpublished:(_value:boolean)=>{},setReviewEnabled:(_value:boolean)=>{},setView:(view:ClientPlanReadView)=>controller.accept(view),setMode:(_mode:PresentationMode)=>{}};
 Object.assign(window,{__guidanceHarness:harness});
-function App(){const {view}=useSyncExternalStore(controller.subscribe,controller.getSnapshot,controller.getSnapshot),[mode,setMode]=useState<PresentationMode>('client');harness.setMode=setMode;
+function App(){const {view}=useSyncExternalStore(controller.subscribe,controller.getSnapshot,controller.getSnapshot),[mode,setMode]=useState<PresentationMode>('client'),[unpublished,setUnpublished]=useState(false),[reviewEnabled,setReviewEnabled]=useState((window as Window&{__guidanceInitialReviewEnabled?:boolean}).__guidanceInitialReviewEnabled??true);harness.setMode=setMode;harness.setUnpublished=setUnpublished;harness.setReviewEnabled=setReviewEnabled;
+ const currentPath=useSyncExternalStore(navigator.subscribe,navigator.getSnapshot,navigator.getSnapshot);
  if(!view)return <StatusNotice title="session changed">sign in again to view your plan.</StatusNotice>;
- return <NavigationProvider navigator={navigator}><OverlayProvider><PortalShell identity="Maya" mode={mode} status={<Badge>synthetic source test</Badge>} contact={{onContact:()=>{},availability:'service'}}><ClientPlan view={view} session={session!} mode={mode} ports={ports} onViewChange={fetched=>{harness.applied.push(fetched);controller.accept(fetched);}}/></PortalShell></OverlayProvider></NavigationProvider>;
+ const route=(parseRoute(currentPath)??{name:'plan',routine:'morning'}) as PlanRoute;
+ const preview:PlanPreview={mode:'advisor-preview',published:false,target:null,content:view.plan!.content,issues:[]};
+ const malicious={mode:'client' as const,kind:'published',view,ports,demoPorts:{...ports,mode:'public-demo' as const},onViewChange:()=>harness.previewCalls++,onRecordUse:()=>harness.previewCalls++,onExport:()=>harness.previewCalls++,onSendUpdate:()=>harness.previewCalls++,onHistory:()=>harness.previewCalls++,onSelfPurchase:()=>harness.previewCalls++};
+ return <NavigationProvider navigator={navigator}><OverlayProvider><PortalShell identity="Maya" mode={mode} status={<Badge>synthetic source test</Badge>} contact={{onContact:()=>{},availability:'service'}}>{unpublished?<UnpublishedPlanPreview preview={preview} source={{draftId:'33333333-3333-4333-8333-000000000999',contentRevision:1,assignmentRevision:0,target:null}} session={session!} navigation={{route,navigate:r=>navigator.navigate(r),back:()=>navigator.back(),backDestination:()=>navigator.backDestination() as PlanRoute|null}} {...malicious}/>:<ClientPlan view={view} session={session!} mode={mode} ports={reviewEnabled?ports:{...ports,review:undefined}} onViewChange={fetched=>{harness.applied.push(fetched);controller.accept(fetched);}}/>}</PortalShell></OverlayProvider></NavigationProvider>;
 }
 const element=document.getElementById('root');if(!element)throw Error('root required');createRoot(element).render(<React.StrictMode><App/></React.StrictMode>);
