@@ -331,3 +331,44 @@ No additional production fix was needed during this CD browser phase: the four75
 Current compatibility execution: **113/113 pass**, zero failures/skips/cancelled,132.536s, using explicit Node22 `--experimental-strip-types --test --test-timeout=60000 --test-concurrency=1` on the prior27 dependency browser file followed serially by the six unchanged App/advisor/follow-up/payment-context/approval-recovery/status files listed above. This retains old27/86 and all19 original App assertions. The earlier original387/121/67/401/217/251 and independent R1 source/browser failures retain their original source/meaning. Counts overlap and are not added into product acceptance.
 
 The preserved historical RED5 run uses the same Node flags with `SHELV_ADVISOR_CD_SOURCE_REF=36b3563588b934f8507d1023a426f828674a9b9f` and name pattern `CD1 original distinction|CD2 `; its exact old-input receipt and separate `browser/red-36b/` capture are retained. GREEN always rebuilds the ordinary current application and writes separate `browser/green-current/` evidence. Normal provenance from the frozen-input test is not represented as a current-source or production candidate. Final clean-source GREEN/provenance and explicit resource release are recorded in the closing receipt below.
+
+### CD correction final clean-source and release receipt
+
+Final tested clean browser source: **`74a857f4d1108bf1423d8846008e7cf256bf407c`**, with production bytes still exactly matching early source75e. Explicit Node22 command:
+
+```text
+node --experimental-strip-types --test --test-timeout=60000 --test-concurrency=1
+  apps/portal/tests/rebuild-advisor-dependencies-cd-browser.test.mjs
+```
+
+**16/16 pass**, zero failures/skips/cancelled,15.598s. `browser/green-current/execution-1793454188335.json` records the exact head and `dirty:false`; its16 case receipts show16 opened/16 closed contexts and no unexpected requests/page errors. Only the specifically injected HTTP console failures are accepted. Installed Chrome remains **156.0.8078.79**, headless channel chrome. Source429/original independent5/types/UI results remain separate and current production bytes are unchanged since those checks.
+
+The actual application builder during that run exits0 with `sourceHead:74a857f4d1108bf1423d8846008e7cf256bf407c`, `sourceDirty:false`, `gatewayIncluded:false`. Original copied `application-provenance-clean74a857f4.json` SHA **`a72325183cb1cdb837ad15c7e37031f7d6f04e6c2696293c9dc0866f7cc5ee83`**. This is an isolated candidate, not a parent integration, deployment or hosted/genuine result. Source36b historical inputs and all current green inputs/transport hashes are separately bound, not conflated with that candidate.
+
+**CHROME EXPLICITLY RELEASED `2026-10-31T13:45:02.314182Z`.** Final own process inventory13:44:41.067181UTC has own automated Chrome[], own workerd[], own Node tests[], with platform CUA excluded and no global emptiness claim. Final `preview_status` has `tabId:null`. Every final context/browser/test closes normally; no server/Miniflare/listener was started, no broad kill occurred and no native/R7 custody was acquired. The first release steer failed because the parent had no running turn; one corrected normal auto-delivery succeeded. No browser/preview/process/resource call follows release; only local PNG/source/report/hash/Git work occurs. Local old/new320 PNG inspection shows the previously anonymous report heading and the corrected exact historical product identity. Functional assertions, not screenshots, establish the reported behavior.
+
+Ordered owned correction commits from frozen36b:
+
+1. **`75e9ca0652d30dc72dec64c474500598ab7ce9b1`**: four owned frontend fixes, source RED0/3 -> new28/source429 GREEN, original independent5 and typed future reader request; prepared browser harness only, no browser execution at that checkpoint.
+2. **`74a857f4d1108bf1423d8846008e7cf256bf407c`**: additional actual browser lifecycle/metadata regressions and separate RED/GREEN artifacts; production still75e.
+3. This final report-only containing commit, exact SHA in the terminal handoff; tested runtime/test bytes remain74a.
+
+Correction write-set is exactly ten owned paths: advisor `controller.ts`, `types.ts`, `DependencyReview.tsx`, `dependencies.ts`; new `rebuild-advisor-dependencies-cd-{helper.mjs,test.mjs,ssr-entry.tsx,browser-helper.mjs,browser.test.mjs}`; and this report. Existing tests, Root/contracts/SQL/native76, session, routes, SourceApp, plan/shared UI, ports/runtime guard475, packages/config and canonical status/TASKS/CONTEXT_SYNC remain unchanged. Original independent9887 report/scripts/data/logs and all earlier evidence manifests remain preserved.
+
+**Open gates:** parent must commission a NEW independent R2 current-source/browser review after integration. Actual R7 core publisher/dependency rebase acceptance is separate and unexecuted here. No actual Auth/Vault/Edge/PostgREST/SQL/RLS/CAS/after-wait/Storage/notification-delivery or financial/service-clock proof, hosted acceptance, exact-head CI, full Root/portal/session/Expo/iOS suite, exhaustive accessibility/zoom/reduced-motion/human/clinical/legal/business or release acceptance follows. Care13/Plan26/Task14 and all rights remain unchanged. The unintegrated M58/Review15 advisor reported-product reader is still a future dependency, and any non-null current continuation continues to block acknowledgement/rebase even after complete history. No permission-fiction, owner-derived paging workaround or raw-history state reconstruction is introduced.
+
+Selected CD evidence hashes:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| browser-red36.log | `33dfbe7c77b26a9d9e513ca9bd2ed0dcf7152b816d913841d44992addee43500` |
+| browser-red36-preserved5.log | `c5092825a10bc6b228bac22ae8423d9ab0ae0afa9e29206f973297b5caf6a60f` |
+| browser16-clean74a857f4.log | `6f2c2a2617c2a69d2ee9c4935130b351d2caac6a044b7fc54c52e12974be8f31` |
+| retained113.log | `9f6caac1099947790a9d1a0382cd08820dfc386cc01734c230e502af65356f83` |
+| source429.log | `bee6aef1edc7c945706221ea6e16dd5f8660280fa6da3b3b2b0f75d02f66792a` |
+| independent5.log | `8419e3e37cd09f05b5ce4cdc72f8145fcae846ba039e8461770fed150bf10922` |
+| checks.json | `b8de2b1b9a3e7bd6591bf2876e83ac9461a4da3493343325619812424e2f39df` |
+| release.json | `42031e10a6f85866072679b2dc45ab396192d379dfe75914197ec871c5c03eeb` |
+| historical-inputs.json | `d93963e6c3793a1baf0ab483b502b9a095d4e8a36df3f32504634676e0db171d` |
+
+The ignored CD evidence manifest inventories exact runtime/descriptors/pins, copy/strict/source audits, raw RED/green logs, source and browser command receipts, frozen-input hashes, per-context request hashes, original and local PNGs, clean provenance and release. Final validation checks those hashes, unchanged source boundaries/original assertions, report scope/no em dash and `git diff --check`. No push/PR/merge/deployment, real client/source/permission/money/message/order or nested task occurred. This author implementation handoff closes only this correction task, not independent R2 or the full goal.
