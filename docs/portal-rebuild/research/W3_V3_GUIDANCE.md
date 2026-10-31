@@ -220,6 +220,94 @@ Final browser evidence root: `.local-artifacts/portal-rebuild/w3-v3-guidance-bro
 
 Shared Select reproduction (requires a NEW future sole Chrome grant; it was last run before return): explicit Node22 PATH, `node --experimental-strip-types --test --test-concurrency=1 .local-artifacts/portal-rebuild/w3-v3-guidance-browser/select-zoom-crossowner.mjs`. It imports unchanged actual primitives through the owned finite browser helper. Actual intended rectangle assertion0/1: trigger(64,432,192,96), popper transform translate(64px,532px) -> physical(128,1064,384,632), stopped option(138,1358,364,94) against320x960, root320 and CSSzoom2. Pointer option clicks also timed out outside viewport in visual-green-1.log. Source-owned UI seams are `apps/portal/src/ui/primitives.tsx:49` and `apps/portal/src/ui/foundation.css:36`; W3 made no shared change. Root owns the investigation/fix. Exact probe, JSON, failing log and screenshot `shared-Select-pointer-placement-at-CSS-zoom2-stays-in-viewport.png` are retained; source54 and module117 do not close this residual.
 
+## Ordinal3: G1/G2 source correction checkpoint, 31 October 2026
+
+**Source correction only, not a review verdict.** Independent R1 at `4ac59b33ae24adaf13298290bc30a89cce35c561` on the parent's `5a26fdcf` lineage requires G1/G2 changes. Both have source regressions and corrections in **`71c682d7c9c01f40741e13ce65c58a2ca692612f`**. Fresh synthetic Chrome RED/GREEN, unchanged117 and new independent R2 remain required. Earlier117/201 evidence does not certify this new head. Shared Select S1 and the original rectangle objection remain with Root.
+
+### Identity, runtime and boundaries
+
+Clean source base **c4d5a9e0ed86c2ca703f6e5d0ac73988a4f6af77**, same workspace `/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d`, branch `t3/plan-v3-guidance-hydration`. Original T3 task remains `node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1`. New follow-up message identity is **`message:mcp:80ff67d2-459c-49fa-93e3-1b40a1f4cbcd:thread-send:w3-v3-g1-g2-context-fixes-20261031`**, durable position987. This is a new follow-up, not a reopening of the completed ordinal1 source task.
+
+Actual thread remains `thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1`; actual run **`run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:3`**, started **19:06:50.822UTC**, parent **d632030a-18f7-4dec-a2c9-f5c0418c3fd5**. Live thread state verifies workspace/branch/ordinal and message identity; no guessed new delegated-task ID.
+
+First and final live `orchestrator_capabilities(search:"gpt-6.1-sol")` and `t3_thread_configuration` confirm **codex/gpt-6.1-sol/xhigh/default**. Catalog descriptors explicitly support both options. Project defaults/default-subagent and all8 role TOMLs are exact;9 initial/final hashes match. Every Node/npm/compiler command explicitly prepends `/Users/kanuj/.nvm/versions/node/v22.23.0/bin`; actual Node **v22.23.0**. No provider, compiler, dependency, budget or configuration change, install or nested agent.
+
+Writes are3 plan production files and2 new `rebuild-plan-guidance-context-source*` tests, then this report only. The original37 owned files are preserved except the bounded ClientPlan/guidanceDecision correction and report; guidanceContext and the tests are new. Client-state remains blob **89ffa0791e4acaf2478d58a22058d2b3f5bed50e**, exact c4d5. Root4 remain exactly96db032f with the full blobs recorded above. Shell remains **754e4c319fd7b99090bf331b27ed03c4a5ce2a0b**, separate earlier import537051ea/Ef7. **No b69 Select import** was needed or made. No Root/SQL/gateway/Application/default/route/session/role/package/shared UI/source-right change. No push/PR/merge/deploy/live action.
+
+### R1 evidence and prior obligations
+
+Read the full169-line independent report through `git show 4ac59b33:docs/portal-rebuild/research/W7_V3_GUIDANCE_REVIEW.md`, its original context-race/plan-boundary scripts, fixture/helper source, exact commands/wire JSON and raw failures. Copied30 relevant inputs into own ignored `.local-artifacts/portal-rebuild/w3-v3-guidance-g1g2/reviewer-r1/`; `REVIEWER-COPIES.json` records original paths, byte counts and SHA256. Foreign evidence was read/copied only, with no execution or writes. All copied helpers/fixtures equal the corresponding frozen own inputs. The plan-boundary subset comes from `independent-browser.test.mjs`; there is no invented separate plan-boundary source file.
+
+The full original brief and prior source/browser report remain governing context: F1-F8/Q1/Q2/F5 exact fetched identity, operation-token recovery, CU1 unsupported notes, CU2 correction fields and CU3 actor/history/privacy, CA1/C1/AR1 and W3/W7 responses are retained. No historical finding is reopened or closed merely by these two corrections. Strict Root collect/bind, complete manifests, concurrency3/cache150, server snapshot/day/head checks, source Start facts and public/private provenance remain unchanged. No new claim or DTO field, including a summary publisher, is invented. This phase adds no visual design or copy system and acquires no new Figma/native context.
+
+Raw qualifications are preserved. `plan-boundary.tap` is0/2 at intended disabled assertions. `context-race-repeat.tap` is0/3 at intended G1/G2 assertions. Contrary to its report's shorthand, `context-race-final.tap` contains a read-only direction-wait timeout in one case; that run is not described as three intended assertion failures. Earlier initial G2 apparent passes used an already-present uncertain section and were withdrawn by R1. Earlier initial routine waits and Select geometry failures retain their separate setup/shared-owner qualifications. The repeat, wire ordering and separate gate assertions substantiate the findings without relying on those setup faults.
+
+### G1 response: retain restriction before conditional controls
+
+**Requirement:** routine-only read_only -> exact original active object, or advisor-preview -> client before any recommendation controller exists, must require a successful fresh current V3 read and a separate deliberate same-fetched-basis review. Detail hydration must not substitute for that read.
+
+**Correction:** ClientPlan observes the published feature context before SessionPlan/route/decision conditions. New `guidanceContext.ts` retains only a session-bound restriction marker in a WeakMap: inactive access/mode/current-document or missing effective Review/callback spends the context even when no controls mount. No publication, view object, content or instruction is copied into that marker. Unpublished previews do not enter this seam; no preview/demo client intent ledger is created. Invalidated sessions cannot use it, and the weak key is collectible with its session.
+
+The first later controller starts in conflict for an unreviewed marker. The existing strict Review3 fetch establishes the exact fetched object/boundary epoch; a later deliberate review with matching full server snapshot and verified current instructions acknowledges that marker for this decision. An error, pending fetch, detail-only hydration, new controller/remount, exact-old-object return or historical receipt cannot clear it. A later restriction creates another marker. Successful acknowledgements survive navigation through the existing session intent ledger. No background mutation or automatic UUID is introduced. Normal initial active context remains eligible after current instruction checks.
+
+**Source evidence:** first new actual-source run failed0/3 before production edits: G1 read-only/mode each wrote1 instead of0; G2 applied1 instead of0. Tests SSR-render the actual ClientPlan on the routine route, pass canonical projections through the actual controller, return the identical original object, and only then construct decision controls' real controller. Real hydrator/Root joins establish readiness; no successful ready/source/current predicate is substituted. Source scopes/epochs and finite replies are explicit test inputs, so this is not a React DOM lifecycle or whole-Application browser proof.
+
+### G2 response: retire effective source and callback ownership
+
+**Requirement:** a held decision2 response cannot reread through a withdrawn/replaced Review source or apply through an obsolete callback. Preserve the legitimately committed/uncertain original intent and lawful recovery; unchanged effective contexts must still succeed.
+
+**Correction:** context ownership now includes exact effective Review-port and callback identity, in addition to owner/session/view/mode/review-scope/epoch. Fresh wrapper objects and readiness closures do not retire an unchanged effective context. Retirement releases only the obsolete operation token and retains an in-flight command as uncertain. Every continuation checks ownership before post-write read, after that read and immediately before callback, including reentrant notification changes. Old finally still clears only its own token. Current restriction-marker equality also fences an enclosing feature transition before a conditional controller can observe it.
+
+A positively mapped old write receipt may be retained as historical acknowledgement beside its **same original command object/UUID/payload/snapshot/wire**. It cannot install current view authority or clear a spent review restriction. After ordinary public session restore, the effective source may resolve status through READ or retry the exact original bytes. No false failed mutation, new UUID, v1 fallback, Start, quote/payment/order change or client-inferred current provenance is introduced.
+
+**Source evidence:** held real raw-request writes and post-write reads cover withdrawal, exact restoration, distinct real source replacement, callback replacement/removal, notification-time retirement and old-finally/new-current-read ownership. Unchanged effective port/callback/owner plus fresh wrappers remains positive and passes the original typed fetched object to Root accept. Historical receipt recovery and503 exact-wire retry remain positive without wait/reopen/gate bypass.
+
+### Coupled Care and preview obligation
+
+Care13 source, API and rights are untouched. New source test records factual Stop through the actual Care port with its captured expectedUseRevision/server CAS while the decision has a spent gate and no instruction hydration. Its current reread uses strict Review3 and preserves Root accept's original fetched identity, with no Care2/Plan1 or decision write. Existing54 includes missing-Review intent retention, Stop SSR and V1/V2 compatibility; retained122 exercises unchanged actual session/ports/protocol/model paths. Published nonclient modes cannot call decision actions; the extra unsupported `guest` mode is a negative injected prop, not an implemented guest route. Unpublished preview's existing adapter and old malicious-prop tests remain unchanged. No successful full use form/browser flow is claimed anew here.
+
+### Commands, results and setup qualifications
+
+All commands use explicit Node22 PATH. Final results are **20/20 new source**, **54/54 unchanged source**, **122/122 retained**, all0 skips. Strict frontend/session and extended consumer/helper compile exit0. UI guard and isolated rebuild/application builds exit0, without budget/flag changes. `git diff --check` passes. Original8 files covering58 tests remain exact284c04e; all original51 assertion files and the ordinal2 tests/helpers remain exact c4d5. These source checks do not rerun117's Chrome cases.
+
+```sh
+PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH node --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-plan-guidance-context-source.test.mjs
+PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH W3_GUIDANCE_CONTEXT_BASELINE=1 node --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-plan-guidance-context-source.test.mjs
+PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH node --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-plan-guidance-{controller,port,hydration,presentation,ssr,decision,observation}.test.mjs
+PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH node --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-{app-care-composition,app-care-render,app-ports,app-session,app-state,app-render,app-callback,app-start,app-preview-context,app-continuation,care-ports,review-request,plan-model,care-plan-model,use-notes-model}.test.mjs tests/portal-care-{contract,handler}.test.ts
+PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH npm --prefix apps/portal run typecheck:rebuild
+PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH npm --prefix apps/portal run typecheck:session
+PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH npm --prefix apps/portal run check:ui
+PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH npm --prefix apps/portal run build:rebuild
+PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH npm --prefix apps/portal run build:application
+```
+
+The optional retained-input source run loads only exact ClientPlan/guidanceDecision from the hard-pinned c4d5 Git objects into esbuild, without overwriting tracked files or changing any predicate/port/parser. With the same final20-test harness it gives **6 pass/14 intended failures**,0 skips/cancellations; current gives20/20. The initial three-case pre-edit0/3 remains separately preserved. Extended compiler command in `RUNTIME-CHECKS.json` uses actual portal TypeScript6, strict/noUnchecked/verbatim/skipLibCheck:false and unchanged flags, adding only the new helper input.
+
+Own setup qualifications: one replacement probe initially constructed a deliberately unusable runtime whose factory correctly failed immediately; replaced it with a separately created real source from the actual retained runtime. Initial helper strict compile exposed null Back destination and createElement's required children typing; corrected only the new helper, without production/compiler changes. One full retained-base probe waited indefinitely for a new operation that old source never started; its own source-test handle was interrupted, raw incomplete log retained, and the durable test now asserts the actual finite request count before waiting. All subsequent source checks exit normally. These are not browser/product REDs. The first intended0/3 and final retained-input14 failures remain distinct. Existing module-type warnings are retained, not suppressed.
+
+### Evidence, custody and remaining work
+
+Own evidence root is `.local-artifacts/portal-rebuild/w3-v3-guidance-g1g2/`. `RUNTIME-CHECKS.json`, `PINS.json`, `REVIEWER-COPIES.json`, `SCOPE.json`, `FROZEN-SOURCE.json`, raw RED/GREENs and `CLEAN-CANDIDATE.json` record actual inputs, commands, source hashes and results. Reviewer probe hash remains **51509e1f1eff2280c8fa58e9ef7b90d741bc9673b6350d941685a3f521707edb**. Final20 harness SHA and all production blobs are in FROZEN-SOURCE. Selected own receipts:
+
+| Receipt | SHA256 |
+| --- | --- |
+| first actual-source0/3 `context-source-red.tap` |6675215a06ea960428c376e1635f99882ed3bd66ce5bc44e00fa6a37689c0581 |
+| final frozen-base6/20 `context20-frozen-base-red.log` |e374ba15691b918d35ae6cf9f03b78d710ce0e44eeab060047ffa2fd67cc9de9 |
+| final current20/20 `context20-final.log` |6a8a32539352c375ec84e611c816901d60ad2d0587d6df7be954be54ffdd78af |
+| unchanged54 `source54-final.log` |a2a8dd22cfad5207e3f5c118a2bfa47560f8e3a93de998c54cd5a08fc530adfb |
+| retained122 `retained122-final.log` |70992c91178c00531437d7ab5445807041a8bf9404dbd9253d0b9e70f6b2f6cd |
+| reviewer input-copy inventory |6e53d1f624ed0902d3a9a360c7ef4f6ac80d7fa1a589237e8bb3f2bf08b95c46 |
+| frozen source inventory |4be5b97fa629f7c3d658ef968f2f4e825156608e76258eefbd89694ccba9f7b8 |
+
+Final20 harness SHA256 is **a8fb161b755181830521e6546b7a623eb67df608bfe0325b9a124806cdc993bd**, helper **a07c0a7e327e0c59654d3368133e23d2e0b5c26b60229c3e67e866f58c727a23**. Own66-file EVIDENCE.json SHA256 **1606acb66502dcaa9a88dbe51f9a5ca8ec0af3ac22c1eb562a30c0827cd3a9d4** excludes itself, the report and report checkpoint.
+
+Clean application build at71c682d7 records sourceDirty:false/gatewayIncluded:false,2218 inputs; provenance SHA256 **e24c8d0c9a03044178b7f7e266c8522a95884ff48222a193ca432f533d1ed626**, JS **7df13b0f3eab32541f575eaeaeeac529df6c47422816d6395bd46a796d8e6852**, CSS **e6984155db9cd4bc02a03effeaade3f08cfa36dd569208e31a5301cd5d455616**. This does not activate V3: Application/defaults are unchanged. No successful transport/provider/authority replacement or new parent stack was imported.
+
+**Custody unchanged:** no browser/Chrome/DOM/preview/process-resource inventory/native/Figma/DB/Auth/provider/credential/fixture-runtime operation was acquired in ordinal3. Only own source-test handles were managed. The accepted17:52:29UTC sole Chrome return remains final; no new browser grant is implied. No resource or tab is retained, and no inventory call was used to reassert that old release. No foreign process or worktree execution/write.
+
+This is the coherent terminal source checkpoint. No field/API/shared-owner request is needed for G1/G2; existing optional strict5 Review port and readVersion3 opt-in remain the coordinator integration API. Root owns Select S1/original rectangle disposition and any selective future b69 composition. Browser RED/GREEN on the new correction, unchanged117, fresh independent R2, genuine Application/server/Auth/persistence/canonical checks and exact-head CI remain pending. Root node_modules is absent; no Root install/full npm/app/test-types/Expo/iOS, full980, native or genuine check is claimed. Original source-only task remains completed; full goal/release acceptance remains unissued.
+
 Selected SHA256 receipts:
 
 - select-zoom-crossowner.mjs: f1d7826309bcfa208cfba3030f278e6cf6d5ea8b7d8fa25ed4d2c99ae75c4fef
