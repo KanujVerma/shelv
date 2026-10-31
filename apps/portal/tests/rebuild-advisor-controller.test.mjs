@@ -290,3 +290,22 @@ test("SYNTHETIC/DO NOT FULFILL: accepting a newer comparison base requires anoth
   assert.equal(c.getSnapshot().view.draft.content.title, "manual");
   c.dispose();
 });
+
+test("SYNTHETIC/DO NOT FULFILL: uncertain payment confirmation retries only the original bookkeeping command", async () => {
+  const f = fixture({ ready: true }),
+    c = createAdvisorController(f.options);
+  await c.open(ids.draft);
+  await c.refreshContext();
+  f.fail = 503;
+  await c.confirmPayment(ids.claim, "100.00", true);
+  const first = f.calls.at(-1);
+  assert.equal(c.getSnapshot().pending.requestId, first.requestId);
+  f.fail = 0;
+  await c.retry();
+  const commands = f.calls.filter((x) => x.action === "confirm_payment");
+  assert.equal(commands.length, 2);
+  assert.deepEqual(commands[0], commands[1]);
+  assert.equal(c.getSnapshot().pending, null);
+  assert.equal(f.calls.filter((x) => x.action === "publish_plan_v1").length, 0);
+  c.dispose();
+});

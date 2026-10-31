@@ -356,6 +356,36 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       fail(e);
     }
   }
+  async function executePayment(command: ConfirmPaymentCommand) {
+    if (
+      !permissions.confirmPayments ||
+      !ports.payments ||
+      state.busy ||
+      command.clientId !== state.view?.draft.clientId
+    )
+      return deny();
+    emit({ pending: command, busy: true, notice: null });
+    try {
+      const receipt = await invoke((signal) =>
+        ports.payments!.execute(command, { signal }),
+      );
+      if (receipt) {
+        const call =
+          command.schemaVersion === 2
+            ? buildPaymentCallV2(command, permissions.actorId)
+            : buildPaymentCall(command, permissions.actorId);
+        command.schemaVersion === 2
+          ? mapPaymentReceiptV2(receipt, call)
+          : mapPaymentReceipt(receipt, call);
+        await refreshContext();
+        if (!live()) return;
+        emit({ pending: null, busy: false });
+      }
+    } catch (e) {
+      fail(e, true);
+    }
+  }
+
   return {
     getSnapshot: () => state,
     subscribe: (fn: () => void) => {
@@ -742,26 +772,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
             receiptVerified: true,
           }
         : { ...base, bankReceiptVerified: true };
-      emit({ pending: command, busy: true, notice: null });
-      try {
-        const receipt = await invoke((signal) =>
-          ports.payments!.execute(command, { signal }),
-        );
-        if (receipt) {
-          const call =
-            command.schemaVersion === 2
-              ? buildPaymentCallV2(command, permissions.actorId)
-              : buildPaymentCall(command, permissions.actorId);
-          command.schemaVersion === 2
-            ? mapPaymentReceiptV2(receipt, call)
-            : mapPaymentReceipt(receipt, call);
-          await refreshContext();
-          if (!live()) return;
-          emit({ pending: null, busy: false });
-        }
-      } catch (e) {
-        fail(e, true);
-      }
+      await executePayment(command);
     },
     async reconcile() {
       const pending = state.pending;
@@ -797,7 +808,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       const pending = state.pending;
       if (!pending || state.busy) return;
       if (pending.action === "confirm_payment") {
-        await this.reconcile();
+        await executePayment(pending);
         return;
       }
       await execute(pending);
