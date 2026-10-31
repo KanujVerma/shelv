@@ -2,6 +2,8 @@ import { useState } from 'react';
 import type { Guide, Source, Comparison, Fact } from '../../../../../src/contracts/ConciergePresentation.ts';
 import type { PlanDecision, PlanProduct, Schedule } from '../../../../../src/contracts/PortalRebuild.ts';
 import { Button, Icon } from '../../ui/index.ts';
+import type {ClientPlanProps} from './types.ts';
+import {UseFacts} from './UseFacts.tsx';
 import { safePublicUrl, productContext } from './model.ts';
 export function ProductPhoto({ product, size = 'routine' }: {
     product: PlanProduct;
@@ -51,14 +53,15 @@ export function DecisionComparisons({decision:d,products}: {decision:PlanDecisio
 export function DecisionDirections({decision:d}: {decision:PlanDecision}) {
     return <section className="plan-stack">{d.directions.map((t,i)=><p key={i}>{t}</p>)}{d.cautions.map((t,i)=><p className="plan-inline-caution" key={i}>{t}</p>)}<ScheduleContent schedule={d.schedule}/></section>;
 }
-export function ProductAdviceStatus({selected:s}: {selected:NonNullable<ReturnType<typeof productContext>>}) {
-    return <section className="plan-stack" data-product-advice>{s.restrictions.map(d=><div key={d.id}><h2>{d.kind==='pause' ? 'paused in your plan' : 'left out of your plan'}</h2><p>{d.reason}</p>{d.cautions.map((t,i)=><p key={i}>{t}</p>)}</div>)}<p className="plan-meta">{s.use.kind==='unavailable' ? 'actual use is unavailable in preview.' : s.use.start ? `previously reported start: ${s.use.start.startedOn}. this record does not confirm current use.` : 'start not recorded. current use is not confirmed.'}</p></section>;
+export function ProductAdviceStatus({selected:s,props}: {props?:ClientPlanProps;selected:NonNullable<ReturnType<typeof productContext>>}) {
+    return <section className="plan-stack" data-product-advice>{s.restrictions.map(d=><div key={d.id}><h2>{d.kind==='pause' ? 'paused in your plan' : 'left out of your plan'}</h2><p>{d.reason}</p>{d.cautions.map((t,i)=><p key={i}>{t}</p>)}</div>)}{s.use.kind==='published'&&s.use.effective?<UseFacts use={s.use.effective} props={props}/>:<p className="plan-meta">{s.use.kind==='unavailable' ? 'actual use is unavailable in preview.' : s.use.start ? `previously reported start: ${s.use.start.startedOn}. this record does not confirm current use.` : 'start not recorded. current use is not confirmed.'}</p>}</section>;
 }
 export function ProductDirections({selected:s}: {selected:NonNullable<ReturnType<typeof productContext>>}) {
     const hasDirections=s.steps.some(step=>step.directions.length>0) || s.guidance.some(d=>d.directions.length>0) || s.guides.length>0;
-    return <section className="plan-stack"><h2>{s.restrictions.length ? 'current plan guidance' : s.proposed ? 'proposed directions' : 'how to use it'}</h2>
+    const suppressed=s.use.kind==='published'&&s.use.effective&&(s.use.effective.contradiction||['paused','stopped','using_differently','unreviewed'].includes(s.use.effective.state)||s.use.effective.identity&&s.use.effective.identity.match!=='yes');
+    const directions=<><h2>{s.restrictions.length ? 'current plan guidance' : s.proposed ? 'proposed directions' : 'how to use it'}</h2>
       {s.steps.map(step=><section className="plan-stack" key={step.id}>{step.directions.map((t,i)=><p key={i}>{t}</p>)}{step.cautions.map((t,i)=><p className="plan-inline-caution" key={i}>{t}</p>)}<ScheduleContent schedule={step.schedule}/></section>)}
       {s.guidance.map(d=><DecisionDirections key={d.id} decision={d}/>)}{s.guides.map(g=><GuideContent key={g.id} guide={g}/>)}
-      {!hasDirections && !s.restrictions.length ? <p>directions are not recorded.</p> : null}
-    </section>;
+      {!hasDirections && !s.restrictions.length ? <p>directions are not recorded.</p> : null}</>;
+    return <section className="plan-stack">{suppressed&&!s.restrictions.length?<details><summary>published guidance for reference</summary><div className="plan-stack">{directions}</div></details>:directions}</section>;
 }

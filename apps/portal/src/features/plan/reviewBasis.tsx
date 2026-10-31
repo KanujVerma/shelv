@@ -8,6 +8,7 @@ export interface ReviewBasis extends ReviewScope {
     view:ClientPlanProps['view'];
     version:number;
     decisionRevision:number;
+    useRevision:number|null;
     mode:ClientPlanProps['mode'];
     session:ClientPlanProps['session'];
 }
@@ -22,11 +23,11 @@ export function DecisionReviewBoundary({props,children}:{props:ContextProps;chil
 }
 export const useReviewScope=()=>useContext(Context);
 export function fetchedBasis(props:ContextProps,scope:ReviewScope,view:ClientPlanProps['view']):ReviewBasis|null {
-    return view.access==='active' && view.plan ? {token:scope.token,epoch:scope.epoch+Number(view!==props.view),view,version:view.plan.version,decisionRevision:view.decisionRevision,mode:props.mode,session:props.session} : null;
+    return view.access==='active' && view.plan ? {token:scope.token,epoch:scope.epoch+Number(view!==props.view),view,version:view.plan.version,decisionRevision:view.decisionRevision,useRevision:view.schemaVersion===2?view.use.revision:null,mode:props.mode,session:props.session} : null;
 }
 export function isReviewable(props:ContextProps,scope:ReviewScope,basis:ReviewBasis|null|undefined):boolean {
-    return !!basis && props.session.isCurrent() && basis.session===props.session && basis.mode===props.mode && basis.token===scope.token && basis.epoch===scope.epoch && basis.view===props.view && props.view.access==='active' && props.view.plan?.version===basis.version && props.view.decisionRevision===basis.decisionRevision;
+    return !!basis && props.session.isCurrent() && basis.session===props.session && basis.mode===props.mode && basis.token===scope.token && basis.epoch===scope.epoch && basis.view===props.view && props.view.access==='active' && props.view.plan?.version===basis.version && props.view.decisionRevision===basis.decisionRevision && (props.view.schemaVersion===2?props.view.use.revision:null)===basis.useRevision;
 }
 export function sameFetchedRevision(basis:ReviewBasis,view:ClientPlanProps['view']):boolean {
-    return view.access==='active' && view.plan?.version===basis.version && view.decisionRevision===basis.decisionRevision;
+    return view.access==='active' && view.plan?.version===basis.version && view.decisionRevision===basis.decisionRevision && (view.schemaVersion===2?view.use.revision:null)===basis.useRevision;
 }

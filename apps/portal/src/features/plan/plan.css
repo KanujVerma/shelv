@@ -71,3 +71,28 @@
 .plan-introduction-evidence .shelv-page-description {margin-top:var(--space-24);}
 .plan-optional-row .plan-row-number {flex-basis:48px;}
 @media(max-width:1100px){.plan-product-evidence .plan-columns {grid-template-columns:minmax(0,1fr);}}
+
+.plan-use-page .shelv-page-description {margin-top:var(--space-24);}
+.plan-view .plan-use-form {padding:var(--space-24);gap:var(--space-20);}
+.plan-use-form form {gap:var(--space-20);}
+.plan-use-identity {display:flex;align-items:center;gap:var(--space-20);min-width:0;}
+.plan-use-identity .plan-photo {width:88px;height:112px;}
+.plan-use-identity>div:last-child {min-width:0;display:grid;gap:6px;}
+.plan-use-identity h2 {font-size:var(--text-heading);line-height:var(--line-heading);}
+.plan-use-match {padding:0;margin:0;border:0;min-width:0;}
+.plan-use-match legend {padding:0;margin-bottom:var(--space-20);font-weight:600;}
+.plan-use-match>div {display:grid;grid-template-columns:210fr 210fr 252fr;gap:var(--space-12);}
+.plan-use-match button[aria-pressed="true"] {background:var(--color-successBg);border-color:var(--color-brand);}
+.plan-use-fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-16);}
+.plan-use-form .shelv-textarea {min-height:80px;}
+.plan-use-form button[type="submit"] {width:250px;max-width:100%;}
+.plan-view .plan-use-context {background:var(--color-successBg);gap:var(--space-16);}
+.plan-use-context h2 {color:var(--color-brand);}
+.plan-use-facts {gap:var(--space-8);}
+.plan-use-facts h3 {font-size:var(--text-body);}
+.plan-use-facts details,.plan-product-sheet details {min-width:0;}
+.plan-product-sheet summary,.plan-evidence-main summary {cursor:pointer;font-weight:600;min-height:44px;}
+@media(max-width:700px){.plan-view .plan-use-form{padding:var(--space-16);}.plan-use-fields{grid-template-columns:minmax(0,1fr);}.plan-use-match>div{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);}.plan-use-match .shelv-button{padding:var(--space-8);gap:var(--space-4);}.plan-use-identity{align-items:flex-start;gap:var(--space-12);}.plan-use-identity .plan-photo{width:62px;height:80px;}}
+
+.plan-view .plan-use-context {padding:var(--space-24);}
+.plan-use-match button[aria-pressed="false"]:nth-child(-n+2) {background:var(--color-quiet);border-color:var(--color-quiet);justify-content:flex-start;}

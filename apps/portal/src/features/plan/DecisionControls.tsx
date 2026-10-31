@@ -3,6 +3,7 @@ import type { PlanDecision } from '../../../../../src/contracts/PortalRebuild.ts
 import { Button, StatusNotice } from '../../ui/index.ts';
 import {fetchedBasis,isReviewable,sameFetchedRevision,useReviewScope} from './reviewBasis.tsx';
 import type {ReviewBasis} from './reviewBasis.tsx';
+import {readCurrentPlan} from './care.ts';
 import { isPurchaseDecision } from './model.ts';
 import type { ClientPlanProps, DecisionCommand } from './types.ts';
 
@@ -56,7 +57,7 @@ function PendingReview({props,id,intent,onReview,inPlan}:{props:ClientPlanProps;
         const operation={},ownsOperation=()=>current()&&busy.current===operation;
         busy.current=operation;setLoading(true);setFailed(false);
         try {
-            const authoritative=await port.read.execute({schemaVersion:1,action:'read_client_plan_v1',version:null});
+            const authoritative=await readCurrentPlan(props);
             if(!ownsOperation())return;
             const next:Intent={...state,command:null,phase:canAcknowledge&&basis&&sameFetchedRevision(basis,authoritative)?'idle':'conflict',reviewBasis:fetchedBasis(props,scope,authoritative)};
             remember(props,id,next);setState(next);props.onViewChange?.(authoritative);
@@ -77,7 +78,7 @@ function PendingReview({props,id,intent,onReview,inPlan}:{props:ClientPlanProps;
     </StatusNotice>;
 }
 function decisionPort(props:ClientPlanProps) {
-    return !props.onViewChange || props.view.access!=='active' ? undefined : props.mode==='client' ? props.ports : props.mode==='public-demo'&&props.demoPorts?.mode==='public-demo' ? props.demoPorts : undefined;
+    return props.view.schemaVersion===2&&(!props.ports?.care||props.mode!=='client') ? undefined : !props.onViewChange || props.view.access!=='active' ? undefined : props.mode==='client' ? props.ports : props.mode==='public-demo'&&props.demoPorts?.mode==='public-demo' ? props.demoPorts : undefined;
 }
 
 export function DecisionControls(props: ClientPlanProps & {decision:PlanDecision}) {
@@ -87,15 +88,17 @@ export function DecisionControls(props: ClientPlanProps & {decision:PlanDecision
         const saved=readIntents(props)[decision.id];
         return saved ? {...saved,phase:saved.phase==='saving'||saved.phase==='refreshing' ? 'uncertain' : saved.phase} : {command:null,attemptedChoice:null,basisVersion:view.plan!.version,decisionTitle:decision.guidance.title,phase:'idle'};
     });
-    const alive=useRef(true),busy=useRef(false);
+    const alive=useRef(true),busy=useRef<object|null>(null);
     // Object identity fences even same-version/access replacements. The epoch
     // also invalidates a response when context changes away and then back.
-    const context=useRef({view,mode,epoch:0});
-    if(context.current.view!==view || context.current.mode!==mode)
-        context.current={view,mode,epoch:context.current.epoch+1};
+    const context=useRef({view,mode,session,epoch:0});
+    if(context.current.view!==view || context.current.mode!==mode || context.current.session!==session){
+        context.current={view,mode,session,epoch:context.current.epoch+1};
+        busy.current=null;
+    }
     const epoch=context.current.epoch;
     const current=()=>alive.current && session.isCurrent() && context.current.epoch===epoch;
-    useEffect(()=>{alive.current=true;return()=>{alive.current=false;};},[]);
+    useEffect(()=>{alive.current=true;return()=>{alive.current=false;busy.current=null;};},[]);
     useEffect(()=>{
         if(intent.phase==='saving'||intent.phase==='refreshing'){
             const next={...intent,phase:'uncertain' as const};remember(props,decision.id,next);setIntent(next);
@@ -107,50 +110,50 @@ export function DecisionControls(props: ClientPlanProps & {decision:PlanDecision
     },[view]);
     const port=decisionPort(props);
     const update=(next:Intent)=>{if(current()){remember(props,decision.id,next);setIntent(next);}};
-    const read=()=>port!.read.execute({schemaVersion:1,action:'read_client_plan_v1',version:null});
+    const read=()=>readCurrentPlan(props);
     async function submit(choice:DecisionCommand['choice'],retry=false) {
         if(!port || busy.current || !current() || intent.phase==='conflict' || (!retry && intent.command))return;
         const command=retry ? intent.command : {schemaVersion:1 as const,action:'record_decision_v1' as const,requestId:requestId(),publicationVersion:view.plan!.version,expectedDecisionRevision:view.decisionRevision,decisionId:decision.id,choice,reason:null};
         if(!command)return;
-        busy.current=true;
+        const operation={};busy.current=operation;
         const pending:Intent={command,attemptedChoice:choice,basisVersion:command.publicationVersion,decisionTitle:decision.guidance.title,phase:'saving'};
         update(pending);
         let acknowledged=false;
         try {
             await port.decision.execute(command);acknowledged=true;
-            if(!current())return;
+            if(!current()||busy.current!==operation)return;
             update({...pending,phase:'refreshing'});
             const authoritative=await read();
-            if(!current())return;
+            if(!current()||busy.current!==operation)return;
             const confirmed=authoritative.access==='active' && authoritative.plan?.version===command.publicationVersion && authoritative.decisions.some(d=>d.decisionId===command.decisionId && d.choice===command.choice && d.reason===command.reason);
             // Store the outcome before notifying the parent, which replaces this
             // view context. No late state update can undo newer restrictions.
             update({...pending,command:confirmed ? null : command,phase:confirmed ? 'saved' : 'uncertain'});
             onViewChange?.(authoritative);
         } catch(error) {
-            if(!current())return;
+            if(!current()||busy.current!==operation)return;
             const status=(error as {status?:number})?.status;
             if(!acknowledged && status===409){
                 update({...pending,command:null,phase:'conflict',reviewBasis:null});
-                try {const authoritative=await read();if(current()){update({...pending,command:null,phase:'conflict',reviewBasis:fetchedBasis(props,scope,authoritative)});onViewChange?.(authoritative);}}catch{/* Deliberate review remains required after read failure. */}
+                try {const authoritative=await read();if(current()&&busy.current===operation){update({...pending,command:null,phase:'conflict',reviewBasis:fetchedBasis(props,scope,authoritative)});onViewChange?.(authoritative);}}catch{/* Deliberate review remains required after read failure. */}
             } else if(!acknowledged && [400,403,404,413,415,429].includes(status??0)){
                 update({...pending,command:null,phase:status===403||status===404 ? 'denied' : 'error'});
             } else update({...pending,phase:'uncertain'});
-        } finally {busy.current=false;}
+        } finally {if(busy.current===operation)busy.current=null;}
     }
     async function reviewLatest() {
         if(!port || busy.current || !current())return;
         const basis=intent.reviewBasis,canAcknowledge=isReviewable(props,scope,basis);
-        busy.current=true;
+        const operation={};busy.current=operation;
         try {
             const authoritative=await read();
-            if(!current())return;
+            if(!current()||busy.current!==operation)return;
             // A second changed version still needs to be seen and reviewed.
             const same=canAcknowledge&&basis&&sameFetchedRevision(basis,authoritative);
             update({...intent,command:null,reviewBasis:fetchedBasis(props,scope,authoritative),phase:same ? 'idle' : 'conflict'});
             onViewChange?.(authoritative);
-        } catch {update({...intent,phase:intent.phase==='conflict' ? 'conflict' : 'error'});}
-        finally {busy.current=false;}
+        } catch {if(current()&&busy.current===operation)update({...intent,phase:intent.phase==='conflict' ? 'conflict' : 'error'});}
+        finally {if(busy.current===operation)busy.current=null;}
     }
     const locked=intent.phase==='saving'||intent.phase==='refreshing'||!!intent.command||intent.phase==='conflict';
     const recorded=view.decisions.find(d=>d.decisionId===decision.id),purchase=isPurchaseDecision(decision);
@@ -163,7 +166,7 @@ export function DecisionControls(props: ClientPlanProps & {decision:PlanDecision
       {intent.attemptedChoice && intent.phase!=='saved' ? <p>attempted choice: {intent.attemptedChoice}</p> : null}
       {intent.phase==='refreshing' ? <StatusNotice tone="loading" title="checking your choice"/> : null}
       {intent.phase==='saving' ? <StatusNotice tone="loading" title="recording your choice"/> : null}
-      {intent.phase==='saved' ? <StatusNotice tone="success" title="choice recorded">your current routine has not changed.</StatusNotice> : null}
+      {intent.phase==='saved' ? <StatusNotice tone="success" title="choice recorded">{view.schemaVersion===2?'your choice does not record product use.':'your current routine has not changed.'}</StatusNotice> : null}
       {intent.phase==='uncertain' ? <StatusNotice tone="uncertain" title="result uncertain" action={<Button variant="secondary" onClick={()=>void submit(intent.command!.choice,true)}>retry same choice</Button>}>your choice may have been recorded. retry the exact choice for plan version {intent.basisVersion} to confirm.</StatusNotice> : null}
       {intent.phase==='conflict' ? <StatusNotice tone="warning" title="plan changed" action={<Button variant="secondary" onClick={()=>void reviewLatest()}>review latest plan</Button>}>your choice was not saved. review the latest plan before choosing again. your attempted choice is kept for review.</StatusNotice> : null}
       {intent.phase==='denied' ? <StatusNotice tone="denied" title="action unavailable">your choice was not saved. your attempted choice is kept.</StatusNotice> : null}
