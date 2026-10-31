@@ -63,6 +63,7 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
     function publishRestoration(operation:RestoreOperation,result:HistoryRestorationResult,denial=false){
         const applicable=denial?current()&&operation.context.context===ctx&&operation.context.session===ctx.session&&ctx.mode==='client':restoreOwner===operation&&applies(operation.context);
         if(!applicable)return operation.result??unavailable(ended?'session_ended':'superseded');
+        result=freezeMetadata(result);
         operation.result=result;restoreOwner=null;
         restorationLease={operation,result,context:capture(),view:state.view,pages:state.pages,pending:state.pending,filter:timeline().filter,phase:state.phase,readError:state.readError};
         set({timeline:{...timeline(),restoring:false,result}});return result;
