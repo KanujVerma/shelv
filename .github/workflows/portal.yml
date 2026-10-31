@@ -62,6 +62,10 @@ jobs:
         working-directory: apps/portal
         run: npm test
 
+      - name: Verify approval recovery keyboard journeys
+        working-directory: apps/portal
+        run: node --experimental-strip-types --test --test-concurrency=1 --test-timeout=15000 tests/rebuild/advisor-recovery-browser.mjs
+
       - name: Verify session types
         working-directory: apps/portal
         run: npm run typecheck:session

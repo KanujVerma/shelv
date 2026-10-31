@@ -1132,19 +1132,24 @@
       ],
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-77cf6a02",
       "branch": "t3/fix-approval-authority-recovery",
-      "status": "running",
+      "status": "completed",
       "role": "W2 approval recovery fix",
       "baseCommit": "97aa801f58471f8e657d00de1775da7f20f6ee29",
       "reportPath": "docs/portal-rebuild/research/W2_APPROVAL_RECOVERY_FIX.md",
       "writeSet": [
         "apps/portal/src/features/advisor/controller.ts",
-        "apps/portal/src/features/advisor/types.ts if needed",
+        "apps/portal/src/features/advisor/types.ts",
         "apps/portal/tests/rebuild-advisor-approval-authority.test.mjs",
-        "apps/portal/tests/rebuild-advisor-context-notice.test.mjs",
+        "apps/portal/tests/rebuild/advisor-recovery-browser.mjs",
         "docs/portal-rebuild/research/W2_APPROVAL_RECOVERY_FIX.md"
       ],
-      "resources": "Sole intercepted synthetic Chrome allocation after W6 release; no native fixture/Auth custody",
-      "verification": "Exact returned settings plus live thread/worktree readback"
+      "resources": "Chrome released04:15:07UTC; no native custody; all handles terminal",
+      "verification": "Exact returned settings plus live thread/worktree readback",
+      "headCommit": "b8bd5b3a73134e02b6d93e2fb32e8591c67bdcba",
+      "integratedCommits": [
+        "c2e5e92"
+      ],
+      "verdict": "Author402source/11newbrowser/39retainedbrowser pass; independent review pending"
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-remaining-api-20261030-r1",
@@ -1287,8 +1292,36 @@
         "docs/portal-rebuild/research/W7_NATIVE_BROWSER_REVIEW.md"
       ],
       "reportPath": "docs/portal-rebuild/research/W7_NATIVE_BROWSER_REVIEW.md",
-      "resources": "Exclusive bounded R4 native custody; source/pure/Node/cleanup only until explicit Chrome grant after W2 release",
+      "resources": "Exclusive bounded R4 native custody AND sole Chrome granted after W2 release; authorized b8bd5b3 cherry-pick only; no reset",
       "verification": "Exact T3 returned options, thread/worktree/base readback; child both live tools confirmed Sol/xhigh/default"
+    },
+    {
+      "role": "W7 approval recovery review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-approval-review-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-approval-review-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-approval-review-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7b2812c5",
+      "branch": "t3/review-approval-recovery",
+      "baseCommit": "c2e5e92",
+      "status": "running",
+      "reportPath": "docs/portal-rebuild/research/W7_APPROVAL_RECOVERY_REVIEW.md",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_APPROVAL_RECOVERY_REVIEW.md"
+      ],
+      "resources": "Source/pure/SSR/types only; no Chrome until native review explicit release/grant; no native fixture",
+      "verification": "Exact T3 returned options plus thread/worktree/base readback; child live runtime tools confirmedSol/xhigh/default"
     }
   ]
 }
