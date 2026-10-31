@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFile, mkdir, readdir, stat} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {randomBytes} from 'node:crypto';
 import {build} from 'esbuild';
@@ -34,7 +35,7 @@ export async function connectedStack(fixture) {
     if (!data?.access_token) return;
     const claims = JSON.parse(Buffer.from(data.access_token.split('.')[1], 'base64url').toString());
     assert.match(claims.session_id, /^[0-9a-f-]{36}$/); assert.equal(claims.iss, providerOrigin + '/auth/v1');
-    issued.set(claims.session_id, {id:claims.session_id, ownerId:claims.sub, token:data.access_token, closed:false});
+    issued.set(claims.session_id, {id:claims.session_id, ownerId:claims.sub, token:data.access_token, refreshToken:data.refresh_token, closed:false});
   }
   const outbound = async request => {
     // Destination validation happens before body parsing or network access.
@@ -77,12 +78,29 @@ export async function connectedStack(fixture) {
     return new Response(bytes, {headers:{'content-type':mime[path.extname(file)] ?? 'application/octet-stream', 'cache-control':'private, no-store', 'referrer-policy':'no-referrer', 'x-content-type-options':'nosniff', 'content-security-policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"}});
   };
   const common = {PORTAL_ORIGIN:portalOrigin, CLIENT_SHARED_SESSIONS:'true', ADVISOR_SHARED_SESSIONS:'true'};
-  const config = {cf:false, logRequests:false, upstream:portalOrigin, durableObjectsPersist:path.join(dir, 'sqlite-vault'), workers:[
+  const config = {cf:false, host:'127.0.0.1', logRequests:false, upstream:portalOrigin, resourcePersistencePath:path.join(dir,'resources'),isolatedResourcePersistencePath:path.join(dir,'isolated'),resourceTmpPath:path.join(dir,'tmp'),workers:[
     {name:'gateway', routes:['127.0.0.1/*'], modules:true, modulesRoot:dir, scriptPath:path.join(dir,'gateway.mjs'), compatibilityDate:'2026-10-20', compatibilityFlags:['nodejs_compat'], bindings:common, durableObjects:{ADVISOR_SESSIONS:{className:'AdvisorSessionObject',scriptName:'vault',useSQLite:true}}, serviceBindings:{ASSETS:assets}, outboundService:async()=>{throw Error('Unexpected gateway outbound');}},
     {name:'vault', modules:true, modulesRoot:dir, scriptPath:path.join(dir,'vault.mjs'), compatibilityDate:'2026-10-20', compatibilityFlags:['nodejs_compat'], bindings:{...common,SUPABASE_PUBLIC_KEY:fixture.config.PUBLISHABLE_KEY,ADVISOR_SESSION_KEYS:JSON.stringify({active:'local',keys:{local:randomBytes(32).toString('base64url')}}),SESSION_IDLE_SECONDS:'3600',SESSION_ABSOLUTE_SECONDS:'28800',SESSION_FLOW_SECONDS:'600',CLIENT_REMEMBER_IDLE_SECONDS:'604800',CLIENT_REMEMBER_ABSOLUTE_SECONDS:'2592000'}, durableObjects:{ADVISOR_SESSIONS:{className:'AdvisorSessionObject',useSQLite:true}}, outboundService:outbound},
   ]};
   const mf = new Miniflare({...convertV4MiniflareOptions(config),telemetry:{enabled:false}});
   await mf.ready;
+  async function inspectVault() {
+    const files=[];
+    async function visit(directory) {for(const entry of await readdir(directory,{withFileTypes:true})) {const file=path.join(directory,entry.name);if(entry.isDirectory())await visit(file);else if(entry.name.endsWith('.sqlite'))files.push(file);}}
+    await visit(dir);
+    let records=0,activeSessions=0,envelopes=0;
+    for(const file of files) {
+      const query=text=>execFileSync('/usr/bin/sqlite3',['-readonly',file,text],{encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
+      if(query("select count(*) from sqlite_master where type='table' and name='session_record'")!=='1')continue;
+      for(const line of query('select json from session_record').split('\n').filter(Boolean)) {
+        for(const item of issued.values()) {assert.ok(!line.includes(item.token),'Provider bearer must not be plaintext in SQLite');if(item.refreshToken)assert.ok(!line.includes(item.refreshToken),'Provider refresh credential must not be plaintext in SQLite');}
+        const record=JSON.parse(line);records++;
+        if(record.kind==='session'&&record.status==='active') {activeSessions++;assert.equal(record.credentials.version,1);assert.equal(typeof record.credentials.ciphertext,'string');assert.equal(typeof record.credentials.iv,'string');envelopes++;}
+        if(record.kind==='flow'&&record.payload) {assert.equal(record.payload.version,1);assert.equal(typeof record.payload.ciphertext,'string');}
+      }
+    }
+    return {sqliteFiles:files.length,records,activeSessions,credentialEnvelopes:envelopes};
+  }
   async function cleanup() {
     const failures = [];
     for (const item of issued.values()) {
@@ -125,7 +143,7 @@ export async function connectedStack(fixture) {
       } catch {errors.push('local dispatch failed '+url.pathname); await route.abort().catch(()=>{});}
     });
   }
-  return {mf,dir,seams,calls,browserCalls,errors,issued,remember,cleanup,hold,bind,async dispose(){await mf.dispose();}};
+  return {mf,dir,seams,calls,browserCalls,errors,issued,remember,cleanup,hold,bind,inspectVault,async dispose(){await mf.dispose();}};
 }
 
 export function nodeCookieClient(stack, audience, ip=1) {

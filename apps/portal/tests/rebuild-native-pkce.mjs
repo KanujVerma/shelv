@@ -33,6 +33,8 @@ try {
   assert.doesNotMatch(JSON.stringify(response.value),/access_token|refresh_token|code_verifier/);
   pass('Actual gateway flow, SQLite Vault, local Mailpit verify redirect, genuine GoTrue PKCE and live advisor context');
   const csrf=response.value.csrf;
+  result.sqlite=await stack.inspectVault();assert.ok(result.sqlite.sqliteFiles>0);assert.equal(result.sqlite.activeSessions,1);assert.equal(result.sqlite.credentialEnvelopes,1);
+  pass('Actual persisted SQLite Vault contains encrypted active session envelope and no plaintext provider bearer');
   response=await client.request('auth/complete',{code:callback.code},flow);assert.equal(response.status,200);
   assert.equal(response.value.csrf,csrf);assert.equal(response.value.ownerId,fixture.owner.id);
   assert.equal(stack.calls.filter(c=>c.path==='/auth/v1/token').length,1);

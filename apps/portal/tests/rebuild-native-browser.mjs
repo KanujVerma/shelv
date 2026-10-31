@@ -52,6 +52,7 @@ try {
   const cases=await syntheticCases(fixture);result.runId=cases.runId;result.ownedClientIds=[cases.client.id,cases.other.id];result.ownedViewerId=cases.viewer.id;
   browser=await chromium.launch({channel:'chrome',headless:true,args:['--no-proxy-server','--disable-background-networking','--disable-quic','--host-resolver-rules=MAP * ~NOTFOUND']});
   const advisor=await signIn(fixture.owner,'advisor',1),p=advisor.page;
+  result.sqlite=await stack.inspectVault();assert.ok(result.sqlite.sqliteFiles>0);assert.equal(result.sqlite.activeSessions,1);assert.equal(result.sqlite.credentialEnvelopes,1);
   pass('Actual app advisor link request and callback establish Secure HttpOnly opaque cookie through genuine Auth and SQLite Vault');
   phase='incomplete unassigned draft';
   const authCount=fixture.sql('select count(*) from auth.users');
