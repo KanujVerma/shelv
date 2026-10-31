@@ -22,18 +22,19 @@ function keys(value, expected) {assert.ok(value&&typeof value==='object'&&!Array
 
 // Pure selection, never an implicit custody grant or lifecycle operation.
 export function selectCareFixture(value) {
-  keys(value,sourceKeys);assert.equal(value.format,1);assert.equal(value.purpose,'w6-care-native-r5');
+  keys(value,sourceKeys);assert.equal(value.format,1);assert.equal(value.purpose,'w6-care-native-r6');
   assert.equal(value.parentRoot,parentRoot,'Only the allocated parent checkout is permitted');
-  assert.equal(value.directory,path.join(parentRoot,'.local-artifacts/portal-rebuild/canonical-plan-v1-r5'),'Only explicitly selected new R5 is permitted');
+  assert.equal(value.directory,path.join(parentRoot,'.local-artifacts/portal-rebuild/canonical-plan-v1-r6'),'Only explicitly selected new R6 is permitted');
   uuid(value.ownerId);uuid(value.ownerActorId);assert.notEqual(value.ownerId,protectedR4Owner,'Protected R4 cannot be adopted');
   assert.equal(value.projectId,'shelv-portal-admission-'+value.ownerId.replaceAll('-','').slice(0,12));
-  assert.equal(value.migrationCount,careNativePins.migrationCount,'R5 requires current56, never old55');
+  assert.notEqual(value.projectId,'shelv-portal-admission-d5c398970583','Frozen R5 source checkpoint cannot be adopted');
+  assert.equal(value.migrationCount,careNativePins.migrationCount,'R6 requires current56, never old55');
   for(const key of ['configSha256','snapshotSha256','ledgerSha256','sourceHashesSha256'])hash(value[key]);
   keys(value.helpers,kinds);
   const suffix=value.ownerId.replaceAll('-','').slice(0,12),ids=new Set(),names=new Set();
   for(const item of Object.values(value.helpers)) {
     keys(item,['name','id','environmentSha256']);hash(item.id);hash(item.environmentSha256);assert.match(item.name,/^[a-z0-9][a-z0-9-]+$/);
-    assert.ok(item.name.endsWith('-'+suffix),'Helpers must be fresh selected-R5 names');
+    assert.ok(item.name.endsWith('-'+suffix),'Helpers must be fresh selected-R6 names');
     assert.ok(!ids.has(item.id)&&!names.has(item.name),'Distinct helper identities required');ids.add(item.id);names.add(item.name);
   }
   // Parent supplies the complete locked digest with its actual receipt, never a mutable tag.
@@ -47,7 +48,7 @@ export function requireCareCustody(selection, grant, workspace, purpose='genuine
   keys(grant,['format','parentThreadId','purpose','workspace','directory','ownerId','projectId','snapshotSha256','grantId']);
   assert.equal(grant.format,1);assert.equal(grant.parentThreadId,careNativePins.parentThreadId);assert.equal(grant.purpose,purpose,'Separate phase-specific parent grant required');
   assert.equal(grant.workspace,workspace);assert.ok(path.isAbsolute(workspace));assert.notEqual(workspace,parentRoot);
-  for(const key of ['directory','ownerId','projectId','snapshotSha256'])assert.equal(grant[key],selection[key],'Custody must bind the selected R5');
+  for(const key of ['directory','ownerId','projectId','snapshotSha256'])assert.equal(grant[key],selection[key],'Custody must bind the selected R6');
   assert.ok(typeof grant.grantId==='string'&&/^[a-zA-Z0-9:_-]{1,200}$/.test(grant.grantId),'Exact parent grant reference required');
   return grant;
 }
@@ -137,9 +138,9 @@ export async function attestCareFixture(sourceRoot,rawSelection,grant) {
   assert.deepEqual(await migrationHashes(selection.directory),migrations,'Prepared/current migrations differ');
   validateCareSource(selection,{manifest:fixture.manifest,config:await readFile(path.join(selection.directory,'supabase/config.toml')),migrations,sourceHashes});
   const env={...process.env,DOCKER_HOST:careNativePins.dockerHost,DOCKER_CONFIG:path.join(selection.directory,'docker-config')};delete env.DOCKER_CONTEXT;
-  const docker=(...args)=>{try{return execFileSync('docker',args,{env,encoding:'utf8',stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024}).trim();}catch{throw Error('Selected R5 Docker read failed; private output suppressed');}};
+  const docker=(...args)=>{try{return execFileSync('docker',args,{env,encoding:'utf8',stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024}).trim();}catch{throw Error('Selected R6 Docker read failed; private output suppressed');}};
   const db='supabase_db_'+selection.projectId;
-  const sql=text=>{try{return execFileSync('docker',['exec','-i',db,'psql','-U','postgres','-d','postgres','-X','-At','-v','ON_ERROR_STOP=1'],{env,input:text,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:16*1024*1024}).trim();}catch{throw Error('Selected R5 SQL operation failed; private output suppressed');}};
+  const sql=text=>{try{return execFileSync('docker',['exec','-i',db,'psql','-U','postgres','-d','postgres','-X','-At','-v','ON_ERROR_STOP=1'],{env,input:text,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:16*1024*1024}).trim();}catch{throw Error('Selected R6 SQL operation failed; private output suppressed');}};
   const readPrivate=async relative=>{
     assert.ok(['status.private.json','AUTH-PROBE.private.json'].includes(relative),'Only selected fixture identity/config files permitted');
     const file=path.join(selection.directory,relative),entry=await lstat(file);assert.ok(entry.isFile()&&!entry.isSymbolicLink());assert.equal(entry.mode&0o777,0o600,'Private fixture file must be600');
@@ -148,7 +149,10 @@ export async function attestCareFixture(sourceRoot,rawSelection,grant) {
   const bindingEntry=await lstat(path.join(selection.directory,'RUNTIME-BINDING.json'));assert.ok(bindingEntry.isFile()&&!bindingEntry.isSymbolicLink());assert.equal(bindingEntry.mode&0o077,0);
   const binding=JSON.parse(await readFile(path.join(selection.directory,'RUNTIME-BINDING.json'),'utf8'));
   const volume=JSON.parse(docker('volume','inspect',db))[0];
-  const containers=docker('ps','-a','--format','{{.Names}}').split('\n').filter(n=>n.endsWith('_'+selection.projectId)).map(n=>JSON.parse(docker('inspect',n))[0]);
+  const containers=docker('ps','-a','--filter','label=com.supabase.cli.project='+selection.projectId,'--format','{{.Names}}').split('\n').filter(n=>n.endsWith('_'+selection.projectId)).map(n=>JSON.parse(docker('inspect',n))[0]);
+  // Ownership/volume identity must pass before even a selected-database read.
+  assert.equal(verifyFixtureResources(fixture.manifest,binding,volume,containers,selection.directory).fresh,false);
+  assert.ok(containers.some(c=>c.Name==='/'+db&&c.State.Running),'Selected DB must be positively owned/running');
   const ledger=JSON.parse(sql("select coalesce(jsonb_agg(jsonb_build_object('version',version,'name',name,'statements',statements) order by version),'[]'::jsonb) from supabase_migrations.schema_migrations"));
   const helperInspections=Object.fromEntries(kinds.map(kind=>[kind,JSON.parse(docker('inspect',selection.helpers[kind].name))[0]]));
   const lineage=validateCareRuntime(selection,{manifest:fixture.manifest,binding,volume,containers,ledger,helperInspections,sourceHashes});

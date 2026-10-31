@@ -18,6 +18,8 @@ export async function compileCareNativeSource() {
     const result=await build({absWorkingDir:runtime,tsconfig:'tsconfig.json',entryPoints:[entry],bundle:true,format:'esm',platform:'browser',target:'es2022',write:false,external:['cloudflare:workers'],legalComments:'none',plugins:[plugin]});
     assert.equal(result.outputFiles.length,1);outputs.push({entry,sha256:sha(result.outputFiles[0].contents),bytes:result.outputFiles[0].contents.length});
   }
+  const journey=await build({absWorkingDir:path.resolve(runtime,'../..'),entryPoints:['tests/rebuild-care-native-node.mjs'],bundle:true,format:'esm',platform:'node',target:'node22',packages:'external',write:false,legalComments:'none'});
+  assert.equal(journey.outputFiles.length,1);outputs.push({entry:'tests/rebuild-care-native-node.mjs',sha256:sha(journey.outputFiles[0].contents),bytes:journey.outputFiles[0].contents.length});
   assert.equal(seams.length,2);return{kind:'source-only-actual-gateway-vault-bundles',outputs,seams,resourceAcquisition:false};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){
