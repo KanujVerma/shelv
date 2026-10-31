@@ -44,6 +44,12 @@ export function sameCareValue(a:unknown,b:unknown):boolean{
  const x=a as Record<string,unknown>,y=b as Record<string,unknown>;return Object.keys(x).length===Object.keys(y).length&&Object.keys(x).every(k=>Object.hasOwn(y,k)&&sameCareValue(x[k],y[k]));
 }
 export function checkUseProduct(product:ProductRef,change:{kind:string}):void{requireValue(change.kind!=='unreviewed_added'||product.kind==='client_reported_product');}
+const uuidFields=new Set(['requestId','clientId','eventId','expectedAmendmentHeadId','identityEventId','reportedProductId']);
+function canonicalCareIds(value:unknown,key=''):unknown{
+ if(typeof value==='string'&&uuidFields.has(key))return value.toLowerCase();
+ if(Array.isArray(value))return value.map(v=>key==='labelPhotoIds'&&typeof v==='string'?v.toLowerCase():canonicalCareIds(v));
+ if(value!==null&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([k,v])=>[k,canonicalCareIds(v,k)]));return value;
+}
 export function readCareCommand(value:unknown):CareCommand{
  const v=readObject(value);requireValue(typeof v.action==='string'&&Object.hasOwn(careCommandFields,v.action));
  const c=readPlanShape(v,careObject({schemaVersion:careEnum(1),action:careEnum(v.action),...careCommandFields[v.action as CareCommand['action']]})) as CareCommand;
@@ -53,6 +59,6 @@ export function readCareCommand(value:unknown):CareCommand{
  if(c.action==='amend_use_v1')checkUseProduct(c.replacement.product,c.replacement.change);
  const occurrence='occurredOn'in c?c.occurredOn:c.action==='amend_use_v1'?c.replacement.occurredOn:null;
  if(occurrence?.state==='known')requireValue(occurrence.value<=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Chicago',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()));
- return c;
+ return canonicalCareIds(c) as CareCommand;
 }
 export function buildCareRpc(value:unknown):CareRpcCall{return {name:'concierge_care_command_v1',args:{p_command:readCareCommand(value)}};}

@@ -73,6 +73,7 @@ export function readPlanContent(value:unknown):PlanContent{
 export function readPlanCommand(value:unknown):PlanCommand{
  const v=readObject(value);requireValue(typeof v.action==='string'&&Object.hasOwn(planCommandFields,v.action));
  const command=readPlanShape(v,object({schemaVersion:en(1),action:en(v.action),...planCommandFields[v.action as PlanCommand['action']]})) as PlanCommand;
+ if(command.action==='read_draft_dependencies_v1'||command.action==='rebase_draft_dependencies_v1'){command.draftId=command.draftId.toLowerCase();if('requestId'in command)command.requestId=command.requestId.toLowerCase();}
  if('content' in command)readPlanContent(command.content);
  if(command.action==='grant_task_v1')requireValue((command.clientId===null)!==(command.draftId===null));
  return command;

@@ -140,3 +140,21 @@ test('compact current-use summary may retain another publication while identity 
  assert.throws(()=>mapCareResult({...view,use:{...view.use,planProducts:[{...state,identity:{...attr,target:{subject:original,comparedWith:null},match:'yes'}}]}},command));
  assert.throws(()=>mapCareResult({...view,use:{...view.use,planProducts:[{...state,latestEvent:{...state.latestEvent,product:{...original,productId:'other-id'}}}]}},command));
 });
+test('new UUID fields canonicalize without changing opaque content identities or old actions',()=>{
+ const lower='abcdefab-cdef-4abc-8abc-abcdefabcdef',upper=lower.toUpperCase();
+ const c=readCareCommand({...use,requestId:upper,product:{kind:'client_reported_product',reportedProductId:upper,version:1}});
+ assert.equal('requestId'in c&&c.requestId,lower);assert.equal('product'in c&&c.product!==null&&'reportedProductId'in c.product&&c.product.reportedProductId,lower);
+ const d=readPlanCommand({schemaVersion:1,action:'read_draft_dependencies_v1',draftId:upper,contentRevision:0,assignmentRevision:0});assert.equal('draftId'in d&&d.draftId,lower);
+ const old=readPlanCommand({schemaVersion:1,action:'read_draft_v1',draftId:upper});assert.equal('draftId'in old&&old.draftId,upper);
+ const opaque=readCareCommand({...use,product:{...product,productId:upper}});assert.equal('product'in opaque&&opaque.product!==null&&'productId'in opaque.product&&opaque.product.productId,upper);
+});
+test('nested initial use keeps original descriptor while amendment binds selected corrected product',()=>{
+ const second='10000000-0000-4000-8000-000000000002',p1={kind:'client_reported_product',reportedProductId:id,version:1},p2={kind:'client_reported_product',reportedProductId:second,version:1};
+ const attr={sourcePublication:null,occurredOn:unknown,recordedAt:'2026-01-01T00:00:00Z',reportedBy:id,recordedBy:id,channel:'portal'};
+ const amendment={id:second,eventId:id,previousAmendmentHeadId:null,replacement:{product:p2,change:{kind:'paused',details:null},sourcePublication:null,occurredOn:unknown,acquisition:'self',identityEventId:null},amendedBy:id,amendedAt:'2026-01-02T00:00:00Z',reason:'correct product'};
+ const initialUse={...attr,eventId:id,product:p1,change:{kind:'unreviewed_added',details:null},acquisition:'self',identityEventId:null,originalActivationId:null,amendment};
+ const event={...attr,eventId:id,product:p1,descriptor:{name:'original reported descriptor',brand:unknown,variant:unknown,strength:unknown,sizeLabel:unknown,labelPhotoIds:[]},previousVersion:null,reason:null,initialUse};
+ const page={revision:3,entries:[{kind:'reported_product',event}],nextCursor:null};
+ assert.deepEqual(mapCareResult(page,readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:p2,cursor:null,limit:1})),page);
+ assert.throws(()=>mapCareResult({...page,entries:[{kind:'reported_product',event:{...event,initialUse:{...initialUse,amendment:{...amendment,eventId:second}}}}]},readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:p2,cursor:null,limit:1})));
+});
