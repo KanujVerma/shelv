@@ -9,15 +9,20 @@ import {closeProviderSession} from '../scripts/rebuild-native-cases.mjs';
 import {connectedStack,sourceRoot,artifacts,mailSnapshot,captureCallback} from './rebuild-native-stack.mjs';
 
 assert.equal(process.env.SHELV_REBUILD_NATIVE_BROWSER,'1');assert.equal(process.env.SHELV_REBUILD_NATIVE,'1');
-const f=await attestFixture(sourceRoot),stack=await connectedStack(f),originals=await f.readPrivate('PLAN-IDENTITIES.private.json');
 const selectedRun=process.env.SHELV_REBUILD_NATIVE_CASE_RUN;
 if(selectedRun)assert.match(selectedRun,/^[0-9a-f-]{36}$/);
 const prior=JSON.parse(await readFile(path.join(artifacts,selectedRun?'browser-result-'+selectedRun+'.json':'browser-result.json'),'utf8'));
+assert.match(prior.runId,/^[0-9a-f-]{36}$/);
+const f=await attestFixture(sourceRoot),originals=await f.readPrivate('PLAN-IDENTITIES.private.json');
 const identitiesFile=path.join(f.directory,'edge/w6/identities-'+prior.runId+'.private.json');assert.equal((await stat(identitiesFile)).mode&0o077,0);
 const owned=JSON.parse(await readFile(identitiesFile,'utf8')),other=owned.identities.find(x=>x.kind==='other'),viewer=owned.identities.find(x=>x.kind==='viewer');
 assert.equal(viewer.id,prior.ownedViewerId);assert.ok(viewer.email.endsWith('.invalid'));assert.match(viewer.id,/^[0-9a-f-]{36}$/);
-const result={kind:'genuine-readonly-browser-and-negatives',runId:randomUUID(),status:'RUNNING',checks:[],localEmails:0,realEmails:0,hostedRequests:0};
-const contexts=[];let browser,phase='setup',release;
+assert.match(other.id,/^[0-9a-f-]{36}$/);assert.match(originals.client.id,/^[0-9a-f-]{36}$/);assert.ok(other.email.endsWith('.invalid'));
+assert.equal(f.sql(`select email from auth.users where id='${viewer.id}'`),viewer.email,'Selected viewer must be the exact owned synthetic identity');
+assert.equal(f.sql(`select active from concierge.advisors where user_id='${viewer.id}'`),'t','Choose an unconsumed owned viewer grant; do not reset a prior revocation');
+assert.equal(f.sql(`select exists(select 1 from concierge.plan_drafts d join concierge.plan_draft_private p on p.draft_id=d.id where d.client_id='${originals.client.id}' and p.content::text like '%PRIVATE_REAL_AUTH_CANARY%')`),'t','Original-case private marker must exist in actual advisor-only source');
+const result={kind:'genuine-readonly-browser-and-negatives',runId:randomUUID(),status:'RUNNING',checks:[],localEmails:0,realEmails:0,hostedRequests:0,privateMarkerPreflight:true};
+const contexts=[];let stack,browser,phase='setup',release;
 async function login(identity,audience,index,preparation=false) {
   phase='PKCE '+audience;
   const context=await browser.newContext({viewport:{width:1440,height:960},serviceWorkers:'block'});contexts.push(context);await stack.bind(context,index);
@@ -38,6 +43,7 @@ const read={schemaVersion:1,action:'read_client_plan_v1',version:null};
 const snapshot=()=>sha(f.sql(`select jsonb_build_object('case',(select to_jsonb(c) from concierge.cases c where client_id='${originals.client.id}'),'pubs',(select jsonb_agg(to_jsonb(p) order by version) from concierge.publications p where client_id='${originals.client.id}'),'starts',(select jsonb_agg(to_jsonb(a) order by id) from concierge.activations a where client_id='${originals.client.id}'),'service',(select jsonb_agg(to_jsonb(s) order by claim_id) from concierge.service_periods s where client_id='${originals.client.id}'))`));
 const beforeHash=snapshot();
 try {
+  stack=await connectedStack(f);
   browser=await chromium.launch({channel:'chrome',headless:true,args:['--no-proxy-server','--disable-background-networking','--disable-quic','--host-resolver-rules=MAP * ~NOTFOUND']});
   const client=await login(originals.client,'client',11);
   phase='entitled read';let r=await command(client,'client',read);assert.equal(r.status,200);assert.equal(r.value.access,'active');assert.ok(r.value.plan.version>=1);assert.deepEqual(r.value.actualUse,[]);assert.ok(!JSON.stringify(r.value).includes('PRIVATE_REAL_AUTH_CANARY'));assert.ok(!(await client.locator('body').innerText()).includes('PRIVATE_REAL_AUTH_CANARY'));
@@ -68,8 +74,9 @@ try {
 }catch(error){result.status='FAIL';result.failure={phase,type:error.name};}
 finally {
   release?.();for(const c of contexts)await c.close().catch(()=>{});await browser?.close().catch(()=>{});
-  try{result.cleanup=await stack.cleanup();}catch{result.status='FAIL';result.cleanup='FAILED';}
-  result.sessionIds=[...stack.issued.values()].map(x=>({id:x.id,ownerId:x.ownerId,closed:x.closed}));result.browserResponseScan=stack.browserScan;result.errors=stack.errors;result.calls=stack.calls;
-  await stack.dispose();await writeFile(path.join(artifacts,'readonly-browser-result.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});await writeFile(path.join(artifacts,'readonly-browser-result-'+result.runId+'.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});
+  try{result.cleanup=stack?await stack.cleanup():{issued:0,closed:0,remainingSessions:0,remainingRefreshTokens:0,acquisitionFailed:true};}catch{result.status='FAIL';result.cleanup='FAILED';}
+  result.sessionIds=stack?[...stack.issued.values()].map(x=>({id:x.id,ownerId:x.ownerId,closed:x.closed})):[];result.browserResponseScan=stack?.browserScan;result.errors=stack?.errors??[];result.calls=stack?.calls??[];
+  try {await stack?.dispose();}catch{result.status='FAIL';result.runtimeDisposal='FAILED';}
+  await writeFile(path.join(artifacts,'readonly-browser-result.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});await writeFile(path.join(artifacts,'readonly-browser-result-'+result.runId+'.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});
 }
 console.log(JSON.stringify({...result,calls:result.calls.length}));if(result.status!=='PASS')process.exitCode=1;

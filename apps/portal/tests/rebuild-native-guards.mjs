@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {localPolicy, providerTarget, portalOrigin, providerOrigin,assertBrowserBytes} from '../scripts/rebuild-native-boundary.mjs';
+import {localPolicy, providerTarget, portalOrigin, providerOrigin,assertBrowserBytes,safePrivateMarkers} from '../scripts/rebuild-native-boundary.mjs';
 
 // Run explicitly. This file is intentionally outside *.test.mjs automatic globs.
 assert.equal(process.env.SHELV_REBUILD_NATIVE_GUARDS, '1', 'Explicit guard-test opt-in required');
@@ -38,4 +38,16 @@ test('browser response guard catches exact credentials in headers/binary bytes w
   assert.throws(()=>assertBrowserBytes({'content-type':'application/octet-stream'},Buffer.concat([Buffer.from([0,255]),Buffer.from(credential)]),[credential]),/forbidden exact value/);
   assert.doesNotThrow(()=>assertBrowserBytes({'content-type':'text/javascript'},Buffer.from('const fields=["access_token","refresh_token","code_verifier"];'),[credential]));
   assert.throws(()=>assertBrowserBytes({},Buffer.from('{"fact":"W6_PRIVATE_SYNTHETIC_ONLY"}'),['W6_PRIVATE_SYNTHETIC_ONLY']),/forbidden exact value/);
+});
+
+test('actual safe-response marker configuration rejects original-client private marker in headers', () => {
+  assert.throws(()=>assertBrowserBytes({'x-private':'PRIVATE_REAL_AUTH_CANARY'},Buffer.from('safe'),safePrivateMarkers),/forbidden exact value/);
+});
+test('actual safe-response marker configuration rejects original-client private marker in binary bodies', () => {
+  assert.throws(()=>assertBrowserBytes({},Buffer.concat([Buffer.from([0,255]),Buffer.from('PRIVATE_REAL_AUTH_CANARY')]),safePrivateMarkers),/forbidden exact value/);
+});
+test('W6 marker remains denied for safe responses and authorized advisor private responses remain permitted', () => {
+  assert.throws(()=>assertBrowserBytes({},Buffer.from('W6_PRIVATE_SYNTHETIC_ONLY'),safePrivateMarkers),/forbidden exact value/);
+  // Authorized advisor draft responses apply credential guards, not client/private projection guards.
+  assert.doesNotThrow(()=>assertBrowserBytes({},Buffer.from('W6_PRIVATE_SYNTHETIC_ONLY PRIVATE_REAL_AUTH_CANARY'),['unit-credential']));
 });

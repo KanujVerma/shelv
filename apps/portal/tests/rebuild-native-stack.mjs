@@ -5,7 +5,7 @@ import path from 'node:path';
 import {randomBytes} from 'node:crypto';
 import {build} from 'esbuild';
 import {Miniflare, convertV4MiniflareOptions} from 'miniflare';
-import {localPolicy, providerTarget, portalOrigin, providerOrigin, sha,assertBrowserBytes} from '../scripts/rebuild-native-boundary.mjs';
+import {localPolicy, providerTarget, portalOrigin, providerOrigin, sha,assertBrowserBytes,safePrivateMarkers} from '../scripts/rebuild-native-boundary.mjs';
 
 const portal = path.resolve(import.meta.dirname, '..');
 export const sourceRoot = path.resolve(portal, '../..');
@@ -14,7 +14,8 @@ const runtime = path.join(portal, 'session-integration/runtime');
 const app = path.join(sourceRoot, '.local-artifacts/portal-rebuild/application');
 const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.woff2':'font/woff2','.woff':'font/woff','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp'};
 
-export async function connectedStack(fixture) {
+export async function connectedStack(fixture, options={}) {
+  if(options.failureProbe||options.onRuntime)assert.equal(process.env.SHELV_REBUILD_NATIVE_FAILURE_PROBES,'1','Runtime failure instrumentation requires explicit opt-in');
   const dir = path.join(artifacts, 'stack-' + randomBytes(8).toString('hex'));
   await mkdir(dir, {recursive: true, mode: 0o700});
   const seams = [];
@@ -85,8 +86,25 @@ export async function connectedStack(fixture) {
     {name:'gateway', routes:['127.0.0.1/*'], modules:true, modulesRoot:dir, scriptPath:path.join(dir,'gateway.mjs'), compatibilityDate:'2026-10-20', compatibilityFlags:['nodejs_compat'], bindings:common, durableObjects:{ADVISOR_SESSIONS:{className:'AdvisorSessionObject',scriptName:'vault',useSQLite:true}}, serviceBindings:{ASSETS:assets}, outboundService:async()=>{throw Error('Unexpected gateway outbound');}},
     {name:'vault', modules:true, modulesRoot:dir, scriptPath:path.join(dir,'vault.mjs'), compatibilityDate:'2026-10-20', compatibilityFlags:['nodejs_compat'], bindings:{...common,SUPABASE_PUBLIC_KEY:fixture.config.PUBLISHABLE_KEY,ADVISOR_SESSION_KEYS:JSON.stringify({active:'local',keys:{local:randomBytes(32).toString('base64url')}}),SESSION_IDLE_SECONDS:'3600',SESSION_ABSOLUTE_SECONDS:'28800',SESSION_FLOW_SECONDS:'600',CLIENT_REMEMBER_IDLE_SECONDS:'604800',CLIENT_REMEMBER_ABSOLUTE_SECONDS:'2592000'}, durableObjects:{ADVISOR_SESSIONS:{className:'AdvisorSessionObject',useSQLite:true}}, outboundService:outbound},
   ]};
-  const mf = new Miniflare({...convertV4MiniflareOptions(config),telemetry:{enabled:false}});
-  await mf.ready;
+  if(options.failureProbe?.listenPort!==undefined) {
+    const port=options.failureProbe.listenPort;assert.ok(Number.isInteger(port)&&port>=1024&&port<=65535);config.port=port;
+  }
+  let mf;
+  try {
+    mf = new Miniflare({...convertV4MiniflareOptions(config),telemetry:{enabled:false}});
+    options.onRuntime?.({event:'allocated',dispose:()=>mf.dispose()});
+    await mf.ready;
+  } catch(error) {
+    if(mf) {
+      try {await mf.dispose();}
+      catch(disposalError) {
+        // Locked Miniflare completes cleanup, then rethrows the identical cached readiness error.
+        if(disposalError!==error)throw new AggregateError([error,disposalError],'Runtime readiness and disposal failed');
+      }
+      options.onRuntime?.({event:'readiness-failure-disposed'});
+    }
+    throw error;
+  }
   async function inspectVault() {
     const files=[];
     async function visit(directory) {for(const entry of await readdir(directory,{withFileTypes:true})) {const file=path.join(directory,entry.name);if(entry.isDirectory())await visit(file);else if(entry.name.endsWith('.sqlite'))files.push(file);}}
@@ -156,7 +174,7 @@ export async function connectedStack(fixture) {
         browserScan.responses++;browserScan.bodyBytes+=bytes.length;
         const clientResponse=url.pathname.startsWith('/api/client/'),safePreview=url.pathname==='/api/advisor/plans'&&action==='preview_draft_v1';
         if(clientResponse||safePreview) {
-          try {assertBrowserBytes(resultHeaders,bytes,['W6_PRIVATE_SYNTHETIC_ONLY']);}
+          try {assertBrowserBytes(resultHeaders,bytes,safePrivateMarkers);}
           catch(error) {browserScan.privateFactLeaks++;throw error;}
           if(clientResponse)browserScan.clientResponses++;if(safePreview)browserScan.safePreviewResponses++;
         }
