@@ -1,4 +1,5 @@
 import { mapPlanResult } from "../../../../src/contracts/PortalRebuildMapping.ts";
+import {mapReviewResult} from "../../../../src/contracts/PortalReviewMapping.ts";
 import {mapCareResult} from "../../../../src/contracts/PortalCareMapping.ts";
 import {sameCareValue} from "../../../../src/contracts/PortalCareValidation.ts";
 import {TransportError} from "../transport/session.ts";
@@ -16,7 +17,7 @@ export interface ClientPlanState {
 export function createClientPlanController(
   session: PlanSessionBoundary,
   ports: ClientPlanPorts,
-  options: {readVersion?:1|2} = {},
+  options: {readVersion?:1|2|3} = {},
 ) {
   const listeners = new Set<() => void>(),
     controllers = new Set<AbortController>();
@@ -44,6 +45,7 @@ export function createClientPlanController(
     version: null,
   };
   const careCommand={schemaVersion:1 as const,action:"read_client_plan_v2" as const,version:null};
+  const reviewCommand={schemaVersion:1 as const,action:"read_client_plan_v3" as const,version:null};
   return {
     getSnapshot: () => state,
     subscribe(fn: () => void) {
@@ -52,7 +54,7 @@ export function createClientPlanController(
     },
     accept(view: ClientPlanReadView) {
       if (!live()) return;
-      const decoded = (view.schemaVersion===2?mapCareResult(view,careCommand):mapPlanResult(view,command)) as ClientPlanReadView;
+      const decoded = (view.schemaVersion===3?mapReviewResult(view,reviewCommand):view.schemaVersion===2?mapCareResult(view,careCommand):mapPlanResult(view,command)) as ClientPlanReadView;
       // Validation must not replace a fetched object that a deliberate-review
       // fence is bound to. Noncanonical input is rejected, never normalized here.
       if(!sameCareValue(decoded,view))throw new Error("invalid_view");
@@ -71,7 +73,10 @@ export function createClientPlanController(
       emit({ loading: true, error: null });
       try {
         let view:ClientPlanReadView;
-        if(options.readVersion===2 || state.view?.schemaVersion===2){
+        if(options.readVersion===3 || state.view?.schemaVersion===3){
+          if(!ports.review)throw new TransportError(503);
+          view=mapReviewResult(await ports.review.execute(reviewCommand,{signal:controller.signal}),reviewCommand) as ClientPlanReadView;
+        }else if(options.readVersion===2 || state.view?.schemaVersion===2){
           if(!ports.care)throw new TransportError(503);
           view=mapCareResult(await ports.care.execute(careCommand,{signal:controller.signal}),careCommand) as ClientPlanReadView;
         }else view=await ports.read.execute(command,{signal:controller.signal});

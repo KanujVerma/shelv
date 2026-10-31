@@ -1,10 +1,12 @@
 import type {ClientPlanView,PlanCommand} from '../../../../../src/contracts/PortalRebuild.ts';
 import type {CareCommand,CareResult,ClientPlanViewV2} from '../../../../../src/contracts/PortalCare.ts';
+import type {ClientPlanViewV3} from '../../../../../src/contracts/PortalReview.ts';
+import type {ClientGuidancePort} from './guidancePort.ts';
 import type {careClientActions} from '../../../../../src/contracts/PortalCareValues.ts';
 import type {OperationPort} from '../../transport/session.ts';
 import type {PortalRoute,PresentationMode} from '../../navigation/routes.ts';
 
-export type ClientPlanReadView=ClientPlanView|ClientPlanViewV2;
+export type ClientPlanReadView=ClientPlanView|ClientPlanViewV2|ClientPlanViewV3;
 export type ClientCareCommand=Extract<CareCommand,{action:typeof careClientActions[number]}>;
 export type DecisionCommand=Extract<PlanCommand,{action:'record_decision_v1'}>;
 export type ReadPlanCommand=Extract<PlanCommand,{action:'read_client_plan_v1'}>;
@@ -15,6 +17,8 @@ export interface ClientPlanPorts {
   decision: OperationPort<DecisionCommand,void>;
   /** Optional finite capability. Never supplied to unpublished or live-free demos. */
   care?: OperationPort<ClientCareCommand,CareResult>;
+  /** Five-action V3 capability. Confirmed V3 never falls back to older reads. */
+  review?: ClientGuidancePort;
 }
 /** Separate capability, deliberately incompatible with a live decision port. */
 export interface DemoPlanPorts extends ClientPlanPorts {readonly mode:'public-demo'}

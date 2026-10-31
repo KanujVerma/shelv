@@ -3,3 +3,6 @@ export type {ClientPlanReadView,ClientCareCommand,ClientPlanProps,ClientPlanPort
 
 export {UnpublishedPlanPreview} from './UnpublishedPlanPreview.tsx';
 export type {UnpublishedPlanPreviewProps,PlanPreviewSource} from './preview.ts';
+
+export {createClientGuidancePort,clientGuidanceActions} from './guidancePort.ts';
+export type {ClientGuidanceCommand,GuidanceDecisionCommand,ClientGuidancePort} from './guidancePort.ts';
