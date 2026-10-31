@@ -285,3 +285,5 @@ At **04:10:03.675UTC**, actual process readback again has Chrome PID inventory e
 | `h1-h2-resource-release.json` | `67f339eedc38f589c42e6d1ac7b28156c034e724c39c3439ec633f04d154df27` |
 
 H1/H2 are addressed within this tested scope and require independent disposition. C1 and the separately assigned controller/notice issues remain outside W6 ownership; no controller edit, stale-notice suppression, gate fiction or overall application/source approval is claimed.
+
+**Final clean native implementation/test head:** `f2330f4c3b7c15fb2caca4aea8114d61da232dc5`. Fresh guard6, frontend/session strict typechecks, application build and `git diff --check` all pass at that clean head after the second custody return. No fixture/browser work was rerun for these source-only checks. Both live T3 model tools again verify Codex/Sol/xhigh/default. The containing final report commit is documentation only; its hash is returned in the handoff. All authored native files remain inside the allocated rebuild-native prefixes; the two exact parent-supplied UI commits are the documented exceptions, and backend/contracts/gateway/policy/package/lock bytes are unchanged.
