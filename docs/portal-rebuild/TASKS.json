@@ -2,7 +2,7 @@
   "updatedOn": "2026-10-30",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
-  "allocatedWorkers": 3,
+  "allocatedWorkers": 2,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -1087,7 +1087,7 @@
       ],
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-45beee69",
       "branch": "t3/native-browser-acceptance",
-      "status": "running",
+      "status": "completed",
       "role": "W6 genuine connected acceptance",
       "baseCommit": "cdc00bd9b5a0a02e897d67885c368bcd3126fc3c",
       "reportPath": "docs/portal-rebuild/research/W6_GENUINE_BROWSER.md",
@@ -1096,8 +1096,23 @@
         "apps/portal/tests/rebuild-native-*",
         "docs/portal-rebuild/research/W6_GENUINE_BROWSER.md"
       ],
-      "resources": "Temporary exclusive populated parentR4 custody, bounded H1 readonly Chrome replay and H2 cleanup; no reset; 13 main genuine groups passed",
-      "verification": "Exact returned settings plus live thread/worktree readback"
+      "resources": "Chrome and R4 custody returned04:10:03UTC; no handles; helpers RUNNING; whole Auth sessions/refresh rows0",
+      "verification": "Exact returned settings plus live thread/worktree readback",
+      "headCommit": "3617424cc7acca36f0e53794cbb0e79681b178ed",
+      "implementationHead": "f2330f4c3b7c15fb2caca4aea8114d61da232dc5",
+      "verdict": "Author main13, fresh H1 readonly4, guard6 and cleanup3 PASS; independent disposition pending",
+      "integratedCommits": [
+        "e32d81e",
+        "2af5299",
+        "ee33822",
+        "3ed76e1",
+        "77933bc",
+        "13a1e0b",
+        "b4e8346",
+        "a5d1c55",
+        "5574367",
+        "ad1b23e"
+      ]
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-approval-recovery-fix-20261030-r1",
@@ -1128,7 +1143,7 @@
         "apps/portal/tests/rebuild-advisor-context-notice.test.mjs",
         "docs/portal-rebuild/research/W2_APPROVAL_RECOVERY_FIX.md"
       ],
-      "resources": "Source/pure/SSR only until explicit Chrome grant; no native custody",
+      "resources": "Sole intercepted synthetic Chrome allocation after W6 release; no native fixture/Auth custody",
       "verification": "Exact returned settings plus live thread/worktree readback"
     },
     {

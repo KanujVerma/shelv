@@ -283,9 +283,41 @@
       "privateFactLeaks": 0
     },
     "scope": "Actual combined gateway/SQLite Vault/GoTrue PKCE/native operations-payments-plans/PostgREST/canonical SQL; test-bundle-only pinned loopback portal/provider origins",
-    "qualification": "Coupled source review C1 approval-recovery and H1 original readonly marker/H2 disposal followups remain open; main W6 private marker/credential scan counts retained within that scope",
+    "qualification": "Main13 author evidence retains W6-marker/credential coverage at2134695. H1/H2 author corrections integrated5574367/ad1b23e; fresh readonly4 covers both markers. C1 approval recovery and fresh independent dispositions remain open.",
     "hostedRequests": 0,
     "realFunds": 0,
-    "realEmails": 0
+    "realEmails": 0,
+    "harnessFollowup": {
+      "implementationHead": "f2330f4c3b7c15fb2caca4aea8114d61da232dc5",
+      "integrationHead": "5574367",
+      "status": "AUTHOR_PASS_INDEPENDENT_PENDING",
+      "pureGuards": 6,
+      "actualCleanupFailureProbes": 3,
+      "readonlyRunId": "d0b3cdaf-541b-4e61-8267-f45c5b02cddc",
+      "readonlyResultSha256": "7501e079239a5391a43e46e523e869d709a4e06b84ca53404567a52df62b2216",
+      "readonlyGroups": 4,
+      "cleanup": {
+        "issued": 4,
+        "closed": 4,
+        "remainingSessions": 0,
+        "remainingRefreshTokens": 0,
+        "failures": 0
+      },
+      "originalResponseScan": {
+        "responses": 145,
+        "bodyBytes": 22175409,
+        "clientResponses": 27,
+        "credentialLeaks": 0,
+        "privateFactLeaks": 0
+      },
+      "safePrivateMarkers": [
+        "W6_PRIVATE_SYNTHETIC_ONLY",
+        "PRIVATE_REAL_AUTH_CANARY"
+      ],
+      "originalRootStateSha256": "48d2f62290f048927737ec6191f9fc98aeff3e1fb2001b9d5ee67a1d7537eb85",
+      "readonlyQueryStateSha256": "1623f148c413dcefefb1cf3997b1923ebf2bf34c064b18a799631cd1b0834e74",
+      "custodyReturnUtc": "2026-10-31T04:10:03.675Z",
+      "limits": "No main13 rerun or independent native replay; snapshots use distinct explicit queries and are not interchangeable."
+    }
   }
 }

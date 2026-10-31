@@ -38,12 +38,12 @@ Parallel independent tasks after checkpoint: W1 reads canonical backend/security
 
 Files: W1-owned new shared types/validators, draft/publication/source/outbox modules and allocated canonical migration; W0 transport composition; minimal W2/W3 editor and shared plan view. Tests target the actual API/SQL and browser effects.
 
-- [ ] Write failing domain/schema/SQL tests for incomplete unassigned saving, assignment without Auth creation, strict import fields, stale revisions, exact review and approval invalidation.
-- [ ] Implement minimal compatible records and authenticated operations, including the external-agent operation surface. Re-run focused cases and inspect public/private projections.
-- [ ] Write failing publication tests for missing/wrong-client/wrong-content approval, missing payment, unsupported authority, legacy bypass, concurrent execution and exact retry.
-- [ ] Implement one transaction for gates, immutable version, first entitlement/service/review dates and outbox. Payment recording must not invalidate unchanged content approval. Re-run tests including failure of email delivery.
-- [ ] Connect minimal editor and shared client renderer through existing authenticated transport. Verify actual database changes, not only success notices.
-- [ ] Run isolated real Auth/PostgREST journey: create unassigned draft, populate, assign, review/approve, verify synthetic service receipt, deliberately publish, client read/notification, decision review, Back to current routine. Verify old IDs/dates/receipts unchanged.
+- [x] Write failing domain/schema/SQL tests for incomplete unassigned saving, assignment without Auth creation, strict import fields, stale revisions, exact review and approval invalidation.
+- [x] Implement minimal compatible records and authenticated operations, including the external-agent operation surface. Re-run focused cases and inspect public/private projections.
+- [x] Write failing publication tests for missing/wrong-client/wrong-content approval, missing payment, unsupported authority, legacy bypass, concurrent execution and exact retry.
+- [x] Implement one transaction for gates, immutable version, first entitlement/service/review dates and outbox. Payment recording preserves unchanged content approval; persisted tests cover delivery lease/retry semantics. Actual email/webhook delivery remains task4/5 scope.
+- [x] Connect minimal editor and shared client renderer through existing authenticated transport. Verify actual database changes, not only success notices.
+- [x] Run isolated real Auth/PostgREST journey: create unassigned draft, populate, assign, review/approve, verify synthetic service receipt, deliberately publish, client read/durable notification rows, decision review, Back to current routine. Verify old IDs/dates/receipts unchanged.
 - [ ] Independent Sol/xhigh review and focused fix/re-review. Record exact head, fixture, commands/results and limitations in acceptance matrix before broader page fan-out.
 
 ## task 4: complete owned product modules
