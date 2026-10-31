@@ -1565,7 +1565,7 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-a3da9be0",
       "branch": "t3/w6-care-native-acceptance",
       "baseCommit": "9bd7e213266c12058819f6b208e25510c4318525",
-      "status": "running",
+      "status": "completed",
       "reportPath": "docs/portal-rebuild/research/W6_CARE_GENUINE.md",
       "verification": "Exact T3 returned settings and live thread/worktree/base readback; both runtime tools required",
       "writeSet": [
@@ -1585,7 +1585,7 @@
         "92b2447aee18e691d54cc2b86707b41ac953ad63",
         "24837c36552944404f2eb017fd65800aa6190269"
       ],
-      "resources": "R7 Node custody returned,7issued7closed0/0,205protectedfiles unchanged; source-only genuine care browser preparation; NO resource/browser grant",
+      "resources": "R7 Node returned08:27:51.710UTC;7issued7closed0/0,205protected unchanged, all own handlesclosed; no browsergrant. Terminal revised scope, new fresh browser task reserved.",
       "verdict": "Genuine Node9/9 PASS at92b2447 runf67a47ed; actualPKCE/Vault/nativeCare/SQL, not browser/UI acceptance; independent fresh harness/chain review required",
       "integratedCommits": [
         "3f1cdf9b",
@@ -1601,7 +1601,9 @@
       "custodyGrantFile": ".local-artifacts/portal-rebuild/canonical-plan-v1-r6/edge/care/NODE-CUSTODY-GRANT.json",
       "r7SourceCommit": "3a0e120b0ac0fcdde1a219a12af2ae74977c5d0d",
       "r7IntegrationCommit": "3f3af1d9",
-      "r7Result": "Author actual11groups/all13positiveCareActions PASS; exactfiltered8/3/1/1 client/advisor, currentreport commit pending, independentgenuineR7 remains"
+      "r7Result": "Author actual11groups/all13positiveCareActions PASS; exactfiltered8/3/1/1 client/advisor, currentreport commit pending, independentgenuineR7 remains",
+      "headCommit": "066036b5528a2bec5c2ab1c0c1fb216ce047ae67",
+      "r7ReportIntegration": "80b58a47"
     },
     {
       "role": "W1 care legacy fixes",
@@ -1934,6 +1936,61 @@
       "earlyCommit": "26f9ae3286a7878632ed7ffb058297bfbd2f9518",
       "phase": "SOURCE_ONLY_CORRECTIVE_SEAM",
       "pinStatus": "Do not integrate parent nativeclosure yet; refine empty report no-op and authoritative currentinstruction manifest/read projection before SQL"
+    },
+    {
+      "role": "W7 care application composition review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-app-composition-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-app-composition-review-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-dd64ac3a",
+      "branch": "t3/review-care-app-composition",
+      "baseCommit": "18c78b7d477f7d8fe9bc7ff950544ab0081f8008",
+      "status": "running",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_APP_COMPOSITION_REVIEW.md"
+      ],
+      "resources": "Sole synthetic Chrome; NO native/Auth/resources",
+      "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required"
+    },
+    {
+      "role": "W6 genuine care browser",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-care-browser-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-care-browser-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-13dc32db",
+      "branch": "t3/care-browser-runner",
+      "baseCommit": "80b58a47",
+      "status": "running",
+      "writeSet": [
+        "apps/portal/tests/rebuild-care-native-browser*",
+        "apps/portal/scripts/rebuild-care-native-fixture.mjs explicit phase only",
+        "apps/portal/tests/rebuild-care-native-stack.mjs explicit phase only",
+        "docs/portal-rebuild/research/W6_CARE_BROWSER.md"
+      ],
+      "resources": "SOURCE_ONLY; NO resource/browser/preview/credential grant until early source/phase guards ready and W7 releases",
+      "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required"
     }
   ]
 }
