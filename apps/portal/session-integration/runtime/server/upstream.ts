@@ -114,7 +114,8 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
         }
         if (response.status < 200 || response.status >= 300) {
             const value = data && typeof data === 'object' ? data as Record<string, unknown> : {};
-            const code = typeof value.code === 'string' && safeCodes.has(value.code) ? value.code : response.status === 401 ? 'session_ended' : response.status === 403 ? 'forbidden' : 'unavailable';
+            const codeValue = value.code === 'concierge_content_version_required' ? 'content_version_required' : value.code;
+            const code = typeof codeValue === 'string' && safeCodes.has(codeValue) ? codeValue : response.status === 401 ? 'session_ended' : response.status === 403 ? 'forbidden' : 'unavailable';
             throw new SessionError([400, 401, 403, 404, 409, 413, 415, 429].includes(response.status) ? response.status : 503, code);
         }
         return data;

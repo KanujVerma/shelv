@@ -5,6 +5,7 @@ import {handleGuidanceRequest} from '../supabase/functions/concierge-guidance/ha
 import {createReviewPorts} from '../supabase/functions/concierge-reviews/runtime.ts';
 import {createGuidancePorts} from '../supabase/functions/concierge-guidance/runtime.ts';
 import {handlePlanRequest} from '../supabase/functions/concierge-plans/handler.ts';
+import {handleCheckinsRequest} from '../supabase/functions/concierge-checkins/handler.ts';
 const id='10000000-0000-4000-8000-000000000001',origin='https://portal.goshelv.com';
 const status={schemaVersion:1,action:'request_status_v1',requestId:id};
 const submit={schemaVersion:1,action:'submit_goal_report_v1',requestId:id,expectedReportRevision:0,occurredOn:{state:'unknown'},body:{publication:{version:1,documentSchemaVersion:3},answers:[],comfort:null,notes:null,actualUseEventIds:[],photoIds:[]}};
@@ -40,4 +41,9 @@ test('retained actual Plan handler must preserve finite409 when an old decision/
  const command={schemaVersion:1,action:'record_decision_v1',requestId:id,expectedDecisionRevision:0,publicationVersion:1,decisionId:'decision',choice:'approved',reason:null};
  const response=await handlePlanRequest(req(command),{...ports,rpc:async()=>({data:null,error:{message:'concierge_guidance_version_required'}})});
  assert.equal(response.status,409);assert.deepEqual(await response.json(),{code:'guidance_version_required'});
+});
+test('retained Checkin handler must expose finite version-required instead of lossy generic503',async()=>{
+ const storage={origin:'https://synthetic.supabase.co',upload:async()=> 'uploaded' as const,read:async()=>new Blob(),sign:async()=> 'unused'};
+ const response=await handleCheckinsRequest(req({action:'client_read'}),{...ports,storage,rpc:async()=>({data:null,error:{message:'concierge_content_version_required'}})});
+ assert.equal(response.status,409);assert.deepEqual(await response.json(),{code:'content_version_required',retryable:false});
 });
