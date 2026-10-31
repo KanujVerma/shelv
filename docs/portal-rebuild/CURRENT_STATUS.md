@@ -1,6 +1,6 @@
 # portal rebuild current status
 
-Owner: Kanuj. Updated31 October2026. Integration workspace `kanuj-portal-rebuild-integration-20261030`, branch `kanuj/portal-rebuild-integration-20261030`; latest code checkpoint `c26cbc99`. **The complete approved rebuild remains in progress.** The unrelated dirty scanner checkout is untouched. Main was last fetched at `d39a7d4943209080df7c4cf97d85784f462758bf`.
+Owner: Kanuj. Updated31 October2026. Integration workspace `kanuj-portal-rebuild-integration-20261030`, branch `kanuj/portal-rebuild-integration-20261030`; latest accepted module checkpoint `5cd7ef5a`. **The complete approved rebuild remains in progress.** The unrelated dirty scanner checkout is untouched. Main was last fetched at `d39a7d4943209080df7c4cf97d85784f462758bf`.
 
 ## current lanes and custody
 
@@ -11,7 +11,7 @@ The initial three-child scheduling limit was conservative, not a universal T3 ce
 | W1 commerce backend | Exact implementation target `cab5d03a` frozen. M63 actual CLI filename `20261031200211_portal_rebuild_commerce_v1.sql`; early handler checkpoint `a0f5f922`, SQL in progress | Own marked Unix PG only. Old62 migrations frozen; no parent/native fixture. A bounded nullable private human-finance new-referral verification reference is now pinned for implementation; no inference from empty portal history. New source review and actual earned-flow proof required |
 | W7 commerce contract R3 (completed) | Source review of89/613/cab; terminal83e473e8 scoped source PASS:75 current,6 pin,11 independent and prior9/7 controls pass | No resources, source fixes or financial admission |
 | W3 V3 client | Runtime71 unchanged, terminale093/df tests: frozen0/3, retained117, new19/20. Shared T1 caller-aborted JSON suspends cookie and blocks later Care/Review | Chrome returned20:28:02Z. W0 source-only T1 fix allocated; no workaround or current acceptance |
-| W4 history | RH2 runtime `606744c2`; final browser candidate `01289534` gives60/60. Original95/RH1-24/R1-7/new20/R2-16 pass | Chrome returned19:58:16.345597Z. Fresh independent R3 remains required |
+| W4 history | RH1/RH2 scoped independent R3 PASS3d753;13 exact owned commits+report now integrated through5cd7ef5a. Parent95+44/strict/UI pass | Not mounted in App yet; source composition assigned. Reviewer Chrome returned20:54:43Z |
 | W5 commerce UI | Target adoption `fd864bba`/implementation `e4745af8`, four exactcab SDK blobs;75+20 source, strict/UI pass | Source only. No admitted endpoint, browser or financial acceptance; new independent R2 pending |
 | W6 genuine Review | R9 attempt r3 reaches all15Review+9Guidance and8 groups, then external SQLite observer fails post-rotation | Custody returned20:36:30.554Z, no current grant. Explicit supported live two-SELECT observer allowed only under a new populated r4 grant |
 | W6 account/source research (completed) | Report36766263: existing reads can compose W2 authority; raw source lifecycle/C08 gaps remain | Report-only76 links; no runtime/resource acceptance |
@@ -67,3 +67,8 @@ Latest R9 r4 observation: samebusiness67cf with explicit supportedlive-fixed-sel
 
 
 T1 source candidate9e449/reportac83 is terminal107new/45retained/197source/34runtime-source/types/buildPASS, noresources. Exacttwo client-cookieJSfilesareoutsideactualGateway/Vaultcompileclosure/native87. A new independent Source R1 is active; Root has not imported or relabeled W3's19/20browser. Browser historyR3 nowownssolegrantasrecordedinTASKS. R4NodealsoRETURNED20:50:11.511Z, noactivenativegrant; nextactualattemptawaitssourcewrong-logoutroutefixandnewpopulatedbaseline.
+
+
+Latest backend milestone: **AUTHOR scoped genuine Node PASS9/9/all15 Review+9 Guidance** atfc26/run c03972ec-d7a0-45ba-b07d-2602c60dce21, explicit live observer. Actualcanonical/logout200 acknowledged beforeunchangedheldnative read401, postrotationphysical/envelope/plaintext checkscompleted,2rotations14strings,CareStartthenpause.Fiveissuedclosed/wholeAuth0/0,all233files/105oldmultisets734rowspreserved+245new(979total),21users10cases/core428a/native87/helper7/TLSimmutable. RETURN21:09:19.324Z. R1-R4remainFAILEDhistorical. A NEWindependentSource/NodeR1isSOURCEONLYinitially; itsseparateworkspacegrantneededbeforereplay. ThisisnotBrowser/App/fullGoal/CI/releaseacceptance.
+
+Historyownedsource/tests/reportblobsnowmatch012exactinParent (30 includingreport), same606runtime. Parent95+44source/strictfrontend+session/UIchecks pass. Source-only W0 isolatedAppcomposition nowconsumesfrozen11W3+T1targetsandacceptedHistory: actualclientV3reader/stickyidentity/confirmedrouteguard/HistorysemanticURLs/navigation, withoutfeature/Auth/RootSQLedits. PendingV3/T1reviewsstillblockfinalintegrationandactivation; no backend/callerpermissionassumption. ExistingR9native87compileclosureunaffectedbyfrontendHistory/Appfiles.

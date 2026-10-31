@@ -2,7 +2,7 @@
   "updatedOn": "2026-10-31",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
-  "allocatedWorkers": 4,
+  "allocatedWorkers": 5,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -3616,13 +3616,19 @@
         }
       ],
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-421af879",
-      "status": "running",
+      "status": "completed",
       "reportPath": "docs/portal-rebuild/research/W7_REPORT_HISTORY_R3.md",
       "resourceBoundary": "Sole synthetic Chrome grant, no native/DB resource.",
       "chromeGrant": {
         "grantId": "coordinator-w7-history-r3-synthetic-chrome-01289534-20261031",
-        "status": "granted"
-      }
+        "status": "returned",
+        "returnedAt": "2026-10-31T20:54:43Z"
+      },
+      "headCommit": "3d753761ac33b6a317d6b13899bcbf82f211accc",
+      "integratedCommit": "5cd7ef5a",
+      "specVerdict": "scoped PASS RH1/RH2 addressed",
+      "qualityVerdict": "scoped PASS",
+      "verificationResult": "95source/67retained/9independent/8current/60original/24reviewer/4repeat pass. Only integration targets, actual App/genuine remains."
     },
     {
       "role": "W6 genuine Review R9 Node attempt r4",
@@ -3642,7 +3648,7 @@
         }
       ],
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-c8e152f9",
-      "status": "running-source-logout-correction-after-return",
+      "status": "completed",
       "executedCommit": "ceea56e238c6957b557556bbd7c49c1915acb604",
       "businessCommit": "67cf9e52c8b3b017a34f29d7e44f3fc38a644f1f",
       "runId": "acfeffd8-5b81-4b81-97f2-c75ba1c6d4dc",
@@ -3651,7 +3657,8 @@
         "grantId": "coordinator-w6-review-node-r9-live-observer-20261031-r4",
         "status": "returned",
         "returnedAt": "2026-10-31T20:50:11.511Z"
-      }
+      },
+      "headCommit": "fc26d088308d1b4c2e679647b31404d9f94b22f1"
     },
     {
       "role": "W7 shared-cookie T1 source review R1",
@@ -3675,6 +3682,82 @@
         "docs/portal-rebuild/research/W7_COOKIE_CANCELLATION_REVIEW.md"
       ],
       "resourceBoundary": "No resources/browser/native; actual Source107/45/197/34 plus independent current-vs-caller abort controls."
+    },
+    {
+      "role": "W6 genuine Review R9 Node attempt r5",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw6-review-genuine-node-r9-attempt5-logout-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-review-genuine-source-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w6-review-genuine-source-20261031-r1:ordinal:6",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-c8e152f9",
+      "status": "running-report-after-return",
+      "executedCommit": "fc26d088308d1b4c2e679647b31404d9f94b22f1",
+      "runId": "c03972ec-d7a0-45ba-b07d-2602c60dce21",
+      "actualResult": "AUTHOR scoped Node PASS9/9/all15Review+9Guidance; actuallogout200thenheld401; liveobserverpostrotationvalid,2rotations14strings,CareStartpause.5issuedclosed/whole0/0.233files/105oldsets734rows preserved+245new=979;21users10cases. No independent/Browser/fullGoal/CI/release claim.",
+      "nativeGrant": {
+        "grantId": "coordinator-w6-review-node-r9-logout-route-20261031-r5",
+        "status": "returned",
+        "returnedAt": "2026-10-31T21:09:19.324Z"
+      }
+    },
+    {
+      "role": "W7 independent genuine Review Source and Node R1",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-genuine-node-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-genuine-node-review-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-review-genuine-node-review-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running-source-only",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_REVIEW_GENUINE_NODE_REVIEW.md"
+      ],
+      "resourceBoundary": "SOURCE only initially. One explicit workspace literal adaptation allowed in own loader; no R9/credentials/native/Browser until separate exact grant."
+    },
+    {
+      "role": "W0 client V3 and History App composition source",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running-source-only",
+      "writeSet": [
+        "apps/portal/src/app/**",
+        "new rebuild-app-v3-history tests",
+        "docs/portal-rebuild/research/W0_V3_HISTORY_COMPOSITION.md"
+      ],
+      "resourceBoundary": "Only isolatedsource targetimports11W3/T1; no App integration acceptance, browser/native/resources. No highcontentionotherwriter."
     }
   ]
 }
