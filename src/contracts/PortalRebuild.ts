@@ -38,7 +38,7 @@ export type PlanCommand={schemaVersion:1}&(
  |{action:'create_draft_v1';requestId:UUID;kind:'care_plan';templateVersionId:UUID|null}
  |({action:'save_draft_v1';kind:'care_plan';content:PlanContent}&DraftWrite)
  |({action:'checkpoint_draft_v1';label:string}&DraftWrite)
- |({action:'assign_draft_v1';fromClientId:UUID|null;toClientId:UUID}&DraftWrite)
+ |({action:'assign_draft_v1';fromClientId:UUID|null;toClientId:UUID;legacyAdoption?:{strategy:'adopt_legacy';expectedCaseRevision:Revision}}&DraftWrite)
  |{action:'compare_import_v1';draftId:UUID;baseContentRevision:Revision;baseAssignmentRevision:Revision;content:PlanContent}
  |({action:'apply_import_v1';baseContentRevision:Revision;proposalHash:Hash;content:PlanContent}&DraftWrite)
  |{action:'validate_draft_v1'|'preview_draft_v1';draftId:UUID;contentRevision:Revision;assignmentRevision:Revision}

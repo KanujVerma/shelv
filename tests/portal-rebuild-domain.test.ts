@@ -3,6 +3,11 @@ import { test } from 'node:test';
 import { createEmptyPlanContent, projectClientPlan, adaptLegacyPlan } from '../src/contracts/PortalRebuild.ts';
 import { readPlanContent, readPlanCommand, buildPlanRpc } from '../src/contracts/PortalRebuildValidation.ts';
 const id='10000000-0000-4000-8000-000000000001';
+test('legacy adoption is an explicit bounded assignment option, with no authority or arbitrary strategy',()=>{
+ const command={schemaVersion:1,action:'assign_draft_v1',requestId:id,draftId:id,expectedContentRevision:0,expectedAssignmentRevision:0,fromClientId:null,toClientId:id,legacyAdoption:{strategy:'adopt_legacy',expectedCaseRevision:7}};
+ assert.deepEqual(readPlanCommand(command),command);
+ for(const legacyAdoption of [null,{strategy:'overwrite',expectedCaseRevision:7},{strategy:'adopt_legacy',expectedCaseRevision:null},{strategy:'adopt_legacy',expectedCaseRevision:7,approved:true}])assert.throws(()=>readPlanCommand({...command,legacyAdoption}),/invalid_input/);
+});
 test('incomplete content is saveable and unknown is distinct from none',()=>{
  const content=createEmptyPlanContent(); assert.deepEqual(readPlanContent(content),content);
  assert.equal(content.context.products.state,'unknown');

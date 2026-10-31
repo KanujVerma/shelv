@@ -30,7 +30,7 @@ const write={requestId:uuid,draftId:uuid,expectedContentRevision:rev,expectedAss
 const at={draftId:uuid,contentRevision:rev,assignmentRevision:rev};
 export const planCommandFields:Record<PlanCommand['action'],Record<string,PlanShape>>={
  list_plans_v1:{clientId:nullable(uuid),cursor:nullable({type:'cursor'}),limit:{...positive,max:100}},read_draft_v1:{draftId:uuid},
- create_draft_v1:{requestId:uuid,kind:en('care_plan'),templateVersionId:nullable(uuid)},save_draft_v1:{...write,kind:en('care_plan'),content:planContentShape},checkpoint_draft_v1:{...write,label:text(200)},assign_draft_v1:{...write,fromClientId:nullable(uuid),toClientId:uuid},
+ create_draft_v1:{requestId:uuid,kind:en('care_plan'),templateVersionId:nullable(uuid)},save_draft_v1:{...write,kind:en('care_plan'),content:planContentShape},checkpoint_draft_v1:{...write,label:text(200)},assign_draft_v1:{...write,fromClientId:nullable(uuid),toClientId:uuid,legacyAdoption:{...object({strategy:en('adopt_legacy'),expectedCaseRevision:rev}),optional:true}},
  compare_import_v1:{draftId:uuid,baseContentRevision:rev,baseAssignmentRevision:rev,content:planContentShape},apply_import_v1:{...write,baseContentRevision:rev,proposalHash:hash,content:planContentShape},
  validate_draft_v1:at,preview_draft_v1:at,review_section_v1:{...write,sectionId:en('sources','context','decisions','routine','follow_up'),sectionHash:hash},
  approve_publication_v1:{requestId:uuid,target,scope:en('care_plan.publish'),publisher},revoke_approval_v1:{requestId:uuid,approvalId:uuid,expectedPolicyRevision:rev},publish_plan_v1:{requestId:uuid,target,approvalId:uuid,firstServiceClaimId:nullable(uuid)},

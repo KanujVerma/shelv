@@ -29,7 +29,8 @@ def invoke(actor,command):return raw(session(actor)+'select public.concierge_pla
 def call(actor,action,**kwargs):
  r=invoke(actor,dict(action=action,**kwargs))
  if r.returncode:raise AssertionError(r.stderr)
- return json.loads(next(x for x in reversed(r.stdout.splitlines()) if x.startswith(('{','['))))
+ # JSON strings may contain literal U+2028/U+2029. Only the psql LF is a record separator.
+ return json.loads(next(x for x in reversed(r.stdout.split('\n')) if x.startswith(('{','['))))
 def write(actor,action,**kwargs):return call(actor,action,requestId=str(uuid.uuid4()),**kwargs)
 def prepare():
  prior=raw("select shobj_description(oid,'pg_database') from pg_database where datname="+lit(DB),'postgres')

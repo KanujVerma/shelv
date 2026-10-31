@@ -1,7 +1,7 @@
 -- Canonical pgTAP structural/least-privilege tests. Business/concurrency cases are
 -- also exercised with persisted rows by tests/portal-rebuild-native.py.
 begin;
-select plan(18);
+select plan(30);
 select has_column('concierge','publications','document_schema_version');
 select has_table('concierge','plan_documents');
 select has_table('concierge','plan_draft_private');
@@ -20,5 +20,17 @@ select ok(exists(select 1 from pg_trigger where tgname='plan_reply_barrier'),'ol
 select ok(not exists(select 1 from pg_tables t join pg_class c on c.relname=t.tablename join pg_namespace n on n.oid=c.relnamespace and n.nspname=t.schemaname where t.schemaname='concierge' and t.tablename like 'plan\_%' escape '\' and not c.relrowsecurity),'all plan tables enable RLS');
 select ok(not has_function_privilege('service_role','concierge.plan_claim_email_deliveries(integer)','EXECUTE'),'raw delivery helpers stay private');
 select ok(has_function_privilege('service_role','public.concierge_plan_delivery_claim_v1(integer)','EXECUTE'),'fixed service-only delivery RPC available');
+select has_table('concierge','plan_source_adoptions');
+select has_table('concierge','plan_legacy_adoptions');
+select ok(not has_table_privilege('authenticated','concierge.plan_legacy_adoptions','SELECT'),'retained private legacy snapshot is not a browser table');
+select ok(not has_table_privilege('service_role','concierge.plan_source_adoptions','INSERT'),'delivery service cannot transfer source scope');
+select throws_ok($$select public.concierge_plan_delivery_claim_v1(null)$$,'P0001','concierge_invalid_input','NULL cannot mean an unbounded batch');
+select throws_ok($$select public.concierge_plan_delivery_claim_v1(51)$$,'P0001','concierge_invalid_input','claim limit remains at most 50');
+select throws_ok($$select public.concierge_plan_delivery_result_v1(gen_random_uuid(),gen_random_uuid(),null,null,null)$$,'P0001','concierge_invalid_input','result status cannot be SQL NULL');
+select throws_ok($$select public.concierge_plan_delivery_result_v1(gen_random_uuid(),null,'accepted',null,null)$$,'P0001','concierge_invalid_input','result lease is required');
+select throws_ok($$select public.concierge_plan_delivery_retry_v1(gen_random_uuid(),null,true)$$,'P0001','concierge_invalid_input','retry CAS revision is required');
+select throws_ok($$select public.concierge_plan_delivery_retry_v1(gen_random_uuid(),0,null)$$,'P0001','concierge_invalid_input','retry reconciliation must be explicit');
+select ok(not has_function_privilege('authenticated','concierge.plan_request_authorize(concierge.plan_requests)','EXECUTE'),'stored receipt authority helper remains private');
+select ok(not has_function_privilege('anon','public.concierge_checkin_photo_authorize(uuid,uuid)','EXECUTE'),'wrapped care media remains authenticated-only');
 select * from finish();
 rollback;
