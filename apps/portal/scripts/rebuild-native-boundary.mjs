@@ -29,7 +29,7 @@ export function localPolicy(source) {
   return result;
 }
 
-export function providerTarget(raw) {
+export function providerTarget(raw, {care=false}={}) {
   const url = new URL(raw);
   const deny = () => { throw Error('Refused provider boundary destination'); };
   if (url.origin !== providerOrigin || url.username || url.password || url.hash) deny();
@@ -51,6 +51,7 @@ export function providerTarget(raw) {
   if (url.search) deny();
   if (['/auth/v1/user', '/rest/v1/rpc/concierge_advisor_session_context', '/rest/v1/rpc/concierge_client_session_context'].includes(url.pathname)) return url.href;
   const ports = new Map([['concierge-plans', 57440], ['concierge-operations', 57441], ['concierge-payments', 57442]]);
+  if(care===true)ports.set('concierge-care',57443);
   for (const [name, port] of ports) if (url.pathname === '/functions/v1/' + name) return `http://127.0.0.1:${port}/`;
   deny();
 }

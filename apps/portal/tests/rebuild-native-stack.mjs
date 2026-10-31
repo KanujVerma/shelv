@@ -6,6 +6,8 @@ import {randomBytes} from 'node:crypto';
 import {build} from 'esbuild';
 import {Miniflare, convertV4MiniflareOptions} from 'miniflare';
 import {localPolicy, providerTarget, portalOrigin, providerOrigin, sha,assertBrowserBytes,safePrivateMarkers} from '../scripts/rebuild-native-boundary.mjs';
+import {requireCareCustody} from '../scripts/rebuild-care-native-fixture.mjs';
+import {clientCareActions,advisorCareActions} from '../site/auth/care-actions.js';
 
 const portal = path.resolve(import.meta.dirname, '..');
 export const sourceRoot = path.resolve(portal, '../..');
@@ -15,8 +17,14 @@ const app = path.join(sourceRoot, '.local-artifacts/portal-rebuild/application')
 const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.woff2':'font/woff2','.woff':'font/woff','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp'};
 
 export async function connectedStack(fixture, options={}) {
+  if(options.care===true) {
+    assert.equal(process.env.SHELV_REBUILD_CARE_NATIVE,'1','Care resource acquisition requires explicit opt-in');
+    requireCareCustody(fixture.selection,options.careCustody,sourceRoot,options.careCustody?.purpose);
+    assert.equal(fixture.lineage.migrationCount,56,'Care cannot use the historical55 fixture');
+  }
   if(options.failureProbe||options.onRuntime)assert.equal(process.env.SHELV_REBUILD_NATIVE_FAILURE_PROBES,'1','Runtime failure instrumentation requires explicit opt-in');
-  const dir = path.join(artifacts, 'stack-' + randomBytes(8).toString('hex'));
+  const stackArtifacts=options.care===true?path.join(sourceRoot,'.local-artifacts/portal-rebuild/w6-care-native'):artifacts;
+  const dir = path.join(stackArtifacts, 'stack-' + randomBytes(8).toString('hex'));
   await mkdir(dir, {recursive: true, mode: 0o700});
   const seams = [];
   const plugin = {name: 'reviewed-loopback-origins-only', setup(builder) {
@@ -44,13 +52,14 @@ export async function connectedStack(fixture, options={}) {
     // Destination validation happens before body parsing or network access.
     const url = new URL(request.url);
     let target;
-    try { target=providerTarget(request.url); }
+    try { target=providerTarget(request.url,{care:options.care===true}); }
     catch {errors.push({kind:'refused-provider-route',origin:url.origin,path:url.pathname,queryKeys:[...url.searchParams.keys()]});throw Error('Refused provider route');}
     const body = ['GET','HEAD'].includes(request.method) ? undefined : Buffer.from(await request.arrayBuffer());
     if(url.pathname==='/auth/v1/otp') {const otp=JSON.parse(body);assert.equal(otp.create_user,false,'Link request cannot enroll identities');assert.ok(typeof otp.email==='string'&&otp.email.endsWith('.invalid'),'Only synthetic local recipients are permitted');}
     const command = url.pathname.startsWith('/functions/') ? JSON.parse(body) : null;
     if (url.pathname.startsWith('/functions/')) {
       const allowed = {'concierge-operations':['advisor_list'], 'concierge-payments':['advisor_read','confirm_payment']};
+      if(options.care===true)allowed['concierge-care']=[...new Set([...clientCareActions,...advisorCareActions])];
       const family = url.pathname.split('/').at(-1);
       if (family !== 'concierge-plans') assert.ok(allowed[family]?.includes(command.action), 'Finite native feature boundary');
     }
