@@ -89,7 +89,10 @@ export function AdvisorWorkspace({
   useEffect(() => {
     if (route.name === "advisor-editor" && s.view) void c.inspectDependencies();
   }, [c, route.name, s.view, s.context]);
-  useEffect(() => () => c.retireDependencyReview(), [c]);
+  useEffect(
+    () => () => c.retireDependencyReview(),
+    [c, route.name, route.name === "advisor-editor" ? route.draftId : null],
+  );
   useEffect(() => {
     void (async () => {
       if (route.name === "advisor-editor") await c.open(route.draftId);
@@ -361,7 +364,7 @@ export function AdvisorWorkspace({
         </StatusNotice>
       </div>
     );
-  if (!s.view || !s.local)
+  if (!s.view || !s.local || s.view.draft.id !== route.draftId)
     return (
       <div className="advisor-view">
         {notice ?? (

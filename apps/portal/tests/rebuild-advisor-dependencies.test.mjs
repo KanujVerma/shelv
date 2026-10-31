@@ -442,12 +442,19 @@ for (const change of ["body", "client", "revision", "basis", "reviews"])
 test("current source denial keeps manual work editable and blocks publication without a replacement write", async (t) => {
   const h = await dependencyApp(t);
   await h.c.open(ids.draft);
-  const held = h.hold("read_draft_dependencies_v1", () => Response.json({code: "forbidden"}, {status: 403}));
+  const held = h.hold("read_draft_dependencies_v1", () =>
+    Response.json({ code: "forbidden" }, { status: 403 }),
+  );
   const reading = h.c.inspectDependencies();
-  await held.ready; held.release(); await reading;
+  await held.ready;
+  held.release();
+  await reading;
   assert.equal(h.c.getSnapshot().dependencies.status, "unavailable");
   assert.equal(h.c.canApprove(), false);
-  h.c.edit(p => ({...p, summary: "retained source-denial manual text"}));
-  assert.equal(h.c.getSnapshot().local.summary, "retained source-denial manual text");
+  h.c.edit((p) => ({ ...p, summary: "retained source-denial manual text" }));
+  assert.equal(
+    h.c.getSnapshot().local.summary,
+    "retained source-denial manual text",
+  );
   assert.equal(rebaseCalls(h).length, 0);
 });
