@@ -2377,14 +2377,14 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-0706fba8",
       "branch": "t3/check-ins-history-updates",
       "baseCommit": "f1e9e9113cd75012c27fa97432b63d488b4b0c89",
-      "status": "running",
+      "status": "completed-source-only",
       "writeSet": [
         "apps/portal/src/features/history/**",
         "NEW apps/portal/tests/rebuild-history-* and rebuild-reports-*",
         "docs/portal-rebuild/research/W4_REPORT_HISTORY_UI.md",
         "Exact four new PortalReview contract blobs from30f40da9 in separate attributed import commit ONLY"
       ],
-      "resources": "SOURCE/pure/SSR only; no Chrome/DOM/preview/native/DB/Auth/fixture/credential/resource polling or grant",
+      "resources": "SOURCE terminalclean/worktreepreserved, no browser/DOM/preview/native/Auth/fixture calls. Sameimplementationthread mayresume withNEWfollowupTask+explicit laterChromegrant; slotfreed.",
       "verification": "Fresh coordinator capabilities/config descriptors and all8exactrolepins; actual T3 return model/options +worktree/base; both live child tools and8pins verified by child",
       "contractPin": "96db032faf282d61f6a890eb38923dfd48893e39 fourfiletarget; private sourceManifest outsideclientUI; no authoredRootedits",
       "scope": "C04/C05 optional goal report/no-op, public dated original/amendment/actor/attention/pagination, exact uncertain/status READ and409current deliberate recovery; no fake photoUUID/source/private note/Start/payment; App/ports/routes/backend reserved coordinator.",
@@ -2393,8 +2393,57 @@
       "earlyExports": "HistoryCommand5/HistoryPort/HistoryOutcome/HistoryContext/HistorySession/HistoryController/HistoryProps/HistoryNavigation/ReportIntent/ReportReceipt/createHistoryPort; actualApplicationSession-bound/coordinator-supplied retained Review request. No App edits or uploader.",
       "compileGate": "ActualunchangedportalstrictfrontendnowPASS afterauthoritativeW1presence narrowing; targetimports9bc3fefa/3b716562 separatefromOWNEDdacdcfb8. Puremodel4/controller9PASS(author), tokenprivate-snapshot obsolete-read RED/GREEN. No browser/native.",
       "targetContractUpdate": "3b716562 imports exact96db four authoritative blobs;6 strict consumer diagnostics now0 withunchangednpm typecheck:rebuild",
-      "verificationResult": "Author78source(35new+43retained), actualstrictfrontend/typeassertions/session0, foundation/browserhelperbundle0; noChrome/native. Sourcephasehandoffthenlaterimplementationfollowuptofreeindependentreviewslot.",
-      "authorizedSharedRequestImport": "88d4e5885b575134caf4e214faceb2fb5b592756 only6coordinatorfiles, separateimportfromownedfeatureand4Rootcontracts. RawcreateClientReviewRequest(runtime) actualcookie/CSRF/lease/500000/finite8; domain5/parser/mapperstaysfeature."
+      "verificationResult": "Author95/95 source/SSR(40owned+12imported+43retained), strictfrontend/session/boundarytypes0, actualretainedfactoryhelperbundle0/UI/foundationbuild0. Rootdepsabsent; noChrome/App/genuine/backend/independentreviewacceptance.",
+      "authorizedSharedRequestImport": "88d4e5885b575134caf4e214faceb2fb5b592756 only6coordinatorfiles, separateimportfromownedfeatureand4Rootcontracts. RawcreateClientReviewRequest(runtime) actualcookie/CSRF/lease/500000/finite8; domain5/parser/mapperstaysfeature.",
+      "headCommit": "0266c1e7c3ed0195edfb7e7f1770deeb1626c5e5",
+      "ownedCommits": [
+        "dacdcfb8a2a53bb438be5b277e763e9783e0de49",
+        "80f8a7c4d81d2de3d683b478e190ea4dbd5b7d5c",
+        "0266c1e7c3ed0195edfb7e7f1770deeb1626c5e5"
+      ],
+      "exactImports": [
+        "9bc3fefab27c412e79f97dd2fecdcfcac84be70c",
+        "3b7165628df2d5e589637d3a0f3900dcbcfd6bed",
+        "0b9ea6c6c0a0a408cd50dc5bca9efdad32414cf7"
+      ],
+      "evidenceManifestSha256": "9ce0506818381b951c352611b0144ea695573947951178f97ccfdcfd5f0bce2a"
+    },
+    {
+      "role": "W7 independent M58 reports and exact guidance backend review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-guidance-backend-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-guidance-backend-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-11a40ed2",
+      "branch": "t3/review-guidance-backend",
+      "baseCommit": "28f6a299",
+      "reviewedCandidate": "d33e2587ec017aea50eea9f421be2a51d594997e",
+      "status": "running",
+      "authorizedOwnImports": [
+        "26f9ae3",
+        "a977b190",
+        "9fcb1745",
+        "7cdf86da",
+        "30f40da9",
+        "96db032f",
+        "d33e2587"
+      ],
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_REVIEW_GUIDANCE_BACKEND.md ONLYauthored; candidateimportsandignoredindependentdiagnosticsattributed"
+      ],
+      "resources": "SOURCE/pure/strict/actualhandler+OWNnewUnix-onlyPG15 authorized. NoChrome/DOM/preview/Docker/R7/R6/R4/R5/authorfixture/Auth/provider/credential resourcecalls. MustisolateallbindingsandstoponlyownmarkedPGpreservingdata.",
+      "verification": "Freshcoordinatorcap/config/descriptors/8pins andexactT3returnedSol/xhigh/default/liveworkspace. Childbothlivechecksagainrequired.",
+      "scope": "Completeoriginalrequirements+allpinnedcontracts/privateManifest100000/decisionprovenance/legacy/photo/noop/attention/authority/postwait/bounds/ACL; separateM59knownPlanbudgetgapEXCLUDED/frozenM58candidate. No newproductionfix; reportonly/newroundsrequired."
     }
   ]
 }
