@@ -144,6 +144,17 @@ async function setup(initial = "/plan", width = 1440, s = state()) {
       }
       if (endpoint === "care" && request.method() === "POST") {
         if (s.failure) return route.fulfill({status:s.failure,json:{code:"unavailable"}});
+        if (audience === "advisor" && command.action === "read_advisor_use_history_v1") {
+          assert.equal(command.clientId, s.f.getView().draft.clientId);
+          assert.equal(command.product, null);
+          assert.equal(command.cursor, null);
+          assert.equal(command.limit, 25);
+          // Existing advisor cases seed no care event ledger. Refuse a changed
+          // head rather than fabricate healthy history from compact summaries.
+          if (s.careRevision !== 0)
+            return route.fulfill({status:409,json:{code:"revision_conflict"}});
+          return route.fulfill({json:{revision:0,entries:[],nextCursor:null}});
+        }
         const careView = view => ({...view,schemaVersion:2,use:{revision:s.careRevision,planProducts:(view.plan?.content.products??[]).map(product=>({product:{kind:"plan_product",publication:{version:view.plan.version,documentSchemaVersion:view.plan.documentSchemaVersion},productId:product.id,slotId:null},state:"not_reported",originalStart:{state:"unknown"},latestEvent:null,identity:null,contradiction:false,...s.reportedUse.get(product.id)})),reportedProducts:{items:[],nextCursor:null}},latestPublicReview:null});
         if (audience === "client" && command.action === "read_client_plan_v2") {
           assert.deepEqual(command,{schemaVersion:1,action:"read_client_plan_v2",version:null});
@@ -201,6 +212,29 @@ async function setup(initial = "/plan", width = 1440, s = state()) {
             });
           }
         } else {
+          if (command.action === "read_draft_dependencies_v1" || command.action === "rebase_draft_dependencies_v1") {
+            const v = s.f.getView();
+            assert.equal(command.draftId, v.draft.id);
+            assert.equal(v.draft.clientId, ids.client);
+            if (s.careRevision !== 0)
+              return route.fulfill({status:409,json:{code:"revision_conflict"}});
+            const basis = {schemaVersion:2,legacyBasis:v.draft.basis,legacyBasisManifestHash:"a".repeat(64),useHead:0,reportHead:0,instructionHead:0,references:[]};
+            if (command.action === "read_draft_dependencies_v1") {
+              assert.equal(command.contentRevision,v.draft.contentRevision);
+              assert.equal(command.assignmentRevision,v.draft.assignmentRevision);
+              return route.fulfill({json:{draftId:v.draft.id,contentRevision:v.draft.contentRevision,assignmentRevision:v.draft.assignmentRevision,captured:basis,current:basis,needsRebase:false,affectedSections:[]}});
+            }
+            assert.equal(command.expectedContentRevision,v.draft.contentRevision);
+            assert.equal(command.expectedAssignmentRevision,v.draft.assignmentRevision);
+            assert.deepEqual(command.expectedHeads,{useHead:0,reportHead:0,instructionHead:0});
+            assert.deepEqual(command.expectedLegacyBasis,basis.legacyBasis);
+            assert.equal(command.expectedLegacyBasisManifestHash,basis.legacyBasisManifestHash);
+            v.draft.contentRevision++;v.draft.contentHash="c".repeat(64);
+            v.target={...v.target,contentRevision:v.draft.contentRevision,contentHash:v.draft.contentHash};
+            v.sections=v.sections.map(section=>({...section,reviewed:false}));
+            s.f.setView(v);s.f.context.approval=null;
+            return route.fulfill({json:v});
+          }
           if (command.action === "read_advisor_publication_v1" && s.publication)
             return route.fulfill({ json: s.publication });
           if (command.action === "read_advisor_gate_v1")

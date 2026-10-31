@@ -789,6 +789,10 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         await refreshContext();
         if (!current()) return;
         emit({ pending: null, busy: false });
+        // The financial write is acknowledged. Recover current clinical basis
+        // before its UI continuation returns to publication checks; a read
+        // failure must not turn that known receipt back into an uncertain write.
+        if (ports.dependencies) await inspectDependencies();
       }
     } catch (e) {
       if (current()) fail(e, true);

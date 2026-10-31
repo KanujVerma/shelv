@@ -87,7 +87,12 @@ export function AdvisorWorkspace({
     [client, setClient] = useState(""),
     [paymentOpen, setPaymentOpen] = useState(false);
   useEffect(() => {
-    if (route.name === "advisor-editor" && s.view) void c.inspectDependencies();
+    if (
+      route.name === "advisor-editor" &&
+      s.view &&
+      !c.dependencyReviewCurrent()
+    )
+      void c.inspectDependencies();
   }, [c, route.name, s.view, s.context]);
   useEffect(
     () => () => c.retireDependencyReview(),
