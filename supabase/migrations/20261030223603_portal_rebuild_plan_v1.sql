@@ -327,6 +327,10 @@ declare g uuid;stored jsonb:=r.result->'draft';scope_client uuid;begin
   if scope_client is not null then perform concierge.plan_target_client(scope_client,false);end if;
   perform concierge.plan_content_check(stored->'content',(stored->>'id')::uuid,scope_client,g);
  end if;
+ -- Source/permission locks above may wait past session or task expiry. Those
+ -- rows stay locked; recheck the original operation and exact grant last.
+ perform concierge.plan_authorize(r.command->>'action',r.scope_draft_id,r.scope_client_id,r.grant_id);
+ perform concierge.plan_session(auth.uid(),(auth.jwt()->>'session_id')::uuid);
 end $$;
 
 create function public.concierge_plan_command_v1(p_command jsonb) returns jsonb language plpgsql security definer set search_path='' as $$
@@ -667,7 +671,14 @@ do $ddl$ declare n text;prior text;begin
     perform concierge.plan_care_access(p_client_id,true);
    end if;
    if exists(select 1 from concierge.publications where client_id=p_client_id and document_schema_version=3) and p_action in ('save_draft','save_draft_v2','decide','receive','start','save_instruction_draft') then perform concierge.fail('content_version_required');end if;
-   return concierge.%I(p_client_id,p_action,p_expected_revision,p_request_id,p_payload);
+   stored:=concierge.%I(p_client_id,p_action,p_expected_revision,p_request_id,p_payload);
+   if pol.activated and p_action in ('submit_report','reserve_photo','complete_photo') then
+    -- The legacy writer holds the existing request/client locks, including
+    -- its cached-return branch. Denial here rolls back all its effects.
+    perform concierge.plan_care_access(p_client_id,true);
+    perform concierge.plan_session(auth.uid(),(auth.jwt()->>'session_id')::uuid);
+   end if;
+   return stored;
   end $fn$ $body$,n,n,case n when 'concierge_presentation_write' then 'presentation' when 'concierge_service_write' then 'service' when 'concierge_checkin_write' then 'checkin' else 'advisor' end,prior);
   execute format('revoke all on function concierge.%I(uuid,text,bigint,uuid,jsonb) from public,anon,authenticated,service_role',prior);
   execute format('revoke all on function public.%I(uuid,text,bigint,uuid,jsonb) from public,anon,service_role',n);
