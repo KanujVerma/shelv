@@ -123,3 +123,39 @@ The next explicitly authorized source step is the **separate88d4e588 retained tr
 **No Chrome grant exists for W4.** W2 has the separately named sole synthetic Chrome allocation. W4 must remain source-only, make no preview/resource poll, and notify readiness. Later module browser work must intercept only actual `/api/client/reviews` and actual session routes, use the actual retained factory, deny all unexpected traffic and compare1440/1280/390/320, keyboard/long/error/read-only states against native C04/C05. Callback/feature-state tests cannot be presented as complete App routing/native Back/Forward or genuine Auth acceptance. R7 is idle/ungranted; no inference of custody.
 
 Not executed: full portal/session runtime suites (they include forbidden browser/resource work), browser/DOM/visual geometry or pixel comparison, keyboard/focus/scroll/native Back, genuine Auth/Edge/PostgREST/DB/Storage/RLS/outbox/notification delivery, canonical reset/pgTAP, iOS/native, hosted/CI, human/accessibility/clinical/legal/license/business/release acceptance. Root blockers are above. No push/PR/merge/deploy, actual client/source/permission/message/funds/order action or memory write. Shared routes/App/real Review gateway/backend activation and independent acceptance remain coordinator-owned. Keep the branch and worktree for the next bounded phase.
+
+## Source-phase completion receipt: actual retained Review factory
+
+The coherent owned implementation/report above is frozen at **`80f8a7c4d81d2de3d683b478e190ea4dbd5b7d5c`**, after early owned seam **`dacdcfb8a2a53bb438be5b277e763e9783e0de49`**. Both are W4 work, separate from all target/transport imports. No feature runtime file changed after80f8a7c4.
+
+After that checkpoint, the explicitly authorized coordinator commit **`88d4e5885b575134caf4e214faceb2fb5b592756`** was cherry-picked alone as **`0b9ea6c6`**. All six resulting files match the source commit's exact blobs:
+
+| Imported coordinator file | Exact blob |
+| --- | --- |
+| `apps/portal/site/auth/advisor-cookie-session.js` | `62b507e4518c95e794f59d6c487dd500031c37a1` |
+| `apps/portal/site/auth/client-cookie-session.js` | `2f05dc15b3155d476d7a8aa188ab4a1a4c5c3582` |
+| `apps/portal/site/auth/review-actions.js` | `fb7db97cc974d367236485e6fd80ca08788a58c1` |
+| `apps/portal/src/app/review-request.ts` | `86e9e4dbcefd1cc9a6b4c22d1070fa5589c0791a` |
+| `apps/portal/src/transport/session.ts` | `ad80c6e4ad67e6ef102268f4088ab1482b7d91d9` |
+| `apps/portal/tests/rebuild-review-request.test.mjs` | `8cf5dca506c3076d6f19e3d3fb324ecba2e6227c` |
+
+This is coordinator authorship and authorized import, not W4-authored shared transport work. No Root Review/server/gateway/RPC/App route/backend activation arrived in this import. All four Root target files still exactly match96db; all57 migrations still match the original base.
+
+`mountHistoryCandidate` now **directly imports and calls** `createClientReviewRequest(runtime)`, then `createHistoryPort(runtime,request)`. It no longer takes an injectable raw request. Later browser tests must intercept only actual `/api/client/reviews` and actual session/logout paths, with no cookie/session/action/request/port override. Its shell/navigation callbacks retain the expressly limited module-harness qualification. It was compiled, never launched.
+
+New owned **`apps/portal/tests/rebuild-history-factory.test.mjs`** executes actual retained CookieClientSession/acquire/CSRF/no-store/same-origin request factory, shared transport, creation-bound raw Review request, W4 five-action parser/mapper/controller and actual SSR. Only finite HTTP responses are controlled; no successful operation port/current predicate/action metadata/Root mapper is replaced. It verifies domain-action denial before egress; actual current V3/history -> SSR form; exact empty no-op and optional-note writes with empty photo/use refs; malformed ACK plus403/503 status retention, normal cookie restore and byte-identical retry; private-extra initial-read refusal/retry; actual owner/CSRF replacement against held HTTP results. These are **synthetic HTTP/component tests**, not a new Review server, real Auth/persistence/attention/outbox/delivery or App composition claim.
+
+Actual W4 executions after import:
+
+| Command / scope | Result |
+| --- | --- |
+| New factory file plus unchanged imported `rebuild-review-request.test.mjs`, Node strip-types/test/concurrency1 | **17/17**,0 failures/skips, `E/actual-factory.log` |
+| Initial78 source command above, additionally including actual factory file and imported Review request file | **95/95**,0 failures/skips, `E/source-with-factory-final.log`:35 earlier owned +5 new owned factory +12 imported coordinator +43 retained |
+| Portal unchanged `npm run typecheck:rebuild` and `npm run typecheck:session` | Both exit0, zero diagnostics; `frontend-types-after-import.log`, `session-types-after-import.log` |
+| Same strict forbidden-boundary/browser-helper compiler command above | Exit0, `feature-types-after-import.log` |
+| esbuild actual updated browser helper including the committed retained factory | Exit0; `E/browser-actual-factory/entry.js`, CSS and metafile; **never launched** |
+| Final source/import/migration/config/native-reference/owned-path checks; `git diff --check` | Verified before the receipt commit; evidence manifests remain under E |
+
+Root checks were not repeated after this narrow transport import: child Root dependencies remain absent, with the actual earlier blockers recorded above. The coordinator's Root1213/18 existing opt-in skips/types/Expo and broader transport results remain separately attributed. No Root install or flag change. No additional browser/native test scope was exercised.
+
+**Source phase ends cleanly here at the coordinator's explicit request to free the bounded child slot.** This is not feature acceptance or cancellation. The coordinator will resume the **same implementation thread** with a fresh follow-up task and an explicit future Chrome grant after W2 release and subsequent independent-review allocation. No W4 Chrome/preview/resource poll occurred. R7 remains ungranted. Next step is that separately granted actual module-browser comparison/recovery/keyboard phase, retaining all current code, reports, pending App/genuine/backend gates and original findings. The exact final report/helper/test receipt commit and clean status are returned separately; the T3 worktree is preserved.
