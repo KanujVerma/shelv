@@ -2009,7 +2009,7 @@
         "apps/portal/tests/rebuild-care-native-stack.mjs explicit phase only",
         "docs/portal-rebuild/research/W6_CARE_BROWSER.md"
       ],
-      "resources": "EXCLUSIVE R7+soleChrome HELD from09:44. First2mainattempts4groups pass theninspectionCANTOPEN14; no productverdict. SupportedlockedMF5 actualexistingDO twofixedSELECT browser-only inspection proved onreadonlygenuine2audience control:8physicaldb/6records/2encryptedactive, no newdb/tokenplaintext, own2closed. Thirdmain executing sameApp/source73ba, no parentresourcecalls.",
+      "resources": "EXCLUSIVE R7+soleChrome HELD. SupportedMF5 actualexistingDO storagecontrol passed8physical/6records/2encryptedactive/no newDBIDs. Thirdmain7groups thenfuture-fixture slotalignment8537; fourthmainad58c2209groups plusfirst4stepUUIDpipeline committed, only broadsheetheadinglocator ambiguous. Readonlyold/scopedlocatorcontrol andfreshmain pending; no productdefect/Root/App/SQL/native76change. Allpriorfailedcases/cleanup preserved, parentNOresourcecalls.",
       "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required",
       "earlyCommits": [
         "41b3600514ca7fb6236e09324b4ecda2ef8d450a",
@@ -2035,8 +2035,15 @@
       "additionalOwnedCommits": [
         "cd09a21e4caf0690cd79c91c6adf954e9e5ef264",
         "e73d768",
-        "73ba16aefff81adbe36af8964a8859faed46a25f"
-      ]
+        "73ba16aefff81adbe36af8964a8859faed46a25f",
+        "8537ce3"
+      ],
+      "partialMainRuns": [
+        "425e9bb9-a09d-41c1-ac3f-70e18d77521d",
+        "525aa1c0-6b1d-4c47-95c2-8a4b882b16eb",
+        "ad58c220-2c33-4f0b-83cc-b17f3fbef387"
+      ],
+      "overallBrowserAcceptance": "PENDING_FULL_RUN_AND_INDEPENDENT_REVIEW"
     },
     {
       "role": "W7 care app recovery round2",
