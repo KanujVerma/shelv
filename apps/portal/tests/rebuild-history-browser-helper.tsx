@@ -8,13 +8,15 @@ import {createRoot} from 'react-dom/client';
 import type {ApplicationSession} from '../src/app/session.ts';
 import {createClientReviewRequest} from '../src/app/review-request.ts';
 import {ClientHistory,createHistoryController,createHistoryPort} from '../src/features/history/index.ts';
-import type {HistoryNavigation} from '../src/features/history/index.ts';
+import type {HistoryNavigation,HistoryProps} from '../src/features/history/index.ts';
+import type {PresentationMode} from '../src/navigation/routes.ts';
 
-export function mountHistoryCandidate({element,runtime,navigation,screen,wrap=(node)=>node}:{
+export function mountHistoryCandidate({element,runtime,navigation,screen,publicProps={},wrap=(node)=>node}:{
   element:HTMLElement;
   runtime:ApplicationSession;
   navigation:HistoryNavigation;
   screen:'history'|'update';
+  publicProps?:Pick<HistoryProps,'actorLabel'|'productLabel'|'goalLabel'|'onContact'|'onExport'>;
   wrap?:(node:ReactNode)=>ReactNode;
 }){
   const boundary=runtime.getSnapshot().boundary;
@@ -22,7 +24,7 @@ export function mountHistoryCandidate({element,runtime,navigation,screen,wrap=(n
   const port=createHistoryPort(runtime,createClientReviewRequest(runtime));
   const controller=createHistoryController({session:boundary,mode:'client',port});
   const root=createRoot(element);
-  const render=(next:'history'|'update')=>root.render(<StrictMode>{wrap(<ClientHistory controller={controller} screen={next} navigation={navigation}/>)}</StrictMode>);
+  const render=(next:'history'|'update')=>root.render(<StrictMode>{wrap(<ClientHistory {...publicProps} controller={controller} screen={next} navigation={navigation}/>)}</StrictMode>);
   render(screen);
-  return {controller,render,dispose(){root.unmount();controller.dispose();}};
+  return {controller,render,setMode(mode:PresentationMode){controller.setContext({session:boundary,mode,port});},dispose(){root.unmount();controller.dispose();}};
 }

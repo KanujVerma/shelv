@@ -15,22 +15,21 @@ export function ClientHistory(props: HistoryProps) {
         scope.current = { controller, screen, navigation };
     useEffect(() => () => { scope.current = { ...scope.current }; }, []);
     useEffect(() => {
-        let live = true;
         const s = controller.getSnapshot();
         if (s.phase === 'idle' || screen === 'history')
-            void controller.load().then(() => { if (live && screen === 'update')
-                controller.startReport(); });
-        else if (screen === 'update' && s.phase === 'ready')
-            controller.startReport();
-        return () => { live = false; };
+            void controller.load();
     }, [controller, screen]);
+    useEffect(() => {
+        if (screen === 'update' && state.phase === 'ready')
+            controller.startReport();
+    }, [controller, screen, state.phase]);
     const retry = async () => { const captured = scope.current; await controller.load(); if (scope.current === captured && screen === 'update' && controller.getSnapshot().phase === 'ready')
         controller.startReport(); };
     const update = () => { controller.startReport(); navigation.openUpdate(); };
     const correct = async (event: ReportEvent) => { const captured = scope.current; await controller.startAmendment(event); const s = controller.getSnapshot(); if (scope.current === captured && s.phase === 'ready' && s.intent?.kind === 'amendment' && s.intent.original.id === event.id)
         navigation.openUpdate(); };
     const labels = { actorLabel: props.actorLabel, productLabel: props.productLabel, goalLabel: props.goalLabel ?? ((id: string, pub: GoalReportBody['publication']) => state.view?.plan?.version === pub.version && state.view.plan.documentSchemaVersion === pub.documentSchemaVersion ? state.view.plan.content.goals.find(g => g.id === id)?.text ?? null : null) };
-    const write = state.phase === 'ready' && state.version === null && state.view?.access === 'active' && state.view.currentGuidance?.mode === 'current_document';
+    const write = state.phase === 'ready' && !state.readError && !state.loadingMore && state.version === null && state.view?.access === 'active' && state.view.currentGuidance?.mode === 'current_document';
     const entries = state.pages.flatMap(p => p.entries), hasMore = state.pages.at(-1)?.nextCursor != null;
     return <div className="history-view" data-history-screen={screen}>
     <PageHeader title={screen === 'history' ? 'check-ins & history' : state.intent?.kind === 'amendment' ? 'correct an update' : 'send an update'} description={screen === 'history' ? 'your updates, our decisions and what changed' : 'a short update before your check-in, or whenever something changes'} action={screen === 'history' ? props.onExport ? <Button variant="ghost" onClick={props.onExport}>download plan</Button> : undefined : <Button variant="ghost" onClick={navigation.back}><Icon name="arrow-left"/>back to history</Button>}/>
@@ -43,14 +42,14 @@ export function ClientHistory(props: HistoryProps) {
       {state.view?.access === 'read_only' ? <StatusNotice title="read-only record">your plan and history remain available. new care updates are unavailable.</StatusNotice> : null}
       {state.view?.access === 'preparation' ? <StatusNotice title="your plan is being prepared">you can continue your consultation by text, call or video.</StatusNotice> : null}
       {state.version !== null ? <StatusNotice title={`history for plan version ${state.version}`} action={<Button variant="secondary" onClick={() => void controller.load(null)}>return to all history</Button>}>this is a history filter. it is not a snapshot of actual use at publication.</StatusNotice> : null}
-      {state.error && state.mutation !== 'uncertain' && state.mutation !== 'conflict' ? <StatusNotice tone="error" title="check your update">{state.error}</StatusNotice> : null}
+      {state.readError ? <StatusNotice tone="error" title="history is incomplete" action={<Button variant="secondary" onClick={()=>void retry()}>retry current record</Button>}>{state.error}</StatusNotice> : state.error && state.mutation !== 'uncertain' && state.mutation !== 'conflict' ? <StatusNotice tone="error" title="check your update">{state.error}</StatusNotice> : null}
       <div className="history-columns">
         <div className="history-stack">
           {screen === 'history' ? <>
             <div className="history-filters" role="group" aria-label="filter history">{([['all', 'all activity'], ['checkins', 'check-ins'], ['changes', 'plan changes']] as const).map(([key, label]) => <Button key={key} variant={filter === key ? 'primary' : 'secondary'} aria-pressed={filter === key} onClick={() => setFilter(key)}>{label}</Button>)}</div>
             <Panel className="history-record"><Timeline entries={entries} filter={filter} labels={labels} onAmend={write && !state.pending ? event => void correct(event) : undefined} onVersion={navigation.openVersion}/>
               {!entries.some(e => visibleHistory(e, filter)) ? <StatusNotice tone="empty" title={hasMore ? 'no matching activity in the loaded pages' : 'no activity to show yet'}>{hasMore ? 'load more to continue through your record.' : 'your future updates and published decisions will appear here.'}</StatusNotice> : null}
-              {hasMore ? <Button variant="secondary" busy={state.loadingMore} onClick={() => void controller.loadMore()}>load more activity</Button> : null}
+              {hasMore && !state.readError ? <Button variant="secondary" busy={state.loadingMore} onClick={() => void controller.loadMore()}>load more activity</Button> : null}
             </Panel>
           </> : <>
             <Feedback state={state} controller={controller}/>
@@ -72,7 +71,7 @@ function Feedback({ state, controller }: {
     if (state.mutation === 'uncertain')
         return <StatusNotice tone="uncertain" title="update result uncertain" action={<div className="history-actions"><Button variant="secondary" busy={state.checkingStatus} onClick={() => void controller.checkStatus()}>check update status</Button>{state.view?.access === 'active' ? <Button variant="secondary" disabled={state.checkingStatus} onClick={() => void controller.retryExact()}>retry exact update</Button> : null}</div>}>{state.error ?? 'the original update is retained.'}</StatusNotice>;
     if (state.needsReview)
-        return <StatusNotice tone="warning" title="review the current record" action={<Button variant="secondary" onClick={() => void controller.reviewCurrent()}>i’ve reviewed this record</Button>}>{state.error ?? 'your unsent answers are retained. review this fetched record before sending again.'}</StatusNotice>;
+        return <StatusNotice tone="warning" title="review the current record" action={<Button variant="secondary" disabled={state.readError||state.loadingMore} onClick={() => void controller.reviewCurrent()}>i’ve reviewed this record</Button>}>{state.error ?? 'your unsent answers are retained. review this fetched record before sending again.'}</StatusNotice>;
     if (state.mutation === 'no_observation')
         return <StatusNotice title="nothing was sent">there were no observations to record. add anything you noticed, or return to your history.</StatusNotice>;
     if (state.mutation === 'confirmed')

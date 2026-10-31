@@ -36,7 +36,7 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
     function capture() { return { epoch, context: ctx, session: ctx.session }; }
     function applies(c: ReturnType<typeof capture>) { return current() && epoch === c.epoch && ctx === c.context && ctx.session === c.session; }
     function permitted() { return current() && ctx.mode === 'client' && !!ctx.port; }
-    function active() { return permitted() && state.phase === 'ready' && state.version === null && state.view?.access === 'active' && state.view.currentGuidance?.mode === 'current_document'; }
+    function active() { return permitted() && state.phase === 'ready' && !state.readError && !state.loadingMore && state.version === null && state.view?.access === 'active' && state.view.currentGuidance?.mode === 'current_document'; }
     async function execute(command: HistoryCommand): Promise<HistoryOutcome> {
         if (!ctx.port)
             return { state: 'rejected', status: 503, code: 'unavailable' };
@@ -136,7 +136,7 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
                 return;
             if (result.state !== 'ok') {
                 if (result.state === 'rejected' && result.status === 409) {
-                    set({ pages: [], phase: 'error', view: null, readError: true, error: 'your record changed. reload the current record before continuing.' });
+                    set({ readError: true, error: 'your record changed. reload the current record before continuing.' });
                     return;
                 }
                 throw new Error();
@@ -146,7 +146,7 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
         }
         catch {
             if (applies(c) && readOwner === token)
-                set({ phase: 'error', pages: [], view: null, readError: true, error: 'could not continue this record. reload to start a current record.' });
+                set({ readError: true, error: 'could not continue this record. reload to start a current record.' });
         }
         finally {
             if (applies(c) && readOwner === token) {
