@@ -1,0 +1,2 @@
+-- Allocated by Supabase CLI2.121.0 for CN1 filtered-history correction.
+-- Implementation is owned by the next bounded fix task; frozen M56 remains unchanged.
