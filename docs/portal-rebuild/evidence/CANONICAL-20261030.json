@@ -259,5 +259,33 @@
     "webExport": "PASS",
     "rootTestLogSha256": "ef23887d4522433637a0455965c5ed5d17563498b51f2e0a2870d3808a41f779",
     "webExportLogSha256": "a0ffb0b7b0b68ae92360cd570a737de4d5207526fb2c30f27fe70560c76d580a"
+  },
+  "genuineGatewayVaultBrowser": {
+    "status": "MAIN13_PASS_INDEPENDENT_FOLLOWUPS_PENDING",
+    "authorWorkspace": "/Users/kanuj/.t3/worktrees/shelv/t3-45beee69",
+    "runId": "f1b451cd-4a8e-40eb-b05a-437584200544",
+    "resultSha256": "b870b68602af015c42469748da9420b2064c7ca431fd82539c8d9014972f5541",
+    "groups": 13,
+    "cleanup": {
+      "issued": 7,
+      "closed": 7,
+      "remainingSessions": 0,
+      "remainingRefreshTokens": 0,
+      "failures": 0
+    },
+    "originalResponseScan": {
+      "responses": 343,
+      "bodyBytes": 42797516,
+      "clientResponses": 31,
+      "safePreviewResponses": 2,
+      "advisorPrivateDraftResponses": 13,
+      "credentialLeaks": 0,
+      "privateFactLeaks": 0
+    },
+    "scope": "Actual combined gateway/SQLite Vault/GoTrue PKCE/native operations-payments-plans/PostgREST/canonical SQL; test-bundle-only pinned loopback portal/provider origins",
+    "qualification": "Coupled source review C1 approval-recovery and H1 original readonly marker/H2 disposal followups remain open; main W6 private marker/credential scan counts retained within that scope",
+    "hostedRequests": 0,
+    "realFunds": 0,
+    "realEmails": 0
   }
 }
