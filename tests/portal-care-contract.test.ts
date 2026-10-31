@@ -62,3 +62,42 @@ test('dependency read binds exact revision while old strict Draft basis cannot w
  assert.deepEqual(readPlanCommand(rebase),rebase);
  assert.throws(()=>readPlanCommand({...rebase,approved:true}));
 });
+test('current projection is bounded by actual products and provider byte budget',async()=>{
+ const values=await import('../src/contracts/PortalCareValues.ts');
+ assert.equal(values.carePlanProductsMax,50,'one state per document product, never product x slots');
+ assert.equal(values.carePageMaxBytes,400000);
+ assert.equal(values.careResponseMaxBytes,1800000);
+});
+test('source-valid near500k UTF8 document keeps all50 paused states plus bounded descriptor page',async()=>{
+ const {readFileSync}=await import('node:fs');
+ const {createEmptyPlanContent,projectClientPlan}=await import('../src/contracts/PortalRebuild.ts');
+ const {readPlanContent}=await import('../src/contracts/PortalRebuildValidation.ts');
+ const template=JSON.parse(readFileSync(new URL('./fixtures/concierge-presentation.json',import.meta.url),'utf8')).presentation.categoryCards.find((c:{currentProduct:unknown})=>c.currentProduct).currentProduct;
+ const c=createEmptyPlanContent();c.title='maximum valid synthetic';c.context={products:{state:'recorded',productIds:[]},facts:[]};c.goals=[{id:'comfort',text:'comfort',factIds:[]}];c.followUp.criteria=['report changes'];
+ for(let i=0;i<50;i++){const pid='p'+String(i).padStart(2,'0')+'x'.repeat(97);c.products.push({...template,id:pid,name:'😀'.repeat(200),brand:'😀'.repeat(100),variant:'😀'.repeat(200),sizeLabel:'😀'.repeat(120),strength:{state:'known',value:'😀'.repeat(200)},category:{state:'known',value:'😀'.repeat(200)},identity:'unresolved',formula:'unknown',factIds:[],guides:[],evidence:[]});}
+ c.context={products:{state:'recorded',productIds:c.products.map(p=>p.id)},facts:[]};
+ const bytes=(v:unknown)=>new TextEncoder().encode(JSON.stringify(v)).byteLength;
+ while(c.consultationSections.length<50&&bytes(c)+16500<499000)c.consultationSections.push({title:'source',body:'😀'.repeat(4000)});
+ c.consultationSections.push({title:'last',body:'😀'.repeat(Math.min(4000,Math.floor((498900-bytes(c))/4)))});
+ assert.ok(bytes(c)>480000&&bytes(c)<500000);readPlanContent(c);
+ const stamp='2026-01-01T00:00:00Z',actor=id,unknownDate={state:'unknown' as const};
+ const planProducts=c.products.map(p=>{const ref={kind:'plan_product' as const,publication:{version:1,documentSchemaVersion:3 as const},productId:p.id,slotId:null};const original={...ref,slotId:'s'.repeat(100)};return {product:ref,state:'paused',originalStart:unknownDate,contradiction:false,identity:{eventId:id,target:{subject:original,comparedWith:original},match:'not_sure',sourcePublication:publication,occurredOn:unknownDate,recordedAt:stamp,reportedBy:actor,recordedBy:actor,channel:'call'},latestEvent:{eventId:id,product:original,changeKind:'started',sourcePublication:publication,occurredOn:unknownDate,recordedAt:stamp,reportedBy:actor,recordedBy:actor,channel:'call',acquisition:'self',identityEventId:id,originalActivationId:'9'.repeat(19),amendment:{id,eventId:id,previousAmendmentHeadId:id,product:ref,changeKind:'paused',occurredOn:unknownDate,sourcePublication:publication,acquisition:'self',identityEventId:id,amendedBy:actor,amendedAt:stamp}}};});
+ const photos=Array.from({length:100},(_,n)=>'10000000-0000-4000-8000-'+String(n).padStart(12,'0'));
+ const descriptor={name:'😀'.repeat(200),brand:{state:'known',value:'😀'.repeat(200)},variant:{state:'known',value:'😀'.repeat(200)},strength:{state:'known',value:'😀'.repeat(200)},sizeLabel:{state:'known',value:'😀'.repeat(200)},labelPhotoIds:photos};
+ const row={product:{kind:'client_reported_product',reportedProductId:id,version:1},descriptor,state:'unreviewed',originalStart:unknownDate,latestEvent:null,identity:null,contradiction:false};
+ const items:unknown[]=[];while(items.length<100&&bytes({items:[...items,row],nextCursor:null})<399500)items.push(row);
+ assert.ok(items.length>1&&items.length<100);
+ const view={schemaVersion:2,access:'active',plan:{documentSchemaVersion:3,version:1,publishedAt:stamp,content:projectClientPlan(c)},decisionRevision:0,decisions:[],actualUse:[],nextReviewOn:null,use:{revision:1,planProducts,reportedProducts:{items,nextCursor:'c:'+'a'.repeat(64)+':'+id}},latestPublicReview:null};
+ const mapped=mapCareResult(view,readCareCommand({schemaVersion:1,action:'read_client_plan_v2',version:1}));assert.equal((mapped as typeof view).use.planProducts.filter(p=>p.state==='paused').length,50);assert.ok(bytes(mapped)<1800000);assert.ok(bytes(mapped)>900000);
+ const omitted={...view,use:{...view.use,planProducts:planProducts.slice(1)}};assert.throws(()=>mapCareResult(omitted,readCareCommand({schemaVersion:1,action:'read_client_plan_v2',version:1})));
+ const over={...view,use:{...view.use,reportedProducts:{items:Array.from({length:100},()=>row),nextCursor:null}}};assert.throws(()=>mapCareResult(over,readCareCommand({schemaVersion:1,action:'read_client_plan_v2',version:1})));
+});
+test('400000 byte UTF8 history page accepts exact boundary and rejects one extra byte',()=>{
+ const bytes=(v:unknown)=>new TextEncoder().encode(JSON.stringify(v)).byteLength;
+ const entry=(details:string)=>({kind:'use',event:{eventId:id,product,change:{kind:'stopped',details},sourcePublication:publication,occurredOn:unknown,recordedAt:'2026-01-01T00:00:00Z',reportedBy:id,recordedBy:id,channel:'portal',acquisition:'self',identityEventId:null,originalActivationId:null,amendment:null}});
+ const page={revision:1,entries:[] as ReturnType<typeof entry>[],nextCursor:null};
+ while(bytes({...page,entries:[...page.entries,entry('😀'.repeat(4000)),entry('x')]})<400000)page.entries.push(entry('😀'.repeat(4000)));
+ page.entries.push(entry('x'));const missing=400000-bytes(page);const size=missing+1;page.entries[page.entries.length-1].event.change.details='😀'.repeat(Math.floor(size/4))+'x'.repeat(size%4);assert.equal(bytes(page),400000);
+ const command=readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:null,cursor:null,limit:100});assert.equal((mapCareResult(page,command) as typeof page).entries.length,page.entries.length);
+ page.entries[page.entries.length-1].event.change.details+='x';assert.equal(bytes(page),400001);assert.throws(()=>mapCareResult(page,command));
+});

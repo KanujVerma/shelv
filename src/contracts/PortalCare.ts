@@ -17,7 +17,10 @@ export type UseReplacement={product:ProductRef;change:UseChange;sourcePublicatio
 export type UseAmendment={id:UUID;eventId:UUID;previousAmendmentHeadId:UUID|null;replacement:UseReplacement;amendedBy:UUID;amendedAt:string;reason:string};
 export type AttributedUseEvent=Attribution&{eventId:UUID;product:ProductRef;change:UseChange;acquisition:Acquisition;identityEventId:UUID|null;originalActivationId:string|null;amendment:UseAmendment|null};
 export type AttributedIdentityEvent=Attribution&{eventId:UUID;target:IdentityTarget;answer:IdentityAnswer};
-export type EffectiveUse<P extends ProductRef=ProductRef>={product:P;state:'not_reported'|'using'|'paused'|'stopped'|'using_differently'|'unreviewed';originalStart:Known<string>;latestEvent:AttributedUseEvent|null;identity:AttributedIdentityEvent|null;contradiction:boolean};
+export type UseAmendmentSummary=Pick<UseAmendment,'id'|'eventId'|'previousAmendmentHeadId'|'amendedBy'|'amendedAt'>&Omit<UseReplacement,'change'>&{changeKind:UseChange['kind']};
+export type UseEventSummary=Omit<AttributedUseEvent,'change'|'amendment'>&{changeKind:UseChange['kind'];amendment:UseAmendmentSummary|null};
+export type IdentityEventSummary=Omit<AttributedIdentityEvent,'answer'>&{match:IdentityAnswer['match']};
+export type EffectiveUse<P extends ProductRef=ProductRef>={product:P;state:'not_reported'|'using'|'paused'|'stopped'|'using_differently'|'unreviewed';originalStart:Known<string>;latestEvent:UseEventSummary|null;identity:IdentityEventSummary|null;contradiction:boolean};
 export type ReportedProductUse=EffectiveUse<ReportedProductRef>&{descriptor:ReportedProductBody};
 export type ReportedProductsPage={revision:Revision;items:ReportedProductUse[];nextCursor:string|null};
 export type UseProjection={revision:Revision;planProducts:EffectiveUse<PlanProductRef>[];reportedProducts:{items:ReportedProductUse[];nextCursor:string|null}};
