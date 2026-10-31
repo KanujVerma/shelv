@@ -8,9 +8,9 @@ Owner: Kanuj. Updated 31 October 2026. Integration branch `kanuj/portal-rebuild-
 
 Three implementation streams are active, each verified Sol/xhigh/default:
 
-- **W1**, `t3-7a7cac7e`: isolated report/conversation/guidance platform and logical M58. Latest coherent source seam `30f40da9`; SQL/native work continues in its own Unix-only PG. Parent remains57 migrations /76 native source files. No parent integration or R7 access.
+- **W1**, `t3-7a7cac7e`: isolated report/conversation/guidance platform and logical M58. Latest coherent source seam `96db032f`; SQL/native work continues in its own Unix-only PG. Parent remains57 migrations /76 native source files. No parent integration or R7 access.
 - **W2**, `t3-d6691f48`: correct [CD1/CD2](research/W7_CARE_DEPENDENCIES_REVIEW.md) in its unintegrated advisor dependency UI. Historical products need actual immutable identities; incomplete current reported-product pages must block acknowledgement. Source-only, no resource grant. Initial source401/browser27/retained86 results do not close independent findings.
-- **W4**, `t3-0706fba8`: C04 meaningful client history and C05 optional goal reports/amendments. Source-only against the exact four new contract blobs from `30f40da9`, imported separately in its own checkout. Shared App/routes/ports and backend activation remain coordinator-owned. No resource grant.
+- **W4**, `t3-0706fba8`: C04 meaningful client history and C05 optional goal reports/amendments. Source-only against the exact four new contract blobs from `96db032f`, imported separately in its own checkout. Shared App/routes/ports and backend activation remain coordinator-owned. No resource grant.
 
 [TASKS.json](TASKS.json) records actual task IDs, settings, bases, ownership and returns. At most three children plus coordinator run concurrently; user maximum eight. No nested delegation.
 
