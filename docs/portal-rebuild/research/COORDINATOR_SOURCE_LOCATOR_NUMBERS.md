@@ -39,4 +39,13 @@ Raw SQL/logs, complete before/after private snapshots and source correspondence 
 
 Three local probe setup errors are separate from the product RED: psql command tags preceded the JSON snapshot; pgTAP was not installed outside the CLI test transaction; JavaScript replacement-string dollar handling corrupted the generated transaction. Quiet output, transaction-local extension/search path and a function replacement callback corrected those harness issues. Their logs remain retained. No altered test expectation or production workaround was used.
 
-Fresh canonical62 reset/full pgTAP, independent review, genuine connected Review/Guidance/V3/history execution and exact-head CI remain pending. The earlier composed M58-M61 scoped independent PASS and Root1256-pass/18-existing-skip/type/Expo evidence remain separately attributed. This correction does not close the full portal goal or authorize deployment.
+At the initial source checkpoint, fresh canonical62 reset/full pgTAP, independent review, genuine connected Review/Guidance/V3/history execution and exact-head CI were pending; the later fresh rehearsal is recorded below. The earlier composed M58-M61 scoped independent PASS and Root1256-pass/18-existing-skip/type/Expo evidence remain separately attributed. This correction does not close the full portal goal or authorize deployment.
+
+
+## fresh canonical62 rehearsal
+
+After preserving/stopping R8, a wholly fresh R9 owner `63bd4f3a-66bc-42ff-96a7-0b2e75410809`, project `shelv-portal-admission-63bd4f3a66bc`, reset all62 migrations successfully. Runtime ledger `3e3a7d638b637fe5fb15bd0ad56dc920df26bd5b28f6740fd3ee2e444c323379` and snapshot `9cf2c772109851511b0a9723a3d09296233ba5b16b76bd160cee8ec658fae340` bind the actual fresh volume. Canonical pgTAP then passed40 files/930 assertions with no failed/skipped file. All40 host/VM test hashes match; the original42 test was unchanged. Whole Auth sessions/refresh remain0/0.
+
+Actual command uses installed CLI2.121.0, explicit selected Docker socket/config and the exact absolute R9 workdir/test directory. The coordinator scripts `reset-canonical-r9.mjs` and `test-canonical-r9.mjs` retain commands/guards under `.local-artifacts/portal-rebuild/`; raw result is `r9-pgtap.log`, with `PGTAP-review-r9.json` in R9. No new helper, owner bootstrap, connected Auth/client or browser was acquired in this phase. Independent M62 review and genuine new-feature execution remain open.
+
+Actual installed CLI `db advisors --local --type security --level warn --fail-on warn --workdir <absolute R9>` exits0, returns `No issues found` and an empty results array. The only notices are the existing CLI update availability. No hosted call or platform upgrade was made.

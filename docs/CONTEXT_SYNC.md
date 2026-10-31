@@ -1,5 +1,12 @@
 # Approved portal rebuild, 30 October 2026
 
+## portal rebuild: composed guidance backend and canonical62 preparation (31 October 2026)
+
+Composed M58-M61 backend is integrated through3edb0700 with scoped independent R3 PASS, Root1256 pass/18 existing opt-in skips, strict types and Expo export. Current fresh canonical61 reset succeeded but pgTAP exposed the original scaled-number source cast; it is not accepted. Coordinator M62 `6e4d38e2` passes unchanged42/new28 rollback probes without changing105 tables, function attributes, ledger or Auth0/0. Fresh R9 canonical62 reset and40-file/930-assertion pgTAP now pass; independent M62 review and genuine new-feature execution remain pending. R7 and R8 were positively audited, privately backed up and stopped with volumes/data retained; no worker has native custody.
+
+W3 owns the sole synthetic Chrome lane for V3 guidance. W0 fixed8/8/9 Review/Guidance transport79d is source-complete and under new independent source review. W4 report/history RH1 fixfe707+006 is parked source-only pending a fresh Chrome followup and new review. Advisor CD1-CD3 have scoped independent PASS; complete reported-product/new report/instruction readers and genuine rebase remain separate. W1 commerce source contracts are in progress before any SQL pin. [Current status](portal-rebuild/CURRENT_STATUS.md), [task ledger](portal-rebuild/TASKS.json) and [execution log](portal-rebuild/EXECUTION_LOG.md) govern current allocations and evidence. Full approved rebuild, genuine new features, CI and release remain incomplete; no merge/deploy/live action.
+
+
 ## portal rebuild: independently accepted care and next modules (31 October 2026)
 
 Current [integrated care review](portal-rebuild/research/W7_CARE_INTEGRATED_REVIEW.md), authorf7cc2981/integrationf1e9e911, independently passes current CS1 source correspondence, unchanged genuine Node11/all13 care actions and FIRST unchanged browser15 at1011ae33. Both R7/Chrome returned12:25:55.680349UTC;13 own sessions closed/whole Auth0/0, prior cases/protected files/57 migrations/4x76 source/five helpers/TLS preserved. Representative core care is accepted within that scope; source Storage, complete report/guidance/history, commerce/account/delivery/demo and all-goal/CI/release remain open. No deployment/merge/live action.

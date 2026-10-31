@@ -68,3 +68,12 @@ Corecareindependentlyacceptedat1011; advisorCD3scopedPASS57d3/integration2924410
 | Coordinator | Integration/docs/sharedtransport/server/route/defaultcomposition; RootCD3fixfinished | NoChrome/nativegrant; no editsinclaimedplan/client-state/history/SQLpaths |
 
 All3reviewroundsjustreturnedreport-onlyandresources: M58composedR2FAILRG5(RG1-RG4addressed/M59PASS), C04/C05R1FAILRH1(B1-B4closedscoped), advisorR3PASSCD3. Freshindependentreviewsaftercorrections, canonical61/genuinecoupledApp/serverandfullD01-D48/V01-V17remain. EveryreviewNEWT3taskwithfullpriorbriefs/findings/responses; implementationfollow-upssamethreadNEWtask IDsverifiedsettings. TASKS.json owns exacthandles/workspaces/model/options/source/grants; CURRENT_STATUS ownsstatus; EXECUTION_LOGownschronology. Allthreeoriginalimplementationworktrees/evidencepreserved. Atmostthreechildrenpluscoordinator;no nested.
+
+
+## current allocation: canonical62 and remaining feature composition
+
+The composed backend R3 report260a937b is integrated as3dd4aded with scoped PASS. Exact ten backend imports through3edb0700 preserve41 candidate blobs and old57 SQL. Canonical61 reset passed; its pgTAP run failed at the retained `1.0` locator cast, with37/42 in that file and897/902 total executed. Coordinator M62 `6e4d38e2` changes only two private locator functions, old61 bytes frozen; unchanged42/new28 pass in rollback-only transactions, all105 tables/functions/ledger/Auth counts restored. Independent review and fresh canonical62 are still required.
+
+R7 was positively audited, backed up and stopped16:53:19.789Z, five helpers retained stopped. R8 was backed up and stopped after preserving its failed test run; no M62 was committed there. Fresh R9 project `shelv-portal-admission-63bd4f3a66bc`, owner `63bd4f3a-66bc-42ff-96a7-0b2e75410809`, is coordinator-owned for canonical62 only. No worker has a native grant. W3 remains the sole synthetic Chrome owner; parked W4 may resume only after explicit W3 release and a fresh followup grant.
+
+Current three children: W3 V3 synthetic browser implementation in1026, W1 commerce source contracts in7a7, and new independent W7 transport source review incf6. W0 transport79d is terminal, awaiting that review before parent adoption. W4 RH1 sourcefe707/receipt006 is terminal and parked with24+7+95 source pass and four browser cases compiled but unrun. TASKS.json records their distinct exact task IDs and settings. No nested work or live client, hosted, funds, retailer, permission or communication action is authorized.

@@ -2750,14 +2750,17 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-0706fba8",
       "branch": "t3/check-ins-history-updates",
       "baseCommit": "5aa860a8d529efd2ba35db2fb024acc5b575d5cb",
-      "status": "running",
+      "status": "completed-source-only",
       "verification": "ExactT3returnedprovider/model/options andliveworkspace; freshcoordinatorcatalog/config/eightpins andchildbothlivechecks required/verifiedasreported.",
       "writeSet": [
         "OwnedHistorycontroller currentpagination403",
         "NEWsource/browserRH1regressions/report"
       ],
       "resources": "SOURCEONLY/noChrome/DOM/preview/process/native/fixturepolling untilnewgrantafterW3release. PersistedmodelcfgRootverifiedSol/xhigh/default; childbothlive/eightpinsagainrequired.",
-      "scope": "Currentapplicable403 clearsreadableview/pages/detail andexistingdeniedtreatment, keepsactualsession/admin +pendingexactUUID/body/wire/unsentintent. 503/409readableincomplete andsuperseded403newreadfences preserved. NoApp/sharedshell/Root/SQL/rights edits."
+      "scope": "Currentapplicable403 clearsreadableview/pages/detail andexistingdeniedtreatment, keepsactualsession/admin +pendingexactUUID/body/wire/unsentintent. 503/409readableincomplete andsuperseded403newreadfences preserved. NoApp/sharedshell/Root/SQL/rights edits.",
+      "headCommit": "006b2ae514aeb2bae5c2a6bca657e3310f1f5c2b",
+      "implementationCommit": "fe70753187b8277cb7afa832fe684f4486e61fa3",
+      "verificationResult": "New24, unchanged reviewer7 and original95 source checks pass; strict compilation passes. Four browser cases compiled, not run. Await new implementation followup plus explicit sole-Chrome grant and independent R2."
     },
     {
       "role": "W7 composed backend round3",
@@ -2779,13 +2782,150 @@
       "branch": "t3/backend-review-round3",
       "baseCommit": "2ebf3391",
       "reviewedCandidate": "35d26181c3e1d8dcd81149b99c0344cc91bce858",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_REVIEW_GUIDANCE_BACKEND_R3.md ONLYauthored; 10attributedcandidateimports/ownignoreddiagnostics"
       ],
       "resources": "SOURCE/pure/strict/actualhandlers+NEWOWNUnix-onlyPG15only. NoChrome/DOM/Docker/R7/author/reviewerPG/provider/realAuth/credentials/sharedfixture. Guardedownstop/dataevidencepreserve required.",
       "scope": "FULLoriginalR1+R2brief/priorRG1-RG5findings/responses. Exactcase-sensitiveM61stageidentityacrossfresh/preapproved/draft/rebase/cache/status/final/deferredpaths, validbounds/attributes/old60hashes; preserveRG1-RG4andM59scopedcorrection. Freshreportonly, no fixes.",
-      "verification": "Parentfreshcapabilities/config/effectiveoptions/descriptors/eightpins; actualT3returnedSol/xhigh/default/liveworkspace/base verified; childbothlivechecksrequired."
+      "verification": "Parentfreshcapabilities/config/effectiveoptions/descriptors/eightpins; actualT3returnedSol/xhigh/default/liveworkspace/base verified; childbothlivechecksrequired.",
+      "headCommit": "260a937b364a3dad469499f014b399232fe2e605",
+      "integratedCommit": "3dd4aded",
+      "reportPath": "docs/portal-rebuild/research/W7_REVIEW_GUIDANCE_BACKEND_R3.md",
+      "specVerdict": "scoped PASS",
+      "qualityVerdict": "scoped PASS",
+      "verificationResult": "RG5 addressed; RG1-RG4 retained and M59 scoped PASS. Own Unix PG stopped; no genuine/canonical acceptance."
+    },
+    {
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "role": "W0 fixed Review and Guidance cookie transport",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-review-guidance-transport-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-review-guidance-transport-20261031-r1",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-de43a1b0",
+      "branch": "t3/wire-review-guidance-transport",
+      "baseCommit": "3edb0700eeb423082a99a4e7e617b348364bc3dd",
+      "status": "completed-source-only",
+      "headCommit": "79d757e56e1111c437ffd21bf1c43fc465082e67",
+      "ownedCommits": [
+        "885aa414d2a37ea70927ba4cc6deb69c34bacf3d",
+        "020cf72510aa6db480233d5f23325d28a71a22ff",
+        "79d757e56e1111c437ffd21bf1c43fc465082e67"
+      ],
+      "reportPath": "docs/portal-rebuild/research/W0_REVIEW_GUIDANCE_TRANSPORT.md",
+      "writeSet": [
+        "apps/portal/runtime/server finite transport and dispatch",
+        "apps/portal/site/auth Review/Guidance action metadata",
+        "apps/portal/src/transport/CookieChannel.ts",
+        "apps/portal/src/app/advisor-review-request.ts",
+        "apps/portal/src/app/advisor-guidance-request.ts",
+        "allocated new tests and report"
+      ],
+      "verificationResult": "Author request45/runtime59/both fixed RPC chains/Root80/error9/strict/build pass. No resources. New independent R1 running before parent adoption.",
+      "integratedCommits": [
+        "ffdc2ccd",
+        "8ff1a0ea",
+        "52e85cd3"
+      ],
+      "independentReview": "Scoped spec/quality PASS in new R1 bc3cdc7a, integrated4dab895a. No genuine/App activation."
+    },
+    {
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "role": "W1 commerce strict contracts source phase",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-commerce-contracts-source-phase-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-report-guidance-contracts-20261031-r1:ordinal:3",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7a7cac7e",
+      "branch": "t3/portal-review-contract-seam",
+      "baseCommit": "35d26181c3e1d8dcd81149b99c0344cc91bce858",
+      "status": "running",
+      "writeSet": [
+        "src/contracts/PortalCommerce.ts",
+        "src/contracts/PortalCommerceValues.ts",
+        "src/contracts/PortalCommerceValidation.ts",
+        "src/contracts/PortalCommerceMapping.ts",
+        "tests/portal-commerce-contract.test.ts",
+        "docs/portal-rebuild/research/W1_COMMERCE_CONTRACTS.md"
+      ],
+      "resourceBoundary": "Source only. No SQL allocation, fixtures, runtime resources or old contract changes."
+    },
+    {
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "role": "W7 independent Review and Guidance transport source review R1",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-guidance-transport-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-guidance-transport-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-review-guidance-transport-20261031-r1:ordinal:1",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-cf6b17d1",
+      "branch": "t3/review-guidance-transport",
+      "baseCommit": "3edb0700eeb423082a99a4e7e617b348364bc3dd",
+      "reviewedHead": "08c1017cb2cf6e4ef94638f23c7d14a5c6816c8f",
+      "status": "completed",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_REVIEW_GUIDANCE_TRANSPORT.md"
+      ],
+      "verification": "Returned exact live model/options; new worktree imported only three author transport commits; all16 candidate blobs exact. Source/mock HTTP only, no resources.",
+      "headCommit": "bc3cdc7afef953e108d7c5dbfe9c4c372a95e4d9",
+      "integratedCommit": "4dab895a",
+      "specVerdict": "scoped PASS",
+      "qualityVerdict": "scoped PASS",
+      "verificationResult": "Request45/runtime59/Root80/error9/both RPC chains/independent28+lease2/types/builds pass; intentional sensitivity failures prove exercised fences. No resources."
+    },
+    {
+      "role": "W7 M62 source locator numeric review R1",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-source-locator-numbers-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-source-locator-numbers-review-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-source-locator-numbers-review-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-42813b88",
+      "baseCommit": "6e4d38e2aa593715a275299f244eedd644c060f9",
+      "status": "running",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_SOURCE_LOCATOR_NUMBERS_REVIEW.md"
+      ],
+      "resourceBoundary": "Only own new marked Unix PG15 if needed; no foreign or parent fixture, Docker, browser or native grant."
     }
   ]
 }
