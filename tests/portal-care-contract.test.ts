@@ -101,3 +101,18 @@ test('400000 byte UTF8 history page accepts exact boundary and rejects one extra
  const command=readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:null,cursor:null,limit:100});assert.equal((mapCareResult(page,command) as typeof page).entries.length,page.entries.length);
  page.entries[page.entries.length-1].event.change.details+='x';assert.equal(bytes(page),400001);assert.throws(()=>mapCareResult(page,command));
 });
+test('slotnull selected-product history includes exact original slot and exact amendment replacement',()=>{
+ const original={...product,slotId:'actual-slot'},other={...product,productId:'other-product',slotId:'other-slot'};
+ const amendment={id,eventId:id,previousAmendmentHeadId:null,replacement:{product:other,change:{kind:'paused',details:'corrected'},sourcePublication:publication,occurredOn:unknown,acquisition:'self',identityEventId:null},amendedBy:id,amendedAt:'2026-01-02T00:00:00Z',reason:'wrong product'};
+ const event={eventId:id,product:original,change:{kind:'started'},sourcePublication:publication,occurredOn:unknown,recordedAt:'2026-01-01T00:00:00Z',reportedBy:id,recordedBy:id,channel:'portal',acquisition:'self',identityEventId:null,originalActivationId:null,amendment};
+ const page={revision:2,entries:[{kind:'use',event}],nextCursor:null};
+ for(const filter of [{...product,slotId:null},original,{...other,slotId:null},other])assert.deepEqual(mapCareResult(page,readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:filter,cursor:null,limit:10})),page);
+ for(const filter of [{...original,slotId:'wrong-slot'},{...other,publication:{...publication,version:2}}])assert.throws(()=>mapCareResult(page,readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:filter,cursor:null,limit:10})));
+});
+test('amendment history entry binds replacement context and exact descriptor version',()=>{
+ const ref={kind:'client_reported_product',reportedProductId:id,version:2};
+ const amendment={id,eventId:id,previousAmendmentHeadId:null,replacement:{product:ref,change:{kind:'stopped',details:null},sourcePublication:null,occurredOn:unknown,acquisition:'unknown',identityEventId:null},amendedBy:id,amendedAt:'2026-01-02T00:00:00Z',reason:'correct version'};
+ const page={revision:2,entries:[{kind:'amendment',amendment}],nextCursor:null};
+ assert.deepEqual(mapCareResult(page,readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:ref,cursor:null,limit:1})),page);
+ assert.throws(()=>mapCareResult(page,readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:{...ref,version:1},cursor:null,limit:1})));
+});

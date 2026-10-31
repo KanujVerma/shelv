@@ -58,7 +58,7 @@ export function mapCareResult(value:unknown,command:CareCommand):CareResult{
  }
  if(command.action==='read_use_history_v1'||command.action==='read_advisor_use_history_v1'){
   const r=readPlanShape(value,careResultShapes.history) as import('./PortalCare.ts').UseHistoryPage;requireValue(new TextEncoder().encode(JSON.stringify(r)).byteLength<=carePageMaxBytes);requireValue(r.entries.length<=command.limit);
-  if(command.product)for(const entry of r.entries){const p:ProductRef=entry.kind==='use'?entry.event.product:entry.kind==='identity'?entry.event.target.subject:entry.kind==='reported_product'?entry.event.product:entry.amendment.replacement.product;requireValue(sameCareValue(p,command.product));}
+  if(command.product)for(const entry of r.entries){const p:ProductRef=entry.kind==='use'?entry.event.product:entry.kind==='identity'?entry.event.target.subject:entry.kind==='reported_product'?entry.event.product:entry.amendment.replacement.product;const matches=(candidate:ProductRef)=>candidate.kind==='plan_product'&&command.product?.kind==='plan_product'?sameCareValue(candidate.publication,command.product.publication)&&candidate.productId===command.product.productId&&(command.product.slotId===null||candidate.slotId===command.product.slotId):sameCareValue(candidate,command.product);requireValue(matches(p)||(entry.kind==='use'&&entry.event.amendment!==null&&matches(entry.event.amendment.replacement.product)));}
   return r;
  }
  const r=mapWrite(value,command.requestId);
