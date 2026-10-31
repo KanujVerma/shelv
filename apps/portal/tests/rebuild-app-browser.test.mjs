@@ -17,7 +17,17 @@ const portal = path.resolve(import.meta.dirname, ".."),
     portal,
     "../../.local-artifacts/portal-rebuild/w0-app",
   );
-const origin = "https://shelv-app.example";
+const origin = "https://shelv-app.invalid";
+const localImages = new Map(
+  mayaPlan()
+    .plan.content.products.filter((p) =>
+      p.imageUrl?.startsWith("https://portal.goshelv.com/maya/assets/"),
+    )
+    .map((p) => {
+      const source = new URL(p.imageUrl).pathname.slice(1);
+      return ["/assets/" + path.basename(source), source];
+    }),
+);
 let browser;
 before(async () => {
   await fs.mkdir(artifacts, { recursive: true });
@@ -45,7 +55,7 @@ function state() {
     view = mayaPlan();
   for (const p of view.plan.content.products)
     if (p.imageUrl)
-      p.imageUrl = p.imageUrl.replace("https://portal.goshelv.com", origin);
+      p.imageUrl = "assets/" + path.basename(new URL(p.imageUrl).pathname);
   return {
     f,
     view,
@@ -256,11 +266,10 @@ async function setup(initial = "/plan", width = 1440, s = state()) {
       return route.abort();
     }
     const pathname =
-        parseRoute(url.pathname + url.search) ||
-        url.searchParams.has("code") ||
-        url.pathname === "/missing"
+        request.resourceType() === "document" &&
+        (parseRoute(url.pathname) || url.pathname === "/missing")
           ? "index.html"
-          : url.pathname.slice(1),
+          : (localImages.get(url.pathname) ?? url.pathname.slice(1)),
       file = path.resolve(output, pathname);
     if (!file.startsWith(output + path.sep)) {
       unexpected.push(url.pathname);
@@ -462,6 +471,144 @@ test("advisor workspace uses actual draft source for unpublished preview and ret
     await f.close();
   }
 });
+test("preview native history retains nonzero scroll and distinct focus through repeated traversal and resets", async () => {
+  const s = state(),
+    view = s.f.getView();
+  view.draft.content = mayaPlan().plan.content;
+  s.f.setView(view);
+  const f = await setup(`/advisor/plans/${ids.draft}/routine`, 1440, s);
+  try {
+    const p = f.page;
+    // Deliberately long synthetic viewport geometry, without changing UI source.
+    await p.addStyleTag({ content: ".shelv-content { min-height: 2400px; }" });
+    await p.getByRole("heading", { name: "routine", exact: true }).waitFor();
+    await p
+      .getByRole("button", { name: "open client preview", exact: true })
+      .click();
+    await p
+      .getByRole("heading", { name: "draft routine", exact: true })
+      .waitFor();
+    await p.getByRole("tab", { name: "evening", exact: true }).click();
+    await p.locator("#plan-product-cerave-pm").click();
+    await p.getByRole("dialog").waitFor();
+    await p.evaluate(
+      () =>
+        new Promise((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(resolve)),
+        ),
+    );
+    await p.evaluate(() => window.scrollTo({ top: 250, behavior: "instant" }));
+    await p.waitForFunction(
+      () =>
+        window.scrollY === 250 &&
+        history.state.shelvNavigation.restore.scrollY === 250,
+    );
+    await p
+      .getByRole("button", { name: "ingredients & evidence", exact: true })
+      .click();
+    await p.locator("[data-plan-evidence]").waitFor();
+    await p.evaluate(
+      () =>
+        new Promise((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(resolve)),
+        ),
+    );
+    await p.evaluate(() => {
+      document.getElementById("portal-content").focus({ preventScroll: true });
+      window.scrollTo({ top: 600, behavior: "instant" });
+    });
+    await p.waitForFunction(
+      () =>
+        scrollY === 600 &&
+        document.activeElement.id === "portal-content" &&
+        history.state.shelvNavigation.restore.scrollY === 600,
+    );
+    for (let repeat = 0; repeat < 3; repeat++) {
+      await p.goBack();
+      await p.getByRole("dialog").waitFor();
+      await p.waitForFunction(
+        () =>
+          scrollY === 250 &&
+          document.activeElement?.textContent === "back to plan",
+      );
+      await p.goForward();
+      await p.locator("[data-plan-evidence]").waitFor();
+      try {
+        await p.waitForFunction(
+          () =>
+            scrollY === 600 && document.activeElement?.id === "portal-content",
+        );
+      } catch (error) {
+        assert.deepEqual(
+          await p.evaluate(() => ({
+            scrollY,
+            focus: document.activeElement?.id,
+          })),
+          { scrollY: 600, focus: "portal-content" },
+        );
+        throw error;
+      }
+    }
+    assert.equal(
+      JSON.stringify(await p.evaluate(() => history.state)).includes(
+        "cerave-pm",
+      ),
+      false,
+    );
+    await p.goBack();
+    await p.getByRole("dialog").waitFor();
+    await p.keyboard.press("Escape");
+    await p
+      .getByRole("tab", { name: "evening", exact: true, selected: true })
+      .waitFor();
+    await p.getByRole("button", { name: "back to draft", exact: true }).click();
+    await p.waitForURL(`**/advisor/plans/${ids.draft}/routine`);
+    await p.waitForFunction(
+      () => document.activeElement.id === "advisor-preview-open-plan",
+    );
+    await p
+      .getByRole("button", { name: "open client preview", exact: true })
+      .click();
+    await p
+      .getByRole("tab", { name: "morning", exact: true, selected: true })
+      .waitFor();
+    await p.reload();
+    await p
+      .getByRole("heading", { name: "draft routine", exact: true })
+      .waitFor();
+    await p
+      .getByRole("tab", { name: "morning", exact: true, selected: true })
+      .waitFor();
+    await p.getByRole("tab", { name: "evening", exact: true }).click();
+    await p.locator("#plan-product-cerave-pm").click();
+    await p.getByRole("dialog").waitFor();
+    const oldScope = await p.evaluate(
+      () => history.state.shelvNavigation.scopeKey,
+    );
+    s.csrf = "SYNTHETIC-replacement-csrf";
+    await p.evaluate(() => window.dispatchEvent(new Event("focus")));
+    await p.waitForFunction(
+      (scope) => history.state?.shelvNavigation?.scopeKey !== scope,
+      oldScope,
+    );
+    await p
+      .getByRole("heading", { name: "draft routine", exact: true })
+      .waitFor();
+    await p
+      .getByRole("tab", { name: "morning", exact: true, selected: true })
+      .waitFor();
+    assert.equal(await p.getByRole("dialog").count(), 0);
+    await p.getByRole("button", { name: "back to draft", exact: true }).click();
+    await p.waitForURL(`**/advisor/plans/${ids.draft}/sources`);
+    assert.equal(
+      s.calls.some((c) => c.command?.action === "record_decision_v1"),
+      false,
+    );
+  } finally {
+    await f.close();
+  }
+});
+
 test("first publication needs current approval and separately verified manual receipt plus deliberate publish", async () => {
   const f = await setup(`/advisor/plans/${ids.draft}/review-publish`);
   try {
@@ -817,6 +964,86 @@ test("signed-out advisor recovery retains exact same-origin destination and actu
       false,
     );
     assert.equal(p.url(), origin + target);
+  } finally {
+    await f.close();
+  }
+});
+
+test("actual startup rejects partial, empty, duplicate, mixed and oversized callbacks without auth requests", async () => {
+  const f = await setup("/maya");
+  const messages = [];
+  f.page.on("console", (message) => messages.push(message.text()));
+  try {
+    const keys = [
+      "token_hash",
+      "type",
+      "error",
+      "error_code",
+      "error_description",
+      "code",
+      "access_token",
+      "refresh_token",
+      "expires_at",
+      "expires_in",
+      "token_type",
+      "provider_token",
+      "provider_refresh_token",
+    ];
+    const cases = [];
+    for (const key of keys)
+      for (const side of ["?", "#"]) {
+        cases.push("/plan" + side + key + "=");
+        if (
+          !(
+            (side === "?" && ["code", "token_hash"].includes(key)) ||
+            (side === "#" && key === "access_token")
+          )
+        )
+          cases.push("/plan" + side + key + "=SYNTHETIC-private");
+      }
+    for (const key of keys)
+      cases.push(
+        "/plan?code=a&" + key + "=one&" + key + "=two",
+        "/plan#access_token=a&" + key + "=one&" + key + "=two",
+        "/plan?code=a&" + key + "=one#" + key + "=two",
+      );
+    cases.push(
+      "/plan?code=a&code=b",
+      "/plan?code=a#access_token=b",
+      "/plan?error_description=SYNTHETIC-private",
+      "/plan?code=" + "a".repeat(2049),
+    );
+    for (const path of ["/maya", "/missing"])
+      for (const key of keys)
+        cases.push(path + "#" + key + "=SYNTHETIC-private");
+    for (const initial of cases) {
+      await f.page.goto("about:blank");
+      await f.page.goto(origin + initial);
+      const path = new URL(origin + initial).pathname;
+      await f.page.getByRole("heading", { level: 1 }).waitFor();
+      if (path === "/plan")
+        await f.page
+          .getByText("sign-in link unavailable", { exact: true })
+          .waitFor();
+      assert.equal(f.page.url(), origin + path);
+      assert.equal(f.s.calls.length, 0);
+      assert.equal(
+        JSON.stringify(await f.page.evaluate(() => history.state)).includes(
+          "SYNTHETIC-private",
+        ),
+        false,
+      );
+      assert.equal(
+        (await f.page.locator("body").innerText()).includes(
+          "SYNTHETIC-private",
+        ),
+        false,
+      );
+    }
+    assert.equal(
+      messages.some((value) => value.includes("SYNTHETIC-private")),
+      false,
+    );
   } finally {
     await f.close();
   }
