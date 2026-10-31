@@ -3677,11 +3677,15 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_COOKIE_CANCELLATION_REVIEW.md"
       ],
-      "resourceBoundary": "No resources/browser/native; actual Source107/45/197/34 plus independent current-vs-caller abort controls."
+      "resourceBoundary": "No resources/browser/native; actual Source107/45/197/34 plus independent current-vs-caller abort controls.",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-0ce6270f",
+      "deliveryCommit": "bec620f681a155f393779ddbd4b95dcdf29684d3",
+      "verdict": "T1 scoped PASS; specification/quality changes required CK1/P2 known401/403 body deadline becomes503/offline; CK2/P3 signal-ignoring late200 after deadline. Both preexisting; browser reachability CK2 unknown.",
+      "verification": "Original107/45/197/34 and strict/build pass; independent178=168pass/10 intended findings. Source-only, no resources."
     },
     {
       "role": "W6 genuine Review R9 Node attempt r5",
@@ -3701,14 +3705,22 @@
         }
       ],
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-c8e152f9",
-      "status": "running-report-after-return",
+      "status": "completed",
       "executedCommit": "fc26d088308d1b4c2e679647b31404d9f94b22f1",
       "runId": "c03972ec-d7a0-45ba-b07d-2602c60dce21",
-      "actualResult": "AUTHOR scoped Node PASS9/9/all15Review+9Guidance; actuallogout200thenheld401; liveobserverpostrotationvalid,2rotations14strings,CareStartpause.5issuedclosed/whole0/0.233files/105oldsets734rows preserved+245new=979;21users10cases. No independent/Browser/fullGoal/CI/release claim.",
+      "actualResult": "AUTHOR scoped genuine Node PASS9/9/all15 Review+9Guidance; logout200 ACK then held401, two provider rotations/14 strings. SQLite observed initial17/15/5 active/envelopes; postrotation17/15/5 with10 retained external CANTOPEN/live-observer fallbacks; afterlogout17/15/4 before remaining cleanup. All configured exact scans pass. No independent/browser/full-goal acceptance.",
       "nativeGrant": {
         "grantId": "coordinator-w6-review-node-r9-logout-route-20261031-r5",
         "status": "returned",
         "returnedAt": "2026-10-31T21:09:19.324Z"
+      },
+      "deliveryCommit": "17dda84425f52950fdecadd8183c9837bc6626cc",
+      "observedScans": {
+        "responses": 162,
+        "bodyBytes": 246537,
+        "safeResponses": 74,
+        "privateDraftPositives": 3,
+        "conversationPositives": 2
       }
     },
     {
@@ -3728,11 +3740,19 @@
           "value": "default"
         }
       ],
-      "status": "running-source-only",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_REVIEW_GENUINE_NODE_REVIEW.md"
       ],
-      "resourceBoundary": "SOURCE only initially. One explicit workspace literal adaptation allowed in own loader; no R9/credentials/native/Browser until separate exact grant."
+      "resourceBoundary": "SOURCE only initially. One explicit workspace literal adaptation allowed in own loader; no R9/credentials/native/Browser until separate exact grant.",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-570be77e",
+      "branch": "t3/review-guidance-node",
+      "baseCommit": "5cd7ef5aa416de077d9c74603c74b91075e7c40a",
+      "testedSourceHead": "3c8a251a",
+      "sourceFinding": "Closure entry roots/ancestors can be symlinks before traversal; nested links reject. Actual pure own root-symlink probe accepted. Source-only review remains frozen fc26; no native grant issued, no domain bypass established.",
+      "deliveryCommit": "35f631e6d96788613ec96bda14dfa3be1ee31bd4",
+      "verdict": "Source-preflight SPEC/quality CHANGES REQUIRED W7RGN1/P2; closure-root and src/supabase ancestor symlinks accepted. Exact87/62 maps validate. No further material finding. Native NOT RUN, no resources/grant.",
+      "verification": "Retained45, independent9, two strict graphs and source bundles pass; symlink rejection suite1pass/2 intended failures."
     },
     {
       "role": "W0 client V3 and History App composition source",
@@ -3751,13 +3771,122 @@
           "value": "default"
         }
       ],
-      "status": "running-source-only",
+      "status": "completed-source-checkpoint",
       "writeSet": [
         "apps/portal/src/app/**",
         "new rebuild-app-v3-history tests",
         "docs/portal-rebuild/research/W0_V3_HISTORY_COMPOSITION.md"
       ],
-      "resourceBoundary": "Only isolatedsource targetimports11W3/T1; no App integration acceptance, browser/native/resources. No highcontentionotherwriter."
+      "resourceBoundary": "Only isolatedsource targetimports11W3/T1; no App integration acceptance, browser/native/resources. No highcontentionotherwriter.",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
+      "branch": "t3/compose-v3-client-history",
+      "openDependency": "T1 CK1/CK2; W4 remount restoration interface; fresh independent/composed browser/genuine verification. No Root activation.",
+      "deliveryCommit": "f16363bea245d5986a1a20b67f5f2e6beb1e792b",
+      "ownedCommits": [
+        "c6add5e5",
+        "57bff834",
+        "f16363be"
+      ],
+      "verification": "98 App/source,158 retained feature,152 transport; strict/UI; exact clean2229 inputs/15 in-memory outputs."
+    },
+    {
+      "role": "W6 genuine Review source-root preflight correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw6-review-source-root-symlink-fix-20261031",
+      "status": "running-source-only",
+      "writeSet": [
+        "apps/portal/scripts/rebuild-review-native-fixture.mjs",
+        "owned Review native guards/proof tests",
+        "docs/portal-rebuild/research/W6_REVIEW_GENUINE.md"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-c8e152f9",
+      "resourceBoundary": "No R9/fixture/private metadata/process/browser resources. Preserve r5 author actual pass; reject root/ancestor symlinks before traversal/acquisition.",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-review-genuine-source-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w6-review-genuine-source-20261031-r1:ordinal:7",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ]
+    },
+    {
+      "role": "W0 shared cookie CK1/CK2 deadline correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-cookie-deadline-ck1-ck2-fix-20261031",
+      "status": "running-source-only",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-2d6813cc",
+      "writeSet": [
+        "apps/portal/site/auth/advisor-cookie-session.js",
+        "apps/portal/site/auth/client-cookie-session.js",
+        "owned cancellation tests",
+        "docs/portal-rebuild/research/W0_COOKIE_CANCELLATION_FIX.md"
+      ],
+      "resourceBoundary": "No resources. Preserve T1 and current authority; known401/403 deadline classification and late-deadline success source fence only.",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-cookie-cancellation-fix-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-cookie-cancellation-fix-20261031-r1:ordinal:2",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ]
+    },
+    {
+      "role": "W7 commerce contracts source review R4",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-contracts-review-20261031-r4",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-contracts-review-20261031-r4",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-commerce-contracts-review-20261031-r4:ordinal:1",
+      "status": "running-source-only",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_COMMERCE_CONTRACTS_R4.md"
+      ],
+      "resourceBoundary": "Only five exact source proposal inputs89/613/cab/2e/603. No M63, resources or financial admission."
+    },
+    {
+      "role": "W7 commerce UI source review R2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-ui-source-review-20261031-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-ui-source-review-20261031-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-commerce-ui-source-review-20261031-r2:ordinal:1",
+      "status": "running-source-only",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_COMMERCE_UI_SOURCE_R2.md"
+      ],
+      "resourceBoundary": "Only exact11 frozen W5 source/SDK inputs throughfd864bba; no browser/native/backend/resources. CU1-CU3 and cab currency/head regressions."
     }
   ]
 }
