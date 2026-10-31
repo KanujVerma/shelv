@@ -9,7 +9,7 @@ class HttpFailure extends Error {
   constructor(status: number, code: string, retryable = false) { super(code); this.status = status; this.code = code; this.retryable = retryable; }
 }
 const errors: Record<string, number> = { unauthorized: 401, forbidden: 403, invalid_input: 400, service_inactive: 403,
-  routine_not_started: 409, revision_conflict: 409, request_conflict: 409, photo_unavailable: 404, not_found: 404, content_version_required:409 };
+  routine_not_started: 409, revision_conflict: 409, request_conflict: 409, photo_unavailable: 404, not_found: 404, content_version_required:409, session_ended:401 };
 async function rpcData(ports: CheckinPorts, token: string, call: CheckinRpcCall, signal: AbortSignal): Promise<unknown> {
   const result = await ports.rpc(token, call, signal);
   if (result.error) {
