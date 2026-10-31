@@ -286,6 +286,52 @@ export async function contextApp(t, createController) {
         data.draft = clone(draft);
         result = { requestId: command.requestId, draft };
         receipts.set(command.requestId, clone(result));
+      } else if (command.action === "approve_guidance_v1") {
+        const approval = {
+          id: ids.other,
+          target: clone(command.target),
+          scope: command.scope,
+          publisher: clone(command.publisher),
+          approvedBy: login.ownerId,
+          approvedAt: at,
+          policyRevision: data.policy.revision,
+          revokedAt: null,
+          receiptId: null,
+        };
+        data.draft.approval = clone(approval);
+        result = { requestId: command.requestId, approval };
+        receipts.set(command.requestId, clone(result));
+      } else if (command.action === "publish_guidance_v1") {
+        result = {
+          requestId: command.requestId,
+          receiptId: ids.amend,
+          target: clone(command.target),
+          approvalId: command.approvalId,
+          publisher: clone(command.publisher),
+          record: { kind: command.target.kind, id: ids.amend },
+          publishedAt: at,
+          notificationEventId: ids.other,
+        };
+        receipts.set(command.requestId, clone(result));
+        history = [
+          {
+            ...data.page,
+            entries: [
+              ...data.page.entries,
+              {
+                kind: "guidance",
+                guidance: {
+                  record: result.record,
+                  body: clone(data.draft.body),
+                  publishedBy: login.ownerId,
+                  publishedAt: at,
+                  originalStart: null,
+                },
+              },
+            ],
+          },
+        ];
+        data.draft.approval = null;
       } else if (command.action === "append_private_review_note_v1")
         result = {
           requestId: command.requestId,
@@ -351,6 +397,9 @@ export async function contextApp(t, createController) {
     async caps(patch) {
       Object.assign(login.capabilities, patch);
       await runtime.restore();
+    },
+    advance(milliseconds) {
+      time += milliseconds;
     },
     expire() {
       time = Date.parse("2099-01-03T00:00:00Z");

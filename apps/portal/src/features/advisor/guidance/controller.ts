@@ -1,3 +1,4 @@
+import type { AdvisorGuidanceContext } from "../../../app/advisor-guidance-context.ts";
 import type { ApplicationSession } from "../../../app/session.ts";
 import { TransportError } from "../../../transport/session.ts";
 import { createAdvisorGuidanceAdapters } from "./adapters.ts";
@@ -67,7 +68,8 @@ type Lane =
   | "instructions"
   | "status"
   | "write"
-  | "connection";
+  | "connection"
+  | "authority";
 type HistoryState = {
   entries: AdvisorCareHistoryEntry[];
   heads: AdvisorCareHistoryPage["heads"] | null;
@@ -125,6 +127,8 @@ export interface AdvisorGuidanceState {
   ended: boolean;
   connection: string;
   privateDenied: boolean;
+  authorityContext: AdvisorGuidanceContext | null;
+  contextStatus: "unavailable" | "loading" | "ready";
 }
 const emptyHistory = (): HistoryState => ({
   entries: [],
@@ -172,6 +176,8 @@ const initial = (): AdvisorGuidanceState => ({
   ended: false,
   connection: "ready",
   privateDenied: false,
+  authorityContext: null,
+  contextStatus: "unavailable",
 });
 const detached = <T>(value: T): T => structuredClone(value);
 function freeze<T>(value: T): T {
@@ -188,6 +194,7 @@ function assert(value: unknown): asserts value {
 /** Creation-bound, memory-only source module. Parent owns mounting and routes. */
 export function createAdvisorGuidanceController({
   runtime,
+  context: contextPort,
 }: AdvisorGuidanceOptions) {
   const adapters = createAdvisorGuidanceAdapters(runtime),
     boundary = runtime.getSnapshot().boundary;
@@ -201,6 +208,19 @@ export function createAdvisorGuidanceController({
     manual = 0,
     authority = 0,
     pending: Pending | null = null;
+  let dispatchOwner: Pending | null = null;
+  let contextStamp: {
+    selection: AdvisorGuidanceSelection | null;
+    draft: GuidanceDraftView | null;
+    body: GuidanceBody | null;
+    publication: AdvisorPublicationViewV3 | null;
+    history: HistoryState;
+    reported: AdvisorGuidanceState["reported"];
+    instructions: AdvisorGuidanceState["instructions"];
+    manual: number;
+    authority: number;
+    pending: Pending | null;
+  } | null = null;
   const capabilityWire = () =>
     JSON.stringify(runtime.cookie._view?.capabilities ?? null);
   let capabilities = capabilityWire();
@@ -223,7 +243,9 @@ export function createAdvisorGuidanceController({
     next.evidenceReasons = evidence.reasons;
     next.missing = [
       ...evidence.missing,
-      guidanceDependencies.find((d) => d.kind === "guidance_authority")!,
+      ...(next.authorityContext && contextPort?.isCurrent(next.authorityContext)
+        ? []
+        : [guidanceDependencies.find((d) => d.kind === "guidance_authority")!]),
     ];
     next.pending = pending
       ? {
@@ -236,13 +258,61 @@ export function createAdvisorGuidanceController({
     state = freeze(next);
     listeners.forEach((fn) => fn());
   }
+  function retireAuthority() {
+    contextPort?.invalidate();
+    contextStamp = null;
+    aborters.get("authority")?.abort();
+    aborters.delete("authority");
+    laneVersions.set("authority", (laneVersions.get("authority") ?? 0) + 1);
+    emit({
+      authorityContext: null,
+      contextStatus: "unavailable",
+      busy: state.busy.filter((x) => x !== "authority"),
+      acknowledged: false,
+    });
+  }
+  function authorityCurrent(
+    own: Pending | undefined = dispatchOwner ?? undefined,
+  ): boolean {
+    const value = state.authorityContext,
+      stamp = contextStamp;
+    return (
+      !!value &&
+      !!stamp &&
+      !!contextPort?.isCurrent(value) &&
+      state.selection === stamp.selection &&
+      state.draft === stamp.draft &&
+      state.body === stamp.body &&
+      state.publication === stamp.publication &&
+      state.history === stamp.history &&
+      state.reported === stamp.reported &&
+      state.instructions === stamp.instructions &&
+      manual === stamp.manual &&
+      authority === stamp.authority &&
+      (pending === stamp.pending ||
+        (own !== undefined && pending === own && stamp.pending === null)) &&
+      !!state.draft &&
+      sameCareValue(value.request.target, state.draft.target) &&
+      sameCareValue(value.draft.body, state.body) &&
+      sameCareValue(
+        value.request.snapshot,
+        state.publication?.currentGuidance.snapshot,
+      ) &&
+      value.request.publisher.actorId === runtime.cookie.identity?.ownerId &&
+      value.request.scope === `${state.draft.target.kind}.publish`
+    );
+  }
   function cancelAll() {
     aborters.forEach((c) => c.abort());
     aborters.clear();
     laneVersions.forEach((n, k) => laneVersions.set(k, n + 1));
   }
   function clearPrivate(ended = false) {
-    if (ended) parked.clear();
+    retireAuthority();
+    if (ended) {
+      parked.clear();
+      dispatchOwner = null;
+    }
     authority++;
     manual++;
     cancelAll();
@@ -281,6 +351,7 @@ export function createAdvisorGuidanceController({
     const next = capabilityWire();
     if (next !== capabilities) {
       capabilities = next;
+      retireAuthority();
       authority++;
       context++;
       cancelAll();
@@ -320,6 +391,8 @@ export function createAdvisorGuidanceController({
   }
   function capture(lane: Lane) {
     reconcile();
+    if (lane !== "authority" && lane !== "status" && lane !== "write")
+      retireAuthority();
     if (!current()) throw new TransportError(401);
     aborters.get(lane)?.abort();
     const controller = new AbortController(),
@@ -514,6 +587,8 @@ export function createAdvisorGuidanceController({
           ],
         },
         privateDenied: false,
+        authorityContext: null,
+        contextStatus: "unavailable",
       });
     } catch (error) {
       if (lease.valid()) {
@@ -554,6 +629,8 @@ export function createAdvisorGuidanceController({
           !!state.body &&
           !sameCareValue(state.body, draft.body),
         privateDenied: false,
+        authorityContext: null,
+        contextStatus: "unavailable",
         notice: null,
         saveState: preserveBuffer ? state.saveState : "saved",
       });
@@ -752,6 +829,86 @@ export function createAdvisorGuidanceController({
       lease.finish();
     }
   }
+  async function refreshAuthority() {
+    if (
+      !contextPort ||
+      !permitted("edit") ||
+      pending ||
+      state.busy.some((lane) => lane !== "authority") ||
+      !state.selection?.draftId ||
+      !state.draft ||
+      !state.publicationCurrent ||
+      !state.publication ||
+      !state.draftCurrent ||
+      state.dirty
+    )
+      return;
+    retireAuthority();
+    const selection = state.selection,
+      draft = state.draft,
+      publication = state.publication;
+    const lease = capture("authority");
+    emit({ contextStatus: "loading", acknowledged: false });
+    try {
+      const value = await contextPort.read(
+        {
+          boundaryKey: boundary!.key,
+          selection,
+          target: draft.target,
+          publisher: {
+            kind: "human",
+            actorId: runtime.cookie.identity!.ownerId,
+          },
+          scope: `${draft.target.kind}.publish`,
+          required: [
+            "read_policy_v1",
+            "fresh_guidance_draft",
+            "current_publication",
+            "current_session_capabilities",
+          ],
+          snapshot: publication.currentGuidance.snapshot,
+        },
+        { signal: lease.signal },
+      );
+      if (!lease.valid()) return;
+      assert(
+        contextPort.isCurrent(value) &&
+          sameCareValue(value.draft.target, draft.target) &&
+          sameCareValue(value.draft.body, state.body) &&
+          sameCareValue(value.draft.currentBasis, draft.currentBasis) &&
+          sameCareValue(value.draft.capturedBasis, draft.capturedBasis),
+      );
+      contextStamp = {
+        selection: state.selection,
+        draft: value.draft,
+        body: state.body,
+        publication: value.publication,
+        history: state.history,
+        reported: state.reported,
+        instructions: state.instructions,
+        manual,
+        authority,
+        pending,
+      };
+      emit({
+        authorityContext: value,
+        contextStatus: "ready",
+        draft: value.draft,
+        publication: value.publication,
+        publicationCurrent: true,
+        draftCurrent: true,
+        acknowledged: false,
+        notice: null,
+      });
+    } catch (error) {
+      if (lease.valid()) {
+        retireAuthority();
+        failure(error, true);
+      }
+    } finally {
+      lease.finish();
+    }
+  }
   function can(action: GuidanceAction): boolean {
     if (
       !permitted("edit") ||
@@ -795,10 +952,66 @@ export function createAdvisorGuidanceController({
       state.privateDenied
     )
       return false;
-    if (action === "revoke") return !!state.draft.approval;
-    // The fixed Guidance API has no authority/policy read response. An approval UUID,
-    // cookie publish flag or previous receipt cannot stand in for that missing gate.
-    if (action === "approve" || action === "publish") return false;
+    if (action === "revoke") {
+      const approval = state.draft.approval;
+      if (!approval) return false;
+      if (!contextPort) return true;
+      const value = state.authorityContext;
+      return (
+        authorityCurrent() &&
+        !!value &&
+        approval.policyRevision === value.policy.revision &&
+        (approval.approvedBy === value.actorId ||
+          value.actorId === value.policy.ownerActorId)
+      );
+    }
+    if (action === "approve" || action === "publish") {
+      if (
+        state.busy.length > 0 ||
+        !authorityCurrent() ||
+        !state.evidenceComplete ||
+        !state.acknowledged ||
+        state.draft.needsRebase
+      )
+        return false;
+      const value = state.authorityContext!,
+        draft = value.draft;
+      if (
+        value.client.enrollmentStatus !== "active" ||
+        !value.publication.clientAccess.canWrite ||
+        !value.capabilities.edit ||
+        !value.capabilities.publish ||
+        !permitted("publish") ||
+        !draft.review ||
+        !sameCareValue(draft.review.target, draft.target) ||
+        draft.issues.length !== 0
+      )
+        return false;
+      if (action === "approve")
+        return (
+          value.actorId === value.policy.ownerActorId ||
+          !value.policy.requireKanujApproval
+        );
+      const approval = draft.approval;
+      return (
+        !!approval &&
+        sameCareValue(approval.target, draft.target) &&
+        approval.scope === value.request.scope &&
+        sameCareValue(approval.publisher, value.request.publisher) &&
+        approval.publisher.actorId === value.actorId &&
+        approval.policyRevision === value.policy.revision &&
+        approval.revokedAt === null &&
+        approval.receiptId === null &&
+        (!value.policy.requireKanujApproval ||
+          approval.approvedBy === value.policy.ownerActorId)
+      );
+    }
+    if (
+      contextPort &&
+      (action === "review" || action === "rebase") &&
+      !authorityCurrent()
+    )
+      return false;
     if (!state.evidenceComplete || !state.acknowledged) return false;
     if (action === "rebase") return state.draft.needsRebase;
     return (
@@ -806,8 +1019,21 @@ export function createAdvisorGuidanceController({
       state.draft.issues.every((i) => i.code === "review_required")
     );
   }
+  function needsCurrentAuthority(command: Write) {
+    return (
+      !!contextPort &&
+      [
+        "review_guidance_v1",
+        "rebase_guidance_draft_v1",
+        "approve_guidance_v1",
+        "publish_guidance_v1",
+        "revoke_guidance_approval_v1",
+      ].includes(command.action)
+    );
+  }
   async function executeWrite(family: Family, command: Write, retry = false) {
     if (!current() || !state.selection) return;
+    if (!retry && needsCurrentAuthority(command) && !authorityCurrent()) return;
     const own = retry
       ? pending
       : {
@@ -823,6 +1049,7 @@ export function createAdvisorGuidanceController({
         return;
       own.state = "sending";
     } else if (pending) return;
+    if (!retry && needsCurrentAuthority(command)) dispatchOwner = own;
     pending = own;
     const lease = capture("write");
     emit({
@@ -831,14 +1058,19 @@ export function createAdvisorGuidanceController({
       notice: null,
     });
     try {
-      const result =
+      if (!retry && needsCurrentAuthority(command) && !authorityCurrent(own))
+        throw new TransportError(409);
+      const dispatched =
         family === "guidance"
-          ? await adapters.guidance.execute(own.command as GuidanceCommand, {
+          ? adapters.guidance.execute(own.command as GuidanceCommand, {
               signal: lease.signal,
             })
-          : await adapters.review.execute(own.command as AdvisorReviewCommand, {
+          : adapters.review.execute(own.command as AdvisorReviewCommand, {
               signal: lease.signal,
             });
+      retireAuthority();
+      dispatchOwner = null;
+      const result = await dispatched;
       if (!lease.valid()) return;
       acknowledge(result as GuidanceWriteResult | ReviewWriteResult, own);
     } catch (error) {
@@ -866,6 +1098,7 @@ export function createAdvisorGuidanceController({
         failure(error, true);
       }
     } finally {
+      if (dispatchOwner === own) dispatchOwner = null;
       lease.finish();
     }
   }
@@ -1012,11 +1245,12 @@ export function createAdvisorGuidanceController({
       };
       const result =
         own.family === "guidance"
-          ? await adapters.guidance.execute(status, { signal: lease.signal })
-          : await adapters.review.execute(status, { signal: lease.signal });
-      if (!lease.valid()) return;
+          ? await adapters.guidance.execute(status)
+          : await adapters.review.execute(status);
+      if (!current()) return;
       assert("status" in result);
       if (result.status === "absent") {
+        if (!lease.valid()) return;
         emit({
           notice:
             "no receipt was found. the original request is still unresolved.",
@@ -1031,7 +1265,14 @@ export function createAdvisorGuidanceController({
               result.receipt,
               own.command as AdvisorReviewCommand,
             );
-      acknowledge(receipt as GuidanceWriteResult | ReviewWriteResult, own);
+      if (lease.valid())
+        acknowledge(receipt as GuidanceWriteResult | ReviewWriteResult, own);
+      else {
+        // A committed original status can settle only its exact parked intent.
+        // It cannot replace a newer selected draft, evidence or authority gate.
+        const key = JSON.stringify(own.selection);
+        if (parked.get(key) === own) parked.delete(key);
+      }
     } catch (error) {
       if (lease.valid()) failure(error, true);
     } finally {
@@ -1039,7 +1280,12 @@ export function createAdvisorGuidanceController({
     }
   }
   return {
-    getSnapshot: () => state,
+    getSnapshot: () => {
+      if (state.authorityContext && !authorityCurrent()) retireAuthority();
+      return state;
+    },
+    refreshAuthority,
+    hasAuthorityReader: contextPort !== undefined,
     subscribe(fn: () => void) {
       listeners.add(fn);
       return () => listeners.delete(fn);
@@ -1047,6 +1293,7 @@ export function createAdvisorGuidanceController({
     can,
     async open(selection: AdvisorGuidanceSelection) {
       if (!current()) return;
+      retireAuthority();
       context++;
       manual++;
       cancelAll();
@@ -1115,6 +1362,7 @@ export function createAdvisorGuidanceController({
         )
       )
         return;
+      retireAuthority();
       context++;
       manual++;
       cancelAll();
@@ -1136,6 +1384,7 @@ export function createAdvisorGuidanceController({
     },
     editBody(body: GuidanceBody) {
       if (!permitted("edit") || pending || !state.selection) return;
+      retireAuthority();
       manual++;
       cancelAll();
       emit({
@@ -1234,8 +1483,28 @@ export function createAdvisorGuidanceController({
     },
     async refreshAfterConflict() {
       if (!state.conflict || pending) return;
-      const base = state.conflict.base;
+      const conflict = state.conflict,
+        base = conflict.base;
+      const expected = {
+        context,
+        manual,
+        authority,
+        pending,
+        selection: state.selection,
+        publication: state.publication,
+      };
       await refreshDraft(true);
+      if (
+        !current() ||
+        context !== expected.context ||
+        manual !== expected.manual ||
+        authority !== expected.authority ||
+        pending !== expected.pending ||
+        state.selection !== expected.selection ||
+        state.publication !== expected.publication ||
+        state.conflict !== conflict
+      )
+        return;
       if (state.draftCurrent && state.draft)
         emit({
           conflict: { state: "current_displayed", base, latest: state.draft },
@@ -1260,10 +1529,12 @@ export function createAdvisorGuidanceController({
     dispose() {
       if (disposed) return;
       disposed = true;
+      dispatchOwner = null;
       context++;
       pending = null;
       parked.clear();
       cancelAll();
+      contextPort?.dispose();
       adapters.dispose();
       unsubscribe();
       unend?.();

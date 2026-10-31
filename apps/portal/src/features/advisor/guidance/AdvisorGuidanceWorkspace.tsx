@@ -274,6 +274,55 @@ function DraftReview({
       aria-label="exact guidance review"
     >
       <h2>review & publish</h2>
+      {controller.hasAuthorityReader ? (
+        <section
+          className="advisor-guidance-fields"
+          aria-label="current approval context"
+        >
+          <Button
+            variant="secondary"
+            busy={state.busy.includes("authority")}
+            disabled={
+              !state.draft ||
+              !state.draftCurrent ||
+              state.dirty ||
+              !!state.pending ||
+              !state.publicationCurrent ||
+              state.busy.some((lane) => lane !== "authority")
+            }
+            onClick={() => void controller.refreshAuthority()}
+          >
+            refresh approval context
+          </Button>
+          {state.authorityContext ? (
+            <>
+              <p>
+                {state.authorityContext.policy.requireKanujApproval
+                  ? "owner approval required"
+                  : "eligible advisors may approve their own exact guidance"}{" "}
+                · policy revision {state.authorityContext.policy.revision}
+              </p>
+              <p>
+                {state.authorityContext.actorId ===
+                state.authorityContext.policy.ownerActorId
+                  ? "you are the current policy owner"
+                  : "owner approval policy applies to this advisor"}
+              </p>
+              <p>
+                {state.authorityContext.capabilities.publish
+                  ? "publisher: your authenticated advisor account"
+                  : "publishing is unavailable with your current access"}
+              </p>
+            </>
+          ) : (
+            <p>
+              refresh the current policy and permissions before approving or
+              publishing.
+            </p>
+          )}
+        </section>
+      ) : null}
+
       {draft ? (
         <>
           <p>

@@ -305,6 +305,27 @@ export function createAdvisorGuidanceContext(
         );
         // Multi-channel reads are not a transaction. Detect changes observed during
         // the composition, then leave the final live write fence to the backend.
+        const finalDraft = await raw.guidance.execute(
+          {
+            schemaVersion: 1,
+            action: "read_guidance_draft_v1",
+            draftId: request.target.draftId,
+          },
+          options,
+        );
+        check();
+        requireContext(sameCareValue(draft, finalDraft));
+        const finalView = await raw.review.execute(
+          {
+            schemaVersion: 1,
+            action: "read_advisor_publication_v3",
+            clientId: request.selection.clientId,
+            version: request.selection.publicationVersion,
+          },
+          options,
+        );
+        check();
+        requireContext(sameCareValue(publication, finalView));
         const finalPolicy = await policy();
         check();
         const finalDirectory = await directory();
