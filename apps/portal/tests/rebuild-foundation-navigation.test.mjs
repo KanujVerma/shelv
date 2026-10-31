@@ -76,3 +76,20 @@ test('history subscriptions survive React strict effect cleanup and re-subscript
   nav.navigate({name:'product',productId:'card:cerave',routine:'evening'});nav.back();
   assert.equal(updates,2);assert.equal(nav.getSnapshot(),'/plan?routine=evening');second();nav.dispose();
 });
+
+test('Back destination is a read-only prediction of the validated recommendation or product predecessor',()=>{
+  const b=fakeBrowser(),nav=createPortalNavigator(b.win,{scopeKey:'back-prediction'});
+  const recommendation={name:'recommendation',decisionId:'card:one',routine:'evening'};
+  nav.navigate(recommendation);nav.navigate({name:'product-evidence',productId:'product:one',routine:'evening'});
+  const before=JSON.stringify(b.entries);assert.deepEqual(nav.backDestination(),recommendation);
+  assert.equal(JSON.stringify(b.entries),before);assert.equal(b.backCalls,0);
+  nav.back();assert.deepEqual(parseRoute(nav.getSnapshot()),recommendation);nav.dispose();
+});
+test('direct and foreign-scope Back destinations use the same scoped parent without initializing history',()=>{
+  for(const state of [null,{shelvNavigation:{version:1,scopeKey:'foreign',entryId:'foreign:1',predecessor:{entryId:'foreign:0',path:'/orders'},restore:{scrollY:0,focusKey:null}}}]){
+    const b=fakeBrowser();b.win.location.pathname='/plan/products/product%3Aone/evidence';b.entries[0].state=state;
+    const nav=createPortalNavigator(b.win,{scopeKey:'current'}),expected={name:'product',productId:'product:one',routine:'evening'},before=JSON.stringify(b.entries);
+    assert.deepEqual(nav.backDestination(),expected);assert.equal(JSON.stringify(b.entries),before);assert.equal(b.backCalls,0);
+    nav.back();assert.deepEqual(parseRoute(nav.getSnapshot()),expected);assert.equal(b.backCalls,0);nav.dispose();
+  }
+});

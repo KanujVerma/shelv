@@ -73,14 +73,21 @@ export function createPortalNavigator(win: Window, {scopeKey}: {scopeKey: string
     current=makeMarker(replace ? saved.predecessor : {entryId:saved.entryId,path:currentPath()});
     win.history[replace?'replaceState':'pushState']({shelvNavigation:current},'',path);restore(current);
   }
+  function backTarget(): {route:PortalRoute;predecessor:boolean} {
+    const saved=marker(win.history.state,scopeKey);
+    if(saved?.predecessor) return {route:parseRoute(saved.predecessor.path)!,predecessor:true};
+    const route=parseRoute(currentPath());
+    return {route:route?parentRoute(route):{name:'plan',routine:'morning'},predecessor:false};
+  }
   return {
     navigate,
+    /** Predict Back without starting navigation, mutating history or restoring focus. */
+    backDestination:()=>backTarget().route,
     back() {
       start();
-      const saved=marker(win.history.state,scopeKey);
-      if (saved?.predecessor) {capture();win.history.back();return;}
-      const current=parseRoute(currentPath());
-      navigate(current ? parentRoute(current) : {name:'plan',routine:'morning'},{replace:true});
+      const destination=backTarget();
+      if (destination.predecessor) {capture();win.history.back();return;}
+      navigate(destination.route,{replace:true});
     },
     getSnapshot:()=>snapshot,
     subscribe(listener: ()=>void) {start();listeners.add(listener);return()=>{listeners.delete(listener);if(!listeners.size)stop();};},
