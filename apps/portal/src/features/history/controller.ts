@@ -123,8 +123,12 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
                 await loadAmendmentView(state.intent.original, c);
         }
         catch (error) {
-            if (applies(c) && readOwner === token)
-                set({ phase: (error as {status?:number})?.status===403?'denied':'error', readError: true, error: 'could not load your record. retry to fetch the current record.' });
+            if (applies(c) && readOwner === token) {
+                if ((error as {status?:number})?.status === 403)
+                    denyReadableHistory();
+                else
+                    set({ phase: 'error', readError: true, error: 'could not load your record. retry to fetch the current record.' });
+            }
         }
         finally {
             if (applies(c) && readOwner === token)
@@ -262,7 +266,12 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
             use.push(...intent.original.body.actualUseEventIds);
         return { goals, use };
     }
-    function confirm(raw: unknown, command: ReportCommand) { const receipt = mapReviewResult(raw, command) as ReportWriteReceipt | ReportNoopReceipt; set({ pending: null, receipt, mutation: 'outcome' in receipt ? 'no_observation' : 'confirmed', needsReview: false, error: null }); }
+    function confirm(raw: unknown, command: ReportCommand) {
+        const receipt = mapReviewResult(raw, command) as ReportWriteReceipt | ReportNoopReceipt;
+        // An immutable receipt resolves this command, never a newer requirement
+        // to review current access or data. Only deliberate review releases it.
+        set({ pending: null, receipt, mutation: 'outcome' in receipt ? 'no_observation' : 'confirmed', error: null });
+    }
     async function send(command: ReportCommand) {
         const c = capture(), token = Symbol('report write');
         writeOwner = token;
