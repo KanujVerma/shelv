@@ -252,3 +252,26 @@ The harness's initial seeded report/use counters were made consistent before fin
 Root dependencies remain absent. This phase does **not** rerun/install Root application dependencies or claim new Root npm/type/test-type/Expo success; earlier concrete blockers remain above. Full portal980/session171, genuine API/canonical reset/pgTAP/RLS/Storage, provider/Vault/PKCE/backend/outbox/email, actual App routes/history restoration, hosted/CI, human/legal/clinical/license/business/release checks remain unrun by W4. No R7/R6/R4/R5/Docker/PG/provider/Auth service/credential/fixture/source-grant access or polling, no new protocol/SQL adoption, no push/PR/merge/deploy/live client/message/money/order action.
 
 Next coordinator action: integrate only the returned owned W4 commits, keep the exact shell import attributed separately (the coordinator already owns its source), and commission a **fresh independent review** carrying source report, original recovery/attribution objections and these browser RED/GREEN/limits. Root/App/genuine integration and full-goal acceptance remain open.
+
+### Frozen browser implementation and final receipt
+
+Owned browser implementation/tests/report checkpoint: **`b495af36f89f4fdd8a49b86d5da907fb5c2fbb27`**. Parent is only the separately attributed exact shell import **8ceaf194**, not a parent integration/backend/advisor stack. Own production delta remains those three history files; four new browser files, the owned helper extension and this report make nine owned paths. Exact final report-only suffix is returned in the handoff.
+
+After committing that checkpoint, a **source-only** esbuild rebuild of the actual browser entry has **sourceHead=b495af36 / sourceDirty:false**. All **2,222 actual bundled input hashes** and **48 served output hashes** match the final48 browser run exactly, including the JS, CSS and local font bytes. The clean module candidate is under `E2/clean-candidate/`; `provenance.json` binds correspondence rather than pretending a new browser/genuine run. Later report-only text does not alter the tested runtime/test bytes. No browser, preview or process inventory was used after release.
+
+Final preservation audit verifies all **85 pre-existing portal test files** unchanged from0266, four Root target blobs exact96db, six transport blobs exact88d4e588, one shell blob exactef7b33, all57 canonical migration bytes and five original approved inputs unchanged. Final48 groups produce **49 unique per-case UI/wire JSON and PNG receipts**, because one group separately exercises goal and legacy correction. All final per-case unknown-console/page-error/unexpected-network arrays are empty; expected negative HTTP diagnostics are separately retained. An optional later local PNG pixel-extraction probe lacked Pillow and was not used as passing evidence; actual screenshot inspection and browser computed-style/geometry receipts above remain the evidence.
+
+Final **236-file** ignored evidence manifest SHA-256: **`14d4390ab4d1756ee9ba9da3c3a747dfb36df420f6cafb57b297ef5d33e245eb`**. It includes sibling TAP paths explicitly, excludes itself and this report, and preserves raw partials plus the final receipts. Selected hashes:
+
+| Actual artifact | SHA-256 |
+| --- | --- |
+| `E2/release-inventory.json` | `6705e3c05ec5953700f955e5eede7c55eb50c2dd32181faefb0cf473ff56ffca` |
+| `E2/preview-release.json` | `c6d49d4ea3327a3423b8330954fe5962d8a9ad610bb3d4ddf319fda856cc995f` |
+| `E2/source95-after-browser.log` | `804478315233859e5868f7ee7f0daecd0242a085c8dc1900e5b215f93403be07` |
+| `E2/clean-candidate/provenance.json` | `634fa117f5d98757fd2a0107b94b9dec3ee67f2147e81c5e9ba5c18f5ca2d4ca` |
+| `E2/final-receipts/bundle-inputs.json` | `e0163d35ea4eda9bfadadc830ce326a3d1fb27d81496550af7b790d4d6af90d1` |
+| Sibling `w4-history-browser-red.log` | `d87504520abb47fcc11ec6991387f7f5a7598f08cb16a37f420da4ae021d755a` |
+| Sibling `w4-history-browser-native-cascade-red.log` | `8d61c1cbeacac3bb65bce9b7eb999999b7d4629eff58c0f7899c88311e0b5384` |
+| Sibling `w4-history-browser-final-receipts.log` | `d5d0e012b5b8180ed2ac86ed6f21f14dd9c00c673c6f5575d9728adde3a6c989` |
+
+The branch/worktree and all earlier source/import commits are preserved. No source work remains dirty at handoff; independent review and the separately owned App/backend/genuine/release gates remain open. No self-certified independent or full-goal verdict follows the author results.
