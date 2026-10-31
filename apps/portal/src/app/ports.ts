@@ -36,6 +36,7 @@ import type {
 } from "../transport/session.ts";
 import { advisorCookieRequest, clientCookieRequest } from "./retained.ts";
 import type { ApplicationSession } from "./session.ts";
+import { createClientCarePort, createAdvisorCarePort } from "./care-ports.ts";
 const advisorActions = new Set<PlanCommand["action"]>([
   "list_plans_v1",
   "read_draft_v1",
@@ -125,10 +126,12 @@ function plan(
 }
 export function createClientPorts(
   runtime: ApplicationSession,
+  options: { care?: boolean } = {},
 ): ClientPlanPorts {
   audience(runtime, "client");
   const current = capturedSession(runtime);
   return {
+    ...(options.care ? { care: createClientCarePort(runtime) } : {}),
     read: {
       async execute(input, options) {
         current();
@@ -153,7 +156,7 @@ export function createClientPorts(
 }
 /** Human-cookie composition only. Task agents use the authenticated backend API
  * and actual grants; no browser global advisor cookie is an agent capability. */
-export function createAdvisorPorts(runtime: ApplicationSession) {
+export function createAdvisorPorts(runtime: ApplicationSession, options: { care?: boolean } = {}) {
   audience(runtime, "advisor");
   const current = capturedSession(runtime);
   const actorId = runtime.cookie.identity!.ownerId;
@@ -371,5 +374,5 @@ export function createAdvisorPorts(runtime: ApplicationSession) {
       return result;
     },
   };
-  return { ports, permissions, publication, dispose: stop };
+  return { ports, permissions, publication, care: options.care ? createAdvisorCarePort(runtime) : undefined, dispose: stop };
 }

@@ -1822,15 +1822,21 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-90e57503",
       "branch": "t3/care-correction-actor-attribution",
       "baseCommit": "7209091e",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "apps/portal/src/features/plan/UseFacts.tsx",
         "apps/portal/tests/rebuild-use-attribution.test.mjs",
         "docs/portal-rebuild/research/W3_CARE_ATTRIBUTION_FIX.md"
       ],
       "reportPath": "docs/portal-rebuild/research/W3_CARE_ATTRIBUTION_FIX.md",
-      "resources": "Sole synthetic Chrome; NO native/Auth/DB",
-      "verification": "Exact requested/returned settings and fresh live thread/workspace, supported model descriptors; both child live tools required"
+      "resources": "Chrome released07:59:43.228409UTC; all handles closed, no native",
+      "verification": "Exact requested/returned settings and fresh live thread/workspace, supported model descriptors; both child live tools required",
+      "headCommit": "933d4973ba69f8f4a26d1f6bf1d85f58529a5334",
+      "integratedCommits": [
+        "c75d8693",
+        "0755c554"
+      ],
+      "verdict": "Author CU3 corrected,173affected/47foundation/171session/18Root pass; independent round3 active"
     },
     {
       "role": "W7 independent M57 history filter review",
@@ -1851,13 +1857,72 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d23ee91d",
       "branch": "t3/care-history-filter-review",
       "baseCommit": "5ed04da7",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_CARE_HISTORY_FILTER_REVIEW.md"
       ],
       "reportPath": "docs/portal-rebuild/research/W7_CARE_HISTORY_FILTER_REVIEW.md",
-      "resources": "Own Unix-only PG; no R6/Chrome",
-      "verification": "Exact requested/returned settings and fresh live thread/workspace, supported model descriptors; both child live tools required"
+      "resources": "Own PG STOPPED; no native/Chrome",
+      "verification": "Exact requested/returned settings and fresh live thread/workspace, supported model descriptors; both child live tools required",
+      "headCommit": "43027190f41b75adb8b6d27fc8935dccf67afcbc",
+      "integratedCommits": [
+        "08575a96"
+      ],
+      "verdict": "Scoped specification/correctness PASS CN1 addressed;9new/26retained/11legacy/37focused/54truth-table/adjacent controls, genuine R7 remains separate"
+    },
+    {
+      "role": "W7 care client round3",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-client-review-20261031-r3",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-client-review-20261031-r3",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-ed98972d",
+      "branch": "t3/w7-care-client-round3-review",
+      "baseCommit": "0755c554",
+      "status": "running",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_CLIENT_R3.md"
+      ],
+      "resources": "Sole synthetic Chrome; no native/Auth/DB",
+      "verification": "Exact delegate_task settings and live thread/workspace readback; both child tools and eight pins required"
+    },
+    {
+      "role": "W1 report and guidance strict contracts",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7a7cac7e",
+      "branch": "t3/portal-review-contract-seam",
+      "baseCommit": "08575a96",
+      "status": "running",
+      "writeSet": [
+        "src/contracts/PortalReview*.ts",
+        "tests/portal-review-contract.test.ts",
+        "docs/portal-rebuild/research/W1_REPORT_GUIDANCE_CONTRACTS.md"
+      ],
+      "resources": "Source-only seam; no SQL/migration/resource/browser until phase2 pin",
+      "verification": "Exact delegate_task settings and live thread/workspace readback; both child tools and eight pins required"
     }
   ]
 }

@@ -238,12 +238,15 @@
   },
   "forwardFilterFix": {
     "migration": "20261031073004_portal_rebuild_care_history_filter_v1.sql",
-    "status": "IMPLEMENTED_INDEPENDENT_REVIEW_PENDING",
+    "status": "INDEPENDENT_SCOPED_PASS_CN1_ADDRESSED",
     "earlier56Immutable": true,
     "futureFixture": "canonical-plan-v1-r7 reset57 PASS; pgTAP/native/genuine pending",
     "authorHead": "e121a8774625746432773697bf1a75c0c6b22b13",
     "integrationHead": "5ed04da7714c28d983a413d33269a086165b5c35",
-    "sha256": "26c9c403729343b1f3463002f26946fbdea81e73df2e13d7882bcf6cb2571caf"
+    "sha256": "26c9c403729343b1f3463002f26946fbdea81e73df2e13d7882bcf6cb2571caf",
+    "independentReview": "research/W7_CARE_HISTORY_FILTER_REVIEW.md",
+    "reviewHead": "43027190f41b75adb8b6d27fc8935dccf67afcbc",
+    "reviewIntegration": "08575a96"
   },
   "r7": {
     "directory": ".local-artifacts/portal-rebuild/canonical-plan-v1-r7",
@@ -253,9 +256,28 @@
     "snapshotSha256": "9416c3d5d1694478f673798445e502adf212e71f48bbf07982974b166c94183c",
     "ledgerSha256": "dd2224ee001be07a1f12898149498081cdd7430866500fd71bcb501806255b82",
     "reset": "PASS",
-    "pgtap": "RUNNING",
+    "pgtap": {
+      "status": "PASS",
+      "files": 35,
+      "assertions": 796,
+      "log": "canonical-plan-v1-r7/pgtap-care-r7.private.log"
+    },
     "nativeHelpers": "NOT_CREATED",
     "genuine": "NOT_RUN",
-    "applicationCareActivation": false
+    "applicationCareActivation": false,
+    "security": {
+      "method": "Official v2.121.0 advisor SQL, positively owned Docker psql, transaction rolled back",
+      "securityWarnErrorCount": 0,
+      "allLintCount": 229
+    },
+    "ownerSetup": {
+      "ownerActorId": "54d53f93-207a-4be0-9c59-2cf25850e2a0",
+      "actualAuth": true,
+      "actualPostgrestPolicy": true,
+      "sessionsIssued": 1,
+      "sessionsClosed": 1,
+      "remainingSessions": 0,
+      "remainingRefreshTokens": 0
+    }
   }
 }
