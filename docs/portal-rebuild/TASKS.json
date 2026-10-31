@@ -2183,13 +2183,18 @@
         "545cfd9",
         "8467c964"
       ],
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_CARE_BROWSER_SOURCE_REVIEW.md"
       ],
-      "resources": "SOURCE/pure/compileONLY; NO MF/Chrome/DB/Auth/R7/privatefixture/resources",
+      "resources": "No source substitutions left; report-onlycommit, no live resources acquired",
       "finding": "CS1/P2 exact output/source correspondence gap: mutated ignoredHTML/extraoutput accepted intoASSETSproof. Ownrestoredsourceprobe; NOactualauthorHTMLalteration/leak asserted.",
-      "verification": "ExactT3returnedSol/xhigh/default; freshparentbothmodeltools/descriptors+eightpins; actualworktree readback; childbothlivechecks required"
+      "verification": "ExactT3returnedSol/xhigh/default; freshparentbothmodeltools/descriptors+eightpins; actualworktree readback; childbothlivechecks required",
+      "headCommit": "ed12cf955f1cbd454f96ebb1c8a8a4bcffedc15f",
+      "integratedCommits": [
+        "691b2f8c"
+      ],
+      "verdict": "SOURCEspec/quality CHANGES_REQUIRED CS1/P2; noadditionalmaterialfinding. Pure23/sourceSSR82/compile/types pass; noactualnative/browser/resourceverdict."
     }
   ]
 }
