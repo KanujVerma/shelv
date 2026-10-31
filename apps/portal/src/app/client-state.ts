@@ -29,7 +29,8 @@ export function createClientPlanController(
     },
     sequence = 0,
     disposed = false,
-    confirmedV3 = options.readVersion===3;
+    confirmedV3 = options.readVersion===3,
+    readable = true;
   const live = () => !disposed && !state.ended && session.isCurrent();
   function emit(patch: Partial<ClientPlanState>) {
     state = { ...state, ...patch };
@@ -47,26 +48,28 @@ export function createClientPlanController(
   };
   const careCommand={schemaVersion:1 as const,action:"read_client_plan_v2" as const,version:null};
   const reviewCommand={schemaVersion:1 as const,action:"read_client_plan_v3" as const,version:null};
+  function accept(view: ClientPlanReadView) {
+      if (!live() || !readable) return;
+      if(confirmedV3&&view.schemaVersion!==3)throw new Error('invalid_view');
+      const decoded = (view.schemaVersion===3?mapReviewResult(view,reviewCommand):view.schemaVersion===2?mapCareResult(view,careCommand):mapPlanResult(view,command)) as ClientPlanReadView;
+      if(!sameCareValue(decoded,view))throw new Error("invalid_view");
+      if(view.schemaVersion===3)confirmedV3=true;
+      sequence++;
+      emit({view,error:null,loading:false});
+  }
   return {
     getSnapshot: () => state,
     subscribe(fn: () => void) {
       listeners.add(fn);
       return () => listeners.delete(fn);
     },
-    accept(view: ClientPlanReadView) {
-      if (!live()) return;
-      if(confirmedV3&&view.schemaVersion!==3)throw new Error('invalid_view');
-      const decoded = (view.schemaVersion===3?mapReviewResult(view,reviewCommand):view.schemaVersion===2?mapCareResult(view,careCommand):mapPlanResult(view,command)) as ClientPlanReadView;
-      // Validation must not replace a fetched object that a deliberate-review
-      // fence is bound to. Noncanonical input is rejected, never normalized here.
-      if(!sameCareValue(decoded,view))throw new Error("invalid_view");
-      if(view.schemaVersion===3)confirmedV3=true;
-      sequence++;
-      emit({
-        view,
-        error: null,
-        loading: false,
-      });
+    // Validation retains the exact supplied canonical object (F4/F5).
+    accept,
+    acceptFrom(source: ClientPlanReadView) {
+      const owner = sequence;
+      return (view: ClientPlanReadView) => {
+        if (owner === sequence && state.view === source) accept(view);
+      };
     },
     async refresh() {
       if (!live()) return;
@@ -78,19 +81,25 @@ export function createClientPlanController(
         let view:ClientPlanReadView;
         if(confirmedV3 || state.view?.schemaVersion===3){
           if(!ports.review)throw new TransportError(503);
-          view=mapReviewResult(await ports.review.execute(reviewCommand,{signal:controller.signal}),reviewCommand) as ClientPlanReadView;
+          const supplied=await ports.review.execute(reviewCommand,{signal:controller.signal});
+          const decoded=mapReviewResult(supplied,reviewCommand) as ClientPlanReadView;
+          if(!sameCareValue(decoded,supplied))throw new Error('invalid_view');
+          view=supplied as ClientPlanReadView;
         }else if(options.readVersion===2 || state.view?.schemaVersion===2){
           if(!ports.care)throw new TransportError(503);
           view=mapCareResult(await ports.care.execute(careCommand,{signal:controller.signal}),careCommand) as ClientPlanReadView;
         }else view=await ports.read.execute(command,{signal:controller.signal});
         if (live() && start === sequence && !controller.signal.aborted){
           if(view.schemaVersion===3)confirmedV3=true;
+          readable=true;
           emit({ view, loading: false });
         }
       } catch (error) {
         if (live() && start === sequence && !controller.signal.aborted) {
           const status = (error as { status?: number }).status;
+          if(status===403)readable=false;
           emit({
+            ...(status===403?{view:null}:{}),
             loading: false,
             error:
               status && [401, 403, 404, 409, 429, 503].includes(status)

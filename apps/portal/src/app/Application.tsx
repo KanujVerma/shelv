@@ -446,7 +446,7 @@ export function ClientContent({
     );
   else if (!state.view)
     content = <StatusNotice tone="loading" title="loading your plan" />;
-  else if (careRoute && state.view.schemaVersion !== 2)
+  else if (careRoute && state.view.schemaVersion !== 2 && state.view.schemaVersion !== 3)
     content = <UnavailableModule title="record actual use" />;
   else
     content = (
@@ -461,7 +461,7 @@ export function ClientContent({
           mode="client"
           view={state.view}
           ports={ports}
-          onViewChange={controller.accept}
+          onViewChange={controller.acceptFrom(state.view)}
         />
       </>
     );
