@@ -1,6 +1,11 @@
 import type { ClientPlanView, PlanDecision, RoutineStep } from '../../../../../src/contracts/PortalRebuild.ts';
 import type { RoutinePeriod } from '../../navigation/routes.ts';
 export const decisionNames: Record<PlanDecision['kind'], string> = { keep: 'keep', pause: 'pause', leave_out: 'leave out', replace: 'replace', finish_then_replace: 'finish, then replace', addition: 'consider', optional_alternative: 'optional alternative', no_addition: 'no addition' };
+export const isPurchaseDecision = (d: PlanDecision) => !!d.primaryProductId && ['addition', 'replace', 'finish_then_replace', 'optional_alternative'].includes(d.kind);
+export const isRestriction = (d: PlanDecision) => d.kind === 'pause' || d.kind === 'leave_out';
+/** Directions on an alternative decision describe its primary option, not every
+ * product mentioned in the comparison. General guides retain their own scope. */
+export const hasProductDirections = (d: PlanDecision, id: string) => d.primaryProductId === id || !d.primaryProductId && d.currentProductIds.includes(id);
 /** Defensive rendering only. Canonical validation still belongs to W1. */
 export function safePublicUrl(value: string | null, asset = false): string | null {
     if (!value || /[\u0000-\u0020\\]/.test(value))
@@ -25,8 +30,13 @@ export function productContext(view: ClientPlanView, productId: string) {
     if (!c || !product)
         return null;
     const decisions = c.decisions.filter(d => d.primaryProductId === productId || d.currentProductIds.includes(productId) || d.alternativeProductIds.includes(productId));
-    const guides = [...product.guides, ...c.routineGuides, ...decisions.flatMap(d => d.guidance.how ? [d.guidance.how] : [])].filter(g => g.productId === productId);
-    return { product, decisions, guides: [...new Map(guides.map(g => [g.id, g])).values()], steps: c.routine.filter(s => s.productId === productId), started: view.actualUse.some(a => a.productId === productId), current: [...routineFor(view, 'morning'), ...routineFor(view, 'evening')].some(s => s.productId === productId) };
+    const restrictions = decisions.filter(isRestriction);
+    const guidance = (restrictions.length ? restrictions : decisions).filter(d => hasProductDirections(d, productId));
+    const guides = (restrictions.length ? restrictions.flatMap(d => d.guidance.how ? [d.guidance.how] : []) : [...product.guides, ...c.routineGuides, ...decisions.flatMap(d => d.guidance.how ? [d.guidance.how] : [])]).filter(g => g.productId === productId);
+    const steps = [...new Map([...routineFor(view, 'morning'), ...routineFor(view, 'evening')].filter(s => s.productId === productId).map(s => [s.id, s])).values()];
+    const proposed = !steps.length && !restrictions.length && decisions.some(d => d.primaryProductId === productId && isPurchaseDecision(d));
+    return { product, decisions, restrictions, guidance, proposed, guides: [...new Map(guides.map(g => [g.id, g])).values()], steps, start: view.actualUse.find(a => a.productId === productId) ?? null, current: steps.length > 0,
+        evidenceVariant: proposed ? 'introduction' as const : 'product' as const };
 }
 /** Publication contains advice. Only explicit reported Start changes its basis. */
 export function routineFor(view: ClientPlanView, period: RoutinePeriod): RoutineStep[] {

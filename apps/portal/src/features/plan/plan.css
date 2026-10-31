@@ -64,3 +64,10 @@
 
 .plan-view .plan-choice-panel {padding:var(--space-24);}
 .plan-choice-panel>.plan-stack {gap:var(--space-16);}
+.plan-product-evidence .shelv-page-header h1 {font-family:var(--font-body);font-size:28px;line-height:34px;font-weight:600;color:var(--color-ink);}
+.plan-product-evidence .plan-columns {grid-template-columns:minmax(0,736fr) minmax(0,376fr);}
+.plan-product-evidence .plan-evidence-context {background:var(--color-successBg);}
+.plan-product-evidence .plan-evidence-context h2 {color:var(--color-brand);}
+.plan-introduction-evidence .shelv-page-description {margin-top:var(--space-24);}
+.plan-optional-row .plan-row-number {flex-basis:48px;}
+@media(max-width:1100px){.plan-product-evidence .plan-columns {grid-template-columns:minmax(0,1fr);}}

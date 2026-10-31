@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import type { Guide, Source, Comparison, Fact } from '../../../../../src/contracts/ConciergePresentation.ts';
-import type { PlanProduct, Schedule } from '../../../../../src/contracts/PortalRebuild.ts';
+import type { PlanDecision, PlanProduct, Schedule } from '../../../../../src/contracts/PortalRebuild.ts';
 import { Button, Icon } from '../../ui/index.ts';
-import { safePublicUrl } from './model.ts';
+import { safePublicUrl, productContext } from './model.ts';
 export function ProductPhoto({ product, size = 'routine' }: {
     product: PlanProduct;
     size?: 'routine' | 'summary' | 'identity';
@@ -37,5 +37,28 @@ export function ScheduleContent({ schedule }: {
     if (!schedule)
         return null;
     const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-    return <>{schedule.condition ? <p className="plan-condition">{schedule.condition}</p> : null}{schedule.asNeeded ? <p className="plan-condition">optional / as needed</p> : null}{schedule.days.kind === 'selected' ? <p>{schedule.days.weekdays.map(d => days[d - 1]).join(', ')}</p> : null}{schedule.stages.length ? <section className="plan-stack"><h3>gradual introduction</h3>{schedule.stages.map(s => <div key={s.id}><p>{s.directions}</p>{s.minimumDaysFromActualStart !== null ? <p className="plan-muted">earliest {s.minimumDaysFromActualStart} days after your actual start</p> : null}<p>{s.proceedOnlyWhen}</p></div>)}<p className="plan-muted">advance only when the stated conditions are met.</p></section> : null}</>;
+    return <>{schedule.periods.length ? <p className="plan-meta">{schedule.periods.join(' / ')}</p> : null}{schedule.condition ? <p className="plan-condition">{schedule.condition}</p> : null}{schedule.asNeeded ? <p className="plan-condition">optional / as needed</p> : null}{schedule.days.kind === 'selected' ? <p>{schedule.days.weekdays.map(d => days[d - 1]).join(', ')}</p> : null}{schedule.stages.length ? <section className="plan-stack"><h3>gradual introduction</h3>{schedule.stages.map(s => <div key={s.id}><p>{s.directions}</p>{s.minimumDaysFromActualStart !== null ? <p className="plan-muted">earliest {s.minimumDaysFromActualStart} days after your actual start</p> : null}<p>{s.proceedOnlyWhen}</p></div>)}<p className="plan-muted">advance only when the stated conditions are met.</p></section> : null}</>;
+}
+
+export function DecisionReasons({decision:d}: {decision:PlanDecision}) {
+    const bodies=d.guidance.reasons.map(r=>r.body);
+    return <>{d.reason && d.reason!==bodies.join('\n') ? <p>{d.reason}</p> : null}{d.guidance.reasons.map((r,i)=><section className="plan-stack" key={i}>{r.title && r.title!==d.guidance.rationaleTitle ? <h3>{r.title}</h3> : null}<p>{r.body}</p></section>)}</>;
+}
+export function DecisionComparisons({decision:d,products}: {decision:PlanDecision;products:PlanProduct[]}) {
+    const name=(id:string)=>products.find(p=>p.id===id)?.name || 'product name not recorded';
+    return <Comparisons items={d.guidance.comparisons} currentName={d.currentProductIds.map(name).join(', ') || 'current approach'} proposedName={d.primaryProductId ? name(d.primaryProductId) : 'proposed approach'}/>;
+}
+export function DecisionDirections({decision:d}: {decision:PlanDecision}) {
+    return <section className="plan-stack">{d.directions.map((t,i)=><p key={i}>{t}</p>)}{d.cautions.map((t,i)=><p className="plan-inline-caution" key={i}>{t}</p>)}<ScheduleContent schedule={d.schedule}/></section>;
+}
+export function ProductAdviceStatus({selected:s}: {selected:NonNullable<ReturnType<typeof productContext>>}) {
+    return <section className="plan-stack" data-product-advice>{s.restrictions.map(d=><div key={d.id}><h2>{d.kind==='pause' ? 'paused in your plan' : 'left out of your plan'}</h2><p>{d.reason}</p>{d.cautions.map((t,i)=><p key={i}>{t}</p>)}</div>)}<p className="plan-meta">{s.start ? `previously reported start: ${s.start.startedOn}. this record does not confirm current use.` : 'start not recorded. current use is not confirmed.'}</p></section>;
+}
+export function ProductDirections({selected:s}: {selected:NonNullable<ReturnType<typeof productContext>>}) {
+    const hasDirections=s.steps.some(step=>step.directions.length>0) || s.guidance.some(d=>d.directions.length>0) || s.guides.length>0;
+    return <section className="plan-stack"><h2>{s.restrictions.length ? 'current plan guidance' : s.proposed ? 'proposed directions' : 'how to use it'}</h2>
+      {s.steps.map(step=><section className="plan-stack" key={step.id}>{step.directions.map((t,i)=><p key={i}>{t}</p>)}{step.cautions.map((t,i)=><p className="plan-inline-caution" key={i}>{t}</p>)}<ScheduleContent schedule={step.schedule}/></section>)}
+      {s.guidance.map(d=><DecisionDirections key={d.id} decision={d}/>)}{s.guides.map(g=><GuideContent key={g.id} guide={g}/>)}
+      {!hasDirections && !s.restrictions.length ? <p>directions are not recorded.</p> : null}
+    </section>;
 }

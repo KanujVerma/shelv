@@ -1,114 +1,136 @@
 import { useEffect, useRef, useState } from 'react';
 import type { PlanDecision } from '../../../../../src/contracts/PortalRebuild.ts';
 import { Button, StatusNotice } from '../../ui/index.ts';
+import { isPurchaseDecision } from './model.ts';
 import type { ClientPlanProps, DecisionCommand } from './types.ts';
+
 type Phase = 'idle' | 'saving' | 'refreshing' | 'uncertain' | 'conflict' | 'denied' | 'error' | 'saved';
 interface Intent {
     command: DecisionCommand | null;
+    attemptedChoice: DecisionCommand['choice'] | null;
+    basisVersion: number;
+    decisionTitle: string;
     phase: Phase;
 }
-const fresh = (): Intent => ({ command: null, phase: 'idle' });
-function requestId() { const b = crypto.getRandomValues(new Uint8Array(16)); b[6] = (b[6]! & 15) | 64; b[8] = (b[8]! & 63) | 128; const h = [...b].map(x => x.toString(16).padStart(2, '0')).join(''); return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20)}`; }
-export function DecisionControls({ decision, view, mode, session, ports, demoPorts, onViewChange, onSelfPurchase }: ClientPlanProps & {
-    decision: PlanDecision;
+type Ledger = Record<string, Intent>;
+const memoryKey = (props: Pick<ClientPlanProps,'session'|'mode'>) => `plan-intents:${props.session.key}:${props.mode}`;
+const readIntents = (props: Pick<ClientPlanProps,'session'|'mode'>) => props.session.memory.get<Ledger>(memoryKey(props)) ?? {};
+function remember(props: Pick<ClientPlanProps,'session'|'mode'>, id: string, next: Intent) {
+    props.session.memory.set(memoryKey(props), {...readIntents(props), [id]:next});
+}
+function requestId() {
+    const b=crypto.getRandomValues(new Uint8Array(16));
+    b[6]=(b[6]! & 15) | 64; b[8]=(b[8]! & 63) | 128;
+    const h=[...b].map(x=>x.toString(16).padStart(2,'0')).join('');
+    return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;
+}
+
+/** A rejected intent survives publication replacement and navigation, including
+ * removal of the decision. It never becomes a command for the new publication. */
+export function PendingDecisionReviews({props,selectedDecisionId,onReview,inPlan}: {
+    props:ClientPlanProps;selectedDecisionId:string|null;onReview:()=>void;inPlan:boolean;
 }) {
-    const memoryKey = `plan:${session.key}:${view.plan!.version}:${decision.id}`;
-    const [intent, setIntent] = useState<Intent>(() => { const saved = session.memory.get<Intent>(memoryKey); return saved ? { ...saved, phase: saved.phase === 'saving' || saved.phase === 'refreshing' ? 'uncertain' : saved.phase } : fresh(); });
-    const alive = useRef(true), busy = useRef(false), latest = useRef({ mode, view });
-    latest.current = { mode, view };
-    useEffect(() => { alive.current = true; return () => { alive.current = false; }; }, []);
-    const port = !onViewChange ? undefined : mode === 'client' && view.access === 'active' ? ports : mode === 'public-demo' && demoPorts?.mode === 'public-demo' && view.access === 'active' ? demoPorts : undefined;
-    const current = () => alive.current && session.isCurrent() && latest.current.mode === mode;
-    const update = (next: Intent) => { if (!current())
-        return; session.memory.set(memoryKey, next); setIntent(next); };
-    const refresh = async (command: DecisionCommand | null) => {
-        if (!port)
-            return;
-        const authoritative = await port.read.execute({ schemaVersion: 1, action: 'read_client_plan_v1', version: null });
-        if (!current())
-            return null;
-        onViewChange?.(authoritative);
-        if (command && authoritative.plan?.version === command.publicationVersion && authoritative.decisions.some(d => d.decisionId === command.decisionId && d.choice === command.choice && d.reason === command.reason))
-            return authoritative;
-        return null;
-    };
-    async function submit(choice: DecisionCommand['choice'], retry = false) {
-        if (!port || busy.current || !current() || (!retry && intent.command))
-            return;
-        busy.current = true;
-        const command = retry ? intent.command : { schemaVersion: 1 as const, action: 'record_decision_v1' as const, requestId: requestId(), publicationVersion: view.plan!.version, expectedDecisionRevision: view.decisionRevision, decisionId: decision.id, choice, reason: null };
-        if (!command) {
-            busy.current = false;
-            return;
+    const [,rerender]=useState(0);
+    const pending=Object.entries(readIntents(props)).filter(([id,intent])=>intent.phase==='conflict' && id!==selectedDecisionId);
+    return <>{pending.map(([id,intent])=>{
+        const removed=!props.view.plan?.content.decisions.some(d=>d.id===id);
+        return <StatusNotice key={id} tone="warning" title="plan changed" action={<Button variant="secondary" onClick={()=>{
+            if(!inPlan){onReview();return;}
+            remember(props,id,{...intent,phase:'idle',command:null});rerender(n=>n+1);
+        }}>{inPlan ? 'i’ve reviewed this plan' : 'review latest plan'}</Button>}>
+            <p>{intent.decisionTitle} · attempted choice: {intent.attemptedChoice}</p>
+            <p>{removed ? 'this decision is no longer in the latest plan. your earlier choice was not saved.' : 'your earlier choice was not saved. review this plan before choosing again.'}</p>
+        </StatusNotice>;
+    })}</>;
+}
+
+export function DecisionControls(props: ClientPlanProps & {decision:PlanDecision}) {
+    const {decision,view,mode,session,ports,demoPorts,onViewChange,onSelfPurchase}=props;
+    const [intent,setIntent]=useState<Intent>(()=>{
+        const saved=readIntents(props)[decision.id];
+        return saved ? {...saved,phase:saved.phase==='saving'||saved.phase==='refreshing' ? 'uncertain' : saved.phase} : {command:null,attemptedChoice:null,basisVersion:view.plan!.version,decisionTitle:decision.guidance.title,phase:'idle'};
+    });
+    const alive=useRef(true),busy=useRef(false);
+    // Object identity fences even same-version/access replacements. The epoch
+    // also invalidates a response when context changes away and then back.
+    const context=useRef({view,mode,epoch:0});
+    if(context.current.view!==view || context.current.mode!==mode)
+        context.current={view,mode,epoch:context.current.epoch+1};
+    const epoch=context.current.epoch;
+    const current=()=>alive.current && session.isCurrent() && context.current.epoch===epoch;
+    useEffect(()=>{alive.current=true;return()=>{alive.current=false;};},[]);
+    useEffect(()=>{
+        if(intent.phase==='saving'||intent.phase==='refreshing'){
+            const next={...intent,phase:'uncertain' as const};remember(props,decision.id,next);setIntent(next);
+        } else if(intent.basisVersion!==view.plan!.version && !intent.command && intent.phase!=='conflict'){
+            const next={...intent,phase:'idle' as const,basisVersion:view.plan!.version};remember(props,decision.id,next);setIntent(next);
         }
-        const pending = { ...intent, command, phase: 'saving' as const };
+        // Only enclosing context replacement supersedes the in-flight operation.
+        // Local phase transitions must not invalidate their own command.
+    },[view]);
+    const port=!onViewChange ? undefined : view.access!=='active' ? undefined : mode==='client' ? ports : mode==='public-demo' && demoPorts?.mode==='public-demo' ? demoPorts : undefined;
+    const update=(next:Intent)=>{if(current()){remember(props,decision.id,next);setIntent(next);}};
+    const read=()=>port!.read.execute({schemaVersion:1,action:'read_client_plan_v1',version:null});
+    async function submit(choice:DecisionCommand['choice'],retry=false) {
+        if(!port || busy.current || !current() || intent.phase==='conflict' || (!retry && intent.command))return;
+        const command=retry ? intent.command : {schemaVersion:1 as const,action:'record_decision_v1' as const,requestId:requestId(),publicationVersion:view.plan!.version,expectedDecisionRevision:view.decisionRevision,decisionId:decision.id,choice,reason:null};
+        if(!command)return;
+        busy.current=true;
+        const pending:Intent={command,attemptedChoice:choice,basisVersion:command.publicationVersion,decisionTitle:decision.guidance.title,phase:'saving'};
         update(pending);
-        let acknowledged = false;
+        let acknowledged=false;
         try {
-            await port.decision.execute(command);
-            acknowledged = true;
-            if (!current())
-                return;
-            update({ ...pending, phase: 'refreshing' });
-            const latest = await refresh(command);
-            if (!current())
-                return;
-            update({ ...pending, command: latest ? null : command, phase: latest ? 'saved' : 'uncertain' });
-        }
-        catch (error) {
-            if (!current())
-                return;
-            const status = (error as {
-                status?: number;
-            })?.status;
-            if (!acknowledged && status === 409) {
-                update({ ...pending, command: null, phase: 'conflict' });
-                try {
-                    await refresh(null);
-                }
-                catch { /* Preserve the local choice; retry refresh explicitly. */ }
-            }
-            else if (!acknowledged && [400, 403, 404, 413, 415, 429].includes(status ?? 0))
-                update({ ...pending, command: null, phase: status === 403 || status === 404 ? 'denied' : 'error' });
-            else
-                update({ ...pending, phase: 'uncertain' });
-        }
-        finally {
-            busy.current = false;
-        }
+            await port.decision.execute(command);acknowledged=true;
+            if(!current())return;
+            update({...pending,phase:'refreshing'});
+            const authoritative=await read();
+            if(!current())return;
+            const confirmed=authoritative.access==='active' && authoritative.plan?.version===command.publicationVersion && authoritative.decisions.some(d=>d.decisionId===command.decisionId && d.choice===command.choice && d.reason===command.reason);
+            // Store the outcome before notifying the parent, which replaces this
+            // view context. No late state update can undo newer restrictions.
+            update({...pending,command:confirmed ? null : command,phase:confirmed ? 'saved' : 'uncertain'});
+            onViewChange?.(authoritative);
+        } catch(error) {
+            if(!current())return;
+            const status=(error as {status?:number})?.status;
+            if(!acknowledged && status===409){
+                update({...pending,command:null,phase:'conflict'});
+                try {const authoritative=await read();if(current())onViewChange?.(authoritative);}catch{/* Deliberate review remains required after read failure. */}
+            } else if(!acknowledged && [400,403,404,413,415,429].includes(status??0)){
+                update({...pending,command:null,phase:status===403||status===404 ? 'denied' : 'error'});
+            } else update({...pending,phase:'uncertain'});
+        } finally {busy.current=false;}
     }
-    async function reload() { if (!port || busy.current)
-        return; busy.current = true; try {
-        await port.read.execute({ schemaVersion: 1, action: 'read_client_plan_v1', version: null }).then(v => { if (current()) {
-            onViewChange?.(v);
-            update({ ...intent, phase: 'idle' });
-        } });
+    async function reviewLatest() {
+        if(!port || busy.current || !current())return;
+        busy.current=true;
+        try {
+            const authoritative=await read();
+            if(!current())return;
+            // A second changed version still needs to be seen and reviewed.
+            const same=authoritative.plan?.version===view.plan!.version;
+            update({...intent,command:null,basisVersion:authoritative.plan?.version??intent.basisVersion,phase:same ? 'idle' : 'conflict'});
+            onViewChange?.(authoritative);
+        } catch {update({...intent,phase:intent.phase==='conflict' ? 'conflict' : 'error'});}
+        finally {busy.current=false;}
     }
-    catch {
-        update({ ...intent, phase: 'error' });
-    }
-    finally {
-        busy.current = false;
-    } }
-    const locked = intent.phase === 'saving' || intent.phase === 'refreshing' || !!intent.command;
-    const recorded = view.decisions.find(d => d.decisionId === decision.id);
-    if (!port)
-        return <div className="plan-stack"><h2>your choice</h2><StatusNotice title={view.access === 'read_only' ? 'read-only plan' : mode === 'historical' ? 'historical plan' : mode === 'public-demo' ? 'demo preview' : 'preview only'}>choices are unavailable in this view.</StatusNotice>{recorded ? <p>recorded choice: {recorded.choice}</p> : null}</div>;
+    const locked=intent.phase==='saving'||intent.phase==='refreshing'||!!intent.command||intent.phase==='conflict';
+    const recorded=view.decisions.find(d=>d.decisionId===decision.id),purchase=isPurchaseDecision(decision);
+    if(!port)return <div className="plan-stack"><h2>your choice</h2><StatusNotice title={view.access==='read_only' ? 'read-only plan' : mode==='historical' ? 'historical plan' : mode==='public-demo' ? 'demo preview' : 'preview only'}>choices are unavailable in this view.</StatusNotice>{recorded ? <p>recorded choice: {recorded.choice}</p> : null}</div>;
     return <div className="plan-stack"><h2>your choice</h2>
-  <Button busy={intent.phase === 'saving'} disabled={locked || intent.phase === 'conflict'} onClick={() => void submit('approved')}>{decision.primaryProductId ? 'approve product' : 'approve decision'}</Button>
-  <Button variant="secondary" disabled={locked || intent.phase === 'conflict'} onClick={() => void submit('deferred')}>decide later</Button>
-  <Button variant="ghost" disabled={locked || intent.phase === 'conflict'} onClick={() => void submit('declined')}>decline</Button>
-  {recorded ? <p className="plan-muted">recorded choice: {recorded.choice}</p> : null}
-  {intent.phase === 'refreshing' ? <StatusNotice tone="loading" title="checking your choice"/> : null}
-  {intent.phase === 'saving' ? <StatusNotice tone="loading" title="recording your choice"/> : null}
-  {intent.phase === 'saved' ? <StatusNotice tone="success" title="choice recorded">your current routine has not changed.</StatusNotice> : null}
-  {intent.phase === 'uncertain' ? <StatusNotice tone="uncertain" title="result uncertain" action={<Button variant="secondary" onClick={() => void submit(intent.command!.choice, true)}>retry same choice</Button>}>your choice may have been recorded. retry this exact choice to confirm; your choice is kept.</StatusNotice> : null}
-  {intent.phase === 'conflict' ? <StatusNotice tone="warning" title="plan changed" action={<Button variant="secondary" onClick={() => void reload()}>review latest plan</Button>}>your choice was not saved. review the latest plan before choosing again. your choice is kept.</StatusNotice> : null}
-  {intent.phase === 'denied' ? <StatusNotice tone="denied" title="action unavailable">your choice was not saved. your choice is kept.</StatusNotice> : null}
-  {intent.phase === 'error' ? <StatusNotice tone="error" title="choice not saved" action={<Button variant="secondary" onClick={() => void reload()}>refresh plan</Button>}>your choice is kept. try again after checking the latest plan.</StatusNotice> : null}
-
-  <p className="plan-meta">no order or charge yet. we confirm the all-in total and return terms before you pay.</p>
-  {onSelfPurchase && mode==='client' && view.access==='active' && decision.primaryProductId ? <><hr /><Button variant="secondary" disabled={locked} onClick={() => onSelfPurchase(decision.primaryProductId!, decision.id)}>i’ll buy it myself</Button></> : null}
-
- </div>;
+      <Button busy={intent.phase==='saving'} disabled={locked} onClick={()=>void submit('approved')}>{purchase ? 'approve product' : 'approve decision'}</Button>
+      <Button variant="secondary" disabled={locked} onClick={()=>void submit('deferred')}>decide later</Button>
+      <Button variant="ghost" disabled={locked} onClick={()=>void submit('declined')}>decline</Button>
+      {recorded ? <p className="plan-muted">recorded choice: {recorded.choice}</p> : null}
+      {intent.attemptedChoice && intent.phase!=='saved' ? <p>attempted choice: {intent.attemptedChoice}</p> : null}
+      {intent.phase==='refreshing' ? <StatusNotice tone="loading" title="checking your choice"/> : null}
+      {intent.phase==='saving' ? <StatusNotice tone="loading" title="recording your choice"/> : null}
+      {intent.phase==='saved' ? <StatusNotice tone="success" title="choice recorded">your current routine has not changed.</StatusNotice> : null}
+      {intent.phase==='uncertain' ? <StatusNotice tone="uncertain" title="result uncertain" action={<Button variant="secondary" onClick={()=>void submit(intent.command!.choice,true)}>retry same choice</Button>}>your choice may have been recorded. retry the exact choice for plan version {intent.basisVersion} to confirm.</StatusNotice> : null}
+      {intent.phase==='conflict' ? <StatusNotice tone="warning" title="plan changed" action={<Button variant="secondary" onClick={()=>void reviewLatest()}>review latest plan</Button>}>your choice was not saved. review the latest plan before choosing again. your attempted choice is kept for review.</StatusNotice> : null}
+      {intent.phase==='denied' ? <StatusNotice tone="denied" title="action unavailable">your choice was not saved. your attempted choice is kept.</StatusNotice> : null}
+      {intent.phase==='error' ? <StatusNotice tone="error" title="choice not saved" action={<Button variant="secondary" onClick={()=>void reviewLatest()}>refresh plan</Button>}>your attempted choice is kept. check the latest plan before trying again.</StatusNotice> : null}
+      <p className="plan-meta">{purchase ? 'no order or charge yet. we confirm the all-in total and return terms before you pay.' : 'this records your choice about the guidance. it does not place an order or record product use.'}</p>
+      {onSelfPurchase && mode==='client' && purchase ? <><hr/><Button variant="secondary" disabled={locked} onClick={()=>onSelfPurchase(decision.primaryProductId!,decision.id)}>i’ll buy it myself</Button></> : null}
+    </div>;
 }
