@@ -116,3 +116,14 @@ test('amendment history entry binds replacement context and exact descriptor ver
  assert.deepEqual(mapCareResult(page,readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:ref,cursor:null,limit:1})),page);
  assert.throws(()=>mapCareResult(page,readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:{...ref,version:1},cursor:null,limit:1})));
 });
+test('reported descriptor creation has one nested unreviewed original event and corrections have none',()=>{
+ const ref={kind:'client_reported_product',reportedProductId:id,version:1},stamp='2026-01-01T00:00:00Z';
+ const attr={sourcePublication:null,occurredOn:unknown,recordedAt:stamp,reportedBy:id,recordedBy:id,channel:'portal'};
+ const initialUse={...attr,eventId:id,product:ref,change:{kind:'unreviewed_added',details:null},acquisition:'self',identityEventId:null,originalActivationId:null,amendment:null};
+ const event={...attr,eventId:id,product:ref,descriptor:{name:'synthetic serum',brand:unknown,variant:unknown,strength:unknown,sizeLabel:unknown,labelPhotoIds:[]},previousVersion:null,reason:null,initialUse};
+ const page={revision:1,entries:[{kind:'reported_product',event}],nextCursor:null},command=readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:ref,cursor:null,limit:1});
+ assert.deepEqual(mapCareResult(page,command),page);
+ for(const change of [{kind:'started'},{kind:'paused',details:null}])assert.throws(()=>mapCareResult({...page,entries:[{kind:'reported_product',event:{...event,initialUse:{...initialUse,change}}}]},command));
+ assert.throws(()=>mapCareResult({...page,entries:[{kind:'reported_product',event:{...event,previousVersion:1}}]},command));
+ const correction={...event,product:{...ref,version:2},previousVersion:1,reason:'correct descriptor',initialUse:null};assert.equal((mapCareResult({...page,revision:2,entries:[{kind:'reported_product',event:correction}]},readCareCommand({schemaVersion:1,action:'read_use_history_v1',product:correction.product,cursor:null,limit:1})) as typeof page).entries.length,1);
+});

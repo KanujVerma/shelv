@@ -20,7 +20,7 @@ const effective={state:en('not_reported','using','paused','stopped','using_diffe
 export const carePlanUseShape=obj({product:planProduct,...effective});
 export const careReportedUseShape=obj({product:reportedProduct,descriptor,...effective});
 export const careUseProjectionShape=obj({revision:rev,planProducts:arr(carePlanUseShape,carePlanProductsMax),reportedProducts:obj({items:arr(careReportedUseShape),nextCursor:nil(cursor)})});
-export const careHistoryEntryShape=union(obj({kind:en('use'),event:careUseEventShape}),obj({kind:en('identity'),event:careIdentityEventShape}),obj({kind:en('reported_product'),event:obj({...attribution,eventId:uuid,product:reportedProduct,descriptor,previousVersion:nil(pos),reason:nil(text)})}),obj({kind:en('amendment'),amendment:careAmendmentShape}));
+export const careHistoryEntryShape=union(obj({kind:en('use'),event:careUseEventShape}),obj({kind:en('identity'),event:careIdentityEventShape}),obj({kind:en('reported_product'),event:obj({...attribution,eventId:uuid,product:reportedProduct,descriptor,previousVersion:nil(pos),reason:nil(text),initialUse:nil(careUseEventShape)})}),obj({kind:en('amendment'),amendment:careAmendmentShape}));
 const writeShape=union(careReceiptShape,obj({receipt:careReceiptShape,product:reportedProduct}));
 export const careResultShapes={receipt:careReceiptShape,created:obj({receipt:careReceiptShape,product:reportedProduct}),reported:obj({revision:rev,items:arr(careReportedUseShape),nextCursor:nil(cursor)}),history:obj({revision:rev,entries:arr(careHistoryEntryShape),nextCursor:nil(cursor)})};
 function sameProduct(a:ProductRef,b:ProductRef):boolean{return a.kind==='plan_product'&&b.kind==='plan_product'?sameCareValue(a.publication,b.publication)&&a.productId===b.productId:sameCareValue(a,b);}
@@ -58,6 +58,7 @@ export function mapCareResult(value:unknown,command:CareCommand):CareResult{
  }
  if(command.action==='read_use_history_v1'||command.action==='read_advisor_use_history_v1'){
   const r=readPlanShape(value,careResultShapes.history) as import('./PortalCare.ts').UseHistoryPage;requireValue(new TextEncoder().encode(JSON.stringify(r)).byteLength<=carePageMaxBytes);requireValue(r.entries.length<=command.limit);
+  for(const entry of r.entries)if(entry.kind==='reported_product'&&entry.event.initialUse){const e=entry.event,u=e.initialUse!;requireValue(e.previousVersion===null&&u.eventId===e.eventId&&sameCareValue(u.product,e.product)&&u.change.kind==='unreviewed_added'&&u.amendment===null);}
   if(command.product)for(const entry of r.entries){const p:ProductRef=entry.kind==='use'?entry.event.product:entry.kind==='identity'?entry.event.target.subject:entry.kind==='reported_product'?entry.event.product:entry.amendment.replacement.product;const matches=(candidate:ProductRef)=>candidate.kind==='plan_product'&&command.product?.kind==='plan_product'?sameCareValue(candidate.publication,command.product.publication)&&candidate.productId===command.product.productId&&(command.product.slotId===null||candidate.slotId===command.product.slotId):sameCareValue(candidate,command.product);requireValue(matches(p)||(entry.kind==='use'&&entry.event.amendment!==null&&matches(entry.event.amendment.replacement.product)));}
   return r;
  }
