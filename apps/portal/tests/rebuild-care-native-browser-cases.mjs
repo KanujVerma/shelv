@@ -74,7 +74,7 @@ export async function prepareCareBrowserPublication({fixture,stack,advisor,cases
   await p.goto(portalOrigin+'/advisor/plans/'+draftId+'/routine');await p.getByRole('button',{name:'open client preview',exact:true}).click();await p.getByRole('heading',{name:'draft routine',exact:true}).waitFor();
   for(const marker of safePrivateMarkers)assert.ok(!(await p.locator('body').innerText()).includes(marker));
   assert.equal(await p.getByRole('button',{name:'record a change in use',exact:true}).count(),0);
-  await p.getByRole('tab',{name:'evening',exact:true}).click();await p.evaluate(()=>{document.getElementById('portal-content').focus({preventScroll:true});window.scrollTo({top:250,behavior:'instant'});});
+  await p.getByRole('tab',{name:'evening',exact:true}).click();await p.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));await p.evaluate(()=>{document.getElementById('portal-content').focus({preventScroll:true});window.scrollTo({top:250,behavior:'instant'});});
   await p.waitForFunction(()=>scrollY===250&&history.state.shelvNavigation.restore.scrollY===250);
   await p.getByRole('button',{name:'review recommendation',exact:true}).click();await p.getByRole('heading',{name:'synthetic product decision',exact:true}).waitFor();
   await p.goBack();await p.getByRole('heading',{name:'draft routine',exact:true}).waitFor();await p.getByRole('tab',{name:'evening',exact:true,selected:true}).waitFor();await p.waitForFunction(()=>scrollY===250&&document.activeElement?.hasAttribute('data-page-heading'));
