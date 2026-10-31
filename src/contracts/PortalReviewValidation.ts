@@ -1,6 +1,6 @@
 import type {ReviewCommand,ReviewRpcCall,GuidanceCommand,GuidanceRpcCall,GoalReportBody,ConversationBody,GuidanceBody,GuidanceBasis} from './PortalReview.ts';
 import {readObject,requireValue,readDate} from './ConciergePortalValidation.ts';
-import {readPlanShape,planScheduleShape,planDependencyBasisShape} from './PortalRebuildValidation.ts';
+import {readPlanShape,planScheduleShape,planDependencyBasisShape,planCommandFields} from './PortalRebuildValidation.ts';
 import type {PlanShape} from './PortalRebuildValidation.ts';
 import {careObject as obj,careArray as arr,careEnum as en,careNull as nil,careUnion as union,careUuid as uuid,careRevision as rev,carePositive as pos,careBool as bool,careDay as day,careKnown as known,carePublication as publication,sameCareValue} from './PortalCareValidation.ts';
 import {reviewCommandMaxBytes,reviewBodyMaxBytes,conversationBodyMaxBytes,guidanceBodyMaxBytes,reviewTextMax,reviewComfortMax,reviewGoalsMax,reviewPhotosMax,reviewReferencesMax,conversationFactsMax,reviewSourcesPerFactMax,reviewPageMax} from './PortalReviewValues.ts';
@@ -16,7 +16,7 @@ export const privateNoteSubjectShape=obj({kind:en('legacy_report','goal_report',
 export const reviewInputRefShape=obj({kind:en('legacy_report','goal_report','conversation','use','identity','reported_product'),id:uuid});
 export const reviewOutputRefShape=obj({kind:en('review','instruction','reply'),id:uuid});
 export const reviewSourceLocationShape=obj({sourceId:uuid,sourceVersion:pos,locator:union(obj({kind:en('whole')}),obj({kind:en('time'),startMs:rev,endMs:pos}),obj({kind:en('text'),start:rev,end:pos}),obj({kind:en('page'),page:pos}))});
-export const goalReportBodyShape=obj({publication,answers:arr(obj({goalId:identifier,change:en('better','same','worse','not_sure')}),reviewGoalsMax),comfort:nil({...reviewTextShape,max:reviewComfortMax}),actualUseEventIds:uuidList(),notes:nil(reviewTextShape),photoIds:uuidList(reviewPhotosMax)});
+export const goalReportBodyShape=obj({publication,answers:arr(obj({goalId:identifier,change:en('better','same','worse','not_sure')}),reviewGoalsMax),comfort:nil({...blank,max:reviewComfortMax}),actualUseEventIds:uuidList(),notes:nil(blank),photoIds:uuidList(reviewPhotosMax)});
 export const legacyReportBodyShape=obj({comfort:legacyText,consistency:legacyText,changes:{...legacyText,empty:true},photoIds:uuidList(reviewPhotosMax)});
 export const reportReplacementShape=union(obj({kind:en('goal_report'),body:goalReportBodyShape}),obj({kind:en('legacy_report'),body:legacyReportBodyShape}));
 const factFields={id:identifier,text:reviewTextShape,sources:arr(reviewSourceLocationShape,reviewSourcesPerFactMax)};
@@ -31,6 +31,9 @@ export const guidanceBodyShape=union(
  obj({kind:en('instruction'),publication:obj({version:pos,documentSchemaVersion:en(3)}),slotId:identifier,productId:nil(identifier),baseInstructionId:nil(uuid),baseInstructionVersion:rev,useBasis:nil(obj({useRevision:rev,latestEventId:nil(uuid),amendmentHeadId:nil(uuid)})),directions:arr(blank,50),cautions:arr(blank,50),schedule:planScheduleShape,reason:blank,effectiveOn:{type:'date'},reviewId:nil(uuid)}),
  obj({kind:en('reply'),publication,reportRef:reviewReportRefShape,reply:blank,nextStep:nil(blank)})
 );
+export const guidanceReadSnapshotShape=obj({publication,currentPublication:publication,useHead:rev,reportHead:rev,instructionHead:rev,serviceRevision:rev,decisionRevision:rev,asOfDay:{type:'date'},manifestHash:{type:'hash'}});
+const manifestRead={snapshot:guidanceReadSnapshotShape,cursor:nil({type:'text',max:104,empty:false}),limit:{...pos,max:reviewPageMax}};
+const instructionRead={snapshot:guidanceReadSnapshotShape,instructionId:uuid,version:pos,contentHash:{type:'hash'} as PlanShape};
 const write={requestId:uuid},reportWrite={...write,expectedReportRevision:{...rev,max:Number.MAX_SAFE_INTEGER-1}};
 const page={cursor:nil({type:'text',max:104,empty:false}),limit:{...pos,max:reviewPageMax},version:nil(pos)};
 export const reviewCommandFields:Record<ReviewCommand['action'],Record<string,PlanShape>>={
@@ -39,6 +42,10 @@ export const reviewCommandFields:Record<ReviewCommand['action'],Record<string,Pl
  record_conversation_v1:{...reportWrite,clientId:uuid,body:conversationBodyShape},
  append_private_review_note_v1:{...write,clientId:uuid,reviewEvent:privateNoteSubjectShape,note:reviewTextShape},
  read_care_history_v1:page,read_advisor_care_history_v1:{...page,clientId:uuid},request_status_v1:write
+ ,read_client_plan_v3:{version:nil(pos)},read_advisor_publication_v3:{clientId:uuid,version:nil(pos)},
+ read_client_instruction_manifest_v1:manifestRead,read_advisor_instruction_manifest_v1:{...manifestRead,clientId:uuid},
+ read_client_instruction_v1:instructionRead,read_advisor_instruction_v1:{...instructionRead,clientId:uuid},
+ record_decision_v2:{...planCommandFields.record_decision_v1,expectedDecisionRevision:{...rev,max:Number.MAX_SAFE_INTEGER-1},snapshot:guidanceReadSnapshotShape}
 };
 export const guidanceCommandFields:Record<GuidanceCommand['action'],Record<string,PlanShape>>={
  create_guidance_draft_v1:{...write,clientId:uuid,body:guidanceBodyShape},read_guidance_draft_v1:{draftId:uuid},
@@ -129,16 +136,17 @@ export function readReviewCommand(value:unknown):ReviewCommand{
   if(command.replacement.kind==='goal_report')checkGoalReport(command.replacement.body);
  }
  if(command.action==='record_conversation_v1'){checkConversation(command.body);checkPast(command.body.occurredOn);}
+ if(command.action==='record_decision_v2')requireValue(command.expectedDecisionRevision===command.snapshot.decisionRevision&&command.publicationVersion===command.snapshot.publication.version&&sameCareValue(command.snapshot.publication,command.snapshot.currentPublication));
  return command;
 }
 export function readGuidanceCommand(value:unknown):GuidanceCommand{
  const command=parseCommand<GuidanceCommand>(value,guidanceCommandFields);
- if('body'in command){checkGuidanceBody(command.body);if('target'in command)requireValue(command.target.kind===command.body.kind);if(command.body.kind==='review')checkPast(command.body.occurredOn);if(command.body.kind==='instruction')checkPast({state:'known',value:command.body.effectiveOn});}
+ if('body'in command){checkGuidanceBody(command.body);if('target'in command)requireValue(command.target.kind===command.body.kind);if(command.body.kind==='review')checkPast(command.body.occurredOn);}
  if(command.action==='approve_guidance_v1')requireValue(command.scope===`${command.target.kind}.publish`);
  if(command.action==='rebase_guidance_draft_v1')checkGuidanceBasis(command.expectedBasis);
  return command;
 }
 export function buildReviewRpc(value:unknown):ReviewRpcCall{return {name:'concierge_review_command_v1',args:{p_command:readReviewCommand(value)}};}
 export function buildGuidanceRpc(value:unknown):GuidanceRpcCall{return {name:'concierge_guidance_command_v1',args:{p_command:readGuidanceCommand(value)}};}
-/** Descriptive predicate only; empty-submission business policy must be pinned before SQL. */
-export function goalReportHasObservation(body:GoalReportBody):boolean{return body.answers.length>0||body.comfort!==null||body.actualUseEventIds.length>0||body.notes!==null||body.photoIds.length>0;}
+/** Empty/whitespace-only submissions are a neutral no-op, never a fabricated report. */
+export function goalReportHasObservation(body:GoalReportBody):boolean{return body.answers.length>0||!!body.comfort?.trim()||body.actualUseEventIds.length>0||!!body.notes?.trim()||body.photoIds.length>0;}

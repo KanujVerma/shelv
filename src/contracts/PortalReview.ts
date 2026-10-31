@@ -1,5 +1,6 @@
 import type {UUID,ContentId,Revision,Hash,Known,SourceLocation,Schedule,Publisher} from './PortalRebuild.ts';
-import type {ClientPublicationRef,Occurrence,UseHistoryEntry,DependencyBasisV2} from './PortalCare.ts';
+import type {ClientPublicationRef,Occurrence,UseHistoryEntry,DependencyBasisV2,ClientPlanViewV2,AdvisorPublicationViewV2} from './PortalCare.ts';
+import type {InstructionRevision} from './ConciergeService.ts';
 
 /** Proposed Phase 1 protocol. No runtime dispatch or new task right is activated. */
 export type ReportRef={kind:'legacy_report'|'goal_report';id:UUID};
@@ -39,7 +40,9 @@ export type GuidanceReceipt={requestId:UUID;receiptId:UUID;target:GuidanceTarget
 export type PublishedGuidance={record:GuidanceOutputRef;body:GuidanceBody;publishedBy:UUID;publishedAt:string;originalStart:Known<string>|null};
 export type ReportWriteReceipt={requestId:UUID;action:'submit_goal_report_v1'|'amend_report_v1'|'record_conversation_v1';event:ReportRef|{kind:'conversation';id:UUID};amendmentId:UUID|null;revision:Revision;recordedAt:string;notificationEventId:UUID;attentionEventId:UUID};
 export type PrivateNoteReceipt={requestId:UUID;action:'append_private_review_note_v1';noteId:UUID;reviewEvent:PrivateNoteSubject;recordedBy:UUID;recordedAt:string;notificationEventId:null};
-export type ReviewWriteResult=ReportWriteReceipt|PrivateNoteReceipt;
+export type ReportNoopReceipt={requestId:UUID;action:'submit_goal_report_v1';outcome:'no_op';reason:'no_observation';revision:Revision;event:null;amendmentId:null;notificationEventId:null;attentionEventId:null};
+export type GuidanceDecisionReceipt=import('./PortalRebuildMapping.ts').PlanDecisionReceipt&{action:'record_decision_v2';snapshot:GuidanceReadSnapshot};
+export type ReviewWriteResult=ReportWriteReceipt|PrivateNoteReceipt|ReportNoopReceipt|GuidanceDecisionReceipt;
 export type GuidanceDraftReceipt={requestId:UUID;draft:GuidanceDraftView};
 export type GuidanceApprovalReceipt={requestId:UUID;approval:GuidanceApproval};
 export type GuidanceRevocationReceipt={requestId:UUID;approvalId:UUID;revokedBy:UUID;revokedAt:string;policyRevision:Revision};
@@ -56,6 +59,19 @@ export type CareHistoryHeads={useHead:Revision;reportHead:Revision;instructionHe
 type HistoryPage={schemaVersion:1;version:number|null;heads:CareHistoryHeads;nextCursor:string|null};
 export type ClientCareHistoryPage=HistoryPage&{audience:'client';entries:ClientCareHistoryEntry[]};
 export type AdvisorCareHistoryPage=HistoryPage&{audience:'advisor';clientId:UUID;entries:AdvisorCareHistoryEntry[]};
+/** Public consistency token, never an access capability or permission frozen at asOfDay. */
+export type GuidanceReadSnapshot={publication:ClientPublicationRef;currentPublication:ClientPublicationRef;useHead:Revision;reportHead:Revision;instructionHead:Revision;serviceRevision:Revision;decisionRevision:Revision;asOfDay:string;manifestHash:Hash};
+export type CurrentGuidanceRef={schemaVersion:1;mode:'current_document'|'historical_document';instructionSemantics:'current_for_selected_publication';snapshot:GuidanceReadSnapshot;instructionCount:number};
+export type ClientPlanViewV3=Omit<ClientPlanViewV2,'schemaVersion'>&{schemaVersion:3;currentGuidance:CurrentGuidanceRef|null};
+export type AdvisorPublicationViewV3=Omit<AdvisorPublicationViewV2,'schemaVersion'>&{schemaVersion:3;currentGuidance:CurrentGuidanceRef};
+export type InstructionScope={publication:ClientPublicationRef;slotId:ContentId;productId:ContentId|null};
+export type InstructionManifestEntry={instructionId:UUID;version:Revision;format:'authored_schedule'|'legacy_usage';scope:InstructionScope;contentHash:Hash;effectiveOn:string;baseInstructionId:UUID|null;baseInstructionVersion:Revision;reviewedUseBasis:InstructionUseBasis|null;basisStatus:'current'|'changed'|'legacy_unversioned';originalStart:Known<string>|null};
+type InstructionAudience={audience:'client'}|{audience:'advisor';clientId:UUID};
+export type InstructionManifestPage=InstructionAudience&{schemaVersion:1;snapshot:GuidanceReadSnapshot;total:number;cursor:string|null;items:InstructionManifestEntry[];nextCursor:string|null};
+export type InstructionContent={format:'authored_schedule';body:Extract<GuidanceBody,{kind:'instruction'}>}|{format:'legacy_usage';revision:InstructionRevision};
+export type InstructionDetail=InstructionAudience&{schemaVersion:1;snapshot:GuidanceReadSnapshot;item:InstructionManifestEntry;content:InstructionContent;publishedBy:UUID;publishedAt:string};
+type ManifestRead={snapshot:GuidanceReadSnapshot;cursor:string|null;limit:number};
+type InstructionRead={snapshot:GuidanceReadSnapshot;instructionId:UUID;version:Revision;contentHash:Hash};
 type ReportWrite={requestId:UUID;expectedReportRevision:Revision};
 export type ReviewCommand={schemaVersion:1}&(
  |({action:'submit_goal_report_v1';body:GoalReportBody;occurredOn:Known<string>}&ReportWrite)
@@ -64,6 +80,13 @@ export type ReviewCommand={schemaVersion:1}&(
  |{action:'append_private_review_note_v1';requestId:UUID;clientId:UUID;reviewEvent:PrivateNoteSubject;note:string}
  |{action:'read_care_history_v1';cursor:string|null;limit:number;version:number|null}
  |{action:'read_advisor_care_history_v1';clientId:UUID;cursor:string|null;limit:number;version:number|null}
+ |{action:'read_client_plan_v3';version:number|null}
+ |{action:'read_advisor_publication_v3';clientId:UUID;version:number|null}
+ |({action:'read_client_instruction_manifest_v1'}&ManifestRead)
+ |({action:'read_advisor_instruction_manifest_v1';clientId:UUID}&ManifestRead)
+ |({action:'read_client_instruction_v1'}&InstructionRead)
+ |({action:'read_advisor_instruction_v1';clientId:UUID}&InstructionRead)
+ |{action:'record_decision_v2';requestId:UUID;expectedDecisionRevision:Revision;publicationVersion:number;decisionId:ContentId;choice:'approved'|'deferred'|'declined';reason:string|null;snapshot:GuidanceReadSnapshot}
  |{action:'request_status_v1';requestId:UUID});
 export type GuidanceCommand={schemaVersion:1}&(
  |{action:'create_guidance_draft_v1';requestId:UUID;clientId:UUID;body:GuidanceBody}
@@ -77,6 +100,6 @@ export type GuidanceCommand={schemaVersion:1}&(
  |{action:'request_status_v1';requestId:UUID});
 export type ReviewRpcCall={name:'concierge_review_command_v1';args:{p_command:ReviewCommand}};
 export type GuidanceRpcCall={name:'concierge_guidance_command_v1';args:{p_command:GuidanceCommand}};
-export type ReviewResult=ReviewWriteResult|ClientCareHistoryPage|AdvisorCareHistoryPage|{status:'absent'}|{status:'committed';receipt:ReviewWriteResult};
+export type ReviewResult=ReviewWriteResult|ClientCareHistoryPage|AdvisorCareHistoryPage|ClientPlanViewV3|AdvisorPublicationViewV3|InstructionManifestPage|InstructionDetail|{status:'absent'}|{status:'committed';receipt:ReviewWriteResult};
 export type GuidanceResult=GuidanceWriteResult|GuidanceDraftView|{status:'absent'}|{status:'committed';receipt:GuidanceWriteResult};
 export type PortalReviewOutcome<T>={state:'ok';value:T}|{state:'rejected';status:number;code:import('./PortalReviewValues.ts').PortalReviewErrorCode}|{state:'uncertain';status:503;code:'uncertain';retry:ReviewCommand|GuidanceCommand};

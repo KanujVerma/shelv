@@ -1,8 +1,11 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
+import {readFileSync} from 'node:fs';
 import type {GoalReportBody,ConversationBody,GuidanceBody,GuidanceTarget,GuidanceBasis,GuidanceDraftView,GuidanceApproval,ReportEvent,ReportAmendment,ClientCareHistoryPage,AdvisorCareHistoryPage,GuidanceReceipt} from '../src/contracts/PortalReview.ts';
 import {readReviewCommand,readGuidanceCommand,buildReviewRpc,buildGuidanceRpc,goalReportHasObservation} from '../src/contracts/PortalReviewValidation.ts';
 import {mapReviewResult,mapGuidanceResult,decodePortalReviewResponse} from '../src/contracts/PortalReviewMapping.ts';
+import {collectInstructionManifest,bindInstructionForScope,instructionScopes} from '../src/contracts/PortalReviewMapping.ts';
+import type {ClientPlanViewV3,GuidanceReadSnapshot,InstructionManifestEntry,InstructionManifestPage,InstructionDetail,ReviewCommand} from '../src/contracts/PortalReview.ts';
 import {reviewPageMaxBytes,reviewResponseMaxBytes,reviewCommandMaxBytes,portalReviewAccess} from '../src/contracts/PortalReviewValues.ts';
 import {careCommandFields} from '../src/contracts/PortalCareValidation.ts';
 import {taskActions} from '../src/contracts/PortalRebuildValues.ts';
@@ -20,7 +23,7 @@ const publisher={kind:'human',actorId:third} as const;
 const approval:GuidanceApproval={id:third,target,scope:'review.publish',publisher,approvedBy:third,approvedAt:now,policyRevision:1,revokedAt:null,receiptId:null};
 const draft:GuidanceDraftView={target,body,capturedBasis:basis,currentBasis:basis,needsRebase:false,savedAt:now,recordedBy:third,review:null,approval:null,issues:[]};
 const receipt:GuidanceReceipt={requestId:id,receiptId:third,target,approvalId:third,publisher,record:{kind:'review',id:other},publishedAt:now,notificationEventId:third};
-const original:ReportEvent={kind:'goal_report',id,body:report,occurredOn:unknown,channel:'portal',reportedBy:other,recordedBy:other,recordedAt:now};
+const original:ReportEvent={kind:'goal_report',id,body:{...report,comfort:'original comfortable report'},occurredOn:unknown,channel:'portal',reportedBy:other,recordedBy:other,recordedAt:now};
 const amendment:ReportAmendment={id:third,event:{kind:'goal_report',id},previousAmendmentHeadId:null,replacement:{kind:'goal_report',body:{...report,notes:'corrected report'}},occurredOn:{state:'known',value:'2024-02-29'},reason:'corrected date and notes',amendedBy:other,recordedAt:now,attention:{id:third,priorReview:{kind:'review',id:third},state:'unresolved',resolvedBy:null}};
 const heads={useHead:0,reportHead:1,instructionHead:0,serviceRevision:0,publicationVersion:1};
 const history:ClientCareHistoryPage={schemaVersion:1,audience:'client',version:null,heads,entries:[{kind:'report',event:original},{kind:'report_amendment',original,amendment}],nextCursor:null};
@@ -94,9 +97,10 @@ test('instruction uses exact V3 product/slot/use basis and authored schedule wit
  assert.equal(readGuidanceCommand(command).action,'create_guidance_draft_v1');
  for(const bad of [{...instruction,publication:{version:1,documentSchemaVersion:2}},{...instruction,productId:null,useBasis:instruction.useBasis},{...instruction,schedule:{...schedule,automaticAdvance:true}},{...instruction,startedOn:'2024-02-29'},{...instruction,useBasis:{useRevision:0,latestEventId:null,amendmentHeadId:id}}])assert.throws(()=>readGuidanceCommand({...command,body:bad}));
  const nonproduct={...instruction,productId:null,useBasis:null};assert.equal(readGuidanceCommand({...command,body:nonproduct}).action,'create_guidance_draft_v1');
+ assert.equal(readGuidanceCommand({...command,body:{...nonproduct,effectiveOn:'2100-01-01'}}).action,'create_guidance_draft_v1','safe draft storage is not a claim that a future instruction is currently applicable');
 });
 test('positive report receipts bind action, event kind, request and next report revision',()=>{
- const c=readReviewCommand(submit),r={requestId:id,action:'submit_goal_report_v1',event:{kind:'goal_report',id:other},amendmentId:null,revision:1,recordedAt:now,notificationEventId:third,attentionEventId:third};
+ const c=readReviewCommand({...submit,body:{...report,notes:'an honest update'}}),r={requestId:id,action:'submit_goal_report_v1',event:{kind:'goal_report',id:other},amendmentId:null,revision:1,recordedAt:now,notificationEventId:third,attentionEventId:third};
  assert.deepEqual(mapReviewResult(r,c),r);
  for(const bad of [{...r,requestId:other},{...r,event:{kind:'conversation',id:other}},{...r,revision:0},{...r,privateNote:'private'},{...r,notificationEventId:null}])assert.throws(()=>mapReviewResult(bad,c));
  const status=readReviewCommand({schemaVersion:1,action:'request_status_v1',requestId:id});
@@ -227,6 +231,159 @@ test('guidance basis cannot omit the retained legacy-use manifest even when new 
  const omitted={schemaVersion:1,publication,useHead:0,reportHead:1,instructionHead:0,references:basis.references,sources:[]};
  assert.throws(()=>mapGuidanceResult({...draft,capturedBasis:omitted,currentBasis:omitted},readGuidanceCommand({schemaVersion:1,action:'read_guidance_draft_v1',draftId:id})));
 });
+test('empty and whitespace-only goal submissions return exact no-op receipts without a report or new head',()=>{
+ const whitespace={...report,comfort:' \t\n',notes:'\u2003 '};assert.equal(goalReportHasObservation(whitespace),false);
+ const command=readReviewCommand({...submit,body:whitespace});
+ const noop={requestId:id,action:'submit_goal_report_v1',outcome:'no_op',reason:'no_observation',revision:0,event:null,amendmentId:null,notificationEventId:null,attentionEventId:null};
+ assert.deepEqual(mapReviewResult(noop,command),noop);assert.deepEqual(mapReviewResult(noop,readReviewCommand(submit)),noop);
+ const status=readReviewCommand({schemaVersion:1,action:'request_status_v1',requestId:id});
+ assert.deepEqual(mapReviewResult({status:'committed',receipt:noop},status),{status:'committed',receipt:noop});
+ assert.throws(()=>mapReviewResult({...noop,revision:1},command));
+ assert.throws(()=>mapReviewResult({...noop,notificationEventId:third},command));
+ assert.throws(()=>mapReviewResult(noop,readReviewCommand({...submit,body:{...report,notes:'real observation'}})));
+ const fake={requestId:id,action:'submit_goal_report_v1',event:{kind:'goal_report',id:other},amendmentId:null,revision:1,recordedAt:now,notificationEventId:third,attentionEventId:third};
+ assert.throws(()=>mapReviewResult(fake,command));
+ assert.throws(()=>mapReviewResult({...history,entries:[{kind:'report',event:{...original,body:report}}]},readReviewCommand(readHistory)));
+});
+test('new v3 read preserves the immutable plan and carries an explicit bounded instruction-manifest requirement',async()=>{
+ const {createEmptyPlanContent,projectClientPlan}=await import('../src/contracts/PortalRebuild.ts');
+ const snapshot={publication,currentPublication:publication,useHead:0,reportHead:0,instructionHead:0,serviceRevision:0,decisionRevision:0,asOfDay:'2026-01-01',manifestHash:'a'.repeat(64)};
+ const currentGuidance={schemaVersion:1,mode:'current_document',instructionSemantics:'current_for_selected_publication',snapshot,instructionCount:0};
+ const view={schemaVersion:3,access:'active',plan:{documentSchemaVersion:3,version:1,publishedAt:now,content:projectClientPlan(createEmptyPlanContent())},decisionRevision:0,decisions:[],actualUse:[],nextReviewOn:null,use:{revision:0,planProducts:[],reportedProducts:{items:[],nextCursor:null}},latestPublicReview:null,currentGuidance};
+ const command=readReviewCommand({schemaVersion:1,action:'read_client_plan_v3',version:1});
+ assert.deepEqual(mapReviewResult(view,command),view);
+ assert.throws(()=>mapReviewResult({...view,currentGuidance:{...currentGuidance,snapshot:{...snapshot,useHead:1}}},command));
+ assert.throws(()=>mapReviewResult({...view,currentGuidance:{...currentGuidance,mode:'historical_document'}},command));
+ assert.throws(()=>mapReviewResult({...view,currentGuidance:{...currentGuidance,privateNote:'private'}},command));
+ const prep={...view,access:'preparation',plan:null,currentGuidance:null};assert.deepEqual(mapReviewResult(prep,readReviewCommand({schemaVersion:1,action:'read_client_plan_v3',version:null})),prep);
+ const {access:_access,...advisorBase}=view;
+ const advisor={...advisorBase,clientId:other,version:1,reviewSchedule:null,clientAccess:{care:'ended',entitled:true,canRead:false,canWrite:false}};
+ const readAdvisor=readReviewCommand({schemaVersion:1,action:'read_advisor_publication_v3',clientId:other,version:1});assert.deepEqual(mapReviewResult(advisor,readAdvisor),advisor);
+ assert.throws(()=>mapReviewResult({...advisor,clientId:id},readAdvisor));
+ assert.throws(()=>mapReviewResult({...view,latestPublicReview:{reviewId:id,publicationVersion:2,publishedAt:now,occurredOn:unknown,conclusion:'no change',rationale:'reviewed',nextStep:'contact shelv',nextReviewOn:null}},command));
+ assert.equal(portalReviewAccess('review','read_client_plan_v3','client'),'READ');assert.equal(portalReviewAccess('review','read_client_plan_v3','task_agent'),'DENY');
+});
+
+async function instructionFixture(){
+ const {createEmptyPlanContent,projectClientPlan}=await import('../src/contracts/PortalRebuild.ts');
+ const schedule={periods:['evening' as const],days:{kind:'daily' as const},condition:null,asNeeded:false,stages:[],anchor:'actual_start' as const,automaticAdvance:false as const};
+ const content=createEmptyPlanContent();content.routine=[{id:'rinse',slotId:'rinse',kind:'instruction',productId:null,title:'rinse',directions:['use water'],cautions:[],schedule}];
+ const snapshot:GuidanceReadSnapshot={publication,currentPublication:publication,useHead:0,reportHead:0,instructionHead:1,serviceRevision:1,decisionRevision:0,asOfDay:'2026-01-01',manifestHash:'a'.repeat(64)};
+ const view:ClientPlanViewV3={schemaVersion:3,access:'active',plan:{documentSchemaVersion:3,version:1,publishedAt:now,content:projectClientPlan(content)},decisionRevision:0,decisions:[],actualUse:[],nextReviewOn:null,use:{revision:0,planProducts:[],reportedProducts:{items:[],nextCursor:null}},latestPublicReview:null,currentGuidance:{schemaVersion:1,mode:'current_document',instructionSemantics:'current_for_selected_publication',snapshot,instructionCount:1}};
+ const item:InstructionManifestEntry={instructionId:id,version:1,format:'authored_schedule',scope:{publication,slotId:'rinse',productId:null},contentHash:'b'.repeat(64),effectiveOn:'2024-02-29',baseInstructionId:null,baseInstructionVersion:0,reviewedUseBasis:null,basisStatus:'current',originalStart:null};
+ const page:InstructionManifestPage={schemaVersion:1,audience:'client',snapshot,total:1,cursor:null,items:[item],nextCursor:null};
+ const detail:InstructionDetail={schemaVersion:1,audience:'client',snapshot,item,content:{format:'authored_schedule',body:{kind:'instruction',publication,slotId:'rinse',productId:null,baseInstructionId:null,baseInstructionVersion:0,useBasis:null,directions:['rinse gently'],cautions:[],schedule,reason:'reviewed practical change',effectiveOn:'2024-02-29',reviewId:null}},publishedBy:third,publishedAt:now};
+ return {view,snapshot,item,page,detail,schedule};
+}
+test('exact instruction manifest/detail reads bind head, day, audience, version, hash and actual scope',async()=>{
+ const {view,snapshot,item,page,detail}=await instructionFixture();
+ const command=readReviewCommand({schemaVersion:1,action:'read_client_instruction_manifest_v1',snapshot,cursor:null,limit:100});
+ assert.deepEqual(mapReviewResult(page,command),page);
+ for(const bad of [{...snapshot,useHead:1},{...snapshot,asOfDay:'2026-01-02'}])assert.throws(()=>mapReviewResult({...page,snapshot:bad},command));
+ assert.throws(()=>mapReviewResult({...page,items:[{...item,effectiveOn:'2026-01-02'}]},command));
+ assert.throws(()=>mapReviewResult({...page,items:[{...item,version:7}]},command));
+ assert.throws(()=>mapReviewResult({...page,snapshot:{...snapshot,sourceId:id}},command));
+ const nextDay={...snapshot,asOfDay:'2026-01-02',manifestHash:'c'.repeat(64)},nextItem={...item,effectiveOn:'2026-01-02'};
+ const nextPage={...page,snapshot:nextDay,items:[nextItem]};assert.deepEqual(mapReviewResult(nextPage,readReviewCommand({schemaVersion:1,action:'read_client_instruction_manifest_v1',snapshot:nextDay,cursor:null,limit:100})),nextPage,'effective day can change applicability without changing numeric heads');
+ const read=readReviewCommand({schemaVersion:1,action:'read_client_instruction_v1',snapshot,instructionId:id,version:1,contentHash:item.contentHash});
+ assert.deepEqual(mapReviewResult(detail,read),detail);
+ for(const bad of [{...item,version:2},{...item,contentHash:'c'.repeat(64)},{...item,scope:{...item.scope,slotId:'other'}}])assert.throws(()=>mapReviewResult({...detail,item:bad},read));
+ const manifest=collectInstructionManifest(view,[page]);assert.deepEqual(bindInstructionForScope(view,manifest,item.scope,detail),detail);
+ assert.throws(()=>bindInstructionForScope(view,manifest,item.scope,null));
+ assert.throws(()=>collectInstructionManifest(view,[]));
+ assert.throws(()=>collectInstructionManifest(view,[{...page,items:[{...item,scope:{...item.scope,slotId:'absent'}}]}]));
+ const advisor=readReviewCommand({schemaVersion:1,action:'read_advisor_instruction_v1',clientId:other,snapshot,instructionId:id,version:1,contentHash:item.contentHash});
+ const advisorDetail={...detail,audience:'advisor',clientId:other};assert.deepEqual(mapReviewResult(advisorDetail,advisor),advisorDetail);
+ assert.throws(()=>mapReviewResult({...advisorDetail,clientId:id},advisor));assert.throws(()=>mapReviewResult(advisorDetail,read));
+});
+test('manifest completeness refuses early terminal pages, duplicates, changed snapshots and missing instructions',async()=>{
+ const {view,snapshot,item,page}=await instructionFixture();
+ const second={...item,instructionId:other,scope:{...item.scope,slotId:'second'}};
+ const c=view.plan!.content;c.routine.push({...c.routine[0],id:'second',slotId:'second'});
+ const two={...view,currentGuidance:{...view.currentGuidance!,instructionCount:2}};
+ const cursor=`r:${'a'.repeat(64)}:${id}`;
+ const pages:InstructionManifestPage[]=[{...page,total:2,nextCursor:cursor},{...page,total:2,cursor,items:[second]}];
+ assert.equal(collectInstructionManifest(two,pages).length,2);
+ assert.throws(()=>collectInstructionManifest(two,[{...pages[0],nextCursor:null},{...pages[1],cursor:null}]));
+ assert.throws(()=>collectInstructionManifest(two,[pages[0]]));
+ assert.throws(()=>collectInstructionManifest(two,[pages[0],{...pages[1],snapshot:{...snapshot,instructionHead:2}}]));
+ assert.throws(()=>collectInstructionManifest(two,[pages[0],{...pages[1],items:[item]}]));
+});
+test('source-valid max document/use/reported page and all2550 explicit scopes stay inside each wire budget',async(t)=>{
+ const {createEmptyPlanContent,projectClientPlan}=await import('../src/contracts/PortalRebuild.ts');
+ const {readPlanContent,planContentShape}=await import('../src/contracts/PortalRebuildValidation.ts');
+ const {reviewInstructionScopesMax}=await import('../src/contracts/PortalReviewValues.ts');
+ const {schedule}=await instructionFixture(),template=JSON.parse(readFileSync(new URL('./fixtures/concierge-presentation.json',import.meta.url),'utf8')).presentation.categoryCards[0].currentProduct;
+ const content=createEmptyPlanContent();content.title='maximum source-valid synthetic plan';
+ for(let i=0;i<50;i++)content.products.push({...template,id:`p${i}`,name:'🧴'.repeat(200),brand:'🧴'.repeat(100),variant:'🧴'.repeat(200),sizeLabel:'🧴'.repeat(120),strength:{state:'known',value:'🧴'.repeat(200)},category:{state:'known',value:'🧴'.repeat(200)},identity:'unresolved',formula:'unknown',factIds:[],guides:[],evidence:[]});
+ const productIds=content.products.map(p=>p.id);content.context.products={state:'recorded',productIds};
+ for(let i=0;i<50;i++){
+  content.routine.push({id:`r${i}`,slotId:`r${i}`+'s'.repeat(97-String(i).length),kind:'product',productId:productIds[i],title:'routine',directions:['use as directed'],cautions:[],schedule});
+  content.decisions.push({id:`d${i}`,slotId:`d${i}`+'s'.repeat(97-String(i).length),recommendationId:null,kind:'keep',goalIds:[],currentProductIds:productIds,primaryProductId:productIds[i],alternativeProductIds:[],reason:'keep',directions:['use as directed'],cautions:[],limitations:[],schedule,factIds:[],guidance:{title:'',subtitle:'',rationaleTitle:'',reasons:[],actions:[],comparisons:[],factsTitle:'',facts:[],how:null,sources:[],group:null,decisionLabels:null}});
+ }
+ const bytes=(v:unknown)=>Buffer.byteLength(JSON.stringify(v));
+ while(content.consultationSections.length<49&&bytes(content)+16500<498000)content.consultationSections.push({title:'retained source content',body:'🧴'.repeat(4000)});
+ const gap=498000-bytes(content)-80;assert.ok(gap>0);content.consultationSections.push({title:'last',body:'🧴'.repeat(Math.min(4000,Math.floor(gap/4)))});
+ assert.ok(bytes(content)>480000&&bytes(content)<500000);readPlanContent(content);
+ assert.equal(content.routine.length,planContentShape.fields!.routine.max);assert.equal(content.decisions.length,planContentShape.fields!.decisions.max);assert.equal(content.products.length,planContentShape.fields!.products.max);
+ const snapshot:GuidanceReadSnapshot={publication,currentPublication:publication,useHead:1,reportHead:1,instructionHead:1,serviceRevision:1,decisionRevision:1,asOfDay:'2026-01-01',manifestHash:'a'.repeat(64)};
+ const states=content.products.map(p=>{const ref={kind:'plan_product' as const,publication,productId:p.id,slotId:null},originalRef={...ref,slotId:'s'.repeat(100)};return {product:ref,state:'paused' as const,originalStart:unknown,contradiction:false,identity:{eventId:id,target:{subject:originalRef,comparedWith:originalRef},match:'not_sure' as const,sourcePublication:publication,occurredOn:unknown,recordedAt:now,reportedBy:other,recordedBy:third,channel:'call' as const},latestEvent:{eventId:id,product:originalRef,changeKind:'started' as const,sourcePublication:publication,occurredOn:unknown,recordedAt:now,reportedBy:other,recordedBy:third,channel:'call' as const,acquisition:'self' as const,identityEventId:id,originalActivationId:'9'.repeat(19),amendment:{id:third,eventId:id,previousAmendmentHeadId:id,product:ref,changeKind:'paused' as const,sourcePublication:publication,occurredOn:unknown,acquisition:'self' as const,identityEventId:id,amendedBy:third,amendedAt:now}}};});
+ const descriptor={name:'🧴'.repeat(200),brand:{state:'known' as const,value:'🧴'.repeat(200)},variant:{state:'known' as const,value:'🧴'.repeat(200)},strength:{state:'known' as const,value:'🧴'.repeat(200)},sizeLabel:{state:'known' as const,value:'🧴'.repeat(200)},labelPhotoIds:[]};
+ const rows=[] as ClientPlanViewV3['use']['reportedProducts']['items'];
+ for(let i=0;i<100;i++){const row={product:{kind:'client_reported_product' as const,reportedProductId:`10000000-0000-4000-8000-${String(i+10).padStart(12,'0')}`,version:1},descriptor,state:'unreviewed' as const,originalStart:unknown,latestEvent:null,identity:null,contradiction:false};if(bytes({items:[...rows,row],nextCursor:`c:${'a'.repeat(64)}:${id}`})>399900)break;rows.push(row);}
+ assert.ok(rows.length>1&&rows.length<100);
+ const view:ClientPlanViewV3={schemaVersion:3,access:'read_only',plan:{documentSchemaVersion:3,version:1,publishedAt:now,content:projectClientPlan(content)},decisionRevision:1,decisions:content.decisions.map(d=>({decisionId:d.id,choice:'approved',reason:'🧴'.repeat(1000)})),actualUse:Array.from({length:1000},(_,i)=>({slot:'old'+String(i).padStart(97,'0'),productId:'old-product'+'p'.repeat(89),startedOn:'2024-02-29',publicationVersion:1})),nextReviewOn:null,use:{revision:1,planProducts:states,reportedProducts:{items:rows,nextCursor:`c:${'a'.repeat(64)}:${id}`}},latestPublicReview:{reviewId:id,publicationVersion:1,publishedAt:now,occurredOn:unknown,conclusion:'🧴'.repeat(4000),rationale:'🧴'.repeat(4000),nextStep:'🧴'.repeat(4000),nextReviewOn:null},currentGuidance:{schemaVersion:1,mode:'current_document',instructionSemantics:'current_for_selected_publication',snapshot,instructionCount:2550}};
+ assert.ok(bytes(view)<1800000&&bytes(view)>1400000);const read=readReviewCommand({schemaVersion:1,action:'read_client_plan_v3',version:1});assert.deepEqual(mapReviewResult(view,read),view);
+ const omitted={...view,use:{...view.use,planProducts:states.slice(1)}};assert.throws(()=>mapReviewResult(omitted,read));assert.equal(view.use.planProducts.filter(p=>p.state==='paused').length,50);
+ const scopes=instructionScopes(view);assert.equal(scopes.length,2550);assert.equal(scopes.length,reviewInstructionScopesMax);
+ const entries:InstructionManifestEntry[]=scopes.map((scope,i)=>({instructionId:`10000000-0000-4000-8000-${String(i+1000).padStart(12,'0')}`,version:1,format:'authored_schedule',scope,contentHash:'b'.repeat(64),effectiveOn:'2026-01-01',baseInstructionId:null,baseInstructionVersion:0,reviewedUseBasis:{useRevision:0,latestEventId:null,amendmentHeadId:null},basisStatus:'changed',originalStart:unknown}));
+ const pages:InstructionManifestPage[]=[];let cursor:string|null=null;
+ for(let i=0;i<entries.length;i+=100){const items=entries.slice(i,i+100),nextCursor=i+100<entries.length?`r:${'a'.repeat(64)}:${items[items.length-1].instructionId}`:null;const page:InstructionManifestPage={schemaVersion:1,audience:'client',snapshot,total:2550,cursor,items,nextCursor};assert.ok(bytes(page)<=400000);assert.deepEqual(mapReviewResult(page,readReviewCommand({schemaVersion:1,action:'read_client_instruction_manifest_v1',snapshot,cursor,limit:100})),page);pages.push(page);cursor=nextCursor;}
+ const manifest=collectInstructionManifest(view,pages);assert.equal(manifest.length,2550);assert.equal(pages.length,26);
+ let totalDetailBytes=0,firstDetail:InstructionDetail|null=null;
+ for(const item of manifest){
+  const body:Extract<GuidanceBody,{kind:'instruction'}>={kind:'instruction',publication,slotId:item.scope.slotId,productId:item.scope.productId,baseInstructionId:null,baseInstructionVersion:0,useBasis:item.reviewedUseBasis,directions:Array.from({length:7},()=> '🧴'.repeat(4000)),cautions:[],schedule,reason:'actual reviewed change',effectiveOn:item.effectiveOn,reviewId:null};
+  const fill=120000-bytes(body)-3;body.directions.push('🧴'.repeat(Math.floor(fill/4))+'x'.repeat(fill%4));assert.equal(bytes(body),120000);
+  const detail:InstructionDetail={schemaVersion:1,audience:'client',snapshot,item,content:{format:'authored_schedule',body},publishedBy:third,publishedAt:now};assert.ok(bytes(detail)<=400000);totalDetailBytes+=bytes(detail);
+  assert.deepEqual(mapReviewResult(detail,readReviewCommand({schemaVersion:1,action:'read_client_instruction_v1',snapshot,instructionId:item.instructionId,version:item.version,contentHash:item.contentHash})),detail);if(firstDetail===null)firstDetail=detail;
+ }
+ assert.ok(totalDetailBytes>300000000,'all full bodies require many bounded reads, never a larger response cap');
+ assert.ok(firstDetail);assert.deepEqual(bindInstructionForScope(view,manifest,firstDetail.item.scope,firstDetail),firstDetail);
+ const wrongStart={...firstDetail,item:{...firstDetail.item,originalStart:{state:'known' as const,value:'2024-02-29'}}};assert.throws(()=>bindInstructionForScope(view,[wrongStart.item,...manifest.slice(1)],wrongStart.item.scope,wrongStart));
+ t.diagnostic(JSON.stringify({documentBytes:bytes(content),v3Bytes:bytes(view),reportedPageBytes:bytes(view.use.reportedProducts),scopeCount:manifest.length,manifestPageCount:pages.length,maxManifestPageBytes:Math.max(...pages.map(bytes)),allDetailBytes:totalDetailBytes,detailBodyBytes:120000,pausedProducts:50}));
+});
+test('legacy instruction detail retains original source facts while declaring its unversioned review basis',async()=>{
+ const {snapshot,item,detail}=await instructionFixture(),legacyPublication={version:1,documentSchemaVersion:2} as const;
+ const legacySnapshot={...snapshot,publication:legacyPublication,currentPublication:legacyPublication,useHead:1};
+ const legacyItem={...item,format:'legacy_usage',scope:{publication:legacyPublication,slotId:'moisturizer',productId:'CeraVe_PM'},reviewedUseBasis:null,basisStatus:'legacy_unversioned',originalStart:unknown};
+ const revision={id,version:1,slot:'moisturizer',productId:'CeraVe_PM',planVersion:1,usage:{periods:['evening'],order:1,short:{morning:null,evening:'apply gently'},instructions:['apply gently']},reason:'actual original instruction',reviewId:null,effectiveOn:'2024-02-29',source:{kind:'baseline',publicationVersion:1,recommendationId:null},originalStartedOn:'2024-02-29',authorId:third,createdAt:now};
+ const legacy={...detail,snapshot:legacySnapshot,item:legacyItem,content:{format:'legacy_usage',revision}};
+ const command=readReviewCommand({schemaVersion:1,action:'read_client_instruction_v1',snapshot:legacySnapshot,instructionId:id,version:1,contentHash:item.contentHash});
+ assert.deepEqual(mapReviewResult(legacy,command),legacy);
+ assert.throws(()=>mapReviewResult({...legacy,content:{format:'legacy_usage',revision:{...revision,privateReference:'private'}}},command));
+ assert.throws(()=>mapReviewResult({...legacy,item:{...legacyItem,basisStatus:'current'}},command));
+});
+test('historical documents label current-for-selected instructions and never carry another publication instruction',async()=>{
+ const {view,snapshot,page,item}=await instructionFixture();
+ const historicalSnapshot={...snapshot,currentPublication:{version:2,documentSchemaVersion:3 as const}};
+ const historical={...view,currentGuidance:{...view.currentGuidance!,mode:'historical_document',snapshot:historicalSnapshot}};
+ const command=readReviewCommand({schemaVersion:1,action:'read_client_plan_v3',version:1});assert.deepEqual(mapReviewResult(historical,command),historical);
+ const read=readReviewCommand({schemaVersion:1,action:'read_client_instruction_manifest_v1',snapshot:historicalSnapshot,cursor:null,limit:100});
+ assert.throws(()=>mapReviewResult({...page,snapshot:historicalSnapshot,items:[{...item,scope:{...item.scope,publication:historicalSnapshot.currentPublication}}]},read));
+ assert.deepEqual(decodePortalReviewResponse('review',read,409,{code:'guidance_conflict'}),{state:'rejected',status:409,code:'guidance_conflict'});
+});
+test('new decision write binds the exact current guidance snapshot and returns only canonical decision acknowledgement',async()=>{
+ const {snapshot}=await instructionFixture();
+ const command={schemaVersion:1,action:'record_decision_v2',requestId:id,expectedDecisionRevision:0,publicationVersion:1,decisionId:'decision_cerave',choice:'approved',reason:null,snapshot};
+ const parsed=readReviewCommand(command);
+ const receipt={requestId:id,action:'record_decision_v2',snapshot,decisionRevision:1,publicationVersion:1,decisionId:'decision_cerave',choice:'approved',reason:null};
+ assert.deepEqual(mapReviewResult(receipt,parsed),receipt);assert.equal(portalReviewAccess('review','record_decision_v2','client'),'WRITE');assert.equal(portalReviewAccess('review','record_decision_v2','task_agent'),'DENY');
+ for(const bad of [{...command,expectedDecisionRevision:1},{...command,publicationVersion:2},{...command,snapshot:{...snapshot,currentPublication:{...publication,version:2}}},{...command,startedOn:'2024-02-29'},{...command,paymentClaimId:other}])assert.throws(()=>readReviewCommand(bad));
+ for(const bad of [{...receipt,decisionRevision:0},{...receipt,choice:'declined'},{...receipt,snapshot:{...snapshot,instructionHead:2}},{...receipt,firstServiceStarted:false},{...receipt,actualUse:[]}])assert.throws(()=>mapReviewResult(bad,parsed));
+ const status=readReviewCommand({schemaVersion:1,action:'request_status_v1',requestId:id});assert.deepEqual(mapReviewResult({status:'committed',receipt},status),{status:'committed',receipt});
+ assert.deepEqual(decodePortalReviewResponse('review',parsed,200,{unexpected:'success'}),{state:'uncertain',status:503,code:'uncertain',retry:parsed});
+ assert.deepEqual(decodePortalReviewResponse('review',parsed,409,{code:'guidance_version_required'}),{state:'rejected',status:409,code:'guidance_version_required'});
+});
 
 // Compiler checks use actual imports with --strict and unchanged compiler settings.
 if(false){
@@ -238,5 +395,9 @@ if(false){
  const wrongKindApproval:GuidanceApproval={...approval,scope:'reply.publish'};
  // @ts-expect-error an amended report must retain its actual actor
  const badAmendment:ReportAmendment={id, event:{kind:'goal_report',id},previousAmendmentHeadId:null,replacement:{kind:'goal_report',body:report},occurredOn:unknown,reason:'reason',recordedAt:now,attention:null};
- void [badReport,badApproval,wrongKindApproval,badAmendment];
+ // @ts-expect-error a new decision write cannot omit its exact guidance snapshot
+ const badDecision:Extract<ReviewCommand,{action:'record_decision_v2'}>={schemaVersion:1,action:'record_decision_v2',requestId:id,expectedDecisionRevision:0,publicationVersion:1,decisionId:'choice',choice:'approved',reason:null};
+ // @ts-expect-error public consistency tokens never contain raw-source locators
+ const badSnapshot:GuidanceReadSnapshot={publication,currentPublication:publication,useHead:0,reportHead:0,instructionHead:0,serviceRevision:0,decisionRevision:0,asOfDay:'2026-01-01',manifestHash:'a'.repeat(64),sourceId:id};
+ void [badReport,badApproval,wrongKindApproval,badAmendment,badDecision,badSnapshot];
 }
