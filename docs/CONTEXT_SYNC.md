@@ -1,5 +1,12 @@
 # Approved portal rebuild, 30 October 2026
 
+## portal rebuild: current boundary and expanded execution (31 October 2026)
+
+Canonical62/40files/930assertions/local security advisor0issues and scopedM62/transportreviews pass. RootsharedSelectc26 passes14+foundation6; no package/authoritychange. NewindependentUIreviewsfindG1/G2(V3)andRH2(history), plusCommerceUIintent/hash/currencygates. AuthorSource/browsercorrectionsareinprogress, notRootApp/defaultactivation. CommercetargetcabUSD/canonicalheadsemanticsfrozenforindependentimplementation; soleM63file20261031200211 isW1-ownedisolatedSQL, financialadmissionstillpending. Exacttask/settings/provenance/resourcefactsarein [current status](portal-rebuild/CURRENT_STATUS.md) and [task ledger](portal-rebuild/TASKS.json).
+
+Theinitialfour-agentclaimwasoverbroadforT3: additionalapp-ownedchildrenactuallyexecute. Userapprovedexpansionupto8totalincludingcoordinator/nestedwhereworkisdisjoint, withno model/settingschangesandnostackedsourcewriters; source/reviewlanesexpanded, Chromeandheavysharednativefixturestayserial. Genuinecorecare1011qualifiedPASSremainshistorical; newR9actualReview/GuidanceattemptsreachedrealPKCE/SQLite/24familyflowbutr2isFAILatadeliberatelyinvalidhistoricaldecision400harnessexpected409, notaproductbypass. r2actual14Review+9Guidancepositives/2pubs/1syntheticpayment/zeroCare/noStart; all5sessionsclosed/wholeAuth0/0/core/helpers230files/old41rowspreserved, custodyreturned20:18:35.118Z. Newattemptneedsnewgrant; nofalseall-goalacceptance orliveaction.
+
+
 ## portal rebuild: composed guidance backend and canonical62 preparation (31 October 2026)
 
 Composed M58-M61 backend is integrated through3edb0700 with scoped independent R3 PASS, Root1256 pass/18 existing opt-in skips, strict types and Expo export. Current fresh canonical61 reset succeeded but pgTAP exposed the original scaled-number source cast; it is not accepted. Coordinator M62 `6e4d38e2` passes unchanged42/new28 rollback probes without changing105 tables, function attributes, ledger or Auth0/0. Fresh R9 canonical62 reset and40-file/930-assertion pgTAP now pass; independent M62 review and genuine new-feature execution remain pending. R7 and R8 were positively audited, privately backed up and stopped with volumes/data retained; no worker has native custody.
