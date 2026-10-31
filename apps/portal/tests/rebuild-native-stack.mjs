@@ -5,7 +5,7 @@ import path from 'node:path';
 import {randomBytes} from 'node:crypto';
 import {build} from 'esbuild';
 import {Miniflare, convertV4MiniflareOptions} from 'miniflare';
-import {localPolicy, providerTarget, portalOrigin, providerOrigin, sha} from '../scripts/rebuild-native-boundary.mjs';
+import {localPolicy, providerTarget, portalOrigin, providerOrigin, sha,assertBrowserBytes} from '../scripts/rebuild-native-boundary.mjs';
 
 const portal = path.resolve(import.meta.dirname, '..');
 export const sourceRoot = path.resolve(portal, '../..');
@@ -30,11 +30,13 @@ export async function connectedStack(fixture) {
     await build({absWorkingDir: runtime, tsconfig:'tsconfig.json', entryPoints:[entry], bundle:true, format:'esm', platform:'browser', target:'es2022', outfile:path.join(dir,output), external:['cloudflare:workers'], legalComments:'none', plugins:[plugin]});
   }
   assert.equal(seams.length, 2);
-  const issued = new Map(), calls = [], browserCalls = [], errors = [], held = new Map();
+  const issued = new Map(), issuedSecrets=new Set(), calls = [], browserCalls = [], errors = [], held = new Map();
+  const browserScan={responses:0,bodyBytes:0,clientResponses:0,safePreviewResponses:0,advisorPrivateDraftResponses:0,credentialLeaks:0,privateFactLeaks:0};
   function remember(data) {
     if (!data?.access_token) return;
     const claims = JSON.parse(Buffer.from(data.access_token.split('.')[1], 'base64url').toString());
     assert.match(claims.session_id, /^[0-9a-f-]{36}$/); assert.equal(claims.iss, providerOrigin + '/auth/v1');
+    issuedSecrets.add(data.access_token);if(data.refresh_token)issuedSecrets.add(data.refresh_token);
     issued.set(claims.session_id, {id:claims.session_id, ownerId:claims.sub, token:data.access_token, refreshToken:data.refresh_token, closed:false});
   }
   const outbound = async request => {
@@ -44,6 +46,7 @@ export async function connectedStack(fixture) {
     try { target=providerTarget(request.url); }
     catch {errors.push({kind:'refused-provider-route',origin:url.origin,path:url.pathname,queryKeys:[...url.searchParams.keys()]});throw Error('Refused provider route');}
     const body = ['GET','HEAD'].includes(request.method) ? undefined : Buffer.from(await request.arrayBuffer());
+    if(url.pathname==='/auth/v1/otp') {const otp=JSON.parse(body);assert.equal(otp.create_user,false,'Link request cannot enroll identities');assert.ok(typeof otp.email==='string'&&otp.email.endsWith('.invalid'),'Only synthetic local recipients are permitted');}
     const command = url.pathname.startsWith('/functions/') ? JSON.parse(body) : null;
     if (url.pathname.startsWith('/functions/')) {
       const allowed = {'concierge-operations':['advisor_list'], 'concierge-payments':['advisor_read','confirm_payment']};
@@ -93,7 +96,7 @@ export async function connectedStack(fixture) {
       const query=text=>execFileSync('/usr/bin/sqlite3',['-readonly',file,text],{encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
       if(query("select count(*) from sqlite_master where type='table' and name='session_record'")!=='1')continue;
       for(const line of query('select json from session_record').split('\n').filter(Boolean)) {
-        for(const item of issued.values()) {assert.ok(!line.includes(item.token),'Provider bearer must not be plaintext in SQLite');if(item.refreshToken)assert.ok(!line.includes(item.refreshToken),'Provider refresh credential must not be plaintext in SQLite');}
+        for(const secret of issuedSecrets)assert.ok(!line.includes(secret),'Provider access/refresh credential must not be plaintext in SQLite');
         const record=JSON.parse(line);records++;
         if(record.kind==='session'&&record.status==='active') {activeSessions++;assert.equal(record.credentials.version,1);assert.equal(typeof record.credentials.ciphertext,'string');assert.equal(typeof record.credentials.iv,'string');envelopes++;}
         if(record.kind==='flow'&&record.payload) {assert.equal(record.payload.version,1);assert.equal(typeof record.payload.ciphertext,'string');}
@@ -131,6 +134,7 @@ export async function connectedStack(fixture) {
       try {
         const headers=await request.allHeaders();
         assert.equal(headers.authorization, undefined, 'Browser provider bearer forbidden');
+        assert.equal(headers.apikey, undefined, 'Browser provider key forbidden');
         let action=null;
         if(url.pathname.startsWith('/api/')&&request.method()==='POST') {try {action=request.postDataJSON()?.action??null;}catch {}}
         browserCalls.push({method:request.method(),path:url.pathname,action});
@@ -139,11 +143,22 @@ export async function connectedStack(fixture) {
         const resultHeaders=Object.fromEntries(response.headers);
         const cookies=response.headers.getSetCookie();
         if(cookies.length) resultHeaders['set-cookie']=cookies.join('\n');
-        await route.fulfill({status:response.status,headers:resultHeaders,body:Buffer.from(await response.arrayBuffer())});
+        const bytes=Buffer.from(await response.arrayBuffer());
+        try {assertBrowserBytes(resultHeaders,bytes,[...issuedSecrets,...[fixture.config.PUBLISHABLE_KEY,fixture.config.ANON_KEY,fixture.config.SERVICE_ROLE_KEY].filter(key=>typeof key==='string'&&key.length>0)]);}
+        catch(error) {browserScan.credentialLeaks++;throw error;}
+        browserScan.responses++;browserScan.bodyBytes+=bytes.length;
+        const clientResponse=url.pathname.startsWith('/api/client/'),safePreview=url.pathname==='/api/advisor/plans'&&action==='preview_draft_v1';
+        if(clientResponse||safePreview) {
+          try {assertBrowserBytes(resultHeaders,bytes,['W6_PRIVATE_SYNTHETIC_ONLY']);}
+          catch(error) {browserScan.privateFactLeaks++;throw error;}
+          if(clientResponse)browserScan.clientResponses++;if(safePreview)browserScan.safePreviewResponses++;
+        }
+        if(url.pathname==='/api/advisor/plans'&&action==='read_draft_v1'&&bytes.includes(Buffer.from('W6_PRIVATE_SYNTHETIC_ONLY')))browserScan.advisorPrivateDraftResponses++;
+        await route.fulfill({status:response.status,headers:resultHeaders,body:bytes});
       } catch {errors.push('local dispatch failed '+url.pathname); await route.abort().catch(()=>{});}
     });
   }
-  return {mf,dir,seams,calls,browserCalls,errors,issued,remember,cleanup,hold,bind,inspectVault,async dispose(){await mf.dispose();}};
+  return {mf,dir,seams,calls,browserCalls,browserScan,errors,issued,remember,cleanup,hold,bind,inspectVault,async dispose(){await mf.dispose();}};
 }
 
 export function nodeCookieClient(stack, audience, ip=1) {
@@ -175,6 +190,6 @@ export async function captureCallback(email, before, returnPath) {
   assert.ok(links.length);
   const verify=await fetch(links[0],{redirect:'manual'}); assert.ok([302,303].includes(verify.status));
   const returned=new URL(verify.headers.get('location'));
-  assert.equal(returned.origin,portalOrigin);assert.equal(returned.pathname,returnPath);assert.equal(returned.searchParams.size,1);assert.ok(returned.searchParams.get('code'));
+  assert.equal(returned.origin,portalOrigin);assert.equal(returned.username,'');assert.equal(returned.password,'');assert.equal(returned.hash,'');assert.equal(returned.pathname,returnPath);assert.equal(returned.searchParams.size,1);assert.ok(returned.searchParams.get('code'));
   return {url:returned.href,code:returned.searchParams.get('code'),localEmails:fresh.length};
 }

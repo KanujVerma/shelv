@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {localPolicy, providerTarget, portalOrigin, providerOrigin} from '../scripts/rebuild-native-boundary.mjs';
+import {localPolicy, providerTarget, portalOrigin, providerOrigin,assertBrowserBytes} from '../scripts/rebuild-native-boundary.mjs';
 
 // Run explicitly. This file is intentionally outside *.test.mjs automatic globs.
 assert.equal(process.env.SHELV_REBUILD_NATIVE_GUARDS, '1', 'Explicit guard-test opt-in required');
@@ -30,4 +30,12 @@ test('provider routing denies external, ambiguous and unlisted destinations befo
   assert.equal(providerTarget(providerOrigin + '/auth/v1/token?grant_type=pkce'), providerOrigin + '/auth/v1/token?grant_type=pkce');
   assert.equal(providerTarget(providerOrigin + '/rest/v1/rpc/concierge_advisor_session_context'), providerOrigin + '/rest/v1/rpc/concierge_advisor_session_context');
   assert.equal(providerTarget(providerOrigin + '/functions/v1/concierge-plans'), 'http://127.0.0.1:57440/');
+});
+
+test('browser response guard catches exact credentials in headers/binary bytes while static field names stay valid', () => {
+  const credential='synthetic-unit-secret-actual-value';
+  assert.throws(()=>assertBrowserBytes({'x-result':credential},Buffer.from('safe'),[credential]),/forbidden exact value/);
+  assert.throws(()=>assertBrowserBytes({'content-type':'application/octet-stream'},Buffer.concat([Buffer.from([0,255]),Buffer.from(credential)]),[credential]),/forbidden exact value/);
+  assert.doesNotThrow(()=>assertBrowserBytes({'content-type':'text/javascript'},Buffer.from('const fields=["access_token","refresh_token","code_verifier"];'),[credential]));
+  assert.throws(()=>assertBrowserBytes({},Buffer.from('{"fact":"W6_PRIVATE_SYNTHETIC_ONLY"}'),['W6_PRIVATE_SYNTHETIC_ONLY']),/forbidden exact value/);
 });

@@ -20,11 +20,11 @@ const command=async(page,audience,family,body,override={})=>page.evaluate(async(
   const response=await fetch('/api/'+audience+'/'+family,{method:'POST',headers:{'content-type':'application/json','x-shelv-csrf':session.csrf,...override},body:JSON.stringify(body)});
   return{status:response.status,value:await response.json()};
 },{audience,family,body,override});
-async function signIn(identity,audience,index,preparation=false) {
+async function signIn(identity,audience,index,preparation=false,initialRoute=null) {
   phase=audience+' PKCE';
   const context=await browser.newContext({viewport:{width:1440,height:960},serviceWorkers:'block'});contexts.push(context);
   await stack.bind(context,index);const page=await context.newPage();page.setDefaultTimeout(12000);
-  const route=audience==='advisor'?'/advisor/plans':'/plan';
+  const route=initialRoute??(audience==='advisor'?'/advisor/plans':'/plan');
   await page.goto(portalOrigin+route);
   await page.getByRole('textbox',{name:'email',exact:true}).fill(identity.email);
   const before=await mailSnapshot();
@@ -33,7 +33,8 @@ async function signIn(identity,audience,index,preparation=false) {
   let callback=await captureCallback(identity.email,before,route);result.localEmails=(result.localEmails??0)+callback.localEmails;
   await page.goto(callback.url);callback=null;
   await page.waitForURL(portalOrigin+route);
-  if(audience==='advisor')await page.getByRole('button',{name:'new plan',exact:true}).waitFor();
+  if(route==='/advisor/clients')await page.getByRole('heading',{name:'clients',exact:true}).waitFor();
+  else if(audience==='advisor')await page.getByRole('button',{name:'new plan',exact:true}).waitFor();
   else if(preparation)await page.getByText('your plan is being prepared',{exact:true}).waitFor();
   else await page.getByRole('heading',{name:'your current routine',exact:true}).waitFor();
   assert.equal(new URL(page.url()).search,'');assert.equal(new URL(page.url()).hash,'');
@@ -174,12 +175,13 @@ try {
   const otherView=await command(other.page,'client','plans',{schemaVersion:1,action:'read_client_plan_v1',version:null});assert.equal(otherView.status,200);assert.equal(otherView.value.plan,null);
   pass('Actual server rejects caller-selected owner, wrong CSRF and wrong cookie audience; another real owner receives own preparation only');
   phase='real view-only advisor and role revocation';
-  const viewer=await signIn(cases.viewer,'advisor',4);
-  assert.equal(await viewer.page.getByRole('button',{name:'new plan',exact:true}).isDisabled(),true);
+  const viewer=await signIn(cases.viewer,'advisor',4,false,'/advisor/clients');
+  assert.equal(await viewer.page.getByRole('button',{name:'new plan',exact:true}).count(),0);
   const roleDenied=await command(viewer.page,'advisor','plans',{schemaVersion:1,action:'create_draft_v1',requestId:randomUUID(),kind:'care_plan',templateVersionId:null});assert.equal(roleDenied.status,403);
+  const freshViewer=await signIn(cases.viewer,'advisor',5,false,'/advisor/clients');
   // Revoke only the newly created explicitly owned synthetic viewer's grant.
   fixture.sql(`update concierge.advisors set active=false where user_id='${cases.viewer.id}'`);
-  await viewer.page.reload();await viewer.page.getByRole('button',{name:'send sign-in link',exact:true}).waitFor();
+  await freshViewer.page.reload();await freshViewer.page.getByRole('button',{name:'send sign-in link',exact:true}).waitFor();
   pass('Real view-only advisor cannot author; revoking only its new local grant ends actual browser authority on live context reread');
   phase='late response after actual logout';
   const held=stack.hold('read_client_plan_v1');released=held.release;
@@ -194,7 +196,9 @@ try {
   await other.page.reload();await other.page.getByRole('button',{name:'send sign-in link',exact:true}).waitFor();
   pass('Actual logout rejects a held genuine backend reply; supported provider revocation ends another real browser session');
   assert.deepEqual(stack.errors,[]);
-  assert.equal(stack.browserCalls.filter(x=>x.path.endsWith('/auth/complete')).length,4);
+  assert.equal(stack.browserCalls.filter(x=>x.path.endsWith('/auth/complete')).length,5);
+  assert.ok(stack.browserScan.responses>0&&stack.browserScan.clientResponses>0&&stack.browserScan.safePreviewResponses>0&&stack.browserScan.advisorPrivateDraftResponses>0);
+  assert.equal(stack.browserScan.credentialLeaks,0);assert.equal(stack.browserScan.privateFactLeaks,0);
   result.status='PASS';
 } catch(error) {
   result.status='FAIL';result.failure={phase,type:error.name};
@@ -207,7 +211,7 @@ try {
   for(const context of contexts)await context.close().catch(()=>{});
   await browser?.close().catch(()=>{});
   try {result.cleanup=await stack.cleanup();}catch {result.status='FAIL';result.cleanup='FAILED';}
-  result.calls=stack.calls;result.browserCalls=stack.browserCalls;result.errors=stack.errors;result.testBundleSeams=stack.seams;
+  result.calls=stack.calls;result.browserCalls=stack.browserCalls;result.browserResponseScan=stack.browserScan;result.errors=stack.errors;result.testBundleSeams=stack.seams;
   result.sessionIds=[...stack.issued.values()].map(item=>({id:item.id,ownerId:item.ownerId,closed:item.closed}));
   await stack.dispose();
   await writeFile(path.join(artifacts,'browser-result.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});
