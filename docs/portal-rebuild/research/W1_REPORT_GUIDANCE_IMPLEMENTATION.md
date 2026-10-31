@@ -173,3 +173,51 @@ All57 earlier migration files compare byte-exact to08575a96. Native33/33, source
 | .local-artifacts/portal-rebuild/w1-review/stress2550-m58-final.log | 7233377e054e3b647a0f34cbf82baa890dd71ebe8b6fa4ebd3fb7a5a250c7105 |
 | /Users/kanuj/.t3/worktrees/shelv/t3-7a7cac7e/.local-artifacts/portal-rebuild/w1-review/fixture/005fdf8052504212b0aedaafaaa2fc6b/manifest100-result.json | 65d577e6f61f1a420fad84183fb50313552cf38de91bea6e8a35bb7caedb60b7 |
 | /Users/kanuj/.t3/worktrees/shelv/t3-7a7cac7e/.local-artifacts/portal-rebuild/w1-review/fixture/005fdf8052504212b0aedaafaaa2fc6b/legacy-preservation.json | 9744049a8e7d73879f3716cb50f1c2d8abfbc0377a14c6d7d297f66e0cf5da96 |
+
+
+## Separate authorized M59 implementation
+
+M58 is frozen at **d33e2587ec017aea50eea9f421be2a51d594997e**. Only after that coherent commit, the installed2.121.0 CLI migration-new help was inspected again, and actual `migration new portal_rebuild_plan_wire_budget_v1 --workdir /Users/kanuj/.t3/worktrees/shelv/t3-7a7cac7e` returned **supabase/migrations/20261031132531_portal_rebuild_plan_wire_budget_v1.sql**. The exact filename was immediately reported before authored SQL. All preceding58 SQL files remain byte-exact; no invented timestamp, parent allocation/import, oldM54 edit or new action/right is used.
+
+M59 adds private `plan_wire_count_v1(jsonb,integer)` and `plan_wire_budget_bytes_v1(jsonb)`. It retains500000 compact bytes,250001 value nodes and at most10 levels. The derived1000000 uncompressed JSONB-text representation check precedes exact closed Plan26 shape/safe-integer validation and bounded compact counting. Strings/keys count actual JSON encoding and UTF8, preserving interior whitespace/quotes/backslashes/control/emoji; integral numeric forms count their canonical safe integral value. No regex whitespace stripping, generic Plan JSON dispatch or experimental8M cap remains in production. Both helpers are invoker functions with empty search paths and no PUBLIC/anon/authenticated/service_role execute. Actual Edge raw500000 validation is unchanged.
+
+The migration obtains the exact retained definition of concierge.plan_command_base_v1(jsonb), validates its pinned source hash and unique erroneous token, then recreates that definition replacing ONLY `pg_column_size(p_command)>500000` with `concierge.plan_wire_budget_bytes_v1(p_command)>500000`. It verifies the expected new source hash, unchanged OID/owner/ACL/search_path/security/volatility/strictness/parallelism/argument/return identity and exact equality of all other body bytes. It fails the whole migration if the retained source differs. Existing Plan26 validation, authorization, live gates/after-wait checks, journals/receipts and unknown-field denial remain in the unchanged source body.
+
+- Before prosrc SHA256:4be414067afedcf3456ae79523c69aaef25a964bddba0f9544836d3fff7552fa,29862 UTF8 bytes.
+- After prosrc SHA256:e1309a1f3e1fad3a952fe6a0786956d6237b2446bb37a5105ba03dbd42d29aa6,29883 bytes.
+- The sole token substitution accounts for the21-byte difference. All remaining body bytes compare equal. Initial own application retained OID275489; fresh own replay retains its newly assigned before/after OID pair too.
+
+The original actual-handler500000 save RED returns400 invalid_input, preserved in m59-exact500k-red.log. After M59, fresh **9/9 wire native cases pass,0 failures/errors,11.208s**. A real own synthetic working draft accepts exactly500000 bytes and persists its full content.500001 rejects at actual HTTP413 and direct SQL400 with no write/journal. Exact concurrent retries return one original receipt/revision; an intervening newer save does not reexecute the old command. Competing same-revision large writes produce200/409. Actual UTF8/quotes/backslashes/control/separators retain their content; fractional/unsafe/unknown/deep/malformed/compressed3M negatives reject. Existing edit and current session authority still apply; natural expiry during a real draft-row wait denies the write, and exact UUID/payload recovery after restored current access persists once. No new public metadata action is added.
+
+Fresh retained **33/33 M58 native cases pass with M59 applied,99.622s**, including internal own-database recreations that replay all59 in order. The new M59 harness wraps only its own test prepare in memory; no M58 test or migration is edited or weakened. Original89-table pre-M58 preservation remains, and a separate before/after M59 comparison now covers every row/column across105 concierge tables without exclusions. Function identity/source and row equality are stored in m59-identity-before.json / m59-identity-after.json / m59-data-preservation.json. A quoting error in the test-only preservation recorder failed syntax before any SQL; its log is retained as setup evidence, then corrected. It is not counted as a product RED.
+
+New canonical M59 test file has23 assertions; combined new M58/M59 assertions42+23=65. Full pgTAP is still UNRUN because this owned PG15 lacks pgtap. Its actual temporary-table/DO boundary fixture and private helper calls were separately executed natively: exact500000 reports500000 (rendered500177),500001 rejects, then transaction rolls back. That fixture check is not described as a pgTAP run. Parent fresh full59 canonical/genuine/independent/application/CI gates remain required.
+
+Direct RPC JSONB has lost original lexical HTTP formatting. The SQL counter enforces the bounded parsed-value representation; actual Edge continues to enforce raw500000 before parsing. The separator derivation applies canonical actual Edge safe-integer scalar forms; direct noncanonical integral scale remains subject to the separate derived representation gate and canonical compact count. JSONB parsing/detoasting AND initial uncompressed text materialization precede SQL resource checks. No pre-parse/detoast DoS or full transport/genuine Auth acceptance is claimed.
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 tests/portal-review-wire-budget-native.py WireTests.test_01_actual_handler_sql_exact_500000_saves_and_retries_original_after_new_revision
+PYTHONDONTWRITEBYTECODE=1 python3 tests/portal-review-wire-budget-native.py --apply
+PYTHONDONTWRITEBYTECODE=1 python3 tests/portal-review-wire-budget-native.py
+PYTHONDONTWRITEBYTECODE=1 python3 tests/portal-review-wire-budget-native.py --retained
+PYTHONDONTWRITEBYTECODE=1 python3 tests/portal-review-wire-budget-native.py --prepare
+```
+
+The first exact test command produced the preserved RED before authored SQL. The final prepare replays the own prerequisite subset plus M54-M59, records105-table equality and function identity, then the wire suite was rerun GREEN. This is an actual parser/handler/mapper/SQL component path with synthetic Auth; real Auth/PostgREST/Storage/browser and hosted activation remain unverified.
+
+Current fresh replay identity: OID306602 -> 306602, ownerpostgres, ACL["postgres=X/postgres"], config["search_path=\"\""]. Row proof:{"tableCount": 105, "equal": true, "beforeSha256": "1bb94e51759c1c6d09d2aa15b353aecffece35e0f00290440543c7963357833a", "afterSha256": "1bb94e51759c1c6d09d2aa15b353aecffece35e0f00290440543c7963357833a"}.
+
+| M59 owned artifact | SHA256 |
+| --- | --- |
+| supabase/migrations/20261031132531_portal_rebuild_plan_wire_budget_v1.sql | 5862ab39f5ca2fd58928ee9a6be7abd3c834c86a137fe7fa5e17c5fbaff8704e |
+| supabase/tests/portal_review_plan_wire_budget_v1.test.sql | e74645401143ef4c34016e2010cd3365bd3971637c83b9b9a2c3574180a727b3 |
+| tests/portal-review-wire-budget-native.py | decaceb7239d447da89006166e42c266277029fece90b955dbd71b09cea58cf5 |
+
+
+## M59 final owned fixture closure and qualification
+
+The own PG15 fixture was stopped using `PYTHONDONTWRITEBYTECODE=1 python3 tests/portal-review-native.py --stop` after its guarded zero-other-client-connections check and final dump. pg_ctl now reports stopped and postmaster.pid is absent. Data, all logs/dumps/failed attempts and source proof remain preserved; no other fixture or process was stopped. Closure receipt: `.local-artifacts/portal-rebuild/w1-review/STOP_RECEIPT.json`. Final dump `/Users/kanuj/.t3/worktrees/shelv/t3-7a7cac7e/.local-artifacts/portal-rebuild/w1-review/fixture/005fdf8052504212b0aedaafaaa2fc6b/final-preserved-422ec401056a414abdb2574233e909d5.sql`, 2480546 bytes, SHA256 05879c9737c004f7b16db3391b9b1fa6dc83e950ffcdc70ea4dc5a312f0add79.
+
+Final source76/76 passes,6135.627ms; actual four-module/transitive portal strict/noUnchecked check0; gateway9 and retained session32 rerun no-network pass. Deno CLI is unavailable, so index runtime/Deno check is not claimed. Root dependencies remain absent; full app/test config, Expo, full canonical59/pgTAP (new42+23), genuine Auth/PostgREST/Storage/photo HTTP/Edge/browser and CI are skipped/pending as detailed above.
+
+Coordinator has now reported independent M58 R1 FAIL with three P2 findings (report49c06001fa3a92ecd1ac8ddc0945cea63645aa97), covering blank provided change strings, lossy old typed-reply reads and direct-SQL locator range validation before authorization deduplication. This M59 review excludes those findings and does not claim to close them. M59 is being committed separately first. The coordinator separately authorizes a logical M60 after that commit; all prior59 will then be byte-frozen. The full independent report/original evidence will be read before those corrections; reviewer PG is stopped/off limits. No independent implementation/backend/application/full-goal acceptance is claimed.
