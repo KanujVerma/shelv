@@ -50,9 +50,21 @@ jobs:
         working-directory: apps/portal
         run: npm run build
 
+      - name: Verify strict React application types
+        working-directory: apps/portal
+        run: npm run typecheck:rebuild
+
+      - name: Build isolated React application candidate
+        working-directory: apps/portal
+        run: npm run build:application
+
       - name: Verify package and synthetic client journeys
         working-directory: apps/portal
         run: npm test
+
+      - name: Verify approval recovery keyboard journeys
+        working-directory: apps/portal
+        run: node --experimental-strip-types --test --test-concurrency=1 --test-timeout=15000 tests/rebuild/advisor-recovery-browser.mjs tests/rebuild/advisor-status-browser.mjs
 
       - name: Verify session types
         working-directory: apps/portal
@@ -84,4 +96,4 @@ jobs:
         run: CONCIERGE_NONE_NATIVE_SQL=1 CONCIERGE_TEST_PG_BIN="$PGBIN" node --experimental-strip-types --test tests/concierge-no-current-products-native.test.ts
 
       - name: Verify founder admission with local Auth, SQL and Chrome
-        run: node apps/portal/scripts/local-admission.mjs run --browser
+        run: node apps/portal/scripts/local-admission.mjs run --fixture-dir .local-artifacts/portal-rebuild/ci-admission-fixture --browser

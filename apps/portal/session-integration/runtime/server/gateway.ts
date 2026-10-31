@@ -1,4 +1,6 @@
 import {validatedReturnPath} from './navigation-return';
+import {planCommandMaxBytes} from '../../../../../src/contracts/PortalRebuildValues.ts';
+import {careCommandMaxBytes} from '../../../../../src/contracts/PortalCareValues.ts';
 import { demand, digest, randomId, SessionError, type SessionView } from './types';
 import { PORTAL_ORIGIN, validateRequest, jsonBody, parseCommand, parsePreview, parseAdvisorEvidence, exact, safeError, readBounded, type Channel } from './policy';
 import { parseClientCommand, parseClientMedia, validateClientUpload } from './client-policy';
@@ -50,7 +52,7 @@ function clearCookies() { const headers = new Headers();
             const route = client ? url.pathname.replace('/api/client/', '/api/advisor/') : url.pathname;
             if (client) demand(env.CLIENT_SHARED_SESSIONS === 'true', 503, 'configuration_missing');
             const rawUpload = client && route === '/api/advisor/checkins/photos/upload';
-            const known = ['/api/advisor/session', '/api/advisor/auth/request', '/api/advisor/auth/complete', '/api/advisor/session/upgrade', '/api/advisor/logout', '/api/advisor/operations', '/api/advisor/payments', '/api/advisor/checkins', '/api/advisor/admission', ...(!client ? ['/api/advisor/walkthroughs'] : [])];
+            const known = ['/api/advisor/session', '/api/advisor/auth/request', '/api/advisor/auth/complete', '/api/advisor/session/upgrade', '/api/advisor/logout', '/api/advisor/operations', '/api/advisor/payments', '/api/advisor/checkins', '/api/advisor/admission', '/api/advisor/plans', '/api/advisor/care', ...(!client ? ['/api/advisor/walkthroughs'] : [])];
             const media = client ? /^\/api\/advisor\/media\/(photo|evidence)$/.test(route) : route==='/api/advisor/media/evidence';
             const preview = !client && /^\/api\/advisor\/preview\/(draft|published|payments|checkins|photo)$/.test(route);
             demand((known.includes(route) && !(client && route.endsWith('/session/upgrade'))) || preview || media || rawUpload, 404, 'not_found');
@@ -119,7 +121,7 @@ function clearCookies() { const headers = new Headers();
                 const result=await dispatch<WireResponse>('session',sid,{type:'session.execute',csrf,operation});
                 return json(result.body,result.status);
             }
-            const body = await jsonBody(request);
+            const body = await jsonBody(request,route==='/api/advisor/plans'?planCommandMaxBytes:route==='/api/advisor/care'?careCommandMaxBytes:100000);
             if (route === '/api/advisor/logout') {
                 exact(body, []);
                 demand(sid || fid, 401, 'session_ended');

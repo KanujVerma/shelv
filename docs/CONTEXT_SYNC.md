@@ -1,3 +1,15 @@
+# Approved portal rebuild, 30 October 2026
+
+## portal rebuild: independently accepted care and next modules (31 October 2026)
+
+Current [integrated care review](portal-rebuild/research/W7_CARE_INTEGRATED_REVIEW.md), authorf7cc2981/integrationf1e9e911, independently passes current CS1 source correspondence, unchanged genuine Node11/all13 care actions and FIRST unchanged browser15 at1011ae33. Both R7/Chrome returned12:25:55.680349UTC;13 own sessions closed/whole Auth0/0, prior cases/protected files/57 migrations/4x76 source/five helpers/TLS preserved. Representative core care is accepted within that scope; source Storage, complete report/guidance/history, commerce/account/delivery/demo and all-goal/CI/release remain open. No deployment/merge/live action.
+
+W2 isolated advisor dependency UI needs CD1 historical identities/CD2 complete current reported projections before acknowledgement. W1 isolated M58 implements Review15/Guidance9 and a private complete sourceManifest, preserving Care13/Plan26/Task14 and old57 SQL. Valid500k Plan transport vsJSONB storage remains a separately tracked forward-correction proposal. W4 now owns source-only C04/C05 report/history UI in t3-0706fba8 against exact committed30f40da9 target contracts; no browser/native grant. Parent App recovery5029825a and native57/76 remain frozen. [Current status](portal-rebuild/CURRENT_STATUS.md), [task ledger](portal-rebuild/TASKS.json) and [execution log](portal-rebuild/EXECUTION_LOG.md) govern current state; older entries below are historical.
+
+The [approved rebuild record](portal-rebuild/README.md) now preserves the complete supplied specification/manifest/input with hashes, D01-D48, initial contracts, acceptance inventory, ownership and current execution status. Work is isolated on `kanuj/portal-rebuild-integration-20261030` from approved docs head `8ac0826`, atop main `d39a7d4`; unrelated dirty scanner work remains untouched. Fresh coordinator runtime Sol/xhigh is verified, and project/eight-role defaults are explicit.
+
+Prospective rebuild rules supersede publication-before-payment, manual-only notifications and the unspecified post-service window: exact human approval plus verified applicable first payment precede deliberate publication; durable email/portal events retry separately; 30-day post-support read-only access and final export are required. Historical release/hosted evidence and legacy dates/receipts are unchanged. Initial documentation/configuration is not runtime implementation or deployment. Continue from [CURRENT_STATUS](portal-rebuild/CURRENT_STATUS.md); no live business writes or production cutover are authorized.
+
 # Shelv Cross-Agent Context Sync Ledger
 
 ## 2026-10-26: PR 209 portal UX deployed, without merge

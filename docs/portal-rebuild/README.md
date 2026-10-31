@@ -9,7 +9,9 @@ This directory is documentation for a prospective rebuild. It does not mean the 
 1. [GOAL.md](GOAL.md): coordinator instructions, required model configuration, eight workstream boundaries, implementation sequence, test gates and release boundaries.
 2. [APPROVED_DECISIONS.md](APPROVED_DECISIONS.md): 48 durable decisions with rationale and explicitly rejected directions.
 3. [SCREEN_MANIFEST.json](SCREEN_MANIFEST.json): exact approved Figma screens, shared components, icon nodes, model requirements and original-source hashes.
-4. The full approved desktop specification and original review manifest supplied in the user handoff bundle or appended to the standalone goal prompt. Preserve those as versioned source documents in this directory before parallel page implementation.
+4. [APPROVED_DESKTOP_SPEC.md](APPROVED_DESKTOP_SPEC.md) and [shelv_desktop_design_manifest.json](shelv_desktop_design_manifest.json): full approved appendices, now imported. [INPUT_PROVENANCE.json](INPUT_PROVENANCE.json) binds them and the exact retained [original input](source/APPROVED_INPUT.txt). Declared preapproval hashes are not a claim that those separate original byte streams were supplied.
+5. [IMPLEMENTATION_CONTRACTS.md](IMPLEMENTATION_CONTRACTS.md), [ACCEPTANCE_MATRIX.md](ACCEPTANCE_MATRIX.md) and [WORKSTREAMS.md](WORKSTREAMS.md): shared boundaries, requirement/screen evidence and exclusive file ownership.
+6. [CURRENT_STATUS.md](CURRENT_STATUS.md) and [EXECUTION_LOG.md](EXECUTION_LOG.md): live continuation state and verified transitions. [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) sequences execution.
 
 ## Approved design, not a choice between old concepts
 
@@ -37,3 +39,7 @@ Coordinator, workers, reviewers, explorers, testers and nested/resumed agents: `
 Develop with synthetic records in isolated environments. Preserve current auth, privacy, money/history safeguards and private walkthrough sharing. No production cutover, live emails to clients, retail purchases, money movement or publication of real advice from this handoff alone. Prepare a verified preview, migration/rollback plan and independent test/review evidence, then obtain the required release authorization.
 
 The separate Wisconsin service-scope question and environment prerequisites remain explicit launch/runtime gates. They are not reasons to invent legal clearance, fake credentials, successful notifications or test results.
+
+Later founder clarifications are recorded in [approved decision addenda](DECISION_ADDENDA.md); the imported decision register/input/specification/manifest retain their original hashes.
+
+The next bounded [care API contract](CARE_API_V1.md) pins actual use/identity, bounded v2 views and dependency rebasing after the source-backed [remaining-domain reconciliation](research/W1_REMAINING_API.md). It is not an implemented endpoint or permission to bypass the first-slice review gate.

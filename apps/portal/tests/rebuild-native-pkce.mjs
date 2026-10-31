@@ -1,0 +1,81 @@
+import assert from 'node:assert/strict';
+import {writeFile,readFile} from 'node:fs/promises';
+import path from 'node:path';
+import {randomUUID} from 'node:crypto';
+import {attestFixture} from '../scripts/rebuild-native-fixture.mjs';
+import {connectedStack, sourceRoot, artifacts, nodeCookieClient, mailSnapshot, captureCallback} from './rebuild-native-stack.mjs';
+import {portalOrigin,sha} from '../scripts/rebuild-native-boundary.mjs';
+
+assert.equal(process.env.SHELV_REBUILD_NATIVE, '1');
+const fixture=await attestFixture(sourceRoot), stack=await connectedStack(fixture);
+const result={kind:'genuine-node-http-pkce-cookie-vault',status:'RUNNING',checks:[],realEmails:0,hostedRequests:0};
+const pass=label=>result.checks.push(label);
+try {
+  const candidate=path.join(sourceRoot,'.local-artifacts/portal-rebuild/application');
+  for(const route of ['/','/plan','/advisor/plans','/advisor/plans/11111111-1111-4111-8111-111111111111/preview']) {
+    const asset=await stack.mf.dispatchFetch(portalOrigin+route);assert.equal(asset.status,200);assert.equal(sha(Buffer.from(await asset.arrayBuffer())),sha(await readFile(path.join(candidate,'index.html'))));
+    assert.match(asset.headers.get('content-security-policy'),/connect-src 'self'/);assert.equal(asset.headers.get('referrer-policy'),'no-referrer');
+  }
+  for(const name of ['application.js','application.css']) {const asset=await stack.mf.dispatchFetch(portalOrigin+'/'+name);assert.equal(asset.status,200);assert.equal(sha(Buffer.from(await asset.arrayBuffer())),sha(await readFile(path.join(candidate,name))));}
+  pass('Actual gateway ASSETS serves exact application JS/CSS/document bytes with same-origin CSP and semantic deep-link fallback');
+  const client=nodeCookieClient(stack,'advisor');
+  let response=await client.request('session');assert.equal(response.status,200);assert.equal(response.value.signedIn,false);
+  const flow=response.value.csrf;
+  const before=await mailSnapshot();
+  response=await client.request('auth/request',{email:fixture.owner.email,remember:false,returnTo:'/advisor/plans'},flow);
+  assert.equal(response.status,200, 'Genuine Auth OTP request must pass');
+  const callback=await captureCallback(fixture.owner.email,before,'/advisor/plans');result.localEmails=callback.localEmails;
+  response=await client.request('auth/complete',{code:callback.code},flow);
+  assert.equal(response.status,200,'Actual PKCE exchange/context must pass');
+  assert.equal(response.value.signedIn,true);assert.equal(response.value.ownerId,fixture.owner.id);
+  assert.equal(stack.issued.size,1);
+  assert.match(response.headers.get('set-cookie'),/__Host-shelv_advisor=.*Secure; HttpOnly; SameSite=Lax/);
+  assert.doesNotMatch(JSON.stringify(response.value),/access_token|refresh_token|code_verifier/);
+  pass('Actual gateway flow, SQLite Vault, local Mailpit verify redirect, genuine GoTrue PKCE and live advisor context');
+  const csrf=response.value.csrf;
+  result.sqlite=await stack.inspectVault();assert.ok(result.sqlite.sqliteFiles>0);assert.equal(result.sqlite.activeSessions,1);assert.equal(result.sqlite.credentialEnvelopes,1);
+  pass('Actual persisted SQLite Vault contains encrypted active session envelope and no plaintext provider bearer');
+  response=await client.request('auth/complete',{code:callback.code},flow);assert.equal(response.status,200);
+  assert.equal(response.value.csrf,csrf);assert.equal(response.value.ownerId,fixture.owner.id);
+  assert.equal(stack.calls.filter(c=>c.path==='/auth/v1/token').length,1);
+  pass('Exact complete retry returns the existing session receipt without a second provider token exchange');
+  response=await client.request('plans',{schemaVersion:1,action:'list_plans_v1',clientId:null,cursor:null,limit:25},csrf);
+  assert.equal(response.status,200,'Actual native plan read must pass');assert.ok(Array.isArray(response.value.drafts));
+  response=await client.request('operations',{action:'advisor_list'},csrf);assert.equal(response.status,200,'Actual native directory must pass');assert.ok(Array.isArray(response.value.clients));
+  const identities=await fixture.readPrivate('PLAN-IDENTITIES.private.json');
+  response=await client.request('payments',{schemaVersion:2,action:'advisor_read',clientId:identities.client.id},csrf);assert.equal(response.status,200,'Actual native payments read must pass');assert.ok(Array.isArray(response.value.quotes));
+  pass('Genuine cookie authority reaches unmodified native plan, operations and payments entries through verified TLS/Auth/PostgREST/SQL');
+  response=await client.request('plans',{schemaVersion:1,action:'list_plans_v1',clientId:null,cursor:null,limit:25},'wrong-csrf');
+  assert.equal(response.status,403);
+  pass('Real cookie without matching CSRF refuses business request');
+  response=await client.request('logout',{},csrf);assert.equal(response.status,200);
+  assert.equal(fixture.sql(`select count(*) from auth.sessions where id='${[...stack.issued.keys()][0]}'`),'0');
+  pass('Actual gateway logout reaches supported local provider logout and removes its actual session');
+  assert.match(identities.client.id,/^[0-9a-f-]{36}$/);
+  const originalState=()=>fixture.sql(`select jsonb_build_object('case',(select to_jsonb(c) from concierge.cases c where client_id='${identities.client.id}'),'publications',(select jsonb_agg(to_jsonb(p) order by version) from concierge.publications p where client_id='${identities.client.id}'),'starts',(select jsonb_agg(to_jsonb(a) order by slot,product_id) from concierge.activations a where client_id='${identities.client.id}'),'service',(select jsonb_agg(to_jsonb(s) order by claim_id) from concierge.service_periods s where client_id='${identities.client.id}'))`);
+  const originalHash=sha(originalState());
+  const reader=nodeCookieClient(stack,'client',2),clientBefore=await mailSnapshot();
+  response=await reader.request('session');assert.equal(response.status,200);const clientFlow=response.value.csrf;
+  response=await reader.request('auth/request',{email:identities.client.email,remember:false,returnTo:'/plan'},clientFlow);assert.equal(response.status,200);
+  const clientCallback=await captureCallback(identities.client.email,clientBefore,'/plan');result.localEmails+=clientCallback.localEmails;
+  response=await reader.request('auth/complete',{code:clientCallback.code},clientFlow);assert.equal(response.status,200);assert.equal(response.value.ownerId,identities.client.id);
+  const clientCsrf=response.value.csrf;
+  assert.match(response.headers.get('set-cookie'),/__Host-shelv_client=.*Secure; HttpOnly; SameSite=Lax/);
+  assert.equal(reader.cookies.has('__Host-shelv_advisor'),false);
+  response=await reader.request('plans',{schemaVersion:1,action:'read_client_plan_v1',version:null},clientCsrf);assert.equal(response.status,200);assert.equal(response.value.access,'active');assert.ok(response.value.plan.version>=1);assert.deepEqual(response.value.actualUse,[]);
+  assert.ok(!JSON.stringify(response.value).includes('PRIVATE_REAL_AUTH_CANARY'));
+  response=await reader.request('logout',{},clientCsrf);assert.equal(response.status,200);
+  assert.equal(sha(originalState()),originalHash);result.existingClientStateSha256=originalHash;
+  pass('Second audience uses genuine client PKCE/cookie/live context/native entitled safe read and supported logout; original plan remains unchanged');
+  result.status='PASS';
+} catch(error) {result.status='FAIL';result.failure=error instanceof assert.AssertionError?error.message:'native_pkce_failed';}
+finally {
+  try {result.cleanup=await stack.cleanup();} catch {result.status='FAIL';result.cleanup='FAILED';}
+  result.calls=stack.calls;result.errors=stack.errors;result.testBundleSeams=stack.seams;
+  result.sessionIds=[...stack.issued.keys()];
+  await stack.dispose();
+  await writeFile(path.join(artifacts,'node-pkce-result.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});
+  await writeFile(path.join(artifacts,'node-pkce-result-'+randomUUID()+'.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});
+}
+console.log(JSON.stringify(result));
+if(result.status!=='PASS')process.exitCode=1;

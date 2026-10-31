@@ -1,0 +1,20 @@
+-- New advisor projections. Full Auth/browser acceptance remains coordinator owned.
+begin;
+select plan(15);
+select has_function('public','concierge_plan_command_v1',array['jsonb']);
+select has_function('concierge','plan_command_base_v1',array['jsonb']);
+select ok(concierge.plan_command_fields() ?& array['read_advisor_gate_v1','read_advisor_publication_v1'],'only fixed explicit read operations added');
+select is((select count(*)::integer from jsonb_object_keys(concierge.plan_command_fields() - 'read_draft_dependencies_v1' - 'rebase_draft_dependencies_v1')),24,'22 retained commands plus two strict reads remain preserved');
+select is((select count(*)::integer from jsonb_object_keys(concierge.plan_command_fields_base_v1())),22,'reviewed command metadata retained privately');
+select ok(not has_function_privilege('authenticated','concierge.plan_command_base_v1(jsonb)','EXECUTE'),'private base cannot bypass dispatcher');
+select ok(not has_function_privilege('service_role','public.concierge_plan_command_v1(jsonb)','EXECUTE'),'service keys cannot read advisor projections');
+select ok(not has_function_privilege('anon','public.concierge_plan_command_v1(jsonb)','EXECUTE'),'anonymous read denied');
+select ok(has_function_privilege('authenticated','public.concierge_plan_command_v1(jsonb)','EXECUTE'),'same caller bearer endpoint');
+select ok(not has_function_privilege('authenticated','concierge.plan_advisor_publication(uuid,integer)','EXECUTE'),'no direct private helper read');
+select ok(not has_function_privilege('authenticated','concierge.plan_read_current_approval(concierge.plan_drafts,jsonb)','EXECUTE'),'no direct authority helper read');
+select ok(not has_table_privilege('authenticated','concierge.plan_documents','SELECT'),'no raw immutable document table grant');
+select ok(not has_table_privilege('authenticated','concierge.plan_draft_private','SELECT'),'no private draft grant');
+select ok(not exists(select 1 from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='concierge' and p.proname like 'plan_%' and not coalesce(p.proconfig,'{}') @> array['search_path=""']),'private plan search paths pinned');
+select ok((concierge.plan_command_fields()->'grant_task_v1'->'actions'->'item'->'values') ?& array['read_advisor_gate_v1','read_advisor_publication_v1'],'finite task action extension requires new explicit grants');
+select * from finish();
+rollback;

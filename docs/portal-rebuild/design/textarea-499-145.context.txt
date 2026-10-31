@@ -1,0 +1,35 @@
+type ShelvV1TextareaProps = {
+  className?: string;
+  value?: string;
+};
+
+export default function ShelvV1Textarea({ className, value = "" }: ShelvV1TextareaProps) {
+  return (
+    <div className={className || "bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[112px] items-start px-[14px] py-[12px] relative rounded-[8px] w-[480px]"} data-node-id="499:145" data-name="shelv/v1/textarea">
+      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Regular'] font-normal leading-[23px] min-w-px not-italic relative text-[16px] text-[color:var(--color-ink,#171a18)]" data-node-id="499:146">
+        {value}
+      </p>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: Portal lab / body: Font(family: "Inter", style: Regular, size: 16, weight: 400, lineHeight: 23, letterSpacing: 0).
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## shelv/v1/textarea
+**Node ID:** 499:145
+
+Shared field treatment for shadcn Input, Textarea or Select. Visible label is owned by the containing field.
+
+The generated code contains image and SVG URL constants, e.g. const image = '[temporary-asset-url-removed]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

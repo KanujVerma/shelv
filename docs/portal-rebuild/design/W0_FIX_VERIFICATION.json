@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-30",
+  "status": "implemented and locally tested; independent re-review pending; foundation not accepted",
+  "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-fab317bf",
+  "branch": "t3/fix-rebuild-foundation",
+  "base": "ec231df2e10671428ef7d98bbe80b6efedc1aa60",
+  "implementationHead": "52a93fb20b13063b0243c85fd1684a433c9e1121",
+  "reportHead": "The subsequent documentation-only commit containing this receipt; final hash returned to coordinator.",
+  "runtime": {
+    "configuration": {
+      "threadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-foundation-fixes-20261030-r1",
+      "modelSelection": {
+        "instanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "options": [
+          {
+            "id": "reasoningEffort",
+            "value": "xhigh"
+          },
+          {
+            "id": "serviceTier",
+            "value": "default"
+          }
+        ]
+      },
+      "runtimeMode": "full-access",
+      "interactionMode": "default"
+    },
+    "requiredCapability": {
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ]
+    },
+    "fullToolEvidence": {
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/live-model-evidence.json",
+      "sha256": "d951498be002f26112dbc6445746e0575c3b969ad3019c8b6c8f51c4de391f8d"
+    },
+    "node": {
+      "executable": "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "version": "v22.23.0"
+    },
+    "nodePathPrefix": "/Users/kanuj/.nvm/versions/node/v22.23.0/bin",
+    "chrome": "156.0.8078.79",
+    "nestedAgents": 0
+  },
+  "sourceFiles": [
+    {
+      "path": "apps/portal/scripts/build-rebuild.mjs",
+      "sha256": "10ce44cfa95c34cc8a7c3e1120d6dccefcf4d9374c39833f8b992c84215dc23a"
+    },
+    {
+      "path": "apps/portal/scripts/emitted-notices.mjs",
+      "sha256": "e8cb100faee2b52dd3f9d6173560f2aa6847edfa7bde7028032c721947d93ecc"
+    },
+    {
+      "path": "apps/portal/src/navigation/history.ts",
+      "sha256": "a55abfc21a0ec2fa5c1b4aa520b37f2bb24f262e5b1c573624fb912feb4a0ac3"
+    },
+    {
+      "path": "apps/portal/src/transport/session.ts",
+      "sha256": "b7be91ce2b4371df466cd9b694dd2e46b419615d9eab0b44d11750b0d74e9143"
+    },
+    {
+      "path": "apps/portal/src/ui/RETAINED_LICENSES.json",
+      "sha256": "6822da9053ac244ae247632756ffd6cb21a2c450e50d7c1ba3d66c3b5678b526"
+    },
+    {
+      "path": "apps/portal/src/ui/THIRD_PARTY_NOTICES.md",
+      "sha256": "e5fe4968488b38811cbc35b850d367ac411a06d5e0ca1f1946958657f5a421a1"
+    },
+    {
+      "path": "apps/portal/src/ui/overlay.tsx",
+      "sha256": "281b97d62325283ff72fccd2a2db96e2207b3d63e470a7be554f16b80cd4b3fd"
+    },
+    {
+      "path": "apps/portal/src/ui/react-remove-scroll-bar.LICENSE",
+      "sha256": "a79aae0c0f21990d9d963bb3c5a79cdcea9a46f8523ba55c58d7fe776b6ebc84"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-foundation-browser.test.mjs",
+      "sha256": "eb17b13cf96f0214777554e9293bf765168ae31762aea3767ece29d24a6e1419"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-foundation-notices.test.mjs",
+      "sha256": "38a9a2b7bd12c695c25e39edba13e1dc3df30de757bcf455eb876ca6af2a56cd"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-foundation-transport.test.mjs",
+      "sha256": "295c2551ea88336eba7baa7aacadfae28e2f3e5037066898659743af7198cb33"
+    },
+    {
+      "path": "docs/portal-rebuild/design/ACQUISITION.json",
+      "sha256": "1e8e9dc3ae5d4b2b8091bec838904793b11980dcf4ca6be00adee3bf11d84934"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W0_FOUNDATION.md",
+      "sha256": "2d4a42e56910386d8b607db0be2cad33731182fc96bbf3e86992148dec9fc226"
+    }
+  ],
+  "checks": [
+    {
+      "cwd": "apps/portal",
+      "command": "node --experimental-strip-types --test tests/rebuild-foundation-transport.test.mjs",
+      "tests": 22,
+      "passed": 18,
+      "failed": 4,
+      "skipped": 0,
+      "note": "expected red before production fix",
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/R1-red.log",
+      "sha256": "c28da82afee57cfb2fbfb74a707d6111b685704bbeedabb1b34c05aafe223e07"
+    },
+    {
+      "cwd": "apps/portal",
+      "command": "node --experimental-strip-types --test --test-name-pattern='direct/initial|native Back' tests/rebuild-foundation-browser.test.mjs",
+      "tests": 2,
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "note": "expected red before R2/R3 production fixes",
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/R2-R3-red.log",
+      "sha256": "8b87782b70c32a1a0d766ab5c16d7a2f01c57b3fbb20025b9c903b98768729c5"
+    },
+    {
+      "cwd": "apps/portal",
+      "command": "node --experimental-strip-types --test --test-name-pattern='direct/initial|native Back' tests/rebuild-foundation-browser.test.mjs",
+      "tests": 2,
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "note": "R2 green, original R3 Forward at 0px reproduced",
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/R2-green-R3-red.log",
+      "sha256": "d1ff30e5b6c1ed7c35eec322e7c2ee83bab4b69ff41291d32835d987c8e224b7"
+    },
+    {
+      "cwd": "apps/portal",
+      "command": "node --experimental-strip-types --test tests/rebuild-foundation-notices.test.mjs",
+      "tests": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "note": "expected red: emitted closure inventory absent",
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/R4-red.log",
+      "sha256": "96bd5633affd0a44c143ff4156c0de29c21c4fa78fa0023461745d3248ed097d"
+    },
+    {
+      "cwd": "apps/portal",
+      "command": "node --experimental-strip-types --test --test-concurrency=1 tests/rebuild-foundation*.test.mjs",
+      "tests": 41,
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0,
+      "note": "final focused green, including expanded replacement and pending teardown cases",
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/focused-final.log",
+      "sha256": "c5df2106d55b4cfa1bb8256b7e04f8ccf62594510b3418d6e9d2f5056174169a"
+    },
+    {
+      "cwd": "apps/portal",
+      "command": "npm test -- --test-concurrency=1",
+      "tests": 389,
+      "passed": 389,
+      "failed": 0,
+      "skipped": 0,
+      "note": "full portal suite; focused tests subsequently strengthened without changing production source and rerun",
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/portal-tests.log",
+      "sha256": "e4919282d8f416c6684c66daaf4bcabe0d334bb863b37fd44e72de3d0c71b201"
+    },
+    {
+      "cwd": "apps/portal",
+      "command": "npm run test:session",
+      "tests": 148,
+      "passed": 148,
+      "failed": 0,
+      "skipped": 0,
+      "note": "retained session runtime, no Auth/database lifecycle",
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/session-tests.log",
+      "sha256": "ecb1a14bf46b4c1e7a1f2065e31c1cdb6ae165a0b643b8546166374b44682413"
+    },
+    {
+      "cwd": "apps/portal",
+      "command": "npm run typecheck:rebuild",
+      "exitCode": 0,
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/typecheck-rebuild.log",
+      "sha256": "5e0ce0235c171270fc3458ee5d6ff81aebb122ba9541a84288ff4c00fc92abf4"
+    },
+    {
+      "cwd": "apps/portal",
+      "command": "npm run typecheck:session",
+      "exitCode": 0,
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/typecheck-session.log",
+      "sha256": "fd818405d0adf819c6b054f776b50a35b279bc3b3e64d7a9ee207cede024b8f0"
+    },
+    {
+      "cwd": "apps/portal",
+      "command": "npm run build:rebuild",
+      "exitCode": 0,
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/build-rebuild.log",
+      "sha256": "e35c6aab48c0ab8960979b9b138b26336c3af8f112c0222d1057e3e995daed12"
+    },
+    {
+      "cwd": "apps/portal",
+      "command": "npm run build",
+      "exitCode": 0,
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/build-legacy.log",
+      "sha256": "f04798d8fc49b0e78144eb55322c7a1bbbdc89b33c79c361e37c5b632bd7be11"
+    },
+    {
+      "cwd": "apps/portal",
+      "command": "npm run check:ui",
+      "exitCode": 0,
+      "artifact": ".local-artifacts/portal-rebuild/w0-fixes/check-ui.log",
+      "sha256": "1580eaf5e9a7a7ff5b1da8a38588855a5f59dd477629e3fde20fa0be2403f003"
+    },
+    {
+      "command": "git diff --check and git diff --cached --check",
+      "exitCode": 0
+    },
+    {
+      "command": "npm ci --ignore-scripts",
+      "cwd": "apps/portal",
+      "exitCode": 0,
+      "note": "130 packages added; 132 audited; 2 moderate/1 high advisories; no upgrades or advisory-identity comparison."
+    }
+  ],
+  "outputInspection": {
+    "packageCount": 47,
+    "legalFileCount": 47,
+    "fontOutputCount": 8,
+    "linkedLegalFiles": [
+      {
+        "path": ".local-artifacts/portal-rebuild/foundation/foundation.js.LEGAL.txt",
+        "sha256": "d32f82d23bd70914fa25f244c6b00695d9ff980da51b7082e13777560d52f5ab"
+      },
+      {
+        "path": ".local-artifacts/portal-rebuild/foundation/chunks/chunk.js.LEGAL.txt",
+        "sha256": "97f33d360edf3acfa21ee9e11ba9fa462fec8973ee2c8c6b489c940fbdd3793a"
+      }
+    ],
+    "inventorySha256": "24a16874de2237bb865bf38eb8d54a3dfb0111722e135c0e78b132dec601c7d9"
+  },
+  "acquisition": {
+    "recordsVerified": 99,
+    "byteCounts": true,
+    "sha256": true,
+    "pageMetadataScope": "57-byte selected D01 response, not an XML page tree. No file version invented or new Figma acquisition."
+  },
+  "retainedLicenseLimit": {
+    "package": "react-remove-scroll-bar@2.3.8",
+    "installedLegalFiles": 0,
+    "upstreamCommit": "8ca9ba5ea52de03308fe8ced94f7b159a44d28ff",
+    "upstreamDescriptorVersion": "2.3.7",
+    "npmReportedGitHead": "b3b1287aad81def2e2ae707274b74531b61ddbaf",
+    "npmHeadRetrieval": "404",
+    "scope": "Original license from the declared upstream repository; no assertion of a package-version-specific license or source match; no legal opinion."
+  },
+  "legacyBuild": {
+    "assetCount": 132,
+    "gatewayRoutes": [
+      "/api/client/*",
+      "/api/advisor/*",
+      "/api/walkthroughs/*"
+    ],
+    "warnings": "3 missing expo/tsconfig.base warnings from absent root install",
+    "zipSha256": "307472c8b6836ae5858d625cd6b0e36748cf8f8b32054967af38b862b2062875",
+    "vaultSha256": "12ccdf38776e434a5e53233cf3806d755e8cf50a1cd028e8989fe5dd73b99126"
+  },
+  "skipped": [
+    "root npm test, app/test typechecks and Expo web/iOS exports (bounded portal-only worker; root dependencies not installed)",
+    "database reset, SQL/RLS/Auth/hosted/Storage/outbox/email journeys (no backend or retained auth changes and lifecycle explicitly prohibited)",
+    "final product pages, full E2E acceptance, screen reader/zoom/human usability, independent review, exact-head CI",
+    "push, PR, merge, deployment, real-client data/messages/money/orders"
+  ]
+}

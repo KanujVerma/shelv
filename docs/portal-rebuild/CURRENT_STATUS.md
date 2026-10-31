@@ -1,0 +1,73 @@
+# portal rebuild current status
+
+Owner: Kanuj. Updated 31 October 2026. Integration branch `kanuj/portal-rebuild-integration-20261030`; application recovery `5029825a`, care source correction `87ad602e`, independent care report `f1e9e911`. Fresh fetch resolves main to `d39a7d4943209080df7c4cf97d85784f462758bf`. The unrelated dirty scanner checkout remains untouched. **The complete approved rebuild is in progress.**
+
+## current work and custody
+
+**W3 owns the sole synthetic Chrome lane** in1026 under `coordinator-w3-v3-guidance-synthetic-chrome-9c5cac1b-20261031`, grantedafterW4reviewerRETURN16:00:47UTC. Allotherworkers/coordinatorwaitexplicitrelease. R7 remainscoordinator-owned/idle/frozen57/native76b09; no sharednativegrant. PriorRoot/CD3/W4browsergrantsarereturned/inactive.
+
+Three activeimplementationfollow-ups, allverifiedSol/xhigh/default:
+
+- **W1RG5**, same7a7worktree: composedM58/M59/M60candidate6a failed [backendR2](research/W7_REVIEW_GUIDANCE_BACKEND_R2.md), newRG5/P2duplicateinstructionstageIDs acceptedbySQLthenhistory/detail503. RG1-RG4addressedandM59scopedPASS. AuthoritativepublicSDK96unchanged. ActualCLIallocatedM61 `20261031161130_portal_rebuild_guidance_schedule_identity_v1.sql`, prior60bytefrozen; ownmarkedUnixPGonly, noParent/reviewerfixture. NewcomposedR3/canonical61/genuinepending.
+- **W3V3browser**, same1026: source9c5cac1b51new+122retainedwasterminal; newfollow-uptestsactualcookie/5actionReview/Root/controller/rendererwithfiniteHTTP, notgenuinebackend. Ownplan/client-stateonly, actualpracticaldirections/decisionprovenance/recovery/carefacts. SharedEf7CSSselectiveimportallowed, noApp/default/serveractivation. Summarypublisherabsent=>noinference; fullhistory/detailactualactor.
+- **W4RH1source**, same0706: source/browser5aa frozen95/48, [independentR1](research/W7_REPORT_HISTORY_REVIEW.md) findsoneRH1/P2currentpagination403leavesprivatehistoryvisible. B1-B4closedscoped. Fixcurrentdeniedreadableprojectiononlywhilepreservingexactpending/unsent/session;503/409andstale403unchanged. Source-onlywhileW3ownsChrome, laterseparategrant/NEWreviewR2.
+
+[AdvisorR3](research/W7_CARE_DEPENDENCIES_R3.md), author57d3fad3/integration2924410c, gives scoped specification/qualityPASS at753116c4: CD3addressed, qualifiedCD1/CD2closuresretained, no newmaterialfinding. ParenthasnineW2candidateimports+coordinator4920namegate andEf7sharedmobilewrap. Actualsource435/originalbrowser4/App19passed. QualifiedCD1/CD2closuresretained; completecurrentreportedproductsbeyondfirstpage andnewreport/instructionreaderintegrationremaindependencies, notinferredfromhistory. Genuinepublisher/rebaseandfullgoalremainunverified.
+
+Allimplementation/reviewsourcecommits/workspaces/evidencepreserved. [TASKS.json](TASKS.json) containsactualnewtaskhandles/settings/bases/grants; maxthreechildrenpluscoordinator, nonested. BackendnewRootcontracts/SQLandHistory/V3featuresremainunintegrated; nofullgoalscopeacceptedfromsyntheticchecks.
+
+## scope and authority
+
+The complete [approved input](source/APPROVED_INPUT.txt), [D01-D48](APPROVED_DECISIONS.md), [desktop specification](APPROVED_DESKTOP_SPEC.md), [26-screen manifest](shelv_desktop_design_manifest.json) and secondary states govern. [Contracts](IMPLEMENTATION_CONTRACTS.md), [acceptance](ACCEPTANCE_MATRIX.md), [plan](IMPLEMENTATION_PLAN.md), [execution log](EXECUTION_LOG.md) and research reports retain detailed evidence. All five originals and hashes remain unchanged. Earlier chronological status text is preserved in Git and the execution log.
+
+Coordinator and every worker/reviewer use live-verified `codex/gpt-6.1-sol/xhigh/default`; all eight role overrides are pinned. One writer owns shared contracts, migration order, auth/routes and application composition. Only isolated synthetic development is authorized: no production deployment, protected-main merge, live-client/source/permission writes, communication, real funds or retailer orders. No memory writes.
+
+The [founder addendum](DECISION_ADDENDA.md) resolves never-started draft audio/transcripts: an authorized advisor deletes them manually, without an invented abandonment timer. Started service retains twelve-month raw-source deletion after actual support ends. Publication/finance/audit retention and source permissions remain distinct.
+
+## accepted implementation and limits
+
+Approved docs/native Figma references, shared React/TypeScript/shadcn/Lucide foundation, semantic auth routes, cookie/Vault transport, advisor editor, shared client/unpublished renderer and isolated application builder are integrated. Exact-version dependency-notice provenance remains qualified; no legal clearance is claimed.
+
+The first publication slice has scoped independent PASS: actual draft/assignment/reviews/exact approval, separate verified synthetic first-service payment, deliberate immutable publication, entitlement/service/review clocks, queued notifications and client decision without Start. M54/M55 retain authority, payments, receipts, legacy preservation and post-wait fences. Later C1/AR1/status and application corrections retain their independent dispositions. App A2 ordinary browser reachability remains unproven; no server bypass was claimed. Queued rows do not prove delivery.
+
+[CARE_API_V1](CARE_API_V1.md) pins13 finite care actions, bounded v2 views, append-only use/identity/descriptors/amendments, truthful known/unknown Start, exact history filters and explicit dependency rebasing. Plan actions26/task14 are unchanged. No new source/task right. Page400000/response1800000-byte limits stay below provider bounds. Label photos are unavailable; upload is omitted and sends[].
+
+M56 `20261031043655_portal_rebuild_care_use_v1.sql` is frozen at SHA `d3a889ab03cba381cd8d2d65b8b567db74ac5f19e6000a0e913c78982fe901e1`. CB1/CB2 are addressed in [backend R2](research/W7_CARE_BACKEND_R2.md). Forward M57 `20261031073004_portal_rebuild_care_history_filter_v1.sql`, SHA `26c9c403729343b1f3463002f26946fbdea81e73df2e13d7882bcf6cb2571caf`, fixes CN1 without changing prior56 migrations. [Independent filter review](research/W7_CARE_HISTORY_FILTER_REVIEW.md) passes. CU1-CU3 are addressed in [client R3](research/W7_CARE_CLIENT_R3.md); direct-route CA1 in [application R2](research/W7_CARE_APP_COMPOSITION_R2.md).
+
+Current complete-App genuine care review passes actual PKCE/cookie/Vault/Edge/TLS/PostgREST/SQL, unknown-date Start, Stop, both mismatch pipelines, immutable original/correction actor history, advisor audit, real CAS409/current deliberate review, real gateway503/public restore/exact UUID retry and exercised access/logout/privacy negatives. Node proves all13 care actions; browser exercises eight positively. Explicit care Start occurred; zero legacy activations does not mean zero actual use. Cancellation/cutoff, source Storage, photos, actual delivery and complete history/guidance remain separate.
+
+## canonical resources and evidence
+
+R7 `canonical-plan-v1-r7` is coordinator-owned and idle, five helpers running. Owner `39f4ba79-bdd5-4822-bc4d-c4412d70d732`, project `shelv-portal-admission-39f4ba79bdd5`;57 migrations, snapshot `9416c3d5d1694478f673798445e502adf212e71f48bbf07982974b166c94183c`, ledger `dd2224ee001be07a1f12898149498081cdd7430866500fd71bcb501806255b82`, native closure76 / `b09d1edfc6ba7f8cd064c76adb59be01981a6f00186f8f9663475c6d18812c54`. Canonical reset57/35 pgTAP files/796 assertions pass; official CLI security SQL0 WARN/ERROR among229 lints. New grants must bind exact workspace, phase and fixture. Returned grants cannot be reused.
+
+Independent source43/source82/CS1 probes12 pass. Node run `6771486c-2a96-481c-b1db-394d6896fc6d` passes11/all13,7 sessions closed. Browser `80e9c361-78ef-4aaf-8732-2e86a2b0ccb4` passes15,6 sessions closed. Parent-verified result SHA `6c8287c72f14f606360eea0bc16f7dbf2bdfb6b674a211a7eddf38e2b3e07386`; return SHA `b6c92b37195297a67f932a504fab877ebba1ef7b123bdce88f5353a30e675abf`. Actual554 original responses/70,543,802 bytes/known credential-private hits0. Eight prior primary cases plus own Node case, protected218 files plus added receipts,39 literal+5 dynamic SQL bodies,12 RLS tables/zero raw ACL/private helper violations, five helper identities/env/images/4x76 source/TLS match. No post-return resource calls.
+
+Author browser15 at `8467c964`, source43 at `91900008`/integration `87ad602e` and retrospective83/83 remain separately attributed in [W6 report](research/W6_CARE_BROWSER.md). CS1 did not establish altered author-served bytes. Parent historical candidate with stale outputs was preserved intact, then rebuilt in a fresh namespace; no verifier weakening.
+
+R6 is stopped/preserved with205 protected files and mode600 backup SHA `4c3949aa5aa326acf33f463d2cec449eb00dde2866fad696584afde560f4cc07`. R4 stopped/preserved; R5 retired source-only. Never overwrite/adopt them. [Canonical care evidence](evidence/CANONICAL-CARE-20261031.json) keeps historical R6/R4 checks distinct from R7.
+
+Coordinator raw client Review request seam `88d4e588` is implemented but not independently reviewed or mounted in App: fixed8 client actions, exact500000UTF8, creation-bound actual cookie/CSRF/lease transport and finite failure codes. W4 may import it separately for synthetic module tests. No server gateway/RPC/backend activation. Fresh44focused +32retained protocol checks, Root1213 pass/18 existing opt-in skips/0 failures, root application/test types0, Expo web export0, portal/session strict0 pass. Clean candidate88d4e588 has sourceDirty:false/gatewayIncluded:false; prior83-file candidate preserved intact before rebuilding. Full portal1030/session171 remain historical and were not rerun here. Last exact CI checkpoint `28f6a299` has three green jobs (freshly read after Root advisor verification); later local advisor/response commits are not that exact head. PR210 and stacked draft PR211 are linked and unmerged.
+
+## isolated next contracts and open correctness work
+
+W1 Review15/Guidance9 uses only fixed new RPCs; Care13/Plan26/Task14 unchanged, new task agents deny. Empty/no-observation goal report is an explicit no-op receipt, no fabricated report/event. Legacy history preserves absent publication/actor/time. Originals, amendments, every prior-review attention relationship and private notes stay separate. V3 keeps immutable document/use and per-choice accepted-guidance provenance. Instruction manifests enumerate all actual scopes, up to2550; paged refs and exact detail reads avoid embedding all bodies. Fresh writes recheck current heads/day/rights after waits; committed retries remain historical receipts. No new family is active in parent.
+
+Two source-valid budget gaps remain before M58 acceptance. Old Plan SQL compares JSONB storage to the500000-byte transport budget: valid490188-byte command can occupy507318 storage bytes and reject. The separate M59 forward-only correction is implemented but awaiting independent review: private bounded canonical counter500000/depth10/nodes250001, derived rendered-text guard1000000, exact existing base storage-condition replacement with other body bytes/identity/ACL preserved. No historical SQL edit or arbitrary cap rise. JSONB parsing/detoasting/first text materialization still precede SQL guard; actual Edge raw500k stays unchanged. Guidance inline sources previously capped100 although valid conversations contribute100000 distinct locators. Pinned private **sourceManifest** replaces that list with hash/count over ALL exact validated canonical locators and immutable input identities/content/amendment heads. Source-free referenced inputs remain bound. Live grants/version/deletion/session stay outside the hash and are rechecked before/after waits. No truncation/public leakage/new source/training/transmission/export right.
+
+## next work and full-goal gates
+
+1. Finish CD1/CD2, run serial browser regressions, commission a new independent review, then integrate advisor dependencies.
+2. Complete isolated M58 and separate M59 with source/budget/legacy/authority/concurrency evidence and independent review before fresh canonical61. Resume W4 synthetic browser phase after its lane is available, then review and compose. Start the shared V3 client instruction-manifest/detail hydration and decision-guidance renderer when a worker slot is free; old v2 reads must not be activated against new unrepresentable public guidance. Compose authenticated server/ports/routes only after the coupled backend/client contracts and checks are ready.
+3. Continue source upload/consent/access/deletion/templates, public/private guidance and instruction hydration, commerce/fulfillment/returns/refunds, account/coverage/renewal/cancellation/privacy/export, delivery/webhooks/inbox/retry, finite agent enrollment and five shared Maya/private walkthrough stages.
+4. Complete D01-D48/screens/secondary/V01-V17, preservation, responsive/keyboard/zoom/human checks, full suites, exact-head CI and cutover/rollback artifacts. External email/domain/enrollment, representative-human comprehension and Wisconsin service-scope prerequisites remain separate release gates.
+
+Do not mark the goal complete for a slice. Preserve long task state in canonical docs, not memory writes.
+
+## progress estimate given to Kanuj
+
+Engineering estimate on31 October: **40-45% of complete approved scope**, not test/screen count or release acceptance. Rough remaining ETA2-4 days at that pace; review findings affect it. Auth/shared UI/navigation90%; editor/import/review/preview85%; approval/payment/publication90%; client plan/recommendations/use85%; reports/history/guidance20%; uploads/templates/consent/retention15%; orders/fulfillment/returns/refunds30%; account/renewal/cancellation/export25%; email/inbox/retry30%; five-stage Maya/private walkthroughs15%. The former care2-3-hour estimate is historical: representative independent care closure is now accepted within scope. Estimates do not replace acceptance evidence.
+
+
+## latest integration verification checkpoint
+
+At the accepted advisor identity source (4920c00b/Ef7; independentR3at753116c4), coordinator reran Root1231TAP tests:1213pass/18existingoptinskips/0fail/cancel, application andtesttypes0, Expo web export0. Logs are `advisor-integrated-{root-tests,root-types,test-types,export}.log` underignoredportal-rebuild. Source435/originalCD3source1/browser4/App19, strictportal/session/UIpassed; independentR3adds435/7/1/8source and4/16/7/3/App19/paymentstatus32 browser withinits scope. No fullunrelatedportal/sessionrepetitionornewgenuineclaim. Root remainscleanapartfromcoordinatordocsbeforethischeckpointcommit; allnewclinicalbackend/History/V3code staysinownedworktrees.

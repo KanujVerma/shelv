@@ -1,0 +1,1423 @@
+import type {
+  Approval,
+  DraftView,
+  PlanContent,
+  PublishReceipt,
+  SectionId,
+} from "../../../../../src/contracts/PortalRebuild.ts";
+import {
+  readPlanCommand,
+  readPlanContent,
+} from "../../../../../src/contracts/PortalRebuildValidation.ts";
+import { mapPlanResult } from "../../../../../src/contracts/PortalRebuildMapping.ts";
+import { mapCareResult } from "../../../../../src/contracts/PortalCareMapping.ts";
+import type {
+  AdvisorPublicationViewV2,
+  DraftDependenciesView,
+  UseHistoryPage,
+} from "../../../../../src/contracts/PortalCare.ts";
+import {
+  assertDependencyHistoryClient,
+  assertDependencyUseClient,
+  dependencyProductRefs,
+  dependencyUnavailable,
+  missingDependencyReaders,
+  planIdentityDocument,
+} from "./dependencies.ts";
+import type {
+  PlanDirectory,
+  PlanImportComparison,
+  PlanPreview,
+  PlanValidation,
+} from "../../../../../src/contracts/PortalRebuildMapping.ts";
+import {
+  buildPaymentCall,
+  mapPaymentReceipt,
+  mapPaymentView,
+} from "../../../../../supabase/functions/concierge-payments/contract.ts";
+import {
+  buildPaymentCallV2,
+  mapPaymentReceiptV2,
+  mapPaymentViewV2,
+} from "../../../../../supabase/functions/concierge-payments/methods.ts";
+import {
+  sameContent,
+  sameTarget,
+  sameDraft,
+  assertDraft,
+  exactApproval,
+  reviewed,
+  paymentReady,
+  firstServiceClaim,
+} from "./model.ts";
+import type {
+  AdvisorCommand,
+  AdvisorControllerOptions,
+  AdvisorGateContext,
+  AdvisorNotice,
+  AdvisorState,
+  AdvisorWrite,
+  AdvisorDependencyReview,
+  AdvisorPlanIdentityDocument,
+  ConfirmPaymentCommand,
+} from "./types.ts";
+
+const empty = (): AdvisorState => ({
+  dependencies: null,
+  needsComparison: false,
+  ended: false,
+  busy: false,
+  save: "saved",
+  notice: null,
+  directory: null,
+  clients: null,
+  view: null,
+  local: null,
+  context: null,
+  comparison: null,
+  comparisonLocal: null,
+  pending: null,
+  receipt: null,
+});
+const memoryKey = "advisor:working-state";
+export function createAdvisorController(options: AdvisorControllerOptions) {
+  const { session, ports, permissions } = options,
+    listeners = new Set<() => void>(),
+    controllers = new Set<AbortController>(),
+    readGenerations = new Map<string, number>(),
+    approvalContexts = new WeakMap<AdvisorWrite, number>();
+  const restored = session.isCurrent()
+    ? session.memory.get<AdvisorState>(memoryKey)
+    : undefined;
+  let state: AdvisorState = restored
+      ? {
+          ...restored,
+          busy: false,
+          context: null,
+          dependencies: null,
+          ...(restored.pending
+            ? {
+                save: "uncertain",
+                notice: { kind: "uncertain", title: "result uncertain" },
+              }
+            : {}),
+        }
+      : empty(),
+    disposed = false,
+    epoch = 0,
+    contextGeneration = 0,
+    appliedContextGeneration = 0,
+    operationGeneration = 0,
+    recoveryGeneration = 0;
+  let dependencyLease: (() => boolean) | null = null;
+  let identityReads: {
+    clientId: string;
+    useHead: number;
+    requested: Set<number>;
+    documents: Partial<Record<number, AdvisorPlanIdentityDocument>>;
+  } | null = null;
+  const live = () => !disposed && !state.ended && session.isCurrent();
+  const emit = (patch: Partial<AdvisorState>) => {
+    if (!live()) return;
+    if (
+      ("view" in patch && patch.view !== state.view) ||
+      ("local" in patch && patch.local !== state.local) ||
+      ("context" in patch && patch.context !== state.context) ||
+      ("comparison" in patch && patch.comparison !== state.comparison)
+    ) {
+      dependencyLease = null;
+      identityReads = null;
+      patch = { ...patch, dependencies: null };
+    }
+    state = { ...state, ...patch };
+    session.memory.set(memoryKey, state);
+    listeners.forEach((fn) => fn());
+  };
+  const invalidate = () => {
+    epoch++;
+    dependencyLease = null;
+    identityReads = null;
+    controllers.forEach((c) => c.abort());
+    controllers.clear();
+    session.memory.delete(memoryKey);
+    state = { ...empty(), ended: true };
+    listeners.forEach((fn) => fn());
+  };
+  const unsubscribe = session.subscribeInvalidation(invalidate);
+  function beginRead(purpose: string) {
+    const generation = (readGenerations.get(purpose) ?? 0) + 1,
+      start = epoch,
+      operation = operationGeneration,
+      view = state.view,
+      target = view?.target,
+      local = state.local,
+      pending = state.pending,
+      actorId = permissions.actorId;
+    readGenerations.set(purpose, generation);
+    // A read owns only this purpose, view, manual basis and operation. It never
+    // acknowledges or cleans up a later write, including a retry of the same UUID.
+    const owns = () =>
+      live() &&
+      start === epoch &&
+      readGenerations.get(purpose) === generation &&
+      operation === operationGeneration &&
+      state.view === view &&
+      state.local === local &&
+      state.pending === pending &&
+      (target == null || sameTarget(state.view?.target, target));
+    // The current app read may itself refresh target-bound mutation capabilities.
+    // Those flags do not identify the reader. Private delivery still requires
+    // the captured actor/session, current view permission and every read fence.
+    return Object.assign(
+      () => owns() && actorId === permissions.actorId && permissions.view,
+      { owns },
+    );
+  }
+  const deny = () =>
+    emit({ notice: { kind: "denied", title: "action unavailable" } });
+  const dirty = () =>
+    !!state.view && !sameContent(state.local, state.view.draft.content);
+  const stable = () =>
+    !!state.view &&
+    state.view.draft.state === "working" &&
+    !dirty() &&
+    !state.pending &&
+    !state.busy &&
+    !state.receipt &&
+    !state.needsComparison;
+  function canReview() {
+    return permissions.review && stable() && dependenciesReady();
+  }
+  function canApprove() {
+    return (
+      permissions.approve &&
+      stable() &&
+      dependenciesReady() &&
+      !!state.view?.target &&
+      reviewed(state.view) &&
+      state.view.issues.length === 0
+    );
+  }
+  function canPublish() {
+    return (
+      permissions.publish &&
+      stable() &&
+      dependenciesReady() &&
+      !!state.view?.target &&
+      reviewed(state.view) &&
+      state.view.issues.length === 0 &&
+      state.context?.clientId === state.view.target.clientId &&
+      exactApproval(
+        state.context.approval,
+        state.view.target,
+        permissions.actorId,
+      ) &&
+      paymentReady(state.context)
+    );
+  }
+  async function invoke<T>(
+    run: (signal: AbortSignal) => Promise<T>,
+  ): Promise<T | undefined> {
+    if (!live()) return;
+    const start = epoch,
+      controller = new AbortController();
+    controllers.add(controller);
+    try {
+      const value = await run(controller.signal);
+      if (!live() || start !== epoch || controller.signal.aborted) return;
+      return value;
+    } catch (error) {
+      if (!live() || start !== epoch || controller.signal.aborted) return;
+      throw error;
+    } finally {
+      controllers.delete(controller);
+    }
+  }
+  function fail(
+    error: unknown,
+    write = false,
+    preserveBusy = false,
+    origin?: AdvisorNotice["origin"],
+  ) {
+    if (!live()) return;
+    const status = (error as { status?: number } | null)?.status;
+    if (status === 401) {
+      invalidate();
+      return;
+    }
+    const uncertain = write && (!status || status === 503),
+      kind =
+        status === 403
+          ? "denied"
+          : status === 409
+            ? "conflict"
+            : uncertain
+              ? "uncertain"
+              : "error";
+    emit({
+      busy: preserveBusy ? state.busy : false,
+      needsComparison:
+        state.needsComparison || (status === 409 && state.view !== null),
+      save: write ? (uncertain ? "uncertain" : "error") : state.save,
+      pending: write ? (uncertain ? state.pending : null) : state.pending,
+      notice: {
+        kind,
+        ...(origin && !state.pending && (kind === "denied" || kind === "error")
+          ? { origin }
+          : {}),
+        title:
+          kind === "denied"
+            ? "action unavailable"
+            : kind === "conflict"
+              ? "draft changed"
+              : kind === "uncertain"
+                ? "result uncertain"
+                : "could not complete request",
+      },
+    });
+  }
+  async function read(command: AdvisorCommand, current = live) {
+    return invoke(async (signal) => {
+      const result =
+        command.action === "read_draft_dependencies_v1" ||
+        command.action === "rebase_draft_dependencies_v1"
+          ? await (() => {
+              if (!ports.dependencies) throw { status: 403 };
+              return ports.dependencies.execute(command, { signal });
+            })()
+          : await ports.plans.execute(command, { signal });
+      return current() ? mapPlanResult(result, command) : undefined;
+    });
+  }
+  function requireDraft() {
+    const view = state.view;
+    if (!view || !live()) return null;
+    return view;
+  }
+  const writeBasis = (view: DraftView) => ({
+    schemaVersion: 1 as const,
+    requestId: crypto.randomUUID(),
+    draftId: view.draft.id,
+    expectedContentRevision: view.draft.contentRevision,
+    expectedAssignmentRevision: view.draft.assignmentRevision,
+  });
+  function accept(command: AdvisorWrite, result: unknown) {
+    const mapped = mapPlanResult(result, command);
+    const authority = contextGeneration;
+    contextGeneration++;
+    if (command.action === "approve_publication_v1") {
+      const approval = mapped as Approval;
+      if (
+        !sameTarget(approval, command.target) ||
+        approval.publisher.kind !== "human" ||
+        approval.publisher.actorId !== permissions.actorId
+      )
+        throw Error("invalid_response");
+      // An immutable command receipt acknowledges that command. It cannot
+      // replace authority refreshed after the command began, even on exact
+      // retry/status recovery. Restored pending commands must refresh authority.
+      if (
+        approvalContexts.get(command) === authority &&
+        permissions.view &&
+        state.context &&
+        sameTarget(state.view?.target, command.target)
+      ) {
+        appliedContextGeneration = contextGeneration;
+        emit({ context: { ...state.context, approval } });
+      } else if (appliedContextGeneration !== authority) {
+        // A newer read has not supplied applicable authority. Receipt recovery
+        // invalidates that read's lease; retire its older displayed context too.
+        // A completed newer read remains intact, including its restrictions.
+        emit({ context: null });
+      } else {
+        appliedContextGeneration = contextGeneration;
+      }
+    } else if (command.action === "publish_plan_v1") {
+      const receipt = mapped as PublishReceipt;
+      if (!sameTarget(receipt.target, command.target))
+        throw Error("invalid_response");
+      emit({ receipt });
+    } else {
+      const view = assertDraft(mapped as DraftView);
+      if (
+        command.action === "create_draft_v1" &&
+        (view.draft.clientId !== null || view.target !== null)
+      )
+        throw Error("invalid_create_target");
+      if (
+        command.action !== "create_draft_v1" &&
+        view.draft.id !== command.draftId
+      )
+        throw Error("invalid_response");
+      if (
+        command.action === "save_draft_v1" ||
+        command.action === "apply_import_v1"
+      ) {
+        if (
+          !sameContent(view.draft.content, command.content) ||
+          view.draft.contentRevision !== command.expectedContentRevision + 1 ||
+          view.draft.assignmentRevision !== command.expectedAssignmentRevision
+        )
+          throw Error("invalid_response");
+      }
+      if (
+        command.action === "assign_draft_v1" &&
+        (view.draft.clientId !== command.toClientId ||
+          view.draft.assignmentRevision !==
+            command.expectedAssignmentRevision + 1)
+      )
+        throw Error("invalid_response");
+      if (
+        command.action === "rebase_draft_dependencies_v1" &&
+        (!state.view ||
+          view.draft.contentRevision !== command.expectedContentRevision + 1 ||
+          view.draft.assignmentRevision !==
+            command.expectedAssignmentRevision ||
+          view.draft.clientId !== state.view.draft.clientId ||
+          view.draft.state !== "working" ||
+          view.draft.basis.publicationVersion !==
+            command.expectedLegacyBasis.publicationVersion ||
+          view.draft.basis.useRevision !==
+            command.expectedLegacyBasis.useRevision ||
+          view.sections.some(
+            (section) => section.sectionId !== "sources" && section.reviewed,
+          ) ||
+          !sameContent(view.draft.content, state.view.draft.content))
+      )
+        throw Error("invalid_response");
+      if (
+        command.action === "review_section_v1" &&
+        (!state.view ||
+          !sameDraft(view, state.view) ||
+          !view.sections.some(
+            (s) =>
+              s.sectionId === command.sectionId &&
+              s.sectionHash === command.sectionHash &&
+              s.reviewed,
+          ))
+      )
+        throw Error("invalid_response");
+      const keep =
+        command.action === "save_draft_v1" &&
+        !sameContent(state.local, command.content);
+      emit({
+        view,
+        needsComparison: false,
+        local: keep ? state.local : view.draft.content,
+        context: null,
+        comparison: null,
+        comparisonLocal: null,
+        receipt: null,
+      });
+    }
+    emit({
+      pending: null,
+      busy: false,
+      notice: null,
+      save: dirty() ? "idle" : "saved",
+    });
+  }
+  async function execute(command: AdvisorWrite) {
+    if (!live() || state.busy) return;
+    readPlanCommand(command);
+    if (
+      command.action === "approve_publication_v1" &&
+      state.pending !== command &&
+      !approvalContexts.has(command)
+    )
+      approvalContexts.set(command, contextGeneration);
+    const operation = ++operationGeneration;
+    const current = () =>
+      live() && operation === operationGeneration && state.pending === command;
+    emit({
+      pending: command,
+      busy: true,
+      notice: null,
+      ...(command.action === "rebase_draft_dependencies_v1"
+        ? { context: null, dependencies: null, save: "saving" as const }
+        : {}),
+      // Starting an approval attempt also retires an unresolved context read
+      // through the operation fence. Its older authority must not survive even
+      // if this attempt returns a definite error instead of a receipt.
+      ...(command.action === "approve_publication_v1" &&
+      appliedContextGeneration !== contextGeneration
+        ? { context: null }
+        : {}),
+      ...(command.action === "save_draft_v1"
+        ? { save: "saving" as const }
+        : {}),
+    });
+    try {
+      const result = await read(command);
+      if (result !== undefined && current()) accept(command, result);
+    } catch (e) {
+      if (current()) {
+        if (
+          command.action === "rebase_draft_dependencies_v1" &&
+          (e as { status?: number })?.status === 409
+        ) {
+          // Definite CAS failure is not permission to mutate/retry the captured
+          // request. A new inspection and human acknowledgement are required.
+          emit({
+            pending: null,
+            busy: false,
+            save: "error",
+            dependencies: null,
+            context: null,
+            notice: {
+              kind: "conflict",
+              title: "client information changed; review it again",
+            },
+          });
+        } else fail(e, true);
+      }
+    }
+  }
+  function dependencyReviewCurrent() {
+    return !!state.dependencies && !!dependencyLease?.();
+  }
+  function dependenciesReady() {
+    return (
+      !ports.dependencies ||
+      !state.view?.target ||
+      (dependencyReviewCurrent() &&
+        state.dependencies?.status === "ready" &&
+        !state.dependencies.view?.needsRebase)
+    );
+  }
+  function retireDependencyReview() {
+    dependencyLease = null;
+    identityReads = null;
+    readGenerations.set(
+      "dependencies",
+      (readGenerations.get("dependencies") ?? 0) + 1,
+    );
+    readGenerations.set(
+      "dependency-history",
+      (readGenerations.get("dependency-history") ?? 0) + 1,
+    );
+    emit({ dependencies: null });
+  }
+  async function hydrateDependencyIdentities(
+    review: AdvisorDependencyReview,
+    current: () => boolean,
+  ) {
+    const scope = identityReads;
+    const owns = () => current() && scope !== null && identityReads === scope;
+    if (!scope || !owns()) return;
+    if (review.publication) {
+      const plan = review.publication.plan;
+      scope.documents[plan.version] = planIdentityDocument(plan);
+      scope.requested.add(plan.version);
+    }
+    const versions = new Set(
+      dependencyProductRefs(review).flatMap((ref) =>
+        ref.kind === "plan_product" ? [ref.publication.version] : [],
+      ),
+    );
+    for (const version of versions) {
+      if (!owns()) return;
+      if (scope.requested.has(version) || !ports.careRead) continue;
+      scope.requested.add(version);
+      try {
+        const command = {
+          schemaVersion: 1,
+          action: "read_advisor_publication_v2",
+          clientId: scope.clientId,
+          version,
+        } as const;
+        const raw = await invoke((signal) =>
+          ports.careRead!.execute(command, { signal }),
+        );
+        if (!raw || !owns()) return;
+        const historical = mapCareResult(
+          raw,
+          command,
+        ) as AdvisorPublicationViewV2;
+        assertDependencyUseClient(historical, scope.clientId);
+        // Historical reads also contain a CURRENT use overlay. It is checked
+        // only for this inspection's head, never cached as historical use.
+        if (historical.use.revision !== scope.useHead)
+          throw Error("identity_head_changed");
+        if (owns())
+          scope.documents[version] = planIdentityDocument(historical.plan);
+      } catch (error) {
+        if (!owns()) return;
+        if ((error as { status?: number })?.status === 401) throw error;
+        // Keep authorized current/history facts readable. Missing exact
+        // immutable identity remains explicit and blocks acknowledgement.
+      }
+    }
+    if (owns()) review.documents = { ...scope.documents };
+  }
+  async function inspectDependencies() {
+    const view = requireDraft(),
+      target = view?.target;
+    if (
+      !ports.dependencies ||
+      !target ||
+      !permissions.view ||
+      state.pending ||
+      state.busy ||
+      dirty()
+    )
+      return;
+    const applicable = beginRead("dependencies"),
+      authority = contextGeneration,
+      capabilities = { ...permissions };
+    const current = () =>
+      applicable() &&
+      authority === contextGeneration &&
+      !(Object.keys(capabilities) as (keyof typeof capabilities)[]).some(
+        (key) => capabilities[key] === true && permissions[key] === false,
+      );
+    dependencyLease = current;
+    identityReads = {
+      clientId: target.clientId,
+      useHead: -1,
+      requested: new Set(),
+      documents: {},
+    };
+    emit({
+      dependencies: {
+        status: "loading",
+        view: null,
+        publication: null,
+        documents: {},
+        history: [],
+        nextCursor: null,
+        acknowledged: false,
+        unavailable: [],
+      },
+    });
+    try {
+      const result = (await read(
+        {
+          schemaVersion: 1,
+          action: "read_draft_dependencies_v1",
+          draftId: view.draft.id,
+          contentRevision: view.draft.contentRevision,
+          assignmentRevision: view.draft.assignmentRevision,
+        },
+        current,
+      )) as DraftDependenciesView | undefined;
+      if (!result || !current()) return;
+      if (identityReads) identityReads.useHead = result.current.useHead;
+      const unavailable = missingDependencyReaders(result).map(
+        (r) => r.message,
+      );
+      let publication: AdvisorPublicationViewV2 | null = null;
+      let history: UseHistoryPage = {
+        revision: result.current.useHead,
+        entries: [],
+        nextCursor: null,
+      };
+      if (!ports.careRead)
+        unavailable.push(
+          "current client use is unavailable here. updating the basis is blocked.",
+        );
+      else {
+        if (result.current.legacyBasis.publicationVersion !== null) {
+          const command = {
+            schemaVersion: 1,
+            action: "read_advisor_publication_v2",
+            clientId: target.clientId,
+            version: null,
+          } as const;
+          const raw = await invoke((signal) =>
+            ports.careRead!.execute(command, { signal }),
+          );
+          if (!raw || !current()) return;
+          publication = mapCareResult(raw, command) as AdvisorPublicationViewV2;
+          assertDependencyUseClient(publication, target.clientId);
+          if (
+            publication.use.revision !== result.current.useHead ||
+            publication.version !==
+              result.current.legacyBasis.publicationVersion
+          )
+            throw { status: 409 };
+        } else if (result.current.useHead !== 0) {
+          unavailable.push(
+            "current use has no available publication context. updating the basis is blocked.",
+          );
+        }
+        const command = {
+          schemaVersion: 1,
+          action: "read_advisor_use_history_v1",
+          clientId: target.clientId,
+          product: null,
+          cursor: null,
+          limit: 25,
+        } as const;
+        const raw = await invoke((signal) =>
+          ports.careRead!.execute(command, { signal }),
+        );
+        if (!raw || !current()) return;
+        history = mapCareResult(raw, command) as UseHistoryPage;
+        assertDependencyHistoryClient(history, target.clientId);
+        if (history.revision !== result.current.useHead) throw { status: 409 };
+      }
+      const review: AdvisorDependencyReview = {
+        status: "ready",
+        view: result,
+        publication,
+        documents: {},
+        history: history.entries,
+        nextCursor: history.nextCursor,
+        acknowledged: false,
+        unavailable,
+      };
+      await hydrateDependencyIdentities(review, current);
+      if (current()) {
+        review.unavailable = [
+          ...new Set([...unavailable, ...dependencyUnavailable(review)]),
+        ];
+        review.status = review.unavailable.length ? "unavailable" : "ready";
+        emit({ dependencies: review });
+      }
+    } catch (error) {
+      if (!current()) return;
+      if ((error as { status?: number })?.status === 401) return fail(error);
+      emit({
+        dependencies: {
+          status: "unavailable",
+          view: null,
+          publication: null,
+          documents: {},
+          history: [],
+          nextCursor: null,
+          acknowledged: false,
+          unavailable: [
+            "current client information could not be confirmed. refresh it before reviewing or publishing.",
+          ],
+        },
+      });
+    }
+  }
+  async function loadDependencyHistory() {
+    const review = state.dependencies,
+      target = state.view?.target;
+    if (
+      !review?.nextCursor ||
+      !review.view ||
+      !target ||
+      !ports.careRead ||
+      !dependencyReviewCurrent() ||
+      state.pending ||
+      state.busy ||
+      dirty()
+    )
+      return;
+    const applicable = beginRead("dependency-history"),
+      current = () =>
+        applicable() &&
+        state.dependencies === review &&
+        dependencyReviewCurrent();
+    try {
+      const command = {
+        schemaVersion: 1,
+        action: "read_advisor_use_history_v1",
+        clientId: target.clientId,
+        product: null,
+        cursor: review.nextCursor,
+        limit: 25,
+      } as const;
+      const raw = await invoke((signal) =>
+        ports.careRead!.execute(command, { signal }),
+      );
+      if (!raw || !current()) return;
+      const page = mapCareResult(raw, command) as UseHistoryPage;
+      assertDependencyHistoryClient(page, target.clientId);
+      if (page.revision !== review.view.current.useHead) throw { status: 409 };
+      const next = {
+        ...review,
+        history: [...review.history, ...page.entries],
+        nextCursor: page.nextCursor,
+        acknowledged: false,
+      };
+      await hydrateDependencyIdentities(next, current);
+      if (!current()) return;
+      next.unavailable = dependencyUnavailable(next);
+      next.status = next.unavailable.length ? "unavailable" : "ready";
+      emit({ dependencies: next });
+    } catch (error) {
+      if (!current()) return;
+      if ((error as { status?: number })?.status === 401) return fail(error);
+      emit({
+        dependencies: {
+          ...review,
+          status: "unavailable",
+          acknowledged: false,
+          unavailable: [
+            ...new Set([
+              ...review.unavailable,
+              "client reports changed or could not be loaded. refresh current client information before continuing.",
+            ]),
+          ],
+        },
+      });
+    }
+  }
+  function canRebaseDependencies() {
+    const review = state.dependencies;
+    return !!(
+      permissions.edit &&
+      stable() &&
+      state.view?.target &&
+      dependencyReviewCurrent() &&
+      review?.status === "ready" &&
+      review.view?.needsRebase &&
+      !review.nextCursor &&
+      review.publication?.use.reportedProducts.nextCursor == null &&
+      review.acknowledged
+    );
+  }
+  async function refreshContext() {
+    const view = requireDraft(),
+      target = view?.target;
+    if (!target) return;
+    if (ports.dependencies) retireDependencyReview();
+    const generation = ++contextGeneration,
+      start = epoch,
+      operation = operationGeneration,
+      applicable = beginRead("context");
+    // Both success and failure belong to one ordered read of this exact view.
+    const current = () =>
+      applicable() &&
+      start === epoch &&
+      generation === contextGeneration &&
+      operation === operationGeneration &&
+      state.view === view &&
+      sameTarget(state.view?.target, target);
+    try {
+      const reads = await invoke((signal) =>
+        Promise.all([
+          ports.context.execute(
+            { clientId: target.clientId, draftId: target.draftId, target },
+            { signal },
+          ),
+          ports.paymentRead.execute(
+            {
+              schemaVersion: 2,
+              action: "advisor_read",
+              clientId: target.clientId,
+            },
+            { signal },
+          ),
+        ]),
+      );
+      if (!reads || !current()) return;
+      const [result, paymentResult] = reads;
+      if (
+        result.clientId !== target.clientId ||
+        !sameTarget(state.view?.target, target)
+      )
+        throw Error("wrong_context");
+      const payments =
+        "schemaVersion" in paymentResult && paymentResult.schemaVersion === 2
+          ? mapPaymentViewV2(paymentResult)
+          : mapPaymentView(paymentResult);
+      let approval: Approval | null = null;
+      if (result.approval) {
+        approval = mapPlanResult(result.approval, {
+          schemaVersion: 1,
+          action: "approve_publication_v1",
+          requestId: crypto.randomUUID(),
+          target,
+          scope: "care_plan.publish",
+          publisher: { kind: "human", actorId: permissions.actorId },
+        }) as Approval;
+      }
+      appliedContextGeneration = generation;
+      const notice = state.notice;
+      emit({
+        context: { ...result, payments, approval },
+        ...(notice?.origin?.purpose === "context" &&
+        notice.origin.actorId === permissions.actorId &&
+        sameTarget(notice.origin.target, target) &&
+        !state.pending &&
+        !state.needsComparison &&
+        (notice.kind === "denied" || notice.kind === "error")
+          ? { notice: null }
+          : {}),
+      });
+    } catch (e) {
+      if (!current()) return;
+      emit({ context: null });
+      fail(e, false, true, {
+        purpose: "context",
+        actorId: permissions.actorId,
+        target: { ...target },
+      });
+    }
+  }
+  async function executePayment(command: ConfirmPaymentCommand) {
+    if (
+      !permissions.confirmPayments ||
+      !ports.payments ||
+      state.busy ||
+      command.clientId !== state.view?.draft.clientId
+    )
+      return deny();
+    const operation = ++operationGeneration;
+    const current = () =>
+      live() && operation === operationGeneration && state.pending === command;
+    emit({ pending: command, busy: true, notice: null });
+    try {
+      const receipt = await invoke((signal) =>
+        ports.payments!.execute(command, { signal }),
+      );
+      if (receipt && current()) {
+        const call =
+          command.schemaVersion === 2
+            ? buildPaymentCallV2(command, permissions.actorId)
+            : buildPaymentCall(command, permissions.actorId);
+        command.schemaVersion === 2
+          ? mapPaymentReceiptV2(receipt, call)
+          : mapPaymentReceipt(receipt, call);
+        await refreshContext();
+        if (!current()) return;
+        emit({ pending: null, busy: false });
+        // The financial write is acknowledged. Recover current clinical basis
+        // before its UI continuation returns to publication checks; a read
+        // failure must not turn that known receipt back into an uncertain write.
+        if (ports.dependencies) await inspectDependencies();
+      }
+    } catch (e) {
+      if (current()) fail(e, true);
+    }
+  }
+
+  return {
+    getSnapshot: () => state,
+    subscribe: (fn: () => void) => {
+      listeners.add(fn);
+      return () => listeners.delete(fn);
+    },
+    permissions,
+    hasDependencies: !!ports.dependencies,
+    dependencyReviewCurrent,
+    inspectDependencies,
+    loadDependencyHistory,
+    retireDependencyReview,
+    canRebaseDependencies,
+    acknowledgeDependencies(acknowledged: boolean) {
+      const review = state.dependencies;
+      if (
+        review &&
+        permissions.edit &&
+        stable() &&
+        dependencyReviewCurrent() &&
+        review.status === "ready" &&
+        !review.nextCursor &&
+        review.publication?.use.reportedProducts.nextCursor == null
+      )
+        emit({ dependencies: { ...review, acknowledged } });
+    },
+    async rebaseDependencies() {
+      if (!canRebaseDependencies()) return;
+      const view = state.view!,
+        current = state.dependencies!.view!.current;
+      await execute({
+        ...writeBasis(view),
+        action: "rebase_draft_dependencies_v1",
+        expectedHeads: {
+          useHead: current.useHead,
+          reportHead: current.reportHead,
+          instructionHead: current.instructionHead,
+        },
+        expectedLegacyBasis: { ...current.legacyBasis },
+        expectedLegacyBasisManifestHash: current.legacyBasisManifestHash,
+      });
+    },
+    dirty,
+    canReview,
+    canApprove,
+    canPublish,
+    async loadDirectory(cursor: string | null = null) {
+      if (!permissions.view) return deny();
+      const current = beginRead("directory");
+      try {
+        const result = await read(
+          {
+            schemaVersion: 1,
+            action: "list_plans_v1",
+            clientId: null,
+            cursor,
+            limit: 50,
+          },
+          current,
+        );
+        if (result && current())
+          emit({
+            directory: result as PlanDirectory,
+            notice: state.needsComparison ? state.notice : null,
+          });
+      } catch (e) {
+        if (current()) fail(e, false, true);
+      }
+    },
+    async loadClients() {
+      if (!permissions.view) return deny();
+      const current = beginRead("clients");
+      try {
+        const result = await invoke((signal) =>
+          ports.clients.execute({ action: "advisor_list" }, { signal }),
+        );
+        if (result && current()) emit({ clients: result });
+      } catch (e) {
+        if (current()) fail(e, false, true);
+      }
+    },
+    async open(draftId: string) {
+      if (!permissions.view) return deny();
+      if (state.view?.draft.id === draftId) return;
+      if (state.pending || dirty()) {
+        emit({
+          notice: {
+            kind: "conflict",
+            title: "save or compare your current work first",
+          },
+        });
+        return;
+      }
+      epoch++;
+      controllers.forEach((c) => c.abort());
+      emit({
+        view: null,
+        local: null,
+        context: null,
+        comparison: null,
+        receipt: null,
+        busy: true,
+        notice: null,
+      });
+      const current = beginRead("open");
+      try {
+        const result = await read(
+          {
+            schemaVersion: 1,
+            action: "read_draft_v1",
+            draftId,
+          },
+          current,
+        );
+        if (result && current()) {
+          const view = assertDraft(result as DraftView);
+          emit({ view, local: view.draft.content, busy: false, save: "saved" });
+        }
+      } catch (e) {
+        if (current()) fail(e);
+      } finally {
+        // A denied current open must end loading. An old open owns neither a
+        // newer open's busy state nor a later write's pending operation.
+        if (current.owns() && state.busy) {
+          emit({ busy: false });
+          if (!current()) deny();
+        }
+      }
+    },
+    async create() {
+      if (!permissions.edit) return deny();
+      if (state.pending || dirty()) return deny();
+      await execute({
+        schemaVersion: 1,
+        action: "create_draft_v1",
+        requestId: crypto.randomUUID(),
+        kind: "care_plan",
+        templateVersionId: null,
+      });
+    },
+    edit(update: (content: PlanContent) => PlanContent) {
+      if (
+        !permissions.edit ||
+        !state.local ||
+        state.receipt ||
+        state.view?.draft.state !== "working" ||
+        (state.pending && state.pending.action !== "save_draft_v1")
+      )
+        return;
+      emit({
+        local: update(structuredClone(state.local)),
+        save: state.pending ? state.save : "idle",
+        comparison: null,
+        comparisonLocal: null,
+      });
+    },
+    async save() {
+      const view = requireDraft();
+      if (!permissions.edit) return deny();
+      if (
+        !view ||
+        !state.local ||
+        state.pending ||
+        state.busy ||
+        !dirty() ||
+        state.needsComparison ||
+        state.receipt ||
+        state.notice?.kind === "conflict"
+      )
+        return;
+      try {
+        const content = readPlanContent(state.local);
+        await execute({
+          ...writeBasis(view),
+          action: "save_draft_v1",
+          kind: "care_plan",
+          content,
+        });
+      } catch {
+        emit({
+          save: "error",
+          notice: {
+            kind: "invalid",
+            title: "check the draft fields before saving",
+          },
+        });
+      }
+    },
+    async assign(clientId: string) {
+      if (!permissions.assign) return deny();
+      const view = requireDraft();
+      if (
+        !view ||
+        !stable() ||
+        !state.clients?.clients.some(
+          (c) => c.clientId === clientId && c.enrollmentStatus === "active",
+        )
+      )
+        return deny();
+      await execute({
+        ...writeBasis(view),
+        action: "assign_draft_v1",
+        fromClientId: view.draft.clientId,
+        toClientId: clientId,
+      });
+    },
+    async review(sectionId: SectionId) {
+      if (!canReview()) return deny();
+      const view = requireDraft(),
+        section = view?.sections.find((s) => s.sectionId === sectionId);
+      if (view && section)
+        await execute({
+          ...writeBasis(view),
+          action: "review_section_v1",
+          sectionId,
+          sectionHash: section.sectionHash,
+        });
+    },
+    async validate() {
+      const view = requireDraft();
+      if (!view || !stable()) return;
+      const current = beginRead("validation");
+      try {
+        const result = (await read(
+          {
+            schemaVersion: 1,
+            action: "validate_draft_v1",
+            draftId: view.draft.id,
+            contentRevision: view.draft.contentRevision,
+            assignmentRevision: view.draft.assignmentRevision,
+          },
+          current,
+        )) as PlanValidation | undefined;
+        if (
+          result &&
+          current() &&
+          state.view &&
+          sameDraft(state.view, view) &&
+          ((result.target === null && view.target === null) ||
+            sameTarget(result.target, view.target))
+        )
+          emit({ view: { ...view, issues: result.issues } });
+      } catch (e) {
+        if (current()) fail(e, false, true);
+      }
+    },
+    async compareImport(raw: string) {
+      try {
+        await this.compare(readPlanContent(JSON.parse(raw)));
+      } catch {
+        emit({
+          notice: {
+            kind: "invalid",
+            title:
+              "import must match the plan fields; unsupported fields are not accepted",
+          },
+        });
+      }
+    },
+    async compareLocal() {
+      if (state.local) await this.compare(state.local);
+    },
+    async compare(content: PlanContent) {
+      const view = requireDraft();
+      if (!permissions.edit) return deny();
+      if (!view || state.pending || state.busy) return;
+      if (ports.dependencies) retireDependencyReview();
+      const current = beginRead("comparison");
+      try {
+        const localAtStart = state.local,
+          proposed = readPlanContent(content),
+          result = (await read(
+            {
+              schemaVersion: 1,
+              action: "compare_import_v1",
+              draftId: view.draft.id,
+              baseContentRevision: view.draft.contentRevision,
+              baseAssignmentRevision: view.draft.assignmentRevision,
+              content: proposed,
+            },
+            current,
+          )) as PlanImportComparison | undefined;
+        if (result && current()) {
+          assertDraft(result.latest);
+          if (
+            !sameContent(result.proposed, proposed) ||
+            result.latest.draft.id !== view.draft.id
+          )
+            throw Error("invalid_comparison");
+          emit({
+            comparison: result,
+            needsComparison: state.needsComparison || result.stale,
+            comparisonLocal: localAtStart,
+            notice: null,
+          });
+        }
+      } catch (e) {
+        if (current()) fail(e, false, true);
+      }
+    },
+    async applyImport() {
+      const v = state.view,
+        c = state.comparison;
+      if (!permissions.edit) return deny();
+      if (
+        !v ||
+        !c ||
+        c.stale ||
+        state.pending ||
+        state.busy ||
+        (dirty() && !sameContent(state.local, c.proposed)) ||
+        !sameContent(state.local, state.comparisonLocal) ||
+        c.baseContentRevision !== v.draft.contentRevision ||
+        c.baseAssignmentRevision !== v.draft.assignmentRevision ||
+        c.latest.draft.contentRevision !== v.draft.contentRevision ||
+        c.latest.draft.assignmentRevision !== v.draft.assignmentRevision
+      )
+        return;
+      await execute({
+        ...writeBasis(v),
+        action: "apply_import_v1",
+        baseContentRevision: c.baseContentRevision,
+        proposalHash: c.proposalHash,
+        content: c.proposed,
+      });
+    },
+    /** Deliberate use of latest base retains manual content, then requires a fresh diff before apply. */
+    async rebaseComparison() {
+      const c = state.comparison;
+      if (!c || state.pending || state.busy) return;
+      emit({
+        view: c.latest,
+        needsComparison: true,
+        context: null,
+        comparison: null,
+        comparisonLocal: null,
+        notice: {
+          kind: "conflict",
+          title: "compare your work with the latest draft",
+        },
+        save: sameContent(state.local, c.latest.draft.content)
+          ? "saved"
+          : "idle",
+      });
+    },
+    refreshContext,
+    async approve() {
+      if (!canApprove()) return deny();
+      const target = state.view!.target!;
+      if (!state.context || state.context.clientId !== target.clientId) {
+        await refreshContext();
+        if (!state.context) return;
+        if (ports.dependencies) await inspectDependencies();
+      }
+      if (!canApprove() || !sameTarget(state.view?.target, target)) return;
+      await execute({
+        schemaVersion: 1,
+        action: "approve_publication_v1",
+        requestId: crypto.randomUUID(),
+        target,
+        scope: "care_plan.publish",
+        publisher: { kind: "human", actorId: permissions.actorId },
+      });
+    },
+    async publish() {
+      if (!canPublish()) return deny();
+      await execute({
+        schemaVersion: 1,
+        action: "publish_plan_v1",
+        requestId: crypto.randomUUID(),
+        target: state.view!.target!,
+        approvalId: state.context!.approval!.id,
+        firstServiceClaimId:
+          state.context!.publication === "first"
+            ? firstServiceClaim(state.context!.payments)!.id
+            : null,
+      });
+    },
+    async preview() {
+      const v = requireDraft();
+      if (!v || !stable() || !options.onPreview) return;
+      if (ports.dependencies) retireDependencyReview();
+      const current = beginRead("preview");
+      try {
+        const p = (await read(
+          {
+            schemaVersion: 1,
+            action: "preview_draft_v1",
+            draftId: v.draft.id,
+            contentRevision: v.draft.contentRevision,
+            assignmentRevision: v.draft.assignmentRevision,
+          },
+          current,
+        )) as PlanPreview | undefined;
+        if (
+          p &&
+          current() &&
+          state.view &&
+          sameDraft(v, state.view) &&
+          !dirty() &&
+          ((p.target === null && v.target === null) ||
+            sameTarget(p.target, v.target))
+        )
+          options.onPreview(p, v);
+      } catch (e) {
+        if (current()) fail(e, false, true);
+      }
+    },
+    async confirmPayment(claimId: string, gross: string, checked: boolean) {
+      if (!permissions.confirmPayments || !ports.payments) return deny();
+      const context = state.context,
+        claim = context?.payments.claims.find((c) => c.id === claimId),
+        quote = context?.payments.quotes.find(
+          (q) => q.id === claim?.quoteId && q.version === claim.quoteVersion,
+        );
+      if (
+        !context ||
+        !claim ||
+        !quote ||
+        !stable() ||
+        context.publication !== "first" ||
+        claim.status !== "submitted_unverified" ||
+        quote.status !== "payable" ||
+        quote.publicationVersion !== 0 ||
+        quote.serviceCents <= 0 ||
+        !checked ||
+        !/^\d+(?:\.\d{1,2})?$/.test(gross) ||
+        Math.round(Number(gross) * 100) !== quote.totalCents
+      )
+        return deny();
+      const base = {
+        action: "confirm_payment" as const,
+        requestId: crypto.randomUUID(),
+        clientId: context.clientId,
+        expectedRevision: context.payments.revision,
+        quoteId: quote.id,
+        quoteVersion: quote.version,
+        shippingAddressVersion: quote.shippingAddressVersion,
+        claimId: claim.id,
+        serviceCents: quote.serviceCents,
+        productCents: quote.productTotalCents,
+        totalCents: quote.totalCents,
+      };
+      const v2 = "contractVersion" in quote && quote.contractVersion === 2;
+      const command: ConfirmPaymentCommand = v2
+        ? {
+            ...base,
+            schemaVersion: 2,
+            paymentOptionId: ("paymentOptionId" in claim
+              ? claim.paymentOptionId
+              : null) as string,
+            receiptVerified: true,
+          }
+        : { ...base, bankReceiptVerified: true };
+      await executePayment(command);
+    },
+    async reconcile() {
+      const pending = state.pending;
+      if (!pending || state.busy) return;
+      const operation = operationGeneration,
+        recovery = ++recoveryGeneration,
+        applicable = beginRead("recovery");
+      // A retry starts another operation even though it reuses the same UUID.
+      const current = () =>
+        applicable() &&
+        operation === operationGeneration &&
+        recovery === recoveryGeneration &&
+        state.pending === pending;
+      if (pending.action === "confirm_payment") {
+        await refreshContext();
+        if (
+          current() &&
+          state.context?.payments.claims.some(
+            (c) => c.id === pending.claimId && c.status === "confirmed",
+          )
+        )
+          emit({
+            pending: null,
+            busy: false,
+            notice: null,
+            save: dirty() ? "idle" : "saved",
+          });
+        return;
+      }
+      try {
+        const result = await read({
+          schemaVersion: 1,
+          action: "request_status_v1",
+          requestId: pending.requestId,
+        });
+        if (
+          current() &&
+          result &&
+          "status" in result &&
+          result.status === "committed"
+        )
+          accept(pending, result.receipt);
+      } catch (e) {
+        // A failed status read says nothing about the original write's outcome.
+        // Keep its exact uncertain intent and current read leases recoverable;
+        // only a committed receipt or private-session invalidation resolves it.
+        if (current()) fail(e);
+      }
+    },
+    async retry() {
+      const pending = state.pending;
+      if (!pending || state.busy) return;
+      if (
+        pending.action === "rebase_draft_dependencies_v1" &&
+        !permissions.edit
+      )
+        return deny();
+      if (pending.action === "confirm_payment") {
+        await executePayment(pending);
+        return;
+      }
+      await execute(pending);
+    },
+    hasPreview: !!options.onPreview,
+    hasPayments: !!ports.payments,
+    dispose() {
+      if (disposed) return;
+      epoch++;
+      dependencyLease = null;
+      identityReads = null;
+      controllers.forEach((c) => c.abort());
+      controllers.clear();
+      unsubscribe();
+      listeners.clear();
+      disposed = true;
+    },
+  };
+}

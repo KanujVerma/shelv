@@ -1,5 +1,13 @@
 # Shelv Agent Guide
 
+## Approved portal rebuild (30 October 2026)
+
+For the approved consolidated portal rebuild, read [the rebuild entry point](docs/portal-rebuild/README.md), [D01-D48](docs/portal-rebuild/APPROVED_DECISIONS.md), [the full desktop specification](docs/portal-rebuild/APPROVED_DESKTOP_SPEC.md), [implementation contracts](docs/portal-rebuild/IMPLEMENTATION_CONTRACTS.md), [workstream ownership](docs/portal-rebuild/WORKSTREAMS.md) and [current status](docs/portal-rebuild/CURRENT_STATUS.md) before work. The approved React/TypeScript, shadcn-wrapper and Lucide baseline supersedes older prospective UI guidance for this rebuild. Use lowercase `shelv` in newly authored rebuild UI while preserving proper identities and source text.
+
+First publication requires exact human approval and verified applicable first service payment before a deliberate authorized command. Publication/reviews create durable transactional email and portal notification events; failure retries notification without republishing. Post-service plan/history access is read-only for 30 days after support ends, with final-plan export and separately reachable unfinished administration. These prospective rules supersede publication-before-payment, manual-only notification and unspecified read-only-window policies below or in older documents. They do not alter historical evidence or authorize live client actions/deployment.
+
+Coordinator and every worker/reviewer/researcher must use verified `gpt-6.1-sol` at `xhigh`. Respect explicit file claims and one writer for shared contracts, migrations, auth/routes and release composition. Follow the exact approved frames, not earlier explorations. Record decisions, implementation status and actual test evidence in `docs/portal-rebuild/` and `CONTEXT_SYNC.md`.
+
 **Brand:** Use Shelv for customer-facing copy and the corrected shelf artwork. Follow [BRANDING.md](docs/BRANDING.md); preserve existing technical identifiers and historical evidence until a separately approved migration.
 
 ## Concierge portal scope (24 October 2026)

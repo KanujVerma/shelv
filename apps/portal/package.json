@@ -10,6 +10,10 @@
     "session-integration/runtime"
   ],
   "scripts": {
+    "build:application": "node scripts/build-portal-app.mjs",
+    "build:rebuild": "node scripts/build-rebuild.mjs",
+    "typecheck:rebuild": "tsc -p tsconfig.frontend.json",
+    "test:rebuild": "node --experimental-strip-types --test tests/rebuild-foundation*.test.mjs",
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.test.mjs",
     "test:session": "npm --prefix session-integration/runtime test",
@@ -21,7 +25,20 @@
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "esbuild": "0.28.2",
-    "playwright-core": "1.64.1"
+    "playwright-core": "1.64.1",
+    "typescript": "6.0.3"
+  },
+  "dependencies": {
+    "@fontsource/instrument-serif": "5.3.0",
+    "@fontsource/inter": "5.3.0",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "lucide-react": "1.65.0",
+    "radix-ui": "1.8.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   }
 }

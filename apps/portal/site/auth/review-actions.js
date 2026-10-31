@@ -1,0 +1,5 @@
+// Closed target-protocol metadata. This does not activate a gateway or grant SQL authority.
+export const REVIEW_COMMAND_MAX_BYTES=500000;
+export const clientReviewActions=Object.freeze(['submit_goal_report_v1','amend_report_v1','read_care_history_v1','read_client_plan_v3','read_client_instruction_manifest_v1','read_client_instruction_v1','record_decision_v2','request_status_v1']);
+export const clientReviewReads=Object.freeze(['read_care_history_v1','read_client_plan_v3','read_client_instruction_manifest_v1','read_client_instruction_v1','request_status_v1']);
+export const reviewErrorCodes=Object.freeze(['invalid_input','not_ready','unauthorized','session_ended','forbidden','candidate_inactive','not_found','revision_conflict','request_conflict','approval_conflict','basis_conflict','source_conflict','cursor_conflict','photo_unavailable','content_version_required','guidance_version_required','guidance_conflict','too_large','unsupported_media_type','rate_limited','unavailable','uncertain']);

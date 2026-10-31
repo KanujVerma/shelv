@@ -31,7 +31,7 @@ const text=(v:unknown,max=4000,empty=false)=>{const s=readText(v,max,empty);requ
 const stamp=(v:unknown)=>{const s=text(v,60);requireValue(Number.isFinite(Date.parse(s)));return s;};
 const cents=(v:unknown)=>readInteger(v,0,100000000);
 const member=<T extends string>(v:unknown,values:readonly T[]):T=>{requireValue(values.includes(v as T));return v as T;};
-export function readServiceUsage(value:unknown):Usage{return readPresentationShape(value,stepShape.fields!.usage) as Usage;}
+export function readServiceUsage(value:unknown):Usage{return readPresentationShape(value,stepShape.fields!.usage!) as Usage;}
 export function readReturnPolicy(value:unknown):ReturnPolicy{const v=readObject(value);exactKeys(v,['checkedOn','url','summary','openedAllowed','finalSale','returnBy','shipBy','returnCostCents']);requireValue(v.openedAllowed===null||typeof v.openedAllowed==='boolean');requireValue(typeof v.finalSale==='boolean');return {checkedOn:readDate(v.checkedOn),url:readPresentationUrl(v.url),summary:text(v.summary,2000),openedAllowed:v.openedAllowed as boolean|null,finalSale:v.finalSale as boolean,returnBy:nullable(v.returnBy,readDate),shipBy:nullable(v.shipBy,readDate),returnCostCents:cents(v.returnCostCents)};}
 /** Fixed request schemas: authority and recorded timestamps cannot be submitted. */
 export function buildServiceRpc(value:unknown,owner:string):ServiceRpc|null{

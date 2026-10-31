@@ -1,0 +1,49 @@
+.shelv-shell {display: grid;grid-template-columns: var(--sidebar-width) minmax(0,1fr);min-height: 100dvh;}
+.shelv-sidebar {position: sticky;top: 0;display: flex;flex-direction: column;height: 100dvh;min-height: 720px;padding: var(--space-20) var(--space-20) 30px;background: var(--color-surface);}
+.shelv-wordmark {display: block;color: var(--color-brand);font-size: 30px;font-weight: 600;line-height: 38px;}
+.shelv-client-nav {display: flex;flex-direction: column;gap: var(--space-12);margin-top: 44px;}
+.shelv-nav-link {display: flex;align-items: center;gap: var(--space-12);height: 48px;min-height: 48px;padding: var(--space-12);border-radius: var(--radius-12);color: var(--color-muted);font-size: var(--text-label);font-weight: 500;line-height: var(--line-label);text-decoration: none;}
+.shelv-nav-link[aria-current='page'] {background: var(--color-successBg);color: var(--color-brand);}
+.shelv-contact-card {display: grid;gap: var(--space-8);margin-top: auto;padding: 14px;border-radius: var(--radius-12);background: var(--color-successBg);color: var(--color-brand);font-size: var(--text-label);font-weight: 500;line-height: var(--line-label);}
+.shelv-contact-card span {font-size: var(--text-meta);line-height: var(--line-meta);color: var(--color-muted);}
+.shelv-identity {display: flex;gap: var(--space-12);align-items: center;margin-top: 41px;font-size: var(--text-label);font-weight: 500;line-height: var(--line-label);}
+.shelv-identity svg {color: var(--color-brand);}
+.shelv-main {min-width: 0;}
+.shelv-topbar {display: flex;align-items: center;gap: var(--space-16);height: var(--topbar-height);padding: var(--space-12) var(--content-inset);border-radius: var(--radius-12);background: var(--color-surface);}
+.shelv-topbar-context {flex: 0 1 800px;min-width: 0;color: var(--color-muted);font-size: var(--text-label);line-height: var(--line-label);}
+.shelv-mode-badge {flex: 0 0 184px;}
+.shelv-content {display: grid;align-content: start;gap: var(--space-24);min-width: 0;padding: var(--space-24) var(--content-inset) var(--space-24);}
+.shelv-page-header {display: flex;align-items: center;gap: var(--space-24);min-width: 0;}
+.shelv-page-header > div:first-child {flex: 1;min-width: 0;}
+.shelv-page-header h1 {color: var(--color-brand);font-family: var(--font-display);font-size: var(--text-display);font-weight: 400;line-height: var(--line-display);overflow-wrap: anywhere;}
+.shelv-page-description {margin-top: 6px;color: var(--color-muted);overflow-wrap: anywhere;}
+.shelv-page-action {flex: 0 1 254px;}
+.shelv-page-action > .shelv-button {width: 100%;}
+.shelv-panel {display: grid;align-content: start;gap: var(--space-20);min-width: 0;padding: var(--space-20);border-radius: var(--radius-12);background: var(--color-surface);}
+.shelv-mobile-controls {display: none;}
+.shelv-skip-link {position: fixed;top: 8px;left: 8px;z-index: 50;padding: var(--space-12);border-radius: var(--radius-8);background: var(--color-surface);transform: translateY(-200%);}
+.shelv-skip-link:focus {transform: none;}
+@media (max-width: 1000px) {
+  .shelv-content {--content-inset: 24px;}
+  .shelv-topbar {padding-inline: var(--space-24);}
+  .shelv-topbar-context {flex: 1;}
+  .shelv-page-header {flex-wrap: wrap;}
+  .shelv-page-action {flex-basis: auto;}
+}
+@media (max-width: 700px) {
+  .shelv-shell {display: block;}
+  .shelv-sidebar {position: static;height: auto;min-height: 0;padding: var(--space-12) var(--space-16);}
+  .shelv-sidebar-top {display: flex;align-items: center;justify-content: space-between;flex-wrap: wrap;min-width: 0;gap: var(--space-8);}
+  .shelv-wordmark {font-size: 28px;line-height: 34px;}
+  .shelv-mobile-controls {display: flex;flex-wrap: wrap;min-width: 0;max-width: 100%;gap: var(--space-4);}
+  .shelv-mobile-controls .shelv-button {font-size: var(--text-label);padding-inline: var(--space-8);}
+  .shelv-client-nav {display: none;margin-top: var(--space-12);}
+  .shelv-client-nav[data-open='true'] {display: grid;grid-template-columns: repeat(2,minmax(0,1fr));gap: var(--space-8);}
+  .shelv-contact-card,.shelv-identity {display: none;}
+  .shelv-topbar {height: 48px;padding: var(--space-8) var(--space-16);border-radius: 0;}
+  .shelv-topbar-context {flex: 1;}
+  .shelv-mode-badge {flex-basis: auto;}
+  .shelv-content {padding: var(--space-20) var(--space-16);}
+  .shelv-page-header {align-items: flex-start;gap: var(--space-12);}
+  .shelv-page-header > div:first-child {flex-basis: 100%;}
+}
