@@ -37,10 +37,21 @@ export type AdvisorCareRead = Extract<
   CareCommand,
   { action: "read_advisor_publication_v2" | "read_advisor_use_history_v1" }
 >;
+/** Immutable identity fields only. Historical care overlays/access are not cached. */
+export type AdvisorPlanIdentityDocument = {
+  version: number;
+  documentSchemaVersion: 1 | 2 | 3;
+  products: Pick<
+    AdvisorPublicationViewV2["plan"]["content"]["products"][number],
+    "id" | "name" | "brand" | "variant" | "strength" | "sizeLabel"
+  >[];
+  slots: { slotId: string; productIds: string[]; label: string }[];
+};
 export interface AdvisorDependencyReview {
   status: "loading" | "ready" | "unavailable";
   view: DraftDependenciesView | null;
   publication: AdvisorPublicationViewV2 | null;
+  documents?: Partial<Record<number, AdvisorPlanIdentityDocument>>;
   history: UseHistoryEntry[];
   nextCursor: string | null;
   acknowledged: boolean;

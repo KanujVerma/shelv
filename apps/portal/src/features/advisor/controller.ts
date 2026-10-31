@@ -19,7 +19,10 @@ import type {
 import {
   assertDependencyHistoryClient,
   assertDependencyUseClient,
+  dependencyProductRefs,
+  dependencyUnavailable,
   missingDependencyReaders,
+  planIdentityDocument,
 } from "./dependencies.ts";
 import type {
   PlanDirectory,
@@ -54,6 +57,8 @@ import type {
   AdvisorNotice,
   AdvisorState,
   AdvisorWrite,
+  AdvisorDependencyReview,
+  AdvisorPlanIdentityDocument,
   ConfirmPaymentCommand,
 } from "./types.ts";
 
@@ -105,6 +110,12 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     operationGeneration = 0,
     recoveryGeneration = 0;
   let dependencyLease: (() => boolean) | null = null;
+  let identityReads: {
+    clientId: string;
+    useHead: number;
+    requested: Set<number>;
+    documents: Partial<Record<number, AdvisorPlanIdentityDocument>>;
+  } | null = null;
   const live = () => !disposed && !state.ended && session.isCurrent();
   const emit = (patch: Partial<AdvisorState>) => {
     if (!live()) return;
@@ -115,6 +126,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       ("comparison" in patch && patch.comparison !== state.comparison)
     ) {
       dependencyLease = null;
+      identityReads = null;
       patch = { ...patch, dependencies: null };
     }
     state = { ...state, ...patch };
@@ -123,6 +135,8 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
   };
   const invalidate = () => {
     epoch++;
+    dependencyLease = null;
+    identityReads = null;
     controllers.forEach((c) => c.abort());
     controllers.clear();
     session.memory.delete(memoryKey);
@@ -473,6 +487,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
   }
   function retireDependencyReview() {
     dependencyLease = null;
+    identityReads = null;
     readGenerations.set(
       "dependencies",
       (readGenerations.get("dependencies") ?? 0) + 1,
@@ -482,6 +497,58 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       (readGenerations.get("dependency-history") ?? 0) + 1,
     );
     emit({ dependencies: null });
+  }
+  async function hydrateDependencyIdentities(
+    review: AdvisorDependencyReview,
+    current: () => boolean,
+  ) {
+    const scope = identityReads;
+    const owns = () => current() && scope !== null && identityReads === scope;
+    if (!scope || !owns()) return;
+    if (review.publication) {
+      const plan = review.publication.plan;
+      scope.documents[plan.version] = planIdentityDocument(plan);
+      scope.requested.add(plan.version);
+    }
+    const versions = new Set(
+      dependencyProductRefs(review).flatMap((ref) =>
+        ref.kind === "plan_product" ? [ref.publication.version] : [],
+      ),
+    );
+    for (const version of versions) {
+      if (!owns()) return;
+      if (scope.requested.has(version) || !ports.careRead) continue;
+      scope.requested.add(version);
+      try {
+        const command = {
+          schemaVersion: 1,
+          action: "read_advisor_publication_v2",
+          clientId: scope.clientId,
+          version,
+        } as const;
+        const raw = await invoke((signal) =>
+          ports.careRead!.execute(command, { signal }),
+        );
+        if (!raw || !owns()) return;
+        const historical = mapCareResult(
+          raw,
+          command,
+        ) as AdvisorPublicationViewV2;
+        assertDependencyUseClient(historical, scope.clientId);
+        // Historical reads also contain a CURRENT use overlay. It is checked
+        // only for this inspection's head, never cached as historical use.
+        if (historical.use.revision !== scope.useHead)
+          throw Error("identity_head_changed");
+        if (owns())
+          scope.documents[version] = planIdentityDocument(historical.plan);
+      } catch (error) {
+        if (!owns()) return;
+        if ((error as { status?: number })?.status === 401) throw error;
+        // Keep authorized current/history facts readable. Missing exact
+        // immutable identity remains explicit and blocks acknowledgement.
+      }
+    }
+    if (owns()) review.documents = { ...scope.documents };
   }
   async function inspectDependencies() {
     const view = requireDraft(),
@@ -505,11 +572,18 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         (key) => capabilities[key] === true && permissions[key] === false,
       );
     dependencyLease = current;
+    identityReads = {
+      clientId: target.clientId,
+      useHead: -1,
+      requested: new Set(),
+      documents: {},
+    };
     emit({
       dependencies: {
         status: "loading",
         view: null,
         publication: null,
+        documents: {},
         history: [],
         nextCursor: null,
         acknowledged: false,
@@ -528,6 +602,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         current,
       )) as DraftDependenciesView | undefined;
       if (!result || !current()) return;
+      if (identityReads) identityReads.useHead = result.current.useHead;
       const unavailable = missingDependencyReaders(result).map(
         (r) => r.message,
       );
@@ -582,18 +657,24 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         assertDependencyHistoryClient(history, target.clientId);
         if (history.revision !== result.current.useHead) throw { status: 409 };
       }
-      if (current())
-        emit({
-          dependencies: {
-            status: unavailable.length ? "unavailable" : "ready",
-            view: result,
-            publication,
-            history: history.entries,
-            nextCursor: history.nextCursor,
-            acknowledged: false,
-            unavailable,
-          },
-        });
+      const review: AdvisorDependencyReview = {
+        status: "ready",
+        view: result,
+        publication,
+        documents: {},
+        history: history.entries,
+        nextCursor: history.nextCursor,
+        acknowledged: false,
+        unavailable,
+      };
+      await hydrateDependencyIdentities(review, current);
+      if (current()) {
+        review.unavailable = [
+          ...new Set([...unavailable, ...dependencyUnavailable(review)]),
+        ];
+        review.status = review.unavailable.length ? "unavailable" : "ready";
+        emit({ dependencies: review });
+      }
     } catch (error) {
       if (!current()) return;
       if ((error as { status?: number })?.status === 401) return fail(error);
@@ -602,6 +683,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
           status: "unavailable",
           view: null,
           publication: null,
+          documents: {},
           history: [],
           nextCursor: null,
           acknowledged: false,
@@ -647,14 +729,17 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       const page = mapCareResult(raw, command) as UseHistoryPage;
       assertDependencyHistoryClient(page, target.clientId);
       if (page.revision !== review.view.current.useHead) throw { status: 409 };
-      emit({
-        dependencies: {
-          ...review,
-          history: [...review.history, ...page.entries],
-          nextCursor: page.nextCursor,
-          acknowledged: false,
-        },
-      });
+      const next = {
+        ...review,
+        history: [...review.history, ...page.entries],
+        nextCursor: page.nextCursor,
+        acknowledged: false,
+      };
+      await hydrateDependencyIdentities(next, current);
+      if (!current()) return;
+      next.unavailable = dependencyUnavailable(next);
+      next.status = next.unavailable.length ? "unavailable" : "ready";
+      emit({ dependencies: next });
     } catch (error) {
       if (!current()) return;
       if ((error as { status?: number })?.status === 401) return fail(error);
@@ -664,7 +749,10 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
           status: "unavailable",
           acknowledged: false,
           unavailable: [
-            "client reports changed or could not be loaded. refresh current client information before continuing.",
+            ...new Set([
+              ...review.unavailable,
+              "client reports changed or could not be loaded. refresh current client information before continuing.",
+            ]),
           ],
         },
       });
@@ -680,6 +768,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       review?.status === "ready" &&
       review.view?.needsRebase &&
       !review.nextCursor &&
+      review.publication?.use.reportedProducts.nextCursor == null &&
       review.acknowledged
     );
   }
@@ -820,7 +909,8 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         stable() &&
         dependencyReviewCurrent() &&
         review.status === "ready" &&
-        !review.nextCursor
+        !review.nextCursor &&
+        review.publication?.use.reportedProducts.nextCursor == null
       )
         emit({ dependencies: { ...review, acknowledged } });
     },
@@ -1321,6 +1411,8 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     dispose() {
       if (disposed) return;
       epoch++;
+      dependencyLease = null;
+      identityReads = null;
       controllers.forEach((c) => c.abort());
       controllers.clear();
       unsubscribe();

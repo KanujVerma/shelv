@@ -261,3 +261,57 @@ Selected evidence SHA-256 values under the browser evidence root:
 | payment-continuation-green.log | `db30a83641baf0b339b120347fc653e9ed74c73514158aedf0dceff9c02c09f3` |
 
 The ignored final manifest inventories all raw setup/RED/green logs, runtime/descriptors/pins, actual command receipts, source/copy audits, transport hashes, local screenshots, clean provenance and custody receipt. Report hashes/scope/whitespace are checked before the report-only commit. No further browser execution occurs after the explicit release.
+
+## CD1/CD2 implementation correction: source-only checkpoint
+
+New bounded implementation round starts clean at **`36b3563588b934f8507d1023a426f828674a9b9f`**, same `t3-d6691f48` workspace/branch/context. Read the complete independent R1 report **`9887fd58a4183e578fdfd72e806dcd185c8408c2`** in the read-only `t3-2db3684b` checkout. Its specification/quality verdict is **CHANGES REQUIRED, CD1/P2 and CD2/P2**. Original independent source5/2 and browser3/4 remain frozen findings, not current acceptance or a server-bypass/data-loss claim. The previous387/121/67/401/27/86 and payment-continuation results remain at their exact historical source.
+
+Both live T3 capability/configuration tools again verify codex/gpt-6.1-sol/xhigh/default with advertised supported descriptors. Project/default-subagent and all eight role pins are freshly parsed/hashed. Every Node/npm/formatter/build command explicitly selects Node22.23.0. Applied review-reception, systematic debugging, source/SSR TDD and verification guidance. No nested agent, worktree, dependency/config/flag change, foreign write or parent integration.
+
+### source RED and bounded changes
+
+Before production edits, three actual-cookie/Root/controller/SSR tests fail **0/3**, zero setup errors: CD1 gives identical **product in plan version1** headings for two different products, CD2 permits rebase after complete102-entry history but only100/101 effective rows, and a separate byte-split case permits rebase with only80 current rows/101 despite all304 history entries. The latter valid reported page is387570 UTF8 bytes, below400000 and split before the100-item cap. `red.log` preserves the intended failures.
+
+CD1 now reads each needed unique historical version with the existing safe **`read_advisor_publication_v2 {clientId,version}`**, through the unchanged careRead runtime guard, retained cookie/session transport and Root positive mapper. No new reader/right/API is introduced. Every response must match the exact client/version and this inspection's current use head; schema/product/slot matching follows the actual immutable document. No current same-ID name is substituted for an older version or a mismatched namespace/schema. Valid slot context comes from the referenced document's actual routine/decision linkage.
+
+The controller caches only a small immutable identity projection per review lease: version/schema, exact product IDs/names/brand/variant/strength/size and slot bindings/labels. Historical responses also contain a **current** use overlay; that overlay is checked for the captured head, never stored or presented as historical use, current effective state or client entitlement. Each unique version is fetched at most once in a lease, including failed attempts; a deliberate refresh starts a fresh cache. Manual edits/imports, mode/selection/authority/session replacement, operations and logout retire it. Every asynchronous fetch/cache/result/error applies only to its captured actor/session/client/target/view/local/pending/operation/authority lease. Late403/503 or success cannot replace newer pending B/manual state.
+
+Reports identify original and replacement products, exact descriptor versions and applicable authored slot context. Reported-product UUID/version lookup uses that exact immutable descriptor from the current projection or authorized history; it cannot borrow another descriptor version or the plan-product namespace. Missing/unknown/denied/mismatched historical identity stays distinct with an explicit unresolved reference and useful reason, keeps authorized current/history text readable, and blocks meaningful acknowledgement/rebase. Existing original/amendment body, frequency/amount, actor and known/unknown Start are unchanged.
+
+CD2 independently treats **`publication.use.reportedProducts.nextCursor !== null`** as incomplete current information. It sets inspection unavailable and blocks acknowledgement/canRebase even with matching heads and complete history. All visible current rows and paged original history remain readable. History is never used to infer the omitted stopped/contradiction/effective state. The owner-derived `read_reported_products_v1` is never called by the advisor. A later actually complete bounded projection must be explicitly refetched and acknowledged; a source control preserves all90 products and their original events while later shorter version2 descriptors allow the full page to fit.
+
+### exact exports and future reader request
+
+Frontend-only exports added in `types.ts`/`dependencies.ts`:
+
+- `AdvisorPlanIdentityDocument` and optional `AdvisorDependencyReview.documents`: derived immutable identity metadata, excluding use/access/source guidance.
+- `planIdentityDocument`, `dependencyProductKey`, `dependencyProductRefs`, `dependencyProductIdentity`, `DependencyProductIdentity`, `dependencyUnavailable`.
+- `missingReportedProductsReader` returns the existing typed `MissingDependencyReader` with new family **`reported_products`** and honest current-state-unavailable copy.
+
+The existing `AdvisorCareRead` already supports the exact-version safe publication operation; no `ports.ts` change is needed. The475 two-action runtime guard, careRead allowlist, legacy defaults and generic read/write/session semantics remain byte-identical.
+
+**Bounded cross-owner request:** future W1 Report/Review work must provide a reviewed safe advisor reported-products reader with explicit authorized client scope, matching current use head, publication/filter/cursor identity, immutable descriptor versions and bounded authoritative effective states. It must not impersonate a client or infer state from raw history. Parent's isolated M58/Review15 reader remains unintegrated and unavailable to this parent/R7. This family is a typed request only, not an enabled endpoint or invented response. Current Care13/Plan26/Task14 and all Root/SQL/permissions remain unchanged. REPORT/INSTRUCTION/opaque-context/source rights continue to block as previously required.
+
+### source checks, copied evidence and browser preparation
+
+Evidence root: `.local-artifacts/portal-rebuild/w2-care-dependencies-cd/`. The exact9887 report and original reviewer source/browser/data/logs are copied byte-for-byte into `original-r1/`, with source/copy paths and SHA-256 in `copy-provenance.json`. Foreign originals remain unchanged. Initial source verification:
+
+| Check | Result / scope |
+| --- | --- |
+| New actual-cookie/Root/controller/SSR regressions |28/28 pass: original CD1/CD2, byte split, exact client/version/schema/product/slot, R2 metadata, namespace/descriptor version, both amendment identities/actor/body, denied/unavailable refresh, per-lease unique-version caching, incremental pages, stale/current data, actual owner/CSRF replacement, role/mode retirement and pending B |
+| Retained source plus new28 |429/429 pass, zero failures/skips/cancelled; original401 intended assertions remain |
+| Original independent race controls |5/5 pass, exact original assertions: four late safe-publication/history403/503 and stale history page versus uncertain rebase |
+| Frontend/session strict types; UI guard |All exit0, unchanged flags;11 retained stylesheets, no CSS/color edit |
+| Current application build |Exit0, source-only build; no gateway/deployment/runtime acceptance |
+| Historical browser build preparation |Exact frozen36b owned four modules compile successfully; no browser was started |
+| Frozen historical evidence |Original35+11+45 manifest entries all match; existing tests and reserved SourceApp/Root/session/routes/plan/UI/ports/status/config bytes unchanged |
+
+The source429 command uses explicit Node22 `--experimental-strip-types --test --test-timeout=15000 --test-concurrency=1` on the six retained advisor controller/race/follow-up/integration/authority/status files, core dependency/runtime-seam/payment-source tests, the new CD test and a path-only retained SSR copy. Exact argv/exits/timing for all checks are in `checks.json`. Original SSR4 build output is redirected by four import/output/cwd literals so the frozen evidence is not overwritten. Original independent5 scripts/data remain byte-identical at the same relative depth, with the current actual SSR bundle.
+
+The new browser helper/test are **prepared, not executed**. They preserve the original historical-heading distinction and incomplete-current-projection assertions at1440/390/320, add exact historical read fixtures and a byte-split case, and keep current/history readability/disabled acknowledgement checks. For CD2 the corrected control may already be disabled; the prepared test observes that state instead of trying to click an intentionally disabled control, while retaining the original rebase-disabled assertion. The original unadapted script remains frozen.
+
+The test-only historical sensitivity option is closed to **36b3563588b934f8507d1023a426f828674a9b9f**. It copies the actual application builder into ignored evidence and substitutes only the four actual frozen owned modules at build input, with Application/Root/session unchanged. It does not replace any successful port/current predicate, weaken a guard or edit production files. `historical-inputs.json` binds those exact Git bytes. Normal builder provenance alone does not authenticate overridden inputs, so historical-input receipts remain explicitly separate; GREEN will rebuild the normal candidate. Both prepared scripts pass `node --check`; compilation is not browser RED/GREEN proof.
+
+One expanded R2 fixture initially left its current summary pointing to document format3 while the actual historical document was format2. The new resolver correctly blocked that inconsistent reference. Corrected all fixture ProductRef/source-publication discriminators without weakening production validation or an assertion. A title-edit patch initially missed its already-formatted context and did not execute; corrected before final checks. No product failure is manufactured from either setup issue.
+
+**No Chrome/DOM/preview/native/Auth/PG/Docker/R7/credential/resource call or polling in this correction phase.** The parent's reported core-care PASS/returned custody and idle Chrome are acknowledged, not treated as a grant. W4 is source-only and W1's PG/M58 remains isolated. This worker will notify source/browser-harness readiness after the coherent commit and wait for explicit sole synthetic Chrome authority. Current browser RED/GREEN/keyboard/old27/retained86 and a fresh independent R2 remain open; actual R7 publisher/rebase acceptance and full-goal/CI/release remain parent gates. No push/PR/merge/deploy/live-client/source/permission/money/communication/order action.

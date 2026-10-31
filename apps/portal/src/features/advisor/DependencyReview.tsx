@@ -11,6 +11,7 @@ import { Button, Field, Select, StatusNotice } from "../../ui/index.ts";
 import { useLabels } from "../plan/UseFacts.tsx";
 import { Disclosure } from "./fields.tsx";
 import type { AdvisorController, AdvisorState } from "./types.ts";
+import { dependencyProductIdentity } from "./dependencies.ts";
 
 const known = (value: Known<string>) =>
   value.state === "known" ? value.value : "not known";
@@ -45,34 +46,25 @@ function correctionActor(
     : "correction by advisor";
 }
 function productName(product: ProductRef, state: AdvisorState) {
-  const publication = state.dependencies?.publication;
-  if (product.kind === "plan_product")
-    return (
-      (publication?.version === product.publication.version
-        ? publication.plan.content.products.find(
-            (p) => p.id === product.productId,
-          )?.name
-        : null) ?? `product in plan version ${product.publication.version}`
-    );
-  return reportedName(product, state);
+  return dependencyProductIdentity(product, state.dependencies ?? null).label;
 }
-function reportedName(
-  product: Extract<ProductRef, { kind: "client_reported_product" }>,
-  state: AdvisorState,
-) {
-  const entry = state.dependencies?.history.find(
-    (e) =>
-      e.kind === "reported_product" &&
-      e.event.product.reportedProductId === product.reportedProductId &&
-      e.event.product.version === product.version,
+function ProductIdentityDetails({
+  product,
+  state,
+}: {
+  product: ProductRef;
+  state: AdvisorState;
+}) {
+  const identity = dependencyProductIdentity(
+    product,
+    state.dependencies ?? null,
   );
-  if (entry?.kind === "reported_product") return entry.event.descriptor.name;
-  return (
-    state.dependencies?.publication?.use.reportedProducts.items.find(
-      (p) =>
-        p.product.reportedProductId === product.reportedProductId &&
-        p.product.version === product.version,
-    )?.descriptor.name ?? "client-reported product"
+  return identity.resolved ? (
+    identity.details.length ? (
+      <p className="advisor-muted">{identity.details.join(" · ")}</p>
+    ) : null
+  ) : (
+    <p className="advisor-muted">{identity.reason}</p>
   );
 }
 function OriginalUse({
@@ -85,10 +77,13 @@ function OriginalUse({
   return (
     <>
       <h4>{productName(event.product, state)} · original report</h4>
+      <ProductIdentityDetails product={event.product} state={state} />
       <Change change={event.change} />
       <p>
         reported by client
-        {event.recordedBy !== event.reportedBy ? " · recorded by advisor" : ""}{" "}
+        {event.recordedBy !== event.reportedBy
+          ? " · recorded by advisor"
+          : ""}{" "}
         · {event.channel.replaceAll("_", " ")} ·{" "}
         {event.occurredOn.state === "known"
           ? `occurred ${event.occurredOn.value}`
@@ -101,6 +96,10 @@ function OriginalUse({
           <h4>current correction</h4>
           <p>{event.amendment.reason}</p>
           <p>{productName(event.amendment.replacement.product, state)}</p>
+          <ProductIdentityDetails
+            product={event.amendment.replacement.product}
+            state={state}
+          />
           <Change change={event.amendment.replacement.change} />
           <p>
             {correctionActor(
@@ -130,6 +129,7 @@ function CurrentUse({
       <h3>
         {productName(use.product, state)} · {useLabels[use.state]}
       </h3>
+      <ProductIdentityDetails product={use.product} state={state} />
       {use.contradiction ? (
         <StatusNotice
           tone="warning"
@@ -138,6 +138,18 @@ function CurrentUse({
           current use and identity are unresolved. published guidance remains
           separate.
         </StatusNotice>
+      ) : null}
+      {use.identity?.target.comparedWith ? (
+        <>
+          <p>
+            compared with:{" "}
+            {productName(use.identity.target.comparedWith, state)}
+          </p>
+          <ProductIdentityDetails
+            product={use.identity.target.comparedWith}
+            state={state}
+          />
+        </>
       ) : null}
       {use.identity ? (
         <p>
@@ -185,6 +197,16 @@ function HistoryEntry({
     return (
       <>
         <h4>{productName(e.target.subject, state)} · identity report</h4>
+        <ProductIdentityDetails product={e.target.subject} state={state} />
+        {e.target.comparedWith ? (
+          <>
+            <p>compared with: {productName(e.target.comparedWith, state)}</p>
+            <ProductIdentityDetails
+              product={e.target.comparedWith}
+              state={state}
+            />
+          </>
+        ) : null}
         <p>product match: {e.answer.match.replaceAll("_", " ")}</p>
         {e.answer.reportedName ? <p>{e.answer.reportedName}</p> : null}
         <p>
@@ -212,6 +234,7 @@ function HistoryEntry({
             ? "reported product"
             : "product description correction"}
         </h4>
+        <p className="advisor-muted">description version {e.product.version}</p>
         <p>
           brand: {known(d.brand)} · variant: {known(d.variant)} · strength:{" "}
           {known(d.strength)} · size: {known(d.sizeLabel)}
@@ -244,6 +267,7 @@ function HistoryEntry({
       <h4>
         reported-use correction · {productName(a.replacement.product, state)}
       </h4>
+      <ProductIdentityDetails product={a.replacement.product} state={state} />
       <p>{a.reason}</p>
       <Change change={a.replacement.change} />
       <p>
