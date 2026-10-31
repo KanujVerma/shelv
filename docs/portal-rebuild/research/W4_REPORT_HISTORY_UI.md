@@ -482,3 +482,24 @@ All passing source tests have0 failures/skips/cancellations; counts overlap. Ini
 Preservation audit verifies all132 pre-existing portal tests/helpers unchanged, all11 exact imported blobs unchanged, all57 migrations unchanged, and every earlier **236/85/306** evidence entry unchanged. All784 foreign copies are rehashed after execution. The original393/026 reports, prior setup faults, review diagnostics, pending bytes, target import commits and prior actual browser evidence remain intact.
 
 **SOURCE/pure/SSR/compiler only throughout ordinal5.** No Chrome/DOM/preview/process inventory/resource polling/native/DB/Auth/provider/credentials/Docker/Colima/fixture call. Prior18:16 and reviewer18:58 releases do not grant new custody; Root's separately owned SelectS1 work is untouched. No UI/design/Figma change or unsupported real-backend/App activation. No push/PR/merge/deploy/live-client/message/email/funds/order/permission/memory write. Next parent step is a new same-thread follow-up with a fresh explicit Chrome allocation for actual RH2 RED/GREEN, then a fresh independent R3. Finish this source phase with its coherent owned commit/report and terminate rather than waiting for that grant.
+
+### Frozen RH2 source receipt
+
+Exact coherent OWNED source checkpoint **`606744c2a7fe63723ac807d74d18aedc39f397fb`**, direct child of9d189480. Five owned paths only: controller, new review-authority source helper/test, prepared browser test and this report. Final receipt suffix is documentation-only; all target/transport/shell imports remain separate and byte-exact.
+
+A clean post-commit **source-only** browser-entry build pins606744c2/sourceDirty:false,2,222 inputs/48 outputs. Exactly the controller input differs from the prior RH1 browser52; no browser was run against this correction. `E5/clean-source-candidate/provenance.json` deliberately records browserTestRun:null. The **931-entry** source/evidence manifest SHA-256 is **`136e968a59b3230675b1c7b2b044c09907f8c6940d55dbdaafb9b8e29f46610b`** (`E5/evidence-manifest.json`), including all784 preserved foreign entries and own raw RED/GREEN/source/SSR/compiler results. It excludes itself and this report.
+
+| E5 artifact | SHA-256 |
+| --- | --- |
+| `unchanged-review-red.log` | `2198dace532cffee0aaa99b2dbac7ad34d26ab8b4a374fb12dfed8288d8953ec` |
+| `durable-red.log` | `0e1f2a718389f28f72f0771b60888a2f31e37289491d66e328956edf6096fee5` |
+| `durable-green.log` | `f7586acf5154bb2088b61f7164d7d0a8e21cbd659a0ce0756ec3684a42eda28c` |
+| `unchanged-review-green.log` | `f09f451f8e79cce8ba56894a818bd359151e22c11ada03fd87a3db456df0c533` |
+| `original95.log` | `4728e30a8884c5bb863241e9a2858c8fff443312c9b8892172c2533c2ecf57f4` |
+| `retained24.log` | `2fa99b6cc3a215f3f1fe96586a60571db8324b1339f8935d558785f56e7ba7c3` |
+| `unchanged-r1-seven.log` | `99e11441ecb135d77077a15e61aea9e2f910a3d5ec21e396acb6169f2d6e07eb` |
+| `foreign-copy-manifest.json` | `571bf608889d1eaca8c7e2d686f5fb74fdc0a18c2a61ce09fecf940f60d8f179` |
+| `source-audit.json` | `32369714748e53d5a5483b7627196b47be32a114c3848aeab833dbfac533f77a` |
+| `clean-source-candidate/provenance.json` | `e43cbc8286eade31c1ddbcce1156bcbc5759d8d6f6f3e78d11f1850f2ceb51a9` |
+
+This ordinal5 source follow-up is terminal. Own source20, unchanged R2 eight+eight, original95/RH1 twenty-four/R1 seven and strict/build/source-bundle checks pass at the frozen checkpoint; prepared browser8 has no execution claim. No Chrome/preview/process/resource custody was acquired in this task. Retain prior RH1 closure and legitimate positive status READ resolution; parent must allocate a new same-thread browser task/grant and fresh independent R3. No waiting loop or implicit authorization.
