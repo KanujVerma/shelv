@@ -37,7 +37,7 @@ export function createClientPhotoUpload(session){
   try{
    const data=await session._fetch('checkins/photos/upload',{body:file,signal,csrf:lease.csrf,headers:{'Content-Type':file.type,'x-request-id':requestId,'x-completion-request-id':completionRequestId,'x-expected-revision':String(expectedRevision),'x-photo-angle':angle}});
    if(!session.isCurrent(lease))throw new CookieSessionError(401);return data;
-  }catch(error){if(!session.isCurrent(lease))throw new CookieSessionError(401);if(error.status===401)session._end();else if(error.status===503||!error.status)session.suspend();throw error;}
+  }catch(error){if(!session.isCurrent(lease))throw new CookieSessionError(401);if(error.status===401)session._end();else if(error.status===503||!error.status&&!(signal?.aborted&&error.name==='AbortError'))session.suspend();throw error;}
  };
 }
 export function createClientCookieRequest(channel,session){

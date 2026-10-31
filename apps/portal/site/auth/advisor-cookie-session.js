@@ -80,25 +80,33 @@ export class CookieAdvisorSession {
         return this._transport(path, options);
     }
     async _transport(path, { body, signal, csrf, headers = {} } = {}) {
-        const controller = new AbortController(), timer = setTimeout(() => controller.abort(), this.timeoutMs), abort = () => controller.abort();
+        let callerAborted = false;
+        const controller = new AbortController(), timer = setTimeout(() => controller.abort(), this.timeoutMs), abort = () => {
+            // Keep the first abort's provenance: a later caller cancellation
+            // cannot turn an expired network deadline into an intentional abort.
+            if (!controller.signal.aborted) { callerAborted = true; controller.abort(); }
+        };
         if (signal?.aborted)
             abort();
         signal?.addEventListener('abort', abort, { once: true });
         try {
+            if (callerAborted) throw new DOMException('The operation was aborted.', 'AbortError');
             const response = await this.fetcher(`/api/${this.audience}/${path}`, { method: body === undefined ? 'GET' : 'POST', headers: { ...headers, ...(body === undefined || body instanceof FormData || body instanceof Blob ? {} : { 'Content-Type': 'application/json' }), ...(csrf ? { 'X-Shelv-CSRF': csrf } : {}) }, ...(body === undefined ? {} : { body: body instanceof FormData || body instanceof Blob ? body : JSON.stringify(body) }), signal: controller.signal, credentials: 'same-origin', cache: 'no-store', redirect: 'error' });
             let data;
-            try {
-                data = await response.json();
-            }
-            catch {
-                throw new CookieSessionError(503);
+            try { data = await response.json(); }
+            catch (error) {
+                // Known HTTP denials/failures still apply if their body is canceled.
+                if (!response.ok && callerAborted && error?.name === 'AbortError')
+                    throw new CookieSessionError(response.status);
+                throw error;
             }
             if (!response.ok)
                 throw new CookieSessionError(response.status, data?.code);
+            if (callerAborted) throw new DOMException('The operation was aborted.', 'AbortError');
             return data;
         }
         catch (error) {
-            if (signal?.aborted)
+            if (callerAborted && error?.name === 'AbortError')
                 throw error;
             if (error instanceof CookieSessionError)
                 throw error;
@@ -251,7 +259,7 @@ export function createCookieRequest(channel, session) {
         const lease = await session.acquire();
         try {
             if (typedReview && !session.isCurrent(lease)) throw new CookieSessionError(401);
-            if (typedReview && signal?.aborted) throw new CookieSessionError(503);
+            if (typedReview && signal?.aborted) throw new DOMException('The operation was aborted.', 'AbortError');
             const data = await session._fetch(channel, { body: payload, signal, csrf: lease.csrf });
             if (!session.isCurrent(lease))
                 throw new CookieSessionError(401);
