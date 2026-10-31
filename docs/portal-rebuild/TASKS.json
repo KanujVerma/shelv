@@ -1942,7 +1942,7 @@
       "verification": "Exact delegate_task settings and live thread/workspace readback; both child tools and eight pins required",
       "earlyCommit": "26f9ae3286a7878632ed7ffb058297bfbd2f9518",
       "phase": "ISOLATED_PHASE2_IMPLEMENTATION",
-      "pinStatus": "Conceptual a977 wire intent pinned, Review14/Guidance9, no-op/currentV3 guidance snapshot/2550 paged exactscopes/decision2+versiongates; attentionevent clarification authorized, independent implementation review remains",
+      "pinStatus": "Review15/Guidance9 (newSAFEadvisorreportedproductsread), Care13/Plan26/Task14 unchanged. V3decisionGuidance/noop/2550instructionmanifests/exactread/decision2/attention/legacypublic+privatenote variants pinned. IsolatedM58only, no parentintegration.",
       "earlyCommits": [
         "26f9ae3286a7878632ed7ffb058297bfbd2f9518",
         "a977b19048408607c5857ba98acf4fd79568ff98",
@@ -1950,9 +1950,11 @@
       ],
       "migration": "20261031091520_portal_rebuild_reviews_guidance_v1.sql",
       "migrationStatus": "CHILD_ONLY_ALLOCATED_EMPTY_THEN_IMPLEMENTING",
-      "phase2Clarifications": "Closed review_attention history event for ALL dependent publishedreview relationships, separate unique eventId vs stableattentionId and immutable resolution links; no action/right expansion. ExistingCheckinHandlerdictionary content_version_required409 authorized afteractualRED; importnamefaultsetup preserved.; bounded V3 decisionGuidance per canonical state pinned: actual latest v1/v2 receipt revision, no fabricated legacy snapshot, stable clinical manifest excludes day/counter/finance/private notes; live full-head/day CAS for freshwrites and historical committed receipts. Source vectors/SQL pending.; actuallegacypublicServiceReview/InstructionRevision/Reply retainclosedvariants: unknownpubnull/unfilteredonly, actualinstructionplanVersionfilter, nofakeGuidanceapproval/currentuse, onlyexactpublishedtypedlink suppresseslegacyduplicate. Parentsourceinspection/pin, mixed/private/cursor tests required.",
+      "phase2Clarifications": "Closed review_attention history event for ALL dependent publishedreview relationships, separate unique eventId vs stableattentionId and immutable resolution links; no action/right expansion. ExistingCheckinHandlerdictionary content_version_required409 authorized afteractualRED; importnamefaultsetup preserved.; bounded V3 decisionGuidance per canonical state pinned: actual latest v1/v2 receipt revision, no fabricated legacy snapshot, stable clinical manifest excludes day/counter/finance/private notes; live full-head/day CAS for freshwrites and historical committed receipts. Source vectors/SQL pending.; actuallegacypublicServiceReview/InstructionRevision/Reply retainclosedvariants: unknownpubnull/unfilteredonly, actualinstructionplanVersionfilter, nofakeGuidanceapproval/currentuse, onlyexactpublishedtypedlink suppresseslegacyduplicate. Parentsourceinspection/pin, mixed/private/cursor tests required.; advisor-onlylegacy_review_note actual(reviewId,note)unfiltered,no inventedactor/time/pub; internalparentanchor+notehashcursor. No client/private-readpermission expansion.",
       "selectiveCompatibilityCommit": "7cdf86da2c83db4019826aac15921ee92846de68",
-      "sharedFileClaim": "CHILD_ONLY upstream.ts exactonelegacyerroralias beforefinite safeCodes;9actualgatewayno-network+32retainedchecks. No parentnative76integration."
+      "sharedFileClaim": "CHILD_ONLY upstream.ts exactonelegacyerroralias beforefinite safeCodes;9actualgatewayno-network+32retainedchecks. No parentnative76integration.",
+      "readSeamExtension": "read_advisor_reported_products_v1{clientId,cursor,limit,expectedUseRevision,publicationVersion}; exactexisting400kReportedProductsPage/cursor/clientpubhead filters; HUMANVIEWbeforeafterlock/everypage/final; agentsdeny/privateeditnotgranted.",
+      "openCompatibilityIssue": "Plan JSONtransport500000 vs pg_column_size500000 internalstorage mismatch on489955/490188/507318specimen, nooldPlanedit; sourceNode/PGexactcompactUTF8+DoSguardFORWARDproposalpending. Source1.8Mmaxnotpersistedmaxacceptance."
     },
     {
       "role": "W7 care application composition review",
@@ -2277,8 +2279,13 @@
       "writeSet": [
         "docs/portal-rebuild/research/W7_CARE_INTEGRATED_REVIEW.md"
       ],
-      "resources": "EXCLUSIVE R7nativeNODEonlyGRANT12:08:34.475UTC,218protected/all8priorcases unchanged/preAuth0/0 verified. grantINDEPENDENT-NODE-CUSTODY-GRANT.json/coordinator-r7-independent-node-8991e601-8ce2-44ed-b56b-cc393aee66b3. NOChrome/browser grant. Source43/82/independentCS1current12+old8467sensitivityPASS, actualNode11next; laterbrowsergrantsseparate.",
-      "verification": "ExactT3returnedmodel/options andliveworktree/base; freshparentbothmodeltools/descriptors/eightpinsbeforeDispatch; bothchildtools/eightpinsrequired"
+      "resources": "BOTH exclusiveR7+Chrome RETURNED12:25:55.680349UTC; independentNode11/all13+unchangedBrowser15 PASS,13ownclosedwhole0/0, all8original+ownNodecases/protected/source57/76/TLS/processpass. Report-onlyfinalizing,no postreturncalls.",
+      "verification": "ExactT3returnedmodel/options andliveworktree/base; freshparentbothmodeltools/descriptors/eightpinsbeforeDispatch; bothchildtools/eightpinsrequired",
+      "independentNodeRun": "6771486c-2a96-481c-b1db-394d6896fc6d",
+      "independentBrowserRun": "80e9c361-78ef-4aaf-8732-2e86a2b0ccb4",
+      "independentBrowserResultSha256": "6c8287c72f14f606360eea0bc16f7dbf2bdfb6b674a211a7eddf38e2b3e07386",
+      "resourceReturnSha256": "b6c92b37195297a67f932a504fab877ebba1ef7b123bdce88f5353a30e675abf",
+      "parentVerified": "ActualreturnreceiptSHA/browserresultSHA/readPASS15/cleanup6/554responses70543802bytesknownhits0; 39literal+5dynamic/RLS12/rawACL0/helperEXEC0 countersattributedactualreviewreceipt; finalreportpending."
     },
     {
       "role": "W7 advisor care dependency source and synthetic browser review",
@@ -2298,12 +2305,43 @@
       ],
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-2db3684b",
       "baseCommit": "1011ae3316ce6186b4dd29537c5d4a48ec80679e",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "docs/portal-rebuild/research/W7_CARE_DEPENDENCIES_REVIEW.md"
       ],
-      "resources": "SOLE SYNTHETICChromeGRANTED; NO R7/native/Auth/DB. Ownreviewcheckout imports exactW2sixstackthrough36b; parentfrontendNOTchanged. LateractualR7publisher/rebaseacceptance separate.",
-      "verification": "ExactT3returnedmodel/options andliveworktree/base; freshparentbothmodeltools/descriptors/eightpinsbeforeDispatch; bothchildtools/eightpinsrequired"
+      "resources": "ChromeRELEASE12:13:54.937UTC; noR7/native",
+      "verification": "ExactT3returnedmodel/options andliveworktree/base; freshparentbothmodeltools/descriptors/eightpinsbeforeDispatch; bothchildtools/eightpinsrequired",
+      "headCommit": "9887fd58a4183e578fdfd72e806dcd185c8408c2",
+      "integratedCommits": [
+        "c3624bab"
+      ],
+      "verdict": "CHANGES_REQUIREDCD1historicalproductlabelcollision/CD2incompletecurrentreportedprojectionpermitsack. Source401/browser27/86retainedpass; independent5pass2sourcefail/3pass4browserfail; no serverbypass/unauthorizedpublicationclaim."
+    },
+    {
+      "role": "W2 CD1/CD2 implementation correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw2-care-dependencies-cd1-cd2-fixes-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-care-dependencies-20261031-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d6691f48",
+      "baseCommit": "36b3563588b934f8507d1023a426f828674a9b9f",
+      "status": "running",
+      "writeSet": [
+        "Ownedadvisordependencycontroller/types/DependencyReview/dependencies/newCDtests/report"
+      ],
+      "resources": "SOURCE/pure/SSR ONLY, noChrome/R7/nativegrant yet",
+      "verification": "FreshchildconfigSol/xhigh/default beforeimplementationresume; bothlivechildtools/eightpinsagainrequired",
+      "scope": "CD1authorizedexacthistoricalpub+schema identitycache/latefencesorblock; CD2currentreportedcontinuationblocksacktypedMissingReaderuntilReview15safeportfuture, no fakeownerclientpaging/ledgerinference. Parentfrontendunintegrated/newindependentR2required."
     }
   ]
 }
