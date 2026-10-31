@@ -22,7 +22,7 @@ export async function runCareBrowserProof({selection,grant,chromeGrant}) {
   const {inventoryProtected,verifyProtected,auditCareBrowserResources,ownBrowserProcesses,assertOwnProcessesClosed}=await import('./rebuild-care-native-browser-audit.mjs');
   const runId=randomUUID(),area=path.join(careBrowserRoot,'.local-artifacts/portal-rebuild',careBrowserPins.artifactDirectory,runId);
   const result={kind:'genuine-care-complete-App-browser',runId,status:'RUNNING',sourceOnly:false,application,authorization:{purpose:authorization.purpose,grantId:authorization.grantId,chromeGrantId:authorization.chromeGrantId},checks:[],realEmails:0,hostedRequests:0,realFunds:0,orders:0,limits:['Representative care UI paths, not all13 actions or the full W3 matrix','No actual cancellation/+30 UI cutoff; service-admin RPC is not permitted','Photos[] only, no completed label Storage','Queued notifications, not delivered email','No new clinical guidance, full visual/human/accessibility or release acceptance']};
-  let fixture,stack,browser,protectedBefore,phase='pre-resource attestation';const contexts=[],releases=[],pass=label=>result.checks.push({label,status:'PASS'}),setPhase=value=>phase=value;
+  let fixture,stack,browser,protectedBefore,clientRequests,phase='pre-resource attestation';const contexts=[],releases=[],pass=label=>result.checks.push({label,status:'PASS'}),setPhase=value=>phase=value;
   try {
     fixture=await attestCareFixture(careBrowserRoot,selection,grant,{purpose:careBrowserPins.purpose});
     assert.equal(fixture.sql('select count(*) from auth.sessions'),'0','Unknown sessions prevent acquisition; never clean them');assert.equal(fixture.sql('select count(*) from auth.refresh_tokens'),'0');
@@ -37,7 +37,7 @@ export async function runCareBrowserProof({selection,grant,chromeGrant}) {
     const {initial}=await prepareCareBrowserPublication({fixture,stack,advisor,cases,result,setPhase,pass,releases});
     const clocks=sha(JSON.stringify([initial.service_periods,initial.plan_review_schedule])),money=sha(JSON.stringify(initial.finance)),documents=sha(JSON.stringify([initial.plan_documents,initial.publications,initial.plan_publication_receipts]));
     const read=c=>call(c,'client','care','read_client_plan_v2',{version:null});
-    phase='actual client PKCE/first v2 read';const client=await signIn({browser,stack,contexts,identity:cases.client,audience:'client',index:2,result}),c=client.page;
+    phase='actual client PKCE/first v2 read';const client=await signIn({browser,stack,contexts,identity:cases.client,audience:'client',index:2,result}),c=client.page;clientRequests=client.requests;
     phase='actual persisted SQLite two-audience envelopes';result.sqlite=await stack.inspectVault();assert.ok(result.sqlite.sqliteFiles>0);assert.equal(result.sqlite.activeSessions,2);assert.equal(result.sqlite.credentialEnvelopes,2);
     const firstRead=stack.browserCalls.find(x=>x.path==='/api/client/care'&&x.action==='read_client_plan_v2');assert.equal(firstRead?.status,200);
     assert.equal(stack.browserCalls.some(x=>x.action==='read_client_plan_v1'),false);
@@ -121,9 +121,16 @@ export async function runCareBrowserProof({selection,grant,chromeGrant}) {
 
     phase='actual committed uncertain response and exact same-request retry';await c.goto(portalOrigin+'/plan/products/cerave-pm?routine=evening');await c.getByRole('dialog').getByRole('button',{name:'record a change in use',exact:true}).click();await select(c,'what changed?','stopped');await select(c,'when did this happen?','date not known');await c.getByRole('textbox',{name:'anything we should know? (optional)',exact:true}).fill('SYNTHETIC exact uncertain payload');
     const held=stack.hold('report_product_use_v1');releases.push(held.release);const uncertainOffset=client.requests.length;
+    const actualUnavailable=c.waitForResponse(r=>new URL(r.url()).pathname==='/api/client/care'&&r.request().method()==='POST'&&r.request().postDataJSON()?.action==='report_product_use_v1');
     await c.getByRole('button',{name:'record change',exact:true}).click();await bounded(held.entered);
     const committed=client.requests.slice(uncertainOffset).find(x=>x.command.action==='report_product_use_v1');assert.ok(committed);const beforeRetry=careCaseSnapshot(fixture,cases.client.id);
-    await c.getByRole('button',{name:'back to product',exact:true}).click();await c.getByRole('dialog').waitFor();await c.goForward();await c.getByText('report result uncertain',{exact:true}).waitFor();await c.getByRole('button',{name:'retry same report',exact:true}).click();await c.getByText('use report recorded',{exact:true}).waitFor();held.release();
+    await c.getByRole('button',{name:'back to product',exact:true}).click();await c.getByRole('dialog').waitFor();await c.goForward();await c.getByText('report result uncertain',{exact:true}).waitFor();
+    // The actual gateway deadline makes this deliberately held committed reply
+    // unavailable. Normal public session restore is required after that real503.
+    assert.equal((await bounded(actualUnavailable)).status(),503);await c.getByRole('button',{name:'check connection',exact:true}).waitFor();
+    assert.equal(await c.getByRole('textbox',{name:'anything we should know? (optional)',exact:true}).inputValue(),'SYNTHETIC exact uncertain payload');
+    const restored=c.waitForResponse(r=>new URL(r.url()).pathname==='/api/client/session'&&r.request().method()==='GET');await c.getByRole('button',{name:'check connection',exact:true}).click();assert.equal((await bounded(restored)).status(),200);await c.getByRole('button',{name:'check connection',exact:true}).waitFor({state:'hidden'});
+    await c.getByRole('button',{name:'retry same report',exact:true}).click();await c.getByText('use report recorded',{exact:true}).waitFor();held.release();
     const uncertainWrites=client.requests.slice(uncertainOffset).filter(x=>x.command.action==='report_product_use_v1');assert.equal(uncertainWrites.length,2);assert.equal(uncertainWrites[0].wire,uncertainWrites[1].wire);assert.deepEqual(careCaseSnapshot(fixture,cases.client.id),beforeRetry);result.uncertain={requestId:committed.command.requestId,wireSha256:committed.sha256};
     pass('Held genuine committed reply plus native remount becomes uncertain; exact UUID/payload retry succeeds once with identical persisted rows and no response rewrite');
 
@@ -157,6 +164,7 @@ export async function runCareBrowserProof({selection,grant,chromeGrant}) {
     for(const context of contexts)try{await context.close();}catch{result.status='FAIL';result.contextCloseFailed=true;}
     try{await browser?.close();}catch{result.status='FAIL';result.browserCloseFailed=true;}
     if(stack){try{result.cleanup=await stack.cleanup();}catch{result.status='FAIL';result.cleanup={status:'FAILED'};}result.sessionIds=[...stack.issued.values()].map(x=>({id:x.id,ownerId:x.ownerId,closed:x.closed}));result.calls=stack.calls;result.browserCalls=stack.browserCalls;result.browserResponseScan=stack.browserScan;result.seams=stack.seams;result.errors=stack.errors;try{await stack.dispose();}catch{result.status='FAIL';result.disposeFailed=true;}}
+    if(clientRequests)result.requestProofs=clientRequests.filter(x=>x.command.requestId).map(x=>({action:x.command.action,requestId:x.command.requestId,expectedUseRevision:x.command.expectedUseRevision,wireSha256:x.sha256}));
     if(fixture){try{if(result.clientId){const retained=careCaseSnapshot(fixture,result.clientId);await mkdir(area,{recursive:true,mode:0o700});await writeFile(path.join(area,'retained-attempt-snapshot.private.json'),JSON.stringify(retained,null,2)+'\n',{mode:0o600});result.retainedAttemptSnapshotSha256=sha(JSON.stringify(retained));}const last=await attestCareFixture(careBrowserRoot,selection,grant,{purpose:careBrowserPins.purpose});result.after=await auditCareBrowserResources(last);if(protectedBefore)result.protected=await verifyProtected(fixture.directory,protectedBefore);assert.equal(result.after.sessions,0);assert.equal(result.after.refreshTokens,0);}catch{result.status='FAIL';result.finalAuditFailed=true;}}
     try{result.processes=assertOwnProcessesClosed(ownedProcesses);}catch{result.status='FAIL';result.processCloseFailed=true;}
     await mkdir(area,{recursive:true,mode:0o700});await writeFile(path.join(area,'browser-result.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});
