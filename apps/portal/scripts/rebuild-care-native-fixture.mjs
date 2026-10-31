@@ -10,6 +10,7 @@ import {sha, portalOrigin, providerOrigin} from './rebuild-native-boundary.mjs';
 export const careNativePins = Object.freeze({
   nodeVersion:'v22.23.0', migrationCount:56,
   migration:'20261031043655_portal_rebuild_care_use_v1.sql',
+  migrationSha256:'d3a889ab03cba381cd8d2d65b8b567db74ac5f19e6000a0e913c78982fe901e1',
   parentThreadId:'d632030a-18f7-4dec-a2c9-f5c0418c3fd5',
   dockerHost:'unix:///Users/kanuj/.colima/shelv-portal-20261024/docker.sock',
   edgeImage:'public.ecr.aws/supabase/edge-runtime@sha256:ad45164b7548bf5820ed7be714789c17ac2865edce79a09cfb4c3756c3d365a8',
@@ -60,6 +61,7 @@ export function validateCareSource(selection,{manifest,config,migrations,sourceH
   assert.equal(sha(config),selection.configSha256,'Prepared config bytes differ');
   assert.equal(Object.keys(manifest.migrations).length,56,'Prepared fixture must have56 migrations');
   assert.ok(Object.hasOwn(manifest.migrations,careNativePins.migration),'Actual care migration required');
+  assert.equal(manifest.migrations[careNativePins.migration],careNativePins.migrationSha256,'Only exact parent-authorized corrected M56 is permitted');
   assert.deepEqual(migrations,manifest.migrations,'Current canonical migration bytes differ from selected snapshot');
   for(const value of Object.values(migrations))hash(value);
   assert.equal(snapshotDigest(manifest),selection.snapshotSha256,'Prepared snapshot differs');
@@ -82,6 +84,7 @@ export function validateCareRuntime(selection,{manifest,binding,volume,container
   selectCareFixture(selection);
   assert.equal(manifest.ownerId,selection.ownerId);assert.equal(manifest.projectId,selection.projectId);
   assert.equal(Object.keys(manifest.migrations).length,56);assert.equal(snapshotDigest(manifest),selection.snapshotSha256);
+  assert.equal(manifest.migrations[careNativePins.migration],careNativePins.migrationSha256,'Runtime must use corrected M56');
   assert.equal(verifyFixtureResources(manifest,binding,volume,containers,selection.directory).fresh,false);
   const lineage=validateRuntimeLineage(manifest,ledger,binding);
   assert.equal(lineage.migrationCount,56);assert.equal(lineage.snapshotSha256,selection.snapshotSha256);assert.equal(lineage.ledgerSha256,selection.ledgerSha256);

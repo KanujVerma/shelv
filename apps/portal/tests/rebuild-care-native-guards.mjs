@@ -48,6 +48,9 @@ test('source attestation rejects old55, wrong bytes, mismatched snapshot/config 
   assert.doesNotThrow(()=>validateCareSource(selected(),{manifest,config,migrations,sourceHashes}));
   const missing=clone(migrations);delete missing['20261031043655_portal_rebuild_care_use_v1.sql'];
   for(const patch of [{migrations:missing},{config:Buffer.from('changed')},{sourceHashes:{...sourceHashes,extra:sha('x')}},{manifest:{...manifest,ownerId:actorId}}])assert.throws(()=>validateCareSource(selected(),{manifest,config,migrations,sourceHashes,...patch}));
+  const staleMigrations={...migrations,[careNativePins.migration]:sha('synthetic superseded M56')},staleManifest={...manifest,migrations:staleMigrations};
+  const matchingStaleSelection=selectCareFixture({...clone(selection),snapshotSha256:snapshotDigest(staleManifest)});
+  assert.throws(()=>validateCareSource(matchingStaleSelection,{manifest:staleManifest,config,migrations:staleMigrations,sourceHashes}),/corrected M56/,'Matching old56 metadata still cannot admit superseded SQL');
 });
 test('runtime attestation rejects replaced volume, wrong owner/workdir/ledger/helper/source and missing DB',()=>{
   assert.doesNotThrow(()=>validateCareRuntime(selected(),runtime()));
