@@ -72,3 +72,26 @@ Ignored evidence under `.local-artifacts/portal-rebuild/w0-app-fixes/`: pure cal
 ## Remaining acceptance limits
 
 Genuine Auth/Vault/Edge/database/hosted acceptance and a fresh independent review remain separate gates. A2's ordinary browser reachability remains unproven. No PG/Docker/Auth credentials/parent fixture, full portal/root/Expo suite, new backend/SQL/RLS test, full visual/accessibility/human/clinical acceptance or CI was run. Scope did not change those systems. No push/PR/merge/deploy, real client/source/email/funds/order or database/Auth fixture action is authorized or performed. Unrelated feature/foundation findings and author responses remain preserved under their existing owners. These scoped passes do not certify the full portal or release readiness.
+
+## Exact source head and parent continuation
+
+**Clean implementation/test head: `3ff66a78039df3b71337d017b316301ab2f557a4`.** Final source95, frontend/session types, UI guard and application build were rerun serially at that clean head, all exit0. `validation.json` records exact argument arrays, timing, Node22.23.0, source head and `sourceDirty:false`. Browser11 used identical application bytes and the committed browser-test bytes immediately before that test-only commit; Chrome was then returned. The final report-only commit does not change runtime/test source. The final delivery gives its exact HEAD separately.
+
+| Owned commit | Parent action |
+| --- | --- |
+| `db1829ab1f35de23b0102fd02bb096d9881aa3f1` | Shared A3 consumer + direct/startup tests + initial report; exports unchanged; seam already reported. |
+| `0c1a2b0e75b929fc37fdd0093cd16be754c20411` | A1/A2 app source + durable pure regressions + retained R2 callback negative. |
+| `3ff66a78039df3b71337d017b316301ab2f557a4` | Actual browser regression expansion and report; no additional runtime changes. |
+
+Final artifact receipts under the same ignored evidence directory:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `source-clean-head.log` | `60a41ce28fd76a4b4814b5ff94a4df779e027e1a5ae7e71eda67c3d154c60950` |
+| `validation.json` | `6f5551bcda44fd40007af424afc51363bae62d1bda01c7db395b6c2d1f34ea20` |
+| `runtime.json` | `09211ea973c720bf66ea33b957c7cb91a285ac5c03cbcd82c8bd108b2ddcddbb` |
+| clean `application/application-provenance.json` in parent evidence directory | `7e5340c1d738a36c762fb0d6a7d94cdddc11483036fd9a7a2379631138735472` |
+
+Final live capabilities and thread configuration again both verify Codex/Sol/xhigh/default. Final process readback has `automationChromeProcesses:[]`. All shell/test handles are terminal, no server/fixture is handed off. Scope/diff/whitespace/link inspection passes. No uncommitted source is left at delivery.
+
+**Next:** parent inspects/composes only these owned commits and report, runs fresh independent application review against its exact integrated head, and keeps genuine connected Auth/feature review and release gates separate. No further implementation is pending in this bounded task; no unresolved product question is introduced.
