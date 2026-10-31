@@ -14,7 +14,7 @@ export function syntheticCareContent() {
   const sample=createMayaSample().clientView.plan;
   const source=adaptLegacyPlan({version:sample.version,presentation:sample.presentation,recommendations:sample.recommendations},2).content;
   const product=structuredClone(source.products.find(p=>p.id==='cerave-pm'));assert.ok(product);
-  Object.assign(product,{displayPrice:null,imageUrl:null,identity:'unresolved',formula:'unknown',strength:{state:'unknown'},factIds:['synthetic-none'],guides:[],evidence:[]});
+  Object.assign(product,{displayPrice:null,imageUrl:null,identity:'possible_match',formula:'unknown',strength:{state:'unknown'},factIds:['synthetic-none'],guides:[],evidence:[]});
   const content=createEmptyPlanContent();
   content.title='synthetic genuine care verification plan';content.summary='synthetic local software verification only; no actual care, funds, product order or requested use';
   content.context={products:{state:'none',factId:'synthetic-none'},facts:[{id:'synthetic-none',kind:'client_report',visibility:'client',text:'synthetic case reports no current products',sources:[],contradicts:[]},{id:'private',kind:'advisor_conclusion',visibility:'advisor_only',text:'W6_PRIVATE_SYNTHETIC_ONLY',sources:[],contradicts:[]}]};

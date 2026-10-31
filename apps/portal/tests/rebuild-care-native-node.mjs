@@ -27,6 +27,7 @@ export async function runCareNativeProof({selection:rawSelection,grant}) {
   const pass=label=>result.checks.push({label,status:'PASS'});
   const call=async(session,family,action,fields={},status=200)=>{
     const response=await session.client.request(family,{schemaVersion:1,action,...fields},session.csrf);
+    if(response.status!==status)result.failureResponse={family,action,expectedStatus:status,actualStatus:response.status,code:typeof response.value?.code==='string'&&/^[a-z_]+$/.test(response.value.code)?response.value.code:null};
     assert.equal(response.status,status,'Actual '+family+'/'+action+' status');return response.value;
   };
   try {
@@ -62,7 +63,7 @@ export async function runCareNativeProof({selection:rawSelection,grant}) {
     draftView=await call(advisor,'plans','assign_draft_v1',{requestId:randomUUID(),...draftWrite(draftView),fromClientId:null,toClientId:cases.client.id});
     async function reviewAndApprove(view) {
       for(const section of view.sections)await call(advisor,'plans','review_section_v1',{requestId:randomUUID(),...draftWrite(view),sectionId:section.sectionId,sectionHash:section.sectionHash});
-      view=await call(advisor,'plans','read_draft_v1',{draftId:view.draft.id});assert.equal(view.issues.length,0);assert.ok(view.sections.every(s=>s.reviewed));
+      view=await call(advisor,'plans','read_draft_v1',{draftId:view.draft.id});if(view.issues.length)result.readinessIssues=view.issues.map(({section,path,code})=>({section,path,code}));assert.equal(view.issues.length,0);assert.ok(view.sections.every(s=>s.reviewed));
       const approval=await call(advisor,'plans','approve_publication_v1',{requestId:randomUUID(),target:view.target,scope:'care_plan.publish',publisher:{kind:'human',actorId:fixture.owner.id}});
       return {view,approval};
     }
