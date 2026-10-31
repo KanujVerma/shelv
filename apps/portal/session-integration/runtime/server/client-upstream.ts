@@ -47,8 +47,10 @@ export class ClientProvider extends SupabaseProvider {
         demand(response.status === 200 && ['image/jpeg','image/png','image/webp'].includes(contentType ?? ''),503,'unavailable');
         return {status:200,bytes:response.bytes,contentType:contentType!};
     }
-    async perform(credentials: Credentials, capabilities: Capabilities, operation: Operation): Promise<WireResponse> {
+    async perform(credentials: Credentials, capabilities: Capabilities, inputOperation: Operation): Promise<WireResponse> {
         demand(capabilities.view && !capabilities.edit && !capabilities.publish && !capabilities.confirmPayments,403,'forbidden');
+        const operation=inputOperation.kind==='command'&&inputOperation.channel==='reviews'
+            ? parseClientCommand(inputOperation.channel,inputOperation.command) : inputOperation;
         if(operation.kind === 'client-media') return this.media(credentials,operation.media,operation.id,operation.schemaVersion===2);
         let body: unknown;
         if(operation.kind === 'client-upload'){

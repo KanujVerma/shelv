@@ -41,6 +41,7 @@ export function createClientPhotoUpload(session){
  };
 }
 export function createClientCookieRequest(channel,session){
+ if(channel==='guidance'||channel==='reviews'&&session.audience!=='client')throw new CookieSessionError(403,'action_forbidden');
  const json=createCookieRequest(channel,session);
  return async(command,options={})=>{
   if(!(command instanceof FormData))return json(command,options);

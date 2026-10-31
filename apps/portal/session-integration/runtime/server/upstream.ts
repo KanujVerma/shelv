@@ -187,8 +187,10 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
             throw new SessionError(503, 'unavailable');
         }
     }
-    async perform(credentials: Credentials, capabilities: Capabilities, operation: Operation): Promise<WireResponse> {
+    async perform(credentials: Credentials, capabilities: Capabilities, inputOperation: Operation): Promise<WireResponse> {
         demand(capabilities.view, 403, 'forbidden');
+        const operation=inputOperation.kind==='command'&&(inputOperation.channel==='reviews'||inputOperation.channel==='guidance')
+            ? parseCommand(inputOperation.channel,inputOperation.command) : inputOperation;
         demand(operation.kind !== 'client-media' && operation.kind !== 'client-upload' && operation.kind !== 'walkthrough', 403, 'action_forbidden');
         let body: unknown;
         if (operation.kind === 'command') {

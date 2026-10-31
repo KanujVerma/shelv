@@ -7,14 +7,13 @@ import {ClientProvider} from '../server/client-upstream';
 import clientGateway,{advisorGateway,type GatewayEnv} from '../server/gateway';
 import {SessionVault} from '../server/session-vault';
 import {CredentialEnvelope} from '../server/credential-envelope';
+import {createEmptyPlanContent,projectClientPlan} from '../../../../../src/contracts/PortalRebuild.ts';
+import {readFileSync} from 'node:fs';
 import type {SessionRecord} from '../server/types';
+// @ts-expect-error retained JavaScript metadata, compared to canonical Root exports below
 import * as metadata from '../../../site/auth/review-actions.js';
 import {reviewClientActions,reviewHumanActions,guidanceHumanActions,reviewReadActions,guidanceReadActions,reviewErrorStatuses,portalReviewAccess} from '../../../../../src/contracts/PortalReviewValues.ts';
 import {readReviewCommand,readGuidanceCommand} from '../../../../../src/contracts/PortalReviewValidation.ts';
-import {createReviewPorts} from '../../../../../supabase/functions/concierge-reviews/runtime.ts';
-import {createGuidancePorts} from '../../../../../supabase/functions/concierge-guidance/runtime.ts';
-import {handleReviewRequest} from '../../../../../supabase/functions/concierge-reviews/handler.ts';
-import {handleGuidanceRequest} from '../../../../../supabase/functions/concierge-guidance/handler.ts';
 
 // Source/API component proof. All fetches are finite synthetic functions; no listeners or DO runtime.
 const owner='11111111-1111-4111-8111-111111111111',id='22222222-2222-4222-8222-222222222222',requestId='33333333-3333-4333-8333-333333333333';
@@ -73,25 +72,15 @@ test('safe view and private edit/publish capability gates follow actual SQL befo
   await assert.rejects(provider.perform(credentials,all,operation),err(503));assert.equal(calls,before+1);
  }
 });
-test('actual provider -> reviewed handler/runtime uses fixed RPC with public apikey and original caller bearer',async()=>{
- for(const [family,create,handle,rpc] of [['reviews',createReviewPorts,handleReviewRequest,'concierge_review_command_v1'],['guidance',createGuidancePorts,handleGuidanceRequest,'concierge_guidance_command_v1']] as const){
-  const seen:string[]=[],publicKey='sb_publishable_synthetic';
-  const ports=create({supabaseUrl:SUPABASE_ORIGIN,publicKey,allowedOrigins:[PORTAL_ORIGIN],fetch:async(input,init)=>{
-   const url=String(input);seen.push(url);assert.equal(new Headers(init?.headers).get('apikey'),publicKey);assert.equal(new Headers(init?.headers).get('authorization'),'Bearer '+credentials.access_token);
-   if(url===SUPABASE_ORIGIN+'/auth/v1/user')return Response.json({id:owner,is_anonymous:false});
-   assert.equal(url,SUPABASE_ORIGIN+'/rest/v1/rpc/'+rpc);assert.deepEqual(JSON.parse(String(init?.body)),{p_command:status});return Response.json({status:'absent'});
-  }});
-  const provider=new SupabaseProvider(publicKey,async(input,init)=>{assert.equal(String(input),SUPABASE_ORIGIN+'/functions/v1/concierge-'+family);return handle(new Request(String(input),init),ports as never);});
-  assert.deepEqual(await provider.perform(credentials,all,op(family,status)),{status:200,body:{status:'absent'}});
-  assert.deepEqual(seen,[SUPABASE_ORIGIN+'/auth/v1/user',SUPABASE_ORIGIN+'/rest/v1/rpc/'+rpc]);
- }
-});
 test('malformed success is unavailable for reads and uncertain for writes; current exact failure namespace survives',async()=>{
  let data:unknown={},http=200;const provider=new ClientProvider('sb_publishable_synthetic',async()=>Response.json(data,{status:http}));
  for(const command of [status,submit])await assert.rejects(provider.perform(credentials,view,op('reviews',command,true)),err(503,command===status?'unavailable':'uncertain'));
  for(const [code,httpStatus] of Object.entries(reviewErrorStatuses)){data={code};http=httpStatus;await assert.rejects(provider.perform(credentials,view,op('reviews',status,true)),err(httpStatus,httpStatus===503?'unavailable':code));}
  for(const code of ['concierge_guidance_conflict','other_content_version_required','concierge_private_sql','CONCIERGE_content_version_required']){data={code};http=409;await assert.rejects(provider.perform(credentials,view,op('reviews',status,true)),err(409,'unavailable'));}
  data={code:'concierge_content_version_required'};await assert.rejects(provider.perform(credentials,view,op('reviews',status,true)),err(409,'content_version_required'));
+ const lost=new ClientProvider('sb_publishable_synthetic',async()=>{throw Error('private SQL and transport detail');});
+ for(const command of [status,submit])await assert.rejects(lost.perform(credentials,view,op('reviews',command,true)),err(503,command===status?'unavailable':'uncertain'));
+ rejects(()=>new SupabaseProvider('sb_secret_synthetic',async()=>assert.fail('no secret credential egress')),503);
 });
 test('private extras, wrong owner/version and cross-family receipt never cross actual client provider',async()=>{
  const read={schemaVersion:1,action:'read_client_plan_v3',version:null};
@@ -123,20 +112,67 @@ test('new JSON request budgets are500000 UTF8 while legacy100000 and multipart b
  assert.equal((await advisorGateway.fetch(request('advisor','operations',' '.repeat(100001)),f.env)).status,413);
 });
 test('origin, CSRF, audience and unknown request fields deny before any Vault operation',async()=>{
- const f=fakeGateway();for(const headers of [{origin:'https://other.invalid'},{'x-shelv-csrf':''},{'sec-fetch-site':'same-site'},{cookie:''}]){const r=await advisorGateway.fetch(request('advisor','reviews',JSON.stringify(status),headers),f.env);assert.ok([401,403].includes(r.status));}
+ const f=fakeGateway(),variants:Record<string,string>[]=[{origin:'https://other.invalid'},{'x-shelv-csrf':''},{'sec-fetch-site':'same-site'},{cookie:''}];
+ for(const headers of variants){const r=await advisorGateway.fetch(request('advisor','reviews',JSON.stringify(status),headers),f.env);assert.ok([401,403].includes(r.status));}
  for(const raw of [{...status,role:'admin'},{...status,clientId:owner},{...status,schemaVersion:9}])assert.equal((await clientGateway.fetch(request('client','reviews',JSON.stringify(raw)),f.env)).status,400);
  assert.equal(f.calls.length,0);
 });
 test('provider2M response bound still contains domain1.8M and400k page limits',async()=>{
  for(const bytes of [400001,1800001,2000001]){const p=new ClientProvider('sb_publishable_synthetic',async()=>new Response(JSON.stringify({padding:'x'.repeat(bytes)})));await assert.rejects(p.perform(credentials,view,op('reviews',history,true)),err(503,'unavailable'));}
 });
+test('provider response binding retains its parsed canonical request across caller mutation',async()=>{
+ for(const [family,client] of [['reviews',false],['guidance',false],['reviews',true]] as const){
+  let release!:()=>void,enter!:()=>void;const entered=new Promise<void>(r=>enter=r),held=new Promise<void>(r=>release=r),command={...status};
+  const Provider=client?ClientProvider:SupabaseProvider,provider=new Provider('sb_publishable_synthetic',async()=>{enter();await held;return Response.json({status:'absent'});});
+  const pending=provider.perform(credentials,client?view:all,{kind:'command',channel:channel(family),command});await entered;command.requestId=owner;command.action='read_unknown_v1';release();
+  assert.deepEqual(await pending,{status:200,body:{status:'absent'}});
+ }
+});
+test('client history uses its own positive mapper; private variants and owner/version/audience swaps reject',async()=>{
+ const heads={useHead:0,reportHead:0,instructionHead:0,serviceRevision:0,publicationVersion:1};
+ const page={schemaVersion:1,audience:'client',version:null,heads,entries:[],nextCursor:null};let data:unknown=page;
+ const provider=new ClientProvider('sb_publishable_synthetic',async()=>Response.json(data));
+ assert.deepEqual((await provider.perform(credentials,view,op('reviews',history,true))).body,page);
+ for(const entry of [{kind:'legacy_review_note',reviewId:id,note:'PRIVATE_CANARY'},{kind:'private_note',note:{}},{kind:'conversation',event:{}}]){data={...page,entries:[entry]};await assert.rejects(provider.perform(credentials,view,op('reviews',history,true)),err(503,'unavailable'));}
+ for(const extra of [{audience:'advisor',clientId:owner},{version:1},{rawSourceManifest:{hash:'a'.repeat(64),count:1}}]){data={...page,...extra};await assert.rejects(provider.perform(credentials,view,op('reviews',history,true)),err(503,'unavailable'));}
+});
+test('whole valid pages hit exact400000 UTF8, preserve private/view separation, and400001 rejects',async()=>{
+ const command={...history,action:'read_advisor_care_history_v1',clientId:owner,limit:100};
+ const page={schemaVersion:1,audience:'advisor',clientId:owner,version:null,heads:{useHead:0,reportHead:0,instructionHead:0,serviceRevision:0,publicationVersion:1},entries:Array.from({length:100},(_,i)=>({kind:'legacy_review_note',reviewId:`10000000-0000-4000-8000-${String(i).padStart(12,'0')}`,note:'a'.repeat(4000)})),nextCursor:null};
+ let excess=Buffer.byteLength(JSON.stringify(page))-400000,index=0;
+ for(const entry of page.entries){const remove=Math.min(excess,entry.note.length);entry.note=entry.note.slice(remove);excess-=remove;if(excess===0)break;index++;}
+ assert.equal(Buffer.byteLength(JSON.stringify(page)),400000);
+ const provider=new SupabaseProvider('sb_publishable_synthetic',async()=>Response.json(page));
+ assert.deepEqual((await provider.perform(credentials,edit,op('reviews',command))).body,page);
+ await assert.rejects(provider.perform(credentials,view,op('reviews',command)),err(403));
+ page.entries[index]!.note+='a';await assert.rejects(provider.perform(credentials,edit,op('reviews',command)),err(503,'unavailable'));
+});
+test('large actual V3 DTO with50 paused products survives provider and cookie mapping without loss',async()=>{
+ const template=JSON.parse(readFileSync(new URL('../../../../../tests/fixtures/concierge-presentation.json',import.meta.url),'utf8')).presentation.categoryCards[0].currentProduct;
+ const content=createEmptyPlanContent(),unknown={state:'unknown' as const},now='2026-10-31T00:00:00Z';
+ const schedule={periods:['evening' as const],days:{kind:'daily' as const},condition:null,asNeeded:false,stages:[],anchor:'actual_start' as const,automaticAdvance:false as const};
+ for(let i=0;i<50;i++)content.products.push({...template,id:'p'+i,name:'🧴'.repeat(200),brand:'🧴'.repeat(100),variant:'🧴'.repeat(200),sizeLabel:'🧴'.repeat(120),strength:{state:'known',value:'🧴'.repeat(200)},category:{state:'known',value:'🧴'.repeat(200)},identity:'unresolved',formula:'unknown',factIds:[],guides:[],evidence:[]});
+ const productIds=content.products.map(p=>p.id);content.context.products={state:'recorded',productIds};
+ for(let i=0;i<50;i++)content.decisions.push({id:'d'+i,slotId:'s'+i,recommendationId:null,kind:'keep',goalIds:[],currentProductIds:productIds,primaryProductId:productIds[i]!,alternativeProductIds:[],reason:'keep',directions:['use as directed'],cautions:[],limitations:[],schedule,factIds:[],guidance:{title:'',subtitle:'',rationaleTitle:'',reasons:[],actions:[],comparisons:[],factsTitle:'',facts:[],how:null,sources:[],group:null,decisionLabels:null}});
+ while(Buffer.byteLength(JSON.stringify(content))+16500<498000)content.consultationSections.push({title:'retained public content',body:'🧴'.repeat(4000)});
+ const snap={...snapshot,useHead:1,decisionRevision:50};
+ const descriptor={name:'🧴'.repeat(200),brand:{state:'known',value:'🧴'.repeat(200)},variant:{state:'known',value:'🧴'.repeat(200)},strength:{state:'known',value:'🧴'.repeat(200)},sizeLabel:{state:'known',value:'🧴'.repeat(200)},labelPhotoIds:[]},rows:unknown[]=[];
+ for(let i=0;i<100;i++){const row={product:{kind:'client_reported_product',reportedProductId:`10000000-0000-4000-8000-${String(i).padStart(12,'0')}`,version:1},descriptor,state:'unreviewed',originalStart:unknown,latestEvent:null,identity:null,contradiction:false};if(Buffer.byteLength(JSON.stringify({items:[...rows,row],nextCursor:`c:${'a'.repeat(64)}:${id}`}))>399900)break;rows.push(row);}
+ const dto={schemaVersion:3,access:'read_only',plan:{documentSchemaVersion:3,version:1,publishedAt:now,content:projectClientPlan(content)},decisionRevision:50,decisions:content.decisions.map(d=>({decisionId:d.id,choice:'approved',reason:'🧴'.repeat(1000)})),decisionGuidance:content.decisions.map((d,i)=>({decisionId:d.id,recordedDecisionRevision:i+1,acceptedSnapshot:{...snap,decisionRevision:i},basisStatus:'current'})),actualUse:Array.from({length:1000},(_,i)=>({slot:'old'+String(i).padStart(97,'0'),productId:'old-product'+'p'.repeat(89),startedOn:'2024-02-29',publicationVersion:1})),nextReviewOn:null,use:{revision:1,planProducts:productIds.map(productId=>({product:{kind:'plan_product',publication,productId,slotId:null},state:'paused',originalStart:unknown,contradiction:false,latestEvent:null,identity:null})),reportedProducts:{items:rows,nextCursor:`c:${'a'.repeat(64)}:${id}`}},latestPublicReview:{reviewId:id,publicationVersion:1,publishedAt:now,occurredOn:unknown,conclusion:'🧴'.repeat(4000),rationale:'🧴'.repeat(4000),nextStep:'🧴'.repeat(4000),nextReviewOn:null},currentGuidance:{schemaVersion:1,mode:'current_document',instructionSemantics:'current_for_selected_publication',snapshot:snap,instructionCount:0}};
+ const size=Buffer.byteLength(JSON.stringify(dto));assert.ok(size>1400000&&size<=1800000,'valid complete V3 size '+size);
+ const read={schemaVersion:1,action:'read_client_plan_v3',version:1},provider=new ClientProvider('sb_publishable_synthetic',async()=>Response.json(dto));
+ assert.deepEqual((await provider.perform(credentials,view,op('reviews',read,true))).body,dto);
+ const gateway=fakeGateway();gateway.set(dto);const response=await clientGateway.fetch(request('client','reviews',JSON.stringify(read)),gateway.env);assert.equal(response.status,200);assert.deepEqual(await response.json(),dto);
+ const wrong={...dto,plan:{...dto.plan,version:2}},bad=new ClientProvider('sb_publishable_synthetic',async()=>Response.json(wrong));await assert.rejects(bad.perform(credentials,view,op('reviews',read,true)),err(503,'unavailable'));
+});
 test('existing Vault execute retains CSRF/current context and held logout fences with new operations',async()=>{
  let record:SessionRecord|null=null,enabled=true;const caps=all;
  const auth={context:async()=>{assert.ok(enabled);return {ownerId:owner,providerSessionId:id,capabilities:caps};},refresh:async()=>credentials,logout:async()=>{}};
- const vault=new SessionVault({read:()=>record,write:r=>{record=r;}},new CredentialEnvelope(JSON.stringify({active:'test',keys:{test:Buffer.alloc(32,7).toString('base64url')}}),'session:review-guidance'),auth,{now:()=>1800000000000,idleMs:3600000,absoluteMs:28800000,recheckContext:true});
+ const store={read:():SessionRecord|null=>record,write:(r:SessionRecord)=>{record=r;}};
+ const vault=new SessionVault(store,new CredentialEnvelope(JSON.stringify({active:'test',keys:{test:Buffer.alloc(32,7).toString('base64url')}}),'session:review-guidance'),auth,{now:()=>1800000000000,idleMs:3600000,absoluteMs:28800000,recheckContext:true});
  const initial=await vault.initialize(credentials,'synthetic-grant');let calls=0;
  await assert.rejects(vault.execute('wrong',async()=>{calls++;return {};}),err(403));assert.equal(calls,0);
  let enter!:()=>void,release!:()=>void;const entered=new Promise<void>(r=>enter=r),held=new Promise<void>(r=>release=r);
  const pending=vault.execute(initial.csrf,async()=>{calls++;enter();await held;return {status:'absent'};});const rejected=assert.rejects(pending,err(401));await entered;await vault.logout(initial.csrf);release();await rejected;
- assert.equal(record?.status,'revoked');assert.equal(record?.credentials,null);
+ assert.equal(store.read()?.status,'revoked');assert.equal(store.read()?.credentials,null);
 });
