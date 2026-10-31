@@ -16,9 +16,9 @@ before(async()=>{
   await fs.mkdir(artifacts,{recursive:true});
   const source=`import {StrictMode,useState} from 'react';import{createRoot}from'react-dom/client';
     import{Select,Field,Button}from'./src/ui/primitives.tsx';import{OverlayProvider,Sheet}from'./src/ui/overlay.tsx';import'./src/ui/foundation.css';
-    function App(){const[value,setValue]=useState('using'),[open,setOpen]=useState(false);const inside=new URL(location.href).searchParams.has('sheet');
+    function App(){const[value,setValue]=useState('using'),[open,setOpen]=useState(false);const inside=new URL(location.href).searchParams.has('sheet'),wide=new URL(location.href).searchParams.has('wide');
       const field=<Field label="what changed?"><Select value={value} onValueChange={setValue} options={[{value:'using',label:'using'},{value:'paused',label:'paused'},{value:'stopped',label:'stopped'}]}/></Field>;
-      return <OverlayProvider><main style={{padding:32,maxWidth:420,margin:'0 auto',minHeight:1800}}><h1>shared select</h1>
+      return <OverlayProvider><main style={{padding:32,maxWidth:wide?undefined:420,margin:'0 auto',minHeight:1800}}><h1>shared select</h1>
       <Button id="open-sheet" onClick={()=>setOpen(true)}>open choice sheet</Button><div style={{marginTop:120}}>{!inside&&field}</div><output aria-label="chosen value">{value}</output>
       <Sheet open={open} onOpenChange={setOpen} title="choice sheet">{inside&&field}</Sheet></main></OverlayProvider>}
     createRoot(document.getElementById('root')).render(<StrictMode><App/></StrictMode>);`;
@@ -37,7 +37,7 @@ after(async()=>browser?.close());
 for(const sample of [
   {width:320,html:2},{width:390,html:2},
   ...[1440,1280,390,320].map(width=>({width,html:1})),
-  {width:390,html:1.5},{width:390,html:0.8},{width:390,body:2},
+  {width:390,html:1.5},{width:390,html:0.8},{width:390,html:0.8,wide:true},{width:390,body:2},
   {width:390,html:1.25,body:1.2},{width:320,html:2,scroll:200},
   {width:390,html:1,sheet:true},{width:320,html:2,sheet:true},
 ]){
@@ -54,7 +54,7 @@ for(const sample of [
         return route.fulfill({body:bytes,contentType:url.pathname.endsWith('.css')?'text/css':url.pathname.endsWith('.js')?'text/javascript':'font/woff2'});
       });
       page=await context.newPage();page.setDefaultTimeout(5000);page.on('pageerror',e=>errors.push(e.message));
-      await page.goto(origin+'/?'+(sample.sheet?'sheet=1':''),{waitUntil:'domcontentloaded'});await page.getByRole('heading',{name:'shared select',exact:true}).waitFor();await page.evaluate(()=>document.fonts.ready);
+      await page.goto(origin+'/?'+new URLSearchParams({...sample.sheet?{sheet:'1'}:{},...sample.wide?{wide:'1'}:{}}),{waitUntil:'domcontentloaded'});await page.getByRole('heading',{name:'shared select',exact:true}).waitFor();await page.evaluate(()=>document.fonts.ready);
       await page.evaluate(s=>{document.documentElement.style.zoom=String(s.html??1);document.body.style.zoom=String(s.body??1);},sample);
       if(sample.sheet)await page.getByRole('button',{name:'open choice sheet'}).click();
       if(sample.scroll)await page.evaluate(y=>scrollTo(0,y),sample.scroll);

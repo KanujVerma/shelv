@@ -36,3 +36,14 @@ An initial new harness passed Uint8Array output directly to the response body an
 Evidence is under `.local-artifacts/portal-rebuild/shared-select-zoom/`, with unique retained/final JSON/PNGs and raw TAP. Normal per-case context cleanup and suite browser closure completed. **Root sole Chrome grant `coordinator-shared-select-zoom-1b507a09-20261031` was returned at2026-10-31T18:31:18.591Z**. Exact installed headless remote-pipe Chrome/owned Node tests/workerd inventories are empty; final collaborative preview has no tab. Platform CUA was excluded from the process predicate. No later browser/preview/process call was made under that returned grant.
 
 Independent current shared-control and W3 composition review remains required. W3's frozen source/browser117 result and historical broader201 result remain separately attributed; they are not retroactively relabeled by this shared correction. No full portal, genuine, CI, release, merge or deployment claim is made.
+
+
+## S1 followup: full-width form at CSS zoom0.8
+
+Independent W3 R1 report4ac59b33 passes the shared coordinate correction and normal interactions, but finds P3 S1: a real full-width form has a338.8125px trigger and unnecessarily narrowed286.390625px popup at390/zoom0.8. The old `100vw` cap is in a different scale from the trigger/positioning values. A new full-width fixture reproduces the exact width failure0/1 without changing production inputs or the original13 expectations.
+
+The correction uses Radix's already-provided scale-aware available-width variable, with the previous cap only as a pre-positioning fallback. Current14/14 and unchanged foundation6/6 pass. The new fixture's trigger and popup both measure338.8125px; document width remains390. UI guard and actual frontend strict compiler pass. No packages, callbacks, authority, spacing/font tokens or other feature source change.
+
+Root's separate S1 Chrome grant `coordinator-shared-select-s1-b69f0160-20261031` returned at2026-10-31T19:23:27.484Z, own installed Chrome/test/workerd inventories empty and preview no tab. No later browser/process/preview calls were made under that grant. RawRED/current14/retained6/bounds are in the `wide-*` evidence namespaces. Independent confirmation is pending.
+
+The original W3 rectangle probe remains separately qualified: a contained six-option menu can require internal scrolling, so the stopped option's initial rectangle may extend below its viewport. W3 R1 shows unforced pointer/keyboard selection and actual Care submission11/11; no unreachable option was established. This followup does not relabel that original0/1 assertion as a pass or claim every option can fit simultaneously, native zoom, all-engine or human accessibility acceptance.
