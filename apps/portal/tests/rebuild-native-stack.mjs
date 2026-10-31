@@ -17,13 +17,20 @@ const app = path.join(sourceRoot, '.local-artifacts/portal-rebuild/application')
 const mime = {'.html':'text/html; charset=utf-8','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.woff2':'font/woff2','.woff':'font/woff','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp'};
 
 export async function connectedStack(fixture, options={}) {
+  let careApplicationProof;
   if(options.care===true) {
     assert.equal(process.env.SHELV_REBUILD_CARE_NATIVE,'1','Care resource acquisition requires explicit opt-in');
-    requireCareCustody(fixture.selection,options.careCustody,sourceRoot,options.careCustody?.purpose);
+    requireCareCustody(fixture.selection,options.careCustody,sourceRoot,options.carePurpose??'genuine-care-node');
     assert.equal(fixture.lineage.migrationCount,57,'Care cannot use the historical56/55 fixtures');
+    if(options.carePurpose==='genuine-care-browser') {
+      const {attestCareBrowserApplication}=await import('./rebuild-care-native-browser-source.mjs');
+      careApplicationProof=await attestCareBrowserApplication();
+      assert.equal(careApplicationProof.directory,app,'Care browser requires this checkout actual application proof');
+      assert.ok(careApplicationProof.outputs['index.html']);
+    }
   }
   if(options.failureProbe||options.onRuntime)assert.equal(process.env.SHELV_REBUILD_NATIVE_FAILURE_PROBES,'1','Runtime failure instrumentation requires explicit opt-in');
-  const stackArtifacts=options.care===true?path.join(sourceRoot,'.local-artifacts/portal-rebuild',careNativePins.artifactDirectory):artifacts;
+  const stackArtifacts=options.care===true?path.join(sourceRoot,'.local-artifacts/portal-rebuild',options.carePurpose==='genuine-care-browser'?'w6-care-native-browser-r7':careNativePins.artifactDirectory):artifacts;
   const dir = path.join(stackArtifacts, 'stack-' + randomBytes(8).toString('hex'));
   await mkdir(dir, {recursive: true, mode: 0o700});
   const seams = [];
@@ -87,6 +94,11 @@ export async function connectedStack(fixture, options={}) {
       // Only actual semantic app routes receive the actual application document.
       if (!/^\/(?:plan(?:\/.*)?|advisor\/(?:plans|clients)(?:\/.*)?|history|orders|account|notifications|maya)?$/.test(url.pathname)) return new Response('not found', {status:404});
       file = path.join(app, 'index.html'); bytes = await readFile(file);
+    }
+    if(options.carePurpose==='genuine-care-browser') {
+      const proof=careApplicationProof.outputs[path.relative(app,file)];
+      assert.ok(proof,'Care ASSETS must be in the exact compiled static allowlist');
+      assert.equal(bytes.length,proof.bytes);assert.equal(sha(bytes),proof.sha256,'Actual care ASSETS bytes changed after source attestation');
     }
     return new Response(bytes, {headers:{'content-type':mime[path.extname(file)] ?? 'application/octet-stream', 'cache-control':'private, no-store', 'referrer-policy':'no-referrer', 'x-content-type-options':'nosniff', 'content-security-policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"}});
   };

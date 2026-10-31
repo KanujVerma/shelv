@@ -139,9 +139,9 @@ async function migrationHashes(root) {
 
 // Explicit later-phase entry only. Everything before Docker is read-only source/prepared receipt validation.
 // No fallback to R4 and no preparation/reset/start/stop/adopt command exists here.
-export async function attestCareFixture(sourceRoot,rawSelection,grant) {
+export async function attestCareFixture(sourceRoot,rawSelection,grant,{purpose='genuine-care-node'}={}) {
   assert.equal(sourceRoot,path.resolve(import.meta.dirname,'../../..'),'Attestor must run from its allocated source checkout');
-  const selection=selectCareFixture(rawSelection);requireCareCustody(selection,grant,sourceRoot);
+  const selection=selectCareFixture(rawSelection);requireCareCustody(selection,grant,sourceRoot,purpose);
   assert.equal(process.version,careNativePins.nodeVersion);assert.equal(process.env.SHELV_REBUILD_CARE_NATIVE,'1','Explicit connected care opt-in required');
   const fixture=await readPreparedPortalAdmissionFixture(parentRoot,selection.directory);
   assert.equal(await realpath(selection.directory),selection.directory,'Real fixture path must match selection');
