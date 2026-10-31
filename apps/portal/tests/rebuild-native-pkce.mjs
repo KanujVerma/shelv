@@ -51,6 +51,22 @@ try {
   response=await client.request('logout',{},csrf);assert.equal(response.status,200);
   assert.equal(fixture.sql(`select count(*) from auth.sessions where id='${[...stack.issued.keys()][0]}'`),'0');
   pass('Actual gateway logout reaches supported local provider logout and removes its actual session');
+  assert.match(identities.client.id,/^[0-9a-f-]{36}$/);
+  const originalState=()=>fixture.sql(`select jsonb_build_object('case',(select to_jsonb(c) from concierge.cases c where client_id='${identities.client.id}'),'publications',(select jsonb_agg(to_jsonb(p) order by version) from concierge.publications p where client_id='${identities.client.id}'),'starts',(select jsonb_agg(to_jsonb(a) order by slot,product_id) from concierge.activations a where client_id='${identities.client.id}'),'service',(select jsonb_agg(to_jsonb(s) order by claim_id) from concierge.service_periods s where client_id='${identities.client.id}'))`);
+  const originalHash=sha(originalState());
+  const reader=nodeCookieClient(stack,'client',2),clientBefore=await mailSnapshot();
+  response=await reader.request('session');assert.equal(response.status,200);const clientFlow=response.value.csrf;
+  response=await reader.request('auth/request',{email:identities.client.email,remember:false,returnTo:'/plan'},clientFlow);assert.equal(response.status,200);
+  const clientCallback=await captureCallback(identities.client.email,clientBefore,'/plan');result.localEmails+=clientCallback.localEmails;
+  response=await reader.request('auth/complete',{code:clientCallback.code},clientFlow);assert.equal(response.status,200);assert.equal(response.value.ownerId,identities.client.id);
+  const clientCsrf=response.value.csrf;
+  assert.match(response.headers.get('set-cookie'),/__Host-shelv_client=.*Secure; HttpOnly; SameSite=Lax/);
+  assert.equal(reader.cookies.has('__Host-shelv_advisor'),false);
+  response=await reader.request('plans',{schemaVersion:1,action:'read_client_plan_v1',version:null},clientCsrf);assert.equal(response.status,200);assert.equal(response.value.access,'active');assert.ok(response.value.plan.version>=1);assert.deepEqual(response.value.actualUse,[]);
+  assert.ok(!JSON.stringify(response.value).includes('PRIVATE_REAL_AUTH_CANARY'));
+  response=await reader.request('logout',{},clientCsrf);assert.equal(response.status,200);
+  assert.equal(sha(originalState()),originalHash);result.existingClientStateSha256=originalHash;
+  pass('Second audience uses genuine client PKCE/cookie/live context/native entitled safe read and supported logout; original plan remains unchanged');
   result.status='PASS';
 } catch(error) {result.status='FAIL';result.failure=error instanceof assert.AssertionError?error.message:'native_pkce_failed';}
 finally {
