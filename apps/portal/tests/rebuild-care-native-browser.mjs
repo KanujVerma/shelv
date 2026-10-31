@@ -121,7 +121,7 @@ export async function runCareBrowserProof({selection,grant,chromeGrant}) {
 
     phase='actual committed uncertain response and exact same-request retry';await c.goto(portalOrigin+'/plan/products/cerave-pm?routine=evening');await c.getByRole('dialog').getByRole('button',{name:'record a change in use',exact:true}).click();await select(c,'what changed?','stopped');await select(c,'when did this happen?','date not known');await c.getByRole('textbox',{name:'anything we should know? (optional)',exact:true}).fill('SYNTHETIC exact uncertain payload');
     const held=stack.hold('report_product_use_v1');releases.push(held.release);const uncertainOffset=client.requests.length;
-    const actualUnavailable=c.waitForResponse(r=>new URL(r.url()).pathname==='/api/client/care'&&r.request().method()==='POST'&&r.request().postDataJSON()?.action==='report_product_use_v1');
+    const actualUnavailable=c.waitForResponse(r=>new URL(r.url()).pathname==='/api/client/care'&&r.request().method()==='POST'&&r.request().postDataJSON()?.action==='report_product_use_v1',{timeout:15000});
     await c.getByRole('button',{name:'record change',exact:true}).click();await bounded(held.entered);
     const committed=client.requests.slice(uncertainOffset).find(x=>x.command.action==='report_product_use_v1');assert.ok(committed);const beforeRetry=careCaseSnapshot(fixture,cases.client.id);
     await c.getByRole('button',{name:'back to product',exact:true}).click();await c.getByRole('dialog').waitFor();await c.goForward();await c.getByText('report result uncertain',{exact:true}).waitFor();
