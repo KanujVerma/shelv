@@ -1,6 +1,6 @@
 # portal rebuild workstreams
 
-Owner: Kanuj. Coordinator owns integration and this registry. Updated 30 October 2026.
+Owner: Kanuj. Coordinator owns integration and this registry. Updated 31 October 2026.
 
 Read the approved decisions/specification, implementation contracts, acceptance matrix and current status before work. Maximum eight concurrent workers including nested tasks. Start with at most three workers plus coordinator to keep resource use bounded. Only the coordinator schedules heavy database/browser stacks. No nested delegation without an allocated slot and write-set.
 
@@ -33,6 +33,8 @@ Coordinator reserves `AGENTS.md`, `apps/portal/AGENTS.md`, `docs/portal-rebuild/
 
 ## task ledger
 
+The progression below is historical. Current allocations are in the final section and TASKS.json.
+
 The [machine-readable task ledger](TASKS.json) records exact task/thread/run IDs, model/options, workspace/base and write-set for each dispatch. Initial checkpoint `9be041d` is pushed in [draft PR211](https://github.com/KanujVerma/shelv/pull/211), stacked on PR210. Three workers were then dispatched; all T3 responses returned provider `codex`, model `gpt-6.1-sol`, `reasoningEffort=xhigh`, `serviceTier=default`. Git worktree readback confirmed each separate checkout at `9be041d`.
 
 | Worker | Worktree / branch | Task and write-set | Dispatch state |
@@ -56,8 +58,13 @@ Return the exact starting/final commit, workspace, status, changed paths, decisi
 
 ## latest composition checkpoint
 
-IndependentgenuineCareNode main9PASS,butCN1/P2 exact-producthistorySQLNULLfailsclosed503; frozenR6 remains56d3/RUNNING/evidence, custodyreturned07:26:55UTCwhole0sessions/refresh/protected205filesunchanged. NewRootCLI-forward57 allocation20261031073004 isnotimplemented. W1t3-08cf4447ownsONLYnewfilterSQL/tests/report, all56oldmigrationsimmutable; ownUnix-onlyPG,noDocker/Chrome. FuturefreshR7afterfix/review, no R6reset/patch/sourceadoption.
+Core care is independently accepted within W7_CARE_INTEGRATED_REVIEW at1011ae33; parent Root/native remains57/76b09. No shared native grant is live. R7 helpers remain coordinator-owned; R4/R6 stopped/preserved; R5 retired source-only. Full goal is active.
 
-CU1/CU2UI-onlybaee/694 isintegrated9c32c56c/bc8b9423,153focused/Root15/types/buildpass, original980frozen6b. FreshW7UIR2t3-7db09590ownsSOLEsyntheticChrome; no native/DB. W3terminal. W6t3-a3da9be0 SOURCEONLYwaitingnew57/hash/R7metadataandfuturegenuine-browsergrant,no resourcecalls. ParentholdsR6andmayplanlifecycle,butno workergrantactive. All3activechildrenSol/xhigh/default throughT3, no nested; exactIDs/ownership inTASKS.json.
+| Active owner | Exclusive current scope | Resource / dependency |
+| --- | --- | --- |
+| W1 t3-7a7cac7e | Root Report/Guidance contracts/backend and allocated M60 RG1-RG3 corrections; old59 SQL immutable | Own marked Unix PG only; M58 FAIL49c/RG1-RG3, M59 candidate958ca. No parent/R7/Chrome |
+| W3 t3-1026ad5d | features/plan V3 hydration/decision UI plus ONLY app/client-state typed V3 acceptance/refresh | Source-only, exact96db four-filetargetimport; App/default activation/routes/ports staycoordinator. Root will not edit client-state during claim |
+| W4 t3-0706fba8 follow-up | features/history and new module browser tests/report | Sole synthetic Chrome from14:25:16UTC; actualretainedrequest/finiteHTTP only, no native. All others waitrelease |
+| Coordinator | Integration/docs/sharedmetadata; temporarily advisor CD3 correction after W2 terminal355802f7 | Parent candidate imports/fix remainunaccepted; source/pure/SSR only while W4ownsChrome. No Root/backend/sharedplan/client-state/history edits |
 
-R4STOPPEDbackup+volumes/helpersretained;R5SOURCEONLYretiredzeroresources;R6actualsource/datafrozen.Currentappdefaultv1, no acceptedcare/browseractivation. Fullreport/guidance/source/template/commerce/account/delivery/demo and allacceptance/releasegatescontinue. NewreviewroundsnewtaskIDs/fullbriefs;resourcehandoffs explicit.
+W2 CD1/CD2 author stack is terminal355802f7; R2 independently closes originalfindings but findsCD3 namelessR1identity gating. New report5f50371b is importedad6f5ed2. Coordinator explicitly reclaims the bounded advisor identity fix while all workerslots are occupied, with meaningfuloriginalRED/newregressions and a freshindependentR3 before acceptance. Do not resume a W2 source writer concurrently. W4 source95 is historical0266; its new implementation follow-up has a distinct task ID. W7 M58 reviewer is terminal49c/ownPGstopped, no authorfix; latercomposedM58+M59+M60 needsnewindependentR2. TASKS.json owns exact handles/settings/bases/grants.
