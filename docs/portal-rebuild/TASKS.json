@@ -1950,7 +1950,7 @@
       ],
       "migration": "20261031091520_portal_rebuild_reviews_guidance_v1.sql",
       "migrationStatus": "CHILD_ONLY_ALLOCATED_EMPTY_THEN_IMPLEMENTING",
-      "phase2Clarifications": "Closed review_attention history event for ALL dependent publishedreview relationships, separate unique eventId vs stableattentionId and immutable resolution links; no action/right expansion. ExistingCheckinHandlerdictionary content_version_required409 authorized afteractualRED; importnamefaultsetup preserved."
+      "phase2Clarifications": "Closed review_attention history event for ALL dependent publishedreview relationships, separate unique eventId vs stableattentionId and immutable resolution links; no action/right expansion. ExistingCheckinHandlerdictionary content_version_required409 authorized afteractualRED; importnamefaultsetup preserved.; bounded V3 decisionGuidance per canonical state pinned: actual latest v1/v2 receipt revision, no fabricated legacy snapshot, stable clinical manifest excludes day/counter/finance/private notes; live full-head/day CAS for freshwrites and historical committed receipts. Source vectors/SQL pending."
     },
     {
       "role": "W7 care application composition review",
@@ -2009,7 +2009,7 @@
         "apps/portal/tests/rebuild-care-native-stack.mjs explicit phase only",
         "docs/portal-rebuild/research/W6_CARE_BROWSER.md"
       ],
-      "resources": "EXCLUSIVE R7 native+soleChrome granted09:44:01.093UTC; custody HELD. Initial4genuinegroups/pass, clientHTTP200; actualCLI SQLiteCANTOPEN14 inspection blocker under bounded supportedMF5 fix, no product verdict. ParentNOresourcecallsaftertransfer.",
+      "resources": "EXCLUSIVE R7+soleChrome HELD from09:44. First2mainattempts4groups pass theninspectionCANTOPEN14; no productverdict. SupportedlockedMF5 actualexistingDO twofixedSELECT browser-only inspection proved onreadonlygenuine2audience control:8physicaldb/6records/2encryptedactive, no newdb/tokenplaintext, own2closed. Thirdmain executing sameApp/source73ba, no parentresourcecalls.",
       "verification": "Exact returned T3 provider/model/options; live thread/worktree readback; supported descriptors/eightpins/bothchildtools required",
       "earlyCommits": [
         "41b3600514ca7fb6236e09324b4ecda2ef8d450a",
@@ -2031,7 +2031,12 @@
       "priorNodeCaseId": "90b338e9-b5a8-401a-83f1-503ac6224de3",
       "priorNodeCaseSha256": "24cf79534e90514ebc42b4ff9462138873375241c2ed4d56fa0509585802cf8d",
       "additionalOwnedCommit": "cd09a21e4caf0690cd79c91c6adf954e9e5ef264",
-      "additionalCommitIntegrated": false
+      "additionalCommitIntegrated": false,
+      "additionalOwnedCommits": [
+        "cd09a21e4caf0690cd79c91c6adf954e9e5ef264",
+        "e73d768",
+        "73ba16aefff81adbe36af8964a8859faed46a25f"
+      ]
     },
     {
       "role": "W7 care app recovery round2",
@@ -2083,7 +2088,7 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d6691f48",
       "branch": "t3/advisor-care-dependency-rebase",
       "baseCommit": "b8b52f5c",
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "apps/portal/src/features/advisor/types.ts/controller.ts/AdvisorWorkspace.tsx/newdependencyhelpers",
         "apps/portal/src/app/ports.ts only optionalcare/dependencyports/new2fixedactions",
@@ -2092,9 +2097,14 @@
       ],
       "earlyCommit": "3d06af0c78b59332a1d55f113e7fb23a18e7bd69",
       "integrated": false,
-      "resources": "SOURCE/pure/SSR only,385+121tests/types/UI PASS; NO browser/native/R7 grant; queuedafterW6",
+      "resources": "Terminal SOURCE_ONLY freeze;387+121source/SSR/types/UI/cleanbuild pass. No browser/native/R7 grant. Later implementation browser phase needs fresh task/explicit serial grant after W6.",
       "verification": "Exact returnedT3provider/options+liveworkspace/base; bothlivechildtools/eightpins verified",
-      "limits": "Actualuse/identity/reportedproduct reader only; unknownreport/instruction/legacybasis changesblockhonestlywithMissingDependencyReader; actualBrowser+independentreview+currentintegrationpending"
+      "limits": "Real M56 dependency read requiresplan_guard/edit; view-only403remains basisunavailable; safeCareAudit unchanged. Report/instruction/opaquelegacyreader unavailable blocksblind rebase. CurrentApp/integration/browser/independent/CI pending.",
+      "headCommit": "278714b708df2a88e5796fb2ef0ae82d31e76057",
+      "implementationCommits": [
+        "3d06af0c78b59332a1d55f113e7fb23a18e7bd69",
+        "5d796c22029224116d7d720c053bf6c528e44605"
+      ]
     }
   ]
 }
