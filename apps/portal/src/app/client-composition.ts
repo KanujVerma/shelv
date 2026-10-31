@@ -7,16 +7,14 @@ import { createClientPlanController } from './client-state.ts';
 import { createClientGuidancePort } from '../features/plan/guidancePort.ts';
 import { createHistoryController } from '../features/history/controller.ts';
 import { createHistoryPort } from '../features/history/port.ts';
-import type { PortalNavigator } from '../navigation/history.ts';
+import type { PortalNavigator,NavigationRestorationTicket } from '../navigation/history.ts';
+import type { PortalRoute } from '../navigation/routes.ts';
 import type { HistoryNavigation } from '../features/history/types.ts';
 import type { HistoryController } from '../features/history/types.ts';
 import type { PlanSessionBoundary } from '../features/plan/types.ts';
 import type { HistoryRestorationAnchor, HistoryRestorationResult, HistoryFilter } from '../features/history/restoration.ts';
-import { restoreNavigationContext } from '../navigation/history.ts';
-
-const historyPositionKey = 'app.history.positions.v1';
+export const deferClientHistoryRestoration=(route:PortalRoute)=>['history','history-new','history-event','history-version'].includes(route.name);
 const safeNavigationId = (value: unknown): value is string => typeof value === 'string' && /^[a-zA-Z0-9_:.-]{1,160}$/.test(value);
-type HistoryPosition = { path: string; scrollY: number; focusKey: string | null };
 /** App-owned UI lease. Feature results remain immutable; only the actual
  * after-commit onReady callback may queue this scope's viewport work. */
 export function createHistoryRestorationScope({controller,boundary,navigator,win,waitForDocument=false}: {
@@ -29,41 +27,37 @@ export function createHistoryRestorationScope({controller,boundary,navigator,win
   };
   const entryId = marker()?.entryId;
   let disposed = false;
-  type Owner = {frames:Set<number>;work:number;documentReady:boolean;documentAvailable:boolean;pending:{result:HistoryRestorationResult;work:number}|null};
+  type Owner = {ticket:NavigationRestorationTicket|null;work:number;documentReady:boolean;documentAvailable:boolean;pending:{result:HistoryRestorationResult;work:number}|null};
   let owner: Owner | null = null;
   const current = () => !disposed && !!owner && safeNavigationId(entryId) && boundary.isCurrent() && navigator.getSnapshot() === path && marker()?.entryId === entryId;
-  const positions = () => boundary.memory.get<Record<string,HistoryPosition>>(historyPositionKey) ?? {};
   function capturePosition() {
     if (!current() || !safeNavigationId(entryId)) return;
     owner!.work++;
-    const id = win.document.activeElement?.id;
-    boundary.memory.set(historyPositionKey,{...positions(),[entryId]:{path,scrollY:Math.max(0,win.scrollY),focusKey:safeNavigationId(id)?id:null}});
+    const state=controller.getSnapshot();
+    if(state.phase!=='ready'||state.timeline?.restoring||state.loadingMore||state.readError)return;
+    if(owner!.ticket)navigator.restoration.cancel(owner!.ticket);
+    navigator.restoration.capture();
   }
-  const saved = safeNavigationId(entryId) ? positions()[entryId] : undefined;
-  const initial = marker()?.restore;
-  const position: HistoryPosition | null = saved?.path === path ? saved : initial && typeof initial.scrollY === 'number' && Number.isFinite(initial.scrollY) && initial.scrollY >= 0 && (initial.focusKey === null || safeNavigationId(initial.focusKey)) ? {path,scrollY:initial.scrollY,focusKey:initial.focusKey} : null;
   function onReady(result:HistoryRestorationResult) {
     const captured=owner;
-    if(!captured||!current()||!controller.restoration?.isCurrent(result))return;
+    if(!captured?.ticket||!current()||!navigator.restoration.isCurrent(captured.ticket)||!controller.restoration?.isCurrent(result))return;
     const work=++captured.work;
     if(!captured.documentReady){captured.pending={result,work};return;}
-    const frame=win.requestAnimationFrame(()=>{
-      captured.frames.delete(frame);
-      if(owner!==captured||captured.work!==work||!current()||!controller.restoration?.isCurrent(result))return;
-      const exact=result.state==='restored'&&position&&captured.documentAvailable;
-      const focusKey=exact?(result.anchorId??position.focusKey):null;
-      const available=focusKey===null||!!win.document.getElementById(focusKey);
-      restoreNavigationContext(exact&&available?{scrollY:position!.scrollY,focusKey}:{scrollY:0,focusKey:null},win.document,win);
-    });
-    captured.frames.add(frame);
+    const saved=navigator.restoration.read(captured.ticket);
+    const available=(!result.anchorId||!!win.document.getElementById(result.anchorId))&&(!saved?.focusKey||!!win.document.getElementById(saved.focusKey));
+    const exact=result.state==='restored'&&!!saved&&captured.documentAvailable&&available;
+    navigator.restoration.complete(captured.ticket,exact?'saved':'fallback',()=>owner===captured&&captured.work===work&&current()&&(!exact||captured.documentAvailable)&&controller.restoration?.isCurrent(result)===true);
   }
   return {
     isCurrent:current,
+    begin(){if(current()){owner!.work++;owner!.pending=null;owner!.ticket=navigator.restoration.begin();}},
     attach() {
       if(disposed)return () => {};
-      const captured:Owner={frames:new Set(),work:0,documentReady:!waitForDocument,documentAvailable:true,pending:null};owner=captured;
+      const captured:Owner={ticket:null,work:0,documentReady:!waitForDocument,documentAvailable:true,pending:null};owner=captured;
+      captured.ticket=navigator.restoration?.begin()??null;
+      const stop=boundary.subscribeInvalidation(()=>{if(owner===captured){if(captured.ticket)navigator.restoration.cancel(captured.ticket);owner=null;}});
       return () => {
-        captured.frames.forEach(id=>win.cancelAnimationFrame?.(id));captured.frames.clear();
+        stop();
         if(owner===captured)owner=null;
       };
     },
@@ -88,6 +82,27 @@ export function createHistoryRestorationScope({controller,boundary,navigator,win
 }
 
 export type AppHistoryRestorationScope = ReturnType<typeof createHistoryRestorationScope>;
+/** Fresh C05 data owner; publishing data is separate from the view's committed
+ * onReady. Pending original commands and amendments remain feature-owned. */
+export function createHistoryUpdateReader(controller:HistoryController,scope:AppHistoryRestorationScope,onData:(result:HistoryRestorationResult)=>void) {
+  let disposed=false,job:Promise<void>|null=null,attempt:ReturnType<NonNullable<HistoryController['restoration']>['restore']>|null=null;
+  return {
+    read():Promise<void> {
+      if(disposed||!scope.isCurrent()||!controller.restoration)return Promise.resolve();
+      if(job)return job;
+      scope.begin();
+      const api=controller.restoration,owned=api.restore(null);attempt=owned;
+      const current=()=>!disposed&&attempt===owned&&scope.isCurrent();
+      const pending=owned.ready.then(result=>{
+        if(!current()||!api.isCurrent(result))return;
+        controller.startReport();
+        if(current()&&api.isCurrent(result))onData(result);
+      }).finally(()=>{if(job===pending)job=null;});
+      job=pending;return pending;
+    },
+    dispose(){disposed=true;attempt?.cancel();attempt=null;job=null;},
+  };
+}
 export function createHistoryNavigation(navigator: Pick<PortalNavigator, 'navigate'|'back'>, scope?: AppHistoryRestorationScope): HistoryNavigation {
   const current=()=>!scope||scope.isCurrent();
   const capture=()=>scope?.capturePosition();

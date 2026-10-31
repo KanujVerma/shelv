@@ -7,6 +7,7 @@ declare const restorationTicketBrand: unique symbol;
 export interface NavigationRestorationTicket {readonly [restorationTicketBrand]: true}
 export type NavigationRestorationMode = 'saved'|'fallback';
 export interface DeferredNavigationRestoration {
+  begin(): NavigationRestorationTicket|null;
   getSnapshot(): NavigationRestorationTicket|null;
   read(ticket: NavigationRestorationTicket): Readonly<NavigationRestore>|null;
   isCurrent(ticket: NavigationRestorationTicket): boolean;
@@ -99,7 +100,7 @@ export function createPortalNavigator(win: Window, {scopeKey,deferRestoration}: 
     const ownership=scrollOwners.get(win);
     if (ownership?.owner===owner) {win.history.scrollRestoration=ownership.previous;scrollOwners.delete(win);}
   }
-  function emit() {snapshot=currentPath();listeners.forEach(fn=>fn());}
+  function emit() {snapshot=currentPath();[...listeners].forEach(fn=>fn());}
   function restore(saved: Marker) {
     const version=++restorationVersion;pending=null;restoring=true;preserveOnLeave=false;
     const path=currentPath();
@@ -122,6 +123,7 @@ export function createPortalNavigator(win: Window, {scopeKey,deferRestoration}: 
   function navigate(route: PortalRoute, {replace=false}: {replace?: boolean}={}) {
     if(disposed)return;
     start();
+    if(!listening||scrollOwners.get(win)?.owner!==owner)return;
     const path=buildRoute(route);capture();
     const saved=current!;
     current=makeMarker(replace ? saved.predecessor : {entryId:saved.entryId,path:currentPath()});
@@ -135,6 +137,15 @@ export function createPortalNavigator(win: Window, {scopeKey,deferRestoration}: 
   }
   return {
     restoration: {
+      begin(){
+        if(!listening||disposed||scrollOwners.get(win)?.owner!==owner||!deferred())return null;
+        if(pending&&valid(pending))return pending.token;
+        const actual=marker(win.history.state,scopeKey);
+        if(!actual||current?.entryId!==actual.entryId)return null;
+        const version=++restorationVersion;restoring=true;preserveOnLeave=false;newTicket(actual,version);
+        const ticket=pending as Ticket|null;emit();
+        return ticket&&valid(ticket)?ticket.token:null;
+      },
       getSnapshot:()=>pending&&valid(pending)?pending.token:null,
       read(ticket){return pending?.token===ticket&&valid(pending)?pending.context:null;},
       isCurrent(ticket){return pending?.token===ticket&&valid(pending);},
@@ -145,14 +156,16 @@ export function createPortalNavigator(win: Window, {scopeKey,deferRestoration}: 
         const completion=++captured.completion;
         win.requestAnimationFrame(()=>{
           if(!valid(captured)||captured.completion!==completion)return;
-          if(!allowed(captured,guard)){if(valid(captured)&&captured.completion===completion)cancelTicket(ticket);return;}
+          // A replacement App source may already be waiting on this same entry.
+          // Retire this work, not the entry-owned ticket or its saved context.
+          if(!allowed(captured,guard))return;
           restoreNavigationContext(mode==='saved'?captured.context:{scrollY:0,focusKey:null},win.document,win,()=>captured.completion===completion&&allowed(captured,guard));
-          if(valid(captured)&&captured.completion===completion){pending=null;restoring=false;preserveOnLeave=false;}
+          if(captured.completion===completion&&allowed(captured,guard)){pending=null;restoring=false;preserveOnLeave=false;}
         });
         return true;
       },
       cancel:cancelTicket,
-      capture(){capture(true);},
+      capture(){if(listening&&!disposed&&scrollOwners.get(win)?.owner===owner&&currentPath()===snapshot&&marker(win.history.state,scopeKey)?.entryId===current?.entryId)capture(true);},
     } satisfies DeferredNavigationRestoration,
     navigate,
     /** Predict Back without starting navigation, mutating history or restoring focus. */
@@ -160,12 +173,16 @@ export function createPortalNavigator(win: Window, {scopeKey,deferRestoration}: 
     back() {
       if(disposed)return;
       start();
+      if(!listening||scrollOwners.get(win)?.owner!==owner)return;
       const destination=backTarget();
       if (destination.predecessor) {capture();win.history.back();return;}
       navigate(destination.route,{replace:true});
     },
     getSnapshot:()=>snapshot,
-    subscribe(listener: ()=>void) {start(true);listeners.add(listener);return()=>{listeners.delete(listener);if(!listeners.size)stop();};},
+    subscribe(listener: ()=>void) {
+      start(true);let active=true;const subscription=()=>{if(active)listener();};listeners.add(subscription);
+      return()=>{if(!active)return;active=false;listeners.delete(subscription);if(!listeners.size)stop();};
+    },
     dispose() {stop();disposed=true;contexts.clear();listeners.clear();},
   };
 }

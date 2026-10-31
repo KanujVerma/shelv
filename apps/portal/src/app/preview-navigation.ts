@@ -139,6 +139,7 @@ function createBrowserPlanNavigation(
     },
     back() {
       if (!live()) return;
+      if(outer.name==='history-version'&&entry.depth===0){navigator.back();return;}
       if (entry.depth > 0) {
         navigator.back();
       } else {

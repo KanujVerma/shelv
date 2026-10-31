@@ -26,7 +26,7 @@ import { AdvisorWorkspace } from "../features/advisor/AdvisorWorkspace.tsx";
 import { createAdvisorController } from "../features/advisor/controller.ts";
 import type { AdvisorController } from "../features/advisor/types.ts";
 import { createClientPorts, createAdvisorPorts } from "./ports.ts";
-import { createClientComposition } from './client-composition.ts';
+import { createClientComposition,deferClientHistoryRestoration } from './client-composition.ts';
 import { ClientHistoryContent } from './ClientHistory.tsx';
 export { ClientHistoryContent } from './ClientHistory.tsx';
 import { createClientPlanController } from "./client-state.ts";
@@ -258,8 +258,8 @@ function ConnectedApplication({
   win: Window;
 }) {
   const navigator = useMemo(
-    () => createPortalNavigator(win, { scopeKey: boundary.key }),
-    [win, boundary.key],
+    () => createPortalNavigator(win, { scopeKey: boundary.key, ...(runtime.cookie.audience==='client'?{deferRestoration:deferClientHistoryRestoration}:{}) }),
+    [win, boundary.key, runtime],
   );
   useEffect(() => () => navigator.dispose(), [navigator]);
   return (

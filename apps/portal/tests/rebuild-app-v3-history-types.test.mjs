@@ -19,6 +19,16 @@ function compile(runtime:ApplicationSession){
  declareUi(boundary,c);
  function declareUi(boundary:NonNullable<ReturnType<ApplicationSession['getSnapshot']>['boundary']>,c:ReturnType<typeof createClientComposition>){
   const win={} as Window;const navigator={} as import('${path.join(portal,'src/navigation/history.ts')}').PortalNavigator;
+  const ticket=navigator.restoration.begin()!;
+  navigator.restoration.complete(ticket,'saved',()=>boundary.isCurrent());
+  // @ts-expect-error ticket identity is opaque, not a caller-created DTO
+  navigator.restoration.read({});
+  // @ts-expect-error only actual canonical saved context or fallback can be selected
+  navigator.restoration.complete(ticket,{scrollY:999,focusKey:'forged'},()=>true);
+  const context=navigator.restoration.read(ticket)!;
+  // @ts-expect-error saved canonical context is immutable
+  context.scrollY=999;
+
   // @ts-expect-error no caller supplied source/current predicate
   createHistoryRestorationScope({controller:c.history,boundary,navigator,win,isCurrent:()=>true});
   // @ts-expect-error no saved cursor/head object can establish restoration authority

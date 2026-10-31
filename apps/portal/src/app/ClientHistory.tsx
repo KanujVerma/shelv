@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useRef, useState, useSyncExternalStore} from 'react';
+import {useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore} from 'react';
 import type {PortalRoute} from '../navigation/routes.ts';
 import {RouteLink, usePortalNavigation} from '../navigation/react.tsx';
 import type {PlanNavigationPort, PlanSessionBoundary} from '../features/plan/types.ts';
@@ -10,7 +10,9 @@ import {ClientPlan} from '../features/plan/ClientPlan.tsx';
 import {Button, StatusNotice} from '../ui/index.ts';
 import {PageHeader} from '../shell/PortalShell.tsx';
 import {ApplicationShell} from './Shell.tsx';
-import {createHistoryNavigation,createHistoryRestorationScope} from './client-composition.ts';
+import {createHistoryNavigation,createHistoryRestorationScope,createHistoryUpdateReader} from './client-composition.ts';
+import type {HistoryProps} from '../features/history/types.ts';
+import type {HistoryRestorationResult} from '../features/history/restoration.ts';
 import type {ClientComposition,AppHistoryRestorationScope} from './client-composition.ts';
 const noRestorationReady=()=>{};
 import {createBrowserHistoricalNavigation} from './preview-navigation.ts';
@@ -27,22 +29,39 @@ export function ClientHistoryContent({connection,boundary,route,win,onSignOut}:{
   const appScope=useMemo(()=>win?createHistoryRestorationScope({controller,boundary,navigator,win,waitForDocument:route.name==='history-version'}):null,[controller,boundary,navigator,win,entry,filter,route.name]);
   const currentScope=useRef(appScope);
   if(currentScope.current!==appScope){currentScope.current?.retire();currentScope.current=appScope;}
-  useEffect(()=>appScope?.attach(),[appScope]);
+  useLayoutEffect(()=>appScope?.attach(),[appScope]);
   const navigation=useMemo(()=>createHistoryNavigation(navigator,appScope??undefined),[navigator,appScope]);
   const version=route.name==='history-version'?Number(route.version):null;
   const restoration=useMemo(()=>({version,onReady:appScope?.onReady??noRestorationReady}),[version,appScope]);
   useEffect(()=>{
-    if(route.name==='history-new'&&controller.getSnapshot().version!==null)void controller.load(null);
-  },[controller,route.name]);
-  const scoped=useMemo<HistoryController>(()=>({...controller,load(selected){
+    if(!win&&route.name==='history-new'&&controller.getSnapshot().version!==null)void controller.load(null);
+  },[controller,route.name,win]);
+  const scoped=useMemo<HistoryController>(()=>({...controller,...controller.restoration?{restoration:{...controller.restoration,restore(selected){appScope?.begin();return controller.restoration!.restore(selected);}}}:{},load(selected){
     if(appScope&&!appScope.isCurrent())return Promise.resolve();
     if(selected===null && version!==null){appScope?.capturePosition();navigator.navigate({name:'history'});return Promise.resolve();}
     return controller.load(selected===undefined?version:selected);
   }}),[controller,version,navigator,appScope]);
   return <ApplicationShell audience="client" onSignOut={onSignOut} readOnly={state.view?.access!=='active'}>
     {route.name==='history-version'&&win&&state.phase!=='denied'&&state.phase!=='ended'?<HistoricalPlan key={route.version} connection={connection} boundary={boundary} version={Number(route.version)} win={win} appScope={appScope}/>:null}
-    {route.name==='history-event'?<HistoryEntry controller={controller} boundary={boundary} eventId={route.eventId} appScope={appScope}/>:<ClientHistory controller={scoped} screen={route.name==='history-new'?'update':'history'} navigation={navigation} filter={filter} onFilterChange={appScope?.setFilter} restoration={route.name==='history-new'?undefined:restoration}/>}
+    {route.name==='history-event'?<HistoryEntry controller={controller} boundary={boundary} eventId={route.eventId} appScope={appScope}/>:route.name==='history-new'&&appScope?<HistoryUpdate controller={controller} appScope={appScope} navigation={navigation}/>:<ClientHistory controller={scoped} screen={route.name==='history-new'?'update':'history'} navigation={navigation} filter={filter} onFilterChange={appScope?.setFilter} restoration={route.name==='history-new'?undefined:restoration}/>}
   </ApplicationShell>;
+}
+
+function HistoryUpdate({controller,appScope,navigation}:{controller:HistoryController;appScope:AppHistoryRestorationScope;navigation:HistoryProps['navigation']}) {
+  const state=useSyncExternalStore(controller.subscribe,controller.getSnapshot,controller.getSnapshot);
+  const [ready,setReady]=useState<{scope:AppHistoryRestorationScope;result:HistoryRestorationResult}|null>(null);
+  const [source,setSource]=useState<{scope:AppHistoryRestorationScope;reader:ReturnType<typeof createHistoryUpdateReader>}|null>(null);
+  const reader=source?.scope===appScope?source.reader:null;
+  useEffect(()=>{
+    const source=createHistoryUpdateReader(controller,appScope,result=>setReady({scope:appScope,result}));
+    setSource({scope:appScope,reader:source});void source.read();return()=>source.dispose();
+  },[controller,appScope]);
+  const current=ready?.scope===appScope&&controller.restoration?.isCurrent(ready.result)?ready.result:null;
+  const scoped=useMemo<HistoryController>(()=>({...controller,load:()=>reader?.read()??Promise.resolve()}),[controller,reader]);
+  useEffect(()=>{if(current)appScope.onReady(current);},[current,appScope]);
+  if(!controller.restoration)return <StatusNotice title="record restoration unavailable"/>;
+  if(!current){const loading=!reader||state.phase==='loading'||state.timeline?.restoring||state.phase==='idle';return <StatusNotice tone={loading?'loading':'error'} title={loading?'loading your record':'retry your current record'} action={loading?undefined:<Button onClick={()=>void reader.read()}>retry current record</Button>}/>;}
+  return <ClientHistory controller={scoped} screen="update" navigation={navigation}/>;
 }
 
 function HistoryEntry({controller,boundary,eventId,appScope}:{controller:HistoryController;boundary:PlanSessionBoundary;eventId:string;appScope:AppHistoryRestorationScope|null}) {
@@ -54,7 +73,7 @@ function HistoryEntry({controller,boundary,eventId,appScope}:{controller:History
   const renderedScope=scope.current;
   const permitted=()=>scope.current===renderedScope&&renderedScope.active&&boundary.isCurrent()&&(!appScope||appScope.isCurrent());
   useEffect(()=>{if(scope.current===renderedScope)renderedScope.active=true;return()=>{renderedScope.active=false;};},[renderedScope]);
-  useEffect(()=>{const attempt=controller.restoration?.restore(null);if(!attempt)void controller.load(null);return()=>attempt?.cancel();},[controller,eventId,appScope]);
+  useEffect(()=>{appScope?.begin();const attempt=controller.restoration?.restore(null);if(!attempt)void controller.load(null);return()=>attempt?.cancel();},[controller,eventId,appScope]);
   useEffect(()=>{const result=state.timeline?.result;if(result)appScope?.onReady(result);},[appScope,state.timeline?.result]);
   const entries=state.pages.flatMap(p=>p.entries).filter(e=>{const key=historyKey(e);return key===eventId||key.slice(key.indexOf(':')+1)===eventId;});
   const ready=state.phase==='ready';
