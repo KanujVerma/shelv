@@ -1,6 +1,6 @@
 # portal rebuild current status
 
-Owner: Kanuj. Updated 31 October 2026. Integration branch `kanuj/portal-rebuild-integration-20261030`; latest application implementation `18c78b7d` (Node report receipt `80b58a47`). Fresh fetch resolves main to `d39a7d4943209080df7c4cf97d85784f462758bf`. The unrelated dirty scanner checkout remains untouched. **The complete approved rebuild is in progress.**
+Owner: Kanuj. Updated 31 October 2026. Integration branch `kanuj/portal-rebuild-integration-20261030`; latest application recovery `5029825a` (composition18c78b7d; Node report receipt80b58a47). Fresh fetch resolves main to `d39a7d4943209080df7c4cf97d85784f462758bf`. The unrelated dirty scanner checkout remains untouched. **The complete approved rebuild is in progress.**
 
 ## scope and authority
 
@@ -16,7 +16,7 @@ Approved docs and exact Figma provenance, shared React/TypeScript/shadcn/Lucide 
 
 The first product-free publication slice has scoped independent PASS: actual draft/assignment/reviews/exact approval, separate verified synthetic first-service payment, deliberate immutable publication, entitlement/service/review clocks, queued notifications and client decision without Start. M54/M55 retain exact authority, payment, receipt, legacy preservation and post-lock-wait fences. Native browser main13/readonly4, H1/H2 and later C1/AR1/status/notice fixes have their bounded independent reports. Queued rows do not prove delivery. Relevant reports: [backend R3](research/W7_BACKEND_R3.md), [client R4](research/W7_CLIENT_R4.md), [advisor R4](research/W7_ADVISOR_R4.md), [app fixes R2](research/W7_APP_FIXES_R2.md), [native review](research/W7_NATIVE_BROWSER_REVIEW.md), [status R2](research/W7_STATUS_RECOVERY_R2.md). App A2 ordinary browser reachability remains unproven; no server bypass was claimed.
 
-Remote checkpoint `26e07fec` is pushed; current PR checks report all three jobs green (Verify & Build, Database & Integration, Portal build/local journeys). Later report/status-only commits are not yet that exact CI head. PR210 and stacked draft PR211 are T3-linked; neither is merged.
+Last verified CI checkpoint `26e07fec` is pushed; all three jobs are green at that head (Verify & Build, Database & Integration, Portal build/local journeys). Later report/status-only commits are not yet that exact CI head. PR210 and stacked draft PR211 are T3-linked; neither is merged.
 
 ## current care implementation and blockers
 
