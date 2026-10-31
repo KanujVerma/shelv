@@ -26,6 +26,8 @@ export interface PlanNavigationPort {
   route:PlanRoute;
   navigate(route:PlanRoute):void;
   back():void;
+  /** Exact scoped predecessor or semantic parent used by back; null means unknown. */
+  backDestination?():PlanRoute|null;
 }
 export interface ClientPlanProps {
   navigation?:PlanNavigationPort;

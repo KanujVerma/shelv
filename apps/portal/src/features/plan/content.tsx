@@ -52,7 +52,7 @@ export function DecisionDirections({decision:d}: {decision:PlanDecision}) {
     return <section className="plan-stack">{d.directions.map((t,i)=><p key={i}>{t}</p>)}{d.cautions.map((t,i)=><p className="plan-inline-caution" key={i}>{t}</p>)}<ScheduleContent schedule={d.schedule}/></section>;
 }
 export function ProductAdviceStatus({selected:s}: {selected:NonNullable<ReturnType<typeof productContext>>}) {
-    return <section className="plan-stack" data-product-advice>{s.restrictions.map(d=><div key={d.id}><h2>{d.kind==='pause' ? 'paused in your plan' : 'left out of your plan'}</h2><p>{d.reason}</p>{d.cautions.map((t,i)=><p key={i}>{t}</p>)}</div>)}<p className="plan-meta">{s.start ? `previously reported start: ${s.start.startedOn}. this record does not confirm current use.` : 'start not recorded. current use is not confirmed.'}</p></section>;
+    return <section className="plan-stack" data-product-advice>{s.restrictions.map(d=><div key={d.id}><h2>{d.kind==='pause' ? 'paused in your plan' : 'left out of your plan'}</h2><p>{d.reason}</p>{d.cautions.map((t,i)=><p key={i}>{t}</p>)}</div>)}<p className="plan-meta">{s.use.kind==='unavailable' ? 'actual use is unavailable in preview.' : s.use.start ? `previously reported start: ${s.use.start.startedOn}. this record does not confirm current use.` : 'start not recorded. current use is not confirmed.'}</p></section>;
 }
 export function ProductDirections({selected:s}: {selected:NonNullable<ReturnType<typeof productContext>>}) {
     const hasDirections=s.steps.some(step=>step.directions.length>0) || s.guidance.some(d=>d.directions.length>0) || s.guides.length>0;
