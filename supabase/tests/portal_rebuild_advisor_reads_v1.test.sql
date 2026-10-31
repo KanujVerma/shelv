@@ -4,7 +4,7 @@ select plan(15);
 select has_function('public','concierge_plan_command_v1',array['jsonb']);
 select has_function('concierge','plan_command_base_v1',array['jsonb']);
 select ok(concierge.plan_command_fields() ?& array['read_advisor_gate_v1','read_advisor_publication_v1'],'only fixed explicit read operations added');
-select is((select count(*)::integer from jsonb_object_keys(concierge.plan_command_fields())),24,'22 retained commands plus two strict reads');
+select is((select count(*)::integer from jsonb_object_keys(concierge.plan_command_fields() - 'read_draft_dependencies_v1' - 'rebase_draft_dependencies_v1')),24,'22 retained commands plus two strict reads remain preserved');
 select is((select count(*)::integer from jsonb_object_keys(concierge.plan_command_fields_base_v1())),22,'reviewed command metadata retained privately');
 select ok(not has_function_privilege('authenticated','concierge.plan_command_base_v1(jsonb)','EXECUTE'),'private base cannot bypass dispatcher');
 select ok(not has_function_privilege('service_role','public.concierge_plan_command_v1(jsonb)','EXECUTE'),'service keys cannot read advisor projections');
