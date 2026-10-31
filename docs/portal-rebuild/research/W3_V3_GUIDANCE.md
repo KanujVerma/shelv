@@ -385,6 +385,45 @@ Evidence root `.local-artifacts/portal-rebuild/w3-v3-guidance-g1g2-browser/`;366
 
 Terminal handoff is test candidate df193d0d, separate exact UI import a8555012, unchanged W3 production71 and this report receipt. Application still defaults Care2; built candidate had only test dirtiness and no gateway/activation. Root owns T1 and fresh R2. Later genuine Application/server/Auth/persistence/canonical/exact-head CI/full-goal acceptance remain pending. No acceptance self-issued, push/PR/merge/deploy/live client/message/source-right/money/order action.
 
+## Ordinal5: cookie-current import preflight stopped, 31 October 2026
+
+**No new browser result.** The explicitly authorized first dependency import conflicts. Per the coordinator's instruction to stop on conflicts without semantic reinvention, the cherry-pick was aborted and the exact clean starting state restored. No dependency import, W3 production/test change or browser execution is retained. Historical19/20 and117 results above remain historical; this round does not relabel them green or dispute the separately accepted source R2.
+
+Actual clean base **e093dd018d59bd1657297f0a7a186179e59d5fc3**, same `/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d`, branch `t3/plan-v3-guidance-hydration`, same original task/backing thread/parent. New message **`message:mcp:80ff67d2-459c-49fa-93e3-1b40a1f4cbcd:thread-send:w3-v3-t1-current-browser-verification-20261031`**, durable position1433. Actual run **`run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:5`**, started **21:47:40.866UTC**. Live catalog/configuration separately verify **codex/gpt-6.1-sol/xhigh/default**, with supporting option descriptors. Actual Node **v22.23.0**, explicit `/Users/kanuj/.nvm/versions/node/v22.23.0/bin` PATH. All9 project/default-subagent/role hashes, five original provenance files, Root4 exact96, W3 production71/client-state9c, shared UIa855 exactc26 and existing originals verify before the import and after abort. No nested work or setting changes.
+
+Read FULL source R1 **bec620f681a155f393779ddbd4b95dcdf29684d3**, FULL R2 **92689fef224f4a7e04f9249cf0c577ca16f541d3** and FULL W0 author report including ordinal2 at **c9cac46a088b5232dfcde5a88b84d9653ccb9a3e**. Copied/hash-bound the reports and all six exact author input paths into own ignored evidence, comparing R2 with the supplied read-only61ee file. No foreign execution/write. Source R2's T1/CK1/CK2 scoped PASS and CK2 ordinary browser/global-fetch reachability qualification remain accurately attributed. No source review or hypothetical CK2 browser exploit was invented here.
+
+### Actual import conflict and bounded request
+
+Attempted only **`git cherry-pick -x 9e449f51242065f903848a6fd9a15cc2501bfc1a`**. Git reports a content conflict in **apps/portal/site/auth/advisor-cookie-session.js**, createCookieRequest around the lease/invocation block. Actual three-stage blobs:
+
+| Stage | Git blob |
+| --- | --- |
+| author base |2dfb55ce3f19dc04d51a907a0b3febf8b4957110 |
+| own frozen source |62b507e4518c95e794f59d6c487dd500031c37a1 |
+| first author correction |00b0dd78354ce5d4a62ee5d31a3a20346e6c8f8a |
+
+The incoming block references **typedReview** and **payload**, with the typed-review lease/pre-abort guards. This frozen source instead invokes `_fetch` with **command** and lacks those surrounding declarations/metadata. The author patch changes a guard in an independently newer factory context; choosing incoming lines alone would leave undefined bindings, while reconstructing the context would author/import unallocated semantics. No manual resolution, inferred alias/ancestor import, whole-file replacement or other Root stack was attempted. **ac83b3d70332d458fe620d4c1c089deacd6a2657 and c9cac46a088b5232dfcde5a88b84d9653ccb9a3e were not attempted.** Partial client/test index changes from the failed first pick were also removed by abort.
+
+`git cherry-pick --abort` returned clean e093dd01, verified by Git status/full SHA. Needed from coordinator: a compatible approved dependency input/base for this frozen checkout, or explicit complete cookie target-file import instructions covering the missing context. W3 will not infer that authorization or write a cookie fix. No new API/field/right or App/history/private-contract import is requested. The subsequent frozen-old-cookie sensitivity/current20/117 and source74/122/strict/build reruns are deferred, not failed tests or silently skipped acceptance.
+
+### Custody, evidence and terminal state
+
+Grant **coordinator-w3-v3-cookie-current-synthetic-chrome-c9cac46a-20261031** was unused beyond first/final preview_status. Both return available:false/tabId:null. No browser, context, runtime, test process or listener was launched; Node --version completed normally. Owned-handle inventory is **Chrome[] / workerd[] / Node[] / esbuild[] / listeners[]**, explicitly a no-launch ownership record, not a scan or claim about other workers/platform CUA/Electron. **EXPLICIT SOLE RETURN21:50:54UTC**, before report/hash/Git handoff. No later browser/preview/process/resource call. No R9/R4-R8/native/DB/Docker/real Auth/credential/provider/source-fixture resource, broad kill, Root install or external action.
+
+Own ignored root: **`.local-artifacts/portal-rebuild/w3-v3-cookie-current-browser/`**. PREFLIGHT.json binds exact inputs, source/role/original hashes and author paths. Raw conflict status, three-stage index, combined diff and the complete conflicted file are preserved; the conflicted file is evidence only and never executed. Selected SHA256:
+
+| Artifact | SHA256 |
+| --- | --- |
+| PREFLIGHT.json |16d6ff4281a1b6bbc60101357badecc3422c2c8fdc7e5469122a68f25f1d4f10 |
+| IMPORT-CONFLICT.diff |4d9d5fe5391083a22dd6dffe8e7c1da7588a9e135965317d3bdb8d4e771d177c |
+| IMPORT-CONFLICT-index.txt |ca34330cd66b450b184809053a96f12823a8b5a870cd48a5b80b503e02045763 |
+| advisor-cookie-session.conflicted.js |2e6e2f262c15aee231a3d2909755a9d87d1f32eb6fc401d7fa276c815051cfe6 |
+
+Initial read-only lookups used an incorrect R1 report filename and provenance subdirectory before finding the actual paths. These are search faults, not source/test/product RED. No tests, sensitivity loader, compiler, build or browser was run on a partial import. Only this report changes after the verified abort; whitespace/scope/hash checks apply. The report-only terminal commit/checkpoint is the handoff, with no acceptance or new source/test delivery. A resolved prerequisite and a fresh explicit browser allocation are required before continuation. No wait loop, source reinvention, push/PR/merge/deploy/live client/source/permission/money/order action.
+
+Own18-file EVIDENCE.json SHA256 **44d5c9482ba2afb5787fd0170b762eb009e34e5f4081f6dfcc7153952df607bb** excludes itself, the report and terminal checkpoint. It retains the complete input copies, initial/final preview, runtime/thread identity, raw conflict and unused-grant return.
+
 Selected SHA256 receipts:
 
 - select-zoom-crossowner.mjs: f1d7826309bcfa208cfba3030f278e6cf6d5ea8b7d8fa25ed4d2c99ae75c4fef
