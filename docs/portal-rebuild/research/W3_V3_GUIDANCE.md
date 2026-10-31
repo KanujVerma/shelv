@@ -16,9 +16,9 @@ Read full95388-byte approved input in bounded1..1005 ranges, appendices A/B/C, D
 
 - [x] Import only the exact four W1 contracts separately, verify all blobs.
 - [x] Red/green actual controller V3 acceptance, five-action feature adapter with actual retained cookie/session/raw request, strict current-read seam.
-- [ ] Complete paginated manifest validation, bounded exact visible/opened detail cache, retirement and honest shared directions overlay.
-- [ ] Canonical per-choice provenance, snapshot-bound decision2, explicit current review, exact uncertain/status recovery and old operation-token fences.
-- [ ] Source/SSR/controller/port/extreme/compile checks, original regression preservation, source-only installed-Chrome helper preparation, strict builds and terminal report.
+- [x] Complete paginated manifest validation, bounded exact visible/opened detail cache, retirement and honest shared directions overlay.
+- [x] Canonical per-choice provenance, snapshot-bound decision2, explicit current review, exact uncertain/status recovery and old operation-token fences.
+- [x] Source/SSR/controller/port/extreme/compile checks, original regression preservation, source-only installed-Chrome helper preparation, strict builds and terminal report.
 
 Exports: `createClientGuidancePort({request:createClientReviewRequest(runtime),session:capturedBoundary,mode:'client'})`; `ClientGuidancePort`; `ClientGuidanceCommand`; `GuidanceDecisionCommand`; optional `ClientPlanPorts.review`. The exact runtime allowlist is read_client_plan_v3, read_client_instruction_manifest_v1, read_client_instruction_v1, record_decision_v2, request_status_v1. Other valid client Review actions deny before egress. The adapter uses canonical parsing/positive response decoding. It accepts no owner, URL, RPC, headers or credentials. The actual coordinator raw factory owns cookie/CSRF/lease/session fencing.
 
@@ -74,3 +74,56 @@ Root app/full tests/types/Expo depend on missing Root node_modules in this check
 Final source follow-through found and corrected one additional V3-only recovery edge: read-only -> exact original active object sets a required fresh-review gate, but leaving before review could lose that local gate on remount. The new actual-cookie/controller/intent regression was6/7 with the intended write-count1 versus0 failure. Retirement now preserves actual pending intent or restriction in the same session ledger, without a new UUID/server mutation or a preview write. All50 final new source tests pass after this fix, including real legacy Usage/current-unknown-Start preservation. This is an author correction requiring fresh independent review.
 
 The actual controller's final downgrade probe was5/6: after confirmed V3, a later otherwise canonical v2 `accept` could select the old reader on refresh. The bounded owned client-state seam now keeps confirmed V3 sticky and rejects a downgrade, while preserving original fetched-object identity and old V1/V2-only behavior. Final new source51/51 passes; actual controller and all retained source checks are rerun below. No shared App/default/transport/Root change accompanies this correction.
+
+## Terminal source handoff,31 October2026
+
+GOAL: deliver the bounded shared V3 renderer/hydration/decision feature source against the exact pinned contracts. This source phase is terminal; browser/native/genuine/independent acceptance is still required.
+
+DONE: source implementation and51 new tests;122 retained source/SSR/protocol/RootCare tests; strict frontend/session plus extended consumer/types/helper compilation; source-only installed-Chrome helper; foundation/application/retained packaging and UI guard. Actual commands and scope are below. No server/default activation.
+
+IN PROGRESS: no dirty implementation is being handed off. The remaining UI/interaction/native design comparison phase is unrun and requires a fresh coordinator grant. No browser or native resource was acquired by W3; no global process/resource-release claim is made.
+
+AT RISK: none of the task implementation is uncommitted. Ignored source-only logs/candidates are retained. Root dependencies are absent; no Root install or real resource action occurred.
+
+DECISIONS / STANDING INSTRUCTIONS: exact Sol/xhigh/default and Node22.23.0; no nested agents; only owned plan paths/new guidance tests/report plus the narrow client-state seam; exact four Root target blobs only. Care13 facts remain independent. Snapshot is consistency, not permission. W1 owns RG1-RG3/backend forward fixes; coordinator owns App/routes/default/server composition and canonical status/CONTEXT_SYNC. No push/PR/merge/deploy/live business action.
+
+NEXT STEP: coordinator may resume this same implementation thread with a fresh follow-up task and explicit sole synthetic Chrome grant when the queued lane is available, preserving the full brief/reviews and these exact source commits. Fresh independent Sol/xhigh review and genuine new-server/Auth/persistence integration follow separately.
+
+OPEN QUESTIONS / DEPENDENCIES: actual publisher display requires the canonical public review-summary field/projection described above. No business policy is reopened. Required native context/screenshots, actual DOM/focus/Back/reflow/visual checks, independent acceptance, new backend/gateway/canonical/genuine lifecycle, exact-head CI and full-goal gates remain unrun.
+
+Actual T3 task ID, read once from the coordinator's task registry (no write): `node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1`. Thread/run/workspace/base/branch are the live-verified exact values in the identity section. Both live model tools were verified initially and again after source work; nine project/role pins remain exact. No runtime option or provider changed.
+
+Separate commits for coordinator import/review:
+
+- Target import only:028a5cd2; full source96db032faf282d61f6a890eb38923dfd48893e39 and four exact blobs above.
+- Early feature/controller seam:068eaecb.
+- Renderer/hydration/provenance implementation:0ba9365ea6b6cbdf4a7e5ad6b833e62cf7b71543.
+- Review gate retention on remount:82ea40cb.
+- Sticky confirmed-V3 reader:caeaf76bc85f4e5ebbfdf1007f5f698078203e88.
+- This final report-only receipt suffix changes no tested runtime/test bytes; its exact SHA is returned in the terminal answer.
+
+Final clean application candidate is at **caeaf76bc85f4e5ebbfdf1007f5f698078203e88**, sourceDirty:false, gatewayIncluded:false,2217 inputs. Provenance SHA256 **fc9e1fab21fa8ac7a588f4c8ebed843bd8b7f8c5db85137bd91598a1c93bad1c**. JS **944e6db680bd932199511a9b6a4264d208412f237183be76f0171c3a4419e3c6**; CSS **e69bed1810171c81ff17a9382f65e640e629fd5000a10d73bf9168ad51bc412e**. The earlier0ba candidate is preserved separately and not relabeled current. Retained package source build at0ba passed139 assets with ZIP8343da88945a6a4ac4ece5d10529fea8c4b3ec181f0608650bee0641a378c0af and Vault8e55c77529350971cd95902292d4be0efc07d6b796ac85b0d8c616153019d593; its source is untouched by the two later TS-only recovery fixes.
+
+All commands from repo root use:
+
+```sh
+export PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH
+node --version
+node --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-plan-guidance-*.test.mjs
+node --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-{app-care-composition,app-care-render,app-ports,app-session,app-state,app-render,app-callback,app-start,app-preview-context,app-continuation,care-ports,review-request,plan-model,care-plan-model,use-notes-model}.test.mjs tests/portal-care-{contract,handler}.test.ts
+npm --prefix apps/portal run typecheck:rebuild
+npm --prefix apps/portal run typecheck:session
+npm --prefix apps/portal run build:application
+npm --prefix apps/portal run build:rebuild
+npm --prefix apps/portal run check:ui
+```
+
+Final results respectively nodev22.23.0,51/51,122/122,exit0,exit0,exit0,exit0,exit0. Source/SSR tests are serialized; builds/types run against the same clean source. Extended consumer test uses the actual portal TS6 compiler with `--ignoreConfig --noEmit --strict --noUncheckedIndexedAccess --verbatimModuleSyntax --skipLibCheck false --allowImportingTsExtensions --target es2022 --module esnext --moduleResolution bundler --lib ES2022,DOM,DOM.Iterable --jsx react-jsx --types react,react-dom --typeRoots apps/portal/node_modules/@types`, exact inputs `rebuild-plan-guidance-types.ts`, `rebuild-plan-guidance-browser-entry.tsx` and actual `src/ui/assets.d.ts`:exit0. Browser preparation calls only prepareGuidanceBrowserSource():exit0/10 outputs, no browser launch.
+
+Final source manifest binds all33 changed paths. All8 original58-test/helper files remain byte-identical to284c04e; all4 Root blobs still match96db032f;5 imported originals and18 retained frame/stateboard context/PNG hashes match. No package/lock/config/CI/style/shared UI/app-other/SQL/backend/status/TASKS/CONTEXT_SYNC/source asset changed. Root source retains57 canonical migration files. No native fixture/source closure was inspected or adopted.
+
+Root `npm test`, app/test tsc and Expo web/iOS exports were **not run**: Root node_modules is actually absent and no Root install is authorized. Full portal/session runtime suites are **not run** because they include the prohibited browser/runtime lanes. Backend/reset/pgTAP/Auth/provider/Storage/genuine HTTP/permissions, actual CSS layout/focus/accessibility/human/native Figma and exact-head CI are **not run**. These are skipped acceptance gates, not parent failures or passing coverage. New source tests do not close W1 backend findings or full-goal/release acceptance.
+
+The final ignored evidence manifest records hashes for raw RED/GREEN/setup logs, scope/old tests/native catalogs, live runtime/thread/configuration, strict/build receipts and clean candidates. It excludes itself and this report. All logs remain local and synthetic; source-only means no real identity, credential, permission, source, email, money or order action.
+
+Final ignored evidence inventory: 70 files, SHA256 **f6a6edd7007b6aa23764e2776bc00fc504be57a3160a185687eb08aeef304806**. Final report/scope/hash/whitespace audit passes before the report-only commit. No runtime/test bytes changed after the51/122 checks.
