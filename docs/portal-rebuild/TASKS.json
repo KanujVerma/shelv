@@ -2,7 +2,7 @@
   "updatedOn": "2026-10-30",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
-  "allocatedWorkers": 0,
+  "allocatedWorkers": 3,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -1068,6 +1068,184 @@
       "baseCommit": "284c04e94060543106e3a686d4aa7cd61c7bebfb",
       "resources": "Terminal; all Chrome/test handles explicitly released; no DB/Auth custody",
       "verification": "Exact T3 returned settings and live thread/worktree readback"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-genuine-browser-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-genuine-browser-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w6-genuine-browser-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-45beee69",
+      "branch": "t3/native-browser-acceptance",
+      "status": "running",
+      "role": "W6 genuine connected acceptance",
+      "baseCommit": "cdc00bd9b5a0a02e897d67885c368bcd3126fc3c",
+      "reportPath": "docs/portal-rebuild/research/W6_GENUINE_BROWSER.md",
+      "writeSet": [
+        "apps/portal/scripts/rebuild-native-*",
+        "apps/portal/tests/rebuild-native-*",
+        "docs/portal-rebuild/research/W6_GENUINE_BROWSER.md"
+      ],
+      "resources": "Temporary exclusive populated parentR4 custody, bounded H1 readonly Chrome replay and H2 cleanup; no reset; 13 main genuine groups passed",
+      "verification": "Exact returned settings plus live thread/worktree readback"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-approval-recovery-fix-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-approval-recovery-fix-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-approval-recovery-fix-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-77cf6a02",
+      "branch": "t3/fix-approval-authority-recovery",
+      "status": "running",
+      "role": "W2 approval recovery fix",
+      "baseCommit": "97aa801f58471f8e657d00de1775da7f20f6ee29",
+      "reportPath": "docs/portal-rebuild/research/W2_APPROVAL_RECOVERY_FIX.md",
+      "writeSet": [
+        "apps/portal/src/features/advisor/controller.ts",
+        "apps/portal/src/features/advisor/types.ts if needed",
+        "apps/portal/tests/rebuild-advisor-approval-authority.test.mjs",
+        "apps/portal/tests/rebuild-advisor-context-notice.test.mjs",
+        "docs/portal-rebuild/research/W2_APPROVAL_RECOVERY_FIX.md"
+      ],
+      "resources": "Source/pure/SSR only until explicit Chrome grant; no native custody",
+      "verification": "Exact returned settings plus live thread/worktree readback"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-remaining-api-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-remaining-api-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-remaining-api-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-e39cb4b1",
+      "branch": "t3/w1-remaining-api-reconciliation",
+      "status": "running",
+      "role": "W1 remaining API reconciliation",
+      "baseCommit": "97aa801f58471f8e657d00de1775da7f20f6ee29",
+      "reportPath": "docs/portal-rebuild/research/W1_REMAINING_API.md",
+      "writeSet": [
+        "docs/portal-rebuild/research/W1_REMAINING_API.md"
+      ],
+      "resources": "Read-only source/docs; no SQL/migration allocation, browser or Auth",
+      "verification": "Exact returned settings plus live thread/worktree readback"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-coupled-source-review-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-coupled-source-review-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-coupled-source-review-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-06cff321",
+      "branch": "t3/review-advisor-native-harness",
+      "status": "completed",
+      "role": "W7 coupled source review",
+      "baseCommit": "13a1e0b7fb6a2f4226ee7963b69b4ffb26b8d13f",
+      "reportPath": "docs/portal-rebuild/research/W7_COUPLED_SOURCE_REVIEW.md",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_COUPLED_SOURCE_REVIEW.md"
+      ],
+      "resources": "Terminal source-only; C1/H1/H2 findings retained",
+      "verification": "Exact returned settings plus live thread/worktree readback"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-payment-context-fix-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-payment-context-fix-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-payment-context-fix-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-69ad392d",
+      "branch": "t3/advisor-payment-context-race",
+      "status": "completed",
+      "role": "W2 payment-context fix",
+      "baseCommit": "6c9d081b201bd0b73f87cc1b83ef8a340c8c80a9",
+      "reportPath": "docs/portal-rebuild/research/W2_PAYMENT_CONTEXT_FIX.md",
+      "writeSet": [
+        "apps/portal/src/features/advisor/AdvisorWorkspace.tsx PaymentVerification",
+        "apps/portal/tests/rebuild-advisor-payment-context.test.mjs",
+        "docs/portal-rebuild/research/W2_PAYMENT_CONTEXT_FIX.md"
+      ],
+      "resources": "Terminal;329source/63browser author pass; Chrome released",
+      "verification": "Exact returned settings plus live thread/worktree readback"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-app-integration-fix-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-app-integration-fix-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-app-integration-fix-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-341bf654",
+      "branch": "t3/advisor-read-capability-fix",
+      "status": "completed",
+      "role": "W2 assigned-app integration fix",
+      "baseCommit": "de308ebf7bf699710613f7a01034a0f1281d129e",
+      "reportPath": "docs/portal-rebuild/research/W2_APP_INTEGRATION_FIX.md",
+      "writeSet": [
+        "apps/portal/src/features/advisor/controller.ts",
+        "apps/portal/tests/rebuild-advisor-app-integration.test.mjs",
+        "docs/portal-rebuild/research/W2_APP_INTEGRATION_FIX.md"
+      ],
+      "resources": "Terminal;251pure/35browser, Chrome released",
+      "verification": "Exact returned settings plus live thread/worktree readback"
     }
   ]
 }
