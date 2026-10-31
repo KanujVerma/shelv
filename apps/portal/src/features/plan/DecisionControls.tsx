@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import type { PlanDecision } from '../../../../../src/contracts/PortalRebuild.ts';
 import { Button, StatusNotice } from '../../ui/index.ts';
+import {fetchedBasis,isReviewable,sameFetchedRevision,useReviewScope} from './reviewBasis.tsx';
+import type {ReviewBasis} from './reviewBasis.tsx';
 import { isPurchaseDecision } from './model.ts';
 import type { ClientPlanProps, DecisionCommand } from './types.ts';
 
 type Phase = 'idle' | 'saving' | 'refreshing' | 'uncertain' | 'conflict' | 'denied' | 'error' | 'saved';
 interface Intent {
+    reviewBasis?:ReviewBasis|null;
     command: DecisionCommand | null;
     attemptedChoice: DecisionCommand['choice'] | null;
     basisVersion: number;
@@ -30,22 +33,47 @@ function requestId() {
 export function PendingDecisionReviews({props,selectedDecisionId,onReview,inPlan}: {
     props:ClientPlanProps;selectedDecisionId:string|null;onReview:()=>void;inPlan:boolean;
 }) {
-    const [,rerender]=useState(0);
-    const pending=Object.entries(readIntents(props)).filter(([id,intent])=>intent.phase==='conflict' && id!==selectedDecisionId);
-    return <>{pending.map(([id,intent])=>{
-        const removed=!props.view.plan?.content.decisions.some(d=>d.id===id);
-        return <StatusNotice key={id} tone="warning" title="plan changed" action={<Button variant="secondary" onClick={()=>{
-            if(!inPlan){onReview();return;}
-            remember(props,id,{...intent,phase:'idle',command:null});rerender(n=>n+1);
-        }}>{inPlan ? 'i’ve reviewed this plan' : 'review latest plan'}</Button>}>
-            <p>{intent.decisionTitle} · attempted choice: {intent.attemptedChoice}</p>
-            <p>{removed ? 'this decision is no longer in the latest plan. your earlier choice was not saved.' : 'your earlier choice was not saved. review this plan before choosing again.'}</p>
-        </StatusNotice>;
-    })}</>;
+    return <>{Object.entries(readIntents(props)).filter(([id,intent])=>intent.phase==='conflict' && id!==selectedDecisionId).map(([id,intent])=>
+        <PendingReview key={`${props.mode}:${id}`} props={props} id={id} intent={intent} onReview={onReview} inPlan={inPlan}/>)}</>;
+}
+function PendingReview({props,id,intent,onReview,inPlan}:{props:ClientPlanProps;id:string;intent:Intent;onReview:()=>void;inPlan:boolean}) {
+    const [state,setState]=useState(intent),[loading,setLoading]=useState(false),[failed,setFailed]=useState(false);
+    const scope=useReviewScope(),alive=useRef(true),busy=useRef(false),context=useRef({view:props.view,mode:props.mode,epoch:0});
+    if(context.current.view!==props.view || context.current.mode!==props.mode)context.current={view:props.view,mode:props.mode,epoch:context.current.epoch+1};
+    const epoch=context.current.epoch,current=()=>alive.current&&props.session.isCurrent()&&context.current.epoch===epoch;
+    useEffect(()=>{alive.current=true;return()=>{alive.current=false;};},[]);
+    useEffect(()=>{setLoading(false);},[props.view,props.mode]);
+    const port=decisionPort(props),reviewable=isReviewable(props,scope,state.reviewBasis);
+    const removed=!props.view.plan?.content.decisions.some(d=>d.id===id);
+    async function refresh(acknowledge:boolean) {
+        if(!port||busy.current||!current())return;
+        const basis=state.reviewBasis,canAcknowledge=acknowledge&&isReviewable(props,scope,basis);
+        busy.current=true;setLoading(true);setFailed(false);
+        try {
+            const authoritative=await port.read.execute({schemaVersion:1,action:'read_client_plan_v1',version:null});
+            if(!current())return;
+            const next:Intent={...state,command:null,phase:canAcknowledge&&basis&&sameFetchedRevision(basis,authoritative)?'idle':'conflict',reviewBasis:fetchedBasis(props,scope,authoritative)};
+            remember(props,id,next);setState(next);props.onViewChange?.(authoritative);
+        } catch {if(current())setFailed(true);}
+        finally {busy.current=false;if(current())setLoading(false);}
+    }
+    if(state.phase!=='conflict')return null;
+    return <StatusNotice tone="warning" title="plan changed" action={!inPlan ? <Button variant="secondary" onClick={onReview}>review latest plan</Button> : <div className="plan-stack">
+        <Button variant="secondary" busy={loading} disabled={!port||loading} onClick={()=>void refresh(reviewable)}>{reviewable?'i’ve reviewed this plan':'retry latest plan'}</Button>
+        {!reviewable ? <Button variant="secondary" disabled>i’ve reviewed this plan</Button> : null}
+    </div>}>
+        <p>{state.decisionTitle} · attempted choice: {state.attemptedChoice}</p>
+        <p>{removed ? `this decision is no longer in ${reviewable?'the latest plan':'the displayed plan'}. your earlier choice was not saved.` : 'your earlier choice was not saved. review the latest plan before choosing again.'}</p>
+        {failed ? <p>latest plan unavailable</p> : null}
+    </StatusNotice>;
+}
+function decisionPort(props:ClientPlanProps) {
+    return !props.onViewChange || props.view.access!=='active' ? undefined : props.mode==='client' ? props.ports : props.mode==='public-demo'&&props.demoPorts?.mode==='public-demo' ? props.demoPorts : undefined;
 }
 
 export function DecisionControls(props: ClientPlanProps & {decision:PlanDecision}) {
-    const {decision,view,mode,session,ports,demoPorts,onViewChange,onSelfPurchase}=props;
+    const {decision,view,mode,session,onViewChange,onSelfPurchase}=props;
+    const scope=useReviewScope();
     const [intent,setIntent]=useState<Intent>(()=>{
         const saved=readIntents(props)[decision.id];
         return saved ? {...saved,phase:saved.phase==='saving'||saved.phase==='refreshing' ? 'uncertain' : saved.phase} : {command:null,attemptedChoice:null,basisVersion:view.plan!.version,decisionTitle:decision.guidance.title,phase:'idle'};
@@ -68,7 +96,7 @@ export function DecisionControls(props: ClientPlanProps & {decision:PlanDecision
         // Only enclosing context replacement supersedes the in-flight operation.
         // Local phase transitions must not invalidate their own command.
     },[view]);
-    const port=!onViewChange ? undefined : view.access!=='active' ? undefined : mode==='client' ? ports : mode==='public-demo' && demoPorts?.mode==='public-demo' ? demoPorts : undefined;
+    const port=decisionPort(props);
     const update=(next:Intent)=>{if(current()){remember(props,decision.id,next);setIntent(next);}};
     const read=()=>port!.read.execute({schemaVersion:1,action:'read_client_plan_v1',version:null});
     async function submit(choice:DecisionCommand['choice'],retry=false) {
@@ -94,8 +122,8 @@ export function DecisionControls(props: ClientPlanProps & {decision:PlanDecision
             if(!current())return;
             const status=(error as {status?:number})?.status;
             if(!acknowledged && status===409){
-                update({...pending,command:null,phase:'conflict'});
-                try {const authoritative=await read();if(current())onViewChange?.(authoritative);}catch{/* Deliberate review remains required after read failure. */}
+                update({...pending,command:null,phase:'conflict',reviewBasis:null});
+                try {const authoritative=await read();if(current()){update({...pending,command:null,phase:'conflict',reviewBasis:fetchedBasis(props,scope,authoritative)});onViewChange?.(authoritative);}}catch{/* Deliberate review remains required after read failure. */}
             } else if(!acknowledged && [400,403,404,413,415,429].includes(status??0)){
                 update({...pending,command:null,phase:status===403||status===404 ? 'denied' : 'error'});
             } else update({...pending,phase:'uncertain'});
@@ -103,13 +131,14 @@ export function DecisionControls(props: ClientPlanProps & {decision:PlanDecision
     }
     async function reviewLatest() {
         if(!port || busy.current || !current())return;
+        const basis=intent.reviewBasis,canAcknowledge=isReviewable(props,scope,basis);
         busy.current=true;
         try {
             const authoritative=await read();
             if(!current())return;
             // A second changed version still needs to be seen and reviewed.
-            const same=authoritative.plan?.version===view.plan!.version;
-            update({...intent,command:null,basisVersion:authoritative.plan?.version??intent.basisVersion,phase:same ? 'idle' : 'conflict'});
+            const same=canAcknowledge&&basis&&sameFetchedRevision(basis,authoritative);
+            update({...intent,command:null,reviewBasis:fetchedBasis(props,scope,authoritative),phase:same ? 'idle' : 'conflict'});
             onViewChange?.(authoritative);
         } catch {update({...intent,phase:intent.phase==='conflict' ? 'conflict' : 'error'});}
         finally {busy.current=false;}

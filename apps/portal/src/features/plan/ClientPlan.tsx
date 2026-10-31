@@ -9,6 +9,7 @@ import type { ClientPlanProps,PlanNavigationPort } from './types.ts';
 import { DecisionControls, PendingDecisionReviews } from './DecisionControls.tsx';
 import { decisionNames, isPurchaseDecision, productContext, routineFor } from './model.ts';
 import { ProductPhoto, GuideContent, Sources, Facts, ScheduleContent, DecisionReasons, DecisionComparisons, DecisionDirections, ProductAdviceStatus, ProductDirections } from './content.tsx';
+import {DecisionReviewBoundary} from './reviewBasis.tsx';
 import './plan.css';
 function usePlanNavigation(port?:PlanNavigationPort) {
     const shared=usePortalNavigation();
@@ -19,7 +20,7 @@ function PlanBack({navigation,children}:{navigation?:PlanNavigationPort;children
 }
 /** One renderer for entitled client data, previews, historical reads and Maya.
  * Mount inside the shared shell/navigation/overlay providers. No auth or fetch. */
-export function ClientPlan(props: ClientPlanProps) { return <SessionPlan key={props.session.key} {...props}/>; }
+export function ClientPlan(props: ClientPlanProps) { return <DecisionReviewBoundary key={props.session.key} props={props}><SessionPlan {...props}/></DecisionReviewBoundary>; }
 function SessionPlan(props: ClientPlanProps) {
     const { session, view, mode } = props, { route, navigator } = usePlanNavigation(props.navigation);
     const productOpeners=useRef(new Map<string,RefObject<HTMLButtonElement|null>>());
