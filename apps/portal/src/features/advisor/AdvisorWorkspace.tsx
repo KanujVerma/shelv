@@ -977,20 +977,12 @@ function PublicationChecks({
     </>
   );
 }
-function PaymentVerification({
-  controller: c,
-  state: s,
-  onBack,
-  onConfirmed,
-}: {
-  controller: AdvisorController;
-  state: AdvisorState;
-  onBack: () => void;
-  onConfirmed: () => void;
-}) {
-  const [gross, setGross] = useState(""),
-    [checked, setChecked] = useState(false),
-    context = s.context;
+function paymentVerificationContext(
+  c: AdvisorController,
+  s: AdvisorState,
+  selectedId: string,
+) {
+  const context = s.context;
   const claims =
     context?.payments.claims.filter(
       (claim) =>
@@ -1004,13 +996,98 @@ function PaymentVerification({
             q.serviceCents > 0,
         ),
     ) ?? [];
-  const v2Payments =
-    context && "schemaVersion" in context.payments ? context.payments : null;
-  const [claimId, setClaimId] = useState(claims[0]?.id ?? ""),
-    claim = claims.find((c) => c.id === claimId),
+  const claim = claims.find((c) => c.id === selectedId) ?? claims[0],
     quote = context?.payments.quotes.find(
       (q) => q.id === claim?.quoteId && q.version === claim.quoteVersion,
     );
+  const v2Payments =
+    context && "schemaVersion" in context.payments ? context.payments : null;
+  const v2Quote = v2Payments?.quotes.find((q) => q.id === quote?.id),
+    optionId = v2Payments?.claims.find(
+      (v) => v.id === claim?.id,
+    )?.paymentOptionId;
+  // Receipt intent belongs to this financial meaning, not the aggregate CAS
+  // revision. A harmless ledger refresh preserves work; changed evidence does not.
+  const basis = JSON.stringify({
+    actorId: c.permissions.actorId,
+    target: s.view?.target,
+    draftState: s.view?.draft.state,
+    clientId: context?.clientId,
+    publication: context?.publication,
+    service: context?.payments.service,
+    claim,
+    quote: quote && {
+      ...quote,
+      contractVersion: v2Quote?.contractVersion ?? 1,
+      paymentOptions:
+        v2Quote?.paymentOptions
+          .filter((o) => o.id === optionId)
+          .map(({ id, recipientVersion, recipient }) => ({
+            id,
+            recipientVersion,
+            recipient,
+          })) ?? [],
+    },
+    address: context?.payments.shippingAddresses.find(
+      (a) => a.version === quote?.shippingAddressVersion,
+    ),
+    view: c.permissions.view,
+    confirmPayments: c.permissions.confirmPayments,
+    ended: s.ended,
+    busy: s.busy,
+    pending: s.pending?.requestId,
+    needsComparison: s.needsComparison,
+    receipt: s.receipt?.publicationReceiptId,
+    dirty: c.dirty(),
+  });
+  const canVerify =
+    !!claim &&
+    !!quote &&
+    !!s.view?.target &&
+    context?.clientId === s.view.target.clientId &&
+    context.clientId === s.view.draft.clientId &&
+    context.publication === "first" &&
+    s.view.draft.state === "working" &&
+    c.permissions.view &&
+    c.permissions.confirmPayments &&
+    c.hasPayments &&
+    !s.ended &&
+    !s.busy &&
+    !s.pending &&
+    !s.needsComparison &&
+    !s.receipt &&
+    !c.dirty();
+  return { context, claims, claim, quote, basis, canVerify };
+}
+function PaymentVerification({
+  controller: c,
+  state: s,
+  onBack,
+  onConfirmed,
+}: {
+  controller: AdvisorController;
+  state: AdvisorState;
+  onBack: () => void;
+  onConfirmed: () => void;
+}) {
+  const [claimId, setClaimId] = useState("");
+  const { context, claims, claim, quote, basis, canVerify } =
+    paymentVerificationContext(c, s, claimId);
+  const selectedId = claim?.id ?? "";
+  if (claimId !== selectedId) setClaimId(selectedId);
+  const [intent, setIntent] = useState({
+    controller: c,
+    basis,
+    gross: "",
+    checked: false,
+  });
+  // Reconcile during render so stale values cannot reach a committed form or
+  // event handler for a replacement claim, even before passive effects run.
+  if (intent.controller !== c || intent.basis !== basis)
+    setIntent({ controller: c, basis, gross: "", checked: false });
+  const { gross, checked } = intent;
+  const v2Payments =
+    context && "schemaVersion" in context.payments ? context.payments : null;
   return (
     <>
       <PageHeader title="verify first service payment" />
@@ -1023,7 +1100,7 @@ function PaymentVerification({
           {claims.length > 1 ? (
             <Field label="payment claim">
               <Select
-                value={claimId}
+                value={selectedId}
                 options={claims.map((c) => ({ value: c.id, label: c.id }))}
                 onValueChange={setClaimId}
               />
@@ -1082,7 +1159,9 @@ function PaymentVerification({
                 <Input
                   inputMode="decimal"
                   value={gross}
-                  onChange={(e) => setGross(e.target.value)}
+                  onChange={(e) =>
+                    setIntent({ ...intent, gross: e.target.value })
+                  }
                 />
               </Field>
               <Field label="receipt checked outside shelv">
@@ -1095,7 +1174,9 @@ function PaymentVerification({
                       label: "amount, recipient and transaction checked",
                     },
                   ]}
-                  onValueChange={(v) => setChecked(v === "yes")}
+                  onValueChange={(v) =>
+                    setIntent({ ...intent, checked: v === "yes" })
+                  }
                 />
               </Field>
               <p>
@@ -1104,6 +1185,7 @@ function PaymentVerification({
               </p>
               <Button
                 disabled={
+                  !canVerify ||
                   !checked ||
                   !/^\d+(?:\.\d{1,2})?$/.test(gross) ||
                   Math.round(Number(gross) * 100) !== quote.totalCents ||
@@ -1111,14 +1193,28 @@ function PaymentVerification({
                   s.busy
                 }
                 onClick={async () => {
-                  await c.confirmPayment(claim.id, gross, checked);
+                  const current = paymentVerificationContext(
+                    c,
+                    c.getSnapshot(),
+                    claim.id,
+                  );
                   if (
-                    c
-                      .getSnapshot()
-                      .context?.payments.claims.some(
-                        (v) => v.id === claim.id && v.status === "confirmed",
-                      ) &&
-                    !c.getSnapshot().pending
+                    !current.canVerify ||
+                    current.basis !== intent.basis ||
+                    intent.controller !== c
+                  )
+                    return;
+                  await c.confirmPayment(claim.id, gross, checked);
+                  const after = c.getSnapshot();
+                  if (
+                    !after.ended &&
+                    JSON.stringify(after.view?.target) ===
+                      JSON.stringify(s.view?.target) &&
+                    after.context?.clientId === context?.clientId &&
+                    after.context?.payments.claims.some(
+                      (v) => v.id === claim.id && v.status === "confirmed",
+                    ) &&
+                    !after.pending
                   )
                     onConfirmed();
                 }}
