@@ -3,7 +3,7 @@ import {readFile,writeFile,mkdir,lstat} from 'node:fs/promises';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {randomUUID} from 'node:crypto';
-import {careBrowserRoot,careBrowserPins,requireCareBrowserAuthorization,attestCareBrowserApplication} from './rebuild-care-native-browser-source.mjs';
+import {careBrowserRoot,careBrowserPins,requireCareBrowserAuthorization,attestCareBrowserApplication,careBrowserFailure} from './rebuild-care-native-browser-source.mjs';
 import {sha,portalOrigin,safePrivateMarkers} from '../scripts/rebuild-native-boundary.mjs';
 
 // Importing this module is source-only. Both independent grants are checked before
@@ -38,7 +38,7 @@ export async function runCareBrowserProof({selection,grant,chromeGrant}) {
     const clocks=sha(JSON.stringify([initial.service_periods,initial.plan_review_schedule])),money=sha(JSON.stringify(initial.finance)),documents=sha(JSON.stringify([initial.plan_documents,initial.publications,initial.plan_publication_receipts]));
     const read=c=>call(c,'client','care','read_client_plan_v2',{version:null});
     phase='actual client PKCE/first v2 read';const client=await signIn({browser,stack,contexts,identity:cases.client,audience:'client',index:2,result}),c=client.page;
-    result.sqlite=await stack.inspectVault();assert.ok(result.sqlite.sqliteFiles>0);assert.equal(result.sqlite.activeSessions,2);assert.equal(result.sqlite.credentialEnvelopes,2);
+    phase='actual persisted SQLite two-audience envelopes';result.sqlite=await stack.inspectVault();assert.ok(result.sqlite.sqliteFiles>0);assert.equal(result.sqlite.activeSessions,2);assert.equal(result.sqlite.credentialEnvelopes,2);
     const firstRead=stack.browserCalls.find(x=>x.path==='/api/client/care'&&x.action==='read_client_plan_v2');assert.equal(firstRead?.status,200);
     assert.equal(stack.browserCalls.some(x=>x.action==='read_client_plan_v1'),false);
     let view=await read(c);assert.equal(view.schemaVersion,2);assert.equal(view.use.revision,0);assert.equal(view.use.planProducts[0].state,'not_reported');assert.deepEqual(view.actualUse,[]);
@@ -147,7 +147,10 @@ export async function runCareBrowserProof({selection,grant,chromeGrant}) {
     assert.equal(stack.browserCalls.some(x=>x.action==='read_client_plan_v1'),false);assert.ok(stack.browserScan.clientResponses>0&&stack.browserScan.safePreviewResponses>0&&stack.browserScan.advisorPrivateDraftResponses>0);assert.equal(stack.browserScan.credentialLeaks,0);assert.equal(stack.browserScan.privateFactLeaks,0);assert.deepEqual(stack.errors,[]);
     result.rows={careEvents:final.useHead,publications:final.publications.length,legacyActivations:final.activations.length,deliveries:final.plan_deliveries.length};result.snapshotSha256=sha(JSON.stringify(final));result.requestProofs=client.requests.filter(x=>x.command.requestId).map(x=>({action:x.command.action,requestId:x.command.requestId,expectedUseRevision:x.command.expectedUseRevision,wireSha256:x.sha256}));
     await writeFile(path.join(area,'snapshot.private.json'),JSON.stringify(final,null,2)+'\n',{mode:0o600});result.status='PASS';
-  } catch(error) {result.status='FAIL';result.failure={phase,kind:error instanceof assert.AssertionError?'assertion':'browser-or-native-failure',code:typeof error.code==='string'&&/^[A-Z_]+$/.test(error.code)?error.code:null};if(error instanceof assert.AssertionError){result.failure.operator=error.operator;for(const key of ['actual','expected'])if(error[key]===null||['number','boolean'].includes(typeof error[key]))result.failure[key]=error[key];}}
+  } catch(error) {result.status='FAIL';result.failure={phase,...careBrowserFailure(error)};
+    await mkdir(area,{recursive:true,mode:0o700});let index=0;result.failureDOM=[];
+    for(const context of contexts)for(const page of context.pages())try{const url=new URL(page.url());if(url.origin!==portalOrigin||url.hash||[...url.searchParams].some(([k,v])=>!(k==='routine'&&['morning','evening'].includes(v)||k==='task'&&v==='history')))continue;const file='failure-dom-'+(++index)+'.private.txt';await writeFile(path.join(area,file),await page.locator('body').innerText(),{mode:0o600});result.failureDOM.push({path:url.pathname,file});}catch{}
+  }
   finally {
     for(const release of releases)release();
     let ownedProcesses=[];try{ownedProcesses=ownBrowserProcesses();}catch{result.status='FAIL';result.processInventoryFailed=true;}

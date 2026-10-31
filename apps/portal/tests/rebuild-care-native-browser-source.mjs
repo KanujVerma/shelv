@@ -8,6 +8,15 @@ import {sha} from '../scripts/rebuild-native-boundary.mjs';
 export const careBrowserPins=Object.freeze({purpose:'genuine-care-browser',applicationCommit:'18c78b7d',parentCommit:'80b58a4773b12435d19200a7cf7ba1e06bef067d',artifactDirectory:'w6-care-native-browser-r7'});
 export const careBrowserRoot=path.resolve(import.meta.dirname,'../../..');
 
+export function careBrowserFailure(error) {
+  const name=['Error','AssertionError','TimeoutError','TypeError','TransportError','AggregateError'].includes(error?.name)?error.name:'Error';
+  const method=typeof error?.message==='string'?error.message.match(/^(?:locator|page|browser|browserContext)\.[a-zA-Z]+/)?.[0]??null:null;
+  const code=typeof error?.code==='string'&&/^(?:ERR_|SQLITE_)[A-Z_]+$/.test(error.code)?error.code:null;
+  const result={name,method,code};
+  if(error instanceof assert.AssertionError){result.operator=error.operator;for(const key of ['actual','expected'])if(error[key]===null||['number','boolean'].includes(typeof error[key]))result[key]=error[key];}
+  return result;
+}
+
 // Pure. Selection, native custody and Chrome custody are independent authorizations.
 export function requireCareBrowserAuthorization({selection,grant,chromeGrant},workspace) {
   const selected=selectCareFixture(selection);

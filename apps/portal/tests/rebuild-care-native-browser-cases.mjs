@@ -47,21 +47,22 @@ export function observeCareCommands(context) {
   return requests;
 }
 export async function signIn({browser,stack,contexts,identity,audience,index,result,preparation=false}) {
+  const stage=step=>{result.authStage={audience,step};};stage('new context');
   const context=await browser.newContext({viewport:{width:1440,height:960},serviceWorkers:'block'});contexts.push(context);
   await stack.bind(context,index);const requests=observeCareCommands(context),page=await context.newPage();page.setDefaultTimeout(12000);
-  const route=audience==='advisor'?identity.kind==='viewer'?'/advisor/clients':'/advisor/plans':'/plan';await page.goto(portalOrigin+route);
-  await page.getByRole('textbox',{name:'email',exact:true}).fill(identity.email);const before=await mailSnapshot();
+  const route=audience==='advisor'?identity.kind==='viewer'?'/advisor/clients':'/advisor/plans':'/plan';stage('initial document');await page.goto(portalOrigin+route);
+  stage('email form');await page.getByRole('textbox',{name:'email',exact:true}).fill(identity.email);const before=await mailSnapshot();
   await page.getByRole('button',{name:'send sign-in link',exact:true}).click();await page.getByText('check your email',{exact:true}).waitFor();
-  let callback=await captureCallback(identity.email,before,route);result.localEmails=(result.localEmails??0)+callback.localEmails;
-  await page.goto(callback.url);callback=null;await page.waitForURL(portalOrigin+route);
+  stage('local callback capture');let callback=await captureCallback(identity.email,before,route);result.localEmails=(result.localEmails??0)+callback.localEmails;
+  stage('callback document');await page.goto(callback.url);callback=null;stage('scrubbed return route');await page.waitForURL(portalOrigin+route);stage('real page heading');
   if(audience==='advisor')await page.getByRole('heading',{name:identity.kind==='viewer'?'clients':'plans',exact:true}).waitFor();
   else if(preparation)await page.getByText('your plan is being prepared',{exact:true}).waitFor();
   else await page.getByRole('heading',{name:'your current routine',exact:true}).waitFor();
   assert.equal(new URL(page.url()).search,'');assert.equal(new URL(page.url()).hash,'');
-  const cookie=(await context.cookies()).find(c=>c.name==='__Host-shelv_'+audience);assert.ok(cookie?.httpOnly&&cookie.secure&&cookie.sameSite==='Lax');assert.equal(cookie.path,'/');
-  const storage=await page.evaluate(()=>({local:{...localStorage},session:{...sessionStorage},cookie:document.cookie,history:history.state}));
+  stage('opaque cookie attributes');const cookie=(await context.cookies()).find(c=>c.name==='__Host-shelv_'+audience);assert.ok(cookie?.httpOnly&&cookie.secure&&cookie.sameSite==='Lax');assert.equal(cookie.path,'/');
+  stage('transient storage check');const storage=await page.evaluate(()=>({local:{...localStorage},session:{...sessionStorage},cookie:document.cookie,history:history.state}));
   assert.doesNotMatch(JSON.stringify(storage),/access_token|refresh_token|code_verifier|__Host-shelv_(advisor|client)=/);
-  return {context,page,requests};
+  stage('complete');return {context,page,requests};
 }
 
 export async function prepareCareBrowserPublication({fixture,stack,advisor,cases,result,setPhase,pass,releases}) {

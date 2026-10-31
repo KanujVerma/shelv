@@ -57,3 +57,9 @@ test('historical first-slice runner is preserved; new entry has no import-time a
   const {runCareBrowserProof}=await import('./rebuild-care-native-browser.mjs');
   await assert.rejects(runCareBrowserProof({selection,grant,chromeGrant:{...chromeGrant,workspace:'/synthetic/other'}}));
 });
+
+test('browser failure metadata retains a finite method and numeric assertion facts without callback or credential text',async()=>{
+  const m=await import('./rebuild-care-native-browser-source.mjs');assert.equal(typeof m.careBrowserFailure,'function');
+  const error=Object.assign(new Error('page.goto: https://127.0.0.1:57430/plan?code=PRIVATE_CALLBACK_VALUE'),{name:'TimeoutError',code:'PRIVATE_CREDENTIAL_VALUE',actual:'PRIVATE_ACTUAL',expected:'PRIVATE_EXPECTED'});
+  const safe=m.careBrowserFailure(error);assert.deepEqual(safe,{name:'TimeoutError',method:'page.goto',code:null});assert.doesNotMatch(JSON.stringify(safe),/PRIVATE_|https:/);
+});
