@@ -47,6 +47,8 @@ export type PlanCommand={schemaVersion:1}&(
  |{action:'revoke_approval_v1';requestId:UUID;approvalId:UUID;expectedPolicyRevision:Revision}
  |{action:'publish_plan_v1';requestId:UUID;target:ExactTarget;approvalId:UUID;firstServiceClaimId:UUID|null}
  |{action:'read_client_plan_v1';version:number|null}
+ |{action:'read_advisor_gate_v1';target:ExactTarget;publisher:Publisher}
+ |{action:'read_advisor_publication_v1';clientId:UUID;version:number|null}
  |{action:'record_decision_v1';requestId:UUID;expectedDecisionRevision:Revision;publicationVersion:number;decisionId:ContentId;choice:'approved'|'deferred'|'declined';reason:string|null}
  |{action:'restore_publication_v1';requestId:UUID;clientId:UUID;publicationVersion:number;expectedWorkingDraftId:UUID|null}
  |{action:'request_status_v1';requestId:UUID}
@@ -58,6 +60,10 @@ export type PlanRpcCall={name:'concierge_plan_command_v1';args:{p_command:PlanCo
 export type ClientFact=Pick<ProvenanceFact,'id'|'kind'|'text'>;
 export type ClientPlanContent=Omit<PlanContent,'context'> & {context:{products:ProductContext;facts:ClientFact[]}};
 export type ClientPlanView={schemaVersion:1;access:'preparation'|'active'|'read_only';plan:({documentSchemaVersion:3;version:number;publishedAt:string;content:ClientPlanContent}|{documentSchemaVersion:1|2;version:number;publishedAt:string;content:ClientPlanContent;legacyOriginal:LegacyPlan})|null;decisionRevision:number;decisions:{decisionId:ContentId;choice:'approved'|'deferred'|'declined';reason:string|null}[];actualUse:{slot:ContentId;productId:ContentId;startedOn:string;publicationVersion:number}[];nextReviewOn:string|null};
+/** Current authenticated authority, never a display-name or model supplied role. */
+export type AdvisorCapabilities={actorId:UUID;view:boolean;edit:boolean;assign:boolean;review:boolean;approve:boolean;publish:boolean;confirmPayments:boolean};
+export type AdvisorGateView={schemaVersion:1;clientId:UUID;target:ExactTarget;publisher:Publisher;approval:Approval|null;publication:'first'|'later';coverage:'active'|'inactive';capabilities:AdvisorCapabilities;policy:PlanPolicyView};
+export type AdvisorPublicationView=Omit<ClientPlanView,'access'|'plan'> & {clientId:UUID;version:number;plan:NonNullable<ClientPlanView['plan']>;reviewSchedule:{firstPublicationAt:string;twoWeekOn:string;monthOneOn:string;monthTwoOn:string;monthThreeOn:string}|null;clientAccess:{care:'preparation'|'active'|'read_only'|'ended';entitled:boolean;canRead:boolean;canWrite:boolean}};
 export type PlanPolicyView={revision:number;ownerActorId:UUID;requireKanujApproval:boolean};
 export type LegacyPlan={version:number;recommendations:ConciergeRecommendation[];presentation:Presentation|null};
 export type LegacyPlanAdapter={documentSchemaVersion:1|2;original:LegacyPlan;content:PlanContent};

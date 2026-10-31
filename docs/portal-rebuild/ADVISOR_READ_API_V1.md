@@ -22,3 +22,22 @@ W1 is the sole writer for this new read seam's root types/validators/mappers, pl
 ## required verification
 
 Behavior tests must prove restart/current approval recovery, payment independence, content/revocation/policy/publisher invalidation, correct target/client/version binding, current/legacy/history projections, expired client versus authorized advisor read, agent scope/revocation/session expiry where supported, denied cross-client/private-source attempts, no raw table/helper grants or unpinned search paths, no writes/clock/outbox/Start effects, and no fabricated publication data. Existing first-slice and fix suites remain green. Genuine Auth/PostgREST/browser and full canonical reset/pgTAP remain coordinator acceptance gates. Independent review must assess the read extension before complete integration acceptance.
+
+## pinned concrete signatures (W1 read extension)
+
+Forward migration allocated by CLI: `20261031003846_portal_rebuild_advisor_reads_v1.sql`. The reviewed `20261030223603` migration is unchanged. Root exports are `AdvisorGateView`, `AdvisorCapabilities`, `AdvisorPublicationView` from `src/contracts/PortalRebuild.ts`; fixed command parser/mapper remain `readPlanCommand`, `buildPlanRpc`, `mapPlanResult`. All reads use only `concierge_plan_command_v1(p_command jsonb)` through the existing authenticated Edge handler.
+
+```ts
+{schemaVersion:1, action:'read_advisor_gate_v1', target:ExactTarget, publisher:Publisher}
+  // => AdvisorGateView
+{schemaVersion:1, action:'read_advisor_publication_v1', clientId:UUID, version:number|null}
+  // => AdvisorPublicationView; null requests the actual current canonical version
+```
+
+The gate returns `{schemaVersion:1,clientId,target,publisher,approval:Approval|null,publication:'first'|'later',coverage:'active'|'inactive',capabilities,policy:PlanPolicyView}`. `publisher` is required, never defaulted from a name. `capabilities` is `{actorId,view,edit,assign,review,approve,publish,confirmPayments}` with server booleans for the authenticated reader in this exact scope. Policy has its actual revision/owner/require-approval state. No permission follows from selecting another publisher. W2's context adapter selects `{clientId,approval,publication,coverage}`. Separate real payment/directory ports remain required.
+
+The publication response contains `{schemaVersion:1,clientId,version,plan,decisionRevision,decisions,actualUse,nextReviewOn,reviewSchedule,clientAccess}`. `plan` is the same non-null immutable format-discriminated `ClientPlanView.plan` public projection, with actual canonical version/time; R1/R2 retains `legacyOriginal`. `reviewSchedule` is null when no rebuild schedule exists, otherwise actual `{firstPublicationAt,twoWeekOn,monthOneOn,monthTwoOn,monthThreeOn}`. `clientAccess` is `{care:'preparation'|'active'|'read_only'|'ended',entitled,canRead,canWrite}` for the selected version and actual client window/enrollment. Advisor audit access does not fabricate a client entitlement, care promise or write right. No publication returns `not_found`, never a mutable draft or synthetic metadata.
+
+Both commands strictly reject extra fields, endpoints, roles and caller session identities. Root response mapping binds the full requested target/publisher or client/version; `approval` is current, unrevoked and unconsumed only. Existing client reads remain owner-derived and reject `clientId`. These two actions are finite additions to the task allowlist; existing grants receive no implicit new action. A publication task read requires explicit client scope, or an exact published source-draft scope matching that version. Gate task read requires the exact draft/client/session grant. Neither read grants raw source access.
+
+Coordinator integration: add only these two actions to the advisor plans gateway allowlist/capability registry. Keep them out of the client action allowlist. Continue strict response mapping and session-generation checks. No gateway/frontend/config change is included in W1. Runtime implementation and persisted verification are reported separately in [W1 advisor reads](research/W1_ADVISOR_READS.md); the signatures alone do not establish acceptance.
