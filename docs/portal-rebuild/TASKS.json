@@ -2,7 +2,7 @@
   "updatedOn": "2026-10-30",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
-  "allocatedWorkers": 2,
+  "allocatedWorkers": 3,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -1506,7 +1506,7 @@
         "dbdec5c250a4835ddb390624024cf650f573882e",
         "c8de1bd2b6492c4a5761edb6effe6a127e0981bc"
       ],
-      "verdict": "Frozen implementation980 full portal/171 session author pass; W7 CU1 note-loss/CU2 corrected body omission require bounded UI fixes and new review",
+      "verdict": "CU1/CU2 UI-only fixes ongoing;22 durable cases green reported, focused retained/repro verification pending final commit/new review; DTOs unchanged",
       "headCommit": "6b264169c0cf4cc286a60b0244fa17e9200cabe6"
     },
     {
@@ -1577,9 +1577,12 @@
         "6f4e9c179c4fe5ea4bf4a371d3c6d838559607d6",
         "19a2eb870732abe2526f4be48d9a4ab612842761",
         "2adeba5df95bd49b3c1dbbd6c2c2bb3e24f18d34",
-        "db3f119af4bb8049808f3083e8d42448ef4d01d8"
+        "db3f119af4bb8049808f3083e8d42448ef4d01d8",
+        "bc6d578bbaecfc68a887a0b7d705b86aaa85efa3",
+        "92b2447aee18e691d54cc2b86707b41ac953ad63",
+        "24837c36552944404f2eb017fd65800aa6190269"
       ],
-      "resources": "R6 NODE custody explicitly returned; all10 phase sessions closed/whole0sessions+refresh, helpers RUNNING/source unchanged; NO browser grant. Source/report finalization pending future care-browser phase",
+      "resources": "SOURCE ONLY waiting later care-browser grant; no current R6 custody/Chrome; W7 independent Node review owns R6",
       "verdict": "Genuine Node9/9 PASS at92b2447 runf67a47ed; actualPKCE/Vault/nativeCare/SQL, not browser/UI acceptance; independent fresh harness/chain review required",
       "integratedCommits": [
         "3f1cdf9b",
@@ -1587,7 +1590,10 @@
         "8d55564b",
         "72e87528",
         "9bf05827",
-        "6e23b70d"
+        "6e23b70d",
+        "6bfe892c",
+        "7c9bb1f0",
+        "0201d90e"
       ],
       "custodyGrantFile": ".local-artifacts/portal-rebuild/canonical-plan-v1-r6/edge/care/NODE-CUSTODY-GRANT.json"
     },
@@ -1691,6 +1697,34 @@
       ],
       "resources": "Chrome released06:53:36UTC, no native access, all handles terminal",
       "verdict": "CHANGES REQUIRED CU1 accepted note-loss/CU2 omitted corrected frequency/amount;130focused/47foundation/171session/18+8+2probes pass separately"
+    },
+    {
+      "role": "W7 independent genuine care Node review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-genuine-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-genuine-review-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-care-genuine-review-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-ee51c8b5",
+      "branch": "t3/independent-node-care-review",
+      "baseCommit": "0201d90e53179966888c0cfb2dcbcfe56bed5fb7",
+      "status": "running",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_GENUINE_NODE_REVIEW.md"
+      ],
+      "reportPath": "docs/portal-rebuild/research/W7_CARE_GENUINE_NODE_REVIEW.md",
+      "resources": "Exclusive R6 independent genuine-care-node custody via NODE-REVIEW-CUSTODY-GRANT.json; NO Chrome/browser/DOM or resets/helper changes",
+      "verification": "Exact returned settings plus live workspace/base and both child tools Sol/xhigh/default"
     }
   ]
 }
