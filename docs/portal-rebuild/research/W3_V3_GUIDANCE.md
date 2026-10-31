@@ -497,6 +497,81 @@ Own evidence root **`.local-artifacts/portal-rebuild/w3-v3-cookie-target3-browse
 
 No further Select formal matrix was needed for the unchanged UI closure. Parent source/Select/cookie reviews remain attributed, not rerun acceptance; the old rectangle0/1 scroll-viewport qualification remains. Root node_modules absent; no Root install/full npm/app/test-types/Expo/iOS, full portal/runtime/native suites, actual new Appf163, current genuine Gateway/Auth/policy/schema/persistence/provider, migrations/reset/pgTAP/RLS, hosted/exact-head CI or human/WCAG/native-zoom/full-goal check is claimed. No permission question or resource wait remains. **Coordinator owns a fresh NEW independent V3 R2 task** carrying all original briefs/findings/responses, source R1/R2, historical19/20/conflict and these exact current inputs/results/faults. No self-acceptance, Root activation, push/PR/merge/deploy or live client/source/permission/communication/money/order action.
 
+## Ordinal7: R2-1/R2-2 source correction checkpoint
+
+31 October 2026. **Source-only correction, no acceptance verdict.** Full independent R2 **f72b16a8b572b853b5a775a5127607fafdc32139** requires changes at the saving subscription and guidance retry paths. Owned source/tests are committed as **875b31e0e7d87a7c66d40fb6e6e77fdbe60680ad**. Copied unchanged reviewer5 now passes5/5; new focused25/25, unchanged74/74 and retained122/122 pass. Browser/DOM and new independent R3 remain unrun and separately required. Ordinary React/App reachability of the deliberate reentrant subscriber remains unproved; no Auth bypass is asserted.
+
+### Exact identity, input custody and source boundaries
+
+Clean base **5951e53371e058851244efa009580daca1f8bf0c**, same1026 workspace, `t3/plan-v3-guidance-hydration` branch and backing thread above. Original delegated task lineage remains `node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1`. Current follow-up message identity, observed from live durable position1762: **`message:mcp:80ff67d2-459c-49fa-93e3-1b40a1f4cbcd:thread-send:w3-v3-saving-and-retry-ownership-source-fixes-20261031`**. No new authoritative node-task ID was separately supplied, so ordinal6's task ID is not silently reused or a new one guessed.
+
+Actual run **`run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:7`**, started **23:09:40.852UTC**; live thread confirms parent d632030a-18f7-4dec-a2c9-f5c0418c3fd5, workspace and branch. Initial/final BOTH live catalog/configuration select **codex/gpt-6.1-sol/reasoningEffort=xhigh/serviceTier=default**, with supporting descriptors. Project/default-subagent and all8 roles are exactSol/xhigh; all9 hashes match. Actual Node **v22.23.0**, explicit `/Users/kanuj/.nvm/versions/node/v22.23.0/bin` PATH for every Node/npm/compiler command. No setting, compiler flag, budget, dependency or lockfile change, install or nested task.
+
+Read complete169-line R2 in bounded ranges, full governing R1/author responses/cookieR1/R2 and own current21/117/raw qualifications. Copied13 direct R2 report/probe/log/JSON/source receipts into own ignored evidence; the full R2 matches its exact Git object and supplied read-only c6d4 file. The executed reviewer5 copy is **byte-exact**, SHA256 **0ef6ae47bae34e74de96db81261a45b8c9da053b5970bf2a6e54dfe64004fef0**, at the same relative depth, with no adaptation or foreign execution/write. Prior own21/117/non-sensitive20/real-fetch0/1 and full source/author reports are additionally copied/hash-bound for this handoff. Copied compiler/browser outputs are historical inputs, never executed as current source.
+
+Write-set is3 plan production paths (`guidanceDecision.ts`, `Guidance.tsx`, NEW internal `guidanceRetry.ts`),3 NEW residual test/helper files and this report. All existing tests/assertions/helpers remain byte-exact5951, including original20/58/54 and the existing ordinary-fetch control. All17 site/auth files remain exactc9/7a0, SDK4 exact96, client-state/sharedUI/shell exactbase, and all other tracked source untouched. No import or cookie/transport/Root/App/SQL/metadata/model-config edit. No new source API/action/right or Parent Appf163/acceptFrom/shared-fence copy.
+
+### R2-1 response: recheck after saving notification, before dispatch
+
+**Actual RED before any production edit:** unchanged reviewer5 gives **3 pass/2 intended fail**. Each saving subscriber withdraws the actual source/callback through real feature/context APIs before dispatch; record_decision_v2 still emits1 instead of0. Old callback/reread suppression stays intact. Raw own RED and original reviewer repeats remain separate, not counted as DOM reproduction.
+
+**Correction:** `write` now rechecks its captured operation immediately after the synchronous saving notification and before invoking the port. A retired invocation does not dispatch, apply a callback, fetch content, create a receipt or claim confirmation. It retains the exact original command/UUID/payload/snapshot and any earlier receipt as an uncertainty witness. If only an enclosing spent marker retired the operation before the child context update, its own finish method releases only that token and moves its still-saving witness to uncertain. It does not overwrite a newer operation or gate deliberately started by a subscriber. No automatic restore/retry/new UUID/rebase or v1 fallback.
+
+Own tests include both pre-egress withdrawals, unchanged saving subscribers, an already-dispatched503-uncertain A, an already-received A receipt, a spent enclosing feature before child update and a newer explicit same-command retry B. A stays exact, no extra write is emitted by the obsolete A, and B's phase/token is not clobbered. These are public controller/subscription source controls with actual ApplicationSession/cookie/raw5/Root/client accept and real hydrator readiness, not a fabricated permission, successful port or ordinary App exploit.
+
+### R2-2 response: effective callback/source ownership for retry
+
+Public `ClientPlanProps`, optional Review5 port, callback signatures and `GuidanceContextValue.retry():void` remain unchanged; parent consumer updates are unnecessary. The existing explicit guidance reread was mechanically moved into the internal retry controller before changing its ownership tuple. That intermediate extraction retained the callback omission and passed unchanged74; its source is preserved as `retry-extraction-before-fix.ts`. New focused RED against that old tuple calls the obsolete callback and blocks a newer retry. This is source/controller evidence, not a pre-edit rendered DOM run.
+
+The shared renderer now uses that internal controller for volatile retrying/failed state. Context retirement includes exact effective callback and Review source identities, view/session/mode/hydrator/scope and the feature's spent restriction marker. New wrapper objects with unchanged effective values remain positive. Operations check ownership after synchronous notifications, after the real strict read, before callback/error delivery and during finally. Actual hydrator/view/session/mode identity and retirement also govern applicability. Old cleanup never releases a newer token or shows its error. Unmount retires without reading; explicit effect activation supports remount without an automatic read. No client intent ledger or persistent/analytic storage is added by this READ controller.
+
+Current reads still use `readCurrentPlan`'s strict Review3 path; historical reads use the selected publication version and Root mapping. The exact canonical fetched object goes unchanged to the callback and Root client-state accept; no new basis clone, Care2/Plan1 fallback or publication/use mutation. Tests cover callback removal/replacement, source withdrawal/replacement, same-context positive identity, obsolete403/error/finally versus a held newer read, current409/explicit recovery, readonly/view/publication/scope/mode/session/unmount transitions, reentrant retry notification, historical selected-version read and remount. Care13/Stop source is untouched and its independent hydration-free behavior remains in unchanged74.
+
+### RED/GREEN, counterfactuals and setup qualifications
+
+| Executed source check | Actual result,0 skips/cancellations |
+| --- | --- |
+| Unchanged copied reviewer5 before / after correction | **3 pass/2 intended fail ->5/5** |
+| Initial focused17 after mechanical extraction, before either fix | **9 pass/8 intended fail** |
+| Final focused25 at clean875b31e0 | **25/25** |
+| Same final25 with exact595 decision input only | **19 pass/6 intended fail** |
+| Same final25 with retained unfixed retry extraction only | **18 pass/7 intended fail** |
+| Unchanged current source74 / retained122 at clean875 | **74/74 /122/122** |
+| Original context20, exactc4 two-file hook, serial | **6 pass/14 intended fail** |
+| Frontend/session/extended helper strict / prepared DOM syntax | All exit0, unchanged strict flags |
+| UI/rebuild/application | All exit0; clean application sourceHead875b31e0/sourceDirty:false/gatewayIncluded:false |
+
+Counterfactual loaders replace complete exact before-fix source inputs in the own build, not individual predicates or responses. The retry input is explicitly the preserved mechanical extraction, not claimed to be an original Git file that existed at595. The decision input is the exact595 Git object. Relative Root/cookie/real port bindings remain current. The actual25, copied5 and original74 share mechanisms; counts are not a total unique coverage score.
+
+Additional test development catches are retained: spent-only retirement initially remained saving, then its first extension incorrectly compared the returned operation wrapper with its private token. The final code uses the operation's own finish method; both the knowingly-unsent and newer-B controls pass. No shared source or original assertion was changed for these own corrections.
+
+One initial c4/current batch used the original helper's common `context-source.cjs` output path concurrently. Its c4 run was non-sensitive20/20 because of the output collision. That run is preserved as a setup fault, not a c4 PASS or product result. Subsequent **serial** c4 gives6/14 and then current74 gives74/74, with raw logs retained. All final counterfactual/current25 runs were likewise sequential. Existing Root typeless-package warnings remain unsuppressed. No timeout/parser/assertion/compiler weakening.
+
+Prepared **three actual shared-renderer retry DOM regressions** in NEW `rebuild-plan-guidance-residual-browser.test.mjs`: callback removal, callback replacement, and old-error/finally versus current retry. Only syntax/consumer compilation was performed. They await a fresh explicit Chrome grant; their expected oldCallback0 is not presented as a measured browser result. R2-1 remains a deliberate public-subscription source seam; ordinary React/App reachability is not fabricated. Historical current21/117 and original frozen Chrome0/3 remain historical until new browser work. The non-sensitive OLD-cookie20/20, separate real-fetch OLD0/1/current1/1, constructed-Response TypeError producer faults and CK2 browser-reachability qualification above are unchanged.
+
+### Evidence, commands, custody and remaining gates
+
+Own ignored root **`.local-artifacts/portal-rebuild/w3-v3-r2-source/`**. INPUTS/PRIOR-COPIES bind source/copy hashes; RUNTIME-CHECKS contains full actual thread/run/model/options and expanded commands/exits; FROZEN-SOURCE records exact6 code/test blobs and SHA plus preserved shared/source boundaries. **67-file EVIDENCE.json SHA256297911742c501fdded901b3b6c4da3d5dd10b65a1bd1a3d642fbea16d157de9f** excludes itself, this report and final checkpoint. Selected SHA256:
+
+| Artifact | SHA256 |
+| --- | --- |
+| copied reviewer RED3/2 |cc9e14224db47bad3d4736e71721df03a92e6743976aaf86ef27892f997bdee2 |
+| copied reviewer current5/5 |ec2e23f8ee97dfa52222cfb715e931f5e40afbe97792dd8d7aa8b7ceafe40bd0 |
+| initial focused17 RED |46f069558c7e467ff69b77e16e8d1f9a68265c9b374dfbb35bb35a039a8521d5 |
+| retained unfixed retry extraction |d71d62a755682c2b76b2551957f7d3e28a0f9488004bc7ce28e7852851ac0efd |
+| clean focused25 |6a6d13566a9474a68d5ec60035f2b2bb48b64bb6bae3d2e91bb32938a3a03366 |
+| clean unchanged74 |80a8086db76b600b8193c95620075b6f65c7194a59f18336d34132a6e70e4221 |
+| clean retained122 |222e78647b66f5faf8b1d07776c8e4edca25ea23fc33af298000b5d7054d839e |
+| final25 retry counterfactual |9c7c5f249cc42bd0c357b891a6ecd598b4b3e440a6d70c1be637ef31ea2bf3f1 |
+| final25 exact595 decision counterfactual |40bc8e2d7c164357d29c08ce3eedec84c57cbe6761560f8243006d31cae711f6 |
+| serial exactc4 original20 |347ae3b41a73b501a46c59a55bf39090eb6196ce5f190c9033c5ad6f78bab55a |
+
+All commands use explicit Node22 PATH. Focused source: `node --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-plan-guidance-residual-source.test.mjs`; unchanged reviewer: same flags on own `independent-source.test.mjs`; before-fix selectors `W3_RETRY_EXTRACTION_BASELINE=1` or `W3_DECISION_RESIDUAL_BASELINE=1`; original c4 selector remains `W3_GUIDANCE_CONTEXT_BASELINE=1`. Source74/122 and strict/UI/build argv remain the unchanged commands in the prior section, with the NEW source helper added to the extended consumer compile. No package or flag edit.
+
+**No Chrome/DOM/preview/process inventory/native/DB/PG/Auth/provider/credential/fixture resource or nested work was acquired, executed, polled or retained.** Only own finite source/SSR/test/compiler/build commands ran; all handles are terminal. No grant or inventory call is inferred for another worker. The **22:25:27UTC sole Chrome return remains final**, with no later resource calls. No new RETURN/scan is fabricated in this source-only round.
+
+Root dependencies remain absent; no Root install/full npm/app/test-types/Expo/iOS, full portal/runtime, actual App/DOM/private-canary, current genuine server/Auth/policy/schema/SQL/persistence/provider, hosted/exact-head CI/visual/human/full-goal acceptance. Root owns fresh browser allocation and a **NEW independent R3** with full R1/R2/responses and these exact source inputs/proofs. No Root consumer update is required, no permission/resource question or wait loop remains, and no self-acceptance, Root/App activation, push/PR/merge/deploy or live clinical/client/source/permission/communication/money/order action.
+
 Selected SHA256 receipts:
 
 - select-zoom-crossowner.mjs: f1d7826309bcfa208cfba3030f278e6cf6d5ea8b7d8fa25ed4d2c99ae75c4fef
