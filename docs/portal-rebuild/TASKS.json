@@ -2,7 +2,7 @@
   "updatedOn": "2026-10-30",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
-  "allocatedWorkers": 0,
+  "allocatedWorkers": 3,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -252,12 +252,12 @@
       "statusAtDispatch": "running",
       "verification": "Exact T3 response; git worktree readback.",
       "status": "completed",
-      "headCommit": "f0f56e8",
+      "headCommit": "f0f56e840cd0dc8e6480d57dfaa71a56208d9af0",
       "integratedCommits": [
         "0f4d6b7",
         "e343fdd"
       ],
-      "independentReview": "required R1-R4 re-review"
+      "independentReview": "PASS scoped R1-R4; exact-version license provenance remains unverified"
     },
     {
       "role": "W3 vertical-slice client",
@@ -289,7 +289,160 @@
       "verification": "Exact T3 response; git worktree readback.",
       "status": "completed",
       "headCommit": "b4f43f7084a4cd3330805e2cf9e7bd0f637dac06",
-      "integrationStatus": "pending, including strict frontend/shared-contract typing"
+      "integrationStatus": "pending, including strict frontend/shared-contract typing",
+      "integratedCommit": "4ad0038",
+      "sharedTypeFixCommit": "930dab9",
+      "strictFrontendTypes": "PASS after type-only corrections; identical emitted JavaScript"
+    },
+    {
+      "role": "W7 foundation re-review round 2",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-5b29f4a6",
+      "branch": "t3/foundation-review-round2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-foundation-review-20261030-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-foundation-review-20261030-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-foundation-review-20261030-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Exact T3 response plus git worktree readback.",
+      "baseCommit": "129635e88f91e9539973062a60779f717f2a935a",
+      "status": "completed",
+      "headCommit": "386ce81a7eeeafb311194ac52ea9733784018219",
+      "reportPath": "docs/portal-rebuild/research/W7_FOUNDATION_R2.md",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_FOUNDATION_R2.md"
+      ],
+      "verdict": "PASS scoped R1-R4; exact-version license association unverified",
+      "integratedCommit": "0a78a61"
+    },
+    {
+      "role": "W7 backend review",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-632797e3",
+      "branch": "t3/review-plan-backend-slice",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-backend-review-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-backend-review-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-backend-review-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Exact T3 response plus git worktree readback.",
+      "baseCommit": "129635e88f91e9539973062a60779f717f2a935a",
+      "status": "completed",
+      "headCommit": "1569d9595cdbdefec8470734743d3eb120400cae",
+      "reportPath": "docs/portal-rebuild/research/W7_BACKEND_REVIEW.md",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_BACKEND_REVIEW.md"
+      ],
+      "verdict": "FAIL; F1-F5 block, Q1/Q2 require correction",
+      "integratedCommit": "ba3fabb"
+    },
+    {
+      "role": "W2 vertical-slice advisor",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-dfd42730",
+      "branch": "t3/advisor-connected-slice",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-vertical-advisor-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-vertical-advisor-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-vertical-advisor-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Exact T3 response plus git worktree readback.",
+      "baseCommit": "930dab999326796b880af67af26dafa270ae4aab",
+      "status": "running at dispatch",
+      "reportPath": "docs/portal-rebuild/research/W2_VERTICAL_ADVISOR.md",
+      "writeSet": [
+        "apps/portal/src/features/advisor/",
+        "apps/portal/tests/rebuild-advisor*",
+        "apps/portal/tests/rebuild/advisor-*",
+        "docs/portal-rebuild/research/W2_VERTICAL_ADVISOR.md"
+      ]
+    },
+    {
+      "role": "W1 backend fixes",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-36369025",
+      "branch": "t3/fix-portal-backend-gates",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-backend-fixes-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-backend-fixes-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-backend-fixes-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Exact T3 response plus git worktree readback.",
+      "baseCommit": "ba3fabbfbbb5b161fa416a06fd7c278534d8609b",
+      "status": "running at dispatch",
+      "reportPath": "docs/portal-rebuild/research/W1_FIXES.md",
+      "writeSet": [
+        "src/contracts/PortalRebuild*.ts",
+        "supabase/functions/concierge-plans/",
+        "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+        "supabase/tests/portal_rebuild*.test.sql",
+        "tests/portal-rebuild-*",
+        "docs/portal-rebuild/research/W1_FIXES.md"
+      ],
+      "resources": "Exclusive stopped/restarted only after verification: /tmp/shelv-w1-plan-pg; parent Auth fixtures forbidden."
+    },
+    {
+      "role": "W7 client review",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d3de7402",
+      "branch": "t3/d3de7402",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-client-review-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-client-review-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-client-review-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Exact T3 response plus git worktree readback.",
+      "baseCommit": "ba3fabbfbbb5b161fa416a06fd7c278534d8609b",
+      "status": "running at dispatch",
+      "reportPath": "docs/portal-rebuild/research/W7_CLIENT_REVIEW.md",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CLIENT_REVIEW.md"
+      ]
     }
   ]
 }
