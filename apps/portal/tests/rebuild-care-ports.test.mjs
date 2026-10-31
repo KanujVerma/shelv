@@ -3,6 +3,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createApplicationSession} from '../src/app/session.ts';
 import {createClientCarePort,createAdvisorCarePort} from '../src/app/care-ports.ts';
+import {createClientPorts} from '../src/app/ports.ts';
+import {createClientPlanController} from '../src/app/client-state.ts';
 const owner='11111111-1111-4111-8111-111111111111',other='22222222-2222-4222-8222-222222222222',requestId='33333333-3333-4333-8333-333333333333';
 const read={schemaVersion:1,action:'read_client_plan_v2',version:null};
 const preparation={schemaVersion:2,access:'preparation',plan:null,decisionRevision:0,decisions:[],actualUse:[],nextReviewOn:null,use:{revision:0,planProducts:[],reportedProducts:{items:[],nextCursor:null}},latestPublicReview:null};
@@ -12,7 +14,7 @@ async function fixture(t,audience='client'){
  let login={signedIn:true,ownerId:owner,generation:1,csrf:'care-csrf',capabilities:{view:true,edit:false,publish:false,confirmPayments:false},idleExpiresAt:new Date(Date.now()+3600000).toISOString(),absoluteExpiresAt:new Date(Date.now()+7200000).toISOString()};
  let data=preparation,status=200,hold=null;const calls=[];
  const runtime=createApplicationSession({audience,locks:{request:async(_n,_o,run)=>run()},fetcher:async(url,init)=>{
-  assert.ok([`/api/${audience}/session`,`/api/${audience}/care`,`/api/${audience}/logout`].includes(url),'unexpected endpoint');calls.push({url,init});
+  calls.push({url,init});assert.ok([`/api/${audience}/session`,`/api/${audience}/care`,`/api/${audience}/logout`].includes(url),'unexpected endpoint');
   if(url.endsWith('/session'))return Response.json(login);
   if(url.endsWith('/logout'))return Response.json({signedOut:true});
   assert.equal(new Headers(init.headers).get('x-shelv-csrf'),login.csrf);
@@ -52,4 +54,18 @@ for(const replacement of [{ownerId:other},{csrf:'replacement-csrf'}])test('a car
 test('logout fences a held care result through the actual cookie factory and transport',async t=>{
  const f=await fixture(t),p=createClientCarePort(f.runtime),h=f.hold(),pending=p.execute(read);await h.entered;await f.runtime.signOut();h.release();
  await assert.rejects(pending,e=>e.status===401);
+});
+
+test('client controller accepts and refreshes confirmed v2 through the care port only',async t=>{
+ const f=await fixture(t),ports={...createClientPorts(f.runtime),care:createClientCarePort(f.runtime)},c=createClientPlanController(f.runtime.getSnapshot().boundary,ports);t.after(()=>c.dispose());
+ c.accept(preparation);assert.equal(c.getSnapshot().view.schemaVersion,2);await c.refresh();assert.equal(c.getSnapshot().view.schemaVersion,2);assert.equal(c.getSnapshot().error,null);assert.equal(f.calls.filter(x=>x.url.endsWith('/care')).length,1);
+ const prior=c.getSnapshot().view;assert.throws(()=>c.accept({...preparation,privateNotes:'PRIVATE_CARE_CANARY'}));assert.equal(c.getSnapshot().view,prior);
+});
+test('a confirmed v2 controller never falls back to a Start-only read when care is unavailable',async t=>{
+ const f=await fixture(t),c=createClientPlanController(f.runtime.getSnapshot().boundary,createClientPorts(f.runtime));t.after(()=>c.dispose());c.accept(preparation);const before=f.calls.length;await c.refresh();
+ assert.equal(c.getSnapshot().view.schemaVersion,2);assert.equal(c.getSnapshot().error,503);assert.equal(f.calls.length,before);
+});
+test('explicit future v2 activation reads care from its first load without changing the legacy default',async t=>{
+ const f=await fixture(t),ports={...createClientPorts(f.runtime),care:createClientCarePort(f.runtime)},c=createClientPlanController(f.runtime.getSnapshot().boundary,ports,{readVersion:2});t.after(()=>c.dispose());await c.refresh();
+ assert.equal(c.getSnapshot().view.schemaVersion,2);assert.equal(c.getSnapshot().error,null);assert.equal(f.calls.filter(x=>x.url.endsWith('/care')).length,1);
 });
