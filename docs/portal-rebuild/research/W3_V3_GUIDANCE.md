@@ -308,6 +308,83 @@ Clean application build at71c682d7 records sourceDirty:false/gatewayIncluded:fal
 
 This is the coherent terminal source checkpoint. No field/API/shared-owner request is needed for G1/G2; existing optional strict5 Review port and readVersion3 opt-in remain the coordinator integration API. Root owns Select S1/original rectangle disposition and any selective future b69 composition. Browser RED/GREEN on the new correction, unchanged117, fresh independent R2, genuine Application/server/Auth/persistence/canonical checks and exact-head CI remain pending. Root node_modules is absent; no Root install/full npm/app/test-types/Expo/iOS, full980, native or genuine check is claimed. Original source-only task remains completed; full goal/release acceptance remains unissued.
 
+## Ordinal4: actual G1/G2 Chrome follow-up, 31 October 2026
+
+**Terminal bounded evidence, not acceptance.** Frozen c4 reproduces the3 intended G1/G2 failures; source71's new cases show the intended ownership/review restrictions, and unchanged117 passes117/117. **The terminal new20 is19/20**, with a separately reproduced shared transport defect: canceling an obsolete JSON-body read can suspend the entire cookie, preventing current guidance and independent Care egress. This is a Root/W0 correction request, not a W3 fix or an excuse to replace authority/current predicates. The new browser phase is not declared fully green.
+
+### Exact candidate, inputs and runtime
+
+- Clean starting head **492da197212ab3611eb0bc2bb8dd80cce8f44232**; W3 production remains exactly **71c682d7c9c01f40741e13ce65c58a2ca692612f**. Same1026 worktree/branch/thread/original task as above. Follow-up message **`message:mcp:80ff67d2-459c-49fa-93e3-1b40a1f4cbcd:thread-send:w3-v3-g1-g2-browser-phase-20261031`**, durable position1182. Actual run **`run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:4`**, started **20:08:04.432UTC**, parent d632030a-18f7-4dec-a2c9-f5c0418c3fd5.
+- First and final live catalog/configuration verify **codex/gpt-6.1-sol/xhigh/default**, with supporting descriptors. All8 roles plus project/default-subagent pins match initially/finally. Every Node/npm/compiler invocation explicitly prepends `/Users/kanuj/.nvm/versions/node/v22.23.0/bin`; actual Node **v22.23.0**. Installed Chrome metadata **156.0.8078.79**. No install, provider/configuration/flag/budget changes or nested work.
+- Separate attributed target import **a8555012a3eb2c58dd9596fe93595f825a86ca23** imports ONLY primitives.tsx and foundation.css from **c26cbc999b00e4c3f132f243b23285849681b7a6**. Exact blobs **2427d21acbc786cf6247c823ca843b20a63750c3** and **50a461aab4296f391c7cff260fec602e82b51959**. No Root tests/report/other stack imported or shared UI authored. Old shellEf7/537 remains exact754e4c319fd7b99090bf331b27ed03c4a5ce2a0b.
+- Own test-only candidate **df193d0d80084767afd39ec7fe2127382e95ddc7** changes the guidance browser helper and adds a context browser entry/test. All plan production and narrow client-state remain exact71/9c; Root4 SDK remains exact96 and all original58 files remain byte-exact. Source20/54 assertions and original browser entry/fixtures are unchanged. No Application/default/role/SQL/server/API/right/package/source-asset changes.
+
+Read the full original brief, R1 report4ac59b33 and governing prior responses/evidence described above. All30 retained R1 copies were reverified read-only. Original probe SHA51509e1f1eff2280c8fa58e9ef7b90d741bc9673b6350d941685a3f521707edb remains intact. Own executable copy changes only relative import/output paths; SHA **e55e259becf4eda778682a7561fb8213cd1e201d80fcb3b86032fa218bdcbe25**. No foreign execution or write. Resume/debugging/verification, task-first UX and repeatable Playwright guidance applied, with the user's installed-Chrome/owned-test-path/finite-HTTP restrictions taking precedence over generic server discovery and /tmp defaults. No native/Figma acquisition was authorized or attempted.
+
+### Actual browser RED and current observations
+
+The build's opt-in retained-input hook reads only **ClientPlan.tsx and guidanceDecision.ts at full c4d5a9e0ed86c2ca703f6e5d0ac73988a4f6af77** through git show. No tracked production file is overwritten. Root SDK, cookie/session/raw factory/controller and all other current code stay actual. It never replaces a successful port, owner, permission or current() predicate.
+
+| Run | Actual result and meaning |
+| --- | --- |
+| New3 primary cases against c4 |**0/3**, all intended assertions: obsolete callback applied1; routine-only read-only/mode approval was enabled after exact old-object return |
+| Path-adapted original reviewer context-race against c4, default original entry |**0/3**, all intended assertions,0 skips: applied1 and both deliberate decision2 writes preceded a second current-plan read. Raw wires/read indices preserved |
+| First current new20 |**19/20**. All3 primary G cases pass; cleanup case waits for wrong Back label. Actual direct destination says back to recommendation. Probe corrected to actual evidence heading/route; no product change |
+| Second current new20 |**19/20**. Initial read-only rapid return has current directions unavailable; all ownership/recovery cases pass |
+| Terminal current new20, assertion unchanged |**19/20**. Routine-only read-only return has cookie offline/current directions unavailable; G1 conflict stays locked. Root cancellation finding below, not relabeled setup or green |
+| Bounded diagnostics |Ordinary/held initial manifest2/2; standalone initial read-only1/1; logging-only initial observation1/1; four-case sequence4/4. They do not erase the failures. Observation-only injected logging is retained locally and absent from the terminal build |
+| Unchanged retained117 |**117/117**,0 skips,135.843s:59 prior guidance groups plus original58, including some pure cases. Not117 entirely new Chrome cases |
+
+The20 new actual Chrome cases cover routine-only read-only/mode and missing source/callback transitions before first controls, initial read-only/preview contexts, failed/pending/fresh/separate same-basis review, exact old object, remount, changed full server snapshot, held write ACK and post-write reads, source/callback withdrawal/replacement, exact restoration, old-finally/new-operation ownership, unchanged callback rerenders, historical receipt/status READ and503 same-wire retry. They also record factual Stop with captured Care CAS while the clinical manifest is incomplete and a decision restriction remains spent. That positive case uses Review3 for current reread and no decision write.
+
+All flows use the real prepared ApplicationSession/cookie/Web Locks/raw Review request/strict5 adapter/Root mapper/client-state.accept/shared renderer and real navigator. New context entry supplies bounded mode/view/source/callback inputs, builds replacement ports with the same actual raw factory, and records callbacks without substituting controller authority. The positive unchanged-callback case retains the original typed fetched object through accept. Status stays READ; uncertain UUID/payload/snapshot/wire is retained through ordinary public restore and exact retry. No v1/Care2 fallback, Start, finance or background choice write is introduced. Initial preview is a mode input after the prepared client bootstrap, not proof of a live preview bootstrap or whole Application activation.
+
+### T1: shared aborted-body normalization suspends current cookie
+
+**Owner/request: Root/W0 shared retained transport.** Own source paths are `apps/portal/site/auth/advisor-cookie-session.js` `_transport` JSON catch at94–96 and `createCookieRequest` catch at254–260; client-cookie-session delegates to that factory. W3 made no edit to these files, transport/session, auth or gateway.
+
+Actual terminal browser sequence: routine hydrates, read-only projection is rendered, exact original active object returns, and the earlier hydration request is canceled. No new clinical head, owner, CSRF or permission is supplied. Actual calls have HTTP200, but cookie state is **offline**; the new manifest/detail work cannot complete and UI truthfully shows current directions unavailable/retry while approval remains locked. This is additional transport failure, not a G1 unlock or a server revocation claim.
+
+Source inspection identifies the conversion: `response.json()` rejecting during caller abort becomes CookieSessionError503; the outer signal-aborted path rethrows that normalized503, then createCookieRequest calls session.suspend(). Thus an obsolete clinical cancellation can affect unrelated Care requests. The finite source producer uses the actual ApplicationSession/raw Review/strict port with a native Response/ReadableStream, incomplete JSON body and the actual propagated AbortSignal. No session/current/permission override or port stub. It deterministically gives **0/1** at expected ready versus actual offline; the next Review read and an independent Care Stop return503 **before any new egress**. Its Care observation is the offline pre-egress branch, not a model of a healthy Care server response. The real positive Care flow is separately exercised in the browser suite.
+
+Proof: own ignored `crossowner-aborted-json.mjs`, `crossowner-aborted-json-care.log`, `crossowner-aborted-json.json`. Expected ready, actual offline; following Review503; Care503/uncertain; wire list contains only the original read. Own adapter blob **62b507e4518c95e794f59d6c487dd500031c37a1**; client adapter2f05dc15b3155d476d7a8aa188ab4a1a4c5c3582; raw Review factory86e9e4dbcefd1cc9a6b4c22d1070fa5589c0791a; transportad80c6e4ad67e6ef102268f4088ab1482b7d91d9. Read-only git show confirms c26 still has these JSON-catch/suspend branches, although its broader adapters/transport differ for separately integrated work. Those newer stacks were neither imported nor executed here.
+
+**Exact bounded request:** Root/W0 must distinguish caller-canceled body consumption from a genuine503/malformed network response before suspending the cookie, preserving all lease/owner/expiry/action/error/uncertain-write guards. Add Root-owned body-abort and independent Care recovery coverage, then fresh source verification/review. No schema, field, API or right expansion is requested. W3 must not catch this by forcing ready/current, accepting old success, delaying away the failure, silently retrying a new UUID or replacing the transport. Consequently this phase retains19/20 and requires a later authorized transport integration plus fresh Chrome/R2. No source or browser predicate workaround was made.
+
+### Source checks, commands and qualifications
+
+**Source74/74** is unchanged source20 plus54; **retained122/122** also passes, all0 skips. Frontend/session and extended actual browser/helper consumer compile exit0 with strict/noUnchecked/verbatim/skipLibCheck:false and unchanged flags. UI guard11 stylesheets, rebuild and application builds exit0. Root node_modules absent; no Root install. No broad980/full Root npm/app/test-types/Expo/iOS/native/genuine/canonical/CI run is claimed. Source74/122, browser117 and browser20 overlap in mechanisms and are not added into a total acceptance score.
+
+Exact expanded browser commands, env, executable, times, exits and owned process receipts are in each `*-run.json`; all use Node22 PATH and serial `--test-concurrency=1`. New context command adds `W3_GUIDANCE_CONTEXT_BROWSER_ENTRY=1`; frozen controls add `W3_GUIDANCE_BROWSER_CONTEXT_BASELINE=1`; every browser command uses fresh grant `coordinator-w3-v3-g1-g2-browser-71c682d7-20261031`. The legacy helper grant remains only a documented historical alternative. Current test source never changes successful authority, current predicates or wire payloads. Screenshot evidence paths are separated by run so earlier frozen evidence is not overwritten.
+
+Additional setup qualifications: diagnostic source search first used nonexistent generic session filenames, then inspected the real retained adapters; no browser state was changed by that search. Actual delivery checks await the relevant HTTP response and render frames, not an already-present uncertain section. No fixed authority delay, force click, reopening, successful response replacement or fake publisher field is used. Existing module-type warnings remain unsuppressed. The wrong Back label is the only new assertion explicitly classified as setup; the unavailable-direction observations remain the shared transport finding.
+
+The shared c26 target contains b69 identity-transform positioning and the later Radix-available-width cap. W3 did not author/fix shared UI or import its tests/report. Root's14/14+foundation6 and S1 width result remain parent-attributed. **Original W3 rectangle0/1 remains qualified as a scroll-viewport expectation**, distinct from the former doubled-coordinate bug. The prior unforced pointer11/11 does not mean all six option rectangles fit simultaneously. No force-click or all-options-visible claim; fresh independent S1 confirmation remains parent-owned.
+
+### Custody and frozen evidence
+
+Fresh sole grant above; first browser tool preview_status returned available:false/tabId:null, then the explicitly authorized installed-Chrome finite intercepted .invalid workflow. External traffic denied; service workers/background networking blocked; only local/public fictional Maya source assets fulfilled. No R9/DB/Auth/provider/Docker/native/credentials/source-fixture resource used, no W6 Node borrowed, no parallel browser owner/context.
+
+All contexts, controllers, navigation listeners, runtimes and browsers closed normally. Terminal inventory **20:28:02.241632UTC** checks1297 exact tracked PID/start identities: **ownChrome[] / ownNode[] / ownEsbuild[] / ownWorkerd[] / workspaceWorkers[] / installedHeadlessPipeChrome[] / ownListeners[]**. W6 and platform Electron excluded; no broad kill. Final preview available:false/tabId:null. **EXPLICIT SOLE RETURN20:28:02UTC**, before local hashes/report/Git. No later browser, preview, process/resource inventory call occurred; later T3 model metadata and filesystem/Git work did not reacquire Chrome.
+
+Evidence root `.local-artifacts/portal-rebuild/w3-v3-guidance-g1g2-browser/`;366-file EVIDENCE.json SHA256 **106ec2cedac2781dddfb5e59633deeadee4cf40678f34517364141239e2a1a2c** excludes itself, report/checkpoint. FROZEN-TESTS records exact test/helper blobs, source71 and import pins. Selected SHA256:
+
+| Artifact | SHA256 |
+| --- | --- |
+| frozen primary0/3 |19a6000aafcfd2433b8ed2d3aa90d91adaebf5ed7b5a9f75148b2df9948f2172 |
+| original reviewer frozen0/3 |031d943d1103bf8de2baa8a693e0715484662ed95daaac84589afac055cc9512 |
+| terminal new19/20 |4785783c22fd43983936ada7e411bbcbd6cbd4f48273a1ef3d70f4082025239d |
+| retained117/117 |3df8c6b001b3b2597a6fb213a9b24fb1247223dcff33689b043eb72793674b13 |
+| source74/74 |f38640e94af0fb78965b3af3fa77e40870b7f288fc142f8e61ffdeea8539ec26 |
+| retained122/122 |7a4340b784f54b84fafaa35e952172fc3cef6e8021d4dbeb1ad02b1191ef2b16 |
+| T1 source producer |46c2444b43028185ce5b962880faf9f6f69a043ce9dd9f837e284bdce1c50a3d |
+| T1 source RED |0298d447d14fe1d6f4c9850e9b2f254e8c3953c4388b0189f85c0e179e96883b |
+| T1 actual state/wires |885319609d1470d0f9c139989b4ca3ae9b7208d98947a321762a7a3962a2494c |
+| final inventory |437a51d1555d51c3a5cade24c01a3b97e55ac61275bfea2b71831d937e70afa6 |
+| return receipt |11286e1e7d4fa30b53b1be4c0e7f4e7158b156aa10073b1f70577263cd3189ba |
+
+Terminal handoff is test candidate df193d0d, separate exact UI import a8555012, unchanged W3 production71 and this report receipt. Application still defaults Care2; built candidate had only test dirtiness and no gateway/activation. Root owns T1 and fresh R2. Later genuine Application/server/Auth/persistence/canonical/exact-head CI/full-goal acceptance remain pending. No acceptance self-issued, push/PR/merge/deploy/live client/message/source-right/money/order action.
+
 Selected SHA256 receipts:
 
 - select-zoom-crossowner.mjs: f1d7826309bcfa208cfba3030f278e6cf6d5ea8b7d8fa25ed4d2c99ae75c4fef
