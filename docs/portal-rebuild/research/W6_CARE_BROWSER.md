@@ -1,6 +1,6 @@
 # W6 genuine care browser preparation
 
-Owner: Kanuj. 31 October 2026. Task `portal-rebuild-w6-care-browser-20261031-r1`. **Author functional run15/15 PASS at8467; R7 and Chrome custody RETURNED11:14:53.715UTC. CS1 source-only correction/verification is in progress. Fresh independent current harness/chain and full-goal acceptance remain required.** Earlier sections preserve their actual source, failed-attempt and custody scopes.
+Owner: Kanuj. 31 October 2026. Task `portal-rebuild-w6-care-browser-20261031-r1`. **TERMINAL author handoff: functional run15/15 PASS at8467; CS1 author source43/43 PASS at91900008; retrospective83/83 matches. R7 and Chrome custody RETURNED11:14:53.715UTC. Fresh independent current source/genuine chain, full-goal/CI/release acceptance remain required.** Earlier sections preserve their actual source, failed-attempt and custody scopes.
 
 ## identity and boundaries
 
@@ -194,3 +194,36 @@ Before any new build, archived the executed candidate's exact83 files into new o
 The bounded fix derives expected output names/bytes only from a fresh write:false compiler, tracked approved catalog/brand/retained public image sources, tracked HTML template, fresh exact metafile, generated provenance/current clean Git head and the unchanged emitted-notices helper in a NEW own expected-only directory. It never uses actual directory inventory or caller provenance to grant an output/input/asset. Actual HTML/meta/notices/font/assets/code/provenance bytes and complete expected set are compared; extra/missing files and changed/self-declared provenance reject. No shared builder/notices/App/Root/SQL/native76/default Node/R4 change. Current23 pure guards and compilation pass. Real clean-build/tamper GREEN verification follows the source commit, so no premature source-fix completion is asserted here.
 
 **Retrospective source-only qualification already passes all83 outputs**, not just HTML: fresh expected generator explicitly labels provenance with original8467, verifies unchanged App/compiler/builder declarations, and every expected byte size/SHA equals the recorded result and archived bytes. Index matches exact git8467 template **fa5eb6c90dc47a2e6ff54c9c9e22b88ce835e92ba3275ea3000220698aa9caed**. This qualifies the actual8467 serving and does not retroactively fix that old verifier, change the actual result, waive CS1's new checkpoint or establish independent/native replay acceptance. Source-only receipt `source/CS1-retrospective.json` retains the complete per-file map.
+
+## final CS1 author checkpoint and terminal receipt
+
+CS1 implementation/test/report code checkpoint is **91900008e8a6338ea428077cf3c19eaef086ef33**, distinct from the **8467c964fd6917eb5b70880b1581b78c235c59a5** actually executed native/browser source. Only browser-source/compile/guards/this report change for CS1. Shared builder/notices helper, App, Root contracts/SQL/native57/76, auth/session, dependencies and original R4/Node behavior are unchanged. **CS1 is author-addressed within these tests; independent disposition remains pending.**
+
+| Final resource-free check at919 | Actual result |
+| --- | --- |
+| Pure care/browser/history/content/retained guards |23/23,0 fail/skip |
+| Same guards plus explicit real candidate/tamper correspondence matrix |**43/43**,0 fail/skip,21.658s;7 browser pure+20 real file cases plus16 retained guards; counts overlap |
+| Exact original author CS1 reject assertions |Historical **0/2 RED** at8467, current **2/2 GREEN**, both restore all own ignored files in finally |
+| Current clean candidate build and exact fresh expected attestation |Exit0;sourceHead919/sourceDirty:false/gatewayIncluded:false,2,207 inputs/17 assets/**83 outputs**; indexfa5eb6c9/JSbed45cd1 unchanged |
+| Fresh expected8467 versus immutable actual recorded/archived outputs |**83/83 exact names, sizes and hashes**; explicit old8467 provenance head, no new-head substitution |
+| Strict frontend/session types |Both exit0, zero diagnostics, unchanged flags; final stdout/argv receipts retained |
+| Six new module syntax, write:false actual gateway/Vault/App/runner compilation, scope/whitespace |All exit0 |
+
+Real file sensitivity covers changed and missing HTML, exact fresh metadata, generated provenance, notices inventory/original notice, font, approved asset and code; ignored extra file; self-declared extra provenance source/asset; positive clean83 baseline and exact post-probe restoration. Missing-file probes move originals to new own holding directories then restore them; no candidate deletion/cleanup forces a pass. Expected legal files are independently generated into new own expected-only directories. No Miniflare/runtime/Auth/fixture/browser/preview or callback is acquired after RETURN.
+
+Recorded current919 canonical provenance receipt: **cd7210a5f78f50484d2d8bf5a5ea05c63ab442e52a08925fabd072cb7857c4fd**. Actual functional result remains SHA3d63ab1a and native return receipt SHA8571969e byte-identical. Retrospective's first exact receipt is preserved separately as `source/CS1-retrospective-first.json` SHA9b7cad70; later expected-only-directory labels have their own complete receipt. Actual historical83 archive remains read-only, including original provenance/meta/notices. Neither the15 functional result nor the old source finding is relabeled as a new native run.
+
+| Source evidence | SHA-256 |
+| --- | --- |
+| CS1-author-red.log |54d6f2a601fa7f3d32673e2888e5669229ff35c055eb16c87a32d10e7af32fa1|
+| CS1-author-green.log |f22fa90f33bf8d4b06a3666b92412d9939983d1e1807568d2457cd7d408a02ac|
+| CS1-real-green.log |3a281a5372347c65890ae240683b01ac096fd72bd63d53a1c2c21d9fc2828631|
+| latest CS1-retrospective.json |af72fb8631a8155999128b8176ae8cc9145ef8474ede9921c554d92f2a08baf8|
+| CS1-fixed-clean-attestation.log |68b7c498e97c87c8b234497d7ff009b99b94b796ac00a2a41053de554b423267|
+| final-source-checks.json |cdf768254378a4035aa1ff3afc80913f2176ca75b42be790e25b7945fc53eb0b|
+
+Parent separately reports clean integrated87ad602e source43/43 GREEN,0 fail/skip,15.976s after correctly detecting historical stale generated chunks on its first baseline. Parent preserved the entire86-file stale folder with a hash manifest and rebuilt its fresh83 namespace without verifier changes, R7 or browser calls. This is **parent-attributed source evidence**, not another W6 execution, product failure or CS1 regression. Own checks above remain independently scoped to919.
+
+Parent has already integrated the first3 owned commits, all7 executed-source supplementals and source-only919; do not duplicate authorized89dc/502 imports or those code commits. The sole new final delivery is this **report-only suffix**, whose exact hash is returned in the terminal handoff. The complete additional owned review range starts after0b71 and ends at that report suffix; its executed head8467 and fixed source code919 remain separately named.
+
+**No active custody, pending server/test handle or uncommitted task work is handed off.** Six partial author main failures, all diagnostic/setup faults, original CS1 RED and actual15/PASS/source43/retrospective83 evidence remain retained with their exact scopes. No actual cancellation/+30 UI cutoff, label Storage completion, delivered email, whole13-action UI matrix, full visual/accessibility/human/clinical/legal/business review, Root/Expo/native export rerun, exact-head CI, merge/deployment or full-goal completion is claimed. New independent current source and genuinely granted Node/browser replay are mandatory parent gates; the user's full approved goal stays active. This bounded tester task ends after the clean report receipt.
