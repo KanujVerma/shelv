@@ -18,7 +18,7 @@ export async function runCareBrowserProof({selection,grant,chromeGrant}) {
   const {connectedCareStack}=await import('./rebuild-care-native-stack.mjs');
   const {createCareCases,careCaseSnapshot}=await import('../scripts/rebuild-care-native-cases.mjs');
   const {closeProviderSession}=await import('../scripts/rebuild-native-cases.mjs');
-  const {signIn,prepareCareBrowserPublication,call,browserCommand,select,bounded,unknown,publication,planProduct,useFields}=await import('./rebuild-care-native-browser-cases.mjs');
+  const {signIn,prepareCareBrowserPublication,verifyCareBrowserAssets,call,browserCommand,select,bounded,unknown,publication,planProduct,useFields}=await import('./rebuild-care-native-browser-cases.mjs');
   const {inventoryProtected,verifyProtected,auditCareBrowserResources,ownBrowserProcesses,assertOwnProcessesClosed}=await import('./rebuild-care-native-browser-audit.mjs');
   const runId=randomUUID(),area=path.join(careBrowserRoot,'.local-artifacts/portal-rebuild',careBrowserPins.artifactDirectory,runId);
   const result={kind:'genuine-care-complete-App-browser',runId,status:'RUNNING',sourceOnly:false,application,authorization:{purpose:authorization.purpose,grantId:authorization.grantId,chromeGrantId:authorization.chromeGrantId},checks:[],realEmails:0,hostedRequests:0,realFunds:0,orders:0,limits:['Representative care UI paths, not all13 actions or the full W3 matrix','No actual cancellation/+30 UI cutoff; service-admin RPC is not permitted','Photos[] only, no completed label Storage','Queued notifications, not delivered email','No new clinical guidance, full visual/human/accessibility or release acceptance']};
@@ -30,6 +30,7 @@ export async function runCareBrowserProof({selection,grant,chromeGrant}) {
     await writeFile(path.join(area,'protected-before.json'),JSON.stringify(protectedBefore,null,2)+'\n',{mode:0o600});
     result.before=await auditCareBrowserResources(fixture);
     stack=await connectedCareStack(fixture,grant,careBrowserRoot,{purpose:careBrowserPins.purpose});
+    phase='actual gateway ASSETS/deeplink/header correspondence';result.static=await verifyCareBrowserAssets(stack,application);pass('Actual retained gateway serves exact current App/static/deeplink bytes and security headers; unlisted static path denies');
     phase='new own synthetic case setup';const cases=await createCareCases(fixture,runId);result.clientId=cases.client.id;result.otherId=cases.other.id;result.viewerId=cases.viewer.id;
     browser=await chromium.launch({channel:'chrome',headless:true,args:['--no-proxy-server','--disable-background-networking','--disable-quic','--host-resolver-rules=MAP * ~NOTFOUND']});
     phase='actual advisor PKCE';const advisor=await signIn({browser,stack,contexts,identity:fixture.owner,audience:'advisor',index:1,result});

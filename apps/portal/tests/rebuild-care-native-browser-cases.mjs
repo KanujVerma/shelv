@@ -12,12 +12,23 @@ export const planProduct={kind:'plan_product',publication,productId:'cerave-pm',
 export const useFields=change=>({product:planProduct,change,sourcePublication:publication,occurredOn:unknown(),channel:'portal',acquisition:'self',identityEventId:null});
 export function careBrowserSyntheticContent() {
   const content=syntheticCareContent();
+  content.context.facts.push({id:'private-second-marker',kind:'advisor_conclusion',visibility:'advisor_only',text:safePrivateMarkers[1],sources:[],contradicts:[]});
   content.routine=syntheticContent().routine;
   content.routine.push({id:'care-product-step',slotId:'care-product-step',kind:'product',productId:'cerave-pm',title:'synthetic product instruction',directions:['software fixture only; no actual product use is requested'],cautions:['synthetic test, not skincare guidance'],schedule:structuredClone(content.decisions[0].schedule)});
   return readPlanContent(content);
 }
 export async function bounded(promise) {let timer;try{return await Promise.race([promise,new Promise((_,reject)=>timer=setTimeout(()=>reject(Error('Care browser wait exceeded15s')),15000))]);}finally{clearTimeout(timer);}}
 export async function select(page,label,value) {await page.getByRole('combobox',{name:label,exact:true}).click();await page.getByRole('option',{name:value,exact:true}).click();}
+export async function verifyCareBrowserAssets(stack,application) {
+  const files=['index.html','application.js','application.css',Object.keys(application.outputs).find(f=>f.startsWith('fonts/')&&f.endsWith('.woff2')),Object.keys(application.outputs).find(f=>f.startsWith('assets/approved/'))];assert.ok(files.every(Boolean));const checks=[];
+  for(const [url,file] of [...files.map(file=>['/'+file,file]),...['/','/plan','/plan/products/cerave-pm/use?routine=evening','/advisor/clients'].map(url=>[url,'index.html'])]) {
+    const response=await stack.mf.dispatchFetch(portalOrigin+url,{headers:{origin:portalOrigin,'cf-connecting-ip':'192.0.2.90'}});assert.equal(response.status,200);
+    assert.equal(response.headers.get('cache-control'),'private, no-store');assert.equal(response.headers.get('referrer-policy'),'no-referrer');assert.equal(response.headers.get('x-content-type-options'),'nosniff');
+    const csp=response.headers.get('content-security-policy');assert.ok(csp.includes("default-src 'self'")&&csp.includes("connect-src 'self'")&&csp.includes("frame-ancestors 'none'"));
+    const bytes=Buffer.from(await response.arrayBuffer()),expected=application.outputs[file];assert.equal(bytes.length,expected.bytes);assert.equal(sha(bytes),expected.sha256);checks.push({path:url,file,bytes:bytes.length,sha256:sha(bytes)});
+  }
+  const denied=await stack.mf.dispatchFetch(portalOrigin+'/unlisted-static-file',{headers:{origin:portalOrigin,'cf-connecting-ip':'192.0.2.90'}});assert.equal(denied.status,404);return {checks,unlistedStatus:denied.status};
+}
 export async function browserCommand(page,audience,family,body,headers={}) {
   return page.evaluate(async({audience,family,body,headers})=>{
     const session=await(await fetch('/api/'+audience+'/session')).json();
@@ -63,7 +74,7 @@ export async function prepareCareBrowserPublication({fixture,stack,advisor,cases
   let draft=await call(p,'advisor','plans','read_draft_v1',{draftId});assert.equal(draft.draft.clientId,null);assert.ok(draft.issues.length>0);
   await p.getByRole('button',{name:'import agent draft',exact:true}).click();await p.getByRole('textbox',{name:'plan JSON',exact:true}).fill(JSON.stringify(careBrowserSyntheticContent()));
   await p.getByRole('button',{name:'compare import',exact:true}).click();await p.getByRole('button',{name:'apply compared import',exact:true}).click();await p.getByText('saved',{exact:true}).waitFor();
-  draft=await call(p,'advisor','plans','read_draft_v1',{draftId});assert.ok(JSON.stringify(draft.draft.content).includes(safePrivateMarkers[0]));
+  draft=await call(p,'advisor','plans','read_draft_v1',{draftId});for(const marker of safePrivateMarkers)assert.ok(JSON.stringify(draft.draft.content).includes(marker));
   await p.getByRole('button',{name:'assign client',exact:true}).click();await select(p,'admitted client',cases.client.displayName);await p.getByRole('button',{name:'confirm intended client',exact:true}).click();await p.getByText(cases.client.displayName,{exact:true}).first().waitFor();
   assert.equal(fixture.sql('select count(*) from auth.users'),authCount);
   for(const section of ['sources','client-context','decisions','routine','follow-up']) {await p.goto(portalOrigin+'/advisor/plans/'+draftId+'/'+section);await p.getByRole('button',{name:'mark section reviewed',exact:true}).click();await p.getByRole('button',{name:'section reviewed',exact:true}).waitFor();}

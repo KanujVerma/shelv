@@ -39,7 +39,7 @@ test('new browser content preserves the retained descriptor and private projecti
   assert.deepEqual(content.products,base.products);assert.deepEqual(content.decisions,base.decisions);assert.equal(content.routine.length,21);
   assert.equal(content.routine.filter(r=>r.productId==='cerave-pm').length,1);
   assert.ok(content.routine.every(r=>r.schedule.automaticAdvance===false));
-  assert.ok(JSON.stringify(content).includes('W6_PRIVATE_SYNTHETIC_ONLY'));assert.ok(!JSON.stringify(projectClientPlan(content)).includes('W6_PRIVATE_SYNTHETIC_ONLY'));
+  for(const marker of ['W6_PRIVATE_SYNTHETIC_ONLY','PRIVATE_REAL_AUTH_CANARY']){assert.ok(JSON.stringify(content).includes(marker),'Both known private markers need an actual authorized-draft positive');assert.ok(!JSON.stringify(projectClientPlan(content)).includes(marker));}
 });
 
 test('candidate evidence binds exact clean head, all source bytes and all emitted bytes without a gateway',()=>{
