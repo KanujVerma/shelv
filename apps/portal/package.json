@@ -10,6 +10,7 @@
     "session-integration/runtime"
   ],
   "scripts": {
+    "build:application": "node scripts/build-portal-app.mjs",
     "build:rebuild": "node scripts/build-rebuild.mjs",
     "typecheck:rebuild": "tsc -p tsconfig.frontend.json",
     "test:rebuild": "node --experimental-strip-types --test tests/rebuild-foundation*.test.mjs",
