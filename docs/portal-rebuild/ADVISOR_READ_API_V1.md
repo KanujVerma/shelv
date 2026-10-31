@@ -1,6 +1,6 @@
 # authoritative advisor read seam
 
-Owner: Kanuj. Status: designed, not implemented or verified. This bounded read extension is required to connect the approved advisor UI without inventing authority or publication metadata.
+Owner: Kanuj. Status: implemented in a bounded forward extension with isolated synthetic native verification; independent review and genuine Auth/PostgREST/browser acceptance remain required. This bounded read extension is required to connect the approved advisor UI without inventing authority or publication metadata.
 
 The current API returns draft/review state and write receipts. It cannot recover a current exact approval after restart or return the canonical published V3 state to an advisor. W2 correctly leaves its explicit context port blocked rather than reconstructing a publication or assuming a remembered approval is still valid. The client read derives its own owner and must remain that way.
 
@@ -41,3 +41,14 @@ The publication response contains `{schemaVersion:1,clientId,version,plan,decisi
 Both commands strictly reject extra fields, endpoints, roles and caller session identities. Root response mapping binds the full requested target/publisher or client/version; `approval` is current, unrevoked and unconsumed only. Existing client reads remain owner-derived and reject `clientId`. These two actions are finite additions to the task allowlist; existing grants receive no implicit new action. A publication task read requires explicit client scope, or an exact published source-draft scope matching that version. Gate task read requires the exact draft/client/session grant. Neither read grants raw source access.
 
 Coordinator integration: add only these two actions to the advisor plans gateway allowlist/capability registry. Keep them out of the client action allowlist. Continue strict response mapping and session-generation checks. No gateway/frontend/config change is included in W1. Runtime implementation and persisted verification are reported separately in [W1 advisor reads](research/W1_ADVISOR_READS.md); the signatures alone do not establish acceptance.
+
+
+## current read rules and limits
+
+Gate recovery requires the complete current `ExactTarget`, a working/readied draft for a non-null approval, current section dependencies/source versions/basis, exact scope and publisher, matching policy revision, a live human approver with current role/edit authority, live selected publisher authority, current source permission, and no revocation/consumption. A stale target returns `revision_conflict`; a current target without a valid approval returns null. A policy revision change requires a fresh approval; finance-only bookkeeping preserves it. Reads never make an approval usable by themselves: deliberate publication reauthorizes independently.
+
+A human read requires active enrolled principal, actual advisor view capability, permanent undeleted identity/profile and a live Auth session. View does not imply edit/review/approve/publish/payment/source authority. Task reads require a finite explicit action in an unrevoked unexpired exact grant bound to the actual provider/Auth session. Task capability booleans use that selected read grant, not implicit global rights or a union with unrelated grants. Legacy publications without a rebuild source-draft linkage require explicit client scope for a task. V3 exact-draft task reads bind the immutable publication's original source draft and client/version, not an arbitrary current working draft.
+
+Client/version choices in the publication envelope are selected-version decision state plus current reported actual use and current review scheduling. They are not fabricated snapshots of use at publication time. The document itself remains immutable. Client access uses the actual version entitlement and care window; audit access may remain while `clientAccess.care==='ended'` and both client booleans are false. Neither new read returns private authoring facts, raw-source locators, notes, credentials or source capability. Existing previews remain `published:false` and receive no invented publication/access metadata.
+
+New read envelopes are deliberately excluded from committed-write receipt decoding: a historical status response cannot be converted into fresh advisor gate authority. Final session/task/target checks run after source/client/draft/grant waits. The existing migration-54 receipt/check-in wait findings reported by W7 R2 are separate coordinator work; this read extension does not claim to close those wrappers.

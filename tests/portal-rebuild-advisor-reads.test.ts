@@ -25,3 +25,11 @@ test('advisor publication binds client/version and reports ended client access w
  const command=readPlanCommand(pubCommand);assert.deepEqual(mapPlanResult(pub,command),pub);
  for(const delta of [{clientId:other},{version:3},{plan:{...pub.plan,version:3}},{privateSource:'CANARY'},{clientAccess:{care:'ended',entitled:true,canRead:true,canWrite:false}},{clientAccess:{care:'active',entitled:false,canRead:true,canWrite:true}}])assert.throws(()=>mapPlanResult({...pub,...delta},command));
 });
+test('stored write receipts cannot be interpreted as fresh advisor gate or publication authority',()=>{
+ const command=readPlanCommand({schemaVersion:1,action:'request_status_v1',requestId:id});
+ for(const receipt of [gate,pub])assert.throws(()=>mapPlanResult({status:'committed',receipt},command));
+});
+test('legacy advisor publication format agrees with the actual immutable original',()=>{
+ const command=readPlanCommand(pubCommand);
+ assert.throws(()=>mapPlanResult({...pub,plan:{...pub.plan,documentSchemaVersion:2,legacyOriginal:{version:2,recommendations:[],presentation:null}}},command));
+});

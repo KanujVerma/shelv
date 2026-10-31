@@ -1,5 +1,5 @@
 import type {PlanCommand,PlanContent,ClientPlanContent,DraftView,ExactTarget,Approval,PublishReceipt,ClientPlanView,PlanPolicyView,ReadinessIssue,UUID,AdvisorGateView,AdvisorPublicationView} from './PortalRebuild.ts';
-import {planContentShape,readPlanShape,readPlanContent} from './PortalRebuildValidation.ts';
+import {planContentShape,readPlanShape,readPlanContent,readLegacyPlan} from './PortalRebuildValidation.ts';
 import type {PlanShape} from './PortalRebuildValidation.ts';
 import {presentationShape} from './ConciergePresentationValidation.ts';
 import {readObject,requireValue} from './ConciergePortalValidation.ts';
@@ -47,7 +47,7 @@ export function mapPlanResult(value:unknown,command:PlanCommand):PlanResult{
   if(v.status==='absent')return readPlanShape(v,obj({status:en('absent')})) as {status:'absent'};
   requireValue(v.status==='committed'&&Object.keys(v).length===2&&Object.hasOwn(v,'receipt'));
   // Stored receipts have the same finite response union; status cannot turn arbitrary JSON into trusted content.
-  for(const shape of Object.values(shapes)){try{return {status:'committed',receipt:readPlanShape(v.receipt,shape) as PlanBusinessResult};}catch{/* next strict result */}}
+  for(const [action,shape] of Object.entries(shapes)){if(action==='read_advisor_gate_v1'||action==='read_advisor_publication_v1')continue;try{return {status:'committed',receipt:readPlanShape(v.receipt,shape) as PlanBusinessResult};}catch{/* next strict result */}}
   throw Error('invalid_input');
  }
  const shape=shapes[command.action];requireValue(shape);
@@ -65,7 +65,7 @@ export function mapPlanResult(value:unknown,command:PlanCommand):PlanResult{
  if(command.action==='read_advisor_publication_v1'){
   const r=result as AdvisorPublicationView,a=r.clientAccess;
   requireValue(r.clientId===command.clientId&&(command.version===null||r.version===command.version)&&r.version===r.plan.version);
-  if('legacyOriginal' in r.plan)requireValue(r.plan.legacyOriginal.version===r.version);
+  if('legacyOriginal' in r.plan){requireValue(r.plan.legacyOriginal.version===r.version);readLegacyPlan(r.plan.legacyOriginal,r.plan.documentSchemaVersion);}
   requireValue(a.canRead===(a.entitled&&(a.care==='active'||a.care==='read_only'))&&(!a.canWrite||a.canRead&&a.care==='active'));
  }
  return result;
