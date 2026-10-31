@@ -403,7 +403,10 @@ export function ClientContent({
     "recommendation",
     "product",
     "product-evidence",
-  ].includes(route.name) || state.view?.schemaVersion === 2 && ["product-use", "report-use"].includes(route.name);
+    "product-use",
+    "report-use",
+  ].includes(route.name);
+  const careRoute = route.name === "product-use" || route.name === "report-use";
   let content: ReactNode;
   if (!supported)
     content = (
@@ -415,16 +418,14 @@ export function ClientContent({
               ? "account"
               : route.name === "orders" || route.name === "order"
                 ? "orders"
-                : route.name === "product-use"
-                  ? "record actual use"
-                  : "notifications"
+                : "notifications"
         }
       />
     );
   else if (state.error && !state.view)
     content = (
       <>
-        <PageHeader title="your plan" />
+        <PageHeader title={careRoute ? "record actual use" : "your plan"} />
         <StatusNotice
           tone={state.error === 403 ? "denied" : "error"}
           title={
@@ -445,6 +446,8 @@ export function ClientContent({
     );
   else if (!state.view)
     content = <StatusNotice tone="loading" title="loading your plan" />;
+  else if (careRoute && state.view.schemaVersion !== 2)
+    content = <UnavailableModule title="record actual use" />;
   else
     content = (
       <>

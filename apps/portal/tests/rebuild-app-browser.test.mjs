@@ -1106,3 +1106,19 @@ test("real application general care route respects read-only access without a wr
     assert.equal(s.calls.some(c=>c.command?.action==="read_client_plan_v1"),false);
   }finally{await f.close();}
 });
+
+for(const status of [403,409,503])for(const route of [{name:"product-use",productId:"cerave-pm",routine:"evening"},{name:"report-use",routine:"evening"}])test(`direct ${route.name} first ${status} keeps care read recovery`,async()=>{
+  const s=state();s.failure=status;const f=await setup(buildRoute(route),390,s);
+  try{
+    const p=f.page;
+    await p.getByRole("button",{name:"try again",exact:true}).waitFor({timeout:1500});
+    assert.equal(await p.getByRole("heading",{level:1}).innerText(),"record actual use");
+    assert.equal(await p.locator("main form").count(),0);
+    s.failure=0;
+    if(status===503){await p.getByRole("button",{name:"check connection",exact:true}).click();await p.getByRole("button",{name:"check connection",exact:true}).waitFor({state:"hidden"});}
+    await p.getByRole("button",{name:"try again",exact:true}).click();
+    await p.getByRole("combobox",{name:"what changed?",exact:true}).waitFor();
+    assert.equal(s.calls.some(c=>c.command?.action==="read_client_plan_v1"),false);
+    assert.equal(s.calls.some(c=>["report_product_use_v1","report_identity_v1","report_unreviewed_product_v1"].includes(c.command?.action)),false);
+  }finally{await f.close();}
+});

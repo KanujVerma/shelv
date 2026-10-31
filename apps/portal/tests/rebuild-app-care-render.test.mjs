@@ -13,11 +13,11 @@ import {mapCareResult} from '../../../src/contracts/PortalCareMapping.ts';
 const area=path.resolve(import.meta.dirname,'../../../.local-artifacts/portal-rebuild/app-care-ssr');await mkdir(area,{recursive:true});
 await build({absWorkingDir:path.resolve(import.meta.dirname,'..'),tsconfig:'tsconfig.frontend.json',entryPoints:['tests/rebuild/app-care-ssr-entry.tsx'],outfile:path.join(area,'entry.cjs'),platform:'node',format:'cjs',bundle:true,loader:{'.css':'empty'}});
 const m=(await import(pathToFileURL(path.join(area,'entry.cjs')).href)).default,{createElement:h,renderToStaticMarkup:render}=m;
-async function setup(t,view=carePlan()){
+async function setup(t,view=carePlan(),status=200){
  const runtime=createApplicationSession({audience:'client',locks:{request:async(_n,_o,run)=>run()},fetcher:async url=>{
   if(url==='/api/client/session')return Response.json({signedIn:true,ownerId:owner,generation:1,csrf:'care-render-csrf',capabilities:{view:true,edit:false,publish:false,confirmPayments:false},idleExpiresAt:new Date(Date.now()+3600000).toISOString(),absoluteExpiresAt:new Date(Date.now()+7200000).toISOString()});
-  assert.equal(url,'/api/client/care');return Response.json(view);
- }});await runtime.restore();const boundary=runtime.getSnapshot().boundary,ports=createClientPorts(runtime,{care:true}),controller=createClientPlanController(boundary,ports,{readVersion:2});await controller.refresh();assert.equal(controller.getSnapshot().error,null);t.after(()=>{controller.dispose();runtime.dispose();});
+  assert.equal(url,'/api/client/care');return Response.json(status===200?view:{code:'unavailable'},{status});
+ }});await runtime.restore();const boundary=runtime.getSnapshot().boundary,ports=createClientPorts(runtime,{care:true}),controller=createClientPlanController(boundary,ports,{readVersion:2});await controller.refresh();assert.equal(controller.getSnapshot().error,status===200?null:status);t.after(()=>{controller.dispose();runtime.dispose();});
  return {boundary,ports,controller};
 }
 function clientPage(f,route){
@@ -43,4 +43,11 @@ test('canonical advisor v2 audit shows reported stops without inventing client e
  const command={schemaVersion:1,action:'read_advisor_publication_v2',clientId:owner,version:1};
  const view=mapCareResult({schemaVersion:2,clientId:owner,version:1,plan:client.plan,decisionRevision:client.decisionRevision,decisions:client.decisions,actualUse:client.actualUse,nextReviewOn:client.nextReviewOn,reviewSchedule:null,clientAccess:{care:'ended',entitled:false,canRead:false,canWrite:false},use:client.use,latestPublicReview:null},command);
  const page=render(h(m.PublicationAuditRecord,{view}));assert.match(page,/reported stopped/);assert.match(page,/current reported use/);assert.match(page,/ended/);assert.doesNotMatch(page,/record a change in use|view original report/);
+});
+for(const status of [403,409,503])test('direct care URLs retain first-read '+status+' recovery before any view exists',async t=>{
+ const f=await setup(t,carePlan(),status);
+ for(const route of [{name:'product-use',productId:'cerave-pm',routine:'evening'},{name:'report-use',routine:'evening'}]){
+  const page=clientPage(f,route);assert.match(page,/try again/);assert.match(page,/<h1[^>]*>record actual use<\/h1>/);
+  assert.doesNotMatch(page,/this page is not connected yet/);assert.doesNotMatch(page,/<form/);
+ }
 });
