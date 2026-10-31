@@ -10,6 +10,17 @@ import {
   readPlanContent,
 } from "../../../../../src/contracts/PortalRebuildValidation.ts";
 import { mapPlanResult } from "../../../../../src/contracts/PortalRebuildMapping.ts";
+import { mapCareResult } from "../../../../../src/contracts/PortalCareMapping.ts";
+import type {
+  AdvisorPublicationViewV2,
+  DraftDependenciesView,
+  UseHistoryPage,
+} from "../../../../../src/contracts/PortalCare.ts";
+import {
+  assertDependencyHistoryClient,
+  assertDependencyUseClient,
+  missingDependencyReaders,
+} from "./dependencies.ts";
 import type {
   PlanDirectory,
   PlanImportComparison,
@@ -47,6 +58,7 @@ import type {
 } from "./types.ts";
 
 const empty = (): AdvisorState => ({
+  dependencies: null,
   needsComparison: false,
   ended: false,
   busy: false,
@@ -77,6 +89,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
           ...restored,
           busy: false,
           context: null,
+          dependencies: null,
           ...(restored.pending
             ? {
                 save: "uncertain",
@@ -91,9 +104,19 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     appliedContextGeneration = 0,
     operationGeneration = 0,
     recoveryGeneration = 0;
+  let dependencyLease: (() => boolean) | null = null;
   const live = () => !disposed && !state.ended && session.isCurrent();
   const emit = (patch: Partial<AdvisorState>) => {
     if (!live()) return;
+    if (
+      ("view" in patch && patch.view !== state.view) ||
+      ("local" in patch && patch.local !== state.local) ||
+      ("context" in patch && patch.context !== state.context) ||
+      ("comparison" in patch && patch.comparison !== state.comparison)
+    ) {
+      dependencyLease = null;
+      patch = { ...patch, dependencies: null };
+    }
     state = { ...state, ...patch };
     session.memory.set(memoryKey, state);
     listeners.forEach((fn) => fn());
@@ -149,12 +172,13 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     !state.receipt &&
     !state.needsComparison;
   function canReview() {
-    return permissions.review && stable();
+    return permissions.review && stable() && dependenciesReady();
   }
   function canApprove() {
     return (
       permissions.approve &&
       stable() &&
+      dependenciesReady() &&
       !!state.view?.target &&
       reviewed(state.view) &&
       state.view.issues.length === 0
@@ -164,6 +188,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     return (
       permissions.publish &&
       stable() &&
+      dependenciesReady() &&
       !!state.view?.target &&
       reviewed(state.view) &&
       state.view.issues.length === 0 &&
@@ -239,7 +264,14 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
   }
   async function read(command: AdvisorCommand, current = live) {
     return invoke(async (signal) => {
-      const result = await ports.plans.execute(command, { signal });
+      const result =
+        command.action === "read_draft_dependencies_v1" ||
+        command.action === "rebase_draft_dependencies_v1"
+          ? await (() => {
+              if (!ports.dependencies) throw { status: 403 };
+              return ports.dependencies.execute(command, { signal });
+            })()
+          : await ports.plans.execute(command, { signal });
       return current() ? mapPlanResult(result, command) : undefined;
     });
   }
@@ -322,6 +354,24 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       )
         throw Error("invalid_response");
       if (
+        command.action === "rebase_draft_dependencies_v1" &&
+        (!state.view ||
+          view.draft.contentRevision !== command.expectedContentRevision + 1 ||
+          view.draft.assignmentRevision !==
+            command.expectedAssignmentRevision ||
+          view.draft.clientId !== state.view.draft.clientId ||
+          view.draft.state !== "working" ||
+          view.draft.basis.publicationVersion !==
+            command.expectedLegacyBasis.publicationVersion ||
+          view.draft.basis.useRevision !==
+            command.expectedLegacyBasis.useRevision ||
+          view.sections.some(
+            (section) => section.sectionId !== "sources" && section.reviewed,
+          ) ||
+          !sameContent(view.draft.content, state.view.draft.content))
+      )
+        throw Error("invalid_response");
+      if (
         command.action === "review_section_v1" &&
         (!state.view ||
           !sameDraft(view, state.view) ||
@@ -369,6 +419,9 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       pending: command,
       busy: true,
       notice: null,
+      ...(command.action === "rebase_draft_dependencies_v1"
+        ? { context: null, dependencies: null, save: "saving" as const }
+        : {}),
       // Starting an approval attempt also retires an unresolved context read
       // through the operation fence. Its older authority must not survive even
       // if this attempt returns a definite error instead of a receipt.
@@ -384,13 +437,257 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       const result = await read(command);
       if (result !== undefined && current()) accept(command, result);
     } catch (e) {
-      if (current()) fail(e, true);
+      if (current()) {
+        if (
+          command.action === "rebase_draft_dependencies_v1" &&
+          (e as { status?: number })?.status === 409
+        ) {
+          // Definite CAS failure is not permission to mutate/retry the captured
+          // request. A new inspection and human acknowledgement are required.
+          emit({
+            pending: null,
+            busy: false,
+            save: "error",
+            dependencies: null,
+            context: null,
+            notice: {
+              kind: "conflict",
+              title: "client information changed; review it again",
+            },
+          });
+        } else fail(e, true);
+      }
     }
+  }
+  function dependencyReviewCurrent() {
+    return !!state.dependencies && !!dependencyLease?.();
+  }
+  function dependenciesReady() {
+    return (
+      !ports.dependencies ||
+      !state.view?.target ||
+      (dependencyReviewCurrent() &&
+        state.dependencies?.status === "ready" &&
+        !state.dependencies.view?.needsRebase)
+    );
+  }
+  function retireDependencyReview() {
+    dependencyLease = null;
+    readGenerations.set(
+      "dependencies",
+      (readGenerations.get("dependencies") ?? 0) + 1,
+    );
+    readGenerations.set(
+      "dependency-history",
+      (readGenerations.get("dependency-history") ?? 0) + 1,
+    );
+    emit({ dependencies: null });
+  }
+  async function inspectDependencies() {
+    const view = requireDraft(),
+      target = view?.target;
+    if (
+      !ports.dependencies ||
+      !target ||
+      !permissions.view ||
+      state.pending ||
+      state.busy ||
+      dirty()
+    )
+      return;
+    const applicable = beginRead("dependencies"),
+      authority = contextGeneration,
+      capabilities = { ...permissions };
+    const current = () =>
+      applicable() &&
+      authority === contextGeneration &&
+      !(Object.keys(capabilities) as (keyof typeof capabilities)[]).some(
+        (key) => capabilities[key] === true && permissions[key] === false,
+      );
+    dependencyLease = current;
+    emit({
+      dependencies: {
+        status: "loading",
+        view: null,
+        publication: null,
+        history: [],
+        nextCursor: null,
+        acknowledged: false,
+        unavailable: [],
+      },
+    });
+    try {
+      const result = (await read(
+        {
+          schemaVersion: 1,
+          action: "read_draft_dependencies_v1",
+          draftId: view.draft.id,
+          contentRevision: view.draft.contentRevision,
+          assignmentRevision: view.draft.assignmentRevision,
+        },
+        current,
+      )) as DraftDependenciesView | undefined;
+      if (!result || !current()) return;
+      const unavailable = missingDependencyReaders(result).map(
+        (r) => r.message,
+      );
+      let publication: AdvisorPublicationViewV2 | null = null;
+      let history: UseHistoryPage = {
+        revision: result.current.useHead,
+        entries: [],
+        nextCursor: null,
+      };
+      if (!ports.careRead)
+        unavailable.push(
+          "current client use is unavailable here. updating the basis is blocked.",
+        );
+      else {
+        if (result.current.legacyBasis.publicationVersion !== null) {
+          const command = {
+            schemaVersion: 1,
+            action: "read_advisor_publication_v2",
+            clientId: target.clientId,
+            version: null,
+          } as const;
+          const raw = await invoke((signal) =>
+            ports.careRead!.execute(command, { signal }),
+          );
+          if (!raw || !current()) return;
+          publication = mapCareResult(raw, command) as AdvisorPublicationViewV2;
+          assertDependencyUseClient(publication, target.clientId);
+          if (
+            publication.use.revision !== result.current.useHead ||
+            publication.version !==
+              result.current.legacyBasis.publicationVersion
+          )
+            throw { status: 409 };
+        } else if (result.current.useHead !== 0) {
+          unavailable.push(
+            "current use has no available publication context. updating the basis is blocked.",
+          );
+        }
+        const command = {
+          schemaVersion: 1,
+          action: "read_advisor_use_history_v1",
+          clientId: target.clientId,
+          product: null,
+          cursor: null,
+          limit: 25,
+        } as const;
+        const raw = await invoke((signal) =>
+          ports.careRead!.execute(command, { signal }),
+        );
+        if (!raw || !current()) return;
+        history = mapCareResult(raw, command) as UseHistoryPage;
+        assertDependencyHistoryClient(history, target.clientId);
+        if (history.revision !== result.current.useHead) throw { status: 409 };
+      }
+      if (current())
+        emit({
+          dependencies: {
+            status: unavailable.length ? "unavailable" : "ready",
+            view: result,
+            publication,
+            history: history.entries,
+            nextCursor: history.nextCursor,
+            acknowledged: false,
+            unavailable,
+          },
+        });
+    } catch (error) {
+      if (!current()) return;
+      if ((error as { status?: number })?.status === 401) return fail(error);
+      emit({
+        dependencies: {
+          status: "unavailable",
+          view: null,
+          publication: null,
+          history: [],
+          nextCursor: null,
+          acknowledged: false,
+          unavailable: [
+            "current client information could not be confirmed. refresh it before reviewing or publishing.",
+          ],
+        },
+      });
+    }
+  }
+  async function loadDependencyHistory() {
+    const review = state.dependencies,
+      target = state.view?.target;
+    if (
+      !review?.nextCursor ||
+      !review.view ||
+      !target ||
+      !ports.careRead ||
+      !dependencyReviewCurrent() ||
+      state.pending ||
+      state.busy ||
+      dirty()
+    )
+      return;
+    const applicable = beginRead("dependency-history"),
+      current = () =>
+        applicable() &&
+        state.dependencies === review &&
+        dependencyReviewCurrent();
+    try {
+      const command = {
+        schemaVersion: 1,
+        action: "read_advisor_use_history_v1",
+        clientId: target.clientId,
+        product: null,
+        cursor: review.nextCursor,
+        limit: 25,
+      } as const;
+      const raw = await invoke((signal) =>
+        ports.careRead!.execute(command, { signal }),
+      );
+      if (!raw || !current()) return;
+      const page = mapCareResult(raw, command) as UseHistoryPage;
+      assertDependencyHistoryClient(page, target.clientId);
+      if (page.revision !== review.view.current.useHead) throw { status: 409 };
+      emit({
+        dependencies: {
+          ...review,
+          history: [...review.history, ...page.entries],
+          nextCursor: page.nextCursor,
+          acknowledged: false,
+        },
+      });
+    } catch (error) {
+      if (!current()) return;
+      if ((error as { status?: number })?.status === 401) return fail(error);
+      emit({
+        dependencies: {
+          ...review,
+          status: "unavailable",
+          acknowledged: false,
+          unavailable: [
+            "client reports changed or could not be loaded. refresh current client information before continuing.",
+          ],
+        },
+      });
+    }
+  }
+  function canRebaseDependencies() {
+    const review = state.dependencies;
+    return !!(
+      permissions.edit &&
+      stable() &&
+      state.view?.target &&
+      dependencyReviewCurrent() &&
+      review?.status === "ready" &&
+      review.view?.needsRebase &&
+      !review.nextCursor &&
+      review.acknowledged
+    );
   }
   async function refreshContext() {
     const view = requireDraft(),
       target = view?.target;
     if (!target) return;
+    if (ports.dependencies) retireDependencyReview();
     const generation = ++contextGeneration,
       start = epoch,
       operation = operationGeneration,
@@ -505,6 +802,40 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       return () => listeners.delete(fn);
     },
     permissions,
+    hasDependencies: !!ports.dependencies,
+    dependencyReviewCurrent,
+    inspectDependencies,
+    loadDependencyHistory,
+    retireDependencyReview,
+    canRebaseDependencies,
+    acknowledgeDependencies(acknowledged: boolean) {
+      const review = state.dependencies;
+      if (
+        review &&
+        permissions.edit &&
+        stable() &&
+        dependencyReviewCurrent() &&
+        review.status === "ready" &&
+        !review.nextCursor
+      )
+        emit({ dependencies: { ...review, acknowledged } });
+    },
+    async rebaseDependencies() {
+      if (!canRebaseDependencies()) return;
+      const view = state.view!,
+        current = state.dependencies!.view!.current;
+      await execute({
+        ...writeBasis(view),
+        action: "rebase_draft_dependencies_v1",
+        expectedHeads: {
+          useHead: current.useHead,
+          reportHead: current.reportHead,
+          instructionHead: current.instructionHead,
+        },
+        expectedLegacyBasis: { ...current.legacyBasis },
+        expectedLegacyBasisManifestHash: current.legacyBasisManifestHash,
+      });
+    },
     dirty,
     canReview,
     canApprove,
@@ -729,6 +1060,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       const view = requireDraft();
       if (!permissions.edit) return deny();
       if (!view || state.pending || state.busy) return;
+      if (ports.dependencies) retireDependencyReview();
       const current = beginRead("comparison");
       try {
         const localAtStart = state.local,
@@ -814,6 +1146,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       if (!state.context || state.context.clientId !== target.clientId) {
         await refreshContext();
         if (!state.context) return;
+        if (ports.dependencies) await inspectDependencies();
       }
       if (!canApprove() || !sameTarget(state.view?.target, target)) return;
       await execute({
@@ -842,6 +1175,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     async preview() {
       const v = requireDraft();
       if (!v || !stable() || !options.onPreview) return;
+      if (ports.dependencies) retireDependencyReview();
       const current = beginRead("preview");
       try {
         const p = (await read(
@@ -967,6 +1301,11 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     async retry() {
       const pending = state.pending;
       if (!pending || state.busy) return;
+      if (
+        pending.action === "rebase_draft_dependencies_v1" &&
+        !permissions.edit
+      )
+        return deny();
       if (pending.action === "confirm_payment") {
         await executePayment(pending);
         return;

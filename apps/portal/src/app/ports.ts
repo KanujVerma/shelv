@@ -62,6 +62,7 @@ const reads = new Set<PlanCommand["action"]>([
   "read_client_plan_v1",
   "read_advisor_gate_v1",
   "read_advisor_publication_v1",
+  "read_draft_dependencies_v1",
 ]);
 const targetKey = (t: ExactTarget | null) =>
   t === null
@@ -160,6 +161,14 @@ export function createAdvisorPorts(runtime: ApplicationSession, options: { care?
   audience(runtime, "advisor");
   const current = capturedSession(runtime);
   const actorId = runtime.cookie.identity!.ownerId;
+  const allowedActions = options.care
+    ? new Set<PlanCommand["action"]>([
+        ...advisorActions,
+        "read_draft_dependencies_v1",
+        "rebase_draft_dependencies_v1",
+      ])
+    : advisorActions;
+  const care = options.care ? createAdvisorCarePort(runtime) : undefined;
   let selected: ExactTarget | null = null,
     gateSequence = 0,
     selectionSequence = 0;
@@ -170,6 +179,7 @@ export function createAdvisorPorts(runtime: ApplicationSession, options: { care?
     "assign_draft_v1",
     "apply_import_v1",
     "review_section_v1",
+    "rebase_draft_dependencies_v1",
   ]);
   const permissions: AdvisorPermissions = {
     actorId,
@@ -259,7 +269,7 @@ export function createAdvisorPorts(runtime: ApplicationSession, options: { care?
           ? ++selectionSequence
           : null;
         if (selection !== null) gateSequence++;
-        const result = await plan(runtime, input, advisorActions, options);
+        const result = await plan(runtime, input, allowedActions, options);
         current(options, kind);
         if ("draft" in result && selection === selectionSequence)
           await select(result, options);
@@ -358,6 +368,21 @@ export function createAdvisorPorts(runtime: ApplicationSession, options: { care?
       },
     },
   };
+  if (care) {
+    ports.dependencies = {
+      execute: (input, options) => ports.plans.execute(input, options),
+    };
+    ports.careRead = {
+      execute(input, options) {
+        if (
+          input.action !== "read_advisor_publication_v2" &&
+          input.action !== "read_advisor_use_history_v1"
+        )
+          throw new TransportError(403);
+        return care.execute(input, options);
+      },
+    };
+  }
   const publication: OperationPort<
     Extract<PlanCommand, { action: "read_advisor_publication_v1" }>,
     AdvisorPublicationView
@@ -374,5 +399,5 @@ export function createAdvisorPorts(runtime: ApplicationSession, options: { care?
       return result;
     },
   };
-  return { ports, permissions, publication, care: options.care ? createAdvisorCarePort(runtime) : undefined, dispose: stop };
+  return { ports, permissions, publication, care, dispose: stop };
 }

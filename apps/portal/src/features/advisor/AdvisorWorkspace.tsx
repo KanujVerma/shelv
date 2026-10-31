@@ -37,6 +37,7 @@ import {
 } from "./model.ts";
 import type { AdvisorController, AdvisorState } from "./types.ts";
 import "./advisor.css";
+import { DependencyReview } from "./DependencyReview.tsx";
 
 export type AdvisorRoute =
   | Extract<PortalRoute, { name: "advisor-editor" }>
@@ -85,6 +86,10 @@ export function AdvisorWorkspace({
     [assignOpen, setAssignOpen] = useState(false),
     [client, setClient] = useState(""),
     [paymentOpen, setPaymentOpen] = useState(false);
+  useEffect(() => {
+    if (route.name === "advisor-editor" && s.view) void c.inspectDependencies();
+  }, [c, route.name, s.view, s.context]);
+  useEffect(() => () => c.retireDependencyReview(), [c]);
   useEffect(() => {
     void (async () => {
       if (route.name === "advisor-editor") await c.open(route.draftId);
@@ -444,6 +449,7 @@ export function AdvisorWorkspace({
     return (
       <div className="advisor-view">
         {notice}
+        <DependencyReview controller={c} state={s} />
         <PublicationChecks
           controller={c}
           state={s}
@@ -504,6 +510,7 @@ export function AdvisorWorkspace({
         </Badge>
       </div>
       {notice}
+      <DependencyReview controller={c} state={s} />
       {s.comparison ? <ImportComparison state={s} controller={c} /> : null}
       <div className="advisor-editor-grid">
         <nav className="advisor-checklist" aria-label="plan sections">
