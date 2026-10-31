@@ -78,8 +78,11 @@ export async function runCareNativeProof({selection:rawSelection,grant}) {
     const confirmed=await advisor.client.request('payments',{schemaVersion:2,action:'confirm_payment',requestId:randomUUID(),clientId:cases.client.id,expectedRevision:finance.value.revision,quoteId:quote.id,quoteVersion:quote.version,shippingAddressVersion:quote.shippingAddressVersion,claimId:claim.claimId,serviceCents:10000,productCents:0,totalCents:10000,paymentOptionId:claim.paymentOptionId,receiptVerified:true},advisor.csrf);assert.equal(confirmed.status,200);
     const gate=await call(advisor,'plans','read_advisor_gate_v1',{target:draftView.target,publisher:{kind:'human',actorId:fixture.owner.id}});assert.equal(gate.approval.id,reviewed.approval.id);
     const paid=careCaseSnapshot(fixture,cases.client.id);assert.equal(paid.publications.length,0);assert.equal(paid.plan_review_schedule.length,0);assert.equal(paid.activations.length,0);
+    assert.ok(paid.service_periods.every(row=>row.starts_on===null&&row.ends_on===null),'Receipt alone must not start service');
+    assert.ok(paid.payment_confirmations.every(row=>row.service_start===null&&row.service_end===null),'Receipt alone must not supply service clock dates');
     const published=await call(advisor,'plans','publish_plan_v1',{requestId:randomUUID(),target:draftView.target,approvalId:reviewed.approval.id,firstServiceClaimId:claim.claimId});assert.equal(published.firstServiceStarted,true);result.firstPublication=published;
     const initial=careCaseSnapshot(fixture,cases.client.id);assert.equal(initial.publications.length,1);assert.equal(initial.plan_events.length,1);assert.equal(initial.plan_deliveries.length,2);assert.equal(initial.plan_review_schedule.length,1);assert.equal(initial.activations.length,0);
+    assert.equal(initial.service_periods.length,1);assert.equal(initial.service_periods[0].ends_on,initial.plan_review_schedule[0].month_one_on);
     const dayParts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date(published.publishedAt));
     const part=name=>dayParts.find(p=>p.type===name).value;assert.equal(initial.service_periods[0].starts_on,part('year')+'-'+part('month')+'-'+part('day'));
     assert.equal(Date.parse(initial.plan_review_schedule[0].first_publication_at),Date.parse(published.publishedAt));
