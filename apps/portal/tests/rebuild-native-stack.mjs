@@ -112,7 +112,7 @@ export async function connectedStack(fixture, options={}) {
   }
   let mf;
   try {
-    mf = new Miniflare({...convertV4MiniflareOptions(config),telemetry:{enabled:false}});
+    mf = new Miniflare({...convertV4MiniflareOptions(config),...(options.carePurpose==='genuine-care-browser'?{unsafeInspectDurableObjects:true}:{}),telemetry:{enabled:false}});
     options.onRuntime?.({event:'allocated',dispose:()=>mf.dispose()});
     await mf.ready;
   } catch(error) {
@@ -132,16 +132,31 @@ export async function connectedStack(fixture, options={}) {
     await visit(dir);
     let records=0,activeSessions=0,envelopes=0;
     for(const file of files) {
-      const query=text=>execFileSync('/usr/bin/sqlite3',['-readonly',file,text],{encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
-      if(query("select count(*) from sqlite_master where type='table' and name='session_record'")!=='1')continue;
-      for(const line of query('select json from session_record').split('\n').filter(Boolean)) {
+      let stored;
+      if(options.carePurpose==='genuine-care-browser') {
+        // Query the actual live workerd SQLite store, through locked Miniflare's
+        // read inspection API. The system CLI cannot open some live VFS files.
+        if(!file.startsWith(path.join(dir,'resources/do/vault-AdvisorSessionObject')+path.sep))continue;
+        assert.equal((await readFile(file)).subarray(0,16).toString(),'SQLite format 3\0');
+        const id=path.basename(file,'.sqlite');assert.match(id,/^[0-9a-f]{64}$/);
+        const storage=await mf.unsafeGetDurableObjectStorage('vault','AdvisorSessionObject',{id});
+        const schema=await storage.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='session_record'");
+        if(!schema.length)continue;assert.equal(schema.length,1);
+        stored=(await storage.exec('SELECT json FROM session_record')).map(row=>{assert.equal(typeof row.json,'string');return row.json;});
+      } else {
+        const query=text=>execFileSync('/usr/bin/sqlite3',['-readonly',file,text],{encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
+        if(query("select count(*) from sqlite_master where type='table' and name='session_record'")!=='1')continue;
+        stored=query('select json from session_record').split('\n').filter(Boolean);
+      }
+      for(const line of stored) {
         for(const secret of issuedSecrets)assert.ok(!line.includes(secret),'Provider access/refresh credential must not be plaintext in SQLite');
         const record=JSON.parse(line);records++;
         if(record.kind==='session'&&record.status==='active') {activeSessions++;assert.equal(record.credentials.version,1);assert.equal(typeof record.credentials.ciphertext,'string');assert.equal(typeof record.credentials.iv,'string');envelopes++;}
         if(record.kind==='flow'&&record.payload) {assert.equal(record.payload.version,1);assert.equal(typeof record.payload.ciphertext,'string');}
       }
     }
-    return {sqliteFiles:files.length,records,activeSessions,credentialEnvelopes:envelopes};
+    if(options.carePurpose==='genuine-care-browser') {const after=[];async function visitAfter(directory){for(const entry of await readdir(directory,{withFileTypes:true})){const file=path.join(directory,entry.name);if(entry.isDirectory())await visitAfter(file);else if(entry.name.endsWith('.sqlite'))after.push(file);}}await visitAfter(dir);assert.deepEqual(after.sort(),[...files].sort(),'Inspection must not create another Durable Object database');}
+    return {sqliteFiles:files.length,records,activeSessions,credentialEnvelopes:envelopes,...(options.carePurpose==='genuine-care-browser'?{inspection:'actual-live-sqlite-fixed-selects'}:{})};
   }
   async function cleanup() {
     const failures = [];
