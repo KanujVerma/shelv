@@ -40,6 +40,7 @@ import type {
   AdvisorCommand,
   AdvisorControllerOptions,
   AdvisorGateContext,
+  AdvisorNotice,
   AdvisorState,
   AdvisorWrite,
   ConfirmPaymentCommand,
@@ -87,6 +88,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     disposed = false,
     epoch = 0,
     contextGeneration = 0,
+    appliedContextGeneration = 0,
     operationGeneration = 0,
     recoveryGeneration = 0;
   const live = () => !disposed && !state.ended && session.isCurrent();
@@ -192,7 +194,12 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       controllers.delete(controller);
     }
   }
-  function fail(error: unknown, write = false, preserveBusy = false) {
+  function fail(
+    error: unknown,
+    write = false,
+    preserveBusy = false,
+    origin?: AdvisorNotice["origin"],
+  ) {
     if (!live()) return;
     const status = (error as { status?: number } | null)?.status;
     if (status === 401) {
@@ -216,6 +223,9 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       pending: write ? (uncertain ? state.pending : null) : state.pending,
       notice: {
         kind,
+        ...(origin && !state.pending && (kind === "denied" || kind === "error")
+          ? { origin }
+          : {}),
         title:
           kind === "denied"
             ? "action unavailable"
@@ -265,8 +275,17 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         permissions.view &&
         state.context &&
         sameTarget(state.view?.target, command.target)
-      )
+      ) {
+        appliedContextGeneration = contextGeneration;
         emit({ context: { ...state.context, approval } });
+      } else if (appliedContextGeneration !== authority) {
+        // A newer read has not supplied applicable authority. Receipt recovery
+        // invalidates that read's lease; retire its older displayed context too.
+        // A completed newer read remains intact, including its restrictions.
+        emit({ context: null });
+      } else {
+        appliedContextGeneration = contextGeneration;
+      }
     } else if (command.action === "publish_plan_v1") {
       const receipt = mapped as PublishReceipt;
       if (!sameTarget(receipt.target, command.target))
@@ -350,6 +369,13 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       pending: command,
       busy: true,
       notice: null,
+      // Starting an approval attempt also retires an unresolved context read
+      // through the operation fence. Its older authority must not survive even
+      // if this attempt returns a definite error instead of a receipt.
+      ...(command.action === "approve_publication_v1" &&
+      appliedContextGeneration !== contextGeneration
+        ? { context: null }
+        : {}),
       ...(command.action === "save_draft_v1"
         ? { save: "saving" as const }
         : {}),
@@ -416,11 +442,27 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
           publisher: { kind: "human", actorId: permissions.actorId },
         }) as Approval;
       }
-      emit({ context: { ...result, payments, approval } });
+      appliedContextGeneration = generation;
+      const notice = state.notice;
+      emit({
+        context: { ...result, payments, approval },
+        ...(notice?.origin?.purpose === "context" &&
+        notice.origin.actorId === permissions.actorId &&
+        sameTarget(notice.origin.target, target) &&
+        !state.pending &&
+        !state.needsComparison &&
+        (notice.kind === "denied" || notice.kind === "error")
+          ? { notice: null }
+          : {}),
+      });
     } catch (e) {
       if (!current()) return;
       emit({ context: null });
-      fail(e, false, true);
+      fail(e, false, true, {
+        purpose: "context",
+        actorId: permissions.actorId,
+        target: { ...target },
+      });
     }
   }
   async function executePayment(command: ConfirmPaymentCommand) {

@@ -111,6 +111,8 @@ export interface AdvisorControllerOptions {
 export type AdvisorNotice = {
   kind: "error" | "denied" | "conflict" | "uncertain" | "invalid";
   title: string;
+  /** Internal read provenance retained with session memory across remounts. */
+  origin?: { purpose: "context"; actorId: string; target: ExactTarget };
 };
 export interface AdvisorState {
   needsComparison: boolean;
