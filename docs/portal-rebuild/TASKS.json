@@ -1399,7 +1399,7 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-caf2b712",
       "branch": "t3/care-use-identity-backend",
       "baseCommit": "8366dedd201a4eed224704eae185350be9aac1d4",
-      "status": "running",
+      "status": "completed",
       "reportPath": "docs/portal-rebuild/research/W1_CARE_IMPLEMENTATION.md",
       "writeSet": [
         "src/contracts/PortalCare*.ts",
@@ -1410,7 +1410,7 @@
         "supabase/tests/portal_care_*",
         "docs/portal-rebuild/research/W1_CARE_IMPLEMENTATION.md"
       ],
-      "resources": "Exclusive root care/dependency SQL writer; own Unix-only synthetic PG, no parent R4/Chrome; native20 reported pass, final implementation pending",
+      "resources": "Own Unix-only PG STOPPED05:30:49UTC; no other handles/fixtures",
       "verification": "Exact T3 returned settings and live thread/worktree/base readback; each child must verify both live runtime tools",
       "migrationFile": "supabase/migrations/20261031043655_portal_rebuild_care_use_v1.sql",
       "earlySeamCommits": [
@@ -1425,9 +1425,11 @@
         "b2cb2e7",
         "98673f8",
         "ebd0b3a",
-        "71c2a52"
+        "71c2a52",
+        "9bd7e213"
       ],
-      "verdict": "Strict seam/handler integrated and targeted tests pass; no persisted/actual Auth acceptance yet"
+      "verdict": "Author26native/37focused/strict boundedTS PASS; fresh W7 finds CB1/CB2, not accepted",
+      "headCommit": "bd40f2e175eba6393af1c195ed267d083aa262bb"
     },
     {
       "role": "W7 status recovery round2",
@@ -1492,18 +1494,203 @@
         "apps/portal/tests/rebuild/care-*",
         "docs/portal-rebuild/research/W3_CARE_USE.md"
       ],
-      "resources": "Sole intercepted synthetic Chrome; actual app/session/care-port harness, no native/DB/Auth; forms and visual/boundary verification in progress",
+      "resources": "Sole synthetic Chrome regranted after W7 CU1/CU2 review release; no R6/native/DB/Auth access",
       "earlySeamCommits": [
         "795a90cc547f79e3bad90a507a36996d5921873f"
       ],
       "integratedCommits": [
-        "3a65498"
+        "3a65498",
+        "5f59b726"
       ],
       "parentAuthorizedImports": [
         "dbdec5c250a4835ddb390624024cf650f573882e",
         "c8de1bd2b6492c4a5761edb6effe6a127e0981bc"
       ],
-      "verdict": "Early model6 green,2 new form browser cases intentionally red pending implementation; strict feature type seam composed"
+      "verdict": "Frozen implementation980 full portal/171 session author pass; W7 CU1 note-loss/CU2 corrected body omission require bounded UI fixes and new review",
+      "headCommit": "6b264169c0cf4cc286a60b0244fa17e9200cabe6"
+    },
+    {
+      "role": "W7 care backend review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-backend-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-backend-review-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-care-backend-review-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b3838853",
+      "branch": "t3/w7-care-backend-review",
+      "baseCommit": "9bd7e213266c12058819f6b208e25510c4318525",
+      "status": "completed",
+      "reportPath": "docs/portal-rebuild/research/W7_CARE_BACKEND_REVIEW.md",
+      "verification": "Exact T3 returned settings and live thread/worktree/base readback; both runtime tools required",
+      "headCommit": "37775eb82d7d3b69e3d4b88e5ea5f976ab32ebf6",
+      "integratedCommits": [
+        "71852c0d"
+      ],
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_BACKEND_REVIEW.md"
+      ],
+      "resources": "Own minimal PG STOPPED; no browser/parent fixture access",
+      "verdict": "CHANGES REQUIRED CB1 legacy chronology / CB2 incompatible v1 Start exemption.37focused/26native/19channel/21ports+adversarial/stress pass separately"
+    },
+    {
+      "role": "W6 care genuine harness",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-care-genuine-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-care-genuine-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w6-care-genuine-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-a3da9be0",
+      "branch": "t3/w6-care-native-acceptance",
+      "baseCommit": "9bd7e213266c12058819f6b208e25510c4318525",
+      "status": "running",
+      "reportPath": "docs/portal-rebuild/research/W6_CARE_GENUINE.md",
+      "verification": "Exact T3 returned settings and live thread/worktree/base readback; both runtime tools required",
+      "writeSet": [
+        "apps/portal/scripts/rebuild-care-native-*",
+        "apps/portal/tests/rebuild-care-native-*",
+        "narrow explicit existing native stack care option",
+        "docs/portal-rebuild/research/W6_CARE_GENUINE.md"
+      ],
+      "earlySeamCommits": [
+        "1d428eee60195a126c233bbca5e33761a7e4085c",
+        "25ffe09c7459f5969d99eec8bee411ba87542e94",
+        "6f4e9c179c4fe5ea4bf4a371d3c6d838559607d6",
+        "19a2eb870732abe2526f4be48d9a4ab612842761",
+        "2adeba5df95bd49b3c1dbbd6c2c2bb3e24f18d34",
+        "db3f119af4bb8049808f3083e8d42448ef4d01d8"
+      ],
+      "resources": "R6 NODE custody explicitly returned; all10 phase sessions closed/whole0sessions+refresh, helpers RUNNING/source unchanged; NO browser grant. Source/report finalization pending future care-browser phase",
+      "verdict": "Genuine Node9/9 PASS at92b2447 runf67a47ed; actualPKCE/Vault/nativeCare/SQL, not browser/UI acceptance; independent fresh harness/chain review required",
+      "integratedCommits": [
+        "3f1cdf9b",
+        "773c8f1d",
+        "8d55564b",
+        "72e87528",
+        "9bf05827",
+        "6e23b70d"
+      ],
+      "custodyGrantFile": ".local-artifacts/portal-rebuild/canonical-plan-v1-r6/edge/care/NODE-CUSTODY-GRANT.json"
+    },
+    {
+      "role": "W1 care legacy fixes",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-care-legacy-fixes-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-care-legacy-fixes-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-care-legacy-fixes-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-e26d8ab2",
+      "branch": "t3/fix-care-legacy-compat",
+      "baseCommit": "71852c0d4a13d04f918e071fd7838066ce432117",
+      "status": "completed",
+      "reportPath": "docs/portal-rebuild/research/W1_CARE_FIXES.md",
+      "verification": "Exact T3 returned settings and live thread/worktree/base readback; both runtime tools required",
+      "writeSet": [
+        "supabase/migrations/20261031043655_portal_rebuild_care_use_v1.sql bounded CB1/CB2",
+        "tests/portal-care-legacy-fixes-native.*",
+        "docs/portal-rebuild/research/W1_CARE_FIXES.md"
+      ],
+      "resources": "Own PG STOPPED, evidence retained; no other resources",
+      "verdict": "CB1/CB2 author11new+26retained+37focused pass; independently accepted R2",
+      "headCommit": "957b7ac77ad1ae9059f9cb92a7211af23ec80529",
+      "integratedCommits": [
+        "f69999a2"
+      ]
+    },
+    {
+      "role": "W7 care backend round2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-backend-review-20261031-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-backend-review-20261031-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-care-backend-review-20261031-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d65c2daf",
+      "branch": "t3/w7-care-backend-review-r2",
+      "baseCommit": "f69999a2dd7747682e6991f56d7db8d9bc23a500",
+      "status": "completed",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_BACKEND_R2.md"
+      ],
+      "reportPath": "docs/portal-rebuild/research/W7_CARE_BACKEND_R2.md",
+      "verification": "Exact T3 returned/live thread/worktree/base, both runtime tools confirmed Sol/xhigh/default",
+      "headCommit": "abaecac872873bbab20dd0f855e4501804785d4c",
+      "integratedCommits": [
+        "85a2f543"
+      ],
+      "resources": "Own PG STOPPED; no browser/parent fixture access",
+      "verdict": "Scoped spec/correctness PASS CB1/CB2 addressed;11new/26retained/37focus/19channel/21ports+adjacent controls; canonical/genuine separate"
+    },
+    {
+      "role": "W7 care client review",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-client-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-care-client-review-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-care-client-review-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-ccbf1213",
+      "branch": "t3/review-care-use-ui",
+      "baseCommit": "5f59b72623c63a968e2068b703628e882f968bd4",
+      "status": "completed",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CARE_CLIENT_REVIEW.md"
+      ],
+      "reportPath": "docs/portal-rebuild/research/W7_CARE_CLIENT_REVIEW.md",
+      "verification": "Exact T3 returned/live thread/worktree/base, both runtime tools confirmed Sol/xhigh/default",
+      "headCommit": "51c61becac6b09c178c397aee9308618a40ae726",
+      "integratedCommits": [
+        "b8657889"
+      ],
+      "resources": "Chrome released06:53:36UTC, no native access, all handles terminal",
+      "verdict": "CHANGES REQUIRED CU1 accepted note-loss/CU2 omitted corrected frequency/amount;130focused/47foundation/171session/18+8+2probes pass separately"
     }
   ]
 }
