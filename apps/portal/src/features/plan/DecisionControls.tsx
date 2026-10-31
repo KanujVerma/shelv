@@ -1,3 +1,5 @@
+import {PendingGuidanceDecisionReviews} from './GuidancePendingReviews.tsx';
+import {GuidanceDecisionControls} from './GuidanceDecisionControls.tsx';
 import { useEffect, useRef, useState } from 'react';
 import type { PlanDecision } from '../../../../../src/contracts/PortalRebuild.ts';
 import { Button, StatusNotice } from '../../ui/index.ts';
@@ -31,9 +33,10 @@ function requestId() {
 
 /** A rejected intent survives publication replacement and navigation, including
  * removal of the decision. It never becomes a command for the new publication. */
-export function PendingDecisionReviews({props,selectedDecisionId,onReview,inPlan}: {
-    props:ClientPlanProps;selectedDecisionId:string|null;onReview:()=>void;inPlan:boolean;
+export function PendingDecisionReviews({props,selectedDecisionId,onReview,onSelect,inPlan}: {
+    props:ClientPlanProps;selectedDecisionId:string|null;onReview:()=>void;onSelect?:(id:string)=>void;inPlan:boolean;
 }) {
+    if(props.view.schemaVersion===3)return <PendingGuidanceDecisionReviews props={props} selectedDecisionId={selectedDecisionId} onSelect={onSelect}/>;
     return <>{Object.entries(readIntents(props)).filter(([id,intent])=>intent.phase==='conflict' && id!==selectedDecisionId).map(([id,intent])=>
         <PendingReview key={`${props.mode}:${id}`} props={props} id={id} intent={intent} onReview={onReview} inPlan={inPlan}/>)}</>;
 }
@@ -81,7 +84,10 @@ function decisionPort(props:ClientPlanProps) {
     return props.view.schemaVersion===2&&(!props.ports?.care||props.mode!=='client') ? undefined : !props.onViewChange || props.view.access!=='active' ? undefined : props.mode==='client' ? props.ports : props.mode==='public-demo'&&props.demoPorts?.mode==='public-demo' ? props.demoPorts : undefined;
 }
 
-export function DecisionControls(props: ClientPlanProps & {decision:PlanDecision}) {
+export function DecisionControls(props:ClientPlanProps&{decision:PlanDecision}) {
+    return props.view.schemaVersion===3?<GuidanceDecisionControls {...props} view={props.view}/>:<LegacyDecisionControls {...props}/>;
+}
+function LegacyDecisionControls(props: ClientPlanProps & {decision:PlanDecision}) {
     const {decision,view,mode,session,onViewChange,onSelfPurchase}=props;
     const scope=useReviewScope();
     const [intent,setIntent]=useState<Intent>(()=>{

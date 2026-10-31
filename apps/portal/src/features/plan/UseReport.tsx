@@ -1,5 +1,7 @@
 import {useEffect,useRef,useState} from 'react';
 import type {CareCommand,CareWriteResult,ClientPlanViewV2,EventReceipt,ProductRef,ReportedProductRef,ReportedProductBody} from '../../../../../src/contracts/PortalCare.ts';
+import type {ClientPlanViewV3} from '../../../../../src/contracts/PortalReview.ts';
+import {sameCareValue} from '../../../../../src/contracts/PortalCareValidation.ts';
 import type {PlanProduct} from '../../../../../src/contracts/PortalRebuild.ts';
 import {mapCareResult} from '../../../../../src/contracts/PortalCareMapping.ts';
 import {readCareCommand} from '../../../../../src/contracts/PortalCareValidation.ts';
@@ -12,14 +14,14 @@ import type {CapturedUse,UseForm} from './useModel.ts';
 import {readCurrentPlan} from './care.ts';
 type Write=Extract<ClientCareCommand,{requestId:string;expectedUseRevision:number}>;
 type Phase='editing'|'saving'|'uncertain'|'conflict'|'saved'|'notes_unsent';
-interface Flow {capture:CapturedUse;steps:('identity'|'create'|'reported_identity'|'use')[];index:number;subject:ProductRef|null;identityId:string|null;receipts:EventReceipt[];pending:Write|null;phase:Phase;review?:{view:ClientPlanViewV2;token:object;epoch:number};}
+interface Flow {capture:CapturedUse;steps:('identity'|'create'|'reported_identity'|'use')[];index:number;subject:ProductRef|null;identityId:string|null;receipts:EventReceipt[];pending:Write|null;phase:Phase;review?:{view:ClientPlanViewV2|ClientPlanViewV3;token:object;epoch:number};}
 interface Intent {form:UseForm;flow:Flow|null}
 const receiptOf=(result:CareWriteResult)=>'receipt'in result?result.receipt:result;
 const initialForm=(product:PlanProduct|null,reported:ReportedProductRef|null):UseForm=>({match:null,action:product||reported?'paused':'unreviewed_added',when:'today',date:'',acquisition:'unknown',details:'',frequency:'',amount:'',name:'',brand:'',variant:'',strength:'',sizeLabel:'',differentProduct:false});
 export function UseReport({props,product,reported,descriptor:reportedDescriptor,back,backLabel,proposed}:{props:ClientPlanProps;product:PlanProduct|null;reported:ReportedProductRef|null;descriptor:ReportedProductBody|null;back:()=>void;backLabel:string;proposed:boolean}){
  const v=props.view,original:ProductRef|null=product&&v.plan?{kind:'plan_product',publication:{version:v.plan.version,documentSchemaVersion:v.plan.documentSchemaVersion},productId:product.id,slotId:null}:reported;
  const key=`care-use:${props.session.key}:${product?.id??reported?.reportedProductId??'new'}`;
- const canWrite=props.mode==='client'&&v.schemaVersion===2&&v.access==='active'&&!!props.ports?.care&&!!props.onViewChange;
+ const canWrite=props.mode==='client'&&v.schemaVersion!==1&&v.access==='active'&&!(v.schemaVersion===3&&v.currentGuidance?.mode==='historical_document')&&!!props.ports?.care&&!!props.onViewChange;
  const [intent,setIntent]=useState<Intent>(()=>{const prior=props.mode==='client'?props.session.memory.get<Intent>(key):undefined;return prior?{...prior,flow:prior.flow?{...prior.flow,phase:prior.flow.phase==='saving'?'uncertain':prior.flow.phase==='saved'&&captureHasUnsentNotes(prior.flow.capture)?'notes_unsent':prior.flow.phase}:null}:{form:{...initialForm(product,reported),...(proposed?{action:'started_today' as const}:{})},flow:null};});
  const [notice,setNotice]=useState(''),[loading,setLoading]=useState(false);
  const dateInput=useRef<HTMLInputElement>(null);
@@ -50,7 +52,7 @@ export function UseReport({props,product,reported,descriptor:reportedDescriptor,
   return readCareCommand(command) as Write;
  }
  async function run(next:Flow,statusOnly=false){
-  if(!canWrite||owner.current||!current()||v.schemaVersion!==2)return;
+  if(!canWrite||owner.current||!current())return;
   const operation={},owns=()=>current()&&owner.current===operation;owner.current=operation;setLoading(true);setNotice('');
   let f={...next},latest=v,awaitingWrite=false;
   const persist=()=>save({form:intent.form,flow:f});
@@ -64,7 +66,7 @@ export function UseReport({props,product,reported,descriptor:reportedDescriptor,
     if(!owns())return;
     const receipt=receiptOf(result),reread=await readCurrentPlan(props);
     if(!owns())return;
-    if(reread.schemaVersion!==2||reread.use.revision<receipt.revision)throw new Error('current report not confirmed');
+    if(reread.schemaVersion!==v.schemaVersion||reread.use.revision<receipt.revision)throw new Error('current report not confirmed');
     latest=reread;
     const subject='product'in result?result.product:f.subject;
     f={...f,subject,identityId:command.action==='report_identity_v1'?receipt.event.id:command.action==='report_unreviewed_product_v1'?null:f.identityId,receipts:[...f.receipts,receipt],pending:null,index:f.index+1};
@@ -78,13 +80,13 @@ export function UseReport({props,product,reported,descriptor:reportedDescriptor,
  async function review(){
   if(!canWrite||!flow||owner.current||!current())return;
   const operation={},owns=()=>current()&&owner.current===operation;owner.current=operation;setLoading(true);setNotice('');
-  try{const next=await readCurrentPlan(props);if(!owns()||next.schemaVersion!==2)return;
-   const b=flow.review,ack=next.access==='active'&&!!b&&b.token===context.current.token&&b.epoch===epoch&&b.view===v&&next.plan?.version===v.plan?.version&&next.use.revision===(v.schemaVersion===2?v.use.revision:-1)&&next.decisionRevision===v.decisionRevision;
+  try{const next=await readCurrentPlan(props);if(!owns()||next.schemaVersion!==v.schemaVersion)return;
+   const b=flow.review,ack=next.access==='active'&&!!b&&b.token===context.current.token&&b.epoch===epoch&&b.view===v&&next.plan?.version===v.plan?.version&&next.use.revision===v.use.revision&&next.decisionRevision===v.decisionRevision&&(v.schemaVersion!==3||next.schemaVersion===3&&sameCareValue(next.currentGuidance?.snapshot,v.currentGuidance?.snapshot));
    save({...intent,flow:{...flow,pending:ack?null:flow.pending,phase:ack?'editing':'conflict',review:{view:next,token:context.current.token,epoch:epoch+Number(next!==v)}}});props.onViewChange?.(next);
   }catch{if(owns())setNotice('latest plan unavailable. your report is retained.');}finally{if(owner.current===operation){owner.current=null;if(current())setLoading(false);}}
  }
  function submit(){
-  if(!canWrite||locked||v.schemaVersion!==2||!v.plan)return;
+  if(!canWrite||locked||!v.plan)return;
   if(notesBlocked){setNotice('these notes are still unsent. choose a different action or remove them before continuing.');return;}
   try{if(flow?.phase==='editing'){void run(flow);return;}
    const capture=captureUse(intent.form,original,{version:v.plan.version,documentSchemaVersion:v.plan.documentSchemaVersion},chicagoToday());

@@ -3,6 +3,7 @@ import type { Guide, Source, Comparison, Fact } from '../../../../../src/contrac
 import type { PlanDecision, PlanProduct, Schedule } from '../../../../../src/contracts/PortalRebuild.ts';
 import { Button, Icon } from '../../ui/index.ts';
 import type {ClientPlanProps} from './types.ts';
+import {GuidanceForProduct,GuidanceForDecision,GuidanceForGuide} from './Guidance.tsx';
 import {UseFacts} from './UseFacts.tsx';
 import { safePublicUrl, productContext } from './model.ts';
 export function ProductPhoto({ product, size = 'routine' }: {
@@ -21,7 +22,7 @@ export function Sources({ sources }: {
 export function GuideContent({ guide }: {
     guide: Guide;
 }) {
-    return <section className="plan-stack"><h2>{guide.title || 'directions'}</h2>{guide.intro ? <p>{guide.intro}</p> : null}<ol className="plan-guide">{guide.steps.map((s, i) => <li key={i}><span className="plan-step-number">{String(i + 1).padStart(2, '0')}</span><div>{s.title ? <h3>{s.title}</h3> : null}<p>{s.body}</p></div></li>)}</ol>{guide.careNote ? <div className="plan-caution">{guide.careNote}</div> : null}<Sources sources={guide.sources}/></section>;
+    return <GuidanceForGuide guide={guide}><section className="plan-stack"><h2>{guide.title || 'directions'}</h2>{guide.intro ? <p>{guide.intro}</p> : null}<ol className="plan-guide">{guide.steps.map((s, i) => <li key={i}><span className="plan-step-number">{String(i + 1).padStart(2, '0')}</span><div>{s.title ? <h3>{s.title}</h3> : null}<p>{s.body}</p></div></li>)}</ol>{guide.careNote ? <div className="plan-caution">{guide.careNote}</div> : null}<Sources sources={guide.sources}/></section></GuidanceForGuide>;
 }
 export function Facts({ facts }: {
     facts: Fact[];
@@ -51,7 +52,7 @@ export function DecisionComparisons({decision:d,products}: {decision:PlanDecisio
     return <Comparisons items={d.guidance.comparisons} currentName={d.currentProductIds.map(name).join(', ') || 'current approach'} proposedName={d.primaryProductId ? name(d.primaryProductId) : 'proposed approach'}/>;
 }
 export function DecisionDirections({decision:d}: {decision:PlanDecision}) {
-    return <section className="plan-stack">{d.directions.map((t,i)=><p key={i}>{t}</p>)}{d.cautions.map((t,i)=><p className="plan-inline-caution" key={i}>{t}</p>)}<ScheduleContent schedule={d.schedule}/></section>;
+    return <GuidanceForDecision decision={d}><section className="plan-stack">{d.directions.map((t,i)=><p key={i}>{t}</p>)}{d.cautions.map((t,i)=><p className="plan-inline-caution" key={i}>{t}</p>)}<ScheduleContent schedule={d.schedule}/></section></GuidanceForDecision>;
 }
 export function ProductAdviceStatus({selected:s,props}: {props?:ClientPlanProps;selected:NonNullable<ReturnType<typeof productContext>>}) {
     return <section className="plan-stack" data-product-advice>{s.restrictions.map(d=><div key={d.id}><h2>{d.kind==='pause' ? 'paused in your plan' : 'left out of your plan'}</h2><p>{d.reason}</p>{d.cautions.map((t,i)=><p key={i}>{t}</p>)}</div>)}{s.use.kind==='published'&&s.use.effective?<UseFacts use={s.use.effective} props={props}/>:<p className="plan-meta">{s.use.kind==='unavailable' ? 'actual use is unavailable in preview.' : s.use.start ? `previously reported start: ${s.use.start.startedOn}. this record does not confirm current use.` : 'start not recorded. current use is not confirmed.'}</p>}</section>;
@@ -63,5 +64,5 @@ export function ProductDirections({selected:s}: {selected:NonNullable<ReturnType
       {s.steps.map(step=><section className="plan-stack" key={step.id}>{step.directions.map((t,i)=><p key={i}>{t}</p>)}{step.cautions.map((t,i)=><p className="plan-inline-caution" key={i}>{t}</p>)}<ScheduleContent schedule={step.schedule}/></section>)}
       {s.guidance.map(d=><DecisionDirections key={d.id} decision={d}/>)}{s.guides.map(g=><GuideContent key={g.id} guide={g}/>)}
       {!hasDirections && !s.restrictions.length ? <p>directions are not recorded.</p> : null}</>;
-    return <section className="plan-stack">{suppressed&&!s.restrictions.length?<details><summary>published guidance for reference</summary><div className="plan-stack">{directions}</div></details>:directions}</section>;
+    return <GuidanceForProduct productId={s.product.id}><section className="plan-stack">{suppressed&&!s.restrictions.length?<details><summary>published guidance for reference</summary><div className="plan-stack">{directions}</div></details>:directions}</section></GuidanceForProduct>;
 }
