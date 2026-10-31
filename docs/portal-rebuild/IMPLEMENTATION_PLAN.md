@@ -2,7 +2,7 @@
 
 > For agentic workers: use the relevant Superpowers implementation, debugging, review and verification workflows. Execute owned tasks against the approved specification; do not reopen its design decisions.
 
-Owner: Kanuj. Coordinator owns integration. Status: initial execution sequence; exact backend signatures are pinned after task 2 source reconciliation, before dependent page work.
+Owner: Kanuj. Coordinator owns integration. Status: tasks 1-2 complete; task 3 implementation/fix/review and connected composition in progress. Exact signatures are pinned in PLAN_API_V1 and ADVISOR_READ_API_V1. Current evidence and limits are in CURRENT_STATUS and the task/review reports.
 
 **Goal:** deliver the complete connected, tested portal matching all D01-D48 and 26 screens plus secondary states.
 
@@ -28,11 +28,11 @@ Files: `docs/portal-rebuild/`, project/eight-role config, root/portal instructio
 
 Parallel independent tasks after checkpoint: W1 reads canonical backend/security/payment/service/source and fixture lineage; W0 acquires current native Figma geometry/component/assets and builds only the shared foundation. Both return exact scope and no page-specific forks. Contract changes remain one writer; coordinator integrates once dependencies are stable.
 
-- [ ] W1 maps existing tables/RPCs/guards against D14-D40, including every legacy publication route and service clock. Produce exact compatible schema/command additions and test cases in `docs/portal-rebuild/research/W1_BACKEND.md`; no production implementation during reconnaissance.
-- [ ] W0 stores all 26 native frame references and recovery/component baselines with hashes/version metadata. Correlate sparse context with child-node fetches. Preserve original Figma file.
-- [ ] W0 implements `apps/portal/src/ui/`, semantic tokens, shell, route builders, session-bound transport adapter and controlled shared wrappers. Update only owned frontend dependencies/build/test config. Use official shadcn/Lucide documentation and existing compatible assets.
-- [ ] Coordinator reviews backend reconciliation, pins exact types/commands and migration allocation in `IMPLEMENTATION_CONTRACTS.md`; document new material conflicts, without broadening permissions.
-- [ ] Verify shared component keyboard/dialog/focus behavior, route roundtrips and transport session fences with focused tests. Compare shell geometry/assets to exact Figma baselines. Integrate foundation and contract checkpoints.
+- [x] W1 maps existing tables/RPCs/guards against D14-D40, including every legacy publication route and service clock. Produce exact compatible schema/command additions and test cases in `docs/portal-rebuild/research/W1_BACKEND.md`; no production implementation during reconnaissance.
+- [x] W0 stores all 26 native frame references and recovery/component baselines with hashes/version metadata. Correlate sparse context with child-node fetches. Preserve original Figma file.
+- [x] W0 implements `apps/portal/src/ui/`, semantic tokens, shell, route builders, session-bound transport adapter and controlled shared wrappers. Update only owned frontend dependencies/build/test config. Use official shadcn/Lucide documentation and existing compatible assets.
+- [x] Coordinator reviews backend reconciliation, pins exact types/commands and migration allocation in `IMPLEMENTATION_CONTRACTS.md`; document new material conflicts, without broadening permissions.
+- [x] Verify shared component keyboard/dialog/focus behavior, route roundtrips and transport session fences with focused tests. Compare shell geometry/assets to exact Figma baselines. Integrate foundation and contract checkpoints.
 
 ## task 3: implement first real connected vertical slice
 

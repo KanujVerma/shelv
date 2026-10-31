@@ -375,14 +375,22 @@
       ],
       "verification": "Exact T3 response plus git worktree readback.",
       "baseCommit": "930dab999326796b880af67af26dafa270ae4aab",
-      "status": "running at dispatch",
+      "status": "completed",
       "reportPath": "docs/portal-rebuild/research/W2_VERTICAL_ADVISOR.md",
       "writeSet": [
         "apps/portal/src/features/advisor/",
         "apps/portal/tests/rebuild-advisor*",
         "apps/portal/tests/rebuild/advisor-*",
         "docs/portal-rebuild/research/W2_VERTICAL_ADVISOR.md"
-      ]
+      ],
+      "headCommit": "a432b1acabd94b993a4c3b0ff298758f4ef6bcd8",
+      "integratedCommits": [
+        "732fa0e",
+        "a66e803",
+        "23c2b59",
+        "f7be7e8"
+      ],
+      "verdict": "Author delivery only; independent review and connected acceptance pending"
     },
     {
       "role": "W1 backend fixes",
@@ -405,7 +413,7 @@
       ],
       "verification": "Exact T3 response plus git worktree readback.",
       "baseCommit": "ba3fabbfbbb5b161fa416a06fd7c278534d8609b",
-      "status": "running at dispatch",
+      "status": "completed",
       "reportPath": "docs/portal-rebuild/research/W1_FIXES.md",
       "writeSet": [
         "src/contracts/PortalRebuild*.ts",
@@ -415,7 +423,10 @@
         "tests/portal-rebuild-*",
         "docs/portal-rebuild/research/W1_FIXES.md"
       ],
-      "resources": "Exclusive stopped/restarted only after verification: /tmp/shelv-w1-plan-pg; parent Auth fixtures forbidden."
+      "resources": "Returned stopped native fixture; now exclusively allocated to W7 backend round 2",
+      "headCommit": "371c42531902b20e302f6dddd2062549493a868b",
+      "integratedCommit": "3baa87c",
+      "verdict": "F1-F5/Q1-Q2 implementation responses; independent round 2 pending"
     },
     {
       "role": "W7 client review",
@@ -438,11 +449,176 @@
       ],
       "verification": "Exact T3 response plus git worktree readback.",
       "baseCommit": "ba3fabbfbbb5b161fa416a06fd7c278534d8609b",
-      "status": "running at dispatch",
+      "status": "completed",
       "reportPath": "docs/portal-rebuild/research/W7_CLIENT_REVIEW.md",
       "writeSet": [
         "docs/portal-rebuild/research/W7_CLIENT_REVIEW.md"
-      ]
+      ],
+      "headCommit": "85ab24d75048a1d3b183fd9c2bdedd154a414d55",
+      "integratedCommit": "c63bbff",
+      "verdict": "Changes required: F1-F8 and Q1"
+    },
+    {
+      "role": "W3 client fixes",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-a4917151",
+      "branch": "t3/client-portal-fixes",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-client-fixes-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-client-fixes-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-client-fixes-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Exact T3 response plus live thread and git checkout readback",
+      "baseCommit": "c63bbffcad832cc383f9ea0ef67ed4aa0aca8d47",
+      "status": "completed",
+      "reportPath": "docs/portal-rebuild/research/W3_FIXES.md",
+      "writeSet": [
+        "apps/portal/src/features/plan/",
+        "apps/portal/tests/rebuild-plan*",
+        "apps/portal/tests/rebuild/plan-*",
+        "docs/portal-rebuild/research/W3_FIXES.md"
+      ],
+      "headCommit": "d341ed75c3d35f71b04b039252ec0cfd8edde9c3",
+      "integratedCommits": [
+        "98f4a5a",
+        "c2415a3",
+        "42555e0"
+      ],
+      "verdict": "Author response F1-F8/Q1; coordinator 32 focused pass; independent round 2 pending"
+    },
+    {
+      "role": "W7 backend re-review round 2",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-9735aa5b",
+      "branch": "t3/backend-review-round-two",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-backend-review-20261030-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-backend-review-20261030-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-backend-review-20261030-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Exact T3 response plus live thread and git checkout readback",
+      "baseCommit": "85267500b68f85039c344243623af4418420cbbb",
+      "status": "completed",
+      "reportPath": "docs/portal-rebuild/research/W7_BACKEND_R2.md",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_BACKEND_R2.md"
+      ],
+      "resources": "Fixture returned STOPPED; allocated to W1 wait-fence fixes",
+      "headCommit": "3c896a90386b23071e856441d133139e6cd2b5d4",
+      "integratedCommit": "efd92fa",
+      "verdict": "FAIL; original7 addressed, remaining P2 R2-1/R2-2 after-wait authority gaps"
+    },
+    {
+      "role": "W1 authoritative advisor reads",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-97b66568",
+      "branch": "t3/advisor-read-projections",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-advisor-reads-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-advisor-reads-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-advisor-reads-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Exact T3 response plus live thread and git checkout readback",
+      "baseCommit": "85267500b68f85039c344243623af4418420cbbb",
+      "status": "running at live readback",
+      "reportPath": "docs/portal-rebuild/research/W1_ADVISOR_READS.md",
+      "writeSet": [
+        "src/contracts/PortalRebuild*",
+        "supabase/functions/concierge-plans/",
+        "supabase/migrations/20261031003846_portal_rebuild_advisor_reads_v1.sql",
+        "supabase/tests/portal_rebuild*",
+        "docs/portal-rebuild/ADVISOR_READ_API_V1.md",
+        "docs/portal-rebuild/research/W1_ADVISOR_READS.md",
+        "tests/portal-rebuild-advisor-reads*"
+      ],
+      "earlySeamCommit": "7ca6d3293830b1b73b02482006e3822d81da14f6",
+      "earlySeamIntegratedCommit": "36af02e",
+      "resources": "Exclusive /tmp/shelv-ar-97b66568 port55447 Unix socket, noTCP; old /tmp/shelv-w1-plan-pg forbidden"
+    },
+    {
+      "role": "W7 client re-review round 2",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-91dd91e7",
+      "branch": "t3/review-client-corrections-round2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-client-review-20261030-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-client-review-20261030-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-client-review-20261030-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Exact T3 response plus live thread and git checkout readback",
+      "baseCommit": "36af02e50a69c6df112b70b003fb3d95d91ac561",
+      "status": "running at live readback",
+      "reportPath": "docs/portal-rebuild/research/W7_CLIENT_R2.md",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_CLIENT_R2.md"
+      ],
+      "resources": "Sole serial intercepted Chrome allocation; parent focused run already terminal"
+    },
+    {
+      "role": "W1 backend wait-fence fixes",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-c484cddc",
+      "branch": "t3/backend-r2-wait-fences",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-wait-fixes-20261030-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-wait-fixes-20261030-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-wait-fixes-20261030-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Exact T3 returned settings and live thread/worktree readback",
+      "baseCommit": "efd92faa01b071cbfb68145d60c410b3fd520022",
+      "status": "running at dispatch",
+      "reportPath": "docs/portal-rebuild/research/W1_WAIT_FIXES.md",
+      "writeSet": [
+        "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+        "tests/portal-rebuild-wait-fences-native.py",
+        "docs/portal-rebuild/research/W1_WAIT_FIXES.md"
+      ],
+      "resources": "Exclusive returned STOPPED /tmp/shelv-w1-plan-pg; verify markers before lifecycle; separate advisor-read and parent Auth fixtures forbidden"
     }
   ]
 }
