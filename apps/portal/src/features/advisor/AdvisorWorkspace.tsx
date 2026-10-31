@@ -944,7 +944,7 @@ function PublicationChecks({
             publishing is a deliberate action. payment verification alone does
             not publish.
           </p>
-          {first && c.permissions.confirmPayments ? (
+          {first && c.permissions.confirmPayments && c.hasPayments ? (
             <Button
               variant="secondary"
               disabled={!context || s.busy || !!s.pending}

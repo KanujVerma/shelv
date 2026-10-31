@@ -10,8 +10,9 @@ import { parseRoute, buildRoute } from "../../src/navigation/routes.ts";
 import { fixture } from "./advisor-fixture.mjs";
 import "../../src/ui/foundation.css";
 import "../../src/shell/shell.css";
-const f = fixture({ ready: true }),
-  c = createAdvisorController(f.options);
+const f = fixture({ ready: true });
+if (location.search === "?no-payment-port") delete f.options.ports.payments;
+const c = createAdvisorController(f.options);
 window.__advisor = { f, c };
 function App() {
   const [route, setRoute] = useState(parseRoute(location.pathname)),

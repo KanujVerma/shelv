@@ -814,6 +814,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       await execute(pending);
     },
     hasPreview: !!options.onPreview,
+    hasPayments: !!ports.payments,
     dispose() {
       if (disposed) return;
       epoch++;

@@ -267,7 +267,7 @@ test("SYNTHETIC/DO NOT FULFILL: approved editor geometry and long/empty repeated
         const box = await p.locator("[data-advisor-editor-form]").boundingBox();
         assert.equal(box.x, 456);
         assert.equal(box.width, 584);
-        assert.equal(box.y,228);
+        assert.equal(box.y, 228);
       }
       await p.getByRole("button", { name: "add decision" }).click();
       await p
@@ -518,6 +518,135 @@ test("SYNTHETIC/DO NOT FULFILL: authored product guide binds its real product an
   }
 });
 
-test('SYNTHETIC/DO NOT FULFILL: autosave waits for acknowledgement and changed sections require deliberate human reviews',async()=>{const f=await setup('/advisor/plans/10000000-0000-4000-8000-000000000001/client-context');try{const p=f.p;await p.getByLabel('plan title').waitFor();await p.evaluate(()=>window.__advisor.f.hold=true);await p.getByLabel('plan title').fill('manual title');await p.getByText('saving',{exact:true}).waitFor();assert.equal(await p.getByText('saved',{exact:true}).count(),0);await p.evaluate(()=>window.__advisor.f.release());await p.getByText('saved',{exact:true}).waitFor();await p.getByRole('button',{name:'review & publish',exact:true}).first().click();assert.equal(await p.getByRole('button',{name:'approve this exact version'}).isDisabled(),true);for(const section of ['follow-up','routine','decisions','sources','client context']){await p.getByRole('button',{name:section,exact:true}).click();await p.getByRole('button',{name:'mark section reviewed',exact:true}).click();await p.getByRole('button',{name:'section reviewed',exact:true}).waitFor();await p.getByRole('button',{name:'review & publish',exact:true}).first().click();}assert.equal(await p.getByRole('button',{name:'approve this exact version'}).isEnabled(),true);}finally{await f.close();}});
+test("SYNTHETIC/DO NOT FULFILL: autosave waits for acknowledgement and changed sections require deliberate human reviews", async () => {
+  const f = await setup(
+    "/advisor/plans/10000000-0000-4000-8000-000000000001/client-context",
+  );
+  try {
+    const p = f.p;
+    await p.getByLabel("plan title").waitFor();
+    await p.evaluate(() => (window.__advisor.f.hold = true));
+    await p.getByLabel("plan title").fill("manual title");
+    await p.getByText("saving", { exact: true }).waitFor();
+    assert.equal(await p.getByText("saved", { exact: true }).count(), 0);
+    await p.evaluate(() => window.__advisor.f.release());
+    await p.getByText("saved", { exact: true }).waitFor();
+    await p
+      .getByRole("button", { name: "review & publish", exact: true })
+      .first()
+      .click();
+    assert.equal(
+      await p
+        .getByRole("button", { name: "approve this exact version" })
+        .isDisabled(),
+      true,
+    );
+    for (const section of [
+      "follow-up",
+      "routine",
+      "decisions",
+      "sources",
+      "client context",
+    ]) {
+      await p.getByRole("button", { name: section, exact: true }).click();
+      await p
+        .getByRole("button", { name: "mark section reviewed", exact: true })
+        .click();
+      await p
+        .getByRole("button", { name: "section reviewed", exact: true })
+        .waitFor();
+      await p
+        .getByRole("button", { name: "review & publish", exact: true })
+        .first()
+        .click();
+    }
+    assert.equal(
+      await p
+        .getByRole("button", { name: "approve this exact version" })
+        .isEnabled(),
+      true,
+    );
+  } finally {
+    await f.close();
+  }
+});
 
-test('SYNTHETIC/DO NOT FULFILL: client/plan directories and publication checks retain native columns and narrow recovery',async()=>{for(const width of [1440,1280,390,320]){const f=await setup('/advisor/plans/10000000-0000-4000-8000-000000000001/review-publish',width);try{const p=f.p;await p.getByRole('heading',{name:'review & publish',exact:true}).waitFor();if(width===1440){const box=await p.locator('.advisor-gate-grid .shelv-panel').first().boundingBox();assert.deepEqual({x:box.x,y:box.y,width:box.width},{x:264,y:209,width:736});}await p.getByRole('button',{name:'refresh publication checks'}).click();assert.equal(await p.getByRole('button',{name:'publish first plan'}).isDisabled(),true);assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await p.screenshot({path:path.join(artifacts,`gate-${width}.png`),fullPage:true});}finally{await f.close();}}for(const route of ['clients','plans']){const f=await setup('/advisor/'+route);try{await f.p.getByRole('heading',{name:route,exact:true}).waitFor();await f.p.getByText('Maya SYNTHETIC',{exact:true}).first().waitFor();await f.p.screenshot({path:path.join(artifacts,`${route==='clients'?'A00':'A01'}-1440.png`)});}finally{await f.close();}}});
+test("SYNTHETIC/DO NOT FULFILL: client/plan directories and publication checks retain native columns and narrow recovery", async () => {
+  for (const width of [1440, 1280, 390, 320]) {
+    const f = await setup(
+      "/advisor/plans/10000000-0000-4000-8000-000000000001/review-publish",
+      width,
+    );
+    try {
+      const p = f.p;
+      await p
+        .getByRole("heading", { name: "review & publish", exact: true })
+        .waitFor();
+      if (width === 1440) {
+        const box = await p
+          .locator(".advisor-gate-grid .shelv-panel")
+          .first()
+          .boundingBox();
+        assert.deepEqual(
+          { x: box.x, y: box.y, width: box.width },
+          { x: 264, y: 209, width: 736 },
+        );
+      }
+      await p
+        .getByRole("button", { name: "refresh publication checks" })
+        .click();
+      assert.equal(
+        await p
+          .getByRole("button", { name: "publish first plan" })
+          .isDisabled(),
+        true,
+      );
+      assert.equal(
+        await p.evaluate(
+          () => document.documentElement.scrollWidth > innerWidth,
+        ),
+        false,
+      );
+      await p.screenshot({
+        path: path.join(artifacts, `gate-${width}.png`),
+        fullPage: true,
+      });
+    } finally {
+      await f.close();
+    }
+  }
+  for (const route of ["clients", "plans"]) {
+    const f = await setup("/advisor/" + route);
+    try {
+      await f.p.getByRole("heading", { name: route, exact: true }).waitFor();
+      await f.p.getByText("Maya SYNTHETIC", { exact: true }).first().waitFor();
+      await f.p.screenshot({
+        path: path.join(
+          artifacts,
+          `${route === "clients" ? "A00" : "A01"}-1440.png`,
+        ),
+      });
+    } finally {
+      await f.close();
+    }
+  }
+});
+
+test("SYNTHETIC/DO NOT FULFILL: an absent payment confirmation port omits its unconnected action", async () => {
+  const f = await setup(
+    "/advisor/plans/10000000-0000-4000-8000-000000000001/review-publish?no-payment-port",
+  );
+  try {
+    await f.p
+      .getByRole("button", { name: "refresh publication checks" })
+      .click();
+    assert.equal(
+      await f.p
+        .getByRole("button", { name: "open payment verification" })
+        .count(),
+      0,
+    );
+  } finally {
+    await f.close();
+  }
+});
