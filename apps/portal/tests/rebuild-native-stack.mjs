@@ -6,7 +6,7 @@ import {randomBytes} from 'node:crypto';
 import {build} from 'esbuild';
 import {Miniflare, convertV4MiniflareOptions} from 'miniflare';
 import {localPolicy, providerTarget, portalOrigin, providerOrigin, sha,assertBrowserBytes,safePrivateMarkers} from '../scripts/rebuild-native-boundary.mjs';
-import {requireCareCustody} from '../scripts/rebuild-care-native-fixture.mjs';
+import {requireCareCustody,careNativePins} from '../scripts/rebuild-care-native-fixture.mjs';
 import {clientCareActions,advisorCareActions} from '../site/auth/care-actions.js';
 
 const portal = path.resolve(import.meta.dirname, '..');
@@ -20,10 +20,10 @@ export async function connectedStack(fixture, options={}) {
   if(options.care===true) {
     assert.equal(process.env.SHELV_REBUILD_CARE_NATIVE,'1','Care resource acquisition requires explicit opt-in');
     requireCareCustody(fixture.selection,options.careCustody,sourceRoot,options.careCustody?.purpose);
-    assert.equal(fixture.lineage.migrationCount,56,'Care cannot use the historical55 fixture');
+    assert.equal(fixture.lineage.migrationCount,57,'Care cannot use the historical56/55 fixtures');
   }
   if(options.failureProbe||options.onRuntime)assert.equal(process.env.SHELV_REBUILD_NATIVE_FAILURE_PROBES,'1','Runtime failure instrumentation requires explicit opt-in');
-  const stackArtifacts=options.care===true?path.join(sourceRoot,'.local-artifacts/portal-rebuild/w6-care-native'):artifacts;
+  const stackArtifacts=options.care===true?path.join(sourceRoot,'.local-artifacts/portal-rebuild',careNativePins.artifactDirectory):artifacts;
   const dir = path.join(stackArtifacts, 'stack-' + randomBytes(8).toString('hex'));
   await mkdir(dir, {recursive: true, mode: 0o700});
   const seams = [];

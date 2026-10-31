@@ -8,9 +8,14 @@ import {parentRoot, fixtureOwner as protectedR4Owner} from './rebuild-native-fix
 import {sha, portalOrigin, providerOrigin} from './rebuild-native-boundary.mjs';
 
 export const careNativePins = Object.freeze({
-  nodeVersion:'v22.23.0', migrationCount:56,
+  nodeVersion:'v22.23.0', migrationCount:57,artifactDirectory:'w6-care-native-r7',
   migration:'20261031043655_portal_rebuild_care_use_v1.sql',
   migrationSha256:'d3a889ab03cba381cd8d2d65b8b567db74ac5f19e6000a0e913c78982fe901e1',
+  historyMigration:'20261031073004_portal_rebuild_care_history_filter_v1.sql',
+  historyMigrationSha256:'26c9c403729343b1f3463002f26946fbdea81e73df2e13d7882bcf6cb2571caf',
+  fixtureOwner:'39f4ba79-bdd5-4822-bc4d-c4412d70d732',
+  fixtureProject:'shelv-portal-admission-39f4ba79bdd5',
+  configSha256:'9d1993fa7a793219b2db884ab42d781d30dd82fc39bc055b1a946661468b93cf',
   parentThreadId:'d632030a-18f7-4dec-a2c9-f5c0418c3fd5',
   dockerHost:'unix:///Users/kanuj/.colima/shelv-portal-20261024/docker.sock',
   edgeImage:'public.ecr.aws/supabase/edge-runtime@sha256:ad45164b7548bf5820ed7be714789c17ac2865edce79a09cfb4c3756c3d365a8',
@@ -23,19 +28,23 @@ function keys(value, expected) {assert.ok(value&&typeof value==='object'&&!Array
 
 // Pure selection, never an implicit custody grant or lifecycle operation.
 export function selectCareFixture(value) {
-  keys(value,sourceKeys);assert.equal(value.format,1);assert.equal(value.purpose,'w6-care-native-r6');
+  keys(value,sourceKeys);assert.equal(value.format,1);assert.equal(value.purpose,'w6-care-native-r7');
   assert.equal(value.parentRoot,parentRoot,'Only the allocated parent checkout is permitted');
-  assert.equal(value.directory,path.join(parentRoot,'.local-artifacts/portal-rebuild/canonical-plan-v1-r6'),'Only explicitly selected new R6 is permitted');
+  assert.equal(value.directory,path.join(parentRoot,'.local-artifacts/portal-rebuild/canonical-plan-v1-r7'),'Only explicitly selected new R7 is permitted');
   uuid(value.ownerId);uuid(value.ownerActorId);assert.notEqual(value.ownerId,protectedR4Owner,'Protected R4 cannot be adopted');
   assert.equal(value.projectId,'shelv-portal-admission-'+value.ownerId.replaceAll('-','').slice(0,12));
   assert.notEqual(value.projectId,'shelv-portal-admission-d5c398970583','Frozen R5 source checkpoint cannot be adopted');
-  assert.equal(value.migrationCount,careNativePins.migrationCount,'R6 requires current56, never old55');
+  assert.notEqual(value.projectId,'shelv-portal-admission-ed43b296fde5','Frozen R6 genuine evidence cannot be adopted');
+  assert.equal(value.ownerId,careNativePins.fixtureOwner,'Only the actual parent-prepared R7 owner is permitted');
+  assert.equal(value.projectId,careNativePins.fixtureProject,'Only the actual parent-prepared R7 project is permitted');
+  assert.equal(value.configSha256,careNativePins.configSha256,'Only the actual parent-prepared R7 config is permitted');
+  assert.equal(value.migrationCount,careNativePins.migrationCount,'R7 requires current57, never old56/55');
   for(const key of ['configSha256','snapshotSha256','ledgerSha256','sourceHashesSha256'])hash(value[key]);
   keys(value.helpers,kinds);
   const suffix=value.ownerId.replaceAll('-','').slice(0,12),ids=new Set(),names=new Set();
   for(const item of Object.values(value.helpers)) {
     keys(item,['name','id','environmentSha256']);hash(item.id);hash(item.environmentSha256);assert.match(item.name,/^[a-z0-9][a-z0-9-]+$/);
-    assert.ok(item.name.endsWith('-'+suffix),'Helpers must be fresh selected-R6 names');
+    assert.ok(item.name.endsWith('-'+suffix),'Helpers must be fresh selected-R7 names');
     assert.ok(!ids.has(item.id)&&!names.has(item.name),'Distinct helper identities required');ids.add(item.id);names.add(item.name);
   }
   // Parent supplies the complete locked digest with its actual receipt, never a mutable tag.
@@ -49,7 +58,7 @@ export function requireCareCustody(selection, grant, workspace, purpose='genuine
   keys(grant,['format','parentThreadId','purpose','workspace','directory','ownerId','projectId','snapshotSha256','grantId']);
   assert.equal(grant.format,1);assert.equal(grant.parentThreadId,careNativePins.parentThreadId);assert.equal(grant.purpose,purpose,'Separate phase-specific parent grant required');
   assert.equal(grant.workspace,workspace);assert.ok(path.isAbsolute(workspace));assert.notEqual(workspace,parentRoot);
-  for(const key of ['directory','ownerId','projectId','snapshotSha256'])assert.equal(grant[key],selection[key],'Custody must bind the selected R6');
+  for(const key of ['directory','ownerId','projectId','snapshotSha256'])assert.equal(grant[key],selection[key],'Custody must bind the selected R7');
   assert.ok(typeof grant.grantId==='string'&&/^[a-zA-Z0-9:_-]{1,200}$/.test(grant.grantId),'Exact parent grant reference required');
   return grant;
 }
@@ -59,14 +68,15 @@ export function validateCareSource(selection,{manifest,config,migrations,sourceH
   assert.equal(manifest.marker,'shelv-portal-admission-fixture-v2');
   for(const key of ['ownerId','projectId','configSha256'])assert.equal(manifest[key],selection[key],'Selected prepared source mismatch');
   assert.equal(sha(config),selection.configSha256,'Prepared config bytes differ');
-  assert.equal(Object.keys(manifest.migrations).length,56,'Prepared fixture must have56 migrations');
+  assert.equal(Object.keys(manifest.migrations).length,57,'Prepared fixture must have57 migrations');
   assert.ok(Object.hasOwn(manifest.migrations,careNativePins.migration),'Actual care migration required');
   assert.equal(manifest.migrations[careNativePins.migration],careNativePins.migrationSha256,'Only exact parent-authorized corrected M56 is permitted');
+  assert.equal(manifest.migrations[careNativePins.historyMigration],careNativePins.historyMigrationSha256,'Only exact parent-authorized forward M57 is permitted');
   assert.deepEqual(migrations,manifest.migrations,'Current canonical migration bytes differ from selected snapshot');
   for(const value of Object.values(migrations))hash(value);
   assert.equal(snapshotDigest(manifest),selection.snapshotSha256,'Prepared snapshot differs');
   assert.equal(sha(JSON.stringify(sourceHashes)),selection.sourceHashesSha256,'Current native source closure differs');
-  return {migrationCount:56,snapshotSha256:selection.snapshotSha256,sourceHashesSha256:selection.sourceHashesSha256};
+  return {migrationCount:57,snapshotSha256:selection.snapshotSha256,sourceHashesSha256:selection.sourceHashesSha256};
 }
 
 // A source-only plan. This function never executes Docker, copies files, reads credentials or adapts helpers.
@@ -83,12 +93,13 @@ export function careHelperPlan(selection) {
 export function validateCareRuntime(selection,{manifest,binding,volume,containers,ledger,helperInspections,sourceHashes}) {
   selectCareFixture(selection);
   assert.equal(manifest.ownerId,selection.ownerId);assert.equal(manifest.projectId,selection.projectId);
-  assert.equal(Object.keys(manifest.migrations).length,56);assert.equal(snapshotDigest(manifest),selection.snapshotSha256);
+  assert.equal(Object.keys(manifest.migrations).length,57);assert.equal(snapshotDigest(manifest),selection.snapshotSha256);
   assert.equal(manifest.migrations[careNativePins.migration],careNativePins.migrationSha256,'Runtime must use corrected M56');
+  assert.equal(manifest.migrations[careNativePins.historyMigration],careNativePins.historyMigrationSha256,'Runtime must use exact forward M57');
   assert.equal(verifyFixtureResources(manifest,binding,volume,containers,selection.directory).fresh,false);
   const lineage=validateRuntimeLineage(manifest,ledger,binding);
-  assert.equal(lineage.migrationCount,56);assert.equal(lineage.snapshotSha256,selection.snapshotSha256);assert.equal(lineage.ledgerSha256,selection.ledgerSha256);
-  assert.equal(binding.migrationCount,56);assert.equal(sha(JSON.stringify(sourceHashes)),selection.sourceHashesSha256);
+  assert.equal(lineage.migrationCount,57);assert.equal(lineage.snapshotSha256,selection.snapshotSha256);assert.equal(lineage.ledgerSha256,selection.ledgerSha256);
+  assert.equal(binding.migrationCount,57);assert.equal(sha(JSON.stringify(sourceHashes)),selection.sourceHashesSha256);
   const db=containers.find(c=>c.Name==='/supabase_db_'+selection.projectId);assert.ok(db,'Selected running DB container required');assert.equal(db.State.Running,true);
   const plan=careHelperPlan(selection);
   keys(helperInspections,kinds);
@@ -141,9 +152,9 @@ export async function attestCareFixture(sourceRoot,rawSelection,grant) {
   assert.deepEqual(await migrationHashes(selection.directory),migrations,'Prepared/current migrations differ');
   validateCareSource(selection,{manifest:fixture.manifest,config:await readFile(path.join(selection.directory,'supabase/config.toml')),migrations,sourceHashes});
   const env={...process.env,DOCKER_HOST:careNativePins.dockerHost,DOCKER_CONFIG:path.join(selection.directory,'docker-config')};delete env.DOCKER_CONTEXT;
-  const docker=(...args)=>{try{return execFileSync('docker',args,{env,encoding:'utf8',stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024}).trim();}catch{throw Error('Selected R6 Docker read failed; private output suppressed');}};
+  const docker=(...args)=>{try{return execFileSync('docker',args,{env,encoding:'utf8',stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024}).trim();}catch{throw Error('Selected R7 Docker read failed; private output suppressed');}};
   const db='supabase_db_'+selection.projectId;
-  const sql=text=>{try{return execFileSync('docker',['exec','-i',db,'psql','-U','postgres','-d','postgres','-X','-At','-v','ON_ERROR_STOP=1'],{env,input:text,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:16*1024*1024}).trim();}catch{throw Error('Selected R6 SQL operation failed; private output suppressed');}};
+  const sql=text=>{try{return execFileSync('docker',['exec','-i',db,'psql','-U','postgres','-d','postgres','-X','-At','-v','ON_ERROR_STOP=1'],{env,input:text,encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:16*1024*1024}).trim();}catch{throw Error('Selected R7 SQL operation failed; private output suppressed');}};
   const readPrivate=async relative=>{
     assert.ok(['status.private.json','AUTH-PROBE.private.json'].includes(relative),'Only selected fixture identity/config files permitted');
     const file=path.join(selection.directory,relative),entry=await lstat(file);assert.ok(entry.isFile()&&!entry.isSymbolicLink());assert.equal(entry.mode&0o777,0o600,'Private fixture file must be600');

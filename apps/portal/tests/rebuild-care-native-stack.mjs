@@ -5,6 +5,6 @@ import {requireCareCustody} from '../scripts/rebuild-care-native-fixture.mjs';
 // Resource acquisition is deliberately a separate call after actual parent selection/grant/attestation.
 export async function connectedCareStack(fixture,grant,workspace) {
   requireCareCustody(fixture.selection,grant,workspace,grant?.purpose);
-  assert.equal(fixture.lineage.migrationCount,56);
+  assert.equal(fixture.lineage.migrationCount,57);
   return connectedStack(fixture,{care:true,careCustody:grant});
 }

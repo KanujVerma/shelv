@@ -12,21 +12,23 @@ const parentRoot = '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integr
 // Authorization test metadata must not become valid merely because this test runs in the parent checkout.
 const syntheticChildWorkspace = '/synthetic/shelv/w6-care-child-workspace';
 const foreignDirectory = '/synthetic/shelv/foreign-directory';
-const ownerId = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa';
-const directory = parentRoot + '/.local-artifacts/portal-rebuild/canonical-plan-v1-r6';
-const projectId = 'shelv-portal-admission-aaaaaaaaaaaa';
+const ownerId = '39f4ba79-bdd5-4822-bc4d-c4412d70d732';
+const directory = parentRoot + '/.local-artifacts/portal-rebuild/canonical-plan-v1-r7';
+const projectId = 'shelv-portal-admission-39f4ba79bdd5';
 const actorId = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb';
 // Pure metadata only. These are never actual container/credential inputs.
 const migrations = Object.fromEntries(await Promise.all((await readdir(path.join(root, 'supabase/migrations'))).filter(n=>n.endsWith('.sql')).sort().map(async n=>[n,sha(await readFile(path.join(root,'supabase/migrations',n)))])));
-const config = Buffer.from('synthetic unit config, not a runnable Supabase configuration');
+// Derive public configuration bytes from checked-in source; never read a fixture or secret input.
+const configTemplate=await readFile(new URL('../test-fixtures/admission/supabase/config.toml',import.meta.url),'utf8');
+const config=Buffer.from(configTemplate.replace(/^project_id\s*=.*$/m,'project_id = '+JSON.stringify(projectId)));
 const manifest = {marker:'shelv-portal-admission-fixture-v2',ownerId,projectId,configSha256:sha(config),migrations};
 const ledger = Object.keys(migrations).map(n=>{const i=n.indexOf('_');return{version:n.slice(0,i),name:n.slice(i+1,-4),statements:['-- synthetic metadata only']};});
 const volume = {Name:'supabase_db_'+projectId,CreatedAt:'2026-10-31T00:00:00Z',Labels:{'com.supabase.cli.project':projectId}};
 const binding = attestFreshRuntime(manifest,ledger,{name:volume.Name,createdAt:volume.CreatedAt},directory);
 const sourceHashes = {'src/contracts/PortalCare.ts':sha('synthetic source metadata')};
 const nativeEnv=['CONCIERGE_ALLOWED_ORIGINS=https://portal.goshelv.com,https://127.0.0.1:57430','SUPABASE_URL=https://shelv-native-tls','DENO_TLS_CA_STORE=system','SSL_CERT_FILE=/certs/server.crt'];
-const helpers = Object.fromEntries(['plan','operations','payments','care','tls'].map((kind,i)=>[kind,{name:`portal-r6-${kind}-aaaaaaaaaaaa`,id:String(i+1).repeat(64),environmentSha256:sha((kind==='tls'?[]:nativeEnv).join('\n')+'\n')}]));
-const selection = {format:1,purpose:'w6-care-native-r6',parentRoot,directory,ownerId,projectId,ownerActorId:actorId,migrationCount:56,configSha256:sha(config),snapshotSha256:snapshotDigest(manifest),ledgerSha256:binding.ledgerSha256,sourceHashesSha256:sha(JSON.stringify(sourceHashes)),helpers,tlsImage:'nginx:1.28.0-alpine@sha256:30f1c'+ '0'.repeat(59)};
+const helpers = Object.fromEntries(['plan','operations','payments','care','tls'].map((kind,i)=>[kind,{name:`portal-r7-${kind}-39f4ba79bdd5`,id:String(i+1).repeat(64),environmentSha256:sha((kind==='tls'?[]:nativeEnv).join('\n')+'\n')}]));
+const selection = {format:1,purpose:'w6-care-native-r7',parentRoot,directory,ownerId,projectId,ownerActorId:actorId,migrationCount:57,configSha256:sha(config),snapshotSha256:snapshotDigest(manifest),ledgerSha256:binding.ledgerSha256,sourceHashesSha256:sha(JSON.stringify(sourceHashes)),helpers,tlsImage:'nginx:1.28.0-alpine@sha256:30f1c'+ '0'.repeat(59)};
 const clone = value=>structuredClone(value);
 const selected = ()=>selectCareFixture(clone(selection));
 function runtime() {
@@ -36,9 +38,9 @@ function runtime() {
   return {manifest,ledger,binding,volume,containers,helperInspections,sourceHashes};
 }
 
-test('R6 selection is explicit, current56 and does not adopt old R4 or caller-selected paths',()=>{
-  assert.equal(selected().migrationCount,56);
-  for(const patch of [undefined,{directory:directory.replace('r6','r4')},{directory:directory.replace('r6','r5')},{purpose:'w6-care-native-r5'},{ownerId:'d5c39897-0583-4056-8056-000000000000',projectId:'shelv-portal-admission-d5c398970583'},{parentRoot:foreignDirectory},{directory:foreignDirectory},{ownerId:'6214c384-1fb3-4aad-b5a8-9dd9042345a3'},{projectId:'shelv-portal-admission-6214c3841fb3'},{migrationCount:55},{directory:directory+'/../canonical-plan-v1-r6'},{unexpected:true}]) {
+test('R7 selection is explicit, current57 and does not adopt old R4 or caller-selected paths',()=>{
+  assert.equal(selected().migrationCount,57);
+  for(const patch of [undefined,{directory:directory.replace('r7','r4')},{directory:directory.replace('r7','r5')},{purpose:'w6-care-native-r5'},{purpose:'w6-care-native-r6'},{directory:directory.replace('r7','r6')},{ownerId:'ed43b296-fde5-400b-9465-9c26ef662e21',projectId:'shelv-portal-admission-ed43b296fde5'},{ownerId:'d5c39897-0583-4056-8056-000000000000',projectId:'shelv-portal-admission-d5c398970583'},{parentRoot:foreignDirectory},{directory:foreignDirectory},{ownerId:'6214c384-1fb3-4aad-b5a8-9dd9042345a3'},{projectId:'shelv-portal-admission-6214c3841fb3'},{ownerId:actorId},{configSha256:sha('foreign config')},{migrationCount:55},{migrationCount:56},{directory:directory+'/../canonical-plan-v1-r7'},{unexpected:true}]) {
     assert.throws(()=>selectCareFixture(patch===undefined?undefined:{...clone(selection),...patch}));
   }
 });
@@ -54,14 +56,16 @@ test('source attestation rejects old55, wrong bytes, mismatched snapshot/config 
   for(const patch of [{migrations:missing},{config:Buffer.from('changed')},{sourceHashes:{...sourceHashes,extra:sha('x')}},{manifest:{...manifest,ownerId:actorId}}])assert.throws(()=>validateCareSource(selected(),{manifest,config,migrations,sourceHashes,...patch}));
   const staleMigrations={...migrations,[careNativePins.migration]:sha('synthetic superseded M56')},staleManifest={...manifest,migrations:staleMigrations};
   const matchingStaleSelection=selectCareFixture({...clone(selection),snapshotSha256:snapshotDigest(staleManifest)});
-  assert.throws(()=>validateCareSource(matchingStaleSelection,{manifest:staleManifest,config,migrations:staleMigrations,sourceHashes}),/corrected M56/,'Matching old56 metadata still cannot admit superseded SQL');
+  assert.throws(()=>validateCareSource(matchingStaleSelection,{manifest:staleManifest,config,migrations:staleMigrations,sourceHashes}),/corrected M56/,'Matching old57 metadata still cannot admit superseded SQL');
+  const staleForward={...migrations,[careNativePins.historyMigration]:sha('synthetic superseded M57')},staleForwardManifest={...manifest,migrations:staleForward};
+  assert.throws(()=>validateCareSource(selectCareFixture({...clone(selection),snapshotSha256:snapshotDigest(staleForwardManifest)}),{manifest:staleForwardManifest,config,migrations:staleForward,sourceHashes}),/forward M57/);
 });
 test('runtime attestation rejects replaced volume, wrong owner/workdir/ledger/helper/source and missing DB',()=>{
   assert.doesNotThrow(()=>validateCareRuntime(selected(),runtime()));
   const variants=[r=>r.volume.CreatedAt='different',r=>r.volume.Labels['com.supabase.cli.project']='foreign',r=>r.binding.ownerId=actorId,r=>r.binding.workdirSha256=sha(foreignDirectory),r=>r.ledger.pop(),r=>r.containers=[],r=>r.containers[0].State.Running=false,r=>r.helperInspections.care.Id='a'.repeat(64),r=>r.helperInspections.care.Config.Labels['shelv.fixture.owner']=actorId,r=>r.helperInspections.care.Config.Labels['shelv.fixture.workdir']=foreignDirectory,r=>r.helperInspections.care.Config.Image='edge-runtime:latest',r=>r.helperInspections.tls.Config.Image='nginx:latest',r=>r.helperInspections.care.Config.Env[0]='CONCIERGE_ALLOWED_ORIGINS=https://foreign.invalid',r=>r.helperInspections.care.HostConfig.PortBindings['9000/tcp'][0].HostIp='0.0.0.0',r=>r.helperInspections.care.State.Running=false,r=>r.sourceHashes.extra=sha('drift')];
   for(const mutate of variants){const r=clone(runtime());mutate(r);assert.throws(()=>validateCareRuntime(selected(),r));}
 });
-test('native helper plan is fresh R6 only, locked unmodified care entry, finite TLS RPC and loopback57443',()=>{
+test('native helper plan is fresh R7 only, locked unmodified care entry, finite TLS RPC and loopback57443',()=>{
   const plan=careHelperPlan(selected());
   assert.equal(plan.helpers.care.entry,'supabase/functions/concierge-care/index.ts');
   assert.equal(plan.helpers.care.port,57443);assert.equal(plan.edgeImage,careNativePins.edgeImage);
