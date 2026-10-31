@@ -2,7 +2,7 @@
   "updatedOn": "2026-10-31",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
-  "allocatedWorkers": 6,
+  "allocatedWorkers": 5,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -3329,7 +3329,7 @@
         }
       ],
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7a7cac7e",
-      "status": "running",
+      "status": "completed-isolated-candidate",
       "baseCommit": "cab5d03a3e1358aee24e48696d89485e1e407461",
       "migration": "20261031200211_portal_rebuild_commerce_v1.sql",
       "migrationOrdinal": 63,
@@ -3341,7 +3341,10 @@
         "six erased strict annotations in two retained files"
       ],
       "resourceBoundary": "Only own marked Unix PG, no parent/R9/other fixtures. Four target Commerce modules frozen cab; one SQL writer. Referral proof gap remains unproven until finite trusted input pin.",
-      "referralPin": "After frozen cab R3 completed, one bounded record_referral nullable newReferralEvidence private human-finance verification reference authorized. Server derives identity/time and actual first10000 claim; no absence inference, new action or fake fixture proof. New source review required."
+      "referralPin": "After frozen cab R3 completed, one bounded record_referral nullable newReferralEvidence private human-finance verification reference authorized. Server derives identity/time and actual first10000 claim; no absence inference, new action or fake fixture proof. New source review required.",
+      "implementationCommit": "b06895fd703e01b80859f0953656adfc317b4bfd",
+      "deliveryCommit": "7825a481c12b7e10f621489bd82cd3973e68d9e9",
+      "verification": "Isolated native39/39 + pure/handler109/109/strict0/gateway4+9; pgTAP40 source UNRUN extension absent, native-equivalent40/40. All62 priorSQL/110oldtables/300oldpg_proc attrs preserved except7 forward bodies.23newRLS tables/67privatehelpers. OwnPGSTOPPED. No backend/genuine/financial admission."
     },
     {
       "role": "W5 commerce currency/CAS target adoption",
@@ -3792,7 +3795,7 @@
     {
       "role": "W6 genuine Review source-root preflight correction",
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw6-review-source-root-symlink-fix-20261031",
-      "status": "running-source-only",
+      "status": "completed",
       "writeSet": [
         "apps/portal/scripts/rebuild-review-native-fixture.mjs",
         "owned Review native guards/proof tests",
@@ -3813,7 +3816,9 @@
           "id": "serviceTier",
           "value": "default"
         }
-      ]
+      ],
+      "deliveryCommit": "c61e893948f2841e2ddb1811767602c9d59eed9c",
+      "verification": "72offline incl27new; frozen5/22 vs current27/27; premetadatazero proofs. Root closure87/62/Gateway/Vault unchanged; actual oldr1-r5 unchanged."
     },
     {
       "role": "W0 shared cookie CK1/CK2 deadline correction",
@@ -3916,14 +3921,24 @@
           "value": "default"
         }
       ],
-      "status": "running-source-only",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-0706fba8",
       "writeSet": [
         "apps/portal/src/features/history/**",
         "new restoration source tests",
         "docs/portal-rebuild/research/W4_REPORT_HISTORY_UI.md"
       ],
-      "resourceBoundary": "No browser/native/DB/Auth/fixture resource grant. Owned source/review only; no Parent activation."
+      "resourceBoundary": "No browser/native/DB/Auth/fixture resource grant. Owned source/review only; no Parent activation.",
+      "earlySeamCommit": "c91cb71ea2611b908ff9e1ec763008f22950b742",
+      "ownedCommits": [
+        "c91cb71ea2611b908ff9e1ec763008f22950b742",
+        "05442a41b510e08acf7c59a6183973c9615a6b57",
+        "2262f97185818f76965ca14c18bf867e30cfd57d",
+        "57f8b6391dbdc5fca8914c4269ef506c2e51a5f5",
+        "83af53f8c4ae7e75ce4527becbfe8678281a1bac"
+      ],
+      "deliveryCommit": "83af53f8c4ae7e75ce4527becbfe8678281a1bac",
+      "verification": "Restoration37/IDs3/final37+SSR10; retained95/24/20/23, strict/build/UI pass;103page fresh extent; no resources. New App/browser/review pending."
     },
     {
       "role": "W2 existing guidance authority source composition",
@@ -3942,7 +3957,7 @@
           "value": "default"
         }
       ],
-      "status": "running-source-only",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-8ddcfb34",
       "writeSet": [
         "apps/portal/src/app/advisor-guidance-context.ts (new only)",
@@ -3951,7 +3966,9 @@
         "docs/portal-rebuild/research/W2_GUIDANCE_UI.md"
       ],
       "resourceBoundary": "No browser/native/DB/Auth/fixture resource grant. Owned source/review only; no Parent activation.",
-      "earlySeamCommit": "1cffb84a69f5504a034ac1efbb114e67f4dd5a4c"
+      "earlySeamCommit": "1cffb84a69f5504a034ac1efbb114e67f4dd5a4c",
+      "deliveryCommit": "6e0a5028133d3b558c941e27149e3edf6365b538",
+      "verification": "78/45/80 source+SSR, strict and both sourcebundles. Optional context source only; independent R1 finds W2G1-G3."
     },
     {
       "role": "W7 shared-cookie cancellation/deadline source review R2",
@@ -3998,7 +4015,7 @@
           "value": "default"
         }
       ],
-      "status": "running-source-only",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b6ea9c3d",
       "writeSet": [
         "apps/portal/src/features/orders/port.ts",
@@ -4006,7 +4023,9 @@
         "new CU4 source tests",
         "docs/portal-rebuild/research/W5_COMMERCE_UI.md"
       ],
-      "resourceBoundary": "No browser/native/DB/Auth/fixture resource grant. Owned source/review only; no Parent activation."
+      "resourceBoundary": "No browser/native/DB/Auth/fixture resource grant. Owned source/review only; no Parent activation.",
+      "deliveryCommit": "1a08cb09ccd11588ad3b0543b94bf1cb08e98eb8",
+      "verification": "CU4 original2pass4fail ->6/6;107owned/23independent/20retained/strict/UI. SDK and wire unchanged."
     },
     {
       "role": "W3 V3 current-cookie synthetic browser verification",
@@ -4025,7 +4044,7 @@
           "value": "default"
         }
       ],
-      "status": "running-synthetic-browser",
+      "status": "completed-import-gate-no-browser",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
       "writeSet": [
         "owned W3 browser tests/helpers",
@@ -4034,9 +4053,577 @@
       "chromeGrant": {
         "grantId": "coordinator-w3-v3-cookie-current-synthetic-chrome-c9cac46a-20261031",
         "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
-        "status": "granted"
+        "status": "returned-unused",
+        "returnedAt": "2026-10-31T21:50:54Z"
       },
-      "resourceBoundary": "Only sole installed Chrome/synthetic finite HTTP. No R9/native/DB/Auth/private resources, no Parent browser use."
+      "resourceBoundary": "Only sole installed Chrome/synthetic finite HTTP. No R9/native/DB/Auth/private resources, no Parent browser use.",
+      "deliveryCommit": "e77ec889d9aa0364b5f9623c7eb4923412cf9703",
+      "verification": "9e patch conflicts because older fixed branch lacks typedReview/payload; cherry-pick aborted, no imports/source/tests/Chrome launched."
+    },
+    {
+      "role": "W7 independent genuine Review Source and Node R2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-genuine-node-review-20261031-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-genuine-node-review-20261031-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-review-genuine-node-review-20261031-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_REVIEW_GENUINE_NODE_R2.md"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-658b05f6",
+      "branch": "t3/w7-genuine-guidance-r2-review",
+      "baseCommit": "f838415cb002018fe33992e7e56e20444aeaa9fe",
+      "testedSourceHead": "3cf2a51a78805112c2a2a90730032291b6817152",
+      "deliveryCommit": "65a98968a690f0be128ce984785d18538e5bc397",
+      "verdict": "W7RGN1 addressed. Independent functional genuine Node9/all24 PASS; evidence SPEC/quality CHANGES REQUIRED W7RGN2/P3 raw SQLite fault receipt overwritten10->1.",
+      "nativeGrant": {
+        "grantId": "coordinator-w7-review-node-r9-c61e8939-independent-r2-20261031",
+        "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-658b05f6",
+        "status": "returned",
+        "mainStart": "2026-10-31T22:23:11.741Z",
+        "returnedAt": "2026-10-31T22:23:51.025Z",
+        "parentBaselineSha256": "2d2794fc6fe1f7b70935939f7e2cedaa19eecd00c575494dac5d74b3cd1ec7a8"
+      },
+      "actualResult": {
+        "runId": "44711e00-1ab8-4778-9fac-07037dd41162",
+        "resultSha256": "8fe074a453acf2ba4a5a5c80a78dc2a1d9dd7ca762f7e5fe1bcce2a7c4760de9",
+        "groups": 9,
+        "reviewActions": 15,
+        "guidanceActions": 9,
+        "sessionsIssued": 5,
+        "sessionsClosed": 5,
+        "rotations": 2,
+        "issuedStrings": 14,
+        "protectedFiles": 234,
+        "oldRows": 979,
+        "newRows": 245,
+        "totalRows": 1224,
+        "users": 25,
+        "cases": 12,
+        "wholeAuth": {
+          "sessions": 0,
+          "refresh": 0
+        },
+        "scanResponses": 162,
+        "scanBodyBytes": 246538,
+        "safeResponses": 74,
+        "privateDraftPositives": 3,
+        "privateConversationPositives": 2,
+        "core": "428a809fbdf32be1fb11ce95022dd533057b51c8f572b6138f206d1deae82544"
+      }
+    },
+    {
+      "role": "W7 commerce UI source review R3",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-ui-source-review-20261031-r3",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-ui-source-review-20261031-r3",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-commerce-ui-source-review-20261031-r3:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_COMMERCE_UI_SOURCE_R3.md"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-edb12f0a",
+      "deliveryCommit": "2d21b1d6d1908e8d8d60d7927b04529906b069f5",
+      "verdict": "Source SPEC/quality scoped PASS; CU4 addressed, CU1-CU3 remain addressed, no new material finding.",
+      "verification": "107+20/23copied/14own; exactfd2/4 ->1a6/6; strict/UI pass;27targetblobs exact1a,4SDKexactcab."
+    },
+    {
+      "role": "W7 advisor guidance source review R1",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-guidance-ui-source-review-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_GUIDANCE_UI_SOURCE_REVIEW.md"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-cef4f1a6",
+      "deliveryCommit": "5bbdf7a4815d78ac5be0cf97c59a7581bec08c3d",
+      "verdict": "Source SPEC/quality FAIL W2G1/P2 approval after context retirement, W2G2/P2 sending intent recovery stuck, W2G3/P3 stale-day direct read (controller contains). Known server-generation dependency f163 separately confirmed.",
+      "verification": "78/45/80 and32independentcontrols/strict/bundles pass; own four W2 assertions fail plus known generation dependency;22targetblobs exact6e0."
+    },
+    {
+      "role": "W3 V3 complete cookie target3 synthetic browser",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-v3-current-cookie-complete-target3-browser-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:6",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "writeSet": [
+        "exact3 auth target inputs",
+        "owned W3 browser tests/report"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
+      "chromeGrant": {
+        "grantId": "coordinator-w3-v3-current-cookie-target3-synthetic-chrome-20261031",
+        "status": "returned",
+        "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
+        "returnedAt": "2026-10-31T22:25:27.865843Z"
+      },
+      "targetImportCommit": "7a0e4186f51ff561e6e3d67055e631392f636d54",
+      "ownedTestsCommit": "ff9007863f4a9ae5bc770316ba4768475657ef53",
+      "deliveryCommit": "5951e53371e058851244efa009580daca1f8bf0c",
+      "verification": "Current21/21 incl new ordinary-fetch control; retained117, source74/122 strict/build pass. Old20nonsensitive20/20; fixed8cycle oldcookies0/1/current1/1, frozenG1G2 0/3. ProducerTypeErrorfaults qualified. W3production71 unchanged."
+    },
+    {
+      "role": "W2 guidance W2G1-G3 source corrections",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw2-guidance-pre-egress-and-intent-recovery-fixes-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-guidance-ui-source-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-guidance-ui-source-20261031-r1:ordinal:3",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "writeSet": [
+        "owned advisor guidance feature",
+        "app/advisor-guidance-context.ts",
+        "new source tests/report"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-8ddcfb34",
+      "dependencyImportCommit": "bac75a990102e816a68331c344fdc42fe30eb42b",
+      "deliveryCommit": "1fd2cfae789717df1a251b67689a153094ab8ff2",
+      "verification": "W2G1/G2/G3 source corrected;106/32unchanged/45raw/80Root/strict/bundles.4originalW2assertions pass; known generation-only f163 dependency still fails separately, not imported."
+    },
+    {
+      "role": "W6 raw observer receipt preservation source correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw6-review-raw-inspection-receipt-retention-fix-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-review-genuine-source-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w6-review-genuine-source-20261031-r1:ordinal:8",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "writeSet": [
+        "owned new Review stack/Node/proof/guards",
+        "new source tests/W6 report"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-c8e152f9",
+      "deliveryCommit": "9e401b4d0216ff4556ae9350186a7dfbdf51af32",
+      "verification": "Frozen writer10+1 retains1/11 RED; current9 focused/full81 offline/compiler/syntax pass. Immutable mode600 wx+sync beforefallback; per-call metrics/partial-final refs. New Node205555 SHAa3699dfcdc6896a9f820e96b56c6e31f0a6511e55c34e5d1d48605b8989d7932 UNEXECUTED; oldlostR2raw10 remain unavailable."
+    },
+    {
+      "role": "W0 current History restoration App adapter source",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-v3-history-remount-adapter-source-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:2",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed-source-canonical-gate",
+      "writeSet": [
+        "existing client App source files",
+        "new app restoration tests/report"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
+      "deliveryCommit": "4bdbb55d520af71374d045856f19e1ef6c13b6ee",
+      "verification": "117App(source diagnostic included),198feature/256transport/strict/build.2230inputs15outputs. Canonical navigator early predata restore counterexample remains, no accepted aftercommit restoration.",
+      "openDependency": "New explicit shared navigation/history.ts entry-owned deferral/ticket API allocated to same author."
+    },
+    {
+      "role": "W7 V3 independent source review R2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-guidance-review-20261031-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-guidance-review-20261031-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-v3-guidance-review-20261031-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed-source-changes-required",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_V3_GUIDANCE_R2.md"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-c6d4ae77",
+      "baseCommit": "f838415cb002018fe33992e7e56e20444aeaa9fe",
+      "testedSourceHead": "61fda1edf93e82a2141e3b3b29f6029a0362418d",
+      "sourceDisposition": "New source residuals under final reporting: reentrant saving subscriber withdrawal still first-egress1, GuidanceState retry callback identity omitted; ordinary React/App and DOM unproved. Current74/122/strict pass, browser UNGRANTED.",
+      "deliveryCommit": "f72b16a8b572b853b5a775a5127607fafdc32139",
+      "verdict": "Two source P2 residuals: reentrant saving subscriber retires context before first decision2 yet1egress; retry callback identity omitted. Ordinary React/App reachability unproved; DOM unrun. Browser UNGRANTED.",
+      "verification": "74/122/expiry2/foundation12/strict/build; repeated source3pass2intendedfail; old G1/G2 scoped closures retained."
+    },
+    {
+      "role": "W7 genuine observer evidence review R3",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-genuine-node-review-20261031-r3",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-genuine-node-review-20261031-r3",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-review-genuine-node-review-20261031-r3:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed-source-pass-native-incomplete",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_REVIEW_GENUINE_NODE_R3.md"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-5e2537fc",
+      "testedSourceHead": "9579d7927a3f5b2cb6cc50db5949458efe041316",
+      "deliveryCommit": "59c12e29688f5d99d06b590777e0e0e9c3f98080",
+      "verdict": "Source SPEC/quality scoped PASS W7RGN1/2. Native failed OWN ignored JSON observer race before MF/business setup; no RESULT/no9groups/nochildfinalaudit.235files1224new0/25users12cases Auth0 before.",
+      "nativeGrant": {
+        "grantId": "coordinator-w7-review-node-r9-9e401b4d-independent-r3-20261031",
+        "status": "failed-relinquished",
+        "returnedAt": "2026-10-31T23:01:54Z",
+        "parentBaselineSha256": "6b0f700d943f3e0aa576561e7525746696fb30bb432cbd224c89eb01b0142f0f"
+      },
+      "parentClosure": {
+        "at": "2026-10-31T23:03:38.826Z",
+        "status": "PASS",
+        "protectedFiles": 235,
+        "tables": 105,
+        "rows": 1224,
+        "users": 25,
+        "cases": 12,
+        "wholeAuth": {
+          "sessions": 0,
+          "refresh": 0
+        },
+        "core": "428a809fbdf32be1fb11ce95022dd533057b51c8f572b6138f206d1deae82544",
+        "receiptSha256": "127d2cfcff1bd710aa5a08e0fac412b5ad924d33587ef3fce362402150d96bc9"
+      }
+    },
+    {
+      "role": "W3 V3 R2 source ownership residual corrections",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-v3-saving-and-retry-ownership-source-fixes-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:7",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "writeSet": [
+        "owned plan guidanceDecision/Guidance",
+        "new source tests/W3 report"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d"
+    },
+    {
+      "role": "W0 canonical deferred History restoration source",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-canonical-history-readiness-restoration-source-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:3",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "writeSet": [
+        "apps/portal/src/navigation/history.ts",
+        "owned client App files/tests/report"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f"
+    },
+    {
+      "role": "W7 Commerce M63 backend review R1",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-backend-review-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-backend-review-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-commerce-backend-review-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_COMMERCE_BACKEND_REVIEW.md"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d01c145e",
+      "deliveryCommit": "4a27967466a4eb9b0dd3765fae3a4ea7b668ce3e",
+      "verdict": "SPEC/quality FAIL: CB1/P1 legacy+new duplicate repayment bookkeeping; CB2/P2 postlock conflict precedes expired/revoked auth; CB3/P2 privilegedsame-kind false effect receipt; CB4/P2 zero-refund return cannotfinish.",
+      "verification": "39native/109pure+handler/gateway4+9/strict; new8cases3pass5fail grouped4findings;10read/privatepages/numberparity/caps controls pass. OwnPGSTOPPED, noParentresources."
+    },
+    {
+      "role": "W7 genuine observer evidence/native review R4",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-genuine-node-review-20261031-r4",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-review-genuine-node-review-20261031-r4",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-review-genuine-node-review-20261031-r4:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_REVIEW_GENUINE_NODE_R4.md"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-e7a3280a",
+      "sourceReady": "81+7+9+6+3 andstrict/sourcebundles PASS; completion-safe ignored driver4/4; no resource beforegrant.",
+      "nativeGrant": {
+        "grantId": "coordinator-w7-review-node-r9-9e401b4d-independent-r4-20261031",
+        "status": "returned",
+        "returnedAt": "2026-10-31T23:32:16.392Z",
+        "parentBaselineSha256": "eff9dcb7a08dbd1a9da00d1647f9e00d0631f51505ea1763bcfc960a6f5d876e"
+      },
+      "resourceBoundary": "Exclusive R9. Coordinator NO resource/fixture/Auth/DB/helper/SQLite/process query until explicitRETURN; noBrowsergrant.",
+      "deliveryCommit": "f36ffdc9d96f8f0cba987c386178035f827b5931",
+      "verdict": "Source SPEC/quality+genuine functional9/all24+current evidence integrity/custody scoped PASS; W7RGN1/2 addressed. No App/browser/M63/delivery/CI/release/full-goal acceptance.",
+      "actualResult": {
+        "runId": "eec10e4e-27a7-4e20-b433-737d24243340",
+        "resultSha256": "51eadd8fabf0a9385e3dc65cced62cabdfbe5875440ea226f84b03f9518d1d0d",
+        "mainAt": "2026-10-31T23:31:48.332Z",
+        "finalAuditAt": "2026-10-31T23:32:16.190Z",
+        "returnedAt": "2026-10-31T23:32:16.392Z",
+        "observedSavedJsonAfterReturnAt": "2026-10-31T23:32:16.398Z",
+        "protectedFiles": 236,
+        "oldRows": 1224,
+        "newRows": 245,
+        "totalRows": 1469,
+        "users": 29,
+        "cases": 14,
+        "sessionsIssued": 5,
+        "sessionsClosed": 5,
+        "rotations": 2,
+        "strings": 14,
+        "wholeAuth": {
+          "sessions": 0,
+          "refresh": 0
+        },
+        "immutableEvents": 16,
+        "rawActualFaults": 10,
+        "perCallExternalFailures": [
+          0,
+          10,
+          0
+        ],
+        "multipleActualErrorBearingObservations": false,
+        "scanResponses": 162,
+        "scanBodyBytes": 246524,
+        "safeResponses": 74,
+        "privateDraftPositives": 3,
+        "privateConversationPositives": 2
+      }
+    },
+    {
+      "role": "W0 finite Commerce transport source",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-commerce-transport-source-20261031-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-commerce-transport-source-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-commerce-transport-source-20261031-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "writeSet": [
+        "new commerce metadata/raw factory/policy",
+        "narrow cookie/runtime Gateway/Vault/protocol checkpoint",
+        "source tests/report"
+      ],
+      "scopeAddenda": [
+        "actualserver/gateway.ts route/budget/positive mapping",
+        "workers/session-vault/index.ts internal actualVault checkpoint plumbing",
+        "WireResponse-only optional internal commerceContext actorId/hash stripped beforeclient; no caller flag/credentials/role",
+        "exact VIEWpreGate record_referral nonNull delegatesowner-or-confirm to canonicalSQL, noownerbitinvented"
+      ]
+    },
+    {
+      "role": "W7 advisor guidance source review R2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261031-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261031-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-guidance-ui-source-review-20261031-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_GUIDANCE_UI_SOURCE_R2.md"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-11a3139c",
+      "deliveryCommit": "7d3e7ea45e82e3a2a633949cd412ac9865cfdc16",
+      "verdict": "OriginalW2G1-G3 addressed5/5; SourceSPEC/quality FAIL newW2G4/P2 day rollover during acquisition first-egress; W2G5/P3 offline directcontext return(controllercontains).",
+      "verification": "106owned/32retained/83new/45raw/80Root/strict/bundles; G4sixfail/G5threefail, generationf163dependency separate."
+    },
+    {
+      "role": "W1 private Source lifecycle contracts Phase1",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-private-source-lifecycle-contract-phase1-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-report-guidance-contracts-20261031-r1:ordinal:7",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "writeSet": [
+        "six NEW PortalSource modules/test/report only"
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7a7cac7e"
+    },
+    {
+      "role": "W2 day/ready final-dispatch source correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw2-guidance-final-dispatch-day-and-ready-source-fixes-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-guidance-ui-source-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-guidance-ui-source-20261031-r1:ordinal:4",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running-source-only"
+    },
+    {
+      "role": "W1 Commerce CB1-CB4 forward fixes (queued)",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-commerce-cb1-cb4-forward-fixes-20261031",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-report-guidance-contracts-20261031-r1:ordinal:8",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "queued-after-source-checkpoint"
     }
   ],
   "parentVerification": {
@@ -4060,5 +4647,19 @@
     "c9cac46a088b5232dfcde5a88b84d9653ccb9a3e": "e3dbb47d8fe242f427182fbdb80554879a6984b6",
     "bec620f681a155f393779ddbd4b95dcdf29684d3": "944f2589240fe6a889f88714df6557c0297bd726",
     "92689fef224f4a7e04f9249cf0c577ca16f541d3": "6f13b82d4e9dfcc502d8dafc14e08b7beb52b239"
+  },
+  "cookieParentVerification": {
+    "testedSourceHead": "f838415cb002018fe33992e7e56e20444aeaa9fe",
+    "authorBlobsExact": 6,
+    "cookieAndRawTests": 256,
+    "retainedSource": 197,
+    "historySource": 84,
+    "fail": 0,
+    "skip": 0,
+    "frontendTypes": 0,
+    "sessionTypes": 0,
+    "applicationBuild": 0,
+    "nativeRootSqlUnchanged": true,
+    "evidence": ".local-artifacts/portal-rebuild/cookie-parent-checkpoint/"
   }
 }
