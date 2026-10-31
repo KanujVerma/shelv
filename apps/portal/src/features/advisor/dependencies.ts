@@ -221,6 +221,10 @@ export function dependencyProductIdentity(
       return unresolved(
         "this exact product and slot are absent from the referenced plan.",
       );
+    if (!p.name.trim())
+      return unresolved(
+        "the original plan has no recorded product name. confirm its identity before updating the draft basis.",
+      );
     const descriptor = [
       p.brand,
       p.variant,
