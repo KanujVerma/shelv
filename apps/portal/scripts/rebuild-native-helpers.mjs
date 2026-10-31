@@ -27,7 +27,14 @@ export async function prepareNativeHelpers(sourceRoot) {
   try {
     const receipt=JSON.parse(await readFile(receiptPath,'utf8'));
     assert.equal(receipt.ownerId,fixtureOwner);assert.equal(receipt.projectId,fixtureProject);
-    for(const item of receipt.containers) {const live=JSON.parse(docker('inspect',item.name))[0];assert.equal(live.Id,item.id);assert.equal(live.Config.Labels['shelv.fixture.owner'],fixtureOwner);assert.equal(live.State.Running,true);assert.equal(live.Config.Image,image);}
+    for(const item of receipt.containers) {
+      const live=JSON.parse(docker('inspect',item.name))[0];assert.equal(live.Id,item.id);assert.equal(live.Config.Labels['shelv.fixture.owner'],fixtureOwner);assert.equal(live.Config.Labels['shelv.fixture.workdir'],fixtureDirectory);assert.equal(live.State.Running,true);assert.equal(live.Config.Image,image);
+      assert.deepEqual(live.HostConfig.PortBindings['9000/tcp'],[{HostIp:'127.0.0.1',HostPort:String(item.port)}]);
+      const values=Object.fromEntries(live.Config.Env.map(line=>{const split=line.indexOf('=');return[line.slice(0,split),line.slice(split+1)];}));
+      assert.equal(values.CONCIERGE_ALLOWED_ORIGINS,'https://portal.goshelv.com,'+portalOrigin);assert.equal(values.DENO_TLS_CA_STORE,'system');assert.equal(values.SSL_CERT_FILE,'/certs/server.crt');
+    }
+    const storedHashes=JSON.parse(await readFile(path.join(area,'SOURCE-HASHES.json'),'utf8'));
+    assert.deepEqual(await tree(path.join(area,'source')),storedHashes);assert.equal(sha(JSON.stringify(storedHashes)),receipt.sourceHashesSha256);
     const old=JSON.parse(docker('inspect',receipt.retainedStoppedPlan.name))[0];
     assert.equal(old.Id,receipt.retainedStoppedPlan.id);assert.equal(old.State.Running,false);assert.equal(old.Config.Image,image);assert.equal(old.Config.Labels['shelv.fixture.owner'],fixtureOwner);
     const beforeEnvironment=old.Config.Env.join('\n')+'\n';
@@ -100,7 +107,14 @@ export async function prepareNativeHelpers(sourceRoot) {
   } catch(error) {
     // Never delete a partially created helper. Preserve it and recover original if free.
     const names=docker('ps','-a','--format','{{.Names}}').split('\n');
-    if(!names.includes(helpers.edge)){docker('rename',retained,helpers.edge);docker('start',helpers.edge);}
+    if(names.includes(helpers.edge)) {
+      const partial=JSON.parse(docker('inspect',helpers.edge))[0],owned=containers.find(item=>item.name===helpers.edge);
+      assert.equal(partial.Id,owned?.id,'Cannot alter an unrecorded partial helper');assert.equal(partial.Config.Labels['shelv.fixture.owner'],fixtureOwner);
+      if(partial.State.Running)docker('stop',helpers.edge);
+      docker('rename',helpers.edge,helpers.edge+'-w6-incomplete-'+partial.Id.slice(0,8));
+    }
+    docker('rename',retained,helpers.edge);docker('start',helpers.edge);
+    await writeFile(path.join(area,'PLAN-RECOVERED.json'),JSON.stringify({ownerId:fixtureOwner,id:helpers.edgeId,running:true,partialResourcesRetained:true,at:new Date().toISOString()})+'\n');
     throw error;
   }
   const receipt={ownerId:fixtureOwner,projectId:fixtureProject,containers,retainedStoppedPlan:{name:retained,id:helpers.edgeId},sourceHashesSha256:sha(JSON.stringify(sourceHashes)),origins:environment.CONCIERGE_ALLOWED_ORIGINS,rpcAdditions:['concierge_advisor_directory','concierge_payment_view_v2','concierge_payment_write_v2'],createdAt:new Date().toISOString()};

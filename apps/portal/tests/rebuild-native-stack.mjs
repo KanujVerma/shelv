@@ -29,7 +29,7 @@ export async function connectedStack(fixture) {
     await build({absWorkingDir: runtime, tsconfig:'tsconfig.json', entryPoints:[entry], bundle:true, format:'esm', platform:'browser', target:'es2022', outfile:path.join(dir,output), external:['cloudflare:workers'], legalComments:'none', plugins:[plugin]});
   }
   assert.equal(seams.length, 2);
-  const issued = new Map(), calls = [], errors = [], held = new Map();
+  const issued = new Map(), calls = [], browserCalls = [], errors = [], held = new Map();
   function remember(data) {
     if (!data?.access_token) return;
     const claims = JSON.parse(Buffer.from(data.access_token.split('.')[1], 'base64url').toString());
@@ -66,7 +66,7 @@ export async function connectedStack(fixture) {
     assert.equal(url.origin, portalOrigin);
     assert.equal(request.method, 'GET');
     let file = path.resolve(app, '.' + decodeURIComponent(url.pathname));
-    assert.ok(file.startsWith(app + path.sep));
+    assert.ok(file === app || file.startsWith(app + path.sep));
     let bytes;
     try { if (!(await stat(file)).isFile()) throw Error(); bytes = await readFile(file); }
     catch {
@@ -113,6 +113,9 @@ export async function connectedStack(fixture) {
       try {
         const headers=await request.allHeaders();
         assert.equal(headers.authorization, undefined, 'Browser provider bearer forbidden');
+        let action=null;
+        if(url.pathname.startsWith('/api/')&&request.method()==='POST') {try {action=request.postDataJSON()?.action??null;}catch {}}
+        browserCalls.push({method:request.method(),path:url.pathname,action});
         headers['cf-connecting-ip']='192.0.2.'+(100+index);
         const response=await mf.dispatchFetch(request.url(),{method:request.method(),headers,body:request.postDataBuffer()??undefined});
         const resultHeaders=Object.fromEntries(response.headers);
@@ -122,7 +125,7 @@ export async function connectedStack(fixture) {
       } catch {errors.push('local dispatch failed '+url.pathname); await route.abort().catch(()=>{});}
     });
   }
-  return {mf,dir,seams,calls,errors,issued,remember,cleanup,hold,bind,async dispose(){await mf.dispose();}};
+  return {mf,dir,seams,calls,browserCalls,errors,issued,remember,cleanup,hold,bind,async dispose(){await mf.dispose();}};
 }
 
 export function nodeCookieClient(stack, audience, ip=1) {

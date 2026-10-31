@@ -1,14 +1,23 @@
 import assert from 'node:assert/strict';
-import {writeFile} from 'node:fs/promises';
+import {writeFile,readFile} from 'node:fs/promises';
 import path from 'node:path';
+import {randomUUID} from 'node:crypto';
 import {attestFixture} from '../scripts/rebuild-native-fixture.mjs';
 import {connectedStack, sourceRoot, artifacts, nodeCookieClient, mailSnapshot, captureCallback} from './rebuild-native-stack.mjs';
+import {portalOrigin,sha} from '../scripts/rebuild-native-boundary.mjs';
 
 assert.equal(process.env.SHELV_REBUILD_NATIVE, '1');
 const fixture=await attestFixture(sourceRoot), stack=await connectedStack(fixture);
 const result={kind:'genuine-node-http-pkce-cookie-vault',status:'RUNNING',checks:[],realEmails:0,hostedRequests:0};
 const pass=label=>result.checks.push(label);
 try {
+  const candidate=path.join(sourceRoot,'.local-artifacts/portal-rebuild/application');
+  for(const route of ['/','/plan','/advisor/plans','/advisor/plans/11111111-1111-4111-8111-111111111111/preview']) {
+    const asset=await stack.mf.dispatchFetch(portalOrigin+route);assert.equal(asset.status,200);assert.equal(sha(Buffer.from(await asset.arrayBuffer())),sha(await readFile(path.join(candidate,'index.html'))));
+    assert.match(asset.headers.get('content-security-policy'),/connect-src 'self'/);assert.equal(asset.headers.get('referrer-policy'),'no-referrer');
+  }
+  for(const name of ['application.js','application.css']) {const asset=await stack.mf.dispatchFetch(portalOrigin+'/'+name);assert.equal(asset.status,200);assert.equal(sha(Buffer.from(await asset.arrayBuffer())),sha(await readFile(path.join(candidate,name))));}
+  pass('Actual gateway ASSETS serves exact application JS/CSS/document bytes with same-origin CSP and semantic deep-link fallback');
   const client=nodeCookieClient(stack,'advisor');
   let response=await client.request('session');assert.equal(response.status,200);assert.equal(response.value.signedIn,false);
   const flow=response.value.csrf;
@@ -45,8 +54,10 @@ try {
 finally {
   try {result.cleanup=await stack.cleanup();} catch {result.status='FAIL';result.cleanup='FAILED';}
   result.calls=stack.calls;result.errors=stack.errors;result.testBundleSeams=stack.seams;
+  result.sessionIds=[...stack.issued.keys()];
   await stack.dispose();
   await writeFile(path.join(artifacts,'node-pkce-result.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});
+  await writeFile(path.join(artifacts,'node-pkce-result-'+randomUUID()+'.json'),JSON.stringify(result,null,2)+'\n',{mode:0o600});
 }
 console.log(JSON.stringify(result));
 if(result.status!=='PASS')process.exitCode=1;
