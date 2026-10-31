@@ -9,6 +9,75 @@ import { createHistoryController } from '../features/history/controller.ts';
 import { createHistoryPort } from '../features/history/port.ts';
 import type { PortalNavigator } from '../navigation/history.ts';
 import type { HistoryNavigation } from '../features/history/types.ts';
+import type { HistoryController } from '../features/history/types.ts';
+import type { PlanSessionBoundary } from '../features/plan/types.ts';
+import type { HistoryRestorationAnchor, HistoryRestorationResult, HistoryFilter } from '../features/history/restoration.ts';
+import { restoreNavigationContext } from '../navigation/history.ts';
+
+const historyPositionKey = 'app.history.positions.v1';
+const safeNavigationId = (value: unknown): value is string => typeof value === 'string' && /^[a-zA-Z0-9_:.-]{1,160}$/.test(value);
+type HistoryPosition = { path: string; scrollY: number; focusKey: string | null };
+/** App-owned UI lease. Feature results remain immutable; only the actual
+ * after-commit onReady callback may queue this scope's viewport work. */
+export function createHistoryRestorationScope({controller,boundary,navigator,win}: {
+  controller: HistoryController; boundary: PlanSessionBoundary; navigator: PortalNavigator; win: Window;
+}) {
+  const path = navigator.getSnapshot();
+  const marker = () => {
+    const value = (win.history.state as {shelvNavigation?:{scopeKey?:unknown;entryId?:unknown;restore?:{scrollY?:unknown;focusKey?:unknown}}}|null)?.shelvNavigation;
+    return value?.scopeKey === boundary.key && safeNavigationId(value.entryId) ? value : null;
+  };
+  const entryId = marker()?.entryId;
+  let disposed = false;
+  type Owner = {frames:Set<number>};
+  let owner: Owner | null = null;
+  const current = () => !disposed && !!owner && safeNavigationId(entryId) && boundary.isCurrent() && navigator.getSnapshot() === path && marker()?.entryId === entryId;
+  const positions = () => boundary.memory.get<Record<string,HistoryPosition>>(historyPositionKey) ?? {};
+  function capturePosition() {
+    if (!current() || !safeNavigationId(entryId)) return;
+    const id = win.document.activeElement?.id;
+    boundary.memory.set(historyPositionKey,{...positions(),[entryId]:{path,scrollY:Math.max(0,win.scrollY),focusKey:safeNavigationId(id)?id:null}});
+  }
+  const saved = safeNavigationId(entryId) ? positions()[entryId] : undefined;
+  const initial = marker()?.restore;
+  const position: HistoryPosition | null = saved?.path === path ? saved : initial && typeof initial.scrollY === 'number' && Number.isFinite(initial.scrollY) && initial.scrollY >= 0 && (initial.focusKey === null || safeNavigationId(initial.focusKey)) ? {path,scrollY:initial.scrollY,focusKey:initial.focusKey} : null;
+  return {
+    attach() {
+      if(disposed)return () => {};
+      const captured:Owner={frames:new Set()};owner=captured;
+      return () => {
+        captured.frames.forEach(id=>win.cancelAnimationFrame?.(id));captured.frames.clear();
+        if(owner===captured)owner=null;
+      };
+    },
+    capturePosition,
+    capture(anchor:HistoryRestorationAnchor|null=null) {
+      if(!current())return null;
+      const point=controller.restoration?.capture(anchor)??null;
+      capturePosition();return point;
+    },
+    setFilter(filter:HistoryFilter) {
+      if(!current())return;
+      capturePosition();controller.restoration?.setFilter(filter);
+    },
+    onReady(result:HistoryRestorationResult) {
+      const captured=owner;
+      if(!captured||!current()||!controller.restoration?.isCurrent(result))return;
+      const frame=win.requestAnimationFrame(()=>{
+        captured.frames.delete(frame);
+        if(owner!==captured||!current()||!controller.restoration?.isCurrent(result))return;
+        const exact=result.state==='restored'&&position;
+        const focusKey=exact?(result.anchorId??position.focusKey):null;
+        // The source witness proves an anchor should exist, not DOM geometry.
+        // Missing actual committed content takes the ordinary heading fallback.
+        const available=focusKey===null||!!win.document.getElementById(focusKey);
+        restoreNavigationContext(exact&&available?{scrollY:position.scrollY,focusKey}:{scrollY:0,focusKey:null},win.document,win);
+      });
+      captured.frames.add(frame);
+    },
+    retire() { disposed=true;owner=null; },
+  };
+}
 
 export function createHistoryNavigation(navigator: Pick<PortalNavigator, 'navigate'|'back'>): HistoryNavigation {
   return {

@@ -157,3 +157,38 @@ docs/portal-rebuild/research/W0_V3_HISTORY_COMPOSITION.md
 A terminal correspondence pass additionally confirms **all41 W3 non-App owned runtime/test/report files** equal exacte093 and **all5 T1 owned runtime/test/report files** equal exactac83. The W3-imported App client-state is deliberately extended only in the allocated App write-set and is not falsely claimed byte-identical. Parent History runtime remains byte-exact606/012. `E/frozen-inputs.json` binds every checked path to full author ref, Git blob and SHA256.
 
 Clean source build at57bff before the final scope cleanup has **2,229 inputs/15 in-memory outputs**, `sourceDirty:false`; its metadata SHA256 is `b2c578266fbefcbd85738ca32def79dfc241e09270236e33f0e3ac6d6c67babd`. Finalization repeats the write:false build on the terminal clean head and records the fresh full head, dirty flag, per-input/output hashes and manifest hashes in **E/source-build-provenance.json** and **E/FINAL-HANDOFF.json**. The final report-only/scope-cleanup commit hash is returned by the terminal handoff rather than embedding a self-referential commit hash here. All source commands are terminal; no resource is retained.
+
+## Follow-up: pinned cookie and History restoration, source only
+
+New bounded source task on the SAME3cffb79f branch from verified clean **f16363bea245d5986a1a20b67f5f2e6beb1e792b**. Both live T3 catalog/descriptors and thread configuration again select **codex/gpt-6.1-sol/xhigh/default**, full-access/default; project/default-subagent and all8 role pins verify, actual explicit Node22.23.0. No nested work, browse/preview/DOM/process/native/DB/Auth/credential/fixture/resource call. Existing own locked portal dependencies reused. All34 previous own f163 evidence files are copied/hash-preserved in new `E9/original-f163/`, inventory `E9/original-f163-inventory.json`. **E9 = `.local-artifacts/portal-rebuild/w0-v3-history-restoration/` in this same worktree.**
+
+Authoritative new task handle supplied by parent: **`node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-v3-history-remount-adapter-source-20261031`**. It is not the original delegate handle or a thread/run ID. Same backing thread/workspace as above; current exact run is recorded separately from live thread readback. No resource grant exists for this App pass, and no grant is inferred from either reviewer or any other lane.
+
+### Six separate approved dependency imports
+
+No manual cookie or feature edit. Each full supplied ref resolves exactly, W4 author chain verified linear, and imports use `cherry-pick -x` in approved order:
+
+| Exact source | Local attributed import |
+| --- | --- |
+| c9cac46a088b5232dfcde5a88b84d9653ccb9a3e | 85328050 |
+| c91cb71ea2611b908ff9e1ec763008f22950b742 | 02de496b |
+| 05442a41b510e08acf7c59a6183973c9615a6b57 | d0a755f7 |
+| 2262f97185818f76965ca14c18bf867e30cfd57d | 73b96712 |
+| 57f8b6391dbdc5fca8914c4269ef506c2e51a5f5 | 749e5680 |
+| 83af53f8c4ae7e75ce4527becbfe8678281a1bac | 082322a5 |
+
+All12 W4 changed runtime/test/report blobs exactly match full83af53f8 (`E9/w4-target-blobs.json`). Existing012/606/R3 scoped closures remain historical; no SDK/transport/shell duplicates or W2 guidance6e0 import. Supplied independent T1 R2 scoped PASS92689fef is recorded as parent-provided review evidence; no review/source target other than c9 is imported. Earlier pending CK1/CK2 status above describes the prior frozen checkpoint, not this successor.
+
+Read the full current715-line W4 report including API/usage and E8 raw qualifications, actual restoration/controller/types/History/Timeline/model code, c9 deadline response and actual changed conditions. W4's new restoration has author37/IDs3/retained evidence only; no new independent restoration verdict. Its E8 fixture's initial correction-opener paging expectation, TypeScript syntax fault, closed-anchor-kind RED, immutable-result RED, inventory-predicate correction and final effect-owner cleanup qualifications remain separate from product acceptance. No foreign evidence/script is executed or modified.
+
+### Early coherent App source seam
+
+`createHistoryRestorationScope({controller,boundary,navigator,win})` is exported from the existing owned App `client-composition.ts`. It consumes the actual generation-aware ApplicationSession boundary, actual feature restoration API and canonical navigator/entry marker. `attach` returns an owner-specific cleanup; `capture/capturePosition/setFilter` keep only navigation UI context in actual session memory; `onReady` accepts only a current immutable feature result and defers its own viewport work. Every deferred callback rechecks actual boundary, route, marker entry identity, exact App scope/attach owner and `controller.restoration.isCurrent(result)`. Retired or unmarked/foreign scopes cannot navigate or focus. Only restored data may use known scroll/opener; fresh/fallback/unavailable data uses the actual current heading fallback. No clinical review, result mutation or response/body/cursor cache is introduced.
+
+Early source RED: missing App scope causes2 intended failures plus one passing cross-owner diagnostic. New marker control gives3 pass/1 intended fail. Early GREEN4/4 with actual composed session/cookie/raw Review/Root/W4/controller, SSR helper and plain navigator; strict frontend passes. This checkpoint does not yet mount the new props in ClientHistoryContent and is not App/default activation acceptance.
+
+### Canonical navigator cross-owner gap
+
+Plain-object execution of the **actual unchanged** `createPortalNavigator` gives focus + scroll0 while `historyReady:false`, before any restoration data or committed onReady. Exact observation: `E9/canonical-pre-data-diagnostic.json`; passing diagnostic assertion is a reproduced gap, not restoration acceptance. The navigator's public methods expose no entry-owned defer/cancel/replay or saved-context read API. Its own pre-data rAF therefore cannot be made subject to W4's matching post-commit lease using the seven allocated App files alone without an unapproved Window/scheduler workaround or another navigation implementation.
+
+Requested a frozen canonical navigator successor or explicit approved App-local adaptation. No navigation/history.ts, shared contract or global scroll behavior is edited. App-owned after-commit scope work continues independently; full canonical after-commit restoration remains gated by that source contract and a new independent composed review. No browser/StrictMode scheduling or actual pixels are claimed.
