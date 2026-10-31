@@ -1,6 +1,6 @@
 # W6 genuine connected care acceptance
 
-Owner: Kanuj. Task `portal-rebuild-w6-care-genuine-20261031-r1`. **Phase 1 source preparation, explicitly future R6 after parent steering. No connected care acceptance yet.**
+Owner: Kanuj. Task `portal-rebuild-w6-care-genuine-20261031-r1`. **Phase2 genuine Node9/9 PASS, native R6 custody returned. Browser/independent fresh care harness/full-care acceptance remain pending.** Earlier sections preserve source-only checkpoints and failed attempts.
 
 ## identity and authority
 
@@ -19,11 +19,11 @@ Goal: prove the care slice through the retained gateway, actual SQLite Vault, re
 - [x] Inspect actual base/instructions/status/log, runtime descriptors and eight role pins; read care contracts, implementation/reconciliation, approved decisions/full desktop/original handoff, ownership/acceptance and original H1/H2/C1 findings/responses.
 - [x] Add pure selected-R5/source/resource denial guards and a finite care57443 boundary while preserving the default R4/Genuine13 scope. Run meaningful red/green before the source seam commit.
 - [x] Return the early source commit and exact exports to the parent; continue independent genuine Node journey/source preparation without acquiring resources.
-- [ ] After explicit R6 grant and corrected source, positively attest current56 source/config/ledger/binding/volume/helper/owner/private permissions. No fixture lifecycle or authority repair. Prepare helpers only if separately allocated; otherwise require parent receipts.
-- [ ] Genuine Node first: both real PKCE audiences/cookies/live contexts/Vault/native RPC; own labeled synthetic case with complete one-product plan, five reviews/exact approval, actual service-only quote/claim/synthetic gross receipt, deliberate publication. Preserve first clocks and separate Start.
-- [ ] Care v2 identity/unknown Start/stop/pause/different, exact retry/CAS/history/descriptor/amendment/attribution/dependency rebase/later publication carry and authorization/logout/provider-revocation negatives. Verify committed original rows, head/outbox uniqueness and zero finance/order/legacy activation effects. Actual supported own-case cancellation only if needed, no SQL clock fiction.
+- [x] After explicit R6 grant and corrected source, positively attest current56 source/config/ledger/binding/volume/helper/owner/private permissions. No fixture lifecycle or authority repair. Parent-prepared helpers only.
+- [x] Genuine Node first: both real PKCE audiences/cookies/live contexts/Vault/native RPC; own labeled synthetic case with complete one-product plan, five reviews/exact approval, actual service-only quote/claim/synthetic gross receipt, deliberate publication. Preserve first clocks and separate Start.
+- [x] Care v2 identity/unknown Start/stop/pause/different, exact retry/CAS/history/descriptor/amendment/attribution/dependency rebase/later publication carry and authorization/logout/provider-revocation negatives. Verify committed original rows, head/outbox uniqueness and zero finance/order/legacy activation effects. Actual cancellation/cutoff remains a separately scoped limit, no SQL clock fiction.
 - [ ] After separate Chrome/composition grant, actual C07/C07C/self-purchase/mismatch/report-use/uncertain409/reload/history flow. If blocked, preserve exact actual response and return a bounded owner request; no fake context, forced permissions, test hook or timing workaround.
-- [ ] Close every issued provider session/context/browser/Miniflare/listener, prove session+refresh0 and exact source/protected/helper post-state, explicitly return custody, then final source/report checks and owned commit. Independent fresh harness/chain review remains required.
+- [x] Node phase: close every issued provider session/Miniflare/listener, prove session+refresh0 and exact source/protected/helper post-state, explicitly return native custody. No browser acquired. Independent fresh harness/chain review and later browser cleanup remain required.
 
 ## evidence boundaries
 
@@ -41,7 +41,7 @@ Early commit `1d428eee60195a126c233bbca5e33761a7e4085c` selected future R5 and w
 
 Current selection is strict `{format:1,purpose:'w6-care-native-r6',parentRoot,directory,ownerId,projectId,ownerActorId,migrationCount:56,configSha256,snapshotSha256,ledgerSha256,sourceHashesSha256,helpers,tlsImage}`. Directory is exactly the parent's `canonical-plan-v1-r6`; R4 owner/project/path, retired R5 project/path/purpose and count55 reject. `helpers` has exactly plan/operations/payments/care/tls, each `{name,id,environmentSha256}`. Parent supplies full locked nginx1.28.0-alpine digest beginning30f1c and actual fresh helper IDs/env hashes. `careSourceHashes(root)` returns the sorted full dependency-closure map; selection digest is SHA-256 of its JSON. Source-only synthetic guard IDs/digests are never actual fixture inputs.
 
-Grant is separately strict `{format:1,parentThreadId,purpose,workspace,directory,ownerId,projectId,snapshotSha256,grantId}`. It records the explicit parent message reference, not an inferred grant from a prepared file. Node and browser purposes are distinct. Selection/grant/Node/opt-in validation precedes fixture reads/acquisition. Attestation uses the read-only prepared-reader, never prepare/reset/start/stop/adopt. It checks exact parent/current/prepared56 bytes, config, snapshot/ledger/volume/workdir labels, DB binding, five helper IDs/owners/environments/images/ports, actual copied source in each native helper, mode600 private files and actual owner/activated policy. It neither creates nor repairs owner authority. No actual selection or custody grant has been supplied or exercised yet.
+Grant is separately strict `{format:1,parentThreadId,purpose,workspace,directory,ownerId,projectId,snapshotSha256,grantId}`. It records the explicit parent message reference, not an inferred grant from a prepared file. Node and browser purposes are distinct. Selection/grant/Node/opt-in validation precedes fixture reads/acquisition. Attestation uses the read-only prepared-reader, never prepare/reset/start/stop/adopt. It checks exact parent/current/prepared56 bytes, config, snapshot/ledger/volume/workdir labels, DB binding, five helper IDs/owners/environments/images/ports, actual copied source in each native helper, mode600 private files and actual owner/activated policy. It neither creates nor repairs owner authority. At this early source-only checkpoint no actual selection/grant had been supplied; the separate Phase2 section below records the later explicit grant, execution and return.
 
 `tests/rebuild-care-native-stack.mjs` exports `connectedCareStack(fixture,grant,workspace)`, requiring the selected56 lineage and phase-specific custody before calling the retained stack. The retained stack's default remains its original finite boundary; only explicit `care:true` admits `/functions/v1/concierge-care` at57443 and the actual closed13-action metadata. No direct care PostgREST RPC is exposed at the provider-dispatch layer; only the native care entry calls its fixed TLS RPC. Care runtime artifacts use separate `w6-care-native/`. Existing R4 attestor constants/count/hash checks and Genuine13/readonly source are unchanged.
 
@@ -85,7 +85,7 @@ All three imported blobs compare byte-for-byte with957b7ac; all55 earlier migrat
 
 `careNativePins.migrationSha256` now requires that exact authorized M56 in both prepared-source and runtime validation. A consistent56 manifest/migration map with superseded M56 still rejects even when its own snapshot digest agrees. Input-only previous guard gives **5 pass/1 intended failure** on that refusal; current combined source/content/retained guards remain **13/13 pass**. The full selected snapshot digest includes migration bytes, so the future R6 metadata must bind corrected M56. `careSourceHashes` is specifically the native copied code closure, which has no SQL; its separate code digest is not relabeled as a migration digest.
 
-Fresh actual gateway/Vault and Node journey write:false compilation passes; both strict frontend/session typechecks exit0. Imported native11 Python file is AST-parsed only, never imported/executed. No canonical reset, pgTAP, native database, actual Auth/session, helper or browser work occurs. R6 preparation is parent-owned; metadata, resource custody and Chrome grants remain absent. Evidence: `source/{m56-pin-before,corrected-m56-guards,corrected-m56-compile}.log` and `source/corrected-source-correspondence.json`. Imported W1 native11/retained26/focused37 remain author-attributed evidence, not W6 executions.
+In this source-import phase, actual gateway/Vault and Node journey write:false compilation passed; both strict frontend/session typechecks exited0. Imported native11 Python file was AST-parsed only, never imported/executed. No canonical reset, pgTAP, native database, actual Auth/session, helper or browser work occurred in that phase. R6 preparation remained parent-owned; metadata, resource custody and Chrome grants were still absent then. Evidence: `source/{m56-pin-before,corrected-m56-guards,corrected-m56-compile}.log` and `source/corrected-source-correspondence.json`. Imported W1 native11/retained26/focused37 remain author-attributed evidence, not W6 executions.
 
 ## phase2 exclusive R6 Node custody
 
@@ -104,3 +104,77 @@ Run **`45fcae9f-4cd3-4eef-bce1-adf6e3316749`**, clean source **`bc6d578bbaecfc68
 Bounded actual ordinary-owner-password/native read diagnostic on own draft **`1d96380d-589b-45fe-96d7-396182ba5f15`** returns all five reviewed:true and the sole issue `decisions.care-addition / guidance_incomplete`. Its additional real session is supported-logout closed, whole0/0; this is a diagnostic outside the cookie journey, not another PKCE pass. M54:210 explicitly blocks primary authored product.identity unresolved. The harness had authored that state for a proposed exact public CeraVe descriptor while expecting publish readiness. This is test-content framing, not a production predicate or transport defect.
 
 Only own proposed descriptor becomes **possible_match**, never client_confirmed; formula remains unknown. Actual client identity is still a separate care event. Pure content assertion gives expected RED unresolved-versus-possible_match, then combined13/13 GREEN after the bounded data correction. No Root/app/UI/gateway/authority/source-helper/fixture/policy/date/receipt change. The failed case is not repaired or republished; the next run creates its own new labeled identities. Safe finite HTTP error-code/readiness metadata is now retained on later harness failures without private response text.
+
+### genuine Node care proof:9/9 PASS
+
+Run **`f67a47ed-294a-497d-8a88-d269f1e2a041`**, exact clean executed source **`92b2447aee18e691d54cc2b86707b41ac953ad63`**. Actual retained combined gateway and SQLite Vault, genuine local GoTrue OTP/PKCE/Mailpit/live contexts, unmodified native Edge entries, TLS/PostgREST and canonical SQL. No successful Auth/context/domain stub, seeded session.initialize, fake/re-signed JWT, forced permission, response rewrite, new BFF or application testing hook. Direct service quote/claim setup uses ordinary genuine temporary owner/client sessions at the unchanged Payment Edge; service-role appears only in explicit synthetic identity setup. Both temporary sessions close independently.
+
+| Executed genuine Node group | Result |
+| --- | --- |
+| Both actual audiences and Vault | Real advisor/client PKCE, local emails, live contexts, opaque Secure/HttpOnly/SameSite cookie attributes. Actual8 SQLite files/6 records/2 active encrypted session envelopes, no exact issued plaintext credentials in stored session JSON. Node jar is not Chrome enforcement or all-file/WAL encryption. |
+| Draft/review/approval | Ordinary incomplete unassigned save, complete structured one-product save, deliberate existing-client assignment without Auth creation, five actual human-role section reviews/exact approval; prepayment publication409/no Start. |
+| Service receipt and publication | Actual service-only frozen10000-cent quote, sent claim and deliberately confirmed synthetic gross receipt; exact approval retained, service dates/review clock null until deliberate publication. First publication creates one period/schedule, no product Start. No real funds. |
+| Use and v1 truth | Separate actual identity yes and self-purchase explicit unknown-date Start; v2 using/unknown Start with actual client reporter/recorder. Exact UUID retry returns identical receipt with unchanged committed rows/head/queue; stale CAS409; status committed. Pause/different/stop persist; exact old Plan HTTP409 use_version_required. |
+| Descriptor/amendment/attribution | Server-issued reported UUID/version, one same-event/head/outbox nested unreviewed_added with no Start, no/not-sure comparison does not activate P. Product-changing append-only use correction preserves original and separate reason/actor/date/version. Descriptor2 is fetched from actual v2, old identity does not carry, correction initialUse:null. Confirmed human text report retains client reporter/actual owner recorder. Nonempty unsupported photo409; empty arrays work. No finance/order/legacy activation effects. |
+| Actual history pages | Bounded few real rows, requested2-item pages, complete unique originals and separate amendments, each below400000 bytes; no fake page or105-row stress label. |
+| Dependencies and equal-tuple carry | New working draft captures care head; new stop invalidates affected reviews/current exact approval. Actual dependency read, stale rebase409, deliberate current-CAS rebase preserves text/new revision, new reviews/approval/later publication with coverage and no first-service claim. Same-tuple stop retains original publication1/slot and unknown Start across publication2; identity does not carry; no event/head/Start from read/publication. |
+| Changed descriptor | Deliberate separately reviewed publication3 changes variant: current state not_reported/contradiction:true/originalStart unknown, original stop retained, no identity/formula promotion. Original first document/receipt/publication bytes and service/review clock remain exact. |
+| Actual authority and late results | Owner selector400, CSRF403, cookie audience401, cross-owner status absent and event edit403, safe view-only human publication read with edit403/private markers absent, only own viewer grant revoked -> actual403. Actual gateway logout acknowledged before held real care response401. Supported provider logout ends a fresh genuine cookie with401. |
+
+Actual final counts: **12 care business events /use head12 /attention12 /3 publications /15 plan events /18 deliveries /0 legacy activations**. Every delivery remains **queued, attempts0**;3 publication email+portal pairs and12 advisor portal jobs are not provider delivery/read proof. Full finance head/status/options/audit/requests/retail/return snapshot is unchanged by care and later plan updates. Exact server service date is independently checked against publication's America/Chicago date, never used as product Start.
+
+| Actual retained synthetic identity | Value |
+| --- | --- |
+| client /other /viewer | afc5d645-3641-4cd2-8672-34ceb031fea4 /1e4c6d01-222b-4755-b643-c16f36277624 /5f295ec9-798c-48db-a369-2d02b489bb36 |
+| first draft /approval |4059de51-6892-49f8-9725-b40817b2a903 /7cbdbed2-5aa1-4cfb-991d-9272f2c8a7b1|
+| service quote /claim |0803d223-30ed-4030-b4ef-a185aaeeac15 /95c39c52-f2af-4f87-95f0-dfab11bbb5ef|
+| reported product |194203d3-2c20-4cc4-9016-2881e3cf36ad, versions1/2|
+| first publication receipt /event |c06d5165-c55a-4206-ab7e-ecf483112af3 /c1bdda60-5d5f-44e8-bf45-0e975337f6b0|
+| unknown Start /last stop event |8bfaaf46-63fc-4866-8309-8b2e1f0aa2e1 /fa34e42a-dc16-4912-b386-74fd8a4d6043|
+| publication /Chicago service |2026-10-31T07:00:00.511311+00:00 /2026-10-31 through exclusive2026-11-30|
+| actual review schedule |2026-11-14 /2026-11-30 /2026-12-31 /2027-01-31|
+
+Successful run **7 actual sessions issued/7 closed/0 session rows/0 refresh rows**, including the two temporary financial sessions; five local Auth emails, no real email. Entire Phase2 has **10 unique issued/closed sessions**: first failed run2, diagnostic1, successful run7. Six newly labeled.invalid identities across two attempts and every failed/successful business record/private setup receipt remain retained. No reset, old grant restoration, historical rewrite or delete.
+
+### actual Node resource return and evidence
+
+Fresh final attestation and SQL readback verify all99 protected before files have identical hashes/modes, exact recorded helper IDs/env/source, all five helpers RUNNING, all76 source files in each of four Edge helpers, current56/d3a M56/snapshot/ledger unchanged. Actual committed-row readback equals snapshot SHA **71034a528fef8903ae91823c0512a7e51e0e0172d9a5219c795acd0446c62763**. Whole R6 Auth session/refresh rows0/0. Actual ps finds no own workerd; prior owned Node PIDs34868/36437/40681/46573 are absent. All Miniflare/Node/listener/exec handles are closed normally.
+
+**Native R6 custody explicitly returned to the parent at2026-10-31T07:03:00.241Z. No fixture/Auth/helper/resource calls follow that return.** Browser/Chrome/DOM/preview was never acquired or called in this phase. W7 owns Chrome, so no global Chrome-empty or preview-no-tab observation is invented. R4/R5 were never accessed. Later parent resource activity is outside this zero-row observation. Browser needs a fresh separate grant after CU1 independent review and actual application composition.
+
+| Fresh R6 helper | Unchanged ID |
+| --- | --- |
+| TLS |cbbe0027078effdd03be29b101fceb5c92bdccf8855153716041112303201e0f|
+| Plan |65a0aaae7ceb4e65d6d66cbc3227ef4c635f601db1dd8e9bf0d1b29a3563e8fc|
+| Operations |60092d899c5f85d1dcf9bec3cbfe9ec7cf03ad1e091bc641b35bce74c3a8f0d8|
+| Payments |54e29e0641ddbf1e1e454f2707d497b9c7eb8f5fdd90ddc4248ef1e2c85d210f|
+| Care |cb0f76ef9cc1abea3a690f51af4d4e4dedf9337ca94b8cbdd54a88c95a3384a9|
+
+Ignored evidence root remains own `.local-artifacts/portal-rebuild/w6-care-native/`. Credentials/callbacks/tokens are not in result/report/source. Setup identities remain only selected-fixture mode600 receipts; own results retain sanitized IDs/statuses/counts. Main execution uses explicit Node22.23.0, SHELV_REBUILD_CARE_NATIVE=1 and an inline ESM runner importing runCareNativeProof with the exact selection/grant JSON, not the automatic test glob. Both actual runs and diagnostic have separate retained files. Source-only verification after custody return does not re-execute the native entry.
+
+Exact native invocation argv was `/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node --experimental-strip-types --input-type=module` from this root, with SHELV_REBUILD_CARE_NATIVE=1; the inline driver reads the two named parent JSON inputs and calls `runCareNativeProof({selection,grant})`. `phase2-execution.json` retains both executed source heads/run IDs/exits, fixed argv/inputs and the returned-custody prohibition. Post-return source guards13/13, all three write:false bundles, both strict frontend/session types and git diff --check pass; no native rerun. Node typeless-package and missing-root-Expo-base source-build warnings remain, with no dependency/config/flag change.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| node-care-result-f67a47ed-294a-497d-8a88-d269f1e2a041.json |94456006d3cf79a3b1651425e1e0bb371f2fc2342eb2512125e83c03275de12a|
+| node-care-result-45fcae9f-4cd3-4eef-bce1-adf6e3316749.json |49aeb850bd42bf3de4542ce07679773132e3d5be7d3a8838c200dab858b15beb|
+| readiness-diagnostic-ab5307e6-7d33-4858-8d53-ed80a441595d.json |f6a2f10536e39468b079a45812e89280f6f961982e4257b8166c540ba490a792|
+| phase2-before.json |54a8390632a1a53cbcf483931642dde38f031e4c46bfe27a27af1054f051154b|
+| phase2-after.json |39485506115df928adc388a5244944fb2c7c359d7a932ea3522d3b6350db8e96|
+| phase2-handles-closed.json |21dbce4aeb6f44d3b9c79b66ee97b86f989fe3640326ea5b513a496fb66e0df2|
+| node-care-summary.json |8533fb9a84e0dc8f7ab8e7ceabb14e82dde61cbbdc84169b466209d24467a10e|
+
+Remaining limits:9 is genuine **Node** groups, not Chrome/UI or all13 actions. record_client_unreviewed_product_v1, read_reported_products_v1 and read_advisor_use_history_v1 are not separately invoked in this Node run; their author/independent SQL/handler tests retain their own scope. Read-only/ended/+30 cutoff and real cancellation were not manufactured; parent34/772 canonical and W7 R2 native coverage is separate. No genuine product-label Storage/photo completion, notification provider/sink delivery/webhook, full source rights, task enrollment/grant, order/return/account/export/goal report/latest-public-review module, full root/portal/session runtime suite/Expo/iOS/CI/visual/human/clinical/legal/release acceptance. Source-only strict types/pure guards/bundles are not another native run. Independent fresh care harness/chain review remains required; all remaining full-goal modules stay pending.
+
+## continuation handoff,31 October2026
+
+Project shelv; branch t3/w6-care-native-acceptance; latest executed Node source92b2447aee18e691d54cc2b86707b41ac953ad63; containing report commit is documentation only and returned separately.
+
+- **GOAL:** complete genuine care browser acceptance after the already scoped Node proof, under exact parent source/resource grants.
+- **DONE:** Node9/9 with actual API/SQL/hash/cleanup receipts above; pure13/13, strict frontend/session types and write:false source compilation at recorded checkpoints; only exact957b7ac imported asfc340891. Native custody returned; all owned handles terminal.
+- **IN PROGRESS:** only this report/source continuation. Browser not granted, no active fixture custody. Application in this checkout retains v1 default/early W3 source until the parent explicitly supplies exact composed source.
+- **AT RISK:** no uncommitted code; this report is being checkpointed. Failed and successful synthetic rows/evidence retained, never reset.
+- **DECISIONS:** exact future/actual R6 selection, d3a M56, parent-owned lifecycle, no R4/R5 access/adoption; own proposed P possible_match is separate from actual client yes/no/not-sure and unknown formula.
+- **STANDING INSTRUCTIONS:** both live Sol/xhigh/default tools and eight pins; explicit Node22.23.0; no nested tasks, Root/app/UI/gateway/dependency edits except exact parent-authorized imports; no push/PR/deploy/merge/live action. No native calls after return until fresh grant. Chrome only after explicit custody, first preview_status, actual W3/App source, finite original-response interception and no workaround/fake context.
+- **NEXT STEP:** receive the exact CU1-reviewed application composition and separate browser/native custody grant, reconcile Git/source/metadata, then prepare/run actual C07/C07C/history/uncertain409 flow. Until then, source/report only.
+- **OPEN QUESTIONS:** none requiring new business design; parent supplies exact source and resource allocation. Fresh independent care harness/chain review and full goal remain required.
