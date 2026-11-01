@@ -1,0 +1,36 @@
+-- AUTHORED, UNRUN. Requires separately authorized full canonical migration/pgTAP replay.
+-- No stubbed authorization, function replacement, grant/owner override or provider side effect.
+begin;
+select plan(30);
+select has_table('concierge'::name,'notification_requests'::name);
+select has_function('public','concierge_notification_command_v1',array['jsonb']);
+select has_function('public','concierge_plan_delivery_context_v1',array['uuid','uuid']);
+select ok((select relrowsecurity from pg_class where oid='concierge.notification_requests'::regclass),'journal enables RLS');
+select ok(not has_table_privilege('anon','concierge.notification_requests','SELECT'),'anon cannot read journal');
+select ok(not has_table_privilege('authenticated','concierge.notification_requests','SELECT'),'browser cannot read raw journal');
+select ok(not has_table_privilege('service_role','concierge.notification_requests','INSERT'),'delivery service cannot forge browser receipts');
+select ok(not has_function_privilege('anon','public.concierge_notification_command_v1(jsonb)','EXECUTE'),'anonymous command denied');
+select ok(has_function_privilege('authenticated','public.concierge_notification_command_v1(jsonb)','EXECUTE'),'caller command available');
+select ok(not has_function_privilege('service_role','public.concierge_notification_command_v1(jsonb)','EXECUTE'),'service key cannot pose as browser');
+select ok(not has_function_privilege('authenticated','public.concierge_plan_delivery_context_v1(uuid,uuid)','EXECUTE'),'browser cannot obtain address resolver');
+select ok(has_function_privilege('service_role','public.concierge_plan_delivery_context_v1(uuid,uuid)','EXECUTE'),'fixed service resolver available');
+select ok(not has_function_privilege('anon','public.concierge_plan_delivery_context_v1(uuid,uuid)','EXECUTE'),'anonymous address resolver denied');
+select ok(not has_function_privilege('authenticated','concierge.notification_command(jsonb)','EXECUTE'),'private dispatcher denied');
+select ok(not has_function_privilege('service_role','concierge.notification_delivery_context(uuid,uuid)','EXECUTE'),'raw helper denied to service');
+select ok(not exists(select 1 from pg_proc p join pg_namespace n on n.oid=p.pronamespace where (n.nspname='concierge' and p.proname like 'notification\_%' escape '\' or n.nspname='public' and p.proname in ('concierge_notification_command_v1','concierge_plan_delivery_context_v1')) and not(coalesce(p.proconfig,'{}'::text[])@>array['search_path=""'])),'all new functions use empty search path');
+select ok(not exists(select 1 from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='concierge' and p.proname like 'notification\_%' escape '\' and (has_function_privilege('authenticated',p.oid,'EXECUTE') or has_function_privilege('service_role',p.oid,'EXECUTE'))),'every new helper stays private');
+select throws_ok($$select public.concierge_plan_delivery_context_v1(null,null)$$,'P0001','concierge_invalid_input','null lease cannot resolve payload');
+select throws_ok($$select public.concierge_plan_delivery_context_v1('10000000-0000-4000-8000-000000000001','10000000-0000-4000-8000-000000000002')$$,'P0001','concierge_revision_conflict','unknown claimed delivery is not a fabricated context');
+select throws_ok($$select concierge.notification_parse('{"schemaVersion":1,"action":"list_inbox_v1","cursor":null,"limit":51}')$$,'P0001','concierge_invalid_input','list cap enforced');
+select throws_ok($$select concierge.notification_parse('{"schemaVersion":1,"action":"list_inbox_v1","cursor":"n:bad","limit":1}')$$,'P0001','concierge_invalid_input','cursor identity validated');
+select throws_ok($$select concierge.notification_parse('{"schemaVersion":1,"action":"list_inbox_v1","cursor":null,"limit":1,"clientId":"10000000-0000-4000-8000-000000000001"}')$$,'P0001','concierge_invalid_input','client cannot select a recipient');
+select throws_ok($$select concierge.notification_parse('{"schemaVersion":1,"action":"retry_failed_email_v1","requestId":"10000000-0000-4000-8000-000000000001","deliveryId":"10000000-0000-4000-8000-000000000002","expectedRevision":0,"providerReconciled":true}')$$,'P0001','concierge_invalid_input','browser cannot attest provider reconciliation');
+select throws_ok($$select concierge.notification_parse('{"schemaVersion":1,"action":"request_status_v1","requestId":"10000000-0000-4000-8000-000000000001"}')$$,'P0001','concierge_invalid_input','status requires original command');
+select is(concierge.notification_parse('{"schemaVersion":1,"action":"request_status_v1","original":{"schemaVersion":1,"action":"mark_seen_v1","requestId":"10000000-0000-4000-8000-000000000001","deliveryId":"10000000-0000-4000-8000-000000000002","expectedRevision":0}}')->'original'->>'action','mark_seen_v1','original once-only intent preserved');
+select ok(has_function_privilege('service_role','public.concierge_plan_delivery_claim_v1(integer)','EXECUTE'),'existing claim remains service-only available');
+select ok(not has_function_privilege('authenticated','public.concierge_plan_delivery_result_v1(uuid,uuid,text,text,text)','EXECUTE'),'browser cannot assert accepted/delivered');
+select ok(not has_function_privilege('authenticated','public.concierge_plan_delivery_retry_v1(uuid,bigint,boolean)','EXECUTE'),'old reconciliation bypass not granted to browser');
+select ok(not has_function_privilege('authenticated','public.concierge_plan_delivery_expire_v1()','EXECUTE'),'lease expiry stays service-only');
+select throws_ok($$select public.concierge_notification_command_v1('{"schemaVersion":1,"action":"list_inbox_v1","cursor":null,"limit":1}')$$,'P0001','concierge_session_ended','sessionless reads never become successful empty inbox');
+select * from finish();
+rollback;
