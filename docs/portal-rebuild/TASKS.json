@@ -5362,7 +5362,15 @@
       "scope": "6newfiles only,15proposed8READ7WRITE,17pure/strict0; actual reader/upload/grants/retention/deletion unimplemented",
       "pin": "NO SourceAPI/Role/profile/disclosure/cap/backendactivation",
       "review": "R220892 SourceS5-S7/P2 afterS1-S4closure; sameauthorSourcecorrectionactive, no SourcePhase2",
-      "priority": "CB5/P1 Commerce M65 takes sole W1 writer; Sourcefix resumes later separately"
+      "priority": "CB5/P1 Commerce M65 takes sole W1 writer; Sourcefix resumes later separately",
+      "s7Adjudication": {
+        "evidence": "Existing verifySourceDetailDigest signaturePromise<void> does not bind the mutable caller object after success",
+        "pinnedPureApi": "verifySourceDetailDigest(d:SourceDetail):Promise<SourceDetail> returns validated detached deep-immutable snapshot actually hashed/compared",
+        "compatibility": "Old await-ignore remains runtime-compatible; positive consumers must use returned snapshot. One valid-start/mutated-raw rejection expectation may remain explicitly incompatible; raw11 unchanged, adaptedpositive must independently verify returnedA/H(A) anddetachment/freeze",
+        "unchangedNegatives": "Initiallyinvalid/crossedtuple negatives remainunchangedandmustreject; no blanketqualification",
+        "authority": "Returned snapshot is NOT actualcurrentlease/permission; caller rechecksrealSourcelease+basisafterawait",
+        "wireRoleScope": "No command/wire/action/right/profile/backend activation change; proposalonly"
+      }
     },
     "v3Package": {
       "input": "fed90f029b2849426f52263c74c589b1e86643d9",
