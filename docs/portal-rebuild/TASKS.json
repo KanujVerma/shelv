@@ -5788,7 +5788,7 @@
           "value": "default"
         }
       ],
-      "status": "starting",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
       "branch": "t3/compose-v3-client-history",
       "baseCommit": "0c447dfb55fa91678665e6f8393b2acc965afe25",
@@ -5797,7 +5797,14 @@
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w0-a07-c1-source-fix-brief.txt",
       "briefChars": 42950,
       "requirements": "Original6source4/2RED->6GREEN beforeretainedchecks; exactper-entry/targetunsentmemory+freshreads; no samepathborrow, no lost possiblysentUUID/body, nofakeauthority. Source/DOMbound preserved. NEW independentR2 required.",
-      "briefSha256": "bc158eb8ca13ceb9e066cee734a2adfddb06c13174e4649b6e17da63aedffa6c"
+      "briefSha256": "bc158eb8ca13ceb9e066cee734a2adfddb06c13174e4649b6e17da63aedffa6c",
+      "terminalCommit": "c5edf65554b8adfe06634d7884e50051d1a9a6b8",
+      "ownedCommits": [
+        "728f3eb738cd9a2190dcab4ae5e578094c59b80e",
+        "b76e9f5dd1ca47a9a70740afff49848fae04b7bb",
+        "c5edf65554b8adfe06634d7884e50051d1a9a6b8"
+      ],
+      "verificationResult": "Author original6:4/2RED->6GREEN unchanged, new27,32/228/500/raw45/Root80/256/strict/UI/2246x15pass. Oneprodfile/APIunchanged/1910protected. Extra uncertain-note falseB observerfailures preserved/notproductRED. Noresources/Parentactivation."
     },
     {
       "role": "W7 CI19c bounded complete-five provenance evidence review R2",
@@ -5837,6 +5844,43 @@
       "reportSha256": "e93401076c4f25882c80dd428f889b639a8177dfe04d2eaac811501888e930a3",
       "evidenceManifestSha256": "30fec40ff2f57d43e80c876baa8e5d9bd399a3bdad3e326ac22af397160f4ea9",
       "verificationResult": "Allfourcurrent/historicaldefault/observedgraphsexactexpected; completefiveprovenance;6/6+old5/1+bridge6/build4/new8/all3strict;noresources"
+    },
+    {
+      "role": "W7 independent A07 per-entry target/unsent custody composition R2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-advisor-guidance-composition-review-20261101-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-advisor-guidance-composition-review-20261101-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-advisor-guidance-composition-review-20261101-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3d3837fc",
+      "branch": "t3/w7-a07-composition-r2-review",
+      "baseCommit": "6a10f5be9412db75cc815f2b35e25ba7e737ecf9",
+      "frozenTarget": "c5edf65554b8adfe06634d7884e50051d1a9a6b8",
+      "allocatedImports": [
+        "c70b11e6d3e7b0724a779444d8eacb7a0f6110ad",
+        "547b72fa9e08bd8f2ebb3636c93c990ad44b784e",
+        "0c447dfb55fa91678665e6f8393b2acc965afe25",
+        "728f3eb738cd9a2190dcab4ae5e578094c59b80e",
+        "b76e9f5dd1ca47a9a70740afff49848fae04b7bb",
+        "c5edf65554b8adfe06634d7884e50051d1a9a6b8"
+      ],
+      "resourceBoundary": "Source/SSR/finite syntheticHTTP/reportonly; no fixes/browser/preview/process/native/Auth/DB/Storage/provider/R9/fixture/resources/Parentintegration/CIpoll.",
+      "reportPath": "docs/portal-rebuild/research/W7_ADVISOR_GUIDANCE_COMPOSITION_R2.md",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-a07-composition-review-r2-brief.txt",
+      "briefChars": 114817,
+      "briefSha256": "c454c768a0a1bff63d063031d9dbb19ff7361c5a757b00d0b4a9e417798b8bbc",
+      "context": "Fulloriginal+A07brief, fullR1/authorresponses/allG/CHrequiredreads; extra falseB uncertain-noteobserver qualification; actualSourceOld6/currentC1/retainedfences/build/protectedtypes"
     }
   ],
   "parentVerification": {
@@ -7167,7 +7211,7 @@
     "reviewTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-provenance-review-20261101-r2",
     "reviewCandidate": "9b2ba20999809440be62d0de85c121a1b8850bb5",
     "reviewCandidateImportedIntoRoot": true,
-    "ciStatus": "Historical19cFAIL preserved; reviewedcorrectionadmitted/localcheckspass, actualnewpublishedCIpending",
+    "ciStatus": "Normalpush6a10f5beconfirmedGitHubdraftOPEN; exactheadCIpending, T3watch next; no merge/deploy",
     "evidenceCorrection": {
       "finding": "E1/P2",
       "originalTwoInputClaim": "false; fullfiveinputs below",
@@ -7248,6 +7292,19 @@
       "A07Imported": false,
       "nativeOrSQLChanged": false,
       "CI": "pending new published head"
-    }
+    },
+    "publishedSuccessor": "6a10f5be9412db75cc815f2b35e25ba7e737ecf9"
+  },
+  "currentPRCheckpoint": {
+    "url": "https://github.com/KanujVerma/shelv/pull/211",
+    "head": "6a10f5be9412db75cc815f2b35e25ba7e737ecf9",
+    "sourceTestedHead": "7d86473612776c09abf388c3a4105eb2fc22ce56",
+    "interveningChanges": "documentation only",
+    "isDraft": true,
+    "state": "OPEN",
+    "push": "normal fast-forward19c->6a; noforce",
+    "bodyUpdated": true,
+    "CI": "pending T3watch",
+    "localCoordinationChangesAfterPush": "A07R2 allocation docs only, not published/CIaccepted"
   }
 }

@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 draft CI checkpoint and A07 R2
+
+PR211normalpush6a10f5beconfirmedGitHubdraftOPEN, bodyupdatedforV3/Historycandidate+reviewedmanifesttestfix. Actualexact6a cleanmain2232/15; Rootcodechecks7d pass andinterveningdocs-only. ExactheadLinuxCIpending/T3watch, no merge/deploy. A07C1authorc5read/oneprodpathconfirmed; original6RED4/2->6GREEN and27/retainedchecks author-only. NEWindependentR2 source-only starts6a in3d3837fc with6exactownedinputs/fullR1/responses; no A07import/resources. Localpostpushcoordinationmetadata may beahead ofwatched6a; do notclaimitCIgreen.
+
 ## 2026-11-01 CI correction admitted, next draft CI checkpoint
 
 IndependentevidenceR2f3bbfa75closesE1/scopedPASS; R1source/testPASS preserved. Rootonlyreport51f498b4 +reviewedtestpatch7d864736 imported; productionUI/runtime/contracts/functions/canonical62treesunchanged. FreshParent36/74/25/strict/UI andRoot1256pass18existingoptinskips/types/Expo pass. Cleanmain2232/15 allinput/outputhashes match priorreviewedApp e6b. NextnormaldraftPRpush intentionallystagescurrentV3/Historycandidate+testfix; exactheadLinuxCIpending, allfullApp/Source/financial/releasegates remain. A07C1successorc5edf655 reportedclean, awaitingfullhandoff/newindependentR2, unimported. No localbrowsergrant/resourceacquisition.
