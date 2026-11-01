@@ -108,6 +108,27 @@ export function createAdvisorGuidanceContext(
   };
   guard();
   const raw = createAdvisorGuidanceAdapters(runtime);
+  // Offline custody may survive a reconnect. Previously issued read authority
+  // must not revive when that same cookie becomes ready again.
+  const lineageKey = () =>
+    JSON.stringify([
+      runtime.cookie.status,
+      runtime.cookie.audience,
+      runtime.cookie.identity?.role,
+      runtime.cookie.identity?.ownerId,
+      runtime.cookie.generation,
+      runtime.cookie._epoch,
+      runtime.cookie._view?.csrf,
+      cookieCaps(),
+    ]);
+  let observedLineage = lineageKey();
+  const unsubscribe = runtime.subscribe(() => {
+    const next = lineageKey();
+    if (next !== observedLineage) {
+      observedLineage = next;
+      sequence++;
+    }
+  });
   const today = () =>
     new Intl.DateTimeFormat("en-CA", {
       timeZone: "America/Chicago",
@@ -196,14 +217,15 @@ export function createAdvisorGuidanceContext(
   }
   return {
     async read(input, options = {}) {
+      const own = ++sequence;
       guard();
       if (runtime.cookie.status !== "ready") throw new TransportError(503);
       const request = parse(input),
-        own = ++sequence,
         caps = cookieCaps();
       const check = () => {
-        guard(own, caps);
+        guard();
         if (runtime.cookie.status !== "ready") throw new TransportError(503);
+        guard(own, caps);
         if (options.signal?.aborted) throw new TransportError(503);
         requireContext(request.snapshot.asOfDay === today());
       };
@@ -375,6 +397,7 @@ export function createAdvisorGuidanceContext(
     dispose() {
       disposed = true;
       sequence++;
+      unsubscribe();
       raw.dispose();
     },
   };

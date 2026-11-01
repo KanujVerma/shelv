@@ -189,3 +189,200 @@ test("G4 a retry cannot adopt an unrelated read generation emitted during regist
   assert.equal(h.c.getSnapshot().pending.state, "uncertain");
   assert.equal(h.runtime.cookie.status, "ready");
 });
+for (const action of ["save", "publish"])
+  test(
+    "G4 natural concurrent503 after sent " +
+      action +
+      " keeps exact intent in the still-current offline session",
+    async (t) => {
+      const h = await ready(t, action === "save" ? "approve" : "publish");
+      if (action === "save")
+        h.c.editBody({
+          ...clone(h.data.body),
+          conclusion: "SYNTHETIC possibly committed",
+        });
+      const hold = h.holdHttp(
+        action === "save" ? "save_guidance_draft_v1" : actionNames.publish,
+      );
+      const work = h.c[action]();
+      await hold.ready;
+      const sent = h.calls.at(-1);
+      h.override("read_advisor_care_history_v1", { code: "unavailable" }, 503);
+      await assert.rejects(
+        createAdvisorReviewRequest(h.runtime).execute(
+          readReviewCommand({
+            schemaVersion: 1,
+            action: "read_advisor_care_history_v1",
+            clientId: ids.client,
+            cursor: null,
+            limit: 100,
+            version: null,
+          }),
+        ),
+        (e) => e.status === 503,
+      );
+      hold.release();
+      await work;
+      assert.equal(h.runtime.cookie.status, "offline");
+      assert.equal(h.c.getSnapshot().ended, false);
+      assert.equal(h.c.getSnapshot().body, null);
+      assert.equal(h.c.getSnapshot().history.entries.length, 0);
+      assert.equal(h.c.getSnapshot().pending.requestId, sent.command.requestId);
+      assert.equal(h.c.getSnapshot().pending.state, "uncertain");
+      assert.equal(h.c.getSnapshot().lastReceipt, null);
+      assert.equal(h.c.can("publish"), false);
+      await h.c.checkConnection();
+      await h.c.checkStatus();
+      assert.equal(h.c.getSnapshot().pending, null);
+      assert.equal(h.calls.at(-1).command.requestId, sent.command.requestId);
+    },
+  );
+test("G4 actual known HTTP401 still ends the owning boundary and clears intent/private snapshots", async (t) => {
+  const h = await ready(t);
+  h.override("approve_guidance_v1", { code: "session_ended" }, 401);
+  await h.c.approve();
+  assert.equal(h.runtime.cookie.status, "signedout");
+  assert.equal(h.c.getSnapshot().ended, true);
+  assert.equal(h.c.getSnapshot().pending, null);
+  assert.equal(h.c.getSnapshot().history.entries.length, 0);
+});
+
+test("G4 rejected new context read retires old lineage before parsing", async (t) => {
+  const h = await ready(t),
+    old = h.c.getSnapshot().authorityContext,
+    generation = h.context.getReadGeneration();
+  await assert.rejects(
+    h.context.read({ ...request(h), boundaryKey: "wrong-boundary" }),
+    (error) => error.status === 400,
+  );
+  assert.equal(h.context.getReadGeneration(), generation + 1);
+  assert.equal(h.context.isCurrent(old), false);
+  assert.equal(h.c.can("approve"), false);
+});
+
+test("G5 restoring real cookie readiness cannot revive returned authority from before natural loss", async (t) => {
+  const h = await ready(t),
+    old = h.c.getSnapshot().authorityContext;
+  h.override("read_advisor_care_history_v1", { code: "unavailable" }, 503);
+  await assert.rejects(
+    createAdvisorReviewRequest(h.runtime).execute(
+      readReviewCommand({
+        schemaVersion: 1,
+        action: "read_advisor_care_history_v1",
+        clientId: ids.client,
+        cursor: null,
+        limit: 100,
+        version: null,
+      }),
+    ),
+    (error) => error.status === 503,
+  );
+  assert.equal(h.context.isCurrent(old), false);
+  await h.runtime.restore();
+  assert.equal(h.runtime.cookie.status, "ready");
+  assert.equal(h.context.isCurrent(old), false);
+  assert.equal(h.c.can("approve"), false);
+});
+
+const contextReads = [
+  "read_policy_v1",
+  "advisor_list",
+  "read_guidance_draft_v1",
+  "read_advisor_publication_v3",
+  "read_guidance_draft_v1",
+  "read_advisor_publication_v3",
+  "read_policy_v1",
+  "advisor_list",
+];
+for (let stage = 0; stage < contextReads.length; stage++)
+  test(
+    "G5 completed natural503 before releasing actual context read " +
+      stage +
+      " rejects private return",
+    async (t) => {
+      const h = await ready(t),
+        name = contextReads[stage];
+      const prior = contextReads.slice(0, stage).filter((x) => x === name).length;
+      let hold = h.hold(name);
+      const work = h.context.read(request(h)).then(
+        (value) => ({ value }),
+        (error) => ({ error }),
+      );
+      for (let n = 0; n < prior; n++) {
+        await hold.ready;
+        const next = h.hold(name);
+        hold.release();
+        hold = next;
+      }
+      await hold.ready;
+      h.override("read_advisor_care_history_v1", { code: "unavailable" }, 503);
+      await assert.rejects(
+        createAdvisorReviewRequest(h.runtime).execute(
+          readReviewCommand({
+            schemaVersion: 1,
+            action: "read_advisor_care_history_v1",
+            clientId: ids.client,
+            cursor: null,
+            limit: 100,
+            version: null,
+          }),
+        ),
+        (error) => error.status === 503,
+      );
+      // Actual producer is still awaiting its held HTTP response. Loss has
+      // completed before this release, not merely before a consumer's .then.
+      assert.equal(h.runtime.cookie.status, "offline");
+      hold.release();
+      const result = await work;
+      assert.equal(result.value, undefined);
+      assert.equal(result.error?.status, 503);
+      assert.equal(h.c.can("approve"), false);
+    },
+  );
+
+for (const action of Object.keys(actionNames)) {
+  test(
+    "G4 captured day rollback denies first " + action + " egress during real acquire",
+    async (t) => {
+      const h = await ready(t, action);
+      const work = h.c[action]();
+      h.advance(-86400000);
+      await work;
+      assert.equal(
+        h.calls.filter((x) => x.command.action === actionNames[action]).length,
+        0,
+      );
+      assert.equal(h.runtime.cookie.status, "ready");
+      assert.equal(h.c.can("publish"), false);
+    },
+  );
+  test(
+    "G4 late day change rejects sent " + action + " receipt and recovers exact status READ",
+    async (t) => {
+      const h = await ready(t, action),
+        hold = h.holdHttp(actionNames[action]);
+      const work = h.c[action]();
+      await hold.ready;
+      const sent = h.calls.at(-1),
+        wire = sent.wire;
+      h.advance(86400000);
+      hold.release();
+      await work;
+      assert.equal(h.c.getSnapshot().pending?.requestId, sent.command.requestId);
+      assert.equal(h.c.getSnapshot().pending?.state, "uncertain");
+      assert.equal(h.c.getSnapshot().lastReceipt, null);
+      assert.equal(h.c.getSnapshot().authorityContext, null);
+      assert.equal(h.c.can("publish"), false);
+      await h.c.checkStatus();
+      assert.equal(h.calls.at(-1).command.action, "request_status_v1");
+      assert.equal(h.calls.at(-1).command.requestId, sent.command.requestId);
+      assert.equal(h.c.getSnapshot().pending, null);
+      assert.equal(h.c.can("publish"), false);
+      assert.equal(
+        h.calls.filter((x) => x.command.action === actionNames[action]).length,
+        1,
+      );
+      assert.equal(sent.wire, wire);
+    },
+  );
+}

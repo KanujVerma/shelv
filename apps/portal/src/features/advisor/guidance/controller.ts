@@ -1254,7 +1254,20 @@ export function createAdvisorGuidanceController({
     } catch (error) {
       if (!lease.valid()) return;
       const status = (error as { status?: unknown })?.status;
-      if (status === 503) {
+      if (status === 401 && runtime.cookie.status === "offline" && current()) {
+        // A concurrent transport loss can invalidate ready-only result delivery
+        // while this exact application boundary still owns offline custody.
+        // Reject/clear private projections; never forget a possibly committed
+        // intent or turn custody into readiness. Real ended boundaries fail the
+        // lease check above and still clear memory through invalidation.
+        own.state = "uncertain";
+        clearPrivate();
+        emit({
+          saveState: "uncertain",
+          notice:
+            "connection unavailable. the original result is uncertain. check its status after reconnecting.",
+        });
+      } else if (status === 503) {
         own.state = "uncertain";
         emit({
           saveState: "uncertain",
