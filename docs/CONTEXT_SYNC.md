@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 A07C1 corrective source phase
+
+Full independentA07R1 report85eb importedreport-only5afe. Bothsourceverdicts require A07C1/P2 correction: preparingB/instructionmutates recordbehindolderAentry and hidesAunsentwork. NoDOM/lostsentintent/privateleakclaim. SameW0ordinal12 source-only from0c447 owns privateentry/target/unsentcustody correction/newtests/report, original6RED4/2beforeedit and6GREENafter, freshreads/rights/recovery retained. No W2/nav/runtime/SQL/Source/resources or A07Parentactivation. CI19c independentreview remainsactive; allChromegrants returned.
+
 ## 2026-11-01 readiness proof returned, CI review and A07 finding
 
 W3finitecases2/2once pass, controlledactualmanifestoldproxytrue/newacceptancefalse thensameowner2550/0details beforeunchanged original5sec/51assertions. UntouchedMacoriginalpass is non-sensitive; Linux19cFAIL persists. ChromeRETURN07:51:23UTC, savedscoped22absent/previewnoTab, no activebrowsergrant. ParentSourceunchanged; newindependentCIreview imports temporaryindex-assembledtest/reportcandidate9b2ba209 only, with existingParentmetadata preserved/nochilddowngrade. A07reviewreproducesA07C1/P2 reportentryBackunresolvableaftertargetselection; reportfinalizing/sourceonly/noDOMclaim. HoldA07importpendingfullreport/correction/review.

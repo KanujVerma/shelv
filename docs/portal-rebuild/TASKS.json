@@ -5688,7 +5688,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "baseCommit": "73cc850a6a60f0c25595b487e4949e2ae3d1f2a8",
       "frozenTarget": "0c447dfb55fa91678665e6f8393b2acc965afe25",
       "allocatedImports": [
@@ -5705,7 +5705,7 @@
       "branch": "t3/review-a07-composition",
       "briefSha256": "4c699fa3c4080b5bb98c80f4592035958fe5e2c995e4b18c3f51afc812e665cc",
       "dependencySetup": {
-        "state": "both_APFS_clones_exit0_reported_by_child",
+        "state": "both_APFS_clones_exit0_verified_terminal",
         "sourceWorkspace": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030",
         "destWorkspace": "/Users/kanuj/.t3/worktrees/shelv/t3-11d1108f",
         "method": "Only APFS cp -cR of two absent ignored node_modules dirs; no install/fullcopy/symlink/Parentwrites",
@@ -5719,8 +5719,14 @@
         "scope": "Sourceonly, noDOM/ordinaryReactclaim",
         "trigger": "One mutable RecordScope reused by reportA/reportB or instruction; native plainnavigatorBack earlierAURL resolvesnull",
         "evidence": "6controls4pass2fail twice, actual104pagepositive and otherretainedpass; authorfixunallocated pendingfullreport",
-        "status": "dependent_acceptance_stopped_report_finalizing"
-      }
+        "status": "confirmed_terminal_report_changes_required"
+      },
+      "terminalCommit": "85eb38916a54e451123707a434a8cf57b68cd046",
+      "integratedReportCommit": "5afe902e",
+      "verdict": "SPEC/qualityCHANGESREQUIRED A07C1/P2. Actual source6controls4pass2failtwice; unsentworkinaccessiblebyearlierentryafternewreport/instruction; noDOM/private/authorization/persisteddatalossclaim.",
+      "reportSha256": "78eae2b8bc580bbaa2284c5c4213182fc46e89023a9fb5cfc3d079a6ceccf2b1",
+      "evidenceManifestSha256": "1c7c10677cd1d9aae84a4847cb37b8113eab3e875a6fe84c79f5cb45e8dbf56a",
+      "verificationResult": "32/228(afterhooksetup)/500/raw45/Root80/256/strict/UI/build2246x15;104page/wrongkindpositive, G5raw4/5preserved,1933protected/12candidate/41deps unchanged; noresources"
     },
     {
       "role": "W7 independent CI19c accepted-manifest precondition source/test/evidence R1",
@@ -5756,6 +5762,34 @@
       "assemblyBoundary": "11test/reportpaths, Rootworktree/indexuntouched. ParentoldgrantliteralretainedonlyNodehelperexception. Skipall3childdependencydowngrades/c6returnedgrantmetadata.",
       "dependencySetup": "Only same4locks+APFScloneofexisting2depdirectories intoownabsentignoredpaths. No install/fullcopy/symlink/Parentwrites; lowdiskconstraint.",
       "briefSha256": "a8cbad80eed05fb54ed976f2f5dde8a9c9a4a653ec572a2096facbf2d9c6b7f4"
+    },
+    {
+      "role": "W0 A07C1 per-entry target and unsent custody source correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-a07-per-entry-target-unsent-custody-c1-source-fix-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:12",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "starting",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
+      "branch": "t3/compose-v3-client-history",
+      "baseCommit": "0c447dfb55fa91678665e6f8393b2acc965afe25",
+      "reviewedFinding": "A07C1/P2 report85eb38916a54e451123707a434a8cf57b68cd046",
+      "resourceBoundary": "OwnedAppcomposition/newmatchingtests/report only, optionalconsumerlifetimeifneeded. No nav/W2/Root/cookie/runtime/SQL/Source/rights/browser/native/resources/Rootactivation. PublicAPIunchanged orprecisepinrequest.",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w0-a07-c1-source-fix-brief.txt",
+      "briefChars": 42950,
+      "requirements": "Original6source4/2RED->6GREEN beforeretainedchecks; exactper-entry/targetunsentmemory+freshreads; no samepathborrow, no lost possiblysentUUID/body, nofakeauthority. Source/DOMbound preserved. NEW independentR2 required.",
+      "briefSha256": "bc158eb8ca13ceb9e066cee734a2adfddb06c13174e4649b6e17da63aedffa6c"
     }
   ],
   "parentVerification": {
