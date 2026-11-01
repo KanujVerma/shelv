@@ -16,9 +16,11 @@ const foreign='10000000-0000-4000-8000-000000000003';
 const consentId='10000000-0000-4000-8000-000000000004';
 const requestId='10000000-0000-4000-8000-000000000005';
 const eventId='10000000-0000-4000-8000-000000000006';
+// Explicit synthetic producer fact: these records belong to one opaque consent-scope group.
+const groupId='10000000-0000-4000-8000-000000000007';
 const hash='a'.repeat(64), requestHash='b'.repeat(64), now='2026-11-01T12:00:00Z';
 const snapshot={revision:7,hash};
-const ref={id:consentId,purpose:'service_storage' as const,disclosure:{version:2,hash}};
+const ref={id:consentId,groupId,purpose:'service_storage' as const,disclosure:{version:2,hash}};
 // Actual typed constructions for ALL three proposed actions, without positive result casts.
 const list:SourceAccountListCommand={schemaVersion:1,action:'list_source_consents_v1',snapshot:null,cursor:null,limit:100};
 const withdraw:SourceAccountWithdrawCommand={schemaVersion:1,action:'withdraw_source_consent_v1',requestId,expectedRevision:7,consent:ref};
@@ -29,7 +31,7 @@ const base={schemaVersion:1 as const,visibility:'client_account' as const,client
 function row(id=consentId):SourceAccountConsent{return {
   consent:{...ref,id},disclosureText:'SYNTHETIC TEST DISCLOSURE ONLY.\uFEFF\r\nStorage purpose e\u0301 🧪.',
   confirmation:{kind:'manual',decision:'allow',channel:'call',occurredAt:{state:'unknown'},recordedBy:advisor,recordedAt:now},
-  effective:'not_withdrawn',withdrawal:null,
+  supersedesConsentId:null,effective:'not_withdrawn',withdrawal:null,
 };}
 function page(entries:SourceAccountConsent[]=[row()]):SourceAccountPage{return {...base,state:'page',snapshot,cursor:null,total:entries.length,entries,nextCursor:null};}
 function receipt():SourceAccountReceipt{return {...base,action:'withdraw_source_consent_v1',requestId,commandHash:requestHash,revision:8,outcome:'withdrawn',withdrawal:{id:eventId,origin:'client_portal',consent:ref,recordedBy:client,recordedAt:now}};}
@@ -128,7 +130,7 @@ test('disclosure bytes stay exact plain text with no guessed copy, lone surrogat
   invalid(list,{...page(),entries:[{...row(),confirmation:{...row().confirmation,occurredAt:{state:'unknown',value:now}}}]});
 });
 const seriesId=(n:number)=>`20000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
-function history(n:number):SourceAccountConsent[]{return Array.from({length:n},(_,i)=>({...row(seriesId(i+1)),effective:i===n-1?'not_withdrawn':'superseded'}));}
+function history(n:number):SourceAccountConsent[]{return Array.from({length:n},(_,i)=>({...row(seriesId(i+1)),supersedesConsentId:i===0?null:seriesId(i),effective:i===n-1?'not_withdrawn':'superseded'}));}
 function historyReads():{command:SourceAccountListCommand;page:SourceAccountPage}[]{
   const items=history(201),sizes=[67,89,45];let offset=0;
   return sizes.map(size=>{
@@ -147,7 +149,7 @@ test('201 records across bounded variable pages are complete only after the term
 test('duplicate identities, inconsistent disclosures and multiple current rows cannot masquerade as complete',()=>{
   invalid(list,page([row(),row()]));
   invalid(list,page([row(),row(foreign)]));
-  const first={...row(),effective:'superseded' as const},second={...row(foreign),disclosureText:'SYNTHETIC DIFFERENT SAME VERSION'};
+  const first={...row(),effective:'superseded' as const},second={...row(foreign),supersedesConsentId:first.consent.id,disclosureText:'SYNTHETIC DIFFERENT SAME VERSION'};
   invalid(list,page([first,second]));
   invalid(list,page([first,{...second,disclosureText:first.disclosureText,consent:{...second.consent,disclosure:{version:2,hash:requestHash}}}]));
   const reads=historyReads(),bad=clone(reads);assert(bad[1]&&bad[0]);bad[1].page.entries[0]=bad[0].page.entries[0]!;

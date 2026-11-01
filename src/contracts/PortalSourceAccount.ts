@@ -5,7 +5,8 @@ import type {SourceAccountErrorCode} from './PortalSourceAccountValues.ts';
 export type SourceAccountPurpose = 'service_storage' | 'service_review';
 /** Same version/hash concept as frozen SourcePolicyRef; no Source15 import/admission. */
 export type SourceAccountDisclosureRef = {version:number; hash:Hash};
-export type SourceAccountConsentRef = {id:UUID; purpose:SourceAccountPurpose; disclosure:SourceAccountDisclosureRef};
+/** Server-created client-safe scope alias; never a private draft/source ID or authority. */
+export type SourceAccountConsentRef = {id:UUID; groupId:UUID; purpose:SourceAccountPurpose; disclosure:SourceAccountDisclosureRef};
 export type SourceAccountSnapshot = {revision:Revision; hash:Hash};
 export type SourceAccountListCommand = {
   schemaVersion:1; action:'list_source_consents_v1'; snapshot:SourceAccountSnapshot|null;
@@ -25,6 +26,8 @@ export type SourceAccountWithdrawal = {
 };
 export type SourceAccountConsent = {
   consent:SourceAccountConsentRef; disclosureText:string;
+  /** Actual immediate causal predecessor within this group/purpose, not UUID/time ordering. */
+  supersedesConsentId:UUID|null;
   confirmation:{
     kind:'manual'; decision:'allow'|'withdraw'; channel:'text'|'call'|'video'|'in_person';
     occurredAt:Known<string>; recordedBy:UUID; recordedAt:string;

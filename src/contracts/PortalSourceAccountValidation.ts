@@ -13,11 +13,11 @@ import {sourceAccountActions,sourceAccountCommandMaxBytes,sourceAccountPageMaxBy
 import type {SourceAccountErrorCode} from './PortalSourceAccountValues.ts';
 
 const hash:PlanShape={type:'hash'};
-const ref=obj({id:uuid,purpose:en('service_storage','service_review'),disclosure:obj({version:pos,hash})});
+const ref=obj({id:uuid,groupId:uuid,purpose:en('service_storage','service_review'),disclosure:obj({version:pos,hash})});
 const snapshot=obj({revision:rev,hash});
 const base={schemaVersion:en(1),visibility:en('client_account'),clientId:uuid};
 const withdrawal=obj({id:uuid,origin:en('client_portal'),consent:ref,recordedBy:uuid,recordedAt:instant});
-const consent=obj({consent:ref,disclosureText:{type:'text',max:sourceAccountDisclosureMaxScalars,empty:false},
+const consent=obj({consent:ref,supersedesConsentId:nil(uuid),disclosureText:{type:'text',max:sourceAccountDisclosureMaxScalars,empty:false},
   confirmation:obj({kind:en('manual'),decision:en('allow','withdraw'),channel:en('text','call','video','in_person'),
     occurredAt:known(instant),recordedBy:uuid,recordedAt:instant}),
   effective:en('not_withdrawn','withdrawn','superseded'),withdrawal:nil(withdrawal)});
@@ -75,7 +75,7 @@ export function readSourceAccountPage(value:unknown):SourceAccountPage|SourceAcc
     requireValue(Number.isSafeInteger(end)&&end<=p.total);
     requireValue(p.entries.length>0||p.total===0&&p.cursor===null);
     requireValue(p.nextCursor===(end<p.total?end:null));
-    p.entries=readSourceAccountRecords(p.entries,p.clientId);
+    p.entries=readSourceAccountRecords(p.entries,p.clientId,p.cursor===null&&p.nextCursor===null?'complete':'partial');
   }
   return p;
 }
@@ -101,12 +101,52 @@ function micros(stamp:string):bigint{
   const fraction=/\.(\d{1,6})/.exec(stamp)?.[1]??'';
   return BigInt(Date.parse(stamp))*1000n+BigInt(fraction.padEnd(6,'0').slice(3));
 }
-/** Finite record relationships only. This is neither consent evidence nor current authorization. */
-export function readSourceAccountRecords(value:unknown,clientId:unknown):SourceAccountConsent[]{
+/** Causal links are explicit model facts. UUID order is pagination, never causal evidence. */
+function checkConsentHistory(records:readonly SourceAccountConsent[],completeness:'partial'|'complete'):void{
+  const byId=new Map(records.map(r=>[r.consent.id,r]));
+  const successors=new Map<string,string>();
+  const groups=new Map<string,{roots:number;current:number}>();
+  const groupKey=(r:SourceAccountConsent)=>`${r.consent.groupId}:${r.consent.purpose}`;
+  for(const r of records){
+    const key=groupKey(r),group=groups.get(key)??{roots:0,current:0};groups.set(key,group);
+    if(r.supersedesConsentId===null)group.roots++;
+    else{
+      requireValue(r.supersedesConsentId!==r.consent.id&&!successors.has(r.supersedesConsentId));
+      successors.set(r.supersedesConsentId,r.consent.id);
+      const previous=byId.get(r.supersedesConsentId);
+      if(previous)requireValue(groupKey(previous)===key&&previous.effective==='superseded');
+      else requireValue(completeness==='partial');
+    }
+    if(r.effective!=='superseded')group.current++;
+  }
+  for(const group of groups.values()){
+    requireValue(group.roots<=1&&group.current<=1);
+    if(completeness==='complete')requireValue(group.roots===1&&group.current===1);
+  }
+  for(const r of records){
+    if(successors.has(r.consent.id))requireValue(r.effective==='superseded');
+    else if(completeness==='complete')requireValue(r.effective!=='superseded');
+  }
+  // Iterative O(n) traversal also rejects a closed cycle beside an otherwise valid chain.
+  const finished=new Set<string>();
+  for(const r of records){
+    const trail=new Set<string>();let at:SourceAccountConsent|undefined=r;
+    while(at&&!finished.has(at.consent.id)){
+      requireValue(!trail.has(at.consent.id));trail.add(at.consent.id);
+      at=at.supersedesConsentId===null?undefined:byId.get(at.supersedesConsentId);
+    }
+    for(const id of trail)finished.add(id);
+  }
+}
+/** Finite record relationships only. Standalone records default to partial, never complete history.
+ * The direct complete-page reader and full collector both request the same complete validation.
+ * Completeness is local parsing context, not a wire flag, consent evidence or authorization. */
+export function readSourceAccountRecords(value:unknown,clientId:unknown,completeness:'partial'|'complete'='partial'):SourceAccountConsent[]{
   try{
+  requireValue(completeness==='partial'||completeness==='complete');
   const client=readReviewShape(clientId,uuid);arrayData(value);
   const records=value.map(item=>read<SourceAccountConsent>(item,consent,sourceAccountPageMaxBytes));
-  const ids=new Set<string>(),events=new Set<string>(),currentPurposes=new Set<string>(),disclosures=new Map<string,{hash:string;text:string}>();
+  const ids=new Set<string>(),events=new Set<string>(),disclosures=new Map<string,{hash:string;text:string}>();
   let previous='';
   for(const r of records){
     const id=r.consent.id;requireValue(!ids.has(id)&&id>previous);ids.add(id);previous=id;
@@ -114,9 +154,6 @@ export function readSourceAccountRecords(value:unknown,clientId:unknown):SourceA
     const disclosureKey=`${r.consent.purpose}:${r.consent.disclosure.version}`,prior=disclosures.get(disclosureKey);
     requireValue(prior===undefined||prior.hash===r.consent.disclosure.hash&&prior.text===r.disclosureText);
     disclosures.set(disclosureKey,{hash:r.consent.disclosure.hash,text:r.disclosureText});
-    if(r.effective!=='superseded'){
-      requireValue(!currentPurposes.has(r.consent.purpose));currentPurposes.add(r.consent.purpose);
-    }
     if(r.confirmation.occurredAt.state==='known')requireValue(micros(r.confirmation.occurredAt.value)<=micros(r.confirmation.recordedAt));
     if(r.withdrawal!==null){
       requireValue(r.withdrawal.origin==='client_portal'&&r.withdrawal.recordedBy===client&&r.withdrawal.id!==id&&
@@ -128,6 +165,7 @@ export function readSourceAccountRecords(value:unknown,clientId:unknown):SourceA
     if(r.effective==='not_withdrawn')requireValue(r.confirmation.decision==='allow'&&r.withdrawal===null);
     if(r.effective==='withdrawn')requireValue(r.confirmation.decision==='withdraw'||r.withdrawal!==null);
   }
+  checkConsentHistory(records,completeness);
   return records;
   }catch{throw Error('invalid_input');}
 }

@@ -67,7 +67,7 @@ export function collectSourceAccountPages(pages:readonly SourceAccountPageRead[]
     }
     requireValue(cursor===null&&entries.length===first.page.total);
     return {schemaVersion:1,visibility:'client_account',clientId:first.page.clientId,state:'complete',snapshot:first.page.snapshot,
-      entries:readSourceAccountRecords(entries,first.page.clientId)};
+      entries:readSourceAccountRecords(entries,first.page.clientId,'complete')};
   }catch{throw Error('unavailable');}
 }
 export function decodeSourceAccountResponse(command:SourceAccountCommand,status:number,value:unknown,context:SourceAccountMappingContext):SourceAccountOutcome{
