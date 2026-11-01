@@ -677,7 +677,7 @@ export function createAdvisorGuidanceController({
             error: "care history is incomplete. retry this page.",
           },
         });
-        failure(error, true);
+        if (lease.valid()) failure(error, true);
       }
     } finally {
       lease.finish();
@@ -780,7 +780,7 @@ export function createAdvisorGuidanceController({
             error: "current reported products are incomplete.",
           },
         });
-        failure(error, false);
+        if (lease.valid()) failure(error, false);
       }
     } finally {
       lease.finish();
@@ -793,6 +793,12 @@ export function createAdvisorGuidanceController({
       snapshot = publication.currentGuidance.snapshot;
     if (publication.currentGuidance.instructionCount === 0) {
       retireAuthority();
+      if (
+        !current() ||
+        state.selection !== selection ||
+        state.publication !== publication
+      )
+        return;
       emit({ instructions: { ...emptyInstructions(), complete: true } });
       return;
     }
@@ -882,6 +888,7 @@ export function createAdvisorGuidanceController({
           },
         });
       }
+      if (!lease.valid()) return;
       emit({
         instructions: {
           pages,
@@ -902,7 +909,7 @@ export function createAdvisorGuidanceController({
               "applicable instructions are incomplete. retry the matching page or detail.",
           },
         });
-        failure(error, false);
+        if (lease.valid()) failure(error, false);
       }
     } finally {
       lease.finish();
