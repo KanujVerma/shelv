@@ -54,10 +54,28 @@ function legacyPresentation(lines:Lines,p:Presentation,record:Pick<FinalExportRe
  for(const g of p.routineGuides)guide(lines,g);sources(lines,p.sources);add(lines,p.currentProductsStatus?'recorded current-products status: '+p.currentProductsStatus:'current-products status not specified');
 }
 function instructionLabel(record:Pick<FinalExportRecord,'plan'>,slotId:string,productId:string|null):string{
- if(record.plan.documentSchemaVersion===3){const c=record.plan.content;if(productId){const p=c.products.find(p=>p.id===productId);requireValue(p);return [p.name||'product name unknown',p.variant,p.sizeLabel].filter(Boolean).join(' · ');}return c.routine.find(s=>s.slotId===slotId&&s.productId===null)?.title||'nonproduct instruction';}
+ const identity=(p:Product)=>[p.name||'product name unknown',p.brand||'brand unknown',p.variant?'variant: '+p.variant:'variant unknown',p.sizeLabel||'size unknown'].join(' · ');
+ const bindings:string[]=[];
+ if(record.plan.documentSchemaVersion===3){
+  const c=record.plan.content;
+  for(const [index,s] of c.routine.entries())if(s.slotId===slotId&&s.productId===productId)bindings.push('published routine item '+(index+1)+': '+(s.title||'title not specified'));
+  for(const [index,d] of c.decisions.entries())if(d.slotId===slotId&&productId!==null){
+   const roles=[...(d.currentProductIds.includes(productId)?['current product']:[]),...(d.primaryProductId===productId?['primary product']:[]),...(d.alternativeProductIds.includes(productId)?['optional alternative']:[])];
+   if(roles.length)bindings.push('published decision item '+(index+1)+': '+d.kind.replaceAll('_',' ')+' · '+(d.guidance.title||'title not specified')+' · '+roles.join(', '));
+  }
+  requireValue(bindings.length>0);
+  if(productId===null)return 'nonproduct instruction; '+bindings.join('; ');
+  const index=c.products.findIndex(p=>p.id===productId),p=c.products[index];requireValue(p);
+  return identity(p)+' · product listing item '+(index+1)+'; '+bindings.join('; ');
+ }
  const p=record.plan.legacyOriginal.presentation;requireValue(p);
- const product=[...p.baselineRoutine.flatMap(s=>s.product?[s.product]:[]),...p.categoryCards.flatMap(c=>[...(c.currentProduct?[c.currentProduct]:[]),...(c.proposedProduct?[c.proposedProduct]:[])])].find(p=>p.id===productId);
- requireValue(product);return [product.name,product.variant,product.sizeLabel].filter(Boolean).join(' · ');
+ for(const [index,s] of p.baselineRoutine.entries())if(s.slot===slotId&&s.productId===productId){requireValue(productId===null||s.product);bindings.push('original published routine item '+(index+1)+': '+s.title+' · '+(s.product?identity(s.product):'nonproduct instruction'));}
+ for(const [index,c] of p.categoryCards.entries())if(c.slot===slotId&&productId!==null){
+  const scope='original published decision item '+(index+1)+': '+c.kind.replaceAll('_',' ')+' · '+c.title;
+  if(c.currentProduct?.id===productId)bindings.push(scope+' · current product: '+identity(c.currentProduct));
+  if(c.proposedProduct?.id===productId)bindings.push(scope+' · proposed product: '+identity(c.proposedProduct));
+ }
+ requireValue(bindings.length>0);return bindings.join('; ');
 }
 const escape=(value:string)=>value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
 const htmlStart='<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; base-uri \'none\'; form-action \'none\'"><title>shelv final plan</title><style>body{max-width:76ch;margin:2rem auto;padding:0 1rem;color:#17392b;background:#fffdf5;font:16px/1.6 system-ui}pre{font:inherit;white-space:pre-wrap;overflow-wrap:anywhere}@media print{body{margin:0;max-width:none}}</style></head><body><main><h1>shelv final plan</h1><pre>';
