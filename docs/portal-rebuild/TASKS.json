@@ -6116,7 +6116,29 @@
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w0-a07-actual-browser-harness-source-brief.txt",
       "briefChars": 49440,
       "briefSha256": "50d76038018326d425cf44ae7bd01fba3cadb4deff1957d62c1c3b6d6cb04074",
-      "context": "FullR3scopedPASSreport+originalA07brief/fullpriorcontext; SourceC1/C2closures do not proveordinarymountedreachability. No fabricatedUI/context/authority, SourceGate/finiteplan before separatefreshChromegrant."
+      "context": "FullR3scopedPASSreport+originalA07brief/fullpriorcontext; SourceC1/C2closures do not proveordinarymountedreachability. No fabricatedUI/context/authority, SourceGate/finiteplan before separatefreshChromegrant.",
+      "declarationInput": {
+        "reason": "author ownedlockedmoduleslackNodewrappersdeclarations; no install/shim",
+        "packages": [
+          {
+            "name": "@types/node",
+            "version": "22.20.3",
+            "files": 74,
+            "fileManifestSha256": "c3ebcf5ae74735b9cca5f7a498051dad2511330ab716829ef258fd62c17d8d87"
+          },
+          {
+            "name": "undici-types",
+            "version": "6.21.0",
+            "files": 41,
+            "fileManifestSha256": "0532a6a8b4c4ebec83bc3d602e397990572f7e075ad65c07ee6c9773dbb7a77c"
+          }
+        ],
+        "frozenHome": ".local-artifacts/portal-rebuild/a07-frozen-node-declarations/",
+        "manifestSha256": "3b8b68e91b2f3c635f3dfa9fd3716fe555d202269046772c30d56d577525bf91",
+        "authorizedUse": "Onlycopytwofrozendeclarationpackagesintoownfreshignoredevidenceclosure,preservelayout/hash; actualportalReacttypesfirst, NodefrozenTypeRootssecond; no runtime/Auth/package/lock/install/flagchange",
+        "pendingResponseSequence": 251377,
+        "actualStrictResult": "pending author replay, not claimed by input allocation"
+      }
     }
   ],
   "parentVerification": {
