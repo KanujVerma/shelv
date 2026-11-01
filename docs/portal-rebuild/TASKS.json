@@ -5370,6 +5370,12 @@
         "unchangedNegatives": "Initiallyinvalid/crossedtuple negatives remainunchangedandmustreject; no blanketqualification",
         "authority": "Returned snapshot is NOT actualcurrentlease/permission; caller rechecksrealSourcelease+basisafterawait",
         "wireRoleScope": "No command/wire/action/right/profile/backend activation change; proposalonly"
+      },
+      "s7NativeTestQualification": {
+        "rawOriginal11": "9/11 preserved: one pinned captured-valid expectation incompatibility and one correctly rejected promise observed too late causingunhandledRejection",
+        "scheduleOnlyReplay": "10/11 ifearlycatchobservesSAMEoriginalpromiseandlaterassert.rejectsremainsunchanged; nocatch-returnreplacement/crypto/timer/productchange",
+        "adaptedPositive": "Consumed returnedvalidateddetacheddeepfrozenSourceDetail tuple+independentdigest, no originalmutableobject certification",
+        "invalidCrossed": "Alloriginalinitiallyinvalid/crossednegativesunchangedandmustreject"
       }
     },
     "v3Package": {
@@ -5397,9 +5403,30 @@
   },
   "currentRemoteCheckpoint": {
     "head": "72326431d5a1b5bf290a68cf82d28797a28336c1",
-    "status": "pushed; new exact-head CI pending",
+    "status": "All3checksPASS oncurrentPRhead; draft/open/unmerged; CIwatchcompleted",
     "scope": "Hermeticbaselinefixtures+syntheticdiagnosticproducer/upload; production/Auth/SQL unchanged from125222",
-    "limits": "budgettimeoutcauseunproved/notclaimedfixed; financialR3providerblocked/M65unadmitted"
+    "limits": "budgettimeoutcauseunproved/notclaimedfixed; financialR3providerblocked/M65unadmitted",
+    "ci": {
+      "portalRun": 41267969182,
+      "portalJob": 124734652434,
+      "otherRun": 41267969206,
+      "packagePass": 1785,
+      "packageFail": 0,
+      "packageSkip": 0,
+      "nativeAdmissionStep": "success",
+      "syntheticArtifactId": 13068299029,
+      "executedMergeHead": "79e4f872f58906506f8a36ed044adcd847c4d983",
+      "executedTreeEqualsHead": true,
+      "artifactOutcome": "pass",
+      "events": 400,
+      "dropped": 0,
+      "errors": 0,
+      "sourceInputs": 2199,
+      "outputs": 10,
+      "served": 6,
+      "evidence": ".local-artifacts/portal-rebuild/ci-723264-pass/"
+    },
+    "qualification": "CurrentconfiguredCIpasses; earlierbudgettimeoutcauseunproved, no testwait/readinesspredicate changed. Fullgoal/Source/App/guidance/financial/release separate."
   },
   "ciRecovery125222": {
     "head": "1252227491a547f194ff7a14fe30879ab2355a95",
