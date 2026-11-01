@@ -5610,14 +5610,50 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "frozenTarget": "e220165bff382e74a2a6fe06bae618cd91860f0f",
       "resourceBoundary": "EXACT child-only erased type companion; no browser/native/resources or Root downgrade",
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-type-companion-source-brief.txt",
       "pinnedArtifact": ".local-artifacts/portal-rebuild/w3-ci19c-type-companion/advisor-types.pinned.ts",
       "pinnedSha256": "356eec8a94115ca9d461aef42590c867cdf84061ed0c511f116e6eebd603df01",
       "parentOverlayEvidence": ".local-artifacts/portal-rebuild/w3-ci19c-type-companion/OVERLAY-CHECK-CWD.json",
-      "parentOverlayResult": "TS6.0.3 configured strict graph7->0 with only inputoverlay; erased JS identical. Initial wrongcwd type-lookup setup fault retained."
+      "parentOverlayResult": "TS6.0.3 configured strict graph7->0 with only inputoverlay; erased JS identical. Initial wrongcwd type-lookup setup fault retained.",
+      "terminalCommit": "3e8132ebc5ec2d201d1487e6811188e597f3a1b0",
+      "dependencyCommit": "d8d51f8cae65ddac19e359062b411417a7279da4",
+      "verificationResult": "SOURCE-READY: actual frontend/session/observer strict0 each; bridge6/build4/74/122/25/9/6/5 pass, oldproxy5/1; uninstrumented2200/10 CIexact; no resourcecalls"
+    },
+    {
+      "role": "W3 CI19c finite two-case synthetic Chrome readiness verification",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci19c-manifest-observer-two-case-chrome-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:14",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "starting",
+      "frozenTarget": "3e8132ebc5ec2d201d1487e6811188e597f3a1b0",
+      "resourceBoundary": "Only original uninstrumented first2550 plus one actual terminal26 hold/accepted-state observed comparison; original51/26/<100/50 and5000ms notice preserved; no native/R9/DB/Auth/Storage/provider/credentials",
+      "chromeGrant": {
+        "grantId": "coordinator-w3-ci19c-manifest-observer-synthetic-chrome-3e8132eb-20261101",
+        "phase": "W3_V3_GUIDANCE_SYNTHETIC_CHROME",
+        "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
+        "sourceHead": "3e8132ebc5ec2d201d1487e6811188e597f3a1b0",
+        "status": "allocated_exclusive",
+        "caseLimit": 2,
+        "attemptsPerCase": 1,
+        "boundary": "Only original uninstrumented first2550 plus one actual terminal26 hold/accepted-state observed comparison; original51/26/<100/50 and5000ms notice preserved; no native/R9/DB/Auth/Storage/provider/credentials",
+        "returnRequired": "Prompt explicit UTC RETURN after normalteardown/exactownPIDstart/previewnoTab BEFORE postrunhash/report/Git; zero afterresourcecalls"
+      },
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-two-case-chrome-brief.txt"
     }
   ],
   "parentVerification": {
@@ -6894,9 +6930,9 @@
     "rawEvidence": ".local-artifacts/portal-rebuild/ci-19c3ea1f/",
     "observed": "26manifestfinished4140ms; timeout8045ms with43of51detailfinished; last51finished8522ms; terminalnotice0/loading1",
     "hypothesis": "zeroDOMloading proxy may pass before actual acceptedterminalmanifest, spending partof5secnoticewindowonbackgroundchain; notyetfixed",
-    "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci19c-erased-advisor-type-companion-source-20261101",
+    "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci19c-manifest-observer-two-case-chrome-20261101",
     "scope": "CIexact19c separatefrom newerlocalAppe6b; no timers/assertions/budgets/production changes authorized",
-    "sourceCheckpoint": "3b2c9d0d/e220165b sourcebridge6/build4; exact uninstrumented2200/10; frontend7 missing companion",
+    "sourceCheckpoint": "3e8132eb/d8d51f8c frontend/session/observer strict0; sourcebridge6/build4/current6/74/122/25/9/6/5; originalproxy5/1; uninstrumented2200/10 CIexact",
     "observerDecision": "Parentpermitsread-onlyTESTBUILDdescendantofactualContextProvider; existingrealhydrator/props currentstate only; no productionfile/export/prop/DOMflags; explicittransformhashes",
     "graphInputs": "Only ports.ts/PortalRebuildValues.ts exact19c additionallyauthorizedinchild; uninstrumented2200/10 comparison required, noRootdowngrade",
     "typeCompanionDecision": {
@@ -6907,6 +6943,16 @@
       "parentActualStrictOverlay": "7->0",
       "rootImport": false
     },
-    "browserGrant": null
+    "browserGrant": {
+      "grantId": "coordinator-w3-ci19c-manifest-observer-synthetic-chrome-3e8132eb-20261101",
+      "phase": "W3_V3_GUIDANCE_SYNTHETIC_CHROME",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
+      "sourceHead": "3e8132ebc5ec2d201d1487e6811188e597f3a1b0",
+      "status": "allocated_exclusive",
+      "caseLimit": 2,
+      "attemptsPerCase": 1,
+      "boundary": "Only original uninstrumented first2550 plus one actual terminal26 hold/accepted-state observed comparison; original51/26/<100/50 and5000ms notice preserved; no native/R9/DB/Auth/Storage/provider/credentials",
+      "returnRequired": "Prompt explicit UTC RETURN after normalteardown/exactownPIDstart/previewnoTab BEFORE postrunhash/report/Git; zero afterresourcecalls"
+    }
   }
 }
