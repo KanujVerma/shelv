@@ -98,6 +98,13 @@ export function createHistoryUpdateReader(controller:HistoryController,scope:App
   // The shared update screen invokes this on ready/mount. Only a deliberate
   // new-update action on the underlying controller may replace a final intent.
   const startReport=()=>{if(current()&&!controller.getSnapshot().intent)controller.startReport();};
+  const dataReady=(result:HistoryRestorationResult)=>{
+    const state=controller.getSnapshot();
+    // Current error witnesses are applicable, not successful data. W4 owns
+    // the declared reconstruction extent; an ordinary next cursor is valid.
+    return result.state!=='unavailable'&&!!result.basis&&!(result.state==='fallback'&&result.reason==='page_read_failed')&&
+      state.phase==='ready'&&!state.readError&&!state.loadingMore&&!state.timeline?.restoring&&state.view!==null&&state.pages.length>0;
+  };
   return {
     isAdmitted(){if(admitted)observe();return admitted&&current();},
     startReport,
@@ -108,9 +115,9 @@ export function createHistoryUpdateReader(controller:HistoryController,scope:App
       const api=controller.restoration,owned=api.restore(null);attempt=owned;
       const owns=()=>current()&&attempt===owned;
       const pending=owned.ready.then(result=>{
-        if(!owns()||!api.isCurrent(result))return;
+        if(!owns()||!api.isCurrent(result)||!dataReady(result))return;
         startReport();
-        if(owns()&&api.isCurrent(result)){admitted=true;onData(result);}
+        if(owns()&&api.isCurrent(result)&&dataReady(result)){admitted=true;onData(result);}
       }).finally(()=>{if(job===pending)job=null;});
       job=pending;return pending;
     },
