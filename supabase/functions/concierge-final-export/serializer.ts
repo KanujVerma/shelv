@@ -37,10 +37,12 @@ function richPlan(lines:Lines,c:ClientPlanContent,record:Pick<FinalExportRecord,
  add(lines,'','published follow-up criteria',...c.followUp.criteria,...c.followUp.authoredNotes);
 }
 function legacyPresentation(lines:Lines,p:Presentation,record:Pick<FinalExportRecord,'use'>):void{
+ const renderedUse=new Set<string>();
+ const productWithUse=(item:Product)=>{product(lines,item);if(renderedUse.has(item.id))return;const use=record.use.find(u=>u.productId===item.id);if(use){reportedUse(lines,use);renderedUse.add(item.id);}};
  add(lines,p.title,p.summary,'prepared by: '+p.preparedBy,p.preparedOn?'prepared on: '+p.preparedOn:'preparation date unknown');
  for(const s of p.consultationSections)add(lines,s.title,s.body);
- add(lines,'','original published routine');for(const s of p.baselineRoutine){add(lines,'',s.title);if(s.product){product(lines,s.product);const use=record.use.find(u=>u.productId===s.productId);if(use)reportedUse(lines,use);}usage(lines,s.usage);}
- add(lines,'','original published decisions (separate from actual use)');for(const c of p.categoryCards){add(lines,'',c.kind.replaceAll('_',' '),c.title,c.subtitle,c.rationaleTitle);if(c.currentProduct){add(lines,'current product');product(lines,c.currentProduct);}if(c.proposedProduct){add(lines,'proposed product');product(lines,c.proposedProduct);}for(const r of c.reasons)add(lines,r.title,r.body);add(lines,...c.actions);if(c.usage)usage(lines,c.usage);comparisons(lines,c.comparisons);add(lines,c.factsTitle);facts(lines,c.facts);guide(lines,c.how);sources(lines,c.sources);if(c.decisionLabels)add(lines,c.decisionLabels.current,c.decisionLabels.proposed);}
+ add(lines,'','original published routine');for(const s of p.baselineRoutine){add(lines,'',s.title);if(s.product)productWithUse(s.product);usage(lines,s.usage);}
+ add(lines,'','original published decisions (separate from actual use)');for(const c of p.categoryCards){add(lines,'',c.kind.replaceAll('_',' '),c.title,c.subtitle,c.rationaleTitle);if(c.currentProduct){add(lines,'current product');productWithUse(c.currentProduct);}if(c.proposedProduct){add(lines,'proposed product');productWithUse(c.proposedProduct);}for(const r of c.reasons)add(lines,r.title,r.body);add(lines,...c.actions);if(c.usage)usage(lines,c.usage);comparisons(lines,c.comparisons);add(lines,c.factsTitle);facts(lines,c.facts);guide(lines,c.how);sources(lines,c.sources);if(c.decisionLabels)add(lines,c.decisionLabels.current,c.decisionLabels.proposed);}
  for(const g of p.routineGuides)guide(lines,g);sources(lines,p.sources);add(lines,p.currentProductsStatus?'recorded current-products status: '+p.currentProductsStatus:'current-products status not specified');
 }
 function instructionLabel(record:Pick<FinalExportRecord,'plan'>,slotId:string,productId:string|null):string{
