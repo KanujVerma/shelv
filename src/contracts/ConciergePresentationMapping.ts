@@ -36,7 +36,7 @@ export function mapConciergeClientViewV2(value:unknown):ClientViewV2 {
    }
    requireValue(step.kind==='instruction'?step.productId===null&&step.product===null&&step.slot===null:base.routine.some(r=>r.slot===step.slot&&r.productId===step.productId));
    const allowed=[...snapshot.routineGuides,...snapshot.categoryCards.map(c=>c.how)].filter(g=>g.productId===null||g.productId===step.productId);
-   let guides=readArray(x.guides,62).map(g=>{if(revision)return readPresentationShape(g,presentationShape.fields!.routineGuides.item!) as ActiveStep['guides'][number];const candidate=allowed.find(a=>canonical(a)===canonical(g));requireValue(candidate);return structuredClone(candidate);});
+   let guides=readArray(x.guides,62).map(g=>{if(revision)return readPresentationShape(g,presentationShape.fields!.routineGuides!.item!) as ActiveStep['guides'][number];const candidate=allowed.find(a=>canonical(a)===canonical(g));requireValue(candidate);return structuredClone(candidate);});
    if(revision){
     requireValue(step.kind==='product'&&revision.slot===step.slot&&revision.productId===step.productId&&revision.source.kind===source.kind&&revision.source.publicationVersion===publicationVersion&&revision.source.recommendationId===recommendationId&&revision.planVersion<=(plan?.version??0)&&canonical(revision.usage)===canonical(step.usage));
     const originalStart=source.kind==='activation'?base.routineHistory.find(h=>h.version===publicationVersion&&h.recommendationId===recommendationId&&h.slot===step.slot&&h.productId===step.productId)?.startedOn:null;
