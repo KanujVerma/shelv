@@ -203,8 +203,12 @@ export function createOwnerPolicyController(runtime: ApplicationSession) {
             if (!owned(op))
                 return false;
             const policy = policyResult(result), keep = state.base !== null && (state.desired !== state.base.requireKanujApproval || state.writeState === 'conflict' || !!pending);
+            // A fresh read can discover the same revision conflict as a rejected
+            // write. Preserve unsent work for deliberate reapply; an unresolved
+            // original operation retains its separate uncertainty/recovery path.
+            const conflict = keep && !pending && state.base !== null && (state.base.revision !== policy.revision || state.base.ownerActorId !== policy.ownerActorId);
             readDay = day();
-            const next: OwnerPolicyState = { ...state, phase: 'ready', current: policy, base: keep ? state.base : policy, desired: keep ? state.desired : policy.requireKanujApproval, confirmation: null, message: null };
+            const next: OwnerPolicyState = { ...state, phase: 'ready', current: policy, base: keep ? state.base : policy, desired: keep ? state.desired : policy.requireKanujApproval, confirmation: null, writeState: conflict ? 'conflict' : state.writeState, message: conflict ? 'this policy changed. refresh it, compare your change, then reapply.' : null };
             active = null;
             state = Object.freeze(next);
             publish({ ...state, writable: canWrite() });
@@ -297,7 +301,7 @@ export function createOwnerPolicyController(runtime: ApplicationSession) {
         reconcile();
         if (!canWrite() || pending || active || !state.current || state.desired === null || state.writeState !== 'conflict')
             return;
-        publish({ ...state, base: state.current, confirmation: null, writeState: 'idle', message: 'your change is ready to review and save.' });
+        publish({ ...state, base: state.current, confirmation: null, writeState: 'idle', message: state.desired === state.current.requireKanujApproval ? 'the current policy already matches your change.' : 'your change is ready to review and save.' });
     }
     const stop = runtime.subscribe(reconcile);
     const stopBoundary = boundary?.subscribeInvalidation(reconcile);
