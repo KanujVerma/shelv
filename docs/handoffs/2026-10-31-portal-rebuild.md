@@ -4,9 +4,9 @@ Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. CurrentlocalA
 
 ## Latest finite resource allocation and reviews
 
-W3 exactlytwofinitecasespassedonce and explicitlyreturned soleChrome07:51:23UTC. Saved22trackedidentitiesabsent/scopedlists[]/previewnoTab; ParentreadssavedJSONonly,noafterresourcecall. No localChromegrantactive. OriginalMacPASSnonsensitive; actualheldterminaloldproxytrue/currentacceptancefalse thensameowner2550/0details andoriginal5sec/51metricsPASS. NEW independentCI19csource/test/evidenceR1 inworktreea86214ff imports onlyParenttest/reportreviewcandidate9b2ba209, no childdependencydowngrade. Rootsource/indexunchanged, published19cCIstillFAIL/unverified.
+AllChromegrantsreturned. W3finitecases2/2once andRETURN07:51:23UTC remainboundedauthorproof; no currentCIpass. CIindependentR1a2c report imported7093 gives source/testscopedPASS, evidenceCHANGESREQUIRED E1: Parentincorrecttwographdelta claim. Actualcurrentfive differences(client-state,retained,session,history,react) areallpreexisting. Parentd3a independentlyreconcilescurrent2195/2200+9/10 and explicitfive-filehistoricalcompileall2200/10CIhashes; no code/entryexecution. NEWboundedindependentevidenceR2 worktree69f7a1f8/sourcebased3a imports onlyunchangedtest/reportcandidate9b2; no browser/resources, no unnecessaryfullUIrepeats. Parentcandidate remainsunimported/currentCIUNVERIFIED.
 
-A07author0c447dfb is inNEWsourceR1; preliminaryA07C1/P2 twice reportA->B/instruction->BackAURL resolvesnull viaone mutableRecordScope. Dependentacceptancestopped/reportonlyfinalizing,noDOMclaim. RootA07unmounted; awaitfullreport beforeboundedauthorcorrection. Sourceplan09cb importedreport-only58a; no SourcePhase2/newrights. M65providergate/no-reroute remains. Exacttask/brief/runtime/grant/returnrecords inTASKS.
+A07independentR1report85eb importedreportonly5afe, bothsourceverdictsCHANGESREQUIRED A07C1/P2. SameW0ordinal12 sourcefix from0c447 nowownsper-entry/target/unsentmemory custody/newtests/report only. RootA07unmounted; no W2/nav/runtime/SQL/Source/rights/resourcechange. Sourceplan09cb remainsplanningonly; M65providergate/no-reroute unchanged. Exacttask/brief/model/source/proof/return records inTASKS.
 
 ## Goal
 

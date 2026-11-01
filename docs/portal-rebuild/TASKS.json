@@ -5798,6 +5798,39 @@
       "briefChars": 42950,
       "requirements": "Original6source4/2RED->6GREEN beforeretainedchecks; exactper-entry/targetunsentmemory+freshreads; no samepathborrow, no lost possiblysentUUID/body, nofakeauthority. Source/DOMbound preserved. NEW independentR2 required.",
       "briefSha256": "bc158eb8ca13ceb9e066cee734a2adfddb06c13174e4649b6e17da63aedffa6c"
+    },
+    {
+      "role": "W7 CI19c bounded complete-five provenance evidence review R2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-provenance-review-20261101-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-provenance-review-20261101-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-ci19c-manifest-provenance-review-20261101-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-69f7a1f8",
+      "branch": "t3/verify-ci-provenance-correspondence",
+      "baseCommit": "d3a5ed1ad8aac59152ee1e8ec9c2cfd94ec14d46",
+      "frozenTarget": "9b2ba20999809440be62d0de85c121a1b8850bb5",
+      "allocatedImports": [
+        "9b2ba20999809440be62d0de85c121a1b8850bb5"
+      ],
+      "responseCommit": "d3a5ed1ad8aac59152ee1e8ec9c2cfd94ec14d46",
+      "resourceBoundary": "Source compile/provenance and readonlysavedfacts ONLY; explicit5historicalwholeinputoverlays plusexistingGuidancetestinstrumentation allowed; no prodmutation/browser/entryexecution/native/Auth/DB/Storage/provider/R9/fixtures/grant",
+      "reportPath": "docs/portal-rebuild/research/W7_CI19C_MANIFEST_PROVENANCE_R2.md",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-ci19c-provenance-review-r2-brief.txt",
+      "briefChars": 114930,
+      "briefSha256": "e54ffd111f11089c570bf52ad61175a801d8430212cc549bc0cbec47caa20488",
+      "scope": "EvidenceE1completefive/currentandhistoricaldefault/observed correspondence; unchangedsource/testR1scopedPASS preserved. No unnecessarybroadrepeats. Fulloriginal/R1/response mandatory."
     }
   ],
   "parentVerification": {
@@ -7101,7 +7134,7 @@
       "evidence": ".local-artifacts/portal-rebuild/w3-ci19c-return/"
     },
     "authorBrowserResult": "2casesPASSonce: originalnonsensitive; actualmountedheldoldproxytrue/newfalse thensameowner2550/0details andoriginalassertionsPASS",
-    "reviewTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-precondition-review-20261101-r1",
+    "reviewTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-provenance-review-20261101-r2",
     "reviewCandidate": "9b2ba20999809440be62d0de85c121a1b8850bb5",
     "reviewCandidateImportedIntoRoot": false,
     "ciStatus": "Published19cFAIL unchanged. Source/testR1 scopedPASS, E1 evidencecorrection pending NEWindependentR2; no currentCI pass.",
@@ -7153,9 +7186,11 @@
         "emittedSha256": "502c49ba694f171b29d4183a2608f60263b1665e109ce655ea94b15d8cee3338"
       },
       "proof": ".local-artifacts/portal-rebuild/ci19c-e1-provenance-correction/RECONCILIATION.json",
-      "state": "coordinator_addressed_pending_new_independent_R2",
+      "state": "coordinator_addressed_independent_R2_active",
       "browserExecuted": false,
-      "codeCandidateImported": false
+      "codeCandidateImported": false,
+      "reviewTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-provenance-review-20261101-r2",
+      "responseCommit": "d3a5ed1ad8aac59152ee1e8ec9c2cfd94ec14d46"
     }
   }
 }
