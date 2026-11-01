@@ -117,21 +117,41 @@ function instructionLines(i:FinalExportInstruction,label:string):Lines{
 export type FinalExportStagingPorts<T>={write(chunk:{html:string;text:string}):Promise<void>;commit(metadata:{filename:string;contentType:string;rootHash:string}):Promise<T>;abort():Promise<void>};
 /** Private staging only. No complete document/result exists before the collector's final verified commit. */
 export function createFinalExportHtmlSink<T>(ports:FinalExportStagingPorts<T>):FinalExportSink<T>{
- const write=ports.write.bind(ports),finish=ports.commit.bind(ports),cancel=ports.abort.bind(ports);let next=0,busy=false,terminal=false,expected:AvailableFinalExport|undefined;const labels=new Map<string,string>();
+ const write=ports.write.bind(ports),finish=ports.commit.bind(ports),cancel=ports.abort.bind(ports);
+ let next=0,busy=false,state:'open'|'aborted'|'committed'='open',discarding=false,discarded=false,expected:AvailableFinalExport|undefined;const labels=new Map<string,string>();
+ const assertOpen=():void=>{requireValue(state==='open');};
+ const abort=async():Promise<void>=>{
+  if(state==='committed')return;
+  state='aborted';labels.clear();expected=undefined;
+  requireValue(!discarding);
+  if(discarded)return;
+  discarding=true;try{await cancel();discarded=true;}finally{discarding=false;}
+ };
  return {
   async stage(input,index,manifest){
-   requireValue(!terminal&&!busy&&index===next);busy=true;
+   requireValue(state==='open'&&!busy&&index===next);busy=true;
    try{
-    const unit=detachFinalExportInput(input);let text:string,html:string;
-    if(index===0){assertFinalExportPlanUnit(unit);const m=detachFinalExportInput(manifest);requireValue(m!==null&&typeof m==='object'&&'status'in m&&m.status==='available');assertAvailableManifest(m);expected=m;freezeFinalExport(expected);
+    const unit=detachFinalExportInput(input),m=detachFinalExportInput(manifest);assertAvailableManifest(m);freezeFinalExport(m);let text:string,html:string;
+    if(index===0){assertFinalExportPlanUnit(unit);expected=m;
      for(const s of finalExportScopes(unit.plan))labels.set(JSON.stringify([s.slotId,s.productId]),instructionLabel(unit,s.slotId,s.productId));
-     const lines=planLines(unit);if(manifest.basis.instructionCount===0)add(lines,'no separately published applicable instruction revisions');text=lines.join('\n');html=htmlStart+escape(text);
-    }else {assertFinalExportInstructionUnit(unit);requireValue(expected&&sameFinalExportValue(expected,manifest));const label=labels.get(JSON.stringify([unit.instruction.slotId,unit.instruction.productId]));requireValue(label);text='\n'+instructionLines(unit.instruction,label).join('\n');html=escape(text);}
-    freezeFinalExport(unit);await write({html,text});next++;
-   }finally{busy=false;}
+     const lines=planLines(unit);if(m.basis.instructionCount===0)add(lines,'no separately published applicable instruction revisions');text=lines.join('\n');html=htmlStart+escape(text);
+    }else {assertFinalExportInstructionUnit(unit);requireValue(expected&&sameFinalExportValue(expected,m));const label=labels.get(JSON.stringify([unit.instruction.slotId,unit.instruction.productId]));requireValue(label);text='\n'+instructionLines(unit.instruction,label).join('\n');html=escape(text);}
+    freezeFinalExport(unit);await write({html,text});assertOpen();next++;
+   }catch(error){try{await abort();}catch{/* Preserve the operation failure when discard also fails. */}throw error;}
+   finally{busy=false;}
   },
-  async commit(manifest){requireValue(!terminal&&!busy&&expected&&sameFinalExportValue(expected,manifest)&&next===manifest.basis.unitCount);busy=true;try{await write({html:htmlEnd,text:''});const result=await finish({filename:`shelv-final-plan-v${manifest.basis.publication.version}.html`,contentType:'text/html; charset=utf-8',rootHash:manifest.rootHash});terminal=true;labels.clear();return result;}finally{busy=false;}},
-  async abort(){terminal=true;labels.clear();expected=undefined;await cancel();}
+  async commit(manifest){
+   requireValue(state==='open'&&!busy&&expected&&next===expected.basis.unitCount);
+   busy=true;
+   try{
+    const m=detachFinalExportInput(manifest);assertAvailableManifest(m);requireValue(expected&&sameFinalExportValue(expected,m));const captured=expected;
+    await write({html:htmlEnd,text:''});assertOpen();
+    const result=await finish({filename:`shelv-final-plan-v${captured.basis.publication.version}.html`,contentType:'text/html; charset=utf-8',rootHash:captured.rootHash});
+    assertOpen();state='committed';labels.clear();expected=undefined;return result;
+   }catch(error){try{await abort();}catch{/* A dispatched backing commit cannot be recalled here. */}throw error;}
+   finally{busy=false;}
+  },
+  abort
  };
 }
 function assertAvailableManifest(value:unknown):asserts value is AvailableFinalExport{
