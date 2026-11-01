@@ -568,3 +568,7 @@ Monitoringcompleted/unwatchedbeforehandoff. No mainmerge/deploy/release/fullgoal
 ## 1 November: current progress and estimate reconciled
 
 For Kanuj's status request, liveGit/currentPR05b all3SUCCESS and liveT3Root+authorordinal14 were rechecked. Currentestimateabout60%fullscope; featureworkestimates/timeleft recordedinTASKS/CURRENT_STATUS. Coreclient90%+, advisor80%, Commerce45%, Source/account/delivery/agents25%, walkthrough/visual35%. Fullplanningrange5–8workingdays AFTERfinancialsecurityreviewblock/Sourcepinsclear andparallelworkresumes; waitingtimeexcluded/nofirmdate. Thisrevisesold3–5dayestimateupward. OldcanonicalCare2/Historyunmounted/advisorday-findings lines were corrected tocurrent orhistoricalscope, without changing frozenreviewreports/code. No new implementation/acceptance claim.
+
+## 1 November: founder pins assisted Source consent workflow
+
+Kanuj directly selected advisor-recorded explicit client confirmation plus client review/withdrawal in Account. Recorded the canonical addendum and task/status pointers. Separate storage/review consent, exact versioned disclosure, server attribution, honest occurrence and durable current-rights withdrawal remain required; no implied consent from old recordings or Source grants. This settles the workflow, not final disclosure text, Source15 client admission, a raw-access grant or implemented lifecycle. Account safe projection/withdrawal and actual producers still need implementation and independent checks. No source/runtime/SQL/resource action occurred for this decision.

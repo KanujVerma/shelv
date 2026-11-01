@@ -1,3 +1,7 @@
+## 2026-11-01 Source consent workflow selected
+
+Kanuj selected advisor-recorded explicit client confirmation, with client review/withdrawal in Account. [Decision addendum](portal-rebuild/DECISION_ADDENDA.md#source-consent-workflow-1-november-2026) is the canonical policy record. Storage and review purposes stay separate; no automatic consent or immediate-purge promise. Safe client projection/withdrawal, disclosure content and Source producers remain unimplemented. Source15 stays advisor-private/unactivated; no resource grant, Root import or live action. A07 source-free browser preparation remains separate.
+
 # Approved portal rebuild, 30 October 2026
 
 ## 2026-11-01 full-scope progress estimate

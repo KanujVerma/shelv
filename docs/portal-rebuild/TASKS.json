@@ -7861,5 +7861,16 @@
     "firmCalendarDate": null,
     "visual": ".local-artifacts/portal-rebuild/progress-20261101/portal-progress.html",
     "scope": "Entireapproved95388/D01-D48/26screens unchanged; allmissingSource/account/delivery/agents/walkthrough/verification remain open"
+  },
+  "sourceConsentWorkflow": {
+    "date": "2026-11-01",
+    "decision": "Advisor records explicit client confirmation; client can review and withdraw in Account",
+    "authority": "Direct Kanuj answer in the coordinator thread",
+    "canonicalRecord": "docs/portal-rebuild/DECISION_ADDENDA.md#source-consent-workflow-1-november-2026",
+    "purposes": "Separate service_storage and service_review; actual versioned disclosure/confirmation required, no implied consent from existing records or grants",
+    "withdrawal": "Durable client-owned Account withdrawal stops affected future operations and pending private returns; physical disposition follows actual retention/obligation basis",
+    "implementation": "UNIMPLEMENTED; Source15 remains advisor_private/unactivated, no client/task action expansion or Root import",
+    "remaining": "Account safe read/withdraw contract and implementation, disclosure words/version, actual Source authority/storage/inspection/cleanup and independent verification",
+    "resources": "No new grant or live-client action"
   }
 }
