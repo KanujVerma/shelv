@@ -6,6 +6,7 @@ import type { CheckinRpcCall } from './types.ts';
 /** Input authority is always the verified identity plus the transactional RPC guard. */
 export function buildCheckinCall(input: unknown, ownerId: string): CheckinRpcCall {
   const b = readObject(input), owner = readUuid(ownerId).toLowerCase();
+  if (b.action === 'read_photo_head_v1') { exactKeys(b, ['action']); return { name: 'concierge_checkin_head_v1', args: {} }; }
   if (b.action === 'client_read') { exactKeys(b, ['action']); return { name: 'concierge_checkin_read', args: { p_client_id: owner } }; }
   if (b.action === 'advisor_read') { exactKeys(b, ['action','clientId']);
     return { name: 'concierge_checkin_advisor_read', args: { p_client_id: readUuid(b.clientId).toLowerCase() } }; }

@@ -9,10 +9,18 @@ export type CheckinReport = Readonly<{
   advisorReplies?: readonly Readonly<{ id: string; reply: string; authorId: string; createdAt: string }>[];
 }>;
 export type CheckinClientView = Readonly<{ revision: number; nextCheckinOn: string | null; reports: readonly CheckinReport[] }>;
+export type CheckinPhotoHead = Readonly<{ revision: number }>;
 export type CheckinSubmitReceipt = Readonly<{ revision: number; operation: 'submit_report'; reportId: string }>;
 
 export function isCheckinRevision(value: unknown): value is number {
   return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0;
+}
+/** Metadata only. A missing head response or additional data is never a valid initial revision. */
+export function mapCheckinPhotoHead(input: unknown): CheckinResult<CheckinPhotoHead> {
+  if (!input || typeof input !== 'object' || Array.isArray(input)) return checkinFailure('unavailable');
+  const value = input as Record<string, unknown>;
+  if (Object.keys(value).length !== 1 || !Object.hasOwn(value, 'revision') || !isCheckinRevision(value.revision)) return checkinFailure('unavailable');
+  return { ok: true, value: Object.freeze({ revision: value.revision }) };
 }
 export function isCheckinInstant(value: unknown): value is string {
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}T([01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d{1,6})?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)$/.test(value)) return false;

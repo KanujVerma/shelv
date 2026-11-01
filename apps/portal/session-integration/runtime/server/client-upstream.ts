@@ -2,7 +2,7 @@ import {validatedReturnPath} from './navigation-return';
 import {SupabaseProvider, claims, hasCredentials} from './upstream';
 import {demand, type Credentials, type AdvisorContext, type Capabilities} from './types';
 import {PORTAL_ORIGIN, SUPABASE_ORIGIN, object, uuid, type Operation} from './policy';
-import {parseClientCommand, validateClientUpload} from './client-policy';
+import {parseClientCommand, validateClientUpload, mapClientPhotoHeadResponse} from './client-policy';
 import {mapPlanResponse} from './plan-policy';
 import {mapCareResponse} from './care-policy';
 import {mapReviewResponse,reviewTransportError} from './review-policy';
@@ -86,6 +86,7 @@ export class ClientProvider extends SupabaseProvider {
         if(operation.kind==='command'&&operation.channel==='plans')body=mapPlanResponse(body,operation.command);
         if(operation.kind==='command'&&operation.channel==='care')body=mapCareResponse(body,operation.command);
         if(operation.kind==='command'&&operation.channel==='reviews')body=mapReviewResponse(body,operation.command);
+        if(operation.kind==='command'&&operation.channel==='checkins'&&operation.command.action==='read_photo_head_v1')body=mapClientPhotoHeadResponse(body);
         demand(!hasCredentials(body,credentials) && !privateFields(body),503,'unavailable');
         return {status:200,body};
     }

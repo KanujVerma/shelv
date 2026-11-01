@@ -6,7 +6,7 @@ import {mapReviewResponse} from './review-policy';
 import {mapGuidanceResponse} from './guidance-policy';
 import { demand, digest, randomId, SessionError, type SessionView } from './types';
 import { PORTAL_ORIGIN, validateRequest, jsonBody, parseCommand, parsePreview, parseAdvisorEvidence, exact, safeError, readBounded, type Channel } from './policy';
-import { parseClientCommand, parseClientMedia, validateClientUpload } from './client-policy';
+import { parseClientCommand, parseClientMedia, validateClientUpload, mapClientPhotoHeadResponse } from './client-policy';
 import type { Completed, VaultCommand, VaultResult, WireResponse } from './protocol';
 import type { AdvisorSessionObject } from '../workers/session-vault/index';
 export type GatewayEnv = Omit<GatewayBindings, 'ADVISOR_SESSIONS' | 'CLIENT_SHARED_SESSIONS'> & {
@@ -169,7 +169,7 @@ function clearCookies() { const headers = new Headers();
             const channel = route.slice('/api/advisor/'.length) as Channel, operation = client ? parseClientCommand(channel, body) : parseCommand(channel, body);
             demand(sid, 401, 'session_ended');
             const result = await dispatch<WireResponse>('session', sid, { type: 'session.execute', csrf, operation });
-            const mapped=channel==='reviews'?mapReviewResponse(result.body,body):channel==='guidance'?mapGuidanceResponse(result.body,body):result.body;
+            const mapped=client&&channel==='checkins'&&body.action==='read_photo_head_v1'&&result.status===200?mapClientPhotoHeadResponse(result.body):channel==='reviews'?mapReviewResponse(result.body,body):channel==='guidance'?mapGuidanceResponse(result.body,body):result.body;
             return json(mapped, result.status);
         }
         catch (error) {

@@ -45,7 +45,8 @@ export function createConciergeAuthenticatedPorts<Call extends { name: string; a
       if (!allowedRpcNames.has(call.name)) throw new Error('unavailable');
       const response = await send(new URL(`/rest/v1/rpc/${call.name}`, base).href, { ...options(token, signal), method: 'POST', body: JSON.stringify(call.args) });
       // R1 returns complete immutable history without pagination or a SQL size cap.
-      if (response.ok) return { data: await decode(response, Number.MAX_SAFE_INTEGER), error: null };
+      // The fixed photo-head metadata RPC alone has a finite success-response budget.
+      if (response.ok) return { data: await decode(response, call.name === 'concierge_checkin_head_v1' ? 4096 : Number.MAX_SAFE_INTEGER), error: null };
       let message: string | undefined;
       try { const value = readObject(await decode(response)); if (typeof value.message === 'string') message = value.message; } catch { /* Status still reports rejected sessions. */ }
       return { data: null, error: { status: response.status, ...(message === undefined ? {} : { message }) } };
