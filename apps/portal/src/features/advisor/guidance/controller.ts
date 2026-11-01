@@ -214,7 +214,7 @@ export function createAdvisorGuidanceController({
   let dispatchOwner: Pending | null = null;
   let activeWrite: {
     intent: Pending;
-    cancel(): void;
+    cancel(): boolean;
     mayHaveDispatched: boolean;
     retry: boolean;
     readGeneration: number | null;
@@ -257,7 +257,77 @@ export function createAdvisorGuidanceController({
     month: "2-digit",
     day: "2-digit",
   });
-  function emit(patch: Partial<AdvisorGuidanceState> = {}) {
+  // A notification/abort can synchronously start another public operation.
+  // This is local continuation ownership, never a permission or read grant.
+  function continuation() {
+    const own = {
+      disposed,
+      context,
+      manual,
+      authority,
+      evidenceGeneration,
+      pending,
+      activeWrite,
+      dispatchOwner,
+      selection: state.selection,
+      publication: state.publication,
+      publicationCurrent: state.publicationCurrent,
+      draft: state.draft,
+      body: state.body,
+      ended: state.ended,
+      capabilities: capabilityWire(),
+      boundary: runtime.getSnapshot().boundary,
+      owner: runtime.cookie.identity?.ownerId,
+      role: runtime.cookie.identity?.role,
+      epoch: runtime.cookie._epoch,
+      generation: runtime.cookie.generation,
+      csrf: runtime.cookie._view?.csrf,
+      status: runtime.cookie.status,
+      readGeneration: readGeneration(),
+      versions: [...laneVersions],
+      controllers: [...aborters],
+    };
+    return () => {
+      try {
+        return (
+          disposed === own.disposed &&
+          context === own.context &&
+          manual === own.manual &&
+          authority === own.authority &&
+          evidenceGeneration === own.evidenceGeneration &&
+          pending === own.pending &&
+          activeWrite === own.activeWrite &&
+          dispatchOwner === own.dispatchOwner &&
+          state.selection === own.selection &&
+          state.publication === own.publication &&
+          state.publicationCurrent === own.publicationCurrent &&
+          state.draft === own.draft &&
+          state.body === own.body &&
+          state.ended === own.ended &&
+          capabilityWire() === own.capabilities &&
+          runtime.getSnapshot().boundary === own.boundary &&
+          runtime.cookie.identity?.ownerId === own.owner &&
+          runtime.cookie.identity?.role === own.role &&
+          runtime.cookie._epoch === own.epoch &&
+          runtime.cookie.generation === own.generation &&
+          runtime.cookie._view?.csrf === own.csrf &&
+          runtime.cookie.status === own.status &&
+          readGeneration() === own.readGeneration &&
+          laneVersions.size === own.versions.length &&
+          own.versions.every(
+            ([lane, version]) => laneVersions.get(lane) === version,
+          ) &&
+          aborters.size === own.controllers.length &&
+          own.controllers.every(
+            ([lane, controller]) => aborters.get(lane) === controller,
+          )
+        );
+      } catch {
+        return false;
+      }
+    };
+  }
+  function update(patch: Partial<AdvisorGuidanceState>) {
     const next = { ...state, ...patch };
     next.connection = next.ended ? "ended" : runtime.cookie.status;
     const basis = next.draft?.currentBasis ?? null;
@@ -286,50 +356,87 @@ export function createAdvisorGuidanceController({
         }
       : null;
     state = freeze(next);
-    listeners.forEach((fn) => fn());
   }
-  function retireWrite(preserve?: Pending) {
+  function emit(patch: Partial<AdvisorGuidanceState> = {}) {
+    update(patch);
+    const owns = continuation();
+    listeners.forEach((fn) => fn());
+    return owns();
+  }
+  type Retirement = {
+    cancel: Array<() => boolean>;
+    notify: Array<() => Partial<AdvisorGuidanceState>>;
+  };
+  function finishRetirement(work: Retirement, owns = true) {
+    // All targets are captured/detached before the first callback. Continue
+    // cancelling only those old targets even if an earlier callback selects B.
+    for (const cancel of work.cancel) if (!cancel()) owns = false;
+    if (!owns) return false;
+    for (const patch of work.notify) if (!emit(patch())) return false;
+    return true;
+  }
+  function prepareWrite(preserve?: Pending): Retirement {
+    const work: Retirement = { cancel: [], notify: [] };
     const operation = activeWrite;
-    if (!operation || operation.intent === preserve) return;
+    if (!operation || operation.intent === preserve) return work;
     activeWrite = null;
-    operation.cancel();
-    if (pending !== operation.intent) return;
+    work.cancel.push(operation.cancel);
+    if (pending !== operation.intent) return work;
     if (operation.retry || operation.mayHaveDispatched) {
       operation.intent.state = "uncertain";
-      emit({
+      work.notify.push(() => ({
         saveState: "uncertain",
         draftCurrent: false,
         notice: "the result is uncertain. check its status before retrying.",
-      });
+      }));
     } else {
       // The fixed raw factories await cookie acquisition before write egress.
       // A cancellation in the initial JS turn is therefore known unsent.
       pending = null;
-      emit({
+      work.notify.push(() => ({
         saveState: "idle",
         notice:
           "the action was cancelled before it was sent. refresh the current information before trying again.",
-      });
+      }));
     }
+    return work;
   }
-  function retireAuthority(preserveWrite?: Pending) {
+  function retireWrite(preserve?: Pending) {
+    return finishRetirement(prepareWrite(preserve));
+  }
+  function prepareAuthority(preserveWrite?: Pending): Retirement {
     if (!preserveWrite) evidenceGeneration++;
-    retireWrite(preserveWrite);
     contextPort?.invalidate();
     // Capture only the operation's OWN invalidation, before abort listeners,
     // state emissions, subscribers, or any other external callback can run.
     if (preserveWrite && activeWrite?.intent === preserveWrite)
       activeWrite.readGeneration = readGeneration();
     contextStamp = null;
-    aborters.get("authority")?.abort();
+    const target = aborters.get("authority");
     aborters.delete("authority");
     laneVersions.set("authority", (laneVersions.get("authority") ?? 0) + 1);
-    emit({
+    update({
+      authorityContext: null,
+      contextStatus: "unavailable",
+      acknowledged: false,
+    });
+    const work = prepareWrite(preserveWrite);
+    if (target)
+      work.cancel.push(() => {
+        const owns = continuation();
+        target.abort();
+        return owns();
+      });
+    work.notify.push(() => ({
       authorityContext: null,
       contextStatus: "unavailable",
       busy: state.busy.filter((x) => x !== "authority"),
       acknowledged: false,
-    });
+    }));
+    return work;
+  }
+  function retireAuthority(preserveWrite?: Pending) {
+    return finishRetirement(prepareAuthority(preserveWrite));
   }
   function authorityCurrent(
     own: Pending | undefined = dispatchOwner ?? undefined,
@@ -362,22 +469,33 @@ export function createAdvisorGuidanceController({
       value.request.scope === `${state.draft.target.kind}.publish`
     );
   }
-  function cancelAll() {
-    retireWrite();
-    aborters.forEach((c) => c.abort());
+  function prepareAll(): Retirement {
+    const targets = [...aborters.values()];
     aborters.clear();
     laneVersions.forEach((n, k) => laneVersions.set(k, n + 1));
+    const work = prepareWrite();
+    work.cancel.push(
+      ...targets.map((target) => () => {
+        const owns = continuation();
+        target.abort();
+        return owns();
+      }),
+    );
+    return work;
   }
-  function clearPrivate(ended = false) {
-    retireAuthority();
+  function cancelAll() {
+    return finishRetirement(prepareAll());
+  }
+  function preparePrivate(ended = false) {
+    const authorityWork = prepareAuthority();
     if (ended) {
       parked.clear();
       dispatchOwner = null;
     }
     authority++;
     manual++;
-    cancelAll();
-    emit({
+    const cancelled = prepareAll();
+    const patch: Partial<AdvisorGuidanceState> = {
       draft: null,
       body: null,
       draftCurrent: false,
@@ -398,26 +516,50 @@ export function createAdvisorGuidanceController({
             saveState: "idle",
           }
         : {}),
+    };
+    // Clear the owning projection before abort/subscriber callbacks, retaining
+    // the intermediate error status until the existing final notification.
+    update({
+      ...patch,
+      busy: state.busy,
+      history: { ...emptyHistory(), error: state.history.error },
     });
+    return {
+      work: {
+        cancel: [...authorityWork.cancel, ...cancelled.cancel],
+        notify: [...authorityWork.notify, ...cancelled.notify],
+      },
+      patch,
+    };
+  }
+  function finishPrivate(
+    prepared: ReturnType<typeof preparePrivate>,
+    owns = true,
+  ) {
+    if (!finishRetirement(prepared.work, owns)) return false;
+    return emit(prepared.patch);
+  }
+  function clearPrivate(ended = false) {
+    return finishPrivate(preparePrivate(ended));
   }
   function reconcile() {
-    if (disposed) return;
+    if (disposed) return false;
     if (!current()) {
       pending = null;
       context++;
       clearPrivate(true);
-      return;
+      return false;
     }
-    if (state.connection !== runtime.cookie.status) emit({});
+    if (state.connection !== runtime.cookie.status && !emit({})) return false;
     const next = capabilityWire();
     if (next !== capabilities) {
       capabilities = next;
-      retireAuthority();
+      if (!retireAuthority()) return false;
       authority++;
       context++;
-      cancelAll();
-      if (!caps()?.edit) clearPrivate();
-      emit({
+      if (!cancelAll()) return false;
+      if (!caps()?.edit && !clearPrivate()) return false;
+      return emit({
         busy: [],
         acknowledged: false,
         draftCurrent: false,
@@ -432,6 +574,7 @@ export function createAdvisorGuidanceController({
         notice: "access changed. refresh the information available to you.",
       });
     }
+    return true;
   }
   const unsubscribe = runtime.subscribe(reconcile),
     unend = boundary?.subscribeInvalidation(() => {
@@ -442,7 +585,7 @@ export function createAdvisorGuidanceController({
       }
     });
   function permitted(right: "view" | "edit" | "publish") {
-    reconcile();
+    if (!reconcile()) return false;
     return (
       current() &&
       !state.ended &&
@@ -451,15 +594,14 @@ export function createAdvisorGuidanceController({
     );
   }
   function capture(lane: Lane) {
-    reconcile();
-    if (lane !== "authority" && lane !== "status" && lane !== "write")
-      retireAuthority();
-    if (!current()) throw new TransportError(401);
-    aborters.get(lane)?.abort();
+    const reconciled = reconcile();
+    const prior = aborters.get(lane);
     const controller = new AbortController(),
       version = (laneVersions.get(lane) ?? 0) + 1;
-    laneVersions.set(lane, version);
-    aborters.set(lane, controller);
+    if (reconciled && current()) {
+      laneVersions.set(lane, version);
+      aborters.set(lane, controller);
+    } else controller.abort();
     const expected = {
       context,
       manual,
@@ -471,19 +613,20 @@ export function createAdvisorGuidanceController({
       capabilities,
       evidenceGeneration,
     };
-    emit({ busy: [...new Set([...state.busy, lane])] });
-    return {
+    const lease = {
       signal: controller.signal,
       cancel() {
-        controller.abort();
-        if (
+        const owned =
           laneVersions.get(lane) === version &&
-          aborters.get(lane) === controller
-        ) {
+          aborters.get(lane) === controller;
+        if (owned) {
           aborters.delete(lane);
           laneVersions.set(lane, version + 1);
-          emit({ busy: state.busy.filter((x) => x !== lane) });
         }
+        const owns = continuation();
+        controller.abort();
+        if (!owns()) return false;
+        return !owned || emit({ busy: state.busy.filter((x) => x !== lane) });
       },
       owns() {
         return (
@@ -516,28 +659,57 @@ export function createAdvisorGuidanceController({
         }
       },
     };
+    if (controller.signal.aborted) return lease;
+    if (lane !== "authority" && lane !== "status" && lane !== "write") {
+      if (!retireAuthority()) {
+        lease.cancel();
+        return lease;
+      }
+      // Only this completed, ownership-checked retirement can change intent.
+      // Never adopt a new selection/manual owner after a callback.
+      expected.pending = pending;
+      expected.evidenceGeneration = evidenceGeneration;
+    }
+    prior?.abort();
+    if (!lease.valid()) {
+      lease.cancel();
+      return lease;
+    }
+    if (!emit({ busy: [...new Set([...state.busy, lane])] })) lease.cancel();
+    return lease;
   }
-  function failure(error: unknown, privateRead: boolean) {
+  function failure(
+    error: unknown,
+    privateRead: boolean,
+    progress?: Partial<AdvisorGuidanceState>,
+  ) {
     const status = (error as { status?: unknown })?.status;
+    if (progress) update(progress);
     if (status === 401) {
       pending = null;
       context++;
-      clearPrivate(true);
+      const prepared = preparePrivate(true);
+      if (!finishPrivate(prepared, !progress || emit({}))) return;
       emit({ notice: "your session has ended. sign in again." });
     } else if (status === 403) {
-      clearPrivate();
+      const prepared = preparePrivate();
+      if (!finishPrivate(prepared, !progress || emit({}))) return;
       if (!privateRead)
-        emit({
-          publication: null,
-          publicationCurrent: false,
-          reported: emptyReported(),
-          instructions: emptyInstructions(),
-        });
+        if (
+          !emit({
+            publication: null,
+            publicationCurrent: false,
+            reported: emptyReported(),
+            instructions: emptyInstructions(),
+          })
+        )
+          return;
       emit({
         notice:
           "access to this information is unavailable. refresh after access is restored.",
       });
-    } else
+    } else {
+      if (progress && !emit({})) return;
       emit({
         acknowledged: false,
         notice:
@@ -545,6 +717,7 @@ export function createAdvisorGuidanceController({
             ? "this information changed. refresh it before continuing."
             : "we could not load this information. try again.",
       });
+    }
   }
   function matchesDraft(draft: GuidanceDraftView) {
     const s = state.selection;
@@ -568,8 +741,9 @@ export function createAdvisorGuidanceController({
     if (!permitted("view") || !state.selection) return;
     const selection = state.selection,
       lease = capture("publication");
-    emit({ acknowledged: false, publicationCurrent: false });
     try {
+      if (!lease.valid()) return;
+      if (!emit({ acknowledged: false, publicationCurrent: false })) return;
       const value = await adapters.review.execute(
         {
           schemaVersion: 1,
@@ -618,11 +792,15 @@ export function createAdvisorGuidanceController({
       prior = more ? state.history : emptyHistory(),
       cursor = more ? prior.nextCursor : null,
       lease = capture("history");
-    emit({
-      acknowledged: false,
-      history: { ...state.history, complete: false },
-    });
     try {
+      if (!lease.valid()) return;
+      if (
+        !emit({
+          acknowledged: false,
+          history: { ...state.history, complete: false },
+        })
+      )
+        return;
       const value = await adapters.review.execute(
         {
           schemaVersion: 1,
@@ -670,14 +848,13 @@ export function createAdvisorGuidanceController({
       });
     } catch (error) {
       if (lease.valid()) {
-        emit({
+        failure(error, true, {
           history: {
             ...state.history,
             complete: false,
             error: "care history is incomplete. retry this page.",
           },
         });
-        if (lease.valid()) failure(error, true);
       }
     } finally {
       lease.finish();
@@ -688,8 +865,9 @@ export function createAdvisorGuidanceController({
     const selection = state.selection,
       draftId = selection.draftId!,
       lease = capture("draft");
-    emit({ acknowledged: false, draftCurrent: false });
     try {
+      if (!lease.valid()) return;
+      if (!emit({ acknowledged: false, draftCurrent: false })) return;
       const value = await adapters.guidance.execute(
         { schemaVersion: 1, action: "read_guidance_draft_v1", draftId },
         { signal: lease.signal },
@@ -730,8 +908,9 @@ export function createAdvisorGuidanceController({
       publication = state.publication,
       prior = state.reported,
       lease = capture("reported");
-    emit({ acknowledged: false });
     try {
+      if (!lease.valid()) return;
+      if (!emit({ acknowledged: false })) return;
       const value = await adapters.review.execute(
         {
           schemaVersion: 1,
@@ -773,14 +952,13 @@ export function createAdvisorGuidanceController({
       });
     } catch (error) {
       if (lease.valid()) {
-        emit({
+        failure(error, false, {
           reported: {
             ...state.reported,
             complete: false,
             error: "current reported products are incomplete.",
           },
         });
-        if (lease.valid()) failure(error, false);
       }
     } finally {
       lease.finish();
@@ -792,7 +970,7 @@ export function createAdvisorGuidanceController({
       selection = state.selection,
       snapshot = publication.currentGuidance.snapshot;
     if (publication.currentGuidance.instructionCount === 0) {
-      retireAuthority();
+      if (!retireAuthority()) return;
       if (
         !current() ||
         state.selection !== selection ||
@@ -804,8 +982,9 @@ export function createAdvisorGuidanceController({
     }
     const lease = capture("instructions"),
       prior = state.instructions;
-    emit({ acknowledged: false });
     try {
+      if (!lease.valid()) return;
+      if (!emit({ acknowledged: false })) return;
       const pages = [...prior.pages];
       if (pages.length === 0 || prior.nextCursor !== null) {
         const value = await adapters.review.execute(
@@ -901,7 +1080,7 @@ export function createAdvisorGuidanceController({
       });
     } catch (error) {
       if (lease.valid()) {
-        emit({
+        failure(error, false, {
           instructions: {
             ...state.instructions,
             complete: false,
@@ -909,7 +1088,6 @@ export function createAdvisorGuidanceController({
               "applicable instructions are incomplete. retry the matching page or detail.",
           },
         });
-        if (lease.valid()) failure(error, false);
       }
     } finally {
       lease.finish();
@@ -929,13 +1107,14 @@ export function createAdvisorGuidanceController({
       state.dirty
     )
       return;
-    retireAuthority();
+    if (!retireAuthority()) return;
     const selection = state.selection,
       draft = state.draft,
       publication = state.publication;
     const lease = capture("authority");
-    emit({ contextStatus: "loading", acknowledged: false });
     try {
+      if (!lease.valid()) return;
+      if (!emit({ contextStatus: "loading", acknowledged: false })) return;
       const value = await contextPort.read(
         {
           boundaryKey: boundary!.key,
@@ -988,7 +1167,7 @@ export function createAdvisorGuidanceController({
       });
     } catch (error) {
       if (lease.valid()) {
-        retireAuthority();
+        if (!retireAuthority()) return;
         failure(error, true);
       }
     } finally {
@@ -1167,6 +1346,27 @@ export function createAdvisorGuidanceController({
     if (!retry && needsCurrentAuthority(command)) dispatchOwner = own;
     pending = own;
     const lease = capture("write");
+    if (!lease.valid()) {
+      // This fresh command has not reached either raw factory. Retire only its
+      // own unsent intent; an uncertain retry and any newer owner stay intact.
+      if (activeWrite?.intent !== own) {
+        if (!retry) {
+          if (pending === own) pending = null;
+          const key = JSON.stringify(own.selection);
+          if (parked.get(key) === own) parked.delete(key);
+        } else own.state = "uncertain";
+        if (
+          state.selection === bound.selection &&
+          context === bound.context &&
+          manual === bound.manual &&
+          authority === bound.authority
+        )
+          emit({});
+      }
+      if (dispatchOwner === own) dispatchOwner = null;
+      lease.finish();
+      return;
+    }
     const operation = {
       intent: own,
       cancel: () => lease.cancel(),
@@ -1233,7 +1433,7 @@ export function createAdvisorGuidanceController({
     });
     try {
       if (!lease.valid()) {
-        retireWrite();
+        if (activeWrite === operation) retireWrite();
         return;
       }
       if (!retry && needsCurrentAuthority(command) && !authorityCurrent(own))
@@ -1254,7 +1454,7 @@ export function createAdvisorGuidanceController({
               isApplicable,
             });
       retireAuthority(own);
-      dispatchOwner = null;
+      if (dispatchOwner === own) dispatchOwner = null;
       const result = await dispatched;
       if (!lease.valid()) return;
       acknowledge(result as GuidanceWriteResult | ReviewWriteResult, own);
@@ -1268,7 +1468,7 @@ export function createAdvisorGuidanceController({
         // intent or turn custody into readiness. Real ended boundaries fail the
         // lease check above and still clear memory through invalidation.
         own.state = "uncertain";
-        clearPrivate();
+        if (!clearPrivate()) return;
         emit({
           saveState: "uncertain",
           notice:
@@ -1523,24 +1723,34 @@ export function createAdvisorGuidanceController({
     can,
     async open(selection: AdvisorGuidanceSelection) {
       if (!current()) return;
-      retireAuthority();
+      if (!retireAuthority()) return;
       context++;
       manual++;
-      cancelAll();
+      if (!cancelAll()) return;
       if (pending) {
         if (pending.state === "sending") pending.state = "uncertain";
         parked.set(JSON.stringify(pending.selection), pending);
       }
       pending = parked.get(JSON.stringify(selection)) ?? null;
       parked.delete(JSON.stringify(selection));
-      emit({
-        ...initial(),
-        selection: freeze(detached(selection)),
-        pending: null,
-      });
-      const selected = state.selection;
+      const selected = freeze(detached(selection));
+      const opened = { context, manual };
+      if (
+        !emit({
+          ...initial(),
+          selection: selected,
+          pending: null,
+        })
+      )
+        return;
       await refreshPublication();
-      if (!current() || state.selection !== selected) return;
+      if (
+        !current() ||
+        state.selection !== selected ||
+        context !== opened.context ||
+        manual !== opened.manual
+      )
+        return;
       if (permitted("edit"))
         await Promise.all([
           historyRead(false),
@@ -1551,6 +1761,7 @@ export function createAdvisorGuidanceController({
       if (!current()) return;
       const lease = capture("connection");
       try {
+        if (!lease.valid()) return;
         await runtime.restore();
         if (lease.valid())
           emit({
@@ -1592,10 +1803,10 @@ export function createAdvisorGuidanceController({
         )
       )
         return;
-      retireAuthority();
+      if (!retireAuthority()) return;
       context++;
       manual++;
-      cancelAll();
+      if (!cancelAll()) return;
       emit({
         selection: freeze({
           ...state.selection,
@@ -1614,9 +1825,9 @@ export function createAdvisorGuidanceController({
     },
     editBody(body: GuidanceBody) {
       if (!permitted("edit") || pending || !state.selection) return;
-      retireAuthority();
+      if (!retireAuthority()) return;
       manual++;
-      cancelAll();
+      if (!cancelAll()) return;
       emit({
         body: freeze(detached(body)),
         dirty: !sameCareValue(body, state.draft?.body),
@@ -1627,9 +1838,12 @@ export function createAdvisorGuidanceController({
     },
     acknowledgeEvidence(value: boolean) {
       if (!current()) return;
+      const owns = continuation();
+      const editable = permitted("edit");
+      if (!owns()) return;
       emit({
         acknowledged:
-          value && state.evidenceComplete && permitted("edit") && !state.dirty,
+          value && state.evidenceComplete && editable && !state.dirty,
       });
     },
     save,
