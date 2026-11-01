@@ -6398,7 +6398,7 @@
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-a07-harness-nonexecuting-metadata-h2-source-fix-20261101",
       "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:16",
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
       "backingOrdinal": 16,
       "baseCommit": "8db94072fa88de86ad73a14db854f1d87bfc8911",
@@ -6412,14 +6412,22 @@
       "scope": "Ownedsourcehelpers/tests/report only; no launcher/browser/resources/privateGuidanceblockedverification/Source15/runtime/API/rights/SQL change",
       "parentInputException": "H2 ONLY exactParent d934 apps/portal/package.json294dbd.../1711 plus preserved own ignored deps and same-lock RootAPFSclone; no install/lock or Rootdep write",
       "newIndependentReviewRequired": true,
-      "authoritativeTaskIdForwarded": true
+      "authoritativeTaskIdForwarded": true,
+      "finalHead": "c76057a91497e1f4df4c897d641e751532b546cb",
+      "ownedOrderedCommits": [
+        "360fad55f74b7caf0371241a390abfe0778fbc49",
+        "5f128bbed6b17c4b055c56b0ebb850ecb7c59b0e",
+        "8f75779afd3470b0ec69f8922203cd8f1c96cf3b",
+        "c76057a91497e1f4df4c897d641e751532b546cb"
+      ],
+      "verificationResult": "Author16/16meta/provenance+25/32/500/45/80/256/strict/main2246x15pass, JSONnon-evaluating, execSHA b1e9effa804b3b46e145fa0dfdb1a731c32c30af5db8c8a5297ed26317b669ff. Package/native esbuild+workerd projection declared; NULLgrant/noRootimport; newR3pending."
     },
     {
       "role": "W6 SAC2 feasible partial causal-cardinality source correction",
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw6-source-account-partial-total-sac2-source-fix-20261101",
       "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-source-account-consent-contracts-20261101-r1",
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w6-source-account-consent-contracts-20261101-r1:ordinal:3",
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-5bfd5242",
       "backingOrdinal": 3,
       "baseCommit": "43496642da66eaf2d1c69b2b2ae63922722c3753",
@@ -6433,6 +6441,153 @@
       "scope": "Ownedsourcehelpers/tests/report only; no launcher/browser/resources/privateGuidanceblockedverification/Source15/runtime/API/rights/SQL change",
       "parentInputException": null,
       "newIndependentReviewRequired": true,
+      "authoritativeTaskIdForwarded": true,
+      "finalHead": "d3be4bb59317e05af426aa23fcced9edfc507eaa",
+      "ownedOrderedCommits": [
+        "cadfcf085febfcae41fd7360b22fc540897b9e91",
+        "d3be4bb59317e05af426aa23fcced9edfc507eaa"
+      ],
+      "verificationResult": "R2three3/3/new12/finite708/adapted72pass/strict77/186zero; raw57=56/57/raw72=71/72; trackedfixturefollowup7c931 separatelyauthorised, no production/APIactivation."
+    },
+    {
+      "role": "W7 all26screen actual-source connectivity/completion inventory",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-26-screen-connectivity-audit-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-26-screen-connectivity-audit-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-26-screen-connectivity-audit-20261101-r1:ordinal:1",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-9562390d",
+      "branch": "t3/w7-screen-connectivity-audit",
+      "baseCommit": "35659909558f5b6705900b4e6fc714150609d33c",
+      "status": "completed",
+      "ownedPaths": [
+        "docs/portal-rebuild/research/W7_26_SCREEN_CONNECTIVITY_AUDIT.md"
+      ],
+      "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-26-screen-connectivity-audit-brief.txt",
+      "briefSHA256": "8eb3dc0d1352a29e0fa8bc16e368a045ed2c6695511348c260180518eb9ca8bd",
+      "scope": "Read-only source inventory/all26manifest IDs plus next2concreteconnectedimplementation recommendations; no imports/tests/resources/security/Guidance orfinancialblockedwork",
+      "authoritativeTaskIdForwarded": true,
+      "reportCommit": "e970d155b16fc49c1723a86a0ca07a6c82d2740e",
+      "parentReportImport": "98ea8dbaf9dbbacd32134df103e2a67931ddcee8",
+      "verdict": "Staticinventoryall26exactmanifestidentities/186sourcecitationscomplete, implementationandacceptanceincomplete; recommendsconnectedAccount/service/export andnotificationsslice. No tests/builds/resources/securityretry."
+    },
+    {
+      "role": "W6 SAC2 tracked fixture input-only compatibility alignment",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw6-source-account-sac2-tracked-fixture-alignment-20261101",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-5bfd5242",
+      "backingOrdinal": 4,
+      "baseCommit": "d3be4bb59317e05af426aa23fcced9edfc507eaa",
+      "status": "completed",
+      "finalHead": "7c931236374693b80ef1f2642a75ec7f004ba089",
+      "model": "gpt-6.1-sol",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w6-sac2-tracked-fixture-alignment-brief.txt",
+      "briefSHA256": "acaad20e6549496827543cf6d830853287361f5d668e4906bcdb87ecdeb4b4e5",
+      "verificationResult": "Sameordinarytracked53:52/53->53/53 afterexacttwoinputfactlines; aggregate72/72/strict77/185zero;49predicateAST+6helperssame; prodbyteexactd3; no API/resources/Rootimport"
+    },
+    {
+      "role": "W7 A07 harness SOURCE R3",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-a07-app-harness-source-review-20261101-r3",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-a07-app-harness-source-review-20261101-r3",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-a07-app-harness-source-review-20261101-r3:ordinal:1",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-62aa237b",
+      "branch": "t3/a07-harness-source-review-1",
+      "baseCommit": "35659909558f5b6705900b4e6fc714150609d33c",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "ownedPaths": [
+        "docs/portal-rebuild/research/W7_A07_APP_HARNESS_SOURCE_R3.md"
+      ],
+      "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-a07-harness-source-r3-brief.txt",
+      "briefSHA256": "4ae524925f312d3d5f408fc4313e1061bdd16b854a5a93e3ff8976d09692d5e7",
+      "scope": "Independentreportonly; fulloriginal/priorR1R2/responses/AST/rawcompatibility andactualinputprojection, no fixes/resources/blockedverification",
+      "authoritativeTaskIdForwarded": true
+    },
+    {
+      "role": "W7 Account source consent partial/fixture SOURCE R3",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-source-account-contracts-review-20261101-r3",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-source-account-contracts-review-20261101-r3",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-source-account-contracts-review-20261101-r3:ordinal:1",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b4061bfb",
+      "branch": "t3/w7-account-consent-review",
+      "baseCommit": "98ea8dbaf9dbbacd32134df103e2a67931ddcee8",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "ownedPaths": [
+        "docs/portal-rebuild/research/W7_SOURCE_ACCOUNT_CONTRACTS_R3.md"
+      ],
+      "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-source-account-contracts-r3-brief.txt",
+      "briefSHA256": "061cf9267d647276868d6b363ffb10e9f89b60e164b6f1b572c9875b094a3217",
+      "scope": "Independentreportonly; fulloriginal/priorR1R2/responses/AST/rawcompatibility andactualinputprojection, no fixes/resources/blockedverification",
+      "authoritativeTaskIdForwarded": true
+    },
+    {
+      "role": "W2 connected A08 owner approval-policy component source slice",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-owner-policy-connected-source-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-owner-policy-connected-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-owner-policy-connected-source-20261101-r1:ordinal:1",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-cbaf938a",
+      "branch": "t3/owner-approval-policy-ui",
+      "baseCommit": "98ea8dbaf9dbbacd32134df103e2a67931ddcee8",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "ownedPaths": [
+        "apps/portal/src/features/advisor/permissions/types.ts",
+        "apps/portal/src/features/advisor/permissions/controller.ts",
+        "apps/portal/src/features/advisor/permissions/port.ts",
+        "apps/portal/src/features/advisor/permissions/OwnerPolicy.tsx",
+        "apps/portal/src/features/advisor/permissions/owner-policy.css",
+        "apps/portal/src/app/advisor-policy-request.ts",
+        "apps/portal/tests/rebuild-owner-policy.test.mjs",
+        "apps/portal/tests/rebuild-owner-policy-types.ts",
+        "docs/portal-rebuild/research/W2_OWNER_POLICY_UI.md"
+      ],
+      "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w2-owner-policy-ui-brief.txt",
+      "briefSHA256": "55005be09a2bde31e24d79166fbe49741257f3ae7fe46926ed0060ed1a11fdf1",
+      "scope": "NEWcomponent+creation-boundport to EXISTING read_policy/set_sami_policy/request_status ONLY; actualruntime/cookie/RootcodecfiniteHTTPsource, no newAPI/right/sharedserver/SQL/mount or livepermission change",
+      "sourceGate": "MeaningfulREDGREEN, exactUUID/revision/currentowner/pending/conflict/uncertainty; existingtask/sourceapprovalrulesunchanged; independentR1beforeRootcomposition/browser",
       "authoritativeTaskIdForwarded": true
     }
   ],
@@ -7858,7 +8013,7 @@
     "isDraft": true,
     "state": "OPEN",
     "push": "normal fastforward05b->5834, noforce",
-    "CI": "New published b89e96f3 requires ownexactheadCI; prior5834all3SUCCESS historical. T3watch active.",
+    "CI": "ALL3SUCCESS exactpublishedb89e96f3. Portal2509/2509/0skip andalllaterPortalstepssuccess. VerifyBuild andDatabaseIntegration success. No merge/deploy/fullgoalacceptance.",
     "previousExactGreenHead": "5834cf51fb41b12a1bbacda4005260e31522ab33",
     "watching": true,
     "postPushLocalMetadata": "H2/SAC2/providerblock currentstatus coordination only",
@@ -8083,7 +8238,7 @@
     "asOf": "2026-11-01",
     "basis": "LiveGit/current05b all3CIgreen, actualliveA07ordinal14run, currentSource/implementation/acceptance evidence. Engineeringwork-completion estimates, not acceptance scores.",
     "overallPercent": 60,
-    "liveAgentsIncludingCoordinator": 3,
+    "liveAgentsIncludingCoordinator": 4,
     "maximumAgents": 8,
     "features": [
       {
@@ -8148,7 +8303,7 @@
     "firmCalendarDate": null,
     "visual": ".local-artifacts/portal-rebuild/progress-20261101/portal-progress.html",
     "scope": "Entireapproved95388/D01-D48/26screens unchanged; allmissingSource/account/delivery/agents/walkthrough/verification remain open",
-    "liveAgentsNote": "Root + verifiedlive H2ordinal16 author + SAC2ordinal3 author; R2 reviewers terminal and Guidancecheckprovider-failed. No nesting/max8."
+    "liveAgentsNote": "Root + two liveR3source reviewers + A08ownerpolicy source author; no nesting/max8/noheavyresources"
   },
   "sourceConsentWorkflow": {
     "date": "2026-11-01",
@@ -8244,5 +8399,103 @@
     "retryRephraseReroute": false,
     "launchGate": "Guidance private-return correctness/genuine acceptance remains unverified; no source fix inferred from partial evidence",
     "otherWork": "Unflagged Source UTF8/harness/Account work continues; fullgoal notcomplete/blocked as awhole"
+  },
+  "sourceAccountSac2CompatibilityPin": {
+    "authority": "Coordinator input-only replay pin; no wire/cap/predicate/oldtrackedtest change",
+    "currentBase": "43496642da66eaf2d1c69b2b2ae63922722c3753",
+    "rawBaseline57": "57/57 before strengthening",
+    "rawCurrent57": "56/57, one old mapper-positive itselfrequires3nodesbutdeclares2",
+    "rawCombined72": "71/72",
+    "adaptation": "OWN IGNORED copy only: a.total3; b.entries=[11 superseded prev10, new current20 supersedes11], b.total3/cursor1/nextnull. Bothpagesindividuallyfeasible; all3entriescollectedpreserve10<->11cycleandvisiblefork forunchangedcollectornegative.",
+    "assertions": "All original assertion/helper AST text unchanged; raw/adapted/semantic results separate",
+    "earlyCheckpoint": "cadfcf085febfcae41fd7360b22fc540897b9e91",
+    "earlyEvidence": "OriginalR2three3/3,new12/12,independentfiniteoracle708=169feasible539impossible, strict0; terminalfinalauditpending, no unboundedproof oracceptance"
+  },
+  "ciB89GreenCheckpoint": {
+    "head": "b89e96f3ee26e94586a15807e8f3149837bbaf06",
+    "runHead": "b89e96f3ee26e94586a15807e8f3149837bbaf06",
+    "event": "pull_request",
+    "all3ChecksSuccess": true,
+    "portalAllStepsSuccess": true,
+    "portalLogBytes": 2686406,
+    "portalLogSHA256": "7163e2227f0b8fd6c790efb841403268f3b67d58bfa60f1cbf5ce87b845929f5",
+    "rawTAPsummaries": [
+      [
+        "tests",
+        [
+          "2509",
+          "15",
+          "186",
+          "40",
+          "3",
+          "7",
+          "6"
+        ]
+      ],
+      [
+        "pass",
+        [
+          "2509",
+          "15",
+          "186",
+          "40",
+          "3",
+          "7",
+          "6"
+        ]
+      ],
+      [
+        "fail",
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      [
+        "skipped",
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      [
+        "cancelled",
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      ]
+    ],
+    "artifactsURL": "https://api.github.com/repos/KanujVerma/shelv/actions/runs/41315674351/artifacts",
+    "PortalPackage": {
+      "tests": 2509,
+      "pass": 2509,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "evidence": ".local-artifacts/portal-rebuild/ci-b89e96f3-pass/"
+  },
+  "accountExportPolicyQuestion": {
+    "state": "AWAITING_USER_CLARIFICATION",
+    "question": "After30daycareplan/historywindow, keep last-entitled staticexport inAccount or closewithwindow?",
+    "recommended": "Keep staticexport separate from continuing support/history",
+    "dependentWork": "No beyond-windowexportpolicyuntilanswer; profile/address/cancellationworkindependent",
+    "scope": "D38/read-onlywindow/public-onlyexportcontent unchanged, no rawSourceexportgrant"
   }
 }
