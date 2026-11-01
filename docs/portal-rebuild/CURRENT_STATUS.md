@@ -2,9 +2,13 @@
 
 Owner: Kanuj. Updated1 November2026. Integration workspace and branch: kanuj-portal-rebuild-integration-20261030. Latest local integration candidate: AppV3/Historye6b0bd7e with reviewedCItestcorrection7d864736 after guidance85fc0663/report52b4e195, V3 34a2af9a, cookie6f13b82d and history5cd7ef5a. Client App nowselectsV3; advisorGuidance remainsunmounted. FullAppacceptance is incomplete. **The complete approved rebuild remains in progress.** The unrelated dirty scanner checkout is untouched. Current source, review, resource and CI evidence have separate acceptance boundaries.
 
+## latest published CI checkpoint
+
+ExactPR211head05b3270e16425eab92090c99f9d0289830aae7fc passesall3checks. Portal2509/2509/0skip andalllaterkeyboard/session/backend/nativeSQL/localAuthadmissionstepspass. Executedmergebc9858treeequalshead. Watchcompleted/off; draftOPEN/unmerged. LocalpostpushcoordinationmetadatamustnotbeclaimedexactheadCIgreen. A07sourceunimported/harnessSource-onlyactive, Source/M65/account/delivery/visual/full-goalgatesremainopen.
+
 ## active work and resource ownership
 
-Kanuj approved disjoint T3-owned work up to eight total agents including coordinator; no nested allocation. HistoricalPR2116a10f5bePortalCI failed13/2497; its2550readinesscasepassesLinux. ReviewedcurrentAppfixtureab5eea15/reportff5 andcleanCH6hookc856areadmittedlocallyforthe nextdraftCIhead. IndependentSource/TestbddPASS; authorfunctional19/19once/25contexts andexplicitcapture/CSPqualifications; Parent199/20/types/UI/main2232x15pass. Publishedsuccessor05b3270eexactheadCIpending. A07R34177scopedSource/SSRPASS closesC1/C2; authorordinal14preparesactualAppbrowserharnessSource-only, noA07import. AllChromegrantsreturned; no native/Auth/DB/Storage/Source/financialauthority. Fullapprovedgoalremainopen.
+Kanuj approved disjoint T3-owned work up to eight total agents including coordinator; no nested allocation. HistoricalPR2116a10f5bePortalCI failed13/2497; its2550readinesscasepassesLinux. ReviewedcurrentAppfixtureab5eea15/reportff5 andcleanCH6hookc856areadmittedlocallyforthe nextdraftCIhead. IndependentSource/TestbddPASS; authorfunctional19/19once/25contexts andexplicitcapture/CSPqualifications; Parent199/20/types/UI/main2232x15pass. Publishedsuccessor05b3270eALL3CIGREEN/Portal2509of2509/0skip; PRstaysdraft. A07R34177scopedSource/SSRPASS closesC1/C2; authorordinal14preparesactualAppbrowserharnessSource-only, noA07import. AllChromegrantsreturned; no native/Auth/DB/Storage/Source/financialauthority. Fullapprovedgoalremainopen.
 
 RootAppV3/Historysourceisunchangedbythesetestfixes; Source modeld0f/planning09cbremainunactivated, M65providerblock/no-rerouteholds. ExistingR6/R7genuineness/visual/frame/CI/releaseboundsstillgovern.
 

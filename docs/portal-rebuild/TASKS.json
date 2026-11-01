@@ -7469,7 +7469,7 @@
     "reviewTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-provenance-review-20261101-r2",
     "reviewCandidate": "9b2ba20999809440be62d0de85c121a1b8850bb5",
     "reviewCandidateImportedIntoRoot": true,
-    "ciStatus": "Normalpush6a10f5beconfirmedGitHubdraftOPEN; exactheadCIpending, T3watch next; no merge/deploy",
+    "ciStatus": "Readinesscasepassed6a; fullpublishedsuccessor05b all3checksSUCCESS/Portal2509. Historical19cfailure/E1qualifications preserved.",
     "evidenceCorrection": {
       "finding": "E1/P2",
       "originalTwoInputClaim": "false; fullfiveinputs below",
@@ -7562,7 +7562,7 @@
     "state": "OPEN",
     "push": "normal fastforward6a->05b, noforce",
     "bodyUpdated": true,
-    "CI": "newexactheadpending; Parent T3watch next",
+    "CI": "ALL3SUCCESS exactpublished05b3270e; Portal2509/2509/0skip andalllaterPortalstepssuccess; no merge/deploy",
     "currentHeadBuild": {
       "inputs": 2232,
       "outputs": 15,
@@ -7570,7 +7570,28 @@
       "sourceDirty": false,
       "sha256": "c4278d0edc1e74206da65da8c0d077726773271f2f53b3e3e1f8ed2479eb761e"
     },
-    "postPushLocalMetadata": "R3report/harnessallocationdocs only, not watchedCIhead"
+    "postPushLocalMetadata": "R3report/harnessallocationdocs only, not watchedCIhead",
+    "checks": [
+      {
+        "name": "Verify & Build",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/KanujVerma/shelv/actions/runs/41299255209/job/124826587061"
+      },
+      {
+        "name": "Portal build and local journeys",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/KanujVerma/shelv/actions/runs/41299255160/job/124826586948"
+      },
+      {
+        "name": "Database & Integration",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/KanujVerma/shelv/actions/runs/41299255209/job/124826587190"
+      }
+    ],
+    "verifiedEvidence": ".local-artifacts/portal-rebuild/ci-05b3270e-pass/VERIFIED.json",
+    "watching": false,
+    "executedMerge": "bc9858eb95e63705956e12c59b1a249c59f1b46e",
+    "mergeTreeEqualsHead": true
   },
   "ci6aFailure": {
     "head": "6a10f5be9412db75cc815f2b35e25ba7e737ecf9",
@@ -7608,7 +7629,7 @@
       "published": false
     },
     "watching": false,
-    "status": "Reviewedfixture+hookcorrectionsnormallypushed05b; allproductiontreesunchanged; currentexactheadCIpending",
+    "status": "Resolvedonpublished05b3270e: all3checksPASS, Portal2509/2509/0skip; original6a13FAIL preserved",
     "fixtureSourceCandidate": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
     "fixtureReviewTask": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci6a-app-browser-fixture-review-20261101-r1",
     "fixtureReviewReport": "bdd6a8c7b255f11ae6189825dd633210495c42fc",
@@ -7679,6 +7700,96 @@
       "ownerFollowup": "Sharedpreviewasset/fixturevisualtriagebeforevisualacceptance; do notweakenCSP",
       "visualOrPacketLevelAcceptance": false
     },
-    "publishedSuccessor": "05b3270e16425eab92090c99f9d0289830aae7fc"
+    "publishedSuccessor": "05b3270e16425eab92090c99f9d0289830aae7fc",
+    "closedByHead": "05b3270e16425eab92090c99f9d0289830aae7fc"
+  },
+  "ci05bGreenCheckpoint": {
+    "head": "05b3270e16425eab92090c99f9d0289830aae7fc",
+    "checks": [
+      {
+        "name": "Verify & Build",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/KanujVerma/shelv/actions/runs/41299255209/job/124826587061"
+      },
+      {
+        "name": "Portal build and local journeys",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/KanujVerma/shelv/actions/runs/41299255160/job/124826586948"
+      },
+      {
+        "name": "Database & Integration",
+        "conclusion": "SUCCESS",
+        "url": "https://github.com/KanujVerma/shelv/actions/runs/41299255209/job/124826587190"
+      }
+    ],
+    "PortalPackage": {
+      "tests": 2509,
+      "pass": 2509,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "allPortalRequiredStepsSuccess": true,
+    "artifact": 13080449805,
+    "zipBytes": 293376,
+    "zipSha256": "e03d0118effe125dc113e697605d38937bcddd7fde3a4bc2e80994f529e27e0b",
+    "members": [
+      {
+        "path": "budget2550-jMEc8A/page.png",
+        "bytes": 166716,
+        "sha256": "dd26b02217caaf9f45e2d675f381310abcaffef9b3a3e6c8220f6a0a465e1b3b"
+      },
+      {
+        "path": "budget2550-jMEc8A/source.json",
+        "bytes": 511176,
+        "sha256": "fc9568eb9b4859687bd6b3d7892ba11123f25a02391613e86986374c90044f42"
+      },
+      {
+        "path": "budget2550-jMEc8A/state.json",
+        "bytes": 22936,
+        "sha256": "5759215aa37f78bd8ff8a64357628f7bd403de81863e67874f0546c50d9b11ee"
+      },
+      {
+        "path": "budget2550-jMEc8A/trace.json",
+        "bytes": 125347,
+        "sha256": "d77f754cb535fb231e77541a56c4c2519601e6d433be44c7b669761d0b400c92"
+      }
+    ],
+    "merge": "bc9858eb95e63705956e12c59b1a249c59f1b46e",
+    "commits": {
+      "05b3270e16425eab92090c99f9d0289830aae7fc": {
+        "sha": "05b3270e16425eab92090c99f9d0289830aae7fc",
+        "tree": "5130048f4af8f9adcc4e091437bd2142ac395071"
+      },
+      "bc9858eb95e63705956e12c59b1a249c59f1b46e": {
+        "sha": "bc9858eb95e63705956e12c59b1a249c59f1b46e",
+        "tree": "5130048f4af8f9adcc4e091437bd2142ac395071"
+      }
+    },
+    "mergeTreeEqualsHead": true,
+    "safeSource": {
+      "platform": "linux",
+      "node": "v22.23.0",
+      "browser": "156.0.8078.79",
+      "inputs": 2202,
+      "outputs": 10,
+      "inputHash": "24a2db4a1135b5d83385d2673dfd255c592bd51dc72563671f3e424f32ec037d",
+      "preparedHash": "63b487a47646c4640eabcaab8bf19ebec6b3dc6e216c3cd8455e05eef1db7d38",
+      "instrumented": true
+    },
+    "terminal": {
+      "outcome": "pass",
+      "counts": {
+        "loading": 0,
+        "paused": 51,
+        "notice": 1,
+        "dialogs": 1
+      },
+      "errors": [],
+      "captureErrors": []
+    },
+    "traceEvents": 463,
+    "traceDropped": 0,
+    "noMergeOrDeployment": true
   }
 }

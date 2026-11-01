@@ -558,3 +558,9 @@ FreshA07R3 report4177 importedONLYbfe78209: availableSource/SSRSpecqualityscoped
 ## 1 November: real Node declaration closure allocated
 
 A07harnessauthor correctly surfaced missing@types/node beforestrictNodewrapperchecks. ParentverifiedactualRoot-locked@types/node22.20.3(74files)+undici-types6.21.0(41files), allnodesnonsymlink, frozecompletepackages withper-filebyte/SHA256 manifests andlockprovenance. ClosuremanifestSHA3b8b68e91b2f3c635f3dfa9fd3716fe555d202269046772c30d56d577525bf91. Onlythese~2.5MBrealdeclarations maybecopiedtoauthorfreshignoredevidencewithnormalpackagelayout; noinstall/shim/cast/Authcopy/flagorpackagechange. PortalReacttypesremainfirst. Actualstrictreplayresultpendingauthor, resource/source-onlyboundaryunchanged. PR05bCIwatchcontinuesseparately.
+
+## 1 November: exact published05b CI green
+
+LiveGitHubPRreadback confirms exact05b3270e/headDRAFT/OPEN andall3checksSUCCESS. Portal41299255160/job124826586948 package2509/2509/0skip plusalllaterPortalstepspass; Verify&Build124826587061/Database&Integration124826587190success. Actualmergebc9858 tree5130048equals05b. Fullpasslog2.69MB/SHA c348ab93...f211 andsafeartifact13080449805/ZIP293376/e03d0118...e0b/fourCRC-checkedmembers/currentobserved2202/10/463events0drops preservedprivately. No extraCIfetch/nativeartifactcopy/localR9query. Historicalfailed13/newfixturequalifications remain.
+
+Monitoringcompleted/unwatchedbeforehandoff. No mainmerge/deploy/release/fullgoalclaim. Localmetadataahead of05bnotCI-certifiedbyhead; productioncodeunchanged. A07SourceR3scopedPASS/harnessSource-onlyactive; Source/Commerce/account/delivery/visualgatesremainopen.

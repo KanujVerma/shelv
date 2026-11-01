@@ -2,11 +2,11 @@
 
 Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. CurrentlocalAppintegrationcandidatee6b0bd7e selectsV3 andHistory, aboveguidance85fc; fullAppacceptance incomplete. Parent228/198/256/500/Root1256+18skips/types/Expo/clean2232x15 pass; exactreviewerbytes/native87 unchanged. PR211remote19c failedPortal2284/2285 on2550scope5secnotice; W3sourcefirsttest-preconditiondiagnosisactive, noresources. Source modeld0f only; W1readinessreport-only. R7targetedsyntheticChrome63acb6f6/e6b returned05:46:10Z, report2c06SPECincomplete/qualityscopedPASS; R6RETURN05:07:18Z. ReadcurrentGit/TASKS beforework.
 
-## Latest CI6a local admission and A07 R3
+## Latest exact published CI checkpoint and A07 preparation
 
-Rootfixturecodeab5eea15/reportff5 +cleanCH6hookc856locallyadmittedafter independentSource/TestbddPASS andauthorfunctional19/19once/25contexts; originaloldfirstcaseexpectedfailure.Sourcefrozencbf8, ChromeRETURN10:27:17Z/all88exactownidentitiesabsent/previewnoTab/noaftercalls. Capture46errors/CSP102previewimageblocks/overwrittenearliercapturebytes/per-controller-auditlimits explicitlyqualified,noconsoleclean/visual/packet-egresspass. Parent199/20/types/UI/cleanmain2232x15all0, allmaininput/outputhashesequal6a; allproduction/runtime/Root/SQLtreesunchanged. ReadyfornormalnewdraftPRpush/currentwholeCI; historical6aPortal13FAIL/budget2550PASSpreserved. No localChrome/nativegrantactive.
+PR211exact05b3270eALL3checksPASS. Portal41299255160/job124826586948 package2509/2509/0skip plusalllaterkeyboard/session/backend/nativeSQL/localAuthadmissionstepssuccess; generalVerify&Build/Database&Integrationsuccess. Mergebc9858tree5130048equalshead. Passlog2686534/SHA c348ab93...f211 +safeartifact13080449805/293376/e03d0118...e0b/4members/currentobserved2202/10/463events0drops retainedci-05b3270e-pass. Watchingdone/off, PRDRAFT/OPEN/unmerged/no deployment. Historical6a13FAIL/19cFAIL andobserverCSP/capturequalification preserved.
 
-A07author083C2sourcefixisinNEWindependentR3 in97a86065/source-only, 8ownedinputsonly; RootA07unmounted. R1C1/R2C2verdicts/failureboundspreserved. Sourceplanplanningonly/M65providergate/no-reroute/fullgoalgatesunchanged. Exacthandles/proofs/limits inTASKS; no merge/deploy/liveactions.
+Rootlocalpostpushmetadata/report/declarationinputcommitsahead of05bnotexactheadCI-certified; productioncodeunchanged. A07R34177Source/SSRPASS importedonlybfe, RootA07stillunmounted/unimported. Authorordinal14source-onlyactualmainbrowserharness/closedRootDTO/finiteplanpreparationactive, NO browser/resourcegrant. FrozenrealNode22.20.3+undici6.21declarationclosureprovided, strictresultpendingauthor. Sourcemodel/planonly andM65providergate/no-reroute, account/delivery/visual/genuine/fullgoalremainopen. Exacttasks/briefs/proofs inTASKS.
 
 ## Goal
 
