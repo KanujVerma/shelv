@@ -6139,6 +6139,39 @@
         "pendingResponseSequence": 251377,
         "actualStrictResult": "pending author replay, not claimed by input allocation"
       }
+    },
+    {
+      "role": "W1 pure actual-byte Source UTF8 inspector",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-source-utf8-inspection-pure-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-source-utf8-inspection-pure-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-source-utf8-inspection-pure-20261101-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-d28c4829",
+      "branch": "t3/source-utf8-inspector",
+      "baseCommit": "d87de5b6a08d9143a49de3d0c3fa86646aa6d42b",
+      "status": "running",
+      "resourceBoundary": "Pure actual-byte UTF8 inspection only; no Source4/SQL/auth/Storage/CLI/Root import or resources",
+      "ownedPaths": [
+        "supabase/functions/concierge-sources/utf8-inspection.ts",
+        "tests/portal-source-utf8-inspection.test.ts",
+        "docs/portal-rebuild/research/W1_SOURCE_UTF8_INSPECTION.md"
+      ],
+      "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w1-source-utf8-inspection-brief.txt",
+      "briefSHA256": "c0cf0a54d3b274695030a62e51b27db13a624304a0b3011ce6d363132aaf6e29",
+      "context": "FULL original95330chars, mandatory full Source model/R1-R5/readiness/author-response reads; no provider-blocked Commerce review continuation/reroute",
+      "gate": "Meaningful test-first RED/GREEN, actual native UTF8/hash/scalar mapping/max500000 candidate, strict unchanged flags, all62SQL/oldtracked exact, no Source policy enable or proof-row/authority claim",
+      "authoritativeTaskIdForwarded": true
     }
   ],
   "parentVerification": {
@@ -7796,7 +7829,7 @@
     "asOf": "2026-11-01",
     "basis": "LiveGit/current05b all3CIgreen, actualliveA07ordinal14run, currentSource/implementation/acceptance evidence. Engineeringwork-completion estimates, not acceptance scores.",
     "overallPercent": 60,
-    "liveAgentsIncludingCoordinator": 2,
+    "liveAgentsIncludingCoordinator": 3,
     "maximumAgents": 8,
     "features": [
       {
@@ -7860,7 +7893,8 @@
     "blockedWaitingIncluded": false,
     "firmCalendarDate": null,
     "visual": ".local-artifacts/portal-rebuild/progress-20261101/portal-progress.html",
-    "scope": "Entireapproved95388/D01-D48/26screens unchanged; allmissingSource/account/delivery/agents/walkthrough/verification remain open"
+    "scope": "Entireapproved95388/D01-D48/26screens unchanged; allmissingSource/account/delivery/agents/walkthrough/verification remain open",
+    "liveAgentsNote": "Root + verified live A07 ordinal14 author + fresh T3-owned UTF8 inspector; all Sol/xhigh/default, max8; no nesting"
   },
   "sourceConsentWorkflow": {
     "date": "2026-11-01",

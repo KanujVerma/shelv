@@ -10,7 +10,7 @@ Kanuj has selected the launch Source consent workflow: advisor-recorded explicit
 
 ## active work and resource ownership
 
-Kanuj approved disjoint T3-owned work up to eight total agents including coordinator; no nested allocation. HistoricalPR2116a10f5bePortalCI failed13/2497; its2550readinesscasepassesLinux. ReviewedcurrentAppfixtureab5eea15/reportff5 andcleanCH6hookc856areadmittedlocallyforthe nextdraftCIhead. IndependentSource/TestbddPASS; authorfunctional19/19once/25contexts andexplicitcapture/CSPqualifications; Parent199/20/types/UI/main2232x15pass. Publishedsuccessor05b3270eALL3CIGREEN/Portal2509of2509/0skip; PRstaysdraft. A07R34177scopedSource/SSRPASS closesC1/C2; authorordinal14preparesactualAppbrowserharnessSource-only, noA07import. AllChromegrantsreturned; no native/Auth/DB/Storage/Source/financialauthority. Fullapprovedgoalremainopen.
+Kanuj approved disjoint T3-owned work up to eight total agents including coordinator; no nested allocation. Current source-only work has coordinator, W0 A07 harness author and W1 actual-byte UTF8 inspector (three total). HistoricalPR2116a10f5bePortalCI failed13/2497; its2550readinesscasepassesLinux. ReviewedcurrentAppfixtureab5eea15/reportff5 andcleanCH6hookc856areadmittedlocallyforthe nextdraftCIhead. IndependentSource/TestbddPASS; authorfunctional19/19once/25contexts andexplicitcapture/CSPqualifications; Parent199/20/types/UI/main2232x15pass. Publishedsuccessor05b3270eALL3CIGREEN/Portal2509of2509/0skip; PRstaysdraft. A07R34177scopedSource/SSRPASS closesC1/C2; authorordinal14preparesactualAppbrowserharnessSource-only, noA07import. AllChromegrantsreturned; no native/Auth/DB/Storage/Source/financialauthority. Fullapprovedgoalremainopen.
 
 RootAppV3/Historysourceisunchangedbythesetestfixes; Source modeld0f/planning09cbremainunactivated, M65providerblock/no-rerouteholds. ExistingR6/R7genuineness/visual/frame/CI/releaseboundsstillgovern.
 
@@ -80,7 +80,7 @@ All five [originals](INPUT_PROVENANCE.json), [D01-D48](APPROVED_DECISIONS.md), [
 
 Next: finish source corrections and NEW independent reviews, then native replay, V3/history/guidance actual App composition and browser/genuine acceptance. Complete canonical Commerce30, raw-source upload/consent/access/deletion/templates, account/contact/coverage/renewal/cancel/export, actual delivery/webhooks/inbox/retry, finite agent enrollment and all five shared Maya/private walkthrough stages. Full26-screen/secondary/V01-V17 acceptance, human/physical/legal/business prerequisites, full suites, exact-head CI and cutover/rollback remain open.
 
-Current engineering estimate, revalidated1 November2026: **about60% of the full approved implementation and required verification work is complete**. These are estimates of work remaining, not test pass rates or release scores. Current live capacity is coordinator plus one A07 harness author (two total), within the eight-agent cap. CI at published05b is all3green; that clears the tested checkpoint, not the unfinished product scope.
+Current engineering estimate, revalidated1 November2026: **about60% of the full approved implementation and required verification work is complete**. These are estimates of work remaining, not test pass rates or release scores. Current live capacity is coordinator, one A07 harness author and one pure UTF8 inspector (three total), within the eight-agent cap. CI at published05b is all3green; that clears the tested checkpoint, not the unfinished product scope.
 
 | Feature | Estimated complete | Remaining working time |
 | --- | --- | --- |

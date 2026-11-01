@@ -96,3 +96,8 @@ Current five active children are W1 isolated M63; W2 guidance ownership/recovery
 
 
 Current continuation: independent R4 genuine Source/evidence/Node9/all24 is scoped PASS, both resource grants returned. M63 R1 is FAIL with CB1/P1 and CB2-CB4; W1 queues forward correction after its six-file Source proposal. W0 owns canonical readiness deferral and a separate disjoint Commerce Auth/runtime lane; W2 owns feature day/ready correction through an approved deny-only shared seam; W3 owns two residual source fixes. Source and resource identity details are in TASKS/CURRENT_STATUS; handoff2026-10-31 provides the resume pointer. No unreviewed candidate is activated from a test count.
+
+
+## 1 November: pure source-byte inspection allocation
+
+W0 ordinal14 continues its actual-main A03/A07 harness SOURCE-only gate in3cffb79f. A separate T3-owned W1 worktree d28c4829 / t3/source-utf8-inspector starts atd87de5b6 for ONLY a new pure UTF8 inspector, matching tests and W1_SOURCE_UTF8_INSPECTION report. Both returned runtime and parent live descriptors confirm codex/Sol/xhigh/default; child must verify its own live identity before work. The full original input and Source R1-R5/response/readiness context are mandatory. Exact task/run/brief SHA and three-file claim are in TASKS. No nested work or Source4/SQL/native/Storage/Auth/browser/CLI/resource/Root-import permission. A 500000-byte candidate inspector bound does not enable a SourcePolicy format or narrow the full recording/PDF/image goal. All approvedSource roles, consent/Account wiring, actual trusted proof/inspection/storage/cleanup and independent admission remain separate. Three live agents including coordinator, within eight total.
