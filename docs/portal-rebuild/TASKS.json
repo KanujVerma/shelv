@@ -5562,10 +5562,18 @@
           "value": "default"
         }
       ],
-      "status": "starting",
+      "status": "completed",
       "frozenTarget": "b752b96051f28d1d35f50e391dc81034630b706c",
       "resourceBoundary": "OwnedApp/navigation/newtests/report only; W2/37f exactdeps separate; no resources/newrights/SourceAPI",
-      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/advisor-guidance-app-composition-brief.txt"
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/advisor-guidance-app-composition-brief.txt",
+      "terminalCommit": "0c447dfb55fa91678665e6f8393b2acc965afe25",
+      "ownedCommits": [
+        "c70b11e6d3e7b0724a779444d8eacb7a0f6110ad",
+        "547b72fa9e08bd8f2ebb3636c93c990ad44b784e",
+        "0c447dfb55fa91678665e6f8393b2acc965afe25"
+      ],
+      "reportPath": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f/docs/portal-rebuild/research/W0_ADVISOR_GUIDANCE_COMPOSITION.md",
+      "verificationResult": "Author SOURCE:32new/228App/500Guidance/raw45/Root80/transport256 and strict/UI; clean2246/15. Noresources/Parentactivation; NEWindependentreviewrequired"
     },
     {
       "role": "W3 CI19c passive live-hydrator observation/source-only",
@@ -5654,6 +5662,40 @@
         "returnRequired": "Prompt explicit UTC RETURN after normalteardown/exactownPIDstart/previewnoTab BEFORE postrunhash/report/Git; zero afterresourcecalls"
       },
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-two-case-chrome-brief.txt"
+    },
+    {
+      "role": "W7 independent actual advisor A07 App composition R1",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-advisor-guidance-composition-review-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-advisor-guidance-composition-review-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-advisor-guidance-composition-review-20261101-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "baseCommit": "73cc850a6a60f0c25595b487e4949e2ae3d1f2a8",
+      "frozenTarget": "0c447dfb55fa91678665e6f8393b2acc965afe25",
+      "allocatedImports": [
+        "c70b11e6d3e7b0724a779444d8eacb7a0f6110ad",
+        "547b72fa9e08bd8f2ebb3636c93c990ad44b784e",
+        "0c447dfb55fa91678665e6f8393b2acc965afe25"
+      ],
+      "resourceBoundary": "SOURCE/SSR/finite synthetic HTTP only; sole report write. NO browser/preview/process/native/Auth/DB/Storage/provider/R9/resources. W3 sole Chrome grant separate.",
+      "reportPath": "docs/portal-rebuild/research/W7_ADVISOR_GUIDANCE_COMPOSITION_R1.md",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-a07-composition-review-r1-brief.txt",
+      "briefChars": 116092,
+      "context": "FULL original95330chars+originalA07brief7064+priorW2G1-G8/AppCH1-CH6 summaries; mandatoryfullR1-R6/W2andR1-R7/Appresponses/readhashledger. Sourceprivacy/financialproviderblock untouched.",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-11d1108f",
+      "branch": "t3/review-a07-composition",
+      "briefSha256": "4c699fa3c4080b5bb98c80f4592035958fe5e2c995e4b18c3f51afc812e665cc"
     }
   ],
   "parentVerification": {
