@@ -4,7 +4,15 @@ const portal=fileURLToPath(new URL('../',import.meta.url)),origin='https://shelv
 export const browserArtifacts=path.resolve(process.env.W3_GUIDANCE_BROWSER_ARTIFACTS??path.join(portal,'../../.local-artifacts/portal-rebuild/w3-v3-guidance-browser'));
 export const guidanceChromeGrant={phase:'W3_V3_GUIDANCE_SYNTHETIC_CHROME',workspace:path.resolve(portal,'../..'),explicit:true,reference:process.env.W3_GUIDANCE_CHROME_GRANT??'coordinator-w3-v3-guidance-synthetic-chrome-9c5cac1b-20261031'};
 export const ownedChromePids=new Set();const liveBrowsers=new Set();
-function ownDescendants(){const rows=execFileSync('ps',['-axo','pid=,ppid=,comm='],{encoding:'utf8'}).trim().split('\n').map(line=>{const m=line.trim().match(/^(\d+)\s+(\d+)\s+(.*)$/);return m?{pid:+m[1],ppid:+m[2],command:m[3]}:null;}).filter(Boolean);const ids=new Set([process.pid]);let changed=true;while(changed){changed=false;for(const r of rows)if(ids.has(r.ppid)&&!ids.has(r.pid)){ids.add(r.pid);changed=true;}}return rows.filter(r=>ids.has(r.pid)&&/Google Chrome|Chromium/.test(r.command));}
+function ownProcessRows(){
+ const ids=new Set([process.pid]),pending=[process.pid];
+ while(pending.length){const parent=pending.shift();let children='';try{children=execFileSync('pgrep',['-P',String(parent)],{encoding:'utf8'});}catch(error){if(error.status!==1)throw error;}
+  for(const value of children.trim().split(/\s+/)){const pid=Number(value);if(pid>0&&!ids.has(pid)){ids.add(pid);pending.push(pid);}}
+ }
+ const rows=execFileSync('ps',['-p',[...ids].join(','),'-o','pid=,ppid=,lstart=,comm='],{encoding:'utf8'}).trim().split('\n').map(line=>{const m=line.trim().match(/^(\d+)\s+(\d+)\s+([A-Za-z]+\s+[A-Za-z]+\s+\d+\s+[\d:]+\s+\d+)\s+(.*)$/);return m?{pid:+m[1],ppid:+m[2],started:m[3],command:m[4]}:null;}).filter(Boolean);
+ return rows;
+}
+function ownDescendants(){return ownProcessRows().filter(r=>/Google Chrome|Chromium/.test(r.command));}
 const baselineRoot=new URL('../test-fixtures/guidance-baselines/',import.meta.url);
 const baselineManifestHash='c2145f3917cf83a26cd78915eda569332337999ef1fe81d408e2e809dc9ff3bf';
 /** Immutable test input only. The reader seam lets pure tests observe fail-closed file errors. */
@@ -30,7 +38,7 @@ export async function prepareGuidanceBrowserSource({entry}={}){
 export async function closeGuidanceBrowsers(){await Promise.all([...liveBrowsers].map(b=>b.close()));liveBrowsers.clear();}
 /** Requires the actual new explicit coordinator grant; no native/Auth resources. */
 export async function openGrantedGuidanceBrowser({grant=guidanceChromeGrant,view,respond,sessionReply,route='/plan?routine=morning',width=1440,reducedMotion='no-preference',reviewEnabled=true,initialMode='client',entry}){
- assert.equal(grant.phase,'W3_V3_GUIDANCE_SYNTHETIC_CHROME');assert.equal(grant.workspace,path.resolve(portal,'../..'));assert.equal(grant.explicit,true);assert.ok(['coordinator-w3-v3-guidance-synthetic-chrome-9c5cac1b-20261031','coordinator-w3-v3-g1-g2-browser-71c682d7-20261031','coordinator-w3-v3-current-cookie-target3-synthetic-chrome-20261031'].includes(grant.reference));
+ assert.equal(grant.phase,'W3_V3_GUIDANCE_SYNTHETIC_CHROME');assert.equal(grant.workspace,path.resolve(portal,'../..'));assert.equal(grant.explicit,true);assert.ok(['coordinator-w3-v3-guidance-synthetic-chrome-9c5cac1b-20261031','coordinator-w3-v3-g1-g2-browser-71c682d7-20261031','coordinator-w3-v3-current-cookie-target3-synthetic-chrome-20261031','coordinator-w3-ci-budget-diagnostic-synthetic-chrome-65363815-20261101'].includes(grant.reference));
  assert.equal(liveBrowsers.size,0,'serial browser custody');
  const files=await prepareGuidanceBrowserSource({entry}),{chromium}=await import('playwright-core');const browser=await chromium.launch({channel:'chrome',headless:true,args:['--no-proxy-server','--disable-background-networking','--disable-quic','--host-resolver-rules=MAP * ~NOTFOUND']});liveBrowsers.add(browser);for(const row of ownDescendants())ownedChromePids.add(row.pid);
  let context;
@@ -51,4 +59,4 @@ export async function openGrantedGuidanceBrowser({grant=guidanceChromeGrant,view
  await page.goto(origin+route,{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>typeof window.__guidanceHarness?.setMode==='function');return result;
  }catch(e){await context?.close();await browser.close();liveBrowsers.delete(browser);throw e;}
 }
-export function ownBrowserInventory(){const current=ownDescendants();return{at:new Date().toISOString(),nodePid:process.pid,trackedChromePids:[...ownedChromePids],liveBrowsers:liveBrowsers.size,ownChrome:current};}
+export function ownBrowserInventory(){const current=ownDescendants();return{at:new Date().toISOString(),nodePid:process.pid,trackedChromePids:[...ownedChromePids],liveBrowsers:liveBrowsers.size,ownChrome:current,ownedProcesses:ownProcessRows()};}

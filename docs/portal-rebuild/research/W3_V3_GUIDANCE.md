@@ -637,6 +637,64 @@ The helper now reads four **complete byte-exact** historical source fixtures und
 
 Own evidence root `.local-artifacts/portal-rebuild/w3-v3-ci-portability-diagnostic/`: full CI log/two failure blocks, controlled RED, isolated metadata,6/5/5 GREEN logs and full source-target comparison. Commands use explicit Node22 PATH: `node --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-plan-guidance-baselines.test.mjs`; unchanged packaging command from both cwd as in ordinal8. Child-only GIT_DIR is used only for controlled absence. No foreign fixture execution/write or history/network availability assumption. No Chrome has been launched at this A checkpoint. The separately granted bounded budget diagnostic follows only after source preflight; its results are not inferred from this packaging correction.
 
+## Ordinal9 B: bounded budget diagnostic and returned custody
+
+**A source/fixture/report commit is11dd78ceabbcc3010ffd1b413d6d034fecbb4c1c.** Authoritative current task ID was subsequently supplied by Parent: **`node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci-baseline-history-and-budget-diagnosis-20261101`**. The ordinal9 child run/thread above remain separate, with no reused older handle. Initial/final both live catalog/configuration checks verify codex/gpt-6.1-sol/xhigh/default and descriptors; final project/default/all8 pins and actual Node22.23.0 remain exact. No nested work or dependency/install/config/flag change.
+
+**Fresh author Mac result: unchanged first2550 case1/1, then one observed unchanged repeat1/1. CI failure is not reproduced.** No other budget case, adjacent case,117 suite, whole portal package, Root suite or CI was run here. Both runs use actual installed Chrome, retained ApplicationSession/current cookie/rawReview5/Root/controller/React and finite intercepted synthetic HTTP; no successful port, current/permission override, response alteration, fake publication, clock/CPU throttle, new wait or timer in the test path. Original test source, semantic assertions,5000ms notice wait, fixture and production875 remain unchanged.
+
+### Source comparison and method
+
+Before launch, compared full Git blobs against parent **1252227491a547f194ff7a14fe30879ab2355a95**: **86 source/config/test inputs**,82 equal and4 explicitly qualified differences. All named plan production, Root4 SDK96, sharedc26/Ef7,17 authc9, retained entries and guidance/budget fixtures match. Additional deltas were not imported: package test script adds serial concurrency (diagnostic already uses explicit serial argv); ports adds advisor dependency actions/read classification (actual createClientPorts body is byte-exact and no Plan actions are invoked here); transport adds only a guidance channel type member (operation bodies exact); PortalRebuildValues adds two legacy Plan error classifications (all78 observed POST replies200 use strict Review, not legacy Plan errors). This is bounded path correspondence, not an assertion that the entire parent checkout or browser platform is identical. Full path/blob/SHA/byte details and delta explanations are in PARENT-TARGETS.json.
+
+First browser tool was preview_status: no tab. The explicitly authorized repository installed-Chrome finite workflow was used; no preview takeover or native/Auth/genuine resources. The helper admits only the one new reference **`coordinator-w3-ci-budget-diagnostic-synthetic-chrome-65363815-20261101`** in addition to retained historical metadata. Every actual call used this exact new grant/workspace. Recognizing an old reference is not renewed permission. To honor the no-global-process-call boundary, helper custody collection now traverses only its own descendant PIDs via pgrep -P and reads those exact PIDs with ps -p; it records start identities/owned workers. No browser-context, port, source predicate or application behavior change.
+
+Baseline command, with explicit22.23.0 PATH and new W3_GUIDANCE_CHROME_GRANT, runs the exact original file through `node --experimental-strip-types --test --test-concurrency=1 --test-name-pattern='^2550 actual declared scopes paginate completely without any unbounded detail preload and retain all50 paused facts$' apps/portal/tests/rebuild-plan-guidance-budget-browser.test.mjs`. Own ignored wrapper records only child/start-scoped inventory and normal closure. The baseline precedes observation. The single observed repeat adds a Node preload that observes the actual browser's request/response/finished/console/DOM events, preserving original commands, responses, predicates and waits. Read-only DOM samples and response-body captures run on asynchronous observation branches, not as readiness gates. The existing normal teardown captures the actual body and screenshot.
+
+An initial observer preload used one incorrect relative import and failed **before Chrome launch** with ERR_MODULE_NOT_FOUND; the wrapper then lacked an expected inventory file. Raw source/log are retained as observer setup faults, not a product RED or a third browser attempt. Correcting that own path allowed the sole actual observed repeat. No retry-until-pass or extra browser case was used.
+
+### Actual observations and remaining question
+
+| Measured check | Baseline / observed repeat |
+| --- | --- |
+| Case outcome / skips |1/1 /1/1,0 skips |
+| Current strict plan reads |1 /1 |
+| Complete manifest page reads |26 /26 |
+| Detail reads / unique IDs |51/51 /51/51, both below100 |
+| Canonical paused use states / instruction refs |50/2550 /50/2550 |
+| Required review notice in captured body |1 /1 |
+| Before-click detail reads |0, unchanged original assertion /0 observed |
+| Observed POST statuses / completed detail replies |78 actual200 replies /51 details finished |
+| Root/page/network/observer errors in actual repeat |none |
+
+Both screenshots are real1440x960 PNGs,168887 bytes each, identical SHA256 **b09bfdb807c0fe25013266fd0dd2310e6207a30721f85d48421ac2a6b77c3060**. They and the exact captured body/calls/view reside in the budget-original/ and budget-observed/ subdirectories. Each run retains all source facts; the opened overlay duplicates one paused fact in DOM, so the late DOM count51 is not a51st canonical product or report. No Care/decision/financial write occurs.
+
+**Observed precondition counterexample:** at the actual published-guidance click, the capture listener sees loading0 and50 paused DOM facts, while Node event ordering shows only8 manifest requests/7 finished of the eventual26 and0 details. The first-manifest-finished DOM sample also has loading0 and no review notice. Thus absence of `[data-tone="loading"]` is not proof that the background manifest is complete in this paused routine. Source GuidanceBoundary/hydrator loads the manifest independently; the opened product scope then needs its matching details, and GuidanceDirections withholds the aggregate until its relevant states finish. No current directions or unqualified continuation leaks while pending.
+
+In the observed Mac run, the last manifest finishes about**750ms after the click**; first-detail-request to last-detail-finished is**2486ms**, and click-to-last-detail-finished is**3344ms**. The first-detail DOM sample is still loading; the51st-finished sample has loading0 and the required notice. These event/observation timings are not a measurement of the exact CI wait start or proof of a Linux/server timing cause. The Mac positives are **non-sensitive to the reported CI timeout**; no production/performance fix or source-scope expansion is justified from them alone.
+
+Smallest proposed test-precondition alignment for Parent review, **not implemented or authorized here**: observe the complete manifest's actual terminal response/chain before opening the51-detail scope, while retaining the existing5000ms post-click notice wait and all original count/factual assertions. That would align the pre-click readiness signal with its intended asynchronous work; it does not establish that CI's51-detail path completes within the current wait. Before any test or production correction, Parent needs the failing CI body/screenshot, source head/hash, manifest/detail commands and response-finished ordering/status, Root/page errors and cancellation/teardown state. Safe synthetic-artifact upload is Parent-owned. No timeout/predicate/fixture/budget change, sleep/retry or load-as-cause assertion is made.
+
+### Custody, hashes and terminal scope
+
+Both cases close session runtime/controller/navigator, listeners, context and browser normally. **EXPLICIT SOLE RETURN delivered2026-11-01T02:17:25UTC**, grant `coordinator-w3-ci-budget-diagnostic-synthetic-chrome-65363815-20261101`, workspace `/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d`, before final report/hash/Git work. Final exact16 owned/tracked PIDs checked with ps -p/lsof -p are absent: **Chrome[]/Node[]/esbuild[]/workerd[]/listeners[]**; preview available:false/tabId:null. Unrelated CUA/Electron/user/Root processes were not inspected or killed, and no global-empty claim is made. No browser/preview/process/resource call follows that return; the later Parent task-ID message did not reacquire custody.
+
+Evidence root remains `.local-artifacts/portal-rebuild/w3-v3-ci-portability-diagnostic/`. **111-file EVIDENCE.json SHA2564374b7a62a06e03052392c5007f39ad11d631e4331e0ba11e0eac0f0dba6e6b2**, excluding itself/report/checkpoint and disposable bare-store internals. WIRE-PROVENANCE hashes all156 actual POST command wires across both cases;78 observed response bodies are retained with byte hashes in the manifest. The four tracked exact historical fixtures total58312 bytes; their full original commits/paths/blobs/SHA/counts remain in the pinned manifest, verified again after execution. RUNTIME-CHECKS records actual task/run/thread/options/commands, SOURCE-CHECK/FROZEN-SOURCE preserve inputs, and final custody receipts are durable.
+
+| Artifact | SHA256 |
+| --- | --- |
+| absent-history original packaging RED4/1 |64eeb1879235b720d6d29e0a84fccb890752ef5bfe3b80d31aa1c79976916142 |
+| baseline source tests6/6 |ffd806b2cf6f007b62b6ba436d3746bef1ae7eb37d4500a58caf1bc38ef785f0 |
+| original first2550 pass |1d59f9c782caca5971f2f407ff66729faa7b38684c8c7addfca941177590d7c9 |
+| observed repeat pass |cc2819a7f80978ded0d961f7938c77f22838c2710ff84e309a747a69e9c4dc09 |
+| BROWSER-OBSERVATIONS.json |ee5d46d0636369e7344c0714e3f4b918f9cc6e6e777a171460a70704166bdf27 |
+| PARENT-TARGETS.json |ef9248126a4fe84ab4297cffd6e726eb480c4f8f5a9fc291a45a51a2bf7d3376 |
+| WIRE-PROVENANCE.json |a10a4a9af242d7e51a4c2f8e03e4a753bc9cfbb183f6fc30516a154496aa0d38 |
+| final owned inventory |6dc51764a67566ed5d01d9ef352af65b890f7d9d77fa8e16b8b6c737fe11f404 |
+| explicit return receipt |6ebc71ac35930be048bf23bb7d0bea1f5871032401e01da14d73b41826fc93e8 |
+
+Only A's authorized helper/new pure test/exact fixtures/report plus B's resource-control helper metadata/report changed. No production TS/TSX/Auth/UI/Root/SQL/package/workflow/App/history/guidance-other-family edit, imported parent deltas, W1M65/RootR9/foreign fixture/native/Auth/DB/Docker/provider/credential/source-storage access or source-right expansion. Original875 R2 corrections, source74/122/25 and historicalR3/21/117/CI failures remain attributed; those broad suites, strict frontend/session/build/Root install, fresh exact-head CI and independent review are not rerun or silently upgraded by this narrow diagnostic. No self-acceptance, full App/genuine/backend/financial/release/full-goal claim, push/PR/merge/deploy/live action or resource wait loop. The source handoff is terminal.
+
 Selected SHA256 receipts:
 
 - select-zoom-crossowner.mjs: f1d7826309bcfa208cfba3030f278e6cf6d5ea8b7d8fa25ed4d2c99ae75c4fef
