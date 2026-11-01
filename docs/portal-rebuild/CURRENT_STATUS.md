@@ -1,10 +1,12 @@
 ## Current bounded execution and source reviews
 
-A07 harness R3 is scoped source PASS. Normal preflight at clean c760 validates the complete execution lease. New W0 ordinal18 has the sole exact-task synthetic Chrome grant for ten serial contexts and 18 captures, with the reviewed driver and ancestry-only supervisor. Browser results remain pending. This is actual App with closed synthetic HTTP, excluding Vault/provider/SQL/Auth and the blocked Guidance/M65 audits. Exact grant and return requirements are in TASKS.json.
+Kanuj has selected [continued static final export](DECISION_ADDENDA.md#static-final-export-after-the-read-only-window-1-november-2026) from Account after the 30-day care read-only window. The policy question is settled; the authenticated public-only final-export producer, complete basis and download flow remain unimplemented. This does not extend ongoing care or raw-source access.
 
-W6 SAC3 source0096 plus the separately pinned fixture45f are terminal. The author reports tracked64/64, overlapping87/87 and strict zero diagnostics. The [exact input pin](research/COORDINATOR_SAC3_FIXTURE_PIN.md) preserves raw failures and assertion identities. NEW independent Account R4 is active before any model pin or Root import. Owner-policy candidate1a7f reports59/59 and strict/SSR/build passes; NEW independent R1 is active. It is one unmounted existing-API-backed A08 slice, not full permissions.
+A07's one granted invocation stopped on its first exact-text harness assertion: the saved paragraph includes the comfort label. Zero cases completed, nine remain unrun; no missing-report production defect established. Custody returned at16:05:57Z with11 observed PID/start identities absent, no observer/cleanup errors and preview noTab; sampled-only limits and old137 cleanup uncertainty remain. The later provider turn failed during saved-artifact report finalization. No grant remains active, and no post-return resource calls are authorized.
 
-Four active agents including coordinator were verified at allocation. All use Sol/xhigh/default; no nesting. Published b89 remains the latest exact green CI head. Local coordination/report work is not claimed as that CI head, and the full approved goal remains open.
+Owner-policy R1 report251e/importc5a finds OP1/P2: a newer-policy refresh strands the preserved edit. The source correction's ordinal2 provider turn failed after reproducing the defect and writing a new test; no fix or terminal acceptance is claimed. Account R4 report59ae independently verifies SAC3 and its exact fixture pin, then finds SAC4/P2 at the least admitted UUID. Both remain unactivated; separate source corrections/reviews are required. Generic provider failures are distinct from the earlier explicit security-gated Guidance/M65 verification, which remains excluded.
+
+Published b89 remains the latest exact green CI head. Local coordination/report work is not that CI head, and the full approved goal remains open.
 
 ## Current checkpoint and next connected slices
 
@@ -12,7 +14,7 @@ Publishedb89e96f3 nowALL3CIGREEN. Portal2509/2509/0fail/skip/cancel plusalllater
 
 H2authorc760 JSONmetadata correction+declaredParentpackage/depprojection andSAC2d3+trackedfixture7c931 areterminal, source-only. NEWA07R3 in62aa237b andAccountR3 inb4061bfbactive; no browsergrant/pin/Rootimplementationimport. Accountordinarytracked53 now53/53 withsame49predicates/6helpers; historicalrawintermediatefailurespreserved.
 
-All26screen sourceinventory e970 isimported98ea; manyRootOrders/Account/Notifications/Maya/permissions/routesareunavailableorcandidate-only, notcompletefromparser/componentpresence. NextconnectedimplementationrecommendationsareAccount/service/export andnotificationinbox/delivery; trustedproducers/finiteinterfaces/migration+transportcompositionrequired. Oneexport-expirypolicyquestionawaitsKanuj; independentprofile/address/cancelcanproceed. ProviderblockedGuidance/M65checksremainunaccepted/noreroute.
+All26screen sourceinventory e970 isimported98ea; manyRootOrders/Account/Notifications/Maya/permissions/routesareunavailableorcandidate-only, notcompletefromparser/componentpresence. NextconnectedimplementationrecommendationsareAccount/service/export andnotificationinbox/delivery; trustedproducers/finiteinterfaces/migration+transportcompositionrequired. Finalexport-after-windowpolicyisnowsettled; actualAccount/service/exportproducersstillrequired. ProviderblockedGuidance/M65checksremainunaccepted/noreroute.
 
 ## Latest Source work, 1 November2026
 

@@ -6648,7 +6648,7 @@
       "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-owner-policy-source-r1-brief.txt",
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-owner-policy-source-review-20261101-r1",
       "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-owner-policy-source-review-20261101-r1",
-      "status": "running",
+      "status": "completed",
       "model": "gpt-6.1-sol",
       "providerInstanceId": "codex",
       "options": {
@@ -6657,7 +6657,10 @@
       },
       "baseCommit": "f2241b5ed9fe6da50cd458b55614a7f734094bb3",
       "authoritativeTaskIdForwarded": true,
-      "briefSHA256": "fe5c355f3098e9d63d7d9f7a64133f6d4ef2ae6c8f36a35559be7b6b6f74b34f"
+      "briefSHA256": "fe5c355f3098e9d63d7d9f7a64133f6d4ef2ae6c8f36a35559be7b6b6f74b34f",
+      "reportCommit": "251e3667ff0a7e39db33fbed81b4723c995bfe66",
+      "parentReportImport": "c5a054aac970a97e48bf8faa1987d8d4818472c9",
+      "verdict": "SPEC/qualityFAIL OP1/P2: newer policy refresh preserves unsent work in idle, Save/Reapply cannot proceed; author correction separate."
     },
     {
       "role": "W7 independent Account consent SOURCE R4",
@@ -6668,7 +6671,7 @@
       "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-source-account-r4-brief.txt",
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-source-account-contracts-review-20261101-r4",
       "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-source-account-contracts-review-20261101-r4",
-      "status": "running",
+      "status": "completed",
       "model": "gpt-6.1-sol",
       "providerInstanceId": "codex",
       "options": {
@@ -6677,7 +6680,9 @@
       },
       "baseCommit": "f2241b5ed9fe6da50cd458b55614a7f734094bb3",
       "authoritativeTaskIdForwarded": true,
-      "briefSHA256": "6c52dbcb1a96fc80f0762b53b77bb10325e194611fa42ace418b3998e44ecd50"
+      "briefSHA256": "6c52dbcb1a96fc80f0762b53b77bb10325e194611fa42ace418b3998e44ecd50",
+      "reportCommit": "59aecd84dfa7d802ade605e7d535d002db73df45",
+      "verdict": "SPEC/qualityFAIL SAC4/P2: cursor1 before least valid canonical UUID has no representable earlier identity. SAC3/pin verified; tracked64/overlap87/strict0 before finding, independent29344agreements; no activation."
     },
     {
       "role": "W0 finite actual A07 synthetic Chrome execution",
@@ -6690,7 +6695,7 @@
       "scope": "One exact10serialcontext18capture actual-main synthetic HTTP phase; sole Chrome grant below, no R9/provider/Vault/SQL/Auth or blocked-work reroute.",
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-a07-finite-browser-execution-20261101",
       "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
-      "status": "running",
+      "status": "failed",
       "model": "gpt-6.1-sol",
       "providerInstanceId": "codex",
       "options": {
@@ -6698,7 +6703,10 @@
         "serviceTier": "default"
       },
       "baseCommit": "c76057a91497e1f4df4c897d641e751532b546cb",
-      "authoritativeTaskIdForwarded": true
+      "authoritativeTaskIdForwarded": true,
+      "runtimeOutcome": "ONE actual invocation exit1 first entry-direct exact-text harness mismatch;0complete9unrun; RETURN2026-11-01T16:05:57Z, all11 observed PID/start identities absent, observer/cleanup0; no production defect established.",
+      "providerOutcome": "Provider turn failed while saved-artifact report-only finalization; raw activity4147 has generic error, no accepted terminal report.",
+      "grantState": "RETURNED-consumed"
     }
   ],
   "parentVerification": {
@@ -8602,11 +8610,11 @@
     "evidence": ".local-artifacts/portal-rebuild/ci-b89e96f3-pass/"
   },
   "accountExportPolicyQuestion": {
-    "state": "AWAITING_USER_CLARIFICATION",
-    "question": "After30daycareplan/historywindow, keep last-entitled staticexport inAccount or closewithwindow?",
-    "recommended": "Keep staticexport separate from continuing support/history",
-    "dependentWork": "No beyond-windowexportpolicyuntilanswer; profile/address/cancellationworkindependent",
-    "scope": "D38/read-onlywindow/public-onlyexportcontent unchanged, no rawSourceexportgrant"
+    "state": "DECIDED_BY_KANUJ",
+    "answer": "Keep the static final export available after 30 days",
+    "decision": "DECISION_ADDENDA.md#static-final-export-after-the-read-only-window-1-november-2026",
+    "effect": "Account keeps authenticated own-client download of the static last-entitled plan and applicable instructions after the care read-only window. No ongoing care/history extension, new care writes, private notes or raw-source export.",
+    "implementation": "Trusted basis/producer/serializer/download/UI still required; policy clarification unblocked."
   },
   "ownerPolicyDependencyInput": {
     "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/apps/portal/node_modules",
@@ -8650,10 +8658,12 @@
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-a07-finite-browser-execution-20261101",
       "executionSHA256": "b1e9effa804b3b46e145fa0dfdb1a731c32c30af5db8c8a5297ed26317b669ff"
     },
-    "status": "issued-active",
+    "status": "RETURNED-consumed",
     "sourceHead": "c76057a91497e1f4df4c897d641e751532b546cb",
     "driverSHA256": "e714827ec98e577caff68853ac17d4d4b8fa4a96a19fe170c28c34c0b89b0b1a",
     "supervisorSHA256": "1197b79d86dfc606c260c7f41aeb20a13a3f8d01e7da530eb3a6900eccb75a84",
-    "limit": "ONE invocation;10serialcontexts18captures; first material fault STOP; exact own observed PID/start final inventory+preview then prompt explicit UTC RETURN before hashes/report/Git; ZERO resource calls after RETURN; synthetic HTTP only."
+    "limit": "ONE invocation;10serialcontexts18captures; first material fault STOP; exact own observed PID/start final inventory+preview then prompt explicit UTC RETURN before hashes/report/Git; ZERO resource calls after RETURN; synthetic HTTP only.",
+    "returnedAt": "2026-11-01T16:05:57Z",
+    "outcome": "First-case exact-text harness mismatch, no retry;0completed9unrun;11observedidentities absent/observer0/cleanup0/previewnoTab; sampledonly/old137cleanupunknown; later provider failure in report finalization."
   }
 }

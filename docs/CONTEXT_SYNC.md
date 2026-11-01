@@ -1,3 +1,7 @@
+## 2026-11-01 final export availability selected
+
+Kanuj selected continued static final-plan/instruction download from Account after30days. [Canonical addendum](portal-rebuild/DECISION_ADDENDA.md#static-final-export-after-the-read-only-window-1-november-2026) settles the prior question; interactive care/history and raw-source rights are unchanged. Actual trusted export basis/producer/download still pending. A07 custody returned16:05:57Z after first harness exact-text failure; no completed browser case/production defect claim, no active grant. Later A07 report and OP1 correction provider turns ended with generic failure; saved state must be reconciled before continuing. AccountR4 finds SAC4 intrinsic UUID-domain capacity; models remain unactivated.
+
 ## 2026-11-01 current Account/owner-policy reviews and A07 execution
 
 SAC3 source0096 and exact fixture45f are terminal; author64/64/overlapping87/87/strict0, raw failures preserved. [Coordinator input pin](portal-rebuild/research/COORDINATOR_SAC3_FIXTURE_PIN.md) changes no API or rights. New independent Account R4 and owner-policy R1 are active, implementations unimported/unmounted. A07 ordinal18 has the separately bound sole synthetic Chrome grant after successful source lease and supervisor review; finite browser results pending, no genuine provider/SQL/Auth claim. Four active including coordinator at allocation, all Sol/xhigh/default; no nesting or blocked Guidance/M65 retry. Full goal remains open. TASKS.json records exact tasks/grant/return boundaries.
