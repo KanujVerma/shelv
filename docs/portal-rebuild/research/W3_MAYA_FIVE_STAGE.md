@@ -110,3 +110,64 @@ Evidence home: own ignored `.local-artifacts/portal-rebuild/maya-five-stage/`. `
 **Parent next:** commission a NEW independent Sol/xhigh review of these exact owned commits and counterexamples before activation; mount only after admission. Parent owns shared shell/provider/controller lifetime and `/maya` URL/history integration. Fresh explicit grants are required for actual DOM/keyboard/focus/a11y, 1800/1440/laptop/390/320 screenshots and frame comparison, human comprehension, connected/genuine and release work. No representative-human acceptance is claimed.
 
 No browser/preview, OS process inventory, native fixture, PG/DB/SQL, real Auth/Storage, Docker/SQLite, external fetch/provider, private Source or blocked Guidance-private-return/M65 check was run. Retained HTTP/session tests are explicitly synthetic; they are not real financial/Auth evidence. Root full suite/types/Expo, full portal/browser suites, real backend migration rehearsal, exact-head CI and production actions are unrun for this slice. No publication, message/email, upload, money, purchase, fulfillment, role change, push/PR, merge or deploy occurred. The candidate does not close full D01-D48/V01-V17 acceptance.
+
+## MF1/P2 correction, 1 November 2026
+
+**Author source correction only, pending NEW independent R2.** R1's specification/completeness FAIL and correctness/quality FAIL remain historical, unchanged evidence. This correction does not self-accept the full tour or activate `/maya`.
+
+The bounded follow-up starts from clean `4535b283c0e1223b641647cbd3461eed588884b0` in the same worktree/branch. Authoritative NEW task ID, explicitly forwarded after the initial gate: `node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw3-maya-reopen-stage-mf1-source-fix-20261101`. The backing thread remains the original thread named above; the actual active run is `run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w3-maya-five-stage-source-20261101-r1:ordinal:2`, ordinal 2. Neither the old task ID nor a run/thread ID was substituted for this NEW task ID.
+
+Initial and final LIVE capabilities/descriptors, self configuration and actual Parent configuration confirm `codex/gpt-6.1-sol`, `reasoningEffort=xhigh`, `serviceTier=default`. The actual T3 project `ac0af19d-d404-4f53-a870-02bfd76c2a80` has `defaultModelSelection=null`; that is distinct from the repository/global Codex defaults and eight role files, which pin Sol/xhigh. No project/default/role/capacity setting was changed. Explicit Node remains `/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node`, `v22.23.0`, with actual TypeScript `6.0.3`. No child or resource was acquired.
+
+### R1 input and reproduced defect
+
+Before the source edit, read and copied the FULL `97d111d023ce341c1c00b500f5636a433fcac33c` report from reviewer worktree `t3-4ca6ee4f`, verified its physical bytes against the Git object, and preserved the full task context, original probes, SSR HTML, logs, original author evidence and relevant source/guards. The report is 21,408 bytes, SHA256 `99ece23c4479e7497530c97fc0ce6686d1235c87f9c8df6765aaf39b63c7d197`. All 96 available review files were copied read-only; every one of the original 92-entry review EVIDENCE records matches its hash and length. The approved originals, including the 95,388-byte input, remain exact. No private client/Source input was read.
+
+Both original probe files were executed byte-for-byte unchanged against old and corrected source; their assertions were not rewritten:
+
+| Probe | Exact script SHA256 | Old replay | Corrected replay |
+| --- | --- | --- | --- |
+| `reopen-probe.mjs` | `9a1a1937cbf0ba63a5f455bc1384321d5e7827d4035daa710e28ec38bf8324cf` | `old-probe1-1793563632893.log`, exit 1 | `new-probe1-1793563827701.log`, exit 0 |
+| `reopen2-probe.mjs` | `3e1f73f9700279f650138b1dcdbfade2b17be0bd3882f39777bc14d27d2b93e9` | `old-probe2-1793563633435.log`, exit 1 | `new-probe2-1793563828229.log`, exit 0 |
+
+The unchanged failure is `resume must restore the page belonging to the retained stage`. Stages 1-3 remain positive controls. Stage 4 formerly reopened with `stage=4/page=plan`, losing its follow-up page; stage 5 similarly lost its next-step page. Corrected replays retain stage 4/5 and restore `follow-up`/`next-step`, including the exact unique content marker. The original first probe's broad stage-5 phrase was non-unique; its original result and the second probe's exact-heading result remain distinct. Original R1 raw logs retain SHA256 `ec160807cdddac3215c31043f5c9650c44cc00b40339b7a6812cf1a2def1f60f` and `f2899a0d2e78211094daac3282903fdccc13e2eab2e06e3de6014f1d69b2d990`. The formerly unrun adjacent Explore path is now explicitly exercised, rather than attributed to R1.
+
+### Minimal correction and coverage
+
+Only `controller.ts` changes in production: `reopen()` opens the guide and calls existing `selectStage(stage)` instead of emitting the inconsistent state. The existing stage entry restores the selected stage's page and canonical plan route, and retires the exploratory predecessor. Stage number, lease, transient memory, choices, reported use, receipt state and generation remain unchanged. Replay still deliberately returns to stage 1 while retaining demo data; Reset alone clears demo data and advances generation. No model helper, public API/type, renderer, route codec, transport, client-mode guard, source data, live port or authority extension was needed.
+
+The NEW `rebuild-maya-five-stage-reopen.test.mjs` observes the actual native Button props emitted by unchanged shared wrappers, returns the original React elements and invokes original callbacks. Actual SSR uses MayaWalkthrough, ClientPlan, NavigationProvider and OverlayProvider. There is no replacement Button/hook, fake current-owner predicate or successful live operation port. This is pure SSR/callback evidence, not DOM interaction, mounted lifecycle, focus or accessibility proof.
+
+The initial new regression is meaningful **RED 12/23**, with 11 page/route/reentrant-restoration failures. The first corrected run is **22/23** because a newly authored assertion incorrectly expected the top-level evening plan's semantic Back parent to remain evening. The unchanged route codec explicitly defaults a top-level plan's parent to morning. That test expectation was corrected against the inspected contract; stage 3 itself still must restore the evening target. Both test versions and raw results remain. No original test or R1 predicate was changed. The corrected 23/23 suite then expanded the same disposal and reentrant checks to all five stages, yielding **31/31**.
+
+Those 31 cases cover all five exit/explore/collapse/reopen combinations, chosen page/content/route restoration after real product/evidence exploration, preserved sample choice/receipt/unknown Start/stop/transient memory, original product/evidence Back, guide forward/back and finish, Replay versus Reset, captured launcher/navigation/port use after disposal, another-demo isolation, and reentrant explicit exit during reopen notification. The reentrant callback observes a fully restored target, and its later explicit exit remains final. Original shared memory/session/late-result guards are unchanged.
+
+### Actual checks and retained qualifications
+
+Every command uses the explicit Node above and the copied global network-denial preload. Each real exit prints before a unique read-only log is written. Source/pure/SSR/finite synthetic HTTP and compiler activity only; no server/browser/native/DB/resource execution. All successful groups below have zero failure/skip/cancel.
+
+| Check | Actual result | Own MF1 log |
+| --- | --- | --- |
+| New reopen regression | 31/31, exit 0 | `new-reopen31-1793564121479.log`, SHA256 `41165197e125359692d1a6df33e1d42e52dd31c7fdb880403ad1c97b198238fa` |
+| Unchanged original candidate suite | 25/25, exit 0 | `retained-candidate25-1793563960450.log` |
+| Retained guidance / App-care-protocol / residual | 74/74, 122/122, 25/25, all exit 0 | `retained74-1793563961989.log`, `retained122-1793563963152.log`, `retained25-1793563960054.log` |
+| Exact preserved scheduled R1 callback runner, rerun by author | 8/8, exit 0 | `original-scheduled8-1793563886136.log` |
+| Actual full new TS closure | strict/noUnchecked/verbatim/skipLibCheck=false, exit 0 | `strong-1793563998677.log` |
+| Configured frontend / session / UI | all exit 0 | `frontend-1793563999651.log`, `session-1793563996390.log`, `ui-1793563994600.log` |
+| Actual full browser-target compiler, write:false | 2,170 inputs / 2 outputs, exit 0 | `compiler-1793563995399.log` |
+
+Original R1's raw **7/8 then 8/8** scheduling qualification is preserved: three assumed microtask turns did not finish the real async choice/read chain; the scheduled runner uses one bounded `setImmediate` turn with the same assertions. The new regression uses that disclosed scheduler turn. This rerun is author verification of the preserved runner, not a new independent verdict. The original caution-removal mutation remains **NON-SENSITIVE 8/8** because it changed an already-empty field; it is not negative proof. The separate sensitive title/Next/cleanup/network mutations and original stage-2 caution probe retain their original attribution and bytes. No mutation result was relabeled or silently rerun as an independent acceptance round.
+
+One own evidence-copy setup attempt used the wrong review-manifest key (`files` rather than actual `entries`) and exited 1 before source/probe execution. Its terminal error and copied-original state remain recorded in `setup-error.txt`; it is not RED. Existing Node module-type and synthetic SDK warning output remains unfiltered. No test/compiler flag, timeout, assertion budget, package, declaration or guard was relaxed.
+
+The exact command families above were rerun, with `--require ./.local-artifacts/portal-rebuild/maya-five-stage-mf1/deny-network.cjs`. The new command is `NODE --require ./.local-artifacts/portal-rebuild/maya-five-stage-mf1/deny-network.cjs --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-maya-five-stage-reopen.test.mjs`. The full strong command is unchanged, including actual CSS/React declarations. Exact expanded argv, statuses, logs and hashes are in the MF1 evidence home; the unchanged two probes run from distinct old/new artifact directories to preserve their `wx` SSR outputs.
+
+Current write:false JS is 722,287 bytes, SHA256 `7e779517128b0d312c834f13d7061aa61023c3f3672935599a7a7ce330bbfd30`; CSS remains 12,280 bytes, SHA256 `3301057c86877b9fbb1fba9c6108c655728507d0adc6dd40743da648b6454415`. Graph SHA256 `6e7a207591e89cc8ab6a565c269ca705f7adb0438534832ff28a96009a4b2f42`. The compiler retains only the same 639 TransportError bytes, with no emitted session/cookie/Application factory, endpoint or fetch call. Its unique new graph was copied into MF1 evidence; no existing author artifact was overwritten.
+
+### Preservation and next gate
+
+Only three tracked paths are authorized: the controller, NEW reopen test and this append-only report. The original 18,252 report bytes remain an exact prefix, SHA256 `1d278c94589d34088dd5fed8a396ea299527097b76858da4c44f97481512988a`. All other 2,008 baseline tracked paths remain byte/mode exact. All 1,991 original Root paths, all 62 canonical/all 113 SQL files, both locks, packages/configs, shared code, original candidate tests and raw author/R1 evidence remain exact. Existing own dependency hashes/modes/literal links still match all 8,525 previously authorized APFS entries; no new copy/install/shim or dependency write occurred. Ordinary hooks were inspected and absent; none were bypassed.
+
+Own ignored evidence: `.local-artifacts/portal-rebuild/maya-five-stage-mf1/`. `EVIDENCE.json` inventories 167 files through final31 checks, SHA256 `b9b6d0e734b41e280b090f6269c0d880d168ff1f055b48956755d670a77a10d5`, excluding itself and later report/Git receipts. It preserves the complete R1 report/context/raws, all original probe/SSR inputs and old/new outputs, initial/intermediate/final new test versions, exact source before the edit, live runtime/config/project proof, protected inputs and command results.
+
+Parent must commission **NEW independent R2** before admission. The actual core public-demo use form and post-preset choice limitations remain unchanged and explicit; no client-mode override or V3 semantic downgrade was introduced. Parent still owns `/maya` App/provider/lifetime and browser-history composition. Browser/viewport/frame/keyboard/focus/a11y/human/genuine/CI/full D01-D48 acceptance remains unrun/open. No resource, nesting, Root write/import, external fetch/provider, blocked Guidance/M65 retry, publication, message, source upload, money/order/fulfillment, permission change, push/PR, merge or deployment occurred in this bounded correction.

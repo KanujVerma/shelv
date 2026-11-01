@@ -103,7 +103,9 @@ export function createMayaDemoController(options:{initialStage?:MayaStageNumber}
     next(){requireLive();if(stage<5)selectStage((stage+1) as MayaStageNumber);else{guide='exploring';page='plan';route={name:'plan',routine:'morning'};stack=[];emit();}},
     back(){requireLive();if(stage>1)selectStage((stage-1) as MayaStageNumber);},
     collapse(){requireLive();guide='collapsed';emit();},
-    reopen(){requireLive();guide='open';emit();},
+    // Resume the chosen guide target after free exploration, keeping its demo
+    // data/lease intact. Stage entry also retires the exploratory predecessor.
+    reopen(){requireLive();guide='open';selectStage(stage);},
     exit(){requireLive();guide='exited';page='plan';emit();},
     explore(){requireLive();guide='exploring';page='plan';emit();},
     replay(){requireLive();guide='open';selectStage(1);},
