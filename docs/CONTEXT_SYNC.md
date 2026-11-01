@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 CI6a diagnosis
+
+PR2116a PortalFAIL13/2497. The prior2550readinesscase passes inLinuxwithreviewedcurrentobserved2202/10hashes andacceptedmanifestbeforeclick. TwelvefailuresareoldwholeAppbrowserfixtureunexpectedcurrentV3read; newisolatedSource-onlytestwriterb0ea ownsfixturemodel/typedHTTP/newunit/report, no productionorbrowsergrant. OneCH6afterhookmissingdir reproduced20pass+ENOENT thenminimalmkdirfix20/20/all74assertionsunchanged. Watchoffduringcorrection; currentfullCIunaccepted. A07R2newC2/P3reported, fullreport/ownerresponsepending, RootA07unmounted.
+
 ## 2026-11-01 draft CI checkpoint and A07 R2
 
 PR211normalpush6a10f5beconfirmedGitHubdraftOPEN, bodyupdatedforV3/Historycandidate+reviewedmanifesttestfix. Actualexact6a cleanmain2232/15; Rootcodechecks7d pass andinterveningdocs-only. ExactheadLinuxCIpending/T3watch, no merge/deploy. A07C1authorc5read/oneprodpathconfirmed; original6RED4/2->6GREEN and27/retainedchecks author-only. NEWindependentR2 source-only starts6a in3d3837fc with6exactownedinputs/fullR1/responses; no A07import/resources. Localpostpushcoordinationmetadata may beahead ofwatched6a; do notclaimitCIgreen.

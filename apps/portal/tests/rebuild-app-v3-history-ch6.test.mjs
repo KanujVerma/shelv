@@ -1,6 +1,6 @@
 // Bounded independent ownership requirement/control, source only. Actual
 // Session/cookie/raw Root/W4/App reader. Plain Window is not mounted React.
-import test from 'node:test';import assert from 'node:assert/strict';import {writeFile} from 'node:fs/promises';
+import test from 'node:test';import assert from 'node:assert/strict';import {writeFile,mkdir} from 'node:fs/promises';
 import {fixture,deferred} from '../tests/rebuild-history-restoration-helper.mjs';
 import {virtualNavigationWindow} from '../tests/rebuild-app-v3-history-helper.mjs';
 import {createClientComposition,createHistoryRestorationScope,createHistoryUpdateReader,deferClientHistoryRestoration} from '../src/app/client-composition.ts';
@@ -26,7 +26,11 @@ for(const ordering of ['pending-same-scope','pending-new-entry','cleanup-before-
  old.dispose();held.resolve(Response.json(f.view()));await oldWork;row.afterOldCleanup={admitted:next.isAdmitted(),resultCurrent:h.restoration.isCurrent(h.getSnapshot().timeline.result),callbacks:delivered.length,oldCallbacks:oldDelivered.length};observations.push(row);
  assert.equal(admittedBefore,true,'a live replacement reader must not retire on cancellation of its predecessor read');assert.equal(delivered.length,2);assert.equal(next.isAdmitted(),true);assert.equal(oldDelivered.length,pending?0:1);
 });
-test.after(()=>writeFile(new URL('../../../.local-artifacts/portal-rebuild/w0-ch6/own-ordering.json',import.meta.url),JSON.stringify(observations,null,2)+'\n'));
+test.after(async()=>{
+ const output=new URL('../../../.local-artifacts/portal-rebuild/w0-ch6/own-ordering.json',import.meta.url);
+ await mkdir(new URL('.',output),{recursive:true});
+ await writeFile(output,JSON.stringify(observations,null,2)+'\n');
+});
 async function replacement(t,beforeNext){
  const f=await fixture(t),c=createClientComposition(f.runtime),h=c.history,boundary=f.runtime.getSnapshot().boundary,w=virtualNavigationWindow('/history/new');
  const navigator=createPortalNavigator(w.win,{scopeKey:boundary.key,deferRestoration:deferClientHistoryRestoration}),off=navigator.subscribe(()=>{}),scope=createHistoryRestorationScope({controller:h,boundary,navigator,win:w.win}),detach=scope.attach(),oldData=[],data=[];
