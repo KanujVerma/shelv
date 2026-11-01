@@ -5816,7 +5816,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-69f7a1f8",
       "branch": "t3/verify-ci-provenance-correspondence",
       "baseCommit": "d3a5ed1ad8aac59152ee1e8ec9c2cfd94ec14d46",
@@ -5830,7 +5830,13 @@
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-ci19c-provenance-review-r2-brief.txt",
       "briefChars": 114930,
       "briefSha256": "e54ffd111f11089c570bf52ad61175a801d8430212cc549bc0cbec47caa20488",
-      "scope": "EvidenceE1completefive/currentandhistoricaldefault/observed correspondence; unchangedsource/testR1scopedPASS preserved. No unnecessarybroadrepeats. Fulloriginal/R1/response mandatory."
+      "scope": "EvidenceE1completefive/currentandhistoricaldefault/observed correspondence; unchangedsource/testR1scopedPASS preserved. No unnecessarybroadrepeats. Fulloriginal/R1/response mandatory.",
+      "terminalCommit": "f3bbfa75e260273a6c518f52600dddbe9a677778",
+      "integratedReportCommit": "51f498b4fd5f418aa6f5ed8744a868aab1136412",
+      "evidenceVerdict": "SPEC/quality scoped PASS; E1 addressed in R2; immutable R1 remainsCHANGES",
+      "reportSha256": "e93401076c4f25882c80dd428f889b639a8177dfe04d2eaac811501888e930a3",
+      "evidenceManifestSha256": "30fec40ff2f57d43e80c876baa8e5d9bd399a3bdad3e326ac22af397160f4ea9",
+      "verificationResult": "Allfourcurrent/historicaldefault/observedgraphsexactexpected; completefiveprovenance;6/6+old5/1+bridge6/build4/new8/all3strict;noresources"
     }
   ],
   "parentVerification": {
@@ -5846,7 +5852,31 @@
       "rootTestTypes": 0,
       "expoWebExport": 0
     },
-    "evidence": ".local-artifacts/portal-rebuild/root-history-checkpoint/"
+    "evidence": ".local-artifacts/portal-rebuild/root-history-checkpoint/",
+    "ci19cTestCorrection": {
+      "testedHead": "7d86473612776c09abf388c3a4105eb2fc22ce56",
+      "allChecksExit0": true,
+      "focused36": 36,
+      "source74": 74,
+      "residual25": 25,
+      "rootPass": 1256,
+      "rootExistingOptInSkipped": 18,
+      "frontendSessionObserverRootAndTestTypes": 0,
+      "UI": 0,
+      "ExpoWeb": 0,
+      "actualMainBuild": {
+        "receipt": ".local-artifacts/portal-rebuild/app-r6-parent-integration/in-memory-app-runs/build-7d86473612776c09abf388c3a4105eb2fc22ce56-e6b2e6d1-01cd-4cd0-8fee-b458474ed608.json",
+        "sha256": "d550966d8b870d0ae98283d62f2fbe5883f1e3b061f6a49c75cfab62a5a87fb4",
+        "head": "7d86473612776c09abf388c3a4105eb2fc22ce56",
+        "sourceDirty": false
+      },
+      "priorExactBaseReceipt": ".local-artifacts/portal-rebuild/app-r6-parent-integration/in-memory-app-runs/build-e6b0bd7e8e398493db6f1a6766b5a3be93437794-601c857d-0956-45ae-b5ef-3f9369d5200d.json",
+      "all2232InputsAnd15OutputsEqualPriorReviewedApp": true,
+      "browserAcquired": false,
+      "A07Imported": false,
+      "nativeOrSQLChanged": false,
+      "CI": "pending new published head"
+    }
   },
   "cookieImports": {
     "9e449f51242065f903848a6fd9a15cc2501bfc1a": "947ae5fdb2456938e6cd1f70ac1e9002af8e1107",
@@ -7136,8 +7166,8 @@
     "authorBrowserResult": "2casesPASSonce: originalnonsensitive; actualmountedheldoldproxytrue/newfalse thensameowner2550/0details andoriginalassertionsPASS",
     "reviewTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-provenance-review-20261101-r2",
     "reviewCandidate": "9b2ba20999809440be62d0de85c121a1b8850bb5",
-    "reviewCandidateImportedIntoRoot": false,
-    "ciStatus": "Published19cFAIL unchanged. Source/testR1 scopedPASS, E1 evidencecorrection pending NEWindependentR2; no currentCI pass.",
+    "reviewCandidateImportedIntoRoot": true,
+    "ciStatus": "Historical19cFAIL preserved; reviewedcorrectionadmitted/localcheckspass, actualnewpublishedCIpending",
     "evidenceCorrection": {
       "finding": "E1/P2",
       "originalTwoInputClaim": "false; fullfiveinputs below",
@@ -7186,11 +7216,38 @@
         "emittedSha256": "502c49ba694f171b29d4183a2608f60263b1665e109ce655ea94b15d8cee3338"
       },
       "proof": ".local-artifacts/portal-rebuild/ci19c-e1-provenance-correction/RECONCILIATION.json",
-      "state": "coordinator_addressed_independent_R2_active",
+      "state": "addressed_independent_R2_PASS",
       "browserExecuted": false,
       "codeCandidateImported": false,
       "reviewTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-provenance-review-20261101-r2",
-      "responseCommit": "d3a5ed1ad8aac59152ee1e8ec9c2cfd94ec14d46"
+      "responseCommit": "d3a5ed1ad8aac59152ee1e8ec9c2cfd94ec14d46",
+      "reviewReport": "f3bbfa75e260273a6c518f52600dddbe9a677778"
+    },
+    "rootIntegrationCommit": "7d86473612776c09abf388c3a4105eb2fc22ce56",
+    "sourceTestAdmission": "scopedR1PASS +E1evidenceR2PASS; test-onlycandidateadmitted, allproductiontreesunchanged",
+    "parentVerification": {
+      "testedHead": "7d86473612776c09abf388c3a4105eb2fc22ce56",
+      "allChecksExit0": true,
+      "focused36": 36,
+      "source74": 74,
+      "residual25": 25,
+      "rootPass": 1256,
+      "rootExistingOptInSkipped": 18,
+      "frontendSessionObserverRootAndTestTypes": 0,
+      "UI": 0,
+      "ExpoWeb": 0,
+      "actualMainBuild": {
+        "receipt": ".local-artifacts/portal-rebuild/app-r6-parent-integration/in-memory-app-runs/build-7d86473612776c09abf388c3a4105eb2fc22ce56-e6b2e6d1-01cd-4cd0-8fee-b458474ed608.json",
+        "sha256": "d550966d8b870d0ae98283d62f2fbe5883f1e3b061f6a49c75cfab62a5a87fb4",
+        "head": "7d86473612776c09abf388c3a4105eb2fc22ce56",
+        "sourceDirty": false
+      },
+      "priorExactBaseReceipt": ".local-artifacts/portal-rebuild/app-r6-parent-integration/in-memory-app-runs/build-e6b0bd7e8e398493db6f1a6766b5a3be93437794-601c857d-0956-45ae-b5ef-3f9369d5200d.json",
+      "all2232InputsAnd15OutputsEqualPriorReviewedApp": true,
+      "browserAcquired": false,
+      "A07Imported": false,
+      "nativeOrSQLChanged": false,
+      "CI": "pending new published head"
     }
   }
 }

@@ -2,11 +2,11 @@
 
 Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. CurrentlocalAppintegrationcandidatee6b0bd7e selectsV3 andHistory, aboveguidance85fc; fullAppacceptance incomplete. Parent228/198/256/500/Root1256+18skips/types/Expo/clean2232x15 pass; exactreviewerbytes/native87 unchanged. PR211remote19c failedPortal2284/2285 on2550scope5secnotice; W3sourcefirsttest-preconditiondiagnosisactive, noresources. Source modeld0f only; W1readinessreport-only. R7targetedsyntheticChrome63acb6f6/e6b returned05:46:10Z, report2c06SPECincomplete/qualityscopedPASS; R6RETURN05:07:18Z. ReadcurrentGit/TASKS beforework.
 
-## Latest finite resource allocation and reviews
+## Latest admission and pending CI checkpoint
 
-AllChromegrantsreturned. W3finitecases2/2once andRETURN07:51:23UTC remainboundedauthorproof; no currentCIpass. CIindependentR1a2c report imported7093 gives source/testscopedPASS, evidenceCHANGESREQUIRED E1: Parentincorrecttwographdelta claim. Actualcurrentfive differences(client-state,retained,session,history,react) areallpreexisting. Parentd3a independentlyreconcilescurrent2195/2200+9/10 and explicitfive-filehistoricalcompileall2200/10CIhashes; no code/entryexecution. NEWboundedindependentevidenceR2 worktree69f7a1f8/sourcebased3a imports onlyunchangedtest/reportcandidate9b2; no browser/resources, no unnecessaryfullUIrepeats. Parentcandidate remainsunimported/currentCIUNVERIFIED.
+RootreviewedCItestcorrection7d864736 is nowadmitted after R1source/testPASS +R2evidencef3bbfa75PASS/E1closed. Completefivecurrent/historicalprojection documented; no childdowngrades, allproductionUI/runtime/Root/contracts/canonical62trees unchanged bypatch. Parent36/74/25/strict/UI/Root1256pass18existingoptinskips/types/Expo pass atclean7d; actualmain2232/15 exactlymatches priorApp e6b. NextnormaldraftPRpush deliberatelyincludes alreadyreviewedV3/Historysource+correctedtest; newexactheadLinuxCIpending, notfullApp/genuine/release acceptance. AllChromegrantsreturned/no newnativeauthority.
 
-A07independentR1report85eb importedreportonly5afe, bothsourceverdictsCHANGESREQUIRED A07C1/P2. SameW0ordinal12 sourcefix from0c447 nowownsper-entry/target/unsentmemory custody/newtests/report only. RootA07unmounted; no W2/nav/runtime/SQL/Source/rights/resourcechange. Sourceplan09cb remainsplanningonly; M65providergate/no-reroute unchanged. Exacttask/brief/model/source/proof/return records inTASKS.
+A07Rootstillunmounted. R1report85eb requiresC1per-entry/targetunsentcustody; authorordinal12reportsclean successorc5edf655 with original4/2->6/6, pendingParentfullread/NEWindependentR2. NoSourceAPI/financial activation. Sourceplan09cbplanningonly/M65providergate/no-reroute remain. Exacttask/runtime/proof/receipt/imports inTASKS.
 
 ## Goal
 

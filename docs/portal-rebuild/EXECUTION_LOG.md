@@ -500,3 +500,9 @@ One explicit complete FIVE-input historical compile-only overlay from19c indepen
 ## 1 November: bounded independent E1 evidence R2
 
 A NEW T3 worktree69f7a1f8/sourcebase d3a5ed1a receives only unchangedcandidate9b2. Its full114930-character brief includes originalapprovedinput/CIbrief plus mandatoryR1/fullresponse/readledger. Scope is completecurrentfive-input projection and explicitlyauthorized historicalfive-file default/observedcompilation with exactcompiledprovenance, erasedtype distinction and allnonoverlay preservation. Source/testR1scopedPASS remainsattributed; no broadUItest rerunwithoutnewcause, no browser/entryexecution/native/resources. OnlynewR2report authored. Exacttask/run/modeloptions/briefhash recorded. Parentcodecandidate stillunimported; currentCIunverified.
+
+## 1 November: reviewed CI correction admitted and verified locally
+
+IndependentR2 f3bbfa75 closesE1 with four completegraphprojections and scopedEVIDENCEPASS, preservingR1source/testPASS/historicalE1raw. ImportedonlyR2report51f498b4 and reviewedtestcandidate7d864736; twelvechangedpaths are ten test/helper/control files and two reports. Pre/postGit trees prove no UI/runtime/contracts/functions/migrations/native-source change. Allchilddependencydowngrades excluded.
+
+Parentfreshfocused36/source74/residual25 and allfrontend/session/observerstrict/UI pass. Rootnpm1256pass/18existingoptinskips/0fail; Rootapp/testtypes0/Expo0. Actualcleanmain2232/15 sourceDirtyfalse exactlymatches priorreviewedApp e6b input/outputhashes; uniqueimmutablebuildreceipt retained. CI correction localadmission is complete; nextnormaldraftPRpush intentionallyincludes reviewedstagedV3/Historysource, no A07/Source/financial activation. ExactheadCI is required/pending, no mainmerge/deploy.

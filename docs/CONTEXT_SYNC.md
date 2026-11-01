@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 CI correction admitted, next draft CI checkpoint
+
+IndependentevidenceR2f3bbfa75closesE1/scopedPASS; R1source/testPASS preserved. Rootonlyreport51f498b4 +reviewedtestpatch7d864736 imported; productionUI/runtime/contracts/functions/canonical62treesunchanged. FreshParent36/74/25/strict/UI andRoot1256pass18existingoptinskips/types/Expo pass. Cleanmain2232/15 allinput/outputhashes match priorreviewedApp e6b. NextnormaldraftPRpush intentionallystagescurrentV3/Historycandidate+testfix; exactheadLinuxCIpending, allfullApp/Source/financial/releasegates remain. A07C1successorc5edf655 reportedclean, awaitingfullhandoff/newindependentR2, unimported. No localbrowsergrant/resourceacquisition.
+
 ## 2026-11-01 CI provenance E1 correction
 
 IndependentCI R1 a2c75dc5 importedreport-only7093: source/testscopedPASS, evidenceCHANGESREQUIRED E1/P2. Parentincorrectlystatedtwoinputdifferences; actualcurrentgraphfive(client-state,retained,session,history,react). Parentfreshcurrentcompile2195/2200+9/10matchesreviewer; explicitfive-whole-filehistoricaloverlayall2200/10CIhashesmatch; retainedtypeerasedJSidentical. Sourcecandidate9b2unchanged/unimported; no browser/applicationexecution. Fullraws/projection nowcanonicalCIreport; NEWboundedevidenceR2 requiredbeforeadmission/currentCI. A07C1authorfixcontinuesseparately; allChromegrantsreturned.
