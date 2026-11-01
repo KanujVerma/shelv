@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## portal rebuild: CI lineage capture correction (1 November 2026)
+
+PR211 head153d11e passes the corrected package/RPC-loader step and fails the later local-admission probe. Its complete62-migration ledger is larger than Node's default1 MiB capture; the actual probe reproduces ENOBUFS against synthetic CLI output. A bounded16 MiB capture, matching the existing lifecycle runner, passes18 lineage/fixture checks without truncating statements or changing attestation predicates. Exact-head native CI remains pending; no shared R9 fixture was read or modified. [Evidence and limits](portal-rebuild/research/COORDINATOR_CI_LINEAGE_OUTPUT.md).
+
 ## portal rebuild: current boundary and expanded execution (31 October 2026)
 
 History RH1/RH2 source is integrated through5cd7ef5a; cookie T1/CK1/CK2 independent R2 is integrated through6f13b82d. Parent256/197/84 controls, both portal strict checks and clean application build pass. Root1256 pass/18 existing opt-in skips, app/test types and Expo export pass at the prior code-equivalent scope. App V3/history/restoration remains an isolated candidate; its canonical pre-data focus/scroll gap now has an explicitly allocated entry-owned deferred restoration API. [Current status](portal-rebuild/CURRENT_STATUS.md), [task ledger](portal-rebuild/TASKS.json) and [handoff](handoffs/2026-10-31-portal-rebuild.md) govern exact state.

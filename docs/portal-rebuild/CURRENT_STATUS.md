@@ -72,6 +72,6 @@ Next: finish source corrections and NEW independent reviews, then native replay,
 
 The latest estimate given to Kanuj is **about50-55% of full approved scope**, not a pass count: core auth/editor/publication/use90%; reports/history80%; reviews/instructions75%; commerce45%; source lifecycle20%; account25%; notifications/templates/walkthrough25%. Estimate6-10 more working hours to an integrated reports/guidance candidate and3-5 working days to full scope/verification; current findings make these uncertain, not completion guarantees.
 
-No protected-main merge, deployment, live client/source/permission change, communication, real funds or retailer action is authorized. Current exact-head CI is pending; the old remotec999 checkpoint is historical.
+No protected-main merge, deployment, live client/source/permission change, communication, real funds or retailer action is authorized. PR211 head153d11e passed the corrected RPC-loader/package step but failed the later local-admission lineage probe. Its complete62-migration ledger exceeds Node's default1 MiB subprocess capture. The bounded16 MiB correction reproduces ENOBUFS before the fix and passes18 focused lineage/fixture checks afterward; a new exact-head native CI run remains required. See the [CI investigation](research/COORDINATOR_CI_LINEAGE_OUTPUT.md). No R9 access or reset was used for this correction.
 
 Continuation state: [coordinator handoff](../handoffs/2026-10-31-portal-rebuild.md). It supplements, rather than replaces, current Git, TASKS and this status.

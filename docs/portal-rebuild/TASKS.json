@@ -4734,5 +4734,45 @@
     "defaultApp": "Care2 unchanged",
     "nativeRootSqlAuthRuntimeUnchanged": true,
     "qualification": "Initial types log-directory parallel mkdir race prevented launch; initial extended command omitted existing assets.d.ts and failed TS2882, corrected actual declaration/unchangedflags compile0. Not product failures."
+  },
+  "ciRecovery153d": {
+    "failedHead": "153d11e95b5f2d35f2df4c4a858cdad35b5d9e9f",
+    "run": 41255892150,
+    "job": 124698852990,
+    "step": "Verify founder admission with local Auth, SQL and Chrome",
+    "localBase": "160ef0e77735d5a7f33753026dc36ce2978270c1",
+    "diagnosis": "Default1MiB execFileSync capture prevents complete62-migration ledger read; exact original probe reproduces ENOBUFS with controlled synthetic CLI. Private remote child log unavailable.",
+    "focused": {
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "skip": 0,
+      "frontendTypes": 0,
+      "sessionTypes": 0,
+      "rootNpmTestExit": 0,
+      "rootTapPass": 1256,
+      "rootExistingOptInSkip": 18
+    },
+    "localV3Package": {
+      "pass": 1726,
+      "fail": 15,
+      "skip": 0,
+      "classification": "11 missing context-entry methods,1 cwd-relative tsconfig before assertions,3 timeouts cause unproved. New V3 imports remain unpublished."
+    },
+    "v3PackagingFollowup": {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-package-entry-and-cwd-portability-source-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:8",
+      "status": "running-source-only",
+      "resourceGrant": null
+    },
+    "isolatedPushScope": [
+      "apps/portal/tests/admission-lineage-native.mjs",
+      "apps/portal/tests/admission-lineage-output.test.mjs",
+      "docs/portal-rebuild/research/COORDINATOR_CI_LINEAGE_OUTPUT.md"
+    ],
+    "sharedResourceCalls": 0,
+    "evidence": ".local-artifacts/portal-rebuild/ci-153d/",
+    "remoteNativeStatus": "pending new exact-head CI"
   }
 }
