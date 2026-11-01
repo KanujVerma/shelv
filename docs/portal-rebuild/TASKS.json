@@ -5934,7 +5934,7 @@
           "value": "default"
         }
       ],
-      "status": "starting",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
       "branch": "t3/compose-v3-client-history",
       "baseCommit": "c5edf65554b8adfe06634d7884e50051d1a9a6b8",
@@ -5943,7 +5943,13 @@
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w0-a07-c2-source-fix-brief.txt",
       "briefChars": 38711,
       "briefSha256": "5aee0d68b1c646180ad444dcd17694b66b2b0fc1e17bf4e55cd20a678703b260",
-      "requiredProof": "Original2cases1/1RED->2GREEN withacceptednewerbodyretained, C1six6GREEN +27/32/228/500/raw45/Root80/256/strict/UI/build, boundededit/model/lossclass ownership audit; no fakeauthority or suppresslegitimateacceptededit. NEWindependentR3."
+      "requiredProof": "Original2cases1/1RED->2GREEN withacceptednewerbodyretained, C1six6GREEN +27/32/228/500/raw45/Root80/256/strict/UI/build, boundededit/model/lossclass ownership audit; no fakeauthority or suppresslegitimateacceptededit. NEWindependentR3.",
+      "terminalCommit": "08386a612703d3e943646112c5c9caaa100d8349",
+      "ownedCommits": [
+        "bb59913dcef6f3a529ebaea5a01938b354036a71",
+        "08386a612703d3e943646112c5c9caaa100d8349"
+      ],
+      "verificationResult": "Author originalC2old1/1->current2/2;C2combined15,C127/A0732/App228/Guidance500/raw45/Root80/256/authority6/strict/UI/build2246x15pass. Oneprodfile/API0delta/1915protected; firstvariantreconstruction/artifactappend/restoredprefixqualifications retained.Noresources/Parentactivation."
     },
     {
       "role": "W7 independent CI6a current App browser fixture and clean hook source review R1",
@@ -6033,6 +6039,45 @@
       "briefChars": 8363,
       "briefSha256": "4be8a599fae49f1ec4145608a8502531c1ed4cf896ab1c8c09817020b57d7487",
       "gates": "Author13/199 +independentSource/TestbddscopedPASS; no production/source/assert/hooks changes duringgrant; onlyignoredrunner/observation thenreportafterRETURN"
+    },
+    {
+      "role": "W7 independent A07 accepted-edit/restoration custody source review R3",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-advisor-guidance-composition-review-20261101-r3",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-advisor-guidance-composition-review-20261101-r3",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-advisor-guidance-composition-review-20261101-r3:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-97a86065",
+      "branch": "t3/a07-r3-guidance-review",
+      "baseCommit": "b09cc7ab",
+      "frozenTarget": "08386a612703d3e943646112c5c9caaa100d8349",
+      "allocatedImports": [
+        "c70b11e6d3e7b0724a779444d8eacb7a0f6110ad",
+        "547b72fa9e08bd8f2ebb3636c93c990ad44b784e",
+        "0c447dfb55fa91678665e6f8393b2acc965afe25",
+        "728f3eb738cd9a2190dcab4ae5e578094c59b80e",
+        "b76e9f5dd1ca47a9a70740afff49848fae04b7bb",
+        "c5edf65554b8adfe06634d7884e50051d1a9a6b8",
+        "bb59913dcef6f3a529ebaea5a01938b354036a71",
+        "08386a612703d3e943646112c5c9caaa100d8349"
+      ],
+      "reportPath": "docs/portal-rebuild/research/W7_ADVISOR_GUIDANCE_COMPOSITION_R3.md",
+      "resourceBoundary": "Source/SSR/finite syntheticHTTP/reportonly; no fixes/browser/preview/process/native/Auth/DB/Storage/provider/R9/fixture/resources. Respectexclusiveb0ea/cbf8Chromegrant; noRootAPI/Source/financialscope.",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-a07-composition-review-r3-brief.txt",
+      "briefChars": 115924,
+      "briefSha256": "b12bc2a82793bbb7e04c88ef6fe3d7fe1d8dc202b3ba9fdfe46187699f4e34ad",
+      "context": "FULLoriginal+A07brief+mandatoryfullR1/R2/authorresponses/G1-G8/CH1-CH6; firstvariantreconstructednotexecuted/evidenceappend+restoredprefix/falseBqualifications. ExactC2twoRED/current andC1six/current plusboundedownershipclass audit, publicAPI0/protectedsource."
     }
   ],
   "parentVerification": {
