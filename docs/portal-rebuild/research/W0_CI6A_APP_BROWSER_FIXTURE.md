@@ -104,3 +104,82 @@ Only a new Parent grant tied to the returned clean source commit and this exact 
 Illustrative exact runners after grant (not executed here): `NODE --experimental-strip-types --loader ./.local-artifacts/portal-rebuild/w0-ci6a-app-browser/baseline-loader.mjs --test --test-concurrency=1 --test-name-pattern='^actual app public Maya/unknown entry never contacts auth; PKCE callback scrubbed before navigation state$' apps/portal/tests/rebuild-app-browser.test.mjs`, followed once by `NODE --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-app-browser.test.mjs` without the loader.
 
 Parent owns the independent source review, separate CH6 correction/integration and actual CI. No push, PR, merge, deploy, live client/source/permission action, funds or message was performed. The full approved goal remains active.
+
+## Author finite synthetic Chrome follow-up, 1 November 2026
+
+This appended phase executes the newly granted two-run plan after independent R1. It does not rewrite the preceding source checkpoint's historical UNRUN limits. **Current complete browser file: 19/19 PASS, zero fail/skip/cancel. Old whole-fixture baseline: the declared one-case failure reproduced.** This is author-operated, finite, intercepted local Chrome evidence, not an independent browser review, genuine Auth/persistence proof, current CI green, release admission or full-goal completion.
+
+Independent source/test R1 is `bdd6a8c7b255f11ae6189825dd633210495c42fc`, 22,266 bytes/SHA-256 `7a5fc7eb651c8c7ba0e5b76848ac56a38187b49b85d5dffd58934a9baa0a040f`. It gives separate scoped specification/quality PASS and is copied read-only in this phase's evidence. Parent imported only that report as `52231a30`; neither that import nor A07/CH6/source/backend work was imported here. Source/code/assertions remained frozen at clean `cbf8a5ba67fffa78020a22038fc34d383f83a5af` for both browser commands.
+
+### Exact grant and execution identity
+
+- Grant: `coordinator-ci6a-app-fixture-synthetic-chrome-cbf8a5ba-20261101`; purpose/phase `CI6A_APP_BROWSER_FIXTURE_SYNTHETIC_CHROME`.
+- Workspace/branch: `/Users/kanuj/.t3/worktrees/shelv/t3-b0ea572d` / `t3/align-ci6a-app-browser-fixture`.
+- New authoritative follow-up task: `node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aci6a-app-browser-fixture-finite-chrome-20261101`.
+- Same backing thread as the source phase; separate actual ordinal2 run: `run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-ci6a-app-browser-fixture-source-20261101-r1:ordinal:2`, started `10:18:36.023 UTC`.
+- Initial and final live capability/thread records both establish `codex / gpt-6.1-sol / xhigh / default`, full-access/default. Selected descriptors advertise xhigh/default. The same shelv project has saved default `null`; the explicit thread selection is the model evidence. All eight role files, project defaults and max8 configuration remained equal to the source pins. No nested work was allocated.
+- Explicit executable for both wrappers, test runners and child PATH: `/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node`, actual `v22.23.0`. Installed own TS6.0.3/esbuild0.28.2/React19.3.1 were rechecked without installation.
+
+Ignored evidence is `.local-artifacts/portal-rebuild/w0-ci6a-app-browser/chrome-cbf8a5ba-20261101/`, abbreviated C/. Preflight reverified the actual T3 binding, exact clean head, all1352 protected bytes, four complete root/portal package+lock files, old/current whole source and prepared loader hashes, and the independent report. The first browser tool was `preview_status`; it returned no tab. No preview was opened or user tab/profile claimed. The explicit repository installed-Chrome workflow used the original `chromium.launch({channel:'chrome',headless:true,...})`, original finite-origin interception and normal contexts.
+
+### Guard, observers and exact once-only commands
+
+Only ignored `run.mjs`, `observe.mjs`, `audit-loader.mjs`, grant receipt and later saved-file analysis/custody records were authored. Before spawning either target, the wrapper checked the exact grant/workspace/branch/purpose/head, clean Git state, source/loader/protected/pin hashes, explicit Node, and an exclusive single-use phase receipt. Current execution additionally required the declared baseline failure and normal browser closure. Neither phase was retried. No operational stop signal or watchdog fired.
+
+`observe.mjs` forwards the real Playwright launch/context/close methods with the same arguments and returned objects. It attaches passive request/response/navigation/console/page/close listeners, hashes actual served buffers, saves bounded synthetic Review/Care DTOs, and captures DOM/PNG at errors/teardown. It does not replace any route, fetch/response, App/session/controller, clock, readiness flag, renderer or UI action. Teardown capture and 500ms sampling of only known own descendants add observation overhead; these timings are not performance/latency evidence. No auth command/response body, credential/header/cookie/environment/storage or private provider/source body was collected. Callback query credentials were redacted in observer URLs.
+
+The extra `audit-loader.mjs` calls `nextLoad`, records the actual target module's returned bytes/hash, checks the expected phase hash and returns that same result. In the baseline chain it observes the unchanged prepared `baseline-loader.mjs` supplying the whole old fixture at its original module URL. In the current chain there is no old loader. Production imports and the actual normal before-hook main build remain current in both runs. This is a qualified loader control, not an old App build or a response-family rewrite.
+
+Actual commands were `NODE C/run.mjs baseline`, then once `NODE C/run.mjs current`. Complete expanded argv/cwd/grant/source/UTC receipts are `baseline-attempt.json` and `current-attempt.json`. Their targets are:
+
+1. `NODE --experimental-strip-types --import C/observe.mjs --loader E/baseline-loader.mjs --loader C/audit-loader.mjs --test --test-concurrency=1 --test-name-pattern='^actual app public Maya/unknown entry never contacts auth; PKCE callback scrubbed before navigation state$' apps/portal/tests/rebuild-app-browser.test.mjs`.
+2. `NODE --experimental-strip-types --import C/observe.mjs --loader C/audit-loader.mjs --test --test-concurrency=1 apps/portal/tests/rebuild-app-browser.test.mjs`.
+
+Here `NODE` is the explicit binary above and `E/` is the preceding source proof directory. There was no tracked source/assertion/model/hook/locator/timeout/fixture-volume change, force click, extra eager read/retry, success-port substitution, test filtering of the current file or new test case. Existing 5000ms defaults and 1500ms recovery waits stayed unchanged. The observer's separate 1500ms screenshot capture limit is not a product wait change.
+
+### Actual results and observed boundaries
+
+| Run | Actual result | Closure and source |
+| --- | --- | --- |
+| Old whole-fixture baseline | Exit1; one selected case, 0 pass/1 fail, 0 skip/cancel; 3 contexts/pages. The other18 original cases were filtered and are not passes. Node's selected TAP summary itself contains only the one selected case. | One actual launch; 3/3 contexts/pages closed; browser disconnected. Live module-load receipt verifies42,486 bytes/SHA `a66bbba71ba1ff45514b468fa08ce9cb1506540694fcebe39d1884687c945cd5`. No observer errors. |
+| Current complete file | Exit0; **19 tests/19 pass/0 fail/0 skip/0 cancel**; all25 original contexts/pages. No partial-count qualification. | One actual launch; 25/25 contexts/pages closed; browser disconnected. Live module-load receipt verifies42,400 bytes/SHA `8201bfc94583271818d6ccd9ce8de0f79af2716ae6b34b6ec1c754ec463b2ad7`. Observer capture errors are qualified below. |
+
+The raw baseline fails at the original `close()` unexpected-list assertion, with stack lines365/398 and exactly `POST /api/client/reviews read_client_plan_v3`. Public contexts1/2 have zero API calls. Context3 performs session restore, PKCE completion and the unsupported current read. This reproduces the declared authenticated-callback boundary and is not a public/pre-auth privacy-leak finding. The normal failure is preserved; no import/setup error is counted as behavioral RED.
+
+The current file passes public/callback privacy, actual client choice/product/evidence/routine restoration, advisor preview and native history/Back, approval/payment/deliberate synthetic publication, preparation/denial/responsive states, draft/import/assignment, ended-client publication metadata, late logout, remembered-link and malformed-callback handling, stop/reload, read-only care and all six403/409/503 recovery combinations. Raw TAP names/results are retained. All88 original static assertions remain frozen at the reviewed source hash:86 raw-identical and the two exact authorized wire predicates. This is not a separate claim to have counted every dynamic assertion invocation.
+
+Current client context4 observes exactly two `read_client_plan_v3` calls and one `record_decision_v2`; no Start/payment/publication/notification call accompanies that choice. Stop context18 observes three V3 reads around the one `report_product_use_v1` and reload. The read-only and failure cases keep their original assertions. All client current-plan reads use V3; the original advisor Care V2 audit remains a separate path. The held client read in context14 ends `net::ERR_ABORTED` after logout, with the original no-remount assertions passing. No controller readiness/current flag or session state was forced.
+
+Post-return saved-file validation uses actual Root `readReviewCommand`/`mapReviewResult` and Care parser/mapper on finite `Response.json` roundtrips of17 saved successful DTOs:15 V3 reads, one decision receipt and one stop receipt. Seven saved negative responses remain separate; the aborted held read has no invented successful body. Twenty-five synthetic command records and24 response bodies are retained. No Auth/private header/body is used as model evidence.
+
+Actual normal main-build provenance records clean executed headcbf8,2232 inputs/15 outputs. Every full input/output record matches the frozen source build, with no test fixture in the production graph. Observed response buffers match the emitted main outputs19 times in the baseline and986 times in the current run; these are repeated served buffers, not distinct output counts. Post-return protected hashing confirms all1352 production/config/other tracked files, the package/lock files, current fixture/helper/assertions and prepared baseline loader remain unchanged. Original API/native87/62 received no resource call or write.
+
+### Observer and console qualifications
+
+Baseline has125 saved events, no drops, no pending observations at worker exit, no page errors and four DOM/PNG captures. Current has6109 events, zero drops/pending at worker exit and zero page errors. It records128 DOM capture events and83 successful PNG capture events, with **46 observer errors:45 screenshot timeouts and one unavailable response body after navigation**. No observer was retuned or test rerun. Repeated `requestfailed` captures use a per-page/reason filename, so final physical current files are28 HTML/28 PNG; earlier same-name capture hashes/errors remain in the event log, but their overwritten image/HTML bytes are not represented as fully retained artifacts. Four original test screenshots were separately preserved. This is not complete PNG coverage or visual approval.
+
+The current run is **not console-clean**:255 console records include146 React development notices and109 errors. Seven errors correspond to the intentional403/409/503 cases. The other102 are restrictive-CSP image blocks in advisor-preview contexts5/6, retaining the original Maya source URLs. There are102 external image request events, each with failure `csp`, and zero matching observed responses. The router's unexpected-list assertions still pass; CSP blocks occur before its response path. This is a recorded preview/image qualification, not evidence that every attempted URL was a successful same-origin fetch or that external packet-level egress was independently audited. No further matrix, image retune, CSP weakening or production fix followed this observation.
+
+### Custody return and after-return work
+
+**SOLE CHROME RETURN: `2026-11-01 10:27:17 UTC`.** The grant is consumed and returned for this exact workspace/executed head. Both test command handles were terminal before return. Existing `f.close()` released declared holds and closed each real context; normal file after-hooks closed the browsers. Sidecar events record page/context closure and browser disconnection. The entry exposes no per-controller or private React disposal interface, so no such direct audit is claimed; closed realms/native processes are the observed boundary.
+
+Bounded500ms `pgrep -P` discovery was restricted to descendants of the exact spawned test Node identities, with `ps -p` PID/start/command receipts. Final inventory checked **only88 previously tracked own PID/start identities**, including both wrappers: all88 absent, no reused identity and no remaining owned process. Listener checks were conditional on an exact still-present identity; none required an `lsof -p` call. This is not a global Chrome/workerd/listener/human-session inventory. Final `preview_status` again reported no tab. `FINAL-CUSTODY.json`, both normal worker exit records and `RETURN.json` preserve these facts.
+
+After the explicit return there were zero browser/preview/process-inventory/native/resource calls. Subsequent work consists only of saved-file/Root DTO/source/hash analysis, allowed live model metadata, documentation and Git. No full package/Guidance/A07/Root/CH6/new legacy case, CI replay, DB/Auth/Storage/PG/Docker/provider/private-source/financial/live-client action, push, PR, watch, merge, deployment or message was performed. Parent retains Root replay/current CI and admission authority; the complete approved goal remains active.
+
+### Evidence receipts
+
+| C/ artifact | SHA-256 |
+| --- | --- |
+| `baseline-stdout.log` | `6426dd78f2988d8b2a0d70577fbb2069959ce0f024548e22b2ecb7dc542d9899` |
+| `current-stdout.log` | `1419c6c9cc0c7642e635d3c7b37e576dae9b113d45321ca9a0a0af5a69d2076c` |
+| `baseline-loader.jsonl` | `72ab320436abeb08a54d00ad4944991c434eb34fbdc364f10ce7a8cf1e148664` |
+| `current-loader.jsonl` | `9aaabc798eb97a783063989604816b6c8e298c095ed6d815c0794038cd06ddf5` |
+| `baseline-observer.jsonl` | `b01da30fa029067a396d5d37ce32aebdf6851ebcc43da3debb7277389dbae589` |
+| `current-observer.jsonl` | `173b252fdd310c46acccb85376a7bd4466c2fd2e87b44bf7a9e46af058bab205` |
+| `FINAL-CUSTODY.json` | `43772f7eedb2db79428da82a056f9edc3f59beacf8c638806e6b8d14e8b0c0c2` |
+| `RETURN.json` | `5076ce4cd60186415e98af64b9c0bda117e1c8915c95a82d2232edc6e7e88c00` |
+| `SAVED-EVIDENCE-ANALYSIS.json` | `65559a71acc867ec3d99dde2223205004e39400f821e37bc6740d94517eed324` |
+
+Both stderr files are empty; ordinary Node experimental/module warnings remain in raw TAP stdout. Exact argv, grants, source-load/PID bindings, all case results, Root DTO validation, original CI raw failures, capture qualifications and complete evidence hashes remain separately addressable. Only this report append is a new tracked change in the follow-up commit; sourcecbf8 remains the implementation dependency.
