@@ -9,6 +9,17 @@ create table concierge.notification_requests (
 );
 alter table concierge.notification_requests enable row level security;
 revoke all on concierge.notification_requests from public,anon,authenticated,service_role;
+
+-- N1: extend the existing shared trigger in place, preserving its OID/ACL and old bindings.
+create or replace function concierge.review_request_collision() returns trigger language plpgsql set search_path='' as $$declare t text;exists_other boolean;begin
+ perform pg_advisory_xact_lock(hashtextextended('concierge:request:'||new.actor_id::text||':'||new.request_id::text,0));
+ foreach t in array array['plan_requests','requests','workflow_requests','care_requests','review_requests','notification_requests'] loop
+  if t=TG_TABLE_NAME then continue;end if;
+  execute format('select exists(select 1 from concierge.%I where actor_id=$1 and request_id=$2)',t) into exists_other using new.actor_id,new.request_id;
+  if exists_other then perform concierge.fail('request_conflict');end if;
+ end loop;return new;
+end $$;
+create trigger review_request_collision before insert on concierge.notification_requests for each row execute function concierge.review_request_collision();
 create trigger notification_requests_immutable before update on concierge.notification_requests for each row execute function concierge.immutable();
 
 create function concierge.notification_identity(u uuid) returns void language plpgsql set search_path='' as $$begin
@@ -153,7 +164,7 @@ declare cmd jsonb:=concierge.notification_parse(v);a text:=cmd->>'action';origin
  else
   req:=(original->>'requestId')::uuid;
   -- A request status observes ONLY the matching original command, not a mutable live delivery.
-  perform pg_advisory_xact_lock(hashtextextended('concierge:notification:request:'||u::text||':'||req::text,0));
+  perform pg_advisory_xact_lock(hashtextextended('concierge:request:'||u::text||':'||req::text,0));
   select * into prior from concierge.notification_requests where actor_id=u and request_id=req;
   if found and (prior.command is distinct from original or prior.fingerprint is distinct from concierge.plan_hash(original)) then perform concierge.fail('request_conflict');end if;
   select * into d from concierge.plan_deliveries where id=(original->>'deliveryId')::uuid;
