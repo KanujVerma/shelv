@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 readiness proof returned, CI review and A07 finding
+
+W3finitecases2/2once pass, controlledactualmanifestoldproxytrue/newacceptancefalse thensameowner2550/0details beforeunchanged original5sec/51assertions. UntouchedMacoriginalpass is non-sensitive; Linux19cFAIL persists. ChromeRETURN07:51:23UTC, savedscoped22absent/previewnoTab, no activebrowsergrant. ParentSourceunchanged; newindependentCIreview imports temporaryindex-assembledtest/reportcandidate9b2ba209 only, with existingParentmetadata preserved/nochilddowngrade. A07reviewreproducesA07C1/P2 reportentryBackunresolvableaftertargetselection; reportfinalizing/sourceonly/noDOMclaim. HoldA07importpendingfullreport/correction/review.
+
 ## 2026-11-01 A07 source composition review
 
 Author0c447dfb/c70b11e6/547b72fa completes actual advisor A07 source composition;32new/228App/500Guidance/raw45/Root80/transport256 and strict/UI/clean2246x15 pass. No resources or Parent activation. A NEW independent R1 in a T3 worktree receives the full original+A07 brief and all prior G/CH findings/responses, imports only the three owned commits and writes only its report. Root A07 remains unmounted. W3's separate sole finite Chrome grant remains allocated; SourceAPI and financial provider-block boundaries unchanged.

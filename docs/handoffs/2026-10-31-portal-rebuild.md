@@ -2,9 +2,11 @@
 
 Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. CurrentlocalAppintegrationcandidatee6b0bd7e selectsV3 andHistory, aboveguidance85fc; fullAppacceptance incomplete. Parent228/198/256/500/Root1256+18skips/types/Expo/clean2232x15 pass; exactreviewerbytes/native87 unchanged. PR211remote19c failedPortal2284/2285 on2550scope5secnotice; W3sourcefirsttest-preconditiondiagnosisactive, noresources. Source modeld0f only; W1readinessreport-only. R7targetedsyntheticChrome63acb6f6/e6b returned05:46:10Z, report2c06SPECincomplete/qualityscopedPASS; R6RETURN05:07:18Z. ReadcurrentGit/TASKS beforework.
 
-## Latest finite resource allocation
+## Latest finite resource allocation and reviews
 
-W3 clean3e8132eb/d8d51f8c resolves actual frontend/session/observer strict0 and preserves CIexact2200/10. Parent allocated SOLE synthetic Chrome grant coordinator-w3-ci19c-manifest-observer-synthetic-chrome-3e8132eb-20261101 to1026/ordinal14 only. Two serial actual cases/one attempt each: original uninstrumented first2550 then actual terminal26 hold/accepted-state observer comparison. No production875/fixtures/assertions/5000ms notice change, no native/R9/Auth/DB/Storage authority. Await explicit RETURN before any other browser lane; source-only W0 A07 continues. Earlier no-local-Chrome statements describe preceding returned phases, not this new grant. Source plan09cb is imported report-only58a; no SourcePhase2. Exact handles/full grant inTASKS.
+W3 exactlytwofinitecasespassedonce and explicitlyreturned soleChrome07:51:23UTC. Saved22trackedidentitiesabsent/scopedlists[]/previewnoTab; ParentreadssavedJSONonly,noafterresourcecall. No localChromegrantactive. OriginalMacPASSnonsensitive; actualheldterminaloldproxytrue/currentacceptancefalse thensameowner2550/0details andoriginal5sec/51metricsPASS. NEW independentCI19csource/test/evidenceR1 inworktreea86214ff imports onlyParenttest/reportreviewcandidate9b2ba209, no childdependencydowngrade. Rootsource/indexunchanged, published19cCIstillFAIL/unverified.
+
+A07author0c447dfb is inNEWsourceR1; preliminaryA07C1/P2 twice reportA->B/instruction->BackAURL resolvesnull viaone mutableRecordScope. Dependentacceptancestopped/reportonlyfinalizing,noDOMclaim. RootA07unmounted; awaitfullreport beforeboundedauthorcorrection. Sourceplan09cb importedreport-only58a; no SourcePhase2/newrights. M65providergate/no-reroute remains. Exacttask/brief/runtime/grant/returnrecords inTASKS.
 
 ## Goal
 

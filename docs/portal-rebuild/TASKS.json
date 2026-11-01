@@ -5647,7 +5647,7 @@
           "value": "default"
         }
       ],
-      "status": "starting",
+      "status": "completed",
       "frozenTarget": "3e8132ebc5ec2d201d1487e6811188e597f3a1b0",
       "resourceBoundary": "Only original uninstrumented first2550 plus one actual terminal26 hold/accepted-state observed comparison; original51/26/<100/50 and5000ms notice preserved; no native/R9/DB/Auth/Storage/provider/credentials",
       "chromeGrant": {
@@ -5655,13 +5655,21 @@
         "phase": "W3_V3_GUIDANCE_SYNTHETIC_CHROME",
         "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
         "sourceHead": "3e8132ebc5ec2d201d1487e6811188e597f3a1b0",
-        "status": "allocated_exclusive",
+        "status": "returned",
         "caseLimit": 2,
         "attemptsPerCase": 1,
         "boundary": "Only original uninstrumented first2550 plus one actual terminal26 hold/accepted-state observed comparison; original51/26/<100/50 and5000ms notice preserved; no native/R9/DB/Auth/Storage/provider/credentials",
-        "returnRequired": "Prompt explicit UTC RETURN after normalteardown/exactownPIDstart/previewnoTab BEFORE postrunhash/report/Git; zero afterresourcecalls"
+        "returnRequired": "Prompt explicit UTC RETURN after normalteardown/exactownPIDstart/previewnoTab BEFORE postrunhash/report/Git; zero afterresourcecalls",
+        "returnedAt": "2026-11-01T07:51:23UTC",
+        "savedParentEvidence": ".local-artifacts/portal-rebuild/w3-ci19c-return/",
+        "returnSha256": "5d2d160f122119b1153535488b3c8568e15dc82de60ebf01d9f678d989767ef2",
+        "finalInventorySha256": "e569f6eedacf62ddad3d626ce152c8a7def005e0de6124b9ca79983b236742f2",
+        "closure": "Saved22exacttrackedidentitiesabsent/scopedlists[]/previewnoTab; authornoafterresourcecall"
       },
-      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-two-case-chrome-brief.txt"
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-two-case-chrome-brief.txt",
+      "terminalCommit": "64f8b61b65d4f7c052118b965ab9e763ecd9de28",
+      "metadataCommit": "c6ab76ff1b473f9806f6ff2ef5293648a105a0c9",
+      "verificationResult": "Exactly2finitecases1/1each once; originalnonsensitiveMacPASS; controlledoldDOMproxytrue/actualacceptancefalseheld ->sameowner2550/0details ->original51/26/<100/50/5000msPASS. NoCIacceptance."
     },
     {
       "role": "W7 independent actual advisor A07 App composition R1",
@@ -5697,14 +5705,57 @@
       "branch": "t3/review-a07-composition",
       "briefSha256": "4c699fa3c4080b5bb98c80f4592035958fe5e2c995e4b18c3f51afc812e665cc",
       "dependencySetup": {
-        "state": "allocated_pending_child_clone",
+        "state": "both_APFS_clones_exit0_reported_by_child",
         "sourceWorkspace": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030",
         "destWorkspace": "/Users/kanuj/.t3/worktrees/shelv/t3-11d1108f",
         "method": "Only APFS cp -cR of two absent ignored node_modules dirs; no install/fullcopy/symlink/Parentwrites",
         "packageAndLockFiles": "All4byte-identical by Parent comparison",
         "evidence": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-a07-r1-dependency-allocation.txt",
         "constraints": "Root480MiB/portal326MiB installed; filesystem2.5GiB available atallocation. Clonefailure requires report, no fullcopy fallback. Resourceboundaryunchanged."
+      },
+      "preliminaryFinding": {
+        "id": "A07C1",
+        "priority": "P2",
+        "scope": "Sourceonly, noDOM/ordinaryReactclaim",
+        "trigger": "One mutable RecordScope reused by reportA/reportB or instruction; native plainnavigatorBack earlierAURL resolvesnull",
+        "evidence": "6controls4pass2fail twice, actual104pagepositive and otherretainedpass; authorfixunallocated pendingfullreport",
+        "status": "dependent_acceptance_stopped_report_finalizing"
       }
+    },
+    {
+      "role": "W7 independent CI19c accepted-manifest precondition source/test/evidence R1",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-precondition-review-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-precondition-review-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-ci19c-manifest-precondition-review-20261101-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-a86214ff",
+      "branch": "t3/ci19c-manifest-precondition-review",
+      "baseCommit": "e7cbeaf450c82bb27a67bfa4fdf39df9552d1c66",
+      "frozenTarget": "9b2ba20999809440be62d0de85c121a1b8850bb5",
+      "underlyingAuthorTarget": "64f8b61b65d4f7c052118b965ab9e763ecd9de28",
+      "allocatedImports": [
+        "9b2ba20999809440be62d0de85c121a1b8850bb5"
+      ],
+      "resourceBoundary": "Source/SSR/finite syntheticHTTP and readonlysavedCI/browserJSON only; NO browser/preview/process/native/Auth/DB/Storage/provider/R9/fixture/resourcegrant. Reportonly/no fixes.",
+      "reportPath": "docs/portal-rebuild/research/W7_CI19C_MANIFEST_PRECONDITION_R1.md",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-ci19c-manifest-review-r1-brief.txt",
+      "briefChars": 116475,
+      "candidateAssembly": ".local-artifacts/portal-rebuild/ci19c-review-input-check/CANDIDATE.json",
+      "assemblyBoundary": "11test/reportpaths, Rootworktree/indexuntouched. ParentoldgrantliteralretainedonlyNodehelperexception. Skipall3childdependencydowngrades/c6returnedgrantmetadata.",
+      "dependencySetup": "Only same4locks+APFScloneofexisting2depdirectories intoownabsentignoredpaths. No install/fullcopy/symlink/Parentwrites; lowdiskconstraint.",
+      "briefSha256": "a8cbad80eed05fb54ed976f2f5dde8a9c9a4a653ec572a2096facbf2d9c6b7f4"
     }
   ],
   "parentVerification": {
@@ -6999,11 +7050,18 @@
       "phase": "W3_V3_GUIDANCE_SYNTHETIC_CHROME",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
       "sourceHead": "3e8132ebc5ec2d201d1487e6811188e597f3a1b0",
-      "status": "allocated_exclusive",
+      "status": "returned",
       "caseLimit": 2,
       "attemptsPerCase": 1,
       "boundary": "Only original uninstrumented first2550 plus one actual terminal26 hold/accepted-state observed comparison; original51/26/<100/50 and5000ms notice preserved; no native/R9/DB/Auth/Storage/provider/credentials",
-      "returnRequired": "Prompt explicit UTC RETURN after normalteardown/exactownPIDstart/previewnoTab BEFORE postrunhash/report/Git; zero afterresourcecalls"
-    }
+      "returnRequired": "Prompt explicit UTC RETURN after normalteardown/exactownPIDstart/previewnoTab BEFORE postrunhash/report/Git; zero afterresourcecalls",
+      "returnedAt": "2026-11-01T07:51:23UTC",
+      "evidence": ".local-artifacts/portal-rebuild/w3-ci19c-return/"
+    },
+    "authorBrowserResult": "2casesPASSonce: originalnonsensitive; actualmountedheldoldproxytrue/newfalse thensameowner2550/0details andoriginalassertionsPASS",
+    "reviewTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-precondition-review-20261101-r1",
+    "reviewCandidate": "9b2ba20999809440be62d0de85c121a1b8850bb5",
+    "reviewCandidateImportedIntoRoot": false,
+    "ciStatus": "Published19cFAIL remains; correction/source/evidence independentreviewpending, no exact-head CI pass"
   }
 }
