@@ -1,3 +1,11 @@
+## 2026-11-01 latest portal integration and parallel work
+
+Root source at a06fd056 now includes independently reviewed owner-policy App composition on the actual permissions route. Fresh Parent38/78, frontend/session/strong/UI, complete main2238/15 correspondence, Root1370pass/18existing skips/types/Expo pass. [Integration record](portal-rebuild/research/COORDINATOR_OWNER_POLICY_APP_INTEGRATION.md). SourceAccount74/strict0/R5 model is imported without RPC/consent/storage activation.
+
+A07 authorff2's one reviewed synthetic Chrome run passes10/10 with18 captures; RETURN20:27:03Z,36sampled identities absent/preview noTab/grantnull. No after-return resources. New report1554 remains separate from Root source integration and genuine acceptance. Historical failures remain intact.
+
+Six new independent reviews were launched in parallel, yielding a verified eight total with W0 finalization and coordinator. Maya MF1 gets scoped SOURCE/SSR PASS; actual App composition is now assigned. New review findings AAS2/AC2/N2/PH1/FE3 hold other module admission. Bounded Account test, Commerce controller and notification runtime corrections are assigned; photo ingress and export display need separate scoped follow-ups. Exact tasks and changing allocation snapshots are in [TASKS](portal-rebuild/TASKS.json). Kanuj authorized more than eight agents when useful; eight role domains/config pins are retained, no hard24 ceiling inferred. No nesting or current resource grant. Full approved26-screen goal remains open.
+
 ## 2026-11-01 static final export implementation begins
 
 [Approved static export after30days](portal-rebuild/DECISION_ADDENDA.md#static-final-export-after-the-read-only-window-1-november-2026) now has W1 source-producer/serializer ownership in b08e21c9, actual sole migration20261101173223 allocated empty by CLI, current62 preserved. No DB/runtime grant or sharedconsumer activation; early trusted finalbasis/API pending. W2 OP1 and W6 SAC4 source corrections plus W0 returned-attempt report recovery are separately live. Five including coordinator verified at allocation, Sol/xhigh/default. Exact handles/ownership/limits in TASKS.json; full goal remains active.

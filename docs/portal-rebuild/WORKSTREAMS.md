@@ -2,7 +2,24 @@
 
 Owner: Kanuj. Coordinator owns integration and this registry. Updated 31 October 2026.
 
-Read the approved decisions/specification, implementation contracts, acceptance matrix and current status before work. Maximum eight concurrent workers including nested tasks. Start with at most three workers plus coordinator to keep resource use bounded. Only the coordinator schedules heavy database/browser stacks. No nested delegation without an allocated slot and write-set.
+Read the approved decisions/specification, implementation contracts, acceptance matrix and current status before work. The original eight role domains remain, with Kanuj's later explicit permission to exceed eight agents when useful. Checked-in max8 configuration is unchanged; app-owned capacity is verified separately and no hard T3 limit of 24 is claimed. Only the coordinator schedules database/browser stacks. No nested delegation without an allocated slot and write-set.
+
+## Current allocation, 1 November 2026, after 20:27 UTC
+
+This section supersedes older live-allocation prose below; historical evidence remains unchanged. A live T3 inventory confirmed eight running agents including coordinator: six new independent reviews, W0 A07 returned-browser report finalization and coordinator integration. All use verified codex/Sol/xhigh/default. Exact task/run handles are in TASKS.json.
+
+| Lane | Current work | Write ownership and resources |
+| --- | --- | --- |
+| W0 / coordinator | reviewed owner-policy App integrated through a06fd056; parent checks pass | coordinator owns integration, docs and shared composition |
+| A07 W0 | ten finite synthetic browser cases pass; returned 20:27:03Z | saved-file/report-only finalization; no further resource calls |
+| Maya | NEW independent R2 on 194866f4 | new report only; no browser |
+| Account | NEW independent R2 on 62f049ef | report only; AAS1 addressed, SSR React duplication AAS2 holds acceptance |
+| Commerce | NEW independent R2 on 322eb864 | report only; new status-notification finding AC2 holds acceptance |
+| Notifications | NEW independent R2 on 1f9fe2be | report only; new upstream-status finding N2 holds acceptance |
+| Photos | NEW independent head-reader R1 on d2261941 | report only, exact imported-handler union authorized; SQL unrun |
+| Final export | NEW independent R3 on 944229a8 | report only; frozen protocol/SQL, no actual download acceptance |
+
+Both source migration writers have returned their slots: photo-head frozen at 5d18f401 and Notifications N1 at 1f9fe2be. No child has a native/SQL grant. R9 remains stopped and preserved. These parallel reviews are independent tasks, not six new feature owners or approval to modify production. Completed reports rotate into bounded corrections and new review rounds without changing the eight role domains.
 
 ## runtime evidence
 

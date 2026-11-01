@@ -1,4 +1,27 @@
-## Current bounded execution and source reviews
+# Portal rebuild current status
+
+## Latest checkpoint, 1 November 2026, after 20:27 UTC
+
+This section supersedes older live-state paragraphs below. The complete approved rebuild remains active. Eight role domains are retained; Kanuj authorized additional subagents when useful. A live inventory confirmed eight running agents including coordinator during the six-review allocation. Capacity snapshots are not a promise that terminal tasks remain running.
+
+**Integrated source:** the owner-policy publishing section now mounts on the actual permissions route through `f1d8e75b` / `eef72117`, with independent report `a06fd056`. Fresh Parent tests pass38 App /78 policy, frontend/session/strong types and UI; actual main has2,238 inputs/15 outputs, all hashes equal reviewed author. Root tests are1,370 pass/0 fail/18 existing opt-in skips, both Root typechecks and Expo web export pass. [Exact integration evidence](research/COORDINATOR_OWNER_POLICY_APP_INTEGRATION.md). Full A08, ordinary browser and genuine persistence remain open.
+
+**A07 bounded browser:** one reviewed invocation on author `ff2f7a53`, production083, passes all10 finite synthetic DOM cases and records18 captures. Parent read the ten result records and supervision receipt. Custody returned **20:27:03Z**; all36 sampled known PID/start identities absent, observer/cleanup errors0, preview unavailable/no tab, grant reset to null. No resource calls are authorized after RETURN. Full report-only `1554a33a` documentary snapshot is imported with its original117,722-byte Root prefix exact; no implementation ancestors are imported. Source-only, synthetic browser and genuine acceptance remain separate. Initial missing-esbuild failure, one exact dependency restore, old ordinal18 failed attempt and old137 cleanup uncertainty remain preserved.
+
+**Reviewed models:** Source Account contracts through `8d0fb3d6` have independent R5 scoped SOURCE/PURE PASS and Parent74/74/strict0. They activate no RPC, consent, storage, disclosure or client UI. The assisted-confirmation workflow and continued static final export after30days are settled user decisions; their actual producers/lifecycle enforcement remain incomplete.
+
+| Feature lane | Current bounded outcome | Next gate |
+| --- | --- | --- |
+| Maya | MF1 independently closes; R2 scoped source/SSR PASS | actual public App composition assigned; full use form/post-preset choices, DOM/history/a11y remain debt |
+| Account address/service | AAS1/AAS2 close within scope; R3 finds AAS3 reentrant abort can observe old private state | report finalization, correction and new review before admission |
+| Advisor Commerce | AC2 observer correction passes80/80 author source cases; R3 finds AC3 expiry notification restores cleared state | report finalization, correction and new review; financial/provider/CAS/evidence gaps remain |
+| Notifications | N2 status correction passes39/39 author source cases | NEW independent R3 active; SQL/catalog/concurrency/provider unrun |
+| Report photos | backend PH1 cap correction in final source checks; separate feature review finds RP1 late media after basis403 | RP1 report/fix and backend review still required; no C05/C07 or storage admission |
+| Final export | FE3 instruction-binding correction f16e6e7 source77/emitted77 author checks pass | NEW independent R4 active; SQL/Account download/R1 public producer still open |
+
+Migration source writers have returned their slots; photo-head5d18 and Notifications1f9 are frozen. No native/DB/Auth/Storage grant is active. R9 stays stopped/preserved. Provider-blocked M65 and Guidance private-return work has no accepted verdict and is not rerouted. Current local source is ahead of published16a; no new exact-head CI or release claim is made. TASKS.json owns exact task identities, ownership and returned grants.
+
+## Historical bounded execution and source reviews
 
 Kanuj has selected [continued static final export](DECISION_ADDENDA.md#static-final-export-after-the-read-only-window-1-november-2026) from Account after the 30-day care read-only window. The policy question is settled. New W1 in b08e21c9 owns the actual public-only final-export producer/handler/serializer source slice and one CLI-allocated forward migration; early final-basis/API reconciliation is in progress, no SQL execution or runtime activation. The completed download flow remains unimplemented. This does not extend ongoing care or raw-source access.
 

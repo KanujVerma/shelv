@@ -32,7 +32,7 @@ Coordinator must add prospective cross-references in AGENTS.md, founder operatio
 
 ## Execution requirement
 
-Coordinator, workers, reviewers, explorers, testers and nested/resumed agents: `gpt-6.1-sol`, `xhigh`. Verify effective runtime settings and overrides. No silent fallback. Maximum eight concurrent workers. The claim that an agent is on the correct model requires configuration/runtime evidence, not its own assertion.
+Coordinator, workers, reviewers, explorers, testers and nested/resumed agents: `gpt-6.1-sol`, `xhigh`. Verify effective runtime settings and overrides. No silent fallback. The original eight workstream domains remain; Kanuj subsequently authorized additional subagents when useful. Actual runtime capacity and disjoint ownership govern allocation; no fixed T3 ceiling of 24 is asserted. The claim that an agent is on the correct model requires configuration/runtime evidence, not its own assertion.
 
 ## Safety and readiness
 

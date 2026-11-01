@@ -2,6 +2,14 @@
 
 Owner: Kanuj. Append meaningful transitions with exact evidence and scope.
 
+## 1 November 2026: owner-policy App integration and fresh parallel review round
+
+Starting clean d4a3314e, imported b33/4a author commits as f1d8e75b/eef72117 and only independent report4baf as a06fd056. Fresh Parent38 App/78 policy and frontend/session/UI pass; extra private-input strong probe exits0. Main2238/15 has zero input/output hash differences from reviewed author. Root npm1370pass/0fail/18old skips, Root app/test types and Expo web pass. Evidence owner-policy-app-parent-admission contains commands/raws/PROOF; first own esbuild import path failure preserved before correcting only ignored helper. The old evidence-index fault remains disclosed.
+
+Launched NEW report-only MayaR2/AccountR2/CommerceR2/NotificationsR2/PhotoHeadR1/FinalExportR3 on frozen d4 in disjoint T3 worktrees, verified Sol/xhigh/default. Live inventory returned eight including coordinator and W0. Root's owner-policy code/test/docs advance was explicitly reconciled without rebasing those reviews. Exact task IDs separately forwarded after live gates. Maya MF1 passes scoped source/SSR; AccountAAS2, CommerceAC2, NotificationsN2, PhotoHeadPH1 and ExportFE3 hold admission. New bounded corrections are assigned as reports finalize. No review failure is erased by a later fix.
+
+A07 current READY after exact authorized dependency restoration was reviewed. Exact driver/supervisor and one10-context/18-capture synthetic grant bound to task/ordinal23/ff2/6325 were authorized; runner exits0,10/10,18 captures. RETURN20:27:03Z precedes saved-file/report/Git finalization. All36 sampled known PID/start identities absent, no observer/cleanup errors and preview false/null; no global or old137 cleanup claim. Grant restorednull, no after-return resource calls. Parent read saved result/supervision records. New author report-only1554 carries evidence; no A07 production import/genuine/CI/full-goal acceptance is inferred.
+
 ## 2026-10-30: goal, runtime and isolation
 
 - Goal accepted for the complete approved rebuild, not a redesign/static-only deliverable. Original input retained byte-for-byte under `source/APPROVED_INPUT.txt`; [input provenance](INPUT_PROVENANCE.json) records exact imported hashes and limits.
