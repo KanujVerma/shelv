@@ -15,7 +15,7 @@ async function rpcData(ports: CheckinPorts, token: string, call: CheckinRpcCall,
   if (result.error) {
     const code = result.error.message?.replace(/^concierge_/, '') ?? '';
     if (result.error.status === 401 || result.error.status === 403) throw new HttpFailure(result.error.status, result.error.status === 401 ? 'unauthorized' : 'forbidden');
-    if (Object.hasOwn(errors, code)) throw new HttpFailure(errors[code], code);
+    if (Object.hasOwn(errors, code)) throw new HttpFailure(errors[code]!, code);
     throw new HttpFailure(503, 'unavailable', true);
   }
   return result.data;
@@ -126,14 +126,14 @@ export async function handleCheckinsRequest(request: Request, ports: CheckinPort
   const bearer = /^Bearer ([^\s]+)$/i.exec(request.headers.get('authorization') ?? '');
   if (!bearer) return reply(401,{code:'unauthorized',retryable:false});
   try {
-    const user = await ports.authenticate(bearer[1],request.signal);
+    const user = await ports.authenticate(bearer[1]!,request.signal);
     if (!user) throw new HttpFailure(401,'unauthorized');
     let ownerId: string; try { ownerId = readUuid(user.id).toLowerCase(); } catch { throw new HttpFailure(503,'unavailable',true); }
     if (user.is_anonymous !== false) throw new HttpFailure(403,'forbidden');
-    if (request.headers.get('content-type')?.toLowerCase().startsWith('multipart/form-data;')) return reply(200,await multipartUpload(request,ports,bearer[1],ownerId));
-    if (new URL(request.url).pathname.endsWith('/upload')) return reply(200,await upload(request,ports,bearer[1],ownerId));
-    if (request.headers.get('content-type')?.split(';')[0].trim().toLowerCase() !== 'application/json') throw new HttpFailure(415,'unsupported_media_type');
-    const call = buildCheckinCall(await readConciergeJson(request.body,100000),ownerId), data = await rpcData(ports,bearer[1],call,request.signal);
+    if (request.headers.get('content-type')?.toLowerCase().startsWith('multipart/form-data;')) return reply(200,await multipartUpload(request,ports,bearer[1]!,ownerId));
+    if (new URL(request.url).pathname.endsWith('/upload')) return reply(200,await upload(request,ports,bearer[1]!,ownerId));
+    if (request.headers.get('content-type')?.split(';')[0]!.trim().toLowerCase() !== 'application/json') throw new HttpFailure(415,'unsupported_media_type');
+    const call = buildCheckinCall(await readConciergeJson(request.body,100000),ownerId), data = await rpcData(ports,bearer[1]!,call,request.signal);
     if (call.name === 'concierge_checkin_read' || call.name === 'concierge_checkin_advisor_read') {
       try {
       const source = call.name === 'concierge_checkin_read' ? data : readObject(data).client;
