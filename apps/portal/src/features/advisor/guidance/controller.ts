@@ -1375,6 +1375,28 @@ export function createAdvisorGuidanceController({
       readGeneration: bound.readGeneration,
     };
     activeWrite = operation;
+    const cancelCapturedAttempt = () => {
+      // An earlier false result stays false: only this attempt's captured
+      // cancellation may run, with no new-scope retirement notifications.
+      if (activeWrite === operation) finishRetirement(prepareWrite(), false);
+      if (dispatchOwner === own) dispatchOwner = null;
+      if (
+        current() &&
+        state.selection === bound.selection &&
+        context === bound.context &&
+        manual === bound.manual &&
+        authority === bound.authority &&
+        activeWrite?.intent !== own
+      )
+        emit({
+          saveState: retry
+            ? "uncertain"
+            : command.action.includes("draft")
+              ? "idle"
+              : state.saveState,
+        });
+      lease.finish();
+    };
     // Pure deny-only relevance. Mandatory live lease/current/CSRF checks stay
     // in the real shared transport before and after this callback.
     const isApplicable = () => {
@@ -1426,11 +1448,20 @@ export function createAdvisorGuidanceController({
         return false;
       }
     };
-    emit({
-      saveState: command.action.includes("draft") ? "saving" : state.saveState,
-      acknowledged: false,
-      notice: null,
-    });
+    if (
+      !emit({
+        saveState: command.action.includes("draft")
+          ? "saving"
+          : state.saveState,
+        acknowledged: false,
+        notice: null,
+      })
+    ) {
+      // No factory has been called. Cancel only the captured attempt and latch
+      // the lost origin; a cancellation helper cannot adopt the new view.
+      cancelCapturedAttempt();
+      return;
+    }
     try {
       if (!lease.valid()) {
         if (activeWrite === operation) retireWrite();
@@ -1453,8 +1484,20 @@ export function createAdvisorGuidanceController({
               signal: lease.signal,
               isApplicable,
             });
-      retireAuthority(own);
+      const retired = retireAuthority(own);
       if (dispatchOwner === own) dispatchOwner = null;
+      if (!retired) {
+        cancelCapturedAttempt();
+        // Drain only the already-created promise. Real global401 handling has
+        // already run in the actual cookie/session path; never install an old
+        // receipt or recapture the newer owner in a failure continuation.
+        try {
+          await dispatched;
+        } catch {
+          /* Intent remains exact or known unsent. */
+        }
+        return;
+      }
       const result = await dispatched;
       if (!lease.valid()) return;
       acknowledge(result as GuidanceWriteResult | ReviewWriteResult, own);
@@ -1567,18 +1610,20 @@ export function createAdvisorGuidanceController({
   }
   async function create() {
     if (!can("create") || !state.selection || !state.body) return;
+    let command: GuidanceCommand;
     try {
-      const command = readGuidanceCommand({
+      command = readGuidanceCommand({
         schemaVersion: 1,
         action: "create_guidance_draft_v1",
         requestId: crypto.randomUUID(),
         clientId: state.selection.clientId,
         body: state.body,
       });
-      await executeWrite("guidance", command as Write);
     } catch {
       emit({ notice: "check the draft fields. the content was not sent." });
+      return;
     }
+    await executeWrite("guidance", command as Write);
   }
   async function action(
     which: "review" | "rebase" | "approve" | "publish" | "revoke",
@@ -1866,8 +1911,9 @@ export function createAdvisorGuidanceController({
           state.publication.currentGuidance.snapshot.publication,
         ),
       );
+      let command: ReturnType<typeof readReviewCommand>;
       try {
-        const command = readReviewCommand({
+        command = readReviewCommand({
           schemaVersion: 1,
           action: "record_conversation_v1",
           requestId: crypto.randomUUID(),
@@ -1875,13 +1921,14 @@ export function createAdvisorGuidanceController({
           expectedReportRevision: state.history.heads.reportHead,
           body,
         });
-        await executeWrite("review", command as Write);
       } catch {
         emit({
           notice:
             "check the conversation facts and actual channel. the record was not sent.",
         });
+        return;
       }
+      await executeWrite("review", command as Write);
     },
     async savePrivateNote(subject: PrivateNoteSubject, note: string) {
       if (!can("private_note") || !state.selection) return;
@@ -1905,8 +1952,9 @@ export function createAdvisorGuidanceController({
                     e.original.id === subject.id),
             );
       if (!exists) return;
+      let command: ReturnType<typeof readReviewCommand>;
       try {
-        const command = readReviewCommand({
+        command = readReviewCommand({
           schemaVersion: 1,
           action: "append_private_review_note_v1",
           requestId: crypto.randomUUID(),
@@ -1914,10 +1962,11 @@ export function createAdvisorGuidanceController({
           reviewEvent: subject,
           note,
         });
-        await executeWrite("review", command as Write);
       } catch {
         emit({ notice: "enter a private note before saving." });
+        return;
       }
+      await executeWrite("review", command as Write);
     },
     checkStatus,
     async retry() {
