@@ -5167,7 +5167,7 @@
       "frozenTarget": "2b6813fcaad482979030bedc3403e5b94817bd99",
       "resourceBoundary": "Controller/newtests/report only, stageoriginaldeniedownerbeforewriteerrorcallbacks, allmutation/denial/emitcaller audit; no resources",
       "terminalCommit": "299929f34a440e9087dc52b67eadf1e348c5d88a",
-      "result": "Author source candidate500; independent R6 pending; no acceptance"
+      "result": "Author complete; independentR6 scopedSOURCE/SSR PASS; source imported85fc0663"
     },
     {
       "role": "W0 C05 successful initial data admission CH5 source correction",
@@ -5289,7 +5289,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-8b66d521",
       "branch": "t3/review-guidance-ui-source-r6",
       "frozenTarget": "299929f34a440e9087dc52b67eadf1e348c5d88a",
@@ -5298,7 +5298,9 @@
       "resourceBoundary": "SOURCE/SSR/report-only; no browser/native/resource grant",
       "reportOnly": true,
       "nested": false,
-      "allocatedAt": "2026-11-01 03:59:42 UTC"
+      "allocatedAt": "2026-11-01 03:59:42 UTC",
+      "terminalCommit": "10569f36306c00e69452b0f012d985993bcc1b39",
+      "result": "SPEC and quality scopedSOURCE/SSR PASS; no App/resource/CI/release acceptance"
     },
     {
       "role": "W1 Source S8-S9 semantic correction",
@@ -5317,12 +5319,14 @@
           "value": "default"
         }
       ],
-      "status": "starting",
+      "status": "completed",
       "frozenTarget": "ea4615966105f6d41aa9f33626a66202d17e2636",
       "resourceBoundary": "Source Mapping/Validation/new tests/report only; no public API/wire/action/right/SQL/Phase2/resources",
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/source-s8-s9-correction-brief.txt",
       "allocatedAt": "2026-11-01 03:59:42 UTC",
-      "nested": false
+      "nested": false,
+      "terminalCommit": "7fc2a2314b824811a354786233424f09f9302144",
+      "result": "AuthorS8/S9 complete; original examples independently closedR4, newS10FAIL retained"
     },
     {
       "role": "W0 History replacement-reader CH6 source correction",
@@ -5341,12 +5345,121 @@
           "value": "default"
         }
       ],
-      "status": "starting",
+      "status": "completed",
       "frozenTarget": "d4c216d0b419a9d0ced365867c1ca4edcd424088",
       "resourceBoundary": "App composition/new tests/report only; public reader API and W4 currentness unchanged; no browser/resources",
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/app-ch6-source-brief.txt",
       "allocatedAt": "2026-11-01 03:59:42 UTC",
-      "nested": false
+      "nested": false,
+      "terminalCommit": "b752b96051f28d1d35f50e391dc81034630b706c",
+      "result": "AuthorCH6 source complete228; NEW independentR6 running"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-private-source-contracts-review-20261101-r4",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-private-source-contracts-review-20261101-r4",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-private-source-contracts-review-20261101-r4:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-267c4e26",
+      "role": "W7 independent Source proposal R4",
+      "status": "completed",
+      "frozenTarget": "7fc2a2314b824811a354786233424f09f9302144",
+      "terminalCommit": "54e702d0393328b14d686efc5e5402ce2f6a51e6",
+      "result": "SPEC/quality FAIL S10/P2 text selector fidelity; S1-S9 original examples addressed",
+      "resourceBoundary": "SOURCE/PURE/report-only; no resources",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/source-contracts-r4-brief-compact.txt",
+      "allocationQualification": "127493-character task rejected by120000 tool validation; no matching child before accepted119524-character prompt; only duplicate outer instructions/summaries removed"
+    },
+    {
+      "role": "W1 Source S10 text selector correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-source-text-selector-s10-correction-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-report-guidance-contracts-20261031-r1:ordinal:14",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "frozenTarget": "7fc2a2314b824811a354786233424f09f9302144",
+      "terminalCommit": "d0f3a31c778d8d08ee752dc1d4b49c4eec26874a",
+      "resourceBoundary": "SourceMapping/newtests/report only; no API/right/Phase2/resources",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/source-s10-correction-brief.txt"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-private-source-contracts-review-20261101-r5",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-private-source-contracts-review-20261101-r5",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-private-source-contracts-review-20261101-r5:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1a72d64d",
+      "branch": "t3/w7-source-contracts-r5",
+      "role": "W7 independent Source proposal R5",
+      "frozenTarget": "d0f3a31c778d8d08ee752dc1d4b49c4eec26874a",
+      "resourceBoundary": "SOURCE/PURE/report-only, no resources",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/source-contracts-r5-brief.txt",
+      "reportOnly": true,
+      "nested": false,
+      "allocatedAt": "2026-11-01 04:40:46 UTC",
+      "terminalCommit": "014bc0073262b274804fd711ff41b70964349b8d",
+      "result": "SPEC/quality scopedSOURCE/PURE PASS; S1-S10 addressed; model only/no resources"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-review-20261101-r6",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-review-20261101-r6",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-v3-history-composition-review-20261101-r6:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-9cfe1ac9",
+      "branch": "t3/review-history-composition-r6",
+      "role": "W7 independent composed History R6",
+      "frozenTarget": "b752b96051f28d1d35f50e391dc81034630b706c",
+      "resourceBoundary": "ACTIVE sole finite syntheticChrome ONLY9cfe1ac9/head4763bc56; noR9/native/Auth/DB/Storage/finance; explicitRETURNrequired",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/app-history-r6-brief.txt",
+      "reportOnly": true,
+      "nested": false,
+      "allocatedAt": "2026-11-01 04:40:46 UTC",
+      "sourceReady": "Source scopedPASS at4763bc56/b752; original228/198/256/25 and own9/9; actualmain2232/15 preservescurrent37f",
+      "chromeGrant": "coordinator-w7-app-history-r6-synthetic-chrome-b752b960-20261101"
     }
   ],
   "parentVerification": {
@@ -5471,21 +5584,22 @@
       "early": "ea6fcb5e6debc0117f5807c66adf878a09da8483",
       "dependency": "14c91e0527c10b825b7ff0e99d5227e9c8533ed8",
       "checks": "500 overlapping owned source/SSR; retained32/83/R332/raw45/Root80; originalG8seven pass; strict/bundles pass; rawG5 remains4/5 and generation0/1",
-      "review": "G8 author audit terminal; NEW independent R6 running",
+      "review": "R610569f36 source SPEC/quality scopedPASS; parent500/256/80/global1256+18skips/types/Expo/buildpass; source integrated85fc0663",
       "g5Disposition": "Independent R3 verifies exact producer-return trace; original4/5 retained qualified, definitive before-return controls pass",
       "g6AuthorFix": "68d3f6ae8fe59401be7fbc138597c06d876ddf08",
       "g6Checks": "172/32/83/R3independent32/45/80/G4six, originalG6fourGREEN; G5original4/5 remainsqualified; servergenerationdependency remains",
-      "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261101-r6"
+      "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261101-r6",
+      "integrationBoundary": "Unmounted; App/generation/rawSource/genuine/CI/release gates remain"
     },
     "app": {
-      "source": "9a40769b98adaa5dd677f406ce66dfad7eeb7311",
-      "delivery": "d4c216d0b419a9d0ced365867c1ca4edcd424088",
-      "checks": "208 source aggregate; feature198/transport256/residual25; strict/UI/build2231x15",
-      "review": "R5 fe2c5d7c CHANGES REQUIRED CH6/P3 outstanding predecessor overlap; CH5 source closed; mounted reachability unproved",
+      "source": "7a19b7e28aaff7c28916d35208ec6aec6c2400bc",
+      "delivery": "b752b96051f28d1d35f50e391dc81034630b706c",
+      "checks": "Fresh228/198/256/25/packaging5/own9/9/strict/build2232x15 SourceReady; DOMpending",
+      "review": "R6 source scopedPASS/SourceReady; separately granted finite syntheticChrome ACTIVE",
       "targetExceptions": "New R5 preserves current Parent875/fed90/hermetic/telemetry test postimages; App-owned client-state remains e4cb",
-      "chrome": "AuthorCH4returned02:44:30.491Z; Roottelemetrysmokereturned03:02:15.602256Z",
-      "production": "9a40769b98adaa5dd677f406ce66dfad7eeb7311",
-      "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-review-20261101-r5",
+      "chrome": "ACTIVE coordinator-w7-app-history-r6-synthetic-chrome-b752b960-20261101, ONLY9cfe1ac9/head4763bc56; no otherresource",
+      "production": "7a19b7e28aaff7c28916d35208ec6aec6c2400bc",
+      "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-review-20261101-r6",
       "productionBoundary": "CH5 private successful-data admission; CH4 intent lifetime preserved; no Parent integration",
       "reviewImportedAs": "8ad131c15c3cc399d7e423f80b4c79a2354c255e",
       "correctionTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-history-update-replacement-reader-ch6-source-20261101"
@@ -5505,10 +5619,10 @@
       "custody": "AuthorownPGSTOPPED"
     },
     "sourceProposal": {
-      "source": "ea4615966105f6d41aa9f33626a66202d17e2636",
+      "source": "d0f3a31c778d8d08ee752dc1d4b49c4eec26874a",
       "scope": "Pure Source15 proposal,8READ/7WRITE/task0; original six files plus owned corrective tests; actual reader/upload/grants/storage/retention/deletion unimplemented",
-      "pin": "UNPINNED/UNACTIVATED; no SourcePhase2 or resource authority",
-      "review": "R3 743bd539 SPEC/quality FAIL; S1-S7 examples addressed, S8/S9 P2 intrinsic detail and retention consistency; bounded author follow-up active",
+      "pin": "PARENT MODEL FREEZE d0f only; Rootmodules/API/runtime/roles/profiles/caps/disclosure/rights UNACTIVATED, noPhase2grant",
+      "review": "R5014bc007 SPEC/quality scopedSOURCE/PURE PASS; allS1-S10 original examples addressed",
       "priority": "Source-only intrinsic invariants before NEW R4/pin; M65 provider block remains separate",
       "s7Adjudication": {
         "evidence": "Existing verifySourceDetailDigest signaturePromise<void> does not bind the mutable caller object after success",
@@ -5526,8 +5640,8 @@
         "rawOld40": "39/40 intentional unsafe job-only positive",
         "independentVerdict": "Pending NEW R3; author130 registrations overlap and are not130 unique behaviors"
       },
-      "checks": "130 current/adapted registrations; strict0; raw11=9/11, scheduling-only10/11, adapted11/11; raw17=16/17 and raw40=39/40 retained",
-      "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-private-source-contracts-review-20261101-r3",
+      "checks": "185 overlapping and independent16 pass; strict0; raw17/40/11 and scheduling-only failures preserved",
+      "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-private-source-contracts-review-20261101-r5",
       "reviewImportedAs": "0c2beaa9ddeb19b4d3c61f85e217ba2641f9b595",
       "correctionTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-source-detail-retention-semantic-s8-s9-corrections-20261101"
     },
@@ -5556,7 +5670,7 @@
   },
   "currentRemoteCheckpoint": {
     "head": "72326431d5a1b5bf290a68cf82d28797a28336c1",
-    "status": "All3checksPASS oncurrentPRhead; draft/open/unmerged; CIwatchcompleted",
+    "status": "Last confirmed green723; subsequent guidance source integration awaits new exact-head CI after publication",
     "scope": "Hermeticbaselinefixtures+syntheticdiagnosticproducer/upload; production/Auth/SQL unchanged from125222",
     "limits": "budgettimeoutcauseunproved/notclaimedfixed; financialR3providerblocked/M65unadmitted",
     "ci": {
@@ -5579,7 +5693,7 @@
       "served": 6,
       "evidence": ".local-artifacts/portal-rebuild/ci-723264-pass/"
     },
-    "qualification": "CurrentconfiguredCIpasses; earlierbudgettimeoutcauseunproved, no testwait/readinesspredicate changed. Fullgoal/Source/App/guidance/financial/release separate."
+    "qualification": "The723 all3PASS/1785 package result does not certify later guidance imports or full goal; older budget timeout cause remains unproved."
   },
   "ciRecovery125222": {
     "head": "1252227491a547f194ff7a14fe30879ab2355a95",
@@ -5631,5 +5745,355 @@
       "upload": "ONLYrunner.temp/portal-guidance-synthetic,7days,pinnedactionea165f8, bounded4files<=2MB",
       "budgetCause": "UNPROVEN; no test assertions/timing/readiness/timeout changes; not fixed by localpass"
     }
+  },
+  "guidanceImports": [
+    {
+      "original": "2b2fd728cab711442823ed99dde1a08dd90c0226",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 6c6bec48] feat(portal): add isolated advisor guidance request seam\n Date: Sat Oct 31 13:19:16 2026 -0500\n 4 files changed, 125 insertions(+)\n create mode 100644 apps/portal/src/features/advisor/guidance/adapters.ts\n create mode 100644 apps/portal/src/features/advisor/guidance/types.ts\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-ports.test.mjs\n create mode 100644 docs/portal-rebuild/research/W2_GUIDANCE_UI.md\n",
+      "stderr": "",
+      "imported": "6c6bec48f5fd885cc4589236ca3fcad69c147d10"
+    },
+    {
+      "original": "c7d4379771d4e68c864351d6546ba453cec5b347",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 48166fd2] feat(portal): add bounded advisor report and guidance workspace\n Date: Sat Oct 31 13:44:10 2026 -0500\n 17 files changed, 5402 insertions(+), 85 deletions(-)\n create mode 100644 apps/portal/src/features/advisor/guidance/AdvisorGuidanceWorkspace.tsx\n create mode 100644 apps/portal/src/features/advisor/guidance/ConversationComposer.tsx\n create mode 100644 apps/portal/src/features/advisor/guidance/GuidanceEditor.tsx\n create mode 100644 apps/portal/src/features/advisor/guidance/HistoryEntries.tsx\n create mode 100644 apps/portal/src/features/advisor/guidance/controller.ts\n create mode 100644 apps/portal/src/features/advisor/guidance/drafts.ts\n create mode 100644 apps/portal/src/features/advisor/guidance/evidence.ts\n create mode 100644 apps/portal/src/features/advisor/guidance/guidance.css\n create mode 100644 apps/portal/src/features/advisor/guidance/index.ts\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-controller.test.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-fixture.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-instructions.test.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-ssr.test.mjs\n",
+      "stderr": "",
+      "imported": "48166fd2ed88775317373f1f65cddc3bba3c0a0a"
+    },
+    {
+      "original": "1cffb84a69f5504a034ac1efbb114e67f4dd5a4c",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 5c40468b] feat(portal): compose existing advisor guidance context reads\n Date: Sat Oct 31 16:38:10 2026 -0500\n 5 files changed, 834 insertions(+), 1 deletion(-)\n create mode 100644 apps/portal/src/app/advisor-guidance-context.ts\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-context-fixture.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-context.test.mjs\n",
+      "stderr": "",
+      "imported": "5c40468b1b9d4c48d120f91f83ae6b59a4762b6a"
+    },
+    {
+      "original": "6e0a5028133d3b558c941e27149e3edf6365b538",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 085dd96d] feat(portal): enable source-free guidance with current context\n Date: Sat Oct 31 17:00:23 2026 -0500\n 7 files changed, 1040 insertions(+), 16 deletions(-)\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-authority.test.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-context-ssr.test.mjs\n",
+      "stderr": "",
+      "imported": "085dd96d864406b9e6cc6e241b1f737e9a5d6bbe"
+    },
+    {
+      "original": "1fd2cfae789717df1a251b67689a153094ab8ff2",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 a1fc9e56] fix(portal): fence guidance egress and recover retired intents\n Date: Sat Oct 31 18:15:14 2026 -0500\n 6 files changed, 703 insertions(+), 6 deletions(-)\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g123-helper.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g123-ssr.test.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g123.test.mjs\n",
+      "stderr": "",
+      "imported": "a1fc9e56ad696df7481036e75d5acbd371e9a2e5"
+    },
+    {
+      "original": "14c91e0527c10b825b7ff0e99d5227e9c8533ed8",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 bc969a72] chore(portal): import pinned W0 operation applicability target\n Date: Sat Oct 31 18:55:04 2026 -0500\n 5 files changed, 89 insertions(+), 23 deletions(-)\n create mode 100644 apps/portal/site/auth/commerce-actions.js\n",
+      "stderr": "",
+      "imported": "bc969a72ed28159fdb6884e3ee5682280ba196e9"
+    },
+    {
+      "original": "1c213b4764d5bd32e838e55ae73b9ca6d6273c6d",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 d34e7321] fix(portal): bind guidance applicability to operation read lineage\n Date: Sat Oct 31 19:10:54 2026 -0500\n 4 files changed, 342 insertions(+), 1 deletion(-)\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g45.test.mjs\n",
+      "stderr": "",
+      "imported": "d34e7321079f727fa90141b42b2ba15db29a3aac"
+    },
+    {
+      "original": "b481efc4e0b31178486293b6d273db713de66f0b",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 4deb8dc5] fix(portal): retire guidance readiness across loss and recovery\n Date: Sat Oct 31 19:24:57 2026 -0500\n 4 files changed, 320 insertions(+), 3 deletions(-)\n",
+      "stderr": "",
+      "imported": "4deb8dc5dad732c54624b43b195f24279824206f"
+    },
+    {
+      "original": "68d3f6ae8fe59401be7fbc138597c06d876ddf08",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 471e5b5c] fix(portal): fence reentrant guidance read completions\n Date: Sat Oct 31 20:26:54 2026 -0500\n 5 files changed, 607 insertions(+), 3 deletions(-)\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g6-helper.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g6-ssr.test.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g6.test.mjs\n",
+      "stderr": "",
+      "imported": "471e5b5cfa62aa341118c4ba284f318054f05a6e"
+    },
+    {
+      "original": "2b6813fcaad482979030bedc3403e5b94817bd99",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 b4cbc281] fix(portal): retain ownership through nested guidance retirement\n Date: Sat Oct 31 21:22:00 2026 -0500\n 4 files changed, 1045 insertions(+), 89 deletions(-)\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g7-ssr.test.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g7.test.mjs\n",
+      "stderr": "",
+      "imported": "b4cbc2811305ab413368fa244f6798b8da544fe7"
+    },
+    {
+      "original": "ea6fcb5e6debc0117f5807c66adf878a09da8483",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 8885e60d] fix(portal): prepare write denial before error notification\n Date: Sat Oct 31 22:14:07 2026 -0500\n 3 files changed, 46 insertions(+), 2 deletions(-)\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g8.test.mjs\n",
+      "stderr": "",
+      "imported": "8885e60d88b3423198d48cc86f0a60aa73921e34"
+    },
+    {
+      "original": "299929f34a440e9087dc52b67eadf1e348c5d88a",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 85fc0663] fix(portal): complete guidance mutation ownership fences\n Date: Sat Oct 31 22:50:33 2026 -0500\n 7 files changed, 1098 insertions(+), 39 deletions(-)\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g8-boundaries.test.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g8-helper.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g8-retirement.test.mjs\n create mode 100644 apps/portal/tests/rebuild-advisor-guidance-g8-ssr.test.mjs\n",
+      "stderr": "",
+      "imported": "85fc06637464e146f13db48894982fb00a6e2400"
+    },
+    {
+      "original": "10569f36306c00e69452b0f012d985993bcc1b39",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 52b4e195] docs(portal): record independent guidance source R6 review\n Date: Sat Oct 31 23:06:45 2026 -0500\n 1 file changed, 166 insertions(+)\n create mode 100644 docs/portal-rebuild/research/W7_GUIDANCE_UI_SOURCE_R6.md\n",
+      "stderr": "",
+      "imported": "52b4e1958c9ba4a052fb804f1d0dcec3a3cd99e9"
+    }
+  ],
+  "guidanceParentVerification": {
+    "sourceTarget": "299929f34a440e9087dc52b67eadf1e348c5d88a",
+    "sourceImport": "85fc06637464e146f13db48894982fb00a6e2400",
+    "reportImport": "52b4e1958c9ba4a052fb804f1d0dcec3a3cd99e9",
+    "scope": "SOURCE/SSR integrated and unmounted; not App/connected/release",
+    "checks": [
+      {
+        "name": "guidance-tracked",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "--import",
+          "./tests/portal-review-no-network.mjs",
+          "--experimental-strip-types",
+          "--test",
+          "--test-concurrency=1",
+          "--test-timeout=15000",
+          "apps/portal/tests/rebuild-advisor-guidance-authority.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-context-ssr.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-context.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-controller.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g123-ssr.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g123.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g45.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g6-ssr.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g6.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g7-ssr.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g7.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g8-boundaries.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g8-retirement.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g8-ssr.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g8.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-instructions.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-ports.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-ssr.test.mjs"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 5.792856542015215,
+        "counts": {
+          "tests": 500,
+          "pass": 500,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/w2-source-parent-integration/guidance-tracked.log"
+      },
+      {
+        "name": "cookie-raw256",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "--import",
+          "./tests/portal-review-no-network.mjs",
+          "--experimental-strip-types",
+          "--test",
+          "--test-concurrency=1",
+          "--test-timeout=15000",
+          "apps/portal/tests/rebuild-cookie-cancellation.test.mjs",
+          "apps/portal/tests/rebuild-cookie-cancellation-deadline.test.mjs",
+          "apps/portal/tests/rebuild-review-guidance-request.test.mjs",
+          "apps/portal/tests/rebuild-review-request.test.mjs"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 3.228350582998246,
+        "counts": {
+          "tests": 256,
+          "pass": 256,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/w2-source-parent-integration/cookie-raw256.log"
+      },
+      {
+        "name": "root80",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "--import",
+          "./tests/portal-review-no-network.mjs",
+          "--experimental-strip-types",
+          "--test",
+          "--test-concurrency=1",
+          "--test-timeout=15000",
+          "tests/portal-review-contract.test.ts",
+          "tests/portal-review-handler.test.ts",
+          "tests/portal-review-guidance-fixes-handler.test.ts",
+          "tests/portal-review-guidance-stage-identity-handler.test.ts",
+          "tests/portal-rebuild-domain.test.ts",
+          "tests/portal-rebuild-handler.test.ts",
+          "tests/portal-rebuild-advisor-reads.test.ts",
+          "tests/portal-rebuild-advisor-handler.test.ts",
+          "tests/portal-care-contract.test.ts",
+          "tests/portal-care-handler.test.ts"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 6.355787792010233,
+        "counts": {
+          "tests": 80,
+          "pass": 80,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/w2-source-parent-integration/root80.log"
+      },
+      {
+        "name": "frontend",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "apps/portal/node_modules/typescript/bin/tsc",
+          "-p",
+          "apps/portal/tsconfig.frontend.json"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 3.2018521669961046,
+        "counts": {},
+        "log": ".local-artifacts/portal-rebuild/w2-source-parent-integration/frontend.log"
+      },
+      {
+        "name": "session",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/npm",
+          "--prefix",
+          "apps/portal",
+          "run",
+          "typecheck:session"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 1.0528116670029704,
+        "counts": {},
+        "log": ".local-artifacts/portal-rebuild/w2-source-parent-integration/session.log"
+      },
+      {
+        "name": "ui",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/npm",
+          "--prefix",
+          "apps/portal",
+          "run",
+          "check:ui"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 0.1438419589831028,
+        "counts": {},
+        "log": ".local-artifacts/portal-rebuild/w2-source-parent-integration/ui.log"
+      }
+    ],
+    "rootChecks": [
+      {
+        "name": "root-npm-test",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/npm",
+          "test"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 37.59903366697836,
+        "counts": {
+          "tests": 1274,
+          "pass": 1256,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 18
+        },
+        "log": ".local-artifacts/portal-rebuild/w2-source-parent-integration/root-npm-test.log"
+      },
+      {
+        "name": "root-types",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "node_modules/typescript/bin/tsc",
+          "--noEmit"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 5.422028708009748,
+        "counts": {
+          "tests": 0,
+          "pass": 0,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/w2-source-parent-integration/root-types.log"
+      },
+      {
+        "name": "root-test-types",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/npm",
+          "run",
+          "typecheck:tests"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 3.697942958009662,
+        "counts": {
+          "tests": 0,
+          "pass": 0,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/w2-source-parent-integration/root-test-types.log"
+      },
+      {
+        "name": "expo-web",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "node_modules/expo/bin/cli",
+          "export",
+          "-p",
+          "web",
+          "--output-dir",
+          "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w2-source-parent-integration/expo-web"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 1.9462185000011232,
+        "counts": {
+          "tests": 0,
+          "pass": 0,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/w2-source-parent-integration/expo-web.log"
+      }
+    ],
+    "cleanInMemoryApplication": {
+      "head": "52b4e1958c9ba4a052fb804f1d0dcec3a3cd99e9",
+      "sourceDirty": false,
+      "inputs": 2221,
+      "outputs": 15,
+      "write": false,
+      "gatewayIncluded": false,
+      "earlierFullManifest": "overwritten by precommitstylecheck; originalclean toolsummaryretained, fullmanifestunavailable/notreconstructed",
+      "currentProof": "Final clean per-runimmutable receipt via APPLICATION-SOURCE-BUILD-CURRENT.json aftercheckpoint"
+    },
+    "effectivePathsExact": 41,
+    "nativeClosureBlobsUnchanged": 87,
+    "migrationsUnchanged": 62,
+    "defaultApp": "Care2; no guidance mount or f163 adoption",
+    "g5": "Original4/5 qualified; original failure preserved",
+    "generation": "Separate0/1 on d7375; App candidate f163 unintegrated",
+    "resourceBoundary": "No local browser/Auth/DB/native fixture/R9 calls; model/compiler/build only",
+    "evidence": ".local-artifacts/portal-rebuild/w2-source-parent-integration",
+    "ci": "Successor exact-head CI pending publication; previous723 all3PASS is separate",
+    "buildEvidenceQualification": "BUILD-EVIDENCE-QUALIFICATION.json preserves firstcleansummary+dirtyrun; final immutable rerun supersedes",
+    "sourceStyles": "SharedcheckStyles allcurrent sourceCSS passed; no budgetchange"
+  },
+  "appR6ChromeGrant": {
+    "id": "coordinator-w7-app-history-r6-synthetic-chrome-b752b960-20261101",
+    "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-review-20261101-r6",
+    "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-9cfe1ac9",
+    "composedHead": "4763bc56acd906e592133883d5d5b98a262c8823",
+    "authorTarget": "b752b96051f28d1d35f50e391dc81034630b706c",
+    "status": "ACTIVE",
+    "casePlanSha256": "8507f407cb2b5cf95bc94f690f296883b2a7cff0662474e9f0a8eb023ba08356",
+    "grantFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/app-r6-chrome-grant.txt",
+    "excludes": "R9/genuine/native/Auth/DB/Storage/finance/liveactions",
+    "return": "PromptUTCexplicit beforehash/report/Git; no laterbrowser/preview/process/resourcecall"
   }
 }

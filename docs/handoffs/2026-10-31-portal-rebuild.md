@@ -1,16 +1,16 @@
 # Portal rebuild continuation, 31 October 2026
 
-Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. Latest report-only Parent checkpoint8ad131c15c3cc399d7e423f80b4c79a2354c255e imports independent Source R3 and History R5 without candidate code. Current pushed72326431 retains all3CIchecks green and portal1785/1785, watch completed/unwatched. Root production remains875 with current helper/CI inputs. Sourceea/Appd4/Guidance299 are candidate branches only. Re-read Git and TASKS before continuing.
+Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. Verified guidance source import85fc06637464e146f13db48894982fb00a6e2400/report52b4e195 is unmounted; native87/62 unchanged. Source proposal d0f is model-frozen only afterR5, not imported or activated. App candidateb752 is in independentR6 syntheticChrome at9cfe1ac9/4763bc56. Lastgreen pushed723 CI is separate; current successor publication/CI is pending. Re-read current Git HEAD/TASKS before continuing.
 
 ## Goal
 
 Complete the approved95388-byte portal rebuild, D01-D48,26 screens and secondary states. The entire goal remains active. Do not stop at the core care slice or mistake the unrelated paused native get_goal record for this T3 work. No merge, deployment, real clients/sources/funds/retailer actions or external communications are authorized.
 
-## Current continuation, 1 November03:59UTC
+## Current continuation, 1 November04:40UTC
 
-This supersedes older in-progress bullets. Source R3 and History R5 completed: immutable reports imported as0c2beaa9 and8ad131c1, without candidate source integration. Source S1-S7 examples close but S8/S9/P2 intrinsic detail/retention model checks fail; W1 has a new source-only correction fromea. CH5 closes in source, but CH6/P3 overlapping replacement reader retires on predecessor cancellation; W0 has a new source-only correction fromd4. Mounted React reachability is unproved and cleanup-first control passes. Guidance G8 author299 is terminal; NEW independent R6 runs in8b66d521. Exact task/thread/run/options/briefs are in TASKS. No Chrome/native grant is active. M65 provider block remains unresolved with PG stopped/preserved; no retry/reroute.
+Guidance Source299 and independentR6 report10569f36 are integrated as85fc0663/52b4e195 with parent500/256/80 and Root1256pass/18existing skips/0fail, both Root types, Expo web, frontend/session/UI and clean main2221/15 write:false build. Default App remainsCare2; no guidance mount/f163/Source/financial integration. All87 native blobs and62 migrations unchanged, R9 untouched. Exact imports/commands/build/setup fault are in TASKS and COORDINATOR_GUIDANCE_SOURCE_INTEGRATION.md. Publish checkpoint and use T3 CI watch; do not poll. Lastgreen723 all3/1785 remains separate from successor CI.
 
-Next: consume independent guidance R6, review each Source/App author handoff and commission NEW independent Source R4/App R6 with all original contexts. Keep S7 returned snapshot and raw9/11/scheduling10/11/adapted11/11 distinct. Preserve CH4 intent lifetime and CH5 initial-success semantics while correcting CH6 actual owner cancellation. Source-only results are not DOM/current authority/physical cleanup/CI/release proof. No full-goal completion.
+SourceR4 report54e702 imported0f258512 failsS10/P2 after S1-S9 closure. IndependentSourceR5 in1a72d64d returns scopedPASS; d0f is parent model-frozen only, Source runtime/rights/Phase2 remain unactivated. AppCH6b752/228 is terminal; IndependentAppR6 in9cfe1ac9 now sourceReady with exclusive finite syntheticChrome grant bound4763bc56/b752, protecting newParent299/37f sharedpostimages. Consume AppR6 browserresult and promptRETURN; nootherlocalChrome or native/resource authority. Preserve finalclean build unique immutable receipts; earlier52b fullmanifest was overwritten and only its clean toolsummary remains. Source raw17/40/11 and scheduling-only exceptions, G5 qualification/generation0/1, CH4 incompleteDOM and unprovedCH6mounted reachability remain explicit. M65 providerblock stays unresolved; no retry/reroute. Full approved goal remains active.
 
 ## Done
 
