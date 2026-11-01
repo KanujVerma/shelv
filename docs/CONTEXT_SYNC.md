@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 published05b and A07 browser preparation
+
+PR211normalpush05b3270econfirmedDraftOPEN/newCIpending, exactcleanmain2232/15. Source/codefixture+CH6testfixesonly, production/runtime/Root/SQLunchanged;19authorfunctionalpassremainsqualifiedbycapture/CSPissues. FreshA07R34177Source/SSRPASS importedonlybfe, C1/C2closedsource/no mountedproof. RootA07stillunimported; authorordinal14ownsnewactualmainbrowserharness/closedRootDTO/sourcegate/finiteplan only, no browser/resourcegrant orproductionedit. T3watchmonitors05b; localpostpushmetadataisreport/allocationdocsonly.
+
 ## 2026-11-01 CI fixture local admission
 
 FixtureSource/TestbddPASS+authorcurrent19/19once/25closedcontexts(qualified46captureerrors/CSP102previewblocks/incompleteearlierPNGbytes), ChromeRETURN10:27:17/all88ownidentitiesabsent/previewnoTab. Rootimportsfixtureab5/reportff5, existingCH6hookc856. FreshParent199/20/types/UI/main2232x15pass, allmainhashesequal6a, allproduction/runtime/Root/SQLtreesunchanged. NewexactheadCIpending; noRootbrowserrepeat/resourcecall. A07R3Source-onlyactive/RootA07unmounted, Source/financialgatesunchanged.
