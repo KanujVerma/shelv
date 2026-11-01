@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 portal rebuild review continuation
+
+Sourceea461596 and composed Historyd4c216d0 are frozen author candidates with fresh independent Source R3 and History R5 worktree reviews. Full briefs/findings/responses, exact handles and boundaries are in [TASKS](portal-rebuild/TASKS.json) and [current status](portal-rebuild/CURRENT_STATUS.md). Neither is integrated or activated. Source S7 returns the detached frozen snapshot checked; raw/adapted test exceptions remain explicit. CH5 separates successful initial data admission from CH4 recovery lifetime. W2 G8 correction remains active. M65 review remains provider-blocked with its reviewer PG preserved/stopped, without reroute. Pushed723 CI all3green does not confer acceptance on these candidates. No new browser/native resource grant.
+
 ## portal rebuild: package and current review checkpoint (1 November 2026)
 
 Parent V3 production875 and exact helper packagingfed90 pass the full ordinary serial portal package1770/1770, with no assertions, waits or timeout limits weakened. Earlier1726/15 package failures remain preserved. M64d6e3 source/native author correction is in a NEW composed backend R2; private Source1279 proposal is in a first source review. Advisor R3eba addresses G4/qualifies original G5 but finds G6/P3 post-emission instruction resurrection; App R2b2a addresses CH1/CH2 but finds CH3/P3 RPC-wrapper compatibility. Both same-owner source corrections are active. No advisor/App/financial/source-lifecycle acceptance or native grant is inferred.

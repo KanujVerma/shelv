@@ -1,10 +1,16 @@
 # Portal rebuild continuation, 31 October 2026
 
-Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. Last verified local code checkpoint:5303f2ee8a4b964575a3a6d1e1aed59e39745815, current V3 production875 plus exactfed90 helper packaging. Ordinary serialportal1770/1770 and clean applicationbuild pass. Remote PR21112522274 now includes verified V3/helper/package source; later local changes are metadata only. No App/guidance/financial/source lifecycle activation follows. Re-read Git HEAD/status before continuing.
+Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. Verified Parentc329ee95 is clean, three documentation commits beyond pushed72326431. Current pushed723 CI has all3checks green, portal1785/1785; watch completed/unwatched. Root production remains875 with exact current helper/CI inputs. Sourceea and Appd4 are candidate branches only. Re-read Git and TASKS before continuing.
 
 ## Goal
 
 Complete the approved95388-byte portal rebuild, D01-D48,26 screens and secondary states. The entire goal remains active. Do not stop at the core care slice or mistake the unrelated paused native get_goal record for this T3 work. No merge, deployment, real clients/sources/funds/retailer actions or external communications are authorized.
+
+## Current continuation, 1 November03:42UTC
+
+This section supersedes older in-progress bullets below. Sourceea461596 has a NEW independent R3 running in b87e5743; App/Historyd4c216d0 has a NEW independent R5 running in1e73b6fc. Both are report-only; Source is pure and App is source-first with NO current Chrome/native grant. Exact task/thread/run/options/brief paths are recorded in TASKS. W2 G8 source author remains active. M65 independent R3 is provider-blocked, its own PG dumped/stopped, and must not be retried/rerouted. No resources are held by the new reviewers.
+
+Next: consume each independent result without assuming author pass, preserve Source S7 raw9/11 versus scheduling-only10/11 versus adapted11/11, and CH5 initial-success versus CH4 continuing-intent lifetime. If App source is clean, assess a finite plan before any separately issued sole Chrome grant. After W2 G8 handoff, commission NEW independent R6 with the full original/R1-R5 context. No full-goal or release completion.
 
 ## Done
 
