@@ -62,3 +62,37 @@ Implementing native-slot validation, exact synchronous snapshot, fatal native de
 Tests independently compare literal UTF8 bytes/text/boundaries, Node `createHash` and known empty/abc SHA vectors, Node Buffer roundtrip and every half-open scalar interval. They cover ASCII/empty/non-ASCII/decomposed+precomposed/astral/BOM/CRLF/loneCR/NUL/valid U+FFFD, scalar extremes,18 malformed encodings, exact500000 ASCII/astral bytes and max+1 before decoding, subarray/empty-tail/large-backing views, invalid runtime types/proxies, poisoned caller accessors/species, cross-realm/subclass views, actual detached/shared/growable/resizable/OOB views on Node22, caller mutation+transfer during real native hashing, initial-invalid repair refusal, deep freeze/no byte aliases and readonly type consumers. Test `fetch` is globally denied; no crypto/provider/current-authority override is used.
 
 TDD and verification-before-completion apply to this bounded subset; the broader readiness stages have no execution/resource grant here. Native Edge memory/peak verification is **UNRUN**. Original input copy is bounded to500000 bytes and the ordinary map to500001 number entries; decoded content is bounded by those original bytes. Those are code bounds. Native decoder/hash/array overhead, concurrency and actual Edge peak memory were not measured. No benchmark/peak claim follows from array counts or Node duration.
+
+### Final actual closure and emitted execution
+
+Early coherent commit: `c6e299e7be7ac022fa75c4e7e9c85a82d373a8f5`. No production or test edit followed that checkpoint. Final source execution is **40/40 pass,0 fail/skip/cancel**, exit0,123.666834ms. Separately emitted execution is **40/40**, exit0,83.34625ms, not80 distinct behaviors. Both use actual native WebCrypto and a globally denied test fetch.
+
+Actual TS6.0.3 source closure has **59 files**; actual source+test/import/declaration closure has **165 files**, each freshly strict-compiled with zero diagnostics. Both `--listFilesOnly` outputs and every actual path/realpath/byte count/SHA256 are preserved. No Source4, Commerce/payment, shared runtime/App/native module is in either closure. Source has no imports; the test reaches only this inspector and native Node builtins, with real Node/DOM declarations. TypeScript implementation and declarations are read-only from the existing Root installation. No absent module/type was invented.
+
+The existing portal esbuild0.28.2 was used strictly with `write:false`, Node22 target, ESM, no injected shims or flags. The sole inspector emit input is the new module. The complete test emit inputs are exactly that module and the new test, verified from the actual metafile; native Node imports remain native. Returned compiler bytes were saved only as own ignored evidence, and the complete test bundle was actually executed. Emission is additional source evidence, not an Edge/native fixture.
+
+| Artifact | SHA256 |
+| --- | --- |
+| Actual inspector source | `f591cb209b02ae0095100ced2a281bc436470cd63c62a9a13f2f7e97fdaf5f96` |
+| Actual focused test source, unchanged RED through final GREEN | `24d24b03e25927ae18ca487e07ab552019c2c63167fa690fa31a7077027f0331` |
+| Emitted inspector,3646 bytes | `7f65b9f46e281b11ea3c0683cebffb6897f33bc13e7754336f9e7107ff1bc975` |
+| Emitted complete test bundle,15504 bytes | `6b971d111530ea5f4428846a82c5b6149f27433f82d627ea297341147f5e639f` |
+
+Main commands, from this child workspace:
+
+```sh
+/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node --experimental-strip-types --test tests/portal-source-utf8-inspection.test.ts
+/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node .local-artifacts/portal-rebuild/w1-source-utf8-inspection/verify.cjs
+/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node --test .local-artifacts/portal-rebuild/w1-source-utf8-inspection/emitted-tests.mjs
+git diff --check
+```
+
+`verify.cjs` records the exact compiler and unit argv/exits/raw-output hashes in `commands-final.json`. Unchanged required flags for both actual strict graphs are `--ignoreConfig --noEmit --strict --noUncheckedIndexedAccess --verbatimModuleSyntax --skipLibCheck false --allowImportingTsExtensions --target es2022 --module esnext --moduleResolution bundler --lib ES2022,DOM`; the complete graph adds `--types node --typeRoots /Users/kanuj/Documents/projects/shelv/node_modules/@types`. Compiler is `/Users/kanuj/Documents/projects/shelv/node_modules/typescript/bin/tsc`. No positive cast conceals mutable result types; the three negative readonly consumer checks compile only because their expected errors are present.
+
+### Preserved failures, compatibility and terminal boundary
+
+The original RED/setup/first-GREEN/first-strict logs remain separate from final source/emitted/strict logs. The missing-module setup executes zero behavior; the callable empty-only scaffold gives the actual39 assertion failures. No substantive RED was claimed from the setup run. Static reconnaissance also guessed an absent current W1 report (correctly read from exactd0f Git), absent current Source-selector test (never imported), an incorrect R1 report basename (corrected from Git's changed-path list), and absent child/Root esbuild dependency paths (the existing permitted portal compiler was used). Initial combined displays were sometimes truncated and followed by bounded reads. Raw qualifications are preserved in own evidence; none was a compiler/product failure or repaired by dependency installation. No compiler failure occurred in this inspector slice. Node's source-run typeless-package warning remains, with no package changes; emitted ESM execution has no such warning.
+
+Final preservation verifies all **1,952 original tracked paths** against their pre-edit bytes/modes, all **62 migrations**, all **five retained approved originals** against INPUT_PROVENANCE, and all nine project/eight-role configuration hashes. Exactly the three allocated new tracked paths differ from Parent. All five local report links and `git diff --check` pass. Source/test hashes above bind the tested code; the final report-containing commit/hash and clean-tree receipt are returned separately to avoid self-reference. Both final LIVE tools again positively select codex/Sol/xhigh/default; the actual T3 thread/worktree/run matches this original allocation. `runtime-final.json` retains those readbacks. This is author verification only; no independent review was allocated or performed.
+
+**UNRUN/outside this allocation:** broad Root/application/Expo suites, Edge memory/runtime, SQL/migration/DB/Storage/Auth, credential/provider/browser/preview/process inventory/native/fixture work, source rights/authority, Source15 API/policy/profile admission, actual upload/cleanup/account/clinical/App composition, consent/Account disclosure wording, human/physical/hosted/CI/release acceptance. No Supabase SDK/API/config/CLI/help/new/migration call, old resource adoption, Root import, Source4/Commerce/M63-M65/native87 import, nested task, push/PR/merge/deploy, live communication/client permission/money/retailer action occurred. Native JavaScript TextDecoder/WebCrypto and compiler execution are the explicitly permitted pure Node checks. No resource grant or wait remains; return the owned commits and terminate with full Source/full rebuild scope still open.
