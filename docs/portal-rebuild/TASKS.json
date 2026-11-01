@@ -4773,6 +4773,10 @@
     ],
     "sharedResourceCalls": 0,
     "evidence": ".local-artifacts/portal-rebuild/ci-153d/",
-    "remoteNativeStatus": "pending new exact-head CI"
+    "remoteNativeStatus": "in progress at a69a79fb; T3 monitoring",
+    "isolatedRemoteCommit": "a69a79fbd845677bc66c66977d63c458bc0fea67",
+    "localPreservedMerge": "8e747f41edc0d44a09b7939c216695d90d79a0a9",
+    "localMergeTreeEqualsVerifiedCheckpoint": "503d4e645010319817ed95e2ba00846b743f0401",
+    "variantReview": "Bootstrap and native admission SQL helpers do not read the complete catalog; their selected outputs are scalar/bounded. No further capture change justified."
   }
 }
