@@ -168,7 +168,9 @@ test('browser-target build includes the actual complete policy feature/request c
  const result=await build({tsconfig:'tsconfig.frontend.json',absWorkingDir:new URL('..',import.meta.url).pathname,entryPoints:['src/app/session.ts','src/features/advisor/permissions/OwnerPolicy.tsx','src/features/advisor/permissions/controller.ts','src/features/advisor/permissions/port.ts','src/app/advisor-policy-request.ts'],outdir:'ignored-owner-policy-build',bundle:true,write:false,metafile:true,format:'esm',platform:'browser',target:'es2022'});
  const inputs=Object.keys(result.metafile.inputs);for(const file of ['src/app/session.ts','site/auth/advisor-cookie-session.js','src/transport/session.ts']){assert.ok(inputs.includes(file),'actual feature closure '+file);}
  assert.ok(inputs.some(p=>p.endsWith('/PortalRebuildValidation.ts')));assert.ok(inputs.some(p=>p.endsWith('/PortalRebuildMapping.ts')));assert.ok(result.outputFiles.length>0);
- const {writeFile}=await import('node:fs/promises');await writeFile(new URL('../../../.local-artifacts/portal-rebuild/w2-owner-policy-ui/feature-build-metafile.json',import.meta.url),JSON.stringify(result.metafile,null,2));
+ const {mkdir,writeFile}=await import('node:fs/promises');
+ const artifactURL=new URL('../../../.local-artifacts/portal-rebuild/w2-owner-policy-ui/feature-build-metafile.json',import.meta.url);
+ await mkdir(new URL('.',artifactURL),{recursive:true});await writeFile(artifactURL,JSON.stringify(result.metafile,null,2));
 });
 test('replacement controller owns the session policy lane; old A confirmation/cleanup cannot dispatch or erase B',async t=>{
  const f=await controlled(t),{c:a}=f;await a.refresh();a.edit(false);a.requestSave();const old=a.getSnapshot().confirmation;

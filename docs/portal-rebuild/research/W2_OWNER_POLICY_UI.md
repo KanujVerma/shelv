@@ -161,3 +161,55 @@ The first two recorder names are immutable run receipts and intentionally refuse
 Self-review compared the two controller hunks with1a: existing authority and confirmation guards are unchanged, local comparison cannot dispatch or grant rights, pending ownership remains separate, and existing UI consumes the conflict state without new composition. All1,970 protected original paths, including all62 migrations, remain byte/mode identical; the original report prefix is unchanged and only appended. The NEW test retains the exact ordinal2 partial bytes. Final commit, path/blob/hash proof and clean-worktree readback are returned in own ignored delivery proof, avoiding a self-referential committed SHA.
 
 **Still unrun/unaccepted:** new independent R2, Root composition/mount, browser/DOM/genuine/backend/SQL/Auth/visual/responsive/accessibility/human/exact-head CI and release. No full Root npm/Expo suite, foreign execution, resource/browser/preview/OS process inventory/native/DB/Storage/provider/R9/credential/network-service/live policy operation, nesting, Root write, push/PR/merge/deploy or export work occurred. Existing blocked Guidance private-return/M65 work was not retried, rephrased or rerouted. W0's Chrome and W7's Account review ownership did not transfer. Full A08/task/source administration and all wider approved-goal gates remain open.
+
+## OP2/P3: test-only artifact-parent correction, 1 November 2026
+
+This is a test portability correction on exact clean author base `44a071065746c6da10813ee91453f885bf36b747`, after Parent integration of reviewed1a+44 and R2. It changes only `apps/portal/tests/rebuild-owner-policy.test.mjs` and this appended report. No production policy behavior, right, API, DTO, capability, shared session, Application, Root or CI/package configuration changes.
+
+The independent R2 report `65655dccf55ebd695e4e72d753b5c9f0403b33d9` remains **scoped SOURCE specification/quality PASS** on runtime44, with OP1 addressed. Its exact report SHA256 is `893a3ba7d3e845a7589b75e2eb0e83f3f2ed4543f0f941bb53d812379ba654b1`. OP2 is a separately discovered test-output portability limitation: R2's minimally output-bound run already had its output directory, and Parent reports its policy78 passed only after precreating its own artifact directory. Neither was an untouched clean package-hook proof. R1 FAIL, the original1a candidate, OP1 RED/GREENs and ordinal2's provider failure/ENOSPC/unknown nested test result retain their original meanings.
+
+### Reproduction, smallest fix and unchanged predicates
+
+The old test wrote `feature-build-metafile.json` to a fixed ignored artifact directory without creating that directory. Clean checkouts do not contain it. A fresh own replay target was chosen under `w2-owner-policy-op2/clean-source-old/nested/`; its parent was verified initially absent. The old script reached the actual esbuild result, passed its build assertions, then failed the real `node:fs/promises.writeFile` with **ENOENT**. True result: exit1, **58 pass /1 fail**,59 total, zero skip/cancel. The absent old parent remains absent; no original evidence was deleted or renamed.
+
+The only code change imports the actual `mkdir` alongside `writeFile`, assigns the same existing artifact URL to a local constant, calls `mkdir(new URL('.',artifactURL), {recursive:true})`, then performs the existing write. The new replay uses a separate initially absent `clean-source-new/nested/` parent and succeeds **59/59**, exit0. The corrected test itself creates that parent; the harness does not precreate it.
+
+The replay copies bind only imports, portal build cwd and artifact URL to own source/dependencies/output. Actual ApplicationSession/cookie/Root/esbuild/TypeScript inputs are used; no successful port or filesystem stub is injected. These are explicitly source/output-bound clean controls, **not an untouched clean package/CI run**. Both tracked build call ASTs, absWorkingDir, entrypoints, write:false, metafile options, assertions and limits remain unchanged. Actual TypeScript AST comparison verifies all **157 assertion calls**, **52 non-outer-test helper/predicate/function bodies**, four named helper declarations and six selected predicate callbacks are exact-text identical. The outer build-test callback contains only the permitted filesystem-output addition.
+
+### Artifact preservation and executed checks
+
+Own evidence home is `.local-artifacts/portal-rebuild/w2-owner-policy-op2/`. Before running any tracked test, the existing default generated metafile was preserved as `canonical-default-before.json`,1,531,814 bytes, SHA256 `9d337579a14f9141cfca92ec055d909a2245b265efaf1d64a1a0ddca674c3ae8`. Original receipts and prior run areas were not overwritten. After the repository-cwd run, its new generated metadata was copied to a new receipt before the portal-cwd run. Both new metafiles are SHA256 `aaa20658a1a3db6333d4f8c847171fdd4d7f9973f18729019b8de4a09f3549fc`,2,147 inputs/6 outputs, with bundle output kept in memory through write:false. The canonical latest file is generated metadata; its prior bytes remain available in the preserved copy and historical original evidence.
+
+| Check | True result | New raw evidence |
+| --- | --- | --- |
+| Old source/output-bound replay; artifact parent absent | exit1; **58 pass /1 ENOENT fail**,0 skip/cancel | `clean-source-red.log`, `old-binding.json` |
+| Corrected replay; a different artifact parent absent | exit0; **59/59**,0 fail/skip/cancel | `clean-source-green.log`, `new-binding.json` |
+| Actual tracked policy59 + refresh19, repository cwd | exit0; **78/78**,0 fail/skip/cancel | `tracked-repo78.log` |
+| Same actual tracked files, portal cwd | exit0; **78/78**,0 fail/skip/cancel | `tracked-portal78.log` |
+| Configured frontend, existing actual strong helper, configured session | each exit0 / zero errors | `frontend.log`, `strong.log`, `session.log` |
+| Existing UI guard | exit0; CSS unchanged | `ui-guard.log` |
+| Actual write:false feature/request/runtime closure | **2,147 inputs /6 outputs**, unchanged final44 metafile | clean replay and tracked-run metafiles |
+| AST assertion/helper/predicate/build parity | exact unchanged text | `ast-and-clean-proof.json`, `complete-ast-parity.json` |
+
+The actual tracked tests were executed without import/output rebinding from both requested working directories. Their real default artifact parent already existed in this author worktree; that fact is preserved separately from the initially-absent replay proof. No claim that those tracked runs alone establish a clean checkout/package hook. Counts overlap; no product acceptance total is inferred.
+
+All subprocess receipts record explicit `/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node`, exact argv/cwd/timestamps, true exit/signal and raw SHA256. Global external fetch is denied for all focused runtime tests. The strong helper preserves strict/noUncheckedIndexedAccess/verbatimModuleSyntax/skipLibCheck:false and actual existing assets/React declarations. Configured frontend/session retain their original flags, including existing session skipLibCheck:true. Existing same-lock dependencies are reused; no installation, shim, Auth copy or flag relaxation.
+
+Principal actual tracked commands from the corresponding cwd:
+
+```sh
+# repository cwd
+node --import ./tests/portal-review-no-network.mjs --experimental-strip-types --test --test-concurrency=1 --test-timeout=15000 apps/portal/tests/rebuild-owner-policy.test.mjs apps/portal/tests/rebuild-owner-policy-refresh.test.mjs
+# apps/portal cwd
+node --import ../../tests/portal-review-no-network.mjs --experimental-strip-types --test --test-concurrency=1 --test-timeout=15000 tests/rebuild-owner-policy.test.mjs tests/rebuild-owner-policy-refresh.test.mjs
+```
+
+### Runtime, preservation and terminal boundaries
+
+Live initial/final capabilities and self/Parent configurations verify codex/Sol/xhigh/default with supported descriptors, default interaction and explicit Node22.23.0. Project defaultModelSelection is null; checked-in project/default-subagent/max8 and all eight role pins remain unchanged. Actual backing thread is the existing80ff owner-policy thread; live metadata verifies its **ordinal4** run separately. Parent separately forwarded authoritative NEW taskId `node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw2-owner-policy-clean-artifact-directory-source-fix-20261101`. Backing thread `thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-owner-policy-connected-source-20261101-r1`, run `run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-owner-policy-connected-source-20261101-r1:ordinal:4` and ordinal4 come from live returned metadata and remain distinct. Coordination questions are directed to Parent, as instructed.
+
+`baseline-44.json` and the final proof bind all1,973 starting tracked paths. All1,971 paths outside the allocated test/report remain byte/mode unchanged, including all62 migrations. `ten-production-blobs-44.json` explicitly verifies the six feature production files plus four actual retained runtime/transport dependencies against44. The separate ten-reviewed-postimage ledger includes the allocated test/report, whose only changes are this artifact-parent correction and report append; all other reviewed postimages are unchanged. The original27,975-byte report prefix is preserved exactly.
+
+Self-review confirms only the output parent is created, at the actual artifact URL, before the existing write. Source/runtime44 and R2's source verdict are preserved. Parent must independently verify/import the test/report correction before its dependent composition proceeds. This task makes no consumer, App, A08, browser, genuine backend, clean full-package, exact-head CI or release acceptance claim.
+
+No browser/preview/DOM/native/PG/SQL/Auth/Vault/provider/Storage/R9/credential/network-service/live policy action, OS process inventory, Root write, shared Application edit, import, push/PR/merge/deploy or nested work occurred. No Root npm/Expo/CI or broader browser/native suite was run. Earlier raw45/transport256/guidance500 results remain their separately dated author/R2 evidence; they were not rerun for this mkdir-only correction. Blocked Guidance private-return/M65 checks were not retried, rephrased or rerouted. All wider goal and resource boundaries remain open.
