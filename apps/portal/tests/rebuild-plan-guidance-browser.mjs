@@ -1,5 +1,5 @@
 // Synthetic finite HTTP only. Importing/compiling this module opens no browser.
-import {build} from 'esbuild';import path from 'node:path';import fs from 'node:fs/promises';import assert from 'node:assert/strict';import {fileURLToPath} from 'node:url';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';
+import {build} from 'esbuild';import path from 'node:path';import fs from 'node:fs/promises';import assert from 'node:assert/strict';import {fileURLToPath} from 'node:url';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';import {manifestObserverBuild} from './rebuild-plan-guidance-manifest-build.mjs';
 const portal=fileURLToPath(new URL('../',import.meta.url)),origin='https://shelv-v3-guidance.invalid';
 export const browserArtifacts=path.resolve(process.env.W3_GUIDANCE_BROWSER_ARTIFACTS??path.join(portal,'../../.local-artifacts/portal-rebuild/w3-v3-guidance-browser'));
 export const guidanceChromeGrant={phase:'W3_V3_GUIDANCE_SYNTHETIC_CHROME',workspace:path.resolve(portal,'../..'),explicit:true,reference:process.env.W3_GUIDANCE_CHROME_GRANT??'coordinator-w3-v3-guidance-synthetic-chrome-9c5cac1b-20261031'};
@@ -27,22 +27,25 @@ export async function readGuidanceBaseline(sourceKey,{readFile=fs.readFile}={}){
  assert.equal(createHash('sha1').update('blob '+bytes.length+'\0').update(bytes).digest('hex'),entry.blob,'guidance baseline Git blob mismatch');
  return bytes.toString('utf8');
 }
-export async function prepareGuidanceBrowserSource({entry,budgetDiagnostics}={}){
+export async function prepareGuidanceBrowserSource({entry,budgetDiagnostics,observeManifest=false}={}){
  assert.ok(entry===undefined||entry==='default'||entry==='context','unknown guidance browser entry');
  const selectedEntry=entry??(process.env.W3_GUIDANCE_CONTEXT_BROWSER_ENTRY==='1'?'context':'default'),outdir=path.join(portal,'../../.local-artifacts/portal-rebuild/w3-v3-guidance/browser'),plugins=[];
  if(process.env.W3_GUIDANCE_BROWSER_CONTEXT_BASELINE==='1')plugins.push({name:'exact-c4-context-inputs',setup(b){b.onLoad({filter:/features\/plan\/(ClientPlan\.tsx|guidanceDecision\.ts)$/},async args=>({contents:await readGuidanceBaseline('c4d5a9e0ed86c2ca703f6e5d0ac73988a4f6af77:'+path.relative(path.resolve(portal,'../..'),args.path)),loader:args.path.endsWith('tsx')?'tsx':'ts'}));}});
  if(process.env.W3_GUIDANCE_BROWSER_OLD_COOKIE==='1')plugins.push({name:'exact-e093-cookie-pair',setup(b){b.onLoad({filter:/site\/auth\/(advisor-cookie-session|client-cookie-session)\.js$/},async args=>({contents:await readGuidanceBaseline('e093dd018d59bd1657297f0a7a186179e59d5fc3:'+path.relative(path.resolve(portal,'../..'),args.path)),loader:'js'}));}});
+ if(observeManifest&&(process.env.W3_GUIDANCE_BROWSER_CONTEXT_BASELINE==='1'||process.env.W3_GUIDANCE_BROWSER_OLD_COOKIE==='1'))throw Error('manifest observation requires current compiler inputs');
+ const observed=observeManifest?manifestObserverBuild():null;if(observed)plugins.push(observed.plugin);
  const result=await build({absWorkingDir:portal,entryPoints:[selectedEntry==='context'?'tests/rebuild-plan-guidance-context-browser-entry.tsx':'tests/rebuild-plan-guidance-browser-entry.tsx'],entryNames:'rebuild-plan-guidance-browser-entry',outdir,tsconfig:'tsconfig.frontend.json',bundle:true,write:false,metafile:!!budgetDiagnostics,format:'esm',loader:{'.woff2':'file','.woff':'file'},assetNames:'fonts/[name]-[hash]',plugins});
+ if(observed&&observed.instrumentation.transforms.length!==1)throw Error('manifest observer transform was not uniquely applied');
  const files=new Map(result.outputFiles.map(f=>[path.relative(outdir,f.path),Buffer.from(f.contents)]));
- budgetDiagnostics?.prepared({files,inputs:result.metafile?.inputs??{},workingDirectory:portal});
+ budgetDiagnostics?.prepared({files,inputs:result.metafile?.inputs??{},workingDirectory:portal,testInstrumentation:observed?.instrumentation??{enabled:false}});
  return files;
 }
 export async function closeGuidanceBrowsers(){await Promise.all([...liveBrowsers].map(b=>b.close()));liveBrowsers.clear();}
 /** Requires the actual new explicit coordinator grant; no native/Auth resources. */
-export async function openGrantedGuidanceBrowser({grant=guidanceChromeGrant,view,respond,sessionReply,route='/plan?routine=morning',width=1440,reducedMotion='no-preference',reviewEnabled=true,initialMode='client',entry,budgetDiagnostics}){
+export async function openGrantedGuidanceBrowser({grant=guidanceChromeGrant,view,respond,sessionReply,route='/plan?routine=morning',width=1440,reducedMotion='no-preference',reviewEnabled=true,initialMode='client',entry,budgetDiagnostics,observeManifest=false}){
  assert.equal(grant.phase,'W3_V3_GUIDANCE_SYNTHETIC_CHROME');assert.equal(grant.workspace,path.resolve(portal,'../..'));assert.equal(grant.explicit,true);assert.ok(['coordinator-w3-v3-guidance-synthetic-chrome-9c5cac1b-20261031','coordinator-w3-v3-g1-g2-browser-71c682d7-20261031','coordinator-w3-v3-current-cookie-target3-synthetic-chrome-20261031','coordinator-w3-ci-budget-diagnostic-synthetic-chrome-65363815-20261101','coordinator-root-ci2550-telemetry-smoke-20261101'].includes(grant.reference));
  assert.equal(liveBrowsers.size,0,'serial browser custody');
- const files=await prepareGuidanceBrowserSource({entry,budgetDiagnostics}),{chromium}=await import('playwright-core');const browser=await chromium.launch({channel:'chrome',headless:true,args:['--no-proxy-server','--disable-background-networking','--disable-quic','--host-resolver-rules=MAP * ~NOTFOUND']});liveBrowsers.add(browser);for(const row of ownDescendants())ownedChromePids.add(row.pid);
+ const files=await prepareGuidanceBrowserSource({entry,budgetDiagnostics,observeManifest}),{chromium}=await import('playwright-core');const browser=await chromium.launch({channel:'chrome',headless:true,args:['--no-proxy-server','--disable-background-networking','--disable-quic','--host-resolver-rules=MAP * ~NOTFOUND']});liveBrowsers.add(browser);for(const row of ownDescendants())ownedChromePids.add(row.pid);
  let context;
  try{await fs.mkdir(browserArtifacts,{recursive:true});context=await browser.newContext({viewport:{width,height:960},serviceWorkers:'block',reducedMotion});await context.addInitScript(value=>Object.assign(window,value),{__guidanceInitialReviewEnabled:reviewEnabled,__guidanceInitialMode:initialMode});const page=await context.newPage(),unexpected=[],errors=[],calls=[],cancelled=[],diagnostics=[];
  page.setDefaultTimeout(5000);
@@ -58,7 +61,7 @@ export async function openGrantedGuidanceBrowser({grant=guidanceChromeGrant,view
   unexpected.push(req.method()+' '+u.pathname);await r.abort();
  }catch(e){budgetDiagnostics?.error(/closed|disposed|canceled|cancelled|interrupted/.test(e.message)?'route-cancelled':'route',e);if(/closed|disposed|canceled|cancelled|interrupted/.test(e.message))cancelled.push(e.message);else{errors.push(e.message);try{await r.abort();}catch{}}}});
  page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.text().startsWith('W3_HYDRATION_ERROR'))diagnostics.push(m.text());if(m.type()==='error'&&!m.text().startsWith('Failed to load resource: the server responded with a status of '))errors.push(m.text());});
- let closed=false;const result={page,calls,origin,errors,unexpected,cancelled,diagnostics,async close(){if(closed)return;closed=true;try{await page.evaluate(()=>{const h=window.__guidanceHarness;h?.controller.dispose();h?.navigator.dispose();h?.runtime.dispose();});}catch{}finally{await context.close();await browser.close();liveBrowsers.delete(browser);}assert.deepEqual(unexpected,[]);assert.deepEqual(errors,[]);}};
+ let closed=false;const result={page,calls,origin,errors,unexpected,cancelled,diagnostics,observeManifest,budgetDiagnostics,async close(){if(closed)return;closed=true;try{await page.evaluate(()=>{const h=window.__guidanceHarness;h?.controller.dispose();h?.navigator.dispose();h?.runtime.dispose();});}catch{}finally{await context.close();await browser.close();liveBrowsers.delete(browser);}assert.deepEqual(unexpected,[]);assert.deepEqual(errors,[]);}};
  await page.goto(origin+route,{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>typeof window.__guidanceHarness?.setMode==='function');return result;
  }catch(e){await context?.close();await browser.close();liveBrowsers.delete(browser);throw e;}
 }

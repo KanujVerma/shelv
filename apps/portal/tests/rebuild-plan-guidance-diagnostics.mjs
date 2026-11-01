@@ -48,21 +48,24 @@ export function createBudgetDiagnostics({testName,directory,now=()=>performance.
   on(page,'requestfinished',request=>{const id=requestIds.get(request);if(id)emit({event:'finished',id});});
   on(page,'requestfailed',request=>{const id=requestIds.get(request);if(id)emit({event:'cancelled',id,message:safeText(request.failure()?.errorText)});});
   on(page,'pageerror',e=>error('page',e));
-  on(page,'console',message=>{if(message.type()==='error')error('console',message.text());});
+  on(page,'console',message=>{const text=message.text();if(text.startsWith('W3_MANIFEST_OBSERVATION ')||text.startsWith('W3_MANIFEST_CLICK ')){try{const data=JSON.parse(text.slice(text.indexOf(' ')+1)),summary={};for(const key of ['lifecycle','commitId','instanceId','viewId','sessionId','snapshotId','scopeId','currentViewId','currentSessionId','currentSnapshotId','currentScopeId','mode','phase','manifestCount','instructionCount','detailCount','error','revision','observedAtMs','observationKind','eventAtMs'])if(typeof data[key]==='number'||typeof data[key]==='string'||data[key]===null)summary[key]=typeof data[key]==='string'?safeText(data[key]).slice(0,100):data[key];emit({event:text.startsWith('W3_MANIFEST_CLICK ')?'manifest-click':'manifest-observation',summary});}catch(e){error('manifest-observation',e);}}else if(message.type()==='error')error('console',text);});
   on(page,'close',()=>emit({event:'page-closed'}));
   emit({event:'observer-attached'});
  }
- function preparedSource({files,inputs={},workingDirectory}){
+ function preparedSource({files,inputs={},workingDirectory,testInstrumentation={enabled:false}}){
+  source.testInstrumentation=JSON.parse(JSON.stringify(testInstrumentation));
   for(const [name,bytes] of files){if(!outputName(name)||source.outputs.length>=32||bytes.length>12000000)continue;const row={name,bytes:bytes.length,sha256:hash(bytes)};source.outputs.push(row);prepared.set(name,{...row,reference:bytes});}
   source.preparedHash=hash(JSON.stringify(source.outputs));
   branch(async()=>{
    const workspace=path.resolve(workingDirectory,'../..');source.sourceHead=execFileSync('git',['rev-parse','HEAD'],{cwd:workspace,encoding:'utf8'}).trim();
    const entries=Object.keys(inputs);if(entries.length>2500)throw Error('diagnostics input count exceeds bound');let index=0,total=0;
    async function worker(){while(index<entries.length){const input=entries[index++],absolute=path.resolve(workingDirectory,input),relative=path.relative(workspace,absolute).split(path.sep).join('/');
-    if(!/^(apps\/portal\/(src\/|site\/auth\/|site\/advisor\/maya-sample\.js$|node_modules\/)|src\/contracts\/)/.test(relative)){source.rejectedInputs++;continue;}
+    if(!/^(apps\/portal\/(src\/|site\/auth\/|site\/advisor\/maya-sample\.js$|node_modules\/|tests\/rebuild-plan-guidance-manifest-(observation\.ts|observer\.tsx)$)|src\/contracts\/)/.test(relative)){source.rejectedInputs++;continue;}
     const real=await fs.realpath(absolute);if(real!==absolute||!real.startsWith(workspace+path.sep)){source.rejectedInputs++;continue;}
     const stat=await fs.stat(real);if(!stat.isFile()||stat.size>12000000||total+stat.size>60000000){source.rejectedInputs++;continue;}total+=stat.size;
-    const bytes=await fs.readFile(real);source.inputs.push({path:relative,bytes:bytes.length,compilerBytes:inputs[input]?.bytes??null,sha256:hash(bytes)});
+    const bytes=await fs.readFile(real),transform=testInstrumentation.transforms?.find(t=>t.path===relative),added=testInstrumentation.addedModules?.find(t=>t.path===relative);
+    if(transform){if(hash(bytes)!==transform.beforeSha256||bytes.length!==transform.beforeBytes||inputs[input]?.bytes!==transform.afterBytes)throw Error('transformed input provenance mismatch');source.inputs.push({path:relative,bytes:transform.afterBytes,compilerBytes:inputs[input].bytes,sha256:transform.afterSha256,onDiskSha256:transform.beforeSha256,onDiskBytes:bytes.length,testTransformed:true});}
+    else{if(added&&(hash(bytes)!==added.sha256||bytes.length!==added.bytes))throw Error('added observer module provenance mismatch');source.inputs.push({path:relative,bytes:bytes.length,compilerBytes:inputs[input]?.bytes??null,sha256:hash(bytes)});}
    }}
    await Promise.all(Array.from({length:8},worker));source.inputs.sort((a,b)=>a.path.localeCompare(b.path));source.inputHash=hash(JSON.stringify(source.inputs));
   });
