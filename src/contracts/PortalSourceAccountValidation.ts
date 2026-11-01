@@ -34,17 +34,36 @@ const commandFields:Record<SourceAccountCommand['action'],Record<string,PlanShap
 };
 
 function read<T>(value:unknown,shape:PlanShape,maxBytes:number):T{
-  requireValue(reviewJsonBytes(value)<=maxBytes);
-  return readReviewShape(value,shape) as T;
+  try{
+    requireValue(reviewJsonBytes(value)<=maxBytes);checkArrayPrototypes(value);
+    return readReviewShape(value,shape) as T;
+  }catch{throw Error('invalid_input');}
+}
+/** JSON arrays have no subclass/prototype behavior, accessors, holes or extra keys. */
+function arrayData(value:unknown):asserts value is unknown[]{
+  requireValue(Array.isArray(value)&&Object.getPrototypeOf(value)===Array.prototype&&Object.getOwnPropertySymbols(value).length===0);
+  requireValue(Object.getOwnPropertyNames(value).length===value.length+1);
+  for(let i=0;i<value.length;i++){
+    const descriptor=Object.getOwnPropertyDescriptor(value,String(i));
+    requireValue(descriptor!==undefined&&descriptor.enumerable&&Object.hasOwn(descriptor,'value'));
+  }
+}
+/** Root JSON inspection already bounds depth/nodes and rejects cycles/getters before this walk. */
+function checkArrayPrototypes(value:unknown):void{
+  if(value===null||typeof value!=='object')return;
+  if(Array.isArray(value)){arrayData(value);for(const item of value)checkArrayPrototypes(item);}
+  else for(const item of Object.values(value))checkArrayPrototypes(item);
 }
 export function readSourceAccountCommand(value:unknown):SourceAccountCommand{
-  requireValue(reviewJsonBytes(value)<=sourceAccountCommandMaxBytes);
-  const input=readObject(value);
-  requireValue(typeof input.action==='string'&&(sourceAccountActions as readonly string[]).includes(input.action));
-  const action=input.action as SourceAccountCommand['action'];
-  const c=read<SourceAccountCommand>(value,obj({schemaVersion:en(1),action:en(action),...commandFields[action]}),sourceAccountCommandMaxBytes);
-  if(c.action==='list_source_consents_v1')requireValue(c.cursor===null||c.snapshot!==null);
-  return c;
+  try{
+    requireValue(reviewJsonBytes(value)<=sourceAccountCommandMaxBytes);
+    const input=readObject(value);
+    requireValue(typeof input.action==='string'&&(sourceAccountActions as readonly string[]).includes(input.action));
+    const action=input.action as SourceAccountCommand['action'];
+    const c=read<SourceAccountCommand>(value,obj({schemaVersion:en(1),action:en(action),...commandFields[action]}),sourceAccountCommandMaxBytes);
+    if(c.action==='list_source_consents_v1')requireValue(c.cursor===null||c.snapshot!==null);
+    return c;
+  }catch{throw Error('invalid_input');}
 }
 export function buildSourceAccountRpc(value:unknown):SourceAccountRpcCall{
   return {name:'concierge_source_account_command_v1',args:{p_command:readSourceAccountCommand(value)}};
@@ -84,9 +103,10 @@ function micros(stamp:string):bigint{
 }
 /** Finite record relationships only. This is neither consent evidence nor current authorization. */
 export function readSourceAccountRecords(value:unknown,clientId:unknown):SourceAccountConsent[]{
-  const client=readReviewShape(clientId,uuid);requireValue(Array.isArray(value));
+  try{
+  const client=readReviewShape(clientId,uuid);arrayData(value);
   const records=value.map(item=>read<SourceAccountConsent>(item,consent,sourceAccountPageMaxBytes));
-  const ids=new Set<string>(),currentPurposes=new Set<string>(),disclosures=new Map<string,{hash:string;text:string}>();
+  const ids=new Set<string>(),events=new Set<string>(),currentPurposes=new Set<string>(),disclosures=new Map<string,{hash:string;text:string}>();
   let previous='';
   for(const r of records){
     const id=r.consent.id;requireValue(!ids.has(id)&&id>previous);ids.add(id);previous=id;
@@ -102,10 +122,12 @@ export function readSourceAccountRecords(value:unknown,clientId:unknown):SourceA
       requireValue(r.withdrawal.origin==='client_portal'&&r.withdrawal.recordedBy===client&&r.withdrawal.id!==id&&
         sameCareValue(r.withdrawal.consent,r.consent)&&r.confirmation.decision==='allow'&&
         micros(r.withdrawal.recordedAt)>=micros(r.confirmation.recordedAt));
+      requireValue(!events.has(r.withdrawal.id));events.add(r.withdrawal.id);
     }
     if(r.confirmation.decision==='withdraw')requireValue(r.withdrawal===null&&r.effective!=='not_withdrawn');
     if(r.effective==='not_withdrawn')requireValue(r.confirmation.decision==='allow'&&r.withdrawal===null);
     if(r.effective==='withdrawn')requireValue(r.confirmation.decision==='withdraw'||r.withdrawal!==null);
   }
   return records;
+  }catch{throw Error('invalid_input');}
 }

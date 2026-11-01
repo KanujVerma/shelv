@@ -4,9 +4,9 @@ export const sourceAccountResponseMaxBytes = 1800000;
 export const sourceAccountPageMaxBytes = 400000;
 export const sourceAccountPageMax = 100;
 export const sourceAccountDisclosureMaxScalars = 4000;
-export const sourceAccountReadActions = ['list_source_consents_v1','request_status_v1'] as const;
-export const sourceAccountWriteActions = ['withdraw_source_consent_v1'] as const;
-export const sourceAccountActions = [...sourceAccountReadActions,...sourceAccountWriteActions] as const;
+export const sourceAccountReadActions = Object.freeze(['list_source_consents_v1','request_status_v1'] as const);
+export const sourceAccountWriteActions = Object.freeze(['withdraw_source_consent_v1'] as const);
+export const sourceAccountActions = Object.freeze([...sourceAccountReadActions,...sourceAccountWriteActions] as const);
 export const sourceAccountErrorStatuses = Object.freeze({
   invalid_input:400, unauthorized:401, session_ended:401, forbidden:403, not_found:404,
   revision_conflict:409, request_conflict:409, consent_conflict:409, cursor_conflict:409,

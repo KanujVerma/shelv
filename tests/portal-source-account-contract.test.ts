@@ -4,7 +4,7 @@ import type {
   SourceAccountCommand, SourceAccountConsent, SourceAccountListCommand, SourceAccountWithdrawCommand,
   SourceAccountStatusCommand, SourceAccountPage, SourceAccountReceipt, SourceAccountMappingContext,
 } from '../src/contracts/PortalSourceAccount.ts';
-import {readSourceAccountCommand,buildSourceAccountRpc} from '../src/contracts/PortalSourceAccountValidation.ts';
+import {readSourceAccountCommand,buildSourceAccountRpc,readSourceAccountRecords} from '../src/contracts/PortalSourceAccountValidation.ts';
 import {mapSourceAccountResult,collectSourceAccountPages,decodeSourceAccountResponse} from '../src/contracts/PortalSourceAccountMapping.ts';
 import {sourceAccountPageMaxBytes,sourceAccountDisclosureMaxScalars,sourceAccountErrorStatuses} from '../src/contracts/PortalSourceAccountValues.ts';
 
@@ -200,6 +200,53 @@ test('parsed commands/results are detached, canonical UUIDs are checked without 
   const command=clone(withdraw),call=buildSourceAccountRpc(command);command.consent.disclosure.version=3;
   assert.deepEqual(call.args.p_command,withdraw);
   assert.throws(()=>readSourceAccountCommand({...withdraw,consent:{...ref,id:'00000000-0000-0000-0000-000000000000'}}),/invalid_input/);
+});
+
+test('storage and service review are independent purposes with exact positive withdrawals for each',()=>{
+  const storage=row(),review=row(seriesId(2));review.consent.purpose='service_review';
+  assert.deepEqual(mapSourceAccountResult(list,page([storage,review]),{clientId:client}),page([storage,review]));
+  const c:SourceAccountWithdrawCommand={...withdraw,consent:review.consent};
+  const r:SourceAccountReceipt={...receipt(),withdrawal:{...receipt().withdrawal,consent:review.consent}};
+  assert.deepEqual(mapSourceAccountResult(c,r,{clientId:client,requestHash}),r);
+  invalid(c,receipt(),{clientId:client,requestHash});
+  const unavailable=decodeSourceAccountResponse(c,200,{...r,consentRequired:false},{clientId:client,requestHash});
+  assert.equal(unavailable.state,'uncertain');
+});
+test('one linked portal event cannot identify withdrawals of two different purpose records',()=>{
+  const a=row(),b=row(seriesId(2));b.consent.purpose='service_review';a.effective=b.effective='withdrawn';
+  a.withdrawal=receipt().withdrawal;b.withdrawal={...receipt().withdrawal,consent:b.consent};
+  invalid(list,page([a,b]));
+  b.withdrawal.id=seriesId(1);
+  assert.deepEqual(mapSourceAccountResult(list,page([a,b]),{clientId:client}),page([a,b]));
+});
+test('exported record reader rejects unsafe array prototypes and does not invoke array accessors',()=>{
+  class ForeignArray extends Array<SourceAccountConsent>{}
+  assert.throws(()=>readSourceAccountRecords(new ForeignArray(row()),client),/^Error: invalid_input$/);
+  const unsafe=[row()];let invoked=false;
+  Object.defineProperty(unsafe,'0',{enumerable:true,get(){invoked=true;throw Error('PRIVATE_CANARY');}});
+  assert.throws(()=>readSourceAccountRecords(unsafe,client),/^Error: invalid_input$/);assert.equal(invoked,false);
+  invalid(list,{...page(),entries:new ForeignArray(row())});
+});
+test('a malicious non-JSON proxy cannot escape finite command or result errors',()=>{
+  const hostile=new Proxy({}, {ownKeys(){throw Error('PRIVATE_CANARY');}});
+  assert.throws(()=>readSourceAccountCommand(hostile),/^Error: invalid_input$/);
+  invalid(list,hostile);invalid(withdraw,hostile);
+});
+test('cross-page declaration and current-purpose contradictions reject without a total history cutoff',()=>{
+  const reads=historyReads(),altered=clone(reads);assert(altered[1]);
+  altered[1].page.entries=altered[1].page.entries.map(item=>({...item,disclosureText:'SYNTHETIC SECOND PAGE SAME VERSION CHANGE'}));
+  assert.throws(()=>collectSourceAccountPages(altered,{clientId:client}),/^Error: unavailable$/);
+  const badCurrent=clone(reads);assert(badCurrent[0]?.page.entries[0]);badCurrent[0].page.entries[0].effective='not_withdrawn';
+  assert.throws(()=>collectSourceAccountPages(badCurrent,{clientId:client}),/^Error: unavailable$/);
+  const nullPrototype=Object.assign(Object.create(null),list);
+  assert.deepEqual(readSourceAccountCommand(nullPrototype),list);
+});
+test('original status binds every branch to original own UUID and cannot substitute current eligibility',()=>{
+  for(const value of [{...base,requestId:foreign,status:'absent'},{...base,requestId,status:'absent',approved:true},{...base,requestId,status:'unavailable',code:'request_purged',receipt:receipt()}])invalid(status,value);
+  invalid(status,{...base,requestId,status:'committed',receipt:{...receipt(),clientId:foreign}});
+  invalid(status,{...base,requestId,status:'committed',receipt:receipt()},{...context,requestHash:hash});
+  invalid(status,{...base,requestId,status:'committed',receipt:receipt()},{...context,originalWithdrawal:{...withdraw,expectedRevision:6}});
+  invalid(status,{...base,requestId,status:'absent'},{...context,requestHash:undefined});
 });
 
 // Compile-time excess-field negatives accompany the three actual positive literals above.
