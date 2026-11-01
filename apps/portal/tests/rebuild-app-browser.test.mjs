@@ -8,6 +8,7 @@ import { fixture, ids, stamp } from "./rebuild/advisor-fixture.mjs";
 import { mayaPlan } from "./rebuild/plan-fixture.mjs";
 import { projectClientPlan } from "../../../src/contracts/PortalRebuild.ts";
 import { parseRoute, buildRoute } from "../src/navigation/routes.ts";
+import { browserCareView, browserReviewFacts, browserReviewResponse } from "./rebuild-app-browser-model.mjs";
 const portal = path.resolve(import.meta.dirname, ".."),
   output = path.resolve(
     portal,
@@ -70,6 +71,7 @@ function state() {
     csrf: "SYNTHETIC-csrf",
     failure: 0,
     callback: 0,
+    review: browserReviewFacts(),
   };
 }
 async function setup(initial = "/plan", width = 1440, s = state()) {
@@ -142,6 +144,10 @@ async function setup(initial = "/plan", width = 1440, s = state()) {
         assert.equal(request.headers()["x-shelv-csrf"], "SYNTHETIC-flow");
         return route.fulfill({ json: { sent: true } });
       }
+      if (audience === "client" && endpoint === "reviews" && request.method() === "POST") {
+        const response = await browserReviewResponse(s, command);
+        if (response) return route.fulfill(response);
+      }
       if (endpoint === "care" && request.method() === "POST") {
         if (s.failure) return route.fulfill({status:s.failure,json:{code:"unavailable"}});
         if (audience === "advisor" && command.action === "read_advisor_use_history_v1") {
@@ -155,7 +161,7 @@ async function setup(initial = "/plan", width = 1440, s = state()) {
             return route.fulfill({status:409,json:{code:"revision_conflict"}});
           return route.fulfill({json:{revision:0,entries:[],nextCursor:null}});
         }
-        const careView = view => ({...view,schemaVersion:2,use:{revision:s.careRevision,planProducts:(view.plan?.content.products??[]).map(product=>({product:{kind:"plan_product",publication:{version:view.plan.version,documentSchemaVersion:view.plan.documentSchemaVersion},productId:product.id,slotId:null},state:"not_reported",originalStart:{state:"unknown"},latestEvent:null,identity:null,contradiction:false,...s.reportedUse.get(product.id)})),reportedProducts:{items:[],nextCursor:null}},latestPublicReview:null});
+        const careView = view => browserCareView(s, view);
         if (audience === "client" && command.action === "read_client_plan_v2") {
           assert.deepEqual(command,{schemaVersion:1,action:"read_client_plan_v2",version:null});
           if(s.hold)await new Promise(resolve=>s.release=resolve);
@@ -431,12 +437,12 @@ test("actual client app reads/decides through fixed cookie ports and restores pr
       .click();
     await p.getByText("choice recorded", { exact: true }).waitFor();
     assert.equal(
-      f.s.calls.filter((c) => c.command?.action === "record_decision_v1")
+      f.s.calls.filter((c) => c.command?.action === "record_decision_v2")
         .length,
       1,
     );
     assert.equal(
-      f.s.calls.filter((c) => c.command?.action === "read_client_plan_v2")
+      f.s.calls.filter((c) => c.command?.action === "read_client_plan_v3")
         .length,
       2,
     );
@@ -1106,7 +1112,7 @@ test("actual startup rejects partial, empty, duplicate, mixed and oversized call
   }
 });
 
-test("real application v2 care composition records stop and keeps its confirmed state across reload", async () => {
+test("real application current plan/care composition records stop and keeps its confirmed state across reload", async () => {
   const f=await setup(buildRoute({name:"product-use",productId:"cerave-pm",routine:"evening"}),390);
   try {
     const p=f.page;
