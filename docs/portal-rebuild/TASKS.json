@@ -5453,13 +5453,36 @@
       "branch": "t3/review-history-composition-r6",
       "role": "W7 independent composed History R6",
       "frozenTarget": "b752b96051f28d1d35f50e391dc81034630b706c",
-      "resourceBoundary": "ACTIVE sole finite syntheticChrome ONLY9cfe1ac9/head4763bc56; noR9/native/Auth/DB/Storage/finance; explicitRETURNrequired",
+      "resourceBoundary": "Chrome RETURNED05:07:18Z; report/hash/Git only; no new resources",
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/app-history-r6-brief.txt",
       "reportOnly": true,
       "nested": false,
       "allocatedAt": "2026-11-01 04:40:46 UTC",
       "sourceReady": "Source scopedPASS at4763bc56/b752; original228/198/256/25 and own9/9; actualmain2232/15 preservescurrent37f",
-      "chromeGrant": "coordinator-w7-app-history-r6-synthetic-chrome-b752b960-20261101"
+      "chromeGrant": "coordinator-w7-app-history-r6-synthetic-chrome-b752b960-20261101",
+      "browserPhase": "runnerexit0/currentcore3 and exercisedcases pass as reported; final independent report/count/qualifications pending"
+    },
+    {
+      "role": "W1 Source implementation readiness plan only",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-source-implementation-readiness-plan-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-report-guidance-contracts-20261031-r1:ordinal:15",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "starting",
+      "frozenTarget": "d0f3a31c778d8d08ee752dc1d4b49c4eec26874a",
+      "resourceBoundary": "ONE NEW readiness-plan report; no Phase2/code/SQL/CLI/resources/rights/profile/API implementation or admission",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/source-readiness-plan-brief.txt"
     }
   ],
   "parentVerification": {
@@ -5597,7 +5620,7 @@
       "checks": "Fresh228/198/256/25/packaging5/own9/9/strict/build2232x15 SourceReady; DOMpending",
       "review": "R6 source scopedPASS/SourceReady; separately granted finite syntheticChrome ACTIVE",
       "targetExceptions": "New R5 preserves current Parent875/fed90/hermetic/telemetry test postimages; App-owned client-state remains e4cb",
-      "chrome": "ACTIVE coordinator-w7-app-history-r6-synthetic-chrome-b752b960-20261101, ONLY9cfe1ac9/head4763bc56; no otherresource",
+      "chrome": "RETURNED2026-11-01T05:07:18Z; scoped193identitiesabsent/previewnoTab; finalreportpending",
       "production": "7a19b7e28aaff7c28916d35208ec6aec6c2400bc",
       "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-review-20261101-r6",
       "productionBoundary": "CH5 private successful-data admission; CH4 intent lifetime preserved; no Parent integration",
@@ -5643,7 +5666,8 @@
       "checks": "185 overlapping and independent16 pass; strict0; raw17/40/11 and scheduling-only failures preserved",
       "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-private-source-contracts-review-20261101-r5",
       "reviewImportedAs": "0c2beaa9ddeb19b4d3c61f85e217ba2641f9b595",
-      "correctionTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-source-detail-retention-semantic-s8-s9-corrections-20261101"
+      "correctionTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-source-detail-retention-semantic-s8-s9-corrections-20261101",
+      "nextPlanningTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-source-implementation-readiness-plan-20261101"
     },
     "v3Package": {
       "input": "fed90f029b2849426f52263c74c589b1e86643d9",
@@ -6070,7 +6094,13 @@
       "write": false,
       "gatewayIncluded": false,
       "earlierFullManifest": "overwritten by precommitstylecheck; originalclean toolsummaryretained, fullmanifestunavailable/notreconstructed",
-      "currentProof": "Final clean per-runimmutable receipt via APPLICATION-SOURCE-BUILD-CURRENT.json aftercheckpoint"
+      "currentProof": "Final clean per-runimmutable receipt via APPLICATION-SOURCE-BUILD-CURRENT.json aftercheckpoint",
+      "finalProof": {
+        "receipt": ".local-artifacts/portal-rebuild/w2-source-parent-integration/in-memory-app-runs/build-19c3ea1f106f0e123982d29fe2137f137312fdef-2e32278e-06d3-4ce9-9ded-1504ec701135.json",
+        "sha256": "b47a3e573ff2ccf4183da3099aa127fc6294ff1324edc7be15e9ea9b063fc7e0",
+        "head": "19c3ea1f106f0e123982d29fe2137f137312fdef",
+        "sourceDirty": false
+      }
     },
     "effectivePathsExact": 41,
     "nativeClosureBlobsUnchanged": 87,
@@ -6090,10 +6120,30 @@
     "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-9cfe1ac9",
     "composedHead": "4763bc56acd906e592133883d5d5b98a262c8823",
     "authorTarget": "b752b96051f28d1d35f50e391dc81034630b706c",
-    "status": "ACTIVE",
+    "status": "RETURNED",
     "casePlanSha256": "8507f407cb2b5cf95bc94f690f296883b2a7cff0662474e9f0a8eb023ba08356",
     "grantFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/app-r6-chrome-grant.txt",
     "excludes": "R9/genuine/native/Auth/DB/Storage/finance/liveactions",
-    "return": "PromptUTCexplicit beforehash/report/Git; no laterbrowser/preview/process/resourcecall"
+    "return": "PromptUTCexplicit beforehash/report/Git; no laterbrowser/preview/process/resourcecall",
+    "returnAt": "2026-11-01T05:07:18Z",
+    "finalInsideInventoryAt": "2026-11-01T05:07:06.658464+00:00",
+    "runnerExit": 0,
+    "exactOwnIdentities": 193,
+    "scopedEmptyRecorded": true,
+    "preview": "available:false/tabId:null",
+    "savedReceiptVerification": ".local-artifacts/portal-rebuild/app-r6-return/PARENT-SAVED-RECEIPT-VERIFICATION.json",
+    "receiptHashes": {
+      "RETURN.json": {
+        "bytes": 2401,
+        "sha256": "34c2ac49014082479a56c45a71a6344f29268305affba1bcf25e7510235e3115",
+        "copy": ".local-artifacts/portal-rebuild/app-r6-return/RETURN.json"
+      },
+      "FINAL-EXACT-OWN-INVENTORY.json": {
+        "bytes": 51614,
+        "sha256": "95d4a1a44b7e2100fe6a8419adfcbfbb6ba229f7e001bacb0c67ddde074e355d",
+        "copy": ".local-artifacts/portal-rebuild/app-r6-return/FINAL-EXACT-OWN-INVENTORY.json"
+      }
+    },
+    "claimBoundary": "Saved in-custody own identities only; no globalempty claim or post-return resource calls; final report/counts still pending"
   }
 }
