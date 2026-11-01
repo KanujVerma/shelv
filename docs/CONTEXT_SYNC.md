@@ -1,3 +1,7 @@
+## 2026-11-01 current Account/owner-policy reviews and A07 execution
+
+SAC3 source0096 and exact fixture45f are terminal; author64/64/overlapping87/87/strict0, raw failures preserved. [Coordinator input pin](portal-rebuild/research/COORDINATOR_SAC3_FIXTURE_PIN.md) changes no API or rights. New independent Account R4 and owner-policy R1 are active, implementations unimported/unmounted. A07 ordinal18 has the separately bound sole synthetic Chrome grant after successful source lease and supervisor review; finite browser results pending, no genuine provider/SQL/Auth claim. Four active including coordinator at allocation, all Sol/xhigh/default; no nesting or blocked Guidance/M65 retry. Full goal remains open. TASKS.json records exact tasks/grant/return boundaries.
+
 ## 2026-11-01 current source holds and external verification gate
 
 PublishedRootb89e96f3 contains reviewedpureUTF8 component, test andreports; Parent1296/0fail/18oldskip/types0/Expo0 atcode03cd, exactnewheadCIpending. A07H2metadata-execution correction ordinal16 and AccountSAC2partial-total correction ordinal3 arecurrentSOURCE-only tasks; no browser/API/rights/schema/storage grant. NewGuidanceprivate-returnauditproviderfailedwithoutacceptedverdict; partialuncommittedbytesretained, no retry/reroute. ProviderrequiresAAS+compatibleFIDO2hardwarekey atchatgpt.com/cyber; requiredSol/xhighunchanged. R9staysSTOPPED/volume+backupretained, nativecandidate88notruntime. TASKS/currentstatuscarryexacthandles/limits; fullgoalopen.

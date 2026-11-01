@@ -1,8 +1,10 @@
-## Current source gates and browser preparation
+## Current bounded execution and source reviews
 
-A07harnessindependentR3 report1689/importc4a givesSOURCESPEC/qualityscopedPASS forJSONexclusions/completeexecutionlease/finite10contexts18captures; allbrowserUNRUN. NewW0ordinal17 isSOURCE-preflightONLY in3cff/c760, NULLgrant, exactParentdriver1672/e714 andfullb1record. No browser/preview/process/nativeauthorityuntilfreshParentgrantaftercurrentpreflightandownsupervisorsourcereview. ProviderblockedGuidance/M65verificationisnotexecutedbythissyntheticAppplan.
+A07 harness R3 is scoped source PASS. Normal preflight at clean c760 validates the complete execution lease. New W0 ordinal18 has the sole exact-task synthetic Chrome grant for ten serial contexts and 18 captures, with the reviewed driver and ancestry-only supervisor. Browser results remain pending. This is actual App with closed synthetic HTTP, excluding Vault/provider/SQL/Auth and the blocked Guidance/M65 audits. Exact grant and return requirements are in TASKS.json.
 
-AccountR3ab5963/import3c2f findsSAC3/P2 impossiblenamedpredecessorpositiononpartialterminalpage; earlierSAC1/SAC2closedandtracked53/aggregate72pass/strict0butnotnewconstraint. SameW6ordinal5sourcefixactivewithoutpublicwire/caps/Source15/Mapping/resourcechanges; newR4required. W2ownerpolicy early37casespass/noRootmount, exactsame-lockdepsinputquestionansweredforstrict/SSR/build.SourceOwnerPolicyisONEexisting-API-backedA08slice, notfullpermissions.CI b89all3green; fullgoalunfinished.
+W6 SAC3 source0096 plus the separately pinned fixture45f are terminal. The author reports tracked64/64, overlapping87/87 and strict zero diagnostics. The [exact input pin](research/COORDINATOR_SAC3_FIXTURE_PIN.md) preserves raw failures and assertion identities. NEW independent Account R4 is active before any model pin or Root import. Owner-policy candidate1a7f reports59/59 and strict/SSR/build passes; NEW independent R1 is active. It is one unmounted existing-API-backed A08 slice, not full permissions.
+
+Four active agents including coordinator were verified at allocation. All use Sol/xhigh/default; no nesting. Published b89 remains the latest exact green CI head. Local coordination/report work is not claimed as that CI head, and the full approved goal remains open.
 
 ## Current checkpoint and next connected slices
 

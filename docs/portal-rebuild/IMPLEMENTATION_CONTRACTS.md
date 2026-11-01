@@ -109,4 +109,6 @@ A client can have independent lawful client/draft consent scopes for the same pu
 
 This is an engineering refinement of the unactivated proposal, not a founder policy change or final API pin. It adds no Source15 action/right, client selector, raw source disclosure or authority bit. Actual alias generation and lawful client/draft/adoption lineage require a trusted producer; the UUID/type is not proof. Missing producers remain unavailable. The owner's43496642 correction requires new independent R2 before any contract pin or backend/transport/UI admission. The founder-selected assisted confirmation/Account withdrawal workflow and D39/D40 remain unchanged.
 
+The later SAC3 [exact fixture-input reconciliation](research/COORDINATOR_SAC3_FIXTURE_PIN.md) preserves causal-only and actual-page-position evidence separately. It changes no public model or authority; independent R4 remains required.
+
 Every later material decision records problem, alternatives, chosen approach, rationale, affected contract and tests here. Statuses are separate: agreed, designed, implemented, locally tested, hosted verified, deployed.

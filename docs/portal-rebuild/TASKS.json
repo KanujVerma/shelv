@@ -2,7 +2,7 @@
   "updatedOn": "2026-11-01",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
-  "allocatedWorkers": 5,
+  "allocatedWorkers": 4,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -1737,7 +1737,7 @@
       "integratedCommits": [
         "54623e91"
       ],
-      "verdict": "Main9PASS/extra record+pagination+unfiltered controlsPASS; CN1/P2 exactproducthistorySQLNULL\u2192unrelatedsameclientrows\u2192strict503 requiresforwardfix"
+      "verdict": "Main9PASS/extra record+pagination+unfiltered controlsPASS; CN1/P2 exactproducthistorySQLNULL→unrelatedsameclientrows→strict503 requiresforwardfix"
     },
     {
       "role": "W7 care client round2",
@@ -6578,7 +6578,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "ownedPaths": [
         "apps/portal/src/features/advisor/permissions/types.ts",
         "apps/portal/src/features/advisor/permissions/controller.ts",
@@ -6594,14 +6594,16 @@
       "briefSHA256": "55005be09a2bde31e24d79166fbe49741257f3ae7fe46926ed0060ed1a11fdf1",
       "scope": "NEWcomponent+creation-boundport to EXISTING read_policy/set_sami_policy/request_status ONLY; actualruntime/cookie/RootcodecfiniteHTTPsource, no newAPI/right/sharedserver/SQL/mount or livepermission change",
       "sourceGate": "MeaningfulREDGREEN, exactUUID/revision/currentowner/pending/conflict/uncertainty; existingtask/sourceapprovalrulesunchanged; independentR1beforeRootcomposition/browser",
-      "authoritativeTaskIdForwarded": true
+      "authoritativeTaskIdForwarded": true,
+      "finalHead": "1a7f5d12e2497873fc1fc249e89c9f61978dca69",
+      "verificationResult": "Author59/59, retained45/256/500, strict/frontend/session/UI/SSR/write:false2147x6 pass; one unmounted A08 existing-policy slice, no resources; new independent R1 allocated."
     },
     {
       "role": "W0 actualA07 finite synthetic browser phase SOURCE preflight ONLY",
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-a07-finite-actual-app-browser-phase-20261101",
       "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:17",
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
       "backingOrdinal": 17,
       "model": "gpt-6.1-sol",
@@ -6612,14 +6614,15 @@
       "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w0-a07-finite-browser-phase-brief.txt",
       "briefSHA256": "53e96069376852b2589dd06fbf1db035dadf8754d6abc93403ea96852479c19f",
       "scope": "NO GRANT YET; exactc760/production083/b1execution; driver1672/e714; prepare normallease/source/PIDsupervisor AS SOURCE only; no launcher/browser/preview/process resources beforeseparateexplicitgrant",
-      "authoritativeTaskIdForwarded": true
+      "authoritativeTaskIdForwarded": true,
+      "verificationResult": "Ordinal17 normal source lease2246/15/17assets32URLs228entries passes; no driver/browser/resource call. Original source exit137 remains unexplained/cleanup unestablished. Continued as NEW ordinal18."
     },
     {
       "role": "W6 SAC3 page-position feasibility SOURCE correction",
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw6-source-account-cursor-feasibility-sac3-source-fix-20261101",
       "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-source-account-consent-contracts-20261101-r1",
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w6-source-account-consent-contracts-20261101-r1:ordinal:5",
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-5bfd5242",
       "backingOrdinal": 5,
       "model": "gpt-6.1-sol",
@@ -6630,6 +6633,71 @@
       "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w6-source-account-sac3-cursor-feasibility-fix-brief.txt",
       "briefSHA256": "b823cddcdaa83c3b3eeb5e079ede5f85234789d9ff4c9a72e100cae14d16a4c8",
       "scope": "OnlyValidation/newcursorbounds test/report, publicschema/caps/Mappingunchanged; original4/position-awareboundedreference/sourcegate thennewR4, no resources/blockedverification",
+      "authoritativeTaskIdForwarded": true,
+      "sourceCommit": "0096d6313368c671f4d8166b0dcbfa80e7fab45d",
+      "fixtureReportCommit": "45fdf915e38bfef5159c28e49efd36896d26f3ed",
+      "verificationResult": "Author unchangedR3four1/3->4/4; currenttracked64/64/overlap87/87, strict77/186zero; exact Parent fixture pin applied separately, raw48/53 and67/72 retained; no API/resources/Rootimport, new R4 allocated."
+    },
+    {
+      "role": "W7 independent owner approval-policy SOURCE R1",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-ee0dc89f",
+      "sourceTarget": "1a7f5d12e2497873fc1fc249e89c9f61978dca69",
+      "ownedPaths": [
+        "docs/portal-rebuild/research/W7_OWNER_POLICY_UI_SOURCE_R1.md"
+      ],
+      "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-owner-policy-source-r1-brief.txt",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-owner-policy-source-review-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-owner-policy-source-review-20261101-r1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "providerInstanceId": "codex",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "baseCommit": "f2241b5ed9fe6da50cd458b55614a7f734094bb3",
+      "authoritativeTaskIdForwarded": true,
+      "briefSHA256": "fe5c355f3098e9d63d7d9f7a64133f6d4ef2ae6c8f36a35559be7b6b6f74b34f"
+    },
+    {
+      "role": "W7 independent Account consent SOURCE R4",
+      "sourceTarget": "45fdf915e38bfef5159c28e49efd36896d26f3ed",
+      "ownedPaths": [
+        "docs/portal-rebuild/research/W7_SOURCE_ACCOUNT_CONTRACTS_R4.md"
+      ],
+      "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-source-account-r4-brief.txt",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-source-account-contracts-review-20261101-r4",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-source-account-contracts-review-20261101-r4",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "providerInstanceId": "codex",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "baseCommit": "f2241b5ed9fe6da50cd458b55614a7f734094bb3",
+      "authoritativeTaskIdForwarded": true,
+      "briefSHA256": "6c52dbcb1a96fc80f0762b53b77bb10325e194611fa42ace418b3998e44ecd50"
+    },
+    {
+      "role": "W0 finite actual A07 synthetic Chrome execution",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
+      "backingOrdinal": 18,
+      "sourceTarget": "c76057a91497e1f4df4c897d641e751532b546cb",
+      "ownedPaths": [
+        "docs/portal-rebuild/research/W0_ADVISOR_GUIDANCE_COMPOSITION.md"
+      ],
+      "scope": "One exact10serialcontext18capture actual-main synthetic HTTP phase; sole Chrome grant below, no R9/provider/Vault/SQL/Auth or blocked-work reroute.",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-a07-finite-browser-execution-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "providerInstanceId": "codex",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "baseCommit": "c76057a91497e1f4df4c897d641e751532b546cb",
       "authoritativeTaskIdForwarded": true
     }
   ],
@@ -8286,61 +8354,61 @@
       {
         "feature": "Auth, sessions and shell",
         "estimatedPercent": 95,
-        "remainingWorkingTime": "1\u20133 hours"
+        "remainingWorkingTime": "1–3 hours"
       },
       {
         "feature": "Plan authoring and publication",
         "estimatedPercent": 90,
-        "remainingWorkingTime": "3\u20136 hours"
+        "remainingWorkingTime": "3–6 hours"
       },
       {
         "feature": "Client V3 plan and actual use",
         "estimatedPercent": 90,
-        "remainingWorkingTime": "2\u20134 hours"
+        "remainingWorkingTime": "2–4 hours"
       },
       {
         "feature": "Reports and History",
         "estimatedPercent": 90,
-        "remainingWorkingTime": "3\u20136 hours"
+        "remainingWorkingTime": "3–6 hours"
       },
       {
         "feature": "Advisor review and Guidance",
         "estimatedPercent": 80,
-        "remainingWorkingTime": "6\u201312 hours"
+        "remainingWorkingTime": "6–12 hours"
       },
       {
         "feature": "Commerce, orders and returns",
         "estimatedPercent": 45,
-        "remainingWorkingTime": "1\u20132 days after review unblock"
+        "remainingWorkingTime": "1–2 days after review unblock"
       },
       {
         "feature": "Private Source lifecycle",
         "estimatedPercent": 25,
-        "remainingWorkingTime": "2\u20134 days after pins"
+        "remainingWorkingTime": "2–4 days after pins"
       },
       {
         "feature": "Account, coverage and cancellation",
         "estimatedPercent": 25,
-        "remainingWorkingTime": "1\u20132 days"
+        "remainingWorkingTime": "1–2 days"
       },
       {
         "feature": "Notifications and delivery",
         "estimatedPercent": 25,
-        "remainingWorkingTime": "1\u20132 days"
+        "remainingWorkingTime": "1–2 days"
       },
       {
         "feature": "Agent setup and scoped grants",
         "estimatedPercent": 25,
-        "remainingWorkingTime": "1\u20132 days"
+        "remainingWorkingTime": "1–2 days"
       },
       {
         "feature": "Walkthroughs and final26-screen review",
         "estimatedPercent": 35,
-        "remainingWorkingTime": "1\u20132 days"
+        "remainingWorkingTime": "1–2 days"
       }
     ],
-    "nextA07Checkpoint": "3\u20136 working hours, estimate",
-    "fullETA": "5\u20138 working days after financial provider/account-security and Source pins clear, with parallel work",
+    "nextA07Checkpoint": "3–6 working hours, estimate",
+    "fullETA": "5–8 working days after financial provider/account-security and Source pins clear, with parallel work",
     "blockedWaitingIncluded": false,
     "firmCalendarDate": null,
     "visual": ".local-artifacts/portal-rebuild/progress-20261101/portal-progress.html",
@@ -8560,7 +8628,32 @@
     "driverBytes": 1672,
     "driverSHA256": "e714827ec98e577caff68853ac17d4d4b8fa4a96a19fe170c28c34c0b89b0b1a",
     "grant": null,
-    "authority": "SOURCE preparation only; no browser/preview/process grant; freshsupervisor/sourcecurrentnessawaited",
-    "blockedWork": "No Vault/provider/SQL/Auth execution or private-return/security-gate reroute; synthetic App-only phase iflatergranted"
+    "authority": "Ordinal17 did not acquire resources; NEW ordinal18 has separate exact-task grant.",
+    "blockedWork": "No Vault/provider/SQL/Auth execution or private-return/security-gate reroute; synthetic App-only phase iflatergranted",
+    "status": "completed-source-only"
+  },
+  "sourceAccountSac3CompatibilityPin": {
+    "record": "research/COORDINATOR_SAC3_FIXTURE_PIN.md",
+    "sourceCommit": "0096d6313368c671f4d8166b0dcbfa80e7fab45d",
+    "fixtureCommit": "45fdf915e38bfef5159c28e49efd36896d26f3ed",
+    "diffSHA256": "a6bcdc0fe62b77538be493fdf8fab4928b0a9eace4f2ed19842eddebe8c77fba",
+    "testSHA256": "72eb228de21f5ec778b7920a778de019709d40a9d2dcba62f77594a6b196fdae",
+    "independentAcceptance": false,
+    "rootImplementationImported": false
+  },
+  "a07BrowserExecutionGrant": {
+    "grant": {
+      "id": "coordinator-w0-a07-synthetic-chrome-c76057a9-20261101",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
+      "sourceInputsSHA256": "65d48999b841935afee69889fe945b02900af40ae13993edcfd308321ecb1167",
+      "casePlanSHA256": "4db627ab29b0f1b962f29261298af72a2dc9dedff9e77a742f4482a524e67a30",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-a07-finite-browser-execution-20261101",
+      "executionSHA256": "b1e9effa804b3b46e145fa0dfdb1a731c32c30af5db8c8a5297ed26317b669ff"
+    },
+    "status": "issued-active",
+    "sourceHead": "c76057a91497e1f4df4c897d641e751532b546cb",
+    "driverSHA256": "e714827ec98e577caff68853ac17d4d4b8fa4a96a19fe170c28c34c0b89b0b1a",
+    "supervisorSHA256": "1197b79d86dfc606c260c7f41aeb20a13a3f8d01e7da530eb3a6900eccb75a84",
+    "limit": "ONE invocation;10serialcontexts18captures; first material fault STOP; exact own observed PID/start final inventory+preview then prompt explicit UTC RETURN before hashes/report/Git; ZERO resource calls after RETURN; synthetic HTTP only."
   }
 }
