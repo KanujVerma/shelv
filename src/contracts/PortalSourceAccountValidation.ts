@@ -101,6 +101,16 @@ function micros(stamp:string):bigint{
   const fraction=/\.(\d{1,6})/.exec(stamp)?.[1]??'';
   return BigInt(Date.parse(stamp))*1000n+BigInt(fraction.padEnd(6,'0').slice(3));
 }
+/** Rank of a UUID already validated and lowercased by Root in its existing domain.
+ * Root admits version1..8 and variant8..b. Compress only those fixed-domain
+ * digits: 48 ordinary bits, 8 versions, 12 bits, 4 variants, 12 bits, 48 bits.
+ * This is pagination capacity, never causal order or a new UUID policy. */
+function canonicalUuidRank(id:string):bigint{
+  const prefix=BigInt(`0x${id.slice(0,8)}${id.slice(9,13)}`);
+  let rank=(prefix*8n+BigInt(`0x${id.slice(14,15)}`)-1n)*4096n+BigInt(`0x${id.slice(15,18)}`);
+  rank=(rank*4n+BigInt(`0x${id.slice(19,20)}`)-8n)*4096n+BigInt(`0x${id.slice(20,23)}`);
+  return rank*(1n<<48n)+BigInt(`0x${id.slice(24)}`);
+}
 /** Causal links are explicit model facts. UUID order is pagination, never causal evidence. */
 function checkConsentHistory(records:readonly SourceAccountConsent[],completeness:'partial'|'complete',declaredTotal:number|null,pageOffset:number|null):void{
   const byId=new Map(records.map(r=>[r.consent.id,r]));
@@ -164,6 +174,11 @@ function checkConsentHistory(records:readonly SourceAccountConsent[],completenes
   if(declaredTotal!==null)requireValue(minimum<=declaredTotal);
   if(declaredTotal!==null&&pageOffset!==null&&records.length>0){
     const first=records[0]!,last=records[records.length-1]!;let before=0,after=0;
+    // Header slots also need distinct representable identities, including
+    // unnamed records. The existing grammar has 2^125 canonical UUIDs.
+    const earlierSlots=BigInt(pageOffset),laterSlots=BigInt(declaredTotal)-earlierSlots-BigInt(records.length);
+    requireValue(earlierSlots<=canonicalUuidRank(first.consent.id)&&
+      laterSlots<=(1n<<125n)-1n-canonicalUuidRank(last.consent.id));
     // Every named unseen CONSENT is an exact snapshot member. A contiguous page
     // leaves only earlier/later slots; an identity inside its window cannot hide
     // off-page. Root canonicalizes UUID case before this same string comparison.
