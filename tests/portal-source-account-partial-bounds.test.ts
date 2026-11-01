@@ -41,19 +41,19 @@ test('predecessor-only current and successor-only superseded tail each need only
   rejects(page([row(20,30)],1));rejects(page([row(20,null,'superseded')],1));
 });
 test('named predecessor from another segment can bridge a missing successor without double counting',()=>{
-  // 30 -> 20 -> 50 -> 40: 30 and50 are already required unseen predecessor identities.
-  const entries=[row(20,30,'superseded'),row(40,50)];rejects(page(entries,3));accepts(page(entries,4));
+  // 50 -> 20 -> 60 -> 40: both named identities genuinely sort off-page.
+  const entries=[row(20,50,'superseded'),row(40,60)];rejects(page(entries,3));accepts(page(entries,4));
 });
 test('without an observed current node a fresh terminal must be distinct from required ancestors',()=>{
-  const entries=[row(20,30,'superseded'),row(40,50,'superseded')];
+  const entries=[row(20,50,'superseded'),row(40,60,'superseded')];
   rejects(page(entries,4));accepts(page(entries,5));
-  accepts(page([row(20,30,'superseded'),row(40,20,'superseded')],4));
+  accepts(page([row(20,50,'superseded'),row(40,20,'superseded')],4));
 });
 test('independent groups and purposes cannot share a missing record or terminal budget',()=>{
   for(const second of [
     {...row(40,50),consent:{...row(40,50).consent,groupId:otherGroup}},
     {...row(40,50),consent:{...row(40,50).consent,purpose:'service_review' as const}},
-  ]){const entries=[row(20,30,'superseded'),second];rejects(page(entries,4));accepts(page(entries,5));}
+  ]){const entries=[row(20,60,'superseded'),second];rejects(page(entries,4));accepts(page(entries,5));}
   const tails=[row(20,null,'superseded'),{...row(40,null,'superseded'),consent:{...row(40,null).consent,groupId:otherGroup}}];
   rejects(page(tails,3));accepts(page(tails,4));
 });
@@ -89,7 +89,7 @@ test('201 reverse-causal UUID records still map in100/100/1 pages and valid smal
   const entries=Array.from({length:201},(_,i)=>row(10+i,i===200?null:11+i,i===0?'not_withdrawn':'superseded'));
   const first=page(entries.slice(0,100),201),middle=page(entries.slice(100,200),201,100),last=page(entries.slice(200),201,200);
   accepts(first);accepts(middle);accepts(last);
-  accepts(page(entries.filter((_,i)=>i%4===0),201));
+  accepts(page(entries.slice(0,51),201));
   assert.deepEqual(collectSourceAccountPages([{command,page:first},{command:readCommand(middle),page:middle},{command:readCommand(last),page:last}],{clientId:client}).entries,entries);
 });
 test('exact400000/400001 escaped UTF8 envelope includes the current group and predecessor fields',t=>{
@@ -147,7 +147,17 @@ function oracle(records:SourceAccountConsent[],total:number):boolean{
     const f=facts.get(r.consent.id);return f!==undefined&&f.group===groupKey(r)&&f.previous===r.supersedesConsentId&&f.terminal===(r.effective!=='superseded');
   }));
 }
+// Explicit synthetic INPUT rekeying for the original causal-only oracle. It preserves
+// the same graph/total but packs observed records first, so it asserts no missing
+// interior IDs. The separate cursor oracle covers actual UUID positions.
+const causalPage=page;
+function causalPageFacts(entries:SourceAccountConsent[]):SourceAccountConsent[]{
+  const observed=entries.map(r=>r.consent.id),unseen=[...new Set(entries.flatMap(r=>r.supersedesConsentId===null||observed.includes(r.supersedesConsentId)?[]:[r.supersedesConsentId]))];
+  const aliases=new Map([...observed,...unseen].map((old,i)=>[old,id(1000+i)]));
+  return entries.map(r=>({...r,consent:{...r.consent,id:aliases.get(r.consent.id)!},supersedesConsentId:r.supersedesConsentId===null?null:aliases.get(r.supersedesConsentId)!}));
+}
 test('bounded independent five-ID completion oracle checks partial causal totals',t=>{
+  const page=(entries:SourceAccountConsent[],total:number)=>causalPage(causalPageFacts(entries),total);
   const predecessors=[null,10,20,30,40,50],effects=['not_withdrawn','superseded'] as const;
   let checked=0,accepted=0,rejected=0;
   function check(entries:SourceAccountConsent[],total:number):void{
