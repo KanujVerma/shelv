@@ -1,12 +1,24 @@
 // Actual provider -> Edge handler -> retained authenticated runtime; synthetic finite fetch only.
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {SupabaseProvider} from '../session-integration/runtime/server/upstream.ts';
-import {parseCommand as opCommand,PORTAL_ORIGIN,SUPABASE_ORIGIN} from '../session-integration/runtime/server/policy.ts';
-import {createReviewPorts} from '../../../supabase/functions/concierge-reviews/runtime.ts';
-import {createGuidancePorts} from '../../../supabase/functions/concierge-guidance/runtime.ts';
-import {handleReviewRequest} from '../../../supabase/functions/concierge-reviews/handler.ts';
-import {handleGuidanceRequest} from '../../../supabase/functions/concierge-guidance/handler.ts';
+import {build} from 'esbuild';
+import {createRequire} from 'node:module';
+import {fileURLToPath} from 'node:url';
+
+// Compile the actual TypeScript chain: Node's strip-only loader cannot execute
+// the retained provider's parameter properties or extensionless runtime imports.
+const portal=fileURLToPath(new URL('../',import.meta.url));
+const compiled=await build({absWorkingDir:portal,tsconfig:'session-integration/runtime/tsconfig.json',stdin:{resolveDir:portal,contents:`
+export {SupabaseProvider} from './session-integration/runtime/server/upstream.ts';
+export {parseCommand as opCommand,PORTAL_ORIGIN,SUPABASE_ORIGIN} from './session-integration/runtime/server/policy.ts';
+export {createReviewPorts} from '../../supabase/functions/concierge-reviews/runtime.ts';
+export {createGuidancePorts} from '../../supabase/functions/concierge-guidance/runtime.ts';
+export {handleReviewRequest} from '../../supabase/functions/concierge-reviews/handler.ts';
+export {handleGuidanceRequest} from '../../supabase/functions/concierge-guidance/handler.ts';
+`},bundle:true,platform:'node',format:'cjs',target:'node22',write:false});
+const actual={exports:{}};
+new Function('module','exports','require',compiled.outputFiles[0].text)(actual,actual.exports,createRequire(import.meta.url));
+const {SupabaseProvider,opCommand,PORTAL_ORIGIN,SUPABASE_ORIGIN,createReviewPorts,createGuidancePorts,handleReviewRequest,handleGuidanceRequest}=actual.exports;
 const owner='11111111-1111-4111-8111-111111111111',id='22222222-2222-4222-8222-222222222222';
 const credentials={access_token:'synthetic-review-access',refresh_token:'synthetic-review-refresh',expires_at:9999999999,user:{id:owner},providerSessionId:id};
 const status={schemaVersion:1,action:'request_status_v1',requestId:id},all={view:true,edit:true,publish:true,confirmPayments:false};
