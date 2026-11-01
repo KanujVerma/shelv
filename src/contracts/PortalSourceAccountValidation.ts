@@ -75,7 +75,7 @@ export function readSourceAccountPage(value:unknown):SourceAccountPage|SourceAcc
     requireValue(Number.isSafeInteger(end)&&end<=p.total);
     requireValue(p.entries.length>0||p.total===0&&p.cursor===null);
     requireValue(p.nextCursor===(end<p.total?end:null));
-    p.entries=readSourceAccountRecords(p.entries,p.clientId,p.cursor===null&&p.nextCursor===null?'complete':'partial');
+    p.entries=readAccountRecords(p.entries,p.clientId,p.cursor===null&&p.nextCursor===null?'complete':'partial',p.total);
   }
   return p;
 }
@@ -102,22 +102,26 @@ function micros(stamp:string):bigint{
   return BigInt(Date.parse(stamp))*1000n+BigInt(fraction.padEnd(6,'0').slice(3));
 }
 /** Causal links are explicit model facts. UUID order is pagination, never causal evidence. */
-function checkConsentHistory(records:readonly SourceAccountConsent[],completeness:'partial'|'complete'):void{
+function checkConsentHistory(records:readonly SourceAccountConsent[],completeness:'partial'|'complete',declaredTotal:number|null):void{
   const byId=new Map(records.map(r=>[r.consent.id,r]));
   const successors=new Map<string,string>();
-  const groups=new Map<string,{roots:number;current:number}>();
+  const groups=new Map<string,{roots:number;current:number;records:number;unseenPredecessors:number;currentId:string|null}>();
   const groupKey=(r:SourceAccountConsent)=>`${r.consent.groupId}:${r.consent.purpose}`;
   for(const r of records){
-    const key=groupKey(r),group=groups.get(key)??{roots:0,current:0};groups.set(key,group);
+    const key=groupKey(r),group=groups.get(key)??{roots:0,current:0,records:0,unseenPredecessors:0,currentId:null};groups.set(key,group);group.records++;
     if(r.supersedesConsentId===null)group.roots++;
     else{
       requireValue(r.supersedesConsentId!==r.consent.id&&!successors.has(r.supersedesConsentId));
       successors.set(r.supersedesConsentId,r.consent.id);
       const previous=byId.get(r.supersedesConsentId);
       if(previous)requireValue(groupKey(previous)===key&&previous.effective==='superseded');
-      else requireValue(completeness==='partial');
+      else{
+        requireValue(completeness==='partial');
+        // The fork check above makes these distinct required CONSENT identities.
+        group.unseenPredecessors++;
+      }
     }
-    if(r.effective!=='superseded')group.current++;
+    if(r.effective!=='superseded'){group.current++;group.currentId=r.consent.id;}
   }
   for(const group of groups.values()){
     requireValue(group.roots<=1&&group.current<=1);
@@ -137,11 +141,29 @@ function checkConsentHistory(records:readonly SourceAccountConsent[],completenes
     }
     for(const id of trail)finished.add(id);
   }
+  let minimum=records.length;
+  for(const group of groups.values()){
+    // Named unseen predecessors can bridge open segments of this same group/purpose.
+    // They already have successors, so none can be its terminal. Only a group with
+    // no observed current node needs one additional, distinct terminal consent.
+    minimum+=group.unseenPredecessors+(group.current===0?1:0);
+    requireValue(Number.isSafeInteger(minimum));
+    if(group.currentId!==null){
+      let at=byId.get(group.currentId),visible=0;
+      while(at){
+        visible++;
+        if(at.supersedesConsentId===null){
+          // A fixed root-to-current component has no open end at which another
+          // known segment of this group could attach, regardless of the total.
+          requireValue(visible===group.records);break;
+        }
+        at=byId.get(at.supersedesConsentId);
+      }
+    }
+  }
+  if(declaredTotal!==null)requireValue(minimum<=declaredTotal);
 }
-/** Finite record relationships only. Standalone records default to partial, never complete history.
- * The direct complete-page reader and full collector both request the same complete validation.
- * Completeness is local parsing context, not a wire flag, consent evidence or authorization. */
-export function readSourceAccountRecords(value:unknown,clientId:unknown,completeness:'partial'|'complete'='partial'):SourceAccountConsent[]{
+function readAccountRecords(value:unknown,clientId:unknown,completeness:'partial'|'complete',declaredTotal:number|null):SourceAccountConsent[]{
   try{
   requireValue(completeness==='partial'||completeness==='complete');
   const client=readReviewShape(clientId,uuid);arrayData(value);
@@ -165,7 +187,13 @@ export function readSourceAccountRecords(value:unknown,clientId:unknown,complete
     if(r.effective==='not_withdrawn')requireValue(r.confirmation.decision==='allow'&&r.withdrawal===null);
     if(r.effective==='withdrawn')requireValue(r.confirmation.decision==='withdraw'||r.withdrawal!==null);
   }
-  checkConsentHistory(records,completeness);
+  checkConsentHistory(records,completeness,declaredTotal);
   return records;
   }catch{throw Error('invalid_input');}
+}
+/** Finite record relationships only. Standalone records default to partial, never complete history.
+ * Page totals enter only the private validator from the parsed page. The direct complete-page reader
+ * and full collector share the same invariants; no wire flag or authority override is introduced. */
+export function readSourceAccountRecords(value:unknown,clientId:unknown,completeness:'partial'|'complete'='partial'):SourceAccountConsent[]{
+  return readAccountRecords(value,clientId,completeness,null);
 }
