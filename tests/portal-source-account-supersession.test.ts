@@ -98,3 +98,68 @@ test('empty complete and explicit unavailable remain separate from unprovable li
   assert.deepEqual(mapSourceAccountResult(command,value,{clientId:client}),value);
   assert.throws(()=>readSourceAccountRecords([{...row(10),supersedesConsentId:undefined}],client),/^Error: invalid_input$/);
 });
+
+test('withdrawal in one independent group does not retire another group of the same purpose',()=>{
+  const denial=row(10);denial.confirmation.decision='withdraw';denial.effective='withdrawn';
+  const independent={...row(11),consent:{...row(11).consent,groupId:otherGroup}};
+  both([denial,independent]);
+  both([withdrawn(row(10)),independent]);
+});
+test('cross-page forks and closed cycles cannot borrow a complete label from individually valid pages',()=>{
+  const first={...page([{...row(10),effective:'superseded'},{...row(11,10),effective:'superseded'}]),total:4,nextCursor:2};
+  const second={...page([{...row(12,10),effective:'superseded'},row(13,11)]),cursor:2,total:4};
+  const nextCommand:SourceAccountListCommand={...command,snapshot,cursor:2};
+  assert.deepEqual(mapSourceAccountResult(command,first,{clientId:client}),first);
+  assert.deepEqual(mapSourceAccountResult(nextCommand,second,{clientId:client}),second);
+  assert.throws(()=>collectSourceAccountPages([{command,page:first},{command:nextCommand,page:second}],{clientId:client}),/^Error: unavailable$/);
+  const a={...page([{...row(10,11),effective:'superseded'}]),total:2,nextCursor:1};
+  const b={...page([{...row(11,10),effective:'superseded'}]),cursor:1,total:2};
+  assert.deepEqual(mapSourceAccountResult(command,a,{clientId:client}),a);
+  assert.deepEqual(mapSourceAccountResult({...command,snapshot,cursor:1},b,{clientId:client}),b);
+  assert.throws(()=>collectSourceAccountPages([{command,page:a},{command:{...command,snapshot,cursor:1},page:b}],{clientId:client}),/^Error: unavailable$/);
+});
+test('partial visible cross-group and cross-purpose predecessor contradictions reject',()=>{
+  const previous={...row(10),effective:'superseded' as const};
+  for(const child of [{...row(11,10),consent:{...row(11).consent,groupId:otherGroup}},
+    {...row(11,10),consent:{...row(11).consent,purpose:'service_review' as const}}]){
+    assert.throws(()=>mapSourceAccountResult(command,{...page([previous,child]),total:3,nextCursor:2},{clientId:client}),/^Error: unavailable$/);
+  }
+});
+test('missing or unsafe group aliases never become an inferred group or client/source selector',()=>{
+  for(const groupId of [undefined,null,'invalid']){
+    const input={...page([row(10)]),entries:[{...row(10),consent:{...row(10).consent,groupId}}]};
+    assert.throws(()=>mapSourceAccountResult(command,input,{clientId:client}),/^Error: unavailable$/);
+  }
+  for(const extra of [{scope:{kind:'draft',draftId:id(9)}},{sourceId:id(9)},{draftId:id(9)},{groupLabel:'PRIVATE_CANARY'},{reference:'PRIVATE_CANARY'}]){
+    assert.throws(()=>mapSourceAccountResult(command,{...page([row(10)]),entries:[{...row(10),consent:{...row(10).consent,...extra}}]},{clientId:client}),/^Error: unavailable$/);
+  }
+});
+test('original status binds the required group and cannot adopt a changed original command',()=>{
+  const original:SourceAccountWithdrawCommand={schemaVersion:1,action:'withdraw_source_consent_v1',requestId:id(8),expectedRevision:7,consent:row(10).consent};
+  const receipt:SourceAccountReceipt={schemaVersion:1,visibility:'client_account',clientId:client,action:original.action,requestId:original.requestId,commandHash:requestHash,revision:8,outcome:'withdrawn',withdrawal:withdrawn(row(10)).withdrawal!};
+  const status={schemaVersion:1 as const,action:'request_status_v1' as const,requestId:original.requestId};
+  const response={schemaVersion:1,visibility:'client_account',clientId:client,requestId:original.requestId,status:'committed',receipt};
+  assert.throws(()=>mapSourceAccountResult(status,response,{clientId:client,requestHash,originalWithdrawal:{...original,consent:{...original.consent,groupId:otherGroup}}}),/^Error: unavailable$/);
+  assert.deepEqual(mapSourceAccountResult(status,response,{clientId:client,requestHash,originalWithdrawal:original}),response);
+  const purged={schemaVersion:1,visibility:'client_account',clientId:client,requestId:original.requestId,status:'unavailable',code:'request_purged'};
+  assert.deepEqual(mapSourceAccountResult(status,purged,{clientId:client,requestHash,originalWithdrawal:original}),purged);
+});
+test('201 explicit causal records remain complete when UUID pagination reverses their causal order',()=>{
+  const entries=Array.from({length:201},(_,i)=>{
+    const n=10+i,r=row(n,n===210?null:n+1);r.effective=n===10?'not_withdrawn':'superseded';return r;
+  });
+  const first={...page(entries.slice(0,100)),total:201,nextCursor:100};
+  const middle={...page(entries.slice(100,200)),cursor:100,total:201,nextCursor:200};
+  const last={...page(entries.slice(200)),cursor:200,total:201};
+  assert.deepEqual(collectSourceAccountPages([{command,page:first},{command:{...command,snapshot,cursor:100},page:middle},{command:{...command,snapshot,cursor:200},page:last}],{clientId:client}).entries,entries);
+});
+
+function typeCases():void{
+  const c:SourceAccountWithdrawCommand={schemaVersion:1,action:'withdraw_source_consent_v1',requestId:id(8),expectedRevision:7,consent:row(10).consent};
+  // @ts-expect-error an exact consent reference requires the actual opaque group fact
+  const missingGroup:SourceAccountWithdrawCommand={...c,consent:{id:id(10),purpose:'service_storage',disclosure:{version:1,hash}}};
+  // @ts-expect-error the alias belongs inside the exact consent, never a top-level scope selector
+  const selector:SourceAccountWithdrawCommand={...c,groupId:group};
+  void [missingGroup,selector];
+}
+void typeCases;
