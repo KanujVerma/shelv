@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 CI fixture finite browser grant
+
+IndependentbddSource/TestscopedPASS importedreportonly5223. FreshSOLEsyntheticChromegrant coordinator-ci6a-app-fixture-synthetic-chrome-cbf8a5ba-20261101 bindsONLYb0ea/cbf8 authorordinal2. Onewholeoldfirstscenario(1case3contexts/othersfiltered/expectedcallbackread3failure) thenonecurrent19case25contextfile, eachonce; no test/model/production/timingedits or otherresources. Exactexistingclosure/ownPIDstart/preview/EXPLICITUTC RETURN beforepostrunreport/hash/Git, zeroaftercalls. Rootcandidateunimported/currentCIstillred; A07C2Source-onlyseparate.
+
 ## 2026-11-01 CI fixture Source R1 review
 
 Authorcbf8closedcurrentReviewV3/decisionV2fixture source199/new13passes/types/build2232x15/prodprotected.88asserts retained(twoexplicitwireIDsupdated), original19cases25contexts remain; browserUNRUN/UNGRANTED. NEWindependentSourceR1 in05f5e5af from71b importsONLYcbf8, validatesfullmodel/assertion/legacy/failure/Rootmapping/private andexistingRootc856cleanhook, reportonly/noresources. Rootfixturecandidateunimported/currentPR6aPortalstillFAIL13; prior2550PASSfixed/hooklocal20GREEN. A07C2authorfixcontinuesseparately.

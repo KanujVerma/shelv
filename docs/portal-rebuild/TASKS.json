@@ -5962,7 +5962,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-05f5e5af",
       "branch": "t3/review-ci6a-browser-fixture",
       "baseCommit": "71b27a049b6bcf22cf66990603a43645ab704b84",
@@ -5975,7 +5975,64 @@
       "briefChars": 118001,
       "briefSha256": "66f4db712d85f41bd67f711a55864bef4bfa74b35cb0e42e16236d2c86f62e1f",
       "resourceBoundary": "SOURCE/test/report-only NO browser/preview/process/native/Auth/DB/Storage/provider/R9/fixture/resources. IncludesbaseCH6hookc856static/cleanabsenceproof; no fixes/production/API/Source/financialwork.",
-      "requiredContext": "Fulloriginalimplementationbrief+approvedinput;completeauthorreport/assertion88/CI12rawfailures/new13/199/closedmodel andRoothook74assertpreservation; old/raw/current/2wireadaptations distinct. Source review beforefresh finitebrowsergrant."
+      "requiredContext": "Fulloriginalimplementationbrief+approvedinput;completeauthorreport/assertion88/CI12rawfailures/new13/199/closedmodel andRoothook74assertpreservation; old/raw/current/2wireadaptations distinct. Source review beforefresh finitebrowsergrant.",
+      "terminalCommit": "bdd6a8c7b255f11ae6189825dd633210495c42fc",
+      "integratedReportCommit": "52231a30",
+      "verdict": "SOURCE/TESTSPECandqualityscopedPASS; no materialfinding; browserUNRUN/ungranted/noadmission",
+      "reportSha256": "7a5fc7eb651c8c7ba0e5b76848ac56a38187b49b85d5dffd58934a9baa0a040f",
+      "verificationResult": "13/199/new8, strict/frontend/session/modelJS/UI/main2232x15/fixture20x1sourcepass;88/86/2audit,old20+hookENOENT->current20GREEN74assertsame;1946protected/1352Parentprodexact,noresources"
+    },
+    {
+      "role": "W0 CI6a reviewed fixture finite synthetic Chrome verification",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aci6a-app-browser-fixture-finite-chrome-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-ci6a-app-browser-fixture-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-ci6a-app-browser-fixture-source-20261101-r1:ordinal:2",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "starting",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b0ea572d",
+      "branch": "t3/align-ci6a-app-browser-fixture",
+      "baseCommit": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
+      "resourceBoundary": "OnlyownsyntheticinstalledChrome/knownNode/esbuilddescendants; no RootR9/native/Auth/DB/Storage/Docker/provider/realSource/financialresources",
+      "chromeGrant": {
+        "grantId": "coordinator-ci6a-app-fixture-synthetic-chrome-cbf8a5ba-20261101",
+        "phase": "CI6A_APP_BROWSER_FIXTURE_SYNTHETIC_CHROME",
+        "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b0ea572d",
+        "branch": "t3/align-ci6a-app-browser-fixture",
+        "sourceHead": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
+        "status": "allocated_exclusive",
+        "runs": [
+          {
+            "variant": "exactwholeoldfirstscenarioonactualcurrentApp",
+            "selectedCases": 1,
+            "contexts": 3,
+            "expected": "authenticatedcallbackunexpectedread3, othersfilterednotpassed"
+          },
+          {
+            "variant": "currentcompleteoriginalfile",
+            "cases": 19,
+            "contexts": 25,
+            "expected": "alloriginalsemantics/88predicates retained except2explicitwireIDs"
+          }
+        ],
+        "attemptsPerRun": 1,
+        "resourceBoundary": "OnlyownsyntheticinstalledChrome/knownNode/esbuilddescendants; no RootR9/native/Auth/DB/Storage/Docker/provider/realSource/financialresources",
+        "returnRequired": "ExactownPIDstart/scopedclosure/previewnoTab +promptUTCexplicitRETURNBEFOREpostrunhash/report/Git;zeroafterresourcecalls"
+      },
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/ci6a-fixture-finite-chrome-grant.txt",
+      "briefChars": 8363,
+      "briefSha256": "4be8a599fae49f1ec4145608a8502531c1ed4cf896ab1c8c09817020b57d7487",
+      "gates": "Author13/199 +independentSource/TestbddscopedPASS; no production/source/assert/hooks changes duringgrant; onlyignoredrunner/observation thenreportafterRETURN"
     }
   ],
   "parentVerification": {
@@ -7438,8 +7495,35 @@
       "published": false
     },
     "watching": false,
-    "status": "Sourcecandidate199pass/new13; independentSourceR1active, browserUNRUN/UNGRANTED, codeunimported; Portal6aoverallFAIL remains",
+    "status": "FreshsolefiniteChromeallocatedafterSource/TestPASS; candidateunimported/currentoverallCIred",
     "fixtureSourceCandidate": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
-    "fixtureReviewTask": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci6a-app-browser-fixture-review-20261101-r1"
+    "fixtureReviewTask": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci6a-app-browser-fixture-review-20261101-r1",
+    "fixtureReviewReport": "bdd6a8c7b255f11ae6189825dd633210495c42fc",
+    "fixtureReviewVerdict": "Source/TestscopedPASS; browserUNRUN beforegrant",
+    "fixtureBrowserGrant": {
+      "grantId": "coordinator-ci6a-app-fixture-synthetic-chrome-cbf8a5ba-20261101",
+      "phase": "CI6A_APP_BROWSER_FIXTURE_SYNTHETIC_CHROME",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b0ea572d",
+      "branch": "t3/align-ci6a-app-browser-fixture",
+      "sourceHead": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
+      "status": "allocated_exclusive",
+      "runs": [
+        {
+          "variant": "exactwholeoldfirstscenarioonactualcurrentApp",
+          "selectedCases": 1,
+          "contexts": 3,
+          "expected": "authenticatedcallbackunexpectedread3, othersfilterednotpassed"
+        },
+        {
+          "variant": "currentcompleteoriginalfile",
+          "cases": 19,
+          "contexts": 25,
+          "expected": "alloriginalsemantics/88predicates retained except2explicitwireIDs"
+        }
+      ],
+      "attemptsPerRun": 1,
+      "resourceBoundary": "OnlyownsyntheticinstalledChrome/knownNode/esbuilddescendants; no RootR9/native/Auth/DB/Storage/Docker/provider/realSource/financialresources",
+      "returnRequired": "ExactownPIDstart/scopedclosure/previewnoTab +promptUTCexplicitRETURNBEFOREpostrunhash/report/Git;zeroafterresourcecalls"
+    }
   }
 }
