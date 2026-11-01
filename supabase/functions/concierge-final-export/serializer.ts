@@ -9,7 +9,30 @@ type Lines=string[];
 const known=(value:Known<string>):string=>value.state==='known'?value.value:'unknown';
 function add(lines:Lines,...values:(string|null|undefined)[]):void{for(const value of values)if(value!==null&&value!==undefined&&value!=='')lines.push(value);}
 function sources(lines:Lines,items:readonly Source[]):void{for(const s of items)add(lines,'public source: '+s.label,s.url);}
-function guide(lines:Lines,g:Guide):void{add(lines,'',g.title,g.intro);for(const step of g.steps)add(lines,step.title,step.body);add(lines,g.careNote);sources(lines,g.sources);}
+function guideApplicability(plan:FinalExportRecord['plan'],productId:string|null):string{
+ if(productId===null)return 'guide applicability: general guidance for all published routine items';
+ const refs:string[]=[];
+ if(plan.documentSchemaVersion===3){
+  const c=plan.content,index=c.products.findIndex(p=>p.id===productId);
+  if(index<0)return 'guide applicability: public product target unavailable';
+  refs.push('product listing item '+(index+1));
+  for(const [index,s] of c.routine.entries())if(s.productId===productId)refs.push('published routine item '+(index+1));
+  for(const [index,d] of c.decisions.entries()){
+   const roles=[...(d.currentProductIds.includes(productId)?['current product']:[]),...(d.primaryProductId===productId?['primary product']:[]),...(d.alternativeProductIds.includes(productId)?['optional alternative']:[])];
+   if(roles.length)refs.push('published decision item '+(index+1)+' ('+roles.join(', ')+')');
+  }
+ }else {
+  const p=plan.legacyOriginal.presentation;requireValue(p);
+  for(const [index,s] of p.baselineRoutine.entries())if(s.productId===productId&&s.product?.id===productId)refs.push('original published routine item '+(index+1));
+  for(const [index,c] of p.categoryCards.entries()){
+   if(c.currentProduct?.id===productId)refs.push('original published decision item '+(index+1)+' (current product)');
+   if(c.proposedProduct?.id===productId)refs.push('original published decision item '+(index+1)+' (proposed product)');
+  }
+  requireValue(refs.length>0);
+ }
+ return 'guide applicability: '+refs.join('; ');
+}
+function guide(lines:Lines,g:Guide,applicability:string):void{add(lines,'',applicability,g.title,g.intro);for(const step of g.steps)add(lines,step.title,step.body);add(lines,g.careNote);sources(lines,g.sources);}
 function facts(lines:Lines,items:readonly Fact[]):void{for(const fact of items){add(lines,fact.title,fact.body);sources(lines,fact.sources);}}
 function comparisons(lines:Lines,items:readonly Comparison[]):void{for(const c of items){add(lines,c.label,'current: '+c.currentText,'proposed: '+c.proposedText,c.significance,c.guideNote);sources(lines,c.sources);}}
 function product(lines:Lines,p:Product):void{
@@ -29,7 +52,7 @@ function richPlan(lines:Lines,c:ClientPlanContent,record:Pick<FinalExportRecord,
  const name=(id:string)=>{const index=c.products.findIndex(p=>p.id===id),p=c.products[index];requireValue(p);return [p.name||'product name unknown',p.brand||'brand unknown',p.variant?'variant: '+p.variant:'variant unknown',p.sizeLabel||'size unknown','product listing item '+(index+1)].join(' · ');};
  const contextFact=(id:string)=>{const index=c.context.facts.findIndex(f=>f.id===id);requireValue(index>=0);return 'public context item '+(index+1);};
  const contextLinks=(owner:string,ids:readonly string[])=>{for(const id of ids)add(lines,'public context for this '+owner+': '+contextFact(id));};
- const linkedGuide=(g:Guide)=>{add(lines,g.productId===null?'general guidance':c.products.some(p=>p.id===g.productId)?'guide product: '+name(g.productId):'guide product identity unavailable');guide(lines,g);};
+ const linkedGuide=(g:Guide)=>{add(lines,g.productId===null?'general guidance':c.products.some(p=>p.id===g.productId)?'guide product: '+name(g.productId):'guide product identity unavailable');guide(lines,g,guideApplicability({documentSchemaVersion:3,content:c},g.productId));};
  add(lines,c.title,c.summary,c.preparation.by?'prepared by: '+c.preparation.by:null,c.preparation.on?'prepared on: '+c.preparation.on:'preparation date unknown');
  add(lines,'','goals');for(const [index,goal] of c.goals.entries()){add(lines,'goal listing item '+(index+1)+': '+goal.text);contextLinks('goal',goal.factIds);}
  add(lines,'','reported context','current products: '+c.context.products.state);
@@ -44,14 +67,14 @@ function richPlan(lines:Lines,c:ClientPlanContent,record:Pick<FinalExportRecord,
  for(const g of c.routineGuides)linkedGuide(g);sources(lines,c.sources);
  add(lines,'','published follow-up criteria',...c.followUp.criteria,...c.followUp.authoredNotes);
 }
-function legacyPresentation(lines:Lines,p:Presentation,record:Pick<FinalExportRecord,'use'>):void{
+function legacyPresentation(lines:Lines,p:Presentation,record:Pick<FinalExportRecord,'use'|'plan'>):void{
  const renderedUse=new Set<string>();
  const productWithUse=(item:Product)=>{product(lines,item);if(renderedUse.has(item.id))return;const use=record.use.find(u=>u.productId===item.id);if(use){reportedUse(lines,use);renderedUse.add(item.id);}};
  add(lines,p.title,p.summary,'prepared by: '+p.preparedBy,p.preparedOn?'prepared on: '+p.preparedOn:'preparation date unknown');
  for(const s of p.consultationSections)add(lines,s.title,s.body);
  add(lines,'','original published routine');for(const s of p.baselineRoutine){add(lines,'',s.title);if(s.product)productWithUse(s.product);usage(lines,s.usage);}
- add(lines,'','original published decisions (separate from actual use)');for(const c of p.categoryCards){add(lines,'',c.kind.replaceAll('_',' '),c.title,c.subtitle,c.rationaleTitle);if(c.currentProduct){add(lines,'current product');productWithUse(c.currentProduct);}if(c.proposedProduct){add(lines,'proposed product');productWithUse(c.proposedProduct);}for(const r of c.reasons)add(lines,r.title,r.body);add(lines,...c.actions);if(c.usage)usage(lines,c.usage);comparisons(lines,c.comparisons);add(lines,c.factsTitle);facts(lines,c.facts);guide(lines,c.how);sources(lines,c.sources);if(c.decisionLabels)add(lines,c.decisionLabels.current,c.decisionLabels.proposed);}
- for(const g of p.routineGuides)guide(lines,g);sources(lines,p.sources);add(lines,p.currentProductsStatus?'recorded current-products status: '+p.currentProductsStatus:'current-products status not specified');
+ add(lines,'','original published decisions (separate from actual use)');for(const c of p.categoryCards){add(lines,'',c.kind.replaceAll('_',' '),c.title,c.subtitle,c.rationaleTitle);if(c.currentProduct){add(lines,'current product');productWithUse(c.currentProduct);}if(c.proposedProduct){add(lines,'proposed product');productWithUse(c.proposedProduct);}for(const r of c.reasons)add(lines,r.title,r.body);add(lines,...c.actions);if(c.usage)usage(lines,c.usage);comparisons(lines,c.comparisons);add(lines,c.factsTitle);facts(lines,c.facts);guide(lines,c.how,guideApplicability(record.plan,c.how.productId));sources(lines,c.sources);if(c.decisionLabels)add(lines,c.decisionLabels.current,c.decisionLabels.proposed);}
+ for(const g of p.routineGuides)guide(lines,g,guideApplicability(record.plan,g.productId));sources(lines,p.sources);add(lines,p.currentProductsStatus?'recorded current-products status: '+p.currentProductsStatus:'current-products status not specified');
 }
 function instructionLabel(record:Pick<FinalExportRecord,'plan'>,slotId:string,productId:string|null):string{
  const identity=(p:Product)=>[p.name||'product name unknown',p.brand||'brand unknown',p.variant?'variant: '+p.variant:'variant unknown',p.sizeLabel||'size unknown'].join(' · ');

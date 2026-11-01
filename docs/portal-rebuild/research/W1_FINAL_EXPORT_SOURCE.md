@@ -311,3 +311,86 @@ Own command receipts carry exact explicit Node/compiler argv, cwd, actual exits 
 **Still UNRUN / UNVERIFIED:** new independentR4 and remaining full source audit; native PG/SQL/ACL/RLS/current-authority/lock/race/latency/I/O/TOAST/performance/heap/legal maxima; R1 safe public final producer; actual Account/shared-transport/private staging/Blob/post30 download; genuine Auth/persistence/browser/visual/accessibility/comprehension/exact-head CI/release approval. R1 public snapshot gap remains distinct from raw R1 fact loss. No full Account/export/rebuild completion follows this source correction.
 
 No nesting, provider/credentials, resource/CLI/SQL/PG/Auth/Storage/native/process inventory, browser/preview/DOM, services/network, real-client download/send/funds/notifications, Source/financial/blocked Guidance/M65 retry, Root/shared activation, push/PR/merge/deploy occurs. This source family remains unactivated.
+
+## FE4/P2 bounded guide-target correction, 1 November 2026
+
+**IMPLEMENTED_SOURCE; not admitted.** Fresh R4 at `0dc0c5c77275b344f44755f29bb8ba1f8249d087` remains specification/completeness **FAIL**, correctness/quality **FAIL**. Its original unchanged FE4 probe is reproduced OLD0/1 fail before editing and passes after the correction. All R1-R4 FAILs/raws and earlier qualifiers remain immutable. NEW independent R5 and the uncompleted source audit are required before Parent admission; this is not full export/Account/rebuild acceptance.
+
+Same owned worktree `/Users/kanuj/.t3/worktrees/shelv/t3-b08e21c9`, branch `t3/static-final-export-source`, initially clean at exact `f16e6e7ea5f63e9567913fc13b27aeca98ce6391`. Sole allocation: serializer, NEW `tests/portal-final-export-guide-binding.test.ts`, append-only report. No unrelated owner's edits are imported/reverted, no dependency or SQL change.
+
+Authoritative actual NEW taskId, forwarded explicitly by Parent after the initial live gate:
+`node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw1-final-export-guide-binding-fe4-source-fix-20261101`.
+
+Separate backing childThreadId:
+`thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-final-export-source-20261101-r1`.
+
+Separate actual runId, verified LIVE:
+`run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w1-final-export-source-20261101-r1:ordinal:6`; active ordinal **6**. No inferred/reused prior handle. Parent remains `d632030a-18f7-4dec-a2c9-f5c0418c3fd5`; its separately advanced Root code/documentation are not imported.
+
+Initial/final BOTH LIVE self/Parent configuration and capabilities/descriptors establish `codex / gpt-6.1-sol / reasoningEffort=xhigh / serviceTier=default`, default interaction. Selected values exist in the actual Sol descriptor. Project saved default remains null; explicit runtime selections plus unchanged repo/default-subagent/max8/eight-role pins establish Sol/xhigh. Later expanded user concurrency allowance is preserved; no nesting or fallback occurs. Explicit `/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node` is **v22.23.0** initially/finally. No hardware key, Daybreak or other unrelated prerequisite is introduced for this already-authorized ordinary serializer work. Previously refused tasks remain separate/unverified and are not retried.
+
+### Original R4 evidence and meaningful reproduction
+
+FULL R4 report was read and copied from `/Users/kanuj/.t3/worktrees/shelv/t3-b6f9f331`: **25,393 bytes**, SHA-256 `7ded3b71a09f7c34f4dfba3b7b4f73224f671715013c7d775437e4bd30becda8`, exact0dc0c5c bytes. All **4,022** review inputs were copied/hash-checked before editing, including full R1-R3/original brief/complete author responses/raws and controls. Original FE4 probe is unchanged, same relative depth in own ignored evidence, SHA-256 `2813f9b9e8b4cbe964024e53763391f727e0ae84c4df22aa0974002f6b99b17a`. Only own copies execute, never foreign scripts. Own evidence is `.local-artifacts/portal-rebuild/w1-final-export-fe4/`.
+
+Before editing, actual retained `readPresentation`, final-record validator, full wire/hash collector and actual HTML sink/direct serializer produce **0 pass / 1 FE4 fail, actual Node exit1**. A/B differ only in one `routineGuides[0].productId`; both public products/brands and complete guide directions/caution appear, complete roots differ, and each stream commits1/aborts0 while all four artifacts are identical. The guide-caution sensitivity control passes before the missing-relationship assertion. The exact-old emitted original probe also fails on that assertion. No SQL/Auth failure is established.
+
+This is a **defined legacy relationship**, not the previously reported unfounded V3 registry case. Actual retained validation requires every nonnull routine/category guide target to belong to the public presentation product set. Retained `ConciergePresentationMapping.ts:38` selects guides by null/general or exact matching product ID. That source was read; its target relationship governs this correction. Known valid legacy targets are never called unavailable.
+
+### Complete same-class owned-guide traversal
+
+New `guideApplicability` positively resolves compact public document references. The existing `guide` now requires applicability context at every call and prints one ASCII applicability line before its unchanged title/introduction/steps/care-note/public sources. It does not duplicate guide bodies, product names, authored headings, directions or cautions to build the reference list.
+
+| Owned guide path | Actual target handling |
+|---|---|
+| R2 `presentation.routineGuides[]` | Every matching original routine position and category current/proposed product occurrence, with explicit roles; never a first unrelated occurrence. |
+| R2 `categoryCards[].how` | Same complete target resolution, independently of the containing card. All eight retained-valid card kinds covered, including a general/no-addition card whose guide still targets an existing public product. |
+| V3 `routineGuides[]` | Actual public product-listing item plus every matching routine and decision position/role. |
+| V3 `products[].guides[]` | Actual guide target, including one differing from its containing product; no container-based inference. |
+| V3 `decisions[].guidance.how` | Same public target and all current/primary/optional-alternative decision roles; no inferred target from decision kind/container. |
+| Null/general guide, both schemas | Explicit general guidance for published routine items, with no fake product or Start. Remains usable with no products. |
+| Invalid nonnull R2 target | Refuse before staging/commit, matching retained legacy target semantics. Real retained validation also rejects it. |
+| Absent V3 product target | Preserve the existing honest unavailable label because Root lacks this guide integrity check. Do not invent a definition or silently select a product. A defined but otherwise unreferenced public product remains a known listing target. |
+
+References use truthful public array positions and roles whose full identities are already rendered, so identical product names/brands/variants/sizes and repeated routine headings stay distinguishable. Every matching baseline/card role appears when one product occurs repeatedly. No raw opaque product/slot/guide ID, new domain ID, private reference, advice, Start, activation or authority is manufactured. Ingredient-guide keys and opaque grouping registry references remain separate explicit model gaps, not invented guide definitions.
+
+The necessary existing-function changes are narrow and independently asserted: `guide` gains its mandatory applicability argument; `legacyPresentation` gains access to its already-present public plan and supplies context only at its category/routine guide calls; `richPlan` supplies the same context at its existing shared `linkedGuide` call. AST normalization of **only** those calls/type annotation restores exact f16 function bodies. FE1's `productWithUse` logic is untouched, FE2 context/product/goal/fact links are unchanged, and FE3's entire `instructionLabel` is exact f16. All other declarations/imports remain exact. No shared runtime or Root contract is edited.
+
+### Tests and full-artifact comparisons
+
+Current **SOURCE96/96**, same actual **emitted96/96**, retained presentation/service **13/13**, all actual exit0 with zero fail/skip/cancel. Ninety-six comprises prior77 + new18 + unchanged original FE4 one. Original FE1/FE2/FE3/Unicode and segment/kind/leaf/root/Start/private/invalid reference/staging/finite-HTTP predicates and fixtures remain unchanged. External fetch is globally denied before imports; HTTP remains finite actual handler/retained runtime composition. No successful-port substitute or current-care override supplies these results.
+
+New eighteen before editing are **1 pass / 17 semantic failures, exit1**; current18/18. Exact-old emitted new/original controls are **1 pass / 18 failures, exit1**. The unchanged Unicode/body-once sensitivity already passed old code. Tests cover routine/category guides, all eight R2 card kinds, all V3 guide locations, identical labels, all repeated occurrences/roles, null/general/no-products, known-unreferenced/unknown/invalid targets, Unicode escaping and private-field rejection/no commit. Each positive R2 case passes actual retained `readPresentation`; V3 cases pass actual `readPlanContent` and `projectClientPlan`; all complete outputs use actual final-record validation/collector/sink/direct paths. Invalid R2 target returns commits0/aborts1 with staging discarded. Raw malformed private guide fields are rejected by the unchanged closed decoder.
+
+Actual strong TS**6.0.3** with `strict`, `noUncheckedIndexedAccess`, `verbatimModuleSyntax`, `skipLibCheck:false` reports **zero diagnostics** across **215** actual transitive source/declaration files, exact `listFilesOnly` closure SHA-256 `4dd87e1882fa119bda1699c7594ca4f1d6c49b428c447f10531d7b766ae79a84`. Exact-f16/current programs under the same flags emit51 complete JS files: **50 byte-exact**, only serializer.js differs. The two extra closure inputs are the new test and unchanged FE4 probe. Real read-only Parent TS compiler/libs, Node22.20.3 and undici-types6.21 declarations are used; no install/clone, shim, cast, Auth copy, lower flags, diagnostic filtering, React dependency or package/lock/config write occurs.
+
+Original FE4 A/B records and complete manifests remain exact, **2,882 unit bytes /1 part**, roots A `87bc9c0c9d2906b09f001ada96013ab2ebe333be8e51d0e4f6e0bee31f74532b`, B `823826e40003e3b6ecd4c2eb8cef62e0ec063d97645f05f7c64caa47a16a1268`. Old streamed text/HTML **2,143/2,742 -> 2,198/2,797 bytes** for each; direct **2,151/2,750 -> 2,206/2,805**. Added55-byte lines differ in their actual routine position. All four equality predicates become false. Complete old/current byte comparisons are exact after removing **only the newly added `guide applicability:` lines**, not guide bodies or arbitrary text.
+
+Original FE2 and FE3 A/B full records/manifests and all four complete artifacts are **byte-exact** to the R4 inputs, as their original fixtures have no guides. That scoped equality is not a blanket claim about guide-bearing artifacts. All eight FE1 records/manifests/roots/unit counts remain exact; a separately executed old-f16 emitted capture9/9 matches the original R4 captures, and current source capture9/9 passes. Seven guide-bearing full artifacts intentionally gain only applicability lines; every other byte, including FE1 use facts once and FE3 instruction labels, remains exact. Direct counterparts retain the historical extra eight-byte introductory sentence.
+
+| FE1 case | Stream text old -> current | Stream HTML old -> current |
+|---|---:|---:|
+| addition | 3,097 -> 3,247 | 3,696 -> 3,846 |
+| replace | 3,654 -> 3,804 | 4,253 -> 4,403 |
+| optional alternative | 3,680 -> 3,830 | 4,279 -> 4,429 |
+| shared product | 5,417 -> 5,807 | 6,016 -> 6,406 |
+| unknown use | 3,461 -> 3,611 | 4,060 -> 4,210 |
+| same-name distinct products | 3,648 -> 3,798 | 4,247 -> 4,397 |
+| Unicode | 3,612 -> 3,762 | 4,242 -> 4,392 |
+| no products/guides | 1,057 -> 1,057 | 1,656 -> 1,656 |
+
+All31 positive new render pairs available from old/current runs have unchanged unit bytes/parts/roots/commit/abort counts. Full original/new FE4 and prior FE1 captures plus scalar metrics/SHA deltas and closure/protection proofs are in `analysis-proof.json`. Newly reachable later assertions are not mislabeled old executions.
+
+### Bounds, preservation and held acceptance
+
+Guide applicability contains compact ASCII positions/roles, never copied guide/fact/advice bodies or product/heading text. Each guide body remains once per authored guide occurrence. Actual Root maxima bound one V3 target line to at most101 references (one listing item,50 routines,50 decisions with grouped roles);The longest concrete grouped-role reference is below100 ASCII bytes; the padded combination of all50 routine and50 decision references plus listing/header/separators is independently counted below10,240 bytes. At most2,600 authored V3 guide occurrences (50*50 product guides +50 routine +50 decision how) therefore add at most26,624,000 ASCII bytes of applicability output. Legacy has at most150 occurrence references, each below100 bytes plus separators/header, below16,384 bytes per guide, at most62 guides and1,015,808 bytes total. These are conservative **source output bounds**, not measured heap maxima or maximum legal-plan acceptance. Temporary reference arrays are bounded150; strings/join/UTF16/escaping/copy/sink retention still allocate. No new persistent table/cache, full-bundle assembly, input limit reduction, dropped link, fake count or truncation is introduced.
+
+This phase does not establish that the largest combined legal input/output fits an actual Edge/browser/process heap or time budget. The extra compact output and existing practical limits remain part of the unaccepted maximum-path resource gate. The historical lazy300MB author proof remains historical evidence, not rerun, and does not certify this changed serializer. Native SQL/TOAST/history scans/I/O/latency/timeout/heap and real staging/Blob memory remain unmeasured. No giant rerun or inference of a new max heap from small cases occurs.
+
+All **1,987** initial tracked paths are bound to exact f16. Only serializer/report plus one new test may change; other1,985 existing bytes/modes remain exact. All **115 SQL /63 migration source files**, four Root codecs, runtime/handler/body, collector, old tests, limits/actions/hash profile/rights and shared transport/App are frozen. Candidate migration SHA remains `4991cce01a59e82aea46a2d4d37db95defe32e473854cd9e494c5a749a7d7166`; native canonical62 is not changed or re-proven. All **2,178** pre-existing original/FE1/FE2/FE3 artifact files remain byte/mode exact. Original95,388-byte input/five hashes and current Root post30 decision remain unchanged. The complete67,991-byte f16 author-report prefix is exact.
+
+No new setup/compiler/emit failure occurred. Expected Node package-type warnings remain. The added test creates a deliberately unknown private field using an ordinary runtime object assignment for closed-schema rejection, with no type cast or validator replacement. All original type/emit/CLI/dependency/zsh/TAP/analysis/fixture faults and prior RED/GREEN results stay preserved/attributed. Exact explicit Node/compiler argv/cwd/actual exits/full-log hashes are in per-command receipts and `commands.json`; runtime, task identity, review-copy, prior-artifact, compile/listFilesOnly, analysis, terminal protection and commit receipts retain this transition.
+
+**UNRUN / UNVERIFIED:** new independentR5 and remaining full source audit; native SQL/PG/ACL/RLS/current-authority/lock/race/performance/I/O/TOAST/latency/heap/legal maxima; R1 public final producer; Account/shared transport/private backing storage/Blob/post30 actual download; genuine Auth/persistence/browser/visual/accessibility/comprehension; exact-head CI/full App/Expo tests and release approval. Missing R1 public production is not total raw R1 fact loss. No full Account/export/all26/full-goal completion follows this bounded fix.
+
+No nesting, resource, browser/preview/DOM/native/process inventory, CLI/SQL/PG/Auth/Storage/provider/credential/service/network, actual client download/send/funds/notification, Source/financial/blocked-task resubmission/rephrase/reroute, Parent write/shared activation, push/PR/merge/deploy or self-acceptance occurs. Only the authorized local three-path commit follows inspected checks. The final-export family remains unactivated.
