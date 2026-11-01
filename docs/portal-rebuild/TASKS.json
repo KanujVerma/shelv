@@ -5082,12 +5082,14 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "frozenTarget": "53926ef9863491ad0850f1b333947f20ab7ad516",
       "writeSet": [
         "docs/portal-rebuild/research/W7_PRIVATE_SOURCE_CONTRACTS_R2.md"
       ],
-      "resourceBoundary": "Source-only4modules+minimalrealmetadata/typeclosure, no Sourceactivation/resources/Commercework"
+      "resourceBoundary": "Source-only4modules+minimalrealmetadata/typeclosure, no Sourceactivation/resources/Commercework",
+      "deliveryCommit": "20892332ea1fbc1606f0da7f9ef99d32b2e4fce2",
+      "verdict": "ProposalSPEC/qualityFAIL S5/P2 grantreadpurpose-rightset,S6/P2directpartbinding,S7/P2cross-await detaildigest; S1-S4addressed,104controls/strictpass,raw16/17&39/40preserved; no resources."
     },
     {
       "role": "W7 guidance nested cleanup source R5",
@@ -5106,12 +5108,14 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "frozenTarget": "2b6813fcaad482979030bedc3403e5b94817bd99",
       "writeSet": [
         "docs/portal-rebuild/research/W7_GUIDANCE_UI_SOURCE_R5.md"
       ],
-      "resourceBoundary": "Source/SSR-only, allR1-R4/G5qualifiedproducertrace/knownf163dependency, no resources"
+      "resourceBoundary": "Source/SSR-only, allR1-R4/G5qualifiedproducertrace/knownf163dependency, no resources",
+      "deliveryCommit": "a171b9ff5cce7257ffe0f89b77095fd9886865e7",
+      "verdict": "SourceSPEC/qualityFAIL G8/P3 SAVE403/private-note403 erroremitthenfailure cancelsBnewpub; G7addressed10/10old68 7/3; Source251/retained32/83/32/raw45/Root80/strict pass. No resources."
     },
     {
       "role": "W7 composed C05 source-first R4",
@@ -5130,12 +5134,77 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "frozenTarget": "4f2a9c01bef299c8edef7ac40fd1282339e65718",
       "writeSet": [
         "docs/portal-rebuild/research/W7_V3_HISTORY_COMPOSITION_R4.md"
       ],
-      "resourceBoundary": "Source-first; browserUNGRANTEDuntilseparateParentgrant; rawlate-routeDOMgapremains, noresourcesyet"
+      "resourceBoundary": "Source-first; browserUNGRANTEDuntilseparateParentgrant; rawlate-routeDOMgapremains, noresourcesyet",
+      "deliveryCommit": "ff53757905c557085fabdc80f9061adca702834a",
+      "verdict": "SourceSPEC/qualityCHANGESCH5/P2 initialplan503/history503/continuationpartialearnsC05admission; repeated1/3and3/3failurewithsuccessful/laterofflinepositives. BrowserUNGRANTED/UNRUN; no SourceReady."
+    },
+    {
+      "role": "W2 mutation denial caller ownership G8 source correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw2-guidance-write-denial-owner-g8-source-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-guidance-ui-source-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-guidance-ui-source-20261031-r1:ordinal:7",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "frozenTarget": "2b6813fcaad482979030bedc3403e5b94817bd99",
+      "resourceBoundary": "Controller/newtests/report only, stageoriginaldeniedownerbeforewriteerrorcallbacks, allmutation/denial/emitcaller audit; no resources"
+    },
+    {
+      "role": "W0 C05 successful initial data admission CH5 source correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-history-update-initial-admission-ch5-source-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:9",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "frozenTarget": "4f2a9c01bef299c8edef7ac40fd1282339e65718",
+      "resourceBoundary": "App-only initialsuccess admission, preservealreadyearnedmutation/offline lifetime andW4currentwitness; no resources"
+    },
+    {
+      "role": "W1 Source grant/binding/digest S5-S7 pure proposal correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-source-grant-binding-digest-s5-s7-corrections-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-report-guidance-contracts-20261031-r1:ordinal:12",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "frozenTarget": "53926ef9863491ad0850f1b333947f20ab7ad516",
+      "resourceBoundary": "Source4/test/report only; sharedgrantinvariant/directbinding/detacheddigest; no Phase2/SQL/resources"
     }
   ],
   "parentVerification": {
@@ -5260,7 +5329,7 @@
       "early": "1c213b4764d5bd32e838e55ae73b9ca6d6273c6d",
       "dependency": "14c91e0527c10b825b7ff0e99d5227e9c8533ed8",
       "checks": "146/32/83/45/80 + G4six, strict/sourcebundles; G5 original4/5 retained qualified; f163 dependency still fails, no App/browser acceptance",
-      "review": "R4e958G6addressed, newG7/P3 open; sameauthorG7Sourcefix active; not integrated",
+      "review": "R5a171 SourceG8/P3 mutationerrorcallbackcancelB; G7addressed, W2G8Sourcecorrectionactive",
       "g5Disposition": "Independent R3 verifies exact producer-return trace; original4/5 retained qualified, definitive before-return controls pass",
       "g6AuthorFix": "68d3f6ae8fe59401be7fbc138597c06d876ddf08",
       "g6Checks": "172/32/83/R3independent32/45/80/G4six, originalG6fourGREEN; G5original4/5 remainsqualified; servergenerationdependency remains"
@@ -5269,7 +5338,7 @@
       "source": "4f2a9c01bef299c8edef7ac40fd1282339e65718",
       "delivery": "9a4f99c32f6fb549a4423889efede4e3af2e884b",
       "checks": "162App/198+25feature/256transport/independent10, strong types and clean2231/15; CH1 original3/3twice/CH2zero; author two old browser-target differences excluded in new review in favor of current Parent875/fed90 inputs",
-      "review": "CH4authorboundedgreen/lateDOMrouteunestablished; newindependentR4source-firstallocated, noresourcesyet",
+      "review": "R4ff537 SourceCH5/P2 initialerror/partialadmission; W0CH5Sourcecorrectionactive, no browsergranted",
       "targetExceptions": "New R2 exact Parent875/fed90 resolves prior two old browser dependencies; App-owned client-state remains e4cb",
       "chrome": "AuthorCH4returned02:44:30.491Z; Roottelemetrysmokereturned03:02:15.602256Z",
       "production": "a23d6db5fce945b919bc3f5de8ae0e97c3023e75"
@@ -5292,7 +5361,7 @@
       "source": "53926ef9863491ad0850f1b333947f20ab7ad516",
       "scope": "6newfiles only,15proposed8READ7WRITE,17pure/strict0; actual reader/upload/grants/retention/deletion unimplemented",
       "pin": "NO SourceAPI/Role/profile/disclosure/cap/backendactivation",
-      "review": "NEWSourceR2proposalallocated;83registered/strict0author, rawunsafejob-only16/17&39/40preserved, minimalmetadataclosureexplicit",
+      "review": "R220892 SourceS5-S7/P2 afterS1-S4closure; sameauthorSourcecorrectionactive, no SourcePhase2",
       "priority": "CB5/P1 Commerce M65 takes sole W1 writer; Sourcefix resumes later separately"
     },
     "v3Package": {
@@ -5319,9 +5388,10 @@
     }
   },
   "currentRemoteCheckpoint": {
-    "head": "1252227491a547f194ff7a14fe30879ab2355a95",
+    "head": "72326431d5a1b5bf290a68cf82d28797a28336c1",
     "status": "pushed; new exact-head CI pending",
-    "scope": "Published V3module875/fed90 and fullserial1770 pass, sourcedefaultCare2; no App/guidance/Commerce/Source activation"
+    "scope": "Hermeticbaselinefixtures+syntheticdiagnosticproducer/upload; production/Auth/SQL unchanged from125222",
+    "limits": "budgettimeoutcauseunproved/notclaimedfixed; financialR3providerblocked/M65unadmitted"
   },
   "ciRecovery125222": {
     "head": "1252227491a547f194ff7a14fe30879ab2355a95",
