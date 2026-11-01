@@ -85,22 +85,36 @@ export type AppHistoryRestorationScope = ReturnType<typeof createHistoryRestorat
 /** Fresh C05 data owner; publishing data is separate from the view's committed
  * onReady. Pending original commands and amendments remain feature-owned. */
 export function createHistoryUpdateReader(controller:HistoryController,scope:AppHistoryRestorationScope,onData:(result:HistoryRestorationResult)=>void) {
-  let disposed=false,job:Promise<void>|null=null,attempt:ReturnType<NonNullable<HistoryController['restoration']>['restore']>|null=null;
+  let disposed=false,retired=false,admitted=false,job:Promise<void>|null=null,attempt:ReturnType<NonNullable<HistoryController['restoration']>['restore']>|null=null;
+  const current=()=>!disposed&&!retired&&scope.isCurrent();
+  // Admission belongs to this reader/entry, not to a pending-reference-bound
+  // viewport witness. The feature still owns every private projection/action.
+  const observe=()=>{
+    const state=controller.getSnapshot();
+    if(state.phase==='ended'||state.phase==='idle'&&!state.timeline?.restoring){retired=true;admitted=false;}
+    if(state.phase==='denied')admitted=false;
+  };
+  const stop=controller.subscribe(observe);
+  // The shared update screen invokes this on ready/mount. Only a deliberate
+  // new-update action on the underlying controller may replace a final intent.
+  const startReport=()=>{if(current()&&!controller.getSnapshot().intent)controller.startReport();};
   return {
+    isAdmitted(){if(admitted)observe();return admitted&&current();},
+    startReport,
     read():Promise<void> {
-      if(disposed||!scope.isCurrent()||!controller.restoration)return Promise.resolve();
+      if(!current()||!controller.restoration)return Promise.resolve();
       if(job)return job;
       scope.begin();
       const api=controller.restoration,owned=api.restore(null);attempt=owned;
-      const current=()=>!disposed&&attempt===owned&&scope.isCurrent();
+      const owns=()=>current()&&attempt===owned;
       const pending=owned.ready.then(result=>{
-        if(!current()||!api.isCurrent(result))return;
-        controller.startReport();
-        if(current()&&api.isCurrent(result))onData(result);
+        if(!owns()||!api.isCurrent(result))return;
+        startReport();
+        if(owns()&&api.isCurrent(result)){admitted=true;onData(result);}
       }).finally(()=>{if(job===pending)job=null;});
       job=pending;return pending;
     },
-    dispose(){disposed=true;attempt?.cancel();attempt=null;job=null;},
+    dispose(){disposed=true;admitted=false;stop();attempt?.cancel();attempt=null;job=null;},
   };
 }
 export function createHistoryNavigation(navigator: Pick<PortalNavigator, 'navigate'|'back'>, scope?: AppHistoryRestorationScope): HistoryNavigation {

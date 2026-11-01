@@ -57,11 +57,11 @@ function HistoryUpdate({controller,appScope,navigation}:{controller:HistoryContr
     const source=createHistoryUpdateReader(controller,appScope,result=>setReady({scope:appScope,result}));
     setSource({scope:appScope,reader:source});void source.read();return()=>source.dispose();
   },[controller,appScope]);
-  const current=ready?.scope===appScope&&controller.restoration?.isCurrent(ready.result)?ready.result:null;
-  const scoped=useMemo<HistoryController>(()=>({...controller,load:()=>reader?.read()??Promise.resolve()}),[controller,reader]);
-  useEffect(()=>{if(current)appScope.onReady(current);},[current,appScope]);
+  const admitted=reader?.isAdmitted()===true;
+  const scoped=useMemo<HistoryController>(()=>({...controller,load:()=>reader?.read()??Promise.resolve(),startReport:()=>reader?.startReport()}),[controller,reader]);
+  useEffect(()=>{if(ready?.scope===appScope&&reader?.isAdmitted())appScope.onReady(ready.result);},[ready,reader,appScope]);
   if(!controller.restoration)return <StatusNotice title="record restoration unavailable"/>;
-  if(!current){const loading=!reader||state.phase==='loading'||state.timeline?.restoring||state.phase==='idle';return <StatusNotice tone={loading?'loading':'error'} title={loading?'loading your record':'retry your current record'} action={loading?undefined:<Button onClick={()=>void reader.read()}>retry current record</Button>}/>;}
+  if(!admitted){const loading=!reader||state.phase==='loading'||state.timeline?.restoring||state.phase==='idle';return <StatusNotice tone={loading?'loading':'error'} title={loading?'loading your record':'retry your current record'} action={loading?undefined:<Button onClick={()=>void reader.read()}>retry current record</Button>}/>;}
   return <ClientHistory controller={scoped} screen="update" navigation={navigation}/>;
 }
 
