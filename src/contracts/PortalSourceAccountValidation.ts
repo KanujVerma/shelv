@@ -75,7 +75,7 @@ export function readSourceAccountPage(value:unknown):SourceAccountPage|SourceAcc
     requireValue(Number.isSafeInteger(end)&&end<=p.total);
     requireValue(p.entries.length>0||p.total===0&&p.cursor===null);
     requireValue(p.nextCursor===(end<p.total?end:null));
-    p.entries=readAccountRecords(p.entries,p.clientId,p.cursor===null&&p.nextCursor===null?'complete':'partial',p.total);
+    p.entries=readAccountRecords(p.entries,p.clientId,p.cursor===null&&p.nextCursor===null?'complete':'partial',p.total,offset);
   }
   return p;
 }
@@ -102,7 +102,7 @@ function micros(stamp:string):bigint{
   return BigInt(Date.parse(stamp))*1000n+BigInt(fraction.padEnd(6,'0').slice(3));
 }
 /** Causal links are explicit model facts. UUID order is pagination, never causal evidence. */
-function checkConsentHistory(records:readonly SourceAccountConsent[],completeness:'partial'|'complete',declaredTotal:number|null):void{
+function checkConsentHistory(records:readonly SourceAccountConsent[],completeness:'partial'|'complete',declaredTotal:number|null,pageOffset:number|null):void{
   const byId=new Map(records.map(r=>[r.consent.id,r]));
   const successors=new Map<string,string>();
   const groups=new Map<string,{roots:number;current:number;records:number;unseenPredecessors:number;currentId:string|null}>();
@@ -162,8 +162,22 @@ function checkConsentHistory(records:readonly SourceAccountConsent[],completenes
     }
   }
   if(declaredTotal!==null)requireValue(minimum<=declaredTotal);
+  if(declaredTotal!==null&&pageOffset!==null&&records.length>0){
+    const first=records[0]!,last=records[records.length-1]!;let before=0,after=0;
+    // Every named unseen CONSENT is an exact snapshot member. A contiguous page
+    // leaves only earlier/later slots; an identity inside its window cannot hide
+    // off-page. Root canonicalizes UUID case before this same string comparison.
+    for(const predecessor of successors.keys())if(!byId.has(predecessor)){
+      if(predecessor<first.consent.id)before++;
+      else{requireValue(predecessor>last.consent.id);after++;}
+    }
+    requireValue(before<=pageOffset&&after<=declaredTotal-pageOffset-records.length);
+    // The causal minimum above already reserves DISTINCT unnamed terminals.
+    // Once named nodes fit their forced sides, those flexible terminals use the
+    // remaining slots on either side, without counting a named bridge twice.
+  }
 }
-function readAccountRecords(value:unknown,clientId:unknown,completeness:'partial'|'complete',declaredTotal:number|null):SourceAccountConsent[]{
+function readAccountRecords(value:unknown,clientId:unknown,completeness:'partial'|'complete',declaredTotal:number|null,pageOffset:number|null):SourceAccountConsent[]{
   try{
   requireValue(completeness==='partial'||completeness==='complete');
   const client=readReviewShape(clientId,uuid);arrayData(value);
@@ -187,13 +201,13 @@ function readAccountRecords(value:unknown,clientId:unknown,completeness:'partial
     if(r.effective==='not_withdrawn')requireValue(r.confirmation.decision==='allow'&&r.withdrawal===null);
     if(r.effective==='withdrawn')requireValue(r.confirmation.decision==='withdraw'||r.withdrawal!==null);
   }
-  checkConsentHistory(records,completeness,declaredTotal);
+  checkConsentHistory(records,completeness,declaredTotal,pageOffset);
   return records;
   }catch{throw Error('invalid_input');}
 }
 /** Finite record relationships only. Standalone records default to partial, never complete history.
- * Page totals enter only the private validator from the parsed page. The direct complete-page reader
+ * Page totals/offsets enter only the private validator from the parsed page. The direct complete-page reader
  * and full collector share the same invariants; no wire flag or authority override is introduced. */
 export function readSourceAccountRecords(value:unknown,clientId:unknown,completeness:'partial'|'complete'='partial'):SourceAccountConsent[]{
-  return readAccountRecords(value,clientId,completeness,null);
+  return readAccountRecords(value,clientId,completeness,null,null);
 }
