@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 full-scope progress estimate
+
+Revalidatedlive05b3checksSUCCESS andtwoactiveagents(Root+A07ordinal14). Fullapprovedscope remainsabout60%completebyengineeringworkestimate, core90%+/advisor80/Commerce45/Source-account-delivery-agents25/walkthrough-visual35. NextA07browsercheckpoint3–6workinghours, full5–8workingdays AFTERfinancialprovider/securityblockandSourcepinsclear, parallelworkassumed; nofirmdate/waittimeexcluded. CURRENT_STATUSstaleCare2/Historyunmounted/advisorfinding lines reconciled; frozenreports untouched. Actualfeature/time matrix inTASKS/currentstatus, notderivedfromtestcounts.
+
 ## 2026-11-01 exact published CI green
 
 PR211exact05b3270eALL3SUCCESS; Portal2509/2509/0skip andallsubsequentPortalkeyboard/session/backend/nativeSQL/localAuthadmissionstepssuccess. Mergebc9858tree5130048equalshead; completepasslog/safe4artifact13080449805/currentobserved2202/10/463events0drops retainedci-05b3270e-pass. Watchoff/PRdraftOPEN/unmerged/nodeploy. Localpostpushdocs/typeinputmetadataaheadnotexactheadCIGreen; productioncodeunchanged. A07harnessSource-onlyactive, allremainingSource/financial/account/delivery/visual/fullgoalboundariesopen.

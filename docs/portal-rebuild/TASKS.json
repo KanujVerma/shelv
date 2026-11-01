@@ -7791,5 +7791,75 @@
     "traceEvents": 463,
     "traceDropped": 0,
     "noMergeOrDeployment": true
+  },
+  "progressEstimate": {
+    "asOf": "2026-11-01",
+    "basis": "LiveGit/current05b all3CIgreen, actualliveA07ordinal14run, currentSource/implementation/acceptance evidence. Engineeringwork-completion estimates, not acceptance scores.",
+    "overallPercent": 60,
+    "liveAgentsIncludingCoordinator": 2,
+    "maximumAgents": 8,
+    "features": [
+      {
+        "feature": "Auth, sessions and shell",
+        "estimatedPercent": 95,
+        "remainingWorkingTime": "1\u20133 hours"
+      },
+      {
+        "feature": "Plan authoring and publication",
+        "estimatedPercent": 90,
+        "remainingWorkingTime": "3\u20136 hours"
+      },
+      {
+        "feature": "Client V3 plan and actual use",
+        "estimatedPercent": 90,
+        "remainingWorkingTime": "2\u20134 hours"
+      },
+      {
+        "feature": "Reports and History",
+        "estimatedPercent": 90,
+        "remainingWorkingTime": "3\u20136 hours"
+      },
+      {
+        "feature": "Advisor review and Guidance",
+        "estimatedPercent": 80,
+        "remainingWorkingTime": "6\u201312 hours"
+      },
+      {
+        "feature": "Commerce, orders and returns",
+        "estimatedPercent": 45,
+        "remainingWorkingTime": "1\u20132 days after review unblock"
+      },
+      {
+        "feature": "Private Source lifecycle",
+        "estimatedPercent": 25,
+        "remainingWorkingTime": "2\u20134 days after pins"
+      },
+      {
+        "feature": "Account, coverage and cancellation",
+        "estimatedPercent": 25,
+        "remainingWorkingTime": "1\u20132 days"
+      },
+      {
+        "feature": "Notifications and delivery",
+        "estimatedPercent": 25,
+        "remainingWorkingTime": "1\u20132 days"
+      },
+      {
+        "feature": "Agent setup and scoped grants",
+        "estimatedPercent": 25,
+        "remainingWorkingTime": "1\u20132 days"
+      },
+      {
+        "feature": "Walkthroughs and final26-screen review",
+        "estimatedPercent": 35,
+        "remainingWorkingTime": "1\u20132 days"
+      }
+    ],
+    "nextA07Checkpoint": "3\u20136 working hours, estimate",
+    "fullETA": "5\u20138 working days after financial provider/account-security and Source pins clear, with parallel work",
+    "blockedWaitingIncluded": false,
+    "firmCalendarDate": null,
+    "visual": ".local-artifacts/portal-rebuild/progress-20261101/portal-progress.html",
+    "scope": "Entireapproved95388/D01-D48/26screens unchanged; allmissingSource/account/delivery/agents/walkthrough/verification remain open"
   }
 }
