@@ -6005,7 +6005,7 @@
           "value": "default"
         }
       ],
-      "status": "starting",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b0ea572d",
       "branch": "t3/align-ci6a-app-browser-fixture",
       "baseCommit": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
@@ -6016,7 +6016,7 @@
         "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b0ea572d",
         "branch": "t3/align-ci6a-app-browser-fixture",
         "sourceHead": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
-        "status": "allocated_exclusive",
+        "status": "returned",
         "runs": [
           {
             "variant": "exactwholeoldfirstscenarioonactualcurrentApp",
@@ -6033,12 +6033,19 @@
         ],
         "attemptsPerRun": 1,
         "resourceBoundary": "OnlyownsyntheticinstalledChrome/knownNode/esbuilddescendants; no RootR9/native/Auth/DB/Storage/Docker/provider/realSource/financialresources",
-        "returnRequired": "ExactownPIDstart/scopedclosure/previewnoTab +promptUTCexplicitRETURNBEFOREpostrunhash/report/Git;zeroafterresourcecalls"
+        "returnRequired": "ExactownPIDstart/scopedclosure/previewnoTab +promptUTCexplicitRETURNBEFOREpostrunhash/report/Git;zeroafterresourcecalls",
+        "returnedAt": "2026-11-01T10:27:17Z",
+        "returnSha256": "5076ce4cd60186415e98af64b9c0bda117e1c8915c95a82d2232edc6e7e88c00",
+        "custodySha256": "43772f7eedb2db79428da82a056f9edc3f59beacf8c638806e6b8d14e8b0c0c2",
+        "closure": "Saved88exactownPIDstartidentitiesabsent/closedcontexts/browsersdisconnect/previewnoTab. Noafterresourcecalls; observedrealmclosure,no percontrollerinterface."
       },
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/ci6a-fixture-finite-chrome-grant.txt",
       "briefChars": 8363,
       "briefSha256": "4be8a599fae49f1ec4145608a8502531c1ed4cf896ab1c8c09817020b57d7487",
-      "gates": "Author13/199 +independentSource/TestbddscopedPASS; no production/source/assert/hooks changes duringgrant; onlyignoredrunner/observation thenreportafterRETURN"
+      "gates": "Author13/199 +independentSource/TestbddscopedPASS; no production/source/assert/hooks changes duringgrant; onlyignoredrunner/observation thenreportafterRETURN",
+      "terminalCommit": "7bc395b4ff7f68f9abde7d980b6879c8b80469f1",
+      "integratedReportCommit": "ff5fe42afc2e5743f3b5bf071065b488267fc26e",
+      "verificationResult": "Oldwholefirstscenario1FAILexpected authenticatedread3/3contexts/public0API; current19/19/25contextsclosed/no retries/sourcefrozen.46observererrors45screenshottimeouts1bodyunavailable/CSP102previewblocks+overwrittenearliercapturesqualified; no consoleclean/visual/packetegress/percontrollerauditclaim."
     },
     {
       "role": "W7 independent A07 accepted-edit/restoration custody source review R3",
@@ -7540,7 +7547,7 @@
       "published": false
     },
     "watching": false,
-    "status": "FreshsolefiniteChromeallocatedafterSource/TestPASS; candidateunimported/currentoverallCIred",
+    "status": "Localreviewedtestcorrectionsadmitted: SourceR1scopedPASS+authorfunctional19PASSqualified+Parent199/20/types/UI/mainpass; newexactheadCIpending",
     "fixtureSourceCandidate": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
     "fixtureReviewTask": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci6a-app-browser-fixture-review-20261101-r1",
     "fixtureReviewReport": "bdd6a8c7b255f11ae6189825dd633210495c42fc",
@@ -7551,7 +7558,7 @@
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b0ea572d",
       "branch": "t3/align-ci6a-app-browser-fixture",
       "sourceHead": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
-      "status": "allocated_exclusive",
+      "status": "returned",
       "runs": [
         {
           "variant": "exactwholeoldfirstscenarioonactualcurrentApp",
@@ -7568,7 +7575,48 @@
       ],
       "attemptsPerRun": 1,
       "resourceBoundary": "OnlyownsyntheticinstalledChrome/knownNode/esbuilddescendants; no RootR9/native/Auth/DB/Storage/Docker/provider/realSource/financialresources",
-      "returnRequired": "ExactownPIDstart/scopedclosure/previewnoTab +promptUTCexplicitRETURNBEFOREpostrunhash/report/Git;zeroafterresourcecalls"
+      "returnRequired": "ExactownPIDstart/scopedclosure/previewnoTab +promptUTCexplicitRETURNBEFOREpostrunhash/report/Git;zeroafterresourcecalls",
+      "returnedAt": "2026-11-01T10:27:17Z",
+      "parentReceipt": ".local-artifacts/portal-rebuild/ci6a-parent-admission/RETURN.json"
+    },
+    "fixtureIntegrationCommit": "ab5eea1501e4f0b3921b5e8fb1ae2bebc74793aa",
+    "fixtureReportIntegrationCommit": "ff5fe42afc2e5743f3b5bf071065b488267fc26e",
+    "fixtureCandidateImported": true,
+    "parentVerification": {
+      "testedHead": "ff5fe42afc2e5743f3b5bf071065b488267fc26e",
+      "source199": 199,
+      "CH6": 20,
+      "frontendSessionModelTypes": 0,
+      "ui": 0,
+      "mainBuild": {
+        "receipt": ".local-artifacts/portal-rebuild/app-r6-parent-integration/in-memory-app-runs/build-ff5fe42afc2e5743f3b5bf071065b488267fc26e-4ac33f98-f297-4dfe-b176-2b372855f075.json",
+        "sha256": "d0f76cc31893de0bea6c85d84413e754ac14b63f82d68657ec3b64ebfc988945",
+        "head": "ff5fe42afc2e5743f3b5bf071065b488267fc26e",
+        "sourceDirty": false
+      },
+      "sourceProductionInputs": 2232,
+      "outputs": 15,
+      "allInputsOutputsEqual6a": true,
+      "parentBrowserRun": false,
+      "authorBrowser19": {
+        "pass": 19,
+        "contexts": 25,
+        "closed": 25,
+        "scope": "finite intercepted author run;46observercaptureerrors/CSPpreviewqualifications retained"
+      },
+      "nativeOrSQLChanges": false,
+      "A07Imported": false,
+      "CI": "pending nextpublishedhead"
+    },
+    "observerQualification": {
+      "errors": 46,
+      "screenshotTimeouts": 45,
+      "responseBodyUnavailable": 1,
+      "overwrittenEarlierCaptureBytes": "notfullyretained; eventhashes/errors preserved",
+      "consoleClean": false,
+      "CSPExternalPreviewImageBlocks": 102,
+      "ownerFollowup": "Sharedpreviewasset/fixturevisualtriagebeforevisualacceptance; do notweakenCSP",
+      "visualOrPacketLevelAcceptance": false
     }
   }
 }
