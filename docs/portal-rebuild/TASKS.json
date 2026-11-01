@@ -5904,7 +5904,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b0ea572d",
       "branch": "t3/align-ci6a-app-browser-fixture",
       "baseCommit": "e4b65a82",
@@ -5913,7 +5913,9 @@
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/ci6a-app-browser-fixture-source-brief.txt",
       "briefChars": 104956,
       "requiredProof": "Actualold12CIunexpectedread3RED; closedcoherentcurrentV3HTTPDTOviaRootmappers/sourcechecks/assertionwireadaptationaudit; finitebrowserplan/Sourcegatebeforefreshsolegrant.",
-      "briefSha256": "33e8e4e4f8e9e6bed7fe618735784e8a2da7cc5b8870848383f052ae61b30589"
+      "briefSha256": "33e8e4e4f8e9e6bed7fe618735784e8a2da7cc5b8870848383f052ae61b30589",
+      "terminalCommit": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
+      "verificationResult": "AuthorSOURCE199pass includesnew13;frontend/session/modelcheckJSstrict0;actualmain2232/15;1352prod/configprotected.88originalasserts86rawexact+2wireidentifierupdates;14declarations19cases25contexts. BrowserUNRUN/UNGRANTED; no prodchange/admission"
     },
     {
       "role": "W0 A07C2 restoration newer-edit ownership source correction",
@@ -5942,6 +5944,38 @@
       "briefChars": 38711,
       "briefSha256": "5aee0d68b1c646180ad444dcd17694b66b2b0fc1e17bf4e55cd20a678703b260",
       "requiredProof": "Original2cases1/1RED->2GREEN withacceptednewerbodyretained, C1six6GREEN +27/32/228/500/raw45/Root80/256/strict/UI/build, boundededit/model/lossclass ownership audit; no fakeauthority or suppresslegitimateacceptededit. NEWindependentR3."
+    },
+    {
+      "role": "W7 independent CI6a current App browser fixture and clean hook source review R1",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci6a-app-browser-fixture-review-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci6a-app-browser-fixture-review-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-ci6a-app-browser-fixture-review-20261101-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-05f5e5af",
+      "branch": "t3/review-ci6a-browser-fixture",
+      "baseCommit": "71b27a049b6bcf22cf66990603a43645ab704b84",
+      "frozenTarget": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
+      "allocatedImports": [
+        "cbf8a5ba67fffa78020a22038fc34d383f83a5af"
+      ],
+      "reportPath": "docs/portal-rebuild/research/W7_CI6A_APP_BROWSER_FIXTURE_R1.md",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/ci6a-app-browser-fixture-review-r1-brief.txt",
+      "briefChars": 118001,
+      "briefSha256": "66f4db712d85f41bd67f711a55864bef4bfa74b35cb0e42e16236d2c86f62e1f",
+      "resourceBoundary": "SOURCE/test/report-only NO browser/preview/process/native/Auth/DB/Storage/provider/R9/fixture/resources. IncludesbaseCH6hookc856static/cleanabsenceproof; no fixes/production/API/Source/financialwork.",
+      "requiredContext": "Fulloriginalimplementationbrief+approvedinput;completeauthorreport/assertion88/CI12rawfailures/new13/199/closedmodel andRoothook74assertpreservation; old/raw/current/2wireadaptations distinct. Source review beforefresh finitebrowsergrant."
     }
   ],
   "parentVerification": {
@@ -7404,6 +7438,8 @@
       "published": false
     },
     "watching": false,
-    "status": "FixtureSourceOnlyActive; no currentfullCIpass"
+    "status": "Sourcecandidate199pass/new13; independentSourceR1active, browserUNRUN/UNGRANTED, codeunimported; Portal6aoverallFAIL remains",
+    "fixtureSourceCandidate": "cbf8a5ba67fffa78020a22038fc34d383f83a5af",
+    "fixtureReviewTask": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci6a-app-browser-fixture-review-20261101-r1"
   }
 }

@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 CI fixture Source R1 review
+
+Authorcbf8closedcurrentReviewV3/decisionV2fixture source199/new13passes/types/build2232x15/prodprotected.88asserts retained(twoexplicitwireIDsupdated), original19cases25contexts remain; browserUNRUN/UNGRANTED. NEWindependentSourceR1 in05f5e5af from71b importsONLYcbf8, validatesfullmodel/assertion/legacy/failure/Rootmapping/private andexistingRootc856cleanhook, reportonly/noresources. Rootfixturecandidateunimported/currentPR6aPortalstillFAIL13; prior2550PASSfixed/hooklocal20GREEN. A07C2authorfixcontinuesseparately.
+
 ## 2026-11-01 A07 C2 source correction
 
 FullR2ded6report importedonly7976, bothsourceverdictsrequireC2/P3: neweracceptededitduringrestore overwrittenbyretainedoldmodelonnextread. OriginalC1sixclosed6/6, newprobe1/1 twice; nomountedReact/DOM/sentUUIDclaim. SameW0ordinal13 source-onlyhelper/newtests/reportfixactive; noRootA07import. CItestfixtureSource-onlyworkerb0eaactive, RootCH6hookfixedlocalc85620/20/all74assertionsunchanged. Linux2550nowPASS; PR6aPortalstillfailed13, watchoffduringcorrection.
