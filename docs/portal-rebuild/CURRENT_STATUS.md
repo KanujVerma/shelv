@@ -1,3 +1,11 @@
+## Latest Source work, 1 November2026
+
+Reviewed UTF8 component465/e511/03cd is now published in draftPR211b89e96f3; ParentRoot1296pass/0fail/18oldoptinskips/types0/Expo0, newsource-onlycandidate88/old87exact. ExactnewheadCI pending/T3watch; previous5834all3SUCCESS. RootSource15/Account/A07 implementationsremainunactivated/unimported.
+
+Harness R2 reportb9a7/import2e2b finds A07H2/P2: executable excluded metadata runs before literal checks. Current8/10 positive blockers are exactParentpackage/bin differences, not waived. SameW0ordinal16 owns non-evaluating JSON metadata + separately admitted exactParentpackage/same-lock ignoreddeps projection; no browsergrant. Account R2report9f58/importb89 finds SAC2/P2 impossiblepartialtotal, sameW6ordinal3 fixes causalminimum feasibility withwire/capsunchanged. EarlierR1/R2FAILs preserved; freshsuccessorreviewsrequired. Three liveincludingcoordinator.
+
+Separate Guidance private-return verification was provider-flagged and failed without accepted verdict. Its partialuncommittedreport/raws are preserved, no rerun/rephrase/reroute or fix. Provider requires Advanced Account Security with compatible FIDO2 hardwarekey at https://chatgpt.com/cyber; requiredSol/xhigh isnot silentlychanged. This gate remainsunverified, alongsideblockedfinancialM65. Otherworkcontinues; nofull-goalacceptance.
+
 # portal rebuild current status
 
 Owner: Kanuj. Updated1 November2026. Integration workspace and branch: kanuj-portal-rebuild-integration-20261030. Latest local integration candidate: AppV3/Historye6b0bd7e with reviewedCItestcorrection7d864736 after guidance85fc0663/report52b4e195, V3 34a2af9a, cookie6f13b82d and history5cd7ef5a. Client App nowselectsV3; advisorGuidance remainsunmounted. FullAppacceptance is incomplete. **The complete approved rebuild remains in progress.** The unrelated dirty scanner checkout is untouched. Current source, review, resource and CI evidence have separate acceptance boundaries.
@@ -10,7 +18,7 @@ Kanuj has selected the launch Source consent workflow: advisor-recorded explicit
 
 ## active work and resource ownership
 
-Kanuj approved disjoint T3-owned work up to eight total agents including coordinator; no nested allocation. Current source-only work has coordinator plus NEW A07 harnessR2, Account consentR2 and Guidance private-return audit (four total); the component/harness/Account authors and earlier reviewers are terminal. HistoricalPR2116a10f5bePortalCI failed13/2497; its2550readinesscasepassesLinux. ReviewedcurrentAppfixtureab5eea15/reportff5 andcleanCH6hookc856areadmittedlocallyforthe nextdraftCIhead. IndependentSource/TestbddPASS; authorfunctional19/19once/25contexts andexplicitcapture/CSPqualifications; Parent199/20/types/UI/main2232x15pass. Publishedsuccessor05b3270eALL3CIGREEN/Portal2509of2509/0skip; PRstaysdraft. A07R34177scopedSource/SSRPASS closesC1/C2; authorordinal14preparesactualAppbrowserharnessSource-only, noA07import. AllChromegrantsreturned; no native/Auth/DB/Storage/Source/financialauthority. Fullapprovedgoalremainopen.
+Kanuj approved disjoint T3-owned work up to eight total agents including coordinator; no nested allocation. The R2 reviews have returned; current source-only work is coordinator plus W0 H2ordinal16 and W6 SAC2ordinal3. The Guidance audit is provider-failed/unaccepted. HistoricalPR2116a10f5bePortalCI failed13/2497; its2550readinesscasepassesLinux. ReviewedcurrentAppfixtureab5eea15/reportff5 andcleanCH6hookc856areadmittedlocallyforthe nextdraftCIhead. IndependentSource/TestbddPASS; authorfunctional19/19once/25contexts andexplicitcapture/CSPqualifications; Parent199/20/types/UI/main2232x15pass. Publishedsuccessor05b3270eALL3CIGREEN/Portal2509of2509/0skip; PRstaysdraft. A07R34177scopedSource/SSRPASS closesC1/C2; authorordinal14preparesactualAppbrowserharnessSource-only, noA07import. AllChromegrantsreturned; no native/Auth/DB/Storage/Source/financialauthority. Fullapprovedgoalremainopen.
 
 RootAppV3/Historysourceisunchangedbythesetestfixes; Source modeld0f/planning09cbremainunactivated, M65providerblock/no-rerouteholds. ExistingR6/R7genuineness/visual/frame/CI/releaseboundsstillgovern.
 
@@ -80,7 +88,7 @@ All five [originals](INPUT_PROVENANCE.json), [D01-D48](APPROVED_DECISIONS.md), [
 
 Next: finish source corrections and NEW independent reviews, then native replay, V3/history/guidance actual App composition and browser/genuine acceptance. Complete canonical Commerce30, raw-source upload/consent/access/deletion/templates, account/contact/coverage/renewal/cancel/export, actual delivery/webhooks/inbox/retry, finite agent enrollment and all five shared Maya/private walkthrough stages. Full26-screen/secondary/V01-V17 acceptance, human/physical/legal/business prerequisites, full suites, exact-head CI and cutover/rollback remain open.
 
-Current engineering estimate, revalidated1 November2026: **about60% of the full approved implementation and required verification work is complete**. These are estimates of work remaining, not test pass rates or release scores. The last live capacity check has coordinator plus three source reviewers (four total), within the eight-agent cap. CI at published05b is all3green; that clears the tested checkpoint, not the unfinished product scope.
+Current engineering estimate, revalidated1 November2026: **about60% of the full approved implementation and required verification work is complete**. These are estimates of work remaining, not test pass rates or release scores. The last live capacity check has coordinator plus two source correction authors (three total), within the eight-agent cap. CI at published05b is all3green; that clears the tested checkpoint, not the unfinished product scope.
 
 | Feature | Estimated complete | Remaining working time |
 | --- | --- | --- |
