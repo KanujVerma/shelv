@@ -40,6 +40,8 @@ export interface AdvisorGuidanceContextPort {
     options?: { signal?: AbortSignal },
   ): Promise<AdvisorGuidanceContext>;
   isCurrent(context: AdvisorGuidanceContext): boolean;
+  /** Pure read-consistency lineage only; not action eligibility or authority. */
+  getReadGeneration?(): number;
   invalidate(): void;
   dispose(): void;
 }
@@ -201,6 +203,7 @@ export function createAdvisorGuidanceContext(
         caps = cookieCaps();
       const check = () => {
         guard(own, caps);
+        if (runtime.cookie.status !== "ready") throw new TransportError(503);
         if (options.signal?.aborted) throw new TransportError(503);
         requireContext(request.snapshot.asOfDay === today());
       };
@@ -362,6 +365,9 @@ export function createAdvisorGuidanceContext(
         runtime.cookie.status === "ready" &&
         context.request.snapshot.asOfDay === today()
       );
+    },
+    getReadGeneration() {
+      return sequence;
     },
     invalidate() {
       sequence++;

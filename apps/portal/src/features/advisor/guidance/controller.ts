@@ -14,6 +14,7 @@ import type {
   AdvisorCareHistoryPage,
   AdvisorPublicationViewV3,
   GuidanceDraftView,
+  GuidanceReadSnapshot,
   GuidanceBody,
   GuidanceCommand,
   GuidanceWriteResult,
@@ -59,6 +60,7 @@ type Pending = {
   selection: AdvisorGuidanceSelection;
   state: "sending" | "uncertain";
   wire: string;
+  readSnapshot: GuidanceReadSnapshot | null;
 };
 type Lane =
   | "publication"
@@ -215,6 +217,7 @@ export function createAdvisorGuidanceController({
     cancel(): void;
     mayHaveDispatched: boolean;
     retry: boolean;
+    readGeneration: number | null;
   } | null = null;
   let contextStamp: {
     selection: AdvisorGuidanceSelection | null;
@@ -236,6 +239,24 @@ export function createAdvisorGuidanceController({
     adapters.isCurrent() &&
     runtime.getSnapshot().boundary === boundary;
   const caps = () => runtime.cookie._view?.capabilities;
+  function readGeneration(): number | null {
+    try {
+      const value = contextPort?.getReadGeneration?.();
+      return typeof value === "number" &&
+        Number.isSafeInteger(value) &&
+        value >= 0
+        ? value
+        : null;
+    } catch {
+      return null;
+    }
+  }
+  const dayFormatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Chicago",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
   function emit(patch: Partial<AdvisorGuidanceState> = {}) {
     const next = { ...state, ...patch };
     next.connection = next.ended ? "ended" : runtime.cookie.status;
@@ -250,7 +271,9 @@ export function createAdvisorGuidanceController({
     next.evidenceReasons = evidence.reasons;
     next.missing = [
       ...evidence.missing,
-      ...(next.authorityContext && contextPort?.isCurrent(next.authorityContext)
+      ...(next.authorityContext &&
+      contextPort?.isCurrent(next.authorityContext) &&
+      readGeneration() !== null
         ? []
         : [guidanceDependencies.find((d) => d.kind === "guidance_authority")!]),
     ];
@@ -293,6 +316,10 @@ export function createAdvisorGuidanceController({
     if (!preserveWrite) evidenceGeneration++;
     retireWrite(preserveWrite);
     contextPort?.invalidate();
+    // Capture only the operation's OWN invalidation, before abort listeners,
+    // state emissions, subscribers, or any other external callback can run.
+    if (preserveWrite && activeWrite?.intent === preserveWrite)
+      activeWrite.readGeneration = readGeneration();
     contextStamp = null;
     aborters.get("authority")?.abort();
     aborters.delete("authority");
@@ -1004,6 +1031,7 @@ export function createAdvisorGuidanceController({
       state.privateDenied
     )
       return false;
+    if (contextPort && readGeneration() === null) return false;
     if (action === "revoke") {
       const approval = state.draft.approval;
       if (!approval) return false;
@@ -1094,6 +1122,7 @@ export function createAdvisorGuidanceController({
           selection: state.selection,
           state: "sending" as const,
           wire: JSON.stringify(command),
+          readSnapshot: state.publication?.currentGuidance.snapshot ?? null,
         };
     if (!own) return;
     if (retry) {
@@ -1101,6 +1130,33 @@ export function createAdvisorGuidanceController({
         return;
       own.state = "sending";
     } else if (pending) return;
+    const bound = {
+      readGeneration: readGeneration(),
+      context,
+      manual,
+      authority,
+      evidenceGeneration,
+      selection: state.selection,
+      draft: state.draft,
+      body: state.body,
+      publication: state.publication,
+      history: state.history,
+      reported: state.reported,
+      instructions: state.instructions,
+      capabilities: capabilityWire(),
+      command: own.command,
+      wire: own.wire,
+      boundary: runtime.getSnapshot().boundary,
+      owner: runtime.cookie.identity?.ownerId,
+      audience: runtime.cookie.audience,
+      generation: runtime.cookie.generation,
+      epoch: runtime.cookie._epoch,
+      csrf: runtime.cookie._view?.csrf,
+      deadline: Math.min(
+        Date.parse(runtime.cookie._view?.idleExpiresAt ?? ""),
+        Date.parse(runtime.cookie._view?.absoluteExpiresAt ?? ""),
+      ),
+    };
     if (!retry && needsCurrentAuthority(command)) dispatchOwner = own;
     pending = own;
     const lease = capture("write");
@@ -1109,8 +1165,60 @@ export function createAdvisorGuidanceController({
       cancel: () => lease.cancel(),
       mayHaveDispatched: false,
       retry,
+      readGeneration: bound.readGeneration,
     };
     activeWrite = operation;
+    // Pure deny-only relevance. Mandatory live lease/current/CSRF checks stay
+    // in the real shared transport before and after this callback.
+    const isApplicable = () => {
+      try {
+        const cookie = runtime.cookie,
+          now = cookie.now?.() ?? Date.now();
+        return (
+          !disposed &&
+          activeWrite === operation &&
+          pending === own &&
+          own.state === "sending" &&
+          !lease.signal.aborted &&
+          context === bound.context &&
+          manual === bound.manual &&
+          authority === bound.authority &&
+          evidenceGeneration === bound.evidenceGeneration &&
+          state.selection === bound.selection &&
+          state.draft === bound.draft &&
+          state.body === bound.body &&
+          state.publication === bound.publication &&
+          state.history === bound.history &&
+          state.reported === bound.reported &&
+          state.instructions === bound.instructions &&
+          own.command === bound.command &&
+          own.wire === bound.wire &&
+          runtime.getSnapshot().boundary === bound.boundary &&
+          bound.boundary === boundary &&
+          cookie.audience === bound.audience &&
+          cookie.audience === "advisor" &&
+          cookie.identity?.role === "advisor" &&
+          cookie.identity.ownerId === bound.owner &&
+          cookie.generation === bound.generation &&
+          cookie._epoch === bound.epoch &&
+          cookie._view?.csrf === bound.csrf &&
+          cookie.status === "ready" &&
+          capabilityWire() === bound.capabilities &&
+          now < bound.deadline &&
+          own.readSnapshot !== null &&
+          sameCareValue(
+            state.publication?.currentGuidance.snapshot,
+            own.readSnapshot,
+          ) &&
+          dayFormatter.format(new Date(now)) === own.readSnapshot.asOfDay &&
+          (!contextPort ||
+            (operation.readGeneration !== null &&
+              readGeneration() === operation.readGeneration))
+        );
+      } catch {
+        return false;
+      }
+    };
     emit({
       saveState: command.action.includes("draft") ? "saving" : state.saveState,
       acknowledged: false,
@@ -1132,9 +1240,11 @@ export function createAdvisorGuidanceController({
         family === "guidance"
           ? adapters.guidance.execute(own.command as GuidanceCommand, {
               signal: lease.signal,
+              isApplicable,
             })
           : adapters.review.execute(own.command as AdvisorReviewCommand, {
               signal: lease.signal,
+              isApplicable,
             });
       retireAuthority(own);
       dispatchOwner = null;
