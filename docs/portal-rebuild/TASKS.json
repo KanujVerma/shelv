@@ -5448,7 +5448,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-9cfe1ac9",
       "branch": "t3/review-history-composition-r6",
       "role": "W7 independent composed History R6",
@@ -5460,7 +5460,9 @@
       "allocatedAt": "2026-11-01 04:40:46 UTC",
       "sourceReady": "Source scopedPASS at4763bc56/b752; original228/198/256/25 and own9/9; actualmain2232/15 preservescurrent37f",
       "chromeGrant": "coordinator-w7-app-history-r6-synthetic-chrome-b752b960-20261101",
-      "browserPhase": "runnerexit0/currentcore3 and exercisedcases pass as reported; final independent report/count/qualifications pending"
+      "browserPhase": "runnerexit0/currentcore3 and exercisedcases pass as reported; final independent report/count/qualifications pending",
+      "terminalCommit": "e4a2fa7477c46e1bf1f3b0bb300f49b677444e3c",
+      "result": "Source and42current syntheticbrowsergroups scopedPASS; fullAppincomplete, gapsrecorded; ChromeRETURN05:07:18Z"
     },
     {
       "role": "W1 Source implementation readiness plan only",
@@ -5479,10 +5481,87 @@
           "value": "default"
         }
       ],
-      "status": "starting",
+      "status": "completed",
       "frozenTarget": "d0f3a31c778d8d08ee752dc1d4b49c4eec26874a",
       "resourceBoundary": "ONE NEW readiness-plan report; no Phase2/code/SQL/CLI/resources/rights/profile/API implementation or admission",
-      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/source-readiness-plan-brief.txt"
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/source-readiness-plan-brief.txt",
+      "terminalCommit": "09cb78d33128d6cd02258c5ad66d79e6c5a403a3",
+      "result": "Readinessplanreportonly; noimplementation/rights/profile/SQL/resources grant; Parentpinassessmentpending"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-gaps-review-20261101-r7",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-gaps-review-20261101-r7",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-v3-history-composition-gaps-review-20261101-r7:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "role": "W7 R7 targeted composed DOM scheduling verification",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-63acb6f6",
+      "branch": "t3/history-r7-targeted-verification",
+      "frozenTarget": "b752b96051f28d1d35f50e391dc81034630b706c",
+      "allocationBase": "e6b0bd7e8e398493db6f1a6766b5a3be93437794",
+      "sourceReady": "App228/transport256/packaging5/strong/types/UI; coherentfinite6; build2232x15; exacttargets",
+      "resourceBoundary": "RETURNED05:46:10Z; reportonlyterminal; no resourceauthority",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/app-history-r7-gaps-brief.txt",
+      "chromeGrant": "coordinator-w7-app-history-r7-targeted-chrome-e6b0bd7e-20261101",
+      "reportOnly": true,
+      "nested": false,
+      "terminalCommit": "2c06c0ac8c7fd1774377086b181097ed7d6947f0",
+      "result": "SPEC INCOMPLETE B3/B4/frame-C; quality scopedPASS, no newmaterialproductionfault; nativeB2positive andmatchedlate/11DOMgroups observed; nofullAppPASS"
+    },
+    {
+      "role": "W3 CI19c budget2550 source-first test readiness diagnosis",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci19c-budget-manifest-precondition-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:11",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "starting",
+      "frozenTarget": "19c3ea1f106f0e123982d29fe2137f137312fdef",
+      "resourceBoundary": "TEST-ONLY/sourcefirst, no browser/native/resource grant; unchanged5sec/assertions/fixtures/production",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-budget-brief.txt"
+    },
+    {
+      "role": "W0 A07 advisor Guidance App composition source only",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-advisor-guidance-a07-app-composition-source-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:11",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "starting",
+      "frozenTarget": "b752b96051f28d1d35f50e391dc81034630b706c",
+      "resourceBoundary": "OwnedApp/navigation/newtests/report only; W2/37f exactdeps separate; no resources/newrights/SourceAPI",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/advisor-guidance-app-composition-brief.txt"
     }
   ],
   "parentVerification": {
@@ -5612,20 +5691,23 @@
       "g6AuthorFix": "68d3f6ae8fe59401be7fbc138597c06d876ddf08",
       "g6Checks": "172/32/83/R3independent32/45/80/G4six, originalG6fourGREEN; G5original4/5 remainsqualified; servergenerationdependency remains",
       "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261101-r6",
-      "integrationBoundary": "Unmounted; App/generation/rawSource/genuine/CI/release gates remain"
+      "integrationBoundary": "Unmounted; App/generation/rawSource/genuine/CI/release gates remain",
+      "currentGenerationDependency": "Historical0/1 on d7375 is now1/1 with actualParentf163/e4cb Appsession; privatecontextretired/approvalfalse; guidanceworkspaceunmounted"
     },
     "app": {
       "source": "7a19b7e28aaff7c28916d35208ec6aec6c2400bc",
       "delivery": "b752b96051f28d1d35f50e391dc81034630b706c",
       "checks": "Fresh228/198/256/25/packaging5/own9/9/strict/build2232x15 SourceReady; DOMpending",
-      "review": "R6 source scopedPASS/SourceReady; separately granted finite syntheticChrome ACTIVE",
+      "review": "R6 e4a2fa74 source+42current syntheticgroups scopedPASS; fullAppincomplete; Parentcandidateintegratede6b; targetedR7active",
       "targetExceptions": "New R5 preserves current Parent875/fed90/hermetic/telemetry test postimages; App-owned client-state remains e4cb",
-      "chrome": "RETURNED2026-11-01T05:07:18Z; scoped193identitiesabsent/previewnoTab; finalreportpending",
+      "chrome": "R6RETURN05:07:18Z; R7RETURN05:46:10Z,79exactownidentitiesabsent/previewnoTab; noleaseactive",
       "production": "7a19b7e28aaff7c28916d35208ec6aec6c2400bc",
-      "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-review-20261101-r6",
+      "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-gaps-review-20261101-r7",
       "productionBoundary": "CH5 private successful-data admission; CH4 intent lifetime preserved; no Parent integration",
       "reviewImportedAs": "8ad131c15c3cc399d7e423f80b4c79a2354c255e",
-      "correctionTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-history-update-replacement-reader-ch6-source-20261101"
+      "correctionTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-history-update-replacement-reader-ch6-source-20261101",
+      "integration": "e6b0bd7e8e398493db6f1a6766b5a3be93437794",
+      "default": "V3 localcandidate; no deployedactivation"
     },
     "m64": {
       "source": "d6e3c136523ea21d4cf32059df2a92addb2275e0",
@@ -5693,8 +5775,8 @@
     }
   },
   "currentRemoteCheckpoint": {
-    "head": "72326431d5a1b5bf290a68cf82d28797a28336c1",
-    "status": "Last confirmed green723; subsequent guidance source integration awaits new exact-head CI after publication",
+    "head": "19c3ea1f106f0e123982d29fe2137f137312fdef",
+    "status": "FAIL Portal2284/2285; sole2550scope notice timeout; source-first correction active",
     "scope": "Hermeticbaselinefixtures+syntheticdiagnosticproducer/upload; production/Auth/SQL unchanged from125222",
     "limits": "budgettimeoutcauseunproved/notclaimedfixed; financialR3providerblocked/M65unadmitted",
     "ci": {
@@ -5717,7 +5799,7 @@
       "served": 6,
       "evidence": ".local-artifacts/portal-rebuild/ci-723264-pass/"
     },
-    "qualification": "The723 all3PASS/1785 package result does not certify later guidance imports or full goal; older budget timeout cause remains unproved."
+    "qualification": "Prior723green remains historical; localAppe6b notpublished orCIaccepted; rootcausehypothesisundercontrolledverification"
   },
   "ciRecovery125222": {
     "head": "1252227491a547f194ff7a14fe30879ab2355a95",
@@ -6107,7 +6189,7 @@
     "migrationsUnchanged": 62,
     "defaultApp": "Care2; no guidance mount or f163 adoption",
     "g5": "Original4/5 qualified; original failure preserved",
-    "generation": "Separate0/1 on d7375; App candidate f163 unintegrated",
+    "generation": "Historical0/1 nowcloses1/1 afterAppf163 integration; rawoldresultpreserved",
     "resourceBoundary": "No local browser/Auth/DB/native fixture/R9 calls; model/compiler/build only",
     "evidence": ".local-artifacts/portal-rebuild/w2-source-parent-integration",
     "ci": "Successor exact-head CI pending publication; previous723 all3PASS is separate",
@@ -6145,5 +6227,618 @@
       }
     },
     "claimBoundary": "Saved in-custody own identities only; no globalempty claim or post-return resource calls; final report/counts still pending"
+  },
+  "appR7ChromeGrant": {
+    "id": "coordinator-w7-app-history-r7-targeted-chrome-e6b0bd7e-20261101",
+    "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-gaps-review-20261101-r7",
+    "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-63acb6f6",
+    "sourceHead": "e6b0bd7e8e398493db6f1a6766b5a3be93437794",
+    "authorTarget": "b752b96051f28d1d35f50e391dc81034630b706c",
+    "status": "RETURNED",
+    "casePlanSha256": "dd9be1929e8fe4861c8162615a4ca1ab797265a0dba4f91452b0fa746aab945e",
+    "casePlanBytes": 10418,
+    "groups": 11,
+    "passiveObservation": "nativeCDP request/cancel/fire+callsite/commit userTiming",
+    "approvedStimulus": "one-shot MutationObserver actualvisibleDOM.click forB3/B4 only; artificial notordinaryreachability; no nativescheduler change",
+    "observationGate": "actualrequest<loss<fire correlation orOPEN; atmosttwofixedattemptsB3/B4/C2",
+    "return": "PromptUTCexplicit beforehash/report/Git; no postreturnbrowser/process/resource calls",
+    "grantFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/app-r7-targeted-chrome-grant.txt",
+    "excluded": "R9/native/Auth/DB/Storage/finance/genuine/liveactions",
+    "returnAt": "2026-11-01T05:46:10Z",
+    "inventoryAt": "2026-11-01T05:46:10.343349+00:00",
+    "runnerClosedAt": "2026-11-01T05:45:56.522Z",
+    "exactOwnObserved": 79,
+    "scopedEmptyRecorded": true,
+    "savedReceiptHashes": {
+      "RETURN.json": {
+        "bytes": 907,
+        "sha256": "e7c4ca8485a03c53c53815e3d687eecf5726404359077c844bdd58285410a535",
+        "copy": ".local-artifacts/portal-rebuild/app-r7-return/RETURN.json"
+      },
+      "FINAL-EXACT-OWN-INVENTORY.json": {
+        "bytes": 352,
+        "sha256": "371d3b6f565bddb0dfaf120f06825a79c91c5638c29afcd9b0f9e06997310e65",
+        "copy": ".local-artifacts/portal-rebuild/app-r7-return/FINAL-EXACT-OWN-INVENTORY.json"
+      },
+      "PREVIEW-final-held.json": {
+        "bytes": 727,
+        "sha256": "96169fe1dee6181ff52be69946238f45f0a1fe50de2cb43fb7db77a9c70979f0",
+        "copy": ".local-artifacts/portal-rebuild/app-r7-return/PREVIEW-final-held.json"
+      },
+      "OBSERVED-OWN-PIDS.json": {
+        "bytes": 17416,
+        "sha256": "baefd07be61ed6313ddf34777201c243f16408bbc2046e47df5742d34321b510",
+        "copy": ".local-artifacts/portal-rebuild/app-r7-return/OBSERVED-OWN-PIDS.json"
+      }
+    },
+    "claimBoundary": "Parent read savedJSONonly; no postreturn resourcecalls/globalemptyclaim"
+  },
+  "appImports": [
+    {
+      "original": "c91cb71ea2611b908ff9e1ec763008f22950b742",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 1ae5272d] feat(portal): expose optional history restoration contract\n Date: Sat Oct 31 16:42:21 2026 -0500\n 5 files changed, 121 insertions(+)\n create mode 100644 apps/portal/src/features/history/restoration.ts\n create mode 100644 apps/portal/tests/rebuild-history-restoration-ids.test.mjs\n",
+      "stderr": "",
+      "imported": "1ae5272d504de2310415f5cf6d12358b7139145c"
+    },
+    {
+      "original": "05442a41b510e08acf7c59a6183973c9615a6b57",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 d559c68b] feat(portal): restore history from fresh session-bound reads\n Date: Sat Oct 31 17:25:11 2026 -0500\n 10 files changed, 316 insertions(+), 48 deletions(-)\n create mode 100644 apps/portal/tests/rebuild-history-restoration-helper.mjs\n create mode 100644 apps/portal/tests/rebuild-history-restoration-types.ts\n create mode 100644 apps/portal/tests/rebuild-history-restoration.test.mjs\n",
+      "stderr": "",
+      "imported": "d559c68b34034f625b6171cc957885c02a751962"
+    },
+    {
+      "original": "2262f97185818f76965ca14c18bf867e30cfd57d",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 6701688c] fix(portal): keep published restoration witnesses immutable\n Date: Sat Oct 31 17:31:26 2026 -0500\n 3 files changed, 8 insertions(+)\n",
+      "stderr": "",
+      "imported": "6701688cb32505c8e136ff26e68ce12ac03cfa9e"
+    },
+    {
+      "original": "57f8b6391dbdc5fca8914c4269ef506c2e51a5f5",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 dd0817d5] fix(portal): scope history retries to their mounted effect\n Date: Sat Oct 31 17:36:25 2026 -0500\n 2 files changed, 12 insertions(+), 9 deletions(-)\n",
+      "stderr": "",
+      "imported": "dd0817d5b50bd4c09a4ef0d1c06c8f131cad1557"
+    },
+    {
+      "original": "83af53f8c4ae7e75ce4527becbfe8678281a1bac",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 a1b1dd8b] docs(portal): freeze history restoration source handoff\n Date: Sat Oct 31 17:39:36 2026 -0500\n 1 file changed, 26 insertions(+)\n",
+      "stderr": "",
+      "imported": "a1b1dd8b6e001b153c4838c1dd315e57d4113dc2"
+    },
+    {
+      "original": "c6add5e5174dcab796ba4e66be68ee89b67fe488",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 7d098732] feat(portal): expose actual V3 and history App activation seam\n Date: Sat Oct 31 16:08:35 2026 -0500\n 6 files changed, 165 insertions(+), 18 deletions(-)\n create mode 100644 apps/portal/src/app/client-composition.ts\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-helper.mjs\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-source.test.mjs\n create mode 100644 docs/portal-rebuild/research/W0_V3_HISTORY_COMPOSITION.md\n",
+      "stderr": "",
+      "imported": "7d098732fd994dc5438e963dab83efefb894dc88"
+    },
+    {
+      "original": "57bff83485d6a566931003b631a25634710f8db8",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 d0fd21d3] feat(portal): compose V3 client guidance and accepted history source\n Date: Sat Oct 31 16:23:12 2026 -0500\n 15 files changed, 445 insertions(+), 33 deletions(-)\n create mode 100644 apps/portal/src/app/ClientHistory.tsx\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-boundaries.test.mjs\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-build.test.mjs\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-navigation.test.mjs\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-rpc.test.mjs\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-types.test.mjs\n",
+      "stderr": "",
+      "imported": "d0fd21d3dec1f102f1cb0fb1426fb50d4091a237"
+    },
+    {
+      "original": "f16363bea245d5986a1a20b67f5f2e6beb1e792b",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 e7f30422] fix(portal): retire historical entry callbacks on route replacement\n Date: Sat Oct 31 16:26:11 2026 -0500\n 2 files changed, 32 insertions(+), 2 deletions(-)\n",
+      "stderr": "",
+      "imported": "e7f304229131006dfa90da3996c4de98ae6a88f9"
+    },
+    {
+      "original": "56ffbdfd3bff9f6f4243a9c65ac851d7afe5038d",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 c98eea9f] feat(portal): expose scoped History restoration App callback seam\n Date: Sat Oct 31 17:51:33 2026 -0500\n 3 files changed, 134 insertions(+)\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-restoration.test.mjs\n",
+      "stderr": "",
+      "imported": "c98eea9f095d6e0aafd1c4166ec3f704fe58d1ef"
+    },
+    {
+      "original": "4bdbb55d520af71374d045856f19e1ef6c13b6ee",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 de291388] feat(portal): wire committed History restoration with scoped App ownership\n Date: Sat Oct 31 18:05:20 2026 -0500\n 5 files changed, 190 insertions(+), 48 deletions(-)\n",
+      "stderr": "",
+      "imported": "de291388ceb176f1195b59b2e8571e1259c6abe2"
+    },
+    {
+      "original": "fdd9030e193296e5b1303b3c7571a59e91810fba",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 1a718d65] feat(portal): add entry-owned deferred canonical restoration tickets\n Date: Sat Oct 31 18:20:38 2026 -0500\n 3 files changed, 154 insertions(+), 11 deletions(-)\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-canonical.test.mjs\n",
+      "stderr": "",
+      "imported": "1a718d65e9eae0611ed9aac56808e534110c83f4"
+    },
+    {
+      "original": "b827779781ef564da483dd4f91b6ad24a16cb2b0",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 b8a6afbb] feat(portal): gate canonical History restoration on committed source readiness\n Date: Sat Oct 31 18:46:48 2026 -0500\n 9 files changed, 198 insertions(+), 45 deletions(-)\n",
+      "stderr": "",
+      "imported": "b8a6afbb5e230653ba12a93008dd9cd892a4bd5f"
+    },
+    {
+      "original": "51dda75178390eee79e0a996b2fe3885a9de7b46",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 69d6b9fb] fix(portal): bind cached cursor exits and preserve core navigation consumers\n Date: Sat Oct 31 19:33:07 2026 -0500\n 4 files changed, 72 insertions(+), 35 deletions(-)\n",
+      "stderr": "",
+      "imported": "69d6b9fbeabfe7e38bfb63f04d88136845c7d147"
+    },
+    {
+      "original": "9a4f99c32f6fb549a4423889efede4e3af2e884b",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 2386bab5] test(portal): freeze CH1 CH2 source regression handoff\n Date: Sat Oct 31 19:46:50 2026 -0500\n 3 files changed, 95 insertions(+)\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-ch-fixes.test.mjs\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-ch-helper.mjs\n",
+      "stderr": "",
+      "imported": "2386bab5b057a72ed2341641e24ef956551822a8"
+    },
+    {
+      "original": "458405c8226fb865659e7dc683c67022ee5d8adc",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 c3c49acd] fix(portal): import the self-compiling RPC test as ESM\n Date: Sat Oct 31 20:26:25 2026 -0500\n 2 files changed, 51 insertions(+), 5 deletions(-)\n",
+      "stderr": "",
+      "imported": "c3c49acd28c2d3fa4c7fc560ca719e80ed84538b"
+    },
+    {
+      "original": "6cde9904d53d1d2c9f082dc16f10848d3790e94f",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 da10a6cb] docs(portal): bind the authoritative CH3 task receipt\n Date: Sat Oct 31 20:30:23 2026 -0500\n 1 file changed, 1 insertion(+), 1 deletion(-)\n",
+      "stderr": "",
+      "imported": "da10a6cb34d920ce44c2eca94a91728ade8b33fa"
+    },
+    {
+      "original": "a23d6db5fce945b919bc3f5de8ae0e97c3023e75",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 4e8dfa17] fix(portal): retain admitted History update through mutation lifecycle\n Date: Sat Oct 31 21:33:53 2026 -0500\n 5 files changed, 129 insertions(+), 11 deletions(-)\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-ch4-types.ts\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-ch4.test.mjs\n",
+      "stderr": "",
+      "imported": "4e8dfa173af8db4810b1f3deab3ffa19675eaba1"
+    },
+    {
+      "original": "573cdb7fdaf7dd48825c21429fb19e7e18547348",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 3c340231] test(portal): preserve CH4 browser probe and source gate\n Date: Sat Oct 31 21:39:22 2026 -0500\n 4 files changed, 96 insertions(+)\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-ch4-browser-entry.tsx\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-ch4-browser-source.test.mjs\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-ch4-browser.mjs\n",
+      "stderr": "",
+      "imported": "3c3402319ae3941e9ccf3a43b9c3433b9bf37309"
+    },
+    {
+      "original": "4f2a9c01bef299c8edef7ac40fd1282339e65718",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 ffc47e06] docs(portal): record CH4 bounded source and Chrome handoff\n Date: Sat Oct 31 21:50:10 2026 -0500\n 1 file changed, 42 insertions(+)\n",
+      "stderr": "",
+      "imported": "ffc47e06eacc5be4f613aa8324006b71a7c7ce46"
+    },
+    {
+      "original": "9a40769b98adaa5dd677f406ce66dfad7eeb7311",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 29a74ca3] fix(portal): require successful initial History data admission\n Date: Sat Oct 31 22:21:39 2026 -0500\n 3 files changed, 77 insertions(+), 2 deletions(-)\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-ch5.test.mjs\n",
+      "stderr": "",
+      "imported": "29a74ca3b22a89cd6688929e67ab98756ea1f90e"
+    },
+    {
+      "original": "d4c216d0b419a9d0ced365867c1ca4edcd424088",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 1ebe8f34] test(portal): freeze CH5 initial admission source controls\n Date: Sat Oct 31 22:27:52 2026 -0500\n 3 files changed, 56 insertions(+)\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-ch5-types.ts\n",
+      "stderr": "",
+      "imported": "1ebe8f34580402512624e2a4bf51d7939e2e778c"
+    },
+    {
+      "original": "7a19b7e28aaff7c28916d35208ec6aec6c2400bc",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 0e0f2d0e] fix(portal): preserve replacement History reader ownership\n Date: Sat Oct 31 23:14:18 2026 -0500\n 3 files changed, 118 insertions(+), 11 deletions(-)\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-ch6.test.mjs\n",
+      "stderr": "",
+      "imported": "0e0f2d0e3ce649c5270628ab260c967aee103ae9"
+    },
+    {
+      "original": "b752b96051f28d1d35f50e391dc81034630b706c",
+      "exit": 0,
+      "stdout": "[kanuj/portal-rebuild-integration-20261030 e6b0bd7e] test(portal): freeze CH6 replacement ownership source handoff\n Date: Sat Oct 31 23:24:57 2026 -0500\n 3 files changed, 57 insertions(+)\n create mode 100644 apps/portal/tests/rebuild-app-v3-history-ch6-types.ts\n",
+      "stderr": "",
+      "imported": "e6b0bd7e8e398493db6f1a6766b5a3be93437794"
+    }
+  ],
+  "appParentVerification": {
+    "sourceTarget": "b752b96051f28d1d35f50e391dc81034630b706c",
+    "sourceImport": "e6b0bd7e8e398493db6f1a6766b5a3be93437794",
+    "reportOriginal": "e4a2fa7477c46e1bf1f3b0bb300f49b677444e3c",
+    "reportImport": "81278de6",
+    "scope": "Local reviewedintegrationcandidate/defaultV3; fullAppacceptanceINCOMPLETE",
+    "pathsExact": 42,
+    "guidance41Preserved": true,
+    "native87Unchanged": true,
+    "migrations62Unchanged": true,
+    "checks": [
+      {
+        "name": "app228",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "--experimental-strip-types",
+          "--import",
+          "./tests/portal-review-no-network.mjs",
+          "--test",
+          "--test-concurrency=1",
+          "apps/portal/tests/rebuild-app-v3-history-boundaries.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-build.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-canonical.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-ch-fixes.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-navigation.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-restoration.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-rpc.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-source.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-types.test.mjs",
+          "apps/portal/tests/rebuild-app-state.test.mjs",
+          "apps/portal/tests/rebuild-app-session.test.mjs",
+          "apps/portal/tests/rebuild-app-callback.test.mjs",
+          "apps/portal/tests/rebuild-app-continuation.test.mjs",
+          "apps/portal/tests/rebuild-app-preview-context.test.mjs",
+          "apps/portal/tests/rebuild-app-ports.test.mjs",
+          "apps/portal/tests/rebuild-app-render.test.mjs",
+          "apps/portal/tests/rebuild-app-start.test.mjs",
+          "apps/portal/tests/rebuild-app-care-composition.test.mjs",
+          "apps/portal/tests/rebuild-app-care-render.test.mjs",
+          "apps/portal/tests/rebuild-care-ports.test.mjs",
+          "apps/portal/tests/rebuild-foundation-navigation.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-ch4.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-ch4-browser-source.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-ch5.test.mjs",
+          "apps/portal/tests/rebuild-app-v3-history-ch6.test.mjs"
+        ],
+        "env": {
+          "W4_RESTORATION_RUN": "w7r6-app"
+        },
+        "exit": 0,
+        "elapsedSeconds": 11.98753124999348,
+        "counts": {
+          "tests": 228,
+          "pass": 228,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/app228.log"
+      },
+      {
+        "name": "feature198",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "--experimental-strip-types",
+          "--import",
+          "./tests/portal-review-no-network.mjs",
+          "--test",
+          "--test-concurrency=1",
+          "apps/portal/tests/rebuild-plan-guidance-controller.test.mjs",
+          "apps/portal/tests/rebuild-plan-guidance-port.test.mjs",
+          "apps/portal/tests/rebuild-plan-guidance-hydration.test.mjs",
+          "apps/portal/tests/rebuild-plan-guidance-decision.test.mjs",
+          "apps/portal/tests/rebuild-plan-guidance-presentation.test.mjs",
+          "apps/portal/tests/rebuild-plan-guidance-observation.test.mjs",
+          "apps/portal/tests/rebuild-plan-guidance-ssr.test.mjs",
+          "apps/portal/tests/rebuild-plan-guidance-context-source.test.mjs",
+          "apps/portal/tests/rebuild-history-port.test.mjs",
+          "apps/portal/tests/rebuild-history-factory.test.mjs",
+          "apps/portal/tests/rebuild-history-ssr.test.mjs",
+          "apps/portal/tests/rebuild-history-denial.test.mjs",
+          "apps/portal/tests/rebuild-history-review-authority.test.mjs",
+          "apps/portal/tests/rebuild-history-restoration.test.mjs",
+          "apps/portal/tests/rebuild-history-restoration-ids.test.mjs",
+          "apps/portal/tests/rebuild-reports-controller.test.mjs",
+          "apps/portal/tests/rebuild-reports-model.test.mjs"
+        ],
+        "env": {
+          "W4_RESTORATION_RUN": "w7r6-features",
+          "W4_RH1_SOURCE_RUN": "w7r6-features",
+          "W4_RH2_SOURCE_RUN": "w7r6-features"
+        },
+        "exit": 0,
+        "elapsedSeconds": 6.084675999998581,
+        "counts": {
+          "tests": 198,
+          "pass": 198,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/feature198.log"
+      },
+      {
+        "name": "transport256",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "--experimental-strip-types",
+          "--import",
+          "./tests/portal-review-no-network.mjs",
+          "--test",
+          "--test-concurrency=1",
+          "apps/portal/tests/rebuild-cookie-cancellation.test.mjs",
+          "apps/portal/tests/rebuild-cookie-cancellation-deadline.test.mjs",
+          "apps/portal/tests/rebuild-review-request.test.mjs",
+          "apps/portal/tests/rebuild-review-guidance-request.test.mjs"
+        ],
+        "env": {},
+        "exit": 0,
+        "elapsedSeconds": 3.235624333989108,
+        "counts": {
+          "tests": 256,
+          "pass": 256,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/transport256.log"
+      },
+      {
+        "name": "guidance500-after-f163",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "--experimental-strip-types",
+          "--import",
+          "./tests/portal-review-no-network.mjs",
+          "--test",
+          "--test-concurrency=1",
+          "--test-timeout=15000",
+          "apps/portal/tests/rebuild-advisor-guidance-authority.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-context-ssr.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-context.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-controller.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g123-ssr.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g123.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g45.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g6-ssr.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g6.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g7-ssr.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g7.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g8-boundaries.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g8-retirement.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g8-ssr.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-g8.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-instructions.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-ports.test.mjs",
+          "apps/portal/tests/rebuild-advisor-guidance-ssr.test.mjs"
+        ],
+        "env": {},
+        "exit": 0,
+        "elapsedSeconds": 5.8048304579861,
+        "counts": {
+          "tests": 500,
+          "pass": 500,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/guidance500-after-f163.log"
+      },
+      {
+        "name": "w3-packaging-source",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "--experimental-strip-types",
+          "--import",
+          "./tests/portal-review-no-network.mjs",
+          "--test",
+          "--test-concurrency=1",
+          "apps/portal/tests/rebuild-plan-guidance-packaging.test.mjs"
+        ],
+        "env": {},
+        "exit": 0,
+        "elapsedSeconds": 3.9359252089925576,
+        "counts": {
+          "tests": 5,
+          "pass": 5,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/w3-packaging-source.log"
+      },
+      {
+        "name": "strict-helper",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "apps/portal/node_modules/typescript/bin/tsc",
+          "--ignoreConfig",
+          "--noEmit",
+          "--strict",
+          "--noUncheckedIndexedAccess",
+          "--verbatimModuleSyntax",
+          "--skipLibCheck",
+          "false",
+          "--allowImportingTsExtensions",
+          "--target",
+          "ES2022",
+          "--module",
+          "ESNext",
+          "--moduleResolution",
+          "Bundler",
+          "--lib",
+          "ES2022,DOM,DOM.Iterable",
+          "--jsx",
+          "react-jsx",
+          "--types",
+          "react,react-dom",
+          "--typeRoots",
+          "apps/portal/node_modules/@types",
+          "apps/portal/src/ui/assets.d.ts",
+          "apps/portal/tests/rebuild-plan-guidance-types.ts",
+          "apps/portal/tests/rebuild-plan-guidance-context-source.tsx",
+          "apps/portal/tests/rebuild-plan-guidance-residual-source.tsx",
+          "apps/portal/tests/rebuild-history-types.ts",
+          "apps/portal/tests/rebuild-history-restoration-types.ts",
+          "apps/portal/tests/rebuild-app-v3-history-ch4-types.ts",
+          "apps/portal/tests/rebuild-app-v3-history-ch5-types.ts",
+          "apps/portal/tests/rebuild-app-v3-history-ch6-types.ts"
+        ],
+        "env": {},
+        "exit": 0,
+        "elapsedSeconds": 2.6226755419920664,
+        "counts": {},
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/strict-helper.log"
+      },
+      {
+        "name": "strict-frontend",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "apps/portal/node_modules/typescript/bin/tsc",
+          "-p",
+          "apps/portal/tsconfig.frontend.json"
+        ],
+        "env": {},
+        "exit": 0,
+        "elapsedSeconds": 3.1854450830142014,
+        "counts": {},
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/strict-frontend.log"
+      },
+      {
+        "name": "strict-session",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "apps/portal/node_modules/typescript/bin/tsc",
+          "-p",
+          "apps/portal/session-integration/runtime/tsconfig.json"
+        ],
+        "env": {},
+        "exit": 0,
+        "elapsedSeconds": 0.7652162080048583,
+        "counts": {},
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/strict-session.log"
+      },
+      {
+        "name": "ui",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "apps/portal/scripts/check-ui-system.mjs"
+        ],
+        "env": {},
+        "exit": 0,
+        "elapsedSeconds": 0.04136279100202955,
+        "counts": {},
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/ui.log"
+      }
+    ],
+    "rootChecks": [
+      {
+        "name": "root-npm-test",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/npm",
+          "test"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 37.45080683301785,
+        "counts": {
+          "tests": 1274,
+          "pass": 1256,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 18
+        },
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/root-npm-test.log"
+      },
+      {
+        "name": "root-types",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "node_modules/typescript/bin/tsc",
+          "--noEmit"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 5.41516762500396,
+        "counts": {
+          "tests": 0,
+          "pass": 0,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/root-types.log"
+      },
+      {
+        "name": "root-test-types",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/npm",
+          "run",
+          "typecheck:tests"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 3.467399375018431,
+        "counts": {
+          "tests": 0,
+          "pass": 0,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/root-test-types.log"
+      },
+      {
+        "name": "expo-web",
+        "args": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "node_modules/expo/bin/cli",
+          "export",
+          "-p",
+          "web",
+          "--output-dir",
+          "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/app-r6-parent-integration/expo-web"
+        ],
+        "exit": 0,
+        "elapsedSeconds": 1.8803018750040792,
+        "counts": {
+          "tests": 0,
+          "pass": 0,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "log": ".local-artifacts/portal-rebuild/app-r6-parent-integration/expo-web.log"
+      }
+    ],
+    "cleanMainBuild": {
+      "receipt": ".local-artifacts/portal-rebuild/app-r6-parent-integration/in-memory-app-runs/build-e6b0bd7e8e398493db6f1a6766b5a3be93437794-601c857d-0956-45ae-b5ef-3f9369d5200d.json",
+      "sha256": "1a4ef8796f070190c9b17ba5fec854d5c840f2c9b082bc2b219bff9c738f5848",
+      "head": "e6b0bd7e8e398493db6f1a6766b5a3be93437794",
+      "sourceDirty": false
+    },
+    "reviewerBuildCorrespondence": {
+      "ownReceipt": {
+        "receipt": ".local-artifacts/portal-rebuild/app-r6-parent-integration/in-memory-app-runs/build-e6b0bd7e8e398493db6f1a6766b5a3be93437794-601c857d-0956-45ae-b5ef-3f9369d5200d.json",
+        "sha256": "1a4ef8796f070190c9b17ba5fec854d5c840f2c9b082bc2b219bff9c738f5848",
+        "head": "e6b0bd7e8e398493db6f1a6766b5a3be93437794",
+        "sourceDirty": false
+      },
+      "reviewerHead": "4763bc56acd906e592133883d5d5b98a262c8823",
+      "allInputsExact": 2232,
+      "allOutputsExact": 15,
+      "pathNormalization": "Repo-relative input paths and unique output basenames; output bytes/length/SHA compare exactly"
+    },
+    "generationProbe": {
+      "exit": 0,
+      "pass": 1,
+      "sameBoundary": false,
+      "contextCurrent": false,
+      "privateEntries": 0,
+      "canApprove": false,
+      "adaptation": "Two absoluteworkspaceimportbindingsonly; originalnegativepredicateunchanged"
+    },
+    "evidence": ".local-artifacts/portal-rebuild/app-r6-parent-integration",
+    "remaining": "PendingcanonicalRAF/dataDOM/owner403frame/validmatchedlatebasis andfullAppgenuine/visual/CI/release; targetedR7active"
+  },
+  "ci19cBudgetFailure": {
+    "head": "19c3ea1f106f0e123982d29fe2137f137312fdef",
+    "run": 41275595455,
+    "job": 124757021089,
+    "packagePass": 2284,
+    "packageFail": 1,
+    "skip": 0,
+    "failure": "first2550scope notice5000ms wait timeout",
+    "executedMerge": "58aae097fd1da905bc1f29ed92aee34153fa2b43",
+    "tree": {
+      "merge": "3b3ad3ea3f64e260c2254000b385c24b57f1b2ba",
+      "head": "3b3ad3ea3f64e260c2254000b385c24b57f1b2ba",
+      "equal": true
+    },
+    "artifact": 13071815235,
+    "rawEvidence": ".local-artifacts/portal-rebuild/ci-19c3ea1f/",
+    "observed": "26manifestfinished4140ms; timeout8045ms with43of51detailfinished; last51finished8522ms; terminalnotice0/loading1",
+    "hypothesis": "zeroDOMloading proxy may pass before actual acceptedterminalmanifest, spending partof5secnoticewindowonbackgroundchain; notyetfixed",
+    "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci19c-budget-manifest-precondition-20261101",
+    "scope": "CIexact19c separatefrom newerlocalAppe6b; no timers/assertions/budgets/production changes authorized"
   }
 }
