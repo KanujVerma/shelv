@@ -38,6 +38,7 @@ import type { PreparedApplication } from "./bootstrap.ts";
 import { ApplicationShell } from "./Shell.tsx";
 import { PublicationAudit } from "./PublicationAudit.tsx";
 import { OwnerPolicyApplication } from "./OwnerPolicyApplication.tsx";
+import { MayaApplication } from "./MayaApplication.tsx";
 import "./application.css";
 
 export function UnavailableModule({
@@ -55,24 +56,13 @@ export function UnavailableModule({
   );
 }
 export function PublicEntry({ route }: { route: PortalRoute | null }) {
+  if (route?.name === "maya") return <MayaApplication stage={route.stage}/>;
   return (
     <main className="app-entry">
       <span className="shelv-wordmark">shelv</span>
-      <PageHeader
-        title={
-          route?.name === "maya" ? "Maya · fictional demo" : "page unavailable"
-        }
-      />
-      <StatusNotice
-        title={
-          route?.name === "maya"
-            ? "demo unavailable in this candidate"
-            : "check the address"
-        }
-      >
-        {route?.name === "maya"
-          ? "the guided Maya demo remains separate. this first application slice does not include the five-stage tour."
-          : "open your plan or advisor workspace to continue."}
+      <PageHeader title="page unavailable" />
+      <StatusNotice title="check the address">
+        open your plan or advisor workspace to continue.
       </StatusNotice>
       <div className="app-actions">
         <a className="shelv-button shelv-button-secondary" href="/plan">
