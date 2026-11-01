@@ -129,6 +129,11 @@ test('reentrant stage observer may replace the scope without a stale navigation 
   assert.equal(replacement.getSnapshot().controller.getSnapshot().stage,2);assert.equal(f.win.location.search,'?stage=2');
   f.scope.dispose();assert.equal(replacement.getSnapshot().controller.getPlanProps().session.isCurrent(),true);
 });
+test('captured public navigation subscriptions cannot restart a retired navigator over its replacement',()=>{
+  const model=windowModel('/maya'),a=api.createMayaApplicationScope(model.win),old=a.navigator;a.dispose();
+  const b=api.createMayaApplicationScope(model.win),before=model.win.location.href;let stop=()=>{};
+  try{stop=old.subscribe(()=>{});old.navigate({name:'maya',stage:5});assert.equal(model.win.location.href,before);assert.equal(b.getSnapshot().controller.getSnapshot().stage,1);assert.equal(model.listenerCount(),3);}finally{stop();a.dispose();b.dispose();}
+});
 test('all public actions run with network/cookie/storage/session-coordination traps',async t=>{
   const saved=new Map(),effects=[];const deny=name=>()=>{effects.push(name);throw Error('forbidden public effect '+name);};
   for(const name of ['fetch','XMLHttpRequest','WebSocket','localStorage','sessionStorage','indexedDB','caches','navigator']){

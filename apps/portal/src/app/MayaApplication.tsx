@@ -1,6 +1,7 @@
 import {useEffect,useState,useSyncExternalStore} from 'react';
 import {createPortalNavigator} from '../navigation/history.ts';
 import {NavigationProvider} from '../navigation/react.tsx';
+import type {PortalNavigationCore} from '../navigation/react.tsx';
 import {parseRoute} from '../navigation/routes.ts';
 import {createMayaDemoController} from '../features/walkthrough/maya/controller.ts';
 import {MayaWalkthrough} from '../features/walkthrough/maya/view.tsx';
@@ -54,9 +55,19 @@ export function createMayaApplicationScope(win:Window) {
     const stage=controller.getSnapshot().stage;
     if(route.stage!==stage)navigator.navigate({name:'maya',stage});
   });
+  // Canonical subscribe deliberately supports StrictMode re-subscription. Bind
+  // the exposed core to this App lifetime so a retired handle cannot restart
+  // that navigator over a newer sample. All live operations still delegate.
+  const navigation=Object.freeze({
+    getSnapshot:navigator.getSnapshot,
+    subscribe(listener){return disposed?()=>{}:navigator.subscribe(listener);},
+    navigate(route,options){if(!disposed)navigator.navigate(route,options);},
+    back(){if(!disposed)navigator.back();},
+    backDestination(){return disposed?{name:'maya',stage:1}:navigator.backDestination();},
+  } satisfies PortalNavigationCore);
   const scope=Object.freeze({
     [scopeBrand]:true as const,
-    navigator,
+    navigator:navigation,
     getSnapshot:()=>snapshot,
     subscribe(fn:()=>void){if(disposed)return()=>{};listeners.add(fn);return()=>{listeners.delete(fn);};},
     dispose,
