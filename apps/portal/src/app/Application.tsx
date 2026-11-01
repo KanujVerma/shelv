@@ -37,6 +37,7 @@ import type { ApplicationSession } from "./session.ts";
 import type { PreparedApplication } from "./bootstrap.ts";
 import { ApplicationShell } from "./Shell.tsx";
 import { PublicationAudit } from "./PublicationAudit.tsx";
+import { OwnerPolicyApplication } from "./OwnerPolicyApplication.tsx";
 import "./application.css";
 
 export function UnavailableModule({
@@ -541,7 +542,11 @@ function AdvisorApplication({
   let content: ReactNode = (
     <StatusNotice tone="loading" title="loading advisor workspace" />
   );
-  if (connection) {
+  if (route.name === "advisor-permissions")
+    content = (
+      <OwnerPolicyApplication runtime={runtime} win={win} />
+    );
+  else if (connection) {
     if (route.name === "advisor-preview")
       content = (
         <AdvisorPreview
@@ -582,13 +587,7 @@ function AdvisorApplication({
       );
     else
       content = (
-        <UnavailableModule
-          title={
-            route.name === "advisor-permissions"
-              ? "permissions"
-              : "advisor page unavailable"
-          }
-        />
+        <UnavailableModule title="advisor page unavailable" />
       );
   }
   return (
