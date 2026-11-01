@@ -23,8 +23,17 @@ export async function handleNotificationRequest(request:Request,ports:Notificati
   writing=call.args.p_command.action==='mark_seen_v1'||call.args.p_command.action==='retry_failed_email_v1';
   const result=await ports.rpc(token,call,request.signal);
   // Native Auth recheck supplements, never replaces, transactional SQL session/rights checks.
-  const current=await ports.authenticate(token,request.signal);if(!current||current.id!==user.id||current.is_anonymous!==false||request.signal.aborted)return error(401,'session_ended');
+  if(request.signal.aborted)return error(401,'session_ended');
+  let current:Awaited<ReturnType<NotificationPorts['authenticate']>>;
+  try{current=await ports.authenticate(token,request.signal);}catch{
+   if(request.signal.aborted)return error(401,'session_ended');
+   // Failed revalidation cannot expose a result or erase an already received safe denial.
+   if(result.error?.status===401)return error(401,'session_ended');
+   if(result.error?.status===403)return error(403,'forbidden');
+   return error(503,writing?'uncertain':'unavailable');
+  }
+  if(!current||current.id!==user.id||current.is_anonymous!==false||request.signal.aborted)return error(401,'session_ended');
   if(result.error){if(result.error.status===401)return error(401,'session_ended');if(result.error.status===403)return error(403,'forbidden');const raw=result.error.message??'',code=raw.startsWith('concierge_')?raw.slice(10):'';return Object.hasOwn(errors,code)?error(errors[code]!,code):error(503,writing?'uncertain':'unavailable');}
   try{return reply(200,mapNotificationResult(result.data,call.args.p_command));}catch{return error(503,writing?'uncertain':'unavailable');}
- }catch{return error(503,writing?'uncertain':'unavailable');}
+ }catch{return request.signal.aborted?error(401,'session_ended'):error(503,writing?'uncertain':'unavailable');}
 }
