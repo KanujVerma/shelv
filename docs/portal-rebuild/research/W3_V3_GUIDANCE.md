@@ -572,6 +572,57 @@ All commands use explicit Node22 PATH. Focused source: `node --experimental-stri
 
 Root dependencies remain absent; no Root install/full npm/app/test-types/Expo/iOS, full portal/runtime, actual App/DOM/private-canary, current genuine server/Auth/policy/schema/SQL/persistence/provider, hosted/exact-head CI/visual/human/full-goal acceptance. Root owns fresh browser allocation and a **NEW independent R3** with full R1/R2/responses and these exact source inputs/proofs. No Root consumer update is required, no permission/resource question or wait loop remains, and no self-acceptance, Root/App activation, push/PR/merge/deploy or live clinical/client/source/permission/communication/money/order action.
 
+## Ordinal8: source-only packaging portability checkpoint
+
+1 November 2026. **Harness correction only, no new production finding or acceptance verdict.** Clean base **15d60f56098fad6cd584a122083abaad89a83378**; owned helper/test correction **fed90f029b2849426f52263c74c589b1e86643d9**. Production remains exact875b31e0, including the R2 saving/retry corrections. All preceding findings, responses, browser/source proofs, sensitivity qualifications and pending review gates remain intact.
+
+Authoritative current task ID: **`node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-package-entry-and-cwd-portability-source-20261101`**. Separate backing thread: `thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1`; actual parent d632030a-18f7-4dec-a2c9-f5c0418c3fd5. Actual run **`run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:8`**, started **2026-11-01T00:46:56.333Z**. Workspace `/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d`, branch `t3/plan-v3-guidance-hydration`.
+
+Initial and final **both live** capabilities/configuration show **codex/gpt-6.1-sol/reasoningEffort=xhigh/serviceTier=default**, with supporting option descriptors. All8 role TOMLs and project/default-subagent Sol/xhigh settings match;9 config hashes are unchanged. Actual Node **v22.23.0**, explicit `PATH=/Users/kanuj/.nvm/versions/node/v22.23.0/bin:$PATH` on every Node/npm/compiler invocation; spawned source runners inherit that PATH and use the same actual executable. No nested work, install, dependency/package/lockfile/config/flag/budget change or source import.
+
+### Observed packaging failures and bounded response
+
+Parent's read-only full package log was copied/hash-bound from `/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/ci-153d/portal-package-current.log`, SHA256 **04cbe3fb43f89eb67e27c43a9e8afbcd29ef3cd7e7bf5bdd80f7a986f0fdad8e**. All15 failure blocks were inspected: **11 missing-method failures,3 timeouts,1 relative-tsconfig preassertion compile failure**, terminal1726 pass/15 fail/0 skip. Parent's separately supplied Root1256 pass/18 old opt-in skips is not an own run. No foreign source/test execution or write occurred.
+
+The context/residual browser files relied on an externally set `W3_GUIDANCE_CONTEXT_BROWSER_ENTRY=1`; ordinary package discovery did not set it. The default entry has no actual setCallbackEnabled/replaceReviewSource/replaceViewCallback/rerender assignments. `prepareGuidanceBrowserSource` and its browser-opening caller now accept a bounded **test-only** `{entry:'context'|'default'}` option. Each context-requiring test file explicitly selects `context`. Absent an option, the historical environment selector/default behavior remains unchanged; explicit default also works under the legacy context flag. Existing exact-c4/old-cookie input selectors remain effective. Arbitrary entry paths are rejected. No browser launch/grant logic, fixture, source capability, port or assertion is substituted.
+
+The other reached helper is embedded in **`apps/portal/tests/rebuild-plan-guidance-residual-source.test.mjs`**, surfaced before editing. Its actual esbuild call now anchors `absWorkingDir` through `import.meta.url`/`fileURLToPath` and uses portal-relative entry/config paths. Its actual TSX extraction input is unchanged. Source assertions, actual ApplicationSession/cookie/raw5/Root/hydrator/identity mechanisms and baseline selectors are unchanged. No production/public API or parent consumer update is needed.
+
+### Source RED/GREEN and qualifications
+
+Before any helper correction, the new packaging regression observes missing actual compiled context methods in both callers; the explicit-option check also fails. The actual residual25 passes from repo root but fails before assertions from portal cwd with `Cannot find tsconfig file "apps/portal/tsconfig.frontend.json"`. Combined meaningful pre-edit regression: **1 pass/4 intended failures**. Current: **5/5 from each cwd**, with actual residual **25/25 from both cwd**. The tests execute only the actual setup wrapper to capture options, then compile the real entry and inspect its assignments; browser entries, DOM code, teardown hooks and browser boundaries are not executed. The option capture is a harness observation, not a successful production port or permission/current-predicate fake.
+
+One earlier new-test setup run was0/5: its two nested runner checks inherited Node's private `NODE_TEST_CONTEXT` IPC mode and had empty text output. This is retained as a **regression-runner setup fault**, not product RED. The runner now removes only that runner-private marker for the independent child invocation. It does not change product/session/source/cookie/HTTP behavior or timeouts. The corrected pre-edit1/4 and current5/5 are separately preserved.
+
+| Fresh source-only validation | Result |
+| --- | --- |
+| Packaging regression, repo-root / portal cwd | **5/5 /5/5**,0 skips |
+| Actual residual assertions invoked from both cwd | **25/25 each**, overlapping mechanism coverage |
+| Existing source74 / retained122 | **74/74 /122/122**,0 skips |
+| Frontend/session/extended helper strict checks | exit0, unchanged strict/noUnchecked/verbatim/skipLibCheck:false flags |
+| Five changed/new harness syntax checks | exit0; browser test modules not imported/executed |
+| UI guard / rebuild / application build | exit0; UI11 stylesheets; clean application sourceHeadfed90f029/sourceDirty:false/gatewayIncluded:false |
+
+The **three parent timeouts remain unresolved and parent-owned**: two budget text waits and the initial advisor-preview mode wait. Their cause is unproved. No timeout/predicate alteration, added sleep/retry, fixture change or load explanation was used. This compile/source evidence does not claim an ordinary package or browser GREEN. Parent owns the serial package investigation and fresh browser execution/review. Historical21/117, frozenG1/G2 controls, old-cookie20 non-sensitivity, separate real-fetch0/1/current1/1, producer TypeError faults, CK2 reachability and Select scroll-viewport qualifications are unchanged.
+
+### Exact inputs, commands and custody
+
+Captured the47 original owned targets before edits. Only4 existing harness paths and this report differ; the new pure packaging regression is additive. Semantic test bodies in both browser files and the residual source suite are byte-exactbase. All production plan/client-state, original58/source54/20 tests, Root4 SDK96, all17 authc9, shell/sharedUI and other files remain exactbase. The source commit contains these **five full files only**,52325 bytes total:
+
+| Path under apps/portal/tests/ | Bytes | Git blob |
+| --- | ---: | --- |
+| rebuild-plan-guidance-browser.mjs |8384|3f1f8f6a4032fb8b2b1a683a84798f92ffaa3abf |
+| rebuild-plan-guidance-context-browser.test.mjs |18026|9a40c9af241cc3be0c4e3b8ebb10725e637e1f8d |
+| rebuild-plan-guidance-residual-browser.test.mjs |3817|2889efcc8f967b199bc6510325dfeab552765d8e |
+| rebuild-plan-guidance-residual-source.test.mjs |16493|a41b9bc70f14c255a48c194a340b63fe7d8d54bc |
+| rebuild-plan-guidance-packaging.test.mjs |5605|5f63c6726881761c9ebe3188ff19e8b4958e158a |
+
+Own ignored evidence root **`.local-artifacts/portal-rebuild/w3-v3-packaging-source/`** contains the full parent log/failure blocks,47-target/pin manifest, complete5 source snapshots, exact hashes, commands/runtime/run metadata, RED/setup/GREEN logs and clean application provenance. **29-file EVIDENCE.json SHA25635cbdbf07006d5deeccc5fccde68679a017819a2614915727b91d1ceceb5fb08** excludes itself, this report and final checkpoint. FROZEN-SOURCE.json SHA256 **5d641d6c38709f0138c910e5f3c45daebf9278895b912cf3d85d50169d414c15**. Selected log SHA256: corrected RED1/4 **51e2cf14cb91ee5e60a5eb508ddb1a3fcba468165c0c8de60d4937d433c98eed**; repo-root GREEN5 **a562b44a693bf2c77fa9b2089e98aac85bf4745e16abb1887d9693c9ef82999b**; portal GREEN5 **6292ae485e9317fbd7e97fb0b925f900e879b335136b68055535edfc3460d08f**; source74 **5a9c7673645ed2ddd89eaabbc93f2910975ba44ca2bd05178d2ae3d4bcec7ed0**; retained122 **edf210abc8f7ca2893b0edfd2d606a3fc33ce3dffe2842f547980089ee0c25b7**.
+
+Commands all use the explicit Node22 PATH. New check: `node --experimental-strip-types --test --test-concurrency=1 apps/portal/tests/rebuild-plan-guidance-packaging.test.mjs`, and from portal cwd `node --experimental-strip-types --test --test-concurrency=1 tests/rebuild-plan-guidance-packaging.test.mjs`. It invokes the unchanged25 source assertions from both real cwd values. Existing74/122/strict/UI/build commands are the exact prior argv recorded in RUNTIME-CHECKS, with no changed flags or package script. Full source snapshots and hashes correspond to committedfed90; application provenance was additionally rebuilt at that clean head. `git diff --check` passes.
+
+**No Chrome/DOM/preview/process inventory/native/R9/DB/Auth/provider/credential/fixture resources were acquired, executed or polled.** The **2026-10-31T22:25:27UTC sole Chrome return remains final**, with no later resource calls or inferred grant. Only own finite source/SSR/test/compiler/build processes ran and are terminal. Root dependencies remain absent; no Root install/full package/Root npm/Expo/iOS/genuine/App activation/canonical/CI/visual/human/release/full-goal acceptance. No shared/production edits, lineage maxBuffer import, push/PR/merge/deploy/live action, resource question or wait loop. This is a clean bounded source handoff; fresh execution and independent review remain parent-owned.
+
 Selected SHA256 receipts:
 
 - select-zoom-crossowner.mjs: f1d7826309bcfa208cfba3030f278e6cf6d5ea8b7d8fa25ed4d2c99ae75c4fef
