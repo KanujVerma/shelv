@@ -4877,9 +4877,13 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "frozenTarget": "d6e3c136523ea21d4cf32059df2a92addb2275e0",
-      "resourceBoundary": "Sole actualM65 20261101012836 reportedempty; ownmarkedUnixPG only, no Parent/R9/foreign resources; old64/Source6/SDK frozen"
+      "resourceBoundary": "Sole actualM65 20261101012836 reportedempty; ownmarkedUnixPG only, no Parent/R9/foreign resources; old64/Source6/SDK frozen",
+      "earlyCommit": "64085b062420a876b1d758ff20c5d67cd7735814",
+      "deliveryCommit": "7e74760321157f7b83dadb016daf779a0f127f02",
+      "verification": "39/22/10+1/110/strict0/gateway4+9+2,canonical14native-equivalentONLY; newR3pending",
+      "custody": "AuthorownPG85054guardedSTOPPED0others/status3/pidabsent;dump1307920/de8a19ce4ce38197c2df74c2ddf555b723da620709c865023a3c57a02131d542; allold64/603/Source6exact"
     },
     {
       "role": "W7 composed App/history source+conditional synthetic browser R3",
@@ -4898,7 +4902,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "frozenTarget": "6cde9904d53d1d2c9f082dc16f10848d3790e94f",
       "testedSourceHead": "43e69c17d4afdcb8e62b3149cdda2b1e62405afb",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-288a931f",
@@ -4909,9 +4913,13 @@
       "chromeGrant": {
         "grantId": "coordinator-w7-composed-app-history-r3-synthetic-chrome-6cde9904-20261101",
         "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-288a931f",
-        "status": "active",
-        "authority": "Sole finite synthetic installedChrome only; actualApplication/Session/raw/Root/W4/V3/nav; no native/Auth/DB/RootR9/SourceStorage; promptUTCreturn before report/hash/Git and no resource calls afterward"
-      }
+        "status": "returned",
+        "authority": "Sole finite synthetic installedChrome only; actualApplication/Session/raw/Root/W4/V3/nav; no native/Auth/DB/RootR9/SourceStorage; promptUTCreturn before report/hash/Git and no resource calls afterward",
+        "returnedAt": "2026-11-01T02:03:54.356Z",
+        "finalOwnInventory": "36PID/start audit02:03:38.709Z ownChrome/workerd/TestNode/esbuild/listeners[], previewnoTab; no laterresourcecalls"
+      },
+      "deliveryCommit": "ad0a71a5c015d5080c7a09fdc7f5b3773bf07e36",
+      "verdict": "CH1-CH3addressed; SOURCE/exercisedBrowserSPEC/quality FAIL CH4/P2 C05confirmed/noopremount resetsdraft anduncertaincontrols hidden; fullmatrixstopped"
     },
     {
       "role": "W2 nested denial callback ownership G7 Source correction",
@@ -4933,6 +4941,101 @@
       "status": "running",
       "frozenTarget": "68d3f6ae8fe59401be7fbc138597c06d876ddf08",
       "resourceBoundary": "Source-only controller/newtests/report; G7inner403callback mustnotcancelnewBpublication; no sharedAPI/resource/Rootimports"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci-baseline-history-and-budget-diagnosis-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:9",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "role": "W3 CI historical-baseline portability and unchanged budget diagnosis",
+      "frozenTarget": "65363815e9444fc070721bc2efb79240f13b0690",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
+      "resourceBoundary": "Source-only exact historical fixtures plus finite unchanged2550 case diagnostic; no production change/timeout retune; no ParentR9/Auth/DB",
+      "chromeGrant": {
+        "grantId": "coordinator-w3-ci-budget-diagnostic-synthetic-chrome-65363815-20261101",
+        "status": "active",
+        "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
+        "scope": "Sole finite original2550case+oneunchangedrepeat/adjacent incomplete-manifest control; returnbeforehashreportGit/no resourcecallsafter"
+      }
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-backend-review-20261101-r3",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-backend-review-20261101-r3",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-commerce-backend-review-20261101-r3:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "role": "W7 composed Commerce M63/M64/M65 independent R3",
+      "frozenTarget": "7e74760321157f7b83dadb016daf779a0f127f02",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_COMMERCE_BACKEND_R3.md"
+      ],
+      "resourceBoundary": "Only OWN marked synthetic UnixPG, no Parent/R9/foreignDB/Auth/provider/Chrome; guardedSTOP/dump before terminal"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-private-source-s1-s4-resume-after-m65-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-report-guidance-contracts-20261031-r1:ordinal:11",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "role": "W1 Source S1-S4 pure proposal correction resume after M65",
+      "frozenTarget": "7e74760321157f7b83dadb016daf779a0f127f02",
+      "resourceBoundary": "Source modules/tests/report only; no Phase2/CLI/SQL/resources, all65SQLfrozen",
+      "sourceApiPin": "collectSourceCleanup/hashSourceCleanupInventory + explicitlynamed async verifySourceCleanupProof; job-only false; no boolean-or-Promise overload; complete consistent model inventory is NOT actualStorageabsence"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-history-update-restoration-mount-lifetime-ch4-source-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:8",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "role": "W0 CH4 history-update feature lifetime source correction",
+      "frozenTarget": "6cde9904d53d1d2c9f082dc16f10848d3790e94f",
+      "resourceBoundary": "Source-only App host lifecycle/tests/report, keepW4isCurrentwitnessunchanged/canonicalcallbackchecks; no Chrome/resource/feature/sharedAPI changes"
     }
   ],
   "parentVerification": {
@@ -5045,7 +5148,7 @@
     ],
     "sharedResourceCalls": 0,
     "evidence": ".local-artifacts/portal-rebuild/ci-153d/",
-    "remoteNativeStatus": "in progress at a69a79fb; T3 monitoring",
+    "remoteNativeStatus": "Confirmedisolateda69all3CIPASS, Portal41258452926+CI41258452985; newer125222 separatefailure",
     "isolatedRemoteCommit": "a69a79fbd845677bc66c66977d63c458bc0fea67",
     "localPreservedMerge": "8e747f41edc0d44a09b7939c216695d90d79a0a9",
     "localMergeTreeEqualsVerifiedCheckpoint": "503d4e645010319817ed95e2ba00846b743f0401",
@@ -5066,8 +5169,9 @@
       "source": "6cde9904d53d1d2c9f082dc16f10848d3790e94f",
       "delivery": "9a4f99c32f6fb549a4423889efede4e3af2e884b",
       "checks": "162App/198+25feature/256transport/independent10, strong types and clean2231/15; CH1 original3/3twice/CH2zero; author two old browser-target differences excluded in new review in favor of current Parent875/fed90 inputs",
-      "review": "NewR3 source prerequisites PASS at43e69; sole syntheticChrome granted only288a workspace, no native/genuine claim",
-      "targetExceptions": "New R2 exact Parent875/fed90 resolves prior two old browser dependencies; App-owned client-state remains e4cb"
+      "review": "R3ad0CH1-CH3addressed, newCH4/P2C05lifetime/ack/uncertaintymountfailure; W0SourceCH4active",
+      "targetExceptions": "New R2 exact Parent875/fed90 resolves prior two old browser dependencies; App-owned client-state remains e4cb",
+      "chrome": "RETURNED02:03:54.356Z, no postreturnresourcecalls"
     },
     "m64": {
       "source": "d6e3c136523ea21d4cf32059df2a92addb2275e0",
@@ -5076,15 +5180,18 @@
       "bytes": 92223,
       "sha256": "7e724f48fd6a19212fd73fe81aad5e15a2c4a1af1b2d4ce9a0408f2d48dcc0f2",
       "checks": "author22native(original8+14), retained39,pure110,17canonical native-equivalent only, strict0; PGSTOPPED authorreported; no backend acceptance",
-      "review": "R2 8f4f92c FAIL newCB5/P1 andCB6/P2; M65sameauthor active after Sourcephase9cleanstop",
+      "review": "NEW independent R3 active on frozen65; no selfadmission",
       "m65Allocation": "20261101012836_portal_rebuild_commerce_authority_consistency_v1.sql",
-      "allocationBoundary": "ActualCLIreturnedwhileEMPTY before authoredSQL, installed2.121; no acceptance inferred"
+      "allocationBoundary": "ActualCLIreturnedwhileEMPTY before authoredSQL, installed2.121; no acceptance inferred",
+      "m65Code": "64085b062420a876b1d758ff20c5d67cd7735814",
+      "m65Delivery": "7e74760321157f7b83dadb016daf779a0f127f02",
+      "custody": "AuthorownPGSTOPPED"
     },
     "sourceProposal": {
       "source": "1279d7a676f0a78ac00f8ad263672117ecb99fbd",
       "scope": "6newfiles only,15proposed8READ7WRITE,17pure/strict0; actual reader/upload/grants/retention/deletion unimplemented",
       "pin": "Frozen review input only; no activation/cap/profile/role/disclosure decision or Phase2 grant",
-      "review": "R1 6b661e9c FAIL S1-S4; Sourcefixphase9 terminated before any edit, no tests/newcommit/resources; currentSource6 remains1279 exact",
+      "review": "SourceS1-S4correctionresumed asordinal11 afterM65frozen/stopped; no Phase2/SQL/role/disclosure/capactivation",
       "priority": "CB5/P1 Commerce M65 takes sole W1 writer; Sourcefix resumes later separately"
     },
     "v3Package": {
@@ -5114,5 +5221,19 @@
     "head": "1252227491a547f194ff7a14fe30879ab2355a95",
     "status": "pushed; new exact-head CI pending",
     "scope": "Published V3module875/fed90 and fullserial1770 pass, sourcedefaultCare2; no App/guidance/Commerce/Source activation"
+  },
+  "ciRecovery125222": {
+    "head": "1252227491a547f194ff7a14fe30879ab2355a95",
+    "portalRun": 41261330266,
+    "portal": "FAIL package1768/1770,0skip",
+    "otherChecks": "Verify&Build SUCCESS; Database&Integration SUCCESS (CI41261330251)",
+    "failures": [
+      "2550scope budgetcase original5000msnotice wait timeout",
+      "packagingSourceSensitivity historicalc4file unavailable in CI gitshow"
+    ],
+    "owner": "new W3 Source+soleChrome diagnostic followup",
+    "sourceResponse": "Exact immutable in-tree baseline fixtures+SHAmanifest required, no skips/current fallback/fetch foreign refs",
+    "budgetResponse": "Actualunchangedcase/readonlydiagnostics only; no timeout/assertion/timing/fixture change without concretecause+pin",
+    "evidence": ".local-artifacts/portal-rebuild/ci-125222/"
   }
 }

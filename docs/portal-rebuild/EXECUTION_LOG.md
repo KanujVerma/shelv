@@ -385,3 +385,10 @@ Clean5303 actual application build exit0/sourceDirtyfalse/gatewayIncludedfalse f
 
 
 AppCH3author6cde usescurrent153dself-compilingESMtest, productionunchanged9a; newR3workspace288a independentlypasses162/198/256/residual25/packaging5/10+8/strongtypes andexact2231x15 correspondence. ParentfreshbothLiveSol/xhigh/default verified thenissuedSOLEfiniteChrome grant bound43e69/6cde in288a; noRootR9/native/Auth/DB/SourceStorage authority. Awaitexplicitreturnbeforeotherbrowser. W2SourceR4e958 independentlyclosesG6butfindsG7/P3nesteddenialemissioncancelsBpublication across3readlanes; sourcefixallocatedsameW2, privateclearandpubdisabledcontainmentkept. M65early64085 originalR2threeRED/GREEN and10new native pass, originalASTpreserved; ownPGstillrunningfor22/39/fullbounds/finalSTOP, no acceptance inferred.
+
+
+## 1 November: old CI green, current CI portability/budget diagnosis
+
+Verifieda69all3checksSUCCESS (Portal41258452926,CI41258452985), closingtheisolatedledger-readbufferfixatitsactualhead. PRcurrent125222isNOTgreen: Verify&Build/Database&Integrationpass,Portal41261330266fails1768/1770/0skip at2550scope5000msnoticewaitandhistoricalc4gitshowSource inpackagingtest.No timeoutcausediagnosisassumed.SourceCurrent defaultC9/production875 untouched. New W3followup ownsbyteexactin-treehistoricalfixturesandread-onlyboundedbudgetdiagnosis; RootAppreviewerreturnedsoleChrome02:03:54.356Z BEFOREnewW3grant. No ParentR9/Auth/DBresources.
+
+AppR3ad0 actualC05 validamendment200/newreport200 resetacknowledgement anduncertain503hidesstatus; CH1actualentry780/focuspasseswitholdSourceintendedFAIL. BroaderDOMmatrixstopped, nofixbyreviewer. W0SourceCH4 hostlifetimerepairallocated, noW4witnessweakening/noextraChrome. M65author7e retained39/22/10+1/110/strict/gatewaypassandguardedownPGstop, old64/SDK/Sourceexact; NEWbackendR3allocated frozen65. SourceS1-S4 resumedSourceonlywithnamedasyncfullinventoryconsistencyhelperpin; noactualStorageabsence/SourcePhase2claim. AllnewtaskIDs/briefs/grantsretained inTASKS andprivateallocations.
