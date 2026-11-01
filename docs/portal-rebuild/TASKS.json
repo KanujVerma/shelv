@@ -5536,10 +5536,12 @@
           "value": "default"
         }
       ],
-      "status": "starting",
+      "status": "completed",
       "frozenTarget": "19c3ea1f106f0e123982d29fe2137f137312fdef",
       "resourceBoundary": "TEST-ONLY/sourcefirst, no browser/native/resource grant; unchanged5sec/assertions/fixtures/production",
-      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-budget-brief.txt"
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-budget-brief.txt",
+      "terminalCommit": "8bd0a28ff019efcfdc63cbeaf57897cc12eb6a71",
+      "sourceControls": "10798e1e: oldproxy5/1, acceptedmodel6/6; originalbudgetunchanged; bridge/twographdeltasrequested"
     },
     {
       "role": "W0 A07 advisor Guidance App composition source only",
@@ -5562,6 +5564,28 @@
       "frozenTarget": "b752b96051f28d1d35f50e391dc81034630b706c",
       "resourceBoundary": "OwnedApp/navigation/newtests/report only; W2/37f exactdeps separate; no resources/newrights/SourceAPI",
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/advisor-guidance-app-composition-brief.txt"
+    },
+    {
+      "role": "W3 CI19c passive live-hydrator observation/source-only",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci19c-passive-hydrator-observer-source-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:12",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "starting",
+      "frozenTarget": "8bd0a28ff019efcfdc63cbeaf57897cc12eb6a71",
+      "resourceBoundary": "TEST-BUILD observer only; exact19c2dependencyinputs; no productionAPI/source/5sectimeout change or browser/resourcegrant",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-observer-source-brief.txt"
     }
   ],
   "parentVerification": {
@@ -6838,7 +6862,10 @@
     "rawEvidence": ".local-artifacts/portal-rebuild/ci-19c3ea1f/",
     "observed": "26manifestfinished4140ms; timeout8045ms with43of51detailfinished; last51finished8522ms; terminalnotice0/loading1",
     "hypothesis": "zeroDOMloading proxy may pass before actual acceptedterminalmanifest, spending partof5secnoticewindowonbackgroundchain; notyetfixed",
-    "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci19c-budget-manifest-precondition-20261101",
-    "scope": "CIexact19c separatefrom newerlocalAppe6b; no timers/assertions/budgets/production changes authorized"
+    "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci19c-passive-hydrator-observer-source-20261101",
+    "scope": "CIexact19c separatefrom newerlocalAppe6b; no timers/assertions/budgets/production changes authorized",
+    "sourceCheckpoint": "10798e1e/8bd0a28f oldproxy5/1 acceptedmodel6/6; no browsercorrection",
+    "observerDecision": "Parentpermitsread-onlyTESTBUILDdescendantofactualContextProvider; existingrealhydrator/props currentstate only; no productionfile/export/prop/DOMflags; explicittransformhashes",
+    "graphInputs": "Only ports.ts/PortalRebuildValues.ts exact19c additionallyauthorizedinchild; uninstrumented2200/10 comparison required, noRootdowngrade"
   }
 }
