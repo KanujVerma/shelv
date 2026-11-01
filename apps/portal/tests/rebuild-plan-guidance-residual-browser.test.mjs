@@ -1,9 +1,10 @@
 // Prepared only in the R2 source round. A fresh explicit serial Chrome grant
-// and W3_GUIDANCE_CONTEXT_BROWSER_ENTRY=1 are required before execution.
+// is required before execution; this file explicitly selects its context entry.
 import test,{after} from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs/promises';
-import {setupBrowser,treatmentRoute} from './rebuild-plan-guidance-browser-tools.mjs';
+import {setupBrowser as setupBaseBrowser,treatmentRoute} from './rebuild-plan-guidance-browser-tools.mjs';
 import {GuidanceHttpFixture} from './rebuild-plan-guidance-browser-fixture.mjs';
 import {browserArtifacts,closeGuidanceBrowsers,ownBrowserInventory} from './rebuild-plan-guidance-browser.mjs';
+async function setupBrowser(t,server,options){return setupBaseBrowser(t,server,{...options,entry:'context'});}
 after(async()=>{await closeGuidanceBrowsers();await fs.writeFile(browserArtifacts+'/residual-inventory.json',JSON.stringify(ownBrowserInventory(),null,2));});
 const retry=f=>f.page.getByRole('button',{name:'retry current guidance',exact:true}).first();
 function delivery(f){return f.page.waitForResponse(r=>r.request().method()==='POST'&&r.request().postDataJSON()?.action==='read_client_plan_v3');}

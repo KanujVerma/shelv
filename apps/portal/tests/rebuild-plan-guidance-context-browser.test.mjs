@@ -5,7 +5,7 @@ import {browserArtifacts,closeGuidanceBrowsers,ownBrowserInventory} from './rebu
 import {setupBrowser as setupBaseBrowser,treatmentRoute,choiceReady,navigate,restore,select} from './rebuild-plan-guidance-browser-tools.mjs';
 import {GuidanceHttpFixture} from './rebuild-plan-guidance-browser-fixture.mjs';
 after(async()=>{await closeGuidanceBrowsers();await fs.writeFile(browserArtifacts+'/context-inventory.json',JSON.stringify(ownBrowserInventory(),null,2));});
-async function setupBrowser(t,server,options){let f;t.after(async()=>{if(!f)return;const state=await f.page.evaluate(()=>{const h=window.__guidanceHarness;return{cookie:h.runtime.cookie.status,generation:h.runtime.cookie.generation,view:h.controller.getSnapshot().view,applied:h.applied.length};});await fs.writeFile(browserArtifacts+'/'+t.name.replace(/[^a-zA-Z0-9]+/g,'-').slice(0,100)+'-state.json',JSON.stringify({...state,diagnostics:f.diagnostics},null,2));});f=await setupBaseBrowser(t,server,options);return f;}
+async function setupBrowser(t,server,options){let f;t.after(async()=>{if(!f)return;const state=await f.page.evaluate(()=>{const h=window.__guidanceHarness;return{cookie:h.runtime.cookie.status,generation:h.runtime.cookie.generation,view:h.controller.getSnapshot().view,applied:h.applied.length};});await fs.writeFile(browserArtifacts+'/'+t.name.replace(/[^a-zA-Z0-9]+/g,'-').slice(0,100)+'-state.json',JSON.stringify({...state,diagnostics:f.diagnostics},null,2));});f=await setupBaseBrowser(t,server,{...options,entry:'context'});return f;}
 const reads=f=>f.calls.filter(c=>c.command.action==='read_client_plan_v3').length;
 const decisions=f=>f.calls.filter(c=>c.command.action==='record_decision_v2');
 const approve=f=>f.page.getByRole('button',{name:'approve product',exact:true});
