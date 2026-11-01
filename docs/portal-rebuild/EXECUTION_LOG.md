@@ -456,3 +456,9 @@ Portalrun41275595455/job124757021089 at19c3ea1f:2284pass/1fail/0skip, exactfirst
 R7RETURN05:46:10Z verifiedfromSAVEDcopyonly:79ownPIDstartsummaryabsent, previewnoTab, normalcloseexit0. Report2c06 terminalSPECincompleteB3/B4/frame-C, qualityscopedPASS/no newmaterialfault; positiveB2actualnativeframe/current780 andA/Dmatchedfacts nowearned, no fullAppPASS. NoafterReturnresourcecalls.
 
 W3CI19cordinal11terminates8bd0 witholdproxy5/1acceptedmodel6/6, originalbudgetunchanged/noresources. Parentreadfullseamrequest andverifiedtwohashdeltasexact19cports/Values. NEWordinal12source-onlypermitsonlytest-buildobserverdescendantofACTUALGuidanceContextProvider, realgetSnapshot/subscribe+currentprops; no productionAPI/source/props/DOMreadyflags. Explicittransformprovenance anduninstrumented2200/10matchrequired. Exact2childdependencyinputsseparate/noRootdowngrade; sourcegatebeforefreshChrome. CIcorrectionstillpending.
+
+## 1 November: exact CI observer type companion
+
+W3 ordinal12 terminated clean e220165b with exact uninstrumented2200/10 correspondence, sourcebridge6/build4 and fullfrontend7 errors from an absent erased advisor companion. Parent inspected the actual diff and verified a minimal complete child-only type input with TS6.0.3 actual strict7->0 and byte-identical emitted JS. The initial Parent verifier cwd lookup fault is retained. New same-author ordinal13 applies only that pinned4893-byte file separately, then source gate; no Chrome/native/resources or Root type downgrade. Exact task/run/brief/hash are in TASKS.
+
+Source readiness plan09cb was fully read and imported report-only as58a840ac. Its Parent19c/AppCare2 observations remain historical; current local candidate selects V3 and resolves the old generation-only dependency. The plan grants no Source implementation, profile/role/disclosure/rights, SQL allocation or resource action. Full-goal obligations and M65 no-reroute block remain open.

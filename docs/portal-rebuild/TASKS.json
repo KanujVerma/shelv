@@ -1737,7 +1737,7 @@
       "integratedCommits": [
         "54623e91"
       ],
-      "verdict": "Main9PASS/extra record+pagination+unfiltered controlsPASS; CN1/P2 exactproducthistorySQLNULL→unrelatedsameclientrows→strict503 requiresforwardfix"
+      "verdict": "Main9PASS/extra record+pagination+unfiltered controlsPASS; CN1/P2 exactproducthistorySQLNULL\u2192unrelatedsameclientrows\u2192strict503 requiresforwardfix"
     },
     {
       "role": "W7 care client round2",
@@ -5486,7 +5486,9 @@
       "resourceBoundary": "ONE NEW readiness-plan report; no Phase2/code/SQL/CLI/resources/rights/profile/API implementation or admission",
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/source-readiness-plan-brief.txt",
       "terminalCommit": "09cb78d33128d6cd02258c5ad66d79e6c5a403a3",
-      "result": "Readinessplanreportonly; noimplementation/rights/profile/SQL/resources grant; Parentpinassessmentpending"
+      "result": "Readinessplanreportonly; noimplementation/rights/profile/SQL/resources grant; Parentpinassessmentpending",
+      "integratedCommit": "58a840ac",
+      "verificationResult": "Report only, full plan read; no implementation/profile/rights/resource grant. Current Root Appcandidate supersedes its historical19c Care2 comparison."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-gaps-review-20261101-r7",
@@ -5582,10 +5584,40 @@
           "value": "default"
         }
       ],
-      "status": "starting",
+      "status": "completed",
       "frozenTarget": "8bd0a28ff019efcfdc63cbeaf57897cc12eb6a71",
       "resourceBoundary": "TEST-BUILD observer only; exact19c2dependencyinputs; no productionAPI/source/5sectimeout change or browser/resourcegrant",
-      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-observer-source-brief.txt"
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-observer-source-brief.txt",
+      "terminalCommit": "e220165bff382e74a2a6fe06bae618cd91860f0f",
+      "dependencyCommit": "65c9fc29eecedf75b5208540da2d96cf157ab4ef",
+      "ownedCodeCommit": "3b2c9d0d4e416c8b7e93b9f883eff69703a98f36",
+      "verificationResult": "Uninstrumented2200/10 exactCI; bridge6/build4 pass; frontend7 typecompaniondiagnostics unresolved; no resources or mounted/CI claim"
+    },
+    {
+      "role": "W3 CI19c minimal erased advisor type companion/source gate",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci19c-erased-advisor-type-companion-source-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w3-v3-guidance-ui-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w3-v3-guidance-ui-20261031-r1:ordinal:13",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "frozenTarget": "e220165bff382e74a2a6fe06bae618cd91860f0f",
+      "resourceBoundary": "EXACT child-only erased type companion; no browser/native/resources or Root downgrade",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w3-ci19c-type-companion-source-brief.txt",
+      "pinnedArtifact": ".local-artifacts/portal-rebuild/w3-ci19c-type-companion/advisor-types.pinned.ts",
+      "pinnedSha256": "356eec8a94115ca9d461aef42590c867cdf84061ed0c511f116e6eebd603df01",
+      "parentOverlayEvidence": ".local-artifacts/portal-rebuild/w3-ci19c-type-companion/OVERLAY-CHECK-CWD.json",
+      "parentOverlayResult": "TS6.0.3 configured strict graph7->0 with only inputoverlay; erased JS identical. Initial wrongcwd type-lookup setup fault retained."
     }
   ],
   "parentVerification": {
@@ -6862,10 +6894,19 @@
     "rawEvidence": ".local-artifacts/portal-rebuild/ci-19c3ea1f/",
     "observed": "26manifestfinished4140ms; timeout8045ms with43of51detailfinished; last51finished8522ms; terminalnotice0/loading1",
     "hypothesis": "zeroDOMloading proxy may pass before actual acceptedterminalmanifest, spending partof5secnoticewindowonbackgroundchain; notyetfixed",
-    "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci19c-passive-hydrator-observer-source-20261101",
+    "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw3-ci19c-erased-advisor-type-companion-source-20261101",
     "scope": "CIexact19c separatefrom newerlocalAppe6b; no timers/assertions/budgets/production changes authorized",
-    "sourceCheckpoint": "10798e1e/8bd0a28f oldproxy5/1 acceptedmodel6/6; no browsercorrection",
+    "sourceCheckpoint": "3b2c9d0d/e220165b sourcebridge6/build4; exact uninstrumented2200/10; frontend7 missing companion",
     "observerDecision": "Parentpermitsread-onlyTESTBUILDdescendantofactualContextProvider; existingrealhydrator/props currentstate only; no productionfile/export/prop/DOMflags; explicittransformhashes",
-    "graphInputs": "Only ports.ts/PortalRebuildValues.ts exact19c additionallyauthorizedinchild; uninstrumented2200/10 comparison required, noRootdowngrade"
+    "graphInputs": "Only ports.ts/PortalRebuildValues.ts exact19c additionallyauthorizedinchild; uninstrumented2200/10 comparison required, noRootdowngrade",
+    "typeCompanionDecision": {
+      "path": "apps/portal/src/features/advisor/types.ts",
+      "sha256": "356eec8a94115ca9d461aef42590c867cdf84061ed0c511f116e6eebd603df01",
+      "bytes": 4893,
+      "erasedOnly": true,
+      "parentActualStrictOverlay": "7->0",
+      "rootImport": false
+    },
+    "browserGrant": null
   }
 }

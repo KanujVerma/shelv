@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 exact CI observer companion
+
+Root App candidatee6b remains local and unmerged. PublishedPR21119c still fails one2550-case notice wait. W3e220 matches all2200/10 CI runtime inputs/outputs with an explicit readonlytest-buildobserver, but has seven missing advisor-type diagnostics. Parent's pinned erased-only companion independently gives strict7->0/identical emitted JS; same-author ordinal13 owns its exact child dependency and source gate before a new Chrome grant. No browser/native resources authorized. Source readiness plan09cb imported report-only58a; implementation/rights/profile/SQL/resource decisions remain separate.
+
 ## 2026-11-01 portal rebuild review continuation
 
 The reviewed V3/History clientApp candidate is nowintegrated at e6b0bd7e, with exact42App/W4targets, W2/37f41/native87/SQL62 preserved. Parent228/198/256/500/strong/types/UI/Root1256+18existing skips/Expo and clean2232/15 matchingreviewerbuild pass. Clientdefault isV3; Guidance isstillunmounted. R6 gives scopedsource/42syntheticgroupsPASS butfullAppacceptance incomplete. Currentf163generationnegative nowpasses1/1; G5producer-returnqualification remains. TargetedR7 returned05:46:10Z; positive nativeB2/matchedlate/D states pass, B3/B4/frame-CremainOPEN, no currentChromelease; no native/Auth/DB/Storage/finance/R9grant. Source d0f ismodel-frozenonly, W1readinessplan isreport-only. [TASKS](portal-rebuild/TASKS.json), [currentstatus](portal-rebuild/CURRENT_STATUS.md) and [Appproof](portal-rebuild/research/COORDINATOR_APP_R6_INTEGRATION.md) retain currentproof/gaps. No deployment/fullgoalacceptance.
