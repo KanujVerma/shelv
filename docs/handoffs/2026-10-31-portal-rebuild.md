@@ -1,6 +1,6 @@
 # Portal rebuild continuation, 31 October 2026
 
-Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. Last verified local code-tree checkpoint:503d4e645010319817ed95e2ba00846b743f0401, preserved unchanged by local merge8e747f41edc0d44a09b7939c216695d90d79a0a9. Remote PR211 is a69a79fbd845677bc66c66977d63c458bc0fea67, an isolated three-file CI fix above153d; newer V3 integration remains local pending ordinary package portability correction. Re-read Git HEAD/status before continuing.
+Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. Last verified local code checkpoint:5303f2ee8a4b964575a3a6d1e1aed59e39745815, current V3 production875 plus exactfed90 helper packaging. Ordinary serialportal1770/1770 and clean applicationbuild pass. Remote a69 is the isolated CIfix above153d; publishing the verified V3 successor follows this metadata checkpoint. Re-read Git HEAD/status before continuing.
 
 ## Goal
 
@@ -41,7 +41,7 @@ R9 remains running and coordinator-owned after R4 RETURN23:32:16.392Z. No native
 
 ## Next step
 
-Verify current Git/PR211 a69 exact-head CI, then receive the source-only W3 package entry/cwd correction. The ordinary local portal run is1726pass/15fail/0skip:11missing context-entry methods,1cwd-relative tsconfig preassertion failure,3unexplained timeouts. Root npm test1256pass/18old skips and both portal types pass. Do not push the preserved local V3 commits until their package check passes. Then process the next child result against CURRENT_STATUS/TASKS. Keep CB1/P1 priority, source/API ownership and new independent review gates. R9 backup/guarded stop may follow accepted report preservation; future canonical financial work needs a fresh fixture with the reviewed migrations/source, not an R9 patch.
+Verify current Git/PR211 successor exact-head CI. V3 currentserialpackage1770/1770, sourcepackaging5 and clean5303 applicationbuild pass; prior1726/15parallel and unresolved timeout-cause qualification remain. Root1256/18oldskip and portaltypes pass. Priority W1M65 CB5/P1+CB6/P2 allocation20261101012836, while SourceS1-S4 remain unimplemented after cleanphase9stop. W2G6author68d3 needsNEW R4; W0CH3sourceadapter is active. Process exact next results against TASKS, no App/guidance/financial/source-lifecycle admission. Keep CB1/P1 priority, source/API ownership and new independent review gates. R9 backup/guarded stop may follow accepted report preservation; future canonical financial work needs a fresh fixture with the reviewed migrations/source, not an R9 patch.
 
 ## Open questions
 

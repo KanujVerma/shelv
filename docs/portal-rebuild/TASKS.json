@@ -4737,14 +4737,15 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "frozenTarget": "d6e3c136523ea21d4cf32059df2a92addb2275e0",
       "writeSet": [
         "docs/portal-rebuild/research/W7_COMMERCE_BACKEND_R2.md"
       ],
       "resourceBoundary": "Source+own marked Unix-only PG; CB1-CB4/full original controls; no Parent/R9/foreignPG/realAuth/Chrome",
       "baseCommit": "9d857346",
-      "deliveryCommit": null
+      "deliveryCommit": "8f4f92c41eb23a0ce3af8d75c0fdcf2886c772ba",
+      "verdict": "SPEC/quality FAIL newCB5/P1 expired legacy service-head wait commits financial/return records; CB6/P2 privileged partial purchase against frozen quantity accepted. Original8/22/39/110/strict pass; ownPGstopped. No integration."
     },
     {
       "role": "W7 private Source proposal R1",
@@ -4763,14 +4764,15 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "frozenTarget": "1279d7a676f0a78ac00f8ad263672117ecb99fbd",
       "writeSet": [
         "docs/portal-rebuild/research/W7_PRIVATE_SOURCE_CONTRACTS_R1.md"
       ],
       "resourceBoundary": "SOURCE PROPOSAL only,6files; not role/disclosure/profile pin or SourcePhase2; no resources",
       "baseCommit": "9d857346",
-      "deliveryCommit": null
+      "deliveryCommit": "6b661e9c7cd25e99971bc95c46ae9353ec6140bd",
+      "verdict": "ProposalSPEC/quality FAIL S1-S4/P2 cleanup proof, immutable metadata, invalid calendar, uninhabitable policy command type; independent40pass, runtime7intendedfail/typeprobe fails; original17blocked by excluded actualCommerceValues input; no activation"
     }
   ],
   "parentVerification": {
@@ -4895,8 +4897,10 @@
       "early": "1c213b4764d5bd32e838e55ae73b9ca6d6273c6d",
       "dependency": "14c91e0527c10b825b7ff0e99d5227e9c8533ed8",
       "checks": "146/32/83/45/80 + G4six, strict/sourcebundles; G5 original4/5 retained qualified; f163 dependency still fails, no App/browser acceptance",
-      "review": "R3eba FAIL newG6/P3, source-only author correction allocated; no integration",
-      "g5Disposition": "Independent R3 verifies exact producer-return trace; original4/5 retained qualified, definitive before-return controls pass"
+      "review": "NEW independentR4 still required; not Parent-integrated",
+      "g5Disposition": "Independent R3 verifies exact producer-return trace; original4/5 retained qualified, definitive before-return controls pass",
+      "g6AuthorFix": "68d3f6ae8fe59401be7fbc138597c06d876ddf08",
+      "g6Checks": "172/32/83/R3independent32/45/80/G4six, originalG6fourGREEN; G5original4/5 remainsqualified; servergenerationdependency remains"
     },
     "app": {
       "source": "51dda75178390eee79e0a996b2fe3885a9de7b46",
@@ -4912,13 +4916,16 @@
       "bytes": 92223,
       "sha256": "7e724f48fd6a19212fd73fe81aad5e15a2c4a1af1b2d4ce9a0408f2d48dcc0f2",
       "checks": "author22native(original8+14), retained39,pure110,17canonical native-equivalent only, strict0; PGSTOPPED authorreported; no backend acceptance",
-      "review": "new composed independent R2 allocated"
+      "review": "R2 8f4f92c FAIL newCB5/P1 andCB6/P2; M65sameauthor active after Sourcephase9cleanstop",
+      "m65Allocation": "20261101012836_portal_rebuild_commerce_authority_consistency_v1.sql",
+      "allocationBoundary": "ActualCLIreturnedwhileEMPTY before authoredSQL, installed2.121; no acceptance inferred"
     },
     "sourceProposal": {
       "source": "1279d7a676f0a78ac00f8ad263672117ecb99fbd",
       "scope": "6newfiles only,15proposed8READ7WRITE,17pure/strict0; actual reader/upload/grants/retention/deletion unimplemented",
       "pin": "Frozen review input only; no activation/cap/profile/role/disclosure decision or Phase2 grant",
-      "review": "new independent SourceR1 allocated"
+      "review": "R1 6b661e9c FAIL S1-S4; Sourcefixphase9 terminated before any edit, no tests/newcommit/resources; currentSource6 remains1279 exact",
+      "priority": "CB5/P1 Commerce M65 takes sole W1 writer; Sourcefix resumes later separately"
     },
     "v3Package": {
       "input": "fed90f029b2849426f52263c74c589b1e86643d9",
@@ -4933,7 +4940,14 @@
       "resourceScope": "Coordinator-owned finite synthetic Chrome/package tests only; no child browser grants and no R9/Auth/DB fixture access",
       "sourceEvidence": ".local-artifacts/portal-rebuild/v3-package-replay/",
       "childBrowserGrants": 0,
-      "packageProcess": "terminal exit0; standard test teardown; no global process inventory claim"
+      "packageProcess": "terminal exit0; standard test teardown; no global process inventory claim",
+      "cleanApplicationBuild": {
+        "sourceHead": "5303f2ee8a4b964575a3a6d1e1aed59e39745815",
+        "sourceDirty": false,
+        "exit": 0,
+        "gatewayIncluded": false,
+        "artifact": ".local-artifacts/portal-rebuild/application/application-provenance.json"
+      }
     }
   }
 }
