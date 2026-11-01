@@ -2,7 +2,7 @@
   "updatedOn": "2026-11-01",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
-  "allocatedWorkers": 4,
+  "allocatedWorkers": 5,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -6682,7 +6682,8 @@
       "authoritativeTaskIdForwarded": true,
       "briefSHA256": "6c52dbcb1a96fc80f0762b53b77bb10325e194611fa42ace418b3998e44ecd50",
       "reportCommit": "59aecd84dfa7d802ade605e7d535d002db73df45",
-      "verdict": "SPEC/qualityFAIL SAC4/P2: cursor1 before least valid canonical UUID has no representable earlier identity. SAC3/pin verified; tracked64/overlap87/strict0 before finding, independent29344agreements; no activation."
+      "verdict": "SPEC/qualityFAIL SAC4/P2: cursor1 before least valid canonical UUID has no representable earlier identity. SAC3/pin verified; tracked64/overlap87/strict0 before finding, independent29344agreements; no activation.",
+      "parentReportImport": "7812766b601c41f358bdc23104f33f5e81a2aa17"
     },
     {
       "role": "W0 finite actual A07 synthetic Chrome execution",
@@ -6707,6 +6708,104 @@
       "runtimeOutcome": "ONE actual invocation exit1 first entry-direct exact-text harness mismatch;0complete9unrun; RETURN2026-11-01T16:05:57Z, all11 observed PID/start identities absent, observer/cleanup0; no production defect established.",
       "providerOutcome": "Provider turn failed while saved-artifact report-only finalization; raw activity4147 has generic error, no accepted terminal report.",
       "grantState": "RETURNED-consumed"
+    },
+    {
+      "role": "W0 returned-A07 report-only provider-failure recovery",
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw0-a07-returned-attempt-report-recovery-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:19",
+      "model": "gpt-6.1-sol",
+      "providerInstanceId": "codex",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "status": "running",
+      "ownedPaths": [
+        "docs/portal-rebuild/research/W0_ADVISOR_GUIDANCE_COMPOSITION.md"
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false,
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
+      "backingOrdinal": 19,
+      "scope": "Post-RETURN saved artifacts/report/filesystem only; no selector fix, browser or other resource; reconcile last partial command then report-only commit."
+    },
+    {
+      "role": "W2 OP1 source correction provider-failure recovery",
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw2-owner-policy-op1-source-recovery-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-owner-policy-connected-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-owner-policy-connected-source-20261101-r1:ordinal:3",
+      "model": "gpt-6.1-sol",
+      "providerInstanceId": "codex",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "status": "running",
+      "ownedPaths": [
+        "apps/portal/src/features/advisor/permissions/controller.ts",
+        "apps/portal/src/features/advisor/permissions/OwnerPolicy.tsx",
+        "apps/portal/tests/rebuild-owner-policy-refresh.test.mjs",
+        "docs/portal-rebuild/research/W2_OWNER_POLICY_UI.md"
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false,
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-cbaf938a",
+      "backingOrdinal": 3,
+      "scope": "Generic provider-failed ordinal2 left only untracked new test; reconcile/preserve it then continue original bounded OP1 controller correction, no source authority expansion or resources."
+    },
+    {
+      "role": "W6 SAC4 canonical UUID capacity source correction",
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw6-source-account-canonical-id-capacity-sac4-source-fix-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w6-source-account-consent-contracts-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w6-source-account-consent-contracts-20261101-r1:ordinal:6",
+      "model": "gpt-6.1-sol",
+      "providerInstanceId": "codex",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "status": "running",
+      "ownedPaths": [
+        "src/contracts/PortalSourceAccountValidation.ts",
+        "tests/portal-source-account-canonical-bounds.test.ts",
+        "docs/portal-rebuild/research/W6_SOURCE_ACCOUNT_CONTRACTS.md"
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false,
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-5bfd5242",
+      "backingOrdinal": 6,
+      "baseCommit": "45fdf915e38bfef5159c28e49efd36896d26f3ed",
+      "scope": "Private canonical-ID domain page-capacity correction, same7exports/Types/Values/Mapping/caps/oldtests; original R4four, adjacent endpoint/transitions and actual finite reference; no resource/modelpin."
+    },
+    {
+      "role": "W1 static final Account export actual producer SOURCE",
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-final-export-source-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-final-export-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w1-final-export-source-20261101-r1:ordinal:1",
+      "model": "gpt-6.1-sol",
+      "providerInstanceId": "codex",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "status": "running",
+      "ownedPaths": [
+        "src/contracts/PortalFinalExport*.ts",
+        "supabase/functions/concierge-final-export/",
+        "tests/portal-final-export*.test.ts",
+        "supabase/tests/portal_rebuild_final_export_v1.test.sql",
+        "supabase/migrations/20261101173223_portal_rebuild_final_export_v1.sql",
+        "docs/portal-rebuild/research/W1_FINAL_EXPORT_SOURCE.md"
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false,
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b08e21c9",
+      "branch": "t3/static-final-export-source",
+      "baseCommit": "7812766b601c41f358bdc23104f33f5e81a2aa17",
+      "scope": "Actual final-export Root producer/handler/serializer/SQL SOURCE, no mere model-completion claim; source CLI filename-only allocation authorized, SQL/native execution ungranted; own-client static public finalplan/instructions after30days, no ordinarycare extension.",
+      "briefFile": ".local-artifacts/portal-rebuild/review-allocations-20261101/w1-final-export-source-brief.txt",
+      "briefSHA256": "d06cd0fecbb1533ecc63aea98437b9cf206fe08bc18791a5fba9550e5dda7eed"
     }
   ],
   "parentVerification": {
@@ -8665,5 +8764,16 @@
     "limit": "ONE invocation;10serialcontexts18captures; first material fault STOP; exact own observed PID/start final inventory+preview then prompt explicit UTC RETURN before hashes/report/Git; ZERO resource calls after RETURN; synthetic HTTP only.",
     "returnedAt": "2026-11-01T16:05:57Z",
     "outcome": "First-case exact-text harness mismatch, no retry;0completed9unrun;11observedidentities absent/observer0/cleanup0/previewnoTab; sampledonly/old137cleanupunknown; later provider failure in report finalization."
+  },
+  "finalExportSourceAllocation": {
+    "userDecision": "DECISION_ADDENDA.md#static-final-export-after-the-read-only-window-1-november-2026",
+    "sourceBase": "7812766b601c41f358bdc23104f33f5e81a2aa17",
+    "canonicalMigrations": 62,
+    "soleNewMigration": "supabase/migrations/20261101173223_portal_rebuild_final_export_v1.sql",
+    "allocationEvidence": "Actual installedCLI2.121 migrationnew returned filename and EMPTY before SQLauthoring; no DB call",
+    "api": "Provisional two finite READ seam; exact early API/basis reconciliation before consumers, no publicDTO or authority selfpin",
+    "compilerInput": "Read-only Parent TS6.0.3 and realTSlibs/Node+undici and React ifactualgraphneeds; own depsabsent, noinstall/shim/flags/Rootwrite; closurehashesrequired",
+    "nativeGrant": false,
+    "runtimeActivation": false
   }
 }

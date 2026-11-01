@@ -120,3 +120,9 @@ The all26sourceaudit proves A08 is currentlyunavailable despitecanonicalPlanread
 ## 1 November: exact SAC3 reconciliation and bounded A07 execution
 
 Account correction0096 and separate fixture45f enter fresh report-only W7 R4; owner-policy1a7f enters fresh report-only W7 R1. No implementation import or mount is admitted. W0 ordinal18 alone owns the frozen synthetic Chrome phase under the exact grant in TASKS.json; coordinator and reviewers acquire no browser/native resources. Four total at allocation, no nesting. The [fixture pin](research/COORDINATOR_SAC3_FIXTURE_PIN.md) and task ledger preserve inputs, raw results and distinct evidence levels.
+
+## 1 November: static final export after30days and source recovery ownership
+
+The founder decision is canonical in [the addendum](DECISION_ADDENDA.md#static-final-export-after-the-read-only-window-1-november-2026). New W1 b08e21c9 alone owns new PortalFinalExport modules, concierge-final-export server subtree, matching tests/report and actual CLI-allocated20261101173223 migration. Source producer/serializer implementation is authorized; no shared transport/App edit, database execution, Source/consent/financial import or resource grant. Early exact basis/API must precede consumers. Existing62 migrations remain protected.
+
+W2 ordinal3 continues OP1 source correction after reconciling the untracked test left by a generic provider failure. W6 ordinal6 owns SAC4 canonical-domain positional bounds without changing public model or old tests. W0 ordinal19 is saved-evidence/report-only after RETURN; no browser retry or selector change. Five total including coordinator at allocation, all Sol/xhigh/default, no nesting. Exact returned task IDs use the current dd730894 tool prefix and are retained independently of backing threads/runs in TASKS.json.

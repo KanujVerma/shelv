@@ -1,3 +1,7 @@
+## 2026-11-01 static final export implementation begins
+
+[Approved static export after30days](portal-rebuild/DECISION_ADDENDA.md#static-final-export-after-the-read-only-window-1-november-2026) now has W1 source-producer/serializer ownership in b08e21c9, actual sole migration20261101173223 allocated empty by CLI, current62 preserved. No DB/runtime grant or sharedconsumer activation; early trusted finalbasis/API pending. W2 OP1 and W6 SAC4 source corrections plus W0 returned-attempt report recovery are separately live. Five including coordinator verified at allocation, Sol/xhigh/default. Exact handles/ownership/limits in TASKS.json; full goal remains active.
+
 ## 2026-11-01 final export availability selected
 
 Kanuj selected continued static final-plan/instruction download from Account after30days. [Canonical addendum](portal-rebuild/DECISION_ADDENDA.md#static-final-export-after-the-read-only-window-1-november-2026) settles the prior question; interactive care/history and raw-source rights are unchanged. Actual trusted export basis/producer/download still pending. A07 custody returned16:05:57Z after first harness exact-text failure; no completed browser case/production defect claim, no active grant. Later A07 report and OP1 correction provider turns ended with generic failure; saved state must be reconciled before continuing. AccountR4 finds SAC4 intrinsic UUID-domain capacity; models remain unactivated.
