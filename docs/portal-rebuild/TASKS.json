@@ -4958,17 +4958,21 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "role": "W3 CI historical-baseline portability and unchanged budget diagnosis",
       "frozenTarget": "65363815e9444fc070721bc2efb79240f13b0690",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
       "resourceBoundary": "Source-only exact historical fixtures plus finite unchanged2550 case diagnostic; no production change/timeout retune; no ParentR9/Auth/DB",
       "chromeGrant": {
         "grantId": "coordinator-w3-ci-budget-diagnostic-synthetic-chrome-65363815-20261101",
-        "status": "active",
+        "status": "returned",
         "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
-        "scope": "Sole finite original2550case+oneunchangedrepeat/adjacent incomplete-manifest control; returnbeforehashreportGit/no resourcecallsafter"
-      }
+        "scope": "Sole finite original2550case+oneunchangedrepeat/adjacent incomplete-manifest control; returnbeforehashreportGit/no resourcecallsafter",
+        "returnedAt": "2026-11-01T02:17:25Z"
+      },
+      "deliveryCommit": "653839d24374ea9a7f432ebc74cc77470568e26f",
+      "earlyCommit": "11dd78ceabbcc3010ffd1b413d6d034fecbb4c1c",
+      "verdict": "Historicalinputhermeticfix6+5pass; originalbudgettwoMac1/1non-sensitive, observedloading0with7/26manifestfinished; no CIcause/fixclaimed"
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-backend-review-20261101-r3",
@@ -5047,10 +5051,19 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "role": "W0 CH4 history-update feature lifetime source correction",
       "frozenTarget": "6cde9904d53d1d2c9f082dc16f10848d3790e94f",
-      "resourceBoundary": "Source-only App host lifecycle/tests/report, keepW4isCurrentwitnessunchanged/canonicalcallbackchecks; no Chrome/resource/feature/sharedAPI changes"
+      "resourceBoundary": "Source-only App host lifecycle/tests/report, keepW4isCurrentwitnessunchanged/canonicalcallbackchecks; no Chrome/resource/feature/sharedAPI changes",
+      "deliveryCommit": "4f2a9c01bef299c8edef7ac40fd1282339e65718",
+      "testedSourceHead": "a23d6db5fce945b919bc3f5de8ae0e97c3023e75",
+      "verification": "Source186/198/256/25/independent18/strict/UI/build2231x15. Browserold0/3current3/3adjacent10; late-route2timeouts wrongliteralSource/actualDOMunestablished, independentR4required",
+      "chromeGrant": {
+        "grantId": "coordinator-w0-history-update-ch4-synthetic-chrome-a23d6db5-20261101",
+        "status": "returned",
+        "returnedAt": "2026-11-01T02:44:30.491Z",
+        "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f"
+      }
     }
   ],
   "parentVerification": {
@@ -5181,12 +5194,13 @@
       "g6Checks": "172/32/83/R3independent32/45/80/G4six, originalG6fourGREEN; G5original4/5 remainsqualified; servergenerationdependency remains"
     },
     "app": {
-      "source": "6cde9904d53d1d2c9f082dc16f10848d3790e94f",
+      "source": "4f2a9c01bef299c8edef7ac40fd1282339e65718",
       "delivery": "9a4f99c32f6fb549a4423889efede4e3af2e884b",
       "checks": "162App/198+25feature/256transport/independent10, strong types and clean2231/15; CH1 original3/3twice/CH2zero; author two old browser-target differences excluded in new review in favor of current Parent875/fed90 inputs",
-      "review": "R3ad0CH1-CH3addressed, newCH4/P2C05lifetime/ack/uncertaintymountfailure; W0SourceCH4active",
+      "review": "CH4authorboundedgreen/lateDOMrouteunestablished; newindependentR4source-firstallocated, noresourcesyet",
       "targetExceptions": "New R2 exact Parent875/fed90 resolves prior two old browser dependencies; App-owned client-state remains e4cb",
-      "chrome": "RETURNED02:03:54.356Z, no postreturnresourcecalls"
+      "chrome": "AuthorCH4returned02:44:30.491Z; Roottelemetrysmokereturned03:02:15.602256Z",
+      "production": "a23d6db5fce945b919bc3f5de8ae0e97c3023e75"
     },
     "m64": {
       "source": "d6e3c136523ea21d4cf32059df2a92addb2275e0",
@@ -5203,10 +5217,10 @@
       "custody": "AuthorownPGSTOPPED"
     },
     "sourceProposal": {
-      "source": "1279d7a676f0a78ac00f8ad263672117ecb99fbd",
+      "source": "53926ef9863491ad0850f1b333947f20ab7ad516",
       "scope": "6newfiles only,15proposed8READ7WRITE,17pure/strict0; actual reader/upload/grants/retention/deletion unimplemented",
-      "pin": "Frozen review input only; no activation/cap/profile/role/disclosure decision or Phase2 grant",
-      "review": "SourceS1-S4correctionresumed asordinal11 afterM65frozen/stopped; no Phase2/SQL/role/disclosure/capactivation",
+      "pin": "NO SourceAPI/Role/profile/disclosure/cap/backendactivation",
+      "review": "NEWSourceR2proposalallocated;83registered/strict0author, rawunsafejob-only16/17&39/40preserved, minimalmetadataclosureexplicit",
       "priority": "CB5/P1 Commerce M65 takes sole W1 writer; Sourcefix resumes later separately"
     },
     "v3Package": {
@@ -5249,6 +5263,43 @@
     "owner": "new W3 Source+soleChrome diagnostic followup",
     "sourceResponse": "Exact immutable in-tree baseline fixtures+SHAmanifest required, no skips/current fallback/fetch foreign refs",
     "budgetResponse": "Actualunchangedcase/readonlydiagnostics only; no timeout/assertion/timing/fixture change without concretecause+pin",
-    "evidence": ".local-artifacts/portal-rebuild/ci-125222/"
+    "evidence": ".local-artifacts/portal-rebuild/ci-125222/",
+    "baselineCorrection": {
+      "original": "11dd78ceabbcc3010ffd1b413d6d034fecbb4c1c",
+      "report": "653839d24374ea9a7f432ebc74cc77470568e26f",
+      "imports": [
+        "c4932813",
+        "2081c315"
+      ],
+      "parentPure": 11,
+      "historicalFixtures": 4,
+      "bytes": 58312,
+      "allOriginalBytesEqual": true
+    },
+    "diagnostics": {
+      "original": "f36febf092c971a6ea7b36f8afe7f9dbde39ed09",
+      "report": "4a883512141ed747d2d04b10fece49064d4daafd",
+      "imports": [
+        "e7f09de4",
+        "b6333e67"
+      ],
+      "parentPure": 20,
+      "actualUnchangedBrowserCase": {
+        "pass": 1,
+        "fail": 0,
+        "skip": 0,
+        "caseMs": 7893.473417,
+        "sourceInputs": 2199,
+        "preparedOutputs": 10,
+        "servedOutputs": 6,
+        "events": 400,
+        "dropped": 0,
+        "captureErrors": 0,
+        "returnedAt": "2026-11-01T03:02:15.602256Z",
+        "evidence": ".local-artifacts/portal-rebuild/ci-125222/parent-smoke/"
+      },
+      "upload": "ONLYrunner.temp/portal-guidance-synthetic,7days,pinnedactionea165f8, bounded4files<=2MB",
+      "budgetCause": "UNPROVEN; no test assertions/timing/readiness/timeout changes; not fixed by localpass"
+    }
   }
 }

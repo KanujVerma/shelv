@@ -19,7 +19,7 @@ Kanuj approved expanding disjoint T3-owned work beyond the initial conservative 
 | W0 canonical navigation | Candidate9a has canonical committed-readiness gate and per-entry opener; independent CH1/CH2 addressed, source-only CH3 test adapter compatibility remains | No Window/scheduler workaround or second router. New composed source/browser review required |
 | W2 guidance fixes | R4e958 independently addressesG6 but findsG7/P3 innerdenial callback cancelling newer B publication; source correction active. G5original4/5 remains qualified, f163 separate | No session-current override/new authority; source-bearing/opaque legacy evidence blocked. f163 generation boundary remains separate |
 
-**SOLE synthetic Chrome is allocated to W3 CI diagnostic in1026 at653.** App/history R3returned02:03:54.356Z withCH4/P2; no laterresourcecalls. Nativegenuine grantnone. M65authorPGstopped; backendR3 onlyitsOWNmarkedUnixPG. Rootpackage1770/1770 remains local evidence, not newCIacceptance. R9 remains coordinator-owned after23:32:16.392Z return; native62/87 source is preserved. TASKS owns exact grant/audit/tested-source records.
+**No local Chrome lease is active. W3 CI diagnostic returned02:17:25Z, CH4authorreturned02:44:30.491Z and Roottelemetrysmokereturned03:02:15.602256Z.** App/history R3returned02:03:54.356Z withCH4/P2; no laterresourcecalls. Nativegenuine grantnone. M65authorPGstopped; backendR3 onlyitsOWNmarkedUnixPG. Rootpackage1770/1770 remains local evidence, not newCIacceptance. R9 remains coordinator-owned after23:32:16.392Z return; native62/87 source is preserved. TASKS owns exact grant/audit/tested-source records.
 
 ## accepted source and exercised core
 
