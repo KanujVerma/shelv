@@ -112,8 +112,8 @@ test('cross-page forks and closed cycles cannot borrow a complete label from ind
   assert.deepEqual(mapSourceAccountResult(command,first,{clientId:client}),first);
   assert.deepEqual(mapSourceAccountResult(nextCommand,second,{clientId:client}),second);
   assert.throws(()=>collectSourceAccountPages([{command,page:first},{command:nextCommand,page:second}],{clientId:client}),/^Error: unavailable$/);
-  const a={...page([{...row(10,11),effective:'superseded'}]),total:2,nextCursor:1};
-  const b={...page([{...row(11,10),effective:'superseded'}]),cursor:1,total:2};
+  const a={...page([{...row(10,11),effective:'superseded'}]),total:3,nextCursor:1};
+  const b={...page([{...row(11,10),effective:'superseded'},row(20,11)]),cursor:1,total:3};
   assert.deepEqual(mapSourceAccountResult(command,a,{clientId:client}),a);
   assert.deepEqual(mapSourceAccountResult({...command,snapshot,cursor:1},b,{clientId:client}),b);
   assert.throws(()=>collectSourceAccountPages([{command,page:a},{command:{...command,snapshot,cursor:1},page:b}],{clientId:client}),/^Error: unavailable$/);
