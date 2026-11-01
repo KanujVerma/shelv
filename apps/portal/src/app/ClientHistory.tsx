@@ -1,6 +1,6 @@
 import {useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore} from 'react';
 import type {PortalRoute} from '../navigation/routes.ts';
-import {RouteLink, usePortalNavigation} from '../navigation/react.tsx';
+import {RouteLink, usePortalNavigation,useCompletePortalNavigator} from '../navigation/react.tsx';
 import type {PlanNavigationPort, PlanSessionBoundary} from '../features/plan/types.ts';
 import type {HistoryController, ReportIntent} from '../features/history/types.ts';
 import {ClientHistory} from '../features/history/History.tsx';
@@ -21,12 +21,13 @@ export function ClientHistoryContent({connection,boundary,route,win,onSignOut}:{
   connection:ClientComposition; boundary:PlanSessionBoundary; route:PortalRoute; win?:Window; onSignOut():void;
 }) {
   const {navigator}=usePortalNavigation();
+  const completeNavigator=useCompletePortalNavigator();
   const controller=connection.history;
   const state=useSyncExternalStore(controller.subscribe,controller.getSnapshot,controller.getSnapshot);
   const entrySnapshot=()=>JSON.stringify([navigator.getSnapshot(),win?(win.history.state as {shelvNavigation?:{entryId?:unknown}}|null)?.shelvNavigation?.entryId??null:null]);
   const entry=useSyncExternalStore(navigator.subscribe,entrySnapshot,entrySnapshot);
   const filter=state.timeline?.filter??'all';
-  const appScope=useMemo(()=>win?createHistoryRestorationScope({controller,boundary,navigator,win,waitForDocument:route.name==='history-version'}):null,[controller,boundary,navigator,win,entry,filter,route.name]);
+  const appScope=useMemo(()=>win&&completeNavigator?createHistoryRestorationScope({controller,boundary,navigator:completeNavigator,win,waitForDocument:route.name==='history-version'}):null,[controller,boundary,completeNavigator,win,entry,filter,route.name]);
   const currentScope=useRef(appScope);
   if(currentScope.current!==appScope){currentScope.current?.retire();currentScope.current=appScope;}
   useLayoutEffect(()=>appScope?.attach(),[appScope]);

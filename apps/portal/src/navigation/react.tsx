@@ -5,8 +5,21 @@ import type {PortalRoute} from './routes.ts';
 import type {PortalNavigator} from './history.ts';
 import {Button} from '../ui/primitives.tsx';
 import {Icon} from '../ui/icons.tsx';
-const NavigationContext=createContext<PortalNavigator|null>(null);
-export function NavigationProvider({navigator,children}: {navigator: PortalNavigator;children: ReactNode}) {return <NavigationContext.Provider value={navigator}>{children}</NavigationContext.Provider>;}
+/** Shared links/providers need navigation methods, not deferred-restoration rights. */
+export type PortalNavigationCore=Pick<PortalNavigator,'navigate'|'back'|'backDestination'|'getSnapshot'|'subscribe'>;
+const NavigationContext=createContext<PortalNavigationCore|null>(null);
+export function NavigationProvider({navigator,children}: {navigator: PortalNavigationCore;children: ReactNode}) {return <NavigationContext.Provider value={navigator}>{children}</NavigationContext.Provider>;}
+function completeNavigator(value:PortalNavigationCore):value is PortalNavigator {
+  if(!('restoration' in value)||!('dispose' in value)||typeof value.dispose!=='function')return false;
+  const api=value.restoration;
+  return !!api&&typeof api==='object'&&['begin','getSnapshot','read','isCurrent','complete','cancel','capture'].every(name=>typeof Reflect.get(api,name)==='function');
+}
+/** Returns the actual optional extension; never manufactures restoration methods
+ * for a core-only provider. App transport/session authority remains separate. */
+export function useCompletePortalNavigator():PortalNavigator|null {
+  const navigator=useContext(NavigationContext);
+  return navigator&&completeNavigator(navigator)?navigator:null;
+}
 export function usePortalNavigation() {
   const navigator=useContext(NavigationContext);
   if (!navigator) throw new Error('portal navigation requires NavigationProvider');
