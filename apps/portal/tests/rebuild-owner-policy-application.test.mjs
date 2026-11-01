@@ -29,10 +29,11 @@ async function fixture(t,{audience='advisor',path='/advisor/permissions',caps={}
  let login={signedIn:true,ownerId:owner,generation:1,csrf:'app-policy-synthetic',capabilities:{view:true,edit:true,publish:true,confirmPayments:false,...caps},idleExpiresAt:'2026-11-01T20:00:00Z',absoluteExpiresAt:'2026-11-02T00:00:00Z'};
  const calls=[],receipts=new Map();
  const runtime=api.createApplicationSession({audience,now:()=>Date.parse('2026-11-01T12:00:00Z'),locks:{request:async(_n,_o,run)=>run()},fetcher:async(url,init)=>{
-  assert.ok([`/api/${audience}/session`,`/api/${audience}/plans`].includes(url),'closed finite HTTP');
+  assert.ok([`/api/${audience}/session`,`/api/${audience}/plans`,`/api/${audience}/logout`].includes(url),'closed finite HTTP');
   assert.equal(init.credentials,'same-origin');assert.equal(init.cache,'no-store');assert.equal(init.redirect,'error');
   const headers=new Headers(init.headers);assert.equal(headers.has('authorization'),false);assert.equal(headers.has('apikey'),false);
   if(url.endsWith('/session'))return Response.json(login);
+  if(url.endsWith('/logout'))return Response.json({signedOut:true});
   assert.equal(audience,'advisor');assert.equal(headers.get('x-shelv-csrf'),login.csrf);
   const command=readPlanCommand(JSON.parse(init.body));assert.equal(buildPlanRpc(command).name,'concierge_plan_command_v1');calls.push({command,wire:init.body,signal:init.signal});
   const override=fault;fault=null;let response;
@@ -89,13 +90,14 @@ test('route-mounted policy preserves local edit on refresh and requires separate
 test('newer revision keeps original local edit in comparison until Reapply and a separate confirmation',async t=>{
  const f=await fixture(t),c=await read(f);c.edit(false);f.policy({...initial,revision:8});await c.refresh();assert.equal(c.getSnapshot().base.revision,7);assert.equal(c.getSnapshot().desired,false);assert.match(f.html(),/your starting policy:.*revision 7/);assert.match(f.html(),/current policy:.*revision 8/);assert.equal(c.requestSave(),null);c.reapply();assert.equal(c.getSnapshot().base.revision,8);assert.equal(c.getSnapshot().confirmation,null);assert.equal(f.settings().length,0);const token=c.requestSave();assert.ok(token);assert.equal(f.settings().length,0);await c.confirmSave(token);assert.equal(f.settings()[0].command.expectedPolicyRevision,8);
 });
-for(const loss of ['route','same-path-entry','view','generation','session','role'])for(const kind of ['read','write'])test('held '+kind+' loses actual '+loss+' ownership before its result',async t=>{
+for(const loss of ['route','same-path-entry','view','generation','owner','session','role'])for(const kind of ['read','write'])test('held '+kind+' loses actual '+loss+' ownership before its result',async t=>{
  const f=await fixture(t),c=await read(f),held=f.hold();const work=kind==='read'?c.refresh():confirm(c);await held.entered.promise;
  if(loss==='route')f.navigator.navigate({name:'advisor-plans'});
  if(loss==='same-path-entry')f.navigator.navigate({name:'advisor-permissions'});
  if(loss==='view'){f.runtime.cookie._view.capabilities.view=false;f.runtime.cookie._emit();}
  if(loss==='generation'){f.login({generation:2});await f.runtime.restore();}
- if(loss==='session')f.runtime.cookie._end();
+ if(loss==='owner'){f.login({ownerId:other,csrf:'app-other-owner'});await f.runtime.restore();}
+ if(loss==='session')await f.runtime.signOut();
  if(loss==='role')f.runtime.cookie.identity.role='client';
  assert.equal(c.getSnapshot().current,null);assert.equal(c.getSnapshot().confirmation,null);assert.notEqual(f.scope.getSnapshot().controller,c);
  held.release.resolve();await work;assert.equal(c.getSnapshot().current,null);assert.equal(c.getSnapshot().pending,null);assert.equal(f.settings().length,kind==='write'?1:0);assert.doesNotMatch(f.html(),/policy saved/);
