@@ -5695,7 +5695,16 @@
       "context": "FULL original95330chars+originalA07brief7064+priorW2G1-G8/AppCH1-CH6 summaries; mandatoryfullR1-R6/W2andR1-R7/Appresponses/readhashledger. Sourceprivacy/financialproviderblock untouched.",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-11d1108f",
       "branch": "t3/review-a07-composition",
-      "briefSha256": "4c699fa3c4080b5bb98c80f4592035958fe5e2c995e4b18c3f51afc812e665cc"
+      "briefSha256": "4c699fa3c4080b5bb98c80f4592035958fe5e2c995e4b18c3f51afc812e665cc",
+      "dependencySetup": {
+        "state": "allocated_pending_child_clone",
+        "sourceWorkspace": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030",
+        "destWorkspace": "/Users/kanuj/.t3/worktrees/shelv/t3-11d1108f",
+        "method": "Only APFS cp -cR of two absent ignored node_modules dirs; no install/fullcopy/symlink/Parentwrites",
+        "packageAndLockFiles": "All4byte-identical by Parent comparison",
+        "evidence": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-a07-r1-dependency-allocation.txt",
+        "constraints": "Root480MiB/portal326MiB installed; filesystem2.5GiB available atallocation. Clonefailure requires report, no fullcopy fallback. Resourceboundaryunchanged."
+      }
     }
   ],
   "parentVerification": {
