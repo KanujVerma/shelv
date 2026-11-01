@@ -9,7 +9,8 @@ const fixture=await readPreparedPortalAdmissionFixture(undefined,process.env.SHE
 const dockerHost=process.env.DOCKER_HOST??'unix:///var/run/docker.sock';assert.ok(dockerHost.startsWith('unix:///'));
 const env={...process.env,DOCKER_HOST:dockerHost};delete env.DOCKER_CONTEXT;
 const container='supabase_db_'+fixture.projectId;
-const sql=text=>execFileSync('docker',['exec','-i',container,'psql','-U','postgres','-d','postgres','-X','-At','-v','ON_ERROR_STOP=1','-c',text],{env,encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
+// Match the lifecycle runner's bounded capture for the complete migration catalog.
+const sql=text=>execFileSync('docker',['exec','-i',container,'psql','-U','postgres','-d','postgres','-X','-At','-v','ON_ERROR_STOP=1','-c',text],{env,encoding:'utf8',stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024}).trim();
 const binding=JSON.parse(await readFile(path.join(fixture.directory,'RUNTIME-BINDING.json'),'utf8'));
 const attestation=JSON.parse(sql('select payload from public.shelv_portal_fixture_attestation where singleton'));
 assert.deepEqual(attestation,binding);
