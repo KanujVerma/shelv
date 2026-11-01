@@ -4773,6 +4773,111 @@
       "baseCommit": "9d857346",
       "deliveryCommit": "6b661e9c7cd25e99971bc95c46ae9353ec6140bd",
       "verdict": "ProposalSPEC/quality FAIL S1-S4/P2 cleanup proof, immutable metadata, invalid calendar, uninhabitable policy command type; independent40pass, runtime7intendedfail/typeprobe fails; original17blocked by excluded actualCommerceValues input; no activation"
+    },
+    {
+      "role": "W7 guidance UI source R4",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261101-r4",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261101-r4",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-guidance-ui-source-review-20261101-r4:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "frozenTarget": "68d3f6ae8fe59401be7fbc138597c06d876ddf08",
+      "resourceBoundary": "Report-only/source-only, full R1-R3 and G5 qualification; no resources"
+    },
+    {
+      "role": "W2 G6 instruction completion retirement source fix",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw2-guidance-instruction-completion-retirement-g6-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w2-guidance-ui-source-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w2-guidance-ui-source-20261031-r1:ordinal:5",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "frozenTarget": "68d3f6ae8fe59401be7fbc138597c06d876ddf08",
+      "resourceBoundary": "controller-only runtime, no API fields; 172source/originalG6four passed; freshR4required"
+    },
+    {
+      "role": "W0 CH3 current ESM RPC wrapper source compatibility",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-composed-rpc-esm-wrapper-ch3-source-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:6",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "frozenTarget": "9a4f99c32f6fb549a4423889efede4e3af2e884b",
+      "resourceBoundary": "test wrapper/report only plus exact153d one-file test dependency; no resources"
+    },
+    {
+      "role": "W1 Source S1-S4 proposal corrections",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-private-source-s1-s4-contract-corrections-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-report-guidance-contracts-20261031-r1:ordinal:9",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "frozenTarget": "d6e3c136523ea21d4cf32059df2a92addb2275e0",
+      "resourceBoundary": "Stopped BEFORE edits/tests/resources/newcommit, Sourcefindingsopen; prioritizedCB5/P1"
+    },
+    {
+      "role": "W1 CB5/P1 and CB6/P2 forward Commerce correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-commerce-cb5-cb6-forward-authority-consistency-fix-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-report-guidance-contracts-20261031-r1:ordinal:10",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "frozenTarget": "d6e3c136523ea21d4cf32059df2a92addb2275e0",
+      "resourceBoundary": "Sole actualM65 20261101012836 reportedempty; ownmarkedUnixPG only, no Parent/R9/foreign resources; old64/Source6/SDK frozen"
     }
   ],
   "parentVerification": {
@@ -4897,7 +5002,7 @@
       "early": "1c213b4764d5bd32e838e55ae73b9ca6d6273c6d",
       "dependency": "14c91e0527c10b825b7ff0e99d5227e9c8533ed8",
       "checks": "146/32/83/45/80 + G4six, strict/sourcebundles; G5 original4/5 retained qualified; f163 dependency still fails, no App/browser acceptance",
-      "review": "NEW independentR4 still required; not Parent-integrated",
+      "review": "NEW source R4 allocated;68d3 author-only, no Parent integration",
       "g5Disposition": "Independent R3 verifies exact producer-return trace; original4/5 retained qualified, definitive before-return controls pass",
       "g6AuthorFix": "68d3f6ae8fe59401be7fbc138597c06d876ddf08",
       "g6Checks": "172/32/83/R3independent32/45/80/G4six, originalG6fourGREEN; G5original4/5 remainsqualified; servergenerationdependency remains"
@@ -4949,5 +5054,10 @@
         "artifact": ".local-artifacts/portal-rebuild/application/application-provenance.json"
       }
     }
+  },
+  "currentRemoteCheckpoint": {
+    "head": "1252227491a547f194ff7a14fe30879ab2355a95",
+    "status": "pushed; new exact-head CI pending",
+    "scope": "Published V3module875/fed90 and fullserial1770 pass, sourcedefaultCare2; no App/guidance/Commerce/Source activation"
   }
 }

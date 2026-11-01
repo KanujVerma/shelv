@@ -1,6 +1,6 @@
 # Portal rebuild continuation, 31 October 2026
 
-Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. Last verified local code checkpoint:5303f2ee8a4b964575a3a6d1e1aed59e39745815, current V3 production875 plus exactfed90 helper packaging. Ordinary serialportal1770/1770 and clean applicationbuild pass. Remote a69 is the isolated CIfix above153d; publishing the verified V3 successor follows this metadata checkpoint. Re-read Git HEAD/status before continuing.
+Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. Last verified local code checkpoint:5303f2ee8a4b964575a3a6d1e1aed59e39745815, current V3 production875 plus exactfed90 helper packaging. Ordinary serialportal1770/1770 and clean applicationbuild pass. Remote PR21112522274 now includes verified V3/helper/package source; later local changes are metadata only. No App/guidance/financial/source lifecycle activation follows. Re-read Git HEAD/status before continuing.
 
 ## Goal
 
@@ -46,3 +46,5 @@ Verify current Git/PR211 successor exact-head CI. V3 currentserialpackage1770/17
 ## Open questions
 
 No execution-choice question blocks the authorized work. Remaining raw-source format/decoder/cap/source-range proposals require an explicit contract pin before backend support is claimed. Account/contact/client cancellation/final export, delivery/templates/inbox/retry, finite agent grants, five Maya/private walkthrough stages and all full-goal/CI/human/release gates remain open.
+
+Latest task pipeline: W1 logicalM65 actual20261101012836 after independentR2CB5/P1+CB6/P2; SourceS1-S4fix stopped clean before edits. W0 CH3 wrapper source correction active. W2G6author68d3 is in NEW independentSourceR4. All exact current task/thread/run handles are in TASKS, and full original briefs are preserved privately under .local-artifacts/portal-rebuild/review-allocations-20261101/. No child Chrome/sharednative grant active; Root packageprocess terminal0. R9 still coordinator-owned/running, future guardedbackup/stop before changing native87 closure.
