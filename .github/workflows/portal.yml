@@ -60,7 +60,18 @@ jobs:
 
       - name: Verify package and synthetic client journeys
         working-directory: apps/portal
+        env:
+          W3_BUDGET_DIAGNOSTICS_DIR: ${{ runner.temp }}/portal-guidance-synthetic
         run: npm test
+
+      - name: Retain synthetic guidance diagnostics
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: portal-guidance-synthetic-${{ github.sha }}
+          path: ${{ runner.temp }}/portal-guidance-synthetic
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: Verify approval recovery keyboard journeys
         working-directory: apps/portal
