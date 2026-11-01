@@ -378,3 +378,52 @@ Source target accounting is explicit: R1's47 W3-origin claims consist of46 W3-ow
 Current actual task ID is the parent-supplied thread-send handle above; live thread readback confirms backing **ordinal5**, run **`run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:5`**, started2026-11-01T00:22:40.812Z, parentd632, SAME3cffb79f workspace/branch. Task/thread/run/settings are separate fields in E11/FINAL-HANDOFF.json. Terminalization repeats clean exact-head write:false App build, records all source/output hashes and final claim overrides, and verifies scope/whitespace/clean Git. No Root integration or Parent activation; Parent still has its separately stated Care2 composition.
 
 Next parent step: resolve the two target-test claims and commission a NEW independent R2 with the full original brief/R1, these fixes, preserved counterexamples/qualifications and exact composed target. Any later browser/genuine phase requires a new explicit grant. Source ends without resource wait/polling/nesting, push/PR/merge/deploy/live actions or self-acceptance. Full Root/portal/session/runtime/browser/native/DB/Auth/fixture/credentials/provider/hosted/CI/physical/human/release/full-goal checks remain unrun, as required. No source resource was acquired or borrowed from another lane.
+
+## CH3 source-only test adapter follow-up
+
+New bounded follow-up from verified clean **9a4f99c32f6fb549a4423889efede4e3af2e884b**, SAME3cffb79f. Both initial live T3 catalog/descriptors and thread configuration select codex/Sol/xhigh/default; project/default-subagent plus all8 role pins and explicit Node22.23.0 verify. Existing own locked portal dependencies reused; no Root install/config/timeout/flag/source/API change. No production App/navigation/W3/W4/Root/SQL/Auth/transport edits.
+
+Read FULL177-line independent R2, named CH3 compiler/direct/old-input/control source/logs, command lists/setup qualifications, full R1 and current own responses before the wrapper edit. Supplied report ref `b2a4441a25613c0f20db59784a0b8e7e5267c4` has38 characters and fails Git lookup. Its unique supplied prefix resolves to actual **b2a4441a25613c0f20db597bd84a0b8e7e5267c4**; exact committed report bytes equal the supplied file. This is verified ref correction, not an invented missing target. The first copy command had already made read-only evidence copies before this lookup failure; continuation verifies those copies and all9 project/role TOMLs before dependency admission. No production/test change responds to that setup fault.
+
+**E12 = `.local-artifacts/portal-rebuild/w0-ch3/`**. Copied/hash-bound1136 original files including the exact report. E12/original-r2 preserves the untouched evidence; own same-depth working copies execute against own current source/locked deps only. All1127 R2 index entries and1136 copies rehash unchanged. R1 and own response/context hashes plus every named command/control read are retained in context-read.json, named-read.json and review-copies.json. No foreign execution/write or compiled Parent artifact is used.
+
+### Exact admitted dependency and meaningful reproduction
+
+Only **apps/portal/tests/rebuild-review-guidance-request-rpc.test.mjs** is admitted from **153d11e95b5f2d35f2df4c4a858cdad35b5d9e9f**, exact expected blob **6d5b0b628c710994d08378b1d2dc6137bc5908b8**, in separate attributed target-only commit **4fce26a6**. No other153d source/docs/package/native input is admitted. The entire inner test, its loops/assertions/budgets/source compilers/finite HTTP are byte-exact afterward.
+
+Before wrapper edit, actual current wrapper gives **0/1**, failing esbuild CJS compilation at the current inner test's top-level await before underlying assertions. E12/wrapper-red.log retains complete compiler errors/warnings. Direct current inner test gives **1/1**, E12/direct-current.log. Own byte-identical R2 old-input packaging control gives **1/1**, E12/old-inner-control.log, explicitly counterfactual only. Frozen R2's **161 pass/1 compilation failure of162** remains unchanged in original-r2/app162.log; direct/old-control passes are not relabeled aggregate success or domain/Auth proof.
+
+The owned wrapper now only **await imports the actual inner ESM module**. The inner itself continues to compile its actual real TypeScript provider/handler/runtime chain with its own metadata and own locked packages. No second CJS compilation, old-input substitution, foreign loader, copied Auth/declaration stub, Root dependency install, capability/current/transport/environment/body/assertion change or warning suppression. Its registered original fixed-RPC test executes both Review and Guidance source chains. No additional mirror test is needed: the original wrapper failure/current direct positive and complete unchanged composed aggregate exercise this packaging boundary.
+
+### Current author source checks
+
+| Scope | Actual result | E12 evidence |
+| --- | --- | --- |
+| Current wrapper after ESM adaptation |1/1, original registered test name/assertions | wrapper-green.log |
+| Exact current inner direct positive |1/1, separate invocation | direct-current.log |
+| Old-input wrapper counterfactual |1/1, not a fix/current-input claim | old-inner-control.log |
+| Unchanged composed App/history/canonical/source/SSR/type/build command |162/162,0 failures/skips | app-current.log |
+| Retained feature198 plus accepted875 residual25 |223/223,0 failures/skips;198 and25 remain separate scopes | feature-residual-current.log |
+| Cookie107+deadline104+raw requests45 |256/256,0 failures/skips | transport-current.log |
+| Unchanged independent10 plus corrected adjacent8 |18/18,0 failures/skips; original awaited-signOut source retained | independent-adjacent-current.log |
+| Strong context/residual/original/forbidden helper compiler |Exit0, unchanged strict/noUnchecked/verbatim/skipLibCheck:false | strong-helper-current.log |
+| Frontend/session typechecks and UI guard |All exit0,11 unchanged stylesheets | frontend-current.log, session-types-current.log, ui-current.log |
+| Scope/target/index preservation |1854 other baseline tracked paths unchanged, all production exact9a4; inner exact6d5; original1127 index/1136 copies verify | scope-current.json |
+
+All Node commands select `/Users/kanuj/.nvm/versions/node/v22.23.0/bin` first and source tests use the existing no-network preload. Exact expanded commands are in this turn and source receipts; representative current controls:
+
+```sh
+node --experimental-strip-types --import ./tests/portal-review-no-network.mjs --test --test-concurrency=1 apps/portal/tests/rebuild-app-v3-history-rpc.test.mjs
+node --experimental-strip-types --import ./tests/portal-review-no-network.mjs --test --test-concurrency=1 apps/portal/tests/rebuild-review-guidance-request-rpc.test.mjs
+W4_RESTORATION_RUN=fresh-ch3-app node --experimental-strip-types --import ./tests/portal-review-no-network.mjs --test --test-concurrency=1 apps/portal/tests/rebuild-app-v3-history*.test.mjs apps/portal/tests/rebuild-app-{state,session,callback,continuation,preview-context,ports,render,start,care-composition,care-render}.test.mjs apps/portal/tests/rebuild-care-ports.test.mjs apps/portal/tests/rebuild-foundation-navigation.test.mjs
+```
+
+Source counts overlap; none supplies browser/Auth/permission/persistence acceptance. Original warnings are preserved, including failed outer compilation's top-level-await/import.meta/CJS/Root Expo/require.resolve diagnostics. Current inner self-compilation uses its existing runtime tsconfig; no Root install or flag relaxation follows a compiler warning. R2's other bootstrap/target/parser/preload and first adjacent unawaited-signOut qualifications remain frozen, not new production findings or newly counted successes.
+
+### CH3 terminal source boundary
+
+CH1 and CH2's independent R2 scoped addressed dispositions are preserved. R2 overall remains CHANGES REQUIRED at CH3 until a NEW independent R3 reviews the explicit updated wrapper. No self-acceptance, fresh production behavior finding or Parent recertification is asserted. Parent's newerfed90/653 harnesses, ordinary serial1770 result and Source/package/CI changes are separate context, not imported or rerun. This candidate's two older browser-test bytes remain intentionally unadmitted legacy dependencies as explicitly instructed; the earlier admission question is resolved for this round by keeping them unchanged. No whole-Parent byte-match claim.
+
+Actual current run is live-confirmed **ordinal6**, **run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:6**, started2026-11-01T01:15:35.211Z. Same thread/workspace/branch; this new task's exact parent handle is to be supplied separately and is not inferred/reused from ordinal5. Final live model/descriptor/pin readback, authoritative task handle if supplied, separate dependency/owned commits, source head/dirt, raw logs/hashes and clean2231/15 write:false correspondence with unchanged9a4 production are bound in E12/FINAL-HANDOFF.json.
+
+Source ends terminal after final clean build/audit. No conceptual approval/resource wait, nesting, Chrome/preview/DOM/process/native/Auth/DB/fixture/credential/provider/API/live action, push/PR/merge/deploy or Parent activation. All production, f163 generation boundary/App client-state/canonical runtime/W4/c9/Root/shared UI remain exact baseline. Actual DOM/StrictMode/browser/genuine/CI/release/full-goal acceptance and full Root/portal/session/runtime/emitting package/native/DB/physical/human checks remain UNRUN. Parent next: NEW independent R3 with complete R1/R2/response/current wrapper, then any separately authorized later composition/resource work.
