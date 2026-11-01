@@ -5862,7 +5862,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3d3837fc",
       "branch": "t3/w7-a07-composition-r2-review",
       "baseCommit": "6a10f5be9412db75cc815f2b35e25ba7e737ecf9",
@@ -5880,7 +5880,12 @@
       "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w7-a07-composition-review-r2-brief.txt",
       "briefChars": 114817,
       "briefSha256": "c454c768a0a1bff63d063031d9dbb19ff7361c5a757b00d0b4a9e417798b8bbc",
-      "context": "Fulloriginal+A07brief, fullR1/authorresponses/allG/CHrequiredreads; extra falseB uncertain-noteobserver qualification; actualSourceOld6/currentC1/retainedfences/build/protectedtypes"
+      "context": "Fulloriginal+A07brief, fullR1/authorresponses/allG/CHrequiredreads; extra falseB uncertain-noteobserver qualification; actualSourceOld6/currentC1/retainedfences/build/protectedtypes",
+      "terminalCommit": "ded6badea17331be170210e577b3abae05d51a11",
+      "integratedReportCommit": "797628f4",
+      "verdict": "SPEC/qualityCHANGESREQUIRED A07C2/P3: actualpublicsubscriberacceptednewerunsentedit overwrittenonnextrestorationread; source-only/no ordinaryReactclaim",
+      "reportSha256": "8b40e927fed5fd1c4745c4a152ef41443c708e7aa924ec3262f2c91b24d13064",
+      "verificationResult": "OriginalC1sixold0c4/2,current6/6. New2cases1positive/1fail twice,zero writes. Broader27/32/228/500/strict/buildstopped/unrun afterfinding. 17candidate/1942protected/41deps exact,noresources"
     },
     {
       "role": "W0 CI6a current App browser fixture source alignment",
@@ -5909,6 +5914,34 @@
       "briefChars": 104956,
       "requiredProof": "Actualold12CIunexpectedread3RED; closedcoherentcurrentV3HTTPDTOviaRootmappers/sourcechecks/assertionwireadaptationaudit; finitebrowserplan/Sourcegatebeforefreshsolegrant.",
       "briefSha256": "33e8e4e4f8e9e6bed7fe618735784e8a2da7cc5b8870848383f052ae61b30589"
+    },
+    {
+      "role": "W0 A07C2 restoration newer-edit ownership source correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-a07-restoration-newer-edit-owner-c2-source-fix-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:13",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "starting",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
+      "branch": "t3/compose-v3-client-history",
+      "baseCommit": "c5edf65554b8adfe06634d7884e50051d1a9a6b8",
+      "finding": "A07C2/P3 reportded6bade",
+      "resourceBoundary": "OneprivateAppcompositionhelper/newmatchingC2tests/report only, publicAPIunchanged. No consumer/nav/W2/Root/runtime/SQL/CItest/Source/rights/browser/resources.",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/w0-a07-c2-source-fix-brief.txt",
+      "briefChars": 38711,
+      "briefSha256": "5aee0d68b1c646180ad444dcd17694b66b2b0fc1e17bf4e55cd20a678703b260",
+      "requiredProof": "Original2cases1/1RED->2GREEN withacceptednewerbodyretained, C1six6GREEN +27/32/228/500/raw45/Root80/256/strict/UI/build, boundededit/model/lossclass ownership audit; no fakeauthority or suppresslegitimateacceptededit. NEWindependentR3."
     }
   ],
   "parentVerification": {
@@ -7366,7 +7399,9 @@
       "old": "20pass+1ENOENTafterHookFAIL underabsentownparent",
       "new": "20/20pass/0skip",
       "assertionCallsUnchanged": 74,
-      "proof": "HOOK-REGRESSION.json"
+      "proof": "HOOK-REGRESSION.json",
+      "commit": "c856ae3a",
+      "published": false
     },
     "watching": false,
     "status": "FixtureSourceOnlyActive; no currentfullCIpass"

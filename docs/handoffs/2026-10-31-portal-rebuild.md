@@ -2,11 +2,11 @@
 
 Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. CurrentlocalAppintegrationcandidatee6b0bd7e selectsV3 andHistory, aboveguidance85fc; fullAppacceptance incomplete. Parent228/198/256/500/Root1256+18skips/types/Expo/clean2232x15 pass; exactreviewerbytes/native87 unchanged. PR211remote19c failedPortal2284/2285 on2550scope5secnotice; W3sourcefirsttest-preconditiondiagnosisactive, noresources. Source modeld0f only; W1readinessreport-only. R7targetedsyntheticChrome63acb6f6/e6b returned05:46:10Z, report2c06SPECincomplete/qualityscopedPASS; R6RETURN05:07:18Z. ReadcurrentGit/TASKS beforework.
 
-## Latest admission and pending CI checkpoint
+## Latest CI6a correction and A07 C2
 
-RootreviewedCItestcorrection7d864736 is nowadmitted after R1source/testPASS +R2evidencef3bbfa75PASS/E1closed. Completefivecurrent/historicalprojection documented; no childdowngrades, allproductionUI/runtime/Root/contracts/canonical62trees unchanged bypatch. Parent36/74/25/strict/UI/Root1256pass18existingoptinskips/types/Expo pass atclean7d; actualmain2232/15 exactlymatches priorApp e6b. NextnormaldraftPRpush deliberatelyincludes alreadyreviewedV3/Historysource+correctedtest; newexactheadLinuxCIpending, notfullApp/genuine/release acceptance. AllChromegrantsreturned/no newnativeauthority.
+PublishedPR2116a10f5bePortalFAIL2497/2484/13/0skip. Previous2550caseNOWPASSLinux, currentobserved2202/10R2hashes andacceptedmanifestbeforeclick/noerror/463events0drop; exactexecutedmergeb38treeequals6a. TwelvefailuresareoldAppbrowserfixtureunexpectedcurrentread3, newisolatedsource-onlytestwriterb0eaownsclosedV3model/newunit/report. FreshbrowsergrantrequiresSourcegate/finiteplan. ParentRootownsseparateCH6afterhookmkdirfix c856: original20pass+ENOENTunderabsentownoutputparent ->20/20/all74assertionsunchanged. No productionchange/localbrowser/native/R9resource. Watchstoppedwhilefixing, no fullCIpass.
 
-A07Rootstillunmounted. R1report85eb requiresC1per-entry/targetunsentcustody; authorordinal12reportsclean successorc5edf655 with original4/2->6/6, pendingParentfullread/NEWindependentR2. NoSourceAPI/financial activation. Sourceplan09cbplanningonly/M65providergate/no-reroute remain. Exacttask/runtime/proof/receipt/imports inTASKS.
+A07R2ded6report importedonly7976; C1sixclosed6/6butnewC2/P3 sourcecallbackrecoveryoverwritesacceptedneweredit. Broaderreplaystopped/nofreshstrict/buildorDOMclaim. SameW0ordinal13 fromc5privatehelper/newtests/reportcorrectionactive; original2cases1/1REDbeforeedit,2GREENandfreshread/privacy/sentintent gatesrequired. NoRootA07activation/SourceAPI/financialinputs. Sourceplanplanningonly/M65providergate/no-reroute remain. Exacttasks/runtime/briefs/proofs inTASKS.
 
 ## Goal
 

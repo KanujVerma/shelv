@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 A07 C2 source correction
+
+FullR2ded6report importedonly7976, bothsourceverdictsrequireC2/P3: neweracceptededitduringrestore overwrittenbyretainedoldmodelonnextread. OriginalC1sixclosed6/6, newprobe1/1 twice; nomountedReact/DOM/sentUUIDclaim. SameW0ordinal13 source-onlyhelper/newtests/reportfixactive; noRootA07import. CItestfixtureSource-onlyworkerb0eaactive, RootCH6hookfixedlocalc85620/20/all74assertionsunchanged. Linux2550nowPASS; PR6aPortalstillfailed13, watchoffduringcorrection.
+
 ## 2026-11-01 CI6a diagnosis
 
 PR2116a PortalFAIL13/2497. The prior2550readinesscase passes inLinuxwithreviewedcurrentobserved2202/10hashes andacceptedmanifestbeforeclick. TwelvefailuresareoldwholeAppbrowserfixtureunexpectedcurrentV3read; newisolatedSource-onlytestwriterb0ea ownsfixturemodel/typedHTTP/newunit/report, no productionorbrowsergrant. OneCH6afterhookmissingdir reproduced20pass+ENOENT thenminimalmkdirfix20/20/all74assertionsunchanged. Watchoffduringcorrection; currentfullCIunaccepted. A07R2newC2/P3reported, fullreport/ownerresponsepending, RootA07unmounted.
