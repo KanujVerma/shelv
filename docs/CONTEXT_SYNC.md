@@ -1,3 +1,7 @@
+## 2026-11-01 Source prerequisite and component work
+
+Selected R9 is audited/backed up/STOPPED at12:04:38.293Z; all236 protected files/1469 returned rows/Auth0/0/62/native87/core/helpers preserved,4.27MB backup and retainedvolume/sevenstoppedhelpers. [Exact evidence and limits](portal-rebuild/research/COORDINATOR_R9_SOURCE_TRANSITION.md). No restore/newSourceinventory or runtime/API grant. UTF8 component416 returnsauthor40/40+strict0 and enters NEW source-only W7R1; Root component unimported. W6 separately proposes six-file client Account consent review/portal-origin withdrawal/status contract, without changing Source15/manual confirmation or activating clients. W0 actual A07 harness source gate continues. Latestpublished5834 docs-only CI pending at lastread/T3watch; previous05b exactgreen remains historical.
+
 ## 2026-11-01 Source consent workflow selected
 
 Kanuj selected advisor-recorded explicit client confirmation, with client review/withdrawal in Account. [Decision addendum](portal-rebuild/DECISION_ADDENDA.md#source-consent-workflow-1-november-2026) is the canonical policy record. Storage and review purposes stay separate; no automatic consent or immediate-purge promise. Safe client projection/withdrawal, disclosure content and Source producers remain unimplemented. Source15 stays advisor-private/unactivated; no resource grant, Root import or live action. A07 source-free browser preparation remains separate.
