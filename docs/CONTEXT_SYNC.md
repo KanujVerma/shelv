@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## portal rebuild: package and current review checkpoint (1 November 2026)
+
+Parent V3 production875 and exact helper packagingfed90 pass the full ordinary serial portal package1770/1770, with no assertions, waits or timeout limits weakened. Earlier1726/15 package failures remain preserved. M64d6e3 source/native author correction is in a NEW composed backend R2; private Source1279 proposal is in a first source review. Advisor R3eba addresses G4/qualifies original G5 but finds G6/P3 post-emission instruction resurrection; App R2b2a addresses CH1/CH2 but finds CH3/P3 RPC-wrapper compatibility. Both same-owner source corrections are active. No advisor/App/financial/source-lifecycle acceptance or native grant is inferred.
+
 ## portal rebuild: CI lineage capture correction (1 November 2026)
 
 PR211 head153d11e passes the corrected package/RPC-loader step and fails the later local-admission probe. Its complete62-migration ledger is larger than Node's default1 MiB capture; the actual probe reproduces ENOBUFS against synthetic CLI output. A bounded16 MiB capture, matching the existing lifecycle runner, passes18 lineage/fixture checks without truncating statements or changing attestation predicates. Exact-head native CI remains pending; no shared R9 fixture was read or modified. [Evidence and limits](portal-rebuild/research/COORDINATOR_CI_LINEAGE_OUTPUT.md).

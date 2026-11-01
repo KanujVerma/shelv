@@ -1,5 +1,5 @@
 {
-  "updatedOn": "2026-10-31",
+  "updatedOn": "2026-11-01",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": 8,
   "allocatedWorkers": 5,
@@ -1737,7 +1737,7 @@
       "integratedCommits": [
         "54623e91"
       ],
-      "verdict": "Main9PASS/extra record+pagination+unfiltered controlsPASS; CN1/P2 exactproducthistorySQLNULL\u2192unrelatedsameclientrows\u2192strict503 requiresforwardfix"
+      "verdict": "Main9PASS/extra record+pagination+unfiltered controlsPASS; CN1/P2 exactproducthistorySQLNULL→unrelatedsameclientrows→strict503 requiresforwardfix"
     },
     {
       "role": "W7 care client round2",
@@ -4525,7 +4525,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "new commerce metadata/raw factory/policy",
         "narrow cookie/runtime Gateway/Vault/protocol checkpoint",
@@ -4536,7 +4536,11 @@
         "workers/session-vault/index.ts internal actualVault checkpoint plumbing",
         "WireResponse-only optional internal commerceContext actorId/hash stripped beforeclient; no caller flag/credentials/role",
         "exact VIEWpreGate record_referral nonNull delegatesowner-or-confirm to canonicalSQL, noownerbitinvented"
-      ]
+      ],
+      "testedSourceHead": "055065f5f1d95e7df2a68b74bff2bc8ba1cea138",
+      "deliveryCommit": "d549903cd927c32220d5f69b35ef84a705845f0c",
+      "independentReview": "0ed0d91f1b0747bb61412baaf364cca457e29cd1",
+      "verdict": "Independent SOURCE SPEC/quality scoped PASS; Parent implementation unimported, M63/M64/backend/financial admission separate"
     },
     {
       "role": "W7 advisor guidance source review R2",
@@ -4661,6 +4665,112 @@
       "integrationCommit": "34a2af9a4f38fb4d76db258693af1a8b8035f650",
       "verdict": "Source and exercised module browser SPEC/quality scoped PASS. Current residuals addressed; no new material finding. Saving seam ordinary React/App unproved; old-cookie8 one-run nonsensitive; originalSelectrectangle0/1qualifiedscrollviewport.",
       "verification": "Source25/74/122 + own21/7, browserretry3/current21/retained117/own13, strict/build pass; frozenR1c4 0/3intended.20renderedprivacy samples0markers. All47targetpaths exact15d."
+    },
+    {
+      "role": "W7 guidance UI source R3",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261101-r3",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261101-r3",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-guidance-ui-source-review-20261101-r3:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "frozenTarget": "b481efc4e0b31178486293b6d273db713de66f0b",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_GUIDANCE_UI_SOURCE_R3.md"
+      ],
+      "resourceBoundary": "SOURCE/SSR only; G5 original4/5 and server-generation dependency preserved; no resources",
+      "baseCommit": "9d857346",
+      "deliveryCommit": "eba85a01995eab7f002a01306d49fb0e1bc7e5be",
+      "verdict": "Source SPEC/quality FAIL W2G6/P3 instruction final completion after synchronous retirement; SSR contains/no publication enabled. G4 addressed; G5 producer-return qualified disposition independently verified, original4/5 remains; known f163 dependency remains."
+    },
+    {
+      "role": "W7 composed V3/history source R2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-review-20261101-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-review-20261101-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-v3-history-composition-review-20261101-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "completed",
+      "frozenTarget": "9a4f99c32f6fb549a4423889efede4e3af2e884b",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_V3_HISTORY_COMPOSITION_R2.md"
+      ],
+      "resourceBoundary": "SOURCE/SSR only; canonical CH1/CH2 plus full restoration; current875 runtime/fed90 test input, App-owned client-state override; no resources",
+      "baseCommit": "9d857346",
+      "deliveryCommit": "b2a4441a25613c0f20db597bd84a0b8e7e5267c4",
+      "verdict": "CH1/CH2 addressed; Source changes required CH3/P3 CJS wrapper double-compiles current Parent self-compiling ESM RPC test; App161/162, directinner1/1, no new exercised production behavior failure"
+    },
+    {
+      "role": "W7 Commerce backend M63/M64 R2",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-backend-review-20261101-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-commerce-backend-review-20261101-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-commerce-backend-review-20261101-r2:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "frozenTarget": "d6e3c136523ea21d4cf32059df2a92addb2275e0",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_COMMERCE_BACKEND_R2.md"
+      ],
+      "resourceBoundary": "Source+own marked Unix-only PG; CB1-CB4/full original controls; no Parent/R9/foreignPG/realAuth/Chrome",
+      "baseCommit": "9d857346",
+      "deliveryCommit": null
+    },
+    {
+      "role": "W7 private Source proposal R1",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-private-source-contracts-review-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-private-source-contracts-review-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-private-source-contracts-review-20261101-r1:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "frozenTarget": "1279d7a676f0a78ac00f8ad263672117ecb99fbd",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_PRIVATE_SOURCE_CONTRACTS_R1.md"
+      ],
+      "resourceBoundary": "SOURCE PROPOSAL only,6files; not role/disclosure/profile pin or SourcePhase2; no resources",
+      "baseCommit": "9d857346",
+      "deliveryCommit": null
     }
   ],
   "parentVerification": {
@@ -4778,5 +4888,52 @@
     "localPreservedMerge": "8e747f41edc0d44a09b7939c216695d90d79a0a9",
     "localMergeTreeEqualsVerifiedCheckpoint": "503d4e645010319817ed95e2ba00846b743f0401",
     "variantReview": "Bootstrap and native admission SQL helpers do not read the complete catalog; their selected outputs are scalar/bounded. No further capture change justified."
+  },
+  "latestHandoffs20261101": {
+    "w2": {
+      "source": "b481efc4e0b31178486293b6d273db713de66f0b",
+      "early": "1c213b4764d5bd32e838e55ae73b9ca6d6273c6d",
+      "dependency": "14c91e0527c10b825b7ff0e99d5227e9c8533ed8",
+      "checks": "146/32/83/45/80 + G4six, strict/sourcebundles; G5 original4/5 retained qualified; f163 dependency still fails, no App/browser acceptance",
+      "review": "R3eba FAIL newG6/P3, source-only author correction allocated; no integration",
+      "g5Disposition": "Independent R3 verifies exact producer-return trace; original4/5 retained qualified, definitive before-return controls pass"
+    },
+    "app": {
+      "source": "51dda75178390eee79e0a996b2fe3885a9de7b46",
+      "delivery": "9a4f99c32f6fb549a4423889efede4e3af2e884b",
+      "checks": "162App/198+25feature/256transport/independent10, strong types and clean2231/15; CH1 original3/3twice/CH2zero; author two old browser-target differences excluded in new review in favor of current Parent875/fed90 inputs",
+      "review": "R2b2a independently addresses CH1/CH2, newCH3/P3 wrapper compatibility; source-only author correction allocated",
+      "targetExceptions": "New R2 exact Parent875/fed90 resolves prior two old browser dependencies; App-owned client-state remains e4cb"
+    },
+    "m64": {
+      "source": "d6e3c136523ea21d4cf32059df2a92addb2275e0",
+      "ops401": "aa468bcfbb40bb2781222c747585805d567cdc1b",
+      "migration": "20261101001206_portal_rebuild_commerce_fixes_v1.sql",
+      "bytes": 92223,
+      "sha256": "7e724f48fd6a19212fd73fe81aad5e15a2c4a1af1b2d4ce9a0408f2d48dcc0f2",
+      "checks": "author22native(original8+14), retained39,pure110,17canonical native-equivalent only, strict0; PGSTOPPED authorreported; no backend acceptance",
+      "review": "new composed independent R2 allocated"
+    },
+    "sourceProposal": {
+      "source": "1279d7a676f0a78ac00f8ad263672117ecb99fbd",
+      "scope": "6newfiles only,15proposed8READ7WRITE,17pure/strict0; actual reader/upload/grants/retention/deletion unimplemented",
+      "pin": "Frozen review input only; no activation/cap/profile/role/disclosure decision or Phase2 grant",
+      "review": "new independent SourceR1 allocated"
+    },
+    "v3Package": {
+      "input": "fed90f029b2849426f52263c74c589b1e86643d9",
+      "report": "65363815e9444fc070721bc2efb79240f13b0690",
+      "imports": [
+        "f57760cc",
+        "9d857346"
+      ],
+      "parentPurePackaging": 5,
+      "production": "875 unchanged",
+      "packageReplay": "PASS1770/1770,0fail/skip/cancel,644080.413458ms; all existing assertions/timeouts unchanged; firstparallel1726/15 retained; timeout cause unproved",
+      "resourceScope": "Coordinator-owned finite synthetic Chrome/package tests only; no child browser grants and no R9/Auth/DB fixture access",
+      "sourceEvidence": ".local-artifacts/portal-rebuild/v3-package-replay/",
+      "childBrowserGrants": 0,
+      "packageProcess": "terminal exit0; standard test teardown; no global process inventory claim"
+    }
   }
 }
