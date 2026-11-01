@@ -86,12 +86,19 @@ export type AppHistoryRestorationScope = ReturnType<typeof createHistoryRestorat
  * onReady. Pending original commands and amendments remain feature-owned. */
 export function createHistoryUpdateReader(controller:HistoryController,scope:AppHistoryRestorationScope,onData:(result:HistoryRestorationResult)=>void) {
   let disposed=false,retired=false,admitted=false,job:Promise<void>|null=null,attempt:ReturnType<NonNullable<HistoryController['restoration']>['restore']>|null=null;
-  const current=()=>!disposed&&!retired&&scope.isCurrent();
+  let predecessorCancellation:ReturnType<HistoryController['getSnapshot']>|null=null;
+  const current=()=>{if(disposed||retired)return false;if(!scope.isCurrent()){retired=true;admitted=false;return false;}return true;};
   // Admission belongs to this reader/entry, not to a pending-reference-bound
   // viewport witness. The feature still owns every private projection/action.
   const observe=()=>{
     const state=controller.getSnapshot();
-    if(state.phase==='ended'||state.phase==='idle'&&!state.timeline?.restoring){retired=true;admitted=false;}
+    if(state.phase==='idle'&&!state.timeline?.restoring){
+      const prior=predecessorCancellation;predecessorCancellation=null;
+      // Only the first synchronous predecessor cancellation may preserve these
+      // exact public references. A context replacement clears its own pages.
+      if(!prior||state.pages!==prior.pages||state.view!==prior.view||state.intent!==prior.intent||state.pending!==prior.pending){retired=true;admitted=false;}
+    }
+    if(state.phase==='ended'||!scope.isCurrent()){retired=true;admitted=false;}
     if(state.phase==='denied')admitted=false;
   };
   const stop=controller.subscribe(observe);
@@ -111,15 +118,27 @@ export function createHistoryUpdateReader(controller:HistoryController,scope:App
     read():Promise<void> {
       if(!current()||!controller.restoration)return Promise.resolve();
       if(job)return job;
-      scope.begin();
-      const api=controller.restoration,owned=api.restore(null);attempt=owned;
-      const owns=()=>current()&&attempt===owned;
-      const pending=owned.ready.then(result=>{
-        if(!owns()||!api.isCurrent(result)||!dataReady(result))return;
-        startReport();
-        if(owns()&&api.isCurrent(result)&&dataReady(result)){admitted=true;onData(result);}
-      }).finally(()=>{if(job===pending)job=null;});
-      job=pending;return pending;
+      let complete!:()=>void,fail!:(error:unknown)=>void;
+      const pending=new Promise<void>((resolve,reject)=>{complete=resolve;fail=reject;});
+      // Publish the real job before any synchronous notification can reenter.
+      job=pending;
+      try{
+        scope.begin();
+        if(!current()){if(job===pending)job=null;complete();return pending;}
+        const api=controller.restoration,prior=controller.getSnapshot();
+        predecessorCancellation=!attempt&&prior.phase==='loading'&&prior.timeline?.restoring?prior:null;
+        let owned:ReturnType<typeof api.restore>;
+        try{owned=api.restore(null);}finally{predecessorCancellation=null;}
+        attempt=owned;
+        if(!current())owned.cancel();
+        const owns=()=>current()&&attempt===owned;
+        void owned.ready.then(result=>{
+          if(!owns()||!api.isCurrent(result)||!dataReady(result))return;
+          startReport();
+          if(owns()&&api.isCurrent(result)&&dataReady(result)){admitted=true;onData(result);}
+        }).then(()=>{if(job===pending)job=null;complete();},error=>{if(job===pending)job=null;fail(error);});
+      }catch(error){predecessorCancellation=null;if(job===pending)job=null;fail(error);}
+      return pending;
     },
     dispose(){disposed=true;admitted=false;stop();attempt?.cancel();attempt=null;job=null;},
   };
