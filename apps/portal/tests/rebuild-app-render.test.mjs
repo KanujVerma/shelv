@@ -47,7 +47,7 @@ function inside(node) {
 test("public Maya recovery and unknown page SSR never construct a session or imply a completed tour", () => {
   const page = render(h(m.PublicEntry, { route: { name: "maya", stage: 1 } }));
   assert.match(page, /fictional demo/);
-  assert.match(page, /does not include the five-stage tour/);
+  assert.match(page, /loading sample · stage 1 of 5/);
   assert.doesNotMatch(page, /publication committed|sign out/);
   assert.match(render(h(m.PublicEntry, { route: null })), /check the address/);
 });
