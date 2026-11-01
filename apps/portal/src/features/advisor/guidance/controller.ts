@@ -1492,8 +1492,7 @@ export function createAdvisorGuidanceController({
         });
       } else {
         pending = null;
-        emit({ saveState: "error" });
-        failure(error, true);
+        failure(error, true, { saveState: "error" });
       }
     } finally {
       if (activeWrite === operation) activeWrite = null;
