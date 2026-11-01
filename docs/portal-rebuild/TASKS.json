@@ -5745,7 +5745,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-a86214ff",
       "branch": "t3/ci19c-manifest-precondition-review",
       "baseCommit": "e7cbeaf450c82bb27a67bfa4fdf39df9552d1c66",
@@ -5761,7 +5761,15 @@
       "candidateAssembly": ".local-artifacts/portal-rebuild/ci19c-review-input-check/CANDIDATE.json",
       "assemblyBoundary": "11test/reportpaths, Rootworktree/indexuntouched. ParentoldgrantliteralretainedonlyNodehelperexception. Skipall3childdependencydowngrades/c6returnedgrantmetadata.",
       "dependencySetup": "Only same4locks+APFScloneofexisting2depdirectories intoownabsentignoredpaths. No install/fullcopy/symlink/Parentwrites; lowdiskconstraint.",
-      "briefSha256": "a8cbad80eed05fb54ed976f2f5dde8a9c9a4a653ec572a2096facbf2d9c6b7f4"
+      "briefSha256": "a8cbad80eed05fb54ed976f2f5dde8a9c9a4a653ec572a2096facbf2d9c6b7f4",
+      "terminalCommit": "a2c75dc553d26fe383d64aefc4d53c8a1e9c9c43",
+      "integratedReportCommit": "7093a6a0",
+      "sourceVerdict": "scoped PASS",
+      "testVerdict": "scoped PASS",
+      "evidenceVerdict": "CHANGES REQUIRED E1/P2: actual current graph five differing inputs vs declaredtwo; no overlay executed afterfinding",
+      "reportSha256": "d7d91af8074eeedc8b208f74d789bc7ec1d271d33f43973f5ee280dfbd8f2e2d",
+      "evidenceManifestSha256": "7d91f52a03fdee520d31422fe3c4a49bdb367576fb76207efb1096823c8ff1eb",
+      "verificationResult": "6/6bridge/build4/diag9/hermetic6/packaging5/74/122/25/new8/all3strictpass; oldproxy5/1; current2195/2200and9/10; sourcefilesuntouched/noresources"
     },
     {
       "role": "W0 A07C1 per-entry target and unsent custody source correction",
@@ -7096,6 +7104,58 @@
     "reviewTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-ci19c-manifest-precondition-review-20261101-r1",
     "reviewCandidate": "9b2ba20999809440be62d0de85c121a1b8850bb5",
     "reviewCandidateImportedIntoRoot": false,
-    "ciStatus": "Published19cFAIL remains; correction/source/evidence independentreviewpending, no exact-head CI pass"
+    "ciStatus": "Published19cFAIL unchanged. Source/testR1 scopedPASS, E1 evidencecorrection pending NEWindependentR2; no currentCI pass.",
+    "evidenceCorrection": {
+      "finding": "E1/P2",
+      "originalTwoInputClaim": "false; fullfiveinputs below",
+      "scope": "coordinator provenance only, candidate/source unchanged",
+      "currentParentHead": "7093a6a020adcb416eaeb88780216838bb7c27ac",
+      "differingInputs": [
+        "apps/portal/src/app/client-state.ts",
+        "apps/portal/src/app/retained.ts",
+        "apps/portal/src/app/session.ts",
+        "apps/portal/src/navigation/history.ts",
+        "apps/portal/src/navigation/react.tsx"
+      ],
+      "current": {
+        "head": "7093a6a020adcb416eaeb88780216838bb7c27ac",
+        "inputs": 2200,
+        "matchingCI": 2195,
+        "differingInputs": [
+          "apps/portal/src/app/client-state.ts",
+          "apps/portal/src/app/retained.ts",
+          "apps/portal/src/app/session.ts",
+          "apps/portal/src/navigation/history.ts",
+          "apps/portal/src/navigation/react.tsx"
+        ],
+        "outputs": 10,
+        "matchingOutputs": 9,
+        "inputHash": "20f1d83f1b4aad838968d78bb9370287bc60073caece3830b7d4c61703f5fe75",
+        "preparedHash": "6cc1679179c24a714e212ac40a98dfe516bfabaa197275853ecd658a76c9c9d0"
+      },
+      "historicalFiveInputCompile": {
+        "inputs": 2200,
+        "allInputsMatchCI": true,
+        "outputs": 10,
+        "allOutputsMatchCI": true,
+        "inputHash": "a40df8bb05893d7ec284098de141f67b59d70ad1f298dc636f66047c5ecf0047",
+        "preparedHash": "30bae7806eac01af299638488b22c8889109a119d40d1d46d8b13967ba4b760b",
+        "overlaysApplied": [
+          "apps/portal/src/app/client-state.ts",
+          "apps/portal/src/app/retained.ts",
+          "apps/portal/src/app/session.ts",
+          "apps/portal/src/navigation/history.ts",
+          "apps/portal/src/navigation/react.tsx"
+        ]
+      },
+      "retainedErasure": {
+        "identical": true,
+        "emittedSha256": "502c49ba694f171b29d4183a2608f60263b1665e109ce655ea94b15d8cee3338"
+      },
+      "proof": ".local-artifacts/portal-rebuild/ci19c-e1-provenance-correction/RECONCILIATION.json",
+      "state": "coordinator_addressed_pending_new_independent_R2",
+      "browserExecuted": false,
+      "codeCandidateImported": false
+    }
   }
 }

@@ -1,5 +1,9 @@
 # Approved portal rebuild, 30 October 2026
 
+## 2026-11-01 CI provenance E1 correction
+
+IndependentCI R1 a2c75dc5 importedreport-only7093: source/testscopedPASS, evidenceCHANGESREQUIRED E1/P2. Parentincorrectlystatedtwoinputdifferences; actualcurrentgraphfive(client-state,retained,session,history,react). Parentfreshcurrentcompile2195/2200+9/10matchesreviewer; explicitfive-whole-filehistoricaloverlayall2200/10CIhashesmatch; retainedtypeerasedJSidentical. Sourcecandidate9b2unchanged/unimported; no browser/applicationexecution. Fullraws/projection nowcanonicalCIreport; NEWboundedevidenceR2 requiredbeforeadmission/currentCI. A07C1authorfixcontinuesseparately; allChromegrantsreturned.
+
 ## 2026-11-01 A07C1 corrective source phase
 
 Full independentA07R1 report85eb importedreport-only5afe. Bothsourceverdicts require A07C1/P2 correction: preparingB/instructionmutates recordbehindolderAentry and hidesAunsentwork. NoDOM/lostsentintent/privateleakclaim. SameW0ordinal12 source-only from0c447 owns privateentry/target/unsentcustody correction/newtests/report, original6RED4/2beforeedit and6GREENafter, freshreads/rights/recovery retained. No W2/nav/runtime/SQL/Source/resources or A07Parentactivation. CI19c independentreview remainsactive; allChromegrants returned.
