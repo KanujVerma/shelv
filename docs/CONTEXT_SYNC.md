@@ -2,7 +2,7 @@
 
 ## 2026-11-01 portal rebuild review continuation
 
-Sourceea461596 and composed Historyd4c216d0 are frozen author candidates with fresh independent Source R3 and History R5 worktree reviews. Full briefs/findings/responses, exact handles and boundaries are in [TASKS](portal-rebuild/TASKS.json) and [current status](portal-rebuild/CURRENT_STATUS.md). Neither is integrated or activated. Source S7 returns the detached frozen snapshot checked; raw/adapted test exceptions remain explicit. CH5 separates successful initial data admission from CH4 recovery lifetime. W2 G8 correction remains active. M65 review remains provider-blocked with its reviewer PG preserved/stopped, without reroute. Pushed723 CI all3green does not confer acceptance on these candidates. No new browser/native resource grant.
+Immutable Source R3 and History R5 reports are imported without activating their candidates. S1-S7 examples and CH5 source close; new Source S8/S9 semantic consistency and App CH6/P3 overlapping-reader ownership corrections run in the original author worktrees. Mounted CH6 reachability remains unproved. Guidance G8 author299 is complete; fresh independent R6 is running. Exact handles, current targets, prior findings/responses and resource boundaries are in [TASKS](portal-rebuild/TASKS.json) and [current status](portal-rebuild/CURRENT_STATUS.md). Source remains unpinned; App is unintegrated. No browser/native grant, M65 provider-gate reroute or financial/release acceptance. Pushed723 configuredCIgreen remains separate.
 
 ## portal rebuild: package and current review checkpoint (1 November 2026)
 

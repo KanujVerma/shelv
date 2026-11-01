@@ -1,16 +1,16 @@
 # Portal rebuild continuation, 31 October 2026
 
-Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. Verified Parentc329ee95 is clean, three documentation commits beyond pushed72326431. Current pushed723 CI has all3checks green, portal1785/1785; watch completed/unwatched. Root production remains875 with exact current helper/CI inputs. Sourceea and Appd4 are candidate branches only. Re-read Git and TASKS before continuing.
+Project: Shelv. Branch: kanuj/portal-rebuild-integration-20261030. Latest report-only Parent checkpoint8ad131c15c3cc399d7e423f80b4c79a2354c255e imports independent Source R3 and History R5 without candidate code. Current pushed72326431 retains all3CIchecks green and portal1785/1785, watch completed/unwatched. Root production remains875 with current helper/CI inputs. Sourceea/Appd4/Guidance299 are candidate branches only. Re-read Git and TASKS before continuing.
 
 ## Goal
 
 Complete the approved95388-byte portal rebuild, D01-D48,26 screens and secondary states. The entire goal remains active. Do not stop at the core care slice or mistake the unrelated paused native get_goal record for this T3 work. No merge, deployment, real clients/sources/funds/retailer actions or external communications are authorized.
 
-## Current continuation, 1 November03:42UTC
+## Current continuation, 1 November03:59UTC
 
-This section supersedes older in-progress bullets below. Sourceea461596 has a NEW independent R3 running in b87e5743; App/Historyd4c216d0 has a NEW independent R5 running in1e73b6fc. Both are report-only; Source is pure and App is source-first with NO current Chrome/native grant. Exact task/thread/run/options/brief paths are recorded in TASKS. W2 G8 source author remains active. M65 independent R3 is provider-blocked, its own PG dumped/stopped, and must not be retried/rerouted. No resources are held by the new reviewers.
+This supersedes older in-progress bullets. Source R3 and History R5 completed: immutable reports imported as0c2beaa9 and8ad131c1, without candidate source integration. Source S1-S7 examples close but S8/S9/P2 intrinsic detail/retention model checks fail; W1 has a new source-only correction fromea. CH5 closes in source, but CH6/P3 overlapping replacement reader retires on predecessor cancellation; W0 has a new source-only correction fromd4. Mounted React reachability is unproved and cleanup-first control passes. Guidance G8 author299 is terminal; NEW independent R6 runs in8b66d521. Exact task/thread/run/options/briefs are in TASKS. No Chrome/native grant is active. M65 provider block remains unresolved with PG stopped/preserved; no retry/reroute.
 
-Next: consume each independent result without assuming author pass, preserve Source S7 raw9/11 versus scheduling-only10/11 versus adapted11/11, and CH5 initial-success versus CH4 continuing-intent lifetime. If App source is clean, assess a finite plan before any separately issued sole Chrome grant. After W2 G8 handoff, commission NEW independent R6 with the full original/R1-R5 context. No full-goal or release completion.
+Next: consume independent guidance R6, review each Source/App author handoff and commission NEW independent Source R4/App R6 with all original contexts. Keep S7 returned snapshot and raw9/11/scheduling10/11/adapted11/11 distinct. Preserve CH4 intent lifetime and CH5 initial-success semantics while correcting CH6 actual owner cancellation. Source-only results are not DOM/current authority/physical cleanup/CI/release proof. No full-goal completion.
 
 ## Done
 

@@ -5163,9 +5163,11 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "frozenTarget": "2b6813fcaad482979030bedc3403e5b94817bd99",
-      "resourceBoundary": "Controller/newtests/report only, stageoriginaldeniedownerbeforewriteerrorcallbacks, allmutation/denial/emitcaller audit; no resources"
+      "resourceBoundary": "Controller/newtests/report only, stageoriginaldeniedownerbeforewriteerrorcallbacks, allmutation/denial/emitcaller audit; no resources",
+      "terminalCommit": "299929f34a440e9087dc52b67eadf1e348c5d88a",
+      "result": "Author source candidate500; independent R6 pending; no acceptance"
     },
     {
       "role": "W0 C05 successful initial data admission CH5 source correction",
@@ -5227,7 +5229,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-b87e5743",
       "branch": "t3/source-contracts-r3-review",
       "frozenTarget": "ea4615966105f6d41aa9f33626a66202d17e2636",
@@ -5237,7 +5239,9 @@
       "allocatedAt": "2026-11-01 03:42:32 UTC",
       "parentBase": "c329ee957b55e5ea12720ce15adc9a8891bfc0df",
       "reportOnly": true,
-      "nested": false
+      "nested": false,
+      "terminalCommit": "743bd53946f5beaa88e379446ef412cd8048bb47",
+      "result": "SPEC FAIL; quality FAIL; S1-S7 examples addressed, S8/S9 P2 model consistency remains"
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-review-20261101-r5",
@@ -5255,7 +5259,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1e73b6fc",
       "branch": "t3/v3-history-composition-review",
       "frozenTarget": "d4c216d0b419a9d0ced365867c1ca4edcd424088",
@@ -5265,6 +5269,83 @@
       "allocatedAt": "2026-11-01 03:42:32 UTC",
       "parentBase": "c329ee957b55e5ea12720ce15adc9a8891bfc0df",
       "reportOnly": true,
+      "nested": false,
+      "terminalCommit": "fe2c5d7cd28dfa90c292eda0a40137f370d6a6a9",
+      "result": "Source CHANGES REQUIRED CH6/P3; CH5 source addressed; mounted overlap reachability unproved"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261101-r6",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261101-r6",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w7-guidance-ui-source-review-20261101-r6:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-8b66d521",
+      "branch": "t3/review-guidance-ui-source-r6",
+      "frozenTarget": "299929f34a440e9087dc52b67eadf1e348c5d88a",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/guidance-r6-brief.txt",
+      "role": "W7 independent guidance source R6",
+      "resourceBoundary": "SOURCE/SSR/report-only; no browser/native/resource grant",
+      "reportOnly": true,
+      "nested": false,
+      "allocatedAt": "2026-11-01 03:59:42 UTC"
+    },
+    {
+      "role": "W1 Source S8-S9 semantic correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-source-detail-retention-semantic-s8-s9-corrections-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w1-report-guidance-contracts-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w1-report-guidance-contracts-20261031-r1:ordinal:13",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "starting",
+      "frozenTarget": "ea4615966105f6d41aa9f33626a66202d17e2636",
+      "resourceBoundary": "Source Mapping/Validation/new tests/report only; no public API/wire/action/right/SQL/Phase2/resources",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/source-s8-s9-correction-brief.txt",
+      "allocatedAt": "2026-11-01 03:59:42 UTC",
+      "nested": false
+    },
+    {
+      "role": "W0 History replacement-reader CH6 source correction",
+      "taskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-history-update-replacement-reader-ch6-source-20261101",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-v3-history-composition-20261031-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%253Adelegate-task%253Aportal-rebuild-w0-v3-history-composition-20261031-r1:ordinal:10",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "starting",
+      "frozenTarget": "d4c216d0b419a9d0ced365867c1ca4edcd424088",
+      "resourceBoundary": "App composition/new tests/report only; public reader API and W4 currentness unchanged; no browser/resources",
+      "brief": ".local-artifacts/portal-rebuild/review-allocations-20261101/app-ch6-source-brief.txt",
+      "allocatedAt": "2026-11-01 03:59:42 UTC",
       "nested": false
     }
   ],
@@ -5386,25 +5467,28 @@
   },
   "latestHandoffs20261101": {
     "w2": {
-      "source": "b481efc4e0b31178486293b6d273db713de66f0b",
-      "early": "1c213b4764d5bd32e838e55ae73b9ca6d6273c6d",
+      "source": "299929f34a440e9087dc52b67eadf1e348c5d88a",
+      "early": "ea6fcb5e6debc0117f5807c66adf878a09da8483",
       "dependency": "14c91e0527c10b825b7ff0e99d5227e9c8533ed8",
-      "checks": "146/32/83/45/80 + G4six, strict/sourcebundles; G5 original4/5 retained qualified; f163 dependency still fails, no App/browser acceptance",
-      "review": "R5a171 SourceG8/P3 mutationerrorcallbackcancelB; G7addressed, W2G8Sourcecorrectionactive",
+      "checks": "500 overlapping owned source/SSR; retained32/83/R332/raw45/Root80; originalG8seven pass; strict/bundles pass; rawG5 remains4/5 and generation0/1",
+      "review": "G8 author audit terminal; NEW independent R6 running",
       "g5Disposition": "Independent R3 verifies exact producer-return trace; original4/5 retained qualified, definitive before-return controls pass",
       "g6AuthorFix": "68d3f6ae8fe59401be7fbc138597c06d876ddf08",
-      "g6Checks": "172/32/83/R3independent32/45/80/G4six, originalG6fourGREEN; G5original4/5 remainsqualified; servergenerationdependency remains"
+      "g6Checks": "172/32/83/R3independent32/45/80/G4six, originalG6fourGREEN; G5original4/5 remainsqualified; servergenerationdependency remains",
+      "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-guidance-ui-source-review-20261101-r6"
     },
     "app": {
       "source": "9a40769b98adaa5dd677f406ce66dfad7eeb7311",
       "delivery": "d4c216d0b419a9d0ced365867c1ca4edcd424088",
       "checks": "208 source aggregate; feature198/transport256/residual25; strict/UI/build2231x15",
-      "review": "R4 CH5/P2 FAIL historical; NEW independent R5 source-first running",
+      "review": "R5 fe2c5d7c CHANGES REQUIRED CH6/P3 outstanding predecessor overlap; CH5 source closed; mounted reachability unproved",
       "targetExceptions": "New R5 preserves current Parent875/fed90/hermetic/telemetry test postimages; App-owned client-state remains e4cb",
       "chrome": "AuthorCH4returned02:44:30.491Z; Roottelemetrysmokereturned03:02:15.602256Z",
       "production": "9a40769b98adaa5dd677f406ce66dfad7eeb7311",
       "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-v3-history-composition-review-20261101-r5",
-      "productionBoundary": "CH5 private successful-data admission; CH4 intent lifetime preserved; no Parent integration"
+      "productionBoundary": "CH5 private successful-data admission; CH4 intent lifetime preserved; no Parent integration",
+      "reviewImportedAs": "8ad131c15c3cc399d7e423f80b4c79a2354c255e",
+      "correctionTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw0-history-update-replacement-reader-ch6-source-20261101"
     },
     "m64": {
       "source": "d6e3c136523ea21d4cf32059df2a92addb2275e0",
@@ -5424,8 +5508,8 @@
       "source": "ea4615966105f6d41aa9f33626a66202d17e2636",
       "scope": "Pure Source15 proposal,8READ/7WRITE/task0; original six files plus owned corrective tests; actual reader/upload/grants/storage/retention/deletion unimplemented",
       "pin": "UNPINNED/UNACTIVATED; no SourcePhase2 or resource authority",
-      "review": "R2 FAIL historical; NEW independent R3 running",
-      "priority": "Author corrections terminal; fresh independent Source R3 before pin/Phase2. M65 independent review remains provider-blocked and is not rerouted.",
+      "review": "R3 743bd539 SPEC/quality FAIL; S1-S7 examples addressed, S8/S9 P2 intrinsic detail and retention consistency; bounded author follow-up active",
+      "priority": "Source-only intrinsic invariants before NEW R4/pin; M65 provider block remains separate",
       "s7Adjudication": {
         "evidence": "Existing verifySourceDetailDigest signaturePromise<void> does not bind the mutable caller object after success",
         "pinnedPureApi": "verifySourceDetailDigest(d:SourceDetail):Promise<SourceDetail> returns validated detached deep-immutable snapshot actually hashed/compared",
@@ -5443,7 +5527,9 @@
         "independentVerdict": "Pending NEW R3; author130 registrations overlap and are not130 unique behaviors"
       },
       "checks": "130 current/adapted registrations; strict0; raw11=9/11, scheduling-only10/11, adapted11/11; raw17=16/17 and raw40=39/40 retained",
-      "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-private-source-contracts-review-20261101-r3"
+      "independentTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w7-private-source-contracts-review-20261101-r3",
+      "reviewImportedAs": "0c2beaa9ddeb19b4d3c61f85e217ba2641f9b595",
+      "correctionTaskId": "node:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Athread-send%3Aw1-source-detail-retention-semantic-s8-s9-corrections-20261101"
     },
     "v3Package": {
       "input": "fed90f029b2849426f52263c74c589b1e86643d9",
