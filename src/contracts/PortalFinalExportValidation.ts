@@ -1,9 +1,9 @@
-import type {FinalCareBasis,FinalExportBasis,FinalExportCommand,FinalExportRecord,FinalExportPlan} from './PortalFinalExport.ts';
+import type {FinalCareBasis,FinalExportSelectionBasis,FinalExportCommand,FinalExportRecord,FinalExportPlan,FinalExportPlanUnit,FinalExportInstructionUnit} from './PortalFinalExport.ts';
 import type {PlanShape} from './PortalRebuildValidation.ts';
 import {planContentShape,planScheduleShape,readPlanShape,readLegacyPlan} from './PortalRebuildValidation.ts';
 import {stepShape} from './ConciergePresentationValidation.ts';
-import {readObject,readText,requireValue,exactKeys,readInteger} from './ConciergePortalValidation.ts';
-import {finalExportInstructionScopesMax,finalExportRecordMaxBytes,finalExportPartCharacters} from './PortalFinalExportValues.ts';
+import {readObject,readArray,readText,requireValue,exactKeys,readInteger} from './ConciergePortalValidation.ts';
+import {finalExportInstructionScopesMax,finalExportPlanUnitMaxBytes,finalExportPartCharacters,finalExportHashProfile} from './PortalFinalExportValues.ts';
 
 export const exportObject=(fields:Record<string,PlanShape>):PlanShape=>({type:'object',fields});
 export const exportEnum=(...values:(string|number|boolean|null)[]):PlanShape=>({type:'enum',values});
@@ -18,7 +18,9 @@ export const exportKnownDate:PlanShape={type:'union',variants:[known,exportObjec
 const publication=exportObject({version:exportPositive,documentSchemaVersion:exportEnum(2,3)});
 const careFields={supportEndsOn:exportDate,supportEndsAt:exportInstant,readOnlyEndsOn:exportDate,readOnlyEndsAt:exportInstant,publication,publishedAt:exportInstant};
 export const finalCareBasisShape=exportObject(careFields);
-export const finalExportBasisShape=exportObject({...careFields,recordHash:exportHash,recordBytes:{...exportPositive,max:finalExportRecordMaxBytes},recordCharacters:{...exportPositive,max:finalExportRecordMaxBytes},partCount:{...exportPositive,max:Math.ceil(finalExportRecordMaxBytes/finalExportPartCharacters)},instructionCount:{...exportRevision,max:finalExportInstructionScopesMax}});
+const chicagoDayFormatter=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Chicago',year:'numeric',month:'2-digit',day:'2-digit'});
+const chicagoTimeFormatter=new Intl.DateTimeFormat('en-GB',{timeZone:'America/Chicago',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'});
+export const finalExportBasisShape=exportObject({...careFields,hashProfile:exportEnum(finalExportHashProfile),selectionHash:exportHash,unitCount:{...exportPositive,max:finalExportInstructionScopesMax+1},instructionCount:{...exportRevision,max:finalExportInstructionScopesMax}});
 const context=planContentShape.fields?.context;
 requireValue(context?.fields?.products);
 export const finalExportClientContentShape:PlanShape={...planContentShape,fields:{...planContentShape.fields,context:exportObject({products:context.fields.products,facts:exportArray(exportObject({id:exportId,kind:exportEnum('client_report','advisor_conclusion','agent_proposal'),text}),200)})}};
@@ -29,7 +31,8 @@ const useShape=exportObject({productId:exportId,state:exportEnum('not_reported',
 /** Refuse executable objects/accessors before detaching; async readers never retain caller-owned JSON. */
 export function detachFinalExportInput(value:unknown,depth=0):unknown{
  requireValue(depth<=100);
- if(value===null||typeof value==='string'||typeof value==='boolean')return value;
+ if(typeof value==='string'){assertFinalExportScalars(value);return value;}
+ if(value===null||typeof value==='boolean')return value;
  if(typeof value==='number'){requireValue(Number.isFinite(value));return value;}
  requireValue(typeof value==='object'&&value!==null);
  if(Array.isArray(value))return Array.from({length:value.length},(_,i)=>{const d=Object.getOwnPropertyDescriptor(value,String(i));requireValue(d&&Object.hasOwn(d,'value'));const item:unknown=d.value;return detachFinalExportInput(item,depth+1);});
@@ -42,24 +45,25 @@ export function detachFinalExportInput(value:unknown,depth=0):unknown{
 }
 export function freezeFinalExport(value:unknown):void{if(value!==null&&typeof value==='object'){for(const item of Object.values(value))freezeFinalExport(item);Object.freeze(value);}}
 export function finalExportBytes(value:string):number{return new TextEncoder().encode(value).byteLength;}
+export function finalExportCharacters(value:string):number{let count=0;for(const _character of value)count++;return count;}
+export function assertFinalExportScalars(value:string):void{for(let i=0;i<value.length;i++){const n=value.charCodeAt(i);if(n>=0xd800&&n<=0xdbff){const next=value.charCodeAt(++i);requireValue(next>=0xdc00&&next<=0xdfff);}else requireValue(n<0xdc00||n>0xdfff);}}
 export function assertFinalCareBasis(value:unknown):asserts value is FinalCareBasis{
  readPlanShape(value,finalCareBasisShape);const b=readObject(value);
  requireValue(Date.parse(String(b.publishedAt))<Date.parse(String(b.supportEndsAt))&&String(b.supportEndsOn)<String(b.readOnlyEndsOn));
  // Exact Chicago midnight offsets and calendar addition are produced by SQL, not a caller clock.
- const chicagoDay=(instant:unknown)=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/Chicago',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(String(instant)));
+ const chicagoDay=(instant:unknown)=>chicagoDayFormatter.format(new Date(String(instant)));
  requireValue(chicagoDay(b.supportEndsAt)===b.supportEndsOn&&chicagoDay(b.readOnlyEndsAt)===b.readOnlyEndsOn);
  const d=new Date(String(b.supportEndsOn)+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+30);requireValue(d.toISOString().slice(0,10)===b.readOnlyEndsOn);
- for(const at of [b.supportEndsAt,b.readOnlyEndsAt])requireValue(/T\d{2}:00:00\.000000Z$/.test(String(at))&&new Intl.DateTimeFormat('en-GB',{timeZone:'America/Chicago',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).format(new Date(String(at)))==='00:00:00');
+ for(const at of [b.supportEndsAt,b.readOnlyEndsAt])requireValue(/T\d{2}:00:00\.000000Z$/.test(String(at))&&chicagoTimeFormatter.format(new Date(String(at)))==='00:00:00');
 }
-export function assertFinalExportBasis(value:unknown):asserts value is FinalExportBasis{
- readPlanShape(value,finalExportBasisShape);const b=readObject(value);const {recordHash:_h,recordBytes:_b,recordCharacters:_c,partCount:_p,instructionCount:_i,...care}=b;assertFinalCareBasis(care);
- const chars=readInteger(b.recordCharacters,1),bytes=readInteger(b.recordBytes,1);requireValue(bytes>=chars&&bytes<=chars*4&&b.partCount===Math.ceil(chars/finalExportPartCharacters));
+export function assertFinalExportBasis(value:unknown):asserts value is FinalExportSelectionBasis{
+ readPlanShape(value,finalExportBasisShape);const b=readObject(value);const {hashProfile:_h,selectionHash:_s,unitCount:_u,instructionCount:_i,...care}=b;assertFinalCareBasis(care);requireValue(b.unitCount===readInteger(b.instructionCount,0)+1);
 }
 export function readFinalExportCommand(input:unknown):FinalExportCommand{
  const v=readObject(detachFinalExportInput(input));requireValue(v.schemaVersion===1);
  if(v.action==='read_final_export_manifest_v1'){exactKeys(v,['schemaVersion','action']);return {schemaVersion:1,action:v.action};}
  requireValue(v.action==='read_final_export_part_v1');exactKeys(v,['schemaVersion','action','basis','partIndex']);assertFinalExportBasis(v.basis);
- const partIndex=readInteger(v.partIndex,0,v.basis.partCount-1);freezeFinalExport(v.basis);return {schemaVersion:1,action:v.action,basis:v.basis,partIndex};
+ const pair=readObject(v.partIndex);exactKeys(pair,['unitIndex','segmentIndex']);const partIndex={unitIndex:readInteger(pair.unitIndex,0,v.basis.unitCount-1),segmentIndex:readInteger(pair.segmentIndex,0,Math.ceil(finalExportPlanUnitMaxBytes/finalExportPartCharacters)-1)};freezeFinalExport(v.basis);return {schemaVersion:1,action:v.action,basis:v.basis,partIndex};
 }
 export function finalExportProductIds(plan:FinalExportPlan):string[]{
  if(plan.documentSchemaVersion===3)return plan.content.products.map(p=>p.id);
@@ -72,26 +76,42 @@ export function finalExportScopes(plan:FinalExportPlan):{slotId:string;productId
  return [...new Map(rows.map(r=>[JSON.stringify([r.slotId,r.productId]),r])).values()];
 }
 /** Closed public schema plus complete cross-record binding, without a fabricated care-view envelope. */
-function isFinalRecordStructure(value:unknown):value is FinalExportRecord{
- const v=readObject(value);exactKeys(v,['schemaVersion','careBasis','plan','use','instructions']);requireValue(v.schemaVersion===1);assertFinalCareBasis(v.careBasis);
+function checkPlanPayload(value:unknown):void{
+ const v=readObject(value);assertFinalCareBasis(v.careBasis);
  const p=readObject(v.plan);
  if(p.documentSchemaVersion===3){exactKeys(p,['documentSchemaVersion','content']);readPlanShape(p.content,finalExportClientContentShape);}
- else {requireValue(p.documentSchemaVersion===2);exactKeys(p,['documentSchemaVersion','legacyOriginal','goal']);readLegacyPlan(p.legacyOriginal,2);requireValue(readObject(p.legacyOriginal).presentation!==null);readText(p.goal,4000,true);}
- readPlanShape(v.use,exportArray(useShape,150));readPlanShape(v.instructions,exportArray(finalExportInstructionShape,finalExportInstructionScopesMax));
- return true;
+ else {requireValue(p.documentSchemaVersion===2);exactKeys(p,['documentSchemaVersion','legacyOriginal','goal']);const legacy=readLegacyPlan(p.legacyOriginal,2);requireValue(legacy.presentation!==null);for(const rec of readArray(readObject(p.legacyOriginal).recommendations,50))exactKeys(readObject(rec),['id','slot','currentProductId','proposedProductId','priceCents','currency','rationale']);readText(p.goal,4000,true);}
+ readPlanShape(v.use,exportArray(useShape,150));
 }
-export function assertFinalExportRecord(value:unknown):asserts value is FinalExportRecord{
- requireValue(isFinalRecordStructure(value));
- const r=value;requireValue(r.plan.documentSchemaVersion===r.careBasis.publication.documentSchemaVersion);
+function checkPlanSemantics(r:Pick<FinalExportRecord,'careBasis'|'plan'|'use'>):void{
+ requireValue(r.plan.documentSchemaVersion===r.careBasis.publication.documentSchemaVersion);
  if(r.plan.documentSchemaVersion===2)requireValue(r.plan.legacyOriginal.version===r.careBasis.publication.version);
- const ids=finalExportProductIds(r.plan),scopes=finalExportScopes(r.plan);requireValue(new Set(ids).size===ids.length&&r.use.length===ids.length&&new Set(r.use.map(u=>u.productId)).size===ids.length&&r.use.every(u=>ids.includes(u.productId)));
+ if(r.plan.documentSchemaVersion===3){
+  const c=r.plan.content,products=new Set(c.products.map(p=>p.id)),goals=new Set(c.goals.map(g=>g.id)),facts=new Set(c.context.facts.map(f=>f.id));
+  requireValue(products.size===c.products.length&&goals.size===c.goals.length&&facts.size===c.context.facts.length&&new Set(c.routine.map(s=>s.id)).size===c.routine.length&&new Set(c.decisions.map(d=>d.id)).size===c.decisions.length);
+  for(const refs of [...c.products.map(p=>p.factIds),...c.goals.map(g=>g.factIds),...c.decisions.map(d=>d.factIds)])requireValue(refs.every(id=>facts.has(id)));
+  if(c.context.products.state==='none')requireValue(facts.has(c.context.products.factId));
+  if(c.context.products.state==='recorded')requireValue(c.context.products.productIds.every(id=>products.has(id)));
+  for(const s of c.routine)requireValue(s.kind==='instruction'?s.productId===null:s.productId!==null&&products.has(s.productId));
+  for(const d of c.decisions)requireValue(d.goalIds.every(id=>goals.has(id))&&[...d.currentProductIds,...d.alternativeProductIds,...(d.primaryProductId?[d.primaryProductId]:[])].every(id=>products.has(id)));
+ }
+ const ids=finalExportProductIds(r.plan);requireValue(new Set(ids).size===ids.length&&r.use.length===ids.length&&new Set(r.use.map(u=>u.productId)).size===ids.length&&r.use.every(u=>ids.includes(u.productId)));
+ for(const u of r.use)for(const d of [u.originalStart,u.occurredOn])if(d.state==='known')requireValue(d.value<r.careBasis.supportEndsOn);
+}
+function isPlanUnit(value:unknown):value is FinalExportPlanUnit{const v=readObject(value);exactKeys(v,['schemaVersion','kind','careBasis','plan','use']);requireValue(v.schemaVersion===1&&v.kind==='plan');checkPlanPayload(value);return true;}
+export function assertFinalExportPlanUnit(value:unknown):asserts value is FinalExportPlanUnit{requireValue(isPlanUnit(value));checkPlanSemantics(value);}
+function isInstructionUnit(value:unknown):value is FinalExportInstructionUnit{const v=readObject(value);exactKeys(v,['schemaVersion','kind','instruction']);requireValue(v.schemaVersion===1&&v.kind==='instruction');readPlanShape(v.instruction,finalExportInstructionShape);return true;}
+export function assertFinalExportInstructionUnit(value:unknown):asserts value is FinalExportInstructionUnit{requireValue(isInstructionUnit(value));}
+function isRecord(value:unknown):value is FinalExportRecord{const v=readObject(value);exactKeys(v,['schemaVersion','careBasis','plan','use','instructions']);requireValue(v.schemaVersion===1);checkPlanPayload(value);readPlanShape(v.instructions,exportArray(finalExportInstructionShape,finalExportInstructionScopesMax));return true;}
+/** Convenience validator is separate from the maximum streaming pathway. */
+export function assertFinalExportRecord(value:unknown):asserts value is FinalExportRecord{
+ requireValue(isRecord(value));const r=value;checkPlanSemantics(r);const scopes=finalExportScopes(r.plan);
  const unique=new Set<string>();const instructionIds=new Set<string>();
  for(const i of r.instructions){const key=JSON.stringify([i.slotId,i.productId]);requireValue(!unique.has(key)&&!instructionIds.has(i.instructionId)&&scopes.some(s=>s.slotId===i.slotId&&s.productId===i.productId));unique.add(key);instructionIds.add(i.instructionId);
   requireValue(i.effectiveOn<r.careBasis.supportEndsOn&&Date.parse(i.publishedAt)<Date.parse(r.careBasis.supportEndsAt)&&(i.productId===null)===(i.originalStart===null));
   requireValue((i.content.format==='authored_schedule')===(r.plan.documentSchemaVersion===3));
   if(i.productId!==null)requireValue(sameFinalExportValue(i.originalStart,r.use.find(u=>u.productId===i.productId)?.originalStart));
  }
- for(const u of r.use)for(const d of [u.originalStart,u.occurredOn])if(d.state==='known')requireValue(d.value<r.careBasis.supportEndsOn);
 }
 export function sameFinalExportValue(a:unknown,b:unknown):boolean{
  if(a===b)return true;
