@@ -1,8 +1,8 @@
 {
-  "updatedOn": "2026-11-02T17:35:22.504377+00:00",
+  "updatedOn": "2026-11-02T21:04:26.023160+00:00",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
-  "allocatedWorkers": 6,
+  "allocatedWorkers": 1,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -11803,7 +11803,7 @@
     "statusOnly": true,
     "noWorkerOrSourceMutation": true
   },
-  "integrationHead": "68ed8a54ebd5e78e042cf14d0cc74008b8848e7f",
+  "integrationHead": "3d1dbd8a7dbf8d66c37a2e160605845cd56d131a",
   "currentAllocationEvidence": "Six current children: Account/notifications composition; ordinary journey author; independent contact provider/profile/contact consumer reviews; client Orders pin. Three completed authors and failed photo reviewer excluded. Full briefs/readbacks/literal IDs in refill-final receipt.",
   "resourceGrantState": "No resource remains. RootboundedPGgrammarprobe acceptedRETURN2026-11-02T05:26:24.136318Z; no application/Auth/migration replay. Notificationexecutor no grant. Bankedreset disarmed.",
   "currentCheckpoint": {
@@ -11858,10 +11858,10 @@
   "orchestrationState": {
     "state": "authorized_execution",
     "coordinatorThread": "9b085ada-435f-48d6-8886-957c1ce3e82d",
-    "actualRunningChildren": 6,
-    "asOf": "2026-11-02T17:35:22.504377+00:00",
+    "actualRunningChildren": 1,
+    "asOf": "2026-11-02T21:04:26.023160+00:00",
     "nativeGoalThread": "01a19b3a-77a2-71c1-a661-046efe4fbb51",
-    "nativeGoalObservedStatus": "paused-after-workspace-handoff; explicit user resume governs current T3 work",
+    "nativeGoalObservedStatus": "paused; user explicitly requested replacement, officialuserclear/setblockedactivewriter; awaitingowningUIclear",
     "sourceIntegrated": [
       "b2a5f4f372d4f65a1cc3f9c85fd061bddcc7668b",
       "594d64e22c1ec2f9bcb76d7fe7dafb2b91098369",
@@ -11886,11 +11886,12 @@
     "sharedSourcePassAwaitingRootProjection": "556befca22e0c2d7aa9cb63913eadaf45fb7b853",
     "credentialSourcePassAwaitingKernel": "ba1caf3bc4c28b13d1c1d4ad07682d69718ff544",
     "heavySlot": {
-      "owner": "account-notifications-composition",
-      "status": "exclusive conditional APFS + focused SSR/types after explicit photo RETURN",
+      "owner": "client-inbox-navigation",
+      "status": "conditionalAPFSandboundedSSR/typesgrantedafterRootCIvalidationreturned",
       "returnRequired": true
     },
-    "pendingParent": "Actual fixed profile/contact registration and gateway/route-policy composition; consumer corrections/fresh reviews, then genuine acceptance. Application writer reserved to composition child."
+    "pendingParent": "publishreviewedCIrepair/currentinventory; ParentAPC3/OR1/COE1/adminCFtypingcorrections; maintainreadyqueueandrefillaftercandidatesfreeze",
+    "goalReplacementPacket": "docs/portal-rebuild/source/REPLACEMENT_GOAL_OBJECTIVE_20261102.txt"
   },
   "sqlWriterState": "soleParent writer; profile67source admitted unexecuted; nochildSQLwriter/noNativegrant",
   "continuation20261102": {
@@ -11919,14 +11920,38 @@
     "workspaceRecovery": "Current harness root is unrelated dirty scanner checkout. Native same-thread worktree handoff from integration HEAD without setup; continue operating authorized original integration Root; children derive correct committed source."
   },
   "currentProgressBaseline": {
-    "at": "2026-11-02T17:35:22.504377+00:00",
-    "sourceHead": "68ed8a54ebd5e78e042cf14d0cc74008b8848e7f",
-    "publishedLastVerified": "be475d913e376b4cce9327220440c07e367af10a",
-    "connected26": "not measured",
-    "browser26": "not measured",
-    "verifiedDecisions48": "not measured",
-    "completeJourneys10": "not measured",
-    "newAcceptedProductFeaturesSincePreviousCheckpoint": "none evidenced",
-    "delta": "R8 Root source admission; frozen Account consumer/read-provider source and Parent small composition corrections pending testing/review; concurrency refill"
-  }
+    "at": "2026-11-02T21:04:26.023160+00:00",
+    "sourcePin": "89bf/code3c +CIrepair3d1",
+    "mountedScreens": 21,
+    "controllerWired": 21,
+    "completeSourceWiring": 12,
+    "verifiedConnected": 0,
+    "browserVerified": 0,
+    "unknownFunctionalOutcomes": 26,
+    "verifiedDecisions": 1,
+    "partialDecisions": 46,
+    "unverifiedDecisionImplementation": 1,
+    "completeJourneyPasses": 0,
+    "fullyExecutedJourneys": 0,
+    "unrunCompleteJourneys": 10,
+    "notFailedTests": true,
+    "inventories": [
+      "acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+      "acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json"
+    ]
+  },
+  "readyQueue": [
+    {
+      "task": "freshindependentAPC3review",
+      "gate": "Parentunderlyingguard/savedstatecorrectionandREDGREEN"
+    },
+    {
+      "task": "freshOrdersSSRsuccessorreview",
+      "gate": "Parentoriginalrepro2/3 +narrowpublic-descriptionpredicatecorrection"
+    },
+    {
+      "task": "combinedadminregistrationreview",
+      "gate": "ParentCFproductiontypes+correcttestenvironment+cookiecompositionandregressionwitness"
+    }
+  ]
 }

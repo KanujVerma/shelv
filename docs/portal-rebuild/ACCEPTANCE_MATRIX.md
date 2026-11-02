@@ -1,3 +1,13 @@
+# reconciled current inventory: 2026-11-02T21:04:26.023160+00:00
+
+Authoritative detailed rows: [26 screen JSON](acceptance/CURRENT_SCREEN_INVENTORY_20261102.json), [screen report](research/W7_CURRENT_SCREEN_INVENTORY_20261102.md), [48 decisions +10 journeys JSON](acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json), [decision/journey report](research/W7_CURRENT_DECISIONS_JOURNEYS_20261102.md). Actual source pin89bf/code3c; later CI-only compatibility patch changes no mount/producers/signoffs. Every row has implementation parts, actual source chain, current evidence, missing gate and owner.
+
+Computed baseline:21/26 mounted,21/26 actualcontrollers,12/26 complete frame-local SOURCEwiring;0/26 verified genuineconnection and0/26 currentfullbrowser (26 unverified/unknown, not26failed/nonfunctional);1/48 wholeverified (D06 source),46partial,1unverified (D36);0/10 completecurrentpasses,0fullyexecuted,10notfullyexecuted. No percentage or test-count-as-feature inference. CurrentStatus preserves exact gate distinctions and actual Git/CI overrides stale snapshots.
+
+---
+
+## retained historical ledger
+
 # current portal acceptance evidence: 2026-11-02T08:52:52.400275+00:00
 
 Owner: Kanuj. This current ledger covers all26 screens and48 decisions with independent evidence fields. Historical tables below are retained; scoped historical/source passes are not current full-product acceptance. Source state is Root b2a5f4f3 plus report-only successors. The exact dependency fingerprint is the actual main/public compiler input manifests under the ignored continuation-20261102/maya evidence; no virtual overlays or weakened flags were used.

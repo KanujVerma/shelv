@@ -1,3 +1,41 @@
+# current continuation snapshot: 2026-11-02T21:04:26.023160+00:00
+
+Same approved D01-D48/26-screen rebuild; Owner Kanuj. Root inbox source is admitted3c284771 and bounded CI repair3d1dbd8a has independent scoped PASSc91d6f51. Published e10 still has the older14-failure portal check until this new checkpoint is pushed. PR211 stays draft/stacked on210; no merge/force-push/production/real-client action.
+
+## Completed current acceptance inventory
+
+The [26-row screen inventory](acceptance/CURRENT_SCREEN_INVENTORY_20261102.json) and [58-row decision/journey ledger](acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json) replace generic not-measured inventory rows. They are pinned to89bf/source3c; subsequent CI repair changes no routes/controllers/producers or complete acceptance outcomes.
+
+| Measure | Evidence-backed baseline |
+| --- | --- |
+| Mounted frames |21/26|
+| Actual controller wired |21/26|
+| Complete frame-local SOURCE wiring |12/26; not real execution acceptance|
+| Proved current connected real functionality |0 verified/26;26 unverified/unknown, not26 failures|
+| Current full browser verification |0 verified/26;26 unverified, not0 functioning|
+| Whole decisions verified |1/48 (D06 source icon rule);46 partial,1 unverified implementation (D36)|
+| Complete current journeys passing |0/10 verified passes;0 fully executed,10 not fully executed; not10 failed tests|
+
+Missing mounts C06,C06D,C08,C08C,A07; C08R restrictions only. Client inbox is a secondary flow in actual App before clinical reads, not an extra27th frame. D04 shared-wrapper checkbox gaps and D01 disconnected contact/missing chrome remain. Required real Owner/Auth/persistence/ordinarybrowser/visual/narrow/keyboard evidence is assigned per row.
+
+## CI repair evidence, not product completion
+
+Original portal CI14 failures remain preserved: eleven recovery/abort cases, one head AST preservation case, two packaging builds. Current unchanged recovery208/208; packaging+emptyGit wrapper/sharedguards13/13; head7/7; new historical-content guards7/7. Exact bounded photo witness successor was independently approved. Only three already-inventoried historical bodies are added, current production error/Maya unchanged; G8 assertions unchanged with actual native401 headers before abort; G4 only adds503 to the existing offline/current valid-lease cleanup condition. Held Guidance private-return/M65/photo review gates remain HELD.
+
+Fresh actualRoot validation: unit1775pass/0fail/18existing nativeoptins skipped; Rootapp/test/frontend/session types0; UI0; actualportalbuild0; Expowebexport0. Full browser-heavy portal suite is reserved for hosted CI/current permitted methods, not falsely reported locally executed. Original failures/raw/setup and mutation controls are in ci-e10-repair receipts and [independent review](research/W7_CI_E10_REPAIR_REVIEW_R1.md).
+
+## Execution and goal lifecycle
+
+Native goal01a19b3a... remains genuinely paused. User explicitly requested replacement with full original + corrective steer; original95388/c457 and continuation100187/b428 plus [full steer](source/CORRECTIVE_EXECUTION_STEER_20261102.txt) and [replacement objective](source/REPLACEMENT_GOAL_OBJECTIVE_20261102.txt) are preserved. Modelcreate_goal rejects unfinished existing goal; official user-origin clear/set rejects active-writer ownership. Native computer UI host is unavailable. Awaiting owning T3 goal-control clear; no falsely completed goal, lock removal, worker interruption or state-file edit. Explicit ongoing T3 implementation authority persists.
+
+Current implementation child is client inbox navigation/bell, Sol/xhigh/default independently READ, exact taskId in TASKS. It owns Shell.tsx/PortalShell.tsx/icons.tsx, central bounded SSR/type slot after allRoot CI validation returned. Completed inventories/CI diagnostics/reviews are not active. Parent owns APC3, OR1, COE1, platform type reconciliation and Root integration; refill follows corrected candidate readiness without redundant audit tasks.
+
+Own-admin registration83203/e53a source passes actual17 finite chain but session7/test49 diagnostics and old contact72/73 remain FAIL, no Root admission. Profile APC3 false-saved-after-offline remains held, although retained52/64 pass. Orders read producer8b/e26 sourcePASS and consumercd022/OR1 await correction/integration; registered namespaces alone are not fullAccount/Orders. Stopped native DB/Auth/Storage resources remain untouched with no reset/query/reuse/execution grant. No new full feature, genuine journey, visual/a11y/human/release acceptance.
+
+---
+
+## superseded checkpoint history
+
 # current continuation snapshot: 2026-11-02T17:35:22.504377+00:00
 
 Owner: Kanuj. Same approved D01-D48/26-screen rebuild, incomplete. No estimated percentage.
