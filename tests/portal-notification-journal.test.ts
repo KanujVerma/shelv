@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import {test,before,after} from 'node:test';
 import {readFileSync,readdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
 import {portalCiBaselines} from './helpers/portal-ci-baselines.ts';
 const globalFetch=globalThis.fetch;before(()=>{globalThis.fetch=async()=>{throw Error('global_external_fetch_denied');};});after(()=>{globalThis.fetch=globalFetch;});
 const migration='supabase/migrations/20261101191527_portal_rebuild_notifications_v1.sql';
@@ -90,8 +91,12 @@ test('unknown and purged status never certify absence or a new receipt; real fin
  const forbidden=await finite(command,{message:'concierge_forbidden'},{status:403});assert.deepEqual({status:forbidden.status,body:forbidden.body},{status:403,body:{code:'forbidden'}});
 });
 
-test('the complete actual migration inventory has only the original helper and this bounded forward replacement',()=>{
+test('the complete migration inventory preserves both original writers and the exact approved profile successor',()=>{
  const root=new URL('../supabase/migrations/',import.meta.url),definitions:{file:string;text:string}[]=[];
  for(const file of readdirSync(root).filter(p=>p.endsWith('.sql')).sort()){const text=readFileSync(new URL(file,root),'utf8');if(helper(text))definitions.push({file,text:helper(text)!});}
- assert.deepEqual(definitions.map(d=>d.file),[review.split('/').at(-1),migration.split('/').at(-1)]);assert.equal(definitions.at(-1)?.text,helper(current()));
+ const profile='20261102110000_portal_rebuild_account_profile_v1.sql';
+ assert.deepEqual(definitions.map(d=>d.file),[review.split('/').at(-1),migration.split('/').at(-1),profile]);
+ assert.equal(definitions[1]?.text,helper(current()));
+ // SOURCE identity only: this entire guarded append was independently reviewed in profile R2.
+ assert.equal(createHash('sha256').update(readFileSync(new URL(profile,root))).digest('hex'),'7dcde23039959d60dc1a964b50f22012991139e3d68d5889282ab4524c82b23b');
 });
