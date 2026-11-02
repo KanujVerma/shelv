@@ -89,6 +89,7 @@ export function DecisionControls(props:ClientPlanProps&{decision:PlanDecision}) 
 }
 function LegacyDecisionControls(props: ClientPlanProps & {decision:PlanDecision}) {
     const {decision,view,mode,session,onViewChange,onSelfPurchase}=props;
+    const demoChoice=mode==='public-demo'&&view.schemaVersion===2&&view.access==='active'&&props.demoInteractions?.mode==='public-demo'&&props.demoInteractions.choice.kind==='demo-choice'&&onViewChange?props.demoInteractions.choice:undefined;
     const scope=useReviewScope();
     const [intent,setIntent]=useState<Intent>(()=>{
         const saved=readIntents(props)[decision.id];
@@ -103,7 +104,7 @@ function LegacyDecisionControls(props: ClientPlanProps & {decision:PlanDecision}
         busy.current=null;
     }
     const epoch=context.current.epoch;
-    const current=()=>alive.current && session.isCurrent() && context.current.epoch===epoch;
+    const current=()=>alive.current && session.isCurrent() && context.current.epoch===epoch && (!demoChoice||demoChoice.isCurrent());
     useEffect(()=>{alive.current=true;return()=>{alive.current=false;busy.current=null;};},[]);
     useEffect(()=>{
         if(intent.phase==='saving'||intent.phase==='refreshing'){
@@ -118,7 +119,16 @@ function LegacyDecisionControls(props: ClientPlanProps & {decision:PlanDecision}
     const update=(next:Intent)=>{if(current()){remember(props,decision.id,next);setIntent(next);}};
     const read=()=>readCurrentPlan(props);
     async function submit(choice:DecisionCommand['choice'],retry=false) {
-        if(!port || busy.current || !current() || intent.phase==='conflict' || (!retry && intent.command))return;
+        if((!port&&!demoChoice) || busy.current || !current() || intent.phase==='conflict' || (!retry && intent.command))return;
+        if(demoChoice){
+            try{
+                const result=demoChoice.choose({decisionId:decision.id,choice});
+                if(!current()||result.kind!=='demo-memory')return;
+                update({command:null,attemptedChoice:choice,basisVersion:view.plan!.version,decisionTitle:decision.guidance.title,phase:'saved'});
+                onViewChange?.(result.view);
+            }catch{if(current())update({...intent,command:null,attemptedChoice:choice,phase:'error'});}
+            return;
+        }
         const command=retry ? intent.command : {schemaVersion:1 as const,action:'record_decision_v1' as const,requestId:requestId(),publicationVersion:view.plan!.version,expectedDecisionRevision:view.decisionRevision,decisionId:decision.id,choice,reason:null};
         if(!command)return;
         const operation={};busy.current=operation;
@@ -126,7 +136,7 @@ function LegacyDecisionControls(props: ClientPlanProps & {decision:PlanDecision}
         update(pending);
         let acknowledged=false;
         try {
-            await port.decision.execute(command);acknowledged=true;
+            await port!.decision.execute(command);acknowledged=true;
             if(!current()||busy.current!==operation)return;
             update({...pending,phase:'refreshing'});
             const authoritative=await read();
@@ -163,16 +173,16 @@ function LegacyDecisionControls(props: ClientPlanProps & {decision:PlanDecision}
     }
     const locked=intent.phase==='saving'||intent.phase==='refreshing'||!!intent.command||intent.phase==='conflict';
     const recorded=view.decisions.find(d=>d.decisionId===decision.id),purchase=isPurchaseDecision(decision);
-    if(!port)return <div className="plan-stack"><h2>your choice</h2><StatusNotice title={view.access==='read_only' ? 'read-only plan' : mode==='historical' ? 'historical plan' : mode==='public-demo' ? 'demo preview' : 'preview only'}>choices are unavailable in this view.</StatusNotice>{recorded ? <p>recorded choice: {recorded.choice}</p> : null}</div>;
+    if(!port&&!(demoChoice&&demoChoice.isCurrent()))return <div className="plan-stack"><h2>your choice</h2><StatusNotice title={view.access==='read_only' ? 'read-only plan' : mode==='historical' ? 'historical plan' : mode==='public-demo' ? 'demo preview' : 'preview only'}>choices are unavailable in this view.</StatusNotice>{recorded ? <p>recorded choice: {recorded.choice}</p> : null}</div>;
     return <div className="plan-stack"><h2>your choice</h2>
       <Button busy={intent.phase==='saving'} disabled={locked} onClick={()=>void submit('approved')}>{purchase ? 'approve product' : 'approve decision'}</Button>
       <Button variant="secondary" disabled={locked} onClick={()=>void submit('deferred')}>decide later</Button>
       <Button variant="ghost" disabled={locked} onClick={()=>void submit('declined')}>decline</Button>
-      {recorded ? <p className="plan-muted">recorded choice: {recorded.choice}</p> : null}
+      {recorded ? <p className="plan-muted">{demoChoice?'demo choice':'recorded choice'}: {recorded.choice}</p> : null}
       {intent.attemptedChoice && intent.phase!=='saved' ? <p>attempted choice: {intent.attemptedChoice}</p> : null}
       {intent.phase==='refreshing' ? <StatusNotice tone="loading" title="checking your choice"/> : null}
       {intent.phase==='saving' ? <StatusNotice tone="loading" title="recording your choice"/> : null}
-      {intent.phase==='saved' ? <StatusNotice tone="success" title="choice recorded">{view.schemaVersion===2?'your choice does not record product use.':'your current routine has not changed.'}</StatusNotice> : null}
+      {intent.phase==='saved' ? <StatusNotice tone={demoChoice?'neutral':'success'} title={demoChoice?'demo choice updated':'choice recorded'}>{demoChoice?'only this demo’s memory changed. nothing is ordered, charged or recorded to a client account.':view.schemaVersion===2?'your choice does not record product use.':'your current routine has not changed.'}</StatusNotice> : null}
       {intent.phase==='uncertain' ? <StatusNotice tone="uncertain" title="result uncertain" action={<Button variant="secondary" onClick={()=>void submit(intent.command!.choice,true)}>retry same choice</Button>}>your choice may have been recorded. retry the exact choice for plan version {intent.basisVersion} to confirm.</StatusNotice> : null}
       {intent.phase==='conflict' ? <StatusNotice tone="warning" title="plan changed" action={<Button variant="secondary" onClick={()=>void reviewLatest()}>review latest plan</Button>}>your choice was not saved. review the latest plan before choosing again. your attempted choice is kept for review.</StatusNotice> : null}
       {intent.phase==='denied' ? <StatusNotice tone="denied" title="action unavailable">your choice was not saved. your attempted choice is kept.</StatusNotice> : null}

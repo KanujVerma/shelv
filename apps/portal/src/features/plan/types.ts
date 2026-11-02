@@ -5,6 +5,7 @@ import type {ClientGuidancePort} from './guidancePort.ts';
 import type {careClientActions} from '../../../../../src/contracts/PortalCareValues.ts';
 import type {OperationPort} from '../../transport/session.ts';
 import type {PortalRoute,PresentationMode} from '../../navigation/routes.ts';
+import type {CapturedUse} from './useModel.ts';
 
 export type ClientPlanReadView=ClientPlanView|ClientPlanViewV2|ClientPlanViewV3;
 export type ClientCareCommand=Extract<CareCommand,{action:typeof careClientActions[number]}>;
@@ -22,6 +23,24 @@ export interface ClientPlanPorts {
 }
 /** Separate capability, deliberately incompatible with a live decision port. */
 export interface DemoPlanPorts extends ClientPlanPorts {readonly mode:'public-demo'}
+/** Memory interactions deliberately have no live-operation ABI or receipt. */
+export interface DemoMemoryResult {readonly kind:'demo-memory';readonly view:ClientPlanViewV2}
+export interface DemoUsePort {
+  readonly kind:'demo-use';
+  readonly sampleToday:string;
+  isCurrent():boolean;
+  report(capture:CapturedUse):DemoMemoryResult;
+}
+export interface DemoChoicePort {
+  readonly kind:'demo-choice';
+  isCurrent():boolean;
+  choose(input:{decisionId:string;choice:DecisionCommand['choice']}):DemoMemoryResult;
+}
+export interface DemoPlanInteractions {
+  readonly mode:'public-demo';
+  readonly use:DemoUsePort;
+  readonly choice:DemoChoicePort;
+}
 export interface PlanSessionBoundary {
   /** Opaque owner + session generation key; never a credential. Replace on login. */
   readonly key:string;
@@ -46,6 +65,7 @@ export interface ClientPlanProps {
   session:PlanSessionBoundary;
   ports?:ClientPlanPorts;
   demoPorts?:DemoPlanPorts;
+  demoInteractions?:DemoPlanInteractions;
   onViewChange?:(view:ClientPlanReadView)=>void;
   onRecordUse?:(productId:string)=>void;
   onSelfPurchase?:(productId:string,decisionId:string)=>void;

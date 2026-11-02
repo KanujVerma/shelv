@@ -77,14 +77,14 @@ test('real product/evidence exploration stays in Maya and MF1 reopen restores se
   render(f.scope);click('view tour');target(f,4);assert.equal(f.entries.length,1);
   assert.deepEqual(f.controller.getSnapshot().route,{name:'plan',routine:'morning'});
 });
-test('real demo choice/use/receipt remain isolated through history, finish/replay/reset and unavailable form',async t=>{
+test('real demo choice/use/receipt remain isolated through history, finish/replay/reset and available memory form',async t=>{
   const f=fixture(t,2),other=fixture(t,3);target(f,2);click('decide later');await new Promise(setImmediate);
   assert.equal(f.controller.getSnapshot().view.decisions[0].choice,'deferred');render(f.scope);click('next');target(f,3);
   click('try sample receipt');assert.deepEqual(f.controller.getSnapshot().exampleReports,[]);
   render(f.scope);click('try sample start · date unknown');render(f.scope);click('try sample stop · date unknown');
   assert.deepEqual(f.controller.getSnapshot().view.actualUse,[]);assert.equal(f.controller.getSnapshot().exampleReports[0].occurredOn.state,'unknown');
-  render(f.scope);click('back');assert.match(target(f,2),/reset demo to try choices/);assert.doesNotMatch(render(f.scope),/>approve product</);
-  f.controller.navigate({name:'product-use',productId:'cerave-pm',routine:'morning'});assert.match(render(f.scope),/use reporting unavailable/);
+  render(f.scope);click('back');assert.match(target(f,2),/>approve product</);assert.doesNotMatch(render(f.scope),/reset demo to try choices/);
+  f.controller.navigate({name:'product-use',productId:'cerave-pm',routine:'morning'});assert.match(render(f.scope),/sample use form/);assert.doesNotMatch(render(f.scope),/use reporting unavailable/);
   f.controller.selectStage(5);target(f,5);click('finish guide');assert.equal(f.controller.getSnapshot().guide,'exploring');
   render(f.scope);click('view tour');target(f,5);const before=f.controller.getSnapshot().exampleReports;
   click('replay guide');target(f,1);assert.deepEqual(f.controller.getSnapshot().exampleReports,before);

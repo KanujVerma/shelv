@@ -1,10 +1,11 @@
 import {readPlanCommand} from '../../../../../../src/contracts/PortalRebuildValidation.ts';
-import type {AttributedUseEvent,UseProjection} from '../../../../../../src/contracts/PortalCare.ts';
-import type {ClientPlanProps,ClientPlanReadView,DemoPlanPorts,PlanNavigationPort,PlanRoute,PlanSessionBoundary} from '../../plan/types.ts';
+import type {AttributedUseEvent,ClientPlanViewV2,UseProjection} from '../../../../../../src/contracts/PortalCare.ts';
+import type {ClientPlanProps,ClientPlanReadView,DemoPlanInteractions,DemoPlanPorts,PlanNavigationPort,PlanRoute,PlanSessionBoundary} from '../../plan/types.ts';
 import {captureUse} from '../../plan/useModel.ts';
 import type {UseForm} from '../../plan/useModel.ts';
 import {buildRoute,parentRoute,parseRoute} from '../../../navigation/routes.ts';
-import {createMayaFixture,mayaCareView,MAYA_TREATMENT,SAMPLE_ACTOR,SAMPLE_RECORDED_AT,sampleId} from './fixture.ts';
+import {createMayaFixture,mayaCareView,MAYA_TREATMENT} from './fixture.ts';
+import {MAYA_SAMPLE_TODAY,reduceMayaUse} from './interactions.ts';
 import {mayaStage,readMayaStage} from './model.ts';
 import type {MayaGuide,MayaPage,MayaStageNumber} from './model.ts';
 
@@ -18,7 +19,7 @@ export interface MayaDemoSnapshot {
   readonly exampleReports:readonly AttributedUseEvent[];
   readonly generation:number;
 }
-type Lease={active:boolean;memory:Map<string,unknown>;listeners:Set<()=>void>;lastRead:ClientPlanReadView|null};
+type Lease={active:boolean;memory:Map<string,unknown>;listeners:Set<()=>void>;lastRead:ClientPlanReadView|null;lastMemoryView:ClientPlanViewV2|null};
 const unavailable=()=>Object.assign(Error('demo is no longer available'),{status:403});
 function planRoute(input:PlanRoute):PlanRoute {
   const route=parseRoute(buildRoute(input));
@@ -31,13 +32,14 @@ function planRoute(input:PlanRoute):PlanRoute {
 export function createMayaDemoController(options:{initialStage?:MayaStageNumber}={}) {
   const listeners=new Set<()=>void>();
   let disposed=false,generation=0,fixture=createMayaFixture(),use:UseProjection=fixture.use;
-  let lease:Lease={active:true,memory:new Map(),listeners:new Set(),lastRead:null};
+  let lease:Lease={active:true,memory:new Map(),listeners:new Set(),lastRead:null,lastMemoryView:null};
   let stack:PlanRoute[]=[],reports:AttributedUseEvent[]=[],stage=readMayaStage(options.initialStage??1),guide:MayaGuide='open',page:MayaPage=mayaStage(stage).page,route:PlanRoute=structuredClone(mayaStage(stage).route),receipt=false;
   const receipts=new Map<string,string>();
   let snapshot:MayaDemoSnapshot;
   const live=()=>!disposed&&lease.active;
-  const renderView=():ClientPlanReadView=>stage===2&&use.revision===0?structuredClone(fixture.base):mayaCareView(fixture.base,use,stage>=4);
+  const renderView=():ClientPlanViewV2=>mayaCareView(fixture.base,use,stage>=4);
   function publish() {
+    lease.lastRead=null;lease.lastMemoryView=null;
     snapshot={stage,guide,page,route:structuredClone(route),view:renderView(),exampleReceipt:receipt,exampleReports:structuredClone(reports),generation};
   }
   function emit(){publish();for(const listener of [...listeners])listener();}
@@ -47,7 +49,7 @@ export function createMayaDemoController(options:{initialStage?:MayaStageNumber}
   function backDestination():PlanRoute {return structuredClone(stack.at(-1)??parentRoute(route)) as PlanRoute;}
   function backPlan(){requireLive();route=planRoute(stack.pop()??backDestination());page='plan';emit();}
   function retire(current:Lease){
-    current.active=false;current.memory.clear();current.lastRead=null;
+    current.active=false;current.memory.clear();current.lastRead=null;current.lastMemoryView=null;
     const observers=[...current.listeners];current.listeners.clear();
     for(const fn of observers){try{fn();}catch{/* Local observers cannot interrupt retirement. */}}
   }
@@ -84,7 +86,7 @@ export function createMayaDemoController(options:{initialStage?:MayaStageNumber}
   function reset(){
     requireLive();const old=lease;old.active=false;
     generation++;fixture=createMayaFixture();use=fixture.use;reports=[];receipt=false;receipts.clear();stack=[];stage=1;guide='open';page='plan';route={name:'plan',routine:'morning'};
-    lease={active:true,memory:new Map(),listeners:new Set(),lastRead:null};demoPorts=createPorts(lease);session=sessionFor(lease);
+    lease={active:true,memory:new Map(),listeners:new Set(),lastRead:null,lastMemoryView:null};demoPorts=createPorts(lease);session=sessionFor(lease);
     publish();retire(old);emit();
   }
   /** Preset reports demonstrate the REAL shared capture/projection/renderer
@@ -94,10 +96,7 @@ export function createMayaDemoController(options:{initialStage?:MayaStageNumber}
     if(!state)throw Error('unknown demo product');
     const form:UseForm={match:action==='stopped-unknown'?null:'yes',action:action==='stopped-unknown'?'stopped':'started_earlier',when:action==='started-known'?'earlier':'unknown',date:action==='started-known'?'2026-11-03':'',acquisition:action==='stopped-unknown'?'unknown':'self',details:'',frequency:'',amount:'',name:'',brand:'',variant:'',strength:'',sizeLabel:'',differentProduct:false};
     const capture=captureUse(form,state.product,state.product.publication,'2026-11-03');
-    const event:AttributedUseEvent={eventId:sampleId(reports.length+1),product:state.product,change:capture.change,occurredOn:capture.occurredOn,channel:'portal',sourcePublication:capture.sourcePublication,reportedBy:SAMPLE_ACTOR,recordedBy:SAMPLE_ACTOR,recordedAt:SAMPLE_RECORDED_AT,acquisition:form.acquisition,identityEventId:null,originalActivationId:null,amendment:null};
-    const {change,...summary}=event;
-    use={...use,revision:use.revision+1,planProducts:use.planProducts.map(s=>s!==state?s:{...s,state:change.kind==='stopped'?'stopped':'using',originalStart:change.kind==='started'&&s.state==='not_reported'?capture.occurredOn:s.originalStart,latestEvent:{...summary,changeKind:change.kind,amendment:null}})};
-    reports=[...reports,event];emit();
+    const next=reduceMayaUse(renderView(),reports,capture);use=next.use;reports=next.reports;emit();
   }
   publish();
   return {
@@ -119,8 +118,24 @@ export function createMayaDemoController(options:{initialStage?:MayaStageNumber}
     reportExample,
     receiveExample(){requireLive();receipt=true;emit();},
     getPlanProps():ClientPlanProps {
-      const current=lease,view=snapshot.view,navigation:PlanNavigationPort={route:snapshot.route,navigate,back:backPlan,backDestination};
-      return {view,mode:'public-demo',session,demoPorts,navigation,onViewChange(value){if(live()&&lease===current&&current.lastRead===value&&value.schemaVersion===1)emit();}};
+      const current=lease,view=snapshot.view,capturedRoute=snapshot.route;
+      const routeKey=buildRoute(snapshot.route),currentContext=()=>live()&&lease===current&&snapshot.view===view&&buildRoute(snapshot.route)===routeKey;
+      const navigation:PlanNavigationPort={route:capturedRoute,navigate(input){if(!currentContext())throw unavailable();navigate(input);},back(){if(!currentContext())throw unavailable();backPlan();},backDestination:()=>currentContext()?backDestination():parentRoute(capturedRoute) as PlanRoute};
+      // A sample interaction returns the exact Root read DTO. The later-story
+      // review remains authored display content, never a fabricated Care ACK.
+      const result=()=>{const value=mayaCareView(fixture.base,use,false);current.lastMemoryView=value;return {kind:'demo-memory' as const,view:value};};
+      const demoInteractions:DemoPlanInteractions={mode:'public-demo',use:{kind:'demo-use',sampleToday:MAYA_SAMPLE_TODAY,isCurrent:currentContext,report(capture){
+        if(!currentContext()||current.lastMemoryView!==null||view.schemaVersion!==2)throw unavailable();
+        const r=snapshot.route;
+        if(r.name==='report-use'?capture.original!==null:r.name!=='product-use'||!capture.original||(capture.original.kind==='plan_product'?capture.original.productId:capture.original.reportedProductId)!==r.productId)throw Error('sample use target changed');
+        const next=reduceMayaUse(view,reports,capture);use=next.use;reports=next.reports;return result();
+      }},choice:{kind:'demo-choice',isCurrent:currentContext,choose(input){
+        if(!currentContext()||current.lastMemoryView!==null||view.schemaVersion!==2)throw unavailable();
+        if(snapshot.route.name!=='recommendation'||snapshot.route.decisionId!==input.decisionId||!['approved','deferred','declined'].includes(input.choice)||!fixture.base.plan!.content.decisions.some(d=>d.id===input.decisionId))throw Error('sample choice target changed');
+        fixture.base={...fixture.base,decisionRevision:fixture.base.decisionRevision+1,decisions:[...fixture.base.decisions.filter(d=>d.decisionId!==input.decisionId),{decisionId:input.decisionId,choice:input.choice,reason:null}]};
+        return result();
+      }}};
+      return {view,mode:'public-demo',session,demoPorts,demoInteractions,navigation,onViewChange(value){if(currentContext()&&(current.lastRead===value&&value.schemaVersion===1||current.lastMemoryView===value&&value.schemaVersion===2)){current.lastMemoryView=null;emit();}}};
     },
     dispose(){if(disposed)return;disposed=true;const old=lease;receipts.clear();reports=[];stack=[];fixture=createMayaFixture();use=fixture.use;receipt=false;guide='exited';page='plan';stage=1;route={name:'plan',routine:'morning'};publish();listeners.clear();retire(old);},
   };
