@@ -47,6 +47,18 @@ export function ApplicationShell({
   const status = (
     <div className="app-session-actions">
       {preview ? <Badge>advisor preview</Badge> : null}
+      {audience === "client" && !preview ? (
+        <Button variant="ghost" asChild>
+          <RouteLink
+            id="portal-notifications"
+            route={{ name: "notifications" }}
+            aria-current={route?.name === "notifications" ? "page" : undefined}
+          >
+            <Icon name="bell" />
+            notifications
+          </RouteLink>
+        </Button>
+      ) : null}
       <Button variant="ghost" onClick={onSignOut}>
         sign out
       </Button>

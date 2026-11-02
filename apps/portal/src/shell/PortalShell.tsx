@@ -9,7 +9,7 @@ export interface ContactPort {onContact: ()=>void;availability: 'service'|'admin
 export interface PortalShellProps {children: ReactNode;identity: string;contact: ContactPort;mode: PresentationMode;context?: ReactNode;status?: ReactNode}
 function activeSection(route: PortalRoute|null): string {
   const name=route?.name??'plan';
-  return name.startsWith('history')?'history':name==='order'||name==='orders'?'orders':name.startsWith('account')?'account':'plan';
+  return name==='notifications'?'notifications':name.startsWith('history')?'history':name==='order'||name==='orders'?'orders':name.startsWith('account')?'account':'plan';
 }
 function ContactCard({contact}: {contact: ContactPort}) {
   return <div className="shelv-contact-card" data-foundation="contact">

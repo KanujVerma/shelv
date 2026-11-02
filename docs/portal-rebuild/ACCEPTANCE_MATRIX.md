@@ -1,3 +1,7 @@
+## Source-only navigation delta: 2026-11-02T21:26:08.361347+00:00
+
+Client shell bell92b8 has independente3d81 source/SSR/finite/strict PASS and is being imported as exact four postimages. It reaches the existing client inbox without a clinical read or invented unread count. No approved-frame/controller or current browser/genuine/journey numerator changes. Detailed89bf inventory remains the baseline below; new physical Root heavy validation and exact-head CI remain distinct.
+
 # reconciled current inventory: 2026-11-02T21:04:26.023160+00:00
 
 Authoritative detailed rows: [26 screen JSON](acceptance/CURRENT_SCREEN_INVENTORY_20261102.json), [screen report](research/W7_CURRENT_SCREEN_INVENTORY_20261102.md), [48 decisions +10 journeys JSON](acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json), [decision/journey report](research/W7_CURRENT_DECISIONS_JOURNEYS_20261102.md). Actual source pin89bf/code3c; later CI-only compatibility patch changes no mount/producers/signoffs. Every row has implementation parts, actual source chain, current evidence, missing gate and owner.

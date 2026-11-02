@@ -1,8 +1,8 @@
 {
-  "updatedOn": "2026-11-02T21:04:26.023160+00:00",
+  "updatedOn": "2026-11-02T21:26:08.361347+00:00",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
-  "allocatedWorkers": 1,
+  "allocatedWorkers": 3,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -4383,12 +4383,13 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "owned plan guidanceDecision/Guidance",
         "new source tests/W3 report"
       ],
-      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d"
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-1026ad5d",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "W0 canonical deferred History restoration source",
@@ -4407,12 +4408,13 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "apps/portal/src/navigation/history.ts",
         "owned client App files/tests/report"
       ],
-      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f"
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "W7 Commerce M63 backend review R1",
@@ -4585,11 +4587,12 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "writeSet": [
         "six NEW PortalSource modules/test/report only"
       ],
-      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7a7cac7e"
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7a7cac7e",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "W2 day/ready final-dispatch source correction",
@@ -7558,7 +7561,7 @@
         "reasoningEffort": "xhigh",
         "serviceTier": "default"
       },
-      "status": "running",
+      "status": "completed",
       "resourceGrant": false,
       "scope": "bounded source only; explicit ownership and preserved original findings in current brief",
       "authoritativeTaskIdForwarded": true,
@@ -7566,7 +7569,8 @@
         "path": "supabase/functions/concierge-operations/runtime.ts",
         "scope": "fixed4096-byte success cap only exact concierge_checkin_head_v1, legacyothersunchanged",
         "sqlWriter": false
-      }
+      },
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "maya_app_task",
@@ -7579,14 +7583,15 @@
         "reasoningEffort": "xhigh",
         "serviceTier": "default"
       },
-      "status": "running",
+      "status": "completed",
       "resourceGrant": false,
       "scope": "bounded source only; explicit ownership and preserved original findings in current brief",
       "authoritativeTaskIdForwarded": true,
       "sharedFileAllocation": {
         "path": "apps/portal/src/app/Application.tsx",
         "scope": "sole writer public Maya mount only, other branches frozen"
-      }
+      },
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "report_photos_review_task",
@@ -7617,10 +7622,11 @@
         "reasoningEffort": "xhigh",
         "serviceTier": "default"
       },
-      "status": "running",
+      "status": "completed",
       "resourceGrant": false,
       "scope": "bounded source only; explicit ownership and preserved original findings in current brief",
-      "authoritativeTaskIdForwarded": false
+      "authoritativeTaskIdForwarded": false,
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-advisor-commerce-ui-source-review-20261101-r3",
@@ -7638,12 +7644,13 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "role": "ac3_review_task",
       "baseCommit": "a4c72858b0fe8b0fb4da4b21a2ccaf9cf6ecbec9",
       "resourceGrant": false,
       "scope": "NEW independent report-only source R3 with complete original/prior findings/responses",
-      "authoritativeTaskIdForwarded": true
+      "authoritativeTaskIdForwarded": true,
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-notification-kernel-source-review-20261101-r3",
@@ -7661,12 +7668,13 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "role": "n3_review_task",
       "baseCommit": "a4c72858b0fe8b0fb4da4b21a2ccaf9cf6ecbec9",
       "resourceGrant": false,
       "scope": "NEW independent report-only source R3 with complete original/prior findings/responses",
-      "authoritativeTaskIdForwarded": false
+      "authoritativeTaskIdForwarded": false,
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-final-export-source-review-20261101-r4",
@@ -7684,14 +7692,15 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "role": "W7 final export SOURCE R4",
       "baseCommit": "a4c72858b0fe8b0fb4da4b21a2ccaf9cf6ecbec9",
       "ownedPaths": [
         "docs/portal-rebuild/research/W7_FINAL_EXPORT_SOURCE_R4.md"
       ],
       "resourceGrant": false,
-      "authoritativeTaskIdForwarded": false
+      "authoritativeTaskIdForwarded": false,
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w0-notification-transport-source-20261101-r1",
@@ -7835,9 +7844,10 @@
       "resourceGrant": false,
       "authoritativeTaskIdForwarded": true,
       "baseCommit": "d797184f5b3323d28e072b1c59a730452347651e",
-      "status": "running",
+      "status": "completed",
       "heldSourceCommit": "13f131458d6e635aed76a1d6ab6dab8b6b5a92f6",
-      "resultQualification": "V3held50=48/50; actualT3phase6 stillrunning after exactV4pin; continuationownedprojectiononly"
+      "resultQualification": "V3held50=48/50; actualT3phase6 stillrunning after exactV4pin; continuationownedprojectiononly",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw5-commerce-command-capability-ac4-source-fix-20261101",
@@ -8104,7 +8114,8 @@
       "role": "w0_sd1_fix_task",
       "resourceGrant": false,
       "authoritativeTaskIdForwarded": true,
-      "status": "running"
+      "status": "completed",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw7-notifications-native-ne1-source-fix-20261101",
@@ -8150,7 +8161,8 @@
       "role": "fe6_fix_task",
       "resourceGrant": false,
       "authoritativeTaskIdForwarded": true,
-      "status": "running"
+      "status": "completed",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw4-report-photo-controller-retirement-rp3-source-fix-20261101",
@@ -8268,7 +8280,8 @@
       "role": "nui1_fix_task",
       "resourceGrant": false,
       "authoritativeTaskIdForwarded": true,
-      "status": "running"
+      "status": "completed",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-notifications-native-executor-source-review-20261101-r2",
@@ -8276,7 +8289,7 @@
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w7-notifications-native-executor-source-review-20261101-r2:ordinal:1",
       "role": "native_r2_review_task",
       "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
-      "status": "running",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -8290,7 +8303,8 @@
         }
       ],
       "authoritativeTaskIdForwarded": true,
-      "resourceGrant": false
+      "resourceGrant": false,
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-account-address-service-source-review-20261101-r5",
@@ -8298,7 +8312,7 @@
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w7-account-address-service-source-review-20261101-r5:ordinal:1",
       "role": "aas5_review_task",
       "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
-      "status": "running",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -8312,7 +8326,8 @@
         }
       ],
       "authoritativeTaskIdForwarded": true,
-      "resourceGrant": false
+      "resourceGrant": false,
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-advisor-commerce-ui-source-review-20261101-r6",
@@ -8320,7 +8335,7 @@
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w7-advisor-commerce-ui-source-review-20261101-r6:ordinal:1",
       "role": "ac6_review_task",
       "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
-      "status": "running",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -8334,7 +8349,8 @@
         }
       ],
       "authoritativeTaskIdForwarded": true,
-      "resourceGrant": false
+      "resourceGrant": false,
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-photo-inventory-source-20261101-r1",
@@ -8342,7 +8358,7 @@
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w1-photo-inventory-source-20261101-r1:ordinal:1",
       "role": "photo_inventory_task",
       "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
-      "status": "running",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -8356,7 +8372,8 @@
         }
       ],
       "authoritativeTaskIdForwarded": true,
-      "resourceGrant": false
+      "resourceGrant": false,
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w6-source-consents-ui-source-20261101-r1",
@@ -8364,7 +8381,7 @@
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w6-source-consents-ui-source-20261101-r1:ordinal:1",
       "role": "source_consent_ui_task",
       "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
-      "status": "running",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -8378,7 +8395,8 @@
         }
       ],
       "authoritativeTaskIdForwarded": true,
-      "resourceGrant": false
+      "resourceGrant": false,
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-source-lifecycle-next-slice-20261101-r1",
@@ -8386,7 +8404,7 @@
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w1-source-lifecycle-next-slice-20261101-r1:ordinal:1",
       "role": "source_lifecycle_delta_task",
       "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
-      "status": "running",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -8400,7 +8418,8 @@
         }
       ],
       "authoritativeTaskIdForwarded": true,
-      "resourceGrant": false
+      "resourceGrant": false,
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-report-photo-head-reader-source-review-20261101-r5",
@@ -8408,7 +8427,7 @@
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w7-report-photo-head-reader-source-review-20261101-r5:ordinal:1",
       "role": "photo_reader_r5_task",
       "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
-      "status": "running",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -8422,7 +8441,8 @@
         }
       ],
       "authoritativeTaskIdForwarded": true,
-      "resourceGrant": false
+      "resourceGrant": false,
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "native_ne3_fix",
@@ -8459,14 +8479,15 @@
         "serviceTier": "default"
       },
       "statusAtDispatch": "starting",
-      "status": "running",
+      "status": "completed",
       "statusEvidence": "T3 returned dispatch receipt; current live claims require current inventory, not this historical field.",
       "writeSet": [
         "apps/portal/src/features/advisor/commerce/controller.ts",
         "apps/portal/tests/rebuild-advisor-commerce-replacement-custody.test.mjs",
         "docs/portal-rebuild/research/W5_ADVISOR_COMMERCE_UI.md"
       ],
-      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json"
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "photo_inventory_collection",
@@ -8480,14 +8501,15 @@
         "serviceTier": "default"
       },
       "statusAtDispatch": "starting",
-      "status": "running",
+      "status": "completed",
       "statusEvidence": "T3 returned dispatch receipt; current live claims require current inventory, not this historical field.",
       "writeSet": [
         "apps/portal/src/features/history/photos/port.ts",
         "new matching report-photo inventory tests",
         "docs/portal-rebuild/research/W4_REPORT_PHOTOS.md"
       ],
-      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json"
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "combined_transport_r3",
@@ -8540,8 +8562,9 @@
       "resourceGrant": false,
       "receipt": ".local-artifacts/portal-rebuild/review-allocations-20261101/coordination_recovery_ledger_inputs_20261102.json",
       "statusEvidence": "Original returned allocation receipt, live resumed thread read, and successful missing-input delivery; no identity inferred from run ordinal.",
-      "status": "running",
-      "statusQualification": "Last direct missing-input delivery; not a new poll or acceptance result."
+      "status": "completed",
+      "statusQualification": "Last direct missing-input delivery; not a new poll or acceptance result.",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "maya_interactions_r1",
@@ -8602,15 +8625,16 @@
       "resourceGrant": false,
       "receipt": ".local-artifacts/portal-rebuild/review-allocations-20261101/coordination_recovery_ledger_inputs_20261102.json",
       "statusEvidence": "Original returned allocation receipt, live resumed thread read, and successful missing-input delivery; no identity inferred from run ordinal.",
-      "status": "running",
-      "statusQualification": "Last direct missing-input delivery; not a new poll or acceptance result."
+      "status": "completed",
+      "statusQualification": "Last direct missing-input delivery; not a new poll or acceptance result.",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "Maya complete interaction reconciliation",
       "taskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Athread-send%3Aw3-complete-maya-retirement-compatibility-reconciliation-20261102",
       "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w3-maya-complete-interactions-source-20261101-r1",
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w3-maya-complete-interactions-source-20261101-r1:ordinal:3",
-      "status": "running",
+      "status": "completed",
       "statusAtDispatch": "starting",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
@@ -8624,7 +8648,8 @@
         "append W3 report",
         "separate approved two-file test expectation successor"
       ],
-      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/maya-reconciliation-20261102.json"
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/maya-reconciliation-20261102.json",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "native_r4",
@@ -8683,7 +8708,7 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "statusEvidence": "Actual successful fresh delegate_task response and initial child runtime gate, not an old attempted dispatch",
       "authoritativeTaskIdForwarded": true,
       "resourceGrant": false,
@@ -8694,7 +8719,8 @@
       ],
       "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restoration-20261102.json",
       "firstMaterialFinding": "SK1: unparenthesized CASE in source_parse IF conditions, reported by independent reviewer",
-      "acceptance": "held; report-only closure after first finding; no kernel SQL executed"
+      "acceptance": "held; report-only closure after first finding; no kernel SQL executed",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "maya_r2 restored Parent independent review",
@@ -8713,11 +8739,12 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "statusEvidence": "Successful actual fresh delegate response and child read; dispatch state only, not acceptance",
       "authoritativeTaskIdForwarded": true,
       "resourceGrant": false,
-      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restored-parallel-reviews-20261102.json"
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restored-parallel-reviews-20261102.json",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "commerce_r8 restored Parent independent review",
@@ -8736,11 +8763,12 @@
           "value": "default"
         }
       ],
-      "status": "running",
+      "status": "completed",
       "statusEvidence": "Successful actual fresh delegate response and child read; dispatch state only, not acceptance",
       "authoritativeTaskIdForwarded": true,
       "resourceGrant": false,
-      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restored-parallel-reviews-20261102.json"
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restored-parallel-reviews-20261102.json",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "role": "transport_r4",
@@ -9199,7 +9227,7 @@
       "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-shared-transport-review-r6>",
       "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aafb222dc-28b4-420b-9474-b05bc6eeba89%253Adelegate-task%253Acontinuation-20261102-shared-transport-review-r6:ordinal:1",
       "childNodeId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-shared-transport-review-r6",
-      "status": "running",
+      "status": "completed",
       "workState": "working",
       "hasPendingChildRuns": false,
       "latestTerminalRunId": null,
@@ -9237,7 +9265,8 @@
         "serviceTier": "default"
       },
       "taskIdForwardedSeparately": true,
-      "asOf": "2026-11-02T12:16:08.664283+00:00"
+      "asOf": "2026-11-02T12:16:08.664283+00:00",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-profile-review-r2",
@@ -9520,7 +9549,7 @@
       "threadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-notifications-composition-v1",
       "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aafb222dc-28b4-420b-9474-b05bc6eeba89%253Adelegate-task%253Acontinuation-20261102-account-notifications-composition-v1:ordinal:1",
       "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-notifications-composition-v1>",
-      "status": "running",
+      "status": "completed",
       "role": "W0: compose real Account and notifications routes",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7c5f3fe1",
       "baseCommit": "8581b3eb4aaf21f31f2f055d7f973d96c6490336",
@@ -9541,7 +9570,8 @@
       "taskIdForwardedSeparately": true,
       "asOf": "2026-11-02T17:35:22.504377+00:00",
       "completeBriefAndReceipts": ".local-artifacts/portal-rebuild/continuation-20261102/product-flow-refill-final.json",
-      "scope": "account-notifications-composition"
+      "scope": "account-notifications-composition",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-photo-collection-current-review-v1",
@@ -9579,7 +9609,7 @@
       "threadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-portal-ordinary-journey-tests-v1",
       "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aafb222dc-28b4-420b-9474-b05bc6eeba89%253Adelegate-task%253Acontinuation-20261102-portal-ordinary-journey-tests-v1:ordinal:1",
       "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-portal-ordinary-journey-tests-v1>",
-      "status": "running",
+      "status": "completed",
       "role": "W7: author ordinary portal browser journeys and acceptance ledger",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-7be40828",
       "baseCommit": "8581b3eb4aaf21f31f2f055d7f973d96c6490336",
@@ -9600,14 +9630,15 @@
       "taskIdForwardedSeparately": true,
       "asOf": "2026-11-02T17:35:22.504377+00:00",
       "completeBriefAndReceipts": ".local-artifacts/portal-rebuild/continuation-20261102/product-flow-refill-final.json",
-      "scope": "portal-ordinary-journey-tests"
+      "scope": "portal-ordinary-journey-tests",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-contact-provider-review-r1",
       "threadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-contact-provider-review-r1",
       "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aafb222dc-28b4-420b-9474-b05bc6eeba89%253Adelegate-task%253Acontinuation-20261102-account-contact-provider-review-r1:ordinal:1",
       "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-contact-provider-review-r1>",
-      "status": "running",
+      "status": "completed",
       "role": "R1: review complete Account contact read provider",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-f52b9677",
       "baseCommit": "8581b3eb4aaf21f31f2f055d7f973d96c6490336",
@@ -9628,14 +9659,15 @@
       "taskIdForwardedSeparately": true,
       "asOf": "2026-11-02T17:35:22.504377+00:00",
       "completeBriefAndReceipts": ".local-artifacts/portal-rebuild/continuation-20261102/product-flow-refill-final.json",
-      "scope": "account-contact-provider-review-r1"
+      "scope": "account-contact-provider-review-r1",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-profile-consumer-review-r1",
       "threadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-profile-consumer-review-r1",
       "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aafb222dc-28b4-420b-9474-b05bc6eeba89%253Adelegate-task%253Acontinuation-20261102-account-profile-consumer-review-r1:ordinal:1",
       "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-profile-consumer-review-r1>",
-      "status": "running",
+      "status": "completed",
       "role": "R1: review complete Account profile consumer and C08 summary",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-79219be2",
       "baseCommit": "58554585003fed9a77b88ee4aa3a67ad5e9fbbd7",
@@ -9656,14 +9688,15 @@
       "taskIdForwardedSeparately": true,
       "asOf": "2026-11-02T17:35:22.504377+00:00",
       "completeBriefAndReceipts": ".local-artifacts/portal-rebuild/continuation-20261102/product-flow-refill-final.json",
-      "scope": "account-profile-consumer-review-r1"
+      "scope": "account-profile-consumer-review-r1",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-contact-consumer-review-r1",
       "threadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-contact-consumer-review-r1",
       "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aafb222dc-28b4-420b-9474-b05bc6eeba89%253Adelegate-task%253Acontinuation-20261102-account-contact-consumer-review-r1:ordinal:1",
       "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-contact-consumer-review-r1>",
-      "status": "running",
+      "status": "completed",
       "role": "R1: review complete Account contact consumer and callback fences",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-6d954c6c",
       "baseCommit": "58554585003fed9a77b88ee4aa3a67ad5e9fbbd7",
@@ -9684,14 +9717,15 @@
       "taskIdForwardedSeparately": true,
       "asOf": "2026-11-02T17:35:22.504377+00:00",
       "completeBriefAndReceipts": ".local-artifacts/portal-rebuild/continuation-20261102/product-flow-refill-final.json",
-      "scope": "account-contact-consumer-review-r1"
+      "scope": "account-contact-consumer-review-r1",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-client-orders-interface-pin",
       "threadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-client-orders-interface-pin",
       "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aafb222dc-28b4-420b-9474-b05bc6eeba89%253Adelegate-task%253Acontinuation-20261102-client-orders-interface-pin:ordinal:1",
       "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-client-orders-interface-pin>",
-      "status": "running",
+      "status": "completed",
       "role": "W5: pin the next real client Orders vertical",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-094eeabe",
       "baseCommit": "58554585003fed9a77b88ee4aa3a67ad5e9fbbd7",
@@ -9712,7 +9746,71 @@
       "taskIdForwardedSeparately": true,
       "asOf": "2026-11-02T17:35:22.504377+00:00",
       "completeBriefAndReceipts": ".local-artifacts/portal-rebuild/continuation-20261102/product-flow-refill-final.json",
-      "scope": "client-orders-interface-pin"
+      "scope": "client-orders-interface-pin",
+      "currentSnapshotReconciliation": "Terminal handoff received before 2026-11-02T21:26:08.361347+00:00; excluded from active count."
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-admin-platform-type-integration",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-admin-platform-type-integration",
+      "role": "W0 admin platform types and relocated17 freeze/report",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-9b4ecd7e",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Actual per-thread configure READ and one live running inventory at 2026-11-02T21:26:08.361347+00:00",
+      "scope": "Source/finite/SSR/type evidence only; no Root/browser/genuine acceptance."
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-profile-consumer-review-r5",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-profile-consumer-review-r5",
+      "role": "R5 complete profile consumer/APC3 review",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-17f74494",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Actual per-thread configure READ and one live running inventory at 2026-11-02T21:26:08.361347+00:00",
+      "scope": "Source/finite/SSR/type evidence only; no Root/browser/genuine acceptance."
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-orders-consumer-review-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-orders-consumer-review-r2",
+      "role": "R2 complete recorded Orders consumer/OR1 review",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-85389b46",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "verification": "Actual per-thread configure READ and one live running inventory at 2026-11-02T21:26:08.361347+00:00",
+      "scope": "Source/finite/SSR/type evidence only; no Root/browser/genuine acceptance."
     }
   ],
   "parentVerification": {
@@ -11856,42 +11954,14 @@
     "consumerReview": "R7 failed provider risk flag before final report; no reroute/rephrase; bounded finalREADY findings unaccepted report, no consumer admission"
   },
   "orchestrationState": {
-    "state": "authorized_execution",
-    "coordinatorThread": "9b085ada-435f-48d6-8886-957c1ce3e82d",
-    "actualRunningChildren": 1,
-    "asOf": "2026-11-02T21:04:26.023160+00:00",
-    "nativeGoalThread": "01a19b3a-77a2-71c1-a661-046efe4fbb51",
-    "nativeGoalObservedStatus": "paused; user explicitly requested replacement, officialuserclear/setblockedactivewriter; awaitingowningUIclear",
-    "sourceIntegrated": [
-      "b2a5f4f372d4f65a1cc3f9c85fd061bddcc7668b",
-      "594d64e22c1ec2f9bcb76d7fe7dafb2b91098369",
-      "9eb4dd6604f0b487a45da0aa47e3391f95dc7b5c",
-      "38415adefaf4c7b5998bfdeb59ad49c8e0de91c2",
-      "68ed8a54ebd5e78e042cf14d0cc74008b8848e7f"
-    ],
-    "rootBeforeDocumentation": "68ed8a54ebd5e78e042cf14d0cc74008b8848e7f",
-    "integrationReadyAccepted": [],
-    "reviewReadyCandidate": "ba1caf3bc4c28b13d1c1d4ad07682d69718ff544",
-    "nextIndependentCandidate": "3016cfb99a165fccd4218c58a76090d3b4ac397b",
-    "heavyExecution": "allchildheavyworkterminal/noresources",
-    "limitingFactor": "bounded sole-writer Root admission and coordinated shared-source corrections; next reviews require corrected candidates, no redundant audit allocation",
-    "nextReadyReviewAlternatives": [
-      "corrected complete shared transport",
-      "corrected notification entry",
-      "corrected Account departure/export",
-      "corrected native executor"
-    ],
-    "nextCoordinatorStep": "pushverifiedprofileSource/docs; awaitexactheadCIwatch, thenprepareShared51Rootprojection+inventorywitness/currentconsumerreview; readcontactpinbeforeimplementingnewseam; otherParent smallfixesremain",
-    "activeTasks": [],
-    "sharedSourcePassAwaitingRootProjection": "556befca22e0c2d7aa9cb63913eadaf45fb7b853",
-    "credentialSourcePassAwaitingKernel": "ba1caf3bc4c28b13d1c1d4ad07682d69718ff544",
-    "heavySlot": {
-      "owner": "client-inbox-navigation",
-      "status": "conditionalAPFSandboundedSSR/typesgrantedafterRootCIvalidationreturned",
-      "returnRequired": true
-    },
-    "pendingParent": "publishreviewedCIrepair/currentinventory; ParentAPC3/OR1/COE1/adminCFtypingcorrections; maintainreadyqueueandrefillaftercandidatesfreeze",
-    "goalReplacementPacket": "docs/portal-rebuild/source/REPLACEMENT_GOAL_OBJECTIVE_20261102.txt"
+    "asOf": "2026-11-02T21:26:08.361347+00:00",
+    "coordinator": "9b085ada-435f-48d6-8886-957c1ce3e82d",
+    "actualRunningChildren": 3,
+    "actualWorkflowsIncludingCoordinator": 4,
+    "targetUsefulChildren": 7,
+    "heavyOwner": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-orders-consumer-review-r2",
+    "nativeGoal": "paused; replacement user-authorized but clear/set blocked by existing active writer; no false completion",
+    "whyBelowTarget": "Parent-owned small fixes and exact combined authority/cookie composition must freeze before fresh independent reviews. One heavy slot serializes execution, not source work. No filler historical research dispatched."
   },
   "sqlWriterState": "soleParent writer; profile67source admitted unexecuted; nochildSQLwriter/noNativegrant",
   "continuation20261102": {
@@ -11942,16 +12012,16 @@
   },
   "readyQueue": [
     {
-      "task": "freshindependentAPC3review",
-      "gate": "Parentunderlyingguard/savedstatecorrectionandREDGREEN"
+      "owner": "Parent",
+      "task": "Correct COE1 stale503 side effect and add own-admin bounded decoder in sole-owned shared cookie; preserve received401/403 provenance; then fresh full combined review."
     },
     {
-      "task": "freshOrdersSSRsuccessorreview",
-      "gate": "Parentoriginalrepro2/3 +narrowpublic-descriptionpredicatecorrection"
+      "owner": "Parent",
+      "task": "Correct AEC1/AEC2 Account helper lifetime/domain reentry; after profile R5 and admin integration review, mount real C08 with no clinical-read dependency."
     },
     {
-      "task": "combinedadminregistrationreview",
-      "gate": "ParentCFproductiontypes+correcttestenvironment+cookiecompositionandregressionwitness"
+      "owner": "Parent",
+      "task": "Integrate reviewed Orders producer/consumer/entry after COE1 and OR1 review, then exact authorized ordinary Auth/persistence/browser acceptance."
     }
   ]
 }

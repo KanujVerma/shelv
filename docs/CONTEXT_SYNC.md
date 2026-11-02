@@ -1,3 +1,7 @@
+## Portal integration: 2026-11-02T21:26:08.361347+00:00
+
+Reviewed client bell/navigation92b8 + independente3d81 now joins the source-mounted inbox; exact scoped checks and unchanged numeric21/26mounted,12/26SOURCEwired,1/48sourceverified,0/10complete-current outcomes are in [CURRENT_STATUS](portal-rebuild/CURRENT_STATUS.md). Three live children handle platform type freeze, profile R5 and Orders R2; Parent owns COE1/AEC fixes and Root integration. Native paused-goal clear remains blocked by writer ownership, with full replacement packet saved. No browser/genuine/full-feature acceptance or resource grant follows.
+
 ## Portal corrective execution: 2026-11-02T21:04:26.023160+00:00
 
 Client inbox source3c and reviewed CI repair3d1 are in Root; exact new-head hosted CI pending publication. Detailed26/48/10 inventory is complete:21mounted/21controllers/12SOURCEwired;0verifiedcurrentgenuine/browser,1whole-source-verifieddecision,0completecurrentjourneys. [Current status](portal-rebuild/CURRENT_STATUS.md) and [exact evidence matrix](portal-rebuild/ACCEPTANCE_MATRIX.md) explain unknown outcomes and owners. Native paused goal replacement is user-authorized but blocked by active-writer control; full originals/steer saved, no false completion. Client navigation child active, other returned tasks terminal. No native/production/release grant or new complete-portal acceptance.
