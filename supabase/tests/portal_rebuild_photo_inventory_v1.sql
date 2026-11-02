@@ -58,6 +58,10 @@ insert into concierge.review_report_amendments(id,client_id,report_id,report_kin
   'd1200000-0000-4000-8000-000000000001',clock_timestamp());
 insert into concierge.review_amendment_photos values('d1220000-0000-4000-8000-000000000002','d1210000-0000-4000-8000-000000000002');
 update concierge.plan_policy set activated=true,owner_actor_id='d1200000-0000-4000-8000-000000000002';
+-- The legacy report insert above legitimately advances the Review head via its
+-- existing trigger. Measure inventory's no-effect against actual completed setup.
+create temporary table photo_inventory_review_head_before as
+select revision from concierge.care_report_heads where client_id='d1200000-0000-4000-8000-000000000001';
 set local role authenticated;
 -- This fixture is preparation, not entitled active care. Do not forge coverage to
 -- make the legacy clinical read pass its earlier care guard. Its exact M59 fence
@@ -78,7 +82,7 @@ update concierge.checkin_heads set revision=18 where client_id='d1200000-0000-40
 set local role authenticated;
 select throws_ok($$select public.concierge_checkin_photo_inventory_v1('d1210000-0000-4000-8000-000000000002',2,17)$$,'P0001','concierge_revision_conflict','changed head between pages rejects snapshot');
 reset role;
-select is((select revision from concierge.care_report_heads where client_id='d1200000-0000-4000-8000-000000000001'),77::bigint,'Review head is unrelated and unchanged');
+select is((select revision from concierge.care_report_heads where client_id='d1200000-0000-4000-8000-000000000001'),(select revision from photo_inventory_review_head_before),'Review head is unrelated and unchanged');
 select is((select revision from concierge.checkin_heads where client_id='d1200000-0000-4000-8000-000000000002'),93::bigint,'other owner head unchanged');
 select is((select count(*)::integer from concierge.workflow_requests where client_id='d1200000-0000-4000-8000-000000000001'),0,'inventory has no write receipt');
 select set_config('request.jwt.claims','{}',true);
