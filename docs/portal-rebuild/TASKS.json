@@ -1,8 +1,8 @@
 {
-  "updatedOn": "2026-11-02T09:15:38.092412+00:00",
+  "updatedOn": "2026-11-02T12:16:08.664283+00:00",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
-  "allocatedWorkers": 1,
+  "allocatedWorkers": 2,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -9187,8 +9187,124 @@
       ],
       "statusAtDispatch": "running",
       "verification": "Exact delegate and read-only runtime configuration confirms codex/gpt-6.1-sol/xhigh/default",
+      "status": "completed",
+      "currentStatusObservedOn": "2026-11-02T09:15:38.092412+00:00",
+      "reportCommit": "6950f63ccf2c07c2cca25b7d126b901f8eec0775",
+      "verdict": "FAIL RPU3; genuine Storage/browser/current collection held",
+      "asOf": "2026-11-02T12:16:08.664283+00:00"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-shared-transport-review-r6",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-shared-transport-review-r6",
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-shared-transport-review-r6>",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aafb222dc-28b4-420b-9474-b05bc6eeba89%253Adelegate-task%253Acontinuation-20261102-shared-transport-review-r6:ordinal:1",
+      "childNodeId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-shared-transport-review-r6",
       "status": "running",
-      "currentStatusObservedOn": "2026-11-02T09:15:38.092412+00:00"
+      "workState": "working",
+      "hasPendingChildRuns": false,
+      "latestTerminalRunId": null,
+      "latestTerminalStatus": null,
+      "latestTerminalSummary": null,
+      "latestTerminalResultContextTransferId": null,
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "summary": null,
+      "resultContextTransferId": null,
+      "hasPendingQuestion": false,
+      "pendingApproval": null,
+      "waitTimedOut": false,
+      "next": "Completion wakes this thread, so end your turn. Do not wait on it or poll it.",
+      "role": "shared transport independent R6",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-c14aa8ab",
+      "baseCommit": "a90b9ef5290953acfc24a159b78ab6758bb109e7",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_SHARED_TRANSPORT_SOURCE_R6.md"
+      ],
+      "actualConfigurationReadback": {
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "taskIdForwardedSeparately": true,
+      "asOf": "2026-11-02T12:16:08.664283+00:00"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-profile-review-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-profile-review-r2",
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-profile-review-r2>",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aafb222dc-28b4-420b-9474-b05bc6eeba89%253Adelegate-task%253Acontinuation-20261102-account-profile-review-r2:ordinal:1",
+      "childNodeId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-profile-review-r2",
+      "status": "running",
+      "workState": "working",
+      "hasPendingChildRuns": false,
+      "latestTerminalRunId": null,
+      "latestTerminalStatus": null,
+      "latestTerminalSummary": null,
+      "latestTerminalResultContextTransferId": null,
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "summary": null,
+      "resultContextTransferId": null,
+      "hasPendingQuestion": false,
+      "pendingApproval": null,
+      "waitTimedOut": false,
+      "next": "Completion wakes this thread, so end your turn. Do not wait on it or poll it.",
+      "role": "Account profile independent R2",
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-48579960",
+      "baseCommit": "3016cfb99a165fccd4218c58a76090d3b4ac397b",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_ACCOUNT_PROFILE_PRODUCER_SOURCE_R2.md"
+      ],
+      "actualConfigurationReadback": {
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "taskIdForwardedSeparately": true,
+      "asOf": "2026-11-02T12:16:08.664283+00:00"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-shared-transport-review-r5",
+      "status": "completed",
+      "reportCommit": "0f822783febfc02019ba85fba0fb331c05ea3397",
+      "verdict": "FAIL NT5/NT6; Parent successor a90 under full R6",
+      "asOf": "2026-11-02T12:16:08.664283+00:00"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-notification-entry-review-r2",
+      "status": "completed",
+      "reportCommit": "c3689867c13d61334deb1de1679c4c7cf8f72cdd",
+      "verdict": "scoped SOURCE PASS; shared/current Root composition held",
+      "asOf": "2026-11-02T12:16:08.664283+00:00"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-profile-review-r1",
+      "status": "completed",
+      "reportCommit": "4c9f0a960671e7dc5c3886e50b870231820e612f",
+      "verdict": "FAIL AP1; Parent3016 successor under new R2",
+      "asOf": "2026-11-02T12:16:08.664283+00:00"
     }
   ],
   "parentVerification": {
@@ -11155,11 +11271,11 @@
   },
   "currentReviewHolds": {
     "transport": [
-      "NT3",
-      "NT4"
+      "completeR6 pending",
+      "NT7 provisional inherited invalidation recursion"
     ],
     "entry": [
-      "NEI1"
+      "scopedR2 SOURCE PASS; shared/current composition and Root mount held"
     ],
     "Source": [
       "SK2",
@@ -11169,7 +11285,8 @@
     ],
     "native": [
       "NE5",
-      "NE6"
+      "NE6-S1 source correlations",
+      "fresh complete executor review then exact native grant"
     ],
     "departure_preliminary": [
       "ADPR1",
@@ -11200,9 +11317,13 @@
       "MSC3/P2; independentR1FAIL"
     ],
     "photoUpload": [
-      "RPU3/P2 preliminary; independentR1 still active",
+      "RPU3/P2 independentR1 FAIL",
       "RPU-D1 physical dependency failure",
-      "NT3/NT4 and consumer-v2/collection/mount/Storage gates"
+      "complete current shared/consumer-v2/collection/mount/genuine Storage gates"
+    ],
+    "profile": [
+      "AP1/P2 Parent source correction3016; new complete independentR2 running",
+      "strict/SQL/gateway/Account/contact/genuine/browser open"
     ]
   },
   "migrationWriter": {
@@ -11291,25 +11412,32 @@
     "statusOnly": true,
     "noBankedResets": true
   },
-  "integrationHead": "1418d724c704aac51ed1235ed55c71c12f76bcc2",
-  "currentAllocationEvidence": "Seven child workflows allocated after three older lanes were reconciled live; dispatch receipt times in refill20261102. This is not an ongoing live count.",
+  "integrationHead": "d0a6386fa6b041c20ef8e9fa59f204d510f26495",
+  "currentAllocationEvidence": "Timestamped current roster:2 running independent children plus coordinator. Seven-child target remains; bounded parent-owned small corrections and complete reviews currently determine useful refills. Old terminal allocations are not running.",
   "resourceGrantState": "No resource remains. RootboundedPGgrammarprobe acceptedRETURN2026-11-02T05:26:24.136318Z; no application/Auth/migration replay. Notificationexecutor no grant. Bankedreset disarmed.",
   "currentCheckpoint": {
-    "at": "2026-11-02T09:15:38.092412+00:00",
+    "at": "2026-11-02T12:16:08.664283+00:00",
     "sourceHead": "b2a5f4f372d4f65a1cc3f9c85fd061bddcc7668b",
-    "rootBeforeDocs": "af0dee94799a9ad4cb48ae9ccdd0cc8a9167e494",
-    "remoteLastVerified": "8af746d197b976972d4b16924155afa8c3b32d44",
+    "rootBeforeDocs": "d0a6386fa6b041c20ef8e9fa59f204d510f26495",
+    "remoteLastVerified": "b86b8aeac71c15ec01eea5dd0e99e8062828e21c",
     "proof": "Maya source integrated at b2a5f4f372d4f65a1cc3f9c85fd061bddcc7668b; current39/cold39/retained210/guidance99 and strict/frontend/session/UI/main-public compile plus physical Root app/test types pass. Mounted real main-entry public Maya five stages, actual shared form with unknown Start/self-purchase, native Back/Forward, finish/reopen/replay/reset observed; no API/external resource requests observed. Visual comparison FAIL: shared client chrome absent. Width samples1440/390/320 have no document horizontal overflow, not full visual/a11y acceptance.",
     "SMTPSource": "594d64e22c1ec2f9bcb76d7fe7dafb2b91098369",
     "SMTPRootProof": "73/73; actual physical app/test types0; source/finiteVM only",
     "agentSource": "9eb4dd6604f0b487a45da0aa47e3391f95dc7b5c",
-    "agentRootProof": "29new+19retained pass; physical app/test types0; scoped independentR1PASS; genuine agent grants/source workflow open"
+    "agentRootProof": "29new+19retained pass; physical app/test types0; scoped independentR1PASS; genuine agent grants/source workflow open",
+    "remoteChecks": "all3 success observed on exactb86; hosted review no major issues; no candidate or later docs-head acceptance",
+    "coordinatorHead": "3016cfb99a165fccd4218c58a76090d3b4ac397b",
+    "sharedSuccessor": "a90b9ef5290953acfc24a159b78ab6758bb109e7",
+    "profileSuccessor": "3016cfb99a165fccd4218c58a76090d3b4ac397b",
+    "rootNewChanges": "four sole-report imports only; no new candidate production admitted"
   },
   "sourcePins": {
     "kernel": "docs/portal-rebuild/research/COORDINATOR_SOURCE_KERNEL_INTERFACE_PIN.md",
     "photoTransport": "docs/portal-rebuild/research/COORDINATOR_PHOTO_INVENTORY_TRANSPORT_PIN.md",
     "sourceKernelMigration": "20261102033048_portal_rebuild_source_kernel_v1.sql",
-    "sqlExecution": "none authorized in active source assignments"
+    "sqlExecution": "none authorized in active source assignments",
+    "profileSuccessor": "3016cfb99a165fccd4218c58a76090d3b4ac397b",
+    "sharedSuccessor": "a90b9ef5290953acfc24a159b78ab6758bb109e7"
   },
   "coordinationRecovery20261102": {
     "sourcePin": "docs/portal-rebuild/research/COORDINATOR_SOURCE_KERNEL_INTERFACE_PIN.md",
@@ -11322,16 +11450,16 @@
     "scope": "source/report/coordination only; no new resource or activation grant"
   },
   "sharedTransportHold": {
-    "finding": "NT2/P2",
-    "report": "c1371910cdb17688a367d15a4512ff8b3eddc84b",
-    "parentArtifact": "docs/portal-rebuild/research/COORDINATOR_NT2_FINAL_APPLICABILITY_PATCH.md",
-    "status": "prepared and bounded-probe/type verified, not adopted/admitted"
+    "status": "complete R6 running on a90; NT3-NT6 controls pass within source scope, inherited NT7 invalidation recursion provisional; no Root admission",
+    "previousReport": "0f822783febfc02019ba85fba0fb331c05ea3397",
+    "candidate": "a90b9ef5290953acfc24a159b78ab6758bb109e7",
+    "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-shared-transport-review-r6"
   },
   "orchestrationState": {
     "state": "authorized_execution",
     "coordinatorThread": "9b085ada-435f-48d6-8886-957c1ce3e82d",
-    "actualRunningChildren": 1,
-    "asOf": "2026-11-02T09:15:38.092412+00:00",
+    "actualRunningChildren": 2,
+    "asOf": "2026-11-02T12:16:08.664283+00:00",
     "nativeGoalThread": "01a19b3a-77a2-71c1-a661-046efe4fbb51",
     "nativeGoalObservedStatus": "paused-after-workspace-handoff; explicit user resume governs current T3 work",
     "sourceIntegrated": [
@@ -11339,11 +11467,11 @@
       "594d64e22c1ec2f9bcb76d7fe7dafb2b91098369",
       "9eb4dd6604f0b487a45da0aa47e3391f95dc7b5c"
     ],
-    "rootBeforeDocumentation": "af0dee94799a9ad4cb48ae9ccdd0cc8a9167e494",
+    "rootBeforeDocumentation": "d0a6386fa6b041c20ef8e9fa59f204d510f26495",
     "integrationReadyAccepted": [],
-    "reviewReadyCandidate": "19b5946e860871deddf3eae762c02bc06fd245e7",
-    "nextIndependentCandidate": "435c6d13cd16b3081ced5d6fbe76d730090152dc",
-    "heavyExecution": "serialized; no native fixture grant",
+    "reviewReadyCandidate": "a90b9ef5290953acfc24a159b78ab6758bb109e7",
+    "nextIndependentCandidate": "3016cfb99a165fccd4218c58a76090d3b4ac397b",
+    "heavyExecution": "serialized; shared R6 owns central heavy slot; profile R2 builtin/source only until release",
     "limitingFactor": "bounded sole-writer Root admission and coordinated shared-source corrections; next reviews require corrected candidates, no redundant audit allocation",
     "nextReadyReviewAlternatives": [
       "corrected complete shared transport",
@@ -11351,9 +11479,13 @@
       "corrected Account departure/export",
       "corrected native executor"
     ],
-    "nextCoordinatorStep": "correct NT3/NT4 on complete bc5651e6 manifest; retain exact independent OLD tests then fresh full shared review, no source admission before review"
+    "nextCoordinatorStep": "consume complete sharedR6/profileR2; Parent correct material findings, then new independent reviews. Other small credential/export/Maya/native/Source/departure/upload fixes remain parent-owned.",
+    "activeTasks": [
+      "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-shared-transport-review-r6",
+      "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-profile-review-r2"
+    ]
   },
-  "sqlWriterState": "Sourceauthor9fe terminal/clean. Parent serialized never-appliedexportCASErepair complete; no active new migration author granted by this continuation.",
+  "sqlWriterState": "sole coordinator writer; Account profile author released additive migration reservation; no native grant",
   "continuation20261102": {
     "at": "2026-11-02T07:52:30.991321+00:00",
     "t3Parent": "9b085ada-435f-48d6-8886-957c1ce3e82d",

@@ -1,6 +1,6 @@
 ## portal rebuild continuation, 2 November 2026
 
-The approved full portal continuation is running under the same T3 parent after native workspace recovery. Current source/acceptance, exact task roster, ownership, gates and preserved input provenance are canonical in [portal-rebuild/CURRENT_STATUS.md](portal-rebuild/CURRENT_STATUS.md), [TASKS.json](portal-rebuild/TASKS.json) and [ACCEPTANCE_MATRIX.md](portal-rebuild/ACCEPTANCE_MATRIX.md). The older rough percentage is retired. No release or real-client/resource reset authority is implied.
+Same full approved rebuild continues. Four independent reports are preserved in Root without new production admission. Shared transport successor and Account profile AP1 correction have passing bounded author evidence and active fresh complete reviews; shared admission is still held on provisional inherited invalidation recursion. Current source/acceptance, exact timestamped roster, ownership and remaining gates are canonical in [portal-rebuild/CURRENT_STATUS.md](portal-rebuild/CURRENT_STATUS.md), [TASKS.json](portal-rebuild/TASKS.json) and [ACCEPTANCE_MATRIX.md](portal-rebuild/ACCEPTANCE_MATRIX.md). Published b86 CI success does not accept these unimported candidates. No release, real-client or resource-reset authority is implied.
 
 ## Portal restored execution, 1 November 2026
 
