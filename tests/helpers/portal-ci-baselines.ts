@@ -2,7 +2,7 @@
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 
-const fixtureSha256='90ade94d3dabda72595390afca5a0fb46f4ae7732c714526b2109698ce5e0d07';
+const fixtureSha256='8cc400c4b68b65cae90b816ee99c9034d73fc7de1a998a15a95ccbcc74754645';
 const defaultFixture=new URL('../fixtures/portal-ci-baselines.json',import.meta.url);
 type Content={encoding:'base64';bytes:number;sha256:string;data:string};
 type Entry={path:string;mode:string;type:string;blob:string;content?:Content};

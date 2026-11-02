@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {readFileSync,readdirSync} from 'node:fs';
-import {execFileSync} from 'node:child_process';
+import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import ts from '../node_modules/typescript/lib/typescript.js';
@@ -73,7 +73,7 @@ test('removing only allocated inventory nodes leaves every old executable Root n
   const printed=ts.createPrinter({removeComments:true}).printFile(transformed.transformed[0]);transformed.dispose();return printed;
  }
  for(const file of files){
-  const original=execFileSync('git',['show',base+':'+file],{cwd:root,encoding:'utf8'}),current=readFileSync(root+file,'utf8');
+  const original=portalCiBaselines.readBytes(base,file).toString('utf8'),current=readFileSync(root+file,'utf8');
   const before=normalize(original,file,false),after=normalize(current,file,true);assert.equal(after,before,file);
   console.log('INVENTORY_OLD_AST '+JSON.stringify({file,base,sha256:createHash('sha256').update(before).digest('hex')}));
  }

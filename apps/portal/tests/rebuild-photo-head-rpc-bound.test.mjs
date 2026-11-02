@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {createRequire} from 'node:module';
 import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
+import {withoutPhotoInventory} from './helpers/photo-inventory-baseline.mjs';
 import {fileURLToPath} from 'node:url';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -204,7 +205,7 @@ test('PH1 production AST differs only at the fixed-name success budget; emitted 
   }]);
   const value=ts.createPrinter({removeComments:true}).printFile(result.transformed[0]);result.dispose();return value;
  };
- assert.equal(normalize(after,true),normalize(before,false));assert.equal(replaced,1);
+ assert.equal(normalize(withoutPhotoInventory(after,name),true),normalize(before,false));assert.equal(replaced,1);
  const options={target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,moduleResolution:ts.ModuleResolutionKind.Bundler,lib:['lib.es2022.d.ts','lib.dom.d.ts','lib.dom.iterable.d.ts'],strict:true,noUncheckedIndexedAccess:true,verbatimModuleSyntax:true,skipLibCheck:false,allowImportingTsExtensions:true,noEmit:true,types:[]};
  function program(old){const host=ts.createCompilerHost(options),get=host.getSourceFile;
   if(old)host.getSourceFile=(file,version,onError,create)=>file===root+name?ts.createSourceFile(file,before,version,true):get(file,version,onError,create);

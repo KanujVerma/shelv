@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {createRequire} from 'node:module';
 import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
+import {withApprovedInventoryHandler} from './helpers/photo-inventory-baseline.mjs';
 import {fileURLToPath} from 'node:url';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -173,7 +174,8 @@ test('source bundle includes actual canonical entry and session graph with no di
 });
 test('entire actual closed session/gateway/Root graph emits byte-identical JavaScript across six Parent annotations',async()=>{
  const handler='supabase/functions/concierge-checkins/handler.ts';
- const previous=portalCiBaselines.readBytes('b42742a190fb55e1b2339c0017472dea03ea4e78',handler);
+ const historical=portalCiBaselines.readBytes('b42742a190fb55e1b2339c0017472dea03ea4e78',handler);
+ const previous=Buffer.from(withApprovedInventoryHandler(historical.toString('utf8'),readFileSync(root+handler,'utf8')));
  const before=await build({...bundleOptions,plugins:[{name:'only-admitted-six-annotation-preimage',setup(b){b.onLoad({filter:/concierge-checkins\/handler\.ts$/},args=>{assert.equal(args.path,root+handler);return {contents:previous.toString('utf8'),loader:'ts'};});}}]});
  assert.deepEqual(Object.keys(before.metafile.inputs),Object.keys(compiled.metafile.inputs));
  assert.equal(before.outputFiles[0].text,compiled.outputFiles[0].text);

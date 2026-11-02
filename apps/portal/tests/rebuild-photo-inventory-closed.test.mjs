@@ -3,7 +3,7 @@ import test from 'node:test';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 import {build} from '../node_modules/esbuild/lib/main.js';
-import {execFileSync} from 'node:child_process';
+import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
 
 const root=fileURLToPath(new URL('../../../',import.meta.url));
 const owner='d1000000-0000-4000-8000-000000000001';
@@ -17,7 +17,7 @@ globalThis.fetch=deny;
 const priorDeno=globalThis.Deno;
 let entry;
 globalThis.Deno={env:{get:key=>({SUPABASE_URL:base,SUPABASE_PUBLISHABLE_KEY:'synthetic-public-key',SUPABASE_SERVICE_ROLE_KEY:'synthetic-never-used-storage',CONCIERGE_ALLOWED_ORIGINS:'https://portal.invalid'})[key]},serve:fn=>{entry=fn;}};
-const built=await build({absWorkingDir:root,stdin:{contents:`export {createConciergeAuthenticatedPorts} from './supabase/functions/concierge-operations/runtime.ts'; import './supabase/functions/concierge-checkins/index.ts';`,resolveDir:root,sourcefile:'inventory-root-entry.ts',loader:'ts'},bundle:true,write:false,metafile:true,platform:'node',format:'cjs',logLevel:'silent',plugins:process.env.PHOTO_INVENTORY_OLD_RPC_BUDGET==='1'?[{name:'immutable-before-inventory-budget',setup(b){b.onLoad({filter:/concierge-operations\/runtime\.ts$/},args=>({contents:execFileSync('git',['show','3bd152a259b7b9b9971caa1546e65f69de12aab9:supabase/functions/concierge-operations/runtime.ts'],{cwd:root,encoding:'utf8'}),loader:'ts'}));}}]:[]});
+const built=await build({absWorkingDir:root,stdin:{contents:`export {createConciergeAuthenticatedPorts} from './supabase/functions/concierge-operations/runtime.ts'; import './supabase/functions/concierge-checkins/index.ts';`,resolveDir:root,sourcefile:'inventory-root-entry.ts',loader:'ts'},bundle:true,write:false,metafile:true,platform:'node',format:'cjs',logLevel:'silent',plugins:process.env.PHOTO_INVENTORY_OLD_RPC_BUDGET==='1'?[{name:'immutable-before-inventory-budget',setup(b){b.onLoad({filter:/concierge-operations\/runtime\.ts$/},args=>({contents:portalCiBaselines.readBytes('3bd152a259b7b9b9971caa1546e65f69de12aab9','supabase/functions/concierge-operations/runtime.ts').toString('utf8'),loader:'ts'}));}}]:[]});
 assert.ok(Object.keys(built.metafile.inputs).includes('supabase/functions/concierge-operations/runtime.ts'));
 const module={exports:{}};
 new Function('require','module','exports',built.outputFiles[0].text)(createRequire(import.meta.url),module,module.exports);
