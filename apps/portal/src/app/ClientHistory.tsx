@@ -27,12 +27,14 @@ export function ClientHistoryContent({connection,boundary,route,win,onSignOut}:{
   const entrySnapshot=()=>JSON.stringify([navigator.getSnapshot(),win?(win.history.state as {shelvNavigation?:{entryId?:unknown}}|null)?.shelvNavigation?.entryId??null:null]);
   const entry=useSyncExternalStore(navigator.subscribe,entrySnapshot,entrySnapshot);
   const filter=state.timeline?.filter??'all';
-  const appScope=useMemo(()=>win&&completeNavigator?createHistoryRestorationScope({controller,boundary,navigator:completeNavigator,win,waitForDocument:route.name==='history-version'}):null,[controller,boundary,completeNavigator,win,entry,filter,route.name]);
+  const requestedVersion=route.name==='history-version'?Number(route.version):null;
+  const invalidVersion=requestedVersion!==null&&(!Number.isSafeInteger(requestedVersion)||requestedVersion<1);
+  const version=invalidVersion?null:requestedVersion;
+  const appScope=useMemo(()=>!invalidVersion&&win&&completeNavigator?createHistoryRestorationScope({controller,boundary,navigator:completeNavigator,win,waitForDocument:route.name==='history-version'}):null,[controller,boundary,completeNavigator,win,entry,filter,route.name,invalidVersion]);
   const currentScope=useRef(appScope);
   if(currentScope.current!==appScope){currentScope.current?.retire();currentScope.current=appScope;}
   useLayoutEffect(()=>appScope?.attach(),[appScope]);
   const navigation=useMemo(()=>createHistoryNavigation(navigator,appScope??undefined),[navigator,appScope]);
-  const version=route.name==='history-version'?Number(route.version):null;
   const restoration=useMemo(()=>({version,onReady:appScope?.onReady??noRestorationReady}),[version,appScope]);
   useEffect(()=>{
     if(!win&&route.name==='history-new'&&controller.getSnapshot().version!==null)void controller.load(null);
@@ -43,8 +45,10 @@ export function ClientHistoryContent({connection,boundary,route,win,onSignOut}:{
     return controller.load(selected===undefined?version:selected);
   }}),[controller,version,navigator,appScope]);
   return <ApplicationShell audience="client" onSignOut={onSignOut} readOnly={state.view?.access!=='active'}>
-    {route.name==='history-version'&&win&&state.phase!=='denied'&&state.phase!=='ended'?<HistoricalPlan key={route.version} connection={connection} boundary={boundary} version={Number(route.version)} win={win} appScope={appScope}/>:null}
+    {invalidVersion?<StatusNotice tone="error" title="plan version unavailable" action={<Button variant="secondary" asChild><RouteLink route={{name:'history'}}>back to history</RouteLink></Button>}/>:<>
+    {route.name==='history-version'&&version!==null&&win&&state.phase!=='denied'&&state.phase!=='ended'?<HistoricalPlan key={route.version} connection={connection} boundary={boundary} version={version} win={win} appScope={appScope}/>:null}
     {route.name==='history-event'?<HistoryEntry controller={controller} boundary={boundary} eventId={route.eventId} appScope={appScope}/>:route.name==='history-new'&&appScope?<HistoryUpdate controller={controller} appScope={appScope} navigation={navigation}/>:<ClientHistory controller={scoped} screen={route.name==='history-new'?'update':'history'} navigation={navigation} filter={filter} onFilterChange={appScope?.setFilter} restoration={route.name==='history-new'?undefined:restoration}/>}
+    </>}
   </ApplicationShell>;
 }
 

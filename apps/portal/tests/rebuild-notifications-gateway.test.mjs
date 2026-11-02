@@ -1,21 +1,22 @@
 // Separate finite-HTTP composition. The unchanged43 intentionally bypasses this
 // real, serial Vault path. No success/authority/current implementation is replaced.
 import test from 'node:test';import assert from 'node:assert/strict';
-import {mkdir,writeFile} from 'node:fs/promises';import {pathToFileURL} from 'node:url';import path from 'node:path';
+import {mkdir,writeFile} from 'node:fs/promises';import {pathToFileURL,fileURLToPath} from 'node:url';import path from 'node:path';
 import {build} from '../node_modules/esbuild/lib/main.js';
 import {createApplicationSession} from '../src/app/session.ts';
 import {createNotificationsController} from '../src/features/notifications/controller.ts';
 import {readNotificationCommand} from '../../../src/contracts/PortalNotificationValidation.ts';
-const evidence=path.resolve('.local-artifacts/w2-notifications-followup');await mkdir(evidence,{recursive:true});
+const root=fileURLToPath(new URL('../../../',import.meta.url));
+const evidence=path.join(root,'.local-artifacts/w2-notifications-followup');await mkdir(evidence,{recursive:true});
 // Server-only bundle keeps browser cookie/WeakMap identities in their one actual
 // Node module graph, shared by the ApplicationSession and feature controller.
-const bundle=await build({stdin:{contents:`export {default as clientGateway,advisorGateway} from './apps/portal/session-integration/runtime/server/gateway.ts';
+const bundle=await build({absWorkingDir:root,stdin:{contents:`export {default as clientGateway,advisorGateway} from './apps/portal/session-integration/runtime/server/gateway.ts';
 export {ClientProvider} from './apps/portal/session-integration/runtime/server/client-upstream.ts';
 export {SupabaseProvider} from './apps/portal/session-integration/runtime/server/upstream.ts';
 export {SessionVault} from './apps/portal/session-integration/runtime/server/session-vault.ts';
 export {CredentialEnvelope} from './apps/portal/session-integration/runtime/server/credential-envelope.ts';
 export {createNotificationPorts} from './supabase/functions/concierge-notifications/runtime.ts';
-export {handleNotificationRequest} from './supabase/functions/concierge-notifications/handler.ts';`,resolveDir:process.cwd(),loader:'ts'},bundle:true,platform:'node',format:'esm',write:false,tsconfig:'apps/portal/tsconfig.frontend.json'});
+export {handleNotificationRequest} from './supabase/functions/concierge-notifications/handler.ts';`,resolveDir:root,loader:'ts'},bundle:true,platform:'node',format:'esm',write:false,tsconfig:'apps/portal/tsconfig.frontend.json'});
 const file=path.join(evidence,`gateway-${crypto.randomUUID()}.mjs`);await writeFile(file,bundle.outputFiles[0].contents,{flag:'wx'});
 const {clientGateway,advisorGateway,ClientProvider,SupabaseProvider,SessionVault,CredentialEnvelope,createNotificationPorts,handleNotificationRequest}=await import(pathToFileURL(file).href);
 const id=n=>`30000000-0000-4000-8000-${String(n).padStart(12,'0')}`,origin='https://portal.goshelv.com',upstream='https://snojlbqovlawewwqbviz.supabase.co',at='2026-11-01T12:00:00Z';

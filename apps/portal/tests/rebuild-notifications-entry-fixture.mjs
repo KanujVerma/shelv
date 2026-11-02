@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { build } from '../node_modules/esbuild/lib/main.js';
-const root = process.cwd(), evidence = path.resolve('.local-artifacts/w2-notifications-entry');
+const root = fileURLToPath(new URL('../../../', import.meta.url)), evidence = path.join(root, '.local-artifacts/w2-notifications-entry');
 // Optional test-only immutable source projection. No runtime operation, return,
 // authority, session or clock method is replaced by this compiler binding.
 export async function inputProjection() {
@@ -27,7 +27,7 @@ let compiled;
 async function source() {
   if (compiled) return compiled;
   await mkdir(evidence, { recursive: true });
-  const result = await build({ stdin: { contents: `
+  const result = await build({ absWorkingDir: root, stdin: { contents: `
 export {createNotificationsEntry,NotificationsEntryView} from './apps/portal/src/app/notifications-entry.tsx';
 export {createApplicationSession} from './apps/portal/src/app/session.ts';
 export {createPortalNavigator} from './apps/portal/src/navigation/history.ts';
@@ -44,7 +44,7 @@ export {createElement} from 'react';export {renderToString} from 'react-dom/serv
     outdir: path.join(evidence, 'absent-output'), metafile: true,
     banner: { js: "import { createRequire as sourceRequire } from 'node:module'; const require = sourceRequire(import.meta.url);" },
     tsconfig: 'apps/portal/tsconfig.frontend.json', plugins: await inputProjection(),
-    alias: { react: path.resolve('apps/portal/node_modules/react'), 'react-dom': path.resolve('apps/portal/node_modules/react-dom') },
+    alias: { react: path.resolve(root, 'apps/portal/node_modules/react'), 'react-dom': path.resolve(root, 'apps/portal/node_modules/react-dom') },
   });
   const file = path.join(evidence, `entry-source-${crypto.randomUUID()}.mjs`);
   await writeFile(file, result.outputFiles.find(x => x.path.endsWith('.js')).contents, { flag: 'wx' });

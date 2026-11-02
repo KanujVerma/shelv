@@ -5,7 +5,7 @@ import { existsSync } from 'node:fs';
 // The complete actual-source fixture is loaded only after this owned entry
 // exists. A missing implementation is distinct from an unavailable dependency.
 async function fixture(t, options) {
-  assert.ok(existsSync('apps/portal/src/app/notifications-entry.tsx'), 'the owned notifications App-entry seam is missing');
+  assert.ok(existsSync(new URL('../src/app/notifications-entry.tsx',import.meta.url)), 'the owned notifications App-entry seam is missing');
   const { entryFixture } = await import('./rebuild-notifications-entry-fixture.mjs');
   return entryFixture(t, options);
 }
