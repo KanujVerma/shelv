@@ -1,3 +1,13 @@
+## 2026-11-01 Parent source checkpoint: Maya, notification kernel and photo head
+
+Current follow-up:4e07119b corrects the inherited standalone TS7016 import-annotation gap without changing actual JavaScript output; configured frontend and both Root type graphs pass. Earlier482 comment-removal failures remain preserved.
+
+Reviewed Maya now mounts on the actual public App route. Notification source kernel/worker and the fixed own-client photo-head read are integrated as source. Parent checks pass notification39, head32, Root1409/0fail/18existing skips, Root/application/test types,2246-input/15-output main and Expo web export. [Exact source/provenance/failure record](portal-rebuild/research/COORDINATOR_MAYA_NOTIFICATION_PHOTO_SOURCE_INTEGRATION.md). Code prerequisite482557b4 changes only artifact-parent setup, obsolete compiler comments and two native-test fixed-RPC signature maps; original test/assertion bodies and retained emitted JavaScript are exact.
+
+New modules remain gated by independent findings NUI1/AC5/RP3/FE6/SD1 and Account's post-invoke offline race. Each has an exact source owner/correction or fresh review; none is a human-key/program dependency. Native notification executor source is correcting missing persisted no-effect assertions and the explicit fresh loopback stack recipe. No new SQL/Auth/Storage/browser/provider fixture or runtime grant is active;64 migrations are source only and original62/113SQL remain exact. R9 stays stopped/preserved.
+
+The complete approved goal remains active. Eight total agents were live-verified, with exact task identities/bases and changing claims in [TASKS](portal-rebuild/TASKS.json); no nesting and every actual runtime Sol/xhigh/default/Node22.23. Private Source lifecycle, missing Account/Commerce/export/agent producers and full26-screen genuine/visual/a11y/CI acceptance remain incomplete. [Current status](portal-rebuild/CURRENT_STATUS.md) supersedes historical live prose. No production deployment/main merge, real-client messaging/publication, funds/orders or permission weakening.
+
 ## 2026-11-01 latest portal integration and parallel work
 
 Root source at a06fd056 now includes independently reviewed owner-policy App composition on the actual permissions route. Fresh Parent38/78, frontend/session/strong/UI, complete main2238/15 correspondence, Root1370pass/18existing skips/types/Expo pass. [Integration record](portal-rebuild/research/COORDINATOR_OWNER_POLICY_APP_INTEGRATION.md). SourceAccount74/strict0/R5 model is imported without RPC/consent/storage activation.

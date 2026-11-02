@@ -1,5 +1,25 @@
 # Portal rebuild current status
 
+## Current source checkpoint, 1 November 2026, Chicago
+
+This section supersedes older live-state paragraphs. The full D01-D48/26-screen rebuild remains active. Current reviewed source/code prerequisite is482557b4; later report imports through1bdb248d preserve their exact verdicts. The next published checkpoint includes these docs. Prior remote headab19 remains distinct from local verification; no fresh exact-head CI PASS is claimed yet.
+
+Current follow-up:4e07119b corrects the inherited standalone TS7016 import-annotation gap without changing actual JavaScript output; configured frontend and both Root type graphs pass. Earlier482 comment-removal failures remain preserved.
+
+**Integrated:** actual public Maya App mount and five-stage renderer, notification source kernel/worker, and compatible own-client photo-head metadata route. [Parent integration evidence](research/COORDINATOR_MAYA_NOTIFICATION_PHOTO_SOURCE_INTEGRATION.md). Parent notification39/39, head32/32, Root1,409 pass/0 fail/18 existing opt-in skips, both Root typechecks, frontend/session checks, actual2246-input/15-output build and Expo web export pass. Four bounded test/comment prerequisites preserve original test/assertion bodies and emitted behavior. Raw setup/type failures and the immutable-output EEXIST refusal remain recorded separately.
+
+**Not admitted:** notification UI, Account/service module, advisor Commerce workspace, report-photo feature and final-export candidate. Latest independent source findings are NUI1 (inert enabled recovery after EDIT loss), AC5 (protected conflict base after EDIT loss), RP3 (snapshot cleared after abort callback), FE6 (known401 lost on body error), and SD1 plus the post-invoke offline race (shared denial provenance). Corresponding author corrections and new reviews are active. AAS4's real-session/controller50 remains48/50 under the obsolete generic V3 input; its two residual failures are explicitly dependency-held. Source-ready counts never replace these held integration gates.
+
+**Parallel work:** eight total agents were live-verified at the latest progress update, including coordinator. Completed authors rotate to fresh corrections/reviews; exact task IDs, own bases, claims and snapshots are in TASKS.json. Every runtime is verified codex/Sol/xhigh/default with Node22.23.0, no nesting. One writer owns shared transport, one owns Parent composition; current migration source writer slot is free. The native executor correction owns only its source harness, not a running database.
+
+**Database:**64 source migrations, old62/113 SQL bytes and modes exact. New notification/photo SQL is UNRUN. The isolated notification executor needs NE1 persisted no-effect assertions and a reviewed explicit loopback startup recipe before a fresh exact native grant. Parent has authentic CLI2.121, six cached image identities and stock pgTAP metadata, with no new DB/Auth/Storage fixture active. R9 remains stopped and preserved. No old database/dump or credentials are reused.
+
+**Remaining scope:** actual Source storage/consent/retention/cleanup producers, full Account/cancellation/export including safe legacy projection, missing Commerce/CAS/evidence/actor producers and financial verification, notification App/provider delivery and agent workflows, full Maya forms, and ordinary browser/frame/a11y/human/genuine/CI acceptance across all26 screens. A07 author ten synthetic browser cases/18 captures remain bounded to authorff2/production083; no new Root browser acceptance follows.
+
+Engineering estimate remains about65%, not release readiness. The last user update forecasts4-8 more working hours to a useful integrated preview and5-8 working days for the full verified rebuild, both low-confidence planning ranges. The earlier2-4-hour preview estimate was too optimistic and is explicitly superseded. No blocker currently requires Kanuj's decision. Kanuj has no hardware key or Daybreak Blue membership; neither is a project prerequisite. Two refused historical reviews stay unaccepted, without disguised prompts or rerouting.
+
+## Prior checkpoint history
+
 ## Latest checkpoint, 1 November 2026, after 20:27 UTC
 
 This section supersedes older live-state paragraphs below. The complete approved rebuild remains active. Eight role domains are retained; Kanuj authorized additional subagents when useful. A live inventory confirmed eight running agents including coordinator during the six-review allocation. Capacity snapshots are not a promise that terminal tasks remain running.
@@ -19,7 +39,7 @@ This section supersedes older live-state paragraphs below. The complete approved
 | Report photos | backend PH1 cap correction in final source checks; separate feature review finds RP1 late media after basis403 | RP1 report/fix and backend review still required; no C05/C07 or storage admission |
 | Final export | FE3 instruction-binding correction f16e6e7 source77/emitted77 author checks pass | NEW independent R4 active; SQL/Account download/R1 public producer still open |
 
-Migration source writers have returned their slots; photo-head5d18 and Notifications1f9 are frozen. No native/DB/Auth/Storage grant is active. R9 stays stopped/preserved. Provider-blocked M65 and Guidance private-return work has no accepted verdict and is not rerouted. Current local source is ahead of published16a; no new exact-head CI or release claim is made. TASKS.json owns exact task identities, ownership and returned grants.
+Migration source writers have returned their slots; photo-head5d18 and Notifications1f9 are frozen. No native/DB/Auth/Storage grant is active. R9 stays stopped/preserved. The two provider-refused M65/Guidance reviews retain no accepted verdict. Kanuj has no hardware key and is not enrolled in Daybreak Blue: enrollment is not a project prerequisite. Continue permitted implementation, deterministic local acceptance and independent correctness work; do not disguise refused prompts or claim their checks passed. Surface any indispensable unavailable acceptance check promptly with concrete alternatives. The engineering plan must not park whole features behind that program. Published checkpoint is now ab19cda3; its exact-head CI is watched, not yet claimed green. TASKS.json owns exact task identities, ownership and returned grants.
 
 ## Historical bounded execution and source reviews
 

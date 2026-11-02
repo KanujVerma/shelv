@@ -1,38 +1,35 @@
-# Portal rebuild continuation, 1 November 2026
+# Portal rebuild continuation, 1 November 2026, Chicago
 
-Project: shelv. Branch `kanuj/portal-rebuild-integration-20261030`. Verified runtime code `a06fd0564ec189e8b9c8f2475d1742eb07834418`; report imports through `a4c72858b0fe8b0fb4da4b21a2ccaf9cf6ecbec9`. Coordinator documentation follows in this checkpoint. Read current Git/TASKS before continuation.
+Branch kanuj/portal-rebuild-integration-20261030. Code prerequisite482557b47c4e8e61ea6032c8e3b9dc2452b60d38; report imports through1bdb248dd5480ae5375a655cd024aa3f44d8fedb; this documentation checkpoint follows. Read Git and TASKS before continuation. Prior remoteab19 is not current local CI acceptance.
 
 ## GOAL
 
-Complete the entire approved95,388-byte rebuild/D01-D48/all26 screens and verification. No production deployment, protected-main merge, real-client publication/messages, funds/orders or permission weakening. Eight role domains remain, with user permission for additional useful agents. Use actual T3 codex/gpt-6.1-sol/xhigh/default and explicit Node22.23.0 for every task, no nesting or provider-block reroute.
+Complete the approved95,388-byte/D01-D48/26-screen rebuild, real connected verification and reviewable preview. No production deployment/main merge, real-client messages/publication, funds/order actions or permission weakening. Actual coordinator/worker Sol/xhigh/default and explicit Node22.23.0 required. User permits additional useful agents; role/config pins retained, no nesting. Current selected concurrency has been eight total including coordinator.
 
-## DONE
+Current follow-up:4e07119b corrects the inherited standalone TS7016 import-annotation gap without changing actual JavaScript output; configured frontend and both Root type graphs pass. Earlier482 comment-removal failures remain preserved.
 
-- `git status -sb` and `git log -5 --oneline` verified clean code at a06 before docs. Ordered owner-policy App f1d8/eef7/reporta06 imported without conflict. Fresh38/78/typed/UI checks exit0; actual main2238/15 matches every author hash.
-- Root `npm test`:1370 pass/0 fail/18 existing skips; `npx --no-install tsc --noEmit`, `npm run typecheck:tests`, Expo web export all exit0. Raw receipts at owner-policy-app-parent-admission. First ignored build import binding failed, then corrected; original failure preserved.
-- Six NEW independent source reviews were started using exact T3 task IDs, all on d4. A live inventory confirmed eight including coordinator and W0 finalization. Their source base stays frozen despite Parent owner-policy advance.
-- A07 author one synthetic browser invocation passes10 cases/18 captures. Parent read all result records/supervision. RETURN20:27:03Z,36 sampled identities absent/preview false-null/grantnull. No resource calls afterward. Author report-only1554, not Parent App acceptance.
+## VERIFIED
 
-## IN PROGRESS
+- Maya source and App composition independently reviewed and integrated; Parent App32/Maya56/render2/types/UI/main correspondence/Root1370+18oldskips/types/Expo pass at Maya checkpoint.
+- Notification kernel through82f and independentR3, and exact17-path head2fe1 target with independentR3, integrated. Parent39/32/root1409/0fail/18oldskips/types/frontend/session/main2246x15/Expo pass. Current integration report records exact inputs, scope, raw failures and all unrun gates.
+- Bounded Parent test/type prerequisite482557b4 committed ordinarily: mkdir before test artifacts; remove unused compiler comments with emittedJS exact; two native test signature-map additions. All original assertion/test bodies exact. One repeat ignored build refused immutable-output overwrite, then unique output build succeeded with all15 hashes equal.
+- Original62 migrations/113SQL are byte/mode exact. Current64 source migrations unexecuted. Notification native preparation has authentic installed CLI/cachedsix/stockpgTAP metadata; no DB/Auth/Storage fixture active. No R9 reuse.
+- Earlier A07 author one synthetic invocation10/10,18 captures, RETURN20:27:03Z/grantnull remains bounded author evidence; RootA07 source still unimported.
 
-TASKS.json and CURRENT_STATUS.md are canonical; older live prose is explicitly historical. MayaR2 scoped PASS permits separately assigned W0 Maya App composition (Application public branch/new MayaApplication/tests/report; exact one retained unavailable-copy expectation exception approved). Account AAS2 and Commerce AC2 have source corrections and new R3 reviews; those reviews now find AAS3/AC3 and are finalizing reports. Notifications N2 correction is in new R3. Export FE3 correction is in new R4. Backend PhotoHead PH1 correction is in final source checks; a separate feature review finds RP1 late media after current403. These new findings need correction/re-review before admission. No SQL writer active, no browser/native grant.
+## ACTIVE OWNERS AND HOLDS
 
-## AT RISK
+Use exact TASKS records and own ignored coordinator-active-20261101 archives. Current lanes: Parent integration/infrastructure; W0 shared SD1 and post-invoke classification; W6 AAS4 controller dependency; W1 FE6 runtime error bodies; W4 RP3 controller retirement correction/newR4; W7 native NE1 executor assertions/startup; W2 NUI1 recovery availability; W5 AC5 conflict privacy. Authors and independent report-only reviewers rotate; backing thread is not a review taskId. Initial live gate precedes separately forwarded actual returned handle; steering is mode steer, not auto for metadata.
 
-Coordinator documentation edits are uncommitted until checkpoint. No implementation uncommitted in Parent. Child source remains separate and unadmitted except reviewed owner-policy and SourceAccount model. Initial source137 cleanup remains unknown; no global resource absence inference. Provider-blocked M65/Guidance questions remain unresolved and must not be rerouted.
+Shared W0V3/61bb is NOT accepted. W6 exact16-input generic projection closes44 but actual post-invoke sweep4/42 and currentcontroller50=48/50 expose two residual failures. New V4 must pin the same16 effective runtime paths with13 exact58 inputs and3 generic postimages, plus actual composed proof. Root explicitly authorized one isolated foundation expected local-offline401->503 predicate change while strict no-private-success/decode fencing stays intact; real received401/403 retains provenance in binary/multipart wrappers. No controller401 heuristic.
 
-## DECISIONS
+Notifications owned59 passed, R1 finds NUI1 enabled silent recovery after EDIT removal; correction owned with readonly deny-only pendingRecovery projection. Commerce owned347 passed, R5 finds protected conflict.base retained after EDIT loss; AC5 correction assigned. Photo RP3 authorda0d now has independentR4 scopedSOURCE/functionalPASS08f1e5; wholeport/upload remains exactRP2, compatiblehead/App/genuine gates remain. Export FE6 fix is runtime-only; source/emitted qualifications and physical backing-store limits stay explicit. NE1 executor must verify persisted no-effect state, not code-only denials. No native execution before new reviewed exact task/grant.
 
-Advisor records actual explicit client confirmation for private source; client reviews/withdraws in Account. Static last-entitled final plan/instructions remain downloadable after30days, without ongoing care/history extension or raw-source export. Canonical addenda preserve these user choices. No final disclosure text or backend authority is invented.
+## NEXT
 
-## STANDING INSTRUCTIONS
+Finalize canonical docs, publish reviewed source checkpoint to draftPR211, link211/210 and use T3 watch for exact-head CI (no polling or main merge). Continue independent/fix rotation and actual remaining producer work. After executor review and exact startup/fixture/grant proof, execute owned fresh canonical62->notification63 acceptance; current Parent64 includes photo separately. Keep old fixture/resources and blocked reviews preserved.
 
-Coordinator owns Parent integration/shared composition/migration order and canonical docs. W0 Maya is sole current Application writer. New independent review uses delegate_task with full original brief/prior findings/responses, not backing-thread continuation. Follow-up author work may reuse its own thread as a NEW task. Retain actual returned taskId separately; identity steering must not enqueue an idle duplicate. Source-only never grants browser/DB/Auth/Storage/provider/native access.
+## REMAINING AND USER DECISIONS
 
-## NEXT STEP
+Private Source trusted producers/storage/consent/physical cleanup; full Account/service/cancellation/final-export including safeR1public projection; missing Commerce CAS/evidence/actor/private producers and financial acceptance; notification App/provider/scoped agents; full Maya use form/post-preset choices; ordinary browser/frame/a11y/human/genuine/CI/all26-screen acceptance. No smaller goal replaces these.
 
-Finish canonical ledger/docs checkpoint, then commission bounded FE3/PH1 corrections and continue implementation/review rotation. Import only independent report commits; never their input ancestors. Publish reviewed checkpoint only after relevant checks, link PR211/210 and let T3 watch exact-head CI.
-
-## OPEN QUESTIONS
-
-No current product-choice question is sent to Kanuj. Provider account-security requirement remains external. Source trusted producers/consent/physical cleanup, financial review, full Account/export/delivery/scoped agents/private walkthroughs/all-screen ordinary browser/genuine/frame/a11y/human/release gates remain substantial work.
+Advisor records actual explicit client consent; client reviews/withdraws in Account. Continued static final plan/instructions after30days is settled, without raw-source or ongoing care extension. Final Source disclosure words are not approved by choosing the workflow. Kanuj has no hardware key/Daybreak Blue membership, neither is a prerequisite. Do not disguise/resubmit the two refused historical reviews; preserve unaccepted artifacts and continue permitted engineering. Current blockers need no human decision. Last engineering estimate65%; preview4-8moreworkinghours/full5-8workingdays low-confidence forecast, prior2-4preview explicitly superseded.
