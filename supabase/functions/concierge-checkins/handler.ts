@@ -1,7 +1,7 @@
 import { readConciergeJson } from '../concierge-operations/body.ts';
 import { exactKeys, readArray, readInteger, readObject, readText, readUuid, requireValue } from '../../../src/contracts/ConciergePortalValidation.ts';
 import { buildCheckinCall } from './commands.ts';
-import { isCheckinInstant, mapCheckinClientView, mapCheckinPhotoHead } from './projection.ts';
+import { isCheckinInstant, mapCheckinClientView, mapCheckinPhotoHead, mapCheckinPhotoInventory } from './projection.ts';
 import { isCheckinPhotoAngle, validateCheckinPhoto } from './photos.ts';
 import type { CheckinPorts, CheckinRpcCall, PrivateCheckinPhoto } from './types.ts';
 class HttpFailure extends Error {
@@ -134,6 +134,16 @@ export async function handleCheckinsRequest(request: Request, ports: CheckinPort
     if (new URL(request.url).pathname.endsWith('/upload')) return reply(200,await upload(request,ports,bearer[1]!,ownerId));
     if (request.headers.get('content-type')?.split(';')[0]!.trim().toLowerCase() !== 'application/json') throw new HttpFailure(415,'unsupported_media_type');
     const call = buildCheckinCall(await readConciergeJson(request.body,100000),ownerId), data = await rpcData(ports,bearer[1]!,call,request.signal);
+    if (call.name === 'concierge_checkin_photo_inventory_v1') {
+      const inventory = mapCheckinPhotoInventory(data,{ cursor: call.args.p_cursor, limit: call.args.p_limit, expectedRevision: call.args.p_expected_revision });
+      if (!inventory.ok) throw new HttpFailure(503,'unavailable',true);
+      const token = bearer[1]; if (!token) throw new HttpFailure(401,'unauthorized');
+      const live = await ports.authenticate(token,request.signal);
+      if (!live) throw new HttpFailure(401,'unauthorized');
+      if (live.is_anonymous !== false || live.id.toLowerCase() !== ownerId) throw new HttpFailure(403,'forbidden');
+      if (request.signal.aborted) throw new HttpFailure(503,'unavailable',true);
+      return reply(200,inventory.value);
+    }
     if (call.name === 'concierge_checkin_head_v1') {
       const head = mapCheckinPhotoHead(data); if (!head.ok) throw new HttpFailure(503,'unavailable',true);
       const token = bearer[1]; if (!token) throw new HttpFailure(401,'unauthorized');

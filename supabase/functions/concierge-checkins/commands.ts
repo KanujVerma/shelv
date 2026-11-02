@@ -7,6 +7,13 @@ import type { CheckinRpcCall } from './types.ts';
 export function buildCheckinCall(input: unknown, ownerId: string): CheckinRpcCall {
   const b = readObject(input), owner = readUuid(ownerId).toLowerCase();
   if (b.action === 'read_photo_head_v1') { exactKeys(b, ['action']); return { name: 'concierge_checkin_head_v1', args: {} }; }
+  if (b.action === 'read_photo_inventory_v1') {
+    exactKeys(b, ['action','cursor','limit','expectedRevision']);
+    const cursor = b.cursor === null ? null : readUuid(b.cursor).toLowerCase();
+    const expectedRevision = b.expectedRevision === null ? null : readInteger(b.expectedRevision);
+    requireValue(cursor === null || expectedRevision !== null);
+    return { name: 'concierge_checkin_photo_inventory_v1', args: { p_cursor: cursor, p_limit: readInteger(b.limit,1,50), p_expected_revision: expectedRevision } };
+  }
   if (b.action === 'client_read') { exactKeys(b, ['action']); return { name: 'concierge_checkin_read', args: { p_client_id: owner } }; }
   if (b.action === 'advisor_read') { exactKeys(b, ['action','clientId']);
     return { name: 'concierge_checkin_advisor_read', args: { p_client_id: readUuid(b.clientId).toLowerCase() } }; }
