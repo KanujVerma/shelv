@@ -1,5 +1,5 @@
 {
-  "updatedOn": "2026-11-02T03:49:39.215654+00:00",
+  "updatedOn": "2026-11-02T04:06:47.730093+00:00",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
   "allocatedWorkers": 7,
@@ -8600,6 +8600,27 @@
       "statusEvidence": "Original returned allocation receipt, live resumed thread read, and successful missing-input delivery; no identity inferred from run ordinal.",
       "status": "running",
       "statusQualification": "Last direct missing-input delivery; not a new poll or acceptance result."
+    },
+    {
+      "role": "Maya complete interaction reconciliation",
+      "taskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Athread-send%3Aw3-complete-maya-retirement-compatibility-reconciliation-20261102",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w3-maya-complete-interactions-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w3-maya-complete-interactions-source-20261101-r1:ordinal:3",
+      "status": "running",
+      "statusAtDispatch": "starting",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "writeSet": [
+        "owned Maya controller",
+        "new retirement tests",
+        "append W3 report",
+        "separate approved two-file test expectation successor"
+      ],
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/maya-reconciliation-20261102.json"
     }
   ],
   "parentVerification": {
@@ -10715,18 +10736,24 @@
     "statusOnly": true,
     "noBankedResets": true
   },
-  "integrationHead": "8ee18fda2b89e727f1efe7fd56255d3cb1fd05fd",
+  "integrationHead": "1418d724c704aac51ed1235ed55c71c12f76bcc2",
   "currentAllocationEvidence": "Seven child workflows allocated after three older lanes were reconciled live; dispatch receipt times in refill20261102. This is not an ongoing live count.",
   "resourceGrantState": "No native/browser/Auth/Storage fixture active or granted by this refill. Banked reset authorization disarmed after user manual reset.",
   "currentCheckpoint": {
-    "sourceHead": "8ee18fda2b89e727f1efe7fd56255d3cb1fd05fd",
-    "change": "Verified hermetic historical test inputs; no production/workflow changes.",
-    "parentEvidence": ".local-artifacts/portal-rebuild/ci-recovery-parent-20261102/commands.json",
-    "coldHistory": "45/45 exit0",
-    "rootTests": "1432 total,1414 pass,18 retained opt-in skips,0 fail",
+    "sourceHead": "1418d724c704aac51ed1235ed55c71c12f76bcc2",
+    "change": "Reviewed export source and unmounted consent UI imported; direct Parent MIF1 correction verified.",
+    "evidence": "docs/portal-rebuild/research/COORDINATOR_EXPORT_CONSENT_SOURCE_INTEGRATION.md",
+    "rootTests": "1613 total/1595 pass/18 retained skips/0 fail at b90",
+    "consent": "29/29",
     "rootAppTypes": 0,
     "rootTestTypes": 0,
-    "freshHeadCI": "pending push/checks",
+    "frontend": 0,
+    "sessionTypes": 0,
+    "expoWeb": 0,
+    "unmountedSourceBuild": "2246 inputs/15 output hashes exact before MIF1",
+    "MIF1": "original probe fail->pass; new6=3/6->6/6; retained+new94/94; frontend0; only controller input/appJS output change",
+    "sql": "65 source migrations/119 tracked SQL, export native UNRUN locally",
+    "sharedTransport": "R3 new NT2 final applicability hold; old V5 not accepted",
     "fullGoal": "active/incomplete"
   },
   "sourcePins": {

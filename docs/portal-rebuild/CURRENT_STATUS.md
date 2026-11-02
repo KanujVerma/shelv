@@ -1,5 +1,13 @@
 # Portal rebuild current status
 
+## Parent continuation, 1 November 2026, 22:05 Chicago
+
+Reviewed final-export source through acf632 and Source consent presentation34badb4 are now imported, with their independent R7/R1 reports. Parent verification passes1,595 Root tests with0fail/18 retained skips,29 consent source/shared-SSR cases, both Root type graphs, frontend/session/UI and Expo web export. The actual unmounted application graph remains2,246 inputs/15 exact output hashes. [Exact integration and evidence](research/COORDINATOR_EXPORT_CONSENT_SOURCE_INTEGRATION.md). No Account download, Source authority or mounted consent flow is accepted. Export source adds one migration:65 source migrations/119 tracked SQL, no old SQL changed and no local SQL executed.
+
+Parent directly corrected inherited Maya MIF1 as1418d724: clear/publish sample state before callbacks and isolate observer exceptions. Original unchanged probe fails before and passes afterward; new6 go3/6 to6/6; retained/new94/94 and frontend pass. This corrects the existing Root controller. The complete memory-interaction candidate is still held for owner reconciliation, separately allocated test expectations and a NEW full R2 review; its R1 FAIL and208/210 raw remain preserved.
+
+Combined shared/notification R3 found NT2/P2: final private return after cleanup omits the last applicability check. Its full report is pending, and shared admission remains stopped. Old SD1/NT1/AAS5 passes do not close this new dependency finding. W4 can continue its exact immutable photo-adapter composition source work with that hold explicit. Commerce AC7 and native NE3 corrections continue; no native resource grant exists. Full26-screen/App/genuine/visual/CI/release acceptance remains open, with no new banked-reset authorization.
+
 ## Current continuation checkpoint, 1 November 2026, 21:45 Chicago
 
 The full D01-D48/26-screen goal remains active. Parent imported the reviewed CI-input repair451dc357 as8ee18fda: six existing tests now read verified immutable historical bytes from one fixture instead of depending on unavailable author Git objects, and the Maya browser expectation uses its actual staged-sample label. No production, workflow, dependency or runtime changed. Parent fresh empty-Git checks pass45/45; Root suite passes1,414 with0 failures and18 retained opt-in skips; both actual Root TypeScript graphs pass. [Diagnosis, exact repair and original assertion preservation](research/W7_CI_RECOVERY_17D2.md). Evidence is `.local-artifacts/portal-rebuild/ci-recovery-parent-20261102/commands.json`. Fresh published-head CI is still required; these local results do not make PR211 green.
