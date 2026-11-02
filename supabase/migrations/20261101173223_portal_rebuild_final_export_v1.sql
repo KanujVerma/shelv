@@ -214,7 +214,7 @@ declare ref jsonb:=b->'publication';cutoff timestamptz:=(b->>'supportEndsAt')::t
   unit:=jsonb_build_object('schemaVersion',1,'kind','instruction','instruction',jsonb_build_object('instructionId',r.id,'version',r.version,'slotId',r.slot,'productId',r.product,'effectiveOn',r.effective_on,'publishedAt',concierge.care_instant(r.published_at),'originalStart',u->'originalStart','content',body));
  end if;
  -- Derived per-unit bounds include use/metadata/wrappers. Never a full-bundle bound or row cap.
- if octet_length(convert_to(unit::text,'UTF8'))>case when unit_index=0 then 14772736 else 865536 end then perform concierge.fail('unavailable');end if;
+ if octet_length(convert_to(unit::text,'UTF8'))>(case when unit_index=0 then 14772736 else 865536 end) then perform concierge.fail('unavailable');end if;
  return unit;
 end $$;
 create function concierge.final_export_leaf_v1(unit_index integer,kind text,segment_index integer,segment_count integer,t text) returns text
