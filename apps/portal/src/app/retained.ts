@@ -3,11 +3,9 @@ import type {
   CookieRequestFactory,
   CookieSessionPort,
 } from "../transport/session.ts";
-// The retained JavaScript adapters have no declarations. This local structural
-// facade describes only the real exports used by composition; no auth rewrite.
-// @ts-expect-error retained JavaScript, exercised with the actual cookie adapters
+// This local structural facade describes only the real retained JavaScript
+// exports used by composition; no auth rewrite.
 import * as advisor from "../../site/auth/advisor-cookie-session.js";
-// @ts-expect-error retained JavaScript, exercised with the actual cookie adapters
 import * as client from "../../site/auth/client-cookie-session.js";
 export interface CookieCapabilities {
   view: boolean;

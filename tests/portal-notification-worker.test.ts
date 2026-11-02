@@ -1,4 +1,5 @@
-import assert from 'node:assert/strict';import {test} from 'node:test';import {existsSync} from 'node:fs';import {mkdtemp,readFile,readdir,stat} from 'node:fs/promises';import {join} from 'node:path';
+import assert from 'node:assert/strict';import {test} from 'node:test';import {existsSync} from 'node:fs';import {mkdir,mkdtemp,readFile,readdir,stat} from 'node:fs/promises';import {join} from 'node:path';
+await mkdir(join(process.cwd(),'.local-artifacts/notification-kernel'),{recursive:true,mode:0o700});
 const id='10000000-0000-4000-8000-000000000001',lease='10000000-0000-4000-8000-000000000002',eventId='10000000-0000-4000-8000-000000000003',recipientId='10000000-0000-4000-8000-000000000004';
 const claim={deliveryId:id,leaseId:lease,eventId,recipientId,idempotencyKey:id};
 const event={eventId,createdAt:'2026-11-01T00:00:00Z',source:{kind:'publication',publicationVersion:1},destination:{kind:'plan_version',version:1}};

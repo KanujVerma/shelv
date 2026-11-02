@@ -30,7 +30,7 @@ before(()=>{
  fs.writeFileSync(path.join(artifacts,'BOOTSTRAP.json'),JSON.stringify({database:db,listenAddresses:'',migrations,synthetic:true})+'\n');
 });
 after(()=>{if(started){command('pg_ctl',['-D',path.join(artifacts,'data'),'-m','fast','-w','stop']);fs.rmSync(path.join(artifacts,'data'),{recursive:true,force:true});}if(socket)fs.rmSync(socket,{recursive:true,force:true});});
-const signature:Record<CheckinRpcCall['name'],string[]>={concierge_checkin_read:['p_client_id'],concierge_checkin_advisor_read:['p_client_id'],concierge_checkin_write:['p_client_id','p_action','p_expected_revision','p_request_id','p_payload'],concierge_checkin_photo_authorize:['p_client_id','p_photo_id']};
+const signature:Record<CheckinRpcCall['name'],string[]>={concierge_checkin_head_v1:[],concierge_checkin_read:['p_client_id'],concierge_checkin_advisor_read:['p_client_id'],concierge_checkin_write:['p_client_id','p_action','p_expected_revision','p_request_id','p_payload'],concierge_checkin_photo_authorize:['p_client_id','p_photo_id']};
 function setup(){
  const [client,other,advisor,viewer]=Array.from({length:4},()=>randomUUID());
  sql(`insert into auth.users(id) values ${[client,other,advisor,viewer].map(id=>`(${lit(id)})`).join(',')};insert into public.profiles(id) select id from auth.users on conflict do nothing;insert into concierge.enrollments(client_id,display_name,status) values (${lit(client)},'Synthetic reply client','active'),(${lit(other)},'Synthetic other client','active');insert into concierge.advisors(user_id,active,can_view,can_edit,can_publish,can_confirm_payments) values (${lit(advisor)},true,true,true,false,false),(${lit(viewer)},true,true,false,false,true);`);
