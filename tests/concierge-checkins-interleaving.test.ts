@@ -45,7 +45,7 @@ function scenario(options: { legacyGlobalFence?: boolean; loseFirstCompletionAck
     authenticate:async token => token === 'owner' || token === 'advisor' ? {id:token === 'owner' ? owner : advisor,is_anonymous:false} : null,
     rpc:async (token,call) => {
       calls.push(structuredClone(call));
-      if(revoked || call.args.p_client_id !== owner) return error('concierge_forbidden');
+      if(revoked || !('p_client_id' in call.args) || call.args.p_client_id !== owner) return error('concierge_forbidden');
       if(call.name !== 'concierge_checkin_write') throw Error('Unexpected read/rebase RPC');
       const args=call.args,actor=token === 'owner' ? owner : advisor;
       if((args.p_action === 'set_next_checkin') !== (actor === advisor)) return error('concierge_forbidden');
