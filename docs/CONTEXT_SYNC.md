@@ -1,3 +1,7 @@
+## Portal continuation, 1 November 2026, 21:45 Chicago
+
+CI historical-input recovery451dc357 is imported as8ee18fda. Parent empty-history checks45/45, Root1,414 pass/18 retained opt-in skips/0fail and both Root typechecks pass. Production/workflow bytes are unchanged. Exact-head CI after push remains pending. Current live acceptance and seven allocated child workflows are recorded in [portal status](portal-rebuild/CURRENT_STATUS.md) and TASKS; Source kernel/inventory transport interfaces are pinned. Full D01-D48/26-screen goal remains active; no deployment, native-resource activation or release acceptance. User manually reset usage, so the prior one-banked-reset permission is disarmed and coordinator consumed zero. Hourly progress is scheduled; future updates must use current evidence.
+
 ## 2026-11-01 Parent source checkpoint: Maya, notification kernel and photo head
 
 Current follow-up:4e07119b corrects the inherited standalone TS7016 import-annotation gap without changing actual JavaScript output; configured frontend and both Root type graphs pass. Earlier482 comment-removal failures remain preserved.

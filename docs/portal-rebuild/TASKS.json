@@ -1,5 +1,5 @@
 {
-  "updatedOn": "2026-11-02T00:04:48.567170+00:00",
+  "updatedOn": "2026-11-02T03:45:49.212563+00:00",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
   "allocatedWorkers": 7,
@@ -7787,7 +7787,9 @@
       "baseCommit": "0ca4fe8ca6da208deb70d7d5a89031671dc8b234",
       "status": "completed",
       "resultCommit": "d449d2e12148e512856a8a92d7249bf5cf566c52",
-      "resultQualification": "20 pure guards; no native execution"
+      "resultQualification": "20 pure guards; no native execution",
+      "headCommit": "d449d2e12148e512856a8a92d7249bf5cf566c52",
+      "verificationResult": "superseded by NE1/NE2/NE3 reviews"
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw4-report-photo-authorization-denial-rp2-source-fix-20261101",
@@ -7859,7 +7861,9 @@
       "baseCommit": "d59190a7ea923a45f3f49635bc2dee657505ba0e",
       "status": "completed",
       "resultCommit": "6a7cea32b8e9dbfc5a3a35484dd5ba5e00139ada",
-      "resultQualification": "Author347PASS; independentR5AC5found, reportpending"
+      "resultQualification": "Author347PASS; independentR5AC5found, reportpending",
+      "headCommit": "6a7cea32b8e9dbfc5a3a35484dd5ba5e00139ada",
+      "verificationResult": "later AC5/AC6 corrected, AC7 newfinding; new author correction active"
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw1-final-export-terminal-sink-fe5-source-fix-20261101",
@@ -8122,7 +8126,9 @@
       "role": "native_ne1_fix_task",
       "resourceGrant": false,
       "authoritativeTaskIdForwarded": true,
-      "status": "running"
+      "status": "completed",
+      "headCommit": "004c8be757b0c580873913a30729ceb5f9d3edd5",
+      "verificationResult": "independent NE2 FAIL; later2edf/NE3 FAIL, new correction active"
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw1-final-export-authority-body-fe6-source-fix-20261101",
@@ -8166,7 +8172,9 @@
       "role": "rp3_fix_task",
       "resourceGrant": false,
       "authoritativeTaskIdForwarded": true,
-      "status": "running"
+      "status": "completed",
+      "headCommit": "da0d3ae093d67b651adb8481da6fe8be16a52cc9",
+      "verificationResult": "independent08f scoped lifecycle PASS; later reader89b/R5 scopedPASS"
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-advisor-commerce-ui-source-review-20261101-r5",
@@ -8261,6 +8269,242 @@
       "resourceGrant": false,
       "authoritativeTaskIdForwarded": true,
       "status": "running"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-notifications-native-executor-source-review-20261101-r2",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-notifications-native-executor-source-review-20261101-r2",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w7-notifications-native-executor-source-review-20261101-r2:ordinal:1",
+      "role": "native_r2_review_task",
+      "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-account-address-service-source-review-20261101-r5",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-account-address-service-source-review-20261101-r5",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w7-account-address-service-source-review-20261101-r5:ordinal:1",
+      "role": "aas5_review_task",
+      "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-advisor-commerce-ui-source-review-20261101-r6",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-advisor-commerce-ui-source-review-20261101-r6",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w7-advisor-commerce-ui-source-review-20261101-r6:ordinal:1",
+      "role": "ac6_review_task",
+      "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-photo-inventory-source-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-photo-inventory-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w1-photo-inventory-source-20261101-r1:ordinal:1",
+      "role": "photo_inventory_task",
+      "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w6-source-consents-ui-source-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w6-source-consents-ui-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w6-source-consents-ui-source-20261101-r1:ordinal:1",
+      "role": "source_consent_ui_task",
+      "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-source-lifecycle-next-slice-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-source-lifecycle-next-slice-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w1-source-lifecycle-next-slice-20261101-r1:ordinal:1",
+      "role": "source_lifecycle_delta_task",
+      "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-report-photo-head-reader-source-review-20261101-r5",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-report-photo-head-reader-source-review-20261101-r5",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w7-report-photo-head-reader-source-review-20261101-r5:ordinal:1",
+      "role": "photo_reader_r5_task",
+      "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false
+    },
+    {
+      "role": "native_ne3_fix",
+      "taskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Athread-send%3Aw7-native-cleanup-budget-ne3-source-fix-20261102",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-notifications-native-preflight-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w7-notifications-native-preflight-20261101-r1:ordinal:5",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "statusAtDispatch": "starting",
+      "status": "running",
+      "statusEvidence": "T3 returned dispatch receipt; current live claims require current inventory, not this historical field.",
+      "writeSet": [
+        "tests/portal-notifications-native-executor.mjs",
+        "tests/portal-notifications-native-executor.test.mjs",
+        "docs/portal-rebuild/research/W7_NOTIFICATIONS_NATIVE_R1.md"
+      ],
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json"
+    },
+    {
+      "role": "commerce_ac7_fix",
+      "taskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Athread-send%3Aw5-shared-replacement-custody-ac7-source-fix-20261102",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w5-advisor-commerce-ui-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w5-advisor-commerce-ui-source-20261101-r1:ordinal:10",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "statusAtDispatch": "starting",
+      "status": "running",
+      "statusEvidence": "T3 returned dispatch receipt; current live claims require current inventory, not this historical field.",
+      "writeSet": [
+        "apps/portal/src/features/advisor/commerce/controller.ts",
+        "apps/portal/tests/rebuild-advisor-commerce-replacement-custody.test.mjs",
+        "docs/portal-rebuild/research/W5_ADVISOR_COMMERCE_UI.md"
+      ],
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json"
+    },
+    {
+      "role": "photo_inventory_collection",
+      "taskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Athread-send%3Aw4-head-bound-complete-photo-inventory-source-20261102",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w4-report-photos-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w4-report-photos-source-20261101-r1:ordinal:8",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "statusAtDispatch": "starting",
+      "status": "running",
+      "statusEvidence": "T3 returned dispatch receipt; current live claims require current inventory, not this historical field.",
+      "writeSet": [
+        "apps/portal/src/features/history/photos/port.ts",
+        "new matching report-photo inventory tests",
+        "docs/portal-rebuild/research/W4_REPORT_PHOTOS.md"
+      ],
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json"
+    },
+    {
+      "role": "combined_transport_r3",
+      "taskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-combined-notification-transport-source-review-20261102-r3",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-combined-notification-transport-source-review-20261102-r3",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Afab56c32-51e9-4c25-a214-3043797a2822%253Adelegate-task%253Aportal-rebuild-w7-combined-notification-transport-source-review-20261102-r3:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "statusAtDispatch": "running",
+      "status": "running",
+      "statusEvidence": "T3 returned dispatch receipt; current live claims require current inventory, not this historical field.",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_NOTIFICATION_TRANSPORT_SOURCE_R3.md"
+      ],
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json"
     }
   ],
   "parentVerification": {
@@ -10221,7 +10465,13 @@
     "latestVerifiedActiveTotal": 8,
     "includesCoordinator": true,
     "nestedDelegation": false,
-    "snapshot": "source-only six independent reviews + A07 returned-browser report + coordinator"
+    "snapshot": "source-only six independent reviews + A07 returned-browser report + coordinator",
+    "preferredActiveWorkflows": "7-8 including coordinator",
+    "minimumIsJudgmentBound": true,
+    "refillPolicy": "Promptly replace terminal workers with next needed independent implementation/review; explain real dependency or quality risk if fewer",
+    "extraAgentsAuthorized": true,
+    "runtimeCapacityObserved": "9 including coordinator per active tool context; no hard24 assumed",
+    "noNesting": true
   },
   "currentLocalCheckpoint": {
     "codeHead": "4e07119b41876b66d2cf5fb42a705ebd669574db",
@@ -10286,10 +10536,9 @@
     "NativeExecutor": "NE1 persistednoeffect+exact6cachedimages+ownedloopbacknetwork sourcecorrectionactive; no native grant"
   },
   "migrationWriter": {
-    "active": null,
-    "sourceMigrations": 64,
-    "executedNewMigrations": 0,
-    "note": "Old62 byte-exact; notification191527/photo195359 source imported only"
+    "activeTaskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-photo-inventory-source-20261101-r1",
+    "purpose": "newownclientphoto-inventorysourceonly; oneCLIallocationreportemptybeforeSQLbody",
+    "executedNewMigrations": 0
   },
   "providerGateDisposition": {
     "userDirection": "No hardware key and not in Daybreak Blue; work around accordingly",
@@ -10353,5 +10602,42 @@
     "all15ActualMainOutputsExact": true,
     "inheritedFailure": "482commentremoval causedstandaloneTS7016; R4rawpreserved",
     "independentDependencyRecheck": "R4allocatedstrict+frontendONLY, inputnotreportdelivery"
+  },
+  "latestParallelRefill": {
+    "at": "2026-11-02T01:44:50.449Z",
+    "physicalRunningIncludingCoordinator": 8,
+    "evidenceHome": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-task-records.json",
+    "allSolXhighDefault": true,
+    "identitiesForwarded": true
+  },
+  "hourlyProgressAutomation": {
+    "scheduledTaskId": "scheduled-task:command:mcp:dd730894-0fab-4a94-873d-743422eae122:schedule-task:portal-rebuild-hourly-progress-20261101-v1",
+    "enabled": true,
+    "boundThreadId": "d632030a-18f7-4dec-a2c9-f5c0418c3fd5",
+    "everyMs": 3600000,
+    "nextRunAtAtCreation": "2026-11-02T03:42:33.021Z",
+    "style": "concise lower-case Kanuj style; overall/9features/moved/running/ETA/blockers",
+    "statusOnly": true,
+    "noBankedResets": true
+  },
+  "integrationHead": "8ee18fda2b89e727f1efe7fd56255d3cb1fd05fd",
+  "currentAllocationEvidence": "Seven child workflows allocated after three older lanes were reconciled live; dispatch receipt times in refill20261102. This is not an ongoing live count.",
+  "resourceGrantState": "No native/browser/Auth/Storage fixture active or granted by this refill. Banked reset authorization disarmed after user manual reset.",
+  "currentCheckpoint": {
+    "sourceHead": "8ee18fda2b89e727f1efe7fd56255d3cb1fd05fd",
+    "change": "Verified hermetic historical test inputs; no production/workflow changes.",
+    "parentEvidence": ".local-artifacts/portal-rebuild/ci-recovery-parent-20261102/commands.json",
+    "coldHistory": "45/45 exit0",
+    "rootTests": "1432 total,1414 pass,18 retained opt-in skips,0 fail",
+    "rootAppTypes": 0,
+    "rootTestTypes": 0,
+    "freshHeadCI": "pending push/checks",
+    "fullGoal": "active/incomplete"
+  },
+  "sourcePins": {
+    "kernel": "docs/portal-rebuild/research/COORDINATOR_SOURCE_KERNEL_INTERFACE_PIN.md",
+    "photoTransport": "docs/portal-rebuild/research/COORDINATOR_PHOTO_INVENTORY_TRANSPORT_PIN.md",
+    "sourceKernelMigration": "20261102033048_portal_rebuild_source_kernel_v1.sql",
+    "sqlExecution": "none authorized in active source assignments"
   }
 }

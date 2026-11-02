@@ -1,5 +1,17 @@
 # Portal rebuild current status
 
+## Current continuation checkpoint, 1 November 2026, 21:45 Chicago
+
+The full D01-D48/26-screen goal remains active. Parent imported the reviewed CI-input repair451dc357 as8ee18fda: six existing tests now read verified immutable historical bytes from one fixture instead of depending on unavailable author Git objects, and the Maya browser expectation uses its actual staged-sample label. No production, workflow, dependency or runtime changed. Parent fresh empty-Git checks pass45/45; Root suite passes1,414 with0 failures and18 retained opt-in skips; both actual Root TypeScript graphs pass. [Diagnosis, exact repair and original assertion preservation](research/W7_CI_RECOVERY_17D2.md). Evidence is `.local-artifacts/portal-rebuild/ci-recovery-parent-20261102/commands.json`. Fresh published-head CI is still required; these local results do not make PR211 green.
+
+The prior published17d2 CI failure is diagnosed, not waived. Its database job genuinely reset through notification/photo-head migrations and passed42 pgTAP files/1,028 tests. That hosted CI evidence is distinct from the skipped portal native admission and all unrun newer inventory/Source SQL. No local DB/Auth/Storage resource is active.
+
+Seven child workflows are allocated alongside Parent: Source kernel, photo inventory transport, complete photo inventory collection, Maya interaction review, combined notification/generic transport R3, Commerce AC7 correction and native executor NE3 correction. Dispatch receipts, exact task identities, claims and timestamps are retained in TASKS; completed tasks are not counted as currently running. Coordinator and task settings are codex/Sol/xhigh/default, with explicit Node22.23.0. The [Source kernel interface](research/COORDINATOR_SOURCE_KERNEL_INTERFACE_PIN.md) and [inventory transport interface](research/COORDINATOR_PHOTO_INVENTORY_TRANSPORT_PIN.md) are pinned for implementation, with no activation or resource grant.
+
+Latest scoped reviews pass for final-export FE6/R7, consent presentation R1, photo inventory producer R1 and photo metadata reader R5; their candidates remain separate until Parent integration. Latest source holds are Commerce AC7 unresolved shared-slot custody and executor NE3 cleanup reserve; both are assigned corrections. Shared V5/NT1 is awaiting a new combined R3, so notification/Account composition stays held. Existing typed/practical/public-legacy-export/producer/UI/browser/genuine/CI/release limitations remain explicit. No full feature or full-goal acceptance follows.
+
+Hourly concise progress automation is configured for this thread. The banked-reset permission is disarmed after Kanuj reported manually resetting; coordinator has consumed zero banked resets. No further reset is authorized. Engineering estimates remain rough and unaccepted as evidence; no elapsed ETA clock is restarted here.
+
 ## Current source checkpoint, 1 November 2026, Chicago
 
 This section supersedes older live-state paragraphs. The full D01-D48/26-screen rebuild remains active. Current reviewed source/code prerequisite is482557b4; later report imports through1bdb248d preserve their exact verdicts. The next published checkpoint includes these docs. Prior remote headab19 remains distinct from local verification; no fresh exact-head CI PASS is claimed yet.
