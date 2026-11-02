@@ -23,6 +23,7 @@ function sql(query: string) {
 }
 const signature: Record<CheckinRpcCall['name'],readonly string[]> = {
   concierge_checkin_head_v1:[],
+  concierge_checkin_photo_inventory_v1:['p_cursor','p_limit','p_expected_revision'],
   concierge_checkin_read:['p_client_id'], concierge_checkin_advisor_read:['p_client_id'],
   concierge_checkin_write:['p_client_id','p_action','p_expected_revision','p_request_id','p_payload'],
   concierge_checkin_photo_authorize:['p_client_id','p_photo_id'],
