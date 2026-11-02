@@ -1,5 +1,5 @@
 {
-  "updatedOn": "2026-11-02T05:36:54.768982+00:00",
+  "updatedOn": "2026-11-02T05:47:07.993238+00:00",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
   "allocatedWorkers": 7,
@@ -8665,6 +8665,34 @@
       ],
       "reportCommit": "1afccad16c453945e3591815df10bf0ec9f4121b",
       "verificationResult": "Research proposes immutable public R1 reconstruction sidecar; proposalnotpinned orimplemented. No sourcechanges."
+    },
+    {
+      "role": "Source kernel independent R1 restored Parent",
+      "taskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-source-kernel-source-review-20261102-r1-restored-parent",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-source-kernel-source-review-20261102-r1-restored-parent",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Afab56c32-51e9-4c25-a214-3043797a2822%253Adelegate-task%253Aportal-rebuild-w7-source-kernel-source-review-20261102-r1-restored-parent:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "statusEvidence": "Actual successful fresh delegate_task response and initial child runtime gate, not an old attempted dispatch",
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false,
+      "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-4bb235ab",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_SOURCE_KERNEL_SOURCE_R1.md (NEW report only)",
+        "own ignored bounded evidence"
+      ],
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restoration-20261102.json"
     }
   ],
   "parentVerification": {
@@ -10832,19 +10860,28 @@
     "status": "prepared and bounded-probe/type verified, not adopted/admitted"
   },
   "orchestrationState": {
-    "status": "new starts rejected by host",
-    "actualErrorCode": "parent_not_active",
-    "actualError": "The calling provider no longer owns an active thread run.",
-    "reviewTasksCreated": 0,
-    "attemptedReviews": [
-      "CommerceR8",
-      "MayaR2",
-      "SourceKernelR1",
-      "photoConsumerR6"
-    ],
-    "preparedPacket": ".local-artifacts/portal-rebuild/coordinator-active-20261101/prepared-reviews-and-ne4-20261102.json",
-    "nextActualParentRun": "VerifySol/xhigh/default and dispatch prepared exact tasks; forward each real taskId; no alternate-provider/native/CLI bypass",
-    "latestInventory": "OnlyW0running at last current read; other declared lanes terminal. Do not count planned reviews as running."
+    "status": "restored; fresh Parent dispatch succeeded",
+    "priorFailure": {
+      "status": "new starts rejected by host",
+      "actualErrorCode": "parent_not_active",
+      "actualError": "The calling provider no longer owns an active thread run.",
+      "reviewTasksCreated": 0,
+      "attemptedReviews": [
+        "CommerceR8",
+        "MayaR2",
+        "SourceKernelR1",
+        "photoConsumerR6"
+      ],
+      "preparedPacket": ".local-artifacts/portal-rebuild/coordinator-active-20261101/prepared-reviews-and-ne4-20261102.json",
+      "nextActualParentRun": "VerifySol/xhigh/default and dispatch prepared exact tasks; forward each real taskId; no alternate-provider/native/CLI bypass",
+      "latestInventory": "OnlyW0running at last current read; other declared lanes terminal. Do not count planned reviews as running."
+    },
+    "restorationReceipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restoration-20261102.json",
+    "nativeHarnessGoal": "active original objective restored; no new scope or budget",
+    "sourceR1TaskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-source-kernel-source-review-20261102-r1-restored-parent",
+    "sourceR1State": "running from actual returned dispatch and child initial live gate; no poll",
+    "remainingPreparedReviews": "Not started by this restoration turn; original failed attempts still created zero tasks",
+    "resourceGrant": "none"
   },
   "sqlWriterState": "Sourceauthor9fe terminal/clean. Parent serialized never-appliedexportCASErepair complete; no active new migration author granted by this continuation."
 }

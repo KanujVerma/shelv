@@ -1,5 +1,9 @@
 # Portal rebuild current status
 
+## Goal execution restored, 1 November 2026
+
+The native coordinator runtime reported no active goal after the old Parent lost its T3 run ownership. Earlier `parent_not_active` review attempts created no tasks; repeated status messages did not mean implementation was still running. The original full approved goal has now been restored in the current runtime without changing scope or resetting code. A fresh independent Source kernel R1 actually dispatched successfully, with Sol/xhigh/default, initial child gates and its exact returned task ID forwarded. [Recovery receipt](../../.local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restoration-20261102.json) and TASKS preserve the failed state separately from this successful start. Other prepared reviews remain undispatched by this recovery turn. No resource, release or banked-reset grant follows.
+
 ## Parent source and CI repair, 1 November 2026, 23:30 Chicago
 
 Reviewed own-photo inventory source is imported with its R1 report. Parent reproduces raw historical29/32 separately, then the explicit inventory compatibility successor passes48/48, three mutation-sensitivity controls pass, and empty-Git packaging/notification/photo checks pass64/64. Root/app/test/frontend/session types and Expo web export pass; the actual application remains2,246 inputs/15 exact output hashes. [Full integration, preserved raw failures and bounded compatibility](research/COORDINATOR_PHOTO_INVENTORY_PARENT_INTEGRATION.md). This is producer source, not admitted W0 transport/W4 collection or completed C05/C07 uploads.

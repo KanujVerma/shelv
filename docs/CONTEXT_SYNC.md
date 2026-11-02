@@ -6,6 +6,10 @@ Reviewed photo inventory producer and explicit historical-test successor are int
 
 Reviewed export source and unmounted Source consent presentation are imported; Parent Root1,595pass/18 retained skips/0fail, consent29, actual types/UI/Expo pass. Small inherited Maya retirement is corrected and verified as1418d724; the full new Maya candidate still needs reconciliation/R2. Shared NT2 is a new held dependency, separate from closed SD1/NT1/AAS5 vectors. [Current integration/evidence and remaining gates](portal-rebuild/research/COORDINATOR_EXPORT_CONSENT_SOURCE_INTEGRATION.md) govern; no runtime/Source/App/download/release acceptance is implied. Full approved goal remains active.
 
+## Portal goal execution recovery, 1 November 2026
+
+The coordinator runtime had no active goal and prior worker starts failed because the old Parent no longer owned an active T3 run. The original full approved objective is now restored; a fresh Source kernel independent R1 actually started and received its exact returned task ID. No code reset, new scope or resource grant occurred. [Current recovery state and receipt](portal-rebuild/CURRENT_STATUS.md) and TASKS govern; earlier failed review attempts remain distinct from this successful dispatch.
+
 ## Portal continuation, 1 November 2026, 21:45 Chicago
 
 Maya interaction R1 now holds admission on inherited MIF1/P3, with a deliberately throwing observer and old/current source reproduction; mounted/browser reachability remains unproved. Its production and original208/210 compatibility hold remain unaccepted. [Current source status and exact review](portal-rebuild/CURRENT_STATUS.md) govern. Source/inventory interface pins and current task receipts have been forwarded; raw legacy fixture results remain distinct from new canonical-wire verification. No resource or activation grant follows.
