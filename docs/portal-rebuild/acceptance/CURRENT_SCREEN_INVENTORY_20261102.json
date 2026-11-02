@@ -1,0 +1,4185 @@
+{
+  "schemaVersion": 1,
+  "title": "Current approved 26-screen source and verification inventory",
+  "date": "2026-11-02",
+  "owner": "Kanuj",
+  "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-current-screen-inventory",
+  "ownCheckout": "/Users/kanuj/.t3/worktrees/shelv/t3-2d685b4d",
+  "ownCleanBase": "e18c375fbe70318a2d3465adcb80d8e063568e47",
+  "ownBaseIsRootEquivalent": false,
+  "ownInputOnlyAncestors": [
+    "835ac1c0",
+    "e18c375f"
+  ],
+  "sourcePin": {
+    "rootHead": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+    "codeHead": "3c28477140cc480dc3d610630c356b3812228638",
+    "priorAuditSourceHead": "68ed8a54ebd5e78e042cf14d0cc74008b8848e7f",
+    "publishedFailingCiHead": "e10cf652b970b8228cbfa47e57dd1328dcfc7678",
+    "immutableRootReadOnly": true,
+    "rootWorkingEditsExcluded": true,
+    "deltaSinceAudit": "Only the admitted client inbox23 changes runtime source; other differences are docs/report. Account/Orders/A07/Maya source inventories remain the same. Inbox is a required secondary flow, not an extra approved frame."
+  },
+  "runtime": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "xhigh",
+    "serviceTier": "default",
+    "verified": "Self and Parent t3_thread_configure READ with modelSelection omitted; no setting mutated.",
+    "node": "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+    "nodeVersion": "v22.23.0"
+  },
+  "criteria": {
+    "mounted": "An actual immutable Root entry branch renders the frame component/variant; a parsed route, file or unavailable placeholder is false. Partial C08R/A06/A08 count as mounted only, not feature-complete.",
+    "controllerWired": "The mount supplies its actual production controller from the ordinary factory (or actual isolated Maya controller). Unmounted candidates and successful stubs cannot qualify.",
+    "completeSourceWiring": "For the frame-local principal read/write actions, mounted && actualControllerConnected && requiredReadProducersConnected===true && requiredWriteProducersConnected===true && principalJourneyImplemented===true. Includes action/registry/gateway/strict handler/fixed RPC/SQL path where required; public Maya uses its intentionally isolated memory reducers. Read-only/no-independent-write cases explain applicability. This is a source inventory, not accepted behavior, whole cross-screen journey, visual completeness or a product score.",
+    "genuineConnectedVerified": "A complete current dependency-pinned ordinary route/controller/authenticated adapter/authorized handler/real persistent read or required effect/readback receipt with principal action, denial and later-return cases. For Maya: complete current real public isolated-demo behavior/no-business-effects receipt. Historical proof without actual relevant dependency equivalence is unverified.",
+    "currentBrowserVerified": "Complete ordinary mounted current-source frame/task/return/negative and compared approved state/geometry plus applicable narrow/mobile/keyboard/a11y evidence; SSR/intercepted/public partial observations do not qualify.",
+    "zeroVerifiedMeaning": "0 verified means no qualifying current full signoff was found in the reconciled proof records. All26 actual functional outcomes remain unverified/unknown. It does not mean0functioning,26broken, or26failed browser tests."
+  },
+  "totals": {
+    "denominator": 26,
+    "mounted": 21,
+    "controllerWired": 21,
+    "completeSourceWiring": 12,
+    "provedConnectedRealFunctionality": 0,
+    "currentFullBrowserVerified": 0,
+    "genuineUnverified": 26,
+    "currentFullBrowserUnverified": 26,
+    "unknownActualFunctionalOutcome": 26,
+    "browserTestFailuresEstablishedByThisInventory": 0
+  },
+  "frames": [
+    {
+      "id": "C01",
+      "route": "/plan?routine=morning",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 473,
+          "reason": "shared ClientPlan mount",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 78,
+          "reason": "morning Routine",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 370,
+          "reason": "construct actual client composition after commit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual clientCookieRequest reviews factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/care-ports.ts",
+          "line": 24,
+          "reason": "Care factory plus Root mapper",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "P",
+        "U"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Entitled current V3, current instruction manifest/detail, reported use, pending decision, nextReviewOn and latestPublicReview have actual Review/Care producers.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "This routine frame navigates to existing decision/use/update/history flows; it has no independent required write. No export callback is claimed.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Read practical morning instructions/cautions",
+        "Select morning/evening",
+        "Open exact product/recommendation",
+        "Open update/history"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "preparation exposes no private draft",
+        "no proposal/no date/none-versus-unknown/extreme content",
+        "Stop/paused state retains advice history without unqualified continue",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J03"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "S68",
+        "GP",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Execute current entitled V3 content/manifest hydration, Stop/no-proposal/preparation/negative/return cases and compare1440 frame with required narrow/mobile/a11y. Full destination-photo and J05 flows remain separately incomplete.",
+      "owner": "Kanuj / W3; W0 navigation",
+      "completeSourceWiring": true,
+      "title": "your plan · morning",
+      "nodeId": "498:85",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C01E",
+      "route": "/plan?routine=evening",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 473,
+          "reason": "shared ClientPlan mount",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 89,
+          "reason": "period tabs and conditional Routine",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 370,
+          "reason": "construct actual client composition after commit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual clientCookieRequest reviews factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/care-ports.ts",
+          "line": 24,
+          "reason": "Care factory plus Root mapper",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "P",
+        "U"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Same authoritative V3/current instructions/use read; period selects authored evening steps and conditions.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "Period and detail navigation are local; no independent evening write is required.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Switch authored evening routine",
+        "Read conditional makeup removal/cleanser/moisturizer",
+        "Open selected detail/use"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "conditional/as-needed and gradual schedule preserve actual Start",
+        "proposed/paid/delivered treatment remains out before Start",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J03"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "S68",
+        "GP",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Prove current conditional evening content, no auto-Start/escalation, returning routine/Stop and full approved comparison/a11y.",
+      "owner": "Kanuj / W3",
+      "completeSourceWiring": true,
+      "title": "your plan · evening",
+      "nodeId": "503:926",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C02",
+      "route": "/plan/recommendations/:decisionId",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 473,
+          "reason": "shared renderer",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 116,
+          "reason": "Recommendation and DecisionControls",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 370,
+          "reason": "construct actual client composition after commit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual clientCookieRequest reviews factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "P"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Selected stable decision/product, current public instructions/cautions/source limits and decision basis are produced by actual V3/Review readers.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "Actual record_decision_v2 and exact request_status_v1 are supplied through the ordinary Review factory; approve/defer/decline are not money/order/Start.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Approve/defer/decline exact decision",
+        "Read relevant evidence and current limitations",
+        "Reconcile conflict or uncertain original"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "wrong decision/publication/basis and read-only deny",
+        "choice does not charge/order/Start",
+        "stale/uncertain original retains exact request",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J03",
+        "J04"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "S68",
+        "GP",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Run all current V3 choices, changed basis/conflict/uncertain/reload and no-charge/no-Start readbacks; compare selected recommendation frame. Full purchasing is J04, still absent.",
+      "owner": "Kanuj / W3; Sami / W5 purchasing",
+      "completeSourceWiring": true,
+      "title": "review a recommendation",
+      "nodeId": "498:212",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C02D",
+      "route": "/plan/products/:productId/evidence (recommended treatment ID)",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 473,
+          "reason": "shared renderer",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 155,
+          "reason": "selected Evidence page",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 370,
+          "reason": "construct actual client composition after commit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual clientCookieRequest reviews factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "P"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Exact selected product/decision and public guidance, source references, formula limits and instructions come from actual V3 and instruction producers.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "Read-only evidence/navigation frame; no independent write is required and no private raw-source access is inferred.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Read full directions/evidence/limitations",
+        "Return to originating decision/plan"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "unknown product unavailable without guessed record",
+        "no private consultation bytes in public source projection",
+        "complete azelaic cautions and formulation limits",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J03"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "S68",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Read current exact treatment/caution/limits projection through ordinary authenticated route, verify unknown-ID/privacy/return and compare full evidence frame/a11y.",
+      "owner": "Kanuj / W3",
+      "completeSourceWiring": true,
+      "title": "directions & evidence",
+      "nodeId": "499:766",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C03",
+      "route": "/plan/products/:productId[?routine=evening]",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 473,
+          "reason": "shared renderer",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 67,
+          "reason": "one shared Sheet",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 141,
+          "reason": "ProductDetails",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 370,
+          "reason": "construct actual client composition after commit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual clientCookieRequest reviews factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/care-ports.ts",
+          "line": 24,
+          "reason": "Care factory plus Root mapper",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "P",
+        "U"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Selected product identity/directions/reasoning/use are supplied by actual V3/Review/Care projections.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "Sheet close/evidence/use destinations are connected navigation actions; no independent sheet mutation is required. The C07 optional-label gap is recorded on that destination.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Open/close selected product sheet",
+        "Open same-product evidence",
+        "Open same-product use report"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "unrecognized or ambiguous selected ID unavailable",
+        "only one overlay",
+        "CeraVe actions retain CeraVe identity",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J03"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "S68",
+        "GP",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Prove same-product Sheet/Escape/Back/Forward/direct-entry/focus/scroll/unsent behavior on current Root and compare actual selected product frame.",
+      "owner": "Kanuj / W0 and W3",
+      "completeSourceWiring": true,
+      "title": "product details sheet",
+      "nodeId": "499:151",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C03D",
+      "route": "/plan/products/:productId/evidence (CeraVe PM ID)",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 473,
+          "reason": "shared renderer",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 155,
+          "reason": "Evidence product variant",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 167,
+          "reason": "product experience/limits context",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 370,
+          "reason": "construct actual client composition after commit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual clientCookieRequest reviews factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "P"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Product-specific evidenceVariant and selected CeraVe content bind to actual current publication/instructions; no azelaic substitution.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "This is a read-only product-evidence frame with Back; no independent write is required.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Read CeraVe PM ingredients/reasoning/experience/limits",
+        "Return with product/routine context"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "CeraVe ID never routes to treatment evidence",
+        "unknown ID unavailable",
+        "formula unknown remains unknown",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J03"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "S68",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Verify complete CeraVe-specific current content and accessible return/unknown-ID handling; C02D navigation proof alone cannot sign off C03D.",
+      "owner": "Kanuj / W3",
+      "completeSourceWiring": true,
+      "title": "CeraVe PM reasoning",
+      "nodeId": "503:1083",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C04",
+      "route": "/history; /history/:eventId; /history/versions/:version",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 380,
+          "reason": "History mount",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ClientHistory.tsx",
+          "line": 47,
+          "reason": "timeline/event/version composition",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/ClientHistory.tsx",
+          "line": 20,
+          "reason": "actual History composition",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ClientHistory.tsx",
+          "line": 101,
+          "reason": "historical version controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/client-composition.ts",
+          "line": 187,
+          "reason": "actual History controller and port",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 370,
+          "reason": "construct actual client composition after commit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual clientCookieRequest reviews factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "H",
+        "P"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Actual history keyset/V3/original publication readers supply meaningful public events, original report, attribution and historical shared plan.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "The frame reads/filters/pages and opens the actual amendment form; no report mutation is silently performed by viewing. Required no-change output producer exists in backend, but full report-to-A07 journey is not mounted.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Read/filter/page timeline",
+        "Open exact event and original-bound amendment",
+        "Read linked historical publication and return"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "no advisor-private notes/autosave churn in client projection",
+        "pagination403 removes denied record",
+        "event/version unavailable remains explicit",
+        "amendments retain originals",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J05",
+        "J03"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "S68",
+        "GR",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Run current ordinary history/event/version/filter/restore/denied/return cases and private-byte exclusions, then complete C05→A07→C04 J05 separately.",
+      "owner": "Kanuj / W4; W2 and W0 for J05",
+      "completeSourceWiring": true,
+      "title": "check-ins & history",
+      "nodeId": "498:304",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C05",
+      "route": "/history/new; existing report amendment",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 380,
+          "reason": "History branch",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ClientHistory.tsx",
+          "line": 51,
+          "reason": "current-record-gated form",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/history/History.tsx",
+          "line": 106,
+          "reason": "actual inline ReportForm",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/ClientHistory.tsx",
+          "line": 20,
+          "reason": "actual History composition",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ClientHistory.tsx",
+          "line": 101,
+          "reason": "historical version controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/client-composition.ts",
+          "line": 187,
+          "reason": "actual History controller and port",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "H"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "Current plan/goals/history/original report are connected. Complete photo collection/byte reader is not supplied to the mounted form; one-page inventory source does not implement it.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "submit_goal_report_v1/amend_report_v1/status and durable attention are source-connected. No mounted new-photo upload/confirmation/collection workflow; existing amendment photo references only.",
+      "principalJourneyImplemented": "partial",
+      "principalActions": [
+        "Per-goal better/same/worse/not-sure/comfort/use/optional notes: connected",
+        "Submit/amend with attribution and status: connected",
+        "Optional new photo upload/retry/private bytes: absent"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "submission works without a required photo/form gate",
+        "current record must be re-read before editing",
+        "correction preserves original/date/channel",
+        "no-change human conclusion/alert is distinct from automated acknowledgement",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J05",
+        "J07"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "S68",
+        "GR"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Connect reviewed optional-photo upload/complete collection/actual private bytes without making photos mandatory; complete ordinary no-photo and photo report/amendment/alert/A07/history persistence with current returning/privacy cases. Failed-photo-review hold remains HELD.",
+      "owner": "Kanuj / W4; W1 bytes/Storage; W2/W0 J05",
+      "completeSourceWiring": false,
+      "title": "send an update",
+      "nodeId": "499:305",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C06",
+      "route": "/orders",
+      "mounted": false,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 415,
+          "reason": "unsupported client routes",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 433,
+          "reason": "Orders title in unavailable fallback",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": false,
+      "controllerEvidence": [],
+      "sourceChainIds": [
+        "X"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "No ordinary client Orders controller/read producer is mounted. Retained payments/operations and unadmitted Orders/Commerce candidates do not supply this frame.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "No actual client orders list/quote preparation actions are supplied by the Root route. Separately mounted use reporting is not order detail.",
+      "principalJourneyImplemented": false,
+      "principalActions": [
+        "Required orders list/quote preparation UI: unavailable",
+        "Quote/claim/delivery/return/Start chain: missing"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "unknown seller/tax/shipping/returns blocks payable quote",
+        "claimed funds ≠ verified receipt ≠ order ≠ shipment/delivery",
+        "plan/address changes never rewrite frozen order",
+        "wrong owner and ended-care outstanding admin",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J04",
+        "J06",
+        "J08"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "GP",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Implement and independently admit client Orders contract/controller/read and quote/claim producers; frozen seller/product/total/address/method/return-terms reconciliation and real isolated bookkeeping/J04 proof. M65 remains HELD.",
+      "owner": "Sami / W5; Kanuj / Root composition",
+      "completeSourceWiring": false,
+      "title": "orders · quote preparation",
+      "nodeId": "499:446",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C06D",
+      "route": "/orders/:orderId",
+      "mounted": false,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 415,
+          "reason": "unsupported client routes",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 433,
+          "reason": "Orders title in unavailable fallback",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": false,
+      "controllerEvidence": [],
+      "sourceChainIds": [
+        "X"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "No ordinary client Orders controller/read producer is mounted. Retained payments/operations and unadmitted Orders/Commerce candidates do not supply this frame.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "No actual client order detail/delivered not started actions are supplied by the Root route. Separately mounted use reporting is not order detail.",
+      "principalJourneyImplemented": false,
+      "principalActions": [
+        "Required order detail/delivered not started UI: unavailable",
+        "Quote/claim/delivery/return/Start chain: missing"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "unknown seller/tax/shipping/returns blocks payable quote",
+        "claimed funds ≠ verified receipt ≠ order ≠ shipment/delivery",
+        "plan/address changes never rewrite frozen order",
+        "wrong owner and ended-care outstanding admin",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J04",
+        "J06",
+        "J08"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "GP",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Admit frozen order/detail/delivery/return producers and actual selected-product Start destination; prove delivery alone does not Start, self-purchase creates no fake order, and return/retailer-funds/client-repayment remain distinct. M65 remains HELD.",
+      "owner": "Sami / W5; Kanuj / Root composition",
+      "completeSourceWiring": false,
+      "title": "delivered, not started",
+      "nodeId": "503:808",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C07",
+      "route": "/plan/products/:productId/use; /plan/use",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 473,
+          "reason": "actual shared plan",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 66,
+          "reason": "UseReport route",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 370,
+          "reason": "construct actual client composition after commit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual clientCookieRequest reviews factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/care-ports.ts",
+          "line": 24,
+          "reason": "Care factory plus Root mapper",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "P",
+        "U"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Actual current selected publication/product/descriptor/use and original status producers are connected through Review/Care.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "Identity/create/use/status and V3 reread are connected, including Stop, unknown date and self-purchase. Required optional mismatch/label-photo upload is not connected; labelPhotoIds:[] is literal.",
+      "principalJourneyImplemented": "partial",
+      "principalActions": [
+        "Yes/no/not-sure identity and actual known/unknown occurrence: connected",
+        "Start/pause/Stop/different/unreviewed/self-purchase: connected",
+        "Optional label/photo mismatch capture: absent"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "Stop does not require advisor permission",
+        "self-purchase creates no fake funds/order",
+        "different/unknown product cannot silently activate advised recommendation",
+        "recorded time is not occurrence/Start",
+        "partial write/conflict/uncertain retains exact original",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J03",
+        "J04",
+        "J05"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "S68",
+        "GP",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Complete optional label/mismatch byte workflow and current full identity/use/amendment/negative/return matrix with real persisted reported-use/attention readback and visual/a11y.",
+      "owner": "Kanuj / W3; W4/W1 optional label bytes",
+      "completeSourceWiring": false,
+      "title": "record actual use",
+      "nodeId": "499:584",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C07C",
+      "route": "/plan/products/:productId/use (CeraVe PM ID)",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 473,
+          "reason": "actual shared plan",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 66,
+          "reason": "same selected-product UseReport",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 370,
+          "reason": "construct actual client composition after commit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual clientCookieRequest reviews factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/care-ports.ts",
+          "line": 24,
+          "reason": "Care factory plus Root mapper",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "P",
+        "U"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Same current producer path retains CeraVe publication/product/descriptor binding.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "CeraVe pause/Stop/different-use and current reread are connected; the same required optional label/mismatch upload remains absent.",
+      "principalJourneyImplemented": "partial",
+      "principalActions": [
+        "Report CeraVe pause/Stop/change: connected",
+        "Preserve authored advice and notify attention: backend-connected",
+        "Material mismatch label/photo: absent"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "CeraVe identity never becomes treatment report",
+        "Stop visible separately from advice",
+        "known/unknown occurrence and correction retain attribution",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J03",
+        "J05"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "S68",
+        "GP",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Run current CeraVe-bound Stop/change/correction and sheet/return/session negatives plus optional label path; compare C07C separately.",
+      "owner": "Kanuj / W3; W4/W1 optional label bytes",
+      "completeSourceWiring": false,
+      "title": "report a CeraVe PM change",
+      "nodeId": "503:1174",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C08",
+      "route": "/account; /account/service",
+      "mounted": false,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 415,
+          "reason": "Account excluded from supported routes",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 425,
+          "reason": "Account unavailable fallback",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": false,
+      "controllerEvidence": [],
+      "sourceChainIds": [
+        "X",
+        "Q"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "Profile handler/runtime/SQL source exists; ordinary index/channel/gateway/Account mount is absent. Full contact/address/service/consent/export/admin readers are not registered Root flows.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "No Root Account controller supplies profile/contact/address verification, goal-report alert, consent withdrawal, cancellation or download controls. Own inherited input namespaces are excluded.",
+      "principalJourneyImplemented": false,
+      "principalActions": [
+        "Profile/contact/address/coverage/privacy: unavailable",
+        "Own consent/withdrawal/final export/outstanding admin: unavailable"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "Account administration must not require a clinical plan read",
+        "profile/address cannot rewrite paid order",
+        "unknown contact pending/change/verification remains unavailable",
+        "wrong client/late callback/logout denied"
+      ],
+      "journeyIds": [
+        "J06",
+        "J07",
+        "J08"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "PROFILE"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Correct/admit bounded Account consumers/composer and actual own-client profile/contact plus required address/service/consent/export/admin producers and registrations; prove ordinary read/save/reload/owner-negative first, then remaining C08 flows.",
+      "owner": "Kanuj / W6 and W0; Sami / frozen order facts",
+      "completeSourceWiring": false,
+      "title": "account",
+      "nodeId": "498:399",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C08C",
+      "route": "/account/cancel",
+      "mounted": false,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 415,
+          "reason": "Account routes unsupported",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 425,
+          "reason": "Account unavailable fallback",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": false,
+      "controllerEvidence": [],
+      "sourceChainIds": [
+        "X",
+        "Q"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "No mounted own-client authoritative cancellation/departure read supplies support-end/+30/export/admin facts. Existing advisor cancel_service is a separate operation.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "No mounted own-client deliberate ordinary-cancel or explicit-early-departure confirmation producer. A date derived in a browser or candidate departure DTO is not authority.",
+      "principalJourneyImplemented": false,
+      "principalActions": [
+        "Ordinary cancellation confirmation: unavailable",
+        "Early departure explicit support end: unavailable",
+        "Read-only/final export/admin consequences: unavailable"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "ordinary cancel preserves paid coverage and stops renewal only",
+        "explicit early support end is distinct from refund movement",
+        "calendar +30 boundary and last entitlement",
+        "wrong owner/uncertain command/cancelled confirmation"
+      ],
+      "journeyIds": [
+        "J08"
+      ],
+      "existingProofIds": [
+        "AUDIT"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Correct stored-confirmation/deadline producer findings ADPR1/2, admit reviewed own-client cancellation/departure read/write/confirmation, then prove canonical support/read-only dates, no care writes, lasting public export and separate unfinished administration.",
+      "owner": "Kanuj / W6 and W1/W0",
+      "completeSourceWiring": false,
+      "title": "cancel service",
+      "nodeId": "499:927",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "C08R",
+      "route": "/plan and /history under authoritative read_only entitlement",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 473,
+          "reason": "shared entitled plan",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 64,
+          "reason": "actual read-only notice/restrictions",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/history/History.tsx",
+          "line": 62,
+          "reason": "read-only history",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 370,
+          "reason": "construct actual client composition after commit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual clientCookieRequest reviews factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ClientHistory.tsx",
+          "line": 20,
+          "reason": "actual History composition",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ClientHistory.tsx",
+          "line": 101,
+          "reason": "historical version controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/client-composition.ts",
+          "line": 187,
+          "reason": "actual History controller and port",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "P",
+        "H",
+        "Q"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "Existing P/H use real entitlement and suppress care writes. Complete authoritative support-end/+30/end-window/final-export/outstanding-admin basis is not supplied to this frame; Account is unavailable.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "No new skincare write is required or allowed for this read-only frame. Existing UI/backend care guards are present; a download is an authorized public read, still missing under required reads.",
+      "principalJourneyImplemented": "partial",
+      "principalActions": [
+        "Read entitled final care/history: source-connected subset",
+        "Care choices/use/check-ins disabled: connected restrictions",
+        "Explicit end dates, lasting download and admin continuation: missing"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "exact exclusive cutoff at +30 Chicago calendar days",
+        "no new care writes via direct API",
+        "static last-entitled instructions exclude private/unentitled updates",
+        "unfinished administration independently reachable",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J08"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "GP",
+        "S68"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Admit actual departure/final-export/admin producer+Account paths and prove support-end/+30 boundaries, lasting real browser download/readback and care-write denial. Historical suite named readonly is not this boundary proof.",
+      "owner": "Kanuj / W6; W1 export; W0 composition",
+      "completeSourceWiring": false,
+      "title": "read-only access",
+      "nodeId": "504:621",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "A00",
+      "route": "/advisor/clients",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 561,
+          "reason": "advisor-clients branch",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 205,
+          "reason": "actual directory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 513,
+          "reason": "actual advisor adapter and controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 160,
+          "reason": "ordinary advisor port factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 264,
+          "reason": "strict Plan command adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "A"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "advisor_list → concierge_advisor_directory reads actual client directory; Open reaches actual limited AdvisorClientRecovery with draft/publication producers.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "This frame searches and navigates; it requires no independent mutation. Creating/inviting a new client is not fabricated by directory view.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Read/search directory",
+        "Open actual client draft/publication entry"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "not enrolled/other advisor/role denied",
+        "no placeholder Auth/client on view or draft creation",
+        "no unavailable task query treated as full client workspace",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J01"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "GP"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Run current ordinary advisor directory/client entry/roles/Back/reload and compare A00; broader client-work/service/admission tasks remain distinct incomplete flows.",
+      "owner": "Kanuj / W2 and W0",
+      "completeSourceWiring": true,
+      "title": "clients",
+      "nodeId": "503:449",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "A01",
+      "route": "/advisor/plans",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 561,
+          "reason": "advisor-plans branch",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 254,
+          "reason": "actual plans list/new plan",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 513,
+          "reason": "actual advisor adapter and controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 160,
+          "reason": "ordinary advisor port factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 264,
+          "reason": "strict Plan command adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "A"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "Assigned/unassigned/publication list/read is connected. Required reusable template catalog/selection/checkpoint restoration is not exposed by the ordinary source.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "create_draft_v1 exists but controller always sends templateVersionId:null; SQL rejects nonnull template. Template-based creation and checkpoint/restore UI are absent.",
+      "principalJourneyImplemented": "partial",
+      "principalActions": [
+        "List/read/create/open unassigned draft: connected",
+        "Template-based creation/checkpoint/restore: absent"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "no Auth/placeholder client on draft create",
+        "one working assigned draft/concurrent assignment",
+        "incomplete draft survives reload",
+        "stale template/unknown import does not rewrite published history"
+      ],
+      "journeyIds": [
+        "J01"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "GP"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Implement admitted reusable template and checkpoint/restore selection using fixed contracts, then genuine list/create/incomplete/assign/return/concurrency and compared A01 proof.",
+      "owner": "Kanuj / W1 and W2",
+      "completeSourceWiring": false,
+      "title": "plans",
+      "nodeId": "500:299",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "A02",
+      "route": "/advisor/plans/:draftId/:section; /advisor/plans/:draftId/preview",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 561,
+          "reason": "editor mount",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 470,
+          "reason": "six-section structured editor",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 752,
+          "reason": "shared unpublished preview",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 513,
+          "reason": "actual advisor adapter and controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 160,
+          "reason": "ordinary advisor port factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 264,
+          "reason": "strict Plan command adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "A"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "Saved draft, dependency basis/gate/preview and sections are connected. Required actual raw Source/template/checkpoint/task context is not supplied by the ordinary workbench.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "Incomplete save/assign/import/review/approval/preview are connected with original revision/status recovery; source attachment/storage and reusable template/checkpoint/full agent setup remain absent.",
+      "principalJourneyImplemented": "partial",
+      "principalActions": [
+        "Freely select six sections and autosave incomplete draft: connected",
+        "Compare/apply import, assignment and actual shared preview: connected",
+        "Full Source/template/checkpoint/scoped-agent workflow: incomplete"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "unsupported/code import rejected",
+        "manual newer edits survive stale compare/apply",
+        "uncertain save not labeled saved",
+        "edit/reassign invalidates exact human approval; payment-only does not",
+        "private notes/sources excluded from preview",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J01",
+        "J02"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "GP",
+        "S68"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Complete admitted Source/template/checkpoint/agent interfaces and current ordinary autosave/conflict/uncertain/preview/approval/unsent-return matrix against actual persistence; compare full editor.",
+      "owner": "Kanuj / W2; W1 producer/API; W0 composition",
+      "completeSourceWiring": false,
+      "title": "plan editor",
+      "nodeId": "500:383",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "A03",
+      "route": "/advisor/plans/:draftId/sources",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 561,
+          "reason": "editor mount",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 564,
+          "reason": "structured sources section",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 640,
+          "reason": "compare/apply import dialog",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 513,
+          "reason": "actual advisor adapter and controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 160,
+          "reason": "ordinary advisor port factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 264,
+          "reason": "strict Plan command adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "A"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "Structured provenance/source locations and import comparison exist. Actual private Source credentials/bytes/storage/consent/current grant/lifecycle readers are not integrated.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "Draft import/apply/save uses actual Plan APIs. Required source upload/confirmation/attachment/access/retention deletion and complete scoped-agent source operations have no mounted production path.",
+      "principalJourneyImplemented": "partial",
+      "principalActions": [
+        "Edit source references and strict structured import: connected",
+        "Upload/store/read actual private recordings/transcripts/notes/photos: absent",
+        "Task-authorized permitted full-source workflow: incomplete"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "source text is untrusted data, never instruction/authority",
+        "unsupported/code/stale import cannot overwrite human work",
+        "wrong scope/revoked consent/expired private return denied",
+        "unknown retention/obligations never deletion clearance"
+      ],
+      "journeyIds": [
+        "J01",
+        "J07"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "GP"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Resolve preserved Source kernel SK2-SK4/final-authority findings and admit exact consent/credential/Storage/inspection/egress/lifecycle plus scoped-agent workflow; exact disclosure approval and separately granted private-byte proof.",
+      "owner": "Kanuj / W1 and W2; W6 consent",
+      "completeSourceWiring": false,
+      "title": "sources & agent changes",
+      "nodeId": "500:500",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "A04",
+      "route": "/advisor/plans/:draftId/review-publish (blocked)",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 561,
+          "reason": "editor route",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 456,
+          "reason": "review-publish branch",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 810,
+          "reason": "actual PublicationChecks",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 513,
+          "reason": "actual advisor adapter and controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 160,
+          "reason": "ordinary advisor port factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 264,
+          "reason": "strict Plan command adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "A"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Actual read_advisor_gate_v1/readiness/exact target/human review/approval/coverage/payment context producers are wired; absence remains blocked.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "Actual validation/review/approval/publish commands and payment subview navigation exist; server deliberate publish enforces the missing gate rather than optimistic success.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Read exact target and genuine blockers",
+        "Review/refresh/approve exact revision when permitted",
+        "Open independent payment verification"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "missing payment/review/approval/assignment/authority deny",
+        "stale revision/reassignment/legacy bypass deny",
+        "neither approval nor payment auto-publishes or starts clocks",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J02"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "GP",
+        "S68"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Run current complete wrong-target/stale/reassignment/role/payment/coverage/legacy-bypass negatives and blocked UI under ordinary Auth/SQL; compare A04.",
+      "owner": "Kanuj / W1 and W2",
+      "completeSourceWiring": true,
+      "title": "publication blocked",
+      "nodeId": "500:592",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "A04P",
+      "route": "editor-local paymentOpen under /advisor/plans/:draftId/review-publish",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 444,
+          "reason": "actual PaymentVerification subview",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 1077,
+          "reason": "manual receipt form",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 513,
+          "reason": "actual advisor adapter and controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 160,
+          "reason": "ordinary advisor port factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 264,
+          "reason": "strict Plan command adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 336,
+          "reason": "confirm_payment adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "A",
+        "PAY"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Actual advisor_read v2 produces current frozen quote/claim/payment-method/receipt context for the selected draft client.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "Actual confirm_payment v2 binds gross receipt, claim and explicit externally checked verification, followed by context refresh. This records bookkeeping only.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Read current eligible quote/claim",
+        "Record checked exact gross receipt deliberately",
+        "Return without publishing/resetting approval/clocks"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "late or multiple claim ambiguity must be re-read",
+        "wrong amount/recipient/method/version/role denied",
+        "screenshot/sent claim is not verified receipt",
+        "verification alone does not publish/charge/order/Start",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J02",
+        "J04"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "GP",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Reprove current payment-context/late-claim/denial/renewal/approval-preservation under actual isolated bookkeeping and compare full A04P. M65 held financial scope remains separately unaccepted.",
+      "owner": "Sami / W5 receipt facts; Kanuj / W2 and Root",
+      "completeSourceWiring": true,
+      "title": "verify service payment",
+      "nodeId": "503:672",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "A05",
+      "route": "/advisor/plans/:draftId/review-publish (ready)",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 561,
+          "reason": "editor mount",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 810,
+          "reason": "ready PublicationChecks",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 513,
+          "reason": "actual advisor adapter and controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 160,
+          "reason": "ordinary advisor port factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 264,
+          "reason": "strict Plan command adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 336,
+          "reason": "confirm_payment adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "A",
+        "PAY"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Exact assigned reviewed target/human approval and applicable verified first payment/current coverage are produced by actual gate/context.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "Deliberate publish_plan_v1 routes to canonical persistent transaction/receipt/outbox, not a UI success stub; exact retry/status present.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Approve exact reviewed intended target",
+        "Deliberately publish only with all gates",
+        "Read same receipt on exact retry"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "either review/payment order leaves clocks unset until publish",
+        "content/reassignment invalidates approval, payment-only does not",
+        "wrong client/role/agent grant/replay denied",
+        "concurrent retry yields one version/start/review/outbox"
+      ],
+      "journeyIds": [
+        "J02"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "GP",
+        "GC"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Run current either-order/stale/content/ledger-only/authority/agent/concurrency/retry full ordinary UI/API matrix and stored version/clock/outbox readbacks; compare ready frame.",
+      "owner": "Kanuj / W1 and W2; Sami / verified receipt facts",
+      "completeSourceWiring": true,
+      "title": "ready to publish",
+      "nodeId": "500:686",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "A06",
+      "route": "/advisor/plans/:draftId/review-publish (published receipt)",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 389,
+          "reason": "actual receipt branch",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 421,
+          "reason": "queued status only",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 513,
+          "reason": "actual advisor adapter and controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 160,
+          "reason": "ordinary advisor port factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 264,
+          "reason": "strict Plan command adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/notifications-entry.tsx",
+          "line": 135,
+          "reason": "post-commit initial real controller read",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "A",
+        "N"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "Actual publication receipt/queued event exists. A06 does not read live failed/bounced/accepted/delivered email detail; client inbox mount does not provide that advisor branch.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "No A06 failed-email detail/explicit retry producer is supplied. Notification backend/standalone SMTP source and generic feature retry are separate; worker remains filesystem-only.",
+      "principalJourneyImplemented": "partial",
+      "principalActions": [
+        "Publication receipt and original clocks: connected",
+        "Actual failed-email status/read/retry: absent",
+        "Actual authorized local-sink effect: unproved/uncomposed"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "email failure preserves publication/access/coverage",
+        "retry notification never republishes/resets dates",
+        "queued/accepted/delivered/failed/bounced/seen remain distinct",
+        "draft/private edits silent; neutral deep link checks auth"
+      ],
+      "journeyIds": [
+        "J02",
+        "J09"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "GP",
+        "S68",
+        "INBOX23"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Compose advisor A06 status/confirmation/retry and reviewed worker/current-context/SMTP adapter, then separately authorized actual local sink failure/retry/dedup/readback with no-republish/date-reset proof. Client inbox23 is source-only secondary progress.",
+      "owner": "Kanuj / W1, W2 and W0",
+      "completeSourceWiring": false,
+      "title": "published / notification failure",
+      "nodeId": "500:779",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "A07",
+      "route": "/advisor/reviews/:reportId",
+      "mounted": false,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 561,
+          "reason": "only clients/plans/editor supported",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 589,
+          "reason": "advisor reviews fall through unavailable",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": false,
+      "controllerEvidence": [],
+      "sourceChainIds": [
+        "X"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "Root has Guidance/Review components/backend and candidate entry/harness, but no ordinary advisor report/review controller mount or producer supplied here.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "No Root report-to-public-conclusion/private-note/no-change-review action from this route. Candidate synthetic browser and historical Node do not mount Root.",
+      "principalJourneyImplemented": false,
+      "principalActions": [
+        "Read source-bound report and review: unavailable",
+        "Publish no-change/public conclusion with private-note separation: unavailable"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "exact report/version/dependency binding and wrong client deny",
+        "no-change conclusion does not create care plan",
+        "private notes excluded from client response/export bytes",
+        "revocation/late private return remains held, not silently accepted",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "journeyIds": [
+        "J05"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "H07",
+        "GR"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Admit actual A07 report entry/controller/producer composition after its required gates, then prove C05→A07→C04 no-change/immutable/private/public/return journey. Original Guidance private-return provider hold remains HELD; no rephrase/retry/reroute performed.",
+      "owner": "Kanuj / W2 and W4; W0 composition",
+      "completeSourceWiring": false,
+      "title": "review a check-in",
+      "nodeId": "500:846",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "A08",
+      "route": "/advisor/permissions",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 546,
+          "reason": "actual owner-policy mount",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/OwnerPolicyApplication.tsx",
+          "line": 133,
+          "reason": "actual owner-policy scope",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 513,
+          "reason": "actual advisor adapter and controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 160,
+          "reason": "ordinary advisor port factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 264,
+          "reason": "strict Plan command adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/OwnerPolicyApplication.tsx",
+          "line": 80,
+          "reason": "actual lazy controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/permissions/OwnerPolicy.tsx",
+          "line": 7,
+          "reason": "explicit publishing-policy-only scope",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/permissions/port.ts",
+          "line": 15,
+          "reason": "actual policy request factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "X",
+        "A",
+        "W"
+      ],
+      "requiredReadProducersConnected": false,
+      "requiredReadProducersReason": "Actual Sami-policy read/status is wired. Full task enrollment/grant/source-right administration is absent; explanatory text supplies no authority producer.",
+      "requiredWriteProducersConnected": false,
+      "requiredWriteProducersReason": "Actual confirmed set_sami_approval_policy_v1/audit/status is wired. Full workspace agent/source permission controls are not exposed by this subset.",
+      "principalJourneyImplemented": "partial",
+      "principalActions": [
+        "Read/confirm/change Sami publishing policy: connected",
+        "Conflict/uncertain original recovery: connected",
+        "Independent task/source permission administration: absent"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "nonowner/publish-denied cannot mutate policy",
+        "toggle never grants external-agent publication or source rights",
+        "wrong revision/uncertain original retain exact operation",
+        "replaced owner/route cannot apply late result"
+      ],
+      "journeyIds": [
+        "J02",
+        "J07"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "POLICY"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Prove real owner-only policy persistence/audit/reload and role/uncertainty negatives; implement the remaining approved workspace task/source controls without conflating rights; compare A08.",
+      "owner": "Kanuj / W2 and W0; W1 grants",
+      "completeSourceWiring": false,
+      "title": "workspace permissions",
+      "nodeId": "503:558",
+      "approvedViewport": {
+        "width": 1440,
+        "height": 960
+      }
+    },
+    {
+      "id": "D01",
+      "route": "/maya; /maya?stage=2..5",
+      "mounted": true,
+      "mountEvidence": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 65,
+          "reason": "actual public Maya route",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/MayaApplication.tsx",
+          "line": 84,
+          "reason": "MayaWalkthrough composition",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/walkthrough/maya/view.tsx",
+          "line": 53,
+          "reason": "shared ClientPlan",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/MayaApplication.tsx",
+          "line": 18,
+          "reason": "canonical public navigator/controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/MayaApplication.tsx",
+          "line": 91,
+          "reason": "post-commit scope",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/walkthrough/maya/controller.ts",
+          "line": 32,
+          "reason": "actual isolated sample controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "sourceChainIds": [
+        "M"
+      ],
+      "requiredReadProducersConnected": true,
+      "requiredReadProducersReason": "Real isolated Maya controller/fixture supplies all five stage data and shared form/choice/current reported-use state; no private/business read producer is applicable.",
+      "requiredWriteProducersConnected": true,
+      "requiredWriteProducersReason": "Actual in-memory choice/use/reset/replay/exit/explore/reopen reducers and shared controls are connected. Business persistence/upload/payment/message writes are intentionally forbidden, not missing success ports.",
+      "principalJourneyImplemented": true,
+      "principalActions": [
+        "Five stages, meaningful choice and full shared use form",
+        "Post-preset interactions, Back, exit/explore/reopen/replay/reset",
+        "Isolated no-business-write memory lifetime"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "reset/retirement clears private transient sample memory and rejects old handles",
+        "no real account/payment/order/upload/message request",
+        "staged story does not become observed outcome",
+        "essential controls/cautions visible at1800/1440/narrow/320/390",
+        "keyboard/focus/Back and complete return/replay"
+      ],
+      "journeyIds": [
+        "J10"
+      ],
+      "existingProofIds": [
+        "AUDIT",
+        "MB",
+        "S68"
+      ],
+      "currentBrowserVerified": false,
+      "currentBrowserReceipt": null,
+      "currentBrowserReason": "No complete ordinary current-source frame/behavior/visual/accessibility signoff at the pinned dependency identity. Historical and partial receipts above do not qualify.",
+      "genuineConnectedVerified": false,
+      "genuineConnectedReceipt": null,
+      "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
+      "verificationDisposition": "unverified, not failed",
+      "exactRemainingGate": "Admit reviewed shared client chrome and perform a complete current Root five-stage/forms/isolation/Back/reset/return browser run with approved1800/1440/narrow/mobile/a11y comparisons. Historical partial browser visual FAIL remains; source wiring is not D42 acceptance.",
+      "owner": "Kanuj / W0, W3 and W7",
+      "completeSourceWiring": true,
+      "title": "guided Maya",
+      "nodeId": "503:1271",
+      "approvedViewport": {
+        "width": 1800,
+        "height": 960
+      }
+    }
+  ],
+  "sourceChains": {
+    "X": {
+      "description": "Ordinary authenticated entry, session, retained cookie factories and gateway. These are source connections, not evidence that any environment has deployed them.",
+      "source": [
+        {
+          "path": "apps/portal/src/main.tsx",
+          "line": 1,
+          "reason": "actual React entry",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/start.tsx",
+          "line": 1,
+          "reason": "one prepared startup",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/session.ts",
+          "line": 1,
+          "reason": "ApplicationSession boundary/transport",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/retained.ts",
+          "line": 38,
+          "reason": "real retained constructors and request factories",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 249,
+          "reason": "boundary-keyed navigator",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/navigation/routes.ts",
+          "line": 1,
+          "reason": "canonical route parsing and builders",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/site/auth/client-cookie-session.js",
+          "line": 13,
+          "reason": "client channel/action registry",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/site/auth/advisor-cookie-session.js",
+          "line": 21,
+          "reason": "advisor channel/action registry",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/gateway.ts",
+          "line": 61,
+          "reason": "fixed gateway route registry",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/gateway.ts",
+          "line": 130,
+          "reason": "bounded request parsing",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/policy.ts",
+          "line": 39,
+          "reason": "advisor actions",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/client-policy.ts",
+          "line": 15,
+          "reason": "client actions",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "externalFactGate": "A running exact source environment, actual Auth/session/Vault/SQL rights and persistent readbacks require a separately authorized execution packet; no such runtime was acquired here."
+    },
+    "P": {
+      "description": "Client V3 publication/current instructions/public evidence and selected decision. Actual ordinary factory supplies the Review port, not a successful substitute.",
+      "source": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 370,
+          "reason": "construct actual client composition after commit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 473,
+          "reason": "mounted shared ClientPlan",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/client-composition.ts",
+          "line": 163,
+          "reason": "creation-bound actual runtime",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/client-composition.ts",
+          "line": 178,
+          "reason": "actual Review/Care factories",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/client-state.ts",
+          "line": 86,
+          "reason": "read_client_plan_v3",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/guidancePort.ts",
+          "line": 9,
+          "reason": "V3/manifest/instruction/decision/status action set",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual clientCookieRequest reviews factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/site/auth/client-cookie-session.js",
+          "line": 13,
+          "reason": "reviews action registry",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/client-policy.ts",
+          "line": 21,
+          "reason": "strict client Review parse",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/client-upstream.ts",
+          "line": 133,
+          "reason": "fixed concierge-reviews upstream",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-reviews/handler.ts",
+          "line": 7,
+          "reason": "authenticated strict Root handler and mapper",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-reviews/runtime.ts",
+          "line": 5,
+          "reason": "fixed concierge_review_command_v1 RPC",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+          "line": 235,
+          "reason": "public Review command entry",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+          "line": 252,
+          "reason": "history and V3 projection dispatch",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+          "line": 261,
+          "reason": "record_decision_v2",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+          "line": 718,
+          "reason": "authenticated execute grant",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "rpc": "concierge_review_command_v1({p_command})",
+      "persistentRecords": [
+        "canonical entitled publication and plan_documents",
+        "current instruction manifest/details",
+        "review_decision_provenance",
+        "care use projections"
+      ],
+      "commands": [
+        "read_client_plan_v3",
+        "read_client_instruction_manifest_v1",
+        "read_client_instruction_v1",
+        "record_decision_v2",
+        "request_status_v1"
+      ]
+    },
+    "U": {
+      "description": "Actual selected-product identity/use/report commands through retained Care and strict Root codecs, followed by current V3 reread. Optional label-photo upload is absent.",
+      "source": [
+        {
+          "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+          "line": 66,
+          "reason": "shared UseReport route",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/UseReport.tsx",
+          "line": 24,
+          "reason": "active client write guard",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/UseReport.tsx",
+          "line": 48,
+          "reason": "identity/create/use commands; labelPhotoIds empty",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/plan/UseReport.tsx",
+          "line": 69,
+          "reason": "receipt followed by current-plan read",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/client-composition.ts",
+          "line": 183,
+          "reason": "actual Care port supplied",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/care-ports.ts",
+          "line": 24,
+          "reason": "Care factory plus Root mapper",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/site/auth/client-cookie-session.js",
+          "line": 13,
+          "reason": "Care action registry",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/client-policy.ts",
+          "line": 20,
+          "reason": "strict Care parse",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/client-upstream.ts",
+          "line": 136,
+          "reason": "fixed concierge-care upstream",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-care/handler.ts",
+          "line": 9,
+          "reason": "authenticated Care handler",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-care/runtime.ts",
+          "line": 6,
+          "reason": "fixed concierge_care_command_v1 RPC",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031043655_portal_rebuild_care_use_v1.sql",
+          "line": 6,
+          "reason": "append-only heads/events/attribution records",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031043655_portal_rebuild_care_use_v1.sql",
+          "line": 249,
+          "reason": "public Care command",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+          "line": 554,
+          "reason": "Review-aware public Care wrapper",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "rpc": "concierge_care_command_v1({p_command})",
+      "persistentRecords": [
+        "care_events",
+        "care_use_events",
+        "care_reported_products and versions",
+        "care_requests",
+        "care_attention and plan_events"
+      ],
+      "missing": [
+        "No actual label-photo upload/collection/private-byte form connection; labelPhotoIds is always []."
+      ]
+    },
+    "H": {
+      "description": "Mounted ordinary History controller, keyset pages, original-bound amendment and historical shared renderer. New-photo upload/collection is not supplied to the form.",
+      "source": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 380,
+          "reason": "History branch",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ClientHistory.tsx",
+          "line": 20,
+          "reason": "actual History composition",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ClientHistory.tsx",
+          "line": 51,
+          "reason": "current-record admission before form",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ClientHistory.tsx",
+          "line": 101,
+          "reason": "historical version controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/client-composition.ts",
+          "line": 187,
+          "reason": "actual History controller and port",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/history/port.ts",
+          "line": 6,
+          "reason": "report/amend/history/V3/status actions",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/history/History.tsx",
+          "line": 70,
+          "reason": "timeline/filter/load-more/version/amendment",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/history/History.tsx",
+          "line": 106,
+          "reason": "ReportForm is inline in History.tsx",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/history/History.tsx",
+          "line": 129,
+          "reason": "existing amendment photo references only",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/review-request.ts",
+          "line": 29,
+          "reason": "actual retained reviews request",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/client-upstream.ts",
+          "line": 133,
+          "reason": "fixed concierge-reviews upstream",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-reviews/runtime.ts",
+          "line": 5,
+          "reason": "fixed Review RPC",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+          "line": 14,
+          "reason": "reports/amendments/public-private records",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+          "line": 252,
+          "reason": "authorized history/V3 reads",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+          "line": 269,
+          "reason": "submit/amend persistence",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+          "line": 293,
+          "reason": "durable report attention event",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "rpc": "concierge_review_command_v1({p_command})",
+      "persistentRecords": [
+        "review_goal_reports",
+        "review_report_amendments",
+        "review_requests",
+        "review_attention",
+        "canonical versioned public projections"
+      ]
+    },
+    "A": {
+      "description": "Actual advisor directory, Plan controller/ports, incomplete drafts, imports, assignment, review, preview and exact publication. Templates/checkpoints/raw Source/task administration are incomplete.",
+      "source": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 513,
+          "reason": "actual advisor adapter and controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 561,
+          "reason": "mounted clients/plans/editor branches",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 160,
+          "reason": "ordinary advisor port factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 264,
+          "reason": "strict Plan command adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 280,
+          "reason": "advisor_list directory producer",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/controller.ts",
+          "line": 1020,
+          "reason": "create with templateVersionId:null",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/site/auth/advisor-cookie-session.js",
+          "line": 21,
+          "reason": "Plan/operation/payment registry",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/policy.ts",
+          "line": 39,
+          "reason": "fixed advisor command actions",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/upstream.ts",
+          "line": 245,
+          "reason": "actual capability checks",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/upstream.ts",
+          "line": 270,
+          "reason": "fixed concierge-channel upstream",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-plans/handler.ts",
+          "line": 20,
+          "reason": "authenticate/buildPlanRpc/RPC/mapPlanResult",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-plans/runtime.ts",
+          "line": 6,
+          "reason": "fixed concierge_plan_command_v1",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-operations/commands.ts",
+          "line": 18,
+          "reason": "advisor_list -> concierge_advisor_directory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+          "line": 336,
+          "reason": "base public Plan command",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+          "line": 411,
+          "reason": "create rejects nonnull template",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+          "line": 481,
+          "reason": "deliberate publication transaction",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031003846_portal_rebuild_advisor_reads_v1.sql",
+          "line": 146,
+          "reason": "advisor gate/publication RPC extension",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+          "line": 563,
+          "reason": "current Review-aware public Plan wrapper",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261018234537_concierge_portal_workflows.sql",
+          "line": 204,
+          "reason": "actual advisor directory SQL",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "rpc": [
+        "concierge_plan_command_v1({p_command})",
+        "concierge_advisor_directory()"
+      ],
+      "persistentRecords": [
+        "plan_drafts and plan_draft_private",
+        "plan_section_reviews and plan_approvals",
+        "canonical publications/plan_documents/entitled_publications",
+        "plan_publication_receipts/plan_requests",
+        "plan_events/plan_deliveries/service and review clocks"
+      ]
+    },
+    "PAY": {
+      "description": "Existing manual receipt bookkeeping in actual advisor editor. Confirming an externally checked synthetic gross receipt does not charge, purchase or publish.",
+      "source": [
+        {
+          "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+          "line": 444,
+          "reason": "paymentOpen -> PaymentVerification",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 317,
+          "reason": "paymentRead actual advisor_read v2",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/ports.ts",
+          "line": 336,
+          "reason": "confirm_payment adapter",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/site/auth/advisor-cookie-session.js",
+          "line": 21,
+          "reason": "payments registry",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/upstream.ts",
+          "line": 254,
+          "reason": "confirmPayments capability",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-payments/handler.ts",
+          "line": 54,
+          "reason": "Root buildPaymentCallV2 and strict result mapper",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-payments/methods.ts",
+          "line": 8,
+          "reason": "explicit receipt verification field",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-payments/methods.ts",
+          "line": 14,
+          "reason": "fixed concierge_payment_write_v2",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-payments/runtime.ts",
+          "line": 9,
+          "reason": "fixed payment RPC allowlist",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261024234059_concierge_manual_payment_methods.sql",
+          "line": 54,
+          "reason": "actual payment view v2 SQL",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261024234059_concierge_manual_payment_methods.sql",
+          "line": 65,
+          "reason": "actual payment write v2/journal/receipt SQL",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "rpc": [
+        "concierge_payment_view_v2",
+        "concierge_payment_write_v2"
+      ],
+      "persistentRecords": [
+        "frozen canonical quotes/payment methods",
+        "sent claims and verified receipt ledger"
+      ],
+      "externalFactGate": "Human verification of actual gross receipt is an authorized external fact. Source routes implement recording; source/finite tests cannot prove money arrived."
+    },
+    "W": {
+      "description": "A08 owner-controlled Sami publishing-policy subset only; task/source rights management is not implemented by this mounted section.",
+      "source": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 546,
+          "reason": "owner-policy route",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/OwnerPolicyApplication.tsx",
+          "line": 80,
+          "reason": "actual lazy controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/permissions/OwnerPolicy.tsx",
+          "line": 7,
+          "reason": "explicit publishing-policy-only scope",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/permissions/port.ts",
+          "line": 15,
+          "reason": "actual policy request factory",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/advisor-policy-request.ts",
+          "line": 1,
+          "reason": "retained plans request",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/advisor/permissions/port.ts",
+          "line": 28,
+          "reason": "only policy read/set/status",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+          "line": 525,
+          "reason": "read policy",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+          "line": 526,
+          "reason": "owner-only deliberate policy mutation/audit",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "rpc": "concierge_plan_command_v1({p_command})",
+      "commands": [
+        "read_policy_v1",
+        "set_sami_approval_policy_v1",
+        "request_status_v1"
+      ],
+      "persistentRecords": [
+        "plan_policy",
+        "plan_policy_audit",
+        "plan_requests"
+      ]
+    },
+    "N": {
+      "description": "NEW admitted client inbox bypasses clinical-plan loading. This is a required secondary flow, not a twenty-seventh approved frame and not an A06/advisor/sink implementation.",
+      "source": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 59,
+          "reason": "real runtime/navigator entry helper",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 330,
+          "reason": "client inbox chosen before clinical ClientApplication",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/notifications-entry.tsx",
+          "line": 135,
+          "reason": "post-commit initial real controller read",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/notifications-entry.tsx",
+          "line": 161,
+          "reason": "actual feature view/effect",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/notifications/controller.ts",
+          "line": 1,
+          "reason": "feature retains original command custody",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/notification-request.ts",
+          "line": 18,
+          "reason": "creation-bound actual runtime and Root decoder",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/site/auth/client-cookie-session.js",
+          "line": 14,
+          "reason": "own inbox/seen/status registry",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/client-policy.ts",
+          "line": 18,
+          "reason": "strict notification client parser",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/gateway.ts",
+          "line": 173,
+          "reason": "strict notification result mapping",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/upstream.ts",
+          "line": 160,
+          "reason": "fixed concierge-notifications URL",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-notifications/handler.ts",
+          "line": 9,
+          "reason": "authenticated handler/final checks",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-notifications/runtime.ts",
+          "line": 20,
+          "reason": "fixed concierge_notification_command_v1",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261101191527_portal_rebuild_notifications_v1.sql",
+          "line": 192,
+          "reason": "persistent mark seen",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261101191527_portal_rebuild_notifications_v1.sql",
+          "line": 209,
+          "reason": "public notification RPC",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-notifications/worker.ts",
+          "line": 7,
+          "reason": "worker accepts only local_synthetic_filesystem",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "rpc": "concierge_notification_command_v1({p_command})",
+      "persistentRecords": [
+        "plan_events/plan_deliveries/notification seen/journal records"
+      ],
+      "commands": [
+        "list_inbox_v1",
+        "mark_seen_v1",
+        "request_status_v1"
+      ],
+      "missing": [
+        "No advisor inbox/A06 wiring, bell destination/sign-in recovery acceptance, composed SMTP worker or actual sink delivery."
+      ]
+    },
+    "M": {
+      "description": "Public fictional Maya uses actual shared components and its real isolated in-memory controller. No authenticated business producer or persisted business write is required or allowed.",
+      "source": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 65,
+          "reason": "public /maya entry",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/MayaApplication.tsx",
+          "line": 18,
+          "reason": "canonical public navigator/controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/MayaApplication.tsx",
+          "line": 91,
+          "reason": "post-commit scope",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/walkthrough/maya/view.tsx",
+          "line": 13,
+          "reason": "five-stage view/rail",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/walkthrough/maya/view.tsx",
+          "line": 53,
+          "reason": "actual shared ClientPlan",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/walkthrough/maya/controller.ts",
+          "line": 32,
+          "reason": "actual isolated sample controller",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/walkthrough/maya/controller.ts",
+          "line": 86,
+          "reason": "safe reset/lease retirement",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/walkthrough/maya/controller.ts",
+          "line": 106,
+          "reason": "next/back/exit/explore/reopen/replay",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/features/walkthrough/maya/interactions.ts",
+          "line": 1,
+          "reason": "shared capture/local reducer",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "rpc": null,
+      "persistentRecords": [],
+      "storage": "Isolated session memory only; sample commands never represent real publication, payment, upload or messaging.",
+      "missing": [
+        "Current view does not compose the approved shared client sidebar/topbar chrome; candidate chrome in another ancestry is not admitted."
+      ]
+    },
+    "Q": {
+      "description": "Profile producer17 is admitted server/contract/SQL source, but has no index, retained client channel/gateway registration or Account mount at this pin.",
+      "source": [
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 415,
+          "reason": "Account excluded from supported client content",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "line": 425,
+          "reason": "explicit unavailable fallback",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-account-profile/handler.ts",
+          "line": 1,
+          "reason": "existing own-client profile handler",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/functions/concierge-account-profile/runtime.ts",
+          "line": 1,
+          "reason": "existing fixed profile RPC producer",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "supabase/migrations/20261102110000_portal_rebuild_account_profile_v1.sql",
+          "line": 1,
+          "reason": "admitted profile SQL",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/policy.ts",
+          "line": 18,
+          "reason": "registered Channel union excludes Account",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        },
+        {
+          "path": "apps/portal/session-integration/runtime/server/gateway.ts",
+          "line": 61,
+          "reason": "known gateway routes exclude Account",
+          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+        }
+      ],
+      "missing": [
+        "Profile/contact consumer/composer candidate ancestry is not Root. Address/contact verification/departure/consent/export/admin producers and mounts remain incomplete."
+      ]
+    }
+  },
+  "proofRecords": {
+    "AUDIT": {
+      "kind": "completed historical source/research inventory",
+      "revision": "01a87c08f6b2062dc6dc6360280d78f40cac72d2",
+      "path": "docs/portal-rebuild/research/W7_FULL_PORTAL_ACCEPTANCE_CHECKPOINT_20261102.md",
+      "sourceHead": "68ed8a54ebd5e78e042cf14d0cc74008b8848e7f",
+      "publishedHead": "e10cf652b970b8228cbfa47e57dd1328dcfc7678",
+      "bytes": 106592,
+      "sha256": "0383862a323348241c559a2ac167dcfd690b28faeb59611f36893aeefb827fb5",
+      "currentAcceptance": false,
+      "scope": "Full prior source/evidence/48-decision/10-journey investigation reused, not redone. Its not-measured reporting is replaced by mechanically defined verified counts in this inventory."
+    },
+    "S68": {
+      "kind": "source/finite synthetic HTTP/SSR/compiler",
+      "revision": "4ec93ef7ed5b1be4972dc92609bad8a8027adbe8",
+      "path": "docs/portal-rebuild/research/W7_SHARED_TRANSPORT_ROOT_INTEGRATION_R1.md",
+      "sourceHead": "68ed8a54ebd5e78e042cf14d0cc74008b8848e7f",
+      "currentAcceptance": false,
+      "scope": "Shared61 Root admission; actual ApplicationSession/cookie/strict Root codecs with finite synthetic responses. No new ordinary browser, real SQL/Auth/Storage or delivered email."
+    },
+    "INBOX23": {
+      "kind": "source/inert SSR/finite synthetic HTTP/compiler",
+      "revision": "43331229f36b69a5ca2465af8d2143d8e38a9c36",
+      "path": "docs/portal-rebuild/research/W7_CLIENT_NOTIFICATIONS_ROOT_COMPOSITION_R1.md",
+      "admittedCodeHead": "3c28477140cc480dc3d610630c356b3812228638",
+      "currentAcceptance": false,
+      "scope": "Independent scoped SOURCE PASS on exact23 postimages: original App SSR0/1/current1/1; entry23/23; feature75/75; additional actual-App SSR3/3; retained180/180; frontend/session types and main/public privacy source compilation. None is mounted ordinary browser or genuine persistence. Counts overlap and are not added.",
+      "preservedFailures": "Parent setup0/1 (OverlayProvider missing), semantic OLD0/1, current1/1 distinct; NEI1 old1/4 and new4 in23; incomplete-closure startup/type/graph failures remain separate. Original assertions unchanged."
+    },
+    "GP": {
+      "kind": "historical genuine isolated publication/browser",
+      "path": "docs/portal-rebuild/research/W7_NATIVE_BROWSER_REVIEW.md",
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "executedHead": "89527a8b4d3daba1aa494254648e20f902be6080",
+      "currentAcceptance": false,
+      "dependencyEquivalence": "NOT established; current App, session, transport, cookie and renderer differ.",
+      "scope": "Product-free publication13, original-client readonly4, separate Node8; actual isolated Auth/PKCE/cookie/Vault/Edge/TLS/PostgREST/SQL. Events queued attempts0, no delivered email. Readonly suite is not ended-service/+30 acceptance."
+    },
+    "GC": {
+      "kind": "historical genuine isolated Care Node/browser",
+      "path": "docs/portal-rebuild/research/W7_CARE_INTEGRATED_REVIEW.md",
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "executedHead": "1011ae3316ce6186b4dd29537c5d4a48ec80679e",
+      "currentAcceptance": false,
+      "dependencyEquivalence": "NOT established; current V3/App/transport/renderer changed.",
+      "scope": "Node11/all13 Care actions and actual App browser15; only eight action browser positives. Self-purchased unknown Start/Stop/amendment/conflict/uncertain recovery; empty photos, no full Source/Orders/Account."
+    },
+    "GR": {
+      "kind": "historical genuine Review/Guidance Node only",
+      "path": "docs/portal-rebuild/research/W7_REVIEW_GENUINE_NODE_R4.md",
+      "revision": "f36ffdc9d96f8f0cba987c386178035f827b5931",
+      "executedHead": "be69b67038918218984b3177de86ac1029255f58",
+      "currentAcceptance": false,
+      "dependencyEquivalence": "NOT established; Node proof is not a mounted A07/full J05 receipt.",
+      "scope": "Actual run eec10e4e Node9/all24; previous raw/observer failures preserved. No rerun/refusal bypass in this inventory."
+    },
+    "MB": {
+      "kind": "historical partial mounted public Maya browser, visual FAIL",
+      "revision": "b2a5f4f372d4f65a1cc3f9c85fd061bddcc7668b",
+      "artifact": ".local-artifacts/portal-rebuild/continuation-20261102/maya/browser-proof.json",
+      "artifactSha256": "185a67a91800ac62adf4a495645b29af88ef42549c0203e3e222e0ff12f456fa",
+      "artifactBytes": 223483,
+      "currentAcceptance": false,
+      "dependencyEquivalence": "NOT established for current shared dependency graph. Audit-recorded receipt attribution only; not rerun here.",
+      "scope": "Partial five-stage/forms/Back/reopen/replay/reset; zero observed API/external requests and width samples1440/390/320. Visual failed missing client chrome; no full current frame/a11y/human signoff."
+    },
+    "H07": {
+      "kind": "historical candidate intercepted browser",
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/research/W7_A07_APP_HARNESS_SOURCE_R3.md",
+      "currentAcceptance": false,
+      "scope": "Candidate10 finite synthetic browser cases/18captures; A07 remains unmounted in Root. Not ordinary current Auth/permissions/persistence."
+    },
+    "PROFILE": {
+      "kind": "admitted source/finite; older hosted SQL CI",
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/research/COORDINATOR_ACCOUNT_PROFILE_SOURCE_PROJECTION_20261102.md",
+      "currentAcceptance": false,
+      "scope": "Profile17 source at38415ade and saved be475 CI reset45files/1166 assertions; does not register Account or prove current profile/contact UI."
+    },
+    "POLICY": {
+      "kind": "source/finite synthetic HTTP/SSR",
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/research/W7_OWNER_POLICY_COMPOSITION_R1.md",
+      "currentAcceptance": false,
+      "scope": "Owner-only Sami-policy subset through actual runtime/Plan codecs. Not full task/source permission administration or genuine browser persistence."
+    },
+    "CJ": {
+      "kind": "unexecuted journey source, failed guard review",
+      "revision": "8a6940079d5e8c13fb907c58c3d013799acc71f3",
+      "path": "docs/portal-rebuild/research/W7_PORTAL_CORE_JOURNEY_SOURCE_R1.md",
+      "currentAcceptance": false,
+      "scope": "Seven authored browser cases, zero genuine executions; CJ1-CJ3 open in prior audit. Pure46/47 is guard evidence, not browser progress."
+    }
+  },
+  "sourceManifest": [
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/main.tsx",
+      "blob": "0c4af7994241ac8b31c7ed6baf74fc4ef3705795",
+      "sha256": "282e3f33564281ef80a96cb1d6bab1116a6d5f726658ae156b5b43275996c5f3",
+      "bytes": 966,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/start.tsx",
+      "blob": "25a0d53d3ee984601d8852b961f74565acb7dee2",
+      "sha256": "8bb306e44bc26401ff187e3c6cbd9918324d128611902ddb47b3b1461ac9c213",
+      "bytes": 1796,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/session.ts",
+      "blob": "7ee99d5d0d13d0d316b86b894ec525520616897e",
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea",
+      "bytes": 6061,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/retained.ts",
+      "blob": "9267598f1acf848668196e20e373cb7403bed1a0",
+      "sha256": "146d949005acc395692eca804824c2a67fb0c9bfbe5b0be98d4018f8a265b5a1",
+      "bytes": 1671,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/Application.tsx",
+      "blob": "bfb2a4a754c71c06d63b1a7d9dc6c7d5c899a172",
+      "sha256": "3fe4aae577130195439619de8d1bfc150841f03fcc260b0ce11e53d57c594324",
+      "bytes": 22454,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/navigation/routes.ts",
+      "blob": "7d94e5e313b85493e0061eeccda942960f49ba71",
+      "sha256": "8ada4a24e8250121f10a6254d4102d26810b0433c20f2efa76060f9cea7e954d",
+      "bytes": 1470,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/site/auth/client-cookie-session.js",
+      "blob": "40511c729ed05fd25942ab99f08c64568e85efd6",
+      "sha256": "7d0d8e9d89d51ab7d0221059168d47b9b9c69ff5609c97436fea372ab66f9f3a",
+      "bytes": 6493,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/site/auth/advisor-cookie-session.js",
+      "blob": "38d55642266e66d507da7b963e3ac5bc674f5c0c",
+      "sha256": "784112e551f5ee22060ad8d0d2592ce283b4e583fd58ae213fc01e5c4383c394",
+      "bytes": 29224,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/session-integration/runtime/server/gateway.ts",
+      "blob": "7961851ee3e5a0df77efa2d778d42c2c1ad27a72",
+      "sha256": "4d26800b132dab86ee1ec30e9ca7127511ede09b7d8df7fb9662617a10b0ee62",
+      "bytes": 17307,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/session-integration/runtime/server/policy.ts",
+      "blob": "db4fec1775427043e983bc341fdaf9f8f1846d78",
+      "sha256": "654a6307367d67552b3c1fceda1a221bf68813627878465d39994ca6d0c092a0",
+      "bytes": 13506,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/session-integration/runtime/server/client-policy.ts",
+      "blob": "e7cdbe95987a558d06057c068914f8b8132c0c11",
+      "sha256": "931c36458174afc24d65320833c9723cf17e2b78139ac318bd3d86838f56b1dd",
+      "bytes": 5703,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/client-composition.ts",
+      "blob": "a04bf1b3dd38199a49e1458680468be2cfef7b04",
+      "sha256": "9791f57787725ce7e0e4b6490670ec8955d86670115e7e4d6f8cbd4617bddb6c",
+      "bytes": 11854,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/client-state.ts",
+      "blob": "e4cb15994736a7698c2bdcdee532b2dc26fe0968",
+      "sha256": "e2bd339ec7ae42969f7eb61c89e5eb77a035194616c3cfb95fbc65367ac1e1fb",
+      "bytes": 5142,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/plan/guidancePort.ts",
+      "blob": "949b0de96d38709abea49518422d2381926ad8ad",
+      "sha256": "b662e06cb8c7afdbdfd86a0f112c8fb75e76d0dab08eddf6a9b67a3e7cf85cce",
+      "bytes": 2771,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/review-request.ts",
+      "blob": "86e9e4dbcefd1cc9a6b4c22d1070fa5589c0791a",
+      "sha256": "66d84f88cc2b2040078dcc0026374d2715e48ff6b8a0d7e3923f72507762c6e0",
+      "bytes": 2818,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/session-integration/runtime/server/client-upstream.ts",
+      "blob": "7e6c1bfd0c4f6e3cc37c37bae3b295de7e2b4e88",
+      "sha256": "15643b64023c649b2efc356e68e684db8601f1e2b03110a955814007db930d72",
+      "bytes": 13241,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-reviews/handler.ts",
+      "blob": "1add119a94ed7f61f74d8e363ff94e8e08aa86ec",
+      "sha256": "0471915e025dd2c22ac52f27843a16d6e7c452fa4d87170a683369b5dd2c5100",
+      "bytes": 609,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-reviews/runtime.ts",
+      "blob": "73080e00df9b05811d556de4a25a03dbf370ffda",
+      "sha256": "0157073dac8417db38c8d0902a03d9029f0235f8f90d3a058141c2af81fa1abe",
+      "bytes": 493,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+      "blob": "109404e28e33cea775252d31006e39e2c3a7bf79",
+      "sha256": "b663f897d669edf33d6c7b0c4e18be8f775ed23c3b539e5bb51620606d912a1e",
+      "bytes": 175063,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+      "blob": "a24ba1b7065b1af229296a07cdffd4d1198f04b7",
+      "sha256": "f50a088fbf35b2621ba052a47b6217e842d9c9a0c9fab678db8583c17797a076",
+      "bytes": 28041,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/plan/UseReport.tsx",
+      "blob": "18c9dc10150a7c0b8f1cc6bb9eb1d6c08927fa4e",
+      "sha256": "0f00ee7bdcf5c09aa911d39c69c19ef225ae385e618efb956d2bb09ee60fc50b",
+      "bytes": 20230,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/care-ports.ts",
+      "blob": "8b0687d2b12e2c6fa65c8b4cf67158d45ee58b35",
+      "sha256": "b71e23edb44bd18a766cc57129592d0e70ec10cde5db53d9e1afd936f123355b",
+      "bytes": 2496,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-care/handler.ts",
+      "blob": "67dabbe7b96cb95aaf475e2d946bd7cc870233c0",
+      "sha256": "352e7368cf59706872172d6d592a74f99a3f47ae7334ed9d14515b3506371ebc",
+      "bytes": 2916,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-care/runtime.ts",
+      "blob": "3d61f53fc285aca56e91236a4032639228438fe4",
+      "sha256": "be3aa6c5bdcc1eaeef797782f7791f610eb674ec964babaadd9920492c3831d9",
+      "bytes": 600,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261031043655_portal_rebuild_care_use_v1.sql",
+      "blob": "301a232657340e28958f99fc441426a208d1bdca",
+      "sha256": "d3a889ab03cba381cd8d2d65b8b567db74ac5f19e6000a0e913c78982fe901e1",
+      "bytes": 76468,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/ClientHistory.tsx",
+      "blob": "ed1d2a363890766a8a4a8bc94b3520aadf91487d",
+      "sha256": "cab321063d22955167f5cab65bba22794df06b59c7b84dd432e871a7e8b9a75a",
+      "bytes": 12639,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/history/port.ts",
+      "blob": "4957d22e9bcfe456d8ebb800bf5743c315133362",
+      "sha256": "4f1fd4c461985311372832dfa5898a2965c65e903795a317c2242d1c931360f0",
+      "bytes": 3457,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/history/History.tsx",
+      "blob": "5b76649b847b882f788328c46f88169fb4d02354",
+      "sha256": "a7492c46efd2a7d7f4166da1f1b377110158f693a25b6550539fdf53c52e8971",
+      "bytes": 20406,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/ports.ts",
+      "blob": "5aeb6b9d486a4c0cb38201dd8b40cdb546d2595b",
+      "sha256": "d6ce7729cfaf4d98a1a31fda9965c2d3f8e81717936817a6a9bf46bc1a942eeb",
+      "bytes": 12736,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/advisor/controller.ts",
+      "blob": "00fe874f50eca6e42e063d39c0d6db42855def70",
+      "sha256": "9db3a5780531f9f663684e1f33c68334f05aeeefb2ea4309a46fe3238f5c4079",
+      "bytes": 46026,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/session-integration/runtime/server/upstream.ts",
+      "blob": "bab157d40d23c419c23b2951911e2f395949e128",
+      "sha256": "16d4e818a52d79351e02162a506dbee7770ee3388b3beece12cfe38949eee1dd",
+      "bytes": 25540,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-plans/handler.ts",
+      "blob": "7e9813d85b4409ff07a1661bd9ccdfe6bd7aa223",
+      "sha256": "ee837749965b01320ffebce82981203ff6dfddfe493dfbab40a885d065a5f44d",
+      "bytes": 2814,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-plans/runtime.ts",
+      "blob": "4f22ac3c700667ca5c6cd2b622dc141fca3fd9b9",
+      "sha256": "48da0d461b896de32dd72692bf788a22a31d5da45a6f18027263a4e9bfe9f5bc",
+      "bytes": 603,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-operations/commands.ts",
+      "blob": "6717ae1c1473a37584a8a0cda294f8b5cb535b0b",
+      "sha256": "0bd59e2c20cd98d1a97be8866c53a73befdaae5e96904dcfe3fd6158d5497f90",
+      "bytes": 6199,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+      "blob": "9f9351c969acc1d143269274f6e144ece4e61f12",
+      "sha256": "497d85ef3bd81b7085d112be8c751bbeac8925ce5472ad94bdbc520174aa768c",
+      "bytes": 170429,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261031003846_portal_rebuild_advisor_reads_v1.sql",
+      "blob": "3d29a5a3d8861608e89e61c876385c61df6dddf4",
+      "sha256": "9953297d1243ba8c004b8972ff6205ea2536653817e177b26dc4b9407aed4335",
+      "bytes": 20220,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+      "blob": "3fabe0787b201e9e60d3a723c90791a784bbdf14",
+      "sha256": "2aa9ae64495fcb664fee419bb13a2f6f39f259122efa373fd0c410af96441af2",
+      "bytes": 41834,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-payments/handler.ts",
+      "blob": "ab336ddff4869b8ee251e9d61088f746fcaa34c9",
+      "sha256": "45f3b556999fb9040672fc0b83292c5935d5d6003e6ab51ced9a8001ca91ffb5",
+      "bytes": 5340,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-payments/methods.ts",
+      "blob": "3e0a1bfe60bc03592801ac357b1e63fcb58013b8",
+      "sha256": "136aed10e5a1c2e74b9297a41f13a8698106c32b182bea6ea4ae8d0c0ee57f24",
+      "bytes": 4568,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-payments/runtime.ts",
+      "blob": "8be961855e7e263a094ebb1d03ac6681703035dd",
+      "sha256": "c9f16737cd7c33250c6b6a8705a797d049c15f889a4ad54f518ab5d76f3197c8",
+      "bytes": 1320,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/OwnerPolicyApplication.tsx",
+      "blob": "6b69aeaa311d9b01e6b7a0218d21cc8c4cdfde07",
+      "sha256": "f93486ed0d480d3db9dc60a6787d9a1d974f581a589caae95a511eca0691e9fb",
+      "bytes": 6944,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/advisor/permissions/OwnerPolicy.tsx",
+      "blob": "1d02771d6edf81787d4fdcc695b4543c886cd0b5",
+      "sha256": "b143891c7fea95445521615dc6dc1fdf201ba251b6a16a09580d21b2b7918c72",
+      "bytes": 5769,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/advisor/permissions/port.ts",
+      "blob": "19b8c7063dcbf47830e1abe13de442bc3355d5f4",
+      "sha256": "0b948000509de745ff329718a6074c192a471cfe0c1c3c5feb7414483ed2ee5f",
+      "bytes": 4764,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/advisor-policy-request.ts",
+      "blob": "4a4bc624f194ebb33e3b05e2bcacc093368b0e05",
+      "sha256": "a5b5ceb7236047ce336e55d5b5d51df96e74264ffad2490a76f8504ce6733da2",
+      "bytes": 3653,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/notifications-entry.tsx",
+      "blob": "3a110c91b2b75e66952e58e203e5bf27fd9904f9",
+      "sha256": "92a47b5a7e883a5225cf57b9657507604e0dc506ea4c0dbdc6634b9ce8886fa6",
+      "bytes": 7738,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/notifications/controller.ts",
+      "blob": "b2dd6ccfdb3282f6c2f8f1e1c7cbaa9b945f591b",
+      "sha256": "685a1c9643c861b362f958bc73fadecb2fc3448d84b11131805899319f529c26",
+      "bytes": 19282,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/notification-request.ts",
+      "blob": "adbc97fb5d9ea3f0699c16d61bb103eec8cc303d",
+      "sha256": "2118ec95a62a3f66dd80fd409862d60f9947c7f97b4ef00736c003e3976611b7",
+      "bytes": 6090,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-notifications/handler.ts",
+      "blob": "f80b6758b27b15e4b700534663e07fb927def671",
+      "sha256": "70f989a0ad493761e5840e155c3e112717ffc9ac222ab1882a1f84d38bad75e8",
+      "bytes": 3931,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-notifications/runtime.ts",
+      "blob": "8333b0dc191d5699ba3615081364146e4312d157",
+      "sha256": "6ee8b21d118a4a76b60fbf78d02d72b47b743280595753d025165800035e6c02",
+      "bytes": 2536,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261101191527_portal_rebuild_notifications_v1.sql",
+      "blob": "b25eadf338172f28550d796a613aa76032433748",
+      "sha256": "408b860074abb18a1c1452bd6d08af8009db7fb48e0d01476abd608932d2b684",
+      "bytes": 23746,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-notifications/worker.ts",
+      "blob": "962ec7e42f81f53c1f5f7471c4e3d7e456dff3ac",
+      "sha256": "01b108cb29727dca60d609127f6fd9fbc36cfc59e580e3867c2607eed45edf30",
+      "bytes": 5632,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/app/MayaApplication.tsx",
+      "blob": "b3755df1fabbd87277dbbbe30e28469f79c4416f",
+      "sha256": "ef00d7a5269b5193c6ab3da242dea1efa69053494c25fe54a20146941159fb13",
+      "bytes": 4944,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/walkthrough/maya/view.tsx",
+      "blob": "58e363fb48b7f561039a1e9095f3d8b073670154",
+      "sha256": "da3dfe5bde597ff98a23473b5922a943fd439f4f7297bb25154c38043b8dfb73",
+      "bytes": 7004,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/walkthrough/maya/controller.ts",
+      "blob": "6b73cdf7e118a4dc43ed14083a341a6cb465b5d2",
+      "sha256": "53048224283cf59ded50c266dc12aee60c97b9b593c5a2035aeeffc73fbd3f17",
+      "bytes": 11330,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/walkthrough/maya/interactions.ts",
+      "blob": "37289e1576fe63ea85fd85e282a9aa6192fad4ac",
+      "sha256": "3423e5e32e7628264e2540ea45c675b778faaabebe65ce5cbe17cc0f3d8f1aac",
+      "bytes": 5114,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-account-profile/handler.ts",
+      "blob": "cf419186fe50cbe94a9699dfc6352853d7d98bfa",
+      "sha256": "4f0263a34fb0c23de70934a252e3b085af510bb0d04143333b79a722c75d044f",
+      "bytes": 5139,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/functions/concierge-account-profile/runtime.ts",
+      "blob": "b31a13bb79329b3a6a4eee935e0515b2aadddf07",
+      "sha256": "227d86d69e6a37ea582cde84b7df75e1b357e2826a6de10bbedef0f2571ba9d5",
+      "bytes": 4837,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261102110000_portal_rebuild_account_profile_v1.sql",
+      "blob": "7f3777c7738174db25c579e3b67256587c16244a",
+      "sha256": "7dcde23039959d60dc1a964b50f22012991139e3d68d5889282ab4524c82b23b",
+      "bytes": 14756,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/README.md",
+      "blob": "15089c0f0a7c0c0349e2468c2d0bee72c0617e77",
+      "sha256": "6001c8e480fe3e5f94500ee3a0012373deabdb8ee73e24ef15db57d4fc724325",
+      "bytes": 5006,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/GOAL.md",
+      "blob": "b33b9988df34daaca7f09dce86b0e8ba308ce1db",
+      "sha256": "034832c13adb6b00c657bf98b7c2ea2abc3045ad617b17907dfa1b1d89b9d8f7",
+      "bytes": 20131,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/APPROVED_DECISIONS.md",
+      "blob": "75c11536a33f677f2f746e6198d11307e224622f",
+      "sha256": "eefc74fcc1498cdbbe5ac21d4215cfb9c8936545a6dcc6437bf9e0dd98c21e60",
+      "bytes": 24755,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/APPROVED_DESKTOP_SPEC.md",
+      "blob": "e28ad6586e42059a74c00ae467c075d529007bd9",
+      "sha256": "4ceafbaca13ab9324ea35e5e3cb94d09ba76178c9c5127a93da87c5b9c7e59a0",
+      "bytes": 36823,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/IMPLEMENTATION_CONTRACTS.md",
+      "blob": "c249c959edca6eca7ebce07d9a206a8a3c4e458f",
+      "sha256": "accd8509abf63978e37a96cc55c0b8673419b8ab207cdfaf5a395f708aa8d5da",
+      "bytes": 21280,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/DECISION_ADDENDA.md",
+      "blob": "1318226e3b7c388d1ac52263cd74eada40f315fb",
+      "sha256": "aaa150a5673d23c13ec9ad6a9fc6fc784668cdeb35c34785a1514051ed439e63",
+      "bytes": 4264,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/WORKSTREAMS.md",
+      "blob": "ef2f723dba29ef6922b61f83788b772ff1c5e6c5",
+      "sha256": "9167899a8cb2e436668c69bee74d09d3fea8fccecc9b31cb3bcde13428b576e7",
+      "bytes": 25883,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/ACCEPTANCE_MATRIX.md",
+      "blob": "11e2335d5b0dd4184fa0fe08a562e2ef2a1a9038",
+      "sha256": "8c5f71ed21139e863e3c49011054feb3c7beb0aaf886dc6b6b018fc27a033cb6",
+      "bytes": 50487,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/SCREEN_MANIFEST.json",
+      "blob": "8fc8f2515219b35fd739c14f83d1be1d02b510a7",
+      "sha256": "55a375ede66a3c9c13139d90246fbc096b6bd1a11cb8c2ce49d30ee8bb44519b",
+      "bytes": 4300,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/source/APPROVED_INPUT.txt",
+      "blob": "9fd27a2b23100510434c244319722fcfb9ec77b4",
+      "sha256": "c45701f9f54fd2b1dbb09bbd7aa2b9b437e9059aa6032b6f39411fe2e7f6efbd",
+      "bytes": 95388,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/source/CONTINUATION_INPUT_20261102.txt",
+      "blob": "f421a7604e8e84183514c16218c9406dbcb8d532",
+      "sha256": "b428b318598df52f12ce3e6ea4ebd350ff9333ee05d9fd8f04a8e845d0c722bc",
+      "bytes": 100187,
+      "mode": "100644"
+    },
+    {
+      "revision": "01a87c08f6b2062dc6dc6360280d78f40cac72d2",
+      "path": "docs/portal-rebuild/research/W7_FULL_PORTAL_ACCEPTANCE_CHECKPOINT_20261102.md",
+      "blob": "f613f274abad6f590e53588c8f689d7cf3d97974",
+      "sha256": "0383862a323348241c559a2ac167dcfd690b28faeb59611f36893aeefb827fb5",
+      "bytes": 106592,
+      "mode": "100644"
+    },
+    {
+      "revision": "4ec93ef7ed5b1be4972dc92609bad8a8027adbe8",
+      "path": "docs/portal-rebuild/research/W7_SHARED_TRANSPORT_ROOT_INTEGRATION_R1.md",
+      "blob": "864df4030482ae3c63a47e10615e1f8c617045f3",
+      "sha256": "e0f192f5c1d76844c1f3e9b0509d7ca795cc1dabca41912962ec3cc8b936e6c3",
+      "bytes": 35315,
+      "mode": "100644"
+    },
+    {
+      "revision": "43331229f36b69a5ca2465af8d2143d8e38a9c36",
+      "path": "docs/portal-rebuild/research/W7_CLIENT_NOTIFICATIONS_ROOT_COMPOSITION_R1.md",
+      "blob": "8d0a170b0362165b3561419aadc02885f6f2210e",
+      "sha256": "17261d9698547d4bcffadaf014895a8a509dfaa92d053666543943e7f6ff5125",
+      "bytes": 21420,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/research/W7_NATIVE_BROWSER_REVIEW.md",
+      "blob": "ba9bd1fd58efd5e2be8446d3e2cb5b9383cd1c01",
+      "sha256": "7b727b2a8ee2da8f3cf940639c0f7a42bfe9f535adc2a38b6e323cca254ef1b2",
+      "bytes": 26932,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/research/W7_CARE_INTEGRATED_REVIEW.md",
+      "blob": "fd1509066a22ab3ab1d39a718ad18db7857e664b",
+      "sha256": "43baac0d18da0cb6cfdf681b9f92c8cd0dde4bab229bb541008a29b0968e5361",
+      "bytes": 30017,
+      "mode": "100644"
+    },
+    {
+      "revision": "f36ffdc9d96f8f0cba987c386178035f827b5931",
+      "path": "docs/portal-rebuild/research/W7_REVIEW_GENUINE_NODE_R4.md",
+      "blob": "473b6359687d2233b20e26be07a4419fc35c2bf4",
+      "sha256": "f2b25803a2e62c52cb98822be7e08e05e0c52fb6911ba562632d1407d010c986",
+      "bytes": 38856,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/research/W7_A07_APP_HARNESS_SOURCE_R3.md",
+      "blob": "c7f3eedd0bd6c080ab80004a7907251dfb9a5a79",
+      "sha256": "57042ce652d76c575ec1deacf16ca93bdf53f160912edad6ce3796b32b0fece1",
+      "bytes": 28717,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/research/COORDINATOR_ACCOUNT_PROFILE_SOURCE_PROJECTION_20261102.md",
+      "blob": "dcf9b904b4c27046a2333c9865ea2d3c490e081d",
+      "sha256": "a655f6dcc5cd666a0b38dfcd8c4da7d6b463320f72886f2d307d5e4f8ec85ca4",
+      "bytes": 5899,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "docs/portal-rebuild/research/W7_OWNER_POLICY_COMPOSITION_R1.md",
+      "blob": "72874e0cb2444995a1a25697793326b5981752d3",
+      "sha256": "6e79c4f15f17060f425f92cf2d0bb35498f17f17145ffee0ea8e96185873e9a0",
+      "bytes": 19519,
+      "mode": "100644"
+    },
+    {
+      "revision": "8a6940079d5e8c13fb907c58c3d013799acc71f3",
+      "path": "docs/portal-rebuild/research/W7_PORTAL_CORE_JOURNEY_SOURCE_R1.md",
+      "blob": "d0f095bf54b7b927e35cbd981debb989b074e4ee",
+      "sha256": "53e3efc8304393ec0de1243c3d8f61bfbc9f9423b06a43bc8e90cf1589ae1697",
+      "bytes": 24012,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "src/contracts/PortalRebuild.ts",
+      "blob": "b1d78b1366aec0117682a5389d9785c9362a5e5d",
+      "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc",
+      "bytes": 14140,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "blob": "05882d2aaf175888c718d31cd3d19d9c883b14e4",
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc",
+      "bytes": 12947,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "src/contracts/PortalRebuildMapping.ts",
+      "blob": "ac333d7864eea87a47cb3c581f9af8b770d02d3b",
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d",
+      "bytes": 10694,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "src/contracts/PortalCareValidation.ts",
+      "blob": "232e7e716e05476a9d375c369472b1b2ef3d257f",
+      "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d",
+      "bytes": 7336,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "src/contracts/PortalCareMapping.ts",
+      "blob": "17eb9fd233cbec3acab40b05b83b2af79adc42a5",
+      "sha256": "675135cbb83611bbc8c63ed2c5a7e33b17a1f16cc1b48839358c1f45672d1439",
+      "bytes": 9657,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "src/contracts/PortalReviewValidation.ts",
+      "blob": "997afba2c0b1dd3daf129913d3c2b28d27ed5f71",
+      "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23",
+      "bytes": 15488,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "src/contracts/PortalReviewMapping.ts",
+      "blob": "917b81da881ae8e091c2414ff4864fa936367bbd",
+      "sha256": "de2c64e152156656e7748c5f12c49dd115c6bc88411e488d29bde2e0d122a550",
+      "bytes": 35451,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261031141212_portal_rebuild_reviews_guidance_fixes_v1.sql",
+      "blob": "8b33057091bd32003428e01dfc3a89d2673c8983",
+      "sha256": "126361a70ffbb17c00d8f341e7294c5be430e70b6647ee626d008112d760c64f",
+      "bytes": 13940,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261031161130_portal_rebuild_guidance_schedule_identity_v1.sql",
+      "blob": "7a1fe7e300695920c0d0a7d057ac8ec520749448",
+      "sha256": "655bbdf7ee749da29352af01df75cd45092c2b2c708b7e32ea54768e67a3bc5f",
+      "bytes": 9517,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261031172109_portal_rebuild_source_locator_canonical_numbers_v1.sql",
+      "blob": "63ce0d23d588b1b3deb34b4334ff23d2fc633617",
+      "sha256": "bd3f54ea2f4bf82912428805b9da0e37f315f0131a9095d00dd1e2163c203861",
+      "bytes": 3066,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261101173223_portal_rebuild_final_export_v1.sql",
+      "blob": "c702c0736240f3a772565e7f33dee40e33863c49",
+      "sha256": "54ab1bd50bcb84ec82ea1f6f04e4d837d59269abfe04edf009fbd28084184c8f",
+      "bytes": 29623,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/plan/DecisionControls.tsx",
+      "blob": "ea3063f27812661f1c4bc9dfe7e3f6f86bd51e18",
+      "sha256": "7242d34254d7f036c20d4ddb74f960f27ff35f7c1bb41513e41a92b1bdc05451",
+      "bytes": 16091,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/plan/guidanceHydration.ts",
+      "blob": "6420158ee5ffb130d4106907bd9abc5a0cded593",
+      "sha256": "f85d129b0536f2ca1e545ed80107caa9332ed03bc0a94e023abceb3d406666f6",
+      "bytes": 8123,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/plan/care.ts",
+      "blob": "48a4e6e9a3a7319f99f373f3415f19cde8121819",
+      "sha256": "b3c22e4a37a4db0f666faaf196ba554129a91a9c7875b455a1650296875cd31a",
+      "bytes": 1478,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/history/controller.ts",
+      "blob": "439e760bb64cf5a255f843015b156b4b9d289cdf",
+      "sha256": "827b6d9a24b6e87fe728dbd4d1041c3f2ae8ad9d40d950a09c5961d24cd008fd",
+      "bytes": 36927,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/advisor/permissions/controller.ts",
+      "blob": "3f98c6ba84c690ff39ee68a9c797910cf0f9a5f0",
+      "sha256": "078e7cf4635b11d3a00b7fe034299ea0bb1be061e56ab8e68a309b19966d3392",
+      "bytes": 17518,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "apps/portal/src/features/notifications/Notifications.tsx",
+      "blob": "4d11deb977ae27045e3d721c0a12d5d32baa32a9",
+      "sha256": "619342ebf026e8cfab2503ef032d328a456d406e4fdc1e5fded43de0e6f9f5d4",
+      "bytes": 9026,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261024234059_concierge_manual_payment_methods.sql",
+      "blob": "366f307f5fffae39eba894420e01eaf6166a7eb4",
+      "sha256": "6ebf8543d4102451cdfc9138020b8d3f1b34afe2b71fccf9fe09f340117fe574",
+      "bytes": 21666,
+      "mode": "100644"
+    },
+    {
+      "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "path": "supabase/migrations/20261018234537_concierge_portal_workflows.sql",
+      "blob": "819a1efa7bc0e2d62e3917a920f0df3f2397e0f6",
+      "sha256": "aaf13096407d1568b0a2d858827e3e4a7511e60012e489c96914c15f1b73a325",
+      "bytes": 63986,
+      "mode": "100644"
+    },
+    {
+      "revision": "c91d6f51bb5e7dd4e045a8b1f979d2f0b44ff4f1",
+      "path": "docs/portal-rebuild/research/W7_CI_E10_REPAIR_REVIEW_R1.md",
+      "blob": "aeb89086372710118595f22640cb591112837bc1",
+      "sha256": "0940d27285e74e3688d24db801653217b939a7c2bbeff84989d3de7665613b61",
+      "bytes": 28839,
+      "mode": "100644"
+    }
+  ],
+  "pendingCi7": {
+    "status": "Separate source/test compatibility packet; excluded from accepted product source pin and from browser/genuine numerators.",
+    "review": {
+      "revision": "c91d6f51bb5e7dd4e045a8b1f979d2f0b44ff4f1",
+      "path": "docs/portal-rebuild/research/W7_CI_E10_REPAIR_REVIEW_R1.md",
+      "verdict": "Scoped specification compatibility and correctness/quality PASS on frozen candidate7; original failed CI remains failed; no complete held-domain or product acceptance.",
+      "candidateManifestSha256": "4f2cdb6a93ebc9150dbeddc688b7d2fd3d85680c67250d74e931235a28b775ed",
+      "attributedOriginalCi": {
+        "head": "e10cf652b970b8228cbfa47e57dd1328dcfc7678",
+        "executedMerge": "ac08656b98aa4519de578de8b26d8ab22e11aac5",
+        "portalNpm": {
+          "pass": 2812,
+          "fail": 14,
+          "cancelled": 0,
+          "skipped": 0,
+          "exit": 1
+        }
+      },
+      "replayedHere": false
+    },
+    "publishedFailingHead": "e10cf652b970b8228cbfa47e57dd1328dcfc7678",
+    "workingPathsAtInitialRead": [
+      " M apps/portal/src/features/advisor/guidance/controller.ts",
+      " M apps/portal/tests/rebuild-advisor-guidance-g8-helper.mjs",
+      " M apps/portal/tests/rebuild-photo-head-source.test.mjs",
+      " M apps/portal/tests/rebuild-plan-guidance-browser.mjs",
+      " M tests/fixtures/portal-shared-ci-baselines.json",
+      " M tests/helpers/portal-shared-ci-baselines.ts",
+      "?? docs/handoffs/2026-11-02-portal-rebuild.md",
+      "?? docs/portal-rebuild/source/CORRECTIVE_EXECUTION_STEER_20261102.txt",
+      "?? tests/portal-guidance-historical-closure.test.ts"
+    ],
+    "doesNotEstablish": [
+      "ordinary current browser",
+      "genuine connected frame",
+      "delivery or private Storage",
+      "full product or release"
+    ]
+  },
+  "heldGates": [
+    "Original Guidance private-return provider review HELD",
+    "M65 financial review HELD",
+    "Failed-photo-review provider hold HELD"
+  ],
+  "nextGenuineVertical": {
+    "owner": "Kanuj / Root; W6 and W0 source prerequisites; W7 independent execution only after exact grant",
+    "target": "Ordinary own-client Account name read/save/reload/owner-denial plus admitted inbox own-seen persistence, without a clinical-plan read prerequisite.",
+    "prerequisites": [
+      "Correct/admit Account profile consumer/composer and actual own-client handler/index/channel/gateway path; do not borrow own INPUT ancestry.",
+      "Keep contact pending/change/status unavailable until actual authoritative verification producer exists.",
+      "Correct CJ1-CJ3 before ordinary journey execution.",
+      "Accepted exact executor/recipe/source and fresh explicit fixture/DB/Auth/socket/browser authority."
+    ],
+    "observations": [
+      "Name revision persists across reload; wrong owner denied; logout/replaced session drops late data.",
+      "Inbox opens independently of clinical plan, own mark_seen survives reload, destination reauthorizes, email seen/delivery state stays distinct."
+    ],
+    "doesNotAccept": "Whole C08, J06/J08/J09, actual sink delivery or all26 acceptance remain separate."
+  },
+  "executionScope": {
+    "kind": "SOURCE INVENTORY / DOCUMENTARY VALIDATION ONLY",
+    "productTestsExecuted": 0,
+    "ssrExecuted": 0,
+    "finiteHttpExecuted": 0,
+    "browserAcquired": false,
+    "genuineResourcesAcquired": false,
+    "dependenciesInstalledOrReused": false,
+    "foreignArtifactsExecuted": false,
+    "sourceOrOriginalTestsEdited": false,
+    "canonicalStatusEdited": false,
+    "noApiExports": true,
+    "unrun": [
+      "all product unit/pure/HTTP/SSR/compile/types/build/full suite/Expo",
+      "DB/Auth/SQL/pgTAP/RLS/Storage/native",
+      "server/socket/browser/SMTP/provider/sink",
+      "download/readback",
+      "visual/a11y/human/release"
+    ],
+    "protectedTrackedPaths": 2259,
+    "terminalCustody": "No runtime/resource/dependency grant acquired; only own ignored source notes and two NEW owned documentation paths."
+  },
+  "sourceManifestScope": "Complete identities for all references used in this inventory, including actual fixed RPC SQL and preserved original reports. This is not a newly compiled complete dependency closure or proof of historical-runtime equivalence.",
+  "terminalSourceEquivalence": {
+    "observedAt": "2026-11-02T20:49:35.848Z",
+    "pinnedRootHead": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+    "observedRootHead": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+    "relevantRootSourcePaths": 77,
+    "relevantSourceEquivalent": true,
+    "headDelta": "",
+    "pendingRootWorkingPaths": [
+      " M apps/portal/src/features/advisor/guidance/controller.ts",
+      " M apps/portal/tests/rebuild-advisor-guidance-g8-helper.mjs",
+      " M apps/portal/tests/rebuild-photo-head-source.test.mjs",
+      " M apps/portal/tests/rebuild-plan-guidance-browser.mjs",
+      " M tests/fixtures/portal-shared-ci-baselines.json",
+      " M tests/helpers/portal-shared-ci-baselines.ts",
+      "?? docs/handoffs/2026-11-02-portal-rebuild.md",
+      "?? docs/portal-rebuild/source/CORRECTIVE_EXECUTION_STEER_20261102.txt",
+      "?? tests/portal-guidance-historical-closure.test.ts"
+    ],
+    "scope": "Selected actual runtime source citations and their SQL/codec/transport identities match pinned89bf, both immutable latest HEAD and physical source. This is source-fact equivalence only; historical genuine proof is NOT carried forward. Pending CI7 unmounted Guidance controller/helper/fixtures remain separately attributed."
+  },
+  "documentaryValidation": {
+    "validatorCommand": "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node .local-artifacts/w7-current-screen-inventory/validate-inventory.cjs",
+    "cwd": "/Users/kanuj/.t3/worktrees/shelv/t3-2d685b4d",
+    "lastExit": 0,
+    "exactApprovedFrames": 26,
+    "protectedTrackedFilesExact": 2259,
+    "protectedIndexExact": true,
+    "sourceManifestPins": 99,
+    "lineReferencesChecked": 257,
+    "immutableLinksChecked": 198,
+    "productTestsExecuted": 0,
+    "setupFailure": {
+      "exit": 1,
+      "meaning": "Own documentary validator initially used a one-digit-ID regex that excluded approved suffix IDs; corrected to exact two-digit-ID parsing with unchanged manifest/count requirements. Inventory facts were unchanged."
+    },
+    "validationReceipt": ".local-artifacts/w7-current-screen-inventory/validation-result.json",
+    "rawSetupReceipt": ".local-artifacts/w7-current-screen-inventory/validation-attempt-1.json"
+  }
+}
