@@ -1,10 +1,10 @@
 # current workstream snapshot: 2026-11-02T08:44:33.576176+00:00
 
-Owner: Kanuj. This snapshot supersedes every historical live roster below. Sole Root/integration/migration writer: current coordinator9b085ada. Three actual independent children run scoped source reviews during the coordinator one-writer correction/admission section; exact literal IDs and source/review states are canonical in TASKS.json and CURRENT_STATUS.md. All actual settings are verified Sol/xhigh/default. No nested agents. One heavy execution at a time; no stopped native fixture reuse.
+Owner: Kanuj. This snapshot supersedes every historical live roster below. Sole Root/integration/migration writer: current coordinator9b085ada. One actual independent child runs photo source review during the coordinator one-writer correction/admission section; exact literal IDs and source/review states are canonical in TASKS.json and CURRENT_STATUS.md. All actual settings are verified Sol/xhigh/default. No nested agents. One heavy execution at a time; no stopped native fixture reuse.
 
 Shared candidate ownership: Maya shell/view/CSS only belongs to Maya chrome author; native executor scenario cases only belong to NE6 author, while Runtime.command/cleanup NE5 remains reserved to coordinator. Other children own disjoint new source/test paths. Returned departure migration writer has released its slot; no SQL runs. Parent small corrections use the coordinator checkout/own ignored source fixtures and require fresh independent review before Root admission.
 
-Current roles: Maya chrome independent R1, Plan agent independent R1, photo upload independent R1. Returned native/Account/credential writers released their paths; known findings require coordinator corrections before fresh reviews.
+Current child role: photo upload independent R1. Coordinator admitted the passed SMTP/agent slices and now owns bounded shared-source corrections; fresh reviews refill after those exact candidates are ready. Returned native/Account/credential writers released their paths; known findings require coordinator corrections before fresh reviews.
 
 Historical registry follows; its counts, grants and heads are not current.
 

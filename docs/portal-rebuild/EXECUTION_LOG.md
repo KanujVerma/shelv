@@ -6,6 +6,8 @@
 - Coordinator SMTP1 source correction19b5946e was subsequently admitted at594d64e2 after complete independent R2: unchanged independent5 RED3/5 -> GREEN5/5, author29 and retained39 green, focused strict0. Independent R2 PASS; actual Root73/73 and physical app/test types0. Worker/native activation remains open.
 - Account departure/export and Source credential author candidates returned; current independent reviews and missing channel/native/currentness gates are tracked separately. No complete product, release, migration or actual delivery acceptance is claimed.
 
+- Scoped Plan agent source admitted at9eb4dd66 after independent R1 PASS; Root new29 and unchanged19 plus physical app/test types pass. No genuine credentials/grants/source workflow acceptance follows.
+
 Historical execution log follows.
 
 ---

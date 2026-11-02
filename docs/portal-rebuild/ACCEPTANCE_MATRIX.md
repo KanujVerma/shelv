@@ -6,7 +6,7 @@ Full connected-screen count: **not audited**. Fully browser-verified-screen coun
 
 Common current gate: exact-head full CI, real connected isolated Auth/persistence/permission/Storage/delivery, all required negative/returning flows, visual/a11y and applicable human/external approval remain distinct. Current local physical Root app/test types pass; full npm/Expo/SQL/native acceptance freeze is not claimed.
 
-Evidence keys apply separately in each named column: **R0** = integrated b2a5f4f3 client runtime and594d64e2 standalone server SMTP adapter, plus report-only commits, exact current main/public compiler fingerprints; **I0** = source inventory is research, scoped historical reviews retain their own limits, full screen/decision review is open; **E0** = current complete connected journey/failure paths not audited, historical G1/G2 do not certify this head; **V0** = applicable desktop/narrow/mobile/keyboard/zoom/reduced-motion/a11y states not accepted. No field is marked not applicable to improve a count.
+Evidence keys apply separately in each named column: **R0** = integrated b2a5f4f3 client runtime,594d64e2 standalone server SMTP adapter and9eb4dd66 scoped Plan API client, plus report-only commits, exact current main/public compiler fingerprints; **I0** = source inventory is research, scoped historical reviews retain their own limits, full screen/decision review is open; **E0** = current complete connected journey/failure paths not audited, historical G1/G2 do not certify this head; **V0** = applicable desktop/narrow/mobile/keyboard/zoom/reduced-motion/a11y states not accepted. No field is marked not applicable to improve a count.
 
 ## all26 screen evidence
 
