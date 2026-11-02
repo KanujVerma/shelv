@@ -1,3 +1,7 @@
+## Reviewed history and inbox publication: 2026-11-02T21:56:10.091519+00:00
+
+Complete independent4531aae4 admits exact9aac five-path history recovery and cwd-bound test corrections at source/SSR/finite scope. Reviewed bell d4 is included. Parent current types/UI/build/Expo and1775 unit checks pass with18 existing native optin skips; no browser/genuine/full-journey acceptance follows. Original37c25 CI failures, OLD missing-recovery assertions and setup failures remain preserved. Profile APC4 current d718 passes67 and awaits NEW complete R6; Root Account/Orders remain unmounted pending shared transport/composition. Goal remains VERIFIED ACTIVE.
+
 ## Native goal reconciled: 2026-11-02T21:38:43.150309+00:00
 
 Parent observed no old goal after the owning control cleared it, created the explicitly requested replacement using the saved objective/full-prompt references, and verified ACTIVE in a second get_goal read. CreatedAt1793655482. No rebuild completion, reset, worker interruption, ownership or resource change. Original paused record and full original/corrective text remain preserved. Implementation continues under the same approved scope.

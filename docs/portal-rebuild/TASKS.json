@@ -1,5 +1,5 @@
 {
-  "updatedOn": "2026-11-02T21:42:28.190587+00:00",
+  "updatedOn": "2026-11-02T21:56:10.091519+00:00",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
   "allocatedWorkers": 1,
@@ -9819,7 +9819,7 @@
       "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-history-inbox-cwd-review-r1",
       "childThreadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-history-inbox-cwd-review-r1",
       "role": "R1 full five-path history recovery/inbox CI cwd correction",
-      "status": "running",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -9837,7 +9837,33 @@
         "docs/portal-rebuild/research/W7_HISTORY_RECOVERY_AND_INBOX_CWD_SOURCE_R1.md"
       ],
       "verification": "Delegate response and actual configure READ2026-11-02T21:42:28.190587+00:00",
-      "heavy": "conditional exclusive owned source/SSR/finite/types after Parent terminal full parity; no genuine/browser/native resources"
+      "heavy": "conditional exclusive owned source/SSR/finite/types after Parent terminal full parity; no genuine/browser/native resources",
+      "reportCommit": "4531aae4ee2231e32ffab8cf9e8bbdae36486b07",
+      "verificationResult": "Scoped SPEC/quality PASS; source8/70/6, inbox41 bothcwd, frontend0; original failures/setup separate; fullheavyreturned"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-profile-consumer-review-r6",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-profile-consumer-review-r6",
+      "role": "R6 complete profile15/APC4 finalization review",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "sourceHead": "d7182d4fc9fb5373b53855e89e1f05684aac58ea",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_ACCOUNT_PROFILE_CONSUMER_SOURCE_R6.md"
+      ],
+      "verification": "Actual READ self/Parent configure and running thread read 2026-11-02T21:52:26.187329+00:00",
+      "heavy": "none; builtin/source only"
     }
   ],
   "parentVerification": {
@@ -11981,14 +12007,14 @@
     "consumerReview": "R7 failed provider risk flag before final report; no reroute/rephrase; bounded finalREADY findings unaccepted report, no consumer admission"
   },
   "orchestrationState": {
-    "asOf": "2026-11-02T21:42:28.190587+00:00",
+    "asOf": "2026-11-02T21:56:10.091519+00:00",
     "coordinator": "9b085ada-435f-48d6-8886-957c1ce3e82d",
     "actualRunningChildren": 1,
     "actualWorkflowsIncludingCoordinator": 2,
     "targetUsefulChildren": 7,
-    "heavyOwner": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-history-inbox-cwd-review-r1",
+    "heavyOwner": null,
     "nativeGoal": "VERIFIED active replacement createdAt1793655482",
-    "whyBelowTarget": "Profile R5 and Orders R2 are terminal. Parent owns bounded APC4 finalization, COE1/shared admin cookie and AEC fixes before fresh complete reviews; exact combined candidates are not ready. CI/review repair has one fresh independent reviewer; no filler historical investigations.",
+    "whyBelowTarget": "Profile R6 executes independently. Parent processes accepted history/inbox publication and owns the bounded COE1/admin cookie and Account helper fixes before new complete reviews. No queued/completed workflows counted active.",
     "goalReconciledAt": "2026-11-02T21:38:43.150309+00:00"
   },
   "sqlWriterState": "soleParent writer; profile67source admitted unexecuted; nochildSQLwriter/noNativegrant",
@@ -12040,8 +12066,8 @@
   },
   "readyQueue": [
     {
-      "owner": "Parent",
-      "task": "Correct APC4 exact completed-operation finally custody after transient final applicability denial; preserve draft/ACK and newer operations, reproduce unchanged seven, fresh complete profile R6."
+      "owner": "Parent / R6",
+      "task": "APC4 Parent d718 corrected; old7=5/7/current67pass; fresh complete R6 running. Await verdict, not Root admission."
     },
     {
       "owner": "Parent",
@@ -12065,5 +12091,12 @@
     "fullOriginalAndSteerReferencesPreserved": true,
     "oldMarkedComplete": false,
     "workerOrCodeReset": false
+  },
+  "currentHistoryInboxSourceAdmission": {
+    "candidate": "9aac7eb143738c7789c7f39df9bb89031a61f00c",
+    "review": "4531aae4ee2231e32ffab8cf9e8bbdae36486b07",
+    "scope": "SOURCE/SSR/finite/frontend only",
+    "ParentPhysicalTypesAndBuilds": "all exit0; root1775pass18retainedSkip",
+    "hostedCI": "remote37c remainsFAIL25 until new push; not current source acceptance"
   }
 }
