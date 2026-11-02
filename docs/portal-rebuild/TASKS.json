@@ -1,5 +1,5 @@
 {
-  "updatedOn": "2026-11-02T05:47:07.993238+00:00",
+  "updatedOn": "2026-11-02T05:54:48.992640+00:00",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
   "allocatedWorkers": 7,
@@ -8692,7 +8692,55 @@
         "docs/portal-rebuild/research/W7_SOURCE_KERNEL_SOURCE_R1.md (NEW report only)",
         "own ignored bounded evidence"
       ],
-      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restoration-20261102.json"
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restoration-20261102.json",
+      "firstMaterialFinding": "SK1: unparenthesized CASE in source_parse IF conditions, reported by independent reviewer",
+      "acceptance": "held; report-only closure after first finding; no kernel SQL executed"
+    },
+    {
+      "role": "maya_r2 restored Parent independent review",
+      "taskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-maya-interactions-source-review-20261102-r2-restored-parent",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-maya-interactions-source-review-20261102-r2-restored-parent",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Afab56c32-51e9-4c25-a214-3043797a2822%253Adelegate-task%253Aportal-rebuild-w7-maya-interactions-source-review-20261102-r2-restored-parent:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "statusEvidence": "Successful actual fresh delegate response and child read; dispatch state only, not acceptance",
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false,
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restored-parallel-reviews-20261102.json"
+    },
+    {
+      "role": "commerce_r8 restored Parent independent review",
+      "taskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-commerce-source-review-20261102-r8-restored-parent",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-commerce-source-review-20261102-r8-restored-parent",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Afab56c32-51e9-4c25-a214-3043797a2822%253Adelegate-task%253Aportal-rebuild-w7-commerce-source-review-20261102-r8-restored-parent:ordinal:1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "status": "running",
+      "statusEvidence": "Successful actual fresh delegate response and child read; dispatch state only, not acceptance",
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false,
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restored-parallel-reviews-20261102.json"
     }
   ],
   "parentVerification": {
@@ -10880,8 +10928,12 @@
     "nativeHarnessGoal": "active original objective restored; no new scope or budget",
     "sourceR1TaskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-source-kernel-source-review-20261102-r1-restored-parent",
     "sourceR1State": "running from actual returned dispatch and child initial live gate; no poll",
-    "remainingPreparedReviews": "Not started by this restoration turn; original failed attempts still created zero tasks",
-    "resourceGrant": "none"
+    "remainingPreparedReviews": "Photo consumer R6 held for corrected shared dependency; coordinator NT2/NE4 corrections pending. Maya R2 and Commerce R8 successfully dispatched in this continuation.",
+    "resourceGrant": "none",
+    "additionalSuccessfulPreparedReviews": [
+      "maya_r2",
+      "commerce_r8"
+    ]
   },
   "sqlWriterState": "Sourceauthor9fe terminal/clean. Parent serialized never-appliedexportCASErepair complete; no active new migration author granted by this continuation."
 }

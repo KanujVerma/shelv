@@ -1,3 +1,7 @@
+## Portal restored execution, 1 November 2026
+
+The original goal is restored in the coordinator runtime. Fresh Source R1, Maya R2 and Commerce R8 actually dispatched and received their literal returned IDs, with exact Sol/xhigh/default settings; earlier host-rejected attempts created no tasks and remain separate. Source R1's first syntax finding holds that candidate. [Current execution and exact receipts](portal-rebuild/CURRENT_STATUS.md) govern. Coordinator retains shared transport/grammar corrections; no new native/browser/resource or release grant follows.
+
 ## Portal source checkpoint, 1 November 2026, 23:30 Chicago
 
 Reviewed photo inventory producer and explicit historical-test successor are integrated; cold64 and actual types/build/Expo checks pass, with raw29/32 preserved. The f402 database CI exposed an unapplied export CASE syntax error; Parent1982bc7e repairs only its parentheses, and a real isolated PG17.11 grammar control passes. Full corrected native replay remains pending. [Exact source, tests, preserved failures and resource return](portal-rebuild/research/COORDINATOR_PHOTO_INVENTORY_PARENT_INTEGRATION.md). SharedNT2 and nativeNE4 remain unaccepted. New worker starts are host-rejected parent_not_active, with no tasks created; exact restart briefs are saved for a legitimate fresh Parent run. No permission/model fallback or reset is authorized. Full D01-D48/26-screen goal remains active and incomplete.

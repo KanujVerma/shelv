@@ -2,6 +2,8 @@
 
 ## Goal execution restored, 1 November 2026
 
+The next continuation successfully dispatched fresh Maya R2 and Commerce R8 in separate T3 worktrees, with actual returned Sol/xhigh/default receipts and exact task IDs forwarded. Their [full requests and receipts](../../.local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restored-parallel-reviews-20261102.json) are separate from the prior failed attempts. Source R1 has reported its first material finding SK1: the unimported kernel migration repeats bare CASE expressions in IF conditions. It has stopped dependent broad verification and is finalizing its report; no Source SQL/native acceptance or import follows. The coordinator retains the shared transport and small grammar corrections, without opening another implementation delegate.
+
 The native coordinator runtime reported no active goal after the old Parent lost its T3 run ownership. Earlier `parent_not_active` review attempts created no tasks; repeated status messages did not mean implementation was still running. The original full approved goal has now been restored in the current runtime without changing scope or resetting code. A fresh independent Source kernel R1 actually dispatched successfully, with Sol/xhigh/default, initial child gates and its exact returned task ID forwarded. [Recovery receipt](../../.local-artifacts/portal-rebuild/coordinator-active-20261101/goal-restoration-20261102.json) and TASKS preserve the failed state separately from this successful start. Other prepared reviews remain undispatched by this recovery turn. No resource, release or banked-reset grant follows.
 
 ## Parent source and CI repair, 1 November 2026, 23:30 Chicago
