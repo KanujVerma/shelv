@@ -1,5 +1,5 @@
 {
-  "updatedOn": "2026-11-02T04:06:47.730093+00:00",
+  "updatedOn": "2026-11-02T05:36:54.768982+00:00",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
   "allocatedWorkers": 7,
@@ -8436,14 +8436,16 @@
         "serviceTier": "default"
       },
       "statusAtDispatch": "starting",
-      "status": "running",
+      "status": "completed",
       "statusEvidence": "T3 returned dispatch receipt; current live claims require current inventory, not this historical field.",
       "writeSet": [
         "tests/portal-notifications-native-executor.mjs",
         "tests/portal-notifications-native-executor.test.mjs",
         "docs/portal-rebuild/research/W7_NOTIFICATIONS_NATIVE_R1.md"
       ],
-      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json"
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json",
+      "headCommit": "7a69dafe29cb8c9be7c0a1bfe72c5531cd57839a",
+      "verificationResult": "Author67 pure/source checks; new independentR4 allocated, no native grant."
     },
     {
       "role": "commerce_ac7_fix",
@@ -8499,12 +8501,14 @@
         "serviceTier": "default"
       },
       "statusAtDispatch": "running",
-      "status": "running",
+      "status": "completed",
       "statusEvidence": "T3 returned dispatch receipt; current live claims require current inventory, not this historical field.",
       "writeSet": [
         "docs/portal-rebuild/research/W7_NOTIFICATION_TRANSPORT_SOURCE_R3.md"
       ],
-      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json"
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json",
+      "reportCommit": "c1371910cdb17688a367d15a4512ff8b3eddc84b",
+      "verificationResult": "NT2/P2 changes required. Parent direct artifact closes unchanged3/4->4/4; adoption/completeR4 still required."
     },
     {
       "role": "source_kernel_phase1",
@@ -8621,6 +8625,46 @@
         "separate approved two-file test expectation successor"
       ],
       "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/maya-reconciliation-20261102.json"
+    },
+    {
+      "role": "native_r4",
+      "taskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-notifications-native-executor-source-review-20261102-r4",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-notifications-native-executor-source-review-20261102-r4",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Afab56c32-51e9-4c25-a214-3043797a2822%253Adelegate-task%253Aportal-rebuild-w7-notifications-native-executor-source-review-20261102-r4:ordinal:1",
+      "statusAtDispatch": "running",
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-native-legacy-20261102.json",
+      "writeSet": [
+        "NEW W7_NOTIFICATIONS_NATIVE_EXECUTOR_SOURCE_R4.md only"
+      ],
+      "reportCommit": "831c158cadc7cbb7101e7ee46e094bdf4a87423d",
+      "verificationResult": "NE4/P2 preflight deadline finding; no native grant. Preparedauthorfix not dispatched because hostinactive."
+    },
+    {
+      "role": "legacy_export_research",
+      "taskId": "node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Athread-send%3Aw1-legacy-final-public-producer-reconciliation-20261102",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-final-export-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w1-final-export-source-20261101-r1:ordinal:9",
+      "statusAtDispatch": "starting",
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": {
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default"
+      },
+      "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-native-legacy-20261102.json",
+      "writeSet": [
+        "NEW W1_FINAL_EXPORT_LEGACY_PUBLIC_PRODUCER.md only"
+      ],
+      "reportCommit": "1afccad16c453945e3591815df10bf0ec9f4121b",
+      "verificationResult": "Research proposes immutable public R1 reconstruction sidecar; proposalnotpinned orimplemented. No sourcechanges."
     }
   ],
   "parentVerification": {
@@ -10738,23 +10782,32 @@
   },
   "integrationHead": "1418d724c704aac51ed1235ed55c71c12f76bcc2",
   "currentAllocationEvidence": "Seven child workflows allocated after three older lanes were reconciled live; dispatch receipt times in refill20261102. This is not an ongoing live count.",
-  "resourceGrantState": "No native/browser/Auth/Storage fixture active or granted by this refill. Banked reset authorization disarmed after user manual reset.",
+  "resourceGrantState": "No resource remains. RootboundedPGgrammarprobe acceptedRETURN2026-11-02T05:26:24.136318Z; no application/Auth/migration replay. Notificationexecutor no grant. Bankedreset disarmed.",
   "currentCheckpoint": {
-    "sourceHead": "1418d724c704aac51ed1235ed55c71c12f76bcc2",
-    "change": "Reviewed export source and unmounted consent UI imported; direct Parent MIF1 correction verified.",
-    "evidence": "docs/portal-rebuild/research/COORDINATOR_EXPORT_CONSENT_SOURCE_INTEGRATION.md",
-    "rootTests": "1613 total/1595 pass/18 retained skips/0 fail at b90",
-    "consent": "29/29",
-    "rootAppTypes": 0,
-    "rootTestTypes": 0,
-    "frontend": 0,
-    "sessionTypes": 0,
-    "expoWeb": 0,
-    "unmountedSourceBuild": "2246 inputs/15 output hashes exact before MIF1",
-    "MIF1": "original probe fail->pass; new6=3/6->6/6; retained+new94/94; frontend0; only controller input/appJS output change",
-    "sql": "65 source migrations/119 tracked SQL, export native UNRUN locally",
-    "sharedTransport": "R3 new NT2 final applicability hold; old V5 not accepted",
-    "fullGoal": "active/incomplete"
+    "sourceHead": "1982bc7e13d438e6eb74082a72f11c469eee8811",
+    "inventory": "Reviewed14targetproducer imported; explicitcompatibility48/48 plus3sensitivity; raw29/32 historical preserved; emptyGit64/64",
+    "RootTests": "corrected full npm test exit0, count below",
+    "types": "Rootapp/test/frontend/session0; raw initialTS2339 and correctedfixtureguard separate",
+    "actualMain": "2246 inputs/15outputs everyoutputhash exact",
+    "expoWeb": "exit0",
+    "nativeGrammar": "ActualPostgreSQL17.11 old condition exit3/new0, networknone,tmpfsonly,noappschema,exactCIDabsence accepted2026-11-02T05:26:24.136318Z",
+    "completeNativeMigrationReplay": "pending newCI",
+    "priorCI": "f402 RootSUCCESS/databaseFAIL syntax42601/exportstatement12/portalFAIL localfixturestart",
+    "fullGoal": "active/incomplete",
+    "RootTestCounts": {
+      "tests": 1614,
+      "pass": 1596,
+      "fail": 0,
+      "skipped": 18
+    },
+    "correctedRootTestCounts": {
+      "tests": 1614,
+      "pass": 1596,
+      "fail": 0,
+      "skipped": 18
+    },
+    "actualGrammarResource": "PG17.11 originalconditionexit3/corrected0; exactCIDabsent, acceptedRETURN2026-11-02T05:26:24.136318Z",
+    "completeMigrationReplay": "still pending fresh exactheadCI"
   },
   "sourcePins": {
     "kernel": "docs/portal-rebuild/research/COORDINATOR_SOURCE_KERNEL_INTERFACE_PIN.md",
@@ -10771,5 +10824,27 @@
     "sourceHttpBoundary": "closed native Response ports only; no credential/Auth factory or bootstrap in Phase1",
     "legacyPhotoFixtures": "unchanged raw failures, new canonical-wire tests separate; no waiver/fallback/full-suite-green claim",
     "scope": "source/report/coordination only; no new resource or activation grant"
-  }
+  },
+  "sharedTransportHold": {
+    "finding": "NT2/P2",
+    "report": "c1371910cdb17688a367d15a4512ff8b3eddc84b",
+    "parentArtifact": "docs/portal-rebuild/research/COORDINATOR_NT2_FINAL_APPLICABILITY_PATCH.md",
+    "status": "prepared and bounded-probe/type verified, not adopted/admitted"
+  },
+  "orchestrationState": {
+    "status": "new starts rejected by host",
+    "actualErrorCode": "parent_not_active",
+    "actualError": "The calling provider no longer owns an active thread run.",
+    "reviewTasksCreated": 0,
+    "attemptedReviews": [
+      "CommerceR8",
+      "MayaR2",
+      "SourceKernelR1",
+      "photoConsumerR6"
+    ],
+    "preparedPacket": ".local-artifacts/portal-rebuild/coordinator-active-20261101/prepared-reviews-and-ne4-20261102.json",
+    "nextActualParentRun": "VerifySol/xhigh/default and dispatch prepared exact tasks; forward each real taskId; no alternate-provider/native/CLI bypass",
+    "latestInventory": "OnlyW0running at last current read; other declared lanes terminal. Do not count planned reviews as running."
+  },
+  "sqlWriterState": "Sourceauthor9fe terminal/clean. Parent serialized never-appliedexportCASErepair complete; no active new migration author granted by this continuation."
 }

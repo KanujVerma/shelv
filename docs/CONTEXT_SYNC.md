@@ -1,3 +1,7 @@
+## Portal source checkpoint, 1 November 2026, 23:30 Chicago
+
+Reviewed photo inventory producer and explicit historical-test successor are integrated; cold64 and actual types/build/Expo checks pass, with raw29/32 preserved. The f402 database CI exposed an unapplied export CASE syntax error; Parent1982bc7e repairs only its parentheses, and a real isolated PG17.11 grammar control passes. Full corrected native replay remains pending. [Exact source, tests, preserved failures and resource return](portal-rebuild/research/COORDINATOR_PHOTO_INVENTORY_PARENT_INTEGRATION.md). SharedNT2 and nativeNE4 remain unaccepted. New worker starts are host-rejected parent_not_active, with no tasks created; exact restart briefs are saved for a legitimate fresh Parent run. No permission/model fallback or reset is authorized. Full D01-D48/26-screen goal remains active and incomplete.
+
 ## Portal Parent integration, 1 November 2026, 22:05 Chicago
 
 Reviewed export source and unmounted Source consent presentation are imported; Parent Root1,595pass/18 retained skips/0fail, consent29, actual types/UI/Expo pass. Small inherited Maya retirement is corrected and verified as1418d724; the full new Maya candidate still needs reconciliation/R2. Shared NT2 is a new held dependency, separate from closed SD1/NT1/AAS5 vectors. [Current integration/evidence and remaining gates](portal-rebuild/research/COORDINATOR_EXPORT_CONSENT_SOURCE_INTEGRATION.md) govern; no runtime/Source/App/download/release acceptance is implied. Full approved goal remains active.
