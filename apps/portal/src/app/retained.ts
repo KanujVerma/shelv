@@ -5,7 +5,9 @@ import type {
 } from "../transport/session.ts";
 // This local structural facade describes only the real retained JavaScript
 // exports used by composition; no auth rewrite.
+// @ts-ignore JavaScript declarations are absent in the standalone portal graph; the facade below types the retained exports.
 import * as advisor from "../../site/auth/advisor-cookie-session.js";
+// @ts-ignore The Root test graph infers this JavaScript module, while the standalone portal graph needs this import annotation.
 import * as client from "../../site/auth/client-cookie-session.js";
 export interface CookieCapabilities {
   view: boolean;
