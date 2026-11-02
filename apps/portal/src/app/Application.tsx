@@ -39,6 +39,7 @@ import { ApplicationShell } from "./Shell.tsx";
 import { PublicationAudit } from "./PublicationAudit.tsx";
 import { OwnerPolicyApplication } from "./OwnerPolicyApplication.tsx";
 import { MayaApplication } from "./MayaApplication.tsx";
+import {createNotificationsEntry, NotificationsEntryView} from "./notifications-entry.tsx";
 import "./application.css";
 
 export function UnavailableModule({
@@ -54,6 +55,12 @@ export function UnavailableModule({
       </StatusNotice>
     </>
   );
+}
+/** Client inbox is independent of a successful clinical plan read. */
+function ClientNotificationsApplication({runtime}:{runtime:ApplicationSession}) {
+  const {navigator}=usePortalNavigation();
+  const entry=useMemo(()=>createNotificationsEntry(runtime,navigator),[runtime,navigator]);
+  return <NotificationsEntryView entry={entry}/>;
 }
 export function PublicEntry({ route }: { route: PortalRoute | null }) {
   if (route?.name === "maya") return <MayaApplication stage={route.stage}/>;
@@ -320,7 +327,11 @@ function ConnectedRoute({
           </StatusNotice>
         </div>
       ) : null}
-      {audience === "advisor" ? (
+      {audience === "client" && route.name === "notifications" ? (
+        <ApplicationShell audience="client" onSignOut={signOut} readOnly>
+          <ClientNotificationsApplication runtime={runtime}/>
+        </ApplicationShell>
+      ) : audience === "advisor" ? (
         <AdvisorApplication
           runtime={runtime}
           boundary={boundary}
