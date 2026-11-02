@@ -477,3 +477,103 @@ No new compiler/setup/emit fault occurred. Expected Node package-type warnings a
 **UNRUN / UNVERIFIED:** NEW independentR6 and remaining full source audit; canonical/owned PG/SQL/ACL/RLS/current-authority/lock/race/performance/I/O/TOAST/latency/timeout/legal-max/heap; R1 public final producer; actual Session/cookie/Account/shared admission/private backing-store/Blob/post30 download; genuine Auth/persistence/browser/visual/accessibility/comprehension; full Root/Expo/App/exact-head CI and release approval. R1 public snapshot production gap is not total raw R1 fact loss. No full Account/export/all26/full-goal completion follows this source slice.
 
 No nesting/fallback, resource, native/process inventory, CLI/PG/SQL/Auth/Storage/provider/credentials/services/network, browser/preview/DOM, actual client download/send/funds/notifications, Source/financial/blocked-task disguise/resubmission/rephrase/reroute, Root/Parent/shared activation, push/PR/merge/deploy or self-acceptance occurs. Only ordinary authorized three-path commit follows inspected checks. Final-export family remains unactivated.
+
+## FE6/P2 bounded denial-status correction, 1 November 2026
+
+**IMPLEMENTED_SOURCE; not admitted.** R6 at `e02a5efc0c16c3bbb85bc92d043d03e8ca951f44` remains specification **FAIL on denial-status fidelity**, completeness **INCOMPLETE**, correctness/quality **FAIL**. Its exact original received-401/body-error probe is reproduced before editing and passes after this correction. Immutable R1-R6 FAILs/raws and prior qualifications remain retained. NEW independent R7 and the remaining source audit are required before admission; no complete export/Account/genuine/CI/release/full-goal acceptance follows.
+
+Same owned `/Users/kanuj/.t3/worktrees/shelv/t3-b08e21c9`, branch `t3/static-final-export-source`, initially clean at exact `1787ffd299720cdf2d735d2e7c6c9b2ee3e8b11d`. The production change is five added lines in `supabase/functions/concierge-final-export/runtime.ts`. Sole other tracked allocation is NEW `tests/portal-final-export-authority-status.test.ts` and this append-only report. Handler was reconciled before editing: its existing status branches suffice, so no handler claim/change was needed. Shared runtime/Auth implementation, serializer/FE5 sink, Root contracts, collector, SQL, profile/hash/bounds/actions/rights and old tests are frozen.
+
+Authoritative actual taskId, explicitly forwarded after the initial LIVE gate:
+`node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw1-final-export-authority-body-fe6-source-fix-20261101`.
+
+Separate backing childThreadId:
+`thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-final-export-source-20261101-r1`.
+
+Separate actual runId, forwarded and verified LIVE:
+`run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w1-final-export-source-20261101-r1:ordinal:8`; active ordinal **8**. No inferred/reused previous handle. Actual Parent is `d632030a-18f7-4dec-a2c9-f5c0418c3fd5` from durable thread state, not the capability response's caller-labeled `parentThreadId` field.
+
+Initial/final BOTH LIVE self/actual Parent configurations and capabilities/descriptors verify `codex / gpt-6.1-sol / reasoningEffort=xhigh / serviceTier=default`, default interaction. Actual Sol descriptors offer the selected values. Project saved default remains null and is recorded separately from live options. Repo/default-subagent/max8/eight-role pins remain unchanged; final own/physical Parent config plus eight roles match byte-for-byte. Explicit `/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node` is **v22.23.0** initially/finally, with final binary hash recorded. No nested delegation, model fallback or provider CLI is used. An intermediate catalog receipt's unrelated Cursor timeout is retained; required Codex model/configuration/descriptors remained available, and final catalog succeeds.
+
+### Exact inputs, in-place preservation and replay custody
+
+FULL R6 report was read and matched to its actual Git blob: **25,618 bytes**, SHA-256 `59c403e79e7bceb25fbb2ec7651d0b30911f2fd2105d0346ff755c00b6222dac`. Only the specified executed probe, FE6 raw, its command receipt/full log, and report were copied from `t3-01c2580e` into own ignored `.local-artifacts/portal-rebuild/w1-final-export-fe6/`; allocated/current brief and exact task identity are separately recorded. No nested archive is copied. Exact probe SHA-256 remains **`35f54621b61c5ab6f44bf62468da48be65fd2a17dc70e249fb453fe7b5d6a231`**, same relative depth, unchanged bytes/predicates/control. Its own raw outputs do not overwrite the copied original.
+
+All **19,201** prior own artifact files are hashed/mode-checked **in place**, covering original/FE1-FE5 reports/raws/setup failures and full responses. R6's referenced prior material is also verified in place:177 physical references and five explicit Git report blobs, with no archive copies. All remain exact at final checks. Original95,388-byte input and five approved provenance hashes stay exact. The R5 actual `ace6b3c82e3e9b47127fbe47682805a1edd5ca5b` correction remains preserved; its prior wrong suffix is not reused.
+
+A verification-custody issue was surfaced to Parent rather than silently writing old archives. Four previous original source probes write their raws beside themselves. The initial **183-source /187-emitted** results were recorded with their exact scope, without claiming those four source executions. Parent then explicitly allocated **only four exact OWN prior probe copies** into fresh same-depth `.local-artifacts/portal-rebuild/w1-final-export-fe6-replay/`. Source/destination bytes/modes and original hashes match (FE2 f8ca5311, FE3 c50cf397, FE4 2813f9b9, FE5 d5a9338b); no helper literal, predicate, fixture or import is edited. Relative imports still target actual own Root source, and `import.meta.url` outputs go only into the new home. No source execution of those writers occurs in an old archive or foreign checkout. This later approval is captured in `REPLAY_ALLOCATION.txt` and `own-probe-replay-copy-manifest.json`, distinct from the initial copy limit.
+
+The four source probes then pass **4/4**, with their full raw objects equal to the prior exact FE2-FE5 objects. They are disjoint from the earlier183 tests. Thus current source coverage is **183 +4 =187**, retaining the complete original119 assertions plus67 new tests and the unchanged FE6 original. The original119 are115 in the first run and four in the later authorized run. These receipts are not rewritten as one earlier187 or earlier119 execution. Final emitted187 uses the current generated replay paths after the corresponding220-input compiler proof.
+
+### Reproduction and five-line runtime correction
+
+Before editing, the exact original probe returns readable RPC401 -> **401/session_ended**, but received RPC401 with an errored body -> **503/unavailable**, actual **0 pass /1 fail, Node exit1**. It uses actual final-export handler/runtime and actual retained `createConciergeAuthenticatedPorts`, recognizing only fixed Auth GET and fixed RPC POST targets, with bearer/method/command checks and global external-fetch denial. No successful authority port, copied Auth parser, current override, new actor or RPC selector substitutes for that composition.
+
+The owned bounded wrapper previously awaited `readFinalExportBytes` for every nonempty response. That failed before retained RPC handling could preserve received status independently of error-body decoding. The correction handles **only already-received401/403** first:
+
+1. Construct an empty-body Response preserving the actual received status/status text/headers before cleanup.
+2. Attempt the original body's cancellation best-effort, catching both synchronous throw and rejected promise, **without awaiting** cancellation or body bytes.
+3. Return that denial to the unchanged retained Auth/RPC runtime. Its existing denial behavior and final handler's existing safe-code mapping remain authoritative.
+
+There is no fabricated actor, absence, successful payload, JSON error body or new public flag. The empty body is a transport disposition for an already-known denial; the original body is never handed to the unbounded successful decoder. Known denial no longer depends on malformed/oversized/locked/errored/pending error-body reads or discard acknowledgement. Cleanup failure is not a successful-care result and does not replace the known status with temporary-unavailability semantics.
+
+Successful and other responses retain the exact old branch and **400,000-byte** predecode bound. No cap is raised or body parser copied. Registry remains exactly `concierge_final_export_command_v1`, schema1/two READs/PAIR index/selection basis/framing unchanged. Actual public key/bearer/options/origin/timeout and request/current-identity checks stay in the unmodified retained runtime/handler.
+
+### Same-class Auth/RPC semantics and controls
+
+The new67 tests use actual retained ports + actual runtime + handler, with a closed finite HTTP responder and external fetch denied before imports. All calls verify exact Auth/RPC URLs, Auth GET/RPC POST, server-owned key/bearer, fixed command body, credentials omit, redirect error, cache no-store and actual AbortSignal. No new actor/API/permission/currentness flag is introduced.
+
+Forty-eight cases cover three phases (initial Auth, RPC, current Auth), each received401/403, with eight body modes: null/empty, non-JSON,400001 bytes, errored, locked, cancellation rejection, pending cancellation and pending body. Pending controls prove completion before their explicit release/discard gates, then release them; they do not assert a network SLA or physical erasure. The actual retained public semantics are preserved:
+
+| Received phase/status | Existing public result, independent of denial body |
+|---|---|
+| Initial Auth401 or403 |401 `unauthorized` (retained Auth returns no identity) |
+| RPC401 |401 `session_ended` |
+| RPC403 |403 `forbidden` |
+| Current Auth401 or403 after a successful RPC |401 `session_ended` (retained Auth returns no current identity) |
+
+Auth403 is not newly remapped to a distinct public status: the unchanged Auth port intentionally returns null for either denied Auth status. Its received header survives to that actual behavior. Handler changes or permission weakening are unnecessary.
+
+Remaining nineteen cases cover a true uncancelled readable401; synchronous cancellation throw; malformed200 non-JSON/oversized/errored/locked responses; exact400000 accepted/400001 rejected; unknown400/404/500 with unreadable bodies; lost transport response; understood `concierge_basis_conflict` retaining409; changed/anonymous/denied current Auth; abort before RPC; late200 RPC after abort; abort during current Auth; and a complete successful read. Current-denial/identity/abort cases with a synthetic client-result canary prove no stale private result or success is returned. The known-denial path does not claim a new UI session-currentness guarantee or an authority check after bytes have already been received.
+
+Malformed200/unknown/lost failures remain honest **503/unavailable**, not fabricated401, absence or a successful empty export. Received uncancelled401 remains known. The400001 successful-response control still cancels before the retained decoder; exact400000 valid bytes pass. Safe public error bodies/no-store/CORS behavior remain intact and exclude raw stream/cancellation/SQL/canary text. Cleanup is best-effort/nonwaiting; unresolved physical cancellation is not represented as acknowledged storage erasure.
+
+### Meaningful RED/GREEN, source groups and compiler evidence
+
+The unchanged original FE6 probe is OLD source **0/1 fail, exit1** -> CURRENT source/emitted pass. Its readable401 control, two exact request records, no-store result and received-status/body-attempt fields remain exact. Only unreadable-denial public result changes503/unavailable -> **401/session_ended**. Its `bodyAttempts:1` remains the original stream's observed pull/error event; it is not evidence that the new known-status branch reads the body.
+
+Before editing, the first66 new source cases are **29 pass /37 semantic failures, exit1**. After adding the synchronous-cancel case, exact-old emitted new67 + original1 are **29 pass /39 failures, exit1**. Those are distinct executed controls; no unexecuted67-case OLD source result is invented. Current67 pass inside the source/emitted groups. Existing positives/refusals that already passed old code remain sensitive preservation controls, not relabeled failures.
+
+| Actual current check | Outcome and scope |
+|---|---|
+| Source-safe group |183/183, exit0, before replay-copy approval |
+| Four later exact authorized source originals |4/4, exit0; disjoint from183 |
+| Complete source assertion set |187 passed across those two actual groups, including retained119 |
+| Final actual emitted group |187/187, exit0, current replay input paths |
+| Retained presentation/service |13/13, exit0 |
+| Fresh full-artifact capture harness |14 complete model/manifest/root/count/four-output cases exact |
+| Original baseline217 current-source strong graph |0 diagnostics; only changed source is owned runtime.ts |
+| Extended current strong graph /listFilesOnly |0 diagnostics,220 actual files, exact ordered list |
+| Old/current extended program emission |55 of56 complete emitted JS byte-exact; only runtime.js differs |
+
+Every passing product group has zero fail/skip/cancel. Counts overlap where stated and are not summed into broader acceptance. The original119 source/emitted tests and FE5 sink stay preserved; no scope lost to obtain green. All content renderers, `createFinalExportHtmlSink`, collector and old handler/runtime declarations remain exact1787.
+
+Actual **TS6.0.3** read-only Parent compiler/libs, real Node22.20.3/undici-types6.21 declarations, unchanged `strict`, `noUncheckedIndexedAccess`, `verbatimModuleSyntax`, `skipLibCheck:false` are used. Baseline217 is an actual current-source program over the prior217-file graph, no source substitution and no program emit. Extended220 adds new authority test, unchanged FE6 probe and fresh own capture harness; approved copies replace four prior source-input locations with byte-identical modules. Compiler proof before that location change is preserved separately. Final closure SHA-256 is `9a8b07a3469c8eaef0685ce8d9ea1375713354046f82ca11dabda671349c9bee`. Both exact1787/current-runtime extended programs have zero diagnostics, and only `createFinalExportPorts` changes at AST declaration level. No install/clone, shim, copied Auth, cast, lowered flag, package/lock/config or diagnostic filter is introduced. Full Root/Expo/React/App configurations and CI are not these checks.
+
+### Full artifact parity and unchanged protocol
+
+A new own capture harness reads prior saved synthetic **records** read-only and re-renders using actual Root record validation, complete current wire/hash collector and actual HTML sink/direct serializer. It writes only a fresh result manifest, never the old captures. All eight FE1 records and original FE2/FE3/FE4 A/B records (fourteen total) retain exact full direct filename/content type/text/HTML, streamed text/HTML, complete manifests, roots, unit bytes/part counts and commit1/abort0. No output-line masking is used. All111 prior positive scalar Root/output metric records match as a complete counted multiset, retaining repeated case names and the reescaped Unicode row through explicit scalar extraction. Original FE5 source replay raw also remains exact, with terminal abort still preventing backing finish/success.
+
+Serializer SHA stays exact1787 **`05a271fb0e89ff70d516243739cb2383d7512615583f224a065711d13d425cf0`**. No FE1-FE5 content/lifecycle output exception is introduced. The only intended outcome change is known-denial transport fidelity/body-independence; no framed model/hash/basis/selection semantics change. Fixed two READ actions, schema1, segment32768, upstream400000, command100000, public unit selection and all larger existing unit/scope bounds remain frozen. Public hashes remain consistency, not permission.
+
+### Preservation, setup attribution and held gates
+
+Initial exact1787 has1,989 tracked files. Only owned runtime/report plus one new test may change; other1,987 existing paths/bytes/modes remain exact, including **115 SQL /63 migration source files**, all original Root/shared Auth/runtime/collector/serializer/handler/old tests/profile/rights. Candidate migration SHA remains `4991cce01a59e82aea46a2d4d37db95defe32e473854cd9e494c5a749a7d7166`; source63 is not a canonical/native execution claim. Original62/native preservation is not re-proven. Whole100,306-byte1787 author-report prefix stays exact. Approved95,388-byte source/five hashes and current Root post30 decision stay unchanged. No Source15/financial/M63-M65 stack is imported or retried.
+
+Own evidence root is `.local-artifacts/portal-rebuild/w1-final-export-fe6/`, plus the precisely allocated four-file replay home. Each invocation retains exact explicit Node/compiler argv, cwd, actual exit/full-log SHA in per-command receipts and `commands.json`. Review-copy, in-place prior archive/reference, exact briefs/task/replay allocation, source/emitted/strong/closure, artifact/metric, live model/pin and terminal/commit proofs preserve this transition.
+
+A supplementary read-only reference preflight initially treated all prior-reference entries as filesystem paths and stopped before guessing a relative root. Inspection showed177 physical references plus five explicit `{commit,path}` R1-R5 report entries. The corrected verification hashes physical files in place and validates those exact Git blobs; no archive is copied or source executed. The stop/error and attribution are retained. No product/compiler setup failure or unowned diagnostic was erased or counted green. Historical type/emit/CLI/dependency/zsh/TAP/fixture/analysis faults and immutable R1-R6 FAILs remain attributed. Expected Node package-type warnings persist. No refused task is disguised/rephrased/resubmitted, and no hardware/program prerequisite is introduced.
+
+**UNRUN / UNVERIFIED:** NEW independentR7 and remaining full SOURCE audit; canonical/owned PG/SQL/native/ACL/RLS/current-authority lock races; TOAST/I/O/latency/performance/timeout/legal-max/practical heap; R1 safe public final producer; full ApplicationSession/cookie/shared admission/Account/private backing storage/Blob/post30 actual download; genuine Auth/persistence/browser/visual/accessibility/comprehension; full Root/Expo/App/exact-head CI and release approval. No giant300MB rerun, new maximum-memory inference, actual Blob/download or physical recall/erasure claim occurs. R1 public producer completion gap is not total raw R1 fact loss. Full approved goal remains open.
+
+No nesting/fallback, resource, PG/SQL/CLI/genuine Auth/Storage/provider/credential/service/network, browser/preview/DOM/native/process inventory, actual client download/send/funds/notification, Root/Parent/shared activation, push/PR/merge/deploy or self-acceptance occurs. Only the authorized local three-path commit follows inspected proof. Final-export family remains unactivated.

@@ -10,6 +10,11 @@ export function createFinalExportPorts(config:ConciergeTransportConfiguration):F
  const send=config.fetch??globalThis.fetch;
  const bounded:typeof fetch=async(input,init)=>{
   const response=await send(input,init);
+  if(response.status===401||response.status===403){
+   const denied=new Response(null,{status:response.status,statusText:response.statusText,headers:response.headers});
+   try{void response.body?.cancel().catch(()=>{});}catch{/* Known denial does not depend on cleanup. */}
+   return denied;
+  }
   if(response.body===null)return response;
   const bytes=await readFinalExportBytes(response.body,finalExportPartMaxBytes);
   return new Response(bytes,{status:response.status,statusText:response.statusText,headers:response.headers});
