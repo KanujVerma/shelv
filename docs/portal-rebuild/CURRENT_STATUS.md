@@ -10,22 +10,17 @@ Source admissions also retain Maya17 b2a5f4f3, SMTP5 594d64e2 and scoped agent3 
 
 Complete shared transport **R7 scoped SOURCE PASS** on51-target **556befca**, NT7 addressed and no new material finding. All original matrices, physical35/70/52/184/23/inventory33, fourtypes and static compiler controls pass. This is not Root projection or current-consumer acceptance. Inventory preservation witness remains12/14FAIL with explicit stale-premise disposition; a compatible independently approved successor/current Root projection and full consumer-v2/collection checks remain separate.
 
-Credential CA4 correction **ba1caf3b** now guards listener setup/finalization and classifies actual send invocation. Original3 OLD1/3, expanded5 OLD1/5 plus old unhandled lifetime rejection; CURRENT37/37, independent11/11, configuredtypes0 and full dependency parity. New complete R3 is running; no credential/Source private endpoint admission. Kernel SK2/SK3/SK4 and final private scope/purpose/grant/consent/cookie/Vault egress remain held.
+Credential CA4 correction **ba1caf3b** has NEW complete R3 **scoped SOURCE PASS**, no residual adapter finding. Original3 OLD1/3, expanded5 OLD1/5 plus old unhandled lifetime rejection remain; CURRENT37/37, independent11/11, additional6+6 controls, Account74, Parent configuredtypes0 and full dependency parity. No credential/Source private endpoint admission: kernel SK2/SK3/SK4 and final actual scope/purpose/grant/consent/cookie/Vault egress stay held.
 
-Actual timestamped roster: **2 running children + coordinator**, all actual Sol/xhigh/default readbacks verified; no nestedagents. Seven-useful-child target remains, currently bounded by Parent-owned smallfixes and Root/shared composition. No compiler/dependency/heavy acquisition planned by current children. [TASKS](TASKS.json) records exact returned identities and claims.
+All dispatched review/research children are **terminal at this checkpoint**; coordinator is publishing the verified profile source/docs and will consume exact-head CI through the existing watcher. No terminal child is counted active. Seven-useful-child target remains; next Parent step is exact shared51 Root preimages/projection, legitimate inventory witness/current-consumer review and the remaining smallfixes, with contact implementation using the returned pin. Every actual dispatch/readback remained Sol/xhigh/default, no nestedagents. Exact receipt/history is in [TASKS](TASKS.json).
 
-| Active lane | Literal actual taskId |
-| --- | --- |
-| complete credential R3 | `node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-source-credential-review-r3` |
-| required Account contact/admin interface research | `node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-account-contact-admin-pin` |
-
-The new research pins the next verified contact/email editing seam from approved C08 and actual minimum context. Generic client VIEW is not proof of clinical entitlement. No later contact-preference choice domain is known; no options/phone field/transactional-email opt-out are invented. No production interface is changed by that proposal.
+The [contact/admin pin](research/W6_ACCOUNT_CONTACT_ADMIN_INTERFACE_PIN.md) is proposal only. It maps actual generic client VIEW (not clinical entitlement), minimum existing context reuse, verified-email/read/request/original-status and unproven dispatch/pending/callback facts. No new context boolean, preference alternatives, telephone field or transactional-email opt-out is invented. No contact producer/UI/genuine behavior is accepted by this research.
 
 | Remaining group | Current source boundary |
 | --- | --- |
 | shared/auth/current consumers | SharedR7 sourcepass; exactRoot51projection/inventorywitness/currentconsumer-v2/collection/realApp remain. |
 | Account | Profile source admitted only. Departure ADPR1/2, export AFEC1/2, gateway/Account/contact/verification/preferences/browser-file/genuine remain. |
-| Sources | Kernel SK2/SK3/SK4/final authority; credentialR3 pending; bytes/retention/deletion/genuine remain. |
+| Sources | Kernel SK2/SK3/SK4/final authority; credentialR3 sourcepass, kernel/egress held; bytes/retention/deletion/genuine remain. |
 | notifications/native | EntryR2 SOURCEpass, SMTP source admitted; actualinbox/providerdelivery/native NE5/NE6-S1 plusfreshfullreview/exactgrant remain. |
 | photos/history | UploadR1 FAIL RPU3; physicaldependency/currentcollection/Storage/mount/browser remain. |
 | Maya/chrome/visual | MSC3 source correction/freshreview thenRoot/browser; currentRootvisual mismatch persists. |
