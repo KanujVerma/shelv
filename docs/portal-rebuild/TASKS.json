@@ -1,5 +1,5 @@
 {
-  "updatedOn": "2026-11-02T03:45:49.212563+00:00",
+  "updatedOn": "2026-11-02T03:49:39.215654+00:00",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
   "allocatedWorkers": 7,
@@ -8505,6 +8505,101 @@
         "docs/portal-rebuild/research/W7_NOTIFICATION_TRANSPORT_SOURCE_R3.md"
       ],
       "receipt": ".local-artifacts/portal-rebuild/coordinator-active-20261101/refill-20261102.json"
+    },
+    {
+      "role": "source_kernel_phase1",
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-source-kernel-source-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w1-source-kernel-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w1-source-kernel-source-20261101-r1:ordinal:2",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
+      "writeSet": [
+        "supabase/functions/concierge-sources/kernel-{types,validation,rpc,http}.ts (NEW)",
+        "supabase/functions/concierge-source-account/kernel-{types,validation,rpc,http}.ts (NEW)",
+        "apps/portal/tests/rebuild-source-kernel-{contract,root,http}.test.mjs (NEW)",
+        "supabase/tests/portal_source_kernel_v1.test.sql (NEW)",
+        "supabase/migrations/20261102033048_portal_rebuild_source_kernel_v1.sql (sole CLI allocation)",
+        "docs/portal-rebuild/research/W1_SOURCE_KERNEL_SOURCE.md (NEW)"
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false,
+      "receipt": ".local-artifacts/portal-rebuild/review-allocations-20261101/coordination_recovery_ledger_inputs_20261102.json",
+      "statusEvidence": "Original returned allocation receipt, live resumed thread read, and successful missing-input delivery; no identity inferred from run ordinal.",
+      "status": "running",
+      "statusQualification": "Last direct missing-input delivery; not a new poll or acceptance result."
+    },
+    {
+      "role": "maya_interactions_r1",
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-maya-interactions-source-review-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w7-maya-interactions-source-review-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w7-maya-interactions-source-review-20261101-r1:ordinal:2",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "baseCommit": "3bd152a259b7b9b9971caa1546e65f69de12aab9",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_MAYA_INTERACTIONS_SOURCE_R1.md (sole authored report)"
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false,
+      "receipt": ".local-artifacts/portal-rebuild/review-allocations-20261101/coordination_recovery_ledger_inputs_20261102.json",
+      "statusEvidence": "Original returned allocation receipt, live resumed thread read, and successful missing-input delivery; no identity inferred from run ordinal.",
+      "status": "completed",
+      "resultCommit": "936ec9119aaf605cefaf701e07c19d83c04b1310",
+      "parentReportCommit": "5fe4fd51",
+      "resultQualification": "FAIL MIF1/P3 inherited; production and 208/210 compatibility held",
+      "productionImported": false
+    },
+    {
+      "role": "photo_inventory_transport",
+      "taskId": "node:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Athread-send%3Aw0-photo-inventory-transport-source-20261101-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Add730894-0fab-4a94-873d-743422eae122%3Adelegate-task%3Aportal-rebuild-w0-notification-transport-source-20261101-r1",
+      "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Add730894-0fab-4a94-873d-743422eae122%253Adelegate-task%253Aportal-rebuild-w0-notification-transport-source-20261101-r1:ordinal:6",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "baseCommit": "07c4ae82def408bf9526f48a48eb987e4506f83e",
+      "writeSet": [
+        "apps/portal/src/app/photo-inventory-request.ts (NEW)",
+        "apps/portal/site/auth/client-cookie-session.js (inventory READ classification)",
+        "apps/portal/site/auth/advisor-cookie-session.js (inventory-only bounded decoder)",
+        "owned client-policy/client-upstream/gateway inventory nodes and NEW tests/report"
+      ],
+      "authoritativeTaskIdForwarded": true,
+      "resourceGrant": false,
+      "receipt": ".local-artifacts/portal-rebuild/review-allocations-20261101/coordination_recovery_ledger_inputs_20261102.json",
+      "statusEvidence": "Original returned allocation receipt, live resumed thread read, and successful missing-input delivery; no identity inferred from run ordinal.",
+      "status": "running",
+      "statusQualification": "Last direct missing-input delivery; not a new poll or acceptance result."
     }
   ],
   "parentVerification": {
@@ -10639,5 +10734,15 @@
     "photoTransport": "docs/portal-rebuild/research/COORDINATOR_PHOTO_INVENTORY_TRANSPORT_PIN.md",
     "sourceKernelMigration": "20261102033048_portal_rebuild_source_kernel_v1.sql",
     "sqlExecution": "none authorized in active source assignments"
+  },
+  "coordinationRecovery20261102": {
+    "sourcePin": "docs/portal-rebuild/research/COORDINATOR_SOURCE_KERNEL_INTERFACE_PIN.md",
+    "photoInventoryPin": "docs/portal-rebuild/research/COORDINATOR_PHOTO_INVENTORY_TRANSPORT_PIN.md",
+    "mayaReviewInputPin": ".local-artifacts/portal-rebuild/review-allocations-20261101/maya_full_pin.json",
+    "mayaReportVerdict": "FAIL MIF1/P3 inherited; mounted/browser reachability unproved; no production import; protected208/210 hold retained",
+    "lateCurrentTaskReceipts": ".local-artifacts/portal-rebuild/review-allocations-20261101/late_current_task_receipts_20261102.json",
+    "sourceHttpBoundary": "closed native Response ports only; no credential/Auth factory or bootstrap in Phase1",
+    "legacyPhotoFixtures": "unchanged raw failures, new canonical-wire tests separate; no waiver/fallback/full-suite-green claim",
+    "scope": "source/report/coordination only; no new resource or activation grant"
   }
 }

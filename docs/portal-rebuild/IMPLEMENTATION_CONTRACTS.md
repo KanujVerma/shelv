@@ -111,4 +111,10 @@ This is an engineering refinement of the unactivated proposal, not a founder pol
 
 The later SAC3 [exact fixture-input reconciliation](research/COORDINATOR_SAC3_FIXTURE_PIN.md) preserves causal-only and actual-page-position evidence separately. It changes no public model or authority; independent R4 remains required.
 
+### I11: Source kernel and photo inventory producer seams, 1 November
+
+The [Source kernel interface pin](research/COORDINATOR_SOURCE_KERNEL_INTERFACE_PIN.md) selects the unchanged SourceScope/Source15/Account3 contracts, fixed authenticated journal lookups, immutable disclosure draft/publication references, exact canonical request hashes, guarded pending pointer and coordinated scope/Account CAS. The Account mapper's purged-status requirement is satisfied by retaining the actual minimal safe original withdrawal/hash; missing context stays unavailable. Closed HTTP Response ports do not establish actual authentication or activate credential transport. No real policy, payload or cleanup authority is enabled.
+
+The [photo inventory transport pin](research/COORDINATOR_PHOTO_INVENTORY_TRANSPORT_PIN.md) fixes the client readPage adapter, unchanged provider constructor behavior and inventory-only8192-byte bounds through the browser decoder. Complete collection is an internal consumer responsibility under one authoritative head and current visibility; a page is not a complete PhotoBasis. Old legacy fixtures remain unchanged and raw failures remain separate from new canonical-wire cases. These are implementation pins, not independent or genuine acceptance.
+
 Every later material decision records problem, alternatives, chosen approach, rationale, affected contract and tests here. Statuses are separate: agreed, designed, implemented, locally tested, hosted verified, deployed.
