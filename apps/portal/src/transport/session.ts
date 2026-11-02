@@ -1,3 +1,5 @@
+// @ts-ignore retained JavaScript; private denial provenance is exercised with real cookies
+import {cookieDenialStatus} from '../../site/auth/advisor-cookie-session.js';
 import type {PresentationMode} from '../navigation/routes.ts';
 
 /** Structural boundary of the retained CookieClientSession / CookieAdvisorSession.
@@ -21,26 +23,36 @@ export interface CookieSessionPort {
 /** Local UI relevance only. This predicate can deny, never grant authority. */
 export interface OperationOptions {signal?: AbortSignal;isApplicable?:()=>boolean}
 export interface OperationPort<Input,Output> {execute(input: Input, options?: OperationOptions): Promise<Output>}
-export type CookieChannel = 'operations'|'payments'|'checkins'|'admission'|'walkthroughs'|'plans'|'care'|'reviews'|'guidance';
+export type CookieChannel = 'operations'|'payments'|'checkins'|'admission'|'walkthroughs'|'plans'|'care'|'reviews'|'guidance'|'notifications';
 export type CookieRequestFactory = (channel: CookieChannel, session: CookieSessionPort) => (command: unknown, options?: OperationOptions)=>Promise<unknown>;
 export type OperationKind = 'read'|'write';
-export class TransportError extends Error {
-  readonly status: number;
-  readonly outcome: 'rejected'|'uncertain'|'session-ended';
-  constructor(status: number, kind: OperationKind='read') {
-    super(status===401?'your session has ended. sign in again.':status===403?'you do not have access to this action.':status===409?'this changed. review the latest version before trying again.':status===503 && kind==='write'?'the result is uncertain. check its status before retrying.':'we could not complete this request.');
-    this.name='TransportError';this.status=status;
-    this.outcome=status===401?'session-ended':status===503 && kind==='write'?'uncertain':'rejected';
-  }
-}
-export function createSessionTransport(session: CookieSessionPort) {
+export {TransportError} from './error.ts';
+import {TransportError} from './error.ts';
+
+export function createSessionTransport(session: CookieSessionPort, retireBoundary: ()=>void = ()=>{}) {
   const audience=session.audience;
   const memory=new Map<string,unknown>(),listeners=new Set<()=>void>(),controllers=new Set<AbortController>();
-  let generation=session.generation,owner=session.identity?.ownerId,ended=false;
-  function invalidate() {memory.clear();controllers.forEach(c=>c.abort());controllers.clear();listeners.forEach(fn=>fn());}
+  let generation=session.generation,owner=session.identity?.ownerId,role=session.identity?.role,
+    observedAudience=session.audience,signedOut=session.status==='signedout',ended=false,invalidating=false;
+  function invalidate() {
+    if(invalidating)return;
+    invalidating=true;
+    try{
+    const pending=[...controllers], observers=[...listeners];
+    memory.clear();controllers.clear();
+    // Local context retirement can only deny. It runs after memory is cleared
+    // and before aborts or observers can inspect the producing App boundary.
+    try {retireBoundary();} catch {/* Cleanup must still reach the retained session. */}
+    for(const controller of pending){try{controller.abort();}catch{/* Continue captured cleanup. */}}
+    for(const observer of observers){if(listeners.has(observer)){try{observer();}catch{/* Isolate each observer. */}}}
+    }finally{invalidating=false;}
+  }
   function sessionChanged() {
-    if (generation!==session.generation || owner!==session.identity?.ownerId || audience!==session.audience || session.identity?.role!==audience || !session.identity || session.status==='signedout') {
-      generation=session.generation;owner=session.identity?.ownerId;invalidate();
+    const nextGeneration=session.generation,nextIdentity=session.identity,nextAudience=session.audience,
+      nextOwner=nextIdentity?.ownerId,nextRole=nextIdentity?.role,nextSignedOut=session.status==='signedout';
+    if (generation!==nextGeneration || owner!==nextOwner || role!==nextRole || observedAudience!==nextAudience || signedOut!==nextSignedOut) {
+      generation=nextGeneration;owner=nextOwner;role=nextRole;observedAudience=nextAudience;signedOut=nextSignedOut;
+      invalidate();
     }
   }
   function accessible() {
@@ -50,7 +62,10 @@ export function createSessionTransport(session: CookieSessionPort) {
   function bind<Input,Output>({kind,invoke,decode}: {kind: OperationKind; invoke: (input: Input,options: OperationOptions&{signal: AbortSignal})=>Promise<unknown>; decode: (value: unknown)=>Output}): OperationPort<Input,Output> {
     return {async execute(input,options={}) {
       accessible();if (session.status!=='ready') throw new TransportError(503,kind);
-      const startGeneration=session.generation,startOwner=session.identity?.ownerId;
+      const retained=session as CookieSessionPort&{readonly _view?:{ownerId:string;generation:number;csrf:string;idleExpiresAt:string;absoluteExpiresAt:string}};
+      const startGeneration=session.generation,startOwner=session.identity?.ownerId,startEpoch=session._epoch,startServerGeneration=retained._view?.generation;
+      const same=()=>!ended&&session.audience===audience&&session.identity?.role===audience&&
+        session.identity.ownerId===startOwner&&session.generation===startGeneration&&session._epoch===startEpoch&&retained._view?.generation===startServerGeneration;
       const isApplicable=options.isApplicable;
       const applicability=(guard:()=>void)=>{
         if(isApplicable===undefined)return;
@@ -60,43 +75,65 @@ export function createSessionTransport(session: CookieSessionPort) {
       };
       applicability(()=>{
         accessible();
-        if(ended||session.audience!==audience||session.identity?.role!==audience||session.identity.ownerId!==startOwner||session.generation!==startGeneration)throw new TransportError(401);
+        if(!same())throw new TransportError(401);
         if(session.status!=='ready')throw new TransportError(503,kind);
       });
       let lease: CookieLease;
-      try {lease=await session.acquire();} catch (error) {sessionChanged();throw safeError(error,kind);}
-      if (ended || session.generation!==startGeneration || session.identity?.ownerId!==startOwner || !session.isCurrent(lease)) {sessionChanged();throw new TransportError(401);}
+      try {lease=await session.acquire();} catch (error) {sessionChanged();if(!same())throw new TransportError(401);throw safeError(error,kind);}
       const privateCurrent=()=>{
-        if(ended||session.audience!==audience||session.identity?.role!==audience||session.identity.ownerId!==startOwner||session.generation!==startGeneration||!session.isCurrent(lease)){sessionChanged();throw new TransportError(401);}
+        const live=same()&&session.isCurrent(lease);
+        if(!same()||!live||session.status!=='ready'){sessionChanged();throw new TransportError(401);}
       };
-      applicability(privateCurrent);
+      // This predicate classifies failures only. It never admits invocation,
+      // decoding or private success, and requires an actually acquired lease.
+      const offlineCurrent=()=>{
+        const matches=()=>same()&&session.status==='offline'&&Number.isFinite(startEpoch)&&lease.localEpoch===startEpoch&&
+          lease.ownerId===startOwner&&retained._view?.ownerId===startOwner&&retained._view?.csrf===lease.csrf;
+        if(!matches())return false;
+        let now:number;try{now=session.now?.()??Date.now();}catch{return false;}
+        const view=retained._view;
+        return matches()&&!!view&&Number.isFinite(now)&&now<Math.min(Date.parse(view.idleExpiresAt),Date.parse(view.absoluteExpiresAt));
+      };
+      const errorCurrent=()=>{
+        sessionChanged();
+        const live=same()&&session.isCurrent(lease),offline=offlineCurrent();
+        if(!same()||!(live&&session.status==='ready'||offline)){sessionChanged();throw new TransportError(401);}
+        return offline;
+      };
+      const classify=(error:unknown):TransportError=>{
+        errorCurrent();
+        const status=(error as {status?:unknown}|null)?.status,denial=cookieDenialStatus(error,session,lease);
+        const offline=errorCurrent();
+        if(offline&&denial!==401&&denial!==403)return new TransportError(503,kind);
+        if(status!==401&&status!==403)applicability(()=>{errorCurrent();});
+        const result=safeError(error,kind);errorCurrent();return result;
+      };
       const controller=new AbortController(),abort=()=>controller.abort();controllers.add(controller);
-      if (options.signal?.aborted) controller.abort();
-      options.signal?.addEventListener('abort',abort,{once:true});
+      const signal=options.signal;
+      let decoded!:Output,failed=false,failure:unknown;
       try {
+        privateCurrent();applicability(privateCurrent);
+        if(signal?.aborted)controller.abort();
+        signal?.addEventListener('abort',abort,{once:true});
         if (controller.signal.aborted) throw new TransportError(503,kind);
         applicability(privateCurrent);
         const value=await invoke(input,{signal:controller.signal,...(isApplicable===undefined?{}:{isApplicable})});
-        if (ended || session.audience!==audience || session.generation!==startGeneration || !session.isCurrent(lease)) throw new TransportError(401);
+        privateCurrent();
         if (controller.signal.aborted) throw new TransportError(503,kind);
         applicability(privateCurrent);
         // Decoders are supplied by W1's versioned strict response contracts.
-        const decoded=decode(value);applicability(privateCurrent);return decoded;
+        decoded=decode(value);privateCurrent();applicability(privateCurrent);
       } catch (error) {
-        // Real factories check the lease, then suspend on 503 before rethrowing.
-        // isCurrent intentionally rejects offline results, so only that error
-        // path may use the retained epoch/deadlines. Never accept a late success.
-        const live=session.isCurrent(lease);
-        const suspended=(error as {status?: unknown}|null)?.status===503 && suspendedLease(session,lease);
-        const current=!ended && session.audience===audience && session.identity?.role===audience &&
-          session.identity.ownerId===startOwner && session.generation===startGeneration && (live || suspended);
-        sessionChanged();if (!current) throw new TransportError(401);
-        if(![401,403].includes((error as {status?:number}|null)?.status??0))applicability(()=>{
-          const live=session.isCurrent(lease),suspended=(error as {status?:unknown}|null)?.status===503&&suspendedLease(session,lease);
-          if(ended||session.audience!==audience||session.identity?.role!==audience||session.identity.ownerId!==startOwner||session.generation!==startGeneration||!(live||suspended)){sessionChanged();throw new TransportError(401);}
-        });
-        throw safeError(error,kind);
-      } finally {controllers.delete(controller);options.signal?.removeEventListener('abort',abort);}
+        failed=true;failure=error;
+      } finally {
+        controllers.delete(controller);
+        try{signal?.removeEventListener('abort',abort);}catch(error){if(!failed){failed=true;failure=error;}}
+      }
+      if(failed)throw classify(failure);
+      // Cleanup is callback-capable too. Recheck before the only private return.
+      try{privateCurrent();applicability(privateCurrent);if(controller.signal.aborted||signal?.aborted)throw new TransportError(503,kind);}
+      catch(error){throw classify(error);}
+      return decoded;
     }};
   }
   return {
@@ -115,10 +152,6 @@ export function createSessionTransport(session: CookieSessionPort) {
     async signOut() {ended=true;invalidate();return session.signOut();},
     dispose() {ended=true;invalidate();listeners.clear();},
   };
-}
-function suspendedLease(session: CookieSessionPort,lease: CookieLease): boolean {
-  return session.status==='offline' && session._epoch===lease.localEpoch && Number.isFinite(session._epoch) &&
-    (session.now?.() ?? Date.now())<Math.min(Date.parse(lease.idleExpiresAt ?? ''),Date.parse(lease.absoluteExpiresAt ?? ''));
 }
 function safeError(error: unknown, kind: OperationKind): TransportError {
   if (error instanceof TransportError) return error;

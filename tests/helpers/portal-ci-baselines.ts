@@ -16,9 +16,9 @@ function validPath(name:string):boolean {
   return typeof name==='string'&&name.length>0&&!name.includes('\0')&&!name.includes('\\')&&name.split('/').every(p=>p!==''&&p!=='.'&&p!=='..');
 }
 
-export function loadPortalCiBaselines(file:string|URL=defaultFixture){
+export function loadPortalCiBaselines(file:string|URL=defaultFixture,expectedSha256:string=fixtureSha256){
   const raw=readFileSync(file);
-  requireValue(createHash('sha256').update(raw).digest('hex')===fixtureSha256,'historical_fixture_integrity');
+  requireValue(/^[a-f0-9]{64}$/.test(expectedSha256)&&createHash('sha256').update(raw).digest('hex')===expectedSha256,'historical_fixture_integrity');
   const fixture=JSON.parse(raw.toString('utf8')) as Fixture;
   requireValue(fixture.schemaVersion===1&&Array.isArray(fixture.commits),'historical_fixture_shape');
   const commits=new Map<string,{complete:boolean;entries:Map<string,Entry>;bytes:Map<string,Buffer>}>();

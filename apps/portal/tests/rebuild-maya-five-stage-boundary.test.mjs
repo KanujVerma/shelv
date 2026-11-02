@@ -9,8 +9,8 @@ test('the owned demo closure has no endpoint, credential, storage, private input
   assert.equal(inputs.some(f=>/session-integration|\/app\/|private-walkthrough|backend\/|supabase\/|\/server\//.test(f)),false);
   // Actual shared guidance imports TransportError from this source file. Input
   // membership is not factory reachability: check the actual emitted closure.
-  assert.deepEqual(inputs.filter(f=>/\/transport\//.test(f)),['src/transport/session.ts']);
-  assert.ok(Object.values(metafile.outputs).some(o=>o.inputs['src/transport/session.ts']?.bytesInOutput>0));
+  assert.deepEqual(inputs.filter(f=>/\/transport\//.test(f)),['src/transport/error.ts']);
+  assert.ok(Object.values(metafile.outputs).some(o=>o.inputs['src/transport/error.ts']?.bytesInOutput>0));
   assert.match(code,/class extends Error|class TransportError/);
   assert.doesNotMatch(code,/createSessionTransport|createCookieOperationPort|createCookieRequestFactory|createApplicationSession|document\.cookie|\/api\/|fetch\(/);
   assert.deepEqual(inputs.filter(f=>f.includes('site/')).sort(),['site/advisor/maya-sample.js','site/advisor/presentation-model.js','site/auth/portal-routes.js']);

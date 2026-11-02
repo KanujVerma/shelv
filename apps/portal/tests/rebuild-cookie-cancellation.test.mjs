@@ -50,7 +50,9 @@ for(const family of families){
  });
  for(const failure of ['network','malformed','http503','http401','abort-without-caller','deadline','deadline-before-caller','late-abort-network','late-abort-malformed','late-abort-http503','late-abort-http401'])test(`${family}: ${failure} retains actual failure semantics`,async t=>{
   const f=await fixture(t,{audience,timeoutMs:20}),request=rawRequest(f,family),controller=new AbortController();
+  const knownBody=failure==='late-abort-http401'?bodyRead({status:401}):null;
   f.queue.push((_u,init)=>{
+   if(knownBody)return knownBody.response(init);
    const late=failure.startsWith('late-abort-');if(late)controller.abort();
    if(failure.endsWith('network'))throw new TypeError('synthetic network unavailable');
    if(failure.endsWith('malformed'))return new Response('{',{status:200});
@@ -59,14 +61,17 @@ for(const family of families){
    if(failure==='abort-without-caller')throw abortError();
    return new Promise((_resolve,reject)=>init.signal.addEventListener('abort',()=>{if(failure==='deadline-before-caller')controller.abort();reject(abortError());},{once:true}));
   });
-  const denied=failure.endsWith('http401');await assert.rejects(request.execute(statusCommand,{signal:controller.signal}),e=>e.status===(denied?401:503));
+  const denied=failure.endsWith('http401');const rejection=assert.rejects(request.execute(statusCommand,{signal:controller.signal}),e=>e.status===(denied?401:503));
+  if(knownBody){await knownBody.entered;controller.abort();}
+  await rejection;
   assert.equal(f.runtime.cookie.status,denied?'signedout':'offline');assert.equal(f.calls.length,1);
   const before=f.calls.length;await assert.rejects(request.execute(statusCommand),e=>e.status===(denied?401:503));assert.equal(f.calls.length,before);
   await f.runtime.restore();f.reply({status:'absent'});assert.deepEqual(positiveRoot(await rawRequest(f,family).execute(statusCommand),statusCommand,family),{status:'absent'});
  });
  test(`${family}: a late caller signal cannot erase an actual current403`,async t=>{
-  const f=await fixture(t,{audience}),controller=new AbortController();f.queue.push(()=>{controller.abort();return Response.json({code:'forbidden'},{status:403});});
-  await assert.rejects(rawRequest(f,family).execute(statusCommand,{signal:controller.signal}),e=>e.status===403&&e.outcome==='rejected');assert.equal(f.runtime.cookie.status,'ready');
+  const f=await fixture(t,{audience}),controller=new AbortController(),body=bodyRead({status:403});f.queue.push((_u,init)=>body.response(init));
+  const rejection=assert.rejects(rawRequest(f,family).execute(statusCommand,{signal:controller.signal}),e=>e.status===403&&e.outcome==='rejected');
+  await body.entered;controller.abort();await rejection;assert.equal(f.runtime.cookie.status,'ready');
  });
  for(const replacement of ['owner','csrf','logout-epoch','generation'])test(`${family}: stale ${replacement} result/error/finally cannot retire the new lease`,async t=>{
   const f=await fixture(t,{audience}),old=rawRequest(f,family),oldBoundary=f.runtime.getSnapshot().boundary,entered=deferred(),held=deferred(),oldController=new AbortController();

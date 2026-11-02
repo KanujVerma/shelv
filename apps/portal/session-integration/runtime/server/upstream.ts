@@ -8,6 +8,9 @@ import { demand, decode, SessionError, type AuthProvider, type Credentials, type
 import { PORTAL_ORIGIN, SUPABASE_ORIGIN, readBounded, parseCommand, object, safeCodes, uuid, type Operation } from './policy';
 import type { FlowAuth, LegacyPair } from './auth-flow';
 import type { WireResponse } from './protocol';
+import {parseNotificationCommand,notificationCapability,mapNotificationResponse} from './policy';
+import {readNotificationCommand} from '../../../../../src/contracts/PortalNotificationValidation.ts';
+import {notificationResponseMaxBytes} from '../../../../../src/contracts/PortalNotificationValues.ts';
 export function claims(token: string) { try {
     demand(token.length <= 16384);
     return object(JSON.parse(new TextDecoder().decode(decode(token.split('.')[1]))));
@@ -146,6 +149,51 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
         check(error);
     }
     protected edge(credentials: Credentials, service: string, command: unknown) { return this.json(`${SUPABASE_ORIGIN}/functions/v1/${service}`, credentials.access_token, command); }
+    /** Fixed authenticated notification handler only. Service worker RPCs are never registered. */
+    protected async notification(credentials:Credentials,capabilities:Capabilities,input:unknown,audience:'client'|'advisor'):Promise<WireResponse>{
+        const command=readNotificationCommand(parseNotificationCommand(input,audience)),required=notificationCapability(command);
+        demand(capabilities[required],403,'forbidden');
+        const writing=command.action==='mark_seen_v1'||command.action==='retry_failed_email_v1';
+        const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),this.timeoutMs);
+        let status=503,body:unknown={code:writing?'uncertain':'unavailable'};
+        try{
+            const response=await this.fetcher(`${SUPABASE_ORIGIN}/functions/v1/concierge-notifications`,{method:'POST',headers:this.headers(credentials.access_token),body:JSON.stringify(command),signal:controller.signal,redirect:'error',cache:'no-store'});
+            const headersBeforeAbort=!controller.signal.aborted;
+            if(response.status===401||response.status===403){
+                if(headersBeforeAbort)status=response.status;
+                try{void response.body?.cancel().catch(()=>{});}catch{}
+            }else{
+                const reader=response.body?.getReader(),chunks:Uint8Array[]=[];let length=0;
+                const cancel=()=>{try{void reader?.cancel().catch(()=>{});}catch{}};
+                controller.signal.addEventListener('abort',cancel,{once:true});
+                try{
+                    if(controller.signal.aborted)cancel();
+                    if(reader)for(;;){
+                        const {done,value}=await reader.read();if(done)break;
+                        length+=value.byteLength;
+                        if(length>notificationResponseMaxBytes){cancel();throw new SessionError(503,'unavailable');}
+                        chunks.push(value);
+                    }
+                }finally{controller.signal.removeEventListener('abort',cancel);reader?.releaseLock();}
+                const bytes=new Uint8Array(length);let offset=0;
+                for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.byteLength;}
+                if(!controller.signal.aborted){body=JSON.parse(new TextDecoder('utf-8',{fatal:true,ignoreBOM:false}).decode(bytes));status=response.status;}
+            }
+        }catch{/* A lost/malformed acknowledgement is uncertain for this exact original write. */}
+        finally{clearTimeout(timer);}
+        // Actual provider context, never a role/current port. Recheck the required capability too.
+        try{
+            const current=await this.context(credentials);
+            demand(current.ownerId===credentials.user.id&&current.providerSessionId===credentials.providerSessionId,401,'session_ended');
+            demand(current.capabilities[required],403,'forbidden');
+        }catch(error){
+            if([401,403].includes((error as {status?:number})?.status??0))throw error;
+            if(status!==401&&status!==403)throw new SessionError(503,writing?'uncertain':'unavailable');
+        }
+        const value=mapNotificationResponse(body,command,status);
+        demand(!hasCredentials(value,credentials),503,writing?'uncertain':'unavailable');
+        return {status:200,body:value};
+    }
     private async paymentEvidence(credentials:Credentials,evidenceId:string,v2:boolean,clientId?:string){
         // Reauthorize through the existing Edge/SQL guard on every descriptor and image read.
         const raw=await this.edge(credentials,'concierge-payments',{action:'evidence_url',evidenceId,...(v2?{schemaVersion:2}:{})});
@@ -189,6 +237,7 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
     }
     async perform(credentials: Credentials, capabilities: Capabilities, inputOperation: Operation): Promise<WireResponse> {
         demand(capabilities.view, 403, 'forbidden');
+        if(inputOperation.kind==='command'&&inputOperation.channel==='notifications')return this.notification(credentials,capabilities,inputOperation.command,'advisor');
         const operation=inputOperation.kind==='command'&&(inputOperation.channel==='reviews'||inputOperation.channel==='guidance')
             ? parseCommand(inputOperation.channel,inputOperation.command) : inputOperation;
         demand(operation.kind !== 'client-media' && operation.kind !== 'client-upload' && operation.kind !== 'walkthrough', 403, 'action_forbidden');

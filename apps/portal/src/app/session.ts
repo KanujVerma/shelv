@@ -34,14 +34,21 @@ export function createApplicationSession({
   const cookie: RetainedCookie = new (
     audience === "client" ? CookieClient : CookieAdvisor
   )({ ...options, onState: changed });
-  const transport = createSessionTransport(cookie);
+  const transport = createSessionTransport(cookie, drop);
   function emit() {
     snapshot = { status: cookie.status, boundary: captured?.boundary ?? null };
-    listeners.forEach((fn) => fn());
+    const published = snapshot;
+    for (const listener of [...listeners]) {
+      if (snapshot !== published) break;
+      if (listeners.has(listener)) {
+        try { listener(); } catch { /* Observer failures cannot block retirement. */ }
+      }
+    }
   }
   function drop() {
     const prior = captured;
     captured = null;
+    snapshot = { status: cookie.status, boundary: null };
     prior?.end();
   }
   function current(c: NonNullable<typeof captured>): boolean {
@@ -86,6 +93,7 @@ export function createApplicationSession({
       return;
     const memory = new Map<string, unknown>(),
       invalidations = new Set<() => void>();
+    let retired = false;
     const c = {
       owner: identity.ownerId,
       generation: cookie.generation,
@@ -94,9 +102,14 @@ export function createApplicationSession({
       lease: { ...v, localEpoch: cookie._epoch },
       boundary: null as unknown as PlanSessionBoundary,
       end() {
+        if (retired) return;
+        retired = true;
         memory.clear();
-        invalidations.forEach((fn) => fn());
+        const observers = [...invalidations];
         invalidations.clear();
+        for (const observer of observers) {
+          try { observer(); } catch { /* Continue every captured retirement observer. */ }
+        }
       },
     };
     const valid = () => {
@@ -111,6 +124,7 @@ export function createApplicationSession({
       key: crypto.randomUUID(),
       isCurrent: valid,
       subscribeInvalidation(fn) {
+        if (retired) return () => {};
         invalidations.add(fn);
         return () => invalidations.delete(fn);
       },
@@ -177,18 +191,18 @@ export function createApplicationSession({
       return cookie.sendLink(email, returnTo, remember);
     },
     async signOut() {
-      drop();
-      transport.sessionChanged();
+      const ending = transport.signOut();
       emit();
-      return transport.signOut();
+      return ending;
     },
     dispose() {
       if (disposed) return;
-      transport.dispose();
-      drop();
       disposed = true;
       clearTimeout(timer);
+      transport.dispose();
+      drop();
       cookie.dispose();
+      snapshot = { status: cookie.status, boundary: null };
       listeners.clear();
     },
   };

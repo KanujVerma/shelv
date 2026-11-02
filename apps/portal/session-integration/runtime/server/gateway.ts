@@ -4,9 +4,11 @@ import {careCommandMaxBytes} from '../../../../../src/contracts/PortalCareValues
 import {reviewCommandMaxBytes} from '../../../../../src/contracts/PortalReviewValues.ts';
 import {mapReviewResponse} from './review-policy';
 import {mapGuidanceResponse} from './guidance-policy';
+import {mapNotificationResponse} from './policy';
+import {notificationCommandMaxBytes,notificationErrorStatuses} from '../../../../../src/contracts/PortalNotificationValues.ts';
 import { demand, digest, randomId, SessionError, type SessionView } from './types';
 import { PORTAL_ORIGIN, validateRequest, jsonBody, parseCommand, parsePreview, parseAdvisorEvidence, exact, safeError, readBounded, type Channel } from './policy';
-import { parseClientCommand, parseClientMedia, validateClientUpload, mapClientPhotoHeadResponse } from './client-policy';
+import { parseClientCommand, parseClientMedia, validateClientUpload, mapClientPhotoHeadResponse, mapClientPhotoInventoryResponse } from './client-policy';
 import type { Completed, VaultCommand, VaultResult, WireResponse } from './protocol';
 import type { AdvisorSessionObject } from '../workers/session-vault/index';
 export type GatewayEnv = Omit<GatewayBindings, 'ADVISOR_SESSIONS' | 'CLIENT_SHARED_SESSIONS'> & {
@@ -51,11 +53,12 @@ function clearCookies() { const headers = new Headers();
         if (!url.pathname.startsWith(base))
             return env.ASSETS.fetch(request);
         let lockedControl = false, clearUnusableSession = false;
+        let notificationInput:unknown;
         try {
             const route = client ? url.pathname.replace('/api/client/', '/api/advisor/') : url.pathname;
             if (client) demand(env.CLIENT_SHARED_SESSIONS === 'true', 503, 'configuration_missing');
             const rawUpload = client && route === '/api/advisor/checkins/photos/upload';
-            const known = ['/api/advisor/session', '/api/advisor/auth/request', '/api/advisor/auth/complete', '/api/advisor/session/upgrade', '/api/advisor/logout', '/api/advisor/operations', '/api/advisor/payments', '/api/advisor/checkins', '/api/advisor/admission', '/api/advisor/plans', '/api/advisor/care', '/api/advisor/reviews', ...(!client ? ['/api/advisor/walkthroughs','/api/advisor/guidance'] : [])];
+            const known = ['/api/advisor/session', '/api/advisor/auth/request', '/api/advisor/auth/complete', '/api/advisor/session/upgrade', '/api/advisor/logout', '/api/advisor/operations', '/api/advisor/payments', '/api/advisor/checkins', '/api/advisor/admission', '/api/advisor/plans', '/api/advisor/care', '/api/advisor/reviews', '/api/advisor/notifications', ...(!client ? ['/api/advisor/walkthroughs','/api/advisor/guidance'] : [])];
             const media = client ? /^\/api\/advisor\/media\/(photo|evidence)$/.test(route) : route==='/api/advisor/media/evidence';
             const preview = !client && /^\/api\/advisor\/preview\/(draft|published|payments|checkins|photo)$/.test(route);
             demand((known.includes(route) && !(client && route.endsWith('/session/upgrade'))) || preview || media || rawUpload, 404, 'not_found');
@@ -124,7 +127,7 @@ function clearCookies() { const headers = new Headers();
                 const result=await dispatch<WireResponse>('session',sid,{type:'session.execute',csrf,operation});
                 return json(result.body,result.status);
             }
-            const body = await jsonBody(request,route==='/api/advisor/plans'?planCommandMaxBytes:route==='/api/advisor/care'?careCommandMaxBytes:['/api/advisor/reviews','/api/advisor/guidance'].includes(route)?reviewCommandMaxBytes:100000);
+            const body = await jsonBody(request,route==='/api/advisor/notifications'?notificationCommandMaxBytes:route==='/api/advisor/plans'?planCommandMaxBytes:route==='/api/advisor/care'?careCommandMaxBytes:['/api/advisor/reviews','/api/advisor/guidance'].includes(route)?reviewCommandMaxBytes:100000);
             if (route === '/api/advisor/logout') {
                 exact(body, []);
                 demand(sid || fid, 401, 'session_ended');
@@ -167,13 +170,19 @@ function clearCookies() { const headers = new Headers();
                 return json({ signedIn: true, ...result.session }, 200, { 'Set-Cookie': cookie(SESSION, result.sessionId) + (result.session.remembered === true ? `; Max-Age=${remaining}` : '') });
             }
             const channel = route.slice('/api/advisor/'.length) as Channel, operation = client ? parseClientCommand(channel, body) : parseCommand(channel, body);
+            if(channel==='notifications'&&operation.kind==='command')notificationInput=operation.command;
             demand(sid, 401, 'session_ended');
             const result = await dispatch<WireResponse>('session', sid, { type: 'session.execute', csrf, operation });
-            const mapped=client&&channel==='checkins'&&body.action==='read_photo_head_v1'&&result.status===200?mapClientPhotoHeadResponse(result.body):channel==='reviews'?mapReviewResponse(result.body,body):channel==='guidance'?mapGuidanceResponse(result.body,body):result.body;
+            const mapped=channel==='notifications'?mapNotificationResponse(result.body,notificationInput,result.status):client&&channel==='checkins'&&body.action==='read_photo_inventory_v1'&&result.status===200?mapClientPhotoInventoryResponse(result.body,body):client&&channel==='checkins'&&body.action==='read_photo_head_v1'&&result.status===200?mapClientPhotoHeadResponse(result.body):channel==='reviews'?mapReviewResponse(result.body,body):channel==='guidance'?mapGuidanceResponse(result.body,body):result.body;
             return json(mapped, result.status);
         }
         catch (error) {
             const { status, code } = safeError(error);
+            if(notificationInput&&status!==401&&status!==403){
+                const originalCode=(error as {code?:unknown})?.code;
+                const safeCode=typeof originalCode==='string'&&notificationErrorStatuses[originalCode]===status?originalCode:code;
+                try{mapNotificationResponse({code:safeCode},notificationInput,status);}catch(failure){const e=failure as SessionError;return json({code:e.code},e.status);}
+            }
             return json({ code }, status, lockedControl && clearUnusableSession && [401, 403].includes(status) ? clearCookies() : {});
         }
     } };

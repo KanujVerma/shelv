@@ -3,13 +3,45 @@ import {navigationReturnTo} from './navigation-return.js';
 import {advisorPlanActions,PLAN_COMMAND_MAX_BYTES} from './plan-actions.js';
 import {advisorCareActions,CARE_COMMAND_MAX_BYTES} from './care-actions.js';
 import {advisorReviewActions,advisorGuidanceActions,REVIEW_COMMAND_MAX_BYTES} from './review-actions.js';
+// Denial provenance is private and can never authorize a success or private return.
+const cookieHttpDenials = new WeakMap();
+export function cookieDenialStatus(error, session, lease) {
+    const origin = error && typeof error === 'object' ? cookieHttpDenials.get(error) : null;
+    if (!origin || origin.session !== session || !lease) return null;
+    const matches = () => origin.owner && origin.audience === session.audience && origin.role === origin.audience &&
+        session.identity?.role === origin.audience && session.identity.ownerId === origin.owner &&
+        origin.owner === lease.ownerId && origin.epoch === lease.localEpoch && session._epoch === origin.epoch &&
+        session.generation === origin.generation && session._view?.generation === origin.serverGeneration &&
+        origin.csrf === lease.csrf && session._view?.csrf === lease.csrf && ['ready','offline'].includes(session.status);
+    if (!matches()) return null;
+    let now;
+    try { now = session.now?.() ?? Date.now(); } catch { return null; }
+    return matches() && now < Math.min(Date.parse(session._view.idleExpiresAt), Date.parse(session._view.absoluteExpiresAt)) ? origin.status : null;
+}
 const actions = { operations: ['advisor_preview_read_v2', 'advisor_list', 'advisor_read_v2', 'save_intake_v2', 'save_draft_v2', 'publish_v2', 'save_meeting_note', 'service_advisor_read', 'record_review', 'save_instruction_draft', 'publish_instruction_revision', 'record_purchase', 'record_return_event', 'cancel_service'], payments: ['advisor_read', 'issue_quote', 'confirm_payment', 'reject_claim', 'evidence_url'], checkins: ['advisor_read', 'advisor_photo_view', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply'], admission: ['capabilities','add_client','admission_status'], walkthroughs:['library','open','share_list','share_create','share_revoke'],plans:advisorPlanActions,care:advisorCareActions,reviews:advisorReviewActions,guidance:advisorGuidanceActions,commerce:advisorCommerceActions };
+actions.notifications = ['list_inbox_v1','mark_seen_v1','read_event_deliveries_v1','retry_failed_email_v1','request_status_v1'];
 export class CookieSessionError extends Error {
     constructor(status, code = 'unavailable') { super(status === 401 ? 'Your session has ended. Sign in again.' : status === 403 ? 'You do not have access to this action.' : 'We could not complete this request.'); this.status = status; this.code = /^[a-z_]{1,60}$/.test(code) ? code : 'unavailable'; }
 }
 // Local cancellation only, with no status/code/authority or wire representation.
 export class CookieRequestCancelled extends Error {
     constructor() { super('The operation was cancelled.'); this.name = 'AbortError'; }
+}
+async function photoInventoryJson(response,signal,current){
+    const reader=response.body?.getReader(),chunks=[];let length=0;
+    const cancel=()=>{try{void reader?.cancel().catch(()=>{});}catch{}};
+    signal.addEventListener('abort',cancel,{once:true});
+    try{
+        current();
+        if(reader)for(;;){
+            const {done,value}=await reader.read();current();if(done)break;
+            length+=value.byteLength;if(length>8192){cancel();throw new CookieSessionError(503);}
+            chunks.push(value);
+        }
+        current();const bytes=new Uint8Array(length);let offset=0;
+        for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.byteLength;}
+        current();const value=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));current();return value;
+    }finally{signal.removeEventListener('abort',cancel);reader?.releaseLock();}
 }
 export class CookieAdvisorSession {
     constructor({ fetcher = (...args) => globalThis.fetch(...args), onState = () => { }, timeoutMs = 15000, now = () => Date.now(), locks = globalThis.navigator?.locks, audience = 'advisor' } = {}) {
@@ -94,6 +126,7 @@ export class CookieAdvisorSession {
         if (signal?.aborted)
             abort();
         signal?.addEventListener('abort', abort, { once: true });
+        const requestOrigin = {session:this,audience:this.audience,role:this.identity?.role,owner:this.identity?.ownerId,epoch:this._epoch,generation:this.generation,serverGeneration:this._view?.generation,csrf};
         const applicable = () => {
             if (isApplicable === undefined) return;
             // A prior deadline/caller abort keeps C9's first-abort provenance.
@@ -103,20 +136,77 @@ export class CookieAdvisorSession {
         try {
             if (callerAborted) throw new DOMException('The operation was aborted.', 'AbortError');
             const init = { method: body === undefined ? 'GET' : 'POST', headers: { ...headers, ...(body === undefined || body instanceof FormData || body instanceof Blob ? {} : { 'Content-Type': 'application/json' }), ...(csrf ? { 'X-Shelv-CSRF': csrf } : {}) }, ...(body === undefined ? {} : { body: body instanceof FormData || body instanceof Blob ? body : JSON.stringify(body) }), signal: controller.signal, credentials: 'same-origin', cache: 'no-store', redirect: 'error' };
+            const inventoryRead=this.audience==='client'&&path==='checkins'&&typeof init.body==='string'&&(()=>{try{return JSON.parse(init.body)?.action==='read_photo_inventory_v1';}catch{return false;}})();
+            const inventoryCurrent=()=>{
+                const matches=()=>this.status==='ready'&&this.audience==='client'&&this.identity?.role==='client'&&
+                    this.identity.ownerId===requestOrigin.owner&&this._epoch===requestOrigin.epoch&&this.generation===requestOrigin.generation&&
+                    this._view?.generation===requestOrigin.serverGeneration&&this._view?.csrf===requestOrigin.csrf;
+                if(!matches())throw new CookieSessionError(401);
+                const now=this.now();if(!matches()||now>=Math.min(Date.parse(this._view.idleExpiresAt),Date.parse(this._view.absoluteExpiresAt)))throw new CookieSessionError(401);
+                applicable();if(!matches())throw new CookieSessionError(401);
+                if(controller.signal.aborted)throw new DOMException('The operation was aborted.','AbortError');
+            };
             // After serialization callbacks and actual acquire, immediately before fetch.
             applicable();
             const response = await this.fetcher(`/api/${this.audience}/${path}`, init);
+            const authority = response.status === 401 || response.status === 403;
+            const receivedBeforeAbort = !controller.signal.aborted;
+            const responseError = code => {
+                if (authority && !receivedBeforeAbort) return callerAborted ? new CookieRequestCancelled() : new CookieSessionError(503);
+                const error = new CookieSessionError(response.status, code);
+                if (authority) cookieHttpDenials.set(error, {...requestOrigin,status:response.status});
+                return error;
+            };
+            if (authority && !receivedBeforeAbort) throw responseError();
             if (response.ok) applicable();
+            // Notification authority denials survive unreadable or unfinishable bodies.
+            if ((path === 'notifications'||inventoryRead) && [401,403].includes(response.status)) {
+                const error = responseError(response.status === 401 ? 'session_ended' : 'forbidden');
+                try { void response.body?.cancel().catch(() => {}); } catch {}
+                throw error;
+            }
             let data;
-            try { data = await response.json(); }
+            try {
+                if(inventoryRead&&response.ok)data=await photoInventoryJson(response,controller.signal,inventoryCurrent);
+                else if (path === 'notifications') {
+                    const reader = response.body?.getReader(), chunks = []; let length = 0, cancelRequested = false;
+                    const cancel = () => {
+                        if (cancelRequested) return;
+                        cancelRequested = true;
+                        try { void reader?.cancel().catch(() => {}); } catch {}
+                    };
+                    const readCurrent = () => {
+                        applicable();
+                        if (controller.signal.aborted) { cancel(); throw new DOMException('The operation was aborted.', 'AbortError'); }
+                    };
+                    try {
+                        controller.signal.addEventListener('abort', cancel, {once:true});
+                        readCurrent();
+                        if (reader) for (;;) {
+                            const {done,value} = await reader.read(); readCurrent(); if (done) break;
+                            length += value.byteLength;
+                            if (length > 100000) { cancel(); throw new CookieSessionError(503); }
+                            chunks.push(value);
+                        }
+                    } finally {
+                        try { controller.signal.removeEventListener('abort', cancel); }
+                        finally { reader?.releaseLock(); }
+                    }
+                    readCurrent();
+                    const bytes = new Uint8Array(length); let offset = 0;
+                    for (const chunk of chunks) { bytes.set(chunk,offset); offset += chunk.byteLength; }
+                    data = JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
+                } else data = await response.json();
+            }
             catch (error) {
                 // Known HTTP denials/failures survive caller or deadline body cancellation.
                 if (!response.ok && controller.signal.aborted && error?.name === 'AbortError')
-                    throw new CookieSessionError(response.status);
+                    throw responseError();
+                if (authority) throw responseError();
                 throw error;
             }
             if (!response.ok)
-                throw new CookieSessionError(response.status, data?.code);
+                throw responseError(data?.code);
             // A signal-ignoring fetcher/body cannot deliver success past either abort.
             if (controller.signal.aborted) throw new DOMException('The operation was aborted.', 'AbortError');
             applicable();
@@ -277,6 +367,7 @@ export function createCookieRequest(channel, session) {
     const audience = session.audience;
     if (!Object.hasOwn(allowed, channel))
         throw new CookieSessionError(403, 'action_forbidden');
+    if (channel === 'notifications') return notificationRequest(session, audience, allowed[channel]);
     return async (command, { signal, isApplicable } = {}) => {
         const typedReview = channel === 'reviews' || channel === 'guidance' || channel === 'commerce';
         if (typedReview && command instanceof FormData)
@@ -299,12 +390,54 @@ export function createCookieRequest(channel, session) {
             return data;
         }
         catch (error) {
+            const denial = cookieDenialStatus(error,session,lease);
+            if (denial === 401) { session._end(); throw error; }
+            if (denial === 403) throw error;
             if (!session.isCurrent(lease))
                 throw new CookieSessionError(401);
-            if (error.status === 401)
-                session._end();
-            else if (error.status === 503)
+            if (error.status === 503)
                 session.suspend();
+            throw error;
+        }
+    };
+}
+/** Notification bookkeeping is a write, but is not a clinical EDIT capability. */
+function notificationRequest(session, audience, allowed) {
+    return async (input, {signal,isApplicable} = {}) => {
+        const actor = session.identity?.ownerId, epoch = session._epoch, generation = session.generation, serverGeneration = session._view?.generation;
+        const same = () => session.audience === audience && session.identity?.role === audience && session.identity.ownerId === actor && session._epoch === epoch && session.generation === generation && session._view?.generation === serverGeneration;
+        if (!same()) throw new CookieSessionError(401);
+        let command;
+        try {
+            const body = JSON.stringify(input);
+            if (typeof body !== 'string') throw new CookieSessionError(400,'invalid_input');
+            if (new TextEncoder().encode(body).byteLength > 8192) throw new CookieSessionError(413,'too_large');
+            command = JSON.parse(body);
+        } catch(error) { if (!same()) throw new CookieSessionError(401); if (error instanceof CookieSessionError) throw error; throw new CookieSessionError(400,'invalid_input'); }
+        if (!same()) throw new CookieSessionError(401);
+        if (!command || !allowed.includes(command.action) || audience === 'client' && (command.action === 'read_event_deliveries_v1' || command.action === 'retry_failed_email_v1' || command.action === 'request_status_v1' && command.original?.action !== 'mark_seen_v1')) throw new CookieSessionError(403,'action_forbidden');
+        const needsEdit = (command.action === 'request_status_v1' ? command.original?.action : command.action) === 'retry_failed_email_v1';
+        const caps = () => session._view?.capabilities.view === true && (!needsEdit || session._view.capabilities.edit === true);
+        if (!caps()) throw new CookieSessionError(403,'forbidden');
+        const lease = await session.acquire();
+        const current = () => { if (!same() || !session.isCurrent(lease)) throw new CookieSessionError(401); if (!caps()) throw new CookieSessionError(403,'forbidden'); };
+        const applicable = () => {
+            current(); let applies = true;
+            try { applies = isApplicable === undefined || typeof isApplicable === 'function' && isApplicable() === true; } catch { applies = false; }
+            current(); return applies;
+        };
+        try {
+            current(); if (signal?.aborted) throw new CookieRequestCancelled();
+            const data = await session._fetch('notifications',{body:command,signal,csrf:lease.csrf,isApplicable:applicable});
+            current(); if (!applicable()) throw new CookieRequestCancelled(); return data;
+        } catch(error) {
+            const denial = cookieDenialStatus(error,session,lease);
+            if (denial === 401) { session._end(); throw error; }
+            if (denial === 403) throw error;
+            current();
+            // A cancelled or replaced operation has no session-wide side effects.
+            if (signal?.aborted || error instanceof CookieRequestCancelled || !applicable()) throw new CookieRequestCancelled();
+            if (error.status === 503) session.suspend();
             throw error;
         }
     };

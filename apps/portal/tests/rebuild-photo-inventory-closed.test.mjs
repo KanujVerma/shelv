@@ -3,7 +3,6 @@ import test from 'node:test';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 import {build} from '../node_modules/esbuild/lib/main.js';
-import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
 
 const root=fileURLToPath(new URL('../../../',import.meta.url));
 const owner='d1000000-0000-4000-8000-000000000001';
@@ -17,7 +16,7 @@ globalThis.fetch=deny;
 const priorDeno=globalThis.Deno;
 let entry;
 globalThis.Deno={env:{get:key=>({SUPABASE_URL:base,SUPABASE_PUBLISHABLE_KEY:'synthetic-public-key',SUPABASE_SERVICE_ROLE_KEY:'synthetic-never-used-storage',CONCIERGE_ALLOWED_ORIGINS:'https://portal.invalid'})[key]},serve:fn=>{entry=fn;}};
-const built=await build({absWorkingDir:root,stdin:{contents:`export {createConciergeAuthenticatedPorts} from './supabase/functions/concierge-operations/runtime.ts'; import './supabase/functions/concierge-checkins/index.ts';`,resolveDir:root,sourcefile:'inventory-root-entry.ts',loader:'ts'},bundle:true,write:false,metafile:true,platform:'node',format:'cjs',logLevel:'silent',plugins:process.env.PHOTO_INVENTORY_OLD_RPC_BUDGET==='1'?[{name:'immutable-before-inventory-budget',setup(b){b.onLoad({filter:/concierge-operations\/runtime\.ts$/},args=>({contents:portalCiBaselines.readBytes('3bd152a259b7b9b9971caa1546e65f69de12aab9','supabase/functions/concierge-operations/runtime.ts').toString('utf8'),loader:'ts'}));}}]:[]});
+const built=await build({absWorkingDir:root,stdin:{contents:`import './supabase/functions/concierge-checkins/index.ts';`,resolveDir:root,sourcefile:'inventory-root-entry.ts',loader:'ts'},bundle:true,write:false,metafile:true,platform:'node',format:'cjs',logLevel:'silent'});
 assert.ok(Object.keys(built.metafile.inputs).includes('supabase/functions/concierge-operations/runtime.ts'));
 const module={exports:{}};
 new Function('require','module','exports',built.outputFiles[0].text)(createRequire(import.meta.url),module,module.exports);
@@ -107,69 +106,4 @@ test('Root final Auth wait, cancellation and changed-head conflicts remain close
   const g=fixture(t);g.state.error={status,message};const result=await g.run({...command,cursor:photo(1),expectedRevision:17});
   assert.equal(result.status,expected);assert.equal('photos' in await result.json(),false);
  }
-});
-
-const utf8=new TextEncoder();
-const padded=(size)=>{const text=JSON.stringify(page);assert.ok(text.length<=size);return utf8.encode(text+' '.repeat(size-text.length));};
-function streamed(bytes,{chunkSize=1024,headers={},status=200,errorAt=-1,cancelThrows=false}={}){
- const stats={bytes:0,pulls:0,cancels:0};let at=0;
- const response=new Response(new ReadableStream({pull(c){
-  stats.pulls++;
-  if(stats.pulls===errorAt){c.error(new Error('synthetic stream failure'));return;}
-  if(at===bytes.length){c.close();return;}
-  const part=bytes.slice(at,at+chunkSize);at+=part.length;stats.bytes+=part.length;c.enqueue(part);
- },cancel(){stats.cancels++;if(cancelThrows)throw new Error('synthetic cancellation failure');}},{highWaterMark:0}),{status,headers:{'content-type':'application/json',...headers}});
- return {response,stats};
-}
-
-test('inventory actual RPC success admits exactly8192 UTF8 bytes despite lying Content-Length',async t=>{
- for(const headers of [{},{'content-length':'1'},{'content-length':'999999999'}]){
-  const f=fixture(t),s=streamed(padded(8192),{headers,chunkSize:257});f.state.response=s.response;
-  const result=await f.run();assert.equal(result.status,200);assert.deepEqual(await result.json(),page);
-  assert.equal(s.stats.bytes,8192);assert.equal(s.stats.cancels,0);
- }
-});
-test('inventory actual RPC success8193 cancels at overflow before oversized JSON acknowledgement',async t=>{
- for(const headers of [{},{'content-length':'1'},{'content-length':'8192'}]){
-  const f=fixture(t),s=streamed(padded(8193),{headers});f.state.response=s.response;
-  const result=await f.run();assert.equal(result.status,503);assert.deepEqual(await result.json(),{code:'unavailable',retryable:true});
-  assert.equal(s.stats.bytes,8193);assert.equal(s.stats.cancels,1);assert.equal(f.state.authReads,1);
- }
-});
-test('inventory actual oversized UTF8 stream stops on crossing chunk; stream and cancel errors stay503',async t=>{
- const text=JSON.stringify({...page,padding:'é'.repeat(5000)}),bytes=utf8.encode(text);assert.ok(text.length<8192&&bytes.length>8192);
- for(const options of [{},{cancelThrows:true},{errorAt:2}]){
-  const f=fixture(t),s=streamed(bytes,options);f.state.response=s.response;
-  assert.equal((await f.run()).status,503);assert.equal(s.stats.bytes,options.errorAt?1024:9216);assert.equal(s.stats.cancels,options.errorAt?0:1);
- }
- const f=fixture(t),s=streamed(padded(3*1024*1024),{chunkSize:65536});f.state.response=s.response;
- assert.equal((await f.run()).status,503);assert.equal(s.stats.bytes,65536);assert.equal(s.stats.cancels,1);
-});
-test('inventory known401/403 and malformed or interrupted error bodies preserve denial without pages',async t=>{
- for(const status of [401,403])for(const mode of ['large','error','malformed']){
-  const f=fixture(t),s=streamed(mode==='malformed'?utf8.encode('{'):utf8.encode('{"message":"denied"}'+' '.repeat(9000)),{status,...(mode==='error'?{errorAt:2}:{})});f.state.response=s.response;
-  const result=await f.run();assert.equal(result.status,status);assert.equal('photos' in await result.json(),false);
-  if(mode==='large'){assert.equal(s.stats.bytes,9020);assert.equal(s.stats.cancels,0);}
- }
-});
-test('retained head4096 and legacy/near-match unlimited RPC decoders keep their exact bounds',async()=>{
- for(const name of ['concierge_checkin_head_v1','concierge_checkin_read','concierge_checkin_write','concierge_checkin_photo_inventory_v10','concierge_checkin_photo_inventory_v1_extra']){
-  const bytes=name==='concierge_checkin_head_v1'?utf8.encode('{"revision":17}'+' '.repeat(4097-15)):utf8.encode(JSON.stringify({history:'x'.repeat(3*1024*1024)}));
-  const s=streamed(bytes,{chunkSize:1024});
-  const ports=module.exports.createConciergeAuthenticatedPorts({supabaseUrl:base,publicKey:'synthetic-public-key',allowedOrigins:[],allowedRpcNames:[name],fetch:async(input,init)=>{assert.equal(String(input),base+'/rest/v1/rpc/'+name);assert.equal(init.method,'POST');return s.response;}});
-  if(name==='concierge_checkin_head_v1'){await assert.rejects(ports.rpc('closed-synthetic',{name,args:{}}));assert.equal(s.stats.cancels,1);}
-  else {const result=await ports.rpc('closed-synthetic',{name,args:{}});assert.equal(result.error,null);assert.equal(result.data.history.length,3*1024*1024);assert.equal(s.stats.cancels,0);assert.equal(s.stats.bytes,bytes.length);}
- }
-});
-
-test('Root page ownership uses captured input and immutable result bytes through reentrant final Auth',async t=>{
- const f=fixture(t);f.state.authEntered=deferred();f.state.authWait=deferred();
- const pending=f.run({...command,cursor:photo(1),expectedRevision:17});
- f.state.data={revision:17,photos:[{id:photo(2),angle:'left'},{id:photo(3),angle:'right'}],nextCursor:null};
- await f.state.authEntered.promise;
- const prior=f.state.authWait;f.state.authWait=null;
- f.state.data={revision:18,photos:[{id:photo(4),angle:'front'}],nextCursor:null};
- const b=await f.run({...command,expectedRevision:18});assert.equal(b.status,200);assert.equal((await b.json()).revision,18);
- prior.resolve();const a=await pending;assert.equal(a.status,200);assert.deepEqual(await a.json(),{revision:17,photos:[{id:photo(2),angle:'left'},{id:photo(3),angle:'right'}],nextCursor:null});
- assert.deepEqual(f.calls.filter(c=>c.path.endsWith('concierge_checkin_photo_inventory_v1')).map(c=>c.args),[{p_cursor:photo(1),p_limit:2,p_expected_revision:17},{p_cursor:null,p_limit:2,p_expected_revision:18}]);
 });

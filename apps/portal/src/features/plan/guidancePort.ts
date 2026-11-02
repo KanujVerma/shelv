@@ -2,7 +2,8 @@ import type {ReviewCommand,ReviewResult} from '../../../../../src/contracts/Port
 import {readReviewCommand} from '../../../../../src/contracts/PortalReviewValidation.ts';
 import {decodePortalReviewResponse} from '../../../../../src/contracts/PortalReviewMapping.ts';
 import {reviewErrorStatuses} from '../../../../../src/contracts/PortalReviewValues.ts';
-import {TransportError,type OperationPort} from '../../transport/session.ts';
+import {TransportError} from '../../transport/error.ts';
+import type {OperationPort} from '../../transport/session.ts';
 import type {PlanSessionBoundary} from './types.ts';
 
 export const clientGuidanceActions=['read_client_plan_v3','read_client_instruction_manifest_v1','read_client_instruction_v1','record_decision_v2','request_status_v1'] as const;

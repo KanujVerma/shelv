@@ -9,9 +9,13 @@ import {careErrorStatuses} from '../../../../../src/contracts/PortalCareValues.t
 import {advisorPlanActions} from '../../../site/auth/plan-actions.js';
 import {planErrorStatuses} from '../../../../../src/contracts/PortalRebuildValues.ts';
 import { demand, SessionError } from './types';
+import {readNotificationCommand} from '../../../../../src/contracts/PortalNotificationValidation.ts';
+import {decodeNotificationResponse} from '../../../../../src/contracts/PortalNotificationMapping.ts';
+import {notificationAccess} from '../../../../../src/contracts/PortalNotificationValues.ts';
+import type {NotificationCommand} from '../../../../../src/contracts/PortalNotification.ts';
 export const PORTAL_ORIGIN = 'https://portal.goshelv.com';
 export const SUPABASE_ORIGIN = 'https://snojlbqovlawewwqbviz.supabase.co';
-export type Channel = 'operations' | 'payments' | 'checkins' | 'admission' | 'walkthroughs' | 'plans' | 'care' | 'reviews' | 'guidance';
+export type Channel = 'operations' | 'payments' | 'checkins' | 'admission' | 'walkthroughs' | 'plans' | 'care' | 'reviews' | 'guidance' | 'notifications';
 export type Operation = {kind:'walkthrough'; command:WalkthroughCommand} | {
     kind: 'client-media'; media: 'photo' | 'evidence'; id: string; schemaVersion?:2;
 } | {
@@ -32,11 +36,12 @@ export type Operation = {kind:'walkthrough'; command:WalkthroughCommand} | {
     clientId: string;
     photoId: string;
 };
-const actions: Record<Channel, readonly string[]> = { operations: ['advisor_preview_read_v2', 'advisor_list', 'advisor_read_v2', 'save_intake_v2', 'save_draft_v2', 'publish_v2', 'save_meeting_note', 'service_advisor_read', 'record_review', 'save_instruction_draft', 'publish_instruction_revision', 'record_purchase', 'record_return_event', 'cancel_service'], payments: ['advisor_read', 'issue_quote', 'confirm_payment', 'reject_claim', 'evidence_url'], checkins: ['advisor_read', 'advisor_photo_view', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply'], admission: ['capabilities','add_client','admission_status'], walkthroughs:['library','open','share_list','share_create','share_revoke'],plans:advisorPlanActions,care:advisorCareActions,reviews:reviewHumanActions,guidance:guidanceHumanActions };
+const actions: Record<Channel, readonly string[]> = { operations: ['advisor_preview_read_v2', 'advisor_list', 'advisor_read_v2', 'save_intake_v2', 'save_draft_v2', 'publish_v2', 'save_meeting_note', 'service_advisor_read', 'record_review', 'save_instruction_draft', 'publish_instruction_revision', 'record_purchase', 'record_return_event', 'cancel_service'], payments: ['advisor_read', 'issue_quote', 'confirm_payment', 'reject_claim', 'evidence_url'], checkins: ['advisor_read', 'advisor_photo_view', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply'], admission: ['capabilities','add_client','admission_status'], walkthroughs:['library','open','share_list','share_create','share_revoke'],plans:advisorPlanActions,care:advisorCareActions,reviews:reviewHumanActions,guidance:guidanceHumanActions,notifications:['list_inbox_v1','mark_seen_v1','read_event_deliveries_v1','retry_failed_email_v1','request_status_v1'] };
 export function object(value: unknown): Record<string, unknown> { demand(value !== null && typeof value === 'object' && !Array.isArray(value)); return value as Record<string, unknown>; }
 export function exact(value: Record<string, unknown>, keys: string[]) { demand(Object.keys(value).length === keys.length && keys.every(k => Object.hasOwn(value, k))); }
 export function uuid(value: unknown) { demand(typeof value === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value)); return value.toLowerCase(); }
 export function parseCommand(channel: Channel, value: unknown): Operation {
+    if(channel==='notifications')return {kind:'command',channel,command:parseNotificationCommand(value,'advisor')};
     if(channel==='walkthroughs')return {kind:'walkthrough',command:parseWalkthroughCommand(value)};
     if(channel==='plans')return {kind:'command',channel,command:parsePlanCommand(value,'advisor')};
     if(channel==='care')return {kind:'command',channel,command:parseCareCommand(value,'advisor')};
@@ -84,7 +89,7 @@ export async function readBounded(stream: ReadableStream<Uint8Array> | null, max
                 break;
             total += value.length;
             if (total > max) {
-                await reader.cancel();
+                try { void reader.cancel().catch(() => {}); } catch { /* Refusal does not await cleanup. */ }
                 throw new SessionError(413, 'too_large');
             }
             chunks.push(value);
@@ -156,3 +161,23 @@ export function safeError(error: unknown) { const e = error as {
     status?: number;
     code?: string;
 }; return { status: typeof e?.status === 'number' && [400, 401, 403, 404, 405, 409, 413, 415, 429, 503].includes(e.status) ? e.status : 503, code: typeof e?.code === 'string' && safeCodes.has(e.code) ? e.code : 'unavailable' }; }
+
+/** Exact Root schema, with audience scope checked before any provider egress. */
+export function parseNotificationCommand(value:unknown,audience:'client'|'advisor'):Record<string,unknown>{
+ const raw=object(value),action=raw.action;
+ demand(typeof action==='string'&&notificationAccess(action,audience==='client'?'client':'human')!=='DENY',403,'action_forbidden');
+ let command:NotificationCommand;
+ try{command=readNotificationCommand(value);}catch{throw new SessionError(400,'invalid_input');}
+ demand(audience!=='client'||command.action!=='request_status_v1'||command.original.action==='mark_seen_v1',403,'action_forbidden');
+ return command;
+}
+export function notificationCapability(command:NotificationCommand):'view'|'edit'{
+ return (command.action==='request_status_v1'?command.original.action:command.action)==='retry_failed_email_v1'?'edit':'view';
+}
+/** Positive projection at both provider and final gateway. No upstream private extras. */
+export function mapNotificationResponse(value:unknown,input:unknown,status=200){
+ const command=readNotificationCommand(input);
+ const outcome=decodeNotificationResponse(command,status,status===401?{code:'session_ended'}:status===403?{code:'forbidden'}:value);
+ if(outcome.state!=='ok')throw new SessionError(outcome.status,outcome.code);
+ return outcome.value;
+}

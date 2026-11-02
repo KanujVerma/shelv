@@ -137,6 +137,6 @@ test('offline suspension never permits a successful private result to be decoded
   const f=await retainedSession('client',()=>Response.json({revision:2}));
   try {
     const port=f.transport.bind({kind:'read',invoke:async()=>{f.session.suspend();return {private:'synthetic'};},decode:()=>assert.fail('late private response decoded')});
-    await assert.rejects(port.execute({}),error=>error.status===401);
+    await assert.rejects(port.execute({}),error=>error.status===503);
   } finally {f.close();}
 });

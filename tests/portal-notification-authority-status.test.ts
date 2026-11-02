@@ -1,5 +1,5 @@
 // Closed synthetic HTTP; actual notification runtime/handler/Root/session implementations.
-// No SQL/Auth service, authority predicate override, admitted cookie channel, or provider send.
+// No SQL/Auth service, authority predicate override, or provider send.
 import assert from 'node:assert/strict';
 import {test,before,after} from 'node:test';
 import {setImmediate as nextTurn} from 'node:timers/promises';
@@ -89,10 +89,10 @@ test('other finite errors keep their safe code/status and private upstream text 
 function withLock<T>(name:string,callback:LockGrantedCallback<T>):Promise<Awaited<T>>;
 function withLock<T>(name:string,options:LockOptions,callback:LockGrantedCallback<T>):Promise<Awaited<T>>;
 async function withLock<T>(_name:string,options:LockOptions|LockGrantedCallback<T>,callback?:LockGrantedCallback<T>):Promise<Awaited<T>>{const run=typeof options==='function'?options:callback;assert.ok(run);if(typeof options!=='function'&&options.signal?.aborted)throw new DOMException('aborted','AbortError');return await run(null);}
-test('actual retained session reports403 rejection for every denied body without admitting a notification cookie channel',async()=>{
+test('actual retained session reports403 rejection for every denied body',async()=>{
  for(const mode of ['valid','empty','html','oversized','stream-error'] as const){
   const session=createApplicationSession({audience:'client',locks:{request:withLock},fetcher:async(input)=>{assert.equal(String(input),'/api/client/session');return Response.json({signedIn:true,ownerId:id,generation:1,csrf:'SYNTHETIC-csrf',capabilities:{view:true,edit:false,publish:false,confirmPayments:false},idleExpiresAt:'2099-01-01T00:00:00Z',absoluteExpiresAt:'2099-01-02T00:00:00Z'});}});
-  try{await session.restore();assert.throws(()=>clientCookieRequest('notifications' as never,session.cookie));const b=boundary(write,()=>response(403,mode));const operation=session.transport.bind({kind:'write',invoke:async(command:NotificationCommand,{signal})=>{const r=await handleNotificationRequest(request(command,signal),b.ports);if(!r.ok)throw {status:r.status};return r.json();},decode:v=>mapNotificationResult(v,write)});
+  try{await session.restore();assert.equal(typeof clientCookieRequest('notifications',session.cookie),'function');const b=boundary(write,()=>response(403,mode));const operation=session.transport.bind({kind:'write',invoke:async(command:NotificationCommand,{signal})=>{const r=await handleNotificationRequest(request(command,signal),b.ports);if(!r.ok)throw {status:r.status};return r.json();},decode:v=>mapNotificationResult(v,write)});
    await assert.rejects(operation.execute(write),(e:unknown)=>{assert.equal((e as {status:number}).status,403);assert.equal((e as {outcome:string}).outcome,'rejected');return true;});
   }finally{session.dispose();}
  }

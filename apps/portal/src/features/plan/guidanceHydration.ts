@@ -1,7 +1,7 @@
 import type {ClientPlanViewV3,InstructionScope,InstructionManifestEntry,InstructionManifestPage,InstructionDetail} from '../../../../../src/contracts/PortalReview.ts';
 import {mapReviewResult,collectInstructionManifest,bindInstructionForScope,instructionScopes} from '../../../../../src/contracts/PortalReviewMapping.ts';
 import {sameCareValue} from '../../../../../src/contracts/PortalCareValidation.ts';
-import {TransportError} from '../../transport/session.ts';
+import {TransportError} from '../../transport/error.ts';
 import type {ClientGuidancePort} from './guidancePort.ts';
 import type {PlanSessionBoundary} from './types.ts';
 import type {PresentationMode} from '../../navigation/routes.ts';

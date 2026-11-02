@@ -1,24 +1,27 @@
 import {demand} from './types';
-import {mapCheckinPhotoHead} from '../../../../../supabase/functions/concierge-checkins/projection.ts';
+import {mapCheckinPhotoHead,mapCheckinPhotoInventory} from '../../../../../supabase/functions/concierge-checkins/projection.ts';
+import type {CheckinPhotoInventoryPage} from '../../../../../supabase/functions/concierge-checkins/types.ts';
 import {parsePlanCommand} from './plan-policy';
 import {parseCareCommand} from './care-policy';
 import {parseReviewCommand} from './review-policy';
 import {reviewClientActions} from '../../../../../src/contracts/PortalReviewValues.ts';
 import {clientCareActions} from '../../../site/auth/care-actions.js';
 import {clientPlanActions} from '../../../site/auth/plan-actions.js';
-import {object, exact, uuid, type Channel, type Operation} from './policy';
+import {object, exact, uuid, type Channel, type Operation, parseNotificationCommand} from './policy';
 export const clientActions: Record<Channel, readonly string[]> = {
     operations: ['client_read_v2', 'client_read', 'decide', 'receive', 'start', 'service_client_read', 'request_return'],
     payments: ['client_read', 'submit_claim', 'confirm_shipping_address', 'evidence_url'],
-    checkins: ['client_read', 'read_photo_head_v1', 'submit_report', 'photo_view'],
-    admission: [], walkthroughs:[],plans:clientPlanActions,care:clientCareActions,reviews:reviewClientActions,guidance:[]
+    checkins: ['client_read', 'read_photo_head_v1', 'read_photo_inventory_v1', 'submit_report', 'photo_view'],
+    admission: [], walkthroughs:[],plans:clientPlanActions,care:clientCareActions,reviews:reviewClientActions,guidance:[],notifications:['list_inbox_v1','mark_seen_v1','request_status_v1']
 };
 export function parseClientCommand(channel: Channel, value: unknown): Operation {
+    if(channel==='notifications')return {kind:'command',channel,command:parseNotificationCommand(value,'client')};
     if(channel==='plans')return {kind:'command',channel,command:parsePlanCommand(value,'client')};
     if(channel==='care')return {kind:'command',channel,command:parseCareCommand(value,'client')};
     if(channel==='reviews')return {kind:'command',channel,command:parseReviewCommand(value,'client')};
     const command = object(value);
     demand(Object.hasOwn(clientActions, channel) && typeof command.action === 'string' && clientActions[channel].includes(command.action), 403, 'action_forbidden');
+    if(channel==='checkins'&&command.action==='read_photo_inventory_v1')return {kind:'command',channel,command:{action:'read_photo_inventory_v1',...parseClientPhotoInventoryPage(command)}};
     if(channel==='checkins' && command.action==='read_photo_head_v1')exact(command,['action']);
     demand(!Object.keys(command).some(k => /^(client_?id|owner_?id|user_?id|rpc(name)?|endpoint|url|upstream|function(name)?|headers|authorization|access_?token|refresh_?token)$/i.test(k)));
     // Existing Edge schemas remain authoritative for payloads/revisions/idempotency.
@@ -26,6 +29,19 @@ export function parseClientCommand(channel: Channel, value: unknown): Operation 
 }
 export function mapClientPhotoHeadResponse(input: unknown) {
     const head=mapCheckinPhotoHead(input);demand(head.ok,503,'unavailable');return head.value;
+}
+export function parseClientPhotoInventoryPage(input:unknown):CheckinPhotoInventoryPage{
+    const command=object(input);exact(command,['action','cursor','limit','expectedRevision']);
+    demand(command.action==='read_photo_inventory_v1');
+    const cursor=command.cursor===null?null:uuid(command.cursor),limit=command.limit,expectedRevision=command.expectedRevision;
+    demand(typeof limit==='number'&&Number.isSafeInteger(limit)&&limit>=1&&limit<=50);
+    demand(expectedRevision===null||typeof expectedRevision==='number'&&Number.isSafeInteger(expectedRevision)&&expectedRevision>=0);
+    demand(cursor===null||expectedRevision!==null);
+    return {cursor,limit,expectedRevision};
+}
+export function mapClientPhotoInventoryResponse(input:unknown,command:unknown){
+    const value=mapCheckinPhotoInventory(input,parseClientPhotoInventoryPage(command));demand(value.ok,503,'unavailable');
+    demand(new TextEncoder().encode(JSON.stringify(value.value)).byteLength<=8192,503,'unavailable');return value.value;
 }
 export function parseClientMedia(url: URL): Operation {
     const media = url.pathname.endsWith('/photo') ? 'photo' : 'evidence';

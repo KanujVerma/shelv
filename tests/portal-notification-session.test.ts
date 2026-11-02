@@ -1,5 +1,5 @@
 // SYNTHETIC HTTP ONLY: actual ApplicationSession, retained cookie session, transport and Root codec.
-// This deliberately DOES NOT register a new cookie channel or mount notification UI.
+// This deliberately does not mount notification UI.
 import assert from 'node:assert/strict';import {test} from 'node:test';
 import {createApplicationSession} from '../apps/portal/src/app/session.ts';
 import {clientCookieRequest} from '../apps/portal/src/app/retained.ts';
@@ -11,7 +11,7 @@ const id='10000000-0000-4000-8000-000000000001';
 function withLock<T>(name:string,callback:LockGrantedCallback<T>):Promise<Awaited<T>>;
 function withLock<T>(name:string,options:LockOptions,callback:LockGrantedCallback<T>):Promise<Awaited<T>>;
 async function withLock<T>(_name:string,options:LockOptions|LockGrantedCallback<T>,callback?:LockGrantedCallback<T>):Promise<Awaited<T>>{const run=typeof options==='function'?options:callback;assert.ok(run);if(typeof options!=='function'&&options.signal?.aborted)throw new DOMException('aborted','AbortError');return await run(null);}
-test('retained actual session has no activated notification channel and discards a late notification read after real sign-out',async()=>{
+test('retained actual session discards a late notification read after real sign-out',async()=>{
  const external=globalThis.fetch;globalThis.fetch=async()=>{throw Error('global_external_fetch_denied');};
  const calls:string[]=[];const runtime=createApplicationSession({audience:'client',locks:{request:withLock},fetcher:async(input,init)=>{
   const path=String(input);calls.push(path);
@@ -20,7 +20,7 @@ test('retained actual session has no activated notification channel and discards
  }});
  try{
   await runtime.restore();const boundary=runtime.getSnapshot().boundary;assert.ok(boundary);assert.ok(boundary.isCurrent());
-  assert.throws(()=>clientCookieRequest('notifications' as never,runtime.cookie));
+  assert.equal(typeof clientCookieRequest('notifications',runtime.cookie),'function');
   const command=readNotificationCommand({schemaVersion:1,action:'list_inbox_v1',cursor:null,limit:1});
   let release!:()=>void,entered!:()=>void;const hold=new Promise<void>(r=>{release=r;}),started=new Promise<void>(r=>{entered=r;});
   const ports=createNotificationPorts({supabaseUrl:'https://notification.synthetic.invalid',publicKey:'SYNTHETIC-public',allowedOrigins:[],fetch:async(input)=>{

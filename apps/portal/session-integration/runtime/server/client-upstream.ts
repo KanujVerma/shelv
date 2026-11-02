@@ -1,8 +1,8 @@
 import {validatedReturnPath} from './navigation-return';
 import {SupabaseProvider, claims, hasCredentials} from './upstream';
-import {demand, type Credentials, type AdvisorContext, type Capabilities} from './types';
-import {PORTAL_ORIGIN, SUPABASE_ORIGIN, object, uuid, type Operation} from './policy';
-import {parseClientCommand, validateClientUpload, mapClientPhotoHeadResponse} from './client-policy';
+import {demand, SessionError, type Credentials, type AdvisorContext, type Capabilities} from './types';
+import {PORTAL_ORIGIN, SUPABASE_ORIGIN, object, uuid, safeCodes, type Operation} from './policy';
+import {parseClientCommand, validateClientUpload, mapClientPhotoHeadResponse, mapClientPhotoInventoryResponse} from './client-policy';
 import {mapPlanResponse} from './plan-policy';
 import {mapCareResponse} from './care-policy';
 import {mapReviewResponse,reviewTransportError} from './review-policy';
@@ -11,6 +11,56 @@ function privateFields(value: unknown): boolean {
     return !!value && typeof value === 'object' && Object.entries(value).some(([k,v]) => /^(private_?notes?|meeting_?notes?|transcript|draft|intake|advisor_?notes?)$/i.test(k) || privateFields(v));
 }
 export class ClientProvider extends SupabaseProvider {
+    private readonly inventoryFetcher:typeof fetch;
+    private readonly inventoryTimeoutMs:number;
+    constructor(publicKey:string,fetcher:typeof fetch=(input,init)=>globalThis.fetch(input,init),timeoutMs=12000,durableContext=false){
+        super(publicKey,fetcher,timeoutMs,durableContext);this.inventoryFetcher=fetcher;this.inventoryTimeoutMs=timeoutMs;
+    }
+    private async photoInventory(credentials:Credentials,capabilities:Capabilities,input:unknown):Promise<WireResponse>{
+        const operation=parseClientCommand('checkins',input);demand(operation.kind==='command');
+        const command=operation.command;demand(command.action==='read_photo_inventory_v1'&&capabilities.view,403,'forbidden');
+        const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),this.inventoryTimeoutMs);
+        let status=503,body:unknown={code:'unavailable'};
+        try{
+            const response=await this.inventoryFetcher(`${SUPABASE_ORIGIN}/functions/v1/concierge-checkins`,{method:'POST',headers:this.headers(credentials.access_token),body:JSON.stringify(command),signal:controller.signal,redirect:'error',cache:'no-store'});
+            const headersBeforeAbort=!controller.signal.aborted;
+            if(response.status===401||response.status===403){
+                if(headersBeforeAbort)status=response.status;
+                try{void response.body?.cancel().catch(()=>{});}catch{}
+            }else{
+                const reader=response.body?.getReader(),chunks:Uint8Array[]=[];let length=0;
+                const cancel=()=>{try{void reader?.cancel().catch(()=>{});}catch{}};
+                controller.signal.addEventListener('abort',cancel,{once:true});
+                try{
+                    if(controller.signal.aborted){cancel();throw new SessionError(503,'unavailable');}
+                    if(reader)for(;;){
+                        const {done,value}=await reader.read();if(controller.signal.aborted)throw new SessionError(503,'unavailable');if(done)break;
+                        length+=value.byteLength;if(length>8192){cancel();throw new SessionError(503,'unavailable');}chunks.push(value);
+                    }
+                }finally{controller.signal.removeEventListener('abort',cancel);reader?.releaseLock();}
+                if(controller.signal.aborted)throw new SessionError(503,'unavailable');
+                const bytes=new Uint8Array(length);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.byteLength;}
+                body=JSON.parse(new TextDecoder('utf-8',{fatal:true,ignoreBOM:false}).decode(bytes));
+                if(!controller.signal.aborted)status=response.status;
+            }
+        }catch{/* A missing, oversized, malformed or cancelled page is unavailable. */}
+        finally{clearTimeout(timer);}
+        try{
+            const current=await this.context(credentials);
+            demand(current.ownerId===credentials.user.id&&current.providerSessionId===credentials.providerSessionId,401,'session_ended');
+            demand(current.capabilities.view,403,'forbidden');
+        }catch(error){
+            if([401,403].includes((error as {status?:number})?.status??0))throw error;
+            if(status!==401&&status!==403)throw new SessionError(503,'unavailable');
+        }
+        if(status!==200){
+            const raw=body&&typeof body==='object'?body as {code?:unknown}:{};
+            const code=status===401?'session_ended':status===403?'forbidden':typeof raw.code==='string'&&safeCodes.has(raw.code)?raw.code:'unavailable';
+            throw new SessionError([400,401,403,404,409,413,415,429].includes(status)?status:503,code);
+        }
+        const value=mapClientPhotoInventoryResponse(body,command);demand(!hasCredentials(value,credentials),503,'unavailable');
+        return {status:200,body:value};
+    }
     async requestOtp(email: string, returnTo?:string) {
         const path=validatedReturnPath(returnTo,'client'); const {client, check, values} = this.sdk();
         const {error} = await client.signInWithOtp({email, options:{shouldCreateUser:false,emailRedirectTo:`${PORTAL_ORIGIN}${path}`}});
@@ -49,6 +99,8 @@ export class ClientProvider extends SupabaseProvider {
     }
     async perform(credentials: Credentials, capabilities: Capabilities, inputOperation: Operation): Promise<WireResponse> {
         demand(capabilities.view && !capabilities.edit && !capabilities.publish && !capabilities.confirmPayments,403,'forbidden');
+        if(inputOperation.kind==='command'&&inputOperation.channel==='notifications')return this.notification(credentials,capabilities,inputOperation.command,'client');
+        if(inputOperation.kind==='command'&&inputOperation.channel==='checkins'&&inputOperation.command.action==='read_photo_inventory_v1')return this.photoInventory(credentials,capabilities,inputOperation.command);
         const operation=inputOperation.kind==='command'&&inputOperation.channel==='reviews'
             ? parseClientCommand(inputOperation.channel,inputOperation.command) : inputOperation;
         if(operation.kind === 'client-media') return this.media(credentials,operation.media,operation.id,operation.schemaVersion===2);
