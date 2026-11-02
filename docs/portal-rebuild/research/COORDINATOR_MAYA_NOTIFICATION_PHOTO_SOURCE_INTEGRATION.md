@@ -77,4 +77,3 @@ Earlier findings and reports keep their original verdicts. Source fixes require 
 Kanuj has no hardware key and is not in Daybreak Blue. Enrollment is not a project prerequisite. The two refused historical reviews remain unaccepted; no prompt disguise, reroute or fabricated pass is used. Current blockers are engineering-owned and none needs a human decision.
 
 No production deployment, protected-main merge, real-client communication/publication, funds/order action or permission weakening is authorized by this checkpoint.
-
