@@ -46,7 +46,11 @@ export function createMayaDemoController(options:{initialStage?:MayaStageNumber}
   function navigate(input:PlanRoute){requireLive();const next=planRoute(input);stack.push(route);route=next;page='plan';emit();}
   function backDestination():PlanRoute {return structuredClone(stack.at(-1)??parentRoute(route)) as PlanRoute;}
   function backPlan(){requireLive();route=planRoute(stack.pop()??backDestination());page='plan';emit();}
-  function retire(current:Lease){current.active=false;current.memory.clear();for(const fn of [...current.listeners])fn();current.listeners.clear();}
+  function retire(current:Lease){
+    current.active=false;current.memory.clear();current.lastRead=null;
+    const observers=[...current.listeners];current.listeners.clear();
+    for(const fn of observers){try{fn();}catch{/* Local observers cannot interrupt retirement. */}}
+  }
   function createPorts(current:Lease):DemoPlanPorts {
     const currentLease=()=>live()&&lease===current&&current.active;
     return {mode:'public-demo',read:{async execute(input){
@@ -81,7 +85,7 @@ export function createMayaDemoController(options:{initialStage?:MayaStageNumber}
     requireLive();const old=lease;old.active=false;
     generation++;fixture=createMayaFixture();use=fixture.use;reports=[];receipt=false;receipts.clear();stack=[];stage=1;guide='open';page='plan';route={name:'plan',routine:'morning'};
     lease={active:true,memory:new Map(),listeners:new Set(),lastRead:null};demoPorts=createPorts(lease);session=sessionFor(lease);
-    retire(old);emit();
+    publish();retire(old);emit();
   }
   /** Preset reports demonstrate the REAL shared capture/projection/renderer
    * semantics, not a second use form or a successful live care operation. */
@@ -118,7 +122,7 @@ export function createMayaDemoController(options:{initialStage?:MayaStageNumber}
       const current=lease,view=snapshot.view,navigation:PlanNavigationPort={route:snapshot.route,navigate,back:backPlan,backDestination};
       return {view,mode:'public-demo',session,demoPorts,navigation,onViewChange(value){if(live()&&lease===current&&current.lastRead===value&&value.schemaVersion===1)emit();}};
     },
-    dispose(){if(disposed)return;disposed=true;retire(lease);receipts.clear();reports=[];stack=[];fixture=createMayaFixture();use=fixture.use;receipt=false;guide='exited';page='plan';stage=1;route={name:'plan',routine:'morning'};publish();listeners.clear();},
+    dispose(){if(disposed)return;disposed=true;const old=lease;receipts.clear();reports=[];stack=[];fixture=createMayaFixture();use=fixture.use;receipt=false;guide='exited';page='plan';stage=1;route={name:'plan',routine:'morning'};publish();listeners.clear();retire(old);},
   };
 }
 export type MayaDemoController=ReturnType<typeof createMayaDemoController>;
