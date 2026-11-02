@@ -2,7 +2,7 @@
 import {readFileSync} from 'node:fs';
 import {loadPortalCiBaselines} from './portal-ci-baselines.ts';
 const file=new URL('../fixtures/portal-shared-ci-baselines.json',import.meta.url);
-export const sharedFixtureSha256='0d650fba4ad774a5d5905bd380b84552105120e09f1563f7f64ffd36dd62d071';
+export const sharedFixtureSha256='2047337772cc1d6078e64193dd1a67c2c42cf292c8cc24f00a8c91fdb15f4c23';
 export const sharedCiBaselines=loadPortalCiBaselines(file,sharedFixtureSha256);
 const data=JSON.parse(readFileSync(file,'utf8')) as {approvedSharedCommit:string;reviewedTargets:{path:string;sha256:string}[];normalizedHashes:Record<string,Record<string,string>>;rootCompositionTargets:Record<string,string>;rootNormalizedHashes:Record<string,Record<string,string>>};
 export const reviewedSharedCommit=data.approvedSharedCommit;

@@ -1504,7 +1504,7 @@ export function createAdvisorGuidanceController({
     } catch (error) {
       if (!lease.valid()) return;
       const status = (error as { status?: unknown })?.status;
-      if (status === 401 && runtime.cookie.status === "offline" && current()) {
+      if ((status === 401 || status === 503) && runtime.cookie.status === "offline" && current()) {
         // A concurrent transport loss can invalidate ready-only result delivery
         // while this exact application boundary still owns offline custody.
         // Reject/clear private projections; never forget a possibly committed

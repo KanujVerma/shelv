@@ -64,7 +64,7 @@ export async function prepared(t, kind) {
         },
         status,
       );
-      return h.hold(actions[kind]);
+      return status === 401 ? received401BodyHold(t, h, actions[kind]) : h.hold(actions[kind]);
     }
     // The retained finite helper has a success-only revoke responder. Intercept
     // this negative HTTP route before it, without inventing a committed receipt.
@@ -83,6 +83,7 @@ export async function prepared(t, kind) {
           h.login.csrf,
         );
         h.calls.push({ url, command: clone(command), wire: init.body });
+        if (status === 401) return heldNativeBody(Response.json({ code: 'session_ended' }, { status }), entered, release);
         entered.resolve();
         await release.promise;
         return Response.json(
@@ -105,4 +106,29 @@ export async function prepared(t, kind) {
     return { ready: entered.promise, release: () => release.resolve() };
   };
   return h;
+}
+
+// Native headers must be received before abort for the received-denial control.
+// Hold only JSON consumption; every original caller assertion stays unchanged.
+function heldNativeBody(response, entered, release) {
+  const body = new ReadableStream({
+    async pull(controller) {
+      entered.resolve();
+      await release.promise;
+      controller.enqueue(new Uint8Array(await response.arrayBuffer()));
+      controller.close();
+    },
+  }, {highWaterMark:0});
+  return new Response(body, {status:response.status,headers:response.headers});
+}
+function received401BodyHold(t,h,action) {
+  const original=h.runtime.cookie.fetcher,entered=deferred(),release=deferred();
+  h.runtime.cookie.fetcher=async(url,init)=>{
+    const command=init?.body?JSON.parse(init.body):null;
+    const response=await original(url,init);
+    return (url==='/api/advisor/guidance'||url==='/api/advisor/reviews')&&command?.action===action
+      ?heldNativeBody(response,entered,release):response;
+  };
+  t.after(()=>release.resolve());
+  return {ready:entered.promise,release:()=>release.resolve()};
 }

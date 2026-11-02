@@ -1,3 +1,4 @@
+import {sharedCiBaselines} from '../../../tests/helpers/portal-shared-ci-baselines.ts';
 // Synthetic finite HTTP only. Importing/compiling this module opens no browser.
 import {build} from 'esbuild';import path from 'node:path';import fs from 'node:fs/promises';import assert from 'node:assert/strict';import {fileURLToPath} from 'node:url';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';import {manifestObserverBuild} from './rebuild-plan-guidance-manifest-build.mjs';
 const portal=fileURLToPath(new URL('../',import.meta.url)),origin='https://shelv-v3-guidance.invalid';
@@ -31,7 +32,17 @@ export async function prepareGuidanceBrowserSource({entry,budgetDiagnostics,obse
  assert.ok(entry===undefined||entry==='default'||entry==='context','unknown guidance browser entry');
  const selectedEntry=entry??(process.env.W3_GUIDANCE_CONTEXT_BROWSER_ENTRY==='1'?'context':'default'),outdir=path.join(portal,'../../.local-artifacts/portal-rebuild/w3-v3-guidance/browser'),plugins=[];
  if(process.env.W3_GUIDANCE_BROWSER_CONTEXT_BASELINE==='1')plugins.push({name:'exact-c4-context-inputs',setup(b){b.onLoad({filter:/features\/plan\/(ClientPlan\.tsx|guidanceDecision\.ts)$/},async args=>({contents:await readGuidanceBaseline('c4d5a9e0ed86c2ca703f6e5d0ac73988a4f6af77:'+path.relative(path.resolve(portal,'../..'),args.path)),loader:args.path.endsWith('tsx')?'tsx':'ts'}));}});
- if(process.env.W3_GUIDANCE_BROWSER_OLD_COOKIE==='1')plugins.push({name:'exact-e093-cookie-pair',setup(b){b.onLoad({filter:/site\/auth\/(advisor-cookie-session|client-cookie-session)\.js$/},async args=>({contents:await readGuidanceBaseline('e093dd018d59bd1657297f0a7a186179e59d5fc3:'+path.relative(path.resolve(portal,'../..'),args.path)),loader:'js'}));}});
+ if(process.env.W3_GUIDANCE_BROWSER_OLD_COOKIE==='1'){
+  const historical=new Set(['apps/portal/src/transport/session.ts','apps/portal/src/features/plan/guidanceHydration.ts','apps/portal/src/features/plan/guidancePort.ts']);
+  plugins.push({name:'exact-e093-cookie-pair-and-pre-shared-error-closure',setup(b){
+   b.onLoad({filter:/site\/auth\/(advisor-cookie-session|client-cookie-session)\.js$/},async args=>({contents:await readGuidanceBaseline('e093dd018d59bd1657297f0a7a186179e59d5fc3:'+path.relative(path.resolve(portal,'../..'),args.path)),loader:'js'}));
+   b.onLoad({filter:/src\/(transport\/session|features\/plan\/(guidanceHydration|guidancePort))\.ts$/},args=>{
+    const name=path.relative(path.resolve(portal,'../..'),args.path);
+    if(!historical.has(name))return null;
+    return {contents:sharedCiBaselines.readBytes('58c0669d0c5507c0eb7087fe0a0b0e0785743d5e',name).toString('utf8'),loader:'ts'};
+   });
+  }});
+ }
  if(observeManifest&&(process.env.W3_GUIDANCE_BROWSER_CONTEXT_BASELINE==='1'||process.env.W3_GUIDANCE_BROWSER_OLD_COOKIE==='1'))throw Error('manifest observation requires current compiler inputs');
  const observed=observeManifest?manifestObserverBuild():null;if(observed)plugins.push(observed.plugin);
  const result=await build({absWorkingDir:portal,entryPoints:[selectedEntry==='context'?'tests/rebuild-plan-guidance-context-browser-entry.tsx':'tests/rebuild-plan-guidance-browser-entry.tsx'],entryNames:'rebuild-plan-guidance-browser-entry',outdir,tsconfig:'tsconfig.frontend.json',bundle:true,write:false,metafile:!!budgetDiagnostics,format:'esm',loader:{'.woff2':'file','.woff':'file'},assetNames:'fonts/[name]-[hash]',plugins});
