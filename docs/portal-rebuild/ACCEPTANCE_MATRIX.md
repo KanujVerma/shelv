@@ -1,3 +1,130 @@
+# current portal acceptance evidence: 2026-11-02T08:52:52.400275+00:00
+
+Owner: Kanuj. This current ledger covers all26 screens and48 decisions with independent evidence fields. Historical tables below are retained; scoped historical/source passes are not current full-product acceptance. Source state is Root b2a5f4f3 plus report-only successors. The exact dependency fingerprint is the actual main/public compiler input manifests under the ignored continuation-20261102/maya evidence; no virtual overlays or weakened flags were used.
+
+Full connected-screen count: **not audited**. Fully browser-verified-screen count: **not audited**; screenD01 has partial current mounted behaviors, with failed visual comparison. Fully accepted decision count: **not audited**. No complete current product/release verdict has been issued. These fields are not a points score or a replacement percentage.
+
+Common current gate: exact-head full CI, real connected isolated Auth/persistence/permission/Storage/delivery, all required negative/returning flows, visual/a11y and applicable human/external approval remain distinct. Current local physical Root app/test types pass; full npm/Expo/SQL/native acceptance freeze is not claimed.
+
+Evidence keys apply separately in each named column: **R0** = integrated b2a5f4f3 client runtime and594d64e2 standalone server SMTP adapter, plus report-only commits, exact current main/public compiler fingerprints; **I0** = source inventory is research, scoped historical reviews retain their own limits, full screen/decision review is open; **E0** = current complete connected journey/failure paths not audited, historical G1/G2 do not certify this head; **V0** = applicable desktop/narrow/mobile/keyboard/zoom/reduced-motion/a11y states not accepted. No field is marked not applicable to improve a count.
+
+## all26 screen evidence
+
+| Screen / approved node | Latest source or candidate | Required independent review scope | Integrated Root / dependency fingerprint | Connected route and persistence chain | Current end-to-end and failure paths | Visual / accessibility | Remaining blocker and owner | Accepted |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| C01 · your plan · morning · 498:85 | R0 | I0 | R0 | `/plan` or `?routine=morning`; ClientContent -> ClientPlan -> Routine, P/U. Current directions, proposal, latest public review and next date come from the read projection. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| C01E · your plan · evening · 503:926 | R0 | I0 | R0 | `/plan?routine=evening`; same mounted Routine filtered by authored period, P. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| C02 · review a recommendation · 498:212 | R0 | I0 | R0 | `/plan/recommendations/:decisionId`; stable ID -> Recommendation -> DecisionControls; V3 `record_decision_v2`, P. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| C02D · directions & evidence · 499:766 | R0 | I0 | R0 | `/plan/products/:productId/evidence`, selected from the recommendation; Evidence/ProductDirections/reasons/limits/sources, P. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| C03 · product details sheet · 499:151 | R0 | I0 | R0 | `/plan/products/:productId[?routine=evening]`; one shared Sheet over Routine, selected ProductDetails, P. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| C03D · CeraVe PM reasoning · 503:1083 | R0 | I0 | R0 | Same evidence route with the CeraVe ID; selected evidence variant supplies product title/context, P. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| C04 · check-ins & history · 498:304 | R0 | I0 | R0 | `/history`, `/history/:eventId`, `/history/versions/:version`; mounted ClientHistoryContent/Timeline and historical ClientPlan, H. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| C05 · send an update · 499:305 | R0 | I0 | R0 | `/history/new`; current-record reader gates ReportForm, H. Goal answers, comfort, linked use, optional notes, existing amendment photo refs -> submit/amend/status. | E0 | V0 | W4 photo bytes/collection and connected acceptance | not accepted |
+| C06 · orders · quote preparation · 499:446 | R0 | I0 | R0 | `/orders` parses, but ClientContent -> UnavailableModule. O source APIs and separate Commerce candidates are not this mount. | E0 | V0 | W5 Commerce/Orders producers and held financial gates | not accepted |
+| C06D · delivered, not started · 503:808 | R0 | I0 | R0 | `/orders/:orderId` parses; same unavailable fallback, O. | E0 | V0 | W5 Commerce/Orders producers and held financial gates | not accepted |
+| C07 · record actual use · 499:584 | R0 | I0 | R0 | `/plan/products/:productId/use` or `/plan/use`; ClientPlan -> UseReport, U. Identity/create/use/status then current refresh. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| C07C · report a CeraVe PM change · 503:1174 | R0 | I0 | R0 | Same use route with selected CeraVe product ID from its sheet, U. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| C08 · account · 498:399 | R0 | I0 | R0 | `/account` and `/account/service` -> UnavailableModule. Root consent presentation/export source are unmounted, S. Address/service candidate also remains separate. | E0 | V0 | W6 Account producers/transport/mount | not accepted |
+| C08C · cancel service · 499:927 | R0 | I0 | R0 | `/account/cancel` parses; unavailable. Existing advisor `cancel_service` remains separate, S. | E0 | V0 | W6 Account producers/transport/mount | not accepted |
+| C08R · read-only access · 504:621 | R0 | I0 | R0 | `/plan`/`/history` with authoritative read_only access; mounted source restrictions in P/H. | E0 | V0 | W6 Account producers/transport/mount | not accepted |
+| A00 · clients · 503:449 | R0 | I0 | R0 | `/advisor/clients`; AdvisorWorkspace -> real `advisor_list`/directory. Open enters limited AdvisorClientRecovery, A. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| A01 · plans · 500:299 | R0 | I0 | R0 | `/advisor/plans`; assigned/unassigned draft/publication list, create/read/open, A. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| A02 · plan editor · 500:383 | R0 | I0 | R0 | `/advisor/plans/:draftId/:section` and `/preview`; free checklist, structured fields,900ms autosave, shared unpublished preview, A. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| A03 · sources & agent changes · 500:500 | R0 | I0 | R0 | `/advisor/plans/:draftId/sources`; structured provenance fields plus compare/apply import, A. | E0 | V0 | W1/W2 actual Source/agent workflows | not accepted |
+| A04 · publication blocked · 500:592 | R0 | I0 | R0 | `/advisor/plans/:draftId/review-publish`; PublicationChecks reads actual gate/readiness/exact target, A. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| A04P · verify service payment · 503:672 | R0 | I0 | R0 | PaymentVerification is an editor-local subview (`paymentOpen`), `advisor_read`v2 -> `confirm_payment`, A. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| A05 · ready to publish · 500:686 | R0 | I0 | R0 | Same review-publish route; assigned/reviewed/exact approval/verified first payment -> deliberate `publish_plan_v1`, A. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| A06 · published / notification failure · 500:779 | R0 | I0 | R0 | Same editor receipt branch shows publication and `notification queued`, A. Root N backend now exists separately. | E0 | V0 | W1/W2 actual notification status/retry/delivery | not accepted |
+| A07 · review a check-in · 500:846 | R0 | I0 | R0 | `/advisor/reviews/:reportId` parses but AdvisorApplication -> unavailable. Integrated Guidance component and separately reviewed083 App/harness are not Root mount. | E0 | V0 | coordinator A07 mount; provider hold preserved | not accepted |
+| A08 · workspace permissions · 503:558 | R0 | I0 | R0 | `/advisor/permissions` now mounts OwnerPolicyApplication -> real policy controller/port -> read_policy/set_sami_approval_policy/status, A. | E0 | V0 | feature owner + coordinator connected and visual acceptance | not accepted |
+| D01 · guided Maya · 503:1271 | b2a5f4f3 memory interactions; chrome candidate a8f617e3 unadmitted | Maya complete R2 scoped source/SSR PASS; fresh chrome R1 pending | R0 | /maya +stage: actual PublicEntry → MayaApplication → shared ClientPlan and isolated controller; no business persistence | Five stages, actual form unknown Start/self purchase, Back/Forward, finish/reopen/replay/reset observed; zero API/external resources; full journey acceptance open | FAIL: approved client chrome missing in current Root. Width samples1440/390/320 no horizontal overflow; full visual/a11y open | W0 chrome candidate independent review then coordinator browser comparison | not accepted |
+
+## all48 decision evidence
+
+| Decision | Latest source / candidate mapping | Independent review | Root / dependency fingerprint | Actual connected chain | Current end-to-end and failure evidence | Visual / accessibility | Blocker / owner | Accepted |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| D01: One client experience | `apps/portal/src/ui/; shell/router` | I0 | R0 | E0 | E0 | V0 | W0; see current gates | not accepted |
+| D02: Approved baseline, not a new design competition | `apps/portal/src/ui/; shell/router` | I0 | R0 | E0 | E0 | V0 | W0; see current gates | not accepted |
+| D03: Full frontend rebuild, bounded backend changes | `apps/portal/src/ui/; shell/router` | I0 | R0 | E0 | E0 | V0 | W0; see current gates | not accepted |
+| D04: Enforced consistency | `apps/portal/src/ui/; shell/router` | I0 | R0 | E0 | E0 | V0 | W0; see current gates | not accepted |
+| D05: Brand and copy | `apps/portal/src/ui/; shell/router` | I0 | R0 | E0 | E0 | V0 | W0; see current gates | not accepted |
+| D06: Icons have consistent meaning | `apps/portal/src/ui/; shell/router` | I0 | R0 | E0 | E0 | V0 | W0; see current gates | not accepted |
+| D07: Desktop first, responsive before release | `apps/portal/src/ui/; shell/router` | I0 | R0 | E0 | E0 | V0 | W0; see current gates | not accepted |
+| D08: Your plan is useful immediately | `apps/portal/src/features/plan/` | I0 | R0 | E0 | E0 | V0 | W3; see current gates | not accepted |
+| D09: Proposals do not become actual use | `apps/portal/src/features/plan/` | I0 | R0 | E0 | E0 | V0 | W3; see current gates | not accepted |
+| D10: Detail without a maze | `apps/portal/src/features/plan/` | I0 | R0 | E0 | E0 | V0 | W3; see current gates | not accepted |
+| D11: Correct content binding | `apps/portal/src/features/plan/` | I0 | R0 | E0 | E0 | V0 | W3; see current gates | not accepted |
+| D12: Check-ins & history | `apps/portal/src/features/history/` | I0 | R0 | E0 | E0 | V0 | W4; see current gates | not accepted |
+| D13: Account | `apps/portal/src/features/account/` | I0 | R0 | E0 | E0 | V0 | W6; see current gates | not accepted |
+| D14: Plan lifecycle | `src/contracts/PortalRebuild*; advisor feature` | I0 | R0 | E0 | E0 | V0 | W1/W2; see current gates | not accepted |
+| D15: Guided, not forced | `src/contracts/PortalRebuild*; advisor feature` | I0 | R0 | E0 | E0 | V0 | W1/W2; see current gates | not accepted |
+| D16: Save incomplete work | `src/contracts/PortalRebuild*; advisor feature` | I0 | R0 | E0 | E0 | V0 | W1/W2; see current gates | not accepted |
+| D17: Unique cases use approved modules | `src/contracts/PortalRebuild*; advisor feature` | I0 | R0 | E0 | E0 | V0 | W1/W2; see current gates | not accepted |
+| D18: Schedules are authored | `src/contracts/PortalRebuild*; advisor feature` | I0 | R0 | E0 | E0 | V0 | W1/W2; see current gates | not accepted |
+| D19: External AI workflow | `src/contracts/PortalRebuild*; advisor feature` | I0 | R0 | E0 | E0 | V0 | W1/W2; see current gates | not accepted |
+| D20: Source and import truth | `src/contracts/PortalRebuild*; advisor feature` | I0 | R0 | E0 | E0 | V0 | W1/W2; see current gates | not accepted |
+| D21: First-publication gate | `draft/publication server and SQL; service adapters` | I0 | R0 | E0 | E0 | V0 | W1/W6; see current gates | not accepted |
+| D22: Precise approval | `draft/publication server and SQL; service adapters` | I0 | R0 | E0 | E0 | V0 | W1/W6; see current gates | not accepted |
+| D23: Sami and owner authority | `draft/publication server and SQL; service adapters` | I0 | R0 | E0 | E0 | V0 | W1/W6; see current gates | not accepted |
+| D24: First publication starts clocks | `draft/publication server and SQL; service adapters` | I0 | R0 | E0 | E0 | V0 | W1/W6; see current gates | not accepted |
+| D25: Review cadence and service access | `draft/publication server and SQL; service adapters` | I0 | R0 | E0 | E0 | V0 | W1/W6; see current gates | not accepted |
+| D26: Product identity | `plan feature; identity/use server` | I0 | R0 | E0 | E0 | V0 | W3/W5; see current gates | not accepted |
+| D27: Choice and self-purchase | `plan feature; identity/use server` | I0 | R0 | E0 | E0 | V0 | W3/W5; see current gates | not accepted |
+| D28: No product margin | `orders feature; payment/quote server` | I0 | R0 | E0 | E0 | V0 | W5; see current gates | not accepted |
+| D29: Quote and payment integrity | `orders feature; payment/quote server` | I0 | R0 | E0 | E0 | V0 | W5; see current gates | not accepted |
+| D30: Delivery and actual use | `plan/orders feature; use event server` | I0 | R0 | E0 | E0 | V0 | W3/W5; see current gates | not accepted |
+| D31: Orders survive plan updates | `plan/orders feature; use event server` | I0 | R0 | E0 | E0 | V0 | W3/W5; see current gates | not accepted |
+| D32: Immutable meaningful history | `history feature; review/projection server` | I0 | R0 | E0 | E0 | V0 | W4; see current gates | not accepted |
+| D33: Automatic notification scope | `outbox/delivery server; notifications UI` | I0 | R0 | E0 | E0 | V0 | W1/W4; see current gates | not accepted |
+| D34: Reliable event delivery | `outbox/delivery server; notifications UI` | I0 | R0 | E0 | E0 | V0 | W1/W4; see current gates | not accepted |
+| D35: Existing service terms preserved | `account/orders feature; service policy` | I0 | R0 | E0 | E0 | V0 | W5/W6; see current gates | not accepted |
+| D36: Service refund | `account/orders feature; service policy` | I0 | R0 | E0 | E0 | V0 | W5/W6; see current gates | not accepted |
+| D37: Product return and referral | `account/orders feature; service policy` | I0 | R0 | E0 | E0 | V0 | W5/W6; see current gates | not accepted |
+| D38: Cancellation | `service/source/retention server; account feature` | I0 | R0 | E0 | E0 | V0 | W6/W1; see current gates | not accepted |
+| D39: Source retention and access | `service/source/retention server; account feature` | I0 | R0 | E0 | E0 | V0 | W6/W1; see current gates | not accepted |
+| D40: Data use | `service/source/retention server; account feature` | I0 | R0 | E0 | E0 | V0 | W6/W1; see current gates | not accepted |
+| D41: Truth and scope | `shared renderer; Maya adapter; private viewer` | I0 | R0 | E0 | E0 | V0 | W3/W7; see current gates | not accepted |
+| D42: Same renderer, isolated demo | `shared renderer; Maya adapter; private viewer` | Maya b2 source/SSR + partial mounted behaviors; chrome independent R1 pending | R0 | E0 | E0 | V0 | W3/W7; see current gates | not accepted |
+| D43: Model and agent rules | `configuration; docs; ownership` | I0 | R0 | E0 | E0 | V0 | coordinator; see current gates | not accepted |
+| D44: Parallel ownership | `configuration; docs; ownership` | I0 | R0 | E0 | E0 | V0 | coordinator; see current gates | not accepted |
+| D45: Documentation is a deliverable | `configuration; docs; ownership` | I0 | R0 | E0 | E0 | V0 | coordinator; see current gates | not accepted |
+| D46: Real verification | `integrated app; fixtures; cutover tooling` | I0 | R0 | E0 | E0 | V0 | W7/coordinator; see current gates | not accepted |
+| D47: Cutover, not destructive replacement | `integrated app; fixtures; cutover tooling` | I0 | R0 | E0 | E0 | V0 | W7/coordinator; see current gates | not accepted |
+| D48: Gaps are bounded | `integrated app; fixtures; cutover tooling` | I0 | R0 | E0 | E0 | V0 | W7/coordinator; see current gates | not accepted |
+
+## frozen mandatory integrated journeys
+
+This list preserves the ten mandatory journey groups in the invoked continuation. Earlier detailed V01-V17 and negative matrices remain required refinements, not replaced or waived.
+
+| Journey | Required chain | Current acceptance |
+| --- | --- | --- |
+| J01 | Unassigned draft → source/context → incomplete save → validation → intended assignment → actual preview → exact review. | Not accepted on current complete head. |
+| J02 | Either-order review and verified first payment → deliberate authorized publication; stale/wrong-target/payment denials; unrelated ledger update does not invalidate advice. | Historical slice only; current full acceptance open. |
+| J03 | Client Auth → entitled plan → routine/recommendation/product sources → approve/defer/decline → navigate and return. | Historical slice plus current source regressions; current full acceptance open. |
+| J04 | Exact quote/address/returns → claim vs verified funds → order/delivery → explicit Start; self purchase without fake funds/order. | Producers/Orders/financial holds and current genuine acceptance open. |
+| J05 | Optional check-in/photo → correction → reviewed meaningful conclusion → immutable history and source-bound version; no-change does not republish. | Photo bytes/collection/A07/current genuine acceptance open. |
+| J06 | Profile/address/contact and goal/product report → correct advisor alert; frozen order/source facts retained. | Account and alert producer/composition gaps remain. |
+| J07 | Consent review/withdrawal/revocation → current private protection → truthful retention/deletion and late-return fences. | Source kernel/credential/final egress/storage/lifecycle gates remain. |
+| J08 | Ordinary vs early departure → authoritative dates → 30-day read-only → static last-entitled export → separate open administration. | New source candidates fail/under review; channel/mount/genuine file proof open. |
+| J09 | Publication persists through notification failure → actual isolated sink → retry/dedup without republish/date reset. | Current source/native/worker integration and actual delivery gates open. |
+| J10 | Five-stage Maya/shared renderer/form → exit/explore/replay/reset; no live business writes; visual/narrow/mobile/a11y. | Partial mounted behavior observed; visual fails, chrome under review; full acceptance open. |
+
+## non-screen acceptance boundaries
+
+| Boundary | Current evidence / remaining gate |
+| --- | --- |
+| actual browser file delivery | Concrete-writer callback models are not observed browser filesystem delivery; AFEC source findings and controlled readback gate remain. |
+| SMTP and delivery | SMTP1 correction admitted at594d64e2 after independent R2 PASS; actual Root73/73 and physical app/test types0. No worker activation or actual socket/Mailpit/provider acceptance. |
+| native lifecycle and matrices | NE5 custody and NE6 complete variants/time/identity remain held; candidate repairs do not grant resource execution. No stopped fixture reuse/reset. |
+| photo bytes and private Storage | Metadata, a page or upload receipt are not complete collection/storage/egress acceptance; all current actual privacy/retirement paths need proof. |
+| migration and rollback | No new native migration rehearsal; preserve dates/IDs/receipts/instructions/private shares, backups and rollback; unsupported legacy lineage unavailable. |
+| provider-refused reviews | Guidance private-return and M65 remain unaccepted; no disguise/retry/reroute or invented enrollment prerequisite. |
+| human and release | Representative-human comprehension, exact disclosure/legal/business scope, hosted/provider and explicit release approval remain external. |
+
+---
+
+## historical acceptance ledger
+
 # portal rebuild acceptance matrix
 
 Owner: Kanuj. Updated scope inventory, 31 October 2026. Evidence below distinguishes implemented component/backend slices from complete connected acceptance; unverified paths remain targets. Existing historical tests do not prove rebuild acceptance. Statuses are separate: agreed, designed, implemented, locally tested, real isolated E2E, hosted verified, deployed.

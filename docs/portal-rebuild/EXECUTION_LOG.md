@@ -1,3 +1,15 @@
+# continuation checkpoint: 2026-11-02T08:44:33.576176+00:00
+
+- Reconciled old terminal parent and preserved exact pending17-path Maya projection; original input hash unchanged. Native T3 same-thread workspace recovery moved off unrelated scanner dirt; no setup/install or stack rewrite.
+- Integrated exact reviewed Maya source b2a5f4f3; complete R2 report519a8e7d and all26 source inventory00348819 imported report-only. Maya source integrated at b2a5f4f372d4f65a1cc3f9c85fd061bddcc7668b; current39/cold39/retained210/guidance99 and strict/frontend/session/UI/main-public compile plus physical Root app/test types pass. Mounted real main-entry public Maya five stages, actual shared form with unknown Start/self-purchase, native Back/Forward, finish/reopen/replay/reset observed; no API/external resource requests observed. Visual comparison FAIL: shared client chrome absent. Width samples1440/390/320 have no document horizontal overflow, not full visual/a11y acceptance.
+- Five bootstrap reviews closed with consolidated findings; only their report commits were admitted. No failed candidate was called accepted. Seven child slots were refilled continuously from stable contract tasks and fresh candidate reviews.
+- Coordinator SMTP1 source correction19b5946e was subsequently admitted at594d64e2 after complete independent R2: unchanged independent5 RED3/5 -> GREEN5/5, author29 and retained39 green, focused strict0. Independent R2 PASS; actual Root73/73 and physical app/test types0. Worker/native activation remains open.
+- Account departure/export and Source credential author candidates returned; current independent reviews and missing channel/native/currentness gates are tracked separately. No complete product, release, migration or actual delivery acceptance is claimed.
+
+Historical execution log follows.
+
+---
+
 # portal rebuild execution log
 
 Owner: Kanuj. Append meaningful transitions with exact evidence and scope.

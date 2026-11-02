@@ -1,0 +1,18 @@
+{
+  "savedOn": "2026-11-02T09:04:29.343901+00:00",
+  "continuation": {
+    "file": "source/CONTINUATION_INPUT_20261102.txt",
+    "bytes": 100187,
+    "sha256": "b428b318598df52f12ce3e6ea4ebd350ff9333ee05d9fd8f04a8e845d0c722bc"
+  },
+  "originalStoppedHandoff": {
+    "file": "source/LOCAL_HANDOFF_20261102.txt",
+    "bytes": 53178,
+    "sha256": "95d3093b01b4d9dadef4813c07894cf623bb802d35c2954b1f5e271157712699"
+  },
+  "approvedInputUnchanged": {
+    "bytes": 95388,
+    "sha256": "c45701f9f54fd2b1dbb09bbd7aa2b9b437e9059aa6032b6f39411fe2e7f6efbd"
+  },
+  "scope": "Latest invoked continuation; preserve all original decisions and later addenda. Historical stop superseded for authorized development, not resource/reset/release authority."
+}

@@ -1,4 +1,46 @@
-# Portal rebuild current status
+# current continuation snapshot: 2026-11-02T09:04:29.343901+00:00
+
+Owner: Kanuj. Active authorized continuation of the full D01-D48 / 26-screen rebuild. Root source, native/hosted acceptance and release remain separate. No completion percentage or new ETA is asserted.
+
+Integration source change: **b2a5f4f3**, server adapter source **594d64e2**, plus report-only commits through **59aeb3ab** before this status checkpoint. Remote PR211 was last verified at **8af746d1**, with three successful checks on that older head only. This local checkpoint is not yet covered by exact-head CI. PR211 remains open/draft stacked on PR210; no merge, force-push, main change or deployment is authorized.
+
+Maya source integrated at b2a5f4f372d4f65a1cc3f9c85fd061bddcc7668b; current39/cold39/retained210/guidance99 and strict/frontend/session/UI/main-public compile plus physical Root app/test types pass. Mounted real main-entry public Maya five stages, actual shared form with unknown Start/self-purchase, native Back/Forward, finish/reopen/replay/reset observed; no API/external resource requests observed. Visual comparison FAIL: shared client chrome absent. Width samples1440/390/320 have no document horizontal overflow, not full visual/a11y acceptance.
+
+The existing all26 inventory was imported unchanged as00348819 from report-only0d8651de. Its frozen8af facts remain history; this checkpoint adds Maya behavior and does not call Account/Orders/notifications/A07 connected. Current full connected-screen count, accepted decision count and fully accepted browser-screen count are **not audited**. One screen, D01, has bounded current browser behavior observations but failed visual acceptance. No complete mandatory journey is newly accepted. The separate current evidence tables in [ACCEPTANCE_MATRIX](ACCEPTANCE_MATRIX.md) cover all26 and48 without a points score.
+
+Actual roster at this timestamp: **3 running independent child tasks + 1 coordinator**. Every actual dispatch and readback is codex / gpt-6.1-sol / xhigh / default; no nested agents. The count is below target during the bounded one-writer integration/shared-transport correction section: returned candidates need coordinator corrections, while their next independent reviews are queued. Next available refills are corrected combined transport, entry, Account and native executor; source-ready photo/agent/chrome reviews run now. Heavy execution is serialized on the16GB/10-logical-CPU host. Failed immediate identity steers created zero tasks; one queued export-review identity continuation is metadata only and counts as the same child, not a new review.
+
+| Active role | Literal actual taskId | State |
+| --- | --- | --- |
+| Maya chrome independent R1 | `node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-maya-chrome-review-r1` | running |
+| Plan agent client independent R1 | `node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-agent-client-review-r1` | running |
+| photo upload independent R1 | `node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acontinuation-20261102-photo-upload-review-r1` | running |
+
+Coordinator T3 parent9b085ada-435f-48d6-8886-957c1ce3e82d owns original integration Root; terminal prior parentd632030a has no active writer. Harness moved through native T3 handoff to kanuj/portal-rebuild-coordination-20261102, preserving original Root dirt. Native goal identity01a19b3a-77a2-71c1-a661-046efe4fbb51 is distinct; its stored paused state was observed after workspace recovery despite the explicit user resume, so it is not described as a verified active native continuation. Current execution and child wakes are through the same authorized T3 parent.
+
+| Feature group | Current bounded result and next gate |
+| --- | --- |
+| auth/session/shell | Existing Root source unchanged; shared transport R4 FAIL NT3 final notification facade / NT4 stalled-body abort. Coordinator owns correction, fresh combined review before admission. |
+| plans/publication/advisor | Existing source chains/historical genuine slices remain scoped. New scoped agent client authored for independent review; no owner approval or source right manufactured. |
+| client plan/use | Shared renderer retained; Maya memory interaction source integrated and mounted behaviors observed. Full actual-client/current-content/responsive acceptance open. |
+| check-ins/history/photos | Metadata is not bytes/upload. New actual retained upload consumer source is in progress against separately pinned current transport; complete inventoryv2 and genuine Storage remain gates. |
+| guidance/A07 | A07 remains unmounted. Provider-refused private-return work stays held and is not rerouted. |
+| commerce/orders | Orders unmounted; existing AC8 correction/fresh R9 and missing financial producers remain. M65 provider hold retained. |
+| Sources/consent | Full kernel R2 FAIL SK2 grammar, SK3 temporal and SK4 permission ordering; final private egress unaccepted. Credential adapter435c6d13 + report97b6bba2 returned; independent R1 FAIL CA2/CA3. |
+| Account/service/export | Departure64534a84/report44c918b8 and exporte949c9cc/reportd5a37968 are unadmitted candidates independently FAIL on ADPR1/2 and AFEC1/2, not accepted corrections. Actual gateway/channel/mount/browser-file proof remain open. |
+| notifications/Maya/visual | SMTP source admitted at594d64e2 after complete independent R2 PASS; actual Root73/73 and physical app/test types0. No worker/native activation. Entry NEI1, native NE5/6 hold admission/execution. Maya chrome candidatea8f617e3 has fresh independent R1 in progress after actual visual failure. |
+
+Integration-ready accepted queue: **empty after admitting Maya17 and SMTP5**. Coordinator now owns shared transport NT3/NT4, entry NEI1, Source SK2-4, Account ADPR/AFEC and credential CA2/CA3 corrections; shared transport NT3/NT4 and notification-entry NEI1 coordinator corrections; Source SK2-4 correction under sole migration writer. New native variants also expose a source-derived notification kind/publication-correlation gate; no native observation is claimed. Native scenario0695148a/report8ed1dcf8 returned and writer released; Runtime.command/cleanup NE5 stays coordinator-owned.
+
+Resource state: stopped old DB/Auth/Storage fixtures remain preserved and unused. The temporary Maya-only loopback server4186 expired cleanly under its20-minute owned deadline; no DB/Auth/API was served. Its browser observations are evidence, not an always-live complete preview. No native execution packet can yet be represented as ready while executor NE5/6 is held. No real clients, policy publication, messages, money, provider or production operations.
+
+The exact [continuation input](source/CONTINUATION_INPUT_20261102.txt) and [stopped handoff original](source/LOCAL_HANDOFF_20261102.txt) are preserved; original approved input SHA c45701f9 remains unchanged. Current task schema is retained in [TASKS](TASKS.json); raw local logs remain ignored.
+
+---
+
+## historical state below
+
+Portal rebuild current status
 
 ## Goal execution restored, 1 November 2026
 

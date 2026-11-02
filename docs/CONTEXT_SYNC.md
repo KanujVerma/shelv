@@ -1,3 +1,7 @@
+## portal rebuild continuation, 2 November 2026
+
+The approved full portal continuation is running under the same T3 parent after native workspace recovery. Current source/acceptance, exact task roster, ownership, gates and preserved input provenance are canonical in [portal-rebuild/CURRENT_STATUS.md](portal-rebuild/CURRENT_STATUS.md), [TASKS.json](portal-rebuild/TASKS.json) and [ACCEPTANCE_MATRIX.md](portal-rebuild/ACCEPTANCE_MATRIX.md). The older rough percentage is retired. No release or real-client/resource reset authority is implied.
+
 ## Portal restored execution, 1 November 2026
 
 The original goal is restored in the coordinator runtime. Fresh Source R1, Maya R2 and Commerce R8 actually dispatched and received their literal returned IDs, with exact Sol/xhigh/default settings; earlier host-rejected attempts created no tasks and remain separate. Source R1's first syntax finding holds that candidate. [Current execution and exact receipts](portal-rebuild/CURRENT_STATUS.md) govern. Coordinator retains shared transport/grammar corrections; no new native/browser/resource or release grant follows.
