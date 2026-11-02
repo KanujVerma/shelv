@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {createRequire} from 'node:module';
-import {execFileSync} from 'node:child_process';
+import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
 import {fileURLToPath} from 'node:url';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -24,7 +24,7 @@ export {SessionError} from './apps/portal/session-integration/runtime/server/typ
 export {parseClientCommand,mapClientPhotoHeadResponse} from './apps/portal/session-integration/runtime/server/client-policy.ts';
 export {parseCommand} from './apps/portal/session-integration/runtime/server/policy.ts';
 import './supabase/functions/concierge-checkins/index.ts';
-`,resolveDir:root,sourcefile:'photo-head-closed-entry.ts',loader:'ts'},bundle:true,write:false,metafile:true,platform:'node',format:'cjs',logLevel:'silent',plugins:baseline?[{name:'immutable-base-only-owned',setup(b){b.onLoad({filter:/\.(?:ts|js)$/},args=>{const rel=args.path.slice(root.length);if(!owned.has(rel))return;return {contents:execFileSync('git',['show',`d4125cca52cb21d0c0a79a5733662f782a0dea76:${rel}`],{cwd:root,encoding:'utf8'}),loader:rel.endsWith('.ts')?'ts':'js'};});}}]:[]};
+`,resolveDir:root,sourcefile:'photo-head-closed-entry.ts',loader:'ts'},bundle:true,write:false,metafile:true,platform:'node',format:'cjs',logLevel:'silent',plugins:baseline?[{name:'immutable-base-only-owned',setup(b){b.onLoad({filter:/\.(?:ts|js)$/},args=>{const rel=args.path.slice(root.length);if(!owned.has(rel))return;return {contents:portalCiBaselines.readBytes('d4125cca52cb21d0c0a79a5733662f782a0dea76',rel).toString('utf8'),loader:rel.endsWith('.ts')?'ts':'js'};});}}]:[]};
 const compiled=await build(bundleOptions);
 // CJS evaluation stays in memory, including auth-js's native Node imports.
 const module={exports:{}};new Function('require','module','exports',compiled.outputFiles[0].text)(createRequire(import.meta.url),module,module.exports);
@@ -173,7 +173,7 @@ test('source bundle includes actual canonical entry and session graph with no di
 });
 test('entire actual closed session/gateway/Root graph emits byte-identical JavaScript across six Parent annotations',async()=>{
  const handler='supabase/functions/concierge-checkins/handler.ts';
- const previous=execFileSync('git',['show',`b42742a1:${handler}`],{cwd:root});
+ const previous=portalCiBaselines.readBytes('b42742a190fb55e1b2339c0017472dea03ea4e78',handler);
  const before=await build({...bundleOptions,plugins:[{name:'only-admitted-six-annotation-preimage',setup(b){b.onLoad({filter:/concierge-checkins\/handler\.ts$/},args=>{assert.equal(args.path,root+handler);return {contents:previous.toString('utf8'),loader:'ts'};});}}]});
  assert.deepEqual(Object.keys(before.metafile.inputs),Object.keys(compiled.metafile.inputs));
  assert.equal(before.outputFiles[0].text,compiled.outputFiles[0].text);

@@ -2,7 +2,7 @@ const originUrl = new URL('./rebuild-photo-head-closed.test.mjs',import.meta.url
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {createRequire} from 'node:module';
-import {execFileSync} from 'node:child_process';
+import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
 import {fileURLToPath} from 'node:url';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -29,7 +29,7 @@ export {parseClientCommand,mapClientPhotoHeadResponse} from './apps/portal/sessi
 export {parseCommand} from './apps/portal/session-integration/runtime/server/policy.ts';
 export {createConciergeAuthenticatedPorts} from './supabase/functions/concierge-operations/runtime.ts';
 import './supabase/functions/concierge-checkins/index.ts';
-`,resolveDir:root,sourcefile:'photo-head-closed-entry.ts',loader:'ts'},bundle:true,write:false,metafile:true,platform:'node',format:'cjs',logLevel:'silent',plugins:baseline?[{name:'immutable-base-only-owned',setup(b){b.onLoad({filter:/\.(?:ts|js)$/},args=>{const rel=args.path.slice(root.length);if(!owned.has(rel))return;return {contents:execFileSync('git',['show',`d4125cca52cb21d0c0a79a5733662f782a0dea76:${rel}`],{cwd:root,encoding:'utf8'}),loader:rel.endsWith('.ts')?'ts':'js'};});}}]:[]};
+`,resolveDir:root,sourcefile:'photo-head-closed-entry.ts',loader:'ts'},bundle:true,write:false,metafile:true,platform:'node',format:'cjs',logLevel:'silent',plugins:baseline?[{name:'immutable-base-only-owned',setup(b){b.onLoad({filter:/\.(?:ts|js)$/},args=>{const rel=args.path.slice(root.length);if(!owned.has(rel))return;return {contents:portalCiBaselines.readBytes('d4125cca52cb21d0c0a79a5733662f782a0dea76',rel).toString('utf8'),loader:rel.endsWith('.ts')?'ts':'js'};});}}]:[]};
 const compiled=await build(bundleOptions);
 // CJS evaluation stays in memory, including auth-js's native Node imports.
 const module={exports:{}};new Function('require','module','exports',compiled.outputFiles[0].text)(createRequire(originUrl),module,module.exports);
@@ -190,7 +190,7 @@ test('PH1 other exact shared RPC success names retain their existing unlimited d
 });
 test('PH1 production AST differs only at the fixed-name success budget; emitted runtime JS intentionally changes',()=>{
  const name='supabase/functions/concierge-operations/runtime.ts';
- const before=execFileSync('git',['show',`d226194115fd5917afa591f478e4c20836bc54a8:${name}`],{cwd:root,encoding:'utf8'}),after=readFileSync(root+name,'utf8');
+ const before=portalCiBaselines.readBytes('d226194115fd5917afa591f478e4c20836bc54a8',name).toString('utf8'),after=readFileSync(root+name,'utf8');
  let replaced=0;
  const normalize=(text,strip)=>{
   const source=ts.createSourceFile(name,text,ts.ScriptTarget.ESNext,true);

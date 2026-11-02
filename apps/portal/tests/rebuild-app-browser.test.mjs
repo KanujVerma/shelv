@@ -381,7 +381,7 @@ test("actual app public Maya/unknown entry never contacts auth; PKCE callback sc
       assert.equal(f.s.calls.length, 0);
       assert.match(
         await f.page.locator("body").innerText(),
-        initial === "/maya" ? /fictional demo/ : /page unavailable/,
+        initial === "/maya" ? /fictional staged sample/ : /page unavailable/,
       );
     } finally {
       await f.close();

@@ -2,13 +2,13 @@
 import assert from 'node:assert/strict';
 import {test,before,after} from 'node:test';
 import {readFileSync,readdirSync} from 'node:fs';
-import {execFileSync} from 'node:child_process';
+import {portalCiBaselines} from './helpers/portal-ci-baselines.ts';
 const globalFetch=globalThis.fetch;before(()=>{globalThis.fetch=async()=>{throw Error('global_external_fetch_denied');};});after(()=>{globalThis.fetch=globalFetch;});
 const migration='supabase/migrations/20261101191527_portal_rebuild_notifications_v1.sql';
 const review='supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql';
 const oldFamilies=['plan_requests','requests','workflow_requests','care_requests','review_requests'];
 const allFamilies=[...oldFamilies,'notification_requests'];
-const original=execFileSync('git',['show',`e89f83ed3d4149dfaabf10d30aa3fa5b1dba59c3:${migration}`],{encoding:'utf8'});
+const original=portalCiBaselines.readBytes('e89f83ed3d4149dfaabf10d30aa3fa5b1dba59c3',migration).toString('utf8');
 const old=readFileSync(new URL('../'+review,import.meta.url),'utf8');
 const current=()=>readFileSync(new URL('../'+migration,import.meta.url),'utf8');
 function helper(sql:string):string|null{return [...sql.matchAll(/create (?:or replace )?function concierge\.review_request_collision\(\) returns trigger[\s\S]*?end \$\$;/g)].at(-1)?.[0]??null;}

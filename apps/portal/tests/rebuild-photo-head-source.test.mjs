@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {readFileSync} from 'node:fs';
-import {execFileSync} from 'node:child_process';
+import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import ts from '../node_modules/typescript/lib/typescript.js';
@@ -95,7 +95,7 @@ test('AST proof removes only the explicitly allocated new read branches and pres
   // The sole Parent-owned exception is six annotations, admitted separately with
   // byte-exact emitted JavaScript proof. All other old nodes retain d412 identity.
   const reference=file==='supabase/functions/concierge-checkins/handler.ts'?'d4a3314ecd81e4c3b544a8919834429e90c05d06':'d4125cca52cb21d0c0a79a5733662f782a0dea76';
-  const original=execFileSync('git',['show',`${reference}:${file}`],{cwd:root,encoding:'utf8'}),current=readFileSync(new URL('../../../'+file,import.meta.url),'utf8');
+  const original=portalCiBaselines.readBytes(reference,file).toString('utf8'),current=readFileSync(new URL('../../../'+file,import.meta.url),'utf8');
   const a=normalized(original,file,false),b=normalized(current,file,true);assert.equal(b,a,file);
   console.log('OLD_AST_PRESERVED '+JSON.stringify({file,reference,sha256:createHash('sha256').update(a).digest('hex')}));
  }

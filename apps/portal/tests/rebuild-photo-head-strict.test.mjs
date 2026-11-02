@@ -4,7 +4,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
-import {execFileSync} from 'node:child_process';
+import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
 import ts from '../node_modules/typescript/lib/typescript.js';
 
 const root=fileURLToPath(new URL('../../../',import.meta.url)),portal=path.join(root,'apps/portal');
@@ -12,9 +12,9 @@ const strong={target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,moduleRe
 const rootFiles=['commands','types','projection','handler','index'].map(name=>path.join(root,'supabase/functions/concierge-checkins',name+'.ts'));
 const format=diagnostics=>ts.formatDiagnosticsWithColorAndContext(diagnostics,{getCurrentDirectory:()=>root,getCanonicalFileName:f=>f,getNewLine:()=> '\n'});
 const base='d4125cca52cb21d0c0a79a5733662f782a0dea76';
-const tracked=new Set(execFileSync('git',['ls-tree','-r','--name-only',base],{cwd:root,encoding:'utf8'}).trim().split('\n'));
+const tracked=new Set(portalCiBaselines.paths(base));
 const baselineBytes=new Map();
-function original(file){const rel=path.relative(root,file);if(!tracked.has(rel))return undefined;if(!baselineBytes.has(rel))baselineBytes.set(rel,execFileSync('git',['show',`${base}:${rel}`],{cwd:root}));return baselineBytes.get(rel);}
+function original(file){const rel=path.relative(root,file);if(!tracked.has(rel))return undefined;if(!baselineBytes.has(rel))baselineBytes.set(rel,portalCiBaselines.readBytes(base,rel));return baselineBytes.get(rel);}
 function compile(files,options,baseline){
  const host=ts.createCompilerHost(options),get=host.getSourceFile;
  if(baseline)host.getSourceFile=(file,language,onError,create)=>{const bytes=original(file);return bytes===undefined?get(file,language,onError,create):ts.createSourceFile(file,bytes.toString('utf8'),language,true);};
