@@ -1,3 +1,7 @@
+## Native goal reconciled: 2026-11-02T21:38:43.150309+00:00
+
+Parent observed no old goal after the owning control cleared it, created the explicitly requested replacement using the saved objective/full-prompt references, and verified ACTIVE in a second get_goal read. CreatedAt1793655482. No rebuild completion, reset, worker interruption, ownership or resource change. Original paused record and full original/corrective text remain preserved. Implementation continues under the same approved scope.
+
 ## Portal integration: 2026-11-02T21:26:08.361347+00:00
 
 Reviewed client bell/navigation92b8 + independente3d81 now joins the source-mounted inbox; exact scoped checks and unchanged numeric21/26mounted,12/26SOURCEwired,1/48sourceverified,0/10complete-current outcomes are in [CURRENT_STATUS](portal-rebuild/CURRENT_STATUS.md). Three live children handle platform type freeze, profile R5 and Orders R2; Parent owns COE1/AEC fixes and Root integration. Native paused-goal clear remains blocked by writer ownership, with full replacement packet saved. No browser/genuine/full-feature acceptance or resource grant follows.

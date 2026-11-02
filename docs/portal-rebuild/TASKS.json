@@ -1,8 +1,8 @@
 {
-  "updatedOn": "2026-11-02T21:26:08.361347+00:00",
+  "updatedOn": "2026-11-02T21:42:28.190587+00:00",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
-  "allocatedWorkers": 3,
+  "allocatedWorkers": 1,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -9754,7 +9754,7 @@
       "childThreadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-admin-platform-type-integration",
       "role": "W0 admin platform types and relocated17 freeze/report",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-9b4ecd7e",
-      "status": "running",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -9768,14 +9768,15 @@
         }
       ],
       "verification": "Actual per-thread configure READ and one live running inventory at 2026-11-02T21:26:08.361347+00:00",
-      "scope": "Source/finite/SSR/type evidence only; no Root/browser/genuine acceptance."
+      "scope": "Source/finite/SSR/type evidence only; no Root/browser/genuine acceptance.",
+      "terminalReconciledAt": "2026-11-02T21:42:28.190587+00:00"
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-profile-consumer-review-r5",
       "childThreadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-profile-consumer-review-r5",
       "role": "R5 complete profile consumer/APC3 review",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-17f74494",
-      "status": "running",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -9789,14 +9790,15 @@
         }
       ],
       "verification": "Actual per-thread configure READ and one live running inventory at 2026-11-02T21:26:08.361347+00:00",
-      "scope": "Source/finite/SSR/type evidence only; no Root/browser/genuine acceptance."
+      "scope": "Source/finite/SSR/type evidence only; no Root/browser/genuine acceptance.",
+      "terminalReconciledAt": "2026-11-02T21:42:28.190587+00:00"
     },
     {
       "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-orders-consumer-review-r2",
       "childThreadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-orders-consumer-review-r2",
       "role": "R2 complete recorded Orders consumer/OR1 review",
       "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-85389b46",
-      "status": "running",
+      "status": "completed",
       "providerInstanceId": "codex",
       "model": "gpt-6.1-sol",
       "options": [
@@ -9810,7 +9812,32 @@
         }
       ],
       "verification": "Actual per-thread configure READ and one live running inventory at 2026-11-02T21:26:08.361347+00:00",
-      "scope": "Source/finite/SSR/type evidence only; no Root/browser/genuine acceptance."
+      "scope": "Source/finite/SSR/type evidence only; no Root/browser/genuine acceptance.",
+      "terminalReconciledAt": "2026-11-02T21:42:28.190587+00:00"
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-history-inbox-cwd-review-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-history-inbox-cwd-review-r1",
+      "role": "R1 full five-path history recovery/inbox CI cwd correction",
+      "status": "running",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "sourceHead": "9aac7eb143738c7789c7f39df9bb89031a61f00c",
+      "writeSet": [
+        "docs/portal-rebuild/research/W7_HISTORY_RECOVERY_AND_INBOX_CWD_SOURCE_R1.md"
+      ],
+      "verification": "Delegate response and actual configure READ2026-11-02T21:42:28.190587+00:00",
+      "heavy": "conditional exclusive owned source/SSR/finite/types after Parent terminal full parity; no genuine/browser/native resources"
     }
   ],
   "parentVerification": {
@@ -11901,7 +11928,7 @@
     "statusOnly": true,
     "noWorkerOrSourceMutation": true
   },
-  "integrationHead": "3d1dbd8a7dbf8d66c37a2e160605845cd56d131a",
+  "integrationHead": "9aac7eb143738c7789c7f39df9bb89031a61f00c (code freeze; later lifecycle docs separate)",
   "currentAllocationEvidence": "Six current children: Account/notifications composition; ordinary journey author; independent contact provider/profile/contact consumer reviews; client Orders pin. Three completed authors and failed photo reviewer excluded. Full briefs/readbacks/literal IDs in refill-final receipt.",
   "resourceGrantState": "No resource remains. RootboundedPGgrammarprobe acceptedRETURN2026-11-02T05:26:24.136318Z; no application/Auth/migration replay. Notificationexecutor no grant. Bankedreset disarmed.",
   "currentCheckpoint": {
@@ -11954,14 +11981,15 @@
     "consumerReview": "R7 failed provider risk flag before final report; no reroute/rephrase; bounded finalREADY findings unaccepted report, no consumer admission"
   },
   "orchestrationState": {
-    "asOf": "2026-11-02T21:26:08.361347+00:00",
+    "asOf": "2026-11-02T21:42:28.190587+00:00",
     "coordinator": "9b085ada-435f-48d6-8886-957c1ce3e82d",
-    "actualRunningChildren": 3,
-    "actualWorkflowsIncludingCoordinator": 4,
+    "actualRunningChildren": 1,
+    "actualWorkflowsIncludingCoordinator": 2,
     "targetUsefulChildren": 7,
-    "heavyOwner": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-orders-consumer-review-r2",
-    "nativeGoal": "paused; replacement user-authorized but clear/set blocked by existing active writer; no false completion",
-    "whyBelowTarget": "Parent-owned small fixes and exact combined authority/cookie composition must freeze before fresh independent reviews. One heavy slot serializes execution, not source work. No filler historical research dispatched."
+    "heavyOwner": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-history-inbox-cwd-review-r1",
+    "nativeGoal": "VERIFIED active replacement createdAt1793655482",
+    "whyBelowTarget": "Profile R5 and Orders R2 are terminal. Parent owns bounded APC4 finalization, COE1/shared admin cookie and AEC fixes before fresh complete reviews; exact combined candidates are not ready. CI/review repair has one fresh independent reviewer; no filler historical investigations.",
+    "goalReconciledAt": "2026-11-02T21:38:43.150309+00:00"
   },
   "sqlWriterState": "soleParent writer; profile67source admitted unexecuted; nochildSQLwriter/noNativegrant",
   "continuation20261102": {
@@ -12013,6 +12041,10 @@
   "readyQueue": [
     {
       "owner": "Parent",
+      "task": "Correct APC4 exact completed-operation finally custody after transient final applicability denial; preserve draft/ACK and newer operations, reproduce unchanged seven, fresh complete profile R6."
+    },
+    {
+      "owner": "Parent",
       "task": "Correct COE1 stale503 side effect and add own-admin bounded decoder in sole-owned shared cookie; preserve received401/403 provenance; then fresh full combined review."
     },
     {
@@ -12023,5 +12055,15 @@
       "owner": "Parent",
       "task": "Integrate reviewed Orders producer/consumer/entry after COE1 and OR1 review, then exact authorized ordinary Auth/persistence/browser acceptance."
     }
-  ]
+  ],
+  "goalReplacement20261102": {
+    "status": "active",
+    "createdAt": 1793655482,
+    "nativeThreadId": "01a19b3a-77a2-71c1-a661-046efe4fbb51",
+    "evidence": ".local-artifacts/portal-rebuild/continuation-20261102/goal-control/replacement-goal-active.json",
+    "objectivePath": "docs/portal-rebuild/source/REPLACEMENT_GOAL_OBJECTIVE_20261102.txt",
+    "fullOriginalAndSteerReferencesPreserved": true,
+    "oldMarkedComplete": false,
+    "workerOrCodeReset": false
+  }
 }
