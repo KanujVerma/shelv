@@ -49,7 +49,8 @@
     "genuineUnverified": 26,
     "currentFullBrowserUnverified": 26,
     "unknownActualFunctionalOutcome": 26,
-    "browserTestFailuresEstablishedByThisInventory": 0
+    "browserTestFailuresEstablishedByThisInventory": 0,
+    "acceptedScreens": 0
   },
   "frames": [
     {
@@ -140,7 +141,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C01E",
@@ -228,7 +234,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C02",
@@ -311,7 +322,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C02D",
@@ -391,7 +407,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C03",
@@ -486,7 +507,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C03D",
@@ -572,7 +598,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C04",
@@ -675,7 +706,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C05",
@@ -770,7 +806,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C06",
@@ -846,7 +887,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C06D",
@@ -922,7 +968,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C07",
@@ -1015,7 +1066,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C07C",
@@ -1105,7 +1161,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C08",
@@ -1180,7 +1241,12 @@
       ],
       "unmountedRequiredRouteVariants": [
         "/account/service"
-      ]
+      ],
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C08C",
@@ -1245,7 +1311,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "C08R",
@@ -1352,7 +1423,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "A00",
@@ -1437,7 +1513,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "A01",
@@ -1521,7 +1602,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "A02",
@@ -1617,7 +1703,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "A03",
@@ -1709,7 +1800,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "A04",
@@ -1801,7 +1897,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "A04P",
@@ -1897,7 +1998,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "A05",
@@ -1990,7 +2096,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "A06",
@@ -2085,7 +2196,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "A07",
@@ -2151,7 +2267,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "A08",
@@ -2256,7 +2377,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     },
     {
       "id": "D01",
@@ -2348,7 +2474,12 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "accepted": false,
+      "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
+      "acceptedCapabilities": []
     }
   ],
   "sourceChains": {
