@@ -1,3 +1,7 @@
+## Payment consumer hold, 3 November 2026
+
+Owner: Kanuj. W7-W5-S1/P2 after9ab publication reproduces immutable submitted retry ACK overriding confirmed/rejected canonical status (2/2 failed). W5 owns minimal correction/new full source gate. Earlier source/CI passes remain historical, no current feature acceptance. [Current status](portal-rebuild/CURRENT_STATUS.md) records exact hold; M01/M02 and counters unchanged. No main merge/release/real-client/SQL action.
+
 ## W0 second reviewed source batch, 3 November 2026
 
 Owner: Kanuj. [W0 continuation](portal-rebuild/eight-threads/W0.md) records reviewed PR213/214/216/218 merges, source-only request35f, asset aliases9ba and remaining actual composition work. [W7 canonical acceptance ledger](portal-rebuild/w7/ACCEPTANCE_LEDGER.json) owns all26/48/10 rows and preserved M01/M02; W0 writes only integration summaries. Counts unchanged:2 bounded capabilities,0/26 complete accepted screens,0/10 complete journeys. Original3311/3312 remains failed; c075 all3 CI/native clean is separate from the newer batch. D13 first-service billing is Account/service, product Orders unchanged. Principal44 stays provider-refused/unaccepted with no retry/reroute/setup. No new resource/SQL/release grant. Full W0 remains active.
