@@ -1,6 +1,6 @@
 # W7 continuation, 3 November 2026
 
-Owner: Kanuj. Own worktree `/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103`; branch `kanuj/w7-independent-acceptance-20261103`. Verified parent before latest checkpoint: `d765d002d775b213c8569572e23c548b21091a36`. Starting frozen W0 baseline `8c5c6b2d72e75f620487f1b2b110655b03551b17`. Newer Git/history and user steering supersede this continuation record.
+Owner: Kanuj. Own worktree `/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103`; branch `kanuj/w7-independent-acceptance-20261103`. Verified parent before latest checkpoint: `d475514406277a7f2cd7b9ef252cfe46004cf00c`. Starting frozen W0 baseline `8c5c6b2d72e75f620487f1b2b110655b03551b17`. Newer Git/history and user steering supersede this continuation record.
 
 ## Goal and boundaries
 
@@ -59,7 +59,11 @@ New C1successor0b39b3461a234558230bb06c47c2fd391076d562 complete7 sourcebase8c5,
 
 - `d765`: Completeadmission1c3 SOURCE89/frontend0, Directory/quoteexactcorrespondence; no old06666/0d audit, no genuine/CIgreen.
 
-Currentpriorityqueue: W0Account4 7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db basec0a318e26d1aa88dccfa0b4172888e52ba902b4e, exactsourceheadnowreceived; reviewafterQ1. W2ClientWorkspace0e7dabd8526a1d0759782efa1f8af22998476cc7/PR229 base8893 sevenreadonlysourcefilesqueued. Ownerreportsadmission1c hostedPortal52fail/3416/nativeclean, NOT independentlyinspectedbyW7; source89 remainsvalidscope/noCIgreen. Guarded-readproposal40e336/sourcepredecessorsd46af retainedasCUSTODYONLYpointersinqueue, notnewaudit; actualcatalog/OID/ACL/deployedconsumersunknown.
+Currentpriorityqueue: W0Account4 7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db basec0a318e26d1aa88dccfa0b4172888e52ba902b4e, exact4SOURCEPASS52/52(Entry10+adapter15+consumer27)/frontend0. Actual450file+7c5consumer5bytes verified, originalAccountEntry/OrdersReadsourcebyte8c5, inertSSRprepubmount/noclinicalread andstoppedEntrycustody checked. Report W0_SERVICE_ENTRY_7E6. No genuine/fullscreen/browser/counteradvance. W2ClientWorkspace0e7dabd8526a1d0759782efa1f8af22998476cc7/PR229 base8893 sevenreadonlysourcefilesqueued. Ownerreportsadmission1c hostedPortal52fail/3416/nativeclean, NOT independentlyinspectedbyW7; source89 remainsvalidscope/noCIgreen. Guarded-readproposal40e336/sourcepredecessorsd46af retainedasCUSTODYONLYpointersinqueue, notnewaudit; actualcatalog/OID/ACL/deployedconsumersunknown.
+
+- `d475`: CompleteC1source0b39 closed34exec/strict0/dependencyheld and Q1source677closed47exec/frontend0; originalcontrols byteexact, no oldcandidate rerun or genuineclosure.
+
+Newqueues: W0scoped-client-plans adapter5e5db6b1389bfd21ad1a32af711d8f8c015ebc34 base7e6 exact2 sourcefiles nextpriority. W2followup-test-only2ec0ad959045174b455d05c568f10f28b7aeb54f base1c3 exact3 parity/sensitivity/current14correspondence queued; oldCI52fails retained, no newgenuineclaim. W1TemplateDTOfef98c75702900295783ba7b8514e2b6bb092b1a base8893 exact6/sourceformatqueued; no SQL/allocation/CAS/producerauthority. Ownerreported RootPlanP2/native4460794439 danglingSQLproductreference hold notindependentlyaudited; do not infer templatebackend safe.
 
 Full SHA and exact result paths are in ledger/queue/reports. Completed source results are not full feature/financial/SQL/browser/CI/visual/a11y acceptance. Full original W0Portal3311/3312 and source witnesses retain their failures; later inverse passes do not relabel them.
 

@@ -2449,6 +2449,11 @@
       "head": "677604e514565d113738dcf733ae502e0c3ca6f8",
       "report": "reviews/W0_QUOTE_677.md",
       "level": "PASS_SCOPED_SOURCE_Q1_CLOSED"
+    },
+    {
+      "head": "7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db",
+      "report": "reviews/W0_SERVICE_ENTRY_7E6.md",
+      "level": "PASS_SCOPED_ACCOUNT_SERVICE_PAYMENT_ENTRY_SOURCE_FINITE_SSR"
     }
   ],
   "placementClarifications": [
@@ -2459,7 +2464,7 @@
     }
   ],
   "openIndependentFindings": [],
-  "lastReconciledAt": "2026-11-03T23:21:01.646385+00:00",
+  "lastReconciledAt": "2026-11-03T23:30:43.519787+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",

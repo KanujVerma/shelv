@@ -368,7 +368,29 @@
       "base": "c0a318e26d1aa88dccfa0b4172888e52ba902b4e",
       "lane": "W0",
       "scope": "Exact4 Account first-service payment entry/routecustody source; afterQ1. No M01/M02 fixture/AuthSQL/browser/genuine grant.",
-      "status": "QUEUED_PRIORITY_SOURCE_ACCOUNT_ENTRY"
+      "status": "PASS_SCOPED_ACCOUNT_SERVICE_PAYMENT_ENTRY_SOURCE_FINITE_SSR",
+      "report": "reviews/W0_SERVICE_ENTRY_7E6.md"
+    },
+    {
+      "head": "5e5db6b1389bfd21ad1a32af711d8f8c015ebc34",
+      "base": "7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db",
+      "lane": "W0",
+      "scope": "Exact2 fixed scoped-client plans port/source, afterAccount priority; ClientWorkspace0e7 separate consumer. No AuthSQL/browser or authority grant.",
+      "status": "QUEUED_PRIORITY_SOURCE_SCOPED_CLIENT_PLANS_PORT"
+    },
+    {
+      "head": "2ec0ad959045174b455d05c568f10f28b7aeb54f",
+      "base": "1c39946a77ce06a9bd9cf7208cceacd637542a54",
+      "lane": "W2",
+      "scope": "Exact3 test-only followup parity/sensitivity plus all14 priorpostimage correspondence; no old06666/0d audit, no productsource change.",
+      "status": "QUEUED_SOURCE_TEST_SUCCESSOR_SENSITIVITY"
+    },
+    {
+      "head": "fef98c75702900295783ba7b8514e2b6bb092b1a",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "lane": "W1",
+      "scope": "New exact6 prospective Template DTO format/source only, fiveclosed actions and immutableversion metadata; no SQL/dispatch/auth/CAS/resource or heldaudit.",
+      "status": "QUEUED_SOURCE_TEMPLATE_DTO_ONLY"
     }
   ],
   "freshGenuineGrant": null,
@@ -384,7 +406,8 @@
     "W7-W5-S1 historical4a9 failure is SOURCE-closed only at7c5; oldstate2/SSR2 failures and prior22pass preserved.",
     "W2 2073/6887 owner HOLD means no further oldhead review/test/audit. W7 accidental2073 checks are PARTIAL/NO_VERDICT; noapproval. Await newcorrected heads.",
     "Lifecycle tool currently reports original goal paused despite newer user continuation/intakes. No newgoal created and no completion asserted; current authorized work continues.",
-    "W2 owner reports admission1c hostedPortalCI52fail/3416 and nativeclean; W7 has not independently inspected CI. Source89 pass stays scoped; no currentCIgreen/integration acceptance."
+    "W2 owner reports admission1c hostedPortalCI52fail/3416 and nativeclean; W7 has not independently inspected CI. Source89 pass stays scoped; no currentCIgreen/integration acceptance.",
+    "W1 owner reports distinct Root PlanP2/native4460794439 dangling-product SQLreference hold; W7 has not independently audited it. No Rootbackend/templateproducer safety inferred from DTO/source passes."
   ],
   "browserSlot": {
     "state": "R2_RETURNED_NORMAL_TEARDOWN_EXIT0; NO_FOLLOW_ON_GRANT",
@@ -392,7 +415,7 @@
     "at": "2026-11-03T20:04:32.743040+00:00",
     "report": "reviews/W3_BROWSER_96B_R2_RESULT.json"
   },
-  "lastReconciledAt": "2026-11-03T23:21:01.647796+00:00",
+  "lastReconciledAt": "2026-11-03T23:30:43.520762+00:00",
   "pendingIntakes": [],
   "artifactCustody": [
     {
