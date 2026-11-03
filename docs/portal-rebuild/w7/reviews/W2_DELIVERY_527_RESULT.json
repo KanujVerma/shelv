@@ -1,0 +1,80 @@
+{
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "head": "527b04b44bc1e493cb6a12796b9e3ff2288ff276",
+  "priorHead": "87a669174c8b5574cb4ee0cbee05d73cc0a0c69e",
+  "verdict": "PASS_SCOPED_SOURCE_MODEL_FINITE_SSR",
+  "node": "v22.23.0",
+  "oldCorrection": {
+    "tests": 8,
+    "pass": 7,
+    "fail": 1,
+    "exitCode": 1
+  },
+  "newFocused": {
+    "tests": 8,
+    "pass": 8,
+    "fail": 0,
+    "exitCode": 0
+  },
+  "currentCovering": {
+    "tests": 55,
+    "pass": 55,
+    "fail": 0,
+    "exitCode": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "configuredFrontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+      "sha256": "d29a11bc2cd787e0d621a8d98ce404b03bc51d02d9b2c2c30c1d344fc64c5aac"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/PublicationDelivery.tsx",
+      "sha256": "f70725ea217fb84317f10827f97820be4e69fbbc75e34a5e60208776d485c1c0"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/controller.ts",
+      "sha256": "67cf21ddf94682667dc32a2665fcbebaeab65183ad7822a2138e2fbe588d48ec"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/index.ts",
+      "sha256": "7b65c5aa0294c4b0244de988a0a8280f8cb3461e1dab1c5cce424ac65cd80dd9"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/types.ts",
+      "sha256": "0f3ca7591e738c63bc010521909f898d1a69e86e3b79d22a2c89de08d0761b5f"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-publication-delivery.test.mjs",
+      "sha256": "63be852eecaca652cca89123b30a70bafdb88f341baa78adc0b535dbb4a8309f"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/PUBLICATION_DELIVERY_20261103.md",
+      "sha256": "3f3cbc5eb3c86fa41f571faa4a661760fc216bc105e39fdab75cd6329f70c425"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-delivery-r2-old/W7-OLD.log",
+      "sha256": "0cb639b953a7e4c36379976312d816872509fea212e0c161b5183c38b0bfc3dc"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-delivery-r2/W7-CURRENT.log",
+      "sha256": "9ba30bdf9267f792418136d31ef2acba8b8eb2064f0f90be0c9dc5b314f09f38"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-delivery-r2/W7-FULL55.log",
+      "sha256": "26c52b0aefdc1119fd28e953dd866cb33a26b8deaf30606f6c99fe8dfc2a8fd6"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-delivery-r2/W7-TYPES.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "scope": "Permitted client/controller/UI composition only; no genuine/payment/delivery/held audit clearance"
+}

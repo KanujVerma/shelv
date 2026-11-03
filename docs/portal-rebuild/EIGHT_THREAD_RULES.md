@@ -34,14 +34,14 @@ These are separately user-started top-level goals, not W0 subagents. BASELINE_SH
 | Lane / top-level identity | Additional exclusive new paths |
 | --- | --- |
 | W1 `e966eead-3ef6-4cf8-b7c2-921ec6cbb22c` | `apps/portal/tests/w1-plan-platform-*` tests/helpers; new `docs/portal-rebuild/research/W1_*` reports, including SOURCE-only `W1_M04_PRINCIPAL_SUCCESSOR/**`. Existing reports and bd17 archives remain immutable. No migration allocated. |
-| W2 `81d965dd-3f36-4669-89e0-a5c2df801b92` | `apps/portal/tests/w2-advisor-*` tests and .tsx/.mjs helpers; `docs/portal-rebuild/w2/**`. A08 excluded. |
+| W2 `81d965dd-3f36-4669-89e0-a5c2df801b92` | `apps/portal/tests/w2-advisor-*` tests and .tsx/.mjs helpers; `docs/portal-rebuild/w2/**`. A08 excluded. Exact existing `rebuild-advisor-browser.test.mjs` receipt assertion block near324 may receive the explicitly strengthened event-recorded/current-delivery-unavailable/no-false-queued successor only; all other predicates unchanged. |
 | W3 `f4eff5e7-3a88-4239-ba75-af792aeb039c` | `apps/portal/tests/w3-*` tests/helpers and `apps/portal/tests/w3/**`; `docs/portal-rebuild/eight-threads/W3.md` and `W3_MAYA_IMAGE_SLOT.md`; exact existing tests `rebuild-maya-five-stage-{content,boundary}.test.mjs` and `rebuild-maya-interactions-boundary.test.mjs` only for separately reviewed static-image successors. |
 | W4 `df0cdf51-4d86-4ed6-b3cf-f668e55fb7e9` | `apps/portal/tests/w4-*` tests/helpers; `docs/portal-rebuild/w4/**` and `docs/portal-rebuild/eight-threads/W4.md`. Existing rebuild-history tests are unallocated. |
 | W5 `ffbe74d5-6491-4772-8002-fc4ffa9b15dc` | `apps/portal/tests/w5-orders-*` tests/helpers; `docs/portal-rebuild/eight-threads/W5.md`. Existing files await exact proposals. |
-| W6 `9c324ded-bc8e-45c8-98a7-23016edffe10` | `apps/portal/tests/w6-account-*` tests/helpers; `docs/portal-rebuild/eight-threads/W6.md`. No existing test/backend write expansion beyond the ownership table. |
+| W6 `9c324ded-bc8e-45c8-98a7-23016edffe10` | `apps/portal/tests/w6-account-*` tests/helpers; `docs/portal-rebuild/eight-threads/W6.md`, `W6_EXPORT.md`, `W6_ADDRESS.md`. No existing test/backend write expansion beyond the ownership table. |
 | W7 `99021859-4f2e-43f7-a067-53166931c0c3` | Independent reviews/evidence and acceptance ledgers under the W7 user scope; no product corrections. |
 
-No other existing shared test file is allocated by these patterns. W1 also owns the new authored-only `supabase/tests/portal_advisor_report_context_v1.test.sql` under the separately reserved resolver migration. W1's principal successor is an inert review candidate, not fixture setup authority. W4 retains the HN1 author failure and unreviewed Parent correction and requests W7 review; disabled photos cannot be routed through legacy uploads. ASC1/ASC2 service composition and Guidance/M65/photo/A07 holds remain as recorded until independently closed.
+No other existing shared test file is allocated by these patterns. W1 also owns the new root pure-contract `tests/portal-commerce-contract.test.ts` and the new authored-only `supabase/tests/portal_advisor_report_context_v1.test.sql` under the separately reserved resolver migration. W1's principal successor is an inert review candidate, not fixture setup authority. W4 retains the HN1 author failure and unreviewed Parent correction and requests W7 review; disabled photos cannot be routed through legacy uploads. ASC1/ASC2 service composition and Guidance/M65/photo/A07 holds remain as recorded until independently closed.
 
 ## Frozen interfaces and migration allocation
 

@@ -1,0 +1,135 @@
+{
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "head": "8642079c14c601ad1c763b564b2bf83831b9b842",
+  "verdict": "PASS_SCOPED_SOURCE_FINITE_HTTP_SSR_OLD_HEAD_ONLY",
+  "node": "v22.23.0",
+  "independentOriginalRecovery": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "exitCode": 1,
+    "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-service-r2-old/W7-OLD.log",
+    "sha256": "470753e7cfd5fc2d785e078ddc3b955874564b991a65d0461b9f69bb7656058a"
+  },
+  "independentCurrent": {
+    "tests": 44,
+    "pass": 44,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "joined": true,
+    "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-service-r2/W7-CURRENT.log",
+    "sha256": "a32604d397a33af50723fdc2bace4ecb58a4208cf6bd3c8020e3d85af6f3eeda"
+  },
+  "projection": {
+    "head": "8642079c14c601ad1c763b564b2bf83831b9b842",
+    "dependencies": [
+      {
+        "path": "src/contracts/PortalClientService.ts",
+        "source": "efd533bcabe8537a134206d71e8bd04b4929acab",
+        "sha256": "f8823ef0035cfb0a3912e469c4dc227bf3320ff3a901c9b9ccb7282c025a88a4"
+      },
+      {
+        "path": "src/contracts/PortalClientServiceValues.ts",
+        "source": "efd533bcabe8537a134206d71e8bd04b4929acab",
+        "sha256": "ed5b2686237260f4596357886baeb6563754a4180fae7af25618288593e592d6"
+      },
+      {
+        "path": "src/contracts/PortalClientServiceValidation.ts",
+        "source": "efd533bcabe8537a134206d71e8bd04b4929acab",
+        "sha256": "b5c6e52f88fb5b9423b1cc5440899585725af388d9f16366af4b4f017508d4a5"
+      },
+      {
+        "path": "src/contracts/PortalClientServiceMapping.ts",
+        "source": "efd533bcabe8537a134206d71e8bd04b4929acab",
+        "sha256": "998794007f12d639f483ee87d53b926258548f6fdcaf3f373cfb6fb2d7d632d3"
+      },
+      {
+        "path": "apps/portal/src/app/account-service-request.ts",
+        "source": "76bfb842401687ff997bda5ed003f6b4edeb4533",
+        "sha256": "86bfb72d056b494b99368da1c50e9d7c945aa733293212e0b91e8fe7ac7f2887"
+      },
+      {
+        "path": "apps/portal/site/auth/client-cookie-session.js",
+        "scope": "SYNTHETIC FINITE HTTP NAMESPACE ONLY",
+        "oldSha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0",
+        "postSha256": "28edbf19d8a7c0ac61533bfba1eda165d183ccaa714db4c06cef5814bed86ad7"
+      }
+    ],
+    "scope": "SOURCE finiteHTTP/SSR only, no integrated namespace or genuine grant"
+  },
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/account/service/AccountService.tsx",
+      "sha256": "e8e983222c54204f105462cd7978e68c28805c8e15c9ebfa379c9789a0cec70a"
+    },
+    {
+      "path": "apps/portal/src/features/account/service/CancelService.tsx",
+      "sha256": "e6b6bd41f0920bc66c0091890d16b9afb36dca8b49fefef7ee4d18e56144c231"
+    },
+    {
+      "path": "apps/portal/src/features/account/service/controller.ts",
+      "sha256": "17107e3b2cac914a78f781311b478eb1cc359f4ea3d0161563e0dc09172f812b"
+    },
+    {
+      "path": "apps/portal/src/features/account/service/index.ts",
+      "sha256": "61e5be8970ee2738f9fcde0a8ee9c98d7836179dab06dbe792c13ad5b7c2b8ec"
+    },
+    {
+      "path": "apps/portal/src/features/account/service/model.ts",
+      "sha256": "44e0dadf677527086127b001497d2b1f23030029f39de28ae28fe61b84e2a098"
+    },
+    {
+      "path": "apps/portal/src/features/account/service/types.ts",
+      "sha256": "e85d02c01060823ff423e509fe5e934e038cc1647bef7f22686ac22f12d988b3"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-model.test.mjs",
+      "sha256": "992e9216320bc105046956f09a00364d2b807d9dd0a2d021e56b92723b53e69b"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-presence.test.mjs",
+      "sha256": "8278cebb08c18dbf8a2e33029b23da0eafb2875e8676b4328468add143cd7e55"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-producer-cases.ts",
+      "sha256": "fa67fadc5045878543ad7e32dd6bcb169bb7ebd26d619e20445b8968a08df9e3"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-producer.test.mjs",
+      "sha256": "58e5c08d81cef2456ce09062f529ceac329d696f5ac7bb176b6db75b159c7db1"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-recovery.test.mjs",
+      "sha256": "6186c42c290fc0557c43350301fe56d2938d66603532bec75772c394a5f08abf"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-ssr.test.mjs",
+      "sha256": "0c6acdf2306457b4062dacf7734fa428790b11ceb18e0c8fdd574437565d4346"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W6.md",
+      "sha256": "bcd4d5173948574c700c73d9419f0d0c3c191ec1b2cdf119d7d28e2a65db0a57"
+    },
+    {
+      "path": "supabase/functions/concierge-client-service/body.ts",
+      "sha256": "2dc55df3d9c7737cdbd3a97b3cf667a1c69bbae1662e5cb87a513770386f8b97"
+    },
+    {
+      "path": "supabase/functions/concierge-client-service/handler.ts",
+      "sha256": "25260b9f2a7d0a90a0202f05242a2daccef8712d50f09cc5586fa675b6492a25"
+    },
+    {
+      "path": "supabase/functions/concierge-client-service/runtime.ts",
+      "sha256": "0f60d7ca521f7ffe6430dc0d7c870c611e6512280bf7b6c02d3d60edc4bb830a"
+    }
+  ],
+  "scopeLimits": [
+    "Synthetic closedHTTP Auth/session replies; no realAuth or SQL",
+    "Actual shared registration/request/route and currentfrontend stillmissing",
+    "No browser/workerd/nativefixture/resource",
+    "No C08/C08C/C08R/J08/genuine acceptance",
+    "W6 currentrollforward needs newhead and postimage/dependency reconciliation"
+  ]
+}
