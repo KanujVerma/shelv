@@ -2,7 +2,7 @@
 
 Owner: Kanuj. Own branch `kanuj/w2-admission-ui-20261103`, derived from owned directory candidate `6887f7673b5322cacdd642ef63e4bd05eafd918a`, itself based on frozen `8c5c6b2d72e75f620487f1b2b110655b03551b17`.
 
-This is a local, unpublished SOURCE checkpoint. Its directory ancestor still needs the separately identified assignment-feedback correction and independent review before composition. It is not an integrated A00, actual Auth/account creation, admission permission grant or complete advisor acceptance. No held principal44, Guidance/private-return, M65 or photo audit is retried or rerouted.
+This is a SOURCE checkpoint. The original local c5f1 checkpoint is preserved; the current composition is based on corrected directory successor8f10 and still needs its independent review before integration. It is not an integrated A00, actual Auth/account creation, admission permission grant or complete advisor acceptance. No held principal44, Guidance/private-return, M65 or photo audit is retried or rerouted.
 
 ## Approved consumer seam
 
@@ -29,3 +29,10 @@ The public [Supabase Admin reference](https://supabase.com/docs/reference/javasc
 ## Next gates
 
 Correct the independent directory assignment feedback, then roll this local feature onto its exact owned successor and submit a complete immutable source packet. W0 must provide actual ports/lifetime and inspect composition; W7 independent source, fresh admitted Auth/account/negative/recovery/browser packet, full-frame/a11y and exact-head CI remain required. No outcome or test count upgrades product capability/screen/journey counters.
+
+
+## Corrected-directory composition
+
+The admission delta was reapplied with original attribution from `c5f1bf80a9f676952ed51da16e7ab9aaab9a3c62` onto actual owned directory successor `8f10caa147d196b697d7915b006421f8a10f69a5`, producing initial composition `8b644761bcb3b9773e46622c3ead1924afcb1304`. The two source conflicts were only shared advisor imports and the client-toolbar boundary; both assignment feedback and admission toolbar remain. No source from another lane or prepared INPUT ancestry was imported. Five admission module/test postimages are byte-identical to the local checkpoint; `.local-artifacts/w2/admission-rollforward-parity.json` records exact hashes.
+
+Current11 admission +13 corrected directory +47 unchanged advisor controller/race controls pass71/71 with configured frontend0/diff0. Raw `admission-composed-{current,types}.log` are in `/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-admission-composed-20261103/.local-artifacts/w2/`. Source scope remains UI/model/actual-cookie finite HTTP/SSR, not genuine Auth/Admin/DB or hydrated interaction. No author browser/resource is granted. Full directory+admission composition and the complete admission delta require immutable W7 source review and W0 actual port/lifecycle integration.
