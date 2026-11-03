@@ -17,6 +17,9 @@ export type {
   AdvisorPaymentRead,
   AdvisorPayments,
   ConfirmPaymentCommand,
+  IssueServiceQuoteCommand,
+  AdvisorPaymentCommand,
+  AdvisorPaymentReceipt,
   AdvisorState,
   AdvisorListReadState,
 } from "./types.ts";

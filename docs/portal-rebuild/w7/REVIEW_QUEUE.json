@@ -1,0 +1,144 @@
+{
+  "owner": "Kanuj",
+  "items": [
+    {
+      "lane": "W0",
+      "head": "706b323d6b0969a090fd70cae1c9919ea15cc3be",
+      "scope": "private redirects SOURCE/runtime",
+      "status": "PASS_SCOPED_SOURCE_RUNTIME",
+      "report": "reviews/W0_P1_706B.md"
+    },
+    {
+      "lane": "W1",
+      "head": "efd533bcabe8537a134206d71e8bd04b4929acab",
+      "scope": "ClientService DTO4 SOURCE",
+      "status": "PASS_SCOPED_SOURCE_DTO",
+      "report": "reviews/W1_SERVICE_DTO_EFD.md"
+    },
+    {
+      "lane": "W1",
+      "head": "f49a15a2aab8d13877a26bf98e969c8950f1d014",
+      "scope": "M04 principal signal full SOURCE",
+      "status": "FAIL_PRINCIPAL_S2_01_SUPERSEDED",
+      "finding": "Descriptor-cloned signal bypasses native identity and loses real abort linkage; full remaining source checks continue."
+    },
+    {
+      "lane": "W4",
+      "head": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+      "scope": "archived HN1 parent correction full SOURCE",
+      "status": "QUEUED"
+    },
+    {
+      "lane": "W4",
+      "head": "ee0fddda8b3ad961cf5d3139f887137b328b013b",
+      "scope": "history initial use linkage SOURCE",
+      "status": "PASS_SCOPED_SOURCE_SSR"
+    },
+    {
+      "lane": "W3",
+      "head": "96bfe2428d32eacdef5f4c9e184af7b5ef39a95e",
+      "scope": "approved unstarted next action SOURCE; browser UNRUN",
+      "status": "PASS_SOURCE_SSR_AND_BOUNDED_INTERCEPTED_BROWSER",
+      "report": "reviews/W3_NEXT_ACTION_96B.md",
+      "browser": "reviews/W3_BROWSER_96B_R2_RESULT.json"
+    },
+    {
+      "lane": "W5",
+      "head": "a5c2d041ecabfe53f4c31b2bcfe9d1f3d99d8066",
+      "scope": "service payment SOURCE",
+      "status": "SUPERSEDED_HOLD_OWNER_P2_4459642715",
+      "successor": "4a9b97d2623f0b4a63de840c2c634e2abf04c214"
+    },
+    {
+      "lane": "W6",
+      "head": "ae425beaa7635d5a57dd9175374ce7c7ecf90339",
+      "scope": "service cancellation SOURCE; J08 mapping",
+      "status": "SUPERSEDED_HOLD_OWNER_P2_4459702312"
+    },
+    {
+      "lane": "W2",
+      "head": "6aa586e08d91afd18877d0c84a0a52d1d0026229",
+      "scope": "permitted A07 UI SOURCE only",
+      "status": "HOLD_OWNER_HOSTED_FINDINGS_AWAIT_CORRECTED_SUCCESSOR"
+    },
+    {
+      "lane": "W0",
+      "head": "276105fc885129f681c371466c206ad50c85f01d",
+      "scope": "exact redirect inverse witness",
+      "status": "PASS_EXTENDED_546_SOURCE",
+      "report": "reviews/W0_WITNESS_546.md"
+    },
+    {
+      "lane": "W1",
+      "head": "44e90f6bd8d68d4411e5fe1c02df418d022cf225",
+      "scope": "principal opaque lifetime full successor",
+      "status": "UNACCEPTED_PROVIDER_REFUSAL_STOP",
+      "boundary": "User reports new provider refusal at activityposition370; preserve partial evidence; no resume/retry/rephrase/reroute/model substitution. No source approval or setup eligibility."
+    },
+    {
+      "lane": "W5",
+      "head": "a590dfd51b069df65f3edf50c50073ca9355f27f",
+      "scope": "commerce transport only, no M65 financial audit",
+      "status": "QUEUED"
+    },
+    {
+      "lane": "W2",
+      "head": "f08122a2e2b81e95874f300a5c94f27920f00e4f",
+      "scope": "advisor first quote UI",
+      "status": "HOLD_OWNER_HOSTED_FINDINGS_AWAIT_CORRECTED_SUCCESSOR"
+    },
+    {
+      "lane": "W6",
+      "head": "8642079c14c601ad1c763b564b2bf83831b9b842",
+      "scope": "complete service recovery successor",
+      "status": "PASS_SCOPED_OLD_HEAD_PENDING_ROLLFORWARD",
+      "report": "reviews/W6_SERVICE_864.md"
+    },
+    {
+      "lane": "W5",
+      "head": "4a9b97d2623f0b4a63de840c2c634e2abf04c214",
+      "scope": "service payment full9 successor",
+      "status": "QUEUED"
+    },
+    {
+      "lane": "W2",
+      "head": "87a669174c8b5574cb4ee0cbee05d73cc0a0c69e",
+      "scope": "A06 publication delivery",
+      "status": "HOLD_OWNER_HOSTED_FINDINGS_AWAIT_CORRECTED_SUCCESSOR"
+    },
+    {
+      "lane": "W3",
+      "head": "5e18a8f21d2cadbb3cdbe5f54966884224952080",
+      "base": "96bfe2428d32eacdef5f4c9e184af7b5ef39a95e",
+      "scope": "Maya images and renderClient slot only,12paths",
+      "status": "QUEUED"
+    },
+    {
+      "lane": "W1",
+      "head": "4238ca3061a29569bb2848fede44b0f073723475",
+      "base": "c075cbd4ea4b2f4d75959370233745d07145c069",
+      "scope": "permitted report context resolver8files SOURCEonly; no principal ancestry/SQLexecution",
+      "status": "QUEUED"
+    },
+    {
+      "lane": "W6",
+      "head": "3b1ddcbede87e78374cab333ed5bb5fee24117aa",
+      "base": "c075cbd4ea4b2f4d75959370233745d07145c069",
+      "scope": "additive dependency rollforward16postimages unchanged",
+      "status": "PASS_PARITY_PENDING_REPORT"
+    }
+  ],
+  "freshGenuineGrant": null,
+  "qualifications": [
+    "W2 full suite moving-source; not exact acceptance",
+    "W4 history169 mixed author synthetic browser/source/SSR; full suite interrupted/moving-source",
+    "W0 full suite running with real photo-head source-hash compatibility failure",
+    "W3 original293 baseline joined; new3-width browser UNRUN"
+  ],
+  "browserSlot": {
+    "state": "R2_RETURNED_NORMAL_TEARDOWN_EXIT0; NO_FOLLOW_ON_GRANT",
+    "executionId": "eeb42e98-3844-4698-aebb-6d4c67a76271",
+    "at": "2026-11-03T20:04:32.743040+00:00",
+    "report": "reviews/W3_BROWSER_96B_R2_RESULT.json"
+  }
+}

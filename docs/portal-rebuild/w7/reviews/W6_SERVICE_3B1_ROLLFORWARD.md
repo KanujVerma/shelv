@@ -1,0 +1,7 @@
+# W6 dependency rollforward: independent parity review
+
+Owner: Kanuj. **PASS for the additive source/dependency rollforward**, base `c075cbd4ea4b2f4d75959370233745d07145c069`, head `3b1ddcbede87e78374cab333ed5bb5fee24117aa`. This extends the [old864 scoped source verdict](W6_SERVICE_864.md), without relabeling its historical execution as a new integrated run.
+
+Independent Git comparison verifies all16 owned postimages byte-identical to `8642079c14c601ad1c763b564b2bf83831b9b842`. The full binary delta is identical: SHA256 `78f30afa82e7447352db9d408269add1747f823f25ac65098df3f65ad3e8090b`. Within application/site/contracts/functions, the only dependency additions from old864 to new3b1 are the four PortalClientService files. Each matches the independently passed efd DTO postimage exactly. Those exact DTO bytes were already used in W7's explicitly projected old44/44 source tests.
+
+There is no behavior correction in this rollforward and no new OLD failure is invented. The same unchanged consumer/producer source verdict applies with the contracts now present in canonical ancestry. W0 request/namespace/route/migration integration and current configured frontend/CI remain separate. The retained request76b and synthetic finite namespace in old W7 proof do not become actual integration facts by merging DTOs. No browser, Auth, SQL, workerd, fixture or source-held audit was executed. No screen, journey or genuine service acceptance is awarded.

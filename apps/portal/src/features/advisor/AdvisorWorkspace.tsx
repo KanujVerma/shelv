@@ -41,6 +41,7 @@ import { DependencyReview } from "./DependencyReview.tsx";
 import { ClientAssignment, ClientDirectoryFeedback } from "./ClientAssignment.tsx";
 import { ClientAdmission } from "./admission/ClientAdmission.tsx";
 import type { AdvisorAdmissionController } from "./admission/types.ts";
+import { FirstServiceQuote } from "./FirstServiceQuote.tsx";
 
 export type AdvisorRoute =
   | Extract<PortalRoute, { name: "advisor-editor" }>
@@ -974,7 +975,8 @@ function PublicationChecks({
             publishing is a deliberate action. payment verification alone does
             not publish.
           </p>
-          {first && c.permissions.confirmPayments && c.hasPayments ? (
+          <FirstServiceQuote controller={c} state={s} />
+          {first && c.permissions.confirmPayments && (c.hasPayments || c.hasIssueQuote) ? (
             <Button
               variant="secondary"
               disabled={!context || s.busy || !!s.pending}
