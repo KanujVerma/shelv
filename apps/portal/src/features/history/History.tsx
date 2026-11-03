@@ -4,6 +4,7 @@ import type { HistoryProps, ReportIntent } from './types.ts';
 import { Button, Badge, Field, Input, Textarea, StatusNotice, Icon } from '../../ui/index.ts';
 import { PageHeader, Panel } from '../../shell/PortalShell.tsx';
 import { Timeline, visibleHistory, ReportBody } from './Timeline.tsx';
+import { historyUseReports } from './model.ts';
 import {historyElementId} from './restoration.ts';
 import type {HistoryFilter,HistoryRestorationAnchor,HistoryRestorationAttempt,HistoryRestorationResult} from './restoration.ts';
 import './history.css';
@@ -111,7 +112,7 @@ function ReportForm({ state, controller, editable, labels }: FormProps) {
     const change = (next: ReportIntent) => controller.edit(next);
     const setBody = (next: GoalReportBody) => change(intent.kind === 'new' ? { ...intent, body: next } : { ...intent, replacement: { kind: 'goal_report', body: next } });
     const busy = state.mutation === 'saving';
-    const actualUses = state.pages.flatMap(p => p.entries.flatMap(e => e.kind === 'use' ? [e.event] : []));
+    const actualUses = historyUseReports(state.pages);
     return <Panel className="history-form"><Badge>{state.pending ? 'pending confirmation' : state.mutation === 'confirmed' ? 'recorded' : 'draft · not sent'}</Badge>
     {intent.kind === 'amendment' ? <><h2>correct your report</h2><p>the original stays in your record. your correction has its own reason and date.</p><details><summary>original report</summary><ReportBody replacement={intent.original.kind === 'goal_report' ? { kind: 'goal_report', body: intent.original.body } : { kind: 'legacy_report', body: intent.original.body }} labels={labels}/></details></> : null}
     <form onSubmit={e => { e.preventDefault(); void controller.submit(); }}>
