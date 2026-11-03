@@ -26,7 +26,7 @@ function Recovery({state,controller}:{state:OrdersState;controller?:OrdersContro
 export function OrdersView({state,controller,navigation,onSheet,useDisplay}:OrdersViewProps){
  const selection=state.selection,d=selection?.detail,q=selection?.quote,quoteDependency=quoteWriteDependency(q),writable=state.available&&state.mode!=='historical'&&!state.pending;
  const target=d?.kind==='purchase'?d.line.selection:null;
- const use=state.phase==='ready'&&target&&useDisplay?.clientId===d?.clientId&&
+ const use=state.phase==='ready'&&target&&useDisplay!==undefined&&useDisplay.clientId===d?.clientId&&
   useDisplay.selection.productId===target.productId&&useDisplay.selection.decisionId===target.decisionId&&
   useDisplay.selection.publication.version===target.publication.version&&useDisplay.selection.publication.documentSchemaVersion===target.publication.documentSchemaVersion&&
   useDisplay.view.status==='available'&&useDisplay.view.use.product.kind==='plan_product'&&useDisplay.view.use.product.productId===target.productId?useDisplay.view.use:null;

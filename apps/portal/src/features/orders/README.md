@@ -33,8 +33,8 @@ Author checks use explicit Node22.23.0 and isolated source dependencies:
 | Self-purchase source regression OLD |9 pass/two failures: missing exact selection and ambiguous multi-line action. |
 | Self-purchase complete suite |109/109, zero failures/skips/cancellations. |
 | Actual-use display OLD |12 pass/two failures: valid report data could not render; wrong-client/selection negatives already pass. |
-| Current complete suite |112/112, zero failures/skips/cancellations (`use-display-current.log`). |
-| Current projected configured frontend type graph |exit0, zero diagnostics. |
+| Current complete suite |112/112, zero failures/skips/cancellations (`use-display-current2.log`). |
+| Current projected configured frontend type graph |exit0, zero diagnostics (`frontend-use-projected2.log`). Initial optional-prop narrowing produced eight diagnostics in the separate retained `frontend-use-projected.log`; an explicit undefined guard corrects it. |
 
 Raw logs, exact source/test adoption pins and the complete dependency projection are under ignored `.local-artifacts/w5-orders/`. The projection is baseline source plus the exact four `PortalCommerce*` files from `60332e7ffdebfff81bc020dbfb8346bce11467ef`, owned current feature/test bytes and the unchanged Portal package/config/scripts. Its node_modules link points only to this own checkout's locked install. No shared DTO is copied into the real checkout. Latest603 is not independently current-approved; W1 owns its pin/admission.
 
