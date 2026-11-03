@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { Button, Dialog, Field, StatusNotice, Textarea } from "../../ui/index.ts";
 import { prepareAgentImportComparison } from "./agent-import.ts";
 import type { AdvisorController } from "./types.ts";
@@ -13,17 +13,13 @@ export function AgentImportDialog({ controller: c, open, onOpenChange }: {
 }) {
   const s = useSyncExternalStore(c.subscribe, c.getSnapshot, c.getSnapshot);
   const scope = `${s.view?.draft.id ?? ""}:${c.permissions.actorId}`;
-  const ownerRef = useRef<Owner>({ controller: c, scope, alive: true, attempt: 0 });
-  if (ownerRef.current.controller !== c || ownerRef.current.scope !== scope) {
-    ownerRef.current.alive = false;
-    ownerRef.current = { controller: c, scope, alive: true, attempt: 0 };
-  }
-  const owner = ownerRef.current;
+  const owner = useMemo<Owner>(() => ({ controller: c, scope, alive: false, attempt: 0 }), [c, scope]);
   const [stored, setForm] = useState<Form>(() => empty(owner));
   const form = stored.owner === owner ? stored : empty(owner);
   const editable = !s.ended && c.permissions.view && c.permissions.edit && s.view?.draft.state === "working";
-  useEffect(() => {
+  useLayoutEffect(() => {
     owner.alive = true;
+    setForm(empty(owner));
     return () => { owner.alive = false; owner.attempt++; };
   }, [owner]);
   useEffect(() => {
@@ -34,7 +30,7 @@ export function AgentImportDialog({ controller: c, open, onOpenChange }: {
     const raw = form.raw, attempt = ++owner.attempt;
     setForm({ owner, raw, busy: true, failed: false });
     const prepared = await prepareAgentImportComparison(c, raw);
-    if (!owner.alive || ownerRef.current !== owner || owner.attempt !== attempt) return;
+    if (!owner.alive || owner.attempt !== attempt) return;
     setForm(prepared ? empty(owner) : { owner, raw, busy: false, failed: true });
     if (prepared) onOpenChange(false);
   }
