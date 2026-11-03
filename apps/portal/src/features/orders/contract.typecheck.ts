@@ -1,0 +1,11 @@
+import type {ClientCommerceCommand,ClientCommerceWrite,FutureCommerceRequest} from './types.ts';
+import type {CommerceCommand} from '../../../../../src/contracts/PortalCommerce.ts';
+type Expect<T extends true>=T;
+type Equal<A,B>=(<T>()=>T extends A?1:2) extends (<T>()=>T extends B?1:2)?true:false;
+export type NoCareOrFinance=Expect<Equal<Extract<ClientCommerceCommand,{action:'record_use_v1'|'confirm_payment_v1'|'request_service_refund_v1'|'read_private_commerce_v1'|'submit_repayment_details_v1'|'record_referral_v1'}>,never>>;
+export type StatusIsRead=Expect<Equal<Extract<ClientCommerceWrite,{action:'request_status_v1'}>,never>>;
+export type ExactRequestFamily=Expect<Equal<FutureCommerceRequest['family'],'commerce-v1'>>;
+export type RootCommandCompatibility=Expect<ClientCommerceCommand extends CommerceCommand?true:false>;
+import type {CommerceQuoteHeader,ManualPaymentBasis} from '../../../../../src/contracts/PortalCommerce.ts';
+export type ClosedQuoteCurrency=Expect<Equal<CommerceQuoteHeader['currency'],'USD'>>;
+export type ClosedClaimCurrency=Expect<Equal<ManualPaymentBasis['currency'],'USD'>>;
