@@ -1,0 +1,81 @@
+{
+  "id": "W7-W5-S1",
+  "base": "9ab1b6d65d1027e0515e1b2fd0c6788a3d5842b9",
+  "head": "7c50044df9b6b559e48362ba23da7726064c4dba",
+  "verdict": "PASS_SCOPED_SOURCE_S1_CLOSED",
+  "priorHead": "4a9b97d2623f0b4a63de840c2c634e2abf04c214",
+  "priorFailedControls": "Original state2 and SSR2 each0pass2fail remain FAILED, not relabeled",
+  "current": {
+    "testExecutions": 31,
+    "candidateTests": 27,
+    "originalW7ReproductionsRerun": 4,
+    "note": "Four originals overlap copied candidate cases; not31unique coverage predicates.",
+    "pass": 31,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0"
+  },
+  "frontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "scope": "Complete existing9+new2regressions; model/finite syntheticHTTP/SSR only; no genuine financial/M65/principal scope",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/payments/ServicePayments.tsx",
+      "sha256": "03e62640dc04e7a86da0d1931fb7cd62801ea2c9b4fc0ad281d0b3cad5bf460c"
+    },
+    {
+      "path": "apps/portal/src/features/payments/controller.ts",
+      "sha256": "94b3dcd68127deb9328b7ebbe9177e939c12279066d52beef2883215aebb6576"
+    },
+    {
+      "path": "apps/portal/src/features/payments/index.ts",
+      "sha256": "618df52fe16c9537f2e764cca87f030deeb4190ed0a98bc0e329fd8fe290bd34"
+    },
+    {
+      "path": "apps/portal/src/features/payments/model.ts",
+      "sha256": "60a6701846fc33515975a44c325c00fd9df7c1b088bcef7d117e90df5dd1202f"
+    },
+    {
+      "path": "apps/portal/src/features/payments/types.ts",
+      "sha256": "8c08a4783d5dcd83e68eb463c1ebfd01784d4b663bdfe5a6fa1828fadf4fdca0"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-service-payments-helper.mjs",
+      "sha256": "7cf5723dd7d4c2c4ea0fa0faa20d3bb96f6d094df8f81c0f09a2bdedf2cabd26"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-service-payments-historical-behavior.test.mjs",
+      "sha256": "b75054da37dbb5200fe43ebda7f206b29be3c623214e1b01659f55962230d529"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-service-payments-historical-retry.test.mjs",
+      "sha256": "394b06f152a5d52e4c07b927264fcc6eadffafbbfc150021432f9b7b4865575d"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-service-payments-ui.test.mjs",
+      "sha256": "b71772093eaee203757287230d178c2ba491747582aaa9148f704f9c5865531a"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-service-payments.test.mjs",
+      "sha256": "ca57436e027941919babfec15398068c863bedcbaadd7d71fe2dc8275449fb12"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W5.md",
+      "sha256": "e393c6d3ce328f9206216644c95d1a617d42138632fcaa342be45408f1b93448"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-s1-7c5/W7-CURRENT31.log",
+      "sha256": "5ae7806414f14ae7acb8796fd8461a719136750c40f68af1382ac5d9623c61a9"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-s1-7c5/W7-TYPES.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
