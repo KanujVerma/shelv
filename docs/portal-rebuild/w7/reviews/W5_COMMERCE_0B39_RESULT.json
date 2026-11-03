@@ -1,0 +1,134 @@
+{
+  "owner": "Kanuj",
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "head": "0b39b3461a234558230bb06c47c2fd391076d562",
+  "correctionBase": "a590dfd51b069df65f3edf50c50073ca9355f27f",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-abort.test.mjs",
+      "bytes": 10798,
+      "sha256": "048b788dd7bece4b643ecb32930424102c0688be6e49508a610ca0b0b3f6f946"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-endpoint.test.mjs",
+      "bytes": 7054,
+      "sha256": "6aa6eda3d04f7ed78a080cfced030577f15ad9f1483ef35af3ed6673fdfc3af6"
+    },
+    {
+      "path": "supabase/functions/concierge-commerce/README.md",
+      "bytes": 8197,
+      "sha256": "439f9952d6062b733b95fe0ea97ea846f5260d6009bbdf1048aed4e491874861"
+    },
+    {
+      "path": "supabase/functions/concierge-commerce/body.ts",
+      "bytes": 2298,
+      "sha256": "351d2b887604c1445ce68d7e617be5365267f5dc40cfcc83f82041abe712ff0a"
+    },
+    {
+      "path": "supabase/functions/concierge-commerce/handler.ts",
+      "bytes": 3795,
+      "sha256": "279c423c8517ce9a0ee40927c5c1a8221d809ebb17fe76264f5f750542596300"
+    },
+    {
+      "path": "supabase/functions/concierge-commerce/index.ts",
+      "bytes": 619,
+      "sha256": "9e16a7122ed52eafac9ab484044ba3c769377f5f58ec3b62ca4b071550c22268"
+    },
+    {
+      "path": "supabase/functions/concierge-commerce/runtime.ts",
+      "bytes": 3501,
+      "sha256": "69b66bb9cf65920803fb8a6e65a997facf1824f59fa80c58801d1c965636b331"
+    }
+  ],
+  "patchSha256": "84fd9801a9b61efcf4c9e8e24b8ea0cb4d5db8a0d089de304a3ac949cff11844",
+  "ownerPacketSha256": "43e1a7690fb69d5ca8f89116df3befdcce179fa418b8b6fd39d333a18f51577b",
+  "unchangedOriginal": [
+    "supabase/functions/concierge-commerce/index.ts",
+    "apps/portal/tests/w5-orders-commerce-endpoint.test.mjs"
+  ],
+  "originalW7ControlSha256": "4dc48148eb25e396ed983f4c764201221f170ab66ccbeef47f5dd75f8e68508a",
+  "oldEvidence": "Original a590 failures/passes preserved; no new oldcandidate execution.",
+  "dependencyProjection": [
+    {
+      "path": "src/contracts/PortalCommerce.ts",
+      "head": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 19204,
+      "sha256": "af2d1316434cca41ab78ae4b3bed54cb3a5a348c8e915caaa2f84c0aac9a2c38",
+      "classification": "Exact reviewed99=603 dependency only in ignored projection; absent realcandidate ancestry."
+    },
+    {
+      "path": "src/contracts/PortalCommerceValues.ts",
+      "head": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 5365,
+      "sha256": "ac8c72ca26be1ab1c4f3275b75260cd78e0cdbbebad26524ad7e442a1bb8d27f",
+      "classification": "Exact reviewed99=603 dependency only in ignored projection; absent realcandidate ancestry."
+    },
+    {
+      "path": "src/contracts/PortalCommerceValidation.ts",
+      "head": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 28017,
+      "sha256": "32e19f6ab8c85d5f52024ccf8aa114a088de270b005a806e3600191e4cfe7459",
+      "classification": "Exact reviewed99=603 dependency only in ignored projection; absent realcandidate ancestry."
+    },
+    {
+      "path": "src/contracts/PortalCommerceMapping.ts",
+      "head": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 30476,
+      "sha256": "79d265ab4963cde159c21ff1138c292c80a5ad8548bb45cd843efbd04b706934",
+      "classification": "Exact reviewed99=603 dependency only in ignored projection; absent realcandidate ancestry."
+    }
+  ],
+  "id": "W7-W5-C1",
+  "verdict": "PASS_SCOPED_SOURCE_C1_CLOSED_DEPENDENCY_HELD",
+  "node": "v22.23.0",
+  "current": {
+    "testExecutions": 34,
+    "retained": 10,
+    "ownerCases": 23,
+    "originalW7": 1,
+    "overlap": "Original1 overlaps owner abort predicates;34 executions are not34 unique predicates.",
+    "pass": 34,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "strictTransitiveTypes": {
+    "exitCode": 0,
+    "diagnostics": 0,
+    "configuration": "strict/noUncheckedIndexedAccess/verbatimModuleSyntax/skipLibCheckfalse; exact99=603DTO4 ignoredprojection",
+    "configSha256": "40876a437e0b7189715653f0455950526bca4146b0af6e3b648518768fafb6e3"
+  },
+  "physicalCandidateImports": {
+    "testModules": 2,
+    "pass": 0,
+    "fail": 2,
+    "exitCode": 1,
+    "classification": "Missing canonical DTO setup/dependency failure before cases"
+  },
+  "limits": [
+    "Source C1 correction only; no ordinaryRoot integration green until DTO admission/current connected check",
+    "No actual Auth/RLS/SQLfinancial/legacy/M65/private-return/browser/resource acceptance",
+    "Original a59010pass and original controlFAIL remain separate; no new oldcandidate execution"
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-commerce-0b39/W7-PHYSICAL-IMPORTS.log",
+      "bytes": 3725,
+      "sha256": "f2d6bd30f2193c98faa8b96b7b9482a6e50c325d25851b04e10a320b3dde0d22",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-commerce-0b39/W7-CURRENT34.log",
+      "bytes": 9441,
+      "sha256": "0c1f2d8b97273a05e8ff13f42e1f33e326d730d3cea6336d4eb8373faca3cbbe",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-commerce-0b39/W7-TYPES-STRICT.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ]
+}

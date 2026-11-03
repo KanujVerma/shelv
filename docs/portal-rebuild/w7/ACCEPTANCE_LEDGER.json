@@ -113,7 +113,7 @@
   "screens": [
     {
       "id": "C01",
-      "title": "your plan · morning",
+      "title": "your plan \u00b7 morning",
       "figma": {
         "fileKey": "WGbMylNV4rPoMw3r0nceaw",
         "nodeId": "498:85",
@@ -155,7 +155,7 @@
     },
     {
       "id": "C01E",
-      "title": "your plan · evening",
+      "title": "your plan \u00b7 evening",
       "figma": {
         "fileKey": "WGbMylNV4rPoMw3r0nceaw",
         "nodeId": "503:926",
@@ -370,7 +370,7 @@
         "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
         "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
       ],
-      "remainingGate": "Run current ordinary history/event/version/filter/restore/denied/return cases and private-byte exclusions, then complete C05→A07→C04 J05 separately.",
+      "remainingGate": "Run current ordinary history/event/version/filter/restore/denied/return cases and private-byte exclusions, then complete C05\u2192A07\u2192C04 J05 separately.",
       "historicalRecord": {
         "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
         "row": "C04"
@@ -417,7 +417,7 @@
     },
     {
       "id": "C06",
-      "title": "orders · quote preparation",
+      "title": "orders \u00b7 quote preparation",
       "figma": {
         "fileKey": "WGbMylNV4rPoMw3r0nceaw",
         "nodeId": "499:446",
@@ -443,7 +443,7 @@
       ],
       "requiredNegativeAndReturningCases": [
         "unknown seller/tax/shipping/returns blocks payable quote",
-        "claimed funds ≠ verified receipt ≠ order ≠ shipment/delivery",
+        "claimed funds \u2260 verified receipt \u2260 order \u2260 shipment/delivery",
         "plan/address changes never rewrite frozen order",
         "wrong owner and ended-care outstanding admin",
         "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
@@ -483,7 +483,7 @@
       ],
       "requiredNegativeAndReturningCases": [
         "unknown seller/tax/shipping/returns blocks payable quote",
-        "claimed funds ≠ verified receipt ≠ order ≠ shipment/delivery",
+        "claimed funds \u2260 verified receipt \u2260 order \u2260 shipment/delivery",
         "plan/address changes never rewrite frozen order",
         "wrong owner and ended-care outstanding admin",
         "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
@@ -1007,7 +1007,7 @@
         "revocation/late private return remains held, not silently accepted",
         "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
       ],
-      "remainingGate": "Admit actual A07 report entry/controller/producer composition after its required gates, then prove C05→A07→C04 no-change/immutable/private/public/return journey. Original Guidance private-return provider hold remains HELD; no rephrase/retry/reroute performed.",
+      "remainingGate": "Admit actual A07 report entry/controller/producer composition after its required gates, then prove C05\u2192A07\u2192C04 no-change/immutable/private/public/return journey. Original Guidance private-return provider hold remains HELD; no rephrase/retry/reroute performed.",
       "historicalRecord": {
         "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
         "row": "A07"
@@ -2247,11 +2247,24 @@
   "resourceQueue": {
     "admissionOwner": "W0",
     "executionOwner": "W7",
-    "freshGrantIssued": false,
+    "freshGrantIssued": true,
     "browserConcurrency": 1,
     "nativeFixtureConcurrency": 1,
     "rule": "Any suite launching Chrome uses browser slot, including intercepted synthetic/npm globs. Pure/SSR/compiler/finite HTTP are separate.",
-    "stoppedFixtures": "Never query/reuse/restart/reset/adopt; saved-FS audit only."
+    "stoppedFixtures": "Never query/reuse/restart/reset/adopt; saved-FS audit only.",
+    "activeGrant": null,
+    "freshGenuineGrantIssued": false,
+    "freshGrantIssuedMeaning": "Two once-only intercepted browser packets were admitted and consumed; no active grant or genuine fixture authority.",
+    "completedBrowserExecutions": [
+      {
+        "executionId": "7550b318-23a3-4aa4-ae34-1ff80f9daf3a",
+        "status": "FAILED_SETUP_BEFORE_CHROME_RETAINED"
+      },
+      {
+        "executionId": "eeb42e98-3844-4698-aebb-6d4c67a76271",
+        "status": "PASS_BOUNDED_INTERCEPTED_BROWSER_RETURNED"
+      }
+    ]
   },
   "independentReviewVerdicts": [
     {
@@ -2293,6 +2306,232 @@
       "head": "44e90f6bd8d68d4411e5fe1c02df418d022cf225",
       "report": "PRINCIPAL_44_PROVIDER_REFUSAL.json",
       "level": "UNACCEPTED_PROVIDER_REFUSAL"
+    },
+    {
+      "head": "35f177c82288b673516b3b07b536560814c1c59b",
+      "report": "reviews/W0_SERVICE_REQUEST_35F.md",
+      "level": "PASS_SCOPED_SOURCE_PENDING_BINDING"
+    },
+    {
+      "head": "9ba5241db746233c3f57c97eaed54acc3901bd23",
+      "report": "reviews/W0_MAYA_ASSETS_9BA.md",
+      "level": "PASS_SCOPED_SOURCE_ASSET_BUILD"
+    },
+    {
+      "head": "4238ca3061a29569bb2848fede44b0f073723475",
+      "report": "reviews/W1_REPORT_CONTEXT_4238.md",
+      "level": "PASS_SOURCE_ONLY_SQL_UNRUN_WAIT_W0_PR_PACKET"
+    },
+    {
+      "head": "4a9b97d2623f0b4a63de840c2c634e2abf04c214",
+      "report": "reviews/W5_SERVICE_4A9.md",
+      "level": "PASS_SCOPED_SOURCE_FINITE_SSR",
+      "historicalVerdictPreserved": true,
+      "latestDisposition": "SUPERSEDED_BY_W7_W5_S1_FINDING",
+      "findingReport": "reviews/W5_S1_HISTORICAL_ACK.md",
+      "correctedSourceHead": "7c50044df9b6b559e48362ba23da7726064c4dba"
+    },
+    {
+      "head": "40c96273292345812b6d465436c800cbf7ba2f9f",
+      "report": "reviews/W2_QUOTE_40C.md",
+      "level": "PASS_SCOPED_SOURCE_MODEL_SSR"
+    },
+    {
+      "head": "527b04b44bc1e493cb6a12796b9e3ff2288ff276",
+      "report": "reviews/W2_DELIVERY_527.md",
+      "level": "PASS_SCOPED_SOURCE_MODEL_FINITE_SSR"
+    },
+    {
+      "head": "5e18a8f21d2cadbb3cdbe5f54966884224952080",
+      "report": "reviews/W3_MAYA_5E.md",
+      "level": "PASS_SCOPED_SOURCE_IMAGES_SLOT"
+    },
+    {
+      "head": "3b1ddcbede87e78374cab333ed5bb5fee24117aa",
+      "report": "reviews/W6_SERVICE_3B1_ROLLFORWARD.md",
+      "level": "PASS_SOURCE_PARITY_ORDINARY_TEST_FIXTURE_GAP"
+    },
+    {
+      "head": "7c50044df9b6b559e48362ba23da7726064c4dba",
+      "report": "reviews/W5_S1_7C5.md",
+      "level": "PASS_SCOPED_SOURCE_S1_CLOSED"
+    },
+    {
+      "head": "450a803d67aaf3fa2293b606698e51cda7fd790c",
+      "report": "reviews/W0_CLIENT_PAYMENTS_450.md",
+      "level": "PASS_SCOPED_SOURCE_CLIENT_REQUEST"
+    },
+    {
+      "head": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "report": "reviews/W1_FINANCIALS_DTO_4031.md",
+      "level": "PASS_SCOPED_DTO_FORMAT_ONLY"
+    },
+    {
+      "head": "b2377598b22caf684a2a18da1dfb580f9208e5b2",
+      "report": "reviews/W2_DELIVERY_TEST_B237.md",
+      "level": "PASS_TEST_SOURCE_BYTE_PARITY_NO_BROWSER"
+    },
+    {
+      "head": "d0b0d87b7328d323562d353ca8d946213860413a",
+      "report": "reviews/W3_USE_ENTRY_D0.md",
+      "level": "PASS_SCOPED_SOURCE_ENTRY_SELECTOR"
+    },
+    {
+      "head": "99dc0cee13804ef878298547f53859166352a07a",
+      "report": "reviews/W1_COMMERCE_DTO_99.md",
+      "level": "PASS_SCOPED_DTO_FORMAT_RESTORATION_ONLY"
+    },
+    {
+      "head": "50c33b81a2f8f02455e4c9167f6de2ec69e7aa7d",
+      "report": "reviews/W6_SERVICE_50C.md",
+      "level": "PASS_SCOPED_SOURCE_TEST_SUCCESSOR"
+    },
+    {
+      "head": "7daf3a96b168bdc7b94f568735587c3e60a6fff3",
+      "report": "reviews/W1_COMMERCE_7DA_ROLLFORWARD.md",
+      "level": "PASS_SOURCE_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "2cb04d933622123ca927c4f9b38de0af5e589fd0",
+      "report": "reviews/W6_FINANCIALS_2CB.md",
+      "level": "PASS_SCOPED_PURE_PRESENTATION_ONLY"
+    },
+    {
+      "head": "c8d604809bf7ac340345df591d371b6da31b954b",
+      "report": "reviews/W5_FINANCIALS_C8.md",
+      "level": "PASS_SCOPED_SOURCE_FINITE_BOUNDARY_ONLY_DEPENDENCY_HELD"
+    },
+    {
+      "head": "8f10caa147d196b697d7915b006421f8a10f69a5",
+      "report": "reviews/W2_DIRECTORY_8F10.md",
+      "level": "PASS_SCOPED_SOURCE_MODEL_CONTROLLER_SSR"
+    },
+    {
+      "head": "53bf1f39760fa9edfc9cda481fe76e367c43e9ef",
+      "report": "reviews/W6_FINANCIALS_53B_ROLLFORWARD.md",
+      "level": "PASS_SOURCE_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "a89b24be19ccfb334128fe99601b67985b7af5f8",
+      "report": "reviews/W2_A07_A89.md",
+      "level": "PASS_PERMITTED_UI_SOURCE_FINITE_SSR_ONLY"
+    },
+    {
+      "head": "bd1dd9e0765f83a096a8caea78babb18b01b363d",
+      "report": "reviews/W0_QUOTE_BD1_FAIL.md",
+      "level": "FAIL_SOURCE_SELECTED_CLIENT_INTENT_BINDING",
+      "historicalVerdictPreserved": true,
+      "correctedSourceHead": "677604e514565d113738dcf733ae502e0c3ca6f8"
+    },
+    {
+      "head": "a590dfd51b069df65f3edf50c50073ca9355f27f",
+      "report": "reviews/W5_COMMERCE_A590_FAIL.md",
+      "level": "FAIL_SOURCE_ABORT_BODY_SETTLEMENT",
+      "historicalVerdictPreserved": true,
+      "correctedSourceHead": "0b39b3461a234558230bb06c47c2fd391076d562"
+    },
+    {
+      "head": "c58bbd9bbc0b5cb2b6ee9247b0c22321262ddb00",
+      "report": "reviews/W1_ORDERS_BOUNDARY_C58.md",
+      "level": "PASS_SCOPED_PROSPECTIVE_DTO_BOUNDARY_ONLY"
+    },
+    {
+      "head": "1c39946a77ce06a9bd9cf7208cceacd637542a54",
+      "report": "reviews/W2_ADMISSION_1C3.md",
+      "level": "PASS_SCOPED_COMPLETE_ADMISSION_DIRECTORY_QUOTE_SOURCE_FINITE_SSR"
+    },
+    {
+      "head": "0b39b3461a234558230bb06c47c2fd391076d562",
+      "report": "reviews/W5_COMMERCE_0B39.md",
+      "level": "PASS_SCOPED_SOURCE_C1_CLOSED_DEPENDENCY_HELD"
+    },
+    {
+      "head": "677604e514565d113738dcf733ae502e0c3ca6f8",
+      "report": "reviews/W0_QUOTE_677.md",
+      "level": "PASS_SCOPED_SOURCE_Q1_CLOSED"
     }
-  ]
+  ],
+  "placementClarifications": [
+    {
+      "decision": "D13",
+      "rule": "First-service billing and sent-claim panel belongs Account/service prepublication; Orders remains product purchasing/history.",
+      "scope": "Neutral W5 component and existing command/source gate unchanged; no new permission or genuine execution."
+    }
+  ],
+  "openIndependentFindings": [],
+  "lastReconciledAt": "2026-11-03T23:21:01.646385+00:00",
+  "counterProvenance": {
+    "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+    "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
+    "rule": "Baseline counts stay attributed to8c5. Later bounded source/SSR/finite/intercepted checks advance no complete-screen/decision/journey/genuine numerator."
+  },
+  "closedIndependentFindings": [
+    {
+      "id": "W7-W5-S1",
+      "head": "4a9b97d2623f0b4a63de840c2c634e2abf04c214",
+      "status": "CLOSED_SOURCE_ONLY_AT_SUCCESSOR",
+      "scope": "first-service client source/finiteUI, not M65",
+      "claim": "Historical sent-claim retry acknowledgement restores awaiting banner despite already-read confirmed/rejected current claim.",
+      "reproduction": "2independentclosedHTTP failures; original22pass retained",
+      "correctedHead": "7c50044df9b6b559e48362ba23da7726064c4dba",
+      "report": "reviews/W5_S1_7C5.md",
+      "preservedOriginal": "State2 and SSR2 each0/2; prior22 pass remains historical scoped evidence.",
+      "current": "27 candidate +4 overlapping original W7 executions passed31/31; frontend0; no genuine closure."
+    },
+    {
+      "id": "W7-W5-C1",
+      "severity": "P2",
+      "head": "a590dfd51b069df65f3edf50c50073ca9355f27f",
+      "status": "CLOSED_SOURCE_ONLY_AT_SUCCESSOR",
+      "scope": "Finite transport abort/body settlement only; no M65/SQLfinancial assertion",
+      "claim": "Aborted provider body remains pending, then rawRPC fulfills after release",
+      "reproduction": "Original10pass; independentcontrol0/1 waiting; finally release/join fulfilled",
+      "report": "reviews/W5_COMMERCE_A590_FAIL.md",
+      "correctedHead": "0b39b3461a234558230bb06c47c2fd391076d562",
+      "correctionReport": "reviews/W5_COMMERCE_0B39.md",
+      "preservedOriginal": "Old failed head/report/control remain unchanged; no genuine closure."
+    },
+    {
+      "id": "W7-W0-Q1",
+      "severity": "P2",
+      "head": "bd1dd9e0765f83a096a8caea78babb18b01b363d",
+      "status": "CLOSED_SOURCE_ONLY_AT_SUCCESSOR",
+      "scope": "Ordinary quote adapter selected-client intent binding; no SQLfinancial/M65 assertion",
+      "claim": "Returned draft target aliases private selected target, allowing another client quote without fresh context",
+      "reproduction": "Original11 pass; independent newcontrol0/1 Missingexpectedrejection",
+      "report": "reviews/W0_QUOTE_BD1_FAIL.md",
+      "correctedHead": "677604e514565d113738dcf733ae502e0c3ca6f8",
+      "correctionReport": "reviews/W0_QUOTE_677.md",
+      "preservedOriginal": "Old failed head/report/control remain unchanged; no genuine closure."
+    }
+  ],
+  "sourceCorrespondences": [
+    {
+      "head": "6ed593ff93803ef2accce7a2df43645cdfcef3b0",
+      "reviewedHead": "5e18a8f21d2cadbb3cdbe5f54966884224952080",
+      "level": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+      "report": "reviews/SOURCE_ROLLFORWARDS_6ED_9C3_469.md"
+    },
+    {
+      "head": "9c359dee9294fb4e0150ccc21fe8f59cdb13db82",
+      "reviewedHead": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "level": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+      "report": "reviews/SOURCE_ROLLFORWARDS_6ED_9C3_469.md"
+    },
+    {
+      "head": "4692665cd55acbb118f59de78ec21ba363d2dd60",
+      "reviewedHead": "d0b0d87b7328d323562d353ca8d946213860413a",
+      "level": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+      "report": "reviews/SOURCE_ROLLFORWARDS_6ED_9C3_469.md"
+    }
+  ],
+  "currentGenuineExecutionGate": {
+    "status": "BLOCKED_NO_ELIGIBLE_FRESH_PACKET",
+    "exactBlockedScope": "Fresh principal-dependent actual Auth/persistence/payment-publication/care/report acceptance using the proposed M04 setup path",
+    "sourceHead": "44e90f6bd8d68d4411e5fe1c02df418d022cf225",
+    "reason": "Provider-refused audit at activity370 is STOPPED and unaccepted; user forbids review/test/setup/alternate mechanism. Prior f49 failed. No fresh genuine resource grant exists.",
+    "reference": "PRINCIPAL_44_PROVIDER_REFUSAL.json",
+    "preservedAcceptedEvidence": "M01/M02 terminal saved evidence remains accepted within bounded scope and cannot be reused for fresh execution.",
+    "separatePermittedWork": "Distinct expressly permitted source reviews may continue. Public Maya browser would need actual shell/composition proof and its own admitted packet; it has no current grant."
+  }
 }

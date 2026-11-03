@@ -1,0 +1,48 @@
+{
+  "owner": "Kanuj",
+  "checks": [
+    {
+      "label": "MAYA6ED",
+      "reviewedHead": "5e18a8f21d2cadbb3cdbe5f54966884224952080",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "head": "6ed593ff93803ef2accce7a2df43645cdfcef3b0",
+      "postimages": 12,
+      "allByteIdentical": true,
+      "sameBinaryDeltaSha256": "b533b230369517d5a8bdb0d4012c2e7183608070796cb08d835238a96c68b666",
+      "verdict": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+      "newRuntimeExecution": "UNRUN",
+      "relevantDependencyDelta": [
+        "src/contracts/PortalClientService.ts",
+        "src/contracts/PortalClientServiceMapping.ts",
+        "src/contracts/PortalClientServiceValidation.ts",
+        "src/contracts/PortalClientServiceValues.ts"
+      ],
+      "publicPackagingDependencyExact9ba": true
+    },
+    {
+      "label": "FIN9C3",
+      "reviewedHead": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "head": "9c359dee9294fb4e0150ccc21fe8f59cdb13db82",
+      "postimages": 6,
+      "allByteIdentical": true,
+      "sameBinaryDeltaSha256": "9a5bd82ba608d06c508feac3c0a52a6130320907b06ec99b1e32dab590decea7",
+      "verdict": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+      "newRuntimeExecution": "UNRUN",
+      "relevantDependencyDelta": []
+    },
+    {
+      "label": "USE469",
+      "reviewedHead": "d0b0d87b7328d323562d353ca8d946213860413a",
+      "base": "6ed593ff93803ef2accce7a2df43645cdfcef3b0",
+      "head": "4692665cd55acbb118f59de78ec21ba363d2dd60",
+      "postimages": 8,
+      "allByteIdentical": true,
+      "sameBinaryDeltaSha256": "6b68684d068fefc848fc5c47c609322ef174ef9b36c7c675c127838afc16d507",
+      "maya12PostimagesAlsoExact5e": true,
+      "verdict": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+      "newRuntimeExecution": "UNRUN",
+      "integrationOrder": "Maya221/6ed first, then Source3/223/469; actualcallback/read/OrdersVM stillmissing"
+    }
+  ]
+}

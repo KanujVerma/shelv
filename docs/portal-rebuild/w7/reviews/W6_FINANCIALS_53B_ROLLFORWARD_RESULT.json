@@ -1,0 +1,39 @@
+{
+  "owner": "Kanuj",
+  "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+  "head": "53bf1f39760fa9edfc9cda481fe76e367c43e9ef",
+  "reviewedHead": "2cb04d933622123ca927c4f9b38de0af5e589fd0",
+  "verdict": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/account/financials/AccountServiceFinancials.tsx",
+      "bytes": 3352,
+      "sha256": "ae678bd5ce02ef781e8661368b9eb00aa09eaedca2d528e45938d230caa7f593"
+    },
+    {
+      "path": "apps/portal/src/features/account/financials/index.ts",
+      "bytes": 172,
+      "sha256": "081f13755be500969bb8de1ab51562e82d231b90ce12a7d316679318a7a5ea37"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-financials-presentation.test.mjs",
+      "bytes": 7001,
+      "sha256": "833fbe557ad4eac24082241c4b077ed63d959b7427479518be092e2b4b009fb3"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W6_FINANCIALS.md",
+      "bytes": 4977,
+      "sha256": "3ea1306090e19ae7bcbc79b087df8d0b9d84ac25686bd59c41ffd7e18ab73b2c"
+    }
+  ],
+  "binaryDeltaSha256": "5d660b13625fc0681391341d5bb436c576110ca830fcdd98ba2153ab8b164dfe",
+  "baseOnlyChanges": [
+    "docs/CONTEXT_SYNC.md",
+    "docs/portal-rebuild/CURRENT_STATUS.md",
+    "docs/portal-rebuild/EIGHT_THREAD_RULES.md",
+    "docs/portal-rebuild/eight-threads/W0.md"
+  ],
+  "transitiveCodeDelta": [],
+  "newRuntime": "UNRUN",
+  "limits": "Prior source9 and conditional type proof remain attributed2cb. No actual DTO/read/permission/genuine or resource eligibility."
+}

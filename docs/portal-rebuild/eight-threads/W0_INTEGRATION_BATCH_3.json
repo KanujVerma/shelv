@@ -1,0 +1,22 @@
+{
+  "owner": "Kanuj",
+  "sourceHead": "5e5db6b1389bfd21ad1a32af711d8f8c015ebc34",
+  "publishedPredecessor": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+  "scope": "local source integration; pending publication and independent new adapters; no feature acceptance",
+  "w7OwnedCheckpoints": [
+    "d765d002d775b213c8569572e23c548b21091a36",
+    "d475514406277a7f2cd7b9ef252cfe46004cf00c"
+  ],
+  "rawEvidenceRoot": ".local-artifacts/portal-rebuild/w0-20261103",
+  "checks": {
+    "DTO_INTEGRATED": 85,
+    "accountPaymentEntry": 10,
+    "accountCovering": 75,
+    "scopedClientPlans": 12,
+    "configuredGraphs": 4,
+    "isolatedApplicationBuild": 0
+  },
+  "currentCompleteIntegratedCensus": "NOT_MEASURED",
+  "genuineGrant": null,
+  "forbiddenScope": "No principal44 retry, no stopped-fixture contact, no SQL/authority/production/client/funds action"
+}

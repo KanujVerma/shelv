@@ -1,0 +1,60 @@
+{
+  "owner": "Kanuj",
+  "head": "677604e514565d113738dcf733ae502e0c3ca6f8",
+  "base": "370c30fca7b688af3bd29b36b65e9887b4f35d2e",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/app/ports.ts",
+      "bytes": 15627,
+      "sha256": "6b99db6882bb26d0c3dd44c18c36f2b010ad609b1b101a21bd0a5ff920a19eaf"
+    },
+    {
+      "path": "apps/portal/tests/w0-advisor-service-quote-request.test.mjs",
+      "bytes": 7165,
+      "sha256": "854facce92d1fac19f26d190ac98a4315cabbcd8138bb71dec2d049b979bddc3"
+    }
+  ],
+  "patchSha256": "8c9c711370b4217c3825b9f46fc66c4d0d0b5a32ccc9dcf3f07d59a726726209",
+  "portsInverseExactPriorBd1": true,
+  "originalControlSha256": "7af6f3976069f581fe7096722cf8e1bdb74e3df54110f17a054ca261ab82c7fc",
+  "scope": "Fresh ordinary quote-adapter source successor; originalbd1 FAIL unchanged. No oldcandidate execution.",
+  "id": "W7-W0-Q1",
+  "verdict": "PASS_SCOPED_SOURCE_Q1_CLOSED",
+  "node": "v22.23.0",
+  "current": {
+    "testExecutions": 47,
+    "candidate": 12,
+    "existingAdvisorAppIntegration": 34,
+    "originalW7": 1,
+    "overlap": "Owner12 includes equivalent alias regression; original1 repeats that behavior, not47 unique predicates.",
+    "pass": 47,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "configuredFrontend": {
+    "exitCode": 0,
+    "diagnostics": 0,
+    "sourceOverlay": false
+  },
+  "limits": [
+    "Source Q1 selected-client intent correction only; oldbd1 failure preserved",
+    "No actual server financial authorization/SQL/Auth/funds/browser/genuine acceptance",
+    "Unrelated merged S1/Maya/DTO/adapter source is not newly approved by this correction gate"
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-quote-677/W7-CURRENT47.log",
+      "bytes": 12527,
+      "sha256": "b3c87d0ebdd760329379ed40e6c47aa019d7954800656d1acef3f62b7a8d2779",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-quote-677/W7-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ]
+}

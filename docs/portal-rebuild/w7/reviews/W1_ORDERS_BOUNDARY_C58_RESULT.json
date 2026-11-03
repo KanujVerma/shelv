@@ -1,0 +1,87 @@
+{
+  "head": "c58bbd9bbc0b5cb2b6ee9247b0c22321262ddb00",
+  "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w1-plan-platform-orders-boundary.test.mjs",
+      "bytes": 2723,
+      "sha256": "32046c7482b1d909a39d7e26fd8a903f19c6f798bd340470cdf6f08cbb2a4a48"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_CLIENT_ORDERS_BOUNDARY_20261103.md",
+      "bytes": 4495,
+      "sha256": "c48cef5416d5e5f6af4b07fc214d5db37433eee18436e2f6771c3ef6262c5b6b"
+    },
+    {
+      "path": "src/contracts/PortalClientOrdersBoundary.ts",
+      "bytes": 1320,
+      "sha256": "a312ccb7e51104dca46f056654a8357d65d807116be9880a2fd9925dd4efa2da"
+    }
+  ],
+  "unchangedOriginalContracts": [
+    {
+      "path": "src/contracts/PortalClientOrders.ts",
+      "sha256": "2b5322b7e33e1379c04395c31bc1fb2598213ba44c32f40cbbdbb25e86e05fd5",
+      "exactFrozenBaseline": true
+    },
+    {
+      "path": "src/contracts/PortalClientOrdersValues.ts",
+      "sha256": "a2c504934c81a59abc3ce945b54cd827cb218b73c466ca530f1419cfce06015d",
+      "exactFrozenBaseline": true
+    },
+    {
+      "path": "src/contracts/PortalClientOrdersValidation.ts",
+      "sha256": "192cf3d2cf95c5ff8ae82d0a74c88c57d39a5a5560daead80ae26e1c838cf29e",
+      "exactFrozenBaseline": true
+    },
+    {
+      "path": "src/contracts/PortalClientOrdersMapping.ts",
+      "sha256": "2c1ffcf698fcd7ee54dd8d68527331d888d600298ed3c2c1c27bb3e45fcb4f13",
+      "exactFrozenBaseline": true
+    }
+  ],
+  "patchSha256": "38bd79d18e1259887a99b6ff2e7e231a224dd8f7d46102d9e6318b58f8fa43da",
+  "owner": "Kanuj",
+  "verdict": "PASS_SCOPED_PROSPECTIVE_DTO_BOUNDARY_ONLY",
+  "current": {
+    "tests": 8,
+    "pass": 8,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0"
+  },
+  "configuredRootTypes": {
+    "app": 0,
+    "tests": 0,
+    "diagnostics": 0
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-orders-boundary-c58/W7-CURRENT8.log",
+      "bytes": 2458,
+      "sha256": "e7e23761e659f40a3714ac1749d189a96ccdaebfdfe088148471d51bfbd3fdf8",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-orders-boundary-c58/W7-TYPES-app.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-orders-boundary-c58/W7-TYPES-tests.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "New fixed RPC/error metadata only; no installed guard or runtime status change",
+    "Original four contracts byte-identical frozen8c5; no protectedM02fixture or operation rerun",
+    "No SQL/OID/ACL/Auth/RLS/caller switch/cutover/typed write/actualmixedhistory acceptance",
+    "Author caller inventory/reference counts not independently repeated or promoted to actual call/deployed completeness",
+    "All M65/principal/Guidance/photo/private-return holds remain"
+  ]
+}
