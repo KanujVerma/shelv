@@ -78,6 +78,7 @@ const empty = (): AdvisorState => ({
   comparisonLocal: null,
   pending: null,
   receipt: null,
+  publicationNotification: null,
 });
 const memoryKey = "advisor:working-state";
 export function createAdvisorController(options: AdvisorControllerOptions) {
@@ -95,6 +96,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
           busy: false,
           context: null,
           dependencies: null,
+          publicationNotification: restored.publicationNotification ?? null,
           ...(restored.pending
             ? {
                 save: "uncertain",
@@ -119,6 +121,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
   const live = () => !disposed && !state.ended && session.isCurrent();
   const emit = (patch: Partial<AdvisorState>) => {
     if (!live()) return;
+    if (patch.receipt === null) patch = { ...patch, publicationNotification: null };
     if (
       ("view" in patch && patch.view !== state.view) ||
       ("local" in patch && patch.local !== state.local) ||
@@ -336,7 +339,10 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       const receipt = mapped as PublishReceipt;
       if (!sameTarget(receipt.target, command.target))
         throw Error("invalid_response");
-      emit({ receipt });
+      emit({
+        receipt,
+        publicationNotification: { command: structuredClone(command), receipt },
+      });
     } else {
       const view = assertDraft(mapped as DraftView);
       if (
