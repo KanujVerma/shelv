@@ -1,3 +1,7 @@
+## W0 reviewed shared continuation, 3 November 2026
+
+Owner: Kanuj. [W0 record](portal-rebuild/eight-threads/W0.md) preserves baseline8c5, reviewed P1/witness source706/546, local reviewed serviceDTO mergeef067, raw OLD/setup/current failures and next shared composition queue. Rules explicitly allocate A08 toW6 and canonical acceptance ledgers toW7. NEW principal44 provider refusal is unaccepted with no retry/resume/reroute or setup eligibility; prior f49 failure and DTOpass remain separate. M01/M02 accepted bounded capabilities stay2, complete screens0/26 and journeys0/10. W0 continues with no subagents/main merge/production/fixture reuse.
+
 ## Portal W0 ownership freeze, 3 November 2026
 
 Owner: Kanuj. W0 verifies transition9279914d and former coordinator release, freezes W0-W7 boundaries in [EIGHT_THREAD_RULES](portal-rebuild/EIGHT_THREAD_RULES.md), and preserves all47 recorded dirty worktrees plus nine missing/prunable records. Shared interface/migration hashes and runtime/Git evidence are in the linked preflight. W0 exclusively allocates migrations, authors shared runtime/UI/navigation and integrates reviewed PRs; no W1-W6 implementation rewrite. Exact baseline is the first published commit adding the rules. Full W0 continues after publication with Workers redirect:error P1 reproduction/correction and independent review. M01/M02 stay accepted bounded capabilities; complete screens0/26 and journeys0/10. No subagents, main merge, production action or fixture reuse.

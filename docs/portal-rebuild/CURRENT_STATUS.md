@@ -1,3 +1,15 @@
+## W0 reviewed continuation, 3 November 2026
+
+Owner: Kanuj. Full W0 remains active. Published baseline8c5c6b2d72e75f620487f1b2b110655b03551b17 permits W1-W7 branching; [current W0 record](eight-threads/W0.md) owns exact source/review/test/PR queue and [exclusive rules](EIGHT_THREAD_RULES.md) own allocations. W0 verified Sol/xhigh/default/Node22.23, no subagents. All original dirty worktrees/evidence and accepted M01/M02 remain preserved.
+
+P1 source706b and exact witness successor276/546 have independent W7 scoped PASS, with all original failures retained. Current focused43/43 and workerd40/40 pass. Root npm1867pass/0fail/18native-optin skips, four configured types0, Portal combined/application and Expo web builds0. ORIGINAL complete Portal3311/3312 remains FAILED at old full-source identity; no exact-new-head full Portal/CI PASS is claimed. W1 DTO PR212 exactefd has W7/21 controls, native full-head clean review and all3 hosted checks SUCCESS; selected5-file mergeef067 is local pending normal publication. No service producer/SQL or feature acceptance follows.
+
+W7 owns canonical acceptance evidence and serialized browser/genuine custody. The exact W3 R2 synthetic3width packet passed3/3/returned; original missing-transitive setup attempt failed beforeChrome and stays separate. No full frame/Figma/a11y/genuine inference. NEW principal44 gate is UNACCEPTED_PROVIDER_REFUSAL at verified W7timeline370; user prohibits resuming/retrying/rephrasing/rerouting/substituting models/nested review. No new principal finding/pass or setup eligibility comes from partials. Original f49FAIL, DTOefdPASS and older Guidance/M65/photo/A07 holds stay separate.
+
+Acceptance counts remain2 bounded capabilities,24/26 mounted,12/26 full SOURCE wiring,0/26 fully accepted screens,1/48 whole SOURCE decision(D06),0/10 complete accepted journeys. Shared cancellation/payment/quote/A07/notification/demo/contact adapters and reviewed feature integration remain unfinished in the W0 queue. No main merge/deployment/real-client/funds/retailer/release or protected-fixture reuse.
+
+Earlier snapshots below are historical.
+
 ## W0 ownership freeze, 3 November 2026
 
 Owner: Kanuj. [Eight-thread rules](EIGHT_THREAD_RULES.md) now define W0-W7 exclusive ownership and frozen interfaces. W0 owns migration allocation/order and Root integration; W1 authors shared DTOs and only explicitly allocated migrations. Former coordinator final receipt relinquishes ownership; live T3 status is cancelled/no active run and only W0 is active at preflight. Runtime is verified codex/gpt-6.1-sol/xhigh/default; Node22.23.0. No subagents.
