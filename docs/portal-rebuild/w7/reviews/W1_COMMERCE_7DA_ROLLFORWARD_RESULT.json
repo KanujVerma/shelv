@@ -1,0 +1,42 @@
+{
+  "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+  "head": "7daf3a96b168bdc7b94f568735587c3e60a6fff3",
+  "reviewedHead": "99dc0cee13804ef878298547f53859166352a07a",
+  "verdict": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+  "sourcePins": [
+    {
+      "path": "docs/portal-rebuild/research/W1_COMMERCE_DTO_PIN_20261103.md",
+      "bytes": 5975,
+      "sha256": "8d4344a05e4a4c533c514d49dedeb8be8b31a4970ad2bb07ec90a8a454ca145a"
+    },
+    {
+      "path": "src/contracts/PortalCommerce.ts",
+      "bytes": 19204,
+      "sha256": "af2d1316434cca41ab78ae4b3bed54cb3a5a348c8e915caaa2f84c0aac9a2c38"
+    },
+    {
+      "path": "src/contracts/PortalCommerceMapping.ts",
+      "bytes": 30476,
+      "sha256": "79d265ab4963cde159c21ff1138c292c80a5ad8548bb45cd843efbd04b706934"
+    },
+    {
+      "path": "src/contracts/PortalCommerceValidation.ts",
+      "bytes": 28017,
+      "sha256": "32e19f6ab8c85d5f52024ccf8aa114a088de270b005a806e3600191e4cfe7459"
+    },
+    {
+      "path": "src/contracts/PortalCommerceValues.ts",
+      "bytes": 5365,
+      "sha256": "ac8c72ca26be1ab1c4f3275b75260cd78e0cdbbebad26524ad7e442a1bb8d27f"
+    },
+    {
+      "path": "tests/portal-commerce-contract.test.ts",
+      "bytes": 67723,
+      "sha256": "36dc19840b3d81e981255eaab4700984c35d1132b44edb13bee826def223aa31"
+    }
+  ],
+  "binaryDeltaSha256": "a47054405de45b918f8f63d9cd4adad7c9076f18824ca5d15d663cee36aaa975",
+  "relevantDependencyDelta": [],
+  "newExecution": "UNRUN; prior independent56/test and configuredgraphs remain attributed99",
+  "limitations": "No backend/SQL/catalog/financial/M65 audit, authority or resource grant."
+}

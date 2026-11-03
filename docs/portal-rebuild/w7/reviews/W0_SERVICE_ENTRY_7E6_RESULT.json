@@ -1,0 +1,102 @@
+{
+  "owner": "Kanuj",
+  "head": "7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db",
+  "base": "c0a318e26d1aa88dccfa0b4172888e52ba902b4e",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/app/Application.tsx",
+      "bytes": 24385,
+      "sha256": "c242959d3f600cf28ce24f1af8ba6221c44ea24c54b9bfb7552f93c09536504f"
+    },
+    {
+      "path": "apps/portal/src/app/ServicePaymentEntry.tsx",
+      "bytes": 851,
+      "sha256": "30d4d5d86bfa02443367930aab670924661af23cccc8eae51a2ecbe4c5c50813"
+    },
+    {
+      "path": "apps/portal/src/app/service-payment-entry.ts",
+      "bytes": 5833,
+      "sha256": "0eda454f58696472c113e9cf3c4f741b3e902bda5dc62f1b2891d200da359c73"
+    },
+    {
+      "path": "apps/portal/tests/w0-service-payment-entry.test.mjs",
+      "bytes": 5319,
+      "sha256": "f4b68f1e62cfc234aeba22f8bfef4774c12f1fcbae058e9a5afaba9954fc6f68"
+    }
+  ],
+  "patchSha256": "2a9ecb04f590f5ac9be58fa2128e7964de18f34f1bb34b2ea46989a449dbf2c8",
+  "dependencyPins": [
+    {
+      "path": "apps/portal/src/features/payments/ServicePayments.tsx",
+      "sha256": "03e62640dc04e7a86da0d1931fb7cd62801ea2c9b4fc0ad281d0b3cad5bf460c",
+      "exactReviewed7c5": true
+    },
+    {
+      "path": "apps/portal/src/features/payments/controller.ts",
+      "sha256": "94b3dcd68127deb9328b7ebbe9177e939c12279066d52beef2883215aebb6576",
+      "exactReviewed7c5": true
+    },
+    {
+      "path": "apps/portal/src/features/payments/index.ts",
+      "sha256": "618df52fe16c9537f2e764cca87f030deeb4190ed0a98bc0e329fd8fe290bd34",
+      "exactReviewed7c5": true
+    },
+    {
+      "path": "apps/portal/src/features/payments/model.ts",
+      "sha256": "60a6701846fc33515975a44c325c00fd9df7c1b088bcef7d117e90df5dd1202f",
+      "exactReviewed7c5": true
+    },
+    {
+      "path": "apps/portal/src/features/payments/types.ts",
+      "sha256": "8c08a4783d5dcd83e68eb463c1ebfd01784d4b663bdfe5a6fa1828fadf4fdca0",
+      "exactReviewed7c5": true
+    },
+    {
+      "path": "apps/portal/src/app/client-payments-request.ts",
+      "sha256": "2b8d9910e6bce226eed4a5e8fd2d27ff3685f5aeef72c6531a0d8c69aee03826",
+      "exactReviewed450": true
+    }
+  ],
+  "accountEntryExactFrozen8c5": true,
+  "ordersReadSourceExactFrozen8c5": true,
+  "rule": "No protected M01/M02 fixture or operation execution; source equality only.",
+  "verdict": "PASS_SCOPED_ACCOUNT_SERVICE_PAYMENT_ENTRY_SOURCE_FINITE_SSR",
+  "current": {
+    "tests": 52,
+    "entry": 10,
+    "actualAdapter": 15,
+    "consumer": 27,
+    "pass": 52,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0"
+  },
+  "configuredFrontend": {
+    "exitCode": 0,
+    "diagnostics": 0,
+    "sourceOverlay": false
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-service-entry-7e6/W7-CURRENT52.log",
+      "bytes": 15149,
+      "sha256": "2753aa99f6814c7483f139f097abcc9b921890973a2e8aab1f6e133705216b35",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-service-entry-7e6/W7-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ],
+  "fixtureQualification": "Actual App SSR fixture default physical namespaces/no source-input manifest; unchanged helper appends only a test export to Account entry. No browser or genuine M01 fixture.",
+  "limits": [
+    "No fresh Auth/SQL/payment/firstpublication/genuine journey",
+    "No complete C08/service lifecycle/financial history/guarantee/cancellation or full visual/a11y acceptance",
+    "M01/M02 source preservation only; no protected fixture/operation rerun",
+    "Author fullbuild/fourgraphs/75 remain separate; independentchecks are52+frontendonly"
+  ]
+}

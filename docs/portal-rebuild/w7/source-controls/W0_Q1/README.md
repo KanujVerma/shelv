@@ -1,0 +1,3 @@
+# W0 quote target alias regression
+
+Owner: Kanuj. Exact W7-W0-Q1 regression at bd1dd9, SHA/size in MANIFEST.json. This is an inert evidence archive, outside application test discovery. Relative imports are intentionally unchanged from the immutable Portal projection. Copy unchanged into that projection's apps/portal/tests before invoking explicit Node22.23.0; do not blindly execute from this documentation directory. Owner may bind only paths/filenames for a new exact successor and preserve the original failed control/log separately. No resource grant, product change or held audit is authorized by this archive.

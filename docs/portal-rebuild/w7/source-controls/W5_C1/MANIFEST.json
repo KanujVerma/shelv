@@ -1,0 +1,10 @@
+{
+  "owner": "Kanuj",
+  "finding": "W7-W5-C1",
+  "head": "a590dfd51b069df65f3edf50c50073ca9355f27f",
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "path": "w7-commerce-abort-body.test.mjs",
+  "bytes": 1375,
+  "sha256": "4dc48148eb25e396ed983f4c764201221f170ab66ccbeef47f5dd75f8e68508a",
+  "scope": "Inert exact finite RPC/body abort regression; synthetic intercepted HTTP only, no SQL/Authbusiness/resources."
+}

@@ -1,0 +1,73 @@
+{
+  "base": "5e18a8f21d2cadbb3cdbe5f54966884224952080",
+  "head": "d0b0d87b7328d323562d353ca8d946213860413a",
+  "verdict": "PASS_SCOPED_SOURCE_PREFILL_AND_READONLY_USE_SELECTOR",
+  "node": "v22.23.0",
+  "oldExact96Components": {
+    "tests": 9,
+    "pass": 7,
+    "fail": 2,
+    "exitCode": 1
+  },
+  "current": {
+    "tests": 57,
+    "pass": 57,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "frontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+      "sha256": "f00672a6ef8e35221fcfef45a712e607ab2df422f8332627cca72d78d59b232c"
+    },
+    {
+      "path": "apps/portal/src/features/plan/UseReport.tsx",
+      "sha256": "e41bc6ca4d6f98b5ee29bf5653aee249a58621219f4b7c51730bfdafb0454e4d"
+    },
+    {
+      "path": "apps/portal/src/features/plan/index.ts",
+      "sha256": "a5604a1827b8abb005d6dd18a53add3e2d4150e192379bf2a0c6d0ec0e4463bd"
+    },
+    {
+      "path": "apps/portal/src/features/plan/orderUse.ts",
+      "sha256": "528c3b888ac9cebf3e62c17393ff59a18056d1417672171c3b3a6dc6409de7be"
+    },
+    {
+      "path": "apps/portal/src/features/plan/useEntry.ts",
+      "sha256": "53217cf5108daae95a666c6584ef0402a8d793478287c3098f49d119573248d3"
+    },
+    {
+      "path": "apps/portal/tests/w3-order-use.test.mjs",
+      "sha256": "1840fa06a776dad79a9010d8ed9d523013e225f595192a89d8b53e6cafd0e2be"
+    },
+    {
+      "path": "apps/portal/tests/w3-self-purchase.test.mjs",
+      "sha256": "edda8c2fe433949843a5c8d5b6a5ec25bd279f0f26c331113b0cc95a0639277d"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W3.md",
+      "sha256": "52e10c5f156ec3a4bf6d9ae7ebe66659c36a50133a6c3556a1353115fb3052ea"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-use-entry-d0/W7-OLD.log",
+      "sha256": "8ac8eeec6bc196dc6fe2d388bbcd18cc71975b5102d46be6a42c4dd353f5e610"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-use-entry-d0/W7-CURRENT.log",
+      "sha256": "d4c34b64dd02fdacd1f9fbde32911c17a50471fa6615d2f5d52486cf57a4303c"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-use-entry-d0/W7-TYPES.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "scope": "SSR/component/callback/model observation only; no hydratedDOM/navigation/genuineeffects; W0 actualcallback+authorizedread composition missing"
+}
