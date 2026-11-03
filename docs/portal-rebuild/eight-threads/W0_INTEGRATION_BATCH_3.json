@@ -14,9 +14,26 @@
     "accountCovering": 75,
     "scopedClientPlans": 12,
     "configuredGraphs": 4,
-    "isolatedApplicationBuild": 0
+    "isolatedApplicationBuild": 0,
+    "rootNpm": {
+      "programs": 214,
+      "tests": 1941,
+      "pass": 1923,
+      "fail": 0,
+      "skip": 18
+    },
+    "A07SingleFile": 17,
+    "guardedOrdersPin": 8,
+    "portalPackageExitCode": 0,
+    "expoWebExitCode": 0
   },
   "currentCompleteIntegratedCensus": "NOT_MEASURED",
   "genuineGrant": null,
-  "forbiddenScope": "No principal44 retry, no stopped-fixture contact, no SQL/authority/production/client/funds action"
+  "forbiddenScope": "No principal44 retry, no stopped-fixture contact, no SQL/authority/production/client/funds action",
+  "openHostedFinding": {
+    "head": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+    "discussionId": 4460794439,
+    "state": "OPEN_W1_FORWARD_SOURCE_PROPOSAL",
+    "sqlExecuted": false
+  }
 }
