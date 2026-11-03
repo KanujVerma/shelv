@@ -1,0 +1,32 @@
+{
+  "head": "96bfe2428d32eacdef5f4c9e184af7b5ef39a95e",
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "verdict": "PASS_SCOPED_SOURCE_SSR",
+  "node": "v22.23.0",
+  "old": {
+    "tests": 13,
+    "pass": 6,
+    "fail": 7,
+    "exitCode": 1
+  },
+  "current": {
+    "tests": 13,
+    "pass": 13,
+    "fail": 0,
+    "exitCode": 0
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-next-action/old.log",
+      "sha256": "822a4c1723097ea3f2162b8ed0d7307ce66339b64c9ea9223d81e0efe27912cd"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-next-action/current.log",
+      "sha256": "655da3f449e1d02644581b39bc1a96a467b71937154555b8aa7b6090ea1120de"
+    }
+  ],
+  "projection": "Exact Git exports and identical successor assertions against old/current production postimages. No Browser/Auth/SQL/Storage.",
+  "qualifications": [
+    "Original author and setup evidence retains its own scope/counts; independent expanded OLD never relabels it."
+  ]
+}

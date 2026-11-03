@@ -1,0 +1,34 @@
+{
+  "head": "ee0fddda8b3ad961cf5d3139f887137b328b013b",
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "verdict": "PASS_SCOPED_SOURCE_SSR",
+  "node": "v22.23.0",
+  "old": {
+    "tests": 4,
+    "pass": 2,
+    "fail": 2,
+    "exitCode": 1
+  },
+  "current": {
+    "tests": 4,
+    "pass": 4,
+    "fail": 0,
+    "exitCode": 0
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-linkage/old.log",
+      "sha256": "45ec3612352497111d247b1c74b7c1be7bbc5edb56794e9ab8f45be2ebca1f5f"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-linkage/current.log",
+      "sha256": "6c12ef755d9af30f4e6b98c7d1ad6ed32374e7aee60ee59a71b5fc78c42e982e"
+    }
+  ],
+  "projection": "Exact Git exports and identical successor assertions against old/current production postimages. No Browser/Auth/SQL/Storage.",
+  "qualifications": [
+    "Original author and setup evidence retains its own scope/counts; independent expanded OLD never relabels it.",
+    "Author169 is mixed intercepted browser/source/SSR, not SOURCE-only. Full author sweep interrupted/moving-source, not pinned PASS.",
+    "W7 first incomplete projection lacked Maya sample import; failed before controls; exact archived dependency supplied."
+  ]
+}
