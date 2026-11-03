@@ -31,3 +31,21 @@ test('self-purchase navigation for multiple quoted products requires an identifi
  const element=api.OrdersView({state:{...base,selection:{entity,snapshot,detail:q.header,quote:{...q,verified:true},history:[]}},navigation:{selfPurchase:selection=>calls.push(selection)}});
  const actions=actionsByText(element,'i bought it myself');assert.equal(actions.length,2);actions[1]();assert.deepEqual(calls,[q.lines[1].selection]);
 });
+function useDisplay(q,changes={}){
+ const selection=q.lines[0].selection,product={kind:'plan_product',publication:selection.publication,productId:selection.productId,slotId:null};
+ return {clientId:owner,selection,view:{status:'available',use:{product,state:'not_reported',originalStart:{state:'unknown'},latestEvent:null,identity:null,contradiction:false}},...changes};
+}
+function renderUse(q,display){const purchase=purchaseFixture(q);return renderToStaticMarkup(createElement(api.OrdersView,{state:{...base,selection:{entity:{kind:'purchase',id:purchase.id,revision:0},snapshot,detail:purchase,quote:null,history:[]}},useDisplay:display}));}
+test('Orders displays authoritative use-not-reported through shared UseFacts without deriving Start from delivery',async()=>{
+ const q=await quoteFixture(),html=renderUse(q,useDisplay(q));assert.match(html,/use not reported/);assert.doesNotMatch(html,/not started|reported using/);
+});
+test('Orders displays the exact stopped report and original attribution, including a different event publication',async()=>{
+ const q=await quoteFixture(),display=useDisplay(q),use=display.view.use;
+ use.state='stopped';use.latestEvent={eventId:id(80),product:{...use.product,publication:{version:1,documentSchemaVersion:3}},changeKind:'stopped',acquisition:'self',identityEventId:null,originalActivationId:null,amendment:null,occurredOn:{state:'unknown'},reportedBy:owner,recordedBy:id(9),recordedAt:instant,channel:'text',sourcePublication:{version:1,documentSchemaVersion:3}};
+ const before=structuredClone(display),html=renderUse(q,display);assert.match(html,/reported stopped/);assert.match(html,/recorded by advisor/);assert.match(html,/occurred date not known/);assert.deepEqual(display,before);
+});
+test('wrong-client, wrong-selection and unavailable use data cannot enter the Orders presentation',async()=>{
+ const q=await quoteFixture();for(const patch of [{clientId:id(99)},{selection:{...q.lines[0].selection,productId:'foreign'}},{selection:{...q.lines[0].selection,decisionId:'foreign'}},{selection:{...q.lines[0].selection,publication:{version:9,documentSchemaVersion:3}}},{selection:{...q.lines[0].selection,publication:{version:2,documentSchemaVersion:2}}},{view:{status:'unavailable'}}]){
+  const html=renderUse(q,useDisplay(q,patch));assert.match(html,/actual use is not supplied/);assert.doesNotMatch(html,/use not reported|reported using|reported stopped/);
+ }
+});

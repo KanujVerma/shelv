@@ -1,3 +1,4 @@
+import type {EffectiveUse,PlanProductRef} from '../../../../../src/contracts/PortalCare.ts';
 import type {CommerceCommand, CommerceResult, CommerceDetail, CommerceQuoteHeader, FrozenProductLine, FrozenManualOption, CommerceHistoryEntry, CommerceIndexEntry, CommerceSnapshot, CommerceEntityRef} from '../../../../../src/contracts/PortalCommerce.ts';
 import type {ApplicationSession} from '../../app/session.ts';
 export type OrdersMode = 'client'|'read-only'|'administration'|'historical';
@@ -29,3 +30,7 @@ export interface OrdersNavigation {
  selfPurchase?(selection:FrozenProductLine['selection']):void;
  help?():void;
 }
+
+/** Read-only W0/W3 projection, bound to the selected client and immutable product.
+ * Status describes data availability; it grants no Care or Commerce authority. */
+export type OrdersUseDisplay={clientId:string;selection:FrozenProductLine['selection'];view:{status:'available';use:EffectiveUse<PlanProductRef>}|{status:'unavailable'}};

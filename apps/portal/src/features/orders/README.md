@@ -10,7 +10,9 @@ The feature supports complete paginated frozen quote lines/options/history, exac
 
 `index.ts` exports `OrdersPage`, `OrdersView`, `OrderSheetContent`, `createOrdersController`, `createCommercePort`, `readOrdersIndex`, `loadOrdersSelection` and finite local types. The fixed request is W0-supplied and bound to the actual ApplicationSession; absence stays unavailable. No fallback through Plan/Care/Review. Service/refund/referral/private finance actions are excluded from this client product port. W0 owns actual route/channel/entry/session composition, authorized Care callbacks, focus/Back and lifecycle.
 
-The new owned correction binds `OrdersNavigation.selfPurchase(selection)` to the exact product/decision/publication. A one-line quote passes its sole selection; multiple lines expose identified per-product actions. An unidentified preparation record does not guess a product. This navigates to existing Care reporting only; it cannot create a quote, payment, order or Start. Delivery does not supply actual-use truth.
+The first owned correction binds `OrdersNavigation.selfPurchase(selection)` to the exact product/decision/publication. A one-line quote passes its sole selection; multiple lines expose identified per-product actions. An unidentified preparation record does not guess a product. This navigates to existing Care reporting only; it cannot create a quote, payment, order or Start. Delivery does not supply actual-use truth.
+
+The second owned correction adds optional `OrdersUseDisplay`, a read-only VM bound to client ID and exact product/decision/publication. It renders the existing shared `plan/UseFacts.tsx` only when that binding matches the currently selected purchase. It preserves not_reported, stopped/paused/different states, unknown dates, contradictions and original event provenance; a latest event can retain another publication. Unavailable, wrong-client or mismatched selection remains unavailable. No new/unreviewed W3 selector code is imported. W0 must supply this VM from the authorized exact-publication read and W3 selector after their independent admission; the VM status never grants authority.
 
 ## Design and evidence
 
@@ -29,18 +31,20 @@ Author checks use explicit Node22.23.0 and isolated source dependencies:
 | First adopted projection |106 pass/one setup failure: omitted baseline `scripts/check-ui-system.mjs`. Raw retained. |
 | Complete adopted projection |107/107 after copying that unchanged baseline dependency. |
 | Self-purchase source regression OLD |9 pass/two failures: missing exact selection and ambiguous multi-line action. |
-| Current complete suite |109/109, zero failures/skips/cancellations. |
+| Self-purchase complete suite |109/109, zero failures/skips/cancellations. |
+| Actual-use display OLD |12 pass/two failures: valid report data could not render; wrong-client/selection negatives already pass. |
+| Current complete suite |112/112, zero failures/skips/cancellations (`use-display-current.log`). |
 | Current projected configured frontend type graph |exit0, zero diagnostics. |
 
 Raw logs, exact source/test adoption pins and the complete dependency projection are under ignored `.local-artifacts/w5-orders/`. The projection is baseline source plus the exact four `PortalCommerce*` files from `60332e7ffdebfff81bc020dbfb8346bce11467ef`, owned current feature/test bytes and the unchanged Portal package/config/scripts. Its node_modules link points only to this own checkout's locked install. No shared DTO is copied into the real checkout. Latest603 is not independently current-approved; W1 owns its pin/admission.
 
-The retained107 comprise pure/model/controller/finite synthetic inputs, SSR and browser-target build checks; some use explicit synthetic boundaries/finite requests. They are not actual Auth, SQL, browser, genuine financial or whole-application proof. The two new callbacks are inspected as actual React element callbacks, not mounted interactions. No test in this authored run starts Chrome, a server, a DB or a provider connection. Ordinary exact-checkout execution remains required after actual W1/W0 dependency admission.
+The retained107 comprise pure/model/controller/finite synthetic inputs, SSR and browser-target build checks; some use explicit synthetic boundaries/finite requests. They are not actual Auth, SQL, browser, genuine financial or whole-application proof. The two new callbacks are inspected as actual React element callbacks; three additional use-display groups use shared UseFacts SSR and exact selection/privacy negatives. Neither is mounted interaction proof. No test in this authored run starts Chrome, a server, a DB or a provider connection. Ordinary exact-checkout execution remains required after actual W1/W0 dependency admission.
 
 ## Required integration and acceptance
 
 - W1 exact current shared DTO pin; W0 fixed transport/registered channel and actual entry/route composition.
 - Version-aware legacy/new purchase read strategy before formatVersion3 activation. Existing M02 all-row projection cannot represent typed purchases and is also pinned by service69. No row filtering, fake legacy fields or mutation of accepted M02 prosrc.
-- Actual approved-product preparation identity/image and current Care actual-use display. Unknown remains explicit until an authorized producer supplies it; delivery cannot become not-started or Start.
+- Actual approved-product preparation identity/image and W0 authorized Care actual-use VM composition. Unknown remains explicit until an authorized producer supplies it; delivery cannot become not-started or Start.
 - Completed optional payment/return evidence upload if offered. No fake uploader or uploaded-success state.
 - W7 independent full delta/source review, fresh isolated A/B Auth/persistence/permissions and negative/recovery proofs, mounted desktop/narrow/320/390/zoom/keyboard/focus/reduced-motion/Figma checks; full required suites and exact-head CI.
 - Broad persistence compatibility, CB1-CB6 originals and M65/provider-refused holds remain separate and unmodified. No migration authoring, resource acquisition or refused-audit retry is authorized by this candidate.
