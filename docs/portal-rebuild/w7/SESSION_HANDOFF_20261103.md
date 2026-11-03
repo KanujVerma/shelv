@@ -1,6 +1,6 @@
 # W7 continuation, 3 November 2026
 
-Owner: Kanuj. Own worktree `/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103`; branch `kanuj/w7-independent-acceptance-20261103`. Verified parent before latest checkpoint: `d475514406277a7f2cd7b9ef252cfe46004cf00c`. Starting frozen W0 baseline `8c5c6b2d72e75f620487f1b2b110655b03551b17`. Newer Git/history and user steering supersede this continuation record.
+Owner: Kanuj. Own worktree `/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103`; branch `kanuj/w7-independent-acceptance-20261103`. Verified parent before latest checkpoint: `5b98ae3f9d4945d7776836ce3bc8428e99b09cc5`. Starting frozen W0 baseline `8c5c6b2d72e75f620487f1b2b110655b03551b17`. Newer Git/history and user steering supersede this continuation record.
 
 ## Goal and boundaries
 
@@ -63,7 +63,11 @@ Currentpriorityqueue: W0Account4 7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db basec0
 
 - `d475`: CompleteC1source0b39 closed34exec/strict0/dependencyheld and Q1source677closed47exec/frontend0; originalcontrols byteexact, no oldcandidate rerun or genuineclosure.
 
-Newqueues: W0scoped-client-plans adapter5e5db6b1389bfd21ad1a32af711d8f8c015ebc34 base7e6 exact2 sourcefiles nextpriority. W2followup-test-only2ec0ad959045174b455d05c568f10f28b7aeb54f base1c3 exact3 parity/sensitivity/current14correspondence queued; oldCI52fails retained, no newgenuineclaim. W1TemplateDTOfef98c75702900295783ba7b8514e2b6bb092b1a base8893 exact6/sourceformatqueued; no SQL/allocation/CAS/producerauthority. Ownerreported RootPlanP2/native4460794439 danglingSQLproductreference hold notindependentlyaudited; do not infer templatebackend safe.
+Newqueues: W0scoped-client-plans adapter5e5db6b1389bfd21ad1a32af711d8f8c015ebc34 base7e6 exact2 SOURCEPASS12/12/frontend0 as W0_CLIENT_PLANS_5E5. VIEW-onlyactualread NOTPROVED: inspectedlegacyplan_guard stillhuman/owneredit, mergedlistlimit sourcecheckscombinedcardinality. No SQLexecution/guardrelaxation/installedpermission orbroaderprivateSourceaudit. W2followup-test-only2ec0ad959045174b455d05c568f10f28b7aeb54f base1c3 exact3 parity/sensitivity/current14correspondence queued; oldCI52fails retained, no newgenuineclaim. W1TemplateDTOfef98c75702900295783ba7b8514e2b6bb092b1a base8893 exact6/sourceformatqueued; no SQL/allocation/CAS/producerauthority. Ownerreported RootPlanP2/native4460794439 danglingSQLproductreference hold notindependentlyaudited; do not infer templatebackend safe.
+
+- `5b98`: Account7e6 exact4 source52/frontend0; actual450/7cdependencieschecked, inertprepubSSR; no M01/M02fixture or actualfinancial/grant.
+
+NEWpriority perW0 AFTER5e5: W1e37b21a723447ecb4539be2f23cb6a8a679b4cbe base8893 exact6 inertlookup original/successor4groupingbytes/helperlineage/directRPCtestPROPOSALonly. Patch8aaef3c5/packet260a99f6; no canonicalSQL/parser/catalog/Auth/directRPC/scan/repair/resources orprivateSource/refauthorityaudit; native4460794439 staysOPEN. Sourceoriginal68 immutable. Queuethisbeforetemplates/followupifneeded, no alternateprincipal setup.
 
 Full SHA and exact result paths are in ledger/queue/reports. Completed source results are not full feature/financial/SQL/browser/CI/visual/a11y acceptance. Full original W0Portal3311/3312 and source witnesses retain their failures; later inverse passes do not relabel them.
 

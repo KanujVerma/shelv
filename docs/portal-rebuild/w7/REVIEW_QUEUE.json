@@ -376,7 +376,9 @@
       "base": "7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db",
       "lane": "W0",
       "scope": "Exact2 fixed scoped-client plans port/source, afterAccount priority; ClientWorkspace0e7 separate consumer. No AuthSQL/browser or authority grant.",
-      "status": "QUEUED_PRIORITY_SOURCE_SCOPED_CLIENT_PLANS_PORT"
+      "status": "PASS_SCOPED_SOURCE_CLIENT_PLANS_TRANSPORT",
+      "report": "reviews/W0_CLIENT_PLANS_5E5.md",
+      "readiness": "ActualVIEW-only readnotproved; legacyguardedit semanticsunchanged"
     },
     {
       "head": "2ec0ad959045174b455d05c568f10f28b7aeb54f",
@@ -391,6 +393,13 @@
       "lane": "W1",
       "scope": "New exact6 prospective Template DTO format/source only, fiveclosed actions and immutableversion metadata; no SQL/dispatch/auth/CAS/resource or heldaudit.",
       "status": "QUEUED_SOURCE_TEMPLATE_DTO_ONLY"
+    },
+    {
+      "head": "e37b21a723447ecb4539be2f23cb6a8a679b4cbe",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "lane": "W1",
+      "scope": "Priority perW0 after5e5: exact6 inert original/successor4 groupingbytes/helperlineage/directRPCtestPROPOSAL only. No privateSource/refauthority audit, canonicalSQL/parser/catalog/Auth/scan/repair/resources. Native4460794439 remainsOPEN.",
+      "status": "QUEUED_PRIORITY_NARROW_INERT_PLAN_LOOKUP_SOURCE_ONLY"
     }
   ],
   "freshGenuineGrant": null,
@@ -415,7 +424,7 @@
     "at": "2026-11-03T20:04:32.743040+00:00",
     "report": "reviews/W3_BROWSER_96B_R2_RESULT.json"
   },
-  "lastReconciledAt": "2026-11-03T23:30:43.520762+00:00",
+  "lastReconciledAt": "2026-11-03T23:38:47.999612+00:00",
   "pendingIntakes": [],
   "artifactCustody": [
     {

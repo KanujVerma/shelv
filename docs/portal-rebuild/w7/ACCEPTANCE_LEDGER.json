@@ -2454,6 +2454,12 @@
       "head": "7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db",
       "report": "reviews/W0_SERVICE_ENTRY_7E6.md",
       "level": "PASS_SCOPED_ACCOUNT_SERVICE_PAYMENT_ENTRY_SOURCE_FINITE_SSR"
+    },
+    {
+      "head": "5e5db6b1389bfd21ad1a32af711d8f8c015ebc34",
+      "report": "reviews/W0_CLIENT_PLANS_5E5.md",
+      "level": "PASS_SCOPED_SOURCE_CLIENT_PLANS_TRANSPORT",
+      "readiness": "ActualVIEW-only private-directory authorization remainsunproved/legacyeditguard"
     }
   ],
   "placementClarifications": [
@@ -2464,7 +2470,7 @@
     }
   ],
   "openIndependentFindings": [],
-  "lastReconciledAt": "2026-11-03T23:30:43.519787+00:00",
+  "lastReconciledAt": "2026-11-03T23:38:47.998825+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",

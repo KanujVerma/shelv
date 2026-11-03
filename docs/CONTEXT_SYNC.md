@@ -1,3 +1,7 @@
+## Reviewed W0 source ready for normal publication
+
+Owner: Kanuj. Account/service entry7e6 has independent SOURCE52/52 and scoped-client-list adapter5e5 has SOURCE transport12/12; exact reports are in the canonical W7 ledger through44905056. All four current configured type graphs exit0. The old list RPC still requires EDIT, so no actual VIEW path is proved. Native plan SQL P2 remains open and no genuine packet or release is admitted. Exact local merges, source/CI attributions, current root1923pass/18retained skips and preserved originals remain in the W0 record below. The next normal integration push, not a force push, publishes this bounded development continuation.
+
 ## New plan SQL content-validation finding at published8893
 
 Owner: Kanuj. Umbrella PR211 native review is completed on8893 with a new unresolved P2, discussion4460794439: unparenthesized JSON product-array extractions may bypass the direct-RPC dangling-reference validation loop. Existing original migration bytes remain unchanged. W1 is tracing the exact current helper/predecessor and preparing a narrow forward-source/direct-RPC negative-test proposal; no migration allocation/execution or new genuine packet is inferred. Published8893 has all3 CI successful but its native review is not clean. This finding remains open during bounded development integration and will be independently reviewed; prior P1/S1/Q1 corrections do not close it.
