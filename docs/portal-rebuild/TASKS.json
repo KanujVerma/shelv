@@ -1,8 +1,8 @@
 {
-  "updatedOn": "2026-11-03T01:58:07.894680+00:00",
+  "updatedOn": "2026-11-03T18:38:48.407Z",
   "integrationBase": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
   "concurrencyLimit": null,
-  "allocatedWorkers": 1,
+  "allocatedWorkers": 0,
   "tasks": [
     {
       "role": "W1 backend reconnaissance",
@@ -12197,7 +12197,7 @@
   },
   "integrationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
   "currentAllocationEvidence": "Six current children: Account/notifications composition; ordinary journey author; independent contact provider/profile/contact consumer reviews; client Orders pin. Three completed authors and failed photo reviewer excluded. Full briefs/readbacks/literal IDs in refill-final receipt.",
-  "resourceGrantState": "No resource remains. RootboundedPGgrammarprobe acceptedRETURN2026-11-02T05:26:24.136318Z; no application/Auth/migration replay. Notificationexecutor no grant. Bankedreset disarmed.",
+  "resourceGrantState": "All known current genuine cases STOPPED_RETAINED; 72d1 last17 commands0joined after57 pre-stop0joined. Browser/host returned. No active resource grant transfers to new threads.",
   "currentCheckpoint": {
     "at": "2026-11-02T15:01:50.268524+00:00",
     "sourceHead": "b2a5f4f372d4f65a1cc3f9c85fd061bddcc7668b",
@@ -12248,18 +12248,16 @@
     "consumerReview": "R7 failed provider risk flag before final report; no reroute/rephrase; bounded finalREADY findings unaccepted report, no consumer admission"
   },
   "orchestrationState": {
-    "asOf": "2026-11-03T01:58:07.894680+00:00",
-    "coordinator": "9b085ada-435f-48d6-8886-957c1ce3e82d",
-    "actualRunningChildren": 1,
-    "actualWorkflowsIncludingCoordinator": 2,
-    "targetUsefulChildren": 7,
-    "activeTaskIds": [
-      "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Athread-send%3A4fa48c2f-f46e-4b2a-89a2-8cab535b72b7"
-    ],
-    "nativeGoal": "VERIFIED active replacement",
+    "asOf": "2026-11-03T18:38:48.407Z",
+    "coordinator": null,
+    "formerCoordinator": "9b085ada-435f-48d6-8886-957c1ce3e82d",
+    "actualRunningChildren": 0,
+    "actualWorkflowsIncludingCoordinator": 1,
+    "activeTaskIds": [],
+    "nativeGoal": "handoff only; pause at final return, do not markcomplete",
     "heavyOwner": null,
-    "heavyReturned": "service gateway continuation full parity/4types0, sourcefreeze/report imminent; no commands live",
-    "whyBelowTarget": "Root critical-path compatibility review is complete and Parent is publishing admitted94 now. One service-gateway implementation continuation is freezing its tested layer. Parent owns next Account/dialog lifecycle and small fixes; new full combined service review will be dispatched from exact final source pin, not an invented or terminal slot."
+    "heavyReturned": true,
+    "whyBelowTarget": "User stopped old child scheduling and requested committed transition to eight separately owned peer goals. No new goals launched."
   },
   "sqlWriterState": {
     "asOf": "2026-11-03T00:37:47.022765+00:00",
@@ -12315,16 +12313,8 @@
   },
   "readyQueue": [
     {
-      "owner": "Parent +Root compatibility R1",
-      "task": "Close complete17 Root composition review, fix small findings, commit/push frozen94+scoped reports, exact-head CI; then update three admitted frame mounts with source gates explicitly separate from browser."
-    },
-    {
-      "owner": "Service producer R2 +future gateway implementation child",
-      "task": "Close CSA1 complete12 review; implement actual service32k/8k/10s fixed namespace without caller authority or silent test rewrites; fresh combined review before activation."
-    },
-    {
-      "owner": "Parent",
-      "task": "Compose reviewed service/cancellation fragments into actual Account/dialog/lifetimes with real final-export/unfinished-admin destinations and ordinary paid boundary, then current registered chain+browser/genuine gates under fresh reviewed resource packet."
+      "owner": "Future peer owners, not old coordinator",
+      "task": "Read committed transition handoff, verify Git and claim exclusive paths before starting any /goal."
     }
   ],
   "goalReplacement20261102": {
@@ -12379,10 +12369,10 @@
   "milestoneExecution20261103": {
     "at": "2026-11-03T15:54:27.141Z",
     "coordinator": "9b085ada-435f-48d6-8886-957c1ce3e82d",
-    "goal": "same existing native goal, active",
-    "integrationAuthority": "coordinator only",
+    "goal": "same full goal unfinished; old coordinator relinquishing for user-directed eight-goal transition",
+    "integrationAuthority": "Unclaimed after handoff; proposed G1 peer owns bounded Root integration only after explicit start",
     "counts": {
-      "acceptedBoundedCapabilities": 1,
+      "acceptedBoundedCapabilities": 2,
       "acceptedScreens": 0,
       "screenTotal": 26,
       "acceptedJourneys": 0,
@@ -12393,7 +12383,7 @@
         "key": "M01-fixture",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture",
-        "state": "terminal; source claims released; not executing",
+        "state": "terminal; old ownership released; not executing",
         "owns": [
           "apps/portal/scripts/genuine-account-fixture.mjs",
           "apps/portal/tests/genuine/account-fixture-unit.test.mjs"
@@ -12404,7 +12394,7 @@
         "key": "M01-host",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Aacceptance-20261103-live-host-code-rollforward",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-local-bindings",
-        "state": "terminal; source claims released; not executing",
+        "state": "terminal; old ownership released; not executing",
         "owns": [
           "apps/portal/scripts/genuine-account-host.mjs",
           "apps/portal/tests/genuine/account-local-bindings.mjs",
@@ -12417,35 +12407,35 @@
         "key": "M01-review",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-workerd-private-redirect-review-r2",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-workerd-private-redirect-review-r2",
-        "state": "terminal; source claims released; not executing",
+        "state": "terminal; old ownership released; not executing",
         "resource": "none"
       },
       {
         "key": "M02-orders",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-recorded-orders-oracle",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey",
-        "state": "terminal; source claims released; not executing",
+        "state": "terminal; old ownership released; not executing",
         "resource": "none"
       },
       {
         "key": "milestone-20261103-notifications-inbox",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notifications-inbox",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notifications-inbox",
-        "state": "terminal; source claims released; not executing",
+        "state": "terminal; old ownership released; not executing",
         "resource": "none"
       },
       {
         "key": "milestone-20261103-advisor-publication",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-advisor-publication",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-advisor-publication",
-        "state": "terminal; source claims released; not executing",
+        "state": "terminal; old ownership released; not executing",
         "resource": "none"
       },
       {
         "key": "milestone-20261103-history-current-snapshot",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-current-snapshot",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-current-snapshot",
-        "state": "terminal; source claims released; not executing",
+        "state": "terminal; old ownership released; not executing",
         "resource": "none"
       }
     ],
@@ -12455,6 +12445,12 @@
         "source": "72edabab3afe2532580da4a4069dea1edbd1b952",
         "receipt": "acceptance/ACCEPTED_CAPABILITIES_20261103.json",
         "report": "research/W7_M01_ACCOUNT_PROFILE_GENUINE_ACCEPTANCE_R2.md"
+      },
+      {
+        "id": "M02",
+        "source": "359c6bf0c759357df648ca441e9e3d1c3d29398c",
+        "receipt": "docs/portal-rebuild/acceptance/ACCEPTED_CAPABILITIES_20261103.json",
+        "report": "research/W7_M02_RECORDED_ORDERS_GENUINE_ACCEPTANCE_R1.md"
       }
     ],
     "currentReviewReceipts": [
@@ -12608,22 +12604,16 @@
     ],
     "resourceState": {
       "stage": "STOPPED_RETAINED",
-      "ownerId": "2a771cf9-1a2c-4b60-9569-71d175d26011",
-      "at": "2026-11-03T12:27:51.780Z",
-      "all119Exit0Joined": true,
-      "noFutureQueryOrReuse": true
+      "ownerId": "72d1e2c3-94de-4705-a594-9e9708294965",
+      "noFutureQueryOrReuse": true,
+      "receipt": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/account-72d1e2c3-94de-4705-a594-9e9708294965/private/STOPPED.json"
     },
     "latestOrdersAttempt": {
-      "source": "6bb0efe2bedae6d4f014b2e8b84512a05e965a60",
-      "status": "FAILED: recorded Orders503 from invalid fixture policy URL",
-      "preseedEmptyBrowser": "PASS actual A rev0/empty/keyboard390+320/logout/joins",
-      "seed": "4df once actual0/all3nativejoined, bad data never amended",
-      "baselineFinal": "READ ONLY27 A/B digests+complete actor observations equal; no fullDB/Auth/Vault inference",
-      "resources": "STOPPED_RETAINED all65nativeexit0joined, dump/evidence/containers/volume/network/keys retained, no future query/reuse/reset",
-      "correctionSource": "c5bf8b35a9544746f801bc3bf294dea9d482bd86",
-      "newSeedSha256": "a3217a097b0d12a1f3496a2ea99164ac6dd91747b480a5c88bc123282169c4e4",
-      "sourceGate": "R3 allfive PASS22+32+16",
-      "genuineCorrectedCase": "PENDING"
+      "source": "359c6bf0c759357df648ca441e9e3d1c3d29398c",
+      "status": "ACCEPTED bounded recorded history, independent ACTUAL R1 PASS",
+      "case": "72d1e2c3-94de-4705-a594-9e9708294965",
+      "scope": "No complete frame/journey/financial acceptance",
+      "report": "research/W7_M02_RECORDED_ORDERS_GENUINE_ACCEPTANCE_R1.md"
     },
     "notificationSource": {
       "source": "c8b59c3991d40944ba42dd44d58b3d5db98b7d33",

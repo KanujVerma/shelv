@@ -1,0 +1,31 @@
+{
+  "rootPin": "359c6bf0c759357df648ca441e9e3d1c3d29398c",
+  "kind": "SOURCE_FREEZE_ONLY",
+  "files": [
+    {
+      "path": "source/PINS.json",
+      "bytes": 2236,
+      "sha256": "01fb96863f1132e8b9a51bee133e84d4cf14d471824ef24268699cc8f3ff722f"
+    },
+    {
+      "path": "source/native-lifetime.mjs",
+      "bytes": 2792,
+      "sha256": "a735d6c56c92925a3f4814600a99ac895a9ae0e9f9b49e7d9e59aac1d5089a15"
+    },
+    {
+      "path": "source/negative-observation.sql",
+      "bytes": 6245,
+      "sha256": "c9d0711fde01418563231ca6a910cd7476a413165b1918ee069b4b60b3002339"
+    },
+    {
+      "path": "source/negative-schedules.mjs",
+      "bytes": 32252,
+      "sha256": "22898641797e5de1ef283c33ced0a3af28ff6045656ccee9d75160ca468e9d19"
+    },
+    {
+      "path": "source/page-observer.mjs",
+      "bytes": 7376,
+      "sha256": "aa6f610981209cf68b85d6f3ce4f0c4076ca7aa1bafb49a25951ee3f6543205b"
+    }
+  ]
+}

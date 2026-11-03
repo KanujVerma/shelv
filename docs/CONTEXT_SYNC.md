@@ -1,3 +1,13 @@
+## Eight-goal transition: 2026-11-03T18:38:48.407Z
+
+Owner: Kanuj. The old coordinator has stopped new child scheduling and relinquishes implementation ownership after this handoff commit. **2 accepted bounded capabilities (M01 Account Name, M02 recorded Orders);0/26 fully accepted screens;0/10 complete journeys.** Mounted24/26 and complete SOURCE wiring12/26 remain separate. All original decisions/addenda/full scope are unchanged. Read the [exact transition handoff](handoffs/2026-11-03-portal-eight-goal-transition.md). No new top-level goal is started here.
+
+All known current genuine fixtures are STOPPED_RETAINED, all browser/host/native handles joined, all data/volumes/networks/keys/evidence retained. No stopped-fixture query/reuse/reset. PR211 remains draft/unmerged:359c hosted CI3/3 successful, but Codex completed with unresolved P1 redirect finding; this new local handoff commit has no hosted CI/review. New Source findings PRINCIPAL-R1-01 and HN1 remain open. Parent HN1 correction43/43 is archived unreviewed. Guidance/M65/photo/A07 holds remain. [Ownership map and exact snapshots](portal-rebuild/transition/20261103/eight-goal-ownership.json).
+
+Earlier snapshots below are historical and do not retain active writer claims.
+
+---
+
 ## 2026-11-03T15:54:27.141Z: Orders fixture compatibility correction
 
 M01 remains the sole accepted bounded capability; counts1/0/0. Genuine M02 found invalid synthetic policy URL rather than an Auth/RLS defect: RPC200 became503 during correct production DTO validation. The [reviewed successor](portal-rebuild/research/W7_GENUINE_RECORDED_ORDERS_SOURCE_R3.md) uses a valid presentation URL and adds production-reader coverage; old failed data is preserved. Failed3d resources and every browser/host handle are stopped/retained/joined; no further resource queries/reuse/reset. M03's complete R4 source correction is admitted, genuine execution still waits M04. [Current status](portal-rebuild/CURRENT_STATUS.md) owns the exact evidence/gates and next fresh verification case.

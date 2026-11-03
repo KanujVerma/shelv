@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_CANDIDATE_REVIEW_REQUIRED",
+  "literalTaskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m04-trusted-fixture-implementation",
+  "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888",
+  "sourceRoot": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030",
+  "rootCommit": "359c6bf0c759357df648ca441e9e3d1c3d29398c",
+  "rootTargetSha256": "be2e06bcbd45665e2f2e191dafb5d6d284f0a2591987ad236a6efce02e21eb1e",
+  "runtimeClosureSha256": "2cc3c59ca1be485a60a83b243a5d6957ffc145349025546d0d1bfeb6885beb86",
+  "adapter": {
+    "path": ".local-artifacts/m04-trusted-setup-source/implementation/adapter/account-advisor-local-bindings.mjs",
+    "sha256": "65a1830172bafccc00f59001f1ec346738297c5ced99fe5e554dc59313010322"
+  },
+  "caller": {
+    "path": ".local-artifacts/m04-trusted-setup-source/implementation/caller/genuine-advisor-host.mjs",
+    "sha256": "bac0459987d1e40bb90bef1e51091e80bbcd0e37e61281f302410ca54e24e198"
+  },
+  "publicDescriptor": "v1 unchanged; A/B only; fixed owner/viewer email convention is egress-only",
+  "inputHelper": "ACKed exact8-key byte/raw-observation join; OBSERVATIONS_ONLY/NOT_ASSESSED; no setup, role or currentness authority",
+  "phaseOrder": "original approval first, verify-payment second; both before deliberate publication",
+  "diagnostic": "read_client_plan_v1 retained explicitly, not a substitute for mounted /plan V3; unapproved/held service refusal stays failure",
+  "contextLimit": "fresh schema1 Root359 only; no M02 live-context adoption. Existing baseline schema2 targets old72ed and would require a separately ACKed same-owner359 context/receipt ABI before any new continuation support.",
+  "preservedGuards": "original module closure, Worker entry, dependency inventory, private path/file/key, source/index, persistence lineage, external grant/stop hashes, signal, stream and cleanup guard code retained; only enumerated source deltas plus added fail-closed source/runtime restrictions",
+  "proof": {
+    "sourceControls": 90,
+    "pass": 90,
+    "fail": 0,
+    "skipped": 0,
+    "cwdVariants": [
+      "repository",
+      "apps/portal"
+    ],
+    "meaningfulRed": "initial47:12pass35fail; byte-input35:32pass3fail. Original source/raw argv/cwd/exits retained.",
+    "exactInverse": [
+      "receipts/FULL-EXACT-INVERSE.json",
+      "receipts/ROOT-PROVIDER-EXACT-INVERSE.json"
+    ],
+    "frozenOriginalM04Files": 4
+  },
+  "unrun": [
+    "compiler/build",
+    "SDK/dependency import or inventory execution",
+    "actual GoTrue or canonical handlers",
+    "SQL/Auth/RLS/DB",
+    "engine/Worker/resource acquisition",
+    "socket/network/browser",
+    "actual role/policy/payment setup",
+    "genuine V3/current/history/notification delivery",
+    "CI/visual/release"
+  ],
+  "writes": "only new ignored implementation/{adapter,caller,unit,receipts,setup-plan}; no old proposal/baseline/Root/tracked edits or commit",
+  "genuineAcceptance": "NOT_ASSESSED",
+  "actualGeneratedIds": null,
+  "next": "Review exact inverse/source hashes/negative controls; provide separate reviewed setup executor and concrete resource packet later. Never infer authority from this candidate or activate held paths."
+}

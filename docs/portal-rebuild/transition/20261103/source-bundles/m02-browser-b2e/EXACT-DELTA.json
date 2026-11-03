@@ -1,0 +1,31 @@
+{
+  "baseSha256": "0209a49e664baa06b90a01437110cce3dfaeaefdf60980f8d01a2eac263541a1",
+  "currentSha256": "b2e45539f75e95d814a66345d4ca8822c49f18ad3826b3c4d4f114a8f8701570",
+  "edits": [
+    [
+      "const canonical=async body=>page.evaluate(async({body,path})=>{\n    const session=await fetch('/api/client/session',{cache:'no-store'});\n    const state=await session.json();",
+      "const canonical=async(body,retainedCsrf=null)=>page.evaluate(async({body,path,retainedCsrf})=>{\n    let csrf=retainedCsrf;\n    if(csrf===null){const session=await fetch('/api/client/session',{cache:'no-store'});const state=await session.json();csrf=state.csrf??'';}"
+    ],
+    [
+      "'x-shelv-csrf':state.csrf??''",
+      "'x-shelv-csrf':csrf"
+    ],
+    [
+      "},{body,path:ordersPath});",
+      "},{body,path:ordersPath,retainedCsrf});"
+    ],
+    [
+      "let heldResolve,release;",
+      "let heldResolve,release,endedSessionCsrf;"
+    ],
+    [
+      "assert.equal(route.request().method(),'POST');assert.deepEqual(route.request().postDataJSON(),command);",
+      "assert.equal(route.request().method(),'POST');assert.deepEqual(route.request().postDataJSON(),command);\n            endedSessionCsrf=(await route.request().allHeaders())['x-shelv-csrf'];\n            assert.ok(typeof endedSessionCsrf==='string'&&endedSessionCsrf.length>0&&endedSessionCsrf.length<=128,'actual original read CSRF header required');"
+    ],
+    [
+      "const signedOut=await canonical(command);",
+      "const signedOut=await canonical(command,endedSessionCsrf);"
+    ]
+  ],
+  "scope": "Test-only callback sends original held read CSRF header after actual completed UIlogout, current natural cookies. No cookie/Auth/currentness/response/Vault substitution. Full Root unchanged."
+}

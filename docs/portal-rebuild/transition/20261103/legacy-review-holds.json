@@ -1,0 +1,93 @@
+{
+  "note": "Preserved historical ledgers, not automatically current claims. Read complete per-frame remaining gates and newer explicit findings in handoff. No historical failure is rewritten.",
+  "currentReviewHolds": {
+    "transport": [
+      "Rootshared51exactprojection/currentcomposition",
+      "legitimate inventory witness successor/currentconsumer-v2"
+    ],
+    "entry": [
+      "scopedR2 SOURCE PASS; shared/current composition and Root mount held"
+    ],
+    "Source": [
+      "SK2",
+      "SK3",
+      "SK4",
+      "final_private_egress"
+    ],
+    "native": [
+      "NE5",
+      "NE6-S1 source correlations",
+      "fresh complete executor review then exact native grant"
+    ],
+    "departure_preliminary": [
+      "ADPR1",
+      "ADPR2"
+    ],
+    "export_preliminary": [
+      "AFEC1/P2",
+      "AFEC2/P3"
+    ],
+    "provider": [
+      "Guidance private-return",
+      "M65"
+    ],
+    "SMTP": "independentR2 scopedPASS, exact5-path Root594d64e2 source admitted; worker/native/delivery open",
+    "departure": [
+      "ADPR1",
+      "ADPR2"
+    ],
+    "export": [
+      "AFEC1/P2",
+      "AFEC2/P3"
+    ],
+    "credential": [
+      "R3scopedSOURCEPASS CA1-CA4",
+      "kernelSK2/SK3/SK4/finalactualprivateauthority/genuine stillheld"
+    ],
+    "MayaChrome": [
+      "MSC3/P2; independentR1FAIL"
+    ],
+    "photoUpload": [
+      "RPU3/P2 independentR1 FAIL",
+      "RPU-D1 physical dependency failure",
+      "complete current shared/consumer-v2/collection/mount/genuine Storage gates"
+    ],
+    "profile": [
+      "source admitted38415ade afterR2+integrationR1",
+      "SQL/catalog/roles/Auth/concurrency/Storage/gateway/Vault/Account/contact/genuine/browser stillopen"
+    ]
+  },
+  "providerGateDisposition": {
+    "userDirection": "No hardware key and not in Daybreak Blue; work around accordingly",
+    "appliesOn": "2026-11-01",
+    "engineeringPlan": "Program enrollment is not a project prerequisite. Continue allowed implementation, deterministic local acceptance and permitted independent correctness review. Keep refused tasks and their incomplete verdicts visible. Do not disguise/retry/reroute refused prompts or report them as passed. Escalate any exact indispensable acceptance gap with alternatives rather than parking a whole feature.",
+    "mandatoryRequirementsPreserved": true,
+    "userActionRequiredNow": false,
+    "blockedArtifactsUnchanged": true
+  },
+  "sourceSuccessors": {
+    "w0Code": "3f4cb6716fed9123e2d47949a28144b9a7b55485",
+    "w0Report": "368979d76256334ad2b0fabc2f4e3656979d29ef",
+    "genericV3PatchSha256": "4a5c2fd8963235b97103f99c6d739f653d13cf30c231aad27d69267babba9cca",
+    "genericV3Full16ManifestSha256": "e4e5c5e0b4252089fae26baeec68a3bc41ee2541610ff60b1f39e176ced31635",
+    "W6projection": "own ignored exact58+two generic postimages, Parent pin sent; no tracked shared changes",
+    "W2successor": "exact ordered separate dependency commits through61bb, source only",
+    "genericV4PatchSha256": "a09d1218fe39edad0c34e8a9a002101a7903482952f1ac59285ec38dc164276d",
+    "genericV4Full16ManifestSha256": "32bd38065789df6166fdd3f0465ae8a250513938e7e148e090f3d3a653e88036",
+    "genericV4ComposedProofIndexSha256": "8adf6476269ac7975ba4c1ab034213c567ac68eb3f4adb67d637880f14026041",
+    "W6heldCandidate": "13f131458d6e635aed76a1d6ab6dab8b6b5a92f6",
+    "photoRP3Candidate": "da0d3ae093d67b651adb8481da6fe8be16a52cc9",
+    "notificationNui1Candidate": "8f9c34e83bd193989b90bb2375d2ab08d1a2d7b8",
+    "photoR4IndependentReport": "08f1e5bac91e1473e283b180058a2a303edbf04f"
+  },
+  "sourcePins": {
+    "kernel": "docs/portal-rebuild/research/COORDINATOR_SOURCE_KERNEL_INTERFACE_PIN.md",
+    "photoTransport": "docs/portal-rebuild/research/COORDINATOR_PHOTO_INVENTORY_TRANSPORT_PIN.md",
+    "sourceKernelMigration": "20261102033048_portal_rebuild_source_kernel_v1.sql",
+    "sqlExecution": "none authorized in active source assignments",
+    "profileSuccessor": "3016cfb99a165fccd4218c58a76090d3b4ac397b",
+    "sharedSuccessor": "556befca22e0c2d7aa9cb63913eadaf45fb7b853",
+    "profileSource": "38415adefaf4c7b5998bfdeb59ad49c8e0de91c2",
+    "credentialSuccessor": "ba1caf3bc4c28b13d1c1d4ad07682d69718ff544"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "state": "ACKED_SOURCE_ONLY_NO_EXECUTION_GRANT",
+  "exports": {
+    "validateExecutionGrant": [
+      "grantBytes",
+      "expectedGrantSha256",
+      "executionTaskId",
+      "executorSha256",
+      "sqlSha256"
+    ],
+    "executePrincipalSetup": [
+      "mode",
+      "grantFile",
+      "expectedGrantSha256",
+      "executionTaskId",
+      "signal"
+    ]
+  },
+  "mode": "execute only",
+  "rawGrant": "externally hashed canonical regular0600 max65536; exact fresh execution literal differs from source dispatch",
+  "attempt": {
+    "grantKeys": [
+      "claimFile"
+    ],
+    "claimFile": "<Base>/private/M04-PRINCIPAL-SETUP-ATTEMPT.json",
+    "evidenceDirectory": "internally cryptoUUID-created <Base>/private/m04-principal-<uuid>, new-only0700; never caller-selected/adopted",
+    "semantics": "exclusive wx/fsync + directory fsync before first native query, before any Auth mutation; every later fence checks immutable claim bytes; no retry/delete/amend"
+  },
+  "modes": {
+    "executor": "0600",
+    "sql": "0600",
+    "helper": "0600",
+    "target": "0600",
+    "rawGrant": "0600",
+    "contextFiles": "0600",
+    "privateDirectory": "0700",
+    "evidenceDirectory": "0700",
+    "uuidReceipts": "0600"
+  },
+  "native": {
+    "docker": "one exact captured id, only inspect --format approved fields or exec -i id psql -X -qAt -v ON_ERROR_STOP=1 -U postgres -d postgres -f -",
+    "inspectFields": [
+      "Id",
+      "Name",
+      "Image",
+      "Created",
+      "State",
+      "RestartCount",
+      "Config.Labels",
+      "Mounts",
+      "NetworkSettings.Ports",
+      "NetworkSettings.Networks"
+    ],
+    "forbidden": "Config.Env, discover/list/status/seed/start/stop/reset/pull, arbitrary commands",
+    "helper": "byte-exact ce531, JoinedCommands.issue only; actual child+close promises retained, stdout read synchronously only after close/fence",
+    "https": "fixed actual GoTrue Admin POST twice, pinned ownedCA/rejectUnauthorized, no redirects/session/JWT creation; request/response/socket close joins, partial failure bytes privately retained"
+  },
+  "git": "only fixed sync read argv with GIT_OPTIONAL_LOCKS=0, no network/no handles; full actual head/2376/kinds/modes/hashes/logicalstage/status bind; raw index custody failures use E_PRINCIPAL_GIT_RAW_CUSTODY without claiming changed code",
+  "sourceFences": "full source/samegrant/expiry/real signal/self/helper/SQL/rawD/SOURCE/RESOURCES/ledger/status/CA/Docker bytes/owner/context before and after normal awaits and success/private returns; mandatory cleanup joins continue even if a validity fence fails",
+  "sql": "fixed READ/APPLY/ROLES source, real provider UUID/email literals only; exact2advisors+2principals+initialpolicyCAS, manualprofilewrites0; no approval/payment/publication/outbox/receipt effects",
+  "rawMapping": "actual raw Auth response body+metadata files; actual final roles-only SQL output has profiles(id,email,deletion_started_at), advisors, principals, policy for later byte-bound helper envelope. Full final effects/ledger query is separately preserved. Parent binds existing host adapter/caller source hashes when assembling the helper input; no roles/currentness authority is inferred here.",
+  "genuine": "UNRUN/NOT_ASSESSED",
+  "futureProjection": "new mechanically reviewed source candidate required for any different Root, target count, schema or packet; no allow-drift switch"
+}

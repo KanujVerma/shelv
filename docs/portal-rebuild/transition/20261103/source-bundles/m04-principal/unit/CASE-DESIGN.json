@@ -1,0 +1,36 @@
+{
+  "kind": "NEGATIVE_CONTROL_DESIGN_NOT_TEST_RESULTS",
+  "cases": [
+    "missing external raw hash before any file read",
+    "malformed raw grant JSON",
+    "grant mode not execute",
+    "unknown fields/authority boolean",
+    "wrong parent or source task reused as executionId",
+    "wrong Root head/full2376 target/count/68 ledger",
+    "old helper/self/SQL/Docker hash",
+    "foreign grant/descriptor/source/resource/status/CA path or mode",
+    "symlink/O_NOFOLLOW ancestor refusal",
+    "expired/aborted before native issue",
+    "wrong owner/project/DB id/image/name/start/labels/ports/networks",
+    "old or stopped fixture sentinel",
+    "unexpected extra Auth user",
+    "missing trigger profile/deleting/anonymous/unconfirmed actor",
+    "prior advisors/principals/approvals/publications/payment/serviceclock/outbox",
+    "existing immutable attempt claim",
+    "native slot duplicate/reentrant/out-of-order acquire",
+    "unjoined prior command or HTTP close",
+    "request redirect/foreign HTTPS origin/issuer mismatch",
+    "malformed provider data or duplicate returned ID",
+    "policy CAS conflict keeps SQL rolled back",
+    "metadata drift after command/HTTP await before mutation or success",
+    "error after owner creation remains consumed/uncertain; no second attempt",
+    "stdout/private-return suppression on failure"
+  ],
+  "prohibitedFacades": [
+    "successful HTTP/Page/SQL/Auth",
+    "authority/context/currentness booleans",
+    "callback resource grants"
+  ],
+  "actualTestsRun": 0,
+  "resourcesQueried": 0
+}

@@ -1,0 +1,8 @@
+import actual from '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/apps/portal/session-integration/runtime/server/advisor-candidate-gateway.ts';
+const fixtureApiDestination=function fixtureApiDestination(pathname){
+  if(typeof pathname!=='string')return false;
+  const advisor=['session','auth/request','auth/complete','logout','operations','plans','payments','care'];
+  const client=['session','auth/request','auth/complete','logout','account-profile','account-contact','client-orders','plans','payments'];
+  return advisor.some(p=>pathname==='/api/advisor/'+p)||client.some(p=>pathname==='/api/client/'+p);
+};
+export default {fetch(request,env){const p=new URL(request.url).pathname;if((p==='/api'||p.startsWith('/api/'))&&!fixtureApiDestination(p))return Response.json({code:'not_found'},{status:404,headers:{'cache-control':'private, no-store'}});return actual.fetch(request,env);}};

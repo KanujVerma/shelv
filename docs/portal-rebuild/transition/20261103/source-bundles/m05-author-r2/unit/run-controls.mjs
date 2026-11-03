@@ -1,0 +1,10 @@
+import {spawnSync} from 'node:child_process';import {writeFileSync} from 'node:fs';import {resolve} from 'node:path';
+const cwd=resolve('.'),name=process.argv[2]??'current';
+if(!/^[a-z0-9-]+$/.test(name))throw new Error('invalid owned receipt name');
+const node='/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node';
+const argv=['--test','--test-reporter=spec','.local-artifacts/m05-history-negative-schedules/unit/negative-schedules.test.mjs','.local-artifacts/m05-history-negative-schedules/unit/lifetime-and-callback.test.mjs'];
+const r=spawnSync(node,argv,{cwd,encoding:'utf8',timeout:30000});
+const base='.local-artifacts/m05-history-negative-schedules/receipts/'+name;
+writeFileSync(base+'.stdout.txt',r.stdout??'',{mode:0o600,flag:'wx'});writeFileSync(base+'.stderr.txt',r.stderr??'',{mode:0o600,flag:'wx'});
+writeFileSync(base+'.json',JSON.stringify({cwd,argv:[node,...argv],exit:r.status,signal:r.signal,error:r.error?{name:r.error.name,message:r.error.message}:null},null,2)+'\n',{mode:0o600,flag:'wx'});
+process.stdout.write((r.stdout??'').split('\n').filter(l=>/^[ℹ✖]/.test(l)).join('\n')+'\n');process.stderr.write(r.stderr??'');process.exitCode=r.status??1;

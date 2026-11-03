@@ -1,0 +1,111 @@
+{
+  "capturedAt": "2026-11-03T18:38:48.407Z",
+  "cases": [
+    {
+      "id": "M01-R8",
+      "owner": "2a771cf9-1a2c-4b60-9569-71d175d26011",
+      "stopped": "9577e7d130293bb2fe2a4c57a605364aed7a9f0bf3ba79af89accfad198ba62d",
+      "base": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/account-2a771cf9-1a2c-4b60-9569-71d175d26011",
+      "receipt": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/account-2a771cf9-1a2c-4b60-9569-71d175d26011/private/STOPPED.json",
+      "record": {
+        "stage": "STOPPED_RETAINED",
+        "ownerId": "2a771cf9-1a2c-4b60-9569-71d175d26011",
+        "projectId": "sa-2a771cf91a2c4b60956971d175d26011",
+        "at": "2026-11-03T12:27:51.780Z",
+        "containers": [
+          "d8d42831ed3995f2efcfb6bad80abd176e2ee12972977a0121610deef6bfacf8",
+          "05b0f16e66b6716cdc2cec900ea3a25d8a44afa1cedc6ef499f28b13e0e0572a",
+          "735e5a89b88850781b245c4b01a7854f77fe2ce68bede6a27148b55c9e9f55b3",
+          "102277442bd53dc99669cd24c06f93595ee78d513d8632471fbe8be7f430ff6d",
+          "c3ec0424f9323afca062581617a22a01a5a38c8376c218748cfaf8f0424ea42a"
+        ],
+        "volumesRetained": true,
+        "networksRetained": true,
+        "allIssuedCommandsJoined": true
+      },
+      "mode": 384,
+      "bytes": 649,
+      "disposition": "Terminal retained; no resource queries/reuse/adoption/restart/reset. Saved-FS audit only."
+    },
+    {
+      "id": "M02-failed-invalid-url",
+      "owner": "3d512ae7-ef64-476f-8067-0ecdd0423437",
+      "stopped": "7fea71678052396d822c5a46db9a90d01eeb89277b55d72b27352ff2c081af7a",
+      "base": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/account-3d512ae7-ef64-476f-8067-0ecdd0423437",
+      "receipt": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/account-3d512ae7-ef64-476f-8067-0ecdd0423437/private/STOPPED.json",
+      "record": {
+        "stage": "STOPPED_RETAINED",
+        "ownerId": "3d512ae7-ef64-476f-8067-0ecdd0423437",
+        "projectId": "sa-3d512ae7ef64476f80670ecdd0423437",
+        "at": "2026-11-03T15:47:56.857Z",
+        "containers": [
+          "dde28f2437e5a5dde1a5e818848cab525a8435eca6134e4ccc49cfe33f2530f6",
+          "8a038aec8a1ede01cf2a5dd192b12e08f8b03ec3a83d2ea0c59b3063ac815217",
+          "bf1e0f0b6a7a8c7fe554d2db869657d118c21649e890b73ade0972d2b830ad65",
+          "3a0eecbe468c632804db09913f07cdca0ad9ba122568f9e442e9c04f77ba9663",
+          "1cba0f53bf7141256cdd5eba4bc88ccb9215966efc766e3ca8e5c05d17d44f92"
+        ],
+        "volumesRetained": true,
+        "networksRetained": true,
+        "allIssuedCommandsJoined": true
+      },
+      "mode": 384,
+      "bytes": 649,
+      "disposition": "Terminal retained; no resource queries/reuse/adoption/restart/reset. Saved-FS audit only."
+    },
+    {
+      "id": "M02-accepted-valid-url",
+      "owner": "72d1e2c3-94de-4705-a594-9e9708294965",
+      "stopped": "58d4193c50f000d97ccfaf5f605b5cb9f678d52a04c97ba08711cf9561e646ee",
+      "base": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/account-72d1e2c3-94de-4705-a594-9e9708294965",
+      "receipt": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/account-72d1e2c3-94de-4705-a594-9e9708294965/private/STOPPED.json",
+      "record": {
+        "stage": "STOPPED_RETAINED",
+        "ownerId": "72d1e2c3-94de-4705-a594-9e9708294965",
+        "projectId": "sa-72d1e2c394de4705a5949e9708294965",
+        "at": "2026-11-03T18:14:56.424Z",
+        "containers": [
+          "708e5b1d17d9b0c37d9d25435dd885e9fae96fa2b24dea32ac6259835dd10740",
+          "a5ae9da0c9d51563463f0cabd8e6b57d28ec18ae58b68d394bded02d862a6b20",
+          "ea7749e01130cbdca357d361aa1ab9401a028992557bf4df3b96813913204563",
+          "a82e8343917c599e9f7831c1c303700ce31d04b4318ff0498f686b59ee9ef482",
+          "930f7b5ca59ef336eec0793adfe6f25d6bcd213854fc9141a506d10294279efa"
+        ],
+        "volumesRetained": true,
+        "networksRetained": true,
+        "allIssuedCommandsJoined": true
+      },
+      "mode": 384,
+      "bytes": 649,
+      "disposition": "Terminal retained; no resource queries/reuse/adoption/restart/reset. Saved-FS audit only."
+    }
+  ],
+  "latestStop": {
+    "file": "/Users/kanuj/.t3/worktrees/shelv/t3-0a829f81/.local-artifacts/genuine-orders-valid-url-source/receipts/stop-api-bcd82bba5f37c4bf/SAVED-FS-READBACK.json",
+    "sha256": "a7028824bb13b6ca62454f4e170cf266697d707b559f5cd1cd6765cec4b55896",
+    "commands": 17,
+    "allExit0ClosedJoined": true,
+    "pgDump": {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/account-72d1e2c3-94de-4705-a594-9e9708294965/private/45eb52e4-2209-46b3-8dc6-2440f873628f.stdout",
+      "sha256": "206bc1f8b96caad1ad001a5d65f8705495939df27adf4be8ea6a2b6d3c08cfa4",
+      "bytes": 2961927,
+      "mode": 384
+    },
+    "allCurrentCaseNativeCompletions": 74,
+    "stopSetupQualification": "Saved-FS reader first used SQL argv index rather than producer index after actual stop0; original setup exit1 preserved, corrected reader0; no native retry"
+  },
+  "browserAndHost": {
+    "pids": [
+      50953,
+      7768,
+      16729,
+      40962,
+      40973
+    ],
+    "allRecordedClosedJoined": true,
+    "uncertainty": [],
+    "note": "Known PIDs absent and port58630 absent in saved Parent verification; no post-stop resource queries"
+  },
+  "grants": "Preserved immutable evidence only. No old grant/owner/taskId/packet is transferred as execution authority to new threads. New actual reviewed context+literal IDs+raw grants required; all stopped fixtures unqueryable.",
+  "olderResources": "Historical native/PG/provider-failed custody remains in TASKS and retained raw receipts; not freshly queried and no global-prune/absence claim. Do not adopt/reuse historical resources."
+}

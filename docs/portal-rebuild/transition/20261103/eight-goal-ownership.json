@@ -1,0 +1,123 @@
+{
+  "state": "PLANNED ONLY: no new top-level threads or goals started",
+  "owner": "Kanuj",
+  "oldCoordinator": "9b085ada-435f-48d6-8886-957c1ce3e82d",
+  "oldImplementationClaims": "RELINQUISHED; handoff-document writer only until final return",
+  "newClaims": "UNASSIGNED until each new top-level /goal explicitly starts and claims its listed disjoint paths",
+  "settings": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "xhigh",
+    "serviceTier": "default",
+    "requireActualRead": true
+  },
+  "rules": [
+    "Eight peer goals, not one new broad master goal or competing Root writers.",
+    "Only G1 serially writes Root/integration/shared runtime/auth/navigation/build/canonical docs. G2 alone allocates migrations/shared DTOs; others request changes.",
+    "G8 alone owns genuine harnesses and current resource-custody lock; at most one heavy resource phase. Domain unit tests use disjoint named files.",
+    "supabase/functions/concierge-operations/** and other shared auth/provider composition are reserved to G1, even when a domain needs a change.",
+    "Independent branch/worktree per peer. Integrate ONLY reviewed selected postimages, never prepared INPUT ancestry.",
+    "No new delegation or thread launch by old coordinator; no automatic old goal continuation.",
+    "All approved decisions/addenda/full26/48/10 remain. No source/test/CI result promoted to feature acceptance.",
+    "No merge210/211, force-push/flatten, production deployment/data/funds/client email, stopped-fixture query/reuse/reset or held-scope reroute."
+  ],
+  "roles": [
+    {
+      "id": "G1",
+      "name": "Shared platform and bounded integration",
+      "owns": [
+        "Root integration branch and final composition queue",
+        "apps/portal/src/app/**",
+        "apps/portal/src/ui/**",
+        "apps/portal/src/navigation/**",
+        "apps/portal/src/shell/**",
+        "apps/portal/session-integration/runtime/**",
+        "portal scripts/build/dependencies",
+        "canonical status/acceptance/task/PR records"
+      ],
+      "next": "Verify handoff commit and claim Root once; triage unresolved PR211 P1 redirects before notification activation. No broad master goal."
+    },
+    {
+      "id": "G2",
+      "name": "Canonical plan, Sources and persistence platform",
+      "owns": [
+        "src/contracts/Portal*",
+        "supabase/functions/concierge-plans/**",
+        "supabase/functions/concierge-reviews/**",
+        "supabase/functions/concierge-guidance/**",
+        "supabase/functions/concierge-sources/**",
+        "supabase/functions/concierge-source-account/**",
+        "ALL supabase/migrations/** ordering/allocation",
+        "M04 trusted principal setup executor"
+      ],
+      "next": "Fix PRINCIPAL-R1-01 in bd17 via native signal branding and non-overridable observation/listeners; NEW full independent review before any setup. Preserve provider holds."
+    },
+    {
+      "id": "G3",
+      "name": "Advisor workspace and deliberate publication",
+      "owns": [
+        "apps/portal/src/features/advisor/**",
+        "advisor-only unit fixtures outside shared runtime",
+        "M04 publication scenario orchestration proposals"
+      ],
+      "next": "Consume passed47 publication assets and conditional65a/bac host source; actual principal/payment/approval/publication setup is unrun. Coordinate exact IDs for M03/M05."
+    },
+    {
+      "id": "G4",
+      "name": "Client plan, routine, decisions and actual use",
+      "owns": [
+        "apps/portal/src/features/plan/**",
+        "shared plan renderer",
+        "client product/decision/routine modules",
+        "supabase/functions/concierge-care/**"
+      ],
+      "next": "Continue actual mounted V3/shared renderer without diagnostic v1 substitution; keep Guidance/M65/photo holds and distinguish reported use from Start."
+    },
+    {
+      "id": "G5",
+      "name": "Check-ins, history, review UI and photos",
+      "owns": [
+        "apps/portal/src/features/history/**",
+        "apps/portal/src/features/checkins/**",
+        "supabase/functions/concierge-checkins/**",
+        "history negative-schedule source package",
+        "photo UI/inventory consumer packages outside shared runtime"
+      ],
+      "next": "NEW independent review of Parent HN1 correction43/43; authorR2 remainsheld. Actual M04 IDs, native request/session links and genuine immutable before/after SQL are missing."
+    },
+    {
+      "id": "G6",
+      "name": "Orders, payments, delivery and returns",
+      "owns": [
+        "apps/portal/src/features/orders/**",
+        "supabase/functions/concierge-client-orders/**",
+        "supabase/functions/concierge-payments/**",
+        "Orders/payment-only unit fixtures"
+      ],
+      "next": "Preserve accepted M02 and its failed cases. Quotes/new purchases/fulfillment/delivery/refund/Start/financial journey remain unaccepted; M65 review remainsheld."
+    },
+    {
+      "id": "G7",
+      "name": "Account, service, consent and privacy administration",
+      "owns": [
+        "apps/portal/src/features/account/**",
+        "supabase/functions/concierge-account-profile/**",
+        "supabase/functions/concierge-account-contact/**",
+        "supabase/functions/concierge-client-service/**",
+        "Account/service/retention/export consumer modules"
+      ],
+      "next": "Preserve M01 Name acceptance. Email mutation/address/service/cancellation/consent/export/admin and exact C08 visual work remain; ASC1/ASC2 and missing producer gates are retained."
+    },
+    {
+      "id": "G8",
+      "name": "Independent genuine, visual and resource verification",
+      "owns": [
+        "apps/portal/tests/genuine/**",
+        "apps/portal/tests/rebuild/** cross-domain verification",
+        "new independent evidence/review reports",
+        "fresh local test-resource custody and serialized heavy execution"
+      ],
+      "next": "Verify peers independently, never own product fix being reviewed. No old fixture/grant reuse. Coordinate fresh exact source/resource packets only; do not start a broad coordinator goal."
+    }
+  ]
+}

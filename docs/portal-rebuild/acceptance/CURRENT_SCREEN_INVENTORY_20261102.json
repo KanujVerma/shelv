@@ -887,12 +887,15 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "currentProofLimit": "M02 recorded history genuine accepted at359; complete approved frame source/browser/visual/financial predicates remain unaccepted.",
       "fullySourceWired": false,
       "browserVerified": false,
       "accepted": false,
       "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
-      "acceptedCapabilities": []
+      "acceptedCapabilities": [
+        "M02"
+      ],
+      "boundedCapabilityReceipt": "ACCEPTED_CAPABILITIES_20261103.json#M02"
     },
     {
       "id": "C06D",
@@ -968,12 +971,15 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "currentProofLimit": "M02 recorded history genuine accepted at359; complete approved frame source/browser/visual/financial predicates remain unaccepted.",
       "fullySourceWired": false,
       "browserVerified": false,
       "accepted": false,
       "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
-      "acceptedCapabilities": []
+      "acceptedCapabilities": [
+        "M02"
+      ],
+      "boundedCapabilityReceipt": "ACCEPTED_CAPABILITIES_20261103.json#M02"
     },
     {
       "id": "C07",
@@ -4476,10 +4482,10 @@
     "notes": "All other selected frame branches remain mounted as previously classified; full behavior/care/private-return/visual/native proof is not inferred. Existing sourceManifest identities are historical reference pins, not rewritten as current runtime equivalence."
   },
   "milestoneExecution": {
-    "acceptedBoundedCapabilities": 1,
+    "acceptedBoundedCapabilities": 2,
     "acceptedScreens": 0,
     "acceptedJourneys": 0,
     "receipt": "ACCEPTED_CAPABILITIES_20261103.json",
-    "scope": "M01 Name only; complete frame predicates unchanged"
+    "scope": "M01 Name and M02 recorded history only; complete frame predicates unchanged"
   }
 }

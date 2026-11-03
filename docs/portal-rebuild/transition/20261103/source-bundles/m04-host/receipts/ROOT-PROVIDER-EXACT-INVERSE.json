@@ -1,0 +1,39 @@
+{
+  "kind": "SOURCE_PROJECTION_ONLY_ROOT_UNMODIFIED",
+  "projections": [
+    {
+      "path": "apps/portal/session-integration/runtime/server/upstream.ts",
+      "originalSha256": "16d4e818a52d79351e02162a506dbee7770ee3388b3beece12cfe38949eee1dd",
+      "projectedSha256": "722395def695b028423b27a7e5846304a3c0db3c005cdeacaeb018e52a753bf8",
+      "changes": [
+        {
+          "offset": 3206,
+          "before": "private fetcher: typeof fetch = (input, init) => globalThis.fetch(input, init)",
+          "after": "private fetcher: typeof fetch = (input, init) => m04FixedFetch(input, init)"
+        },
+        {
+          "offset": 0,
+          "before": "",
+          "after": "import {m04FixedFetch} from 'm04:fixed-handlers';\n"
+        }
+      ]
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/client-upstream.ts",
+      "originalSha256": "18120c8450b0744fdc67f1ac342975f92fa6f9949f12352e0bde5fa5c1e4fc78",
+      "projectedSha256": "79c2a78373d27965259a8a558fed5ba9d0ca1f31962241b99872a68213df9917",
+      "changes": [
+        {
+          "offset": 1460,
+          "before": "fetcher:typeof fetch=(input,init)=>globalThis.fetch(input,init)",
+          "after": "fetcher:typeof fetch=(input,init)=>m04FixedFetch(input,init)"
+        },
+        {
+          "offset": 0,
+          "before": "",
+          "after": "import {m04FixedFetch} from 'm04:fixed-handlers';\n"
+        }
+      ]
+    }
+  ]
+}
