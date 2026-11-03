@@ -13,6 +13,15 @@ const request='apps/portal/src/app/final-export-request.ts';
 const cookie='apps/portal/site/auth/client-cookie-session.js';
 const cases=['w6-account-export-recovery-cases.mjs','w6-account-export-retained-consumer-cases.mjs'];
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+const snapshots={
+  [cookie]:{file:'client-cookie-session.c075.js.txt',sha256:'87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0'},
+  [request]:{file:'final-export-request.e949.ts.txt',sha256:'28f8335679f700d4bee3c2550276f7cf2f2a9f85a95c7b3c60852a58eb6ffb98'},
+};
+function snapshot(path) {
+  const selected=snapshots[path];assert.ok(selected);
+  const bytes=readFileSync(resolve(repo,'apps/portal/tests/w6-account-export-inputs',selected.file));
+  assert.equal(sha(bytes),selected.sha256,'exact public source snapshot');return bytes;
+}
 let projection;
 
 export function finalExportSourceProjection() {
@@ -28,12 +37,12 @@ export function finalExportSourceProjection() {
     const physical=resolve(repo,path);
     let bytes,selected='current own source';
     if(path===cookie) {
-      bytes=execFileSync('git',['show','c075cbd4ea4b2f4d75959370233745d07145c069:'+path],{cwd:repo});
+      bytes=snapshot(path);
       selected='EXPLICIT HISTORICAL UNREGISTERED constructor at c075';
     } else if(existsSync(physical))bytes=readFileSync(physical);
     else {
       assert.equal(path,request,'only the one missing W0 request is a pinned source input');
-      bytes=execFileSync('git',['show','e949c9cc4a352c57d0aebb796c175370f72bd052:'+path],{cwd:repo});
+      bytes=snapshot(path);
       selected='W0-owned pending exact e949 request; not product admission';
     }
     const output=resolve(directory,path);mkdirSync(dirname(output),{recursive:true});writeFileSync(output,bytes,{flag:'wx'});
