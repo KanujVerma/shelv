@@ -1737,7 +1737,7 @@
       "integratedCommits": [
         "54623e91"
       ],
-      "verdict": "Main9PASS/extra record+pagination+unfiltered controlsPASS; CN1/P2 exactproducthistorySQLNULL\u2192unrelatedsameclientrows\u2192strict503 requiresforwardfix"
+      "verdict": "Main9PASS/extra record+pagination+unfiltered controlsPASS; CN1/P2 exactproducthistorySQLNULL→unrelatedsameclientrows→strict503 requiresforwardfix"
     },
     {
       "role": "W7 care client round2",
@@ -6837,7 +6837,7 @@
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
       "terminalSummary": "Implemented the five-stage Maya source candidate in the owned paths. Worktree is clean.\n\n- Source: `bb8760ef4d33e21a05d7a43a5aa7a558d7cae3ba`\n- Report: `4535b283c0e1223b641647cbd3461eed588884b0`\n- Tests: new **25/25**; retained **74/74**, **122/122**, **25/25**. Strict types, UI guard and write:false compiler passed.\n- Preserved all **1,991 original files**, including all **113 SQL files**, with exact bytes/modes.\n- Final runtime verified: Sol/xhigh/default, Node **22.23.0**.\n\n[Report with API, exact task/run IDs, commands, failures and hashes](/Users/kanuj/.t3/worktrees/shelv/t3-b757c3ea/docs/portal-rebuild/research/W3_MAYA_FIVE_STAGE.md)\n\nThe shared public-demo use form remains unavailable; explicit sample presets use isolated memory and shared rendering. New independent review is required before parent mounting. Browser, frame, accessibility and human acceptance remain unrun.\n\n",
-      "latestTerminalSummary": "Committed MF1 fix: `194866f468945504ce4085be57eeb05728510653`. Worktree is clean; only the three authorized paths changed.\n\nReopen now restores the selected stage\u2019s content and route while preserving demo choices, use reports and memory.\n\n- Both unchanged R1 probes: **old FAIL \u2192 corrected PASS**\n- New shared-callback/SSR tests: **31/31**\n- Retained suites: **25/74/122/25 passed**\n- Strong/frontend/session types, UI and write:false compilation passed.\n\n[Appended report with exact task/run IDs, commands, hashes and preserved failures](/Users/kanuj/.t3/worktrees/shelv/t3-b757c3ea/docs/portal-rebuild/research/W3_MAYA_FIVE_STAGE.md:114)\n\nOriginal R1 evidence remains intact. NEW independent R2 is required before admission; browser and full-tour acceptance remain open.\n\n",
+      "latestTerminalSummary": "Committed MF1 fix: `194866f468945504ce4085be57eeb05728510653`. Worktree is clean; only the three authorized paths changed.\n\nReopen now restores the selected stage’s content and route while preserving demo choices, use reports and memory.\n\n- Both unchanged R1 probes: **old FAIL → corrected PASS**\n- New shared-callback/SSR tests: **31/31**\n- Retained suites: **25/74/122/25 passed**\n- Strong/frontend/session types, UI and write:false compilation passed.\n\n[Appended report with exact task/run IDs, commands, hashes and preserved failures](/Users/kanuj/.t3/worktrees/shelv/t3-b757c3ea/docs/portal-rebuild/research/W3_MAYA_FIVE_STAGE.md:114)\n\nOriginal R1 evidence remains intact. NEW independent R2 is required before admission; browser and full-tour acceptance remain open.\n\n",
       "refreshedOn": "2026-11-01"
     },
     {
@@ -6862,7 +6862,7 @@
       "sourceCommit": "194866f468945504ce4085be57eeb05728510653",
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
-      "terminalSummary": "Committed MF1 fix: `194866f468945504ce4085be57eeb05728510653`. Worktree is clean; only the three authorized paths changed.\n\nReopen now restores the selected stage\u2019s content and route while preserving demo choices, use reports and memory.\n\n- Both unchanged R1 probes: **old FAIL \u2192 corrected PASS**\n- New shared-callback/SSR tests: **31/31**\n- Retained suites: **25/74/122/25 passed**\n- Strong/frontend/session types, UI and write:false compilation passed.\n\n[Appended report with exact task/run IDs, commands, hashes and preserved failures](/Users/kanuj/.t3/worktrees/shelv/t3-b757c3ea/docs/portal-rebuild/research/W3_MAYA_FIVE_STAGE.md:114)\n\nOriginal R1 evidence remains intact. NEW independent R2 is required before admission; browser and full-tour acceptance remain open.\n\n",
+      "terminalSummary": "Committed MF1 fix: `194866f468945504ce4085be57eeb05728510653`. Worktree is clean; only the three authorized paths changed.\n\nReopen now restores the selected stage’s content and route while preserving demo choices, use reports and memory.\n\n- Both unchanged R1 probes: **old FAIL → corrected PASS**\n- New shared-callback/SSR tests: **31/31**\n- Retained suites: **25/74/122/25 passed**\n- Strong/frontend/session types, UI and write:false compilation passed.\n\n[Appended report with exact task/run IDs, commands, hashes and preserved failures](/Users/kanuj/.t3/worktrees/shelv/t3-b757c3ea/docs/portal-rebuild/research/W3_MAYA_FIVE_STAGE.md:114)\n\nOriginal R1 evidence remains intact. NEW independent R2 is required before admission; browser and full-tour acceptance remain open.\n\n",
       "latestTerminalSummary": null,
       "refreshedOn": "2026-11-01"
     },
@@ -6889,7 +6889,7 @@
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
       "terminalSummary": "Confirmed. The report records that exact authoritative task ID separately from the backing thread, run and ordinal. The existing committed handoff remains unchanged.",
-      "latestTerminalSummary": "AAS1 source correction committed:\n\n- Code: `d25d8011f4eb3a37a461e71dc25408ba702b20a2`\n- Report: `62f049efeac92c7865fa2fb1c4577d9299cb83e6`\n\nCancelled status now blocks new address intents while retaining the proposal. Exact uncertain-original retry remains separate.\n\nVerification: original probe **1/2 RED \u2192 2/2 GREEN**; **77/77 Account**, **256/256 retained**; compilers, UI and builds pass. Worktree clean; protected originals preserved. Sol/xhigh/default and Node22.23.0 reverified.\n\n[Report](/Users/kanuj/.t3/worktrees/shelv/t3-2bf54068/docs/portal-rebuild/research/W6_ACCOUNT_ADDRESS_SERVICE.md:134) \u00b7 [Exact task/run, commands and hashes](/Users/kanuj/.t3/worktrees/shelv/t3-2bf54068/.local-artifacts/portal-rebuild/w6-account-address-service/aas1/FINAL_HANDOFF.json)\n\nR1\u2019s Source FAIL remains preserved. **New R2 is required before admission.**",
+      "latestTerminalSummary": "AAS1 source correction committed:\n\n- Code: `d25d8011f4eb3a37a461e71dc25408ba702b20a2`\n- Report: `62f049efeac92c7865fa2fb1c4577d9299cb83e6`\n\nCancelled status now blocks new address intents while retaining the proposal. Exact uncertain-original retry remains separate.\n\nVerification: original probe **1/2 RED → 2/2 GREEN**; **77/77 Account**, **256/256 retained**; compilers, UI and builds pass. Worktree clean; protected originals preserved. Sol/xhigh/default and Node22.23.0 reverified.\n\n[Report](/Users/kanuj/.t3/worktrees/shelv/t3-2bf54068/docs/portal-rebuild/research/W6_ACCOUNT_ADDRESS_SERVICE.md:134) · [Exact task/run, commands and hashes](/Users/kanuj/.t3/worktrees/shelv/t3-2bf54068/.local-artifacts/portal-rebuild/w6-account-address-service/aas1/FINAL_HANDOFF.json)\n\nR1’s Source FAIL remains preserved. **New R2 is required before admission.**",
       "refreshedOn": "2026-11-01"
     },
     {
@@ -6914,7 +6914,7 @@
       "sourceCommit": "62f049efeac92c7865fa2fb1c4577d9299cb83e6",
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
-      "terminalSummary": "AAS1 source correction committed:\n\n- Code: `d25d8011f4eb3a37a461e71dc25408ba702b20a2`\n- Report: `62f049efeac92c7865fa2fb1c4577d9299cb83e6`\n\nCancelled status now blocks new address intents while retaining the proposal. Exact uncertain-original retry remains separate.\n\nVerification: original probe **1/2 RED \u2192 2/2 GREEN**; **77/77 Account**, **256/256 retained**; compilers, UI and builds pass. Worktree clean; protected originals preserved. Sol/xhigh/default and Node22.23.0 reverified.\n\n[Report](/Users/kanuj/.t3/worktrees/shelv/t3-2bf54068/docs/portal-rebuild/research/W6_ACCOUNT_ADDRESS_SERVICE.md:134) \u00b7 [Exact task/run, commands and hashes](/Users/kanuj/.t3/worktrees/shelv/t3-2bf54068/.local-artifacts/portal-rebuild/w6-account-address-service/aas1/FINAL_HANDOFF.json)\n\nR1\u2019s Source FAIL remains preserved. **New R2 is required before admission.**",
+      "terminalSummary": "AAS1 source correction committed:\n\n- Code: `d25d8011f4eb3a37a461e71dc25408ba702b20a2`\n- Report: `62f049efeac92c7865fa2fb1c4577d9299cb83e6`\n\nCancelled status now blocks new address intents while retaining the proposal. Exact uncertain-original retry remains separate.\n\nVerification: original probe **1/2 RED → 2/2 GREEN**; **77/77 Account**, **256/256 retained**; compilers, UI and builds pass. Worktree clean; protected originals preserved. Sol/xhigh/default and Node22.23.0 reverified.\n\n[Report](/Users/kanuj/.t3/worktrees/shelv/t3-2bf54068/docs/portal-rebuild/research/W6_ACCOUNT_ADDRESS_SERVICE.md:134) · [Exact task/run, commands and hashes](/Users/kanuj/.t3/worktrees/shelv/t3-2bf54068/.local-artifacts/portal-rebuild/w6-account-address-service/aas1/FINAL_HANDOFF.json)\n\nR1’s Source FAIL remains preserved. **New R2 is required before admission.**",
       "latestTerminalSummary": null,
       "refreshedOn": "2026-11-01"
     },
@@ -6941,7 +6941,7 @@
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
       "terminalSummary": "Delivered the source-only advisor Commerce workspace. Worktree is clean.\n\n- Dependency input: `0f48053d48965212e6afbe7b66470b8619fec087`\n- Implementation: `51b9b3d4c2ad06a2e11ce932057c1a727ca31e38`\n- Readiness correction: `fc9fa767267f100cf714842a0b6ad3fb7d000eaa`\n- Report: `7e19a1886f2a9b3f7dff02bd671b985ce33cbb26`\n\nVerified 40/40 owned tests, 20/20 retained tests, frontend/session/strong compilation, SSR and `write:false` bundling. All 1,991 parent files and 113 SQL files remain unchanged. Final runtime confirms Sol/xhigh/default and Node 22.23.0.\n\n[Full report, commands, hashes and limitations](/Users/kanuj/.t3/worktrees/shelv/t3-63fc65ec/docs/portal-rebuild/research/W5_ADVISOR_COMMERCE_UI.md)\n\nReferral/reconciliation creation remains unavailable pending explicit CAS inputs. Independent review, App activation and full Commerce/financial acceptance remain OPEN. No browser, genuine Auth, SQL or money verification ran.\n\n",
-      "latestTerminalSummary": "Committed AC1 correction: `322eb8645b9795f3ad7d52f4b38ef5fd986d4549`. Worktree is clean; only the three allocated files changed.\n\n- Unchanged R1 probe: **1 pass/1 fail \u2192 2/2 pass**\n- Original40 + new22: **62/62**\n- Retained20 + reviewer controls2: **22/22**\n- Frontend/session/strong compilation, UI, SSR and `write:false` build pass.\n\nExact A custody and real session/current-denial cleanup remain intact. All 113 SQL files, frozen dependencies and original evidence are preserved.\n\n[Report and exact commands/hashes](/Users/kanuj/.t3/worktrees/shelv/t3-63fc65ec/docs/portal-rebuild/research/W5_ADVISOR_COMMERCE_UI.md:152)\n\nIndependent R2 remains required. Full Commerce completion debt remains open; no backend/browser/native/financial work ran.\n\n",
+      "latestTerminalSummary": "Committed AC1 correction: `322eb8645b9795f3ad7d52f4b38ef5fd986d4549`. Worktree is clean; only the three allocated files changed.\n\n- Unchanged R1 probe: **1 pass/1 fail → 2/2 pass**\n- Original40 + new22: **62/62**\n- Retained20 + reviewer controls2: **22/22**\n- Frontend/session/strong compilation, UI, SSR and `write:false` build pass.\n\nExact A custody and real session/current-denial cleanup remain intact. All 113 SQL files, frozen dependencies and original evidence are preserved.\n\n[Report and exact commands/hashes](/Users/kanuj/.t3/worktrees/shelv/t3-63fc65ec/docs/portal-rebuild/research/W5_ADVISOR_COMMERCE_UI.md:152)\n\nIndependent R2 remains required. Full Commerce completion debt remains open; no backend/browser/native/financial work ran.\n\n",
       "refreshedOn": "2026-11-01"
     },
     {
@@ -6966,7 +6966,7 @@
       "sourceCommit": "322eb8645b9795f3ad7d52f4b38ef5fd986d4549",
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
-      "terminalSummary": "Committed AC1 correction: `322eb8645b9795f3ad7d52f4b38ef5fd986d4549`. Worktree is clean; only the three allocated files changed.\n\n- Unchanged R1 probe: **1 pass/1 fail \u2192 2/2 pass**\n- Original40 + new22: **62/62**\n- Retained20 + reviewer controls2: **22/22**\n- Frontend/session/strong compilation, UI, SSR and `write:false` build pass.\n\nExact A custody and real session/current-denial cleanup remain intact. All 113 SQL files, frozen dependencies and original evidence are preserved.\n\n[Report and exact commands/hashes](/Users/kanuj/.t3/worktrees/shelv/t3-63fc65ec/docs/portal-rebuild/research/W5_ADVISOR_COMMERCE_UI.md:152)\n\nIndependent R2 remains required. Full Commerce completion debt remains open; no backend/browser/native/financial work ran.\n\n",
+      "terminalSummary": "Committed AC1 correction: `322eb8645b9795f3ad7d52f4b38ef5fd986d4549`. Worktree is clean; only the three allocated files changed.\n\n- Unchanged R1 probe: **1 pass/1 fail → 2/2 pass**\n- Original40 + new22: **62/62**\n- Retained20 + reviewer controls2: **22/22**\n- Frontend/session/strong compilation, UI, SSR and `write:false` build pass.\n\nExact A custody and real session/current-denial cleanup remain intact. All 113 SQL files, frozen dependencies and original evidence are preserved.\n\n[Report and exact commands/hashes](/Users/kanuj/.t3/worktrees/shelv/t3-63fc65ec/docs/portal-rebuild/research/W5_ADVISOR_COMMERCE_UI.md:152)\n\nIndependent R2 remains required. Full Commerce completion debt remains open; no backend/browser/native/financial work ran.\n\n",
       "latestTerminalSummary": null,
       "refreshedOn": "2026-11-01"
     },
@@ -7044,8 +7044,8 @@
       "sourceCommit": "ea6728287ac73f39af9d92c97267146efdd36e6a",
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
-      "terminalSummary": "Implemented the owned source slice. Checkout is clean with 17 new files.\n\n- Early API: `39db1a7652d18b061bf557bdcd201d234744a780`\n- Final commit: `ea6728287ac73f39af9d92c97267146efdd36e6a`\n- Passed: 36 new checks, 105 retained history tests, strict/frontend/session TypeScript, UI guard, write:false build, and diff check.\n- Preserved: all 1,991 original tracked files, 62 canonical/113 total SQL files, and 9,070 dependency entries.\n- Verified self/Parent: Codex `gpt-6.1-sol`, `xhigh`, default service tier; Node `v22.23.0`.\n\n[Implementation report](/Users/kanuj/.t3/worktrees/shelv/t3-59696a97/docs/portal-rebuild/research/W4_REPORT_PHOTOS.md) contains exact task/run IDs, commands, hashes, failed attempts, and limits. [Terminal receipt](/Users/kanuj/.t3/worktrees/shelv/t3-59696a97/.local-artifacts/portal-rebuild/w4-report-photos/terminal-20261101T194851111993Z.json) binds the commits and file hashes.\n\nParent integration remains blocked by the actual legacy check-in reader\u2019s `content_version_required` response for existing goal history. A compatible authoritative head reader, C05/C07 composition, new independent review, and genuine upload/browser acceptance remain pending.\n\n",
-      "latestTerminalSummary": "Acknowledged. `ea6728287ac73f39af9d92c97267146efdd36e6a` remains frozen. The goal-history 409 gate stays held pending Parent\u2019s reviewed backend/shared READ admission and explicit W4 update request.",
+      "terminalSummary": "Implemented the owned source slice. Checkout is clean with 17 new files.\n\n- Early API: `39db1a7652d18b061bf557bdcd201d234744a780`\n- Final commit: `ea6728287ac73f39af9d92c97267146efdd36e6a`\n- Passed: 36 new checks, 105 retained history tests, strict/frontend/session TypeScript, UI guard, write:false build, and diff check.\n- Preserved: all 1,991 original tracked files, 62 canonical/113 total SQL files, and 9,070 dependency entries.\n- Verified self/Parent: Codex `gpt-6.1-sol`, `xhigh`, default service tier; Node `v22.23.0`.\n\n[Implementation report](/Users/kanuj/.t3/worktrees/shelv/t3-59696a97/docs/portal-rebuild/research/W4_REPORT_PHOTOS.md) contains exact task/run IDs, commands, hashes, failed attempts, and limits. [Terminal receipt](/Users/kanuj/.t3/worktrees/shelv/t3-59696a97/.local-artifacts/portal-rebuild/w4-report-photos/terminal-20261101T194851111993Z.json) binds the commits and file hashes.\n\nParent integration remains blocked by the actual legacy check-in reader’s `content_version_required` response for existing goal history. A compatible authoritative head reader, C05/C07 composition, new independent review, and genuine upload/browser acceptance remain pending.\n\n",
+      "latestTerminalSummary": "Acknowledged. `ea6728287ac73f39af9d92c97267146efdd36e6a` remains frozen. The goal-history 409 gate stays held pending Parent’s reviewed backend/shared READ admission and explicit W4 update request.",
       "refreshedOn": "2026-11-01"
     },
     {
@@ -7096,8 +7096,8 @@
       "sourceCommit": "86b5c3df4e09d4ca5b3a5ff18ba85dc6916e6a78",
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
-      "terminalSummary": "FE1 corrected in `86b5c3df4e09d4ca5b3a5ff18ba85dc6916e6a78`; worktree clean.\n\n- Card-only legacy use now renders completely, once per product.\n- Original probe: FAIL \u2192 GREEN.\n- Passed 36 source, 36 emitted and 13 retained tests; strict TS6: zero diagnostics.\n- SQL, contracts, runtime, collector and old tests remain frozen.\n\n[Report appendix](/Users/kanuj/.t3/worktrees/shelv/t3-b08e21c9/docs/portal-rebuild/research/W1_FINAL_EXPORT_SOURCE.md). New independent R2 remains required.",
-      "latestTerminalSummary": "Committed FE2 correction as `944229a829f4043764c23a9bad5b526f2e1676c7`; worktree clean.\n\n- Original FE2 probe: FAIL \u2192 GREEN.\n- Passed 54 source, 54 emitted, and 13 retained tests; strict TS6: zero diagnostics.\n- FE1 outputs remain byte-exact. Only the three authorized paths changed.\n\n[Report appendix](/Users/kanuj/.t3/worktrees/shelv/t3-b08e21c9/docs/portal-rebuild/research/W1_FINAL_EXPORT_SOURCE.md). New independent R3 remains required; native/browser gates remain unrun.",
+      "terminalSummary": "FE1 corrected in `86b5c3df4e09d4ca5b3a5ff18ba85dc6916e6a78`; worktree clean.\n\n- Card-only legacy use now renders completely, once per product.\n- Original probe: FAIL → GREEN.\n- Passed 36 source, 36 emitted and 13 retained tests; strict TS6: zero diagnostics.\n- SQL, contracts, runtime, collector and old tests remain frozen.\n\n[Report appendix](/Users/kanuj/.t3/worktrees/shelv/t3-b08e21c9/docs/portal-rebuild/research/W1_FINAL_EXPORT_SOURCE.md). New independent R2 remains required.",
+      "latestTerminalSummary": "Committed FE2 correction as `944229a829f4043764c23a9bad5b526f2e1676c7`; worktree clean.\n\n- Original FE2 probe: FAIL → GREEN.\n- Passed 54 source, 54 emitted, and 13 retained tests; strict TS6: zero diagnostics.\n- FE1 outputs remain byte-exact. Only the three authorized paths changed.\n\n[Report appendix](/Users/kanuj/.t3/worktrees/shelv/t3-b08e21c9/docs/portal-rebuild/research/W1_FINAL_EXPORT_SOURCE.md). New independent R3 remains required; native/browser gates remain unrun.",
       "refreshedOn": "2026-11-01"
     },
     {
@@ -7122,7 +7122,7 @@
       "sourceCommit": "944229a829f4043764c23a9bad5b526f2e1676c7",
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
-      "terminalSummary": "Committed FE2 correction as `944229a829f4043764c23a9bad5b526f2e1676c7`; worktree clean.\n\n- Original FE2 probe: FAIL \u2192 GREEN.\n- Passed 54 source, 54 emitted, and 13 retained tests; strict TS6: zero diagnostics.\n- FE1 outputs remain byte-exact. Only the three authorized paths changed.\n\n[Report appendix](/Users/kanuj/.t3/worktrees/shelv/t3-b08e21c9/docs/portal-rebuild/research/W1_FINAL_EXPORT_SOURCE.md). New independent R3 remains required; native/browser gates remain unrun.",
+      "terminalSummary": "Committed FE2 correction as `944229a829f4043764c23a9bad5b526f2e1676c7`; worktree clean.\n\n- Original FE2 probe: FAIL → GREEN.\n- Passed 54 source, 54 emitted, and 13 retained tests; strict TS6: zero diagnostics.\n- FE1 outputs remain byte-exact. Only the three authorized paths changed.\n\n[Report appendix](/Users/kanuj/.t3/worktrees/shelv/t3-b08e21c9/docs/portal-rebuild/research/W1_FINAL_EXPORT_SOURCE.md). New independent R3 remains required; native/browser gates remain unrun.",
       "latestTerminalSummary": null,
       "refreshedOn": "2026-11-01"
     },
@@ -7148,7 +7148,7 @@
       "sourceCommit": "4a790a98d17d345c7fe08cb6d6f402dca7b0b7ac",
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
-      "terminalSummary": "Implemented the bounded owner-policy App composition.\n\n- Base: `a67a0f797c63954168c53d63ab074abfd11248b4`\n- Ordered commits: `b33b2bcc4909fdaa924b46d7ca3da8afeb8cc7fc`, `4a790a98d17d345c7fe08cb6d6f402dca7b0b7ac`\n- Clean worktree; five owned paths only. All ten fixed-feature files and 62 migrations remain exact.\n- New tests **38/38**; retained **228/78/198/25/256/18** pass. Frontend, session, strong types and UI checks pass.\n- Clean main build: **2,238 inputs / 15 outputs**.\n- Final live settings: `codex / gpt-6.1-sol / xhigh / default`; Node `22.23.0`.\n\nFinal commit used ordinary Git configuration. The early hook-override qualification remains recorded.\n\n**SourceReady remains unclaimed:** OP2 clean compatibility, new independent composed review, browser/genuine verification and exact-head CI remain open.\n\n[Report](/Users/kanuj/.t3/worktrees/shelv/t3-6c52c4a5/docs/portal-rebuild/research/W0_OWNER_POLICY_COMPOSITION.md) \u00b7 [Exact identities, blobs and evidence ledger](/Users/kanuj/.t3/worktrees/shelv/t3-6c52c4a5/.local-artifacts/portal-rebuild/w0-owner-policy-app/delivery.json)",
+      "terminalSummary": "Implemented the bounded owner-policy App composition.\n\n- Base: `a67a0f797c63954168c53d63ab074abfd11248b4`\n- Ordered commits: `b33b2bcc4909fdaa924b46d7ca3da8afeb8cc7fc`, `4a790a98d17d345c7fe08cb6d6f402dca7b0b7ac`\n- Clean worktree; five owned paths only. All ten fixed-feature files and 62 migrations remain exact.\n- New tests **38/38**; retained **228/78/198/25/256/18** pass. Frontend, session, strong types and UI checks pass.\n- Clean main build: **2,238 inputs / 15 outputs**.\n- Final live settings: `codex / gpt-6.1-sol / xhigh / default`; Node `22.23.0`.\n\nFinal commit used ordinary Git configuration. The early hook-override qualification remains recorded.\n\n**SourceReady remains unclaimed:** OP2 clean compatibility, new independent composed review, browser/genuine verification and exact-head CI remain open.\n\n[Report](/Users/kanuj/.t3/worktrees/shelv/t3-6c52c4a5/docs/portal-rebuild/research/W0_OWNER_POLICY_COMPOSITION.md) · [Exact identities, blobs and evidence ledger](/Users/kanuj/.t3/worktrees/shelv/t3-6c52c4a5/.local-artifacts/portal-rebuild/w0-owner-policy-app/delivery.json)",
       "latestTerminalSummary": null,
       "refreshedOn": "2026-11-01"
     },
@@ -7174,7 +7174,7 @@
       "sourceCommit": "aa319a9a9170fb3e22f6d8da214965f8da123e55",
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
-      "terminalSummary": "Committed test-only `aa319a9a9170fb3e22f6d8da214965f8da123e55` on base `44a071065746c6da10813ee91453f885bf36b747`. Worktree is clean.\n\nAdded recursive artifact-parent creation before the existing write. Verified:\n\n- Absent-parent replay: **58 pass/1 ENOENT \u2192 59/59**\n- Tracked policy + refresh tests: **78/78** from both cwd locations\n- Strict/frontend/session types, UI guard and `write:false` build passed\n- All 157 assertions, 52 helper bodies, both build calls and 10 production blobs unchanged\n\n[Report](/Users/kanuj/.t3/worktrees/shelv/t3-cbaf938a/docs/portal-rebuild/research/W2_OWNER_POLICY_UI.md) and [delivery proof](/Users/kanuj/.t3/worktrees/shelv/t3-cbaf938a/.local-artifacts/portal-rebuild/w2-owner-policy-op2/delivery-ordinal4.json) contain identities, logs, hashes and preservation evidence.\n\nProduction44/R2 SOURCE PASS is unchanged. Parent verification/import is next; no clean full-package, App/browser/genuine or CI acceptance is claimed.",
+      "terminalSummary": "Committed test-only `aa319a9a9170fb3e22f6d8da214965f8da123e55` on base `44a071065746c6da10813ee91453f885bf36b747`. Worktree is clean.\n\nAdded recursive artifact-parent creation before the existing write. Verified:\n\n- Absent-parent replay: **58 pass/1 ENOENT → 59/59**\n- Tracked policy + refresh tests: **78/78** from both cwd locations\n- Strict/frontend/session types, UI guard and `write:false` build passed\n- All 157 assertions, 52 helper bodies, both build calls and 10 production blobs unchanged\n\n[Report](/Users/kanuj/.t3/worktrees/shelv/t3-cbaf938a/docs/portal-rebuild/research/W2_OWNER_POLICY_UI.md) and [delivery proof](/Users/kanuj/.t3/worktrees/shelv/t3-cbaf938a/.local-artifacts/portal-rebuild/w2-owner-policy-op2/delivery-ordinal4.json) contain identities, logs, hashes and preservation evidence.\n\nProduction44/R2 SOURCE PASS is unchanged. Parent verification/import is next; no clean full-package, App/browser/genuine or CI acceptance is claimed.",
       "latestTerminalSummary": null,
       "refreshedOn": "2026-11-01"
     },
@@ -7252,8 +7252,8 @@
       "sourceCommit": "ff2f7a532818d44122cd61ed77dde052b01d266c",
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
-      "terminalSummary": "SOURCE reconciliation is complete at clean **ff2f7a532818d44122cd61ed77dde052b01d266c**.\n\nCommits:\n\n- Source/tests: `fd569848af7b67e3b4b748a87c0c4b2a4273fb74`\n- Final report: `ff2f7a532818d44122cd61ed77dde052b01d266c`\n\nThe fix uses the complete labelled paragraph, distinguishes ready-pending from unavailable recovery UI, and scopes reconnect to `.app-offline`. All ten cases were audited against source/shared SSR.\n\n**31/31 source controls** and retained **25/32/500/45/80/256**, strict types, frontend/session/UI checks pass. Main remains **2246/15 exact083**; production/API delta is zero.\n\nNew execution digest: `6325d48d3964d7e809ee4f6e7a93056ebdce0b3c050f3a8b8086de5329a25a36`.\n\n[Report](/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f/docs/portal-rebuild/research/W0_ADVISOR_GUIDANCE_COMPOSITION.md) \u00b7 [Exact handoff](/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f/.local-artifacts/portal-rebuild/w0-a07-selectors-source/FINAL-HANDOFF.json)\n\nGrant stays null. No browser/resource calls occurred. Historical failures remain preserved. Independent **R4**, then a fresh grant, is next; full-goal acceptance remains open.\n\n",
-      "latestTerminalSummary": "Fresh SOURCE lease passes at clean `ff2f7a53`: **2246 inputs / 15 outputs / 17 assets / 32 URLs / 229 implementation entries**, exact execution `6325d48d\u2026`. All 8525 dependency rows match. Grant remains null; zero resource calls or tracked writes.\n\n[Early preflight receipt](/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f/.local-artifacts/portal-rebuild/w0-a07-browser-proof-r2-preflight/INITIAL-READYPREFLIGHT.json)\n\nLive backing run is **ordinal22**; ordinal21 was cancelled before start. Proposal rebinding awaits the exact new taskId and requested fresh-home/hash pin approval.\n\n",
+      "terminalSummary": "SOURCE reconciliation is complete at clean **ff2f7a532818d44122cd61ed77dde052b01d266c**.\n\nCommits:\n\n- Source/tests: `fd569848af7b67e3b4b748a87c0c4b2a4273fb74`\n- Final report: `ff2f7a532818d44122cd61ed77dde052b01d266c`\n\nThe fix uses the complete labelled paragraph, distinguishes ready-pending from unavailable recovery UI, and scopes reconnect to `.app-offline`. All ten cases were audited against source/shared SSR.\n\n**31/31 source controls** and retained **25/32/500/45/80/256**, strict types, frontend/session/UI checks pass. Main remains **2246/15 exact083**; production/API delta is zero.\n\nNew execution digest: `6325d48d3964d7e809ee4f6e7a93056ebdce0b3c050f3a8b8086de5329a25a36`.\n\n[Report](/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f/docs/portal-rebuild/research/W0_ADVISOR_GUIDANCE_COMPOSITION.md) · [Exact handoff](/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f/.local-artifacts/portal-rebuild/w0-a07-selectors-source/FINAL-HANDOFF.json)\n\nGrant stays null. No browser/resource calls occurred. Historical failures remain preserved. Independent **R4**, then a fresh grant, is next; full-goal acceptance remains open.\n\n",
+      "latestTerminalSummary": "Fresh SOURCE lease passes at clean `ff2f7a53`: **2246 inputs / 15 outputs / 17 assets / 32 URLs / 229 implementation entries**, exact execution `6325d48d…`. All 8525 dependency rows match. Grant remains null; zero resource calls or tracked writes.\n\n[Early preflight receipt](/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f/.local-artifacts/portal-rebuild/w0-a07-browser-proof-r2-preflight/INITIAL-READYPREFLIGHT.json)\n\nLive backing run is **ordinal22**; ordinal21 was cancelled before start. Proposal rebinding awaits the exact new taskId and requested fresh-home/hash pin approval.\n\n",
       "refreshedOn": "2026-11-01"
     },
     {
@@ -7279,7 +7279,7 @@
       "resourceGrant": false,
       "authority": "SOURCE only unless separate consumed grant recorded",
       "terminalSummary": null,
-      "latestTerminalSummary": "Fresh SOURCE lease passes at clean `ff2f7a53`: **2246 inputs / 15 outputs / 17 assets / 32 URLs / 229 implementation entries**, exact execution `6325d48d\u2026`. All 8525 dependency rows match. Grant remains null; zero resource calls or tracked writes.\n\n[Early preflight receipt](/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f/.local-artifacts/portal-rebuild/w0-a07-browser-proof-r2-preflight/INITIAL-READYPREFLIGHT.json)\n\nLive backing run is **ordinal22**; ordinal21 was cancelled before start. Proposal rebinding awaits the exact new taskId and requested fresh-home/hash pin approval.\n\n",
+      "latestTerminalSummary": "Fresh SOURCE lease passes at clean `ff2f7a53`: **2246 inputs / 15 outputs / 17 assets / 32 URLs / 229 implementation entries**, exact execution `6325d48d…`. All 8525 dependency rows match. Grant remains null; zero resource calls or tracked writes.\n\n[Early preflight receipt](/Users/kanuj/.t3/worktrees/shelv/t3-3cffb79f/.local-artifacts/portal-rebuild/w0-a07-browser-proof-r2-preflight/INITIAL-READYPREFLIGHT.json)\n\nLive backing run is **ordinal22**; ordinal21 was cancelled before start. Proposal rebinding awaits the exact new taskId and requested fresh-home/hash pin approval.\n\n",
       "refreshedOn": "2026-11-01",
       "reportCommit": "1554a33a9f084bb2e96c68714917ff20d2399005",
       "browserGrantReturned": "2026-11-01T20:27:03Z",
@@ -12375,5 +12375,79 @@
     "ParentAppSSRFinite": 329,
     "fullProductAccepted": false,
     "ci": "exact-new-head pending publication"
+  },
+  "milestoneExecution20261103": {
+    "at": "2026-11-03T07:53:02.471Z",
+    "coordinator": "9b085ada-435f-48d6-8886-957c1ce3e82d",
+    "goal": "same existing native goal, active",
+    "integrationAuthority": "coordinator only",
+    "counts": {
+      "acceptedBoundedCapabilities": 0,
+      "acceptedScreens": 0,
+      "screenTotal": 26,
+      "acceptedJourneys": 0,
+      "journeyTotal": 10
+    },
+    "lanes": [
+      {
+        "key": "M01-fixture",
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture",
+        "state": "implementation; live stack custody retained, no outstanding native command",
+        "owns": [
+          "apps/portal/scripts/genuine-account-fixture.mjs",
+          "apps/portal/tests/genuine/account-fixture-unit.test.mjs"
+        ],
+        "resource": "no new action until reviewed roll_forward_code grant"
+      },
+      {
+        "key": "M01-host",
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Aacceptance-20261103-live-host-code-rollforward",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-local-bindings",
+        "state": "source implementation",
+        "owns": [
+          "apps/portal/scripts/genuine-account-host.mjs",
+          "apps/portal/tests/genuine/account-local-bindings.mjs",
+          "apps/portal/tests/genuine/account-host-unit.test.mjs",
+          "apps/portal/tests/genuine/account-local-bindings.test.mjs"
+        ],
+        "resource": "none, source plus builtins"
+      },
+      {
+        "key": "M01-review",
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-workerd-private-redirect-review-r2",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-workerd-private-redirect-review-r2",
+        "state": "completed independent Source PASS, not executing",
+        "resource": "none"
+      },
+      {
+        "key": "M02-orders",
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-recorded-orders-oracle",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey",
+        "state": "source implementation",
+        "resource": "none"
+      },
+      {
+        "key": "milestone-20261103-notifications-inbox",
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notifications-inbox",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notifications-inbox",
+        "state": "source implementation; actual self/Parent Sol xhigh/default READ reported",
+        "resource": "none"
+      },
+      {
+        "key": "milestone-20261103-advisor-publication",
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-advisor-publication",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-advisor-publication",
+        "state": "source implementation; actual self/Parent Sol xhigh/default READ reported",
+        "resource": "none"
+      },
+      {
+        "key": "milestone-20261103-history-current-snapshot",
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-current-snapshot",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-current-snapshot",
+        "state": "source implementation; actual self/Parent Sol xhigh/default READ reported",
+        "resource": "none"
+      }
+    ]
   }
 }

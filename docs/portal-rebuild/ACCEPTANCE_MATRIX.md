@@ -290,3 +290,8 @@ Every evidence entry records exact commit, command, result (including failures/s
 Before substantial implementation completion run root `npm test`, `npx tsc --noEmit`, `npm run typecheck:tests`, `EXPO_NO_TELEMETRY=1 npx expo export -p web`; portal tests/build/UI checks, session types/runtime and affected backend tests. For database/auth/storage changes replay canonical migrations via isolated `supabase db reset`, run `supabase test db`, affected Edge/integration smoke and least-privilege/RLS checks. Inspect final diff and `git diff --check`. Exact-head CI must be green before any separately authorized merge.
 
 Human comprehension review and production release authorization remain release gates. Do not claim a human review from an agent test. External email/domain/hosted prerequisites and Wisconsin service-scope clearance are reported explicitly and never simulated as accomplished.
+
+
+## Bounded end-to-end milestones, 3 November 2026
+
+The [milestone schedule](END_TO_END_MILESTONES_20261103.md) defines capability-level actions, screen scope, dependencies and acceptance gates beneath the unchanged full specification. Counters remain **0 accepted bounded capabilities; 0/26 accepted complete screens; 0/10 accepted complete journeys**. M01 Account profile persistence is executing. Actual isolated Auth/DB bootstrap and ordinary A browser login are proven; first profile read503 is a preserved transport defect. Reviewed correction and same-live code update do not themselves accept M01 or C08. All26 individual inventory rows retain their separate mounted/source/browser/accepted states.

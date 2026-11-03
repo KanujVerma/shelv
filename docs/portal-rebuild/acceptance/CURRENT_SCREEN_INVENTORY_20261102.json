@@ -134,7 +134,7 @@
       "exactRemainingGate": "Execute current entitled V3 content/manifest hydration, Stop/no-proposal/preparation/negative/return cases and compare1440 frame with required narrow/mobile/a11y. Full destination-photo and J05 flows remain separately incomplete.",
       "owner": "Kanuj / W3; W0 navigation",
       "completeSourceWiring": true,
-      "title": "your plan \u00b7 morning",
+      "title": "your plan · morning",
       "nodeId": "498:85",
       "approvedViewport": {
         "width": 1440,
@@ -227,7 +227,7 @@
       "exactRemainingGate": "Prove current conditional evening content, no auto-Start/escalation, returning routine/Stop and full approved comparison/a11y.",
       "owner": "Kanuj / W3",
       "completeSourceWiring": true,
-      "title": "your plan \u00b7 evening",
+      "title": "your plan · evening",
       "nodeId": "503:926",
       "approvedViewport": {
         "width": 1440,
@@ -696,7 +696,7 @@
       "genuineConnectedReceipt": null,
       "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
       "verificationDisposition": "unverified, not failed",
-      "exactRemainingGate": "Run current ordinary history/event/version/filter/restore/denied/return cases and private-byte exclusions, then complete C05\u2192A07\u2192C04 J05 separately.",
+      "exactRemainingGate": "Run current ordinary history/event/version/filter/restore/denied/return cases and private-byte exclusions, then complete C05→A07→C04 J05 separately.",
       "owner": "Kanuj / W4; W2 and W0 for J05",
       "completeSourceWiring": true,
       "title": "check-ins & history",
@@ -854,7 +854,7 @@
       ],
       "requiredNegativeAndReturningCases": [
         "unknown seller/tax/shipping/returns blocks payable quote",
-        "claimed funds \u2260 verified receipt \u2260 order \u2260 shipment/delivery",
+        "claimed funds ≠ verified receipt ≠ order ≠ shipment/delivery",
         "plan/address changes never rewrite frozen order",
         "wrong owner and ended-care outstanding admin",
         "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
@@ -880,7 +880,7 @@
       "exactRemainingGate": "Complete the approved quote/claim/frozen payable/delivery/return/Start path and missing authoritative facts; prove real own read persistence and wrong-owner/session/refused private results in ordinary browser. M65 remains HELD.",
       "owner": "Sami / W5; Kanuj / Root composition",
       "completeSourceWiring": false,
-      "title": "orders \u00b7 quote preparation",
+      "title": "orders · quote preparation",
       "nodeId": "499:446",
       "approvedViewport": {
         "width": 1440,
@@ -935,7 +935,7 @@
       ],
       "requiredNegativeAndReturningCases": [
         "unknown seller/tax/shipping/returns blocks payable quote",
-        "claimed funds \u2260 verified receipt \u2260 order \u2260 shipment/delivery",
+        "claimed funds ≠ verified receipt ≠ order ≠ shipment/delivery",
         "plan/address changes never rewrite frozen order",
         "wrong owner and ended-care outstanding admin",
         "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
@@ -1474,7 +1474,7 @@
         "A"
       ],
       "requiredReadProducersConnected": true,
-      "requiredReadProducersReason": "advisor_list \u2192 concierge_advisor_directory reads actual client directory; Open reaches actual limited AdvisorClientRecovery with draft/publication producers.",
+      "requiredReadProducersReason": "advisor_list → concierge_advisor_directory reads actual client directory; Open reaches actual limited AdvisorClientRecovery with draft/publication producers.",
       "requiredWriteProducersConnected": true,
       "requiredWriteProducersReason": "This frame searches and navigates; it requires no independent mutation. Creating/inviting a new client is not fabricated by directory view.",
       "principalJourneyImplemented": true,
@@ -2257,7 +2257,7 @@
       "genuineConnectedReceipt": null,
       "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
       "verificationDisposition": "unverified, not failed",
-      "exactRemainingGate": "Admit actual A07 report entry/controller/producer composition after its required gates, then prove C05\u2192A07\u2192C04 no-change/immutable/private/public/return journey. Original Guidance private-return provider hold remains HELD; no rephrase/retry/reroute performed.",
+      "exactRemainingGate": "Admit actual A07 report entry/controller/producer composition after its required gates, then prove C05→A07→C04 no-change/immutable/private/public/return journey. Original Guidance private-return provider hold remains HELD; no rephrase/retry/reroute performed.",
       "owner": "Kanuj / W2 and W4; W0 composition",
       "completeSourceWiring": false,
       "title": "review a check-in",
@@ -4472,5 +4472,14 @@
     "original94ReviewManifestSha256": "5206bd6cac39000791f959c3949159c4756565edbbcb3e8c32fe586e9e0232d5",
     "formattingOnlySuccessor": "one original clicked-intent test loses extra blank EOF, unchanged assertion passes",
     "notes": "All other selected frame branches remain mounted as previously classified; full behavior/care/private-return/visual/native proof is not inferred. Existing sourceManifest identities are historical reference pins, not rewritten as current runtime equivalence."
+  },
+  "milestoneExecution": {
+    "schedule": "../END_TO_END_MILESTONES_20261103.md",
+    "acceptedBoundedCapabilities": 0,
+    "acceptedScreens": 0,
+    "acceptedJourneys": 0,
+    "current": "M01 own Account profile persistence",
+    "gate": "real first read503 preserved; reviewed772c correction plus same-live V2 host update underway; no capability accepted",
+    "owner": "Kanuj / coordinator"
   }
 }
