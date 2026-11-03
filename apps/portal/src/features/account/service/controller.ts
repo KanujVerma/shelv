@@ -46,9 +46,10 @@ export function createAccountServiceController(runtime:ApplicationSession,option
     return Object.freeze({...next,
       canReview:ready&&available===true,
       canConfirm:ready&&stored.original===null&&current!==null&&current.serviceRevision<clientServiceMaximumRevision&&matchesCancellationDraft(current,next.draft),
-      canRetry:ready&&!stored.conflict&&stored.original!==null&&stored.receipt===null&&stored.status?.state==='absent'&&
-        matchesCancellationDraft(current,stored.review)&&current?.basisHash===stored.original.expectedBasisHash&&
-        current.serviceRevision===stored.original.expectedServiceRevision});
+      // Exact-original recovery is not a new cancellation intent. The server
+      // resolves its immutable UUID/body through idempotency and CAS even if
+      // current coverage changed after an absent status observation.
+      canRetry:ready&&current!==null&&!stored.conflict&&stored.original!==null&&stored.receipt===null&&stored.status?.state==='absent'});
   }
   function publish(next:AccountServiceState){state=decorated(next);notify();}
   function retire(phase:'ended'|'denied'|'inactive'){
