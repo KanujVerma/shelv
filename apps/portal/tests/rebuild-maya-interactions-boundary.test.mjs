@@ -4,6 +4,7 @@ import {createRequire} from 'node:module';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {sourceModule} from './rebuild-maya-five-stage-build.mjs';
+import {assertMayaStaticImages} from './w3/maya-static-images.mjs';
 import {captureUse} from '../src/features/plan/useModel.ts';
 import {mapCareResult} from '../../../src/contracts/PortalCareMapping.ts';
 import {guidancePlan} from './rebuild-plan-guidance-fixture.mjs';
@@ -124,7 +125,7 @@ test('captured guide and sample-control callbacks cannot mutate the fresh demo a
   c.reset();const fresh=c.getSnapshot();
   for(const callback of callbacks){assert.throws(()=>callback({preventDefault(){},stopPropagation(){}}),{status:403});assert.equal(c.getSnapshot(),fresh);}
 });
-test('all stages and deliberate shared interactions cause zero network/cookie/storage/UUID effects',t=>{
+test('all stages permit only exact local images while deliberate shared interactions cause zero network/cookie/storage/UUID effects',t=>{
   let effects=0;const denied=()=>{effects++;throw Error('effect outside demo memory');};
   const fetch=globalThis.fetch,random=crypto.randomUUID,values=crypto.getRandomValues;
   const names=['localStorage','sessionStorage','indexedDB'],descriptors=names.map(n=>Object.getOwnPropertyDescriptor(globalThis,n)),doc=Object.getOwnPropertyDescriptor(globalThis,'document');
@@ -133,7 +134,7 @@ test('all stages and deliberate shared interactions cause zero network/cookie/st
   Object.defineProperty(globalThis,'document',{configurable:true,value:Object.defineProperty({},'cookie',{get:denied,set:denied})});
   const c=createMayaDemoController();
   try{
-    for(let i=1;i<=5;i++){c.selectStage(i);assert.doesNotMatch(render(c),/<(?:img|iframe|script)\b|<link[^>]+rel="(?:preload|preconnect)"/);}
+    for(let i=1;i<=5;i++){c.selectStage(i);assertMayaStaticImages(render(c),{required:i<5});}
     c.selectStage(3);click(c,'try sample use form');click(c,'yes');edit(c,'what changed?','started_earlier');edit(c,'when did this happen?','unknown');submit(c);
     c.selectStage(4);c.selectStage(2);click(c,'approve product');click(c,'decline');c.replay();c.explore();c.reopen();c.reset();c.dispose();assert.equal(effects,0);
   }finally{c.dispose();globalThis.fetch=fetch;crypto.randomUUID=random;crypto.getRandomValues=values;names.forEach((n,i)=>descriptors[i]?Object.defineProperty(globalThis,n,descriptors[i]):delete globalThis[n]);if(doc)Object.defineProperty(globalThis,'document',doc);else delete globalThis.document;}
@@ -145,7 +146,10 @@ test('public emitted module closure contains no live factory, endpoint or effect
   // Immutable 3bd public-input fingerprints; regular tests need no historical
   // Git object in a shallow checkout. Full old/current compiler is separate.
   const approved={
-    'fixture.ts':'2074fb7f120461fee619159180d0d7dfbcd0822345cd715d15ddddf490c19819',
+    // Historical no-image fixture: 2074fb7f120461fee619159180d0d7dfbcd0822345cd715d15ddddf490c19819.
+    // Image successor uses only existing canonical assets/<basename> paths.
+    'fixture.ts':'ae452056969baccbb34d6fbb9934d80a6465fb0546e7d9b680161baee3f52083',
+    'images.ts':'76762196709b90c118fa016e8c44889b746257f947a425bed0fa2e52c97d5014',
     'model.ts':'b8af3631bdac6875c306495775eda66d3d3884d450ef4862fd641484b3d3160b',
     'maya.css':'6cdb2064162ef35aab8b1f08da1c7b95dd0f6ef04f51a5f0b089998c84b89112',
     'public-source.d.ts':'cf789c309c965a1222d671d7192afc3970898e7263526831fc2842406728788e',
