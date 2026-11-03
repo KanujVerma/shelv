@@ -74,3 +74,27 @@ test('A07 view-only session cannot read private check-in data or prepare a respo
  const markup=html(h.c);assert.doesNotMatch(markup,/SYNTHETIC original comfort|<textarea|prepare review|save private note/);
  assert.equal(h.calls.filter(c=>c.action==='read_advisor_care_history_v1').length,0);
 });
+
+test('A07 stale pagination keeps an independent first-page refresh recovery',async t=>{
+ const h=await guidanceApp(t,createAdvisorGuidanceController),next=`r:${'a'.repeat(64)}:${ids.report}`;
+ h.setHistory([{...clone(h.data.page),nextCursor:next},{...clone(h.data.page),heads:{...h.data.page.heads,reportHead:2},entries:[]}]);
+ await h.c.open(selection);await h.c.loadMoreHistory();
+ assert.equal(h.c.getSnapshot().history.complete,false);assert.equal(h.c.getSnapshot().history.nextCursor,next);
+ assert.match(html(h.c),/>refresh care history</);
+ h.setHistory([clone(h.data.page)]);await h.c.refreshHistory();assert.equal(h.c.getSnapshot().history.complete,true);assert.match(html(h.c),/SYNTHETIC original comfort/);
+});
+test('A07 saved private notes stay readable for exactly the selected report',async t=>{
+ const h=await guidanceApp(t,createAdvisorGuidanceController);
+ h.setHistory([{...clone(h.data.page),entries:[...clone(h.data.page.entries),{kind:'private_note',note:{id:ids.amend,reviewEvent:ref,note:'SYNTHETIC selected private note',recordedBy:ids.actor,recordedAt:'2026-10-02T12:00:00Z'}},{kind:'private_note',note:{id:ids.other,reviewEvent:{kind:'goal_report',id:ids.other},note:'SYNTHETIC unrelated private note',recordedBy:ids.actor,recordedAt:'2026-10-02T12:00:00Z'}}]}]);
+ await h.c.open(selection);const markup=html(h.c);
+ assert.match(markup,/SYNTHETIC selected private note/);assert.doesNotMatch(markup,/SYNTHETIC unrelated private note/);
+ assert.ok(markup.indexOf('SYNTHETIC selected private note')>markup.indexOf('private advisor notes'));
+});
+
+test('A07 can read saved private notes when care writes are unavailable',async t=>{
+ const h=await guidanceApp(t,createAdvisorGuidanceController);
+ h.data.view.clientAccess={care:'read_only',entitled:true,canRead:true,canWrite:false};
+ h.setHistory([{...clone(h.data.page),entries:[...clone(h.data.page.entries),{kind:'private_note',note:{id:ids.amend,reviewEvent:ref,note:'SYNTHETIC read-only private history',recordedBy:ids.actor,recordedAt:'2026-10-02T12:00:00Z'}}]}]);
+ await h.c.open(selection);assert.equal(h.c.canEditBody(),false);assert.equal(h.c.getSnapshot().history.complete,true);
+ const markup=html(h.c);assert.match(markup,/SYNTHETIC read-only private history/);assert.doesNotMatch(markup,/private working note/);
+});

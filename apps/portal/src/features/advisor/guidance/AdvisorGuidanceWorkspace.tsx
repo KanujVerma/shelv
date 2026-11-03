@@ -505,6 +505,21 @@ function SelectedCheckIn({ entries }: { entries: AdvisorCareHistoryEntry[] }) {
     </section>
   ) : null;
 }
+function SelectedPrivateNotes({ state, reportRef }: {
+  state: AdvisorGuidanceState;
+  reportRef: ReportRef;
+}) {
+  const entries = state.history.entries.filter((entry) =>
+    entry.kind === "private_note" && sameCareValue(entry.note.reviewEvent, reportRef),
+  );
+  return <section className="shelv-panel advisor-guidance-private advisor-guidance-fields"
+    aria-label="saved private notes">
+    <h2>saved private notes</h2>
+    {entries.length ? entries.map((entry) => (
+      <GuidanceHistoryEntry key={guidanceHistoryKey(entry)} entry={entry} />
+    )) : <p>no private notes saved for this check-in.</p>}
+  </section>;
+}
 
 export interface AdvisorGuidanceWorkspaceProps {
   controller: AdvisorGuidanceController;
@@ -588,11 +603,15 @@ export function AdvisorGuidanceWorkspace({
           <Button
             variant="secondary"
             busy={state.busy.includes("history")}
-            onClick={() => void (state.history.nextCursor
-              ? controller.loadMoreHistory()
-              : controller.refreshHistory())}
+            onClick={() => void controller.refreshHistory()}
           >
-            {state.history.nextCursor ? "load more care history" : "refresh care history"}
+            refresh care history
+          </Button>
+        ) : null}
+        {!state.privateDenied && !state.history.complete && state.history.nextCursor ? (
+          <Button variant="secondary" busy={state.busy.includes("history")}
+            onClick={() => void controller.loadMoreHistory()}>
+            load more care history
           </Button>
         ) : null}
       </div>
@@ -916,6 +935,9 @@ export function AdvisorGuidanceWorkspace({
               state={state}
               reportRef={reportRef}
             />
+          ) : null}
+          {reportRef && !state.privateDenied && state.history.complete ? (
+            <SelectedPrivateNotes state={state} reportRef={reportRef} />
           ) : null}
           <DraftReview controller={controller} state={state} />
           <CurrentInformation controller={controller} state={state} />
