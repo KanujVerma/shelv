@@ -40,6 +40,8 @@ import { PublicationAudit } from "./PublicationAudit.tsx";
 import { OwnerPolicyApplication } from "./OwnerPolicyApplication.tsx";
 import { MayaApplication } from "./MayaApplication.tsx";
 import {createNotificationsEntry, NotificationsEntryView} from "./notifications-entry.tsx";
+import {createAccountEntry, AccountEntryView} from "./account-entry.tsx";
+import {createClientOrdersEntry, ClientOrdersEntryView} from "./client-orders-entry.tsx";
 import "./application.css";
 
 export function UnavailableModule({
@@ -61,6 +63,16 @@ function ClientNotificationsApplication({runtime}:{runtime:ApplicationSession}) 
   const {navigator}=usePortalNavigation();
   const entry=useMemo(()=>createNotificationsEntry(runtime,navigator),[runtime,navigator]);
   return <NotificationsEntryView entry={entry}/>;
+}
+function AccountApplication({runtime}:{runtime:ApplicationSession}) {
+  const {navigator}=usePortalNavigation();
+  const entry=useMemo(()=>createAccountEntry(runtime,navigator),[runtime,navigator]);
+  return <AccountEntryView entry={entry}/>;
+}
+function ClientOrdersApplication({runtime}:{runtime:ApplicationSession}) {
+  const {navigator}=usePortalNavigation();
+  const entry=useMemo(()=>createClientOrdersEntry(runtime,navigator),[runtime,navigator]);
+  return <ClientOrdersEntryView entry={entry}/>;
 }
 export function PublicEntry({ route }: { route: PortalRoute | null }) {
   if (route?.name === "maya") return <MayaApplication stage={route.stage}/>;
@@ -290,7 +302,7 @@ function ConnectedRoute({
   if (
     !route ||
     route.name === "maya" ||
-    route.name.startsWith("advisor-") !== (audience === "advisor")
+    (route.name !== "notifications" && route.name.startsWith("advisor-") !== (audience === "advisor"))
   )
     return (
       <ApplicationShell audience={audience} onSignOut={signOut}>
@@ -327,9 +339,17 @@ function ConnectedRoute({
           </StatusNotice>
         </div>
       ) : null}
-      {audience === "client" && route.name === "notifications" ? (
-        <ApplicationShell audience="client" onSignOut={signOut} readOnly>
+      {route.name === "notifications" ? (
+        <ApplicationShell audience={audience} onSignOut={signOut} readOnly>
           <ClientNotificationsApplication runtime={runtime}/>
+        </ApplicationShell>
+      ) : audience === "client" && route.name === "account" ? (
+        <ApplicationShell audience="client" onSignOut={signOut} readOnly>
+          <AccountApplication runtime={runtime}/>
+        </ApplicationShell>
+      ) : audience === "client" && (route.name === "orders" || route.name === "order") ? (
+        <ApplicationShell audience="client" onSignOut={signOut} readOnly>
+          <ClientOrdersApplication runtime={runtime}/>
         </ApplicationShell>
       ) : audience === "advisor" ? (
         <AdvisorApplication

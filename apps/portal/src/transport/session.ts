@@ -23,7 +23,7 @@ export interface CookieSessionPort {
 /** Local UI relevance only. This predicate can deny, never grant authority. */
 export interface OperationOptions {signal?: AbortSignal;isApplicable?:()=>boolean}
 export interface OperationPort<Input,Output> {execute(input: Input, options?: OperationOptions): Promise<Output>}
-export type CookieChannel = 'operations'|'payments'|'checkins'|'admission'|'walkthroughs'|'plans'|'care'|'reviews'|'guidance'|'notifications';
+export type CookieChannel = 'operations'|'payments'|'checkins'|'admission'|'walkthroughs'|'plans'|'care'|'reviews'|'guidance'|'notifications'|'account-profile'|'account-contact'|'client-orders';
 export type CookieRequestFactory = (channel: CookieChannel, session: CookieSessionPort) => (command: unknown, options?: OperationOptions)=>Promise<unknown>;
 export type OperationKind = 'read'|'write';
 export {TransportError} from './error.ts';

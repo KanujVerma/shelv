@@ -15,7 +15,7 @@ import {notificationAccess} from '../../../../../src/contracts/PortalNotificatio
 import type {NotificationCommand} from '../../../../../src/contracts/PortalNotification.ts';
 export const PORTAL_ORIGIN = 'https://portal.goshelv.com';
 export const SUPABASE_ORIGIN = 'https://snojlbqovlawewwqbviz.supabase.co';
-export type Channel = 'operations' | 'payments' | 'checkins' | 'admission' | 'walkthroughs' | 'plans' | 'care' | 'reviews' | 'guidance' | 'notifications';
+export type Channel = 'operations' | 'payments' | 'checkins' | 'admission' | 'walkthroughs' | 'plans' | 'care' | 'reviews' | 'guidance' | 'notifications' | 'account-profile' | 'account-contact' | 'client-orders';
 export type Operation = {kind:'walkthrough'; command:WalkthroughCommand} | {
     kind: 'client-media'; media: 'photo' | 'evidence'; id: string; schemaVersion?:2;
 } | {
@@ -36,7 +36,7 @@ export type Operation = {kind:'walkthrough'; command:WalkthroughCommand} | {
     clientId: string;
     photoId: string;
 };
-const actions: Record<Channel, readonly string[]> = { operations: ['advisor_preview_read_v2', 'advisor_list', 'advisor_read_v2', 'save_intake_v2', 'save_draft_v2', 'publish_v2', 'save_meeting_note', 'service_advisor_read', 'record_review', 'save_instruction_draft', 'publish_instruction_revision', 'record_purchase', 'record_return_event', 'cancel_service'], payments: ['advisor_read', 'issue_quote', 'confirm_payment', 'reject_claim', 'evidence_url'], checkins: ['advisor_read', 'advisor_photo_view', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply'], admission: ['capabilities','add_client','admission_status'], walkthroughs:['library','open','share_list','share_create','share_revoke'],plans:advisorPlanActions,care:advisorCareActions,reviews:reviewHumanActions,guidance:guidanceHumanActions,notifications:['list_inbox_v1','mark_seen_v1','read_event_deliveries_v1','retry_failed_email_v1','request_status_v1'] };
+const actions: Record<Channel, readonly string[]> = { operations: ['advisor_preview_read_v2', 'advisor_list', 'advisor_read_v2', 'save_intake_v2', 'save_draft_v2', 'publish_v2', 'save_meeting_note', 'service_advisor_read', 'record_review', 'save_instruction_draft', 'publish_instruction_revision', 'record_purchase', 'record_return_event', 'cancel_service'], payments: ['advisor_read', 'issue_quote', 'confirm_payment', 'reject_claim', 'evidence_url'], checkins: ['advisor_read', 'advisor_photo_view', 'set_next_checkin', 'add_meeting_note', 'send_advisor_reply'], admission: ['capabilities','add_client','admission_status'], walkthroughs:['library','open','share_list','share_create','share_revoke'],plans:advisorPlanActions,care:advisorCareActions,reviews:reviewHumanActions,guidance:guidanceHumanActions,notifications:['list_inbox_v1','mark_seen_v1','read_event_deliveries_v1','retry_failed_email_v1','request_status_v1'],'account-profile':[],'account-contact':[],'client-orders':[] };
 export function object(value: unknown): Record<string, unknown> { demand(value !== null && typeof value === 'object' && !Array.isArray(value)); return value as Record<string, unknown>; }
 export function exact(value: Record<string, unknown>, keys: string[]) { demand(Object.keys(value).length === keys.length && keys.every(k => Object.hasOwn(value, k))); }
 export function uuid(value: unknown) { demand(typeof value === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value)); return value.toLowerCase(); }

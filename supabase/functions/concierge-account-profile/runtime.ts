@@ -15,13 +15,17 @@ export function createAccountProfilePorts(config:ConciergeTransportConfiguration
  const exchange=async(token:string,path:string,method:string,signal:AbortSignal,body?:string)=>{
   if(!signal||signal.aborted)throw new AccountProfileFailure(503,'unavailable');
   let received:Response|undefined;
-  try{return await accountProfileWait(()=>send(new URL(path,base).href,{method,headers:{authorization:`Bearer ${token}`,apikey:key,'content-type':'application/json'},body,signal,credentials:'omit',redirect:'error',cache:'no-store'}).then(response=>{
+  try{return await accountProfileWait(()=>{
+   // Keep standard Fetch privacy options across DOM and Worker declarations.
+   const url=new URL(path,base).href;
+   const init:RequestInit & {credentials:'omit'}={method,headers:{authorization:`Bearer ${token}`,apikey:key,'content-type':'application/json'},body,signal,credentials:'omit',redirect:'error',cache:'no-store'};
+   return send(url,init).then(response=>{
    // Inspect status at receipt, before any abort check or cleanup body getter.
    const status=response.status;
    if(status===401||status===403){const denial=accountProfileReceivedDenial(signal,status)!;cleanup(response);throw denial;}
    if(signal.aborted)cleanup(response);else received=response;
    return {response,status};
-  }),signal);}catch(error){
+  });},signal);}catch(error){
    // The registered absolute deadline can refuse before its abort timer fires.
    if(received)cleanup(received);
    throw error;

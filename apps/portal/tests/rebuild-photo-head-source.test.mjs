@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {readFileSync} from 'node:fs';
 import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
-import {sharedCiBaselines,reviewedSharedCommit,currentSourceSha256} from '../../../tests/helpers/portal-shared-ci-baselines.ts';
+import {currentSourceSha256} from '../../../tests/helpers/portal-shared-ci-baselines.ts';
+import {ownAdminSourceBytes,ownAdminSourceCommit} from '../../../tests/helpers/portal-own-admin-source-baselines.ts';
 import {withoutPhotoInventory} from './helpers/photo-inventory-baseline.mjs';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
@@ -68,7 +69,7 @@ test('new SQL source is additive selector-free metadata with guards around the c
  const tap=readFileSync(new URL('../../../supabase/tests/portal_rebuild_photo_head_v1.sql',import.meta.url),'utf8');
  assert.match(tap,/UNRUN/);assert.match(tap,/select \* from finish\(\);\nrollback;/);
 });
-test('five historical photo-head AST rows and four reviewed combined-source identities remain exact',()=>{
+test('five historical photo-head AST rows and four reviewed admin-composition identities remain exact',()=>{
  const root=fileURLToPath(new URL('../../../',import.meta.url));
  const files=['supabase/functions/concierge-checkins/commands.ts','supabase/functions/concierge-checkins/types.ts','supabase/functions/concierge-checkins/projection.ts','supabase/functions/concierge-checkins/handler.ts','supabase/functions/concierge-checkins/index.ts','apps/portal/site/auth/client-cookie-session.js','apps/portal/session-integration/runtime/server/client-policy.ts','apps/portal/session-integration/runtime/server/client-upstream.ts','apps/portal/session-integration/runtime/server/gateway.ts'];
  const names=new Set(['mapCheckinPhotoHead','mapClientPhotoHeadResponse']),newText=/['"](?:read_photo_head_v1|concierge_checkin_head_v1)['"]/;
@@ -95,14 +96,15 @@ test('five historical photo-head AST rows and four reviewed combined-source iden
  }
  for(const file of files){
   // Five Root rows retain d412 (handler: reviewed annotation successor d4a).
-  // Four shared rows bind the reviewed combined identity and the same normalizers.
+  // Four admin rows bind complete37's reviewed identity and unchanged normalizers.
+  // These are explicit current composition pins, not old clinical equivalence.
   const reference=file==='supabase/functions/concierge-checkins/handler.ts'?'d4a3314ecd81e4c3b544a8919834429e90c05d06':'d4125cca52cb21d0c0a79a5733662f782a0dea76';
   const current=readFileSync(new URL('../../../'+file,import.meta.url),'utf8');
   const combined=file.startsWith('apps/portal/');
   if(combined)assert.equal(createHash('sha256').update(current).digest('hex'),currentSourceSha256(file),file+' reviewed full-source identity');
-  const original=(combined?sharedCiBaselines.readBytes(reviewedSharedCommit,file):portalCiBaselines.readBytes(reference,file)).toString('utf8');
+  const original=(combined?ownAdminSourceBytes(file):portalCiBaselines.readBytes(reference,file)).toString('utf8');
   const a=combined?normalized(withoutPhotoInventory(original,file),file,true):normalized(original,file,false);
   const b=normalized(withoutPhotoInventory(current,file),file,true);assert.equal(b,a,file);
-  console.log((combined?'REVIEWED_COMBINED_SHAPE_PINNED ':'OLD_AST_PRESERVED ')+JSON.stringify({file,reference:combined?reviewedSharedCommit:reference,sha256:createHash('sha256').update(a).digest('hex')}));
+  console.log((combined?'REVIEWED_ADMIN_SHAPE_PINNED ':'OLD_AST_PRESERVED ')+JSON.stringify({file,reference:combined?ownAdminSourceCommit:reference,sha256:createHash('sha256').update(a).digest('hex')}));
  }
 });

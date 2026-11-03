@@ -7,14 +7,58 @@ import {mapPlanResponse} from './plan-policy';
 import {mapCareResponse} from './care-policy';
 import {mapReviewResponse,reviewTransportError} from './review-policy';
 import type {WireResponse} from './protocol';
+import {createOwnAdminProvider,type OwnAdminChannel} from './own-admin-provider.ts';
+import {AccountProfileFailure,accountProfileWait,accountProfileReceivedDenial,setAccountProfileDeadline} from '../../../../../supabase/functions/concierge-account-profile/body.ts';
 function privateFields(value: unknown): boolean {
     return !!value && typeof value === 'object' && Object.entries(value).some(([k,v]) => /^(private_?notes?|meeting_?notes?|transcript|draft|intake|advisor_?notes?)$/i.test(k) || privateFields(v));
 }
 export class ClientProvider extends SupabaseProvider {
     private readonly inventoryFetcher:typeof fetch;
     private readonly inventoryTimeoutMs:number;
+    private readonly ownAdminProvider:ReturnType<typeof createOwnAdminProvider>;
     constructor(publicKey:string,fetcher:typeof fetch=(input,init)=>globalThis.fetch(input,init),timeoutMs=12000,durableContext=false){
         super(publicKey,fetcher,timeoutMs,durableContext);this.inventoryFetcher=fetcher;this.inventoryTimeoutMs=timeoutMs;
+        this.ownAdminProvider=createOwnAdminProvider({supabaseUrl:SUPABASE_ORIGIN,publicKey,allowedOrigins:[PORTAL_ORIGIN],fetch:fetcher});
+    }
+    private async ownAdmin(credentials:Credentials,capabilities:Capabilities,channel:OwnAdminChannel,input:unknown):Promise<WireResponse>{
+        // This producer's one budget includes both actual context reads. The
+        // serialized Vault's ordinary pre/post authorization has its own budget.
+        const deadline=Date.now()+10000,controller=new AbortController(),signal=controller.signal,timer=setTimeout(()=>controller.abort(),10000);
+        let original:{token:string;refresh:string;owner:string;session:string;expiry:number;user:Credentials['user']}|undefined;
+        let result:WireResponse|undefined,failure:unknown;
+        const unavailable=()=>new SessionError(503,'unavailable');
+        const check=()=>{
+            if(original){
+                const token=credentials.access_token,refresh=credentials.refresh_token,user=credentials.user,owner=user.id,session=credentials.providerSessionId,expiry=credentials.expires_at;
+                if(token!==original.token||refresh!==original.refresh||user!==original.user||owner!==original.owner||session!==original.session||expiry!==original.expiry)throw unavailable();
+            }
+            if(signal.aborted||Date.now()>=deadline)throw unavailable();
+            if(original&&original.expiry*1000<=Date.now())throw new SessionError(401,'session_ended');
+        };
+        try{
+            setAccountProfileDeadline(signal,deadline);
+            const operation=parseClientCommand(channel,input);demand(operation.kind==='command');
+            // Missing durable contact-flow authority always denies before producer HTTP.
+            if(channel==='account-contact'&&operation.command.action!=='read_account_contact_v1')throw unavailable();
+            const token=credentials.access_token,refresh=credentials.refresh_token,user=credentials.user,owner=user.id,session=credentials.providerSessionId,expiry=credentials.expires_at;
+            demand(typeof token==='string'&&new TextEncoder().encode(token).byteLength<=8192&&Number.isSafeInteger(expiry),401,'session_ended');uuid(owner);uuid(session);
+            original=Object.freeze({token,refresh,user,owner,session,expiry});check();
+            const context=async()=>{
+                const current=await accountProfileWait(()=>this.context(credentials,signal),signal);check();
+                demand(current.ownerId===owner&&current.providerSessionId===session,403,'forbidden');
+                const c=current.capabilities;demand(c.view&&!c.edit&&!c.publish&&!c.confirmPayments,403,'forbidden');check();
+            };
+            demand(capabilities.view&&!capabilities.edit&&!capabilities.publish&&!capabilities.confirmPayments,403,'forbidden');
+            await context();check();
+            result=await accountProfileWait(()=>this.ownAdminProvider.perform(credentials,channel,operation.command,signal),signal);check();
+            await context();check();
+            demand(!hasCredentials(result.body,credentials)&&!privateFields(result.body),503,'unavailable');check();
+        }catch(error){failure=error;}
+        finally{clearTimeout(timer);}
+        const denial=accountProfileReceivedDenial(signal);if(denial)throw new SessionError(denial.status,denial.code);
+        try{check();}catch(error){if(failure&&[401,403].includes((failure as {status?:number}).status??0))throw failure;throw error;}
+        if(failure){if(failure instanceof AccountProfileFailure)throw new SessionError(failure.status,failure.code);throw failure;}
+        if(!result)throw unavailable();return result;
     }
     private async photoInventory(credentials:Credentials,capabilities:Capabilities,input:unknown):Promise<WireResponse>{
         const operation=parseClientCommand('checkins',input);demand(operation.kind==='command');
@@ -66,10 +110,10 @@ export class ClientProvider extends SupabaseProvider {
         const {error} = await client.signInWithOtp({email, options:{shouldCreateUser:false,emailRedirectTo:`${PORTAL_ORIGIN}${path}`}});
         check(error); return values();
     }
-    async context(credentials: Credentials): Promise<AdvisorContext> {
+    async context(credentials: Credentials,ownAdminSignal?:AbortSignal): Promise<AdvisorContext> {
         const jwt = claims(credentials.access_token);
         demand(jwt.sub === credentials.user.id && jwt.session_id === credentials.providerSessionId && typeof jwt.exp === 'number' && jwt.exp > Date.now()/1000, 401, 'session_ended');
-        const context = object(await this.json(`${SUPABASE_ORIGIN}/rest/v1/rpc/concierge_client_session_context`, credentials.access_token, {}));
+        const context = object(await (ownAdminSignal?this.ownAdminProvider.readContext(credentials,ownAdminSignal):this.json(`${SUPABASE_ORIGIN}/rest/v1/rpc/concierge_client_session_context`, credentials.access_token, {})));
         demand(context.ownerId === credentials.user.id, 403, 'forbidden');
         const c = object(context.capabilities);
         demand(c.view === true && c.edit === false && c.publish === false && c.confirmPayments === false, 403, 'forbidden');
@@ -99,6 +143,7 @@ export class ClientProvider extends SupabaseProvider {
     }
     async perform(credentials: Credentials, capabilities: Capabilities, inputOperation: Operation): Promise<WireResponse> {
         demand(capabilities.view && !capabilities.edit && !capabilities.publish && !capabilities.confirmPayments,403,'forbidden');
+        if(inputOperation.kind==='command'&&(inputOperation.channel==='account-profile'||inputOperation.channel==='account-contact'||inputOperation.channel==='client-orders'))return this.ownAdmin(credentials,capabilities,inputOperation.channel,inputOperation.command);
         if(inputOperation.kind==='command'&&inputOperation.channel==='notifications')return this.notification(credentials,capabilities,inputOperation.command,'client');
         if(inputOperation.kind==='command'&&inputOperation.channel==='checkins'&&inputOperation.command.action==='read_photo_inventory_v1')return this.photoInventory(credentials,capabilities,inputOperation.command);
         const operation=inputOperation.kind==='command'&&inputOperation.channel==='reviews'

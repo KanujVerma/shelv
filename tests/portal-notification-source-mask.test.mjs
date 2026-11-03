@@ -2,6 +2,7 @@ import test from 'node:test';import assert from 'node:assert/strict';import {rea
 import ts from '../apps/portal/node_modules/typescript/lib/typescript.js';
 import {createHash} from 'node:crypto';
 import {sharedCiBaselines,currentSourceSha256,currentMaskedSha256} from './helpers/portal-shared-ci-baselines.ts';
+import {ownAdminSourceBytes} from './helpers/portal-own-admin-source-baselines.ts';
 const base='58c0669d0c5507c0eb7087fe0a0b0e0785743d5e';
 const prerequisite='3f4cb6716fed9123e2d47949a28144b9a7b55485';
 const genericFiles=new Set(['apps/portal/site/auth/advisor-cookie-session.js','apps/portal/site/auth/client-cookie-session.js','apps/portal/src/transport/session.ts']);
@@ -40,7 +41,9 @@ for(const file of paths)test(`${combined.has(file)?'pinned Root combined source 
  const old=sharedCiBaselines.readBytes(genericFiles.has(file)?prerequisite:base,file).toString('utf8'),current=readFileSync(file,'utf8');
  if(combined.has(file)){
   assert.equal(createHash('sha256').update(current).digest('hex'),currentSourceSha256(file));
-  assert.equal(createHash('sha256').update(normalized(current,file,true)).digest('hex'),currentMaskedSha256('notification',file));
+  const admin=ownAdminSourceBytes(file);
+  if(admin)assert.equal(normalized(current,file,true),normalized(admin.toString('utf8'),file,true),file+' exact reviewed admin composition shape');
+  else assert.equal(createHash('sha256').update(normalized(current,file,true)).digest('hex'),currentMaskedSha256('notification',file));
  }else assert.equal(normalized(current,file,true),normalized(old,file,genericFiles.has(file)));
 });
 test('erasure controls still detect changes to clinical namespaces and the original lease clock',()=>{

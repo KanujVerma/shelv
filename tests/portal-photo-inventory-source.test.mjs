@@ -1,7 +1,8 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {execFileSync} from 'node:child_process';
 import ts from '../apps/portal/node_modules/typescript/lib/typescript.js';
 import {createHash} from 'node:crypto';
-import {sharedCiBaselines,currentSourceSha256,currentMaskedSha256} from './helpers/portal-shared-ci-baselines.ts';
+import {sharedCiBaselines,currentSourceSha256} from './helpers/portal-shared-ci-baselines.ts';
+import {ownAdminSourceBytes} from './helpers/portal-own-admin-source-baselines.ts';
 const base='07c4ae82def408bf9526f48a48eb987e4506f83e';
 const files=['apps/portal/site/auth/client-cookie-session.js','apps/portal/site/auth/advisor-cookie-session.js',...['client-policy','client-upstream','gateway'].map(n=>`apps/portal/session-integration/runtime/server/${n}.ts`),...['commands','types','projection','handler','index'].map(n=>`supabase/functions/concierge-checkins/${n}.ts`),'supabase/functions/concierge-operations/runtime.ts'];
 const names=new Set(['photoInventoryJson','parseClientPhotoInventoryPage','mapClientPhotoInventoryResponse','mapCheckinPhotoInventory','CheckinPhotoInventoryPage','CheckinPhotoInventory']);
@@ -29,12 +30,13 @@ function normalized(text,file,mask){
  })]);
  const value=ts.createPrinter({removeComments:true}).printFile(transformed.transformed[0]);transformed.dispose();return {value,removed};
 }
-for(const file of files)test(`${file==='apps/portal/site/auth/advisor-cookie-session.js'?'reviewed combined source identity and inventory erasure shape':'inventory-only erasure preserves all other executable nodes'}: ${file}`,()=>{
+for(const file of files)test(`${ownAdminSourceBytes(file)?'reviewed admin source identity and inventory erasure shape':'inventory-only erasure preserves all other executable nodes'}: ${file}`,()=>{
  const old=sharedCiBaselines.readBytes(base,file).toString('utf8'),current=readFileSync(file,'utf8'),result=normalized(current,file,true);
  assert.ok(result.removed.length>0);
- if(file==='apps/portal/site/auth/advisor-cookie-session.js'){
+ const admin=ownAdminSourceBytes(file);
+ if(admin){
   assert.equal(createHash('sha256').update(current).digest('hex'),currentSourceSha256(file));
-  assert.equal(createHash('sha256').update(result.value).digest('hex'),currentMaskedSha256('inventory',file));
+  assert.equal(result.value,normalized(admin.toString('utf8'),file,true).value,file+' exact reviewed admin composition shape');
  }else assert.equal(result.value,normalized(old,file,false).value);
 });
 function constructorPin(text){
@@ -43,9 +45,10 @@ function constructorPin(text){
  assert.deepEqual(constructor.parameters.map(p=>p.name.getText(source)),['publicKey','fetcher','timeoutMs','durableContext']);
  assert.deepEqual(constructor.parameters.map(p=>p.initializer?.getText(source).replace(/\s/g,'')),[undefined,'(input,init)=>globalThis.fetch(input,init)','12000','false']);
  const call=constructor.body.statements[0].expression;assert.equal(call.expression.kind,ts.SyntaxKind.SuperKeyword);assert.deepEqual(call.arguments.map(a=>a.getText(source)),['publicKey','fetcher','timeoutMs','durableContext']);
- assert.equal(constructor.body.statements.length,3);
+ assert.equal(constructor.body.statements.length,4);
+ assert.equal(constructor.body.statements[3].getText(source).replace(/\s/g,''),'this.ownAdminProvider=createOwnAdminProvider({supabaseUrl:SUPABASE_ORIGIN,publicKey,allowedOrigins:[PORTAL_ORIGIN],fetch:fetcher});');
 }
-test('inherited constructor still forwards the same four parameters/defaults without changing any namespace',()=>{
+test('inherited four constructor parameters/defaults stay exact and the fixed admin factory is explicit',()=>{
  const current=readFileSync('apps/portal/session-integration/runtime/server/client-upstream.ts','utf8');constructorPin(current);
  assert.throws(()=>constructorPin(current.replace('super(publicKey,fetcher,timeoutMs,durableContext)','super(publicKey,fetcher,1,durableContext)')));
 });

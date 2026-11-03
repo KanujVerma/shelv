@@ -32,7 +32,7 @@ export async function readAccountProfileJson(stream:ReadableStream<Uint8Array>|n
    size+=next.value.byteLength;if(size>maximum)throw new AccountProfileFailure(413,'too_large');chunks.push(next.value);
   }
   const bytes=new Uint8Array(size);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.byteLength;}
-  try{return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));}catch{throw new AccountProfileFailure(400,'invalid_input');}
+  try{return JSON.parse(new TextDecoder('utf-8',{fatal:true,ignoreBOM:false}).decode(bytes));}catch{throw new AccountProfileFailure(400,'invalid_input');}
  }finally{
   if(!done){try{const cancellation=reader.cancel();void cancellation.catch(()=>{});await accountProfileWait(()=>cancellation,signal);}catch{/* Same deadline bounds cancellation; never renew it. */}}
   try{reader.releaseLock();}catch{/* Pending reader after abort is retired. */}

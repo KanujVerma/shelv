@@ -24,7 +24,7 @@ export function createConciergeAuthenticatedPorts<Call extends { name: string; a
   } catch { throw new Error('unavailable'); }
   const send = config.fetch ?? globalThis.fetch;
   const headers = (token: string) => ({ authorization: `Bearer ${token}`, apikey: config.publicKey, 'content-type': 'application/json' });
-  const options = (token: string, signal?: AbortSignal): RequestInit => ({ headers: headers(token), credentials: 'omit', redirect: 'error', cache: 'no-store',
+  const options = (token: string, signal?: AbortSignal): RequestInit & {credentials: 'omit'} => ({ headers: headers(token), credentials: 'omit', redirect: 'error', cache: 'no-store',
     signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(10000)]) : AbortSignal.timeout(10000) });
   const decode = async (response: Response, maximum = 2097152): Promise<unknown> => {
     try { return await readConciergeJson(response.body, maximum); } catch { throw new Error('unavailable'); }

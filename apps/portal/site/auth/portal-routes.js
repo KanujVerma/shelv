@@ -140,7 +140,7 @@ function parseRoute(path) {
 }
 function safeReturnPath(path, audience) {
   const route = parseRoute(path);
-  if (!route || route.name === "maya" || route.name.startsWith("advisor-") !== (audience === "advisor")) return null;
+  if (!route || route.name === "maya" || route.name !== "notifications" && route.name.startsWith("advisor-") !== (audience === "advisor")) return null;
   return buildRoute(route);
 }
 function parentRoute(route) {

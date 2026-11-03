@@ -12,6 +12,9 @@ export class CookieClientSession extends CookieAdvisorSession {
   super({...options,audience:'client'});
   this.actions={operations:['client_read_v2','client_read','decide','receive','start','service_client_read','request_return'],payments:['client_read','submit_claim','confirm_shipping_address','evidence_url'],checkins:['client_read','read_photo_head_v1','read_photo_inventory_v1','submit_report','photo_view'],plans:clientPlanActions,care:clientCareActions,reviews:clientReviewActions,commerce:clientCommerceActions};
   this.actions.notifications=['list_inbox_v1','mark_seen_v1','request_status_v1'];
+  this.actions['account-profile']=['read_account_profile_v1','set_account_display_name_v1'];
+  this.actions['account-contact']=['read_account_contact_v1','request_account_email_change_v1','read_account_email_change_request_v1'];
+  this.actions['client-orders']=['read_client_orders_v1'];
   this.logoutKey='shelv:client:signout-pending';
   try{this.logoutPending=globalThis.localStorage.getItem(this.logoutKey)==='1';this.logoutPersisted=this.logoutPending;}catch{}
   try{this.channel=new BroadcastChannel('shelv-client-cookie-events');this.channel.addEventListener('message',e=>{if(e.data?.type==='logout'){this.logoutPending=true;this.logoutIntentId=e.data.id;try{this.logoutPersisted=globalThis.localStorage.getItem(this.logoutKey)==='1';}catch{this.logoutPersisted=this._cookiePending();}this._end();}else if(e.data?.type==='logout-complete'&&e.data.id===this.logoutIntentId){this.logoutPending=false;this.logoutPersisted=false;}});}catch{}
@@ -51,7 +54,7 @@ export function createClientPhotoUpload(session){
  };
 }
 export function createClientCookieRequest(channel,session){
- if(channel==='guidance'||['reviews','commerce'].includes(channel)&&session.audience!=='client')throw new CookieSessionError(403,'action_forbidden');
+ if(channel==='guidance'||['reviews','commerce','account-profile','account-contact','client-orders'].includes(channel)&&session.audience!=='client')throw new CookieSessionError(403,'action_forbidden');
  const json=createCookieRequest(channel,session);
  return async(command,options={})=>{
   if(!(command instanceof FormData))return json(command,options);
