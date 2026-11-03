@@ -1,0 +1,75 @@
+{
+  "owner": "Kanuj",
+  "codeHead": "6c322545604f766a6c678f0ec9201e3fc1b0fdeb",
+  "baseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "localMerges": {
+    "212": "ef067cf9b748e3810b08c20ecdd7e4be34bf6253",
+    "213": "bf4bb14cf822f1738ca88cf775a83c088b2a6428",
+    "214": "28b38d486d0df4c6c59d1af6abe8437197d745f1",
+    "216": "3b02a8403c9470da46de8eb2259cd5e291485227",
+    "218": "6c322545604f766a6c678f0ec9201e3fc1b0fdeb"
+  },
+  "fourConfiguredGraphsObservedExit": 0,
+  "sourceOnlySharedSlices": [
+    "35f177c82288b673516b3b07b536560814c1c59b",
+    "9ba5241db746233c3f57c97eaed54acc3901bd23"
+  ],
+  "evidence": [
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/INTEGRATED-FOCUSED-with-quote.log",
+      "sha256": "4f539ed9c247fd1720512b7f762c8dc67111caff4f5565e6864226efee7f5698",
+      "bytes": 15834,
+      "counts": {
+        "tests": 55,
+        "pass": 55,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/maya-assets/INTEGRATED-with-quote.log",
+      "sha256": "065936f2bbb8c9bf51d72bfa7ddd35199c1d56990fbd8547bd0cc21cd0d1608a",
+      "bytes": 3003,
+      "counts": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/INTEGRATED-PACKAGE.log",
+      "sha256": "dd07728680cb6cfa74d21b3a6c687d4c48a8b6ccdd7547fdbbb6e77d8505e486",
+      "bytes": 459,
+      "counts": {}
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/service-request/CURRENT.log",
+      "sha256": "29e3bdf3ae87a484f59edc9847c2cad0c58705406b91ad0fc252bd8c81b0cd22",
+      "bytes": 2312,
+      "counts": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/service-request/OLD-missing-module.log",
+      "sha256": "3b37adeca71d1c47144ba60ba11485ca78ae85fb592dc8bceb70a25a2ce2949f",
+      "bytes": 10885,
+      "counts": {
+        "tests": 7,
+        "pass": 0,
+        "fail": 7,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "acceptance": "Canonical W7 ledger unchanged:2 bounded capabilities,0 full screens,0 complete journeys. Source/finite/build/intercepted results are separate from genuine acceptance.",
+  "remaining": "Actual adapters, route/session/gateway/service SQL composition, full browser/genuine and exact new-head CI/review remain open. No main merge/release/real-client/funds/fixture reuse."
+}

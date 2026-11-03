@@ -1,0 +1,441 @@
+{
+  "owner": "Kanuj",
+  "items": [
+    {
+      "lane": "W0",
+      "head": "706b323d6b0969a090fd70cae1c9919ea15cc3be",
+      "scope": "private redirects SOURCE/runtime",
+      "status": "PASS_SCOPED_SOURCE_RUNTIME",
+      "report": "reviews/W0_P1_706B.md"
+    },
+    {
+      "lane": "W1",
+      "head": "efd533bcabe8537a134206d71e8bd04b4929acab",
+      "scope": "ClientService DTO4 SOURCE",
+      "status": "PASS_SCOPED_SOURCE_DTO",
+      "report": "reviews/W1_SERVICE_DTO_EFD.md"
+    },
+    {
+      "lane": "W1",
+      "head": "f49a15a2aab8d13877a26bf98e969c8950f1d014",
+      "scope": "M04 principal signal full SOURCE",
+      "status": "FAIL_PRINCIPAL_S2_01_PRESERVED",
+      "finding": "Descriptor clone accepted and loses actual abort linkage. Successor44 provider-refused; no continuation or setup eligibility."
+    },
+    {
+      "lane": "W4",
+      "head": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+      "scope": "archived HN1 parent correction full SOURCE",
+      "status": "QUEUED"
+    },
+    {
+      "lane": "W4",
+      "head": "ee0fddda8b3ad961cf5d3139f887137b328b013b",
+      "scope": "history initial use linkage SOURCE",
+      "status": "PASS_SCOPED_SOURCE_SSR"
+    },
+    {
+      "lane": "W3",
+      "head": "96bfe2428d32eacdef5f4c9e184af7b5ef39a95e",
+      "scope": "Approved unstarted next action SOURCE plus bounded intercepted1440/390/320 browser proof; no fullframe acceptance",
+      "status": "PASS_SOURCE_SSR_AND_BOUNDED_INTERCEPTED_BROWSER",
+      "report": "reviews/W3_NEXT_ACTION_96B.md",
+      "browser": "reviews/W3_BROWSER_96B_R2_RESULT.json"
+    },
+    {
+      "lane": "W5",
+      "head": "a5c2d041ecabfe53f4c31b2bcfe9d1f3d99d8066",
+      "scope": "service payment SOURCE",
+      "status": "SUPERSEDED_HOLD_OWNER_P2_4459642715",
+      "successor": "4a9b97d2623f0b4a63de840c2c634e2abf04c214"
+    },
+    {
+      "lane": "W6",
+      "head": "ae425beaa7635d5a57dd9175374ce7c7ecf90339",
+      "scope": "service cancellation SOURCE; J08 mapping",
+      "status": "SUPERSEDED_HOLD_OWNER_P2_4459702312"
+    },
+    {
+      "lane": "W2",
+      "head": "6aa586e08d91afd18877d0c84a0a52d1d0026229",
+      "scope": "permitted A07 UI SOURCE only",
+      "status": "HOLD_OWNER_HOSTED_FINDINGS_AWAIT_CORRECTED_SUCCESSOR"
+    },
+    {
+      "lane": "W0",
+      "head": "276105fc885129f681c371466c206ad50c85f01d",
+      "scope": "exact redirect inverse witness",
+      "status": "PASS_EXTENDED_546_SOURCE",
+      "report": "reviews/W0_WITNESS_546.md"
+    },
+    {
+      "lane": "W1",
+      "head": "44e90f6bd8d68d4411e5fe1c02df418d022cf225",
+      "scope": "principal opaque lifetime full successor",
+      "status": "UNACCEPTED_PROVIDER_REFUSAL_STOP",
+      "boundary": "User reports new provider refusal at activityposition370; preserve partial evidence; no resume/retry/rephrase/reroute/model substitution. No source approval or setup eligibility."
+    },
+    {
+      "lane": "W5",
+      "head": "a590dfd51b069df65f3edf50c50073ca9355f27f",
+      "scope": "commerce transport only, no M65 financial audit",
+      "status": "FAIL_SOURCE_ABORT_BODY_SETTLEMENT",
+      "report": "reviews/W5_COMMERCE_A590_FAIL.md"
+    },
+    {
+      "lane": "W2",
+      "head": "f08122a2e2b81e95874f300a5c94f27920f00e4f",
+      "scope": "advisor first quote UI",
+      "status": "HOLD_OWNER_HOSTED_FINDINGS_AWAIT_CORRECTED_SUCCESSOR"
+    },
+    {
+      "lane": "W6",
+      "head": "8642079c14c601ad1c763b564b2bf83831b9b842",
+      "scope": "complete service recovery successor",
+      "status": "PASS_SCOPED_OLD_HEAD_PENDING_ROLLFORWARD",
+      "report": "reviews/W6_SERVICE_864.md"
+    },
+    {
+      "lane": "W5",
+      "head": "4a9b97d2623f0b4a63de840c2c634e2abf04c214",
+      "scope": "service payment full9 successor",
+      "status": "HOLD_NEW_W7_W5_S1_HISTORICAL_ACK_CONTRADICTS_CURRENT_CLAIM",
+      "report": "reviews/W5_SERVICE_4A9.md",
+      "finding": "Independent extra2 controls0pass2fail; original22pass preserved. Ownercorrectionrequired."
+    },
+    {
+      "lane": "W2",
+      "head": "87a669174c8b5574cb4ee0cbee05d73cc0a0c69e",
+      "scope": "A06 publication delivery",
+      "status": "HOLD_OWNER_HOSTED_FINDINGS_AWAIT_CORRECTED_SUCCESSOR"
+    },
+    {
+      "lane": "W3",
+      "head": "5e18a8f21d2cadbb3cdbe5f54966884224952080",
+      "base": "96bfe2428d32eacdef5f4c9e184af7b5ef39a95e",
+      "scope": "Maya images and renderClient slot only,12paths",
+      "status": "PASS_SCOPED_SOURCE_IMAGES_SLOT",
+      "report": "reviews/W3_MAYA_5E.md"
+    },
+    {
+      "lane": "W1",
+      "head": "4238ca3061a29569bb2848fede44b0f073723475",
+      "base": "c075cbd4ea4b2f4d75959370233745d07145c069",
+      "scope": "permitted report context resolver8files SOURCEonly; no principal ancestry/SQLexecution",
+      "status": "PASS_SOURCE_ONLY_SQL_UNRUN_WAIT_W0_PR_PACKET",
+      "report": "reviews/W1_REPORT_CONTEXT_4238.md"
+    },
+    {
+      "lane": "W6",
+      "head": "3b1ddcbede87e78374cab333ed5bb5fee24117aa",
+      "base": "c075cbd4ea4b2f4d75959370233745d07145c069",
+      "scope": "additive dependency rollforward16postimages unchanged",
+      "status": "PASS_SOURCE_PARITY_ORDINARY_TEST_FIXTURE_GAP",
+      "report": "reviews/W6_SERVICE_3B1_ROLLFORWARD.md"
+    },
+    {
+      "head": "35f177c82288b673516b3b07b536560814c1c59b",
+      "status": "PASS_SCOPED_SOURCE_PENDING_BINDING",
+      "report": "reviews/W0_SERVICE_REQUEST_35F.md"
+    },
+    {
+      "head": "9ba5241db746233c3f57c97eaed54acc3901bd23",
+      "status": "PASS_SCOPED_SOURCE_ASSET_BUILD",
+      "report": "reviews/W0_MAYA_ASSETS_9BA.md"
+    },
+    {
+      "head": "40c96273292345812b6d465436c800cbf7ba2f9f",
+      "status": "PASS_SCOPED_SOURCE_MODEL_SSR",
+      "report": "reviews/W2_QUOTE_40C.md"
+    },
+    {
+      "head": "527b04b44bc1e493cb6a12796b9e3ff2288ff276",
+      "status": "PASS_SCOPED_SOURCE_MODEL_FINITE_SSR",
+      "report": "reviews/W2_DELIVERY_527.md"
+    },
+    {
+      "lane": "W2",
+      "head": "b847e5b92900234317cda5adb07937b95ac9494a",
+      "scope": "A07 UI partial16/types0; ownerP2uncertainrecovery hidden",
+      "status": "HOLD_SUPERSEDED_OWNER_P2_4460135744"
+    },
+    {
+      "lane": "W2",
+      "head": "2073ed0ec7e0ee4e04bb978029c16c112c8c1b2c",
+      "scope": "Normal complete selected-history view also lacks targeted refresh; wait corrected exact successor. W7 accidentally launched checks after hold; outputs partial only, no verdict.",
+      "status": "HOLD_OWNER_P2_4460396315"
+    },
+    {
+      "lane": "W2",
+      "head": "b2377598b22caf684a2a18da1dfb580f9208e5b2",
+      "scope": "Delivery assertion only2files; product527unchanged",
+      "status": "PASS_TEST_SOURCE_BYTE_PARITY_NO_BROWSER",
+      "report": "reviews/W2_DELIVERY_TEST_B237.md"
+    },
+    {
+      "lane": "W2",
+      "head": "6887f7673b5322cacdd642ef63e4bd05eafd918a",
+      "scope": "Assignment needs same list failure/retry presentation; wait corrected exact successor.",
+      "status": "HOLD_OWNER_P2_4460491580"
+    },
+    {
+      "lane": "W3",
+      "head": "d0b0d87b7328d323562d353ca8d946213860413a",
+      "scope": "Selfpurchase entry+readonlyOrdersselector8files",
+      "status": "PASS_SCOPED_SOURCE_ENTRY_SELECTOR",
+      "report": "reviews/W3_USE_ENTRY_D0.md"
+    },
+    {
+      "lane": "W5",
+      "head": "a5bcfa28d2e279481d6076381c071d9b7faad35b",
+      "scope": "OrdersUI23; final current-a5bc-postimages.json only",
+      "status": "QUEUED"
+    },
+    {
+      "lane": "W6",
+      "head": "fedbb0d0a0fc4b820b75f10de883251ff387a7e2",
+      "scope": "Finalexport original14; shallow foreignGitfixturegap",
+      "status": "HOLD_SUPERSEDED"
+    },
+    {
+      "lane": "W6",
+      "head": "62f3bd18a04c65413d5a93574e2924a3f5fff998",
+      "scope": "Finalexport complete16 selfcontainedsnapshot successor",
+      "status": "QUEUED"
+    },
+    {
+      "lane": "W1",
+      "head": "99dc0cee13804ef878298547f53859166352a07a",
+      "scope": "Commerce DTO4+retained56test+report only6; noM65audit",
+      "status": "PASS_SCOPED_DTO_FORMAT_RESTORATION_ONLY",
+      "report": "reviews/W1_COMMERCE_DTO_99.md"
+    },
+    {
+      "lane": "W1",
+      "head": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "scope": "OwnservicefinancialsDTO only6, policy/legacyunavailable",
+      "status": "PASS_SCOPED_DTO_FORMAT_ONLY",
+      "report": "reviews/W1_FINANCIALS_DTO_4031.md"
+    },
+    {
+      "head": "7c50044df9b6b559e48362ba23da7726064c4dba",
+      "status": "PASS_SCOPED_SOURCE_S1_CLOSED",
+      "report": "reviews/W5_S1_7C5.md"
+    },
+    {
+      "head": "450a803d67aaf3fa2293b606698e51cda7fd790c",
+      "status": "PASS_SCOPED_SOURCE_CLIENT_REQUEST",
+      "report": "reviews/W0_CLIENT_PAYMENTS_450.md"
+    },
+    {
+      "head": "50c33b81a2f8f02455e4c9167f6de2ec69e7aa7d",
+      "lane": "W6",
+      "base": "9ab1b6d65d1027e0515e1b2fd0c6788a3d5842b9",
+      "scope": "Complete16 service delta;9prod equal3b1; selfcontained test-only3action synthetic namespace projection, no prodregistration",
+      "status": "PASS_SCOPED_SOURCE_TEST_SUCCESSOR",
+      "report": "reviews/W6_SERVICE_50C.md"
+    },
+    {
+      "head": "2cb04d933622123ca927c4f9b38de0af5e589fd0",
+      "lane": "W6",
+      "base": "9ab1b6d65d1027e0515e1b2fd0c6788a3d5842b9",
+      "scope": "4 new pure financial presentation/intent files; dependency4031/USDpin separate",
+      "status": "PASS_SCOPED_PURE_PRESENTATION_ONLY",
+      "report": "reviews/W6_FINANCIALS_2CB.md"
+    },
+    {
+      "head": "4dca8f7d631d1a8e496802f5a95e71a40ebbce35",
+      "lane": "W1",
+      "base": "c075cbd4ea4b2f4d75959370233745d07145c069",
+      "scope": "5 inert SourceKernel files: SK2/SK3/SK4 dispositions and declared source-lineage only. No finalscope/consent/private-egress/provider-held audit/SQLapply or runtime.",
+      "status": "QUEUED_NARROW_INERT_SOURCE_ONLY"
+    },
+    {
+      "head": "c8d604809bf7ac340345df591d371b6da31b954b",
+      "lane": "W5",
+      "base": "c075cbd4ea4b2f4d75959370233745d07145c069",
+      "scope": "6 new own-financials read boundary files; fixedRPC/finiteHTTP only, author4031DTO dependency-held. No actualfinancial/legacy/M65 audit.",
+      "status": "PASS_SCOPED_SOURCE_FINITE_BOUNDARY_ONLY_DEPENDENCY_HELD",
+      "report": "reviews/W5_FINANCIALS_C8.md"
+    },
+    {
+      "head": "6ed593ff93803ef2accce7a2df43645cdfcef3b0",
+      "status": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "scope": "MAYA6ED bounded source/dependency correspondence only",
+      "report": "reviews/SOURCE_ROLLFORWARDS_6ED_9C3_469.md"
+    },
+    {
+      "head": "9c359dee9294fb4e0150ccc21fe8f59cdb13db82",
+      "status": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "scope": "FIN9C3 bounded source/dependency correspondence only",
+      "report": "reviews/SOURCE_ROLLFORWARDS_6ED_9C3_469.md"
+    },
+    {
+      "head": "4692665cd55acbb118f59de78ec21ba363d2dd60",
+      "status": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+      "base": "6ed593ff93803ef2accce7a2df43645cdfcef3b0",
+      "scope": "USE469 bounded source/dependency correspondence only",
+      "report": "reviews/SOURCE_ROLLFORWARDS_6ED_9C3_469.md"
+    },
+    {
+      "head": "7daf3a96b168bdc7b94f568735587c3e60a6fff3",
+      "status": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+      "report": "reviews/W1_COMMERCE_7DA_ROLLFORWARD.md"
+    },
+    {
+      "head": "a89b24be19ccfb334128fe99601b67985b7af5f8",
+      "lane": "W2",
+      "scope": "New complete6 A07 UI: explicit readonly canReadHistory projection/common targeted refresh. Old2073 remainsheld, no oldretry.",
+      "status": "PASS_PERMITTED_UI_SOURCE_FINITE_SSR_ONLY",
+      "report": "reviews/W2_A07_A89.md"
+    },
+    {
+      "head": "8f10caa147d196b697d7915b006421f8a10f69a5",
+      "lane": "W2",
+      "scope": "New complete7 Directory UI: common assignment/list feedback. Old6887 remainsheld, no oldretry.",
+      "status": "PASS_SCOPED_SOURCE_MODEL_CONTROLLER_SSR",
+      "report": "reviews/W2_DIRECTORY_8F10.md"
+    },
+    {
+      "head": "0d327783f19ac5fafcd9a51bd8d6330e9d3794f2",
+      "base": "8f10caa147d196b697d7915b006421f8a10f69a5",
+      "lane": "W2",
+      "scope": "Admission-only9path delta +relevant new Directory composition; actual-runtime-derived fixed3ports/source only. New Directory8f10 dependency unreviewed; no old6887/2073 continuation or resources.",
+      "status": "HOLD_OWNER_WAIT_EXACT_INTEGRATION_COMPOSITION_SUCCESSOR",
+      "reason": "PR226 conflicted with advanced integration. W7 has not read/reviewed/tested this old candidate; no approval. Await fresh immutable complete intake."
+    },
+    {
+      "head": "53bf1f39760fa9edfc9cda481fe76e367c43e9ef",
+      "status": "PASS_SOURCE_CORRESPONDENCE_ONLY",
+      "report": "reviews/W6_FINANCIALS_53B_ROLLFORWARD.md"
+    },
+    {
+      "head": "bd1dd9e0765f83a096a8caea78babb18b01b363d",
+      "status": "FAIL_SOURCE_SELECTED_CLIENT_INTENT_BINDING",
+      "report": "reviews/W0_QUOTE_BD1_FAIL.md"
+    },
+    {
+      "head": "06666b108e67492f973d544e95632ae196339bfd",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "lane": "W2",
+      "scope": "Combined14 Directory/admission/quote integration postimages. No W7read/test/review started.",
+      "status": "HOLD_OWNER_P2_4461334899_WAIT_NEW_CORRECTED_SUCCESSOR",
+      "reason": "Confirmed rejected add409 then status404 traps pending; owner correcting separately. No old0d327 continuation."
+    },
+    {
+      "head": "c58bbd9bbc0b5cb2b6ee9247b0c22321262ddb00",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "lane": "W1",
+      "scope": "3 new prospective guardedOrders DTO-boundary files only; fixed newRPC/error409 metadata delegates unchanged oldpositive. No SQL/caller/cutover/M02 operation or M65 audit.",
+      "status": "PASS_SCOPED_PROSPECTIVE_DTO_BOUNDARY_ONLY",
+      "report": "reviews/W1_ORDERS_BOUNDARY_C58.md"
+    },
+    {
+      "head": "1c39946a77ce06a9bd9cf7208cceacd637542a54",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "lane": "W2",
+      "status": "PASS_SCOPED_COMPLETE_ADMISSION_DIRECTORY_QUOTE_SOURCE_FINITE_SSR",
+      "scope": "New immutable complete source/finite candidate only; original held/refused scopes unchanged; no resources.",
+      "report": "reviews/W2_ADMISSION_1C3.md"
+    },
+    {
+      "head": "0b39b3461a234558230bb06c47c2fd391076d562",
+      "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+      "lane": "W5",
+      "status": "PASS_SCOPED_SOURCE_C1_CLOSED_DEPENDENCY_HELD",
+      "scope": "New immutable complete source/finite candidate only; original held/refused scopes unchanged; no resources.",
+      "report": "reviews/W5_COMMERCE_0B39.md"
+    },
+    {
+      "head": "677604e514565d113738dcf733ae502e0c3ca6f8",
+      "base": "370c30fca7b688af3bd29b36b65e9887b4f35d2e",
+      "lane": "W0",
+      "scope": "New exact2 Q1 source successor; private target copy, original control rerun; no oldbd1 audit",
+      "status": "PASS_SCOPED_SOURCE_Q1_CLOSED",
+      "report": "reviews/W0_QUOTE_677.md"
+    },
+    {
+      "head": "0e7dabd8526a1d0759782efa1f8af22998476cc7",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "lane": "W2",
+      "scope": "New7 readonly scoped ClientWorkspace source/UI/finite only; no actualadapter/route/Auth/backend/browser",
+      "status": "QUEUED_SOURCE_CLIENT_WORKSPACE_ONLY"
+    },
+    {
+      "head": "7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db",
+      "base": "c0a318e26d1aa88dccfa0b4172888e52ba902b4e",
+      "lane": "W0",
+      "scope": "Exact4 Account first-service payment entry/routecustody source; afterQ1. No M01/M02 fixture/AuthSQL/browser/genuine grant.",
+      "status": "PASS_SCOPED_ACCOUNT_SERVICE_PAYMENT_ENTRY_SOURCE_FINITE_SSR",
+      "report": "reviews/W0_SERVICE_ENTRY_7E6.md"
+    },
+    {
+      "head": "5e5db6b1389bfd21ad1a32af711d8f8c015ebc34",
+      "base": "7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db",
+      "lane": "W0",
+      "scope": "Exact2 fixed scoped-client plans port/source, afterAccount priority; ClientWorkspace0e7 separate consumer. No AuthSQL/browser or authority grant.",
+      "status": "PASS_SCOPED_SOURCE_CLIENT_PLANS_TRANSPORT",
+      "report": "reviews/W0_CLIENT_PLANS_5E5.md",
+      "readiness": "ActualVIEW-only readnotproved; legacyguardedit semanticsunchanged"
+    },
+    {
+      "head": "2ec0ad959045174b455d05c568f10f28b7aeb54f",
+      "base": "1c39946a77ce06a9bd9cf7208cceacd637542a54",
+      "lane": "W2",
+      "scope": "Exact3 test-only followup parity/sensitivity plus all14 priorpostimage correspondence; no old06666/0d audit, no productsource change.",
+      "status": "QUEUED_SOURCE_TEST_SUCCESSOR_SENSITIVITY"
+    },
+    {
+      "head": "fef98c75702900295783ba7b8514e2b6bb092b1a",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "lane": "W1",
+      "scope": "New exact6 prospective Template DTO format/source only, fiveclosed actions and immutableversion metadata; no SQL/dispatch/auth/CAS/resource or heldaudit.",
+      "status": "QUEUED_SOURCE_TEMPLATE_DTO_ONLY"
+    },
+    {
+      "head": "e37b21a723447ecb4539be2f23cb6a8a679b4cbe",
+      "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "lane": "W1",
+      "scope": "Priority perW0 after5e5: exact6 inert original/successor4 groupingbytes/helperlineage/directRPCtestPROPOSAL only. No privateSource/refauthority audit, canonicalSQL/parser/catalog/Auth/scan/repair/resources. Native4460794439 remainsOPEN.",
+      "status": "QUEUED_PRIORITY_NARROW_INERT_PLAN_LOOKUP_SOURCE_ONLY"
+    }
+  ],
+  "freshGenuineGrant": null,
+  "qualifications": [
+    "W2 full suite moving-source; not exact acceptance",
+    "W4 history169 mixed author synthetic browser/source/SSR; full suite interrupted/moving-source",
+    "D13 clarification: first-service billing mounts Account/service before publication. Original Orders proposal retained, not executed; neutral W5 panel/source4a9 unchanged.",
+    "W6 recovery ordinary physical unregistered namespace gives503/OLD0of1. Prior projected44 source pass remains scoped; new wrapper successor required, no production facade.",
+    "Principal44 remains unaccepted provider-refusal; no further review/test/setup/PR/alternate mechanism.",
+    "W0 reports actual-head asset build e385/dirtytrue2284inputs29assets12aliases separately from W7 export b270 qualification.",
+    "W0 original fullPortal3311/3312 sourceidentity failure remains FAILED; later source witness correction is distinct.",
+    "W3 original293 baseline joined; fresh admitted R2 intercepted96 browser3/3 returned, no fullframe/Figma/a11y/genuine acceptance.",
+    "W7-W5-S1 historical4a9 failure is SOURCE-closed only at7c5; oldstate2/SSR2 failures and prior22pass preserved.",
+    "W2 2073/6887 owner HOLD means no further oldhead review/test/audit. W7 accidental2073 checks are PARTIAL/NO_VERDICT; noapproval. Await newcorrected heads.",
+    "Lifecycle tool currently reports original goal paused despite newer user continuation/intakes. No newgoal created and no completion asserted; current authorized work continues.",
+    "W2 owner reports admission1c hostedPortalCI52fail/3416 and nativeclean; W7 has not independently inspected CI. Source89 pass stays scoped; no currentCIgreen/integration acceptance.",
+    "W1 owner reports distinct Root PlanP2/native4460794439 dangling-product SQLreference hold; W7 has not independently audited it. No Rootbackend/templateproducer safety inferred from DTO/source passes."
+  ],
+  "browserSlot": {
+    "state": "R2_RETURNED_NORMAL_TEARDOWN_EXIT0; NO_FOLLOW_ON_GRANT",
+    "executionId": "eeb42e98-3844-4698-aebb-6d4c67a76271",
+    "at": "2026-11-03T20:04:32.743040+00:00",
+    "report": "reviews/W3_BROWSER_96B_R2_RESULT.json"
+  },
+  "lastReconciledAt": "2026-11-03T23:38:47.999612+00:00",
+  "pendingIntakes": [],
+  "artifactCustody": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-commerce-20261103/.local-artifacts/w5-commerce/versioning/GUARDED-READ-PROPOSAL-v1.md",
+      "ownerSuppliedSha256": "40e33610306840d623624dbe65627d05bdef8286197c5c28b681f588db04872f",
+      "classification": "Custody only, no newreview/audit/execution; content not inspected byW7"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-commerce-20261103/.local-artifacts/w5-commerce/versioning/GUARDED-READ-SOURCE-PREDECESSORS-v1.json",
+      "ownerSuppliedSha256": "d46af3d89b97b048b9b4634ada5047cbe6f16c15d56ec29a238052cdbf0db635",
+      "classification": "Custody only, currentcatalog/OID/ACL/deployed consumers unknown; no newreview/audit/execution"
+    }
+  ]
+}

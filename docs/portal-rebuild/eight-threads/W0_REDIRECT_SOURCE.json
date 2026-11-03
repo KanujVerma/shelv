@@ -1,0 +1,290 @@
+{
+  "owner": "Kanuj",
+  "scope": "W0 private provider redirect P1 source/runtime regression, not feature acceptance",
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "head": "706b323d6b0969a090fd70cae1c9919ea15cc3be",
+  "worktree": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030",
+  "branch": "kanuj/portal-rebuild-integration-20261030",
+  "files": [
+    {
+      "path": "apps/portal/session-integration/runtime/server/client-upstream.ts",
+      "sha256": "8db855829807c5f3a0ded68cbd14fa5b80975e26ff9d21eb5b28991bbb11569e",
+      "gitBlob": "a0b8e1402672b344adfbb259aab22e180bd7c412"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/upstream.ts",
+      "sha256": "4fdadd299c719a29ac52520dacf6b7fb225d3cdc1786abd49d0086f272c51282",
+      "gitBlob": "e72d0eb55612485aad67af066257ff0e2f3b5d7b"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/tests/private-redirects.test.ts",
+      "sha256": "75c3826fe1089bdc170fcc2155d507f25d4ead519b8362a7698912cd64b6084b",
+      "gitBlob": "6bda491511baa27cb7cfc04fd4b3dddc846f53c8"
+    }
+  ],
+  "evidence": [
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/SETUP-invalid-base64.log",
+      "sha256": "e8d3c4f8b4f771fd4886bc00aa4fa86442e5a67e62474a76ea87ed99390cec1d",
+      "bytes": 51702,
+      "observedExit": 1,
+      "counts": {
+        "tests": 34,
+        "pass": 1,
+        "fail": 33,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/OLD-valid.log",
+      "sha256": "7dc1d398acf3092dccae895fab8bf225c162f44caefac43c8ad9bdaebb628213",
+      "bytes": 45016,
+      "observedExit": 1,
+      "counts": {
+        "tests": 34,
+        "pass": 1,
+        "fail": 33,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/CURRENT-full.log",
+      "sha256": "8376280979bbd741e382b5a81746240269173ef947b467c5572cd078fdc46b23",
+      "bytes": 8951,
+      "observedExit": 0,
+      "counts": {
+        "tests": 40,
+        "pass": 40,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/AFFECTED.log",
+      "sha256": "e56316c4046d3ba77c1e692640b194fab4fd46b1aa0491166c01ae7ea828dcae",
+      "bytes": 21280,
+      "observedExit": 0,
+      "counts": {
+        "tests": 21,
+        "pass": 21,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/TYPES-root.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "observedExit": 0,
+      "counts": {}
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/TYPES-root-tests.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "observedExit": 0,
+      "counts": {}
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/TYPES-frontend.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "observedExit": 0,
+      "counts": {}
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/TYPES-runtime.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "observedExit": 0,
+      "counts": {}
+    }
+  ],
+  "openHolds": [
+    "Independent W7 review pending",
+    "Hosted exact-head Codex and CI pending",
+    "All genuine/whole-screen/journey gates unchanged",
+    "Guidance/M65/photo/A07 holds retained"
+  ],
+  "mapping": [
+    "D03",
+    "D33",
+    "D34",
+    "D40",
+    "D46",
+    "J09; partial prerequisite only",
+    "C05 inventory transport prerequisite only"
+  ],
+  "resourceScope": "New nonpersistent Miniflare/workerd unit isolate, every outbound intercepted, no real Auth/DB/Storage/browser/external egress; dispose joined in finally. No retained fixture used.",
+  "notes": [
+    "SETUP-invalid-base64 is a harness token-encoding failure; not the product RED.",
+    "OLD-valid directly executed unchanged baseline source before correction: native unsupported-mode check passes; five happy requests return503 and redirect cases record zero endpoint dispatch. 34 total,1pass33fail.",
+    "CURRENT-full adds six finite no-read/nonblocking-cancellation checks to the same workerd regression:40pass0fail. Other CURRENT intermediate logs remain retained.",
+    "All four exact configured type graphs exited0 with zero output.",
+    "Full Portal suite is still running; no full-suite/CI PASS claimed.",
+    "Initial attempt to pass the esbuild native binary to node failed before compilation; tool transcript retained; correct executable used afterward.",
+    "Complete Portal original3311/3312 remains failed. Root npm current1867pass/18 retained skips is separate from Portal, and precedes localDTO merge; all four types passed after DTO merge. Exact new-head hosted CI/review still required."
+  ],
+  "continuationEvidence": [
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/ROOT-WITNESSES-OLD.log",
+      "sha256": "0976179048e12c61a24c31607fd0ab91788eee601e471c05172120bb4ae60623",
+      "bytes": 66960,
+      "observedExit": 1,
+      "counts": {
+        "tests": 25,
+        "pass": 22,
+        "fail": 3,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/INVERSE-RED.log",
+      "sha256": "acb440e8118afbb945410e45a4df5cd1f56cf1faef75ba06f26964afc2b5c988",
+      "bytes": 103164,
+      "observedExit": 1,
+      "counts": {
+        "tests": 9,
+        "pass": 1,
+        "fail": 8,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/INVERSE-CURRENT.log",
+      "sha256": "99239bc5b0a356f2cad1b5527c7631322d834c77f89d06e222bbe99c8f29d5b9",
+      "bytes": 2315,
+      "observedExit": 0,
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/WITNESSES-CURRENT-full.log",
+      "sha256": "75cfb8360d5efbb42e940f146d0ba543ca387a155693dcfb64a3fbe90dfa9154",
+      "bytes": 16488,
+      "observedExit": 0,
+      "counts": {
+        "tests": 43,
+        "pass": 43,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/ROOT-test.log",
+      "sha256": "3bbd2d9b66b6b0527818344d1929ce715d20df3af86bca435517618079c801e0",
+      "bytes": 1046774,
+      "observedExit": 1,
+      "counts": {
+        "tests": 1447,
+        "pass": 1428,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 18
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/ROOT-test-current.log",
+      "sha256": "e1832f9dc9c74777abcc3ae7854b081f6e9434f4a0e1a31d0bb22d8f74212d67",
+      "bytes": 688579,
+      "observedExit": 0,
+      "counts": {
+        "tests": 1885,
+        "pass": 1867,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 18
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/PORTAL-test.log",
+      "sha256": "1f0e5ff15f405be3cf96468bdfb4afe22915d51ad4a738aaebd14cf0ad43403a",
+      "bytes": 1106495,
+      "observedExit": 1,
+      "counts": {
+        "tests": 3312,
+        "pass": 3311,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/PORTAL-build.log",
+      "sha256": "dd07728680cb6cfa74d21b3a6c687d4c48a8b6ccdd7547fdbbb6e77d8505e486",
+      "bytes": 459,
+      "observedExit": 0,
+      "counts": {
+        "tests": 0,
+        "pass": 0,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/PORTAL-application.log",
+      "sha256": "1bf5fce2a7e2821ef3807bfa7e00dfd2f8dcd388e419077216bfd830e8c921dd",
+      "bytes": 266,
+      "observedExit": 0,
+      "counts": {
+        "tests": 0,
+        "pass": 0,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/EXPO-web.log",
+      "sha256": "5b85ec6c137bef464c0be8e452422d8d8ea446a99c0de202d6268d1c05f1d004",
+      "bytes": 4593,
+      "observedExit": 0,
+      "counts": {
+        "tests": 0,
+        "pass": 0,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": ".local-artifacts/portal-rebuild/w0-20261103/private-redirects/TYPES-root-tests-current.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "observedExit": 0,
+      "counts": {
+        "tests": 0,
+        "pass": 0,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "witnessHead": "54646ac03a4fdf00f09cf435b76250f14eaa8217",
+  "postDtoMergeTypes": {
+    "head": "ef067cf9b748e3810b08c20ecdd7e4be34bf6253",
+    "graphs": [
+      "tsconfig.json",
+      "tsconfig.tests.json",
+      "apps/portal/tsconfig.frontend.json",
+      "apps/portal/session-integration/runtime/tsconfig.json"
+    ],
+    "command": "Node22.23.0 apps/portal/node_modules/typescript/bin/tsc -p <graph> --noEmit",
+    "observedExitEach": 0,
+    "rawSource": "exec session46797 joined0; no stdout diagnostics"
+  }
+}

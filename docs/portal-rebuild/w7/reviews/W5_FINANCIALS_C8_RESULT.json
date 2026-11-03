@@ -1,0 +1,125 @@
+{
+  "head": "c8d604809bf7ac340345df591d371b6da31b954b",
+  "base": "c075cbd4ea4b2f4d75959370233745d07145c069",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w5-orders-financials-handler.test.mjs",
+      "bytes": 4347,
+      "sha256": "7e4ca0c6dd27f7e637a83737f6993d1403fde694a3fa4befc28d34564b2e9d45"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-financials-helper.mjs",
+      "bytes": 2974,
+      "sha256": "d9c1ece53a610e68985ef2b13648ff5ee7d10ed8d3d3278b318a3e399f6ac03e"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-financials-runtime.test.mjs",
+      "bytes": 7555,
+      "sha256": "d8d4e8318a8d2d27bb7fbd66f8aa430884feaf6c2009575b3ddc2745a76791cf"
+    },
+    {
+      "path": "supabase/functions/concierge-payments/SERVICE_FINANCIALS.md",
+      "bytes": 5297,
+      "sha256": "5567387cba79e0cfc3368784f4819e64b632e5d526be827046b2a5f622434108"
+    },
+    {
+      "path": "supabase/functions/concierge-payments/service-financials-handler.ts",
+      "bytes": 4623,
+      "sha256": "0320589165a4b0c0f58ce2f58d17ac512d4166ba34daf3b2724f699e9cb9b597"
+    },
+    {
+      "path": "supabase/functions/concierge-payments/service-financials-runtime.ts",
+      "bytes": 5006,
+      "sha256": "2a6841771ba82209cad058acb6a474418b54dc09707e42c96df2e951979d1303"
+    }
+  ],
+  "pureBodyDependencyExactAcceptedD4eb": {
+    "path": "supabase/functions/concierge-client-orders/body.ts",
+    "bytes": 2830,
+    "sha256": "df06fd9432e53ec8c42b6aa0791ba9b87fc3f4e107b1477a67de8c4838e24a4d"
+  },
+  "rule": "Only pure helper source read; no protected M02 fixture or operation.",
+  "dependencyProjection": [
+    {
+      "path": "src/contracts/PortalServiceFinancials.ts",
+      "head": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "bytes": 1519,
+      "sha256": "40e18ad7d702578e26bf1c9876002b120b336c18fe9d5931e8f75ed701ceff16",
+      "classification": "Ignored source-projection only; absent candidate canonical ancestry."
+    },
+    {
+      "path": "src/contracts/PortalServiceFinancialsValues.ts",
+      "head": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "bytes": 1023,
+      "sha256": "2a7c0cd2a8437e8ad09fa3f397270511de61e926e2654604c645edc0d379a9bb",
+      "classification": "Ignored source-projection only; absent candidate canonical ancestry."
+    },
+    {
+      "path": "src/contracts/PortalServiceFinancialsValidation.ts",
+      "head": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "bytes": 4817,
+      "sha256": "1cb733cf3fd15fe74b9de33f6233e4dc32ae48060da0d8e4162980fe42a4e220",
+      "classification": "Ignored source-projection only; absent candidate canonical ancestry."
+    },
+    {
+      "path": "src/contracts/PortalServiceFinancialsMapping.ts",
+      "head": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "bytes": 699,
+      "sha256": "3f5fced46c02b52d45a6338be6a088e841553e242d7e3de6ef4ae3b310c1533e",
+      "classification": "Ignored source-projection only; absent candidate canonical ancestry."
+    }
+  ],
+  "owner": "Kanuj",
+  "verdict": "PASS_SCOPED_SOURCE_FINITE_BOUNDARY_ONLY_DEPENDENCY_HELD",
+  "node": "v22.23.0",
+  "patchSha256": "d0ebd68e8acf010c78cab4ad2a79fb7020002401e54f9240168773af87c631cf",
+  "authorPacketSha256": "b23f3a75e163df6b6b09d1b1b4a2db8a7a743f0bca1706f538fd3032f6503334",
+  "current": {
+    "tests": 38,
+    "pass": 38,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "physicalCandidateImports": {
+    "tests": 38,
+    "pass": 0,
+    "fail": 38,
+    "exitCode": 1,
+    "classification": "Missing canonical DTO setup/dependency failure, not behavior failure"
+  },
+  "strictTransitiveTypes": {
+    "exitCode": 0,
+    "diagnostics": 0,
+    "configPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-financials-c8/W7-tsconfig.json",
+    "configSha256": "4d71afc6bde566c4e5498396ade1ec1553f7363b3934952517e827ef5098e002",
+    "configuration": "strict/noUncheckedIndexedAccess/verbatimModuleSyntax/skipLibCheckfalse, complete imports of two entry modules with exact4031 dependency projection"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-financials-c8/W7-PHYSICAL-DEPENDENCY.log",
+      "bytes": 67764,
+      "sha256": "fe194cc628afda8e7ceb3acd9c6ab1407dfee1db39bcb66b2c42049b7a2b7beb",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-financials-c8/W7-CURRENT38.log",
+      "bytes": 9999,
+      "sha256": "071ece8e5c348d005f5b1cdafa5b3c675c7810b6a9a5aa7512a80c314195263a",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-financials-c8/W7-TYPES-STRICT.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "No ordinary canonical imports or Root integration green until shared DTO admission",
+    "No route/gateway/namespace or SQL facts producer",
+    "No actual Auth/RLS/financial/legacy/policy/browser or M65/principal/private-return held audit",
+    "Only pure M02 body helper source compared; no protected fixture or operation executed"
+  ]
+}

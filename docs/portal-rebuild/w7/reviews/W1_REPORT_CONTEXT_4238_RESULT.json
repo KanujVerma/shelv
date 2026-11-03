@@ -1,0 +1,61 @@
+{
+  "base": "c075cbd4ea4b2f4d75959370233745d07145c069",
+  "head": "4238ca3061a29569bb2848fede44b0f073723475",
+  "verdict": "PASS_SCOPED_SOURCE_ONLY",
+  "files": [
+    {
+      "path": "apps/portal/tests/w1-plan-platform-advisor-report-context.test.mjs",
+      "sha256": "b24d52424c67fe9fce0040766bc1f85de0b11bebb25cfba3887d5ebf2cadce0b"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_ADVISOR_REPORT_CONTEXT_20261103.md",
+      "sha256": "029d4132c178a653b36e25d543c660058416c9d6307b62fc4fe2773a23c56e3e"
+    },
+    {
+      "path": "src/contracts/PortalReview.ts",
+      "sha256": "5e9744e46e296239e2c4eb72403af5ae6b688ae0ee4bdd4f7f9875a39540fe7d"
+    },
+    {
+      "path": "src/contracts/PortalReviewMapping.ts",
+      "sha256": "f406fa20651215b8b28d490ce3e2bc5f91effd09d4222c298d0e935676c751e4"
+    },
+    {
+      "path": "src/contracts/PortalReviewValidation.ts",
+      "sha256": "587fc187e8c6359aec1187c204d623ebaf3a12968ada858e1bb72869e9b19778"
+    },
+    {
+      "path": "src/contracts/PortalReviewValues.ts",
+      "sha256": "8b779a04ffeff4c19c0da2d425ca9ed78950045e56c2d12dd31c1a25f285f917"
+    },
+    {
+      "path": "supabase/migrations/20261103194339_portal_rebuild_advisor_report_context_v1.sql",
+      "sha256": "1f24d8b86d752e7d5ec736181886e542c1d21680b3b8127bc61dd209a1f6a2cd"
+    },
+    {
+      "path": "supabase/tests/portal_advisor_report_context_v1.test.sql",
+      "sha256": "766bf20b7d683ceb61aa080d68d72a1e1819c36ee1805d19b15ff6ebeb89f43b"
+    }
+  ],
+  "independent": {
+    "tests": 70,
+    "pass": 70,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "node": "v22.23.0",
+    "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-report-context/W7-FULL70.log",
+    "sha256": "d9d5e7de66f52ca9c5e373dd37d58edab22dcb266536818d101b8ddcf048ec02"
+  },
+  "unrun": [
+    "SQL syntax/parser",
+    "catalog/OID/body/owner/ACL execution",
+    "pgTAP20",
+    "live Auth/RLS/role/wait races",
+    "gateway/route/browser",
+    "zero business effects",
+    "migration/upgrade/rollback"
+  ],
+  "publication": "W0 separate exact source/ordering/hostedCI packet required before SQL-containing PR publication; no execution grant",
+  "scope": "Distinct tiny report context read only; principal44/Guidance/M65/photo audits excluded"
+}

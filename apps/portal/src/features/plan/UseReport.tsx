@@ -12,6 +12,7 @@ import {ProductPhoto} from './content.tsx';
 import {captureUse,chicagoToday,isStopping,knownText,needsReportedDescriptor,canIncludeUseNotes,captureHasUnsentNotes} from './useModel.ts';
 import type {CapturedUse,UseForm} from './useModel.ts';
 import {readCurrentPlan} from './care.ts';
+import {selfPurchaseAcquisition} from './useEntry.ts';
 type Write=Extract<ClientCareCommand,{requestId:string;expectedUseRevision:number}>;
 type Phase='editing'|'saving'|'uncertain'|'conflict'|'saved'|'notes_unsent';
 interface Flow {capture:CapturedUse;steps:('identity'|'create'|'reported_identity'|'use')[];index:number;subject:ProductRef|null;identityId:string|null;receipts:EventReceipt[];pending:Write|null;phase:Phase;review?:{view:ClientPlanViewV2|ClientPlanViewV3;token:object;epoch:number};}
@@ -24,7 +25,7 @@ export function UseReport({props,product,reported,descriptor:reportedDescriptor,
  const canWrite=props.mode==='client'&&v.schemaVersion!==1&&v.access==='active'&&!(v.schemaVersion===3&&v.currentGuidance?.mode==='historical_document')&&!!props.ports?.care&&!!props.onViewChange;
  const demoUse=props.mode==='public-demo'&&v.schemaVersion===2&&v.access==='active'&&props.demoInteractions?.mode==='public-demo'&&props.demoInteractions.use.kind==='demo-use'&&props.onViewChange?props.demoInteractions.use:undefined;
  const demoCurrent=()=>!!demoUse&&demoUse.isCurrent();
- const [intent,setIntent]=useState<Intent>(()=>{const prior=props.mode==='client'||demoCurrent()?props.session.memory.get<Intent>(key):undefined;return prior?{...prior,flow:prior.flow?{...prior.flow,phase:prior.flow.phase==='saving'?'uncertain':prior.flow.phase==='saved'&&captureHasUnsentNotes(prior.flow.capture)?'notes_unsent':prior.flow.phase}:null}:{form:{...initialForm(product,reported),...(proposed?{action:'started_today' as const}:{})},flow:null};});
+ const [intent,setIntent]=useState<Intent>(()=>{const prior=props.mode==='client'||demoCurrent()?props.session.memory.get<Intent>(key):undefined;return prior?{...prior,flow:prior.flow?{...prior.flow,phase:prior.flow.phase==='saving'?'uncertain':prior.flow.phase==='saved'&&captureHasUnsentNotes(prior.flow.capture)?'notes_unsent':prior.flow.phase}:null}:{form:{...initialForm(product,reported),...(proposed?{action:'started_today' as const}:{}),acquisition:selfPurchaseAcquisition(props,original)??'unknown'},flow:null};});
  const [notice,setNotice]=useState(''),[loading,setLoading]=useState(false);
  const dateInput=useRef<HTMLInputElement>(null);
  useEffect(()=>{if(notice.startsWith('enter a real date'))dateInput.current?.focus();},[notice]);

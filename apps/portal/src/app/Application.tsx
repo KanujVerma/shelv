@@ -41,6 +41,8 @@ import { OwnerPolicyApplication } from "./OwnerPolicyApplication.tsx";
 import { MayaApplication } from "./MayaApplication.tsx";
 import {createNotificationsEntry, NotificationsEntryView} from "./notifications-entry.tsx";
 import {createAccountEntry, AccountEntryView} from "./account-entry.tsx";
+import {createServicePaymentEntry} from './service-payment-entry.ts';
+import {ServicePaymentEntryView} from './ServicePaymentEntry.tsx';
 import {createClientOrdersEntry, ClientOrdersEntryView} from "./client-orders-entry.tsx";
 import "./application.css";
 
@@ -67,7 +69,12 @@ function ClientNotificationsApplication({runtime}:{runtime:ApplicationSession}) 
 function AccountApplication({runtime}:{runtime:ApplicationSession}) {
   const {navigator}=usePortalNavigation();
   const entry=useMemo(()=>createAccountEntry(runtime,navigator),[runtime,navigator]);
-  return <AccountEntryView entry={entry}/>;
+  return <><AccountEntryView entry={entry}/><RouteLink route={{name:'account-service'}}>service &amp; payments</RouteLink></>;
+}
+function AccountServiceApplication({runtime}:{runtime:ApplicationSession}) {
+  const {navigator}=usePortalNavigation();
+  const entry=useMemo(()=>createServicePaymentEntry(runtime,navigator),[runtime,navigator]);
+  return <><ServicePaymentEntryView entry={entry}/><RouteLink route={{name:'account'}}>back to account</RouteLink></>;
 }
 function ClientOrdersApplication({runtime}:{runtime:ApplicationSession}) {
   const {navigator}=usePortalNavigation();
@@ -346,6 +353,10 @@ function ConnectedRoute({
       ) : audience === "client" && route.name === "account" ? (
         <ApplicationShell audience="client" onSignOut={signOut} readOnly>
           <AccountApplication runtime={runtime}/>
+        </ApplicationShell>
+      ) : audience === "client" && route.name === "account-service" ? (
+        <ApplicationShell audience="client" onSignOut={signOut} readOnly>
+          <AccountServiceApplication runtime={runtime}/>
         </ApplicationShell>
       ) : audience === "client" && (route.name === "orders" || route.name === "order") ? (
         <ApplicationShell audience="client" onSignOut={signOut} readOnly>

@@ -1,0 +1,13 @@
+{
+  "owner": "Kanuj",
+  "head": "44e90f6bd8d68d4411e5fe1c02df418d022cf225",
+  "status": "UNACCEPTED_PROVIDER_REFUSAL",
+  "threadId": "99021859-4f2e-43f7-a067-53166931c0c3",
+  "activityPosition": 370,
+  "eventType": "error",
+  "exactProviderMessage": "This content was flagged for possible cybersecurity risk. If this seems wrong, try rephrasing your request. If you’re doing authorized security work that requires more cyber permissive safeguards, apply for Daybreak access via https://platform.openai.com/settings/organization/status-and-access before retrying.",
+  "verifiedBy": "Narrow T3 activity read at370; no code/test/audit resumed",
+  "userBoundary": "No further principal44 review/test/setup/PR/alternative mechanism, resume/retry/rephrase/reroute/model substitution/nestedreview. Ordinary A06 message does not reopen scope.",
+  "partialArtifacts": ".local-artifacts/w7/reviews/principal-v2/; retained, no new result/finding/pass inferred",
+  "priorIndependentResults": "f49 FAIL and efd DTO PASS separate; no setup eligibility/genuine grant"
+}

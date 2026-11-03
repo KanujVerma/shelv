@@ -1,0 +1,130 @@
+[
+  {
+    "owner": "Kanuj",
+    "admittedAt": "2026-11-03T19:59:35.199085+00:00",
+    "admittedByLane": "W0",
+    "ownerThreadId": "99021859-4f2e-43f7-a067-53166931c0c3",
+    "ownerActiveRunId": "run:thread:99021859-4f2e-43f7-a067-53166931c0c3:ordinal:2",
+    "executionId": "7550b318-23a3-4aa4-ae34-1ff80f9daf3a",
+    "packetSha256": "1afeda04997341fc7bf9ae6e611495581fda07c20ca78b2ac4f4c5aa7c9ef3cf",
+    "head": "96bfe2428d32eacdef5f4c9e184af7b5ef39a95e",
+    "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-next-action/apps/portal",
+    "argv": [
+      "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "--experimental-strip-types",
+      "--test",
+      "--test-concurrency=1",
+      "tests/w3-next-action-browser.test.mjs"
+    ],
+    "sourceRowsVerifiedAgainstGitAndProjection": 362,
+    "dependencyPinsVerified": 7,
+    "allowedScope": "INTERCEPTED_SYNTHETIC_BROWSER_ONLY",
+    "network": {
+      "origin": "https://shelv-care.invalid",
+      "allRequestsIntercepted": true,
+      "denyUnexpected": true,
+      "serviceWorkers": "block",
+      "chromeArgs": [
+        "--no-proxy-server",
+        "--disable-background-networking",
+        "--disable-quic",
+        "--host-resolver-rules=MAP * ~NOTFOUND"
+      ],
+      "realProviderAuthOrBusinessNetwork": false
+    },
+    "resources": {
+      "db": false,
+      "auth": false,
+      "storage": false,
+      "nativeFixture": false,
+      "stoppedFixture": false,
+      "browserConcurrency": 1
+    },
+    "timeoutMilliseconds": 90000,
+    "cleanup": "Test finally closes contexts; after(stop) awaits browser.close. Outer process exit/join recorded. If interrupted, inspect/close only owned descendant handles; do not assert global process absence.",
+    "evidenceDirectory": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-next-action/browser-evidence",
+    "status": "SETUP_FAILED_BEFORE_CHROME_RETURNED",
+    "restrictions": [
+      "business API/session replies are intercepted synthetic fixture data, never genuine",
+      "no screenshot comparison/complete a11y or full frame acceptance",
+      "no full J03/J04/J10 acceptance"
+    ],
+    "priorW0BrowserReturn": "2026-11-03T19:52:16.383551+00:00",
+    "result": {
+      "exit": 1,
+      "tests": 3,
+      "pass": 0,
+      "hookFailures": 3,
+      "returnedAt": "2026-11-03T20:00:15Z",
+      "qualification": "Projection omitted transitive backend compiler imports; no Chrome launched; grant consumed, no automatic rerun."
+    }
+  },
+  {
+    "owner": "Kanuj",
+    "admittedAt": "2026-11-03T20:04:11.006743+00:00",
+    "admittedByLane": "W0",
+    "ownerThreadId": "99021859-4f2e-43f7-a067-53166931c0c3",
+    "ownerActiveRunId": "run:thread:99021859-4f2e-43f7-a067-53166931c0c3:ordinal:2",
+    "executionId": "eeb42e98-3844-4698-aebb-6d4c67a76271",
+    "packetSha256": "cfa1b1b80fa4bc7162f9a144ac91d592c8750b1e16f4f98ada2c68ad012b69bd",
+    "head": "96bfe2428d32eacdef5f4c9e184af7b5ef39a95e",
+    "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-next-action/apps/portal",
+    "argv": [
+      "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "--experimental-strip-types",
+      "--test",
+      "--test-concurrency=1",
+      "tests/w3-next-action-browser.test.mjs"
+    ],
+    "sourceRowsVerifiedAgainstGitAndProjection": 521,
+    "dependencyPinsVerified": 7,
+    "actualPrecompiledInputsVerified": 2204,
+    "precompileManifestSha256": "279d91c8475cc9ce453d97b7cf8f5a1f115a2aaf574a6a99516c7c5e13b462ac",
+    "metafileSha256": "b036526af368b4c81c7adf804d932026aa9f226e49a1bd0b7bf56f91509d851a",
+    "allowedScope": "INTERCEPTED_SYNTHETIC_BROWSER_ONLY",
+    "network": {
+      "origin": "https://shelv-care.invalid",
+      "allRequestsIntercepted": true,
+      "denyUnexpected": true,
+      "serviceWorkers": "block",
+      "chromeArgs": [
+        "--no-proxy-server",
+        "--disable-background-networking",
+        "--disable-quic",
+        "--host-resolver-rules=MAP * ~NOTFOUND"
+      ],
+      "realProviderAuthOrBusinessNetwork": false
+    },
+    "resources": {
+      "db": false,
+      "auth": false,
+      "storage": false,
+      "nativeFixture": false,
+      "stoppedFixture": false,
+      "browserConcurrency": 1
+    },
+    "timeoutMilliseconds": 90000,
+    "cleanup": "Test finally closes contexts; after(stop) awaits browser.close. Outer process exit/join recorded. If interrupted, inspect/close only owned descendant handles; do not assert global process absence.",
+    "evidenceDirectory": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-next-action/browser-evidence-r2",
+    "status": "PASS_BOUNDED_INTERCEPTED_BROWSER_RETURNED",
+    "restrictions": [
+      "business API/session replies are intercepted synthetic fixture data, never genuine",
+      "no screenshot comparison/complete a11y or full frame acceptance",
+      "no full J03/J04/J10 acceptance"
+    ],
+    "result": {
+      "exit": 0,
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "outerPid": 64072,
+      "joined": true,
+      "returnedAt": "2026-11-03T20:04:32.743040+00:00",
+      "stdoutSha256": "95d39f8cb02946d5d0c5a43846bb207f17db3b9e149cd8281819bde344b65959",
+      "closure": "Three test context finally closures and awaited browser.close; physical browser PID not separately captured, no global absence claim.",
+      "acceptedCountersChanged": false
+    }
+  }
+]
