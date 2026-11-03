@@ -6,8 +6,8 @@ import {createRequire} from 'node:module';
 import {mkdir} from 'node:fs/promises';
 import {createAdvisorController} from '../src/features/advisor/controller.ts';
 import {fixture,ids} from './rebuild/advisor-fixture.mjs';
-function setup(t){
- const f=fixture({ready:true}),execute=f.options.ports.clients.execute,clientCalls=[];
+function setup(t,{assigned=true}={}){
+ const f=fixture({ready:assigned}),execute=f.options.ports.clients.execute,clientCalls=[];
  let clientFailure=0,hold=null;
  f.options.ports.clients.execute=async(command,options)=>{
   clientCalls.push(structuredClone(command));if(hold)await hold;
@@ -17,8 +17,8 @@ function setup(t){
  return {f,c,clientCalls,failClients(v){clientFailure=v},holdClients(v){hold=v}};
 }
 const out=new URL('../../../.local-artifacts/w2/directory-ssr.cjs',import.meta.url);await mkdir(new URL('.',out),{recursive:true});
-await build({absWorkingDir:new URL('..',import.meta.url).pathname,tsconfig:'tsconfig.frontend.json',stdin:{contents:`import React from 'react';import{renderToStaticMarkup}from'react-dom/server';import{OverlayProvider}from'./src/ui/index.ts';import{AdvisorWorkspace}from'./src/features/advisor/AdvisorWorkspace.tsx';export const render=(props)=>renderToStaticMarkup(React.createElement(OverlayProvider,null,React.createElement(AdvisorWorkspace,props)));`,resolveDir:new URL('..',import.meta.url).pathname,loader:'tsx'},outfile:out.pathname,platform:'node',format:'cjs',bundle:true,loader:{'.css':'empty'}});
-const {render}=createRequire(import.meta.url)(out.pathname);
+await build({absWorkingDir:new URL('..',import.meta.url).pathname,tsconfig:'tsconfig.frontend.json',stdin:{contents:`import React from 'react';import{renderToStaticMarkup}from'react-dom/server';import{OverlayProvider}from'./src/ui/index.ts';import{AdvisorWorkspace}from'./src/features/advisor/AdvisorWorkspace.tsx';import{ClientAssignment}from'./src/features/advisor/ClientAssignment.tsx';export{confirmClientAssignment}from'./src/features/advisor/ClientAssignment.tsx';export const assignment=(props)=>renderToStaticMarkup(React.createElement(OverlayProvider,null,React.createElement(ClientAssignment,props)));export const render=(props)=>renderToStaticMarkup(React.createElement(OverlayProvider,null,React.createElement(AdvisorWorkspace,props)));`,resolveDir:new URL('..',import.meta.url).pathname,loader:'tsx'},outfile:out.pathname,platform:'node',format:'cjs',bundle:true,loader:{'.css':'empty'}});
+const {render,assignment,confirmClientAssignment}=createRequire(import.meta.url)(out.pathname);
 const html=(c,name='advisor-clients')=>render({controller:c,navigation:{route:{name},navigate(){}},onOpenClient(){}});
 
 test('a failed client read shows a retry instead of indefinite loading and recovers through the same read',async t=>{
@@ -75,4 +75,23 @@ test('a remounted directory can retry a read canceled with the prior controller'
  const current=createAdvisorController(f.options);t.after(()=>current.dispose());assert.equal(current.getSnapshot().clientsRead,'idle');
  held=false;await current.loadClients();release();await reading;
  assert.equal(current.getSnapshot().clientsRead,'ready');assert.match(html(current),/Maya SYNTHETIC/);
+});
+
+
+test('assignment shares client read failure and retry instead of a misleading empty selector',async t=>{
+ const h=setup(t,{assigned:false});await h.c.open(ids.draft);h.failClients(503);await h.c.loadClients();let assigned=0;
+ const markup=assignment({controller:h.c,state:h.c.getSnapshot(),selectedClient:ids.client,onSelect(){},onAssigned(){assigned++}});
+ assert.match(markup,/could not load clients/);assert.match(markup,/>retry clients</);assert.doesNotMatch(markup,/no active clients available/);assert.match(markup,/<button[^>]*disabled[^>]*>confirm intended client/);
+ await confirmClientAssignment(h.c,ids.client,()=>assigned++);assert.equal(h.f.calls.filter(c=>c.action==='assign_draft_v1').length,0);assert.equal(h.c.getSnapshot().notice,null);
+ h.failClients(0);await h.c.loadClients();await confirmClientAssignment(h.c,ids.client,()=>assigned++);assert.equal(assigned,1);assert.equal(h.c.getSnapshot().view.draft.clientId,ids.client);
+});
+test('assignment distinguishes a successfully empty eligible list from a failed read',async t=>{
+ const h=setup(t,{assigned:false});const execute=h.f.options.ports.clients.execute;h.f.options.ports.clients.execute=async(...args)=>({...await execute(...args),clients:[]});
+ await h.c.open(ids.draft);await h.c.loadClients();const markup=assignment({controller:h.c,state:h.c.getSnapshot(),selectedClient:'',onSelect(){},onAssigned(){}});
+ assert.match(markup,/no active clients available for assignment/);assert.doesNotMatch(markup,/could not load clients/);assert.match(markup,/<button[^>]*disabled[^>]*>confirm intended client/);
+});
+test('assignment cannot act on a previously selected row after a current denial clears the list',async t=>{
+ const h=setup(t,{assigned:false});await h.c.open(ids.draft);await h.c.loadClients();h.failClients(403);await h.c.loadClients();let assigned=0;
+ const markup=assignment({controller:h.c,state:h.c.getSnapshot(),selectedClient:ids.client,onSelect(){},onAssigned(){assigned++}});assert.match(markup,/>retry clients</);assert.doesNotMatch(markup,/Maya SYNTHETIC/);
+ await confirmClientAssignment(h.c,ids.client,()=>assigned++);assert.equal(assigned,0);assert.equal(h.f.calls.filter(c=>c.action==='assign_draft_v1').length,0);
 });

@@ -38,6 +38,7 @@ import {
 import type { AdvisorController, AdvisorState } from "./types.ts";
 import "./advisor.css";
 import { DependencyReview } from "./DependencyReview.tsx";
+import { ClientAssignment, ClientDirectoryFeedback } from "./ClientAssignment.tsx";
 
 export type AdvisorRoute =
   | Extract<PortalRoute, { name: "advisor-editor" }>
@@ -216,13 +217,12 @@ export function AdvisorWorkspace({
   if (route.name === "advisor-clients")
     return (
       <div className="advisor-view">
-        <PageHeader title="clients" action={
+        <PageHeader title="clients" action={s.clientsRead === "error" || s.clientsRead === "denied" ? undefined : (
           <Button variant="secondary" busy={s.clientsRead === "loading"}
             onClick={() => void c.loadClients()}>
-            {s.clientsRead === "error" || s.clientsRead === "denied"
-              ? "retry clients" : s.clients ? "refresh clients" : "load clients"}
+            {s.clients ? "refresh clients" : "load clients"}
           </Button>
-        } />
+        )} />
         <Field label="find a client">
           <Input
             placeholder="search by name or client identity"
@@ -231,15 +231,7 @@ export function AdvisorWorkspace({
           />
         </Field>
         {notice}
-        {s.clientsRead === "loading" ? (
-          <StatusNotice tone="loading" title={s.clients ? "refreshing clients" : "loading clients"} />
-        ) : s.clientsRead === "error" ? (
-          <StatusNotice tone="error" title="could not load clients">
-            {s.clients ? "the loaded directory is retained. retry to check for changes." : null}
-          </StatusNotice>
-        ) : s.clientsRead === "denied" ? (
-          <StatusNotice tone="denied" title="client directory unavailable with current access" />
-        ) : null}
+        <ClientDirectoryFeedback controller={c} state={s} />
         <Panel>
           <div className="advisor-directory">
             {visibleClients.map((client) => (
@@ -710,33 +702,8 @@ export function AdvisorWorkspace({
         title="assign an existing client"
         description="check the intended recipient before assigning this private draft."
       >
-        <div className="advisor-fields">
-          <Field label="admitted client">
-            <Select
-              value={client}
-              placeholder="select a client"
-              options={(s.clients?.clients ?? [])
-                .filter((v) => v.enrollmentStatus === "active")
-                .map((v) => ({ value: v.clientId, label: v.displayName }))}
-              onValueChange={setClient}
-            />
-          </Field>
-          {client ? (
-            <p>
-              {clientName(s, client)} · {client}
-            </p>
-          ) : null}
-          <Button
-            disabled={!client || s.busy}
-            onClick={async () => {
-              await c.assign(client);
-              if (c.getSnapshot().view?.draft.clientId === client)
-                setAssignOpen(false);
-            }}
-          >
-            confirm intended client
-          </Button>
-        </div>
+        <ClientAssignment controller={c} state={s} selectedClient={client} onSelect={setClient}
+          onAssigned={() => setAssignOpen(false)} />
       </Dialog>
     </div>
   );
