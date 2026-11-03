@@ -1,5 +1,6 @@
 import type { ClientCareHistoryPage, ClientCareHistoryEntry, GoalReportBody } from '../../../../../src/contracts/PortalReview.ts';
 import type { ReportIntent, ReportCommand } from './types.ts';
+import type { AttributedUseEvent } from '../../../../../src/contracts/PortalCare.ts';
 import type {HistoryFilter} from './restoration.ts';
 import { readReviewCommand } from '../../../../../src/contracts/PortalReviewValidation.ts';
 export function buildReportCommand(intent: ReportIntent, revision: number, requestId: string, goals: readonly string[], useIds: readonly string[]): ReportCommand {
@@ -46,5 +47,11 @@ export function historyKey(entry: ClientCareHistoryEntry): string {
     }
 }
 export function emptyBody(publication: GoalReportBody['publication']): GoalReportBody { return { publication, answers: [], comfort: null, actualUseEventIds: [], notes: null, photoIds: [] }; }
+
+/** A first reported product and its initial unreviewed use share one event.
+ * Later descriptor corrections have no initial use and cannot invent one. */
+export function historyUseReports(pages: readonly ClientCareHistoryPage[]): AttributedUseEvent[] {
+    return pages.flatMap(page => page.entries.flatMap(entry => entry.kind === 'use' ? [entry.event] : entry.kind === 'reported_product' && entry.event.initialUse ? [entry.event.initialUse] : []));
+}
 
 export function visibleHistory(entry: ClientCareHistoryEntry, filter: HistoryFilter) { return filter === 'all' || filter === 'checkins' && ['report', 'report_amendment', 'review_attention', 'legacy_review', 'legacy_reply'].includes(entry.kind) || filter === 'checkins' && entry.kind === 'guidance' && entry.guidance.body.kind !== 'instruction' || filter === 'changes' && (entry.kind === 'publication' || entry.kind === 'legacy_instruction' || entry.kind === 'guidance' && entry.guidance.body.kind === 'instruction'); }

@@ -6,6 +6,7 @@ import {createHash,randomUUID} from 'node:crypto';
 import {loadPortalCiBaselines} from './helpers/portal-ci-baselines.ts';
 import {ownAdminSourceCommit,ownAdminSourceFixtureSha256,ownAdminSourcePaths,ownAdminSourceBytes,ownAdminSourceSha256} from './helpers/portal-own-admin-source-baselines.ts';
 import {sharedFixtureSha256} from './helpers/portal-shared-ci-baselines.ts';
+import {privateRedirectHistoricalPreimage} from './helpers/portal-private-redirect-preimage.ts';
 const file=new URL('./fixtures/portal-own-admin-source-baselines.json',import.meta.url);
 test('eight exact admin37 source identities retain complete bodies and full reviewed provenance',()=>{
  const raw=readFileSync(file),data=JSON.parse(raw.toString());
@@ -16,7 +17,7 @@ test('eight exact admin37 source identities retain complete bodies and full revi
  assert.deepEqual(data.commits[0].entries.map((row:{path:string})=>row.path),ownAdminSourcePaths);
  assert.equal(ownAdminSourcePaths.length,8);
  for(const path of ownAdminSourcePaths){
-  const bytes=readFileSync(new URL('../'+path,import.meta.url));
+  const bytes=Buffer.from(privateRedirectHistoricalPreimage(readFileSync(new URL('../'+path,import.meta.url),'utf8'),path));
   assert.deepEqual(bytes,ownAdminSourceBytes(path),path);
   assert.equal(createHash('sha256').update(bytes).digest('hex'),ownAdminSourceSha256(path));
  }

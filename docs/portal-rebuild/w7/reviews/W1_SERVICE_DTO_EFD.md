@@ -1,0 +1,11 @@
+# W1 ClientService DTO: independent source review
+
+Owner: Kanuj. **PASS, scoped source DTO pin**, base `8c5c6b2d72e75f620487f1b2b110655b03551b17`, head `efd533bcabe8537a134206d71e8bd04b4929acab`. No material scoped finding. The complete five-file delta is four contracts plus the author's report; no producer, SQL, gateway or UI is admitted by this verdict.
+
+All four contract postimages independently match retained `714d6647b1a92946dbf9c61f2d96f245ffbd845c`. Read the complete types, values, validator, mapper and their shared scalar validators. The mapper has one fixed RPC and three closed own-client actions. Selectors and authority fields are rejected. Explicit confirmation, original request identity, revision/basis CAS, strict 8/32 KiB bounds and historical receipt/status binding remain separate from current coverage.
+
+Optional V1 postServiceAccess preserves omission and explicit unknown. Known dates require recorded paid support, no pending publication, the earlier applicable cancellation/paid boundary, and an exclusive end 30 calendar days later. They do not grant care access. Static final export, early-departure commands, role permissions, SQL enforcement and source consent require their separate producers and proofs.
+
+Independent execution of the original 21 contract tests against an exact Git export passes 21/21, exit 0, no cancelled/skipped, under Node 22.23.0. Only import URLs changed; no assertion changed and no OLD defect is invented for an exact-byte pin. The tests exercise strict selectors/fields, confirmation, UTF-8/escaping limits, original receipts/status, old V1 shape, unknown state, prepaid coverage, cancellation and DST/leap/calendar boundaries. [Projection and raw-log pins](W1_SERVICE_DTO_EFD_RESULT.json) preserve the exact input and evidence.
+
+No Auth, SQL, Storage, browser or resource execution occurred. D38/C08C/C08R/J08 remain unaccepted as complete behavior; J06 is the separate broader profile/contact journey. Existing ASC1/ASC2, current shared composition, migration/rollback, genuine +30-day boundaries, post-window real download, administration and hosted exact-head gates remain open. Provider-refused holds and M01/M02 acceptance remain unchanged.

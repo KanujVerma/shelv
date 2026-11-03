@@ -86,11 +86,16 @@ await copy("apps/portal/site/assets/shelv-mark.png", "assets/shelv-mark.png");
 // Retained public product recognition imagery only. No private walkthroughs,
 // source documents or client-specific pages are copied into this candidate.
 for (const filename of await readdir(path.join(portal, "site/maya/assets")))
-  if (/\.(png|jpg|webp)$/.test(filename))
+  if (/\.(png|jpg|webp)$/.test(filename)) {
     await copy(
       "apps/portal/site/maya/assets/" + filename,
       "maya/assets/" + filename,
     );
+    await copy(
+      "apps/portal/site/maya/assets/" + filename,
+      "assets/maya-" + filename,
+    );
+  }
 const inputs = [];
 for (const input of Object.keys(result.metafile.inputs).sort()) {
   const absolute = path.resolve(portal, input),

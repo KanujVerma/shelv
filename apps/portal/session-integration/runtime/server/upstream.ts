@@ -157,7 +157,11 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
         const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),this.timeoutMs);
         let status=503,body:unknown={code:writing?'uncertain':'unavailable'};
         try{
-            const response=await this.fetcher(`${SUPABASE_ORIGIN}/functions/v1/concierge-notifications`,{method:'POST',headers:this.headers(credentials.access_token),body:JSON.stringify(command),signal:controller.signal,redirect:'error',cache:'no-store'});
+            const response=await this.fetcher(`${SUPABASE_ORIGIN}/functions/v1/concierge-notifications`,{method:'POST',headers:this.headers(credentials.access_token),body:JSON.stringify(command),signal:controller.signal,redirect:'manual',cache:'no-store'});
+            if(response.status>=300&&response.status<400){
+                try{void response.body?.cancel().catch(()=>{});}catch{}
+                throw new SessionError(503,writing?'uncertain':'unavailable');
+            }
             const headersBeforeAbort=!controller.signal.aborted;
             if(response.status===401||response.status===403){
                 if(headersBeforeAbort)status=response.status;

@@ -1,3 +1,7 @@
+## Eight peers active, 3 November 2026
+
+Owner: Kanuj. [Exclusive rules](EIGHT_THREAD_RULES.md) contain user-started peer IDs, new test/report grants and exact migration reservations. [W0 integration queue](eight-threads/W0.md) owns shared adapters/composition and exact PR heads. W7 independently reviews/owns acceptance ledger and resource custody; A08 is W6. Principal44 is provider-refused/unaccepted with no retry/reroute, separate from scoped P1/DTO passes. No feature counters or resource grants follow source integration. Old claims below are historical.
+
 ## Active ownership freeze, 3 November 2026
 
 Owner: Kanuj. [EIGHT_THREAD_RULES.md](EIGHT_THREAD_RULES.md) is the current exclusive W0-W7 registry and supersedes earlier allocation prose. W0 claims only shared platform/integration and migration allocation/order. W1-W7 may branch from the first published commit adding that file; no peer thread is launched by W0. No subagents. Former coordinator and children relinquished implementation ownership; original dirty worktrees and evidence remain preserved. Historical allocations below are not active claims.

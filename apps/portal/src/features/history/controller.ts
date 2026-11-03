@@ -2,7 +2,7 @@ import type { ClientCareHistoryPage, ClientPlanViewV3, ReportEvent, ReportReplac
 import { mapReviewResult } from '../../../../../src/contracts/PortalReviewMapping.ts';
 import { goalReportHasObservation } from '../../../../../src/contracts/PortalReviewValidation.ts';
 import type { HistoryContext, HistoryState, HistoryController, HistoryCommand, ReportCommand, ReportIntent, HistoryOutcome } from './types.ts';
-import { appendHistory, buildReportCommand, emptyBody, historyKey, visibleHistory } from './model.ts';
+import { appendHistory, buildReportCommand, emptyBody, historyKey, visibleHistory, historyUseReports } from './model.ts';
 import {historyElementId,isHistoryEntryKey} from './restoration.ts';
 import type {HistoryFilter,HistoryTimelineMetadata,HistoryRestorationAnchor,HistoryRestorationBasis,HistoryRestorationResult,HistoryRestorationController} from './restoration.ts';
 const navigationMemoryKey='shelv.history.navigation.v1';
@@ -371,7 +371,7 @@ export function createHistoryController(context: HistoryContext, uuid: () => str
     function sourceIds() {
         const intent = state.intent, view = intent?.kind === 'amendment' ? state.amendmentView : state.view;
         const goals = view?.plan?.content.goals.map(g => g.id) ?? [];
-        const use = state.pages.flatMap(p => p.entries.flatMap(e => e.kind === 'use' ? [e.event.eventId] : []));
+        const use = historyUseReports(state.pages).map(event => event.eventId);
         if (intent?.kind === 'amendment' && intent.original.kind === 'goal_report')
             use.push(...intent.original.body.actualUseEventIds);
         return { goals, use };
