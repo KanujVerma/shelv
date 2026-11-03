@@ -1,0 +1,11 @@
+# W2 publication delivery: independent source review
+
+Owner: Kanuj. **PASS for the complete seven-file source/model/finite-HTTP/SSR candidate**, base `8c5c6b2d72e75f620487f1b2b110655b03551b17`, head `527b04b44bc1e493cb6a12796b9e3ff2288ff276`. No material scoped finding. This is the permitted UI consumer, not a held private-return or financial audit.
+
+Read the full owned delta, correction from87a, existing notification reference/controller/view contracts, advisor publication receipt/recovery flow and new tests/report. The exact acknowledged original publish command and receipt are retained together. The component does not reconstruct a publication command or retry publication. Previous-event data cannot appear under a different publication before the effect. An earlier uncertain notification action keeps its own status/retry controls; existing read versus edit authority stays with the actual controller.
+
+Offline delivery reads can clear selected state. Refresh now reopens the exact retained publication reference when needed, rather than calling loadDeliveries with no selection. Missing actual controller/read status produces an unavailable current-delivery message, without inventing queued/delivered status or changing publication/service dates. W0 still owns its real runtime and single memory-owner lifecycle.
+
+Independent same final8 controls give OLD7/8, exit1; CURRENT8/8, exit0. With unchanged47 advisor controller/race controls, current55/55 passes, zero skips/cancellations. The configured frontend type graph independently exits0/zero diagnostics under Node22.23.0. [Exact source/log pins](W2_DELIVERY_527_RESULT.json) retain results. Finite cases use the actual ApplicationSession/notification controller with synthetic HTTP; other controls use explicit model/SSR fixtures. No actual Auth, provider, outbox delivery or email is proved.
+
+The old browser assertion expecting queued status without a current reader remains a separate failed check requiring its own reviewed truthful successor. This source pass does not make that run green. Combined advisor quote/delivery composition, browser clicks, actual authorized sink failure/retry/dedup/no-republish/date preservation, full A06/J09 and visual/a11y remain open. No principal44 or other provider-held gate is reopened.

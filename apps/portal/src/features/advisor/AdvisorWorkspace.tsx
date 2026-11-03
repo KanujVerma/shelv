@@ -38,6 +38,7 @@ import {
 import type { AdvisorController, AdvisorState } from "./types.ts";
 import "./advisor.css";
 import { DependencyReview } from "./DependencyReview.tsx";
+import { FirstServiceQuote } from "./FirstServiceQuote.tsx";
 
 export type AdvisorRoute =
   | Extract<PortalRoute, { name: "advisor-editor" }>
@@ -962,7 +963,8 @@ function PublicationChecks({
             publishing is a deliberate action. payment verification alone does
             not publish.
           </p>
-          {first && c.permissions.confirmPayments && c.hasPayments ? (
+          <FirstServiceQuote controller={c} state={s} />
+          {first && c.permissions.confirmPayments && (c.hasPayments || c.hasIssueQuote) ? (
             <Button
               variant="secondary"
               disabled={!context || s.busy || !!s.pending}

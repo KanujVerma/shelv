@@ -34,6 +34,7 @@ import {
   buildPaymentCall,
   mapPaymentReceipt,
   mapPaymentView,
+  MONTHLY_SERVICE_CENTS,
 } from "../../../../../supabase/functions/concierge-payments/contract.ts";
 import {
   buildPaymentCallV2,
@@ -60,6 +61,7 @@ import type {
   AdvisorDependencyReview,
   AdvisorPlanIdentityDocument,
   ConfirmPaymentCommand,
+  AdvisorPaymentCommand,
 } from "./types.ts";
 
 const empty = (): AdvisorState => ({
@@ -851,10 +853,21 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       });
     }
   }
-  async function executePayment(command: ConfirmPaymentCommand) {
+  function canIssueFirstServiceQuote() {
+    const context = state.context;
+    return live() && permissions.view && permissions.confirmPayments &&
+      !!ports.issueQuote && stable() && !!context &&
+      context.clientId === state.view?.target?.clientId &&
+      context.clientId === state.view?.draft.clientId &&
+      context.publication === "first" && context.payments.service.status === "unpaid" &&
+      !context.payments.quotes.some((quote) =>
+        quote.publicationVersion === 0 && quote.status === "payable",
+      );
+  }
+  async function executePayment(command: AdvisorPaymentCommand) {
     if (
       !permissions.confirmPayments ||
-      !ports.payments ||
+      (command.action === "issue_quote" ? !ports.issueQuote : !ports.payments) ||
       state.busy ||
       command.clientId !== state.view?.draft.clientId
     )
@@ -863,9 +876,12 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     const current = () =>
       live() && operation === operationGeneration && state.pending === command;
     emit({ pending: command, busy: true, notice: null });
+    if (!current()) return;
     try {
       const receipt = await invoke((signal) =>
-        ports.payments!.execute(command, { signal }),
+        command.action === "issue_quote"
+          ? ports.issueQuote!.execute(command, { signal })
+          : ports.payments!.execute(command, { signal }),
       );
       if (receipt && current()) {
         const call =
@@ -877,14 +893,29 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
           : mapPaymentReceipt(receipt, call);
         await refreshContext();
         if (!current()) return;
-        emit({ pending: null, busy: false });
+        emit({
+          pending: null, busy: false,
+          save: command.action === "issue_quote" ? (dirty() ? "idle" : "saved") : state.save,
+        });
         // The financial write is acknowledged. Recover current clinical basis
         // before its UI continuation returns to publication checks; a read
         // failure must not turn that known receipt back into an uncertain write.
         if (ports.dependencies) await inspectDependencies();
       }
     } catch (e) {
-      if (current()) fail(e, true);
+      if (!current()) return;
+      if (command.action === "issue_quote" && (e as { status?: number })?.status === 409) {
+        emit({
+          context: null, pending: null, busy: false,
+          notice: {
+            kind: "error", title: "payment information changed. refresh before issuing a quote.",
+            origin: state.view?.target ? {
+              purpose: "context", actorId: permissions.actorId,
+              target: { ...state.view.target },
+            } : undefined,
+          },
+        });
+      } else fail(e, true);
     }
   }
 
@@ -1344,6 +1375,19 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         : { ...base, bankReceiptVerified: true };
       await executePayment(command);
     },
+    canIssueFirstServiceQuote,
+    async issueFirstServiceQuote() {
+      if (!canIssueFirstServiceQuote()) return deny();
+      const context = state.context!;
+      await executePayment({
+        schemaVersion: 2, action: "issue_quote", requestId: crypto.randomUUID(),
+        clientId: context.clientId, expectedRevision: context.payments.revision,
+        publicationVersion: 0, serviceCents: MONTHLY_SERVICE_CENTS,
+        servicePeriod: null, shippingAddressVersion: null, items: [],
+        productSubtotalCents: 0, taxCents: 0, shippingCents: 0,
+        productTotalCents: 0, totalCents: MONTHLY_SERVICE_CENTS,
+      });
+    },
     async reconcile() {
       const pending = state.pending;
       if (!pending || state.busy) return;
@@ -1356,6 +1400,12 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         operation === operationGeneration &&
         recovery === recoveryGeneration &&
         state.pending === pending;
+      if (pending.action === "issue_quote") {
+        // A quote in a later read is not proof that this original command
+        // committed. Only retrying its exact idempotent request recovers it.
+        await refreshContext();
+        return;
+      }
       if (pending.action === "confirm_payment") {
         await refreshContext();
         if (
@@ -1400,7 +1450,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         !permissions.edit
       )
         return deny();
-      if (pending.action === "confirm_payment") {
+      if (pending.action === "confirm_payment" || pending.action === "issue_quote") {
         await executePayment(pending);
         return;
       }
@@ -1408,6 +1458,7 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     },
     hasPreview: !!options.onPreview,
     hasPayments: !!ports.payments,
+    hasIssueQuote: !!ports.issueQuote,
     dispose() {
       if (disposed) return;
       epoch++;

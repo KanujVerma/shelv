@@ -1,0 +1,66 @@
+{
+  "base": "c075cbd4ea4b2f4d75959370233745d07145c069",
+  "head": "4031d19be20cf170c5e58e45da063d2463d82b39",
+  "verdict": "PASS_SCOPED_DTO_FORMAT_ONLY",
+  "node": "v22.23.0",
+  "current": {
+    "tests": 29,
+    "pass": 29,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "configuredRootTypes": {
+    "app": 0,
+    "tests": 0,
+    "diagnostics": 0
+  },
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w1-plan-platform-service-financials.test.mjs",
+      "sha256": "845e1daf9a02728820ac0ca5e1a15cff84fa1a3698f24bfd5c0c1fe77055b1e8"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_SERVICE_FINANCIALS_DTO_20261103.md",
+      "sha256": "07197c4dd8d3b275e231dbe02fba19966e8107f1348252279df7563c3c169043"
+    },
+    {
+      "path": "src/contracts/PortalServiceFinancials.ts",
+      "sha256": "40e18ad7d702578e26bf1c9876002b120b336c18fe9d5931e8f75ed701ceff16"
+    },
+    {
+      "path": "src/contracts/PortalServiceFinancialsMapping.ts",
+      "sha256": "3f5fced46c02b52d45a6338be6a088e841553e242d7e3de6ef4ae3b310c1533e"
+    },
+    {
+      "path": "src/contracts/PortalServiceFinancialsValidation.ts",
+      "sha256": "1cb733cf3fd15fe74b9de33f6233e4dc32ae48060da0d8e4162980fe42a4e220"
+    },
+    {
+      "path": "src/contracts/PortalServiceFinancialsValues.ts",
+      "sha256": "2a7c0cd2a8437e8ad09fa3f397270511de61e926e2654604c645edc0d379a9bb"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service-financials/W7-CURRENT29.log",
+      "sha256": "5a52af2f138d987d0c1040ccd034e56ba1382c21f805d8e4ec1469f703b30145"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service-financials-full/W7-tsconfig.json.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service-financials-full/W7-tsconfig.tests.json.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "currencySemanticPin": "USD only for actual canonical confirmation->claim->settled USD quote/service-period lineage; no JSON shape change and no legacy currency inference.",
+  "limitations": [
+    "No actual canonical/payment/legacy/policy provenance established by schema or numeric2500test",
+    "No backend/SQL/endpoint/registration/permission added",
+    "V1 guarantee accepts only unavailable codes, no success",
+    "No genuinefinancial/Auth/browser or held audit"
+  ]
+}
