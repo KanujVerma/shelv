@@ -1,24 +1,26 @@
 {
   "schemaVersion": 1,
   "title": "Current approved 26-screen source and verification inventory",
-  "date": "2026-11-02",
+  "date": "2026-11-03T01:55:01.602349+00:00",
   "owner": "Kanuj",
-  "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-current-screen-inventory",
-  "ownCheckout": "/Users/kanuj/.t3/worktrees/shelv/t3-2d685b4d",
-  "ownCleanBase": "e18c375fbe70318a2d3465adcb80d8e063568e47",
-  "ownBaseIsRootEquivalent": false,
-  "ownInputOnlyAncestors": [
-    "835ac1c0",
-    "e18c375f"
-  ],
+  "taskId": null,
   "sourcePin": {
-    "rootHead": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
-    "codeHead": "3c28477140cc480dc3d610630c356b3812228638",
+    "rootHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+    "codeHead": "5d07d95819f5363795b9c942eec78f145b37a265",
     "priorAuditSourceHead": "68ed8a54ebd5e78e042cf14d0cc74008b8848e7f",
     "publishedFailingCiHead": "e10cf652b970b8228cbfa47e57dd1328dcfc7678",
     "immutableRootReadOnly": true,
     "rootWorkingEditsExcluded": true,
-    "deltaSinceAudit": "Only the admitted client inbox23 changes runtime source; other differences are docs/report. Account/Orders/A07/Maya source inventories remain the same. Inbox is a required secondary flow, not an extra approved frame."
+    "deltaSinceAudit": "Root5d07 admits actual Account name/contact-read and own recorded Orders list/detail routes before clinical loading. Service/cancellation and A07 remain unmounted; other approved frame selections remain present. This is source mounting, not browser/genuine acceptance.",
+    "originalInventorySourcePin": {
+      "rootHead": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "codeHead": "3c28477140cc480dc3d610630c356b3812228638",
+      "priorAuditSourceHead": "68ed8a54ebd5e78e042cf14d0cc74008b8848e7f",
+      "publishedFailingCiHead": "e10cf652b970b8228cbfa47e57dd1328dcfc7678",
+      "immutableRootReadOnly": true,
+      "rootWorkingEditsExcluded": true,
+      "deltaSinceAudit": "Only the admitted client inbox23 changes runtime source; other differences are docs/report. Account/Orders/A07/Maya source inventories remain the same. Inbox is a required secondary flow, not an extra approved frame."
+    }
   },
   "runtime": {
     "provider": "codex",
@@ -39,8 +41,8 @@
   },
   "totals": {
     "denominator": 26,
-    "mounted": 21,
-    "controllerWired": 21,
+    "mounted": 24,
+    "controllerWired": 24,
     "completeSourceWiring": 12,
     "provedConnectedRealFunctionality": 0,
     "currentFullBrowserVerified": 0,
@@ -131,12 +133,14 @@
       "exactRemainingGate": "Execute current entitled V3 content/manifest hydration, Stop/no-proposal/preparation/negative/return cases and compare1440 frame with required narrow/mobile/a11y. Full destination-photo and J05 flows remain separately incomplete.",
       "owner": "Kanuj / W3; W0 navigation",
       "completeSourceWiring": true,
-      "title": "your plan · morning",
+      "title": "your plan \u00b7 morning",
       "nodeId": "498:85",
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C01E",
@@ -217,12 +221,14 @@
       "exactRemainingGate": "Prove current conditional evening content, no auto-Start/escalation, returning routine/Stop and full approved comparison/a11y.",
       "owner": "Kanuj / W3",
       "completeSourceWiring": true,
-      "title": "your plan · evening",
+      "title": "your plan \u00b7 evening",
       "nodeId": "503:926",
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C02",
@@ -303,7 +309,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C02D",
@@ -381,7 +389,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C03",
@@ -474,7 +484,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C03D",
@@ -558,7 +570,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C04",
@@ -651,7 +665,7 @@
       "genuineConnectedReceipt": null,
       "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
       "verificationDisposition": "unverified, not failed",
-      "exactRemainingGate": "Run current ordinary history/event/version/filter/restore/denied/return cases and private-byte exclusions, then complete C05→A07→C04 J05 separately.",
+      "exactRemainingGate": "Run current ordinary history/event/version/filter/restore/denied/return cases and private-byte exclusions, then complete C05\u2192A07\u2192C04 J05 separately.",
       "owner": "Kanuj / W4; W2 and W0 for J05",
       "completeSourceWiring": true,
       "title": "check-ins & history",
@@ -659,7 +673,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C05",
@@ -752,43 +768,52 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C06",
       "route": "/orders",
-      "mounted": false,
+      "mounted": true,
       "mountEvidence": [
         {
           "path": "apps/portal/src/app/Application.tsx",
-          "line": 415,
-          "reason": "unsupported client routes",
-          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
-        },
-        {
-          "path": "apps/portal/src/app/Application.tsx",
-          "line": 433,
-          "reason": "Orders title in unavailable fallback",
-          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+          "line": 350,
+          "reason": "actual Orders/order branch before clinical composition",
+          "revision": "5d07d95819f5363795b9c942eec78f145b37a265"
         }
       ],
-      "actualControllerConnected": false,
-      "controllerEvidence": [],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/client-orders-entry.tsx",
+          "line": 41,
+          "reason": "real captured-session entry and read controller",
+          "revision": "5d07d95819f5363795b9c942eec78f145b37a265"
+        },
+        {
+          "path": "apps/portal/src/features/orders/read/ClientOrdersView.tsx",
+          "line": 1,
+          "reason": "actual list/detail view selects own recorded collection",
+          "revision": "5d07d95819f5363795b9c942eec78f145b37a265"
+        }
+      ],
       "sourceChainIds": [
         "X"
       ],
       "requiredReadProducersConnected": false,
-      "requiredReadProducersReason": "No ordinary client Orders controller/read producer is mounted. Retained payments/operations and unadmitted Orders/Commerce candidates do not supply this frame.",
+      "requiredReadProducersReason": "Own complete persisted purchase/return read is connected through actual cookie/gateway/Vault/fixed normal-Auth RPC and strict Root mapper. Full approved quote/payable/delivery/tracking/frozen-terms facts are still incomplete; this full-frame boolean stays false.",
       "requiredWriteProducersConnected": false,
-      "requiredWriteProducersReason": "No actual client orders list/quote preparation actions are supplied by the Root route. Separately mounted use reporting is not order detail.",
+      "requiredWriteProducersReason": "This admitted vertical is recorded history only. Full quote/claim/payment/purchase/return-help/delivery/Start actions are not completed by the list/detail mount.",
       "principalJourneyImplemented": false,
       "principalActions": [
-        "Required orders list/quote preparation UI: unavailable",
-        "Quote/claim/delivery/return/Start chain: missing"
+        "Own recorded purchase/return list and exact purchase detail: implemented SOURCE/finite/SSR",
+        "Quote/claim/payment/purchase/delivery/return-help/Start chain: incomplete; no invented financial status"
       ],
       "requiredNegativeAndReturningCases": [
         "unknown seller/tax/shipping/returns blocks payable quote",
-        "claimed funds ≠ verified receipt ≠ order ≠ shipment/delivery",
+        "claimed funds \u2260 verified receipt \u2260 order \u2260 shipment/delivery",
         "plan/address changes never rewrite frozen order",
         "wrong owner and ended-care outstanding admin",
         "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
@@ -801,7 +826,8 @@
       "existingProofIds": [
         "AUDIT",
         "GP",
-        "GC"
+        "GC",
+        "ROOT_ADMIN_5D07"
       ],
       "currentBrowserVerified": false,
       "currentBrowserReceipt": null,
@@ -810,51 +836,60 @@
       "genuineConnectedReceipt": null,
       "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
       "verificationDisposition": "unverified, not failed",
-      "exactRemainingGate": "Implement and independently admit client Orders contract/controller/read and quote/claim producers; frozen seller/product/total/address/method/return-terms reconciliation and real isolated bookkeeping/J04 proof. M65 remains HELD.",
+      "exactRemainingGate": "Complete the approved quote/claim/frozen payable/delivery/return/Start path and missing authoritative facts; prove real own read persistence and wrong-owner/session/refused private results in ordinary browser. M65 remains HELD.",
       "owner": "Sami / W5; Kanuj / Root composition",
       "completeSourceWiring": false,
-      "title": "orders · quote preparation",
+      "title": "orders \u00b7 quote preparation",
       "nodeId": "499:446",
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C06D",
       "route": "/orders/:orderId",
-      "mounted": false,
+      "mounted": true,
       "mountEvidence": [
         {
           "path": "apps/portal/src/app/Application.tsx",
-          "line": 415,
-          "reason": "unsupported client routes",
-          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
-        },
-        {
-          "path": "apps/portal/src/app/Application.tsx",
-          "line": 433,
-          "reason": "Orders title in unavailable fallback",
-          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+          "line": 350,
+          "reason": "actual Orders/order branch before clinical composition",
+          "revision": "5d07d95819f5363795b9c942eec78f145b37a265"
         }
       ],
-      "actualControllerConnected": false,
-      "controllerEvidence": [],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/client-orders-entry.tsx",
+          "line": 41,
+          "reason": "real captured-session entry and read controller",
+          "revision": "5d07d95819f5363795b9c942eec78f145b37a265"
+        },
+        {
+          "path": "apps/portal/src/features/orders/read/ClientOrdersView.tsx",
+          "line": 1,
+          "reason": "actual list/detail view selects own recorded collection",
+          "revision": "5d07d95819f5363795b9c942eec78f145b37a265"
+        }
+      ],
       "sourceChainIds": [
         "X"
       ],
       "requiredReadProducersConnected": false,
-      "requiredReadProducersReason": "No ordinary client Orders controller/read producer is mounted. Retained payments/operations and unadmitted Orders/Commerce candidates do not supply this frame.",
+      "requiredReadProducersReason": "Own complete persisted purchase/return read is connected through actual cookie/gateway/Vault/fixed normal-Auth RPC and strict Root mapper. Full approved quote/payable/delivery/tracking/frozen-terms facts are still incomplete; this full-frame boolean stays false.",
       "requiredWriteProducersConnected": false,
-      "requiredWriteProducersReason": "No actual client order detail/delivered not started actions are supplied by the Root route. Separately mounted use reporting is not order detail.",
+      "requiredWriteProducersReason": "This admitted vertical is recorded history only. Full quote/claim/payment/purchase/return-help/delivery/Start actions are not completed by the list/detail mount.",
       "principalJourneyImplemented": false,
       "principalActions": [
-        "Required order detail/delivered not started UI: unavailable",
-        "Quote/claim/delivery/return/Start chain: missing"
+        "Own recorded purchase/return list and exact purchase detail: implemented SOURCE/finite/SSR",
+        "Quote/claim/payment/purchase/delivery/return-help/Start chain: incomplete; no invented financial status"
       ],
       "requiredNegativeAndReturningCases": [
         "unknown seller/tax/shipping/returns blocks payable quote",
-        "claimed funds ≠ verified receipt ≠ order ≠ shipment/delivery",
+        "claimed funds \u2260 verified receipt \u2260 order \u2260 shipment/delivery",
         "plan/address changes never rewrite frozen order",
         "wrong owner and ended-care outstanding admin",
         "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
@@ -867,7 +902,8 @@
       "existingProofIds": [
         "AUDIT",
         "GP",
-        "GC"
+        "GC",
+        "ROOT_ADMIN_5D07"
       ],
       "currentBrowserVerified": false,
       "currentBrowserReceipt": null,
@@ -876,7 +912,7 @@
       "genuineConnectedReceipt": null,
       "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
       "verificationDisposition": "unverified, not failed",
-      "exactRemainingGate": "Admit frozen order/detail/delivery/return producers and actual selected-product Start destination; prove delivery alone does not Start, self-purchase creates no fake order, and return/retailer-funds/client-repayment remain distinct. M65 remains HELD.",
+      "exactRemainingGate": "Complete the approved quote/claim/frozen payable/delivery/return/Start path and missing authoritative facts; prove real own read persistence and wrong-owner/session/refused private results in ordinary browser. M65 remains HELD.",
       "owner": "Sami / W5; Kanuj / Root composition",
       "completeSourceWiring": false,
       "title": "delivered, not started",
@@ -884,7 +920,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C07",
@@ -975,7 +1013,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C07C",
@@ -1063,40 +1103,43 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C08",
       "route": "/account; /account/service",
-      "mounted": false,
+      "mounted": true,
       "mountEvidence": [
         {
           "path": "apps/portal/src/app/Application.tsx",
-          "line": 415,
-          "reason": "Account excluded from supported routes",
-          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
-        },
-        {
-          "path": "apps/portal/src/app/Application.tsx",
-          "line": 425,
-          "reason": "Account unavailable fallback",
-          "revision": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462"
+          "line": 346,
+          "reason": "actual Account branch before clinical composition",
+          "revision": "5d07d95819f5363795b9c942eec78f145b37a265"
         }
       ],
-      "actualControllerConnected": false,
-      "controllerEvidence": [],
+      "actualControllerConnected": true,
+      "controllerEvidence": [
+        {
+          "path": "apps/portal/src/app/account-entry.tsx",
+          "line": 33,
+          "reason": "actual profile/contact controllers bound to captured session/route lifetime",
+          "revision": "5d07d95819f5363795b9c942eec78f145b37a265"
+        }
+      ],
       "sourceChainIds": [
         "X",
         "Q"
       ],
       "requiredReadProducersConnected": false,
-      "requiredReadProducersReason": "Profile handler/runtime/SQL source exists; ordinary index/channel/gateway/Account mount is absent. Full contact/address/service/consent/export/admin readers are not registered Root flows.",
+      "requiredReadProducersReason": "Actual permanent-own profile/name and canonical current-email read are connected. Email pending remains unknown; address/service/consent/final export/unfinished administration readers remain incomplete, so full-frame read wiring stays false.",
       "requiredWriteProducersConnected": false,
-      "requiredWriteProducersReason": "No Root Account controller supplies profile/contact/address verification, goal-report alert, consent withdrawal, cancellation or download controls. Own inherited input namespaces are excluded.",
+      "requiredWriteProducersReason": "Exact display-name CAS write plus canonical reread is connected. Email mutation/status explicitly unavailable; address/consent/cancellation/export and remaining controls are incomplete, so full-frame write wiring stays false.",
       "principalJourneyImplemented": false,
       "principalActions": [
-        "Profile/contact/address/coverage/privacy: unavailable",
-        "Own consent/withdrawal/final export/outstanding admin: unavailable"
+        "Name read/save/canonical reread/remount and canonical current-email read: implemented SOURCE/finite/SSR",
+        "Email verification, address, service/coverage/cancellation, privacy/consent/final export and unfinished administration: incomplete"
       ],
       "requiredNegativeAndReturningCases": [
         "Account administration must not require a clinical plan read",
@@ -1111,7 +1154,8 @@
       ],
       "existingProofIds": [
         "AUDIT",
-        "PROFILE"
+        "PROFILE",
+        "ROOT_ADMIN_5D07"
       ],
       "currentBrowserVerified": false,
       "currentBrowserReceipt": null,
@@ -1120,7 +1164,7 @@
       "genuineConnectedReceipt": null,
       "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
       "verificationDisposition": "unverified, not failed",
-      "exactRemainingGate": "Correct/admit bounded Account consumers/composer and actual own-client profile/contact plus required address/service/consent/export/admin producers and registrations; prove ordinary read/save/reload/owner-negative first, then remaining C08 flows.",
+      "exactRemainingGate": "Run ordinary real Account read/name-save/reload/owner/session negative browser+SQL proof; then admit reviewed service/cancellation channel/lifecycle and final-export/unfinished-admin/privacy/address/contact-verification flows. No full-C08 acceptance yet.",
       "owner": "Kanuj / W6 and W0; Sami / frozen order facts",
       "completeSourceWiring": false,
       "title": "account",
@@ -1128,7 +1172,15 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "mountedRouteVariants": [
+        "/account"
+      ],
+      "unmountedRequiredRouteVariants": [
+        "/account/service"
+      ]
     },
     {
       "id": "C08C",
@@ -1191,7 +1243,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "C08R",
@@ -1296,7 +1350,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "A00",
@@ -1342,7 +1398,7 @@
         "A"
       ],
       "requiredReadProducersConnected": true,
-      "requiredReadProducersReason": "advisor_list → concierge_advisor_directory reads actual client directory; Open reaches actual limited AdvisorClientRecovery with draft/publication producers.",
+      "requiredReadProducersReason": "advisor_list \u2192 concierge_advisor_directory reads actual client directory; Open reaches actual limited AdvisorClientRecovery with draft/publication producers.",
       "requiredWriteProducersConnected": true,
       "requiredWriteProducersReason": "This frame searches and navigates; it requires no independent mutation. Creating/inviting a new client is not fabricated by directory view.",
       "principalJourneyImplemented": true,
@@ -1379,7 +1435,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "A01",
@@ -1461,7 +1519,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "A02",
@@ -1555,7 +1615,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "A03",
@@ -1645,7 +1707,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "A04",
@@ -1735,7 +1799,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "A04P",
@@ -1829,7 +1895,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "A05",
@@ -1920,7 +1988,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "A06",
@@ -2013,7 +2083,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "A07",
@@ -2069,7 +2141,7 @@
       "genuineConnectedReceipt": null,
       "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
       "verificationDisposition": "unverified, not failed",
-      "exactRemainingGate": "Admit actual A07 report entry/controller/producer composition after its required gates, then prove C05→A07→C04 no-change/immutable/private/public/return journey. Original Guidance private-return provider hold remains HELD; no rephrase/retry/reroute performed.",
+      "exactRemainingGate": "Admit actual A07 report entry/controller/producer composition after its required gates, then prove C05\u2192A07\u2192C04 no-change/immutable/private/public/return journey. Original Guidance private-return provider hold remains HELD; no rephrase/retry/reroute performed.",
       "owner": "Kanuj / W2 and W4; W0 composition",
       "completeSourceWiring": false,
       "title": "review a check-in",
@@ -2077,7 +2149,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "A08",
@@ -2180,7 +2254,9 @@
       "approvedViewport": {
         "width": 1440,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     },
     {
       "id": "D01",
@@ -2270,7 +2346,9 @@
       "approvedViewport": {
         "width": 1800,
         "height": 960
-      }
+      },
+      "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution."
     }
   ],
   "sourceChains": {
@@ -3266,6 +3344,21 @@
       "path": "docs/portal-rebuild/research/W7_PORTAL_CORE_JOURNEY_SOURCE_R1.md",
       "currentAcceptance": false,
       "scope": "Seven authored browser cases, zero genuine executions; CJ1-CJ3 open in prior audit. Pure46/47 is guard evidence, not browser progress."
+    },
+    "ROOT_ADMIN_5D07": {
+      "kind": "current admitted SOURCE/finite/SSR/type composition, NOT browser/genuine",
+      "revision": "5d07d95819f5363795b9c942eec78f145b37a265",
+      "review": "bfd572e73833e930a0af55384189fdcdab06a279",
+      "path": "docs/portal-rebuild/research/W7_REGISTERED_ADMIN_ROOT_COMPATIBILITY_SOURCE_R1.md",
+      "Parent": {
+        "types": "four configured graphs zero",
+        "preservation": 30,
+        "controllerCookie": 225,
+        "AppSSRFinite": 329
+      },
+      "independent": "same selections plus current physical authority30 and six real-suite mutation refusals",
+      "historical": "original consumers104/116 and original preservation14/30/originalSSR18/21 remain failed current runs; explicit historical controls separate",
+      "currentAcceptance": false
     }
   },
   "sourceManifest": [
@@ -4122,64 +4215,131 @@
     "doesNotAccept": "Whole C08, J06/J08/J09, actual sink delivery or all26 acceptance remain separate."
   },
   "executionScope": {
-    "kind": "SOURCE INVENTORY / DOCUMENTARY VALIDATION ONLY",
-    "productTestsExecuted": 0,
-    "ssrExecuted": 0,
-    "finiteHttpExecuted": 0,
+    "kind": "Parent current-head SOURCE mounting reconciliation with independently reproduced finite/SSR/type evidence",
+    "productAcceptance": false,
     "browserAcquired": false,
     "genuineResourcesAcquired": false,
-    "dependenciesInstalledOrReused": false,
-    "foreignArtifactsExecuted": false,
-    "sourceOrOriginalTestsEdited": false,
-    "canonicalStatusEdited": false,
-    "noApiExports": true,
-    "unrun": [
-      "all product unit/pure/HTTP/SSR/compile/types/build/full suite/Expo",
-      "DB/Auth/SQL/pgTAP/RLS/Storage/native",
-      "server/socket/browser/SMTP/provider/sink",
-      "download/readback",
-      "visual/a11y/human/release"
-    ],
-    "protectedTrackedPaths": 2259,
-    "terminalCustody": "No runtime/resource/dependency grant acquired; only own ignored source notes and two NEW owned documentation paths."
+    "RootFullNpm": "UNRUN in this local phase; opens loopback",
+    "PortalFullNpm": "UNRUN in this local phase; launches browser",
+    "oldScopePreserved": "originalInventoryProvenance.executionScope"
   },
-  "sourceManifestScope": "Complete identities for all references used in this inventory, including actual fixed RPC SQL and preserved original reports. This is not a newly compiled complete dependency closure or proof of historical-runtime equivalence.",
-  "terminalSourceEquivalence": {
-    "observedAt": "2026-11-02T20:49:35.848Z",
-    "pinnedRootHead": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
-    "observedRootHead": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
-    "relevantRootSourcePaths": 77,
-    "relevantSourceEquivalent": true,
-    "headDelta": "",
-    "pendingRootWorkingPaths": [
-      " M apps/portal/src/features/advisor/guidance/controller.ts",
-      " M apps/portal/tests/rebuild-advisor-guidance-g8-helper.mjs",
-      " M apps/portal/tests/rebuild-photo-head-source.test.mjs",
-      " M apps/portal/tests/rebuild-plan-guidance-browser.mjs",
-      " M tests/fixtures/portal-shared-ci-baselines.json",
-      " M tests/helpers/portal-shared-ci-baselines.ts",
-      "?? docs/handoffs/2026-11-02-portal-rebuild.md",
-      "?? docs/portal-rebuild/source/CORRECTIVE_EXECUTION_STEER_20261102.txt",
-      "?? tests/portal-guidance-historical-closure.test.ts"
-    ],
-    "scope": "Selected actual runtime source citations and their SQL/codec/transport identities match pinned89bf, both immutable latest HEAD and physical source. This is source-fact equivalence only; historical genuine proof is NOT carried forward. Pending CI7 unmounted Guidance controller/helper/fixtures remain separately attributed."
-  },
+  "sourceManifestScope": "Historical original99 reference identities remain immutable references; currentRoot94 composition is independently manifested and reviewed under currentHeadReconciliation. No old source hash is relabeled current.",
   "documentaryValidation": {
-    "validatorCommand": "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node .local-artifacts/w7-current-screen-inventory/validate-inventory.cjs",
-    "cwd": "/Users/kanuj/.t3/worktrees/shelv/t3-2d685b4d",
-    "lastExit": 0,
+    "operator": "Parent builtin JSON/count/evidence-path reconciliation",
     "exactApprovedFrames": 26,
-    "protectedTrackedFilesExact": 2259,
-    "protectedIndexExact": true,
-    "sourceManifestPins": 99,
-    "lineReferencesChecked": 257,
-    "immutableLinksChecked": 198,
-    "productTestsExecuted": 0,
-    "setupFailure": {
-      "exit": 1,
-      "meaning": "Own documentary validator initially used a one-digit-ID regex that excluded approved suffix IDs; corrected to exact two-digit-ID parsing with unchanged manifest/count requirements. Inventory facts were unchanged."
+    "updatedFrames3": true,
+    "mounted24": true,
+    "controller24": true,
+    "sourceComplete12": true,
+    "browser0Unknown26": true,
+    "genuine0Unknown26": true,
+    "noProductAcceptanceInferred": true,
+    "fullOldManifestRetainedAsHistorical": true
+  },
+  "originalInventoryProvenance": {
+    "taskId": "node:delegated-task:command%3Amcp%3Aafb222dc-28b4-420b-9474-b05bc6eeba89%3Adelegate-task%3Acorrective-20261102-current-screen-inventory",
+    "ownCheckout": "/Users/kanuj/.t3/worktrees/shelv/t3-2d685b4d",
+    "ownCleanBase": "e18c375fbe70318a2d3465adcb80d8e063568e47",
+    "ownBaseIsRootEquivalent": false,
+    "ownInputOnlyAncestors": [
+      "835ac1c0",
+      "e18c375f"
+    ],
+    "runtime": {
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "xhigh",
+      "serviceTier": "default",
+      "verified": "Self and Parent t3_thread_configure READ with modelSelection omitted; no setting mutated.",
+      "node": "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "nodeVersion": "v22.23.0"
     },
-    "validationReceipt": ".local-artifacts/w7-current-screen-inventory/validation-result.json",
-    "rawSetupReceipt": ".local-artifacts/w7-current-screen-inventory/validation-attempt-1.json"
+    "executionScope": {
+      "kind": "SOURCE INVENTORY / DOCUMENTARY VALIDATION ONLY",
+      "productTestsExecuted": 0,
+      "ssrExecuted": 0,
+      "finiteHttpExecuted": 0,
+      "browserAcquired": false,
+      "genuineResourcesAcquired": false,
+      "dependenciesInstalledOrReused": false,
+      "foreignArtifactsExecuted": false,
+      "sourceOrOriginalTestsEdited": false,
+      "canonicalStatusEdited": false,
+      "noApiExports": true,
+      "unrun": [
+        "all product unit/pure/HTTP/SSR/compile/types/build/full suite/Expo",
+        "DB/Auth/SQL/pgTAP/RLS/Storage/native",
+        "server/socket/browser/SMTP/provider/sink",
+        "download/readback",
+        "visual/a11y/human/release"
+      ],
+      "protectedTrackedPaths": 2259,
+      "terminalCustody": "No runtime/resource/dependency grant acquired; only own ignored source notes and two NEW owned documentation paths."
+    },
+    "terminalSourceEquivalence": {
+      "observedAt": "2026-11-02T20:49:35.848Z",
+      "pinnedRootHead": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "observedRootHead": "89bf7bfbeadd7d6fa31ebd76d7930715daec4462",
+      "relevantRootSourcePaths": 77,
+      "relevantSourceEquivalent": true,
+      "headDelta": "",
+      "pendingRootWorkingPaths": [
+        " M apps/portal/src/features/advisor/guidance/controller.ts",
+        " M apps/portal/tests/rebuild-advisor-guidance-g8-helper.mjs",
+        " M apps/portal/tests/rebuild-photo-head-source.test.mjs",
+        " M apps/portal/tests/rebuild-plan-guidance-browser.mjs",
+        " M tests/fixtures/portal-shared-ci-baselines.json",
+        " M tests/helpers/portal-shared-ci-baselines.ts",
+        "?? docs/handoffs/2026-11-02-portal-rebuild.md",
+        "?? docs/portal-rebuild/source/CORRECTIVE_EXECUTION_STEER_20261102.txt",
+        "?? tests/portal-guidance-historical-closure.test.ts"
+      ],
+      "scope": "Selected actual runtime source citations and their SQL/codec/transport identities match pinned89bf, both immutable latest HEAD and physical source. This is source-fact equivalence only; historical genuine proof is NOT carried forward. Pending CI7 unmounted Guidance controller/helper/fixtures remain separately attributed."
+    },
+    "documentaryValidation": {
+      "validatorCommand": "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node .local-artifacts/w7-current-screen-inventory/validate-inventory.cjs",
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/t3-2d685b4d",
+      "lastExit": 0,
+      "exactApprovedFrames": 26,
+      "protectedTrackedFilesExact": 2259,
+      "protectedIndexExact": true,
+      "sourceManifestPins": 99,
+      "lineReferencesChecked": 257,
+      "immutableLinksChecked": 198,
+      "productTestsExecuted": 0,
+      "setupFailure": {
+        "exit": 1,
+        "meaning": "Own documentary validator initially used a one-digit-ID regex that excluded approved suffix IDs; corrected to exact two-digit-ID parsing with unchanged manifest/count requirements. Inventory facts were unchanged."
+      },
+      "validationReceipt": ".local-artifacts/w7-current-screen-inventory/validation-result.json",
+      "rawSetupReceipt": ".local-artifacts/w7-current-screen-inventory/validation-attempt-1.json"
+    },
+    "gitReference": "1a6a42b595086c6bc8f32553abda1dc321e3641e:docs/portal-rebuild/acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+    "sha256": "141162c41fd6177983243a523fd3a596e902dd8f794b498b16f53e4cd2524fa8"
+  },
+  "coordinatorThreadId": "9b085ada-435f-48d6-8886-957c1ce3e82d",
+  "currentHeadReconciliation": {
+    "operator": "Kanuj / Parent coordinator",
+    "head": "5d07d95819f5363795b9c942eec78f145b37a265",
+    "updatedFrames": [
+      "C06",
+      "C06D",
+      "C08"
+    ],
+    "all26SourceClassification": true,
+    "mountedFrames": 24,
+    "controllerWiredFrames": 24,
+    "completeFrameSourceWiring": 12,
+    "browserVerified": 0,
+    "genuineConnectedVerified": 0,
+    "unknownFunctionalOutcome": 26,
+    "remainingUnmounted": [
+      "C08C",
+      "A07"
+    ],
+    "SourceManifest": ".local-artifacts/portal-rebuild/root-current-integration/admission94.json",
+    "original94ReviewManifestSha256": "5206bd6cac39000791f959c3949159c4756565edbbcb3e8c32fe586e9e0232d5",
+    "formattingOnlySuccessor": "one original clicked-intent test loses extra blank EOF, unchanged assertion passes",
+    "notes": "All other selected frame branches remain mounted as previously classified; full behavior/care/private-return/visual/native proof is not inferred. Existing sourceManifest identities are historical reference pins, not rewritten as current runtime equivalence."
   }
 }

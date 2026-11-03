@@ -1,3 +1,13 @@
+## Current admitted-head delta 2026-11-03T01:58:07.894680+00:00
+
+Root code `5d07d95819f5363795b9c942eec78f145b37a265` mounts C06 recorded Orders list, C06D recorded detail and C08 name/current-email Account before clinical loading. Source-mounted and actual-controller totals are **24/26**, complete frame-local SOURCE wiring **12/26**. C08C and A07 remain unmounted. Current complete browser and genuine-connected signoffs remain **0 verified /26**, with26 unknown/unverified; whole decisions remain **1/48 SOURCE (D06)** and complete current journeys **0/10 verified, none fully executed**. No new fully accepted feature is claimed. Full quote/payment/purchase/return/Start, contact verification, service/cancellation/privacy/final export and remaining subflows are still required.
+
+[Current 26-row inventory](acceptance/CURRENT_SCREEN_INVENTORY_20261102.json) carries exact three-row updates and preserves the previous immutable inventory provenance; [48/10 ledger](acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json) records the partial additions without upgrading whole acceptance. [Independent Root compatibility approval](research/W7_REGISTERED_ADMIN_ROOT_COMPATIBILITY_SOURCE_R1.md) covers the exact94 Source composition. Parent four configured graphs0, AST30, controller/cookie225 and selected actual App/SSR/finite329 pass; these are separate from SQL/Auth/browser/CI/release. Original consumer104/116, original preservation14/30 and originalSSR18/21 remain failed current-premise runs; explicit historical controls and registered current controls stay distinct.
+
+Earlier ledgers below are historical snapshots, not current unmounted claims for C06/C06D/C08.
+
+---
+
 ## Source-only navigation delta: 2026-11-02T21:26:08.361347+00:00
 
 Client shell bell92b8 has independente3d81 source/SSR/finite/strict PASS and is being imported as exact four postimages. It reaches the existing client inbox without a clinical read or invented unread count. No approved-frame/controller or current browser/genuine/journey numerator changes. Detailed89bf inventory remains the baseline below; new physical Root heavy validation and exact-head CI remain distinct.

@@ -135,7 +135,7 @@
       "kind": "decision",
       "id": "D02",
       "title": "Approved baseline, not a new design competition",
-      "normativeText": "Implement the consolidated 26-screen set, not the earlier A/B/C/D experiments. Most frames are 1440 × 960. D01's guide specimen is 1800 × 960 and requires a usable narrower-desktop adaptation. Preserve the approved hierarchy, spacing, typography, density, content and patterns. Do not choose an older frame because it is easier.",
+      "normativeText": "Implement the consolidated 26-screen set, not the earlier A/B/C/D experiments. Most frames are 1440 \u00d7 960. D01's guide specimen is 1800 \u00d7 960 and requires a usable narrower-desktop adaptation. Preserve the approved hierarchy, spacing, typography, density, content and patterns. Do not choose an older frame because it is easier.",
       "normativeLine": 17,
       "criterion": "Compare the implemented content, geometry, hierarchy, type and density of all 26 approved frames, including the 1800px guide and usable narrower desktop. Manifest identity alone is insufficient.",
       "normativeSource": {
@@ -800,12 +800,12 @@
       "wholeDecisionVerified": false,
       "classification": "partially_implemented",
       "implementedSourceParts": [
-        "Q own-client name/current contact source and retained address/service seams; Root Account unavailable."
+        "Root5d07 mounts actual own-client name read/CAS save/canonical reread/remount and canonical current-email read before clinical plan access. Email pending unknown; mutation/status unavailable."
       ],
       "missingParts": [
-        "Real profile/address/contact verification, goal/product report alert, frozen order isolation and service/privacy controls. APC2/composer findings and registration hold."
+        "Genuine profile/name/browser/owner/session proof; address and contact verification; goal/product advisor report; service/cancellation/privacy/consent/final export/unfinished administration. APC1-4/AEC1-2 close only at scoped SOURCE/finite/SSR/types."
       ],
-      "partialProof": "P384 SOURCE/finite, CI-B profile SQL; unadmitted contact read/UI SOURCE passes.",
+      "partialProof": "Root5d07 +complete profileR6/AccountR2/Root compatibilityR1; actual finite encrypted session-chain and all four configured types pass. SQL/browser/genuine/current48 acceptance not established.",
       "evidenceRefs": [
         "PROFILE",
         "CI_OLD"
@@ -829,7 +829,7 @@
       "responsibleDomain": "W6 Account; W0 composition",
       "missingGate": {
         "state": "OPEN_CURRENT_ACCEPTANCE",
-        "requirement": "Real profile/address/contact verification, goal/product report alert, frozen order isolation and service/privacy controls. APC2/composer findings and registration hold.",
+        "requirement": "Genuine profile/name/browser/owner/session proof; address and contact verification; goal/product advisor report; service/cancellation/privacy/consent/final export/unfinished administration. APC1-4/AEC1-2 close only at scoped SOURCE/finite/SSR/types.",
         "owner": [
           "Kanuj"
         ],
@@ -1691,7 +1691,8 @@
         "head": "01a87c08f6b2062dc6dc6360280d78f40cac72d2",
         "path": "docs/portal-rebuild/research/W7_FULL_PORTAL_ACCEPTANCE_CHECKPOINT_20261102.md",
         "line": 165
-      }
+      },
+      "currentSourceAddition": "Root5d07 has own recorded purchase/return history and exact detail only; no new quote, money, delivery, return dispatch or Start behavior is inferred."
     },
     {
       "kind": "decision",
@@ -1750,7 +1751,8 @@
         "head": "01a87c08f6b2062dc6dc6360280d78f40cac72d2",
         "path": "docs/portal-rebuild/research/W7_FULL_PORTAL_ACCEPTANCE_CHECKPOINT_20261102.md",
         "line": 166
-      }
+      },
+      "currentSourceAddition": "Root5d07 has own recorded purchase/return history and exact detail only; no new quote, money, delivery, return dispatch or Start behavior is inferred."
     },
     {
       "kind": "decision",
@@ -1808,7 +1810,8 @@
         "head": "01a87c08f6b2062dc6dc6360280d78f40cac72d2",
         "path": "docs/portal-rebuild/research/W7_FULL_PORTAL_ACCEPTANCE_CHECKPOINT_20261102.md",
         "line": 167
-      }
+      },
+      "currentSourceAddition": "Root5d07 has own recorded purchase/return history and exact detail only; no new quote, money, delivery, return dispatch or Start behavior is inferred."
     },
     {
       "kind": "decision",
@@ -1868,7 +1871,8 @@
         "head": "01a87c08f6b2062dc6dc6360280d78f40cac72d2",
         "path": "docs/portal-rebuild/research/W7_FULL_PORTAL_ACCEPTANCE_CHECKPOINT_20261102.md",
         "line": 168
-      }
+      },
+      "currentSourceAddition": "Root5d07 has own recorded purchase/return history and exact detail only; no new quote, money, delivery, return dispatch or Start behavior is inferred."
     },
     {
       "kind": "decision",
@@ -3199,7 +3203,8 @@
         "head": "01a87c08f6b2062dc6dc6360280d78f40cac72d2",
         "path": "docs/portal-rebuild/research/W7_FULL_PORTAL_ACCEPTANCE_CHECKPOINT_20261102.md",
         "line": 196
-      }
+      },
+      "currentSourceAddition": "Root5d07 mounts Account name/current-email and recorded Orders list/detail through registered normal own-client handlers; this closes those source mounts only. Full journey never executed/current complete pass remains false."
     },
     {
       "kind": "journey",
@@ -3343,7 +3348,8 @@
         "head": "01a87c08f6b2062dc6dc6360280d78f40cac72d2",
         "path": "docs/portal-rebuild/research/W7_FULL_PORTAL_ACCEPTANCE_CHECKPOINT_20261102.md",
         "line": 198
-      }
+      },
+      "currentSourceAddition": "Root5d07 mounts Account name/current-email and recorded Orders list/detail through registered normal own-client handlers; this closes those source mounts only. Full journey never executed/current complete pass remains false."
     },
     {
       "kind": "journey",
@@ -3458,7 +3464,7 @@
         "EXPORT7",
         "JS"
       ],
-      "changedOrMissingDependencies": "Root Account/cancel unavailable; ADPR1 stored-confirmation mismatch and ADPR2 full budget; AFEC1/AFEC2 consumer recovery/lifetime; channel/staging/legacyR1 lineage gaps. Current67 migration tree unchanged by68 does not admit unintegrated candidates.",
+      "changedOrMissingDependencies": "Root Account and Orders history now mounted; cancellation/service/departure/final export/unfinished administrative write flows remain incomplete. ADPR1/ADPR2 and AFEC1/AFEC2, exact SQL/Auth/window/browser/download gates stay open.",
       "missingGate": {
         "state": "BLOCKED_INCOMPLETE_AND_UNRUN",
         "requirement": "Correct and review exact producer/consumer, real own-client channel/mount and supported export basis; actual canonical departure,+30 boundaries, downloaded file readback/private exclusion and continuing order/refund access under fresh authority.",
@@ -3489,7 +3495,8 @@
         "head": "01a87c08f6b2062dc6dc6360280d78f40cac72d2",
         "path": "docs/portal-rebuild/research/W7_FULL_PORTAL_ACCEPTANCE_CHECKPOINT_20261102.md",
         "line": 200
-      }
+      },
+      "currentSourceAddition": "Root5d07 mounts Account name/current-email and recorded Orders list/detail through registered normal own-client handlers; this closes those source mounts only. Full journey never executed/current complete pass remains false."
     },
     {
       "kind": "journey",
@@ -5408,5 +5415,18 @@
     "foreignCheckoutWrites": false,
     "nestedAgents": false,
     "resourceCustodyOutstanding": false
+  },
+  "currentHeadReconciliation": {
+    "operator": "Kanuj / Parent",
+    "head": "5d07d95819f5363795b9c942eec78f145b37a265",
+    "at": "2026-11-03T01:58:07.894680+00:00",
+    "wholeDecisionCount": 1,
+    "verifiedKind": "D06 SOURCE icon rule, not browser/48",
+    "completeJourneyPasses": 0,
+    "fullyExecutedJourneys": 0,
+    "unrunCompleteJourneys": 10,
+    "noNewWholeAcceptance": true,
+    "sourceDelta": "Account name/current-contact and recorded Orders list/detail now mounted before clinical read. Service/cancel still future, all genuine/browser/financial/full-feature gates remain.",
+    "baselineLedger": "immutable1a6 original artifact retains all original186 pins/history. Current-head implementation notes below supersede stale unmounted descriptions only."
   }
 }

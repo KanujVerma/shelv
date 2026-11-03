@@ -1,3 +1,9 @@
+## Portal administrative source admission — 3 November 2026
+
+Root code `5d07d95819f5363795b9c942eec78f145b37a265` mounts Account name/current-email and recorded Orders list/detail before clinical loading through fixed own-client admin channels. Complete independent compatibility review `bfd572e7` approves the historical/current successors. Four configured type graphs, preservation30, controller225 and selected App/SSR/finite329 pass. Census:24/26 mounted/controllers,12 complete SOURCE frame wiring,0 current genuine/browser signoffs,1 SOURCE whole decision and0 complete current journeys. Source mounting is not full feature or release acceptance.
+
+Service/cancellation producer, UI and next channel layer remain separate; the coordinator's future Account-family changes are not in this Root commit. PR211 stays draft on210, no merge/forcepush/deploy/real-client or funds actions. Guidance/M65/photo holds and fresh genuine-resource gates remain. Canonical per-frame evidence and roster are in docs/portal-rebuild/.
+
 ## Reviewed history and inbox publication: 2026-11-02T21:56:10.091519+00:00
 
 Complete independent4531aae4 admits exact9aac five-path history recovery and cwd-bound test corrections at source/SSR/finite scope. Reviewed bell d4 is included. Parent current types/UI/build/Expo and1775 unit checks pass with18 existing native optin skips; no browser/genuine/full-journey acceptance follows. Original37c25 CI failures, OLD missing-recovery assertions and setup failures remain preserved. Profile APC4 current d718 passes67 and awaits NEW complete R6; Root Account/Orders remain unmounted pending shared transport/composition. Goal remains VERIFIED ACTIVE.
