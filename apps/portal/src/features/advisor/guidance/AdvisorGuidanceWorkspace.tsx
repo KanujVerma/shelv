@@ -30,10 +30,12 @@ import { ConversationComposer } from "./ConversationComposer.tsx";
 import { newReviewBody, newReplyBody, newInstructionBody } from "./drafts.ts";
 import "./guidance.css";
 
-function GuidanceRecovery({ controller, state }: {
+function GuidanceRecovery({ controller, state, reportRef }: {
   controller: AdvisorGuidanceController;
   state: AdvisorGuidanceState;
+  reportRef?: ReportRef;
 }) {
+  const readAllowed = reportRef ? controller.canReadHistory() : false;
   return <>
       {state.connection !== "ready" ? (
         <StatusNotice
@@ -100,6 +102,17 @@ function GuidanceRecovery({ controller, state }: {
           </div>
         </section>
       ) : null}
+    {reportRef ? <section className="advisor-guidance-fields" aria-label="selected check-in history controls">
+      <div className="advisor-guidance-actions">
+        <Button variant="secondary" disabled={!readAllowed} busy={state.busy.includes("history")}
+          onClick={() => void controller.refreshHistory()}>refresh care history</Button>
+        {!state.history.complete && state.history.nextCursor && !state.privateDenied ? (
+          <Button variant="secondary" disabled={!readAllowed} busy={state.busy.includes("history")}
+            onClick={() => void controller.loadMoreHistory()}>load more care history</Button>
+        ) : null}
+      </div>
+      {!readAllowed && state.connection === "ready" ? <p>private history needs current advisor editing access.</p> : null}
+    </section> : null}
   </>;
 }
 
@@ -667,27 +680,12 @@ export function AdvisorGuidanceWorkspace({
       <div className="advisor-view advisor-guidance" data-design-frame="500:846">
         <Button variant="ghost" onClick={navigation.onBack}>back to client</Button>
         <h1>{clientLabel ?? `client ${selection.clientId}`} · review a check-in</h1>
-        <GuidanceRecovery controller={controller} state={state} />
+        <GuidanceRecovery controller={controller} state={state} reportRef={reportRef} />
         <StatusNotice tone={state.privateDenied ? "denied" : "warning"} title={title}>
           {!matches ? "your existing work is preserved. return to its draft before preparing another review." : null}
           {!state.privateDenied && !state.history.complete ? "load the complete history before preparing a response." : null}
         </StatusNotice>
         {!state.privateDenied ? selectedReport : null}
-        {!state.history.complete ? (
-          <Button
-            variant="secondary"
-            busy={state.busy.includes("history")}
-            onClick={() => void controller.refreshHistory()}
-          >
-            refresh care history
-          </Button>
-        ) : null}
-        {!state.privateDenied && !state.history.complete && state.history.nextCursor ? (
-          <Button variant="secondary" busy={state.busy.includes("history")}
-            onClick={() => void controller.loadMoreHistory()}>
-            load more care history
-          </Button>
-        ) : null}
       </div>
     );
   }
@@ -729,7 +727,7 @@ export function AdvisorGuidanceWorkspace({
             : "advisor workspace"}
         </p>
       </header>
-      <GuidanceRecovery controller={controller} state={state} />
+      <GuidanceRecovery controller={controller} state={state} reportRef={reportRef} />
       <div className="advisor-guidance-columns">
         <main className="advisor-guidance-fields">
           {selectedReport}

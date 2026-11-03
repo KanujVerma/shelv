@@ -124,3 +124,19 @@ test('A07 incomplete selected history retains the actual connection recovery con
  assert.notEqual(h.c.getSnapshot().connection,'ready');const markup=html(h.c);assert.match(markup,/>check connection</);assert.doesNotMatch(markup,/SYNTHETIC original comfort/);
  h.clear('read_advisor_care_history_v1');await h.c.checkConnection();await h.c.refreshHistory();assert.match(html(h.c),/SYNTHETIC original comfort/);
 });
+
+test('A07 completed selected history keeps refresh and shows an appended correction without replacing the original',async t=>{
+ const h=await guidanceApp(t,createAdvisorGuidanceController);await h.c.open(selection);assert.equal(h.c.getSnapshot().history.complete,true);
+ assert.match(html(h.c),/>refresh care history</);
+ h.setHistory([{...clone(h.data.page),heads:{...h.data.page.heads,reportHead:2},entries:[...clone(h.data.page.entries),{kind:'report_amendment',original:clone(h.data.report),amendment:{id:ids.amend,event:ref,previousAmendmentHeadId:null,replacement:{kind:'goal_report',body:{...clone(h.data.report.body),notes:'SYNTHETIC newly submitted correction'}},occurredOn:{state:'unknown'},reason:'SYNTHETIC new correction reason',amendedBy:ids.client,recordedAt:'2026-10-03T12:00:00Z',attention:null}}]}]);
+ await h.c.refreshHistory();const markup=html(h.c);assert.match(markup,/SYNTHETIC original comfort/);assert.match(markup,/SYNTHETIC newly submitted correction/);assert.equal(h.c.getSnapshot().history.heads.reportHead,2);
+});
+test('A07 missing selected report can refresh even after the loaded history scan completed',async t=>{
+ const h=await guidanceApp(t,createAdvisorGuidanceController);await h.c.open(selection);const markup=html(h.c,{kind:'goal_report',id:ids.other});
+ assert.match(markup,/selected check-in unavailable/);assert.match(markup,/>refresh care history</);assert.doesNotMatch(markup,/SYNTHETIC original comfort|<textarea/);
+});
+test('A07 history-read affordance uses existing advisor read permission, separately from care-write access',async t=>{
+ const h=await guidanceApp(t,createAdvisorGuidanceController);h.data.view.clientAccess={care:'read_only',entitled:true,canRead:true,canWrite:false};await h.c.open(selection);
+ assert.equal(typeof h.c.canReadHistory,'function');assert.equal(h.c.canReadHistory(),true);assert.equal(h.c.canEditBody(),false);assert.match(html(h.c),/>refresh care history</);
+ await h.caps({edit:false,publish:false});await h.c.open(selection);assert.equal(h.c.canReadHistory(),false);assert.match(html(h.c),/<button[^>]*disabled[^>]*>refresh care history/);
+});
