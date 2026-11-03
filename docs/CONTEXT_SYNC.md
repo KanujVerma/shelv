@@ -1,3 +1,7 @@
+## Portal W0 ownership freeze, 3 November 2026
+
+Owner: Kanuj. W0 verifies transition9279914d and former coordinator release, freezes W0-W7 boundaries in [EIGHT_THREAD_RULES](portal-rebuild/EIGHT_THREAD_RULES.md), and preserves all47 recorded dirty worktrees plus nine missing/prunable records. Shared interface/migration hashes and runtime/Git evidence are in the linked preflight. W0 exclusively allocates migrations, authors shared runtime/UI/navigation and integrates reviewed PRs; no W1-W6 implementation rewrite. Exact baseline is the first published commit adding the rules. Full W0 continues after publication with Workers redirect:error P1 reproduction/correction and independent review. M01/M02 stay accepted bounded capabilities; complete screens0/26 and journeys0/10. No subagents, main merge, production action or fixture reuse.
+
 ## Eight-goal transition: 2026-11-03T18:38:48.407Z
 
 Owner: Kanuj. The old coordinator has stopped new child scheduling and relinquishes implementation ownership after this handoff commit. **2 accepted bounded capabilities (M01 Account Name, M02 recorded Orders);0/26 fully accepted screens;0/10 complete journeys.** Mounted24/26 and complete SOURCE wiring12/26 remain separate. All original decisions/addenda/full scope are unchanged. Read the [exact transition handoff](handoffs/2026-11-03-portal-eight-goal-transition.md). No new top-level goal is started here.

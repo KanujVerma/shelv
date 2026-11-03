@@ -1,3 +1,7 @@
+## Active ownership freeze, 3 November 2026
+
+Owner: Kanuj. [EIGHT_THREAD_RULES.md](EIGHT_THREAD_RULES.md) is the current exclusive W0-W7 registry and supersedes earlier allocation prose. W0 claims only shared platform/integration and migration allocation/order. W1-W7 may branch from the first published commit adding that file; no peer thread is launched by W0. No subagents. Former coordinator and children relinquished implementation ownership; original dirty worktrees and evidence remain preserved. Historical allocations below are not active claims.
+
 ## Eight-goal transition: 2026-11-03T18:38:48.407Z
 
 Owner: Kanuj. The old coordinator has stopped new child scheduling and relinquishes implementation ownership after this handoff commit. **2 accepted bounded capabilities (M01 Account Name, M02 recorded Orders);0/26 fully accepted screens;0/10 complete journeys.** Mounted24/26 and complete SOURCE wiring12/26 remain separate. All original decisions/addenda/full scope are unchanged. Read the [exact transition handoff](../handoffs/2026-11-03-portal-eight-goal-transition.md). No new top-level goal is started here.

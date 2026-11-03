@@ -1,0 +1,1044 @@
+{
+  "capturedAt": "2026-11-03T19:24:24.352432+00:00",
+  "owner": "Kanuj",
+  "transitionSha": "9279914d41ae0072b75a3c5cc9c3ef419e80c307",
+  "runtime": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "xhigh",
+    "serviceTier": "default",
+    "source": "T3 orchestrator_capabilities effective inherited settings"
+  },
+  "ownershipRelease": {
+    "oldCoordinator": "9b085ada-435f-48d6-8886-957c1ce3e82d",
+    "liveStatus": "cancelled",
+    "activeRunId": null,
+    "finalReceiptPosition": 11913,
+    "activeProjectThreads": [
+      "528a39e8-c2a2-401d-9bf6-1f5452a253c8"
+    ],
+    "oldChildCount": 145,
+    "oldChildrenInactiveInTransition": true
+  },
+  "gitBeforeBaseline": {
+    "remoteIntegration": "359c6bf0c759357df648ca441e9e3d1c3d29398c",
+    "remoteMain": "d39a7d4943209080df7c4cf97d85784f462758bf",
+    "pr211Base": "8ac0826f79b4299b0249c5e18003b6ce08593c60",
+    "ahead": 1,
+    "behind": 0
+  },
+  "recordedDirtyWorktrees": [
+    {
+      "worktree": "/Users/kanuj/.codex/.chatgpt-projects/g-p-6aa97a53d2048191a32fe501d4540756/derive-app-store-preflight",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.codex/.chatgpt-projects/g-p-6aa97a53d2048191a32fe501d4540756/derive-camera-result-composition",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.codex/.chatgpt-projects/g-p-6aa97a53d2048191a32fe501d4540756/derive-cx-stewardship",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.codex/.chatgpt-projects/g-p-6aa97a53d2048191a32fe501d4540756/derive-p0b-compose",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-020c289e",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-03465987",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-083ed963",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-17cd7cfc",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-23ab072f",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-25ed8d2d",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-2d02038a",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-32fe1180",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-39b38625",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-3c4106a8",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-4f6630cd",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-695ed988",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-89d3ccab",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-8b09324b",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-8fd3eeb3",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-963e154f",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-9a5ef6ea",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-9d43a79d",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-a42bff77",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-abf51ae6",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-ac61c7bf",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-aead4758",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-b65033b0",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-b7e20edf",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-b9a1fa81",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-bc61e77e",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-beff649f",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-c557e2f3",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-c7d9f412",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-d04da0cd",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-d5167cd2",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-de92158a",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-e5646e71",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-eb1a13a6",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-ec83d21a",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-f4434d36",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/.t3/worktrees/shelv/t3-fb3f5485",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/Documents/Codex/2026-10-03/task/part-four-423-candidate",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/Documents/projects/shelv",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/Documents/projects/shelv/.worktrees/account-settings",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/Documents/projects/shelv/.worktrees/check-page",
+      "issues": [],
+      "preserved": true
+    },
+    {
+      "worktree": "/Users/kanuj/Documents/projects/shelv/.worktrees/plan-copy",
+      "issues": [],
+      "preserved": true
+    }
+  ],
+  "originalRequirementsVerified": [
+    {
+      "file": "docs/portal-rebuild/source/APPROVED_INPUT.txt",
+      "bytes": 95388,
+      "sha256": "c45701f9f54fd2b1dbb09bbd7aa2b9b437e9059aa6032b6f39411fe2e7f6efbd"
+    },
+    {
+      "file": "docs/portal-rebuild/source/CONTINUATION_INPUT_20261102.txt",
+      "bytes": 100187,
+      "sha256": "b428b318598df52f12ce3e6ea4ebd350ff9333ee05d9fd8f04a8e845d0c722bc"
+    },
+    {
+      "file": "docs/portal-rebuild/source/CORRECTIVE_EXECUTION_STEER_20261102.txt",
+      "bytes": 5323,
+      "sha256": "71b1d405ead39abbfe3f0ada02fcbcc6a7e86199990df07ec621d1a116830d31"
+    },
+    {
+      "file": "docs/portal-rebuild/source/ACCEPTANCE_FIRST_EXECUTION_STEER_20261103.txt",
+      "bytes": 2604,
+      "sha256": "7d77c04d411a52a7594001ee8ddf042c3e1349e5f1f488851487f0c30f3f78eb"
+    },
+    {
+      "file": "docs/portal-rebuild/APPROVED_DECISIONS.md",
+      "bytes": 24755,
+      "sha256": "eefc74fcc1498cdbbe5ac21d4215cfb9c8936545a6dcc6437bf9e0dd98c21e60"
+    },
+    {
+      "file": "docs/portal-rebuild/DECISION_ADDENDA.md",
+      "bytes": 4264,
+      "sha256": "aaa150a5673d23c13ec9ad6a9fc6fc784668cdeb35c34785a1514051ed439e63"
+    },
+    {
+      "file": "docs/portal-rebuild/APPROVED_DESKTOP_SPEC.md",
+      "bytes": 36823,
+      "sha256": "4ceafbaca13ab9324ea35e5e3cb94d09ba76178c9c5127a93da87c5b9c7e59a0"
+    },
+    {
+      "file": "docs/portal-rebuild/IMPLEMENTATION_CONTRACTS.md",
+      "bytes": 21280,
+      "sha256": "accd8509abf63978e37a96cc55c0b8673419b8ab207cdfaf5a395f708aa8d5da"
+    },
+    {
+      "file": "docs/portal-rebuild/SCREEN_MANIFEST.json",
+      "bytes": 4300,
+      "sha256": "55a375ede66a3c9c13139d90246fbc096b6bd1a11cb8c2ce49d30ee8bb44519b"
+    }
+  ],
+  "interfaceFreeze": [
+    {
+      "path": "apps/portal/session-integration/runtime/server/protocol.ts",
+      "sha256": "8fd0d9e85615fbc9eeee13972c3b6bce0b9d850795ad2edfef0f05f162505bf3",
+      "gitBlob": "96c214a4506cbd8ceb3625a6fb2e90cd1c863438"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/types.ts",
+      "sha256": "ee8458d77329e1f93908a683fca855c56c16344dc6e22aab59c9a6db9f264783",
+      "gitBlob": "16a6dec4772a135903f37f552d93ce8d1c657685"
+    },
+    {
+      "path": "apps/portal/src/app/Application.tsx",
+      "sha256": "a30743af4f7a9119ddafb2c480d0390025011732a7f6c7f0af17f284c4aa1477",
+      "gitBlob": "4c759f14048bad75ef947def6bbe04e2f96d06a9"
+    },
+    {
+      "path": "apps/portal/src/app/ClientHistory.tsx",
+      "sha256": "dfa0a29f18c1fa19cba37b53d68a0edda82ad1bff5599f17934ce00ec7703ec5",
+      "gitBlob": "c785617a45de049b9d11819dd50e20adafdce582"
+    },
+    {
+      "path": "apps/portal/src/app/MayaApplication.tsx",
+      "sha256": "ef00d7a5269b5193c6ab3da242dea1efa69053494c25fe54a20146941159fb13",
+      "gitBlob": "b3755df1fabbd87277dbbbe30e28469f79c4416f"
+    },
+    {
+      "path": "apps/portal/src/app/OwnerPolicyApplication.tsx",
+      "sha256": "f93486ed0d480d3db9dc60a6787d9a1d974f581a589caae95a511eca0691e9fb",
+      "gitBlob": "6b69aeaa311d9b01e6b7a0218d21cc8c4cdfde07"
+    },
+    {
+      "path": "apps/portal/src/app/PublicationAudit.tsx",
+      "sha256": "2d1e81f245ee225e77d5afe652a5254e71c5fdda2e30889f385f8435fa0b63cd",
+      "gitBlob": "c7713260a2e9b86b4c95c0437df06c0009c36edb"
+    },
+    {
+      "path": "apps/portal/src/app/Shell.tsx",
+      "sha256": "6d1bc4cd66d36594c3990c1dd32d619735168eb8832c4ad0dc27549026d522b5",
+      "gitBlob": "6175f0e4ac0ada0f7c7236e8a5a081e751d25899"
+    },
+    {
+      "path": "apps/portal/src/app/account-contact-request.ts",
+      "sha256": "9d5f7ac7829bdc2f9a412575c6ad040abceb09963dc0cb952dae3bfd6db89a09",
+      "gitBlob": "ae942a0146a3cee68ab2a2678d6a6136c1b347bf"
+    },
+    {
+      "path": "apps/portal/src/app/account-entry.tsx",
+      "sha256": "16b962a5c8a433bcf318bf8d0e6821441aa2c424a333cb6c32f793469cfe3a98",
+      "gitBlob": "d3cf44ee4efa305c7bc5a2a46fcf67cc66ff9510"
+    },
+    {
+      "path": "apps/portal/src/app/account-profile-request.ts",
+      "sha256": "edc465dd576ff215c48df34a8407a0cc721e201abafcf91304a99626714c05fb",
+      "gitBlob": "ed7b5418e966b59a7cc0357c8eafe67ed414f087"
+    },
+    {
+      "path": "apps/portal/src/app/advisor-guidance-context.ts",
+      "sha256": "055b051f8f3d6fee0ad01c2dc9d6d526c796fc7ea0343789f8def3bb263aeaa5",
+      "gitBlob": "4270ba84b3001ef3ac8e0ecd97c18bbe7922186e"
+    },
+    {
+      "path": "apps/portal/src/app/advisor-policy-request.ts",
+      "sha256": "a5b5ceb7236047ce336e55d5b5d51df96e74264ffad2490a76f8504ce6733da2",
+      "gitBlob": "4a4bc624f194ebb33e3b05e2bcacc093368b0e05"
+    },
+    {
+      "path": "apps/portal/src/app/advisor-review-request.ts",
+      "sha256": "1eeaeed5e8caae6e3c0e292c600cd46745a594d84ffa53d259ad6a67c09a0963",
+      "gitBlob": "0129eb1f8263da8e03c08c0ed98c5e558eba7b39"
+    },
+    {
+      "path": "apps/portal/src/app/application.css",
+      "sha256": "2dd6d4ea8ba8463fef234ca3a2e6b2ea561147661b6d39ee19d4b573d635370f",
+      "gitBlob": "1ad708fc88117d7d9d7d7415f6172fc200ec7cd0"
+    },
+    {
+      "path": "apps/portal/src/app/bootstrap.ts",
+      "sha256": "198f56211fd06cf3f553bcf457ce1133a9bcc1274b19616dc1bbf0e1c9101a71",
+      "gitBlob": "086fd4e311699e29daf1558578874b1e1c3e314d"
+    },
+    {
+      "path": "apps/portal/src/app/care-ports.ts",
+      "sha256": "b71e23edb44bd18a766cc57129592d0e70ec10cde5db53d9e1afd936f123355b",
+      "gitBlob": "8b0687d2b12e2c6fa65c8b4cf67158d45ee58b35"
+    },
+    {
+      "path": "apps/portal/src/app/client-composition.ts",
+      "sha256": "9791f57787725ce7e0e4b6490670ec8955d86670115e7e4d6f8cbd4617bddb6c",
+      "gitBlob": "a04bf1b3dd38199a49e1458680468be2cfef7b04"
+    },
+    {
+      "path": "apps/portal/src/app/client-orders-entry.tsx",
+      "sha256": "a50bfa3d1213ed296b8b8c6c8b7d3e3ae2366b2bcbd1b5d55a16f8ef4a9213fa",
+      "gitBlob": "c08554484a37c23fc286a00768c14a57d3bb4546"
+    },
+    {
+      "path": "apps/portal/src/app/client-orders-read-request.ts",
+      "sha256": "9b2767fd2ead80027108323fa320d82d80583b4ba0ff40e7272fb673cdaad23b",
+      "gitBlob": "ebe1d30dbc057b753c4f73f000cbec017881dbbe"
+    },
+    {
+      "path": "apps/portal/src/app/client-state.ts",
+      "sha256": "e2bd339ec7ae42969f7eb61c89e5eb77a035194616c3cfb95fbc65367ac1e1fb",
+      "gitBlob": "e4cb15994736a7698c2bdcdee532b2dc26fe0968"
+    },
+    {
+      "path": "apps/portal/src/app/index.html",
+      "sha256": "fa5eb6c90dc47a2e6ff54c9c9e22b88ce835e92ba3275ea3000220698aa9caed",
+      "gitBlob": "40915a3f92a40bdbf83d0a36d5c6738af900b3f0"
+    },
+    {
+      "path": "apps/portal/src/app/notification-request.ts",
+      "sha256": "2118ec95a62a3f66dd80fd409862d60f9947c7f97b4ef00736c003e3976611b7",
+      "gitBlob": "adbc97fb5d9ea3f0699c16d61bb103eec8cc303d"
+    },
+    {
+      "path": "apps/portal/src/app/notifications-entry.tsx",
+      "sha256": "92a47b5a7e883a5225cf57b9657507604e0dc506ea4c0dbdc6634b9ce8886fa6",
+      "gitBlob": "3a110c91b2b75e66952e58e203e5bf27fd9904f9"
+    },
+    {
+      "path": "apps/portal/src/app/photo-inventory-request.ts",
+      "sha256": "e83f8ac6fdd68e6f1cfdc61e051a6412d1cf74e9551d53f1193565ea96723c7f",
+      "gitBlob": "7ffa68726c8dab6bc114ec4ad5ebf441e352ea4c"
+    },
+    {
+      "path": "apps/portal/src/app/ports.ts",
+      "sha256": "d6ce7729cfaf4d98a1a31fda9965c2d3f8e81717936817a6a9bf46bc1a942eeb",
+      "gitBlob": "5aeb6b9d486a4c0cb38201dd8b40cdb546d2595b"
+    },
+    {
+      "path": "apps/portal/src/app/preview-navigation.ts",
+      "sha256": "82552851eb197240c561c3f798c45594852d3e9d2b05899bcad8c2f31fcbe298",
+      "gitBlob": "d2056f698cf32e8385754927fcc470a7efbb80e8"
+    },
+    {
+      "path": "apps/portal/src/app/preview.ts",
+      "sha256": "1222fffb6752cc09e7bdb78e51b163b9514288cce6620b2f457808114265f689",
+      "gitBlob": "868edf7ea0dc23d2f80e115a83f4eeb2cac5e57f"
+    },
+    {
+      "path": "apps/portal/src/app/retained.ts",
+      "sha256": "146d949005acc395692eca804824c2a67fb0c9bfbe5b0be98d4018f8a265b5a1",
+      "gitBlob": "9267598f1acf848668196e20e373cb7403bed1a0"
+    },
+    {
+      "path": "apps/portal/src/app/review-request.ts",
+      "sha256": "66d84f88cc2b2040078dcc0026374d2715e48ff6b8a0d7e3923f72507762c6e0",
+      "gitBlob": "86e9e4dbcefd1cc9a6b4c22d1070fa5589c0791a"
+    },
+    {
+      "path": "apps/portal/src/app/session.ts",
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea",
+      "gitBlob": "7ee99d5d0d13d0d316b86b894ec525520616897e"
+    },
+    {
+      "path": "apps/portal/src/app/start.tsx",
+      "sha256": "8bb306e44bc26401ff187e3c6cbd9918324d128611902ddb47b3b1461ac9c213",
+      "gitBlob": "25a0d53d3ee984601d8852b961f74565acb7dee2"
+    },
+    {
+      "path": "apps/portal/src/navigation/history.ts",
+      "sha256": "8819dd47dd9b966f63e580fbc6a24d77dec98ab64cfd45f4d2c5adb3fd5e52df",
+      "gitBlob": "7a034c8bcaf4ac74e453423f46fc70fbe753e229"
+    },
+    {
+      "path": "apps/portal/src/navigation/react.tsx",
+      "sha256": "686317041523a29dd750ac5ba88387199b6239634ebae460e5c32617619db7fa",
+      "gitBlob": "75ddd6f2f9c82387affd21ddcd65605473fab663"
+    },
+    {
+      "path": "apps/portal/src/navigation/routes.ts",
+      "sha256": "8ada4a24e8250121f10a6254d4102d26810b0433c20f2efa76060f9cea7e954d",
+      "gitBlob": "7d94e5e313b85493e0061eeccda942960f49ba71"
+    },
+    {
+      "path": "docs/portal-rebuild/ADVISOR_READ_API_V1.md",
+      "sha256": "4f1d35529b993295b919ec7ebfb4f3970f0caa56fc35792fa712537cfde8742f",
+      "gitBlob": "c8de2881d2c295e2cb2eb11b4042977d95f24c1a"
+    },
+    {
+      "path": "docs/portal-rebuild/CARE_API_V1.md",
+      "sha256": "05c8370169e21aff43cefce272c390f99c505fd2a82709a057cca931443bc951",
+      "gitBlob": "b4eaa36dcb1508962805b45254ca9d8ecc177f22"
+    },
+    {
+      "path": "docs/portal-rebuild/PLAN_API_V1.md",
+      "sha256": "f47a6fefecad9bbec6e843b3cdf285371bfef3442d23818dde9b5b58150c28b7",
+      "gitBlob": "8ac2ce62e7d2bc02dd6420218f9cf7c2e4455bf9"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_REMAINING_API.md",
+      "sha256": "de98aead023f4f31666333c20957ad5b8e1dcb16693b6de22071bbf429d2a7a3",
+      "gitBlob": "b7e5001b48b0444862dbba5176ff431fe265e9b7"
+    },
+    {
+      "path": "src/contracts/PortalAccountContact.ts",
+      "sha256": "eaeb8b62d1d448c54376448fb2dce7277fbb7d8960c27b76bc9574813f726533",
+      "gitBlob": "54d1ad4506e07f518aea3b64a775867e28f8cb6e"
+    },
+    {
+      "path": "src/contracts/PortalAccountContactMapping.ts",
+      "sha256": "f4773928bf971a7300edf14b6b7efe0412e783df979c892a6430f5e74fd701ae",
+      "gitBlob": "f2047dadcf7092d19d9d06db4b144183647feb0f"
+    },
+    {
+      "path": "src/contracts/PortalAccountContactValidation.ts",
+      "sha256": "7cfcaf0b2c6554a86a82a24be0ec7929db481932cdb9e38f6f303dec8e210f34",
+      "gitBlob": "28701ca2a186ab46b765251a598fa871e3cd4ec9"
+    },
+    {
+      "path": "src/contracts/PortalAccountContactValues.ts",
+      "sha256": "44976d2e2ee4eb857e3169d2a657f54eeb26de7d1ca0ac24577245f890a6afe9",
+      "gitBlob": "ae57a98712daaf88f18b844939f3b1957c8e478f"
+    },
+    {
+      "path": "src/contracts/PortalAccountProfile.ts",
+      "sha256": "83ecdebe43b3e7e4f22f8e18aa2f87f333b49d8511bbf953ef5b341d4ec88529",
+      "gitBlob": "1238058f2a63b411cb62085ebe16a5d8252a029b"
+    },
+    {
+      "path": "src/contracts/PortalAccountProfileMapping.ts",
+      "sha256": "356b42a2ea8f08db390a2bbed2c088e0a1287aebb1bbb1a289ab58321b22de49",
+      "gitBlob": "053730e1e7180b0cad706cbf850073a177ee97d5"
+    },
+    {
+      "path": "src/contracts/PortalAccountProfileValidation.ts",
+      "sha256": "597de8113b9dbb9e0a6dbe947c7d8cd67c69ff587fe3ed3d245c21d0a3c64497",
+      "gitBlob": "592c137f0628c4ce203a55e0b1f7c0d45b7327fc"
+    },
+    {
+      "path": "src/contracts/PortalAccountProfileValues.ts",
+      "sha256": "26aca8407483a3f9ae9b3dedaa487864c1a69f717e8979eea65c655b373df6e3",
+      "gitBlob": "373762a9dbdd83063a850d2999897adc28c52019"
+    },
+    {
+      "path": "src/contracts/PortalCare.ts",
+      "sha256": "6c66bcad8909eb843c6cf0c9432721e124c42c157b59db0846a58dacd511c469",
+      "gitBlob": "220c137e0cdca2d771a4822868182e34ff1e92e8"
+    },
+    {
+      "path": "src/contracts/PortalCareMapping.ts",
+      "sha256": "675135cbb83611bbc8c63ed2c5a7e33b17a1f16cc1b48839358c1f45672d1439",
+      "gitBlob": "17eb9fd233cbec3acab40b05b83b2af79adc42a5"
+    },
+    {
+      "path": "src/contracts/PortalCareValidation.ts",
+      "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d",
+      "gitBlob": "232e7e716e05476a9d375c369472b1b2ef3d257f"
+    },
+    {
+      "path": "src/contracts/PortalCareValues.ts",
+      "sha256": "31c485f83a7ce142231dd90da43ad402215078419230248a103e3544a275a404",
+      "gitBlob": "03797ee256c03297e797019074f25d129e6ba4c1"
+    },
+    {
+      "path": "src/contracts/PortalClientOrders.ts",
+      "sha256": "2b5322b7e33e1379c04395c31bc1fb2598213ba44c32f40cbbdbb25e86e05fd5",
+      "gitBlob": "93160faeda48bfc8a32e99084d729e39ecc8ae85"
+    },
+    {
+      "path": "src/contracts/PortalClientOrdersMapping.ts",
+      "sha256": "2c1ffcf698fcd7ee54dd8d68527331d888d600298ed3c2c1c27bb3e45fcb4f13",
+      "gitBlob": "dd79efd86c5f71474d865ee8e872abb841640f57"
+    },
+    {
+      "path": "src/contracts/PortalClientOrdersValidation.ts",
+      "sha256": "192cf3d2cf95c5ff8ae82d0a74c88c57d39a5a5560daead80ae26e1c838cf29e",
+      "gitBlob": "f670e16f4435479c8b53f9133491f7baae4406c0"
+    },
+    {
+      "path": "src/contracts/PortalClientOrdersValues.ts",
+      "sha256": "a2c504934c81a59abc3ce945b54cd827cb218b73c466ca530f1419cfce06015d",
+      "gitBlob": "1cb31a5ffce601b3296581eb090a36054888e53d"
+    },
+    {
+      "path": "src/contracts/PortalFinalExport.ts",
+      "sha256": "86ceac2755c5554fe2ae132c0201579c33cd36ebcbdff8b15f216fd9d1049551",
+      "gitBlob": "20ae6dfbfd97698797f952ea74c2e563d2e0d1b4"
+    },
+    {
+      "path": "src/contracts/PortalFinalExportMapping.ts",
+      "sha256": "bcc9f8f0d77accda21b713e69ec7a068055246b3df342f9b4ef2454a694f232b",
+      "gitBlob": "76f54d63802f82c32ee32f4d7cfd126d38c5ccf0"
+    },
+    {
+      "path": "src/contracts/PortalFinalExportValidation.ts",
+      "sha256": "df1f3e100150a51224d4a16727b82cc4aad9021f6cb451a1241166418506327a",
+      "gitBlob": "f2c7198590e9ccbe9f88de672cff3bc916ad60f2"
+    },
+    {
+      "path": "src/contracts/PortalFinalExportValues.ts",
+      "sha256": "e0da7f27f8df40e991690c27f8d67fc80ad899cd478786a02f531fc12f546bac",
+      "gitBlob": "52c29437f4b9a051cc4e59de319ba13aa0d9b5f9"
+    },
+    {
+      "path": "src/contracts/PortalNotification.ts",
+      "sha256": "4b72ce525d87739514845326b8b77bee4eb641041083f43c946c63f4b8e0ec3f",
+      "gitBlob": "b205850326db4558acb7e6a0de23a8dab93f0a1b"
+    },
+    {
+      "path": "src/contracts/PortalNotificationMapping.ts",
+      "sha256": "36c0f8632a823a0ae4e639cb82a59dd2d069a53656e9589452db92aa0ce25dc5",
+      "gitBlob": "ac658e0ee3e2ffbf4ec1698b31373f4471baefbd"
+    },
+    {
+      "path": "src/contracts/PortalNotificationValidation.ts",
+      "sha256": "fed7b4ad0e8493ae223a39786283b01d0137e083cbad67338f1664aec0d6e27f",
+      "gitBlob": "d4b41ef32f60a0b5f3f4960ab2bf6545a05bbaf4"
+    },
+    {
+      "path": "src/contracts/PortalNotificationValues.ts",
+      "sha256": "5902a0989888fa7dad045cfc205ac85648b659f7189617c3db3db8479fb7eddf",
+      "gitBlob": "09bc3ee8dfd1fcb57684081a5c6af0aaaab40b88"
+    },
+    {
+      "path": "src/contracts/PortalRebuild.ts",
+      "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc",
+      "gitBlob": "b1d78b1366aec0117682a5389d9785c9362a5e5d"
+    },
+    {
+      "path": "src/contracts/PortalRebuildMapping.ts",
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d",
+      "gitBlob": "ac333d7864eea87a47cb3c581f9af8b770d02d3b"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc",
+      "gitBlob": "05882d2aaf175888c718d31cd3d19d9c883b14e4"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValues.ts",
+      "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9",
+      "gitBlob": "3b034ae42f05a1f21fe9aac9b5c54e9b44243dd1"
+    },
+    {
+      "path": "src/contracts/PortalReview.ts",
+      "sha256": "78e06f5af74ad3d17cd5d30e03fce0faca505cb7e5f0e32961dbdb942ff33b74",
+      "gitBlob": "028e6bf3bb293e68a60e472b3b6ee87f522ee3c3"
+    },
+    {
+      "path": "src/contracts/PortalReviewMapping.ts",
+      "sha256": "de2c64e152156656e7748c5f12c49dd115c6bc88411e488d29bde2e0d122a550",
+      "gitBlob": "917b81da881ae8e091c2414ff4864fa936367bbd"
+    },
+    {
+      "path": "src/contracts/PortalReviewValidation.ts",
+      "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23",
+      "gitBlob": "997afba2c0b1dd3daf129913d3c2b28d27ed5f71"
+    },
+    {
+      "path": "src/contracts/PortalReviewValues.ts",
+      "sha256": "cce2545be9626e1a1abf8fb4e6a0e783c53831af9740110db26f37a397457000",
+      "gitBlob": "c1e2191cfd0c0b015c31c6e1e4d8066d199d8dd9"
+    },
+    {
+      "path": "src/contracts/PortalSourceAccount.ts",
+      "sha256": "56e796ac7112d48c13d20aaa4cde90e1ab4e60f6f9b54e39bdfa480bd23d2863",
+      "gitBlob": "7c7c94be4e71a0c30dd784168f0daaf3b2a0549c"
+    },
+    {
+      "path": "src/contracts/PortalSourceAccountMapping.ts",
+      "sha256": "4ddf7ad02f6efcaea624d49e95b6d99ac83f06134c736c4c7038a8f773b78427",
+      "gitBlob": "a83e89939542fcf3320230658e5bfed348ddc203"
+    },
+    {
+      "path": "src/contracts/PortalSourceAccountValidation.ts",
+      "sha256": "7747c0d558f96371884eae7de319cbe3c2088726c7f8e04e7c28ca2d4d1d9f66",
+      "gitBlob": "cadef494ce15a9cd84c94a225b6a22d428946a9b"
+    },
+    {
+      "path": "src/contracts/PortalSourceAccountValues.ts",
+      "sha256": "0004bd22d76a5c68e8acad9eca7529bd9e5c6bfa38f209cda384b92cfa09eecf",
+      "gitBlob": "72920cb97ad0a23fad92876e7fe43517eb6319c2"
+    },
+    {
+      "path": "supabase/migrations/20260915_init.sql",
+      "sha256": "7d20fe0bdbaaeb7304e49ffc3d260f67f76870ad012c4b3f4aed83837d370c2a",
+      "gitBlob": "0817789aea4c8322df92859f923c4c60eb6beb63"
+    },
+    {
+      "path": "supabase/migrations/202609160001_s1_auth_rls_private_storage.sql",
+      "sha256": "919647c5c4b919dddbe94b04cd640629b0b869d3f0b7d33f331a3b7edbb3aec5",
+      "gitBlob": "d25ac18571572aa5a3fd36441fbc7f5db8a324ff"
+    },
+    {
+      "path": "supabase/migrations/20260918203554_onboarding_safety_status_and_action_pause.sql",
+      "sha256": "bb7e39281e810f6e9371f21cfe9bba8ff9c96356f9f57437e47aa92cfaf5c2d6",
+      "gitBlob": "4a26fc6b504648bf4a964dd72570261ceefb902e"
+    },
+    {
+      "path": "supabase/migrations/20260918213146_onboarding_intake_submission_and_idempotency.sql",
+      "sha256": "26fa23f7a37980202903d839e95757cfeb16c9c41a48ff776c20adc2f7b80a12",
+      "gitBlob": "2581d504c78a0b49d48aeccabf93cebf207fb311"
+    },
+    {
+      "path": "supabase/migrations/20260918230000_transactional_intake_and_replay_idempotency.sql",
+      "sha256": "3c794c0c14414f16761dfd605545dc6f3adec5be415de5141fb0c432003dd676",
+      "gitBlob": "8f4edf40c7a7fe2e9adc8a8cca2388c600576df9"
+    },
+    {
+      "path": "supabase/migrations/20260919010000_i1_b2_routine_intelligence_and_persistence.sql",
+      "sha256": "9773f5c9f163fd53834b1d40a5bb2a14432da88adf770ceee1a9800f595fab7d",
+      "gitBlob": "deabfc4a584042a11d6b59c91113dc24a8fd8902"
+    },
+    {
+      "path": "supabase/migrations/20260919011000_s2_core_domain_persistence.sql",
+      "sha256": "694490fe5861f497e6e041dc92bf6d1aefb7b1c761d7ad1ac5ba420c3e8d8f00",
+      "gitBlob": "88a9a49852596cef564b8b175a250172bd7e4e4b"
+    },
+    {
+      "path": "supabase/migrations/20260919020000_i1_b2_catalog_provenance_and_confirmation_preservation.sql",
+      "sha256": "9f8f835d93f087361e61635200fe28ad1814f6c0831ef0c4d848aa4f63e0c816",
+      "gitBlob": "f6d990efed6a92de19eba673c410301686068bc6"
+    },
+    {
+      "path": "supabase/migrations/20260919030000_i1_b2_restore_rpc_security_invoker_and_catalog_protection.sql",
+      "sha256": "552829756aadc204f417c6f8feb7cb6b0db91b275510b4820c83a7ec972e019a",
+      "gitBlob": "83289cf500237dfec36bcb33c5511aaec662c57d"
+    },
+    {
+      "path": "supabase/migrations/20260919040000_s3_intelligence_transactions.sql",
+      "sha256": "fdfbb6d7f4f9e23a46325ec0b6c20886b453dab217ecbbedf73ffc802122ab6b",
+      "gitBlob": "047e2b6b67c77268c2eeb28c352008127aa920cc"
+    },
+    {
+      "path": "supabase/migrations/20260919050000_s4_founder_operations.sql",
+      "sha256": "9857d8bdd7eb26bc7bcd5a4bde92f1e6b3b521096acc308ac317a213d5ebca5f",
+      "gitBlob": "505021532fd538a9f96f0aba9a736baff0f214e6"
+    },
+    {
+      "path": "supabase/migrations/20260919075053_i1_b4_membership_identity_reconciliation.sql",
+      "sha256": "67a8e320659cbf37e763dcc4fbb5bca0bd73b14e80231cdd19148ecb485811c9",
+      "gitBlob": "cdac8d32a825d615fb44fc7d2641614a154e07ec"
+    },
+    {
+      "path": "supabase/migrations/20260919081450_i1_b4b_checkin_context.sql",
+      "sha256": "c986a7aa7cac85af46722b6fffbfda5592aef9abc049fbb9c03b2263d8a2b0df",
+      "gitBlob": "21955e7c64436da135929dbdbd9b1d3444cb2633"
+    },
+    {
+      "path": "supabase/migrations/20260919100000_s5_membership_commerce.sql",
+      "sha256": "2d1ef08ffb56f785c0bb30e733550c0077dc1a3dfc690172242b3a2220f6aee5",
+      "gitBlob": "c973d79be9155bba0afe5fd6461511b2094eabad"
+    },
+    {
+      "path": "supabase/migrations/20260919222230_e1_membership_entitlements.sql",
+      "sha256": "fe064d8c3284011738dcb2564f5003eafdceaa812919e18b69ca2c6e2795f816",
+      "gitBlob": "4de306280327c2daf9651e4079e2a55d9daf26f0"
+    },
+    {
+      "path": "supabase/migrations/20260922170000_open_external_beta_access.sql",
+      "sha256": "895e854d074f8de38c00d3ece70849c8bce588c2f50cf6d207276096155e210c",
+      "gitBlob": "f980fa28092fd9cf649ddb85ba0eaf98f41beda1"
+    },
+    {
+      "path": "supabase/migrations/20260922220000_s6_product_identity_resolution.sql",
+      "sha256": "c0c50679fa848323c7e625ab0aa28e1e451fba3696be9a72ef3c122baef55818",
+      "gitBlob": "04ce4ac07eaefdc96fb9e01edd5efee251fbdbb3"
+    },
+    {
+      "path": "supabase/migrations/20260922225606_product_catalog_search.sql",
+      "sha256": "717d6f08d5c1c85fc312381db297129e3d8c787ecaa87e65a6596d85e400c1ab",
+      "gitBlob": "ca526ed4002fd7a6fe981fc994cfabb236e5478f"
+    },
+    {
+      "path": "supabase/migrations/20260922230123_product_catalog_ingest.sql",
+      "sha256": "73a722e3f5f9cfab5161f7c7546e99a0ee531e158a95cddc69c3a26e983504fe",
+      "gitBlob": "be24193903d8f4ab38ca38caa50ec052e6bb48cd"
+    },
+    {
+      "path": "supabase/migrations/20260923180000_s_free_1_identity_boundary.sql",
+      "sha256": "cba8aa5b126b4cb01aa32faeeb9eb8bece71a0e3740966584e23dcc4822aeda9",
+      "gitBlob": "2a563d4bd4ac490ec1448f4645592eabf713a690"
+    },
+    {
+      "path": "supabase/migrations/20260923235000_s_free_2_profile_fit.sql",
+      "sha256": "994cd8ad35a299f369739a04e88dc80f9ccff1f46490e0a2ead3ca2183a2c5a4",
+      "gitBlob": "0fa218077f07773b9e0af79598bdf91ea276104b"
+    },
+    {
+      "path": "supabase/migrations/20260924010000_s_free_3_context_history.sql",
+      "sha256": "97268f1bb12793cba05b46c4b050c0266515a7885f662784356478339e0bb140",
+      "gitBlob": "62c8936e930b914a47a391f3b014ada21a691315"
+    },
+    {
+      "path": "supabase/migrations/20260924020000_s_free_4_product_evidence.sql",
+      "sha256": "df91b8cab61d7c46c65bbc967aaf043d76ec6a23109d7a12453cb6ca0dbae283",
+      "gitBlob": "e5dd911779bdb06fb95325d32a3d1ab3a10a1803"
+    },
+    {
+      "path": "supabase/migrations/20260925140000_s_paid_1_manual_routine_draft.sql",
+      "sha256": "4a6e1edc10d0dd76db5a8006acd47a03ecb129c1cfb618c98cd387a59c7630d5",
+      "gitBlob": "25034ee49a60bebd9f0759d0c1e36a8962f53c09"
+    },
+    {
+      "path": "supabase/migrations/20260926233621_p0b_personal_context_revisions.sql",
+      "sha256": "7acaad4fc2f001d8c15f569dbd494747f17257f5a85f3fe456e5b9fcd1d0a243",
+      "gitBlob": "52d80b5afa7cf0d7c1f8ac1698675694b55d46ab"
+    },
+    {
+      "path": "supabase/migrations/20260927003158_p0b_assessment_context_revision_guard.sql",
+      "sha256": "67270f8c301578f40aa6aa298cfe09252f7172875160837de34e38f6c74c0844",
+      "gitBlob": "43e7799ac86402726af3da931736afd75261efc1"
+    },
+    {
+      "path": "supabase/migrations/20260927010000_p0a_product_truth_snapshots.sql",
+      "sha256": "01e08a2a5e256586c6fbb8f7aba5589040dfb96231cbb78adf0d262aa26dbd27",
+      "gitBlob": "72f9e778f2c88839d8a7cbe21f2156160a22f8b2"
+    },
+    {
+      "path": "supabase/migrations/20260927021000_p0b_assessment_packet_budget.sql",
+      "sha256": "e09502abbe113c4601394f40beb87a74b950a09ba7b0b23487527f8238c33a6e",
+      "gitBlob": "66f80a4830bc08e5d798439f55af8cc26e33961b"
+    },
+    {
+      "path": "supabase/migrations/20260928000000_p0c_account_deletion_upload_fence.sql",
+      "sha256": "0b825b66f2ec9764e089d1cd4797b9d9c00f978b7a8c5961b7914a56804d1a6f",
+      "gitBlob": "3c2ff6405f2af7f41b3068055ae7c9d93bd8d328"
+    },
+    {
+      "path": "supabase/migrations/20260928010000_catalog_contribution_runtime.sql",
+      "sha256": "ee0fe5a1ee17366019f2feb10c9ed135a630a5481fb177159c94bad8b37f05e0",
+      "gitBlob": "a7e0792fff529853e3ddba5f5b50ccdec0490aa4"
+    },
+    {
+      "path": "supabase/migrations/20260928020000_product_measurement_ingress.sql",
+      "sha256": "a82a4548cba3352b00a9b0bdc5446be5a3c82b972d5da2bb7911528a527d03d5",
+      "gitBlob": "e335cecd0be03e50d1a30d88a88bdca7d394ab0a"
+    },
+    {
+      "path": "supabase/migrations/20260929040000_managed_waitlist.sql",
+      "sha256": "560ad60f14d57b42bba3feb5e353802c1e3321b4c1ffc501b0e8e1a44b2f4963",
+      "gitBlob": "32c54b1bfcf5e34597e9055bdbde70c19d0c80b1"
+    },
+    {
+      "path": "supabase/migrations/20260929050000_external_candidate_lookup_budget.sql",
+      "sha256": "b587d97a6d6daf366911f4110c59cb93cefb97d48eb912773e95fccf30e8963e",
+      "gitBlob": "e0ae5273a23be9ddf287063cc749329c4d91960b"
+    },
+    {
+      "path": "supabase/migrations/20260929060000_indexed_product_identity_lookup.sql",
+      "sha256": "309ad09bfa19c2bbaaaa2a8df57cda5ed9606d4d9b79502c76a80e0fe55cf391",
+      "gitBlob": "4a7567a838327a05e705ceee7cd34405c847414b"
+    },
+    {
+      "path": "supabase/migrations/20260929070000_product_check_ingredient_continuation.sql",
+      "sha256": "a824ab4fa1817c4dc64fd5c5576a93c7f2e8725ff62b3da413bc264587b99087",
+      "gitBlob": "17c4b894550b55ce0e30a515de80d0839cce130d"
+    },
+    {
+      "path": "supabase/migrations/20260929090000_indexed_ingredient_candidates.sql",
+      "sha256": "6e14fa6ad805f66f1410656ee0314f465a97734267208ffe2f12d976c4c84144",
+      "gitBlob": "4bdac3ac006ee70ef6421760fb005bc52960fc44"
+    },
+    {
+      "path": "supabase/migrations/20261017120000_product_ingredient_panel_attempts.sql",
+      "sha256": "9d5ceb0ec2d7a7af50797b1b13bed085514ba727686c8e584d5f84cd16d79f80",
+      "gitBlob": "df46ad9398d24385b6af60aa0c8216a13bce8f13"
+    },
+    {
+      "path": "supabase/migrations/20261017190016_concierge_persistence_r1.sql",
+      "sha256": "0a681863f11747a047c7c820128c410db88d37512a3cbae9be195304725ba557",
+      "gitBlob": "ebf6bf668bafd0d0cac2db3d7d2292cd956f4379"
+    },
+    {
+      "path": "supabase/migrations/20261017193748_product_ingredient_accounting_guards.sql",
+      "sha256": "5e70ea14ec051cb480650deccccb44971a3dc8d8d5b6caa767f3c41ee927f0db",
+      "gitBlob": "c4096f12973b89037fc3d1bc9fa826e344131db4"
+    },
+    {
+      "path": "supabase/migrations/20261018234537_concierge_portal_workflows.sql",
+      "sha256": "aaf13096407d1568b0a2d858827e3e4a7511e60012e489c96914c15f1b73a325",
+      "gitBlob": "819a1efa7bc0e2d62e3917a920f0df3f2397e0f6"
+    },
+    {
+      "path": "supabase/migrations/20261019015338_concierge_presentation_r2.sql",
+      "sha256": "0316600b28b7fa7aec0eaa1c607b69ab72cfa980ebe8e29d90c2f00efa621390",
+      "gitBlob": "4db9f9984fd46d2283f60db3f7135532d3dd9e7b"
+    },
+    {
+      "path": "supabase/migrations/20261019171325_concierge_storage_probe_compat.sql",
+      "sha256": "63ddea7120caf5e970e357faee8fbc0958d6d3b4bbf15b09d98c157f07af8426",
+      "gitBlob": "4d8b72ee27dcf18ce2589a1f0ec51fc247ff24be"
+    },
+    {
+      "path": "supabase/migrations/20261020002348_concierge_advisor_preview_v2.sql",
+      "sha256": "41f121dec73fdfb38360036ac938566946e00f62917ac4e1607543cdfa93e090",
+      "gitBlob": "3e6f473c9ea96be7fe6322d1a1d26419f1fded11"
+    },
+    {
+      "path": "supabase/migrations/20261020161532_concierge_maya_contract.sql",
+      "sha256": "46ff63781b19322cfd3e091febacadfc0c45062772d031ae54eb7c9b5a623142",
+      "gitBlob": "21b4441123a6225dc837402c4bf5ddd82b3156a4"
+    },
+    {
+      "path": "supabase/migrations/20261020183719_concierge_client_session_context.sql",
+      "sha256": "6aaaa6df0e4fb70a089d3a94c5d5c64b3df9e7546688060c590b2b5f215e3ffd",
+      "gitBlob": "7594b66e42787cb43f3ec10f35d3aee0999a463a"
+    },
+    {
+      "path": "supabase/migrations/20261023002407_concierge_advisor_durable_session_context.sql",
+      "sha256": "e019b719464a9c789cea6e2e9ea3a1a1208bfe0bef1c702325db8fa01bd61ec5",
+      "gitBlob": "bda83ba760f9de68214fccfcb9d23079e7b69404"
+    },
+    {
+      "path": "supabase/migrations/20261024230528_concierge_founder_admission.sql",
+      "sha256": "4f45572f8e6f7d04e1bb1c4316fd950ef517e78a282b0584ec1f8d239fd97197",
+      "gitBlob": "1cc646540b73716fe38e7be785283c3bda10f4c3"
+    },
+    {
+      "path": "supabase/migrations/20261024230829_concierge_checkin_replies.sql",
+      "sha256": "539f882a4944a7a13959436e0775c22beb6d0ba4d0ce1cc5c7d83bb26d20f47b",
+      "gitBlob": "38f657b4156a7f4329c56dc6b835a850982ce548"
+    },
+    {
+      "path": "supabase/migrations/20261024234059_concierge_manual_payment_methods.sql",
+      "sha256": "6ebf8543d4102451cdfc9138020b8d3f1b34afe2b71fccf9fe09f340117fe574",
+      "gitBlob": "366f307f5fffae39eba894420e01eaf6166a7eb4"
+    },
+    {
+      "path": "supabase/migrations/20261025011331_concierge_no_current_products.sql",
+      "sha256": "2076cef0e5a647d62eaa9b95e512687dab24b5cf696c4028e387409f34916adf",
+      "gitBlob": "d8e634c97b0ef5437f619f83e098a72f46a6b596"
+    },
+    {
+      "path": "supabase/migrations/20261025221028_concierge_service_workflows.sql",
+      "sha256": "5ebb75645abb8e1002a5a3c7bbc64e53b4bfe7e325a2dd63819ebd6d82671eec",
+      "gitBlob": "bb6fbe9ddceb2c0f8a4f283c8766fe7b0474e131"
+    },
+    {
+      "path": "supabase/migrations/20261025221043_concierge_private_walkthroughs.sql",
+      "sha256": "035fd8fa49b3c9ca0314769d24c72e61b83a3d883189588df90966e2f7c2f394",
+      "gitBlob": "39a5a7fa2e328aedde284c45101bb77ac33e9f37"
+    },
+    {
+      "path": "supabase/migrations/20261026185922_concierge_client_account_display_name.sql",
+      "sha256": "ebfc7b5782bb95b0b9ad6c37044f53ce14e3f7973d2893809a3447f60dae5edd",
+      "gitBlob": "1fdcb36611e232e8502f15ea55ecac8deaff6689"
+    },
+    {
+      "path": "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+      "sha256": "497d85ef3bd81b7085d112be8c751bbeac8925ce5472ad94bdbc520174aa768c",
+      "gitBlob": "9f9351c969acc1d143269274f6e144ece4e61f12"
+    },
+    {
+      "path": "supabase/migrations/20261031003846_portal_rebuild_advisor_reads_v1.sql",
+      "sha256": "9953297d1243ba8c004b8972ff6205ea2536653817e177b26dc4b9407aed4335",
+      "gitBlob": "3d29a5a3d8861608e89e61c876385c61df6dddf4"
+    },
+    {
+      "path": "supabase/migrations/20261031043655_portal_rebuild_care_use_v1.sql",
+      "sha256": "d3a889ab03cba381cd8d2d65b8b567db74ac5f19e6000a0e913c78982fe901e1",
+      "gitBlob": "301a232657340e28958f99fc441426a208d1bdca"
+    },
+    {
+      "path": "supabase/migrations/20261031073004_portal_rebuild_care_history_filter_v1.sql",
+      "sha256": "26c9c403729343b1f3463002f26946fbdea81e73df2e13d7882bcf6cb2571caf",
+      "gitBlob": "948dcc93112af84c8a53ebe9d33e9e97fa02d43f"
+    },
+    {
+      "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+      "sha256": "b663f897d669edf33d6c7b0c4e18be8f775ed23c3b539e5bb51620606d912a1e",
+      "gitBlob": "109404e28e33cea775252d31006e39e2c3a7bf79"
+    },
+    {
+      "path": "supabase/migrations/20261031132531_portal_rebuild_plan_wire_budget_v1.sql",
+      "sha256": "5862ab39f5ca2fd58928ee9a6be7abd3c834c86a137fe7fa5e17c5fbaff8704e",
+      "gitBlob": "44a1f2e40b6fa85651dc8bc25da9d91ec2afe2c1"
+    },
+    {
+      "path": "supabase/migrations/20261031141212_portal_rebuild_reviews_guidance_fixes_v1.sql",
+      "sha256": "126361a70ffbb17c00d8f341e7294c5be430e70b6647ee626d008112d760c64f",
+      "gitBlob": "8b33057091bd32003428e01dfc3a89d2673c8983"
+    },
+    {
+      "path": "supabase/migrations/20261031161130_portal_rebuild_guidance_schedule_identity_v1.sql",
+      "sha256": "655bbdf7ee749da29352af01df75cd45092c2b2c708b7e32ea54768e67a3bc5f",
+      "gitBlob": "7a1fe7e300695920c0d0a7d057ac8ec520749448"
+    },
+    {
+      "path": "supabase/migrations/20261031172109_portal_rebuild_source_locator_canonical_numbers_v1.sql",
+      "sha256": "bd3f54ea2f4bf82912428805b9da0e37f315f0131a9095d00dd1e2163c203861",
+      "gitBlob": "63ce0d23d588b1b3deb34b4334ff23d2fc633617"
+    },
+    {
+      "path": "supabase/migrations/20261101173223_portal_rebuild_final_export_v1.sql",
+      "sha256": "54ab1bd50bcb84ec82ea1f6f04e4d837d59269abfe04edf009fbd28084184c8f",
+      "gitBlob": "c702c0736240f3a772565e7f33dee40e33863c49"
+    },
+    {
+      "path": "supabase/migrations/20261101191527_portal_rebuild_notifications_v1.sql",
+      "sha256": "408b860074abb18a1c1452bd6d08af8009db7fb48e0d01476abd608932d2b684",
+      "gitBlob": "b25eadf338172f28550d796a613aa76032433748"
+    },
+    {
+      "path": "supabase/migrations/20261101195359_portal_rebuild_photo_head_v1.sql",
+      "sha256": "b1f1a2ac93bfca7206f968d02e32e0451034364961caed87c8c7f4663f402632",
+      "gitBlob": "d8779e1472f7a9e618345a94d4f3a5f458cdfb2c"
+    },
+    {
+      "path": "supabase/migrations/20261102014536_portal_rebuild_photo_inventory_v1.sql",
+      "sha256": "dce8ab602e10d94e9be9788b72eac10a166132bd5563a4d46329a12aa3f08dcc",
+      "gitBlob": "85f0bbfeb660247cb344a018ffebda852dcf08d7"
+    },
+    {
+      "path": "supabase/migrations/20261102110000_portal_rebuild_account_profile_v1.sql",
+      "sha256": "7dcde23039959d60dc1a964b50f22012991139e3d68d5889282ab4524c82b23b",
+      "gitBlob": "7f3777c7738174db25c579e3b67256587c16244a"
+    },
+    {
+      "path": "supabase/migrations/20261102130000_portal_rebuild_client_orders_read_v1.sql",
+      "sha256": "69677b5681f49757b7112f2bf06046a7587b8e4296bca84d07388c95ae2fc1c4",
+      "gitBlob": "19c6a6cf447dbfcca610d0645f0cc923e7c6ed0a"
+    }
+  ],
+  "scope": "Read-only recorded dirty paths, heads and status. No resource queries, index mutation, reset, prune, delete or adoption. Unknown/sensitive files without prior safe digest were not read.",
+  "preliminaryComparison": {
+    "statusCommand": "git status --porcelain=v1 -z (default untracked directory grouping)",
+    "mismatches": [
+      "/Users/kanuj/.codex/.chatgpt-projects/g-p-6aa97a53d2048191a32fe501d4540756/derive-app-store-preflight",
+      "/Users/kanuj/.codex/.chatgpt-projects/g-p-6aa97a53d2048191a32fe501d4540756/derive-cx-stewardship",
+      "/Users/kanuj/.codex/.chatgpt-projects/g-p-6aa97a53d2048191a32fe501d4540756/derive-p0b-compose",
+      "/Users/kanuj/Documents/Codex/2026-10-03/task/part-four-423-candidate",
+      "/Users/kanuj/Documents/projects/shelv"
+    ],
+    "disposition": "Command-shape mismatch; exact recorded --untracked-files=all comparison below supersedes only this status comparison."
+  },
+  "statusCommand": "git status --porcelain=v1 -z --untracked-files=all"
+}

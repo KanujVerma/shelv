@@ -1,3 +1,13 @@
+## W0 ownership freeze, 3 November 2026
+
+Owner: Kanuj. [Eight-thread rules](EIGHT_THREAD_RULES.md) now define W0-W7 exclusive ownership and frozen interfaces. W0 owns migration allocation/order and Root integration; W1 authors shared DTOs and only explicitly allocated migrations. Former coordinator final receipt relinquishes ownership; live T3 status is cancelled/no active run and only W0 is active at preflight. Runtime is verified codex/gpt-6.1-sol/xhigh/default; Node22.23.0. No subagents.
+
+Transition9279914d is locally verified over359c; actual remote integration359c, main d39a and PR211 base8ac0 were verified before publication. [Preflight](transition/20261103/W0_BASELINE_PREFLIGHT.json) confirms all47 original dirty worktree heads/status paths/safely recorded file hashes and original requirement hashes preserved; nine missing/prunable records untouched. The initial default-untracked status comparison was mismatched in five worktrees; exact original --untracked-files=all comparison passes47/47. This freeze commit has no implementation changes and is not claimed hosted-green or independently reviewed. The exact baseline SHA is the first commit adding EIGHT_THREAD_RULES.md; W0 publishes it by normal push.
+
+Counts remain2 accepted bounded capabilities (M01/M02),24/26 mounted,12/26 complete SOURCE wiring,0/26 full-frame browser/accepted screens,1/48 whole SOURCE decision(D06),0/10 complete accepted journeys. PR211 Workers redirect:error P1 remains open; W0 next reproduces/corrects it with retained no-follow and credential protections and new independent review. W7/hosted review, future feature deliveries, genuine/full visual acceptance and release remain separate. All prior findings/holds/resources/evidence remain preserved; no main merge/deployment or stopped-fixture use.
+
+Earlier snapshots below retain their historical scope.
+
 ## Eight-goal transition: 2026-11-03T18:38:48.407Z
 
 Owner: Kanuj. The old coordinator has stopped new child scheduling and relinquishes implementation ownership after this handoff commit. **2 accepted bounded capabilities (M01 Account Name, M02 recorded Orders);0/26 fully accepted screens;0/10 complete journeys.** Mounted24/26 and complete SOURCE wiring12/26 remain separate. All original decisions/addenda/full scope are unchanged. Read the [exact transition handoff](../handoffs/2026-11-03-portal-eight-goal-transition.md). No new top-level goal is started here.
