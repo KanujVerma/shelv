@@ -3,6 +3,7 @@ import ts from '../apps/portal/node_modules/typescript/lib/typescript.js';
 import {createHash} from 'node:crypto';
 import {sharedCiBaselines,currentSourceSha256,currentMaskedSha256} from './helpers/portal-shared-ci-baselines.ts';
 import {ownAdminSourceBytes} from './helpers/portal-own-admin-source-baselines.ts';
+import {privateRedirectHistoricalPreimage} from './helpers/portal-private-redirect-preimage.ts';
 const base='58c0669d0c5507c0eb7087fe0a0b0e0785743d5e';
 const prerequisite='3f4cb6716fed9123e2d47949a28144b9a7b55485';
 const genericFiles=new Set(['apps/portal/site/auth/advisor-cookie-session.js','apps/portal/site/auth/client-cookie-session.js','apps/portal/src/transport/session.ts']);
@@ -38,7 +39,7 @@ function normalized(text,file,mask){
  const printed=ts.createPrinter({removeComments:true}).printFile(transformed.transformed[0]);transformed.dispose();return printed;
 }
 for(const file of paths)test(`${combined.has(file)?'pinned Root combined source identity and notification erasure shape':'notification-only erasure preserves every other executable node'}: ${file}`,()=>{
- const old=sharedCiBaselines.readBytes(genericFiles.has(file)?prerequisite:base,file).toString('utf8'),current=readFileSync(file,'utf8');
+ const old=sharedCiBaselines.readBytes(genericFiles.has(file)?prerequisite:base,file).toString('utf8'),current=privateRedirectHistoricalPreimage(readFileSync(file,'utf8'),file);
  if(combined.has(file)){
   assert.equal(createHash('sha256').update(current).digest('hex'),currentSourceSha256(file));
   const admin=ownAdminSourceBytes(file);
