@@ -1,0 +1,78 @@
+{
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "head": "706b323d6b0969a090fd70cae1c9919ea15cc3be",
+  "verdict": "PASS_SCOPED_SOURCE_AND_INTERCEPTED_WORKERD",
+  "sourcePins": [
+    {
+      "path": "apps/portal/session-integration/runtime/server/client-upstream.ts",
+      "sha256": "8db855829807c5f3a0ded68cbd14fa5b80975e26ff9d21eb5b28991bbb11569e",
+      "gitBlob": "a0b8e1402672b344adfbb259aab22e180bd7c412"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/upstream.ts",
+      "sha256": "4fdadd299c719a29ac52520dacf6b7fb225d3cdc1786abd49d0086f272c51282",
+      "gitBlob": "e72d0eb55612485aad67af066257ff0e2f3b5d7b"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/tests/private-redirects.test.ts",
+      "sha256": "75c3826fe1089bdc170fcc2155d507f25d4ead519b8362a7698912cd64b6084b",
+      "gitBlob": "6bda491511baa27cb7cfc04fd4b3dddc846f53c8"
+    }
+  ],
+  "authorEvidencePinErrors": [],
+  "independent": [
+    {
+      "label": "old",
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/p1/old/apps/portal/session-integration/runtime",
+      "argv": [
+        "--test",
+        "--test-concurrency=1",
+        "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/p1/old/apps/portal/session-integration/runtime/.test-build/private-redirects.test.mjs"
+      ],
+      "node": "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "seconds": 2.682,
+      "joined": true
+    },
+    {
+      "label": "current",
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/p1/current/apps/portal/session-integration/runtime",
+      "argv": [
+        "--test",
+        "--test-concurrency=1",
+        "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/p1/current/apps/portal/session-integration/runtime/.test-build/private-redirects.test.mjs"
+      ],
+      "node": "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "seconds": 0.955,
+      "joined": true
+    }
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/p1/old.log",
+      "sha256": "a13318c239ec0573fc9b5f2a3e475f1989d2b1630c404f6c10e630c6b2169e2d"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/p1/current.log",
+      "sha256": "b5c9a414250b6810372c6eeb6007ad53dabd068db21adf3fe25f846f4ee1858c"
+    }
+  ],
+  "originalFailures": "Author setup1/33, meaningful OLD1/33 retained; own exact expanded OLD1/39 retained. Original counts never rewritten.",
+  "setupQualifications": [
+    "Own runner missing esbuild import before tests, corrected absolute installed package import",
+    "Own initial projected closure omitted3site/auth files; compilation refused, corrected exact Git source closure"
+  ],
+  "notAccepted": [
+    "wholeCI",
+    "genuineAuthSQLStorage",
+    "wholefeature",
+    "screen",
+    "journey",
+    "release"
+  ]
+}
