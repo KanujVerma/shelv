@@ -1,3 +1,7 @@
+## New plan SQL content-validation finding at published8893
+
+Owner: Kanuj. Umbrella PR211 native review is completed on8893 with a new unresolved P2, discussion4460794439: unparenthesized JSON product-array extractions may bypass the direct-RPC dangling-reference validation loop. Existing original migration bytes remain unchanged. W1 is tracing the exact current helper/predecessor and preparing a narrow forward-source/direct-RPC negative-test proposal; no migration allocation/execution or new genuine packet is inferred. Published8893 has all3 CI successful but its native review is not clean. This finding remains open during bounded development integration and will be independently reviewed; prior P1/S1/Q1 corrections do not close it.
+
 ## Current local W0 continuation, 3 November 2026
 
 Owner: Kanuj. [Exact current W0 receipt](portal-rebuild/eight-threads/W0.md) records local reviewed source merges222/221/223/224/225/215, source-only S1/Q1 closure, current Account/service entry and scoped-client-list adapters pending their new independent gates. Origin remains8893 until normal publication; no force push or main merge. Latest DTO controls85/85 and Account covering75/75 pass; four configured type graphs and isolated application build pass. This is not whole-current-head CI/browser/genuine acceptance.
