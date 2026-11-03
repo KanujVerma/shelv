@@ -26,3 +26,16 @@ test('sent acknowledgement remains unverified and never claims publication',asyn
  const f=await fixture(t),c=createClientPaymentsController(f.runtime,f.ports);t.after(()=>c.dispose());await c.load();await c.claim(c.getSnapshot(),quoteId,optionId,true);const html=await render(c);
  assert.match(html,/payment claim recorded/);assert.match(html,/awaiting receipt verification/);assert.doesNotMatch(html,/plan published|service is active/);
 });
+test('fresh rejected-claim read restores the eligible form and removes the old success notice',async t=>{
+ const f=await fixture(t),c=createClientPaymentsController(f.runtime,f.ports);t.after(()=>c.dispose());await c.load();await c.claim(c.getSnapshot(),quoteId,optionId,true);
+ const latest=structuredClone(c.getSnapshot().view);latest.revision=5;latest.claims=[{id:'44444444-4444-4444-8444-444444444444',quoteId,quoteVersion:1,paymentOptionId:optionId,serviceCents:10000,productCents:0,totalCents:10000,shippingAddressVersion:null,evidenceId:null,status:'rejected'}];
+ f.setView(latest);await c.load();const html=await render(c);
+ assert.equal(c.getSnapshot().outcome,'none');assert.match(html,/record payment sent/);assert.match(html,/payment claim needs review/);assert.doesNotMatch(html,/payment claim recorded|awaiting receipt verification/);
+});
+test('a replacement first-service quote remains actionable after acknowledged earlier claim',async t=>{
+ const f=await fixture(t),c=createClientPaymentsController(f.runtime,f.ports);t.after(()=>c.dispose());await c.load();await c.claim(c.getSnapshot(),quoteId,optionId,true);
+ const latest=structuredClone(c.getSnapshot().view);latest.revision=5;latest.quotes[0].status='superseded';const replacement=structuredClone(latest.quotes[0]);replacement.id='77777777-7777-4777-8777-777777777777';replacement.status='payable';replacement.paymentOptions[0].id='88888888-8888-4888-8888-888888888888';latest.quotes.push(replacement);
+ f.setView(latest);await c.load();const html=await render(c);assert.match(html,/record payment sent/);assert.doesNotMatch(html,/payment claim recorded|awaiting receipt verification/);
+ f.setReply(()=>Response.json({schemaVersion:2,paymentOptionId:replacement.paymentOptions[0].id,revision:6,operation:'submit_claim',quoteId:replacement.id,claimId:'99999999-9999-4999-8999-999999999999',status:'submitted_unverified',serviceUnlocked:false,serviceAccessStatus:null,productOrderStatus:null}));
+ await c.claim(c.getSnapshot(),replacement.id,replacement.paymentOptions[0].id,true);assert.equal(c.getSnapshot().outcome,'submitted_unverified');const writes=f.calls.filter(x=>x.command.action==='submit_claim');assert.equal(writes.length,2);assert.equal(writes[1].command.quoteId,replacement.id);assert.equal(writes[1].command.expectedRevision,5);
+});

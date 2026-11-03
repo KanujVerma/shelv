@@ -48,12 +48,18 @@ export function createClientPaymentsController(runtime:ClientPaymentsRuntime,por
     else if(cookie.status!=='ready'&&state.phase!=='unavailable')update({phase:'unavailable',view:null,receipt:null,error:503});
   }
   function own(id:number,abort:AbortController){return current()&&sequence===id&&active===abort&&!abort.signal.aborted;}
-  function remember(command:ClientPaymentClaim|null){
+  function remember(command:ClientPaymentClaim|null,expected?:ClientPaymentClaim){
     if(!current())return false;
-    if(command)boundary!.memory.set(memoryKey,command);else boundary!.memory.delete(memoryKey);
+    const stored=boundary!.memory.get<ClientPaymentClaim>(memoryKey),basis=command??expected;
+    const matches=!!stored&&!!basis&&JSON.stringify(stored)===JSON.stringify(basis);
+    if(!current())return false;
+    if(command){
+      if(stored&&!matches)return false;
+      boundary!.memory.set(memoryKey,command);
+    }else if(matches)boundary!.memory.delete(memoryKey);
     return current();
   }
-  function failure(error:unknown,write:boolean){
+  function failure(error:unknown,write:boolean,command?:ClientPaymentClaim){
     if(!current())return;
     const raw=error instanceof TransportError?error.status:503;
     const status=[400,401,403,404,409,413,415,429,503].includes(raw)?raw:503;
@@ -61,7 +67,7 @@ export function createClientPaymentsController(runtime:ClientPaymentsRuntime,por
     const uncertain=write&&status===503;
     // A received write rejection is definite. A denied read cannot resolve an
     // earlier dispatched uncertain write or discard its original command.
-    if(write&&!uncertain){if(!remember(null))return;}
+    if(write&&!uncertain){if(!remember(null,command))return;}
     update({phase:status===403?'denied':'unavailable',view:null,receipt:null,error:status,
       ...(write?{pending:uncertain?state.pending:null,outcome:uncertain?'uncertain':'rejected'}:{})});
   }
@@ -76,7 +82,7 @@ export function createClientPaymentsController(runtime:ClientPaymentsRuntime,por
       if(!own(id,abort)||!ready())return;
       const view=immutable(mapPaymentViewV2(raw));
       if(!own(id,abort)||!ready())return;
-      active=null;update({phase:'ready',view,error:null});reconcile();
+      active=null;update({phase:'ready',view,error:null,outcome:state.pending?'uncertain':'none'});reconcile();
     }catch(error){if(own(id,abort)){active=null;failure(error,false);}}
     finally{if(active===abort){active=null;if(current())reconcile();}}
   }
@@ -93,9 +99,9 @@ export function createClientPaymentsController(runtime:ClientPaymentsRuntime,por
       const call=buildPaymentCallV2(command,owner!),receipt=immutable(mapPaymentReceiptV2(raw,call));
       if(!('quoteId' in receipt)||receipt.operation!=='submit_claim')throw new TransportError(503,'write');
       if(!own(id,abort)||!ready()||state.pending!==command)return;
-      if(!remember(null)||!own(id,abort))return;
+      if(!remember(null,command)||!own(id,abort))return;
       active=null;update({phase:'ready',pending:null,receipt,outcome:'submitted_unverified',error:null});reconcile();
-    }catch(error){if(own(id,abort)){active=null;failure(error,true);}}
+    }catch(error){if(own(id,abort)){active=null;failure(error,true,command);}}
     finally{if(active===abort){active=null;if(current()){reconcile();if(state.phase==='submitting')update({phase:'unavailable',view:null,error:503,outcome:'uncertain'});}}}
   }
   const stop=runtime.subscribe(reconcile);cleanups.push(stop);

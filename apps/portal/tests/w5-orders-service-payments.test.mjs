@@ -78,3 +78,16 @@ test('a second mounted consumer cannot mint another claim while the original is 
  await f.runtime.restore();await b.load();await b.claim(b.getSnapshot(),quoteId,optionId,true);
  assert.equal(f.calls.filter(x=>x.command.action==='submit_claim').length,1);assert.deepEqual(b.getSnapshot().pending,a.getSnapshot().pending);
 });
+test('a late receipt for an older command cannot erase a newer uncertain claim during remount recovery',async t=>{
+ const f=await fixture(t),heldA=deferred(),heldC=deferred();let enterA,enterC,oldCalls=0;
+ const startedA=new Promise(r=>{enterA=r;}),startedC=new Promise(r=>{enterC=r;});
+ t.after(()=>{heldA.release();heldC.release();});
+ f.setReply(async command=>{oldCalls++;if(oldCalls===1){enterA();await heldA.promise;}return Response.json(receipt());});
+ const a=await controller(t,f);await a.load();const first=a.claim(a.getSnapshot(),quoteId,optionId,true);await startedA;
+ const b=await controller(t,f);await b.load();await b.retry(b.getSnapshot());assert.equal(b.getSnapshot().pending,null);
+ const latest=view();latest.revision=7;latest.quotes[0].status='superseded';const q=structuredClone(latest.quotes[0]);q.id='77777777-7777-4777-8777-777777777777';q.status='payable';q.paymentOptions[0].id='88888888-8888-4888-8888-888888888888';latest.quotes.push(q);f.setView(latest);await b.load();
+ f.setReply(async()=>{enterC();await heldC.promise;return Response.json({...receipt(),revision:8,quoteId:q.id,paymentOptionId:q.paymentOptions[0].id});});
+ const newer=b.claim(b.getSnapshot(),q.id,q.paymentOptions[0].id,true);await startedC;const originalNewer=b.getSnapshot().pending;
+ heldA.release();await first;const d=await controller(t,f);assert.deepEqual(d.getSnapshot().pending,originalNewer);
+ heldC.release();await newer;
+});
