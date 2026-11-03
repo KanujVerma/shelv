@@ -1,10 +1,16 @@
 import {buildPaymentCallV2,mapPaymentReceiptV2,mapPaymentViewV2} from '../../../../../supabase/functions/concierge-payments/methods.ts';
 import {TransportError} from '../../transport/session.ts';
 import {firstServiceQuotes,immutable} from './model.ts';
-import type {ClientPaymentClaim,ClientPaymentPorts,ClientPaymentSnapshot,ClientPaymentsController,ClientPaymentsRuntime} from './types.ts';
+import type {ClientPaymentClaim,ClientPaymentPorts,ClientPaymentReceipt,ClientPaymentView,ClientPaymentSnapshot,ClientPaymentsController,ClientPaymentsRuntime} from './types.ts';
 
 const memoryKey='w5:first-service-payment:uncertain';
 const initial=():ClientPaymentSnapshot=>Object.freeze({phase:'idle',view:null,pending:null,receipt:null,outcome:'none',error:null});
+/** A retry receipt describes its original write. A matching equal/newer read
+ * remains the source of current claim status; never rewrite either record. */
+function canonicalClaim(view:ClientPaymentView|null,receipt:ClientPaymentReceipt|null){
+  if(!view||!receipt||view.revision<receipt.revision)return undefined;
+  return view.claims.find(claim=>claim.id===receipt.claimId&&claim.quoteId===receipt.quoteId&&claim.paymentOptionId===receipt.paymentOptionId);
+}
 
 /** A controller belongs to one actual ApplicationSession boundary. Construction
  * is inert. Disposal cancels its work; uncertain intent stays in session memory
@@ -100,7 +106,9 @@ export function createClientPaymentsController(runtime:ClientPaymentsRuntime,por
       if(!('quoteId' in receipt)||receipt.operation!=='submit_claim')throw new TransportError(503,'write');
       if(!own(id,abort)||!ready()||state.pending!==command)return;
       if(!remember(null,command)||!own(id,abort))return;
-      active=null;update({phase:'ready',pending:null,receipt,outcome:'submitted_unverified',error:null});reconcile();
+      const known=canonicalClaim(state.view,receipt);
+      if(!ready()||!own(id,abort))return;
+      active=null;update({phase:'ready',pending:null,receipt,outcome:known?'none':'submitted_unverified',error:null});reconcile();
     }catch(error){if(own(id,abort)){active=null;failure(error,true,command);}}
     finally{if(active===abort){active=null;if(current()){reconcile();if(state.phase==='submitting')update({phase:'unavailable',view:null,error:503,outcome:'uncertain'});}}}
   }
@@ -122,7 +130,8 @@ export function createClientPaymentsController(runtime:ClientPaymentsRuntime,por
         return;
       }
       const quote=firstServiceQuotes(state.view).find(q=>q.id===quoteId),option=quote?.paymentOptions.find(o=>o.id===optionId&&o.available);
-      if(!quote||!option||state.receipt?.quoteId===quote.id)return;
+      if(!quote||!option)return;
+      if(state.receipt?.quoteId===quote.id&&canonicalClaim(state.view,state.receipt)?.status!=='rejected')return;
       const command:ClientPaymentClaim=Object.freeze({schemaVersion:2,action:'submit_claim',requestId:crypto.randomUUID(),expectedRevision:state.view.revision,
         quoteId:quote.id,quoteVersion:quote.version,paymentOptionId:option.id,serviceCents:quote.serviceCents,productCents:0,totalCents:quote.totalCents,shippingAddressVersion:null,evidenceId:null});
       buildPaymentCallV2(command,owner!);

@@ -1,6 +1,6 @@
 # W7 independent acceptance
 
-Owner: Kanuj. The canonical [acceptance ledger](ACCEPTANCE_LEDGER.json) owns the exact 26-screen, 48-decision and 10-journey accounting. W0 owns integration status. Original ledgers and reports remain immutable historical evidence; their acceptance qualifications are preserved through explicit references.
+Owner: Kanuj. The canonical [acceptance ledger](ACCEPTANCE_LEDGER.json) owns the exact 26-screen, 48-decision and 10-journey accounting. Its product numerators remain attributed to frozen8c5; later bounded reviews do not constitute a complete new integrated census. W0 owns integration status. Original ledgers and reports remain immutable historical evidence; their acceptance qualifications are preserved through explicit references.
 
 [Baseline reconciliation](BASELINE_RECONCILIATION.json) checks M01/M02 packets, every allowed saved artifact, original acceptance reports, terminal stop receipts, approved requirements and frozen interfaces without contacting a resource. It preserves prior acceptance and does not rerun a protected fixture. [Configured compiler checks](BASELINE_TYPES.json) record independently observed baseline type results. Neither record establishes new browser or genuine acceptance.
 

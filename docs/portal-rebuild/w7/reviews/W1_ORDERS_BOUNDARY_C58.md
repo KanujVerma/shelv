@@ -1,0 +1,9 @@
+# W1 prospective guarded Orders boundary
+
+Owner: Kanuj. **PASS for the scoped prospective DTO boundary only.** Base `8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0`; head `c58bbd9bbc0b5cb2b6ee9247b0c22321262ddb00`. Exact three new files reviewed; binary delta38bd79d1 matches the intake. [Source/dependency/log pins](W1_ORDERS_BOUNDARY_C58_RESULT.json).
+
+The new module keeps every old error/status meaning and adds a separately named content_version_required409 definition. Its guarded builder delegates strict no-selector argument normalization to the old builder, then supplies one literal prospective RPC name. Its positive mapper delegates the unchanged old mapper; malformed200 data is not translated into a409. The new code defines no SQL implementation, exception emitter, permission, registration or caller switch.
+
+All four original Orders contract/values/validation/mapping files independently equal both8893 and frozen8c5. Independent explicit Node22.23.0 current contract tests pass **8/8**, no skip/cancel; configured root application/test type graphs each exit0 with zero diagnostics. These pure tests use synthetic objects, not M02 resources. The owner initial missing-export8/8 failures remain attributed as new-interface absence, not an historical SQL defect. No new historical OLD behavior claim is made.
+
+This gate does not repeat or certify the owner's repository caller inventory, turn reference counts into calls, measure deployed consumers, prove old SQL200/Edge503 behavior, install the new guard or change actual HTTP status. Complete-history classification, unchanged-old-positive/mixed/foreign/session/CSRF/no-effects proofs, current69 compatibility, OID/body/ACL preservation, explicit caller cutover and any eventual old EXEC retirement need separate approved source/runtime/genuine packets. No typed write, M02 fixture/operation, M65 or other held audit is activated or rerun. No screen, decision, journey or genuine-capability numerator advances.

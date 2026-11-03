@@ -32,6 +32,7 @@ import { TransportError } from "../transport/session.ts";
 import type {
   CookieChannel,
   OperationKind,
+  OperationOptions,
   OperationPort,
 } from "../transport/session.ts";
 import { advisorCookieRequest, clientCookieRequest } from "./retained.ts";
@@ -96,7 +97,7 @@ function channel<I, O>(
   kind: "read" | "write",
   command: I,
   decode: (value: unknown) => O,
-  options?: { signal?: AbortSignal },
+  options?: OperationOptions,
 ) {
   const factory =
     runtime.cookie.audience === "advisor"
@@ -247,7 +248,9 @@ export function createAdvisorPorts(runtime: ApplicationSession, options: { care?
   }
   async function select(view: DraftView, options?: { signal?: AbortSignal }) {
     current(options);
-    selected = view.target;
+    // The returned DraftView belongs to its caller. Keep our selection private
+    // and immutable so caller edits cannot retarget a financial operation.
+    selected = view.target === null ? null : Object.freeze({ ...view.target });
     gateSequence++;
     reset(selected === null);
     if (selected) {
@@ -331,6 +334,48 @@ export function createAdvisorPorts(runtime: ApplicationSession, options: { care?
         );
         current(options);
         return result;
+      },
+    },
+    issueQuote: {
+      async execute(input, options) {
+        current();
+        const target=selected,key=targetKey(selected),cookie=runtime.cookie,view=cookie._view,
+          generation=cookie.generation,epoch=cookie._epoch,serverGeneration=view?.generation,csrf=view?.csrf;
+        const ready=()=>{
+          current();
+          if(cookie.identity?.ownerId!==actorId||cookie.identity?.role!=="advisor")throw new TransportError(401,"write");
+          if(cookie.status!=="ready"||cookie._view!==view||cookie.generation!==generation||cookie._epoch!==epoch||
+            cookie._view?.generation!==serverGeneration||cookie._view?.csrf!==csrf)throw new TransportError(503,"write");
+          if(view?.capabilities.view!==true||view.capabilities.confirmPayments!==true||!permissions.view||!permissions.confirmPayments||!target)throw new TransportError(403,"write");
+          if(targetKey(selected)!==key)throw new TransportError(503,"write");
+        };
+        ready();
+        let command:typeof input,call:ReturnType<typeof buildPaymentCallV2>;
+        try{
+          command=structuredClone(input);
+          if(command.schemaVersion!==2)throw new TransportError(400,"write");
+          if(command.action!=="issue_quote"||command.clientId!==target!.clientId)throw new TransportError(403,"write");
+          call=buildPaymentCallV2(command,actorId);
+        }catch(error){ready();throw error instanceof TransportError?error:new TransportError(400,"write");}
+        ready();
+        let signal:AbortSignal|undefined,local:(()=>boolean)|undefined;
+        try{signal=options?.signal;local=options?.isApplicable;}catch{ready();throw new TransportError(503,"write");}
+        ready();
+        const applicable=()=>{
+          ready();const before=signal?.aborted===true;ready();if(before)return false;
+          let allowed=true;try{if(local!==undefined)allowed=local()===true;}catch{allowed=false;}
+          ready();const aborted=signal?.aborted===true;ready();return allowed&&!aborted;
+        };
+        if(!applicable())throw new TransportError(503,"write");
+        try{
+          const receipt=await channel(runtime,"payments","write",command,value=>{
+            if(!applicable())throw new TransportError(503,"write");
+            const mapped=mapPaymentReceiptV2(value,call);
+            if(mapped.operation!=="issue_quote"||!("quoteId"in mapped))throw new TransportError(503,"write");
+            if(!applicable())throw new TransportError(503,"write");return mapped;
+          },{signal,isApplicable:applicable});
+          if(!applicable())throw new TransportError(503,"write");return receipt;
+        }catch(error){current();throw error;}
       },
     },
     payments: {

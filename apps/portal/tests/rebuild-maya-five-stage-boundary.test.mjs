@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile,readdir} from 'node:fs/promises';
 import {sourceModule} from './rebuild-maya-five-stage-build.mjs';
 import {checkStyles} from '../scripts/check-ui-system.mjs';
+import {assertMayaStaticImages} from './w3/maya-static-images.mjs';
 const root=new URL('../src/features/walkthrough/maya/',import.meta.url);
 test('the owned demo closure has no endpoint, credential, storage, private input or live session construction',async()=>{
   const {inputs,code,metafile}=await sourceModule('src/features/walkthrough/maya/index.ts');
@@ -21,13 +22,13 @@ test('the owned demo closure has no endpoint, credential, storage, private input
     if(filename.endsWith('.css'))assert.deepEqual(checkStyles({[filename]:source}),[]);
   }
 });
-test('actual SSR and every deliberate memory action execute with network/storage traps and produce no automatic resource loads',async()=>{
+test('actual SSR and every deliberate memory action permit only exact local images while network/storage effects stay trapped',async()=>{
   const priorFetch=globalThis.fetch,priorLocal=Object.getOwnPropertyDescriptor(globalThis,'localStorage'),priorSession=Object.getOwnPropertyDescriptor(globalThis,'sessionStorage');let effects=0;
   const denied=()=>{effects++;throw Error('outside demo memory');};globalThis.fetch=denied;
   Object.defineProperty(globalThis,'localStorage',{configurable:true,get:denied});Object.defineProperty(globalThis,'sessionStorage',{configurable:true,get:denied});
   try{
     const {exports:{createMayaDemoController,renderMaya}}=await sourceModule('tests/rebuild-maya-five-stage-ssr.ts');
-    const c=createMayaDemoController();for(let stage=1;stage<=5;stage++){c.selectStage(stage);assert.doesNotMatch(renderMaya(c),/<(?:img|iframe|script)\b|<link[^>]+rel="(?:preload|preconnect)"/);}
+    const c=createMayaDemoController();for(let stage=1;stage<=5;stage++){c.selectStage(stage);assertMayaStaticImages(renderMaya(c),{required:stage<5});}
     c.selectStage(2);const p=c.getPlanProps();await p.demoPorts.decision.execute({schemaVersion:1,action:'record_decision_v1',requestId:'ec000000-0000-4000-8000-000000000900',publicationVersion:1,expectedDecisionRevision:0,decisionId:'maya-card-treatments',choice:'deferred',reason:null});const v=await p.demoPorts.read.execute({schemaVersion:1,action:'read_client_plan_v1',version:null});p.onViewChange(v);c.receiveExample();c.reportExample('started-known');c.reportExample('stopped-unknown');c.exit();c.reopen();c.explore();c.replay();c.reset();c.dispose();assert.equal(effects,0);
   }finally{globalThis.fetch=priorFetch;if(priorLocal)Object.defineProperty(globalThis,'localStorage',priorLocal);else delete globalThis.localStorage;if(priorSession)Object.defineProperty(globalThis,'sessionStorage',priorSession);else delete globalThis.sessionStorage;}
 });
