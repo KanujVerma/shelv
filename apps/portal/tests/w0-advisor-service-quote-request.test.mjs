@@ -38,6 +38,12 @@ test('no selected client and a foreign selected client cannot issue a quote',asy
  await f.select();await assert.rejects(f.adapter.ports.issueQuote.execute({...command(),clientId:ids.other}),e=>e.status===403);
  assert.equal(f.calls.filter(c=>c.url==='/api/advisor/payments').length,0);
 });
+test('a returned mutable draft target cannot replace the privately selected client',async t=>{
+ const f=await setup(t),returned=await f.select();assert.ok(f.adapter.ports.issueQuote);
+ returned.target.clientId=ids.other;
+ await assert.rejects(f.adapter.ports.issueQuote.execute({...command(),clientId:ids.other}),e=>[403,503].includes(e.status));
+ assert.equal(f.calls.filter(c=>c.url==='/api/advisor/payments').length,0);
+});
 test('unknown fields and non-quote writes never reach payment HTTP',async t=>{
  const f=await setup(t);await f.select();assert.ok(f.adapter.ports.issueQuote);
  await assert.rejects(f.adapter.ports.issueQuote.execute({...command(),rpc:'arbitrary'}),e=>e.status===400);

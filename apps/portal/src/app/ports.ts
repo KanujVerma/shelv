@@ -248,7 +248,9 @@ export function createAdvisorPorts(runtime: ApplicationSession, options: { care?
   }
   async function select(view: DraftView, options?: { signal?: AbortSignal }) {
     current(options);
-    selected = view.target;
+    // The returned DraftView belongs to its caller. Keep our selection private
+    // and immutable so caller edits cannot retarget a financial operation.
+    selected = view.target === null ? null : Object.freeze({ ...view.target });
     gateSequence++;
     reset(selected === null);
     if (selected) {
