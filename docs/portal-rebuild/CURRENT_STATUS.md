@@ -1,3 +1,11 @@
+## W0 reviewed source integration batch, 3 November 2026
+
+Owner: Kanuj. Exact [W0 receipt and remaining queue](eight-threads/W0.md) records serial source merges of PR213/214/216/218 after W7 review and re-read exact-head all3 CI/native clean gates, plus independently reviewed shared request35f and public image aliases9ba. Latest focused55/55 (quote9 plus prior46), four configured types0, assets13/13 and package0 pass. Earlier c075 all3 hosted CI and full-head native review are independently confirmed; newer batch needs its own CI/review after normal publication. No new accepted capability/frame/journey follows.
+
+[Canonical W7 acceptance ledger](w7/ACCEPTANCE_LEDGER.json) owns exact26/48/10 rows:24 mounted,12 full SOURCE wiring,0 full browser/accepted screens,1 SOURCE decision(D06),0 complete journeys,2 bounded accepted capabilities(M01/M02). Its baseline reconciliation and bounded newer proofs stay distinct. Original failures/resources/dirty worktrees remain preserved. Principal44 provider refusal remains unaccepted with no retry/resume/reroute or setup eligibility. No SQL/native/browser grant is active.
+
+D13 places first-service billing in prepublication Account/service, independent of service-read availability; product Orders/M02 stays unchanged. Shared service request fixes missing imports only, deliberately no namespace grant. W6's additional ordinary recovery-test namespace fixture gap is retained for an explicit test-only successor. Actual adapters/routes/gateway/SQL/connected behavior, Maya shell/HTTP/visuals and all original remaining scope are unfinished. No main merge, release, production, client/funds action or stopped-fixture reuse.
+
 ## W0 reviewed continuation, 3 November 2026
 
 Owner: Kanuj. Full W0 remains active. Published baseline8c5c6b2d72e75f620487f1b2b110655b03551b17 permits W1-W7 branching; [current W0 record](eight-threads/W0.md) owns exact source/review/test/PR queue and [exclusive rules](EIGHT_THREAD_RULES.md) own allocations. W0 verified Sol/xhigh/default/Node22.23, no subagents. All original dirty worktrees/evidence and accepted M01/M02 remain preserved.
