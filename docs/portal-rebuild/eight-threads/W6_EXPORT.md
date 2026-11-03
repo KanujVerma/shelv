@@ -44,6 +44,8 @@ All commands use explicit Node 22.23.0. Local raw evidence is outside Git under 
 | `ssr-CURRENT.log` | 5/5 retained SSR/browser-target source assertions. No browser or filesystem delivery. |
 | `frontend-UNINTEGRATED.log` | Actual configured frontend is missing W0's final-export request; not green. |
 | `frontend-PROJECTED.log` | Zero diagnostics in the separate exact configured strict graph with only the pinned missing request input; full dependency hashes are in `TYPE-PROJECTION.json`. Not actual integration acceptance. |
+| `shallow-OLD-setup.log` | Original fixture helper fails in a real depth-one clone without the c075/e949 objects. This is test setup, not a product regression. |
+| `shallow-CURRENT.log` | The self-contained successor passes all 50 cases in that same shallow checkout, exit0; original helper restored to the exact current bytes before execution. `SHALLOW.json` and `SHALLOW-PROOF.json` bind the absent objects, head, commands and outputs. |
 
 The primary Account Name files and accepted M01 evidence are untouched. No test or source evidence accepts a complete screen, J08, actual download or release.
 
