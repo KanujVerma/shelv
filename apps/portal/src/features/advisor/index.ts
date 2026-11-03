@@ -20,3 +20,8 @@ export type {
   AdvisorState,
   AdvisorListReadState,
 } from "./types.ts";
+
+export { createAdvisorAdmissionController } from "./admission/controller.ts";
+export type { AdvisorAdmissionController, AdvisorAdmissionOptions, AdvisorAdmissionPorts, AdvisorAdmissionState, AdvisorAdmissionStatus } from "./admission/types.ts";
+
+export { ClientAdmission } from "./admission/ClientAdmission.tsx";

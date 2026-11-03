@@ -39,6 +39,8 @@ import type { AdvisorController, AdvisorState } from "./types.ts";
 import "./advisor.css";
 import { DependencyReview } from "./DependencyReview.tsx";
 import { ClientAssignment, ClientDirectoryFeedback } from "./ClientAssignment.tsx";
+import { ClientAdmission } from "./admission/ClientAdmission.tsx";
+import type { AdvisorAdmissionController } from "./admission/types.ts";
 
 export type AdvisorRoute =
   | Extract<PortalRoute, { name: "advisor-editor" }>
@@ -52,6 +54,7 @@ export interface AdvisorWorkspaceProps {
   controller: AdvisorController;
   navigation: AdvisorNavigationPort;
   onOpenClient?: (clientId: string) => void;
+  admission?: AdvisorAdmissionController;
 }
 const editorSections: readonly {
   section: EditorSection;
@@ -77,6 +80,7 @@ export function AdvisorWorkspace({
   controller: c,
   navigation,
   onOpenClient,
+  admission,
 }: AdvisorWorkspaceProps) {
   const s = useSyncExternalStore(c.subscribe, c.getSnapshot, c.getSnapshot),
     route = navigation.route;
@@ -223,6 +227,7 @@ export function AdvisorWorkspace({
             {s.clients ? "refresh clients" : "load clients"}
           </Button>
         )} />
+        <div className="advisor-search">
         <Field label="find a client">
           <Input
             placeholder="search by name or client identity"
@@ -230,6 +235,9 @@ export function AdvisorWorkspace({
             onChange={(e) => setSearch(e.target.value)}
           />
         </Field>
+          {admission ? <ClientAdmission controller={admission} onOpenClient={onOpenClient}
+            onAdmitted={() => void c.loadClients()} /> : null}
+        </div>
         {notice}
         <ClientDirectoryFeedback controller={c} state={s} />
         <Panel>
