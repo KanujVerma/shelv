@@ -25,7 +25,7 @@ function fixture(override?:(stage:number,url:string,init:RequestInit)=>Response|
  const calls:string[]=[],signals:AbortSignal[]=[];
  const fetcher:typeof fetch=async(input,init={})=>{
   const url=String(input),stage=calls.push(url);assert.ok(init.signal);signals.push(init.signal);
-  assert.equal(init.cache,'no-store');assert.equal(init.credentials,'omit');assert.equal(init.redirect,'error');
+  assert.equal(init.cache,'no-store');assert.equal(init.credentials,'omit');assert.equal(init.redirect,'manual');
   assert.equal(new Headers(init.headers).get('authorization'),`Bearer ${credential}`);
   if(stage%2){assert.equal(url,'https://project.example.invalid/auth/v1/user');assert.equal(init.method,'GET');assert.equal(init.body,undefined);}
   else{assert.equal(url,'https://project.example.invalid/rest/v1/rpc/concierge_client_orders_read_v1');assert.equal(init.method,'POST');assert.deepEqual(JSON.parse(String(init.body)),{p_command:command});}
@@ -151,4 +151,11 @@ test('actual ApplicationSession/cookie/transport refuses the unregistered orders
   const port=runtime.transport.bindCookieChannel(clientCookieRequest,'operations','read',value=>mapClientOrdersReadResult(value,command));
   await assert.rejects(()=>port.execute(buildClientOrdersReadRpc(command).args.p_command),error=>error instanceof TransportError&&error.status===403);assert.equal(commands,0);
  }finally{runtime.dispose();}
+});
+
+for(const status of [301,302,303,307,308])for(const stage of ['auth','rpc'])test(`manual redirects ${status} at ${stage} refuse before reading bodies or following Location`,async()=>{
+ let cancelled=0;
+ const redirect=()=>new Proxy(new Response(new ReadableStream({cancel(){cancelled++;return new Promise<void>(()=>{});}}),{status,headers:{location:'https://foreign.example.invalid/private'}}),{get(target,key){if(key==='headers')throw Error('redirect headers must not be read');return Reflect.get(target,key,target);}});
+ const f=fixture(n=>n===(stage==='auth'?1:2)?redirect():undefined);
+ const response=await handleClientOrdersReadRequest(request(),f.ports);assert.equal(response.status,503);assert.deepEqual(await response.json(),{code:'unavailable'});assert.equal(cancelled,1);assert.equal(f.calls.length,stage==='auth'?1:2);
 });

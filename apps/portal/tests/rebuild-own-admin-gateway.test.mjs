@@ -100,10 +100,10 @@ function direct() {
         const url = new URL(String(input));
         assert.equal(url.origin, SUPABASE_ORIGIN);
         assert.equal(new Headers(init?.headers).get('authorization'), `Bearer ${c.access_token}`);
-        if (url.pathname === '/rest/v1/rpc/concierge_client_session_context' && init?.redirect === 'manual') assert.equal(init?.credentials, undefined);
+        assert.equal(init?.redirect, 'manual');
+        if (url.pathname === '/rest/v1/rpc/concierge_client_session_context' && init?.credentials === undefined) assert.equal(init?.credentials, undefined);
         else {
             assert.equal(init?.credentials, 'omit');
-            assert.equal(init?.redirect, 'error');
         }
         assert.equal(init?.cache, 'no-store');
         const body = init?.body === undefined ? null : JSON.parse(String(init.body));
@@ -627,7 +627,7 @@ test('one whole producer budget includes both actual context reads', async (t)=>
     try {
         let ownContexts = 0;
         f.state.context = (init)=>{
-            if (init?.redirect === 'error') t.mock.timers.tick(++ownContexts === 1 ? 6000 : 4000);
+            if (init?.credentials === 'omit') t.mock.timers.tick(++ownContexts === 1 ? 6000 : 4000);
             return Response.json({
                 ownerId: owner,
                 providerSessionId: sessionId,
@@ -722,4 +722,29 @@ test('private result and Auth byte bounds reject without truncated success', asy
         if (kind === 'orders') f.state.orders = ()=>new Response(' '.repeat(2000001));
         await assert.rejects(f.api.perform(f.c, kind === 'orders' ? 'client-orders' : 'account-profile', kind === 'orders' ? ordersRead : profileRead, f.controller.signal), (e)=>e.status === 503);
     }
+});
+
+for (const status of [301, 302, 303, 307, 308]) test(`own context rejects manual redirect ${status} without decoding private body`, async () => {
+    const f = direct();let cancelled = 0;
+    f.state.context = () => new Proxy(new Response(new ReadableStream({cancel(){cancelled++;return new Promise(() => {});}}), {status, headers: {location: 'https://foreign.example.invalid/private'}}), {get(target,key){if(key === 'headers') throw Error('redirect headers must not be read');return Reflect.get(target,key,target);}});
+    await assert.rejects(() => f.api.readContext(f.c, f.controller.signal), error => error.status === 503 && error.code === 'unavailable');
+    assert.equal(f.calls.length, 1);assert.equal(cancelled, 1);
+});
+
+for (const lifetime of ['abort', 'deadline']) test(`own context retires a delayed redirect after original ${lifetime} without decoding`, async (t) => {
+    if (lifetime === 'deadline') t.mock.timers.enable({apis:['Date'],now:Date.parse('2026-11-02T12:00:00Z')});
+    const f = direct();let release, entered, cancelled = 0;
+    const waiting = new Promise(resolve => {entered = resolve;});
+    f.state.context = () => {entered();return new Promise(resolve => {release = resolve;});};
+    const pending = f.api.readContext(f.c, f.controller.signal);
+    await waiting;
+    if (lifetime === 'abort') {
+        f.controller.abort();
+        await assert.rejects(pending, error => error.status === 503);
+    } else t.mock.timers.setTime(Date.now()+10000);
+    release(new Response(new ReadableStream({cancel(){cancelled++;return new Promise(()=>{});}}), {status:302,headers:{location:'https://foreign.example.invalid/never'}}));
+    if(lifetime === 'deadline') await assert.rejects(pending,error=>error.status===503);
+    await new Promise(resolve => setImmediate(resolve));
+    assert.equal(cancelled,1);assert.equal(f.calls.length,1);
+    if (lifetime === 'deadline') {assert.equal(f.controller.signal.aborted,false);t.mock.timers.reset();}
 });

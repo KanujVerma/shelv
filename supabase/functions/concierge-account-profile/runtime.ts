@@ -18,11 +18,12 @@ export function createAccountProfilePorts(config:ConciergeTransportConfiguration
   try{return await accountProfileWait(()=>{
    // Keep standard Fetch privacy options across DOM and Worker declarations.
    const url=new URL(path,base).href;
-   const init:RequestInit & {credentials:'omit'}={method,headers:{authorization:`Bearer ${token}`,apikey:key,'content-type':'application/json'},body,signal,credentials:'omit',redirect:'error',cache:'no-store'};
+   const init:RequestInit & {credentials:'omit'}={method,headers:{authorization:`Bearer ${token}`,apikey:key,'content-type':'application/json'},body,signal,credentials:'omit',redirect:'manual',cache:'no-store'};
    return send(url,init).then(response=>{
    // Inspect status at receipt, before any abort check or cleanup body getter.
    const status=response.status;
    if(status===401||status===403){const denial=accountProfileReceivedDenial(signal,status)!;cleanup(response);throw denial;}
+   if(status>=300&&status<400){cleanup(response);throw new AccountProfileFailure(503,'unavailable');}
    if(signal.aborted)cleanup(response);else received=response;
    return {response,status};
   });},signal);}catch(error){

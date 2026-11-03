@@ -32,9 +32,15 @@ export function createOwnAdminProvider(config:ConciergeTransportConfiguration){
     return response;
   };
   const response=async(start:()=>Promise<Response>,signal:AbortSignal)=>{
-    let held:Response|undefined;
-    try{return await accountProfileWait(()=>start().then(value=>{held=received(value,signal);return held;}),signal);}
-    catch(error){if(held)retire(held);throw error;}
+    let held:Response|undefined,retired=false;
+    const cleanup=()=>{if(held&&!retired){retired=true;retire(held);}};
+    try{return await accountProfileWait(()=>start().then(value=>{
+      held=received(value,signal);
+      // A fetch that ignores abort can arrive after the outer wait has ended.
+      // Recheck the same registered lifetime at receipt and retire locally.
+      return accountProfileWait(()=>Promise.resolve(value),signal).catch(error=>{cleanup();throw error;});
+    }),signal);}
+    catch(error){cleanup();throw error;}
   };
   const decode=async(value:Response,maximum:number,signal:AbortSignal)=>{
     try{return await readAccountProfileJson(value.body,maximum,signal);}
@@ -56,7 +62,7 @@ export function createOwnAdminProvider(config:ConciergeTransportConfiguration){
         // Keep standard Fetch privacy options across DOM and Worker declarations.
         const init:RequestInit & {credentials:'omit'}={
           method:'POST',headers:{authorization:`Bearer ${token}`,apikey:key,'content-type':'application/json',origin:PORTAL_ORIGIN},
-          body:'{}',signal,credentials:'omit',redirect:'error',cache:'no-store',
+          body:'{}',signal,credentials:'omit',redirect:'manual',cache:'no-store',
         };
         return send(`${SUPABASE_ORIGIN}/rest/v1/rpc/concierge_client_session_context`,init);
       },signal);

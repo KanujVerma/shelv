@@ -15,7 +15,7 @@ const request=(data:unknown=read,signal?:AbortSignal)=>new Request('https://edge
 function fixture(override?:(url:string,init:RequestInit,auth:number,rpc:number)=>Response|Promise<Response>|undefined,expectedToken=token){
  let auth=0,rpc=0;const signals:AbortSignal[]=[];const calls:string[]=[];
  const send:typeof fetch=async(input,init={})=>{
-  const url=String(input);calls.push(url);assert.equal(init.redirect,'error');assert.equal(init.credentials,'omit');assert.equal(init.cache,'no-store');assert.equal(new Headers(init.headers).get('authorization'),`Bearer ${expectedToken}`);assert.ok(init.signal);signals.push(init.signal);
+  const url=String(input);calls.push(url);assert.equal(init.redirect,'manual');assert.equal(init.credentials,'omit');assert.equal(init.cache,'no-store');assert.equal(new Headers(init.headers).get('authorization'),`Bearer ${expectedToken}`);assert.ok(init.signal);signals.push(init.signal);
   if(url.endsWith('/auth/v1/user'))auth++;else {rpc++;assert.equal(url,'https://project.example.invalid/rest/v1/rpc/concierge_account_profile_command_v1');const sent=JSON.parse(String(init.body));assert.deepEqual(Object.keys(sent),['p_command']);}
   return await override?.(url,init,auth,rpc)??json(url.endsWith('/auth/v1/user')?{id:actor,is_anonymous:false}:view);
  };
@@ -127,4 +127,11 @@ test('reentrant wall-clock overrun before RPC is unavailable even before timer c
  const start=Date.UTC(2026,10,2);t.mock.timers.enable({apis:['Date','setTimeout'],now:start});
  const f=fixture(url=>{if(url.endsWith('/user'))t.mock.timers.setTime(start+10001);return undefined;});
  const response=await handleAccountProfileRequest(request(write),f.ports);assert.equal(response.status,503);assert.equal(f.calls.length,1);
+});
+
+for(const status of [301,302,303,307,308])for(const stage of ['auth','rpc'])test(`manual redirects ${status} at ${stage} refuse before reading bodies or following Location`,async()=>{
+ let cancelled=0;
+ const redirect=()=>new Proxy(new Response(new ReadableStream({cancel(){cancelled++;return new Promise<void>(()=>{});}}),{status,headers:{location:'https://foreign.example.invalid/private'}}),{get(target,key){if(key==='headers')throw Error('redirect headers must not be read');return Reflect.get(target,key,target);}});
+ const f=fixture((url)=>((stage==='auth')===url.endsWith('/auth/v1/user'))?redirect():undefined);
+ const response=await handleAccountProfileRequest(request(),f.ports);assert.equal(response.status,503);assert.deepEqual(await response.json(),{code:'unavailable'});assert.equal(cancelled,1);assert.equal(f.calls.length,stage==='auth'?1:2);
 });

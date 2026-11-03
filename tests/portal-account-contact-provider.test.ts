@@ -25,7 +25,7 @@ function fixture(override?:Override){
   const config={supabaseUrl:'https://project.example.invalid',publicKey:'synthetic-key',allowedOrigins:['https://portal.example.invalid'],fetch:async(input:Parameters<typeof fetch>[0],init:RequestInit={})=>{
     const url=String(input);calls.push({url,init});
     assert.ok(['https://project.example.invalid/auth/v1/user','https://project.example.invalid/rest/v1/rpc/concierge_account_profile_command_v1'].includes(url));
-    assert.equal(init.credentials,'omit');assert.equal(init.redirect,'error');assert.equal(init.cache,'no-store');assert.ok(init.signal);
+    assert.equal(init.credentials,'omit');assert.equal(init.redirect,'manual');assert.equal(init.cache,'no-store');assert.ok(init.signal);
     assert.equal(new Headers(init.headers).get('authorization'),`Bearer ${token}`);assert.equal(new Headers(init.headers).get('apikey'),'synthetic-key');
     if(url.endsWith('/user'))assert.equal(init.method,'GET');
     else{assert.equal(init.method,'POST');assert.deepEqual(JSON.parse(String(init.body)),{p_command:{schemaVersion:1,action:'read_account_profile_v1'}});}
