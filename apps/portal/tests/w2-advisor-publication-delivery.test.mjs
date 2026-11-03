@@ -28,17 +28,17 @@ test('A06 original publication status recovery captures its original command, ne
  assert.deepEqual(c.getSnapshot().publicationNotification.command,original);assert.equal(c.getSnapshot().publicationNotification.receipt.notificationEventId,ids.event);
 });
 const output=new URL('../../../.local-artifacts/w2/delivery-ssr.cjs',import.meta.url);await mkdir(new URL('.',output),{recursive:true});
-await build({absWorkingDir:new URL('..',import.meta.url).pathname,tsconfig:'tsconfig.frontend.json',stdin:{contents:`import React from 'react';import{renderToStaticMarkup}from'react-dom/server';import{OverlayProvider}from'./src/ui/index.ts';import{AdvisorWorkspace}from'./src/features/advisor/AdvisorWorkspace.tsx';export const render=(props)=>renderToStaticMarkup(React.createElement(OverlayProvider,null,React.createElement(AdvisorWorkspace,props)));`,resolveDir:new URL('..',import.meta.url).pathname,loader:'tsx'},outfile:output.pathname,platform:'node',format:'cjs',bundle:true,loader:{'.css':'empty'}});
-const {render}=createRequire(import.meta.url)(output.pathname);
+await build({absWorkingDir:new URL('..',import.meta.url).pathname,tsconfig:'tsconfig.frontend.json',stdin:{contents:`import React from 'react';import{renderToStaticMarkup}from'react-dom/server';import{OverlayProvider}from'./src/ui/index.ts';import{AdvisorWorkspace}from'./src/features/advisor/AdvisorWorkspace.tsx';export * from './src/features/advisor/PublicationDelivery.tsx';export const render=(props)=>renderToStaticMarkup(React.createElement(OverlayProvider,null,React.createElement(AdvisorWorkspace,props)));`,resolveDir:new URL('..',import.meta.url).pathname,loader:'tsx'},outfile:output.pathname,platform:'node',format:'cjs',bundle:true,loader:{'.css':'empty'}});
+const {render,refreshPublicationDelivery}=createRequire(import.meta.url)(output.pathname);
 const html=(c,publicationNotifications)=>render({controller:c,publicationNotifications,navigation:{route:{name:'advisor-editor',draftId:ids.draft,section:'review-publish'},navigate(){}}});
-async function notifications(t,{command,receipt},edit=true){
- const calls=[];let email='failed';
+async function notifications(t,{command,receipt},edit=true,offline=false){
+ const calls=[];let email='failed',failRead=offline;
  const runtime=createApplicationSession({audience:'advisor',locks:{request:async(_n,_o,run)=>run()},fetcher:async(url,init)=>{
   if(url==='/api/advisor/session')return Response.json({signedIn:true,ownerId:ids.actor,generation:1,csrf:'SYNTHETIC-a06-csrf',capabilities:{view:true,edit,publish:true,confirmPayments:false},idleExpiresAt:'2099-01-01T00:00:00Z',absoluteExpiresAt:'2099-01-02T00:00:00Z'});
   assert.equal(url,'/api/advisor/notifications');const input=JSON.parse(init.body);calls.push(input);
   if(input.action==='retry_failed_email_v1'){email='queued';return Response.json({requestId:input.requestId,action:input.action,deliveryId:input.deliveryId,previousRevision:input.expectedRevision,revision:input.expectedRevision+1,recordedAt:stamp,effect:'retry_queued'});}
-  assert.equal(input.action,'read_event_deliveries_v1');return Response.json({schemaVersion:1,consistency:'live_keyset',observedAt:stamp,cursor:null,event:{eventId:input.eventId,createdAt:stamp,source:{kind:'publication',publicationVersion:receipt.publicationVersion},destination:{kind:'plan_version',version:receipt.publicationVersion}},items:[{deliveryId:ids.other,channel:'email',status:email,revision:email==='failed'?1:2,seenAt:null},{deliveryId:ids.claim,channel:'portal',status:'queued',revision:1,seenAt:null}],nextCursor:null});
- }});t.after(()=>runtime.dispose());await runtime.restore();const c=createNotificationsController(runtime);t.after(()=>c.dispose());await c.openPublication(command,receipt);return {c,calls};
+  assert.equal(input.action,'read_event_deliveries_v1');if(failRead){failRead=false;throw new TypeError('SYNTHETIC offline');}return Response.json({schemaVersion:1,consistency:'live_keyset',observedAt:stamp,cursor:null,event:{eventId:input.eventId,createdAt:stamp,source:{kind:'publication',publicationVersion:receipt.publicationVersion},destination:{kind:'plan_version',version:receipt.publicationVersion}},items:[{deliveryId:ids.other,channel:'email',status:email,revision:email==='failed'?1:2,seenAt:null},{deliveryId:ids.claim,channel:'portal',status:'queued',revision:1,seenAt:null}],nextCursor:null});
+ }});t.after(()=>runtime.dispose());await runtime.restore();const c=createNotificationsController(runtime);t.after(()=>c.dispose());await c.openPublication(command,receipt);return {c,calls,runtime};
 }
 test('A06 receipt alone records an event and never claims its current delivery is queued',async t=>{
  const h=await published(t),markup=html(h.c);assert.match(markup,/notification event recorded/);assert.match(markup,/current delivery status is unavailable/);assert.doesNotMatch(markup,/notification queued/);
@@ -64,4 +64,16 @@ test('A06 clearing a publication for another draft removes its acknowledged noti
  const {c,f}=await published(t);const before=structuredClone(c.getSnapshot().publicationNotification);assert.ok(before);
  await c.open(ids.other);assert.equal(c.getSnapshot().receipt,null);assert.equal(c.getSnapshot().publicationNotification,null);
  assert.equal(before.receipt.notificationEventId,ids.event);assert.equal(f.calls.filter(x=>x.action==='publish_plan_v1').length,1);
+});
+
+
+test('A06 offline refresh rebinds its retained original publication after reconnect',async t=>{
+ const h=await published(t),n=await notifications(t,h,true,true);
+ assert.equal(n.c.getSnapshot().phase,'offline');const boundary=n.runtime.getSnapshot().boundary;
+ await n.runtime.restore();assert.equal(n.runtime.getSnapshot().boundary,boundary);
+ const before=n.calls.length;await n.c.loadDeliveries();assert.equal(n.calls.length,before);
+ assert.equal(typeof refreshPublicationDelivery,'function');
+ await refreshPublicationDelivery(n.c,h.c.getSnapshot().publicationNotification);
+ assert.equal(n.calls.length,before+1);assert.equal(n.c.getSnapshot().deliveries.event.eventId,h.receipt.notificationEventId);
+ assert.match(html(h.c,n.c),/>failed</);assert.equal(h.f.calls.filter(x=>x.action==='publish_plan_v1').length,1);
 });

@@ -34,3 +34,11 @@ Explicit Node22.23.0; live peer configuration codex/gpt-6.1-sol/xhigh/default. `
 - `git diff --check`: exit0.
 
 Controls cover exact original/receipt remount, original publication status recovery, session/receipt clearing, truthful unavailable fallback, real existing notification controller failure status, confirmed retry with no second publication/date change, VIEW-only retry denial and hiding a previous event on first render. Synthetic HTTP is a finite local fetch fixture, not genuine Auth/SQL/outbox/email. Browser interaction, complete visual/a11y, actual delivery, independent current source/composed review, four graphs/full-root checks and exact-head hosted CI remain unrun or pending. No browser/native resources acquired.
+
+## Hosted review correction, 3 November
+
+PR219 [offline delivery recovery](https://github.com/KanujVerma/shelv/pull/219#discussion_r4459885704) was reproduced using the actual existing application session and notification controller under finite synthetic HTTP. The initial read goes offline and clears selection; same-boundary reconnect followed by `loadDeliveries()` sends no request. New regression on frozen `87a669174c8b5574cb4ee0cbee05d73cc0a0c69e` passes7/8 and fails on the missing advisor-bound recovery action.
+
+The advisor presentation now binds the existing notification view's refresh callback through `refreshPublicationDelivery`: use its retained selected-event read when still bound, otherwise call canonical `openPublication` with the retained original command/receipt. Existing mutation/status/retry handlers remain unchanged. This restores the event after suspension without republishing, recreating a receipt, changing dates or replacing currentness/authorization.
+
+Current new8 plus unchanged47 controller/race controls pass55/55 with no skips; frontend strict and diff checks pass. Raw `delivery-hosted-{red,current,types}.log` live in `.local-artifacts/w2/` under `/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-delivery-review-r2-20261103`. The old source/worktree and all prior qualifications remain preserved. Actual browser click, genuine Auth/outbox/provider, full-frame and new independent exact-head review remain pending.

@@ -5,6 +5,17 @@ import type { NotificationController } from "../notifications/index.ts";
 import { publicationReference } from "../notifications/recovery.ts";
 import type { AdvisorPublicationNotification } from "./types.ts";
 
+/** Read recovery needs the retained original after the shared controller clears
+ * its selected reference on suspension. Writes keep their existing handlers. */
+export function refreshPublicationDelivery(controller: NotificationController,
+  publication: AdvisorPublicationNotification): Promise<void> {
+  const state = controller.getSnapshot();
+  const event = state.deliveries?.event ?? state.selectedEvent;
+  return event?.eventId === publication.receipt.notificationEventId
+    ? controller.loadDeliveries()
+    : controller.openPublication(publication.command, publication.receipt);
+}
+
 /** W0 owns the actual runtime/controller and its single memory-owner lifecycle. */
 export function PublicationDelivery({ controller, publication }: {
   controller?: NotificationController;
@@ -62,5 +73,7 @@ function BoundPublicationDelivery({ controller, publication }: {
       the publication and service dates are unchanged.
     </StatusNotice>
   );
-  return <NotificationsView state={state} actions={controller} screen="delivery-status" />;
+  return <NotificationsView state={state} actions={{ ...controller,
+    loadDeliveries: () => refreshPublicationDelivery(controller, publication),
+  }} screen="delivery-status" />;
 }
