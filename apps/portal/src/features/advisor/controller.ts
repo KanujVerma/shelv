@@ -907,7 +907,13 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
       if (command.action === "issue_quote" && (e as { status?: number })?.status === 409) {
         emit({
           context: null, pending: null, busy: false,
-          notice: { kind: "conflict", title: "payment information changed. refresh before issuing a quote." },
+          notice: {
+            kind: "error", title: "payment information changed. refresh before issuing a quote.",
+            origin: state.view?.target ? {
+              purpose: "context", actorId: permissions.actorId,
+              target: { ...state.view.target },
+            } : undefined,
+          },
         });
       } else fail(e, true);
     }

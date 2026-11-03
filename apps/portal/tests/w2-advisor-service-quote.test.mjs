@@ -69,3 +69,13 @@ test('advisor quote availability stays honest when optional authenticated adapte
  const {c}=await ready(t,{withPort:false});const markup=html(c);
  assert.match(markup,/quote preparation unavailable/);assert.match(markup,/<button[^>]*disabled[^>]*>issue first service quote/);
 });
+
+test('a refreshed financial conflict allows subsequent draft edits to save',async t=>{
+ const {c,f,setFail}=await ready(t);setFail(409);await c.issueFirstServiceQuote();setFail(0);await c.refreshContext();
+ c.edit(v=>({...v,title:'SYNTHETIC edit after financial refresh'}));await c.save();
+ assert.equal(f.calls.filter(x=>x.action==='save_draft_v1').length,1);assert.equal(c.getSnapshot().save,'saved');
+});
+test('a financial refresh never clears a genuine clinical draft conflict',async t=>{
+ const {c,f}=await ready(t);c.edit(v=>({...v,title:'SYNTHETIC clinical conflict'}));f.fail=409;await c.save();f.fail=0;await c.refreshContext();
+ assert.equal(c.getSnapshot().notice.kind,'conflict');const before=f.calls.filter(x=>x.action==='save_draft_v1').length;await c.save();assert.equal(f.calls.filter(x=>x.action==='save_draft_v1').length,before);
+});

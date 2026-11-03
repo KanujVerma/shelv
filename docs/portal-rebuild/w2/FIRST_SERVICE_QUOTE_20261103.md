@@ -42,3 +42,9 @@ Commands from this worktree root:
 - `git diff --check`: exit0.
 
 These are synthetic model/SSR/compiler controls, not actual funds, authenticated persistence, committed lost-ack recovery, browser interaction, complete-frame visual/a11y, W7 independent acceptance or exact-head hosted CI. No new browser/native resource was acquired. All remaining mandatory full advisor and root verification gates remain open. W0 integration of the optional adapter and W5 client slice is required before the genuine first-service journey can be proposed under a fresh W7 packet. Broad Commerce/M65 holds are not cleared by this bounded first-service source work.
+
+## Hosted review correction, 3 November
+
+PR218 [financial conflict recovery](https://github.com/KanujVerma/shelv/pull/218#discussion_r4459867413) was reproduced against frozen `f08122a2e2b81e95874f300a5c94f27920f00e4f`: 8/9 new controls pass; the post-refresh draft save sends no command. The quote409 notice now uses the existing target/actor-bound context-error origin, so a successful matching financial/context refresh clears that notice. Genuine clinical conflict notices retain their separate conflict/compare behavior and are not cleared by finance reads.
+
+Current new9 plus unchanged47 controller/race cases pass56/56, no skips. Frontend strict and diff checks pass. Raw `quote-hosted-{red,current,types}.log` live in `.local-artifacts/w2/` under `/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-quote-review-r2-20261103`. Original source/worktree and prior failures remain unchanged. New exact-head hosted/W7 review, actual W0 adapter and genuine/browser financial acceptance remain required.
