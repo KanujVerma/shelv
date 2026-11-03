@@ -27,6 +27,7 @@ A milestone is accepted only after its reviewed implementation is integrated, ap
 - Dependencies: M01 environment/auth continuity and separately reviewed optional seed plus read-only observation oracle. No seed runs during M01.
 - Tests: actual row IDs/revision/markers agree with browser responses; refresh/re-login; A/B positive own views and negative cross-owner/selector/session access; baseline/final canonical and protected row digests unchanged across reads; no Start or financial inference. Check keyboard access, empty/error/history states and narrow layout.
 - Gate/accepted criterion: source and SQL/role/seed review, relevant configured tests, actual browser plus before/after SQL evidence, and independent verification all pass at the exact integrated revision. Current source preparations are **not accepted**.
+- Current actual outcome: pre-seed empty-state/keyboard/narrow passed, seed committed once, then recorded read503 reproduced because fixture URL used forbidden `.invalid`. Corrected c5bf source passes independent R3 and production-DTO regression; old failed fixture and all evidence are STOPPED_RETAINED, never amended/reset/reseeded. New corrected-case resource and genuine gates remain pending.
 
 ## M04: deliberate advisor publication to client plan
 

@@ -165,3 +165,8 @@ W2 ordinal3 continues OP1 source correction after reconciling the untracked test
 ## 2026-11-03T12:39:29.064Z: milestone transition after genuine M01 acceptance
 
 Coordinator/Kanuj remains sole Root/shared/runtime/auth/SQL/resource integration authority. M01 ACTUAL R2 is terminal PASS for one bounded Name capability; all three portal generations/browsers joined and native R8 returned STOPPED_RETAINED. All original fixture/host/implementation/review claims are released; custody forbids further resource queries or reuse of R8. M02/M04/M05 returned source assets are admitted with independent Source gates, not genuine acceptance. M03 NIR2 Parent correction5d66c8a4 has38/38 controls after OLD33pass5fail and awaits a NEW full review. Next source/resource pins must bind the next integrated head and a fresh owner/project/directory, never adopt a stopped fixture. Literal current task receipts/ready queue are in TASKS.json; terminal lanes are not counted as executing.
+
+
+## 2026-11-03T15:54:27.141Z: corrected Orders case handoff
+
+Coordinator admits only c5bf's two fixture postimages and c8b's four notification assets after complete independent Source R3/R4 PASS. All prior source/resource/SQL/browser authors and reviewers are terminal and excluded from executing counts. Failed M02 case3d is STOPPED_RETAINED with dump/evidence; no query/reuse/reset. Next useful allocation is fresh corrected-case source binding and genuine execution; resource acquisition stays serialized under the exact new packet. M01 alone remains accepted, whole screens/journeys0. Literal task receipts and ready queue are in TASKS.json.

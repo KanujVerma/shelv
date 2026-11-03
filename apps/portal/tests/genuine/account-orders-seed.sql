@@ -76,7 +76,7 @@ insert into concierge.retail_purchases(id,client_id,data,actor_id,recorded_at)
   'quantity',2,'unitPriceCents',1234,'taxCents',137,'shippingCents',289,
   'purchasedOn','2026-10-01','deliveredOn',null,
   'policy',jsonb_build_object('checkedOn','2026-10-01',
-   'url','https://example.invalid/historical-terms','summary','saved conditions '||marker,
+   'url','https://example.com/historical-terms','summary','saved conditions '||marker,
    'openedAllowed',null,'finalSale',false,'returnBy',null,'shipBy',null,'returnCostCents',415)),
   client_id,'2026-10-02T11:00:00Z'::timestamptz from orders_seed_inputs;
 insert into concierge.return_cases(id,client_id,purchase_id,data,actor_id,requested_at)

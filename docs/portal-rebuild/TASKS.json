@@ -12377,7 +12377,7 @@
     "ci": "exact-new-head pending publication"
   },
   "milestoneExecution20261103": {
-    "at": "2026-11-03T12:39:29.064Z",
+    "at": "2026-11-03T15:54:27.141Z",
     "coordinator": "9b085ada-435f-48d6-8886-957c1ce3e82d",
     "goal": "same existing native goal, active",
     "integrationAuthority": "coordinator only",
@@ -12459,31 +12459,31 @@
     ],
     "currentReviewReceipts": [
       {
-        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-account-profile-genuine-acceptance-r2",
-        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-account-profile-genuine-acceptance-r2",
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-orders-valid-url-source-r3",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-orders-valid-url-source-r3",
+        "state": "terminal, not executing",
         "provider": "codex",
         "model": "gpt-6.1-sol",
         "reasoningEffort": "xhigh",
-        "serviceTier": "default",
-        "state": "terminal review result received; not executing"
+        "serviceTier": "default"
       },
       {
-        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r2",
-        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r2",
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r4",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r4",
+        "state": "terminal, not executing",
         "provider": "codex",
         "model": "gpt-6.1-sol",
         "reasoningEffort": "xhigh",
-        "serviceTier": "default",
-        "state": "terminal review result received; not executing"
+        "serviceTier": "default"
       },
       {
-        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-assets-review-r2",
-        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-assets-review-r2",
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-sql-executor-source-r1",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-sql-executor-source-r1",
+        "state": "terminal, not executing",
         "provider": "codex",
         "model": "gpt-6.1-sol",
         "reasoningEffort": "xhigh",
-        "serviceTier": "default",
-        "state": "terminal review result received; not executing"
+        "serviceTier": "default"
       }
     ],
     "integration": {
@@ -12601,11 +12601,10 @@
       "InputAncestryImported": false
     },
     "readyQueue": [
-      "NEW complete M03 NIR2 Source R3 review at5d66c8a4",
-      "Fresh M02 producer/host exact new-Root pin and resource packet, then real Orders seed/browser/oracle",
-      "M04 actual ordinary advisor/viewer permissions and canonical synthetic payment/approval setup after M02 interval",
-      "M03/M05 consume actual M04 publication/event/delivery/snapshot IDs",
-      "Remaining consent/source/service/export/admin capabilities remain in master scope"
+      "Fresh corrected M02 environment/host/SQL source pins and exact source/resource gate; no stopped fixture reuse",
+      "Genuine corrected recorded Orders then independent acceptance",
+      "Actual advisor/viewer/auth/canonical approval/payment/publication setup for M04",
+      "M03/M05 actual M04 IDs then genuine inbox/history; remaining complete master requirements unchanged"
     ],
     "resourceState": {
       "stage": "STOPPED_RETAINED",
@@ -12613,6 +12612,23 @@
       "at": "2026-11-03T12:27:51.780Z",
       "all119Exit0Joined": true,
       "noFutureQueryOrReuse": true
+    },
+    "latestOrdersAttempt": {
+      "source": "6bb0efe2bedae6d4f014b2e8b84512a05e965a60",
+      "status": "FAILED: recorded Orders503 from invalid fixture policy URL",
+      "preseedEmptyBrowser": "PASS actual A rev0/empty/keyboard390+320/logout/joins",
+      "seed": "4df once actual0/all3nativejoined, bad data never amended",
+      "baselineFinal": "READ ONLY27 A/B digests+complete actor observations equal; no fullDB/Auth/Vault inference",
+      "resources": "STOPPED_RETAINED all65nativeexit0joined, dump/evidence/containers/volume/network/keys retained, no future query/reuse/reset",
+      "correctionSource": "c5bf8b35a9544746f801bc3bf294dea9d482bd86",
+      "newSeedSha256": "a3217a097b0d12a1f3496a2ea99164ac6dd91747b480a5c88bc123282169c4e4",
+      "sourceGate": "R3 allfive PASS22+32+16",
+      "genuineCorrectedCase": "PENDING"
+    },
+    "notificationSource": {
+      "source": "c8b59c3991d40944ba42dd44d58b3d5db98b7d33",
+      "gate": "R4 allfour SOURCE PASS42+4+26; NIR1/2/3 closed",
+      "genuine": "PENDING actualM04 IDs + own browser/SQL/resource/acceptance"
     }
   }
 }

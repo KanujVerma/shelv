@@ -60,7 +60,7 @@ export function validateOrdersFixture(d){
     assert.equal(p.quantity,2);assert.equal(p.unitPriceCents,1234);assert.equal(p.taxCents,137);assert.equal(p.shippingCents,289);
     assert.equal(p.purchasedOn,'2026-10-01');assert.equal(p.deliveredOn,null);
     assert.equal(Date.parse(p.recordedAt),Date.parse('2026-10-02T11:00:00Z'));
-    assert.deepEqual(p.policy,{checkedOn:'2026-10-01',url:'https://example.invalid/historical-terms',summary:`saved conditions ${s.marker}`,openedAllowed:null,finalSale:false,returnBy:null,shipBy:null,returnCostCents:415});
+    assert.deepEqual(p.policy,{checkedOn:'2026-10-01',url:'https://example.com/historical-terms',summary:`saved conditions ${s.marker}`,openedAllowed:null,finalSale:false,returnBy:null,shipBy:null,returnCostCents:415});
     exact(r,['id','purchaseId','quantity','reason','condition','status','requestedAt','events']);
     assert.equal(r.id,s.returnId);assert.equal(r.purchaseId,p.id);assert.equal(r.quantity,1);
     assert.equal(r.reason,`historical request ${s.marker}`);assert.equal(r.condition,'opened');assert.equal(r.status,'reviewing');
@@ -322,11 +322,15 @@ const uuid=n=>`a1000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
 function fixture(){
  const ownerId=uuid(1),actors={a:{id:uuid(2),email:'orders-a@example.invalid',initialDisplayName:'Synthetic A'},b:{id:uuid(3),email:'orders-b@example.invalid',initialDisplayName:'Synthetic B'}};
  const scenario=key=>{const n=key==='a'?10:20,marker=`ORDERS_${ownerId.replaceAll('-','')}_${key.toUpperCase()}`,clientId=actors[key].id,purchaseId=uuid(n),returnId=uuid(n+1),eventId=uuid(n+2);
-  return {clientId,purchaseId,returnId,eventId,marker,view:{schemaVersion:1,revision:1,purchases:[{id:purchaseId,quoteId:null,recommendationId:null,retailer:`retailer ${marker}`,seller:`seller ${marker}`,productId:`historical_${key}`,productName:`historical synthetic purchase ${marker}`,quantity:2,unitPriceCents:1234,taxCents:137,shippingCents:289,purchasedOn:'2026-10-01',deliveredOn:null,policy:{checkedOn:'2026-10-01',url:'https://example.invalid/historical-terms',summary:`saved conditions ${marker}`,openedAllowed:null,finalSale:false,returnBy:null,shipBy:null,returnCostCents:415},recordedBy:clientId,recordedAt:'2026-10-02T11:00:00+00:00'}],returns:[{id:returnId,purchaseId,quantity:1,reason:`historical request ${marker}`,condition:'opened',status:'reviewing',requestedAt:'2026-10-03T11:00:00+00:00',events:[{id:eventId,status:'reviewing',note:`historical review ${marker}`,expectedRefundCents:null,retailerRefundCents:null,clientRepaidCents:null,policyCheckedOn:null,actorId:clientId,recordedAt:'2026-10-04T11:00:00+00:00'}]}]}};
+  return {clientId,purchaseId,returnId,eventId,marker,view:{schemaVersion:1,revision:1,purchases:[{id:purchaseId,quoteId:null,recommendationId:null,retailer:`retailer ${marker}`,seller:`seller ${marker}`,productId:`historical_${key}`,productName:`historical synthetic purchase ${marker}`,quantity:2,unitPriceCents:1234,taxCents:137,shippingCents:289,purchasedOn:'2026-10-01',deliveredOn:null,policy:{checkedOn:'2026-10-01',url:'https://example.com/historical-terms',summary:`saved conditions ${marker}`,openedAllowed:null,finalSale:false,returnBy:null,shipBy:null,returnCostCents:415},recordedBy:clientId,recordedAt:'2026-10-02T11:00:00+00:00'}],returns:[{id:returnId,purchaseId,quantity:1,reason:`historical request ${marker}`,condition:'opened',status:'reviewing',requestedAt:'2026-10-03T11:00:00+00:00',events:[{id:eventId,status:'reviewing',note:`historical review ${marker}`,expectedRefundCents:null,retailerRefundCents:null,clientRepaidCents:null,policyCheckedOn:null,actorId:clientId,recordedAt:'2026-10-04T11:00:00+00:00'}]}]}};
  };
  return {schemaVersion:1,ownerId,projectId:'fresh-owned-orders-unit',fixtureDirectory:'/tmp/unit-fixture',privateDirectory:'/tmp/unit-fixture/private',sourceCommit:'8b32873843841ed16e8c2b5b40bff8e20e7bad20',endpoints:{portal:'https://127.0.0.1:49301',supabase:'https://127.0.0.1:58621',mailpit:'http://127.0.0.1:49303'},actors,ordersScenario:{schemaVersion:1,a:scenario('a'),b:scenario('b')}};
 }
 test('valid exact readback stays unchanged, including actual nulls',()=>{const d=fixture();assert.strictEqual(validateOrdersFixture(d),d);assert.equal(d.ordersScenario.a.view.purchases[0].deliveredOn,null);});
+test('the source seed fixture conforms to the actual production Orders DTO',async()=>{
+ const {readClientOrdersReadView}=await import('../../../../src/contracts/PortalClientOrdersValidation.ts');
+ const d=fixture();for(const key of ['a','b'])assert.deepEqual(readClientOrdersReadView(d.ordersScenario[key].view),d.ordersScenario[key].view);
+});
 for(const [name,mutate] of [
  ['foreign origin',d=>d.endpoints.portal='https://example.com:443'],
  ['URL credentials',d=>d.endpoints.portal='https://user@127.0.0.1:49301'],
