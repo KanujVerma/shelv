@@ -1,0 +1,40 @@
+{
+  "head": "efd533bcabe8537a134206d71e8bd04b4929acab",
+  "inputTest": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-plan-platform-20261103/.local-artifacts/w1-plan-platform/client-service/original-contract.test.ts",
+  "inputSha256": "474cb85ac7382a9fc10971d79d952c80c06539fe577f516c9724f2408e9287f7",
+  "adaptation": "Only four contract import URLs rebound to exact Git export; no assertion changes.",
+  "paths": [
+    {
+      "path": "PortalClientService.ts",
+      "sha256": "f8823ef0035cfb0a3912e469c4dc227bf3320ff3a901c9b9ccb7282c025a88a4",
+      "matchesRetained714d": true
+    },
+    {
+      "path": "PortalClientServiceMapping.ts",
+      "sha256": "998794007f12d639f483ee87d53b926258548f6fdcaf3f373cfb6fb2d7d632d3",
+      "matchesRetained714d": true
+    },
+    {
+      "path": "PortalClientServiceValidation.ts",
+      "sha256": "b5c6e52f88fb5b9423b1cc5440899585725af388d9f16366af4b4f017508d4a5",
+      "matchesRetained714d": true
+    },
+    {
+      "path": "PortalClientServiceValues.ts",
+      "sha256": "ed5b2686237260f4596357886baeb6563754a4180fae7af25618288593e592d6",
+      "matchesRetained714d": true
+    }
+  ],
+  "verdict": "PASS_SCOPED_SOURCE_DTO",
+  "independentRetainedTests": {
+    "total": 21,
+    "pass": 21,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "node": "v22.23.0",
+    "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/service-dto/current.log",
+    "sha256": "102e129c0fbf7c89d96491506fe02eee58790e917edb8df614010c2ec9d75585"
+  }
+}
