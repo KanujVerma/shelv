@@ -155,6 +155,7 @@ export type AdvisorNotice = {
   /** Internal read provenance retained with session memory across remounts. */
   origin?: { purpose: "context"; actorId: string; target: ExactTarget };
 };
+export type AdvisorListReadState = "idle" | "loading" | "ready" | "error" | "denied";
 export interface AdvisorState {
   dependencies: AdvisorDependencyReview | null;
   needsComparison: boolean;
@@ -164,6 +165,10 @@ export interface AdvisorState {
   notice: AdvisorNotice | null;
   directory: PlanDirectory | null;
   clients: ConciergeAdvisorDirectory | null;
+  directoryRead: AdvisorListReadState;
+  clientsRead: AdvisorListReadState;
+  /** Last successfully observed page, never a server authority or snapshot. */
+  directoryCursor: string | null;
   view: DraftView | null;
   local: PlanContent | null;
   context: AdvisorGateContext | null;
