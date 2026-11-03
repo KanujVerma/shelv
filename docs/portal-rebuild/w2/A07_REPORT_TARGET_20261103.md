@@ -44,3 +44,9 @@ PR217 findings [stale pagination](https://github.com/KanujVerma/shelv/pull/217#d
 An intermediate placement of saved notes inside the writable form failed the explicit read-only case (10/11); moving the read projection outside the form guard corrects that case. The initial correction test launched before npm installation finished and its missing-dependency setup failure is retained separately as `a07-hosted-setup.log`. No application assertion was weakened.
 
 Current new11 plus unchangedSSR4 pass15/15 with no skips. Frontend strict and diff checks pass. Raw `a07-hosted-{red,current,types}.log` and `a07-read-only-note-red.log` live under `.local-artifacts/w2/` in `/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-a07-review-r2-20261103`. The original reviewed worktree remains unchanged. A new exact-head hosted/W7 source review is required; mount/genuine/visual and all held audits remain open.
+
+## Denied-read recovery correction, 3 November
+
+PR217's new [denied retry finding](https://github.com/KanujVerma/shelv/pull/217#discussion_r4460024319) is valid on `37eb2cd1115bf1439789b00d79b47f8e4c3b097d`. The selected-report denied view omitted its refresh action even after access returned. A same-session finite/SSR regression reproduces 11/12 before the correction. The first-page refresh remains available while history is incomplete, including after a current403. Private data stays cleared; actual read authorization and currentness remain the existing controller/transport checks.
+
+Current12 plus unchangedSSR4 pass16/16, frontend strict and diff checks pass. Raw `a07-denied-retry-{red,current,types}.log` live under `.local-artifacts/w2/` in `/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-a07-review-r3-20261103`. The R2 checkout remains frozen unchanged. New exact-head hosted/W7 review is required; no mount/genuine/held-scope clearance follows.

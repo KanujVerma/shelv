@@ -98,3 +98,12 @@ test('A07 can read saved private notes when care writes are unavailable',async t
  await h.c.open(selection);assert.equal(h.c.canEditBody(),false);assert.equal(h.c.getSnapshot().history.complete,true);
  const markup=html(h.c);assert.match(markup,/SYNTHETIC read-only private history/);assert.doesNotMatch(markup,/private working note/);
 });
+
+test('A07 denied report keeps a safe refresh action and recovers after access returns',async t=>{
+ const h=await guidanceApp(t,createAdvisorGuidanceController);
+ h.override('read_advisor_care_history_v1',{code:'forbidden'},403);await h.c.open(selection);
+ const denied=html(h.c);assert.match(denied,/check-in access unavailable/);assert.doesNotMatch(denied,/SYNTHETIC original comfort|<textarea/);
+ assert.match(denied,/>refresh care history</);
+ h.clear('read_advisor_care_history_v1');await h.c.refreshHistory();
+ assert.equal(h.c.getSnapshot().privateDenied,false);assert.equal(h.c.getSnapshot().history.complete,true);assert.match(html(h.c),/SYNTHETIC original comfort/);
+});

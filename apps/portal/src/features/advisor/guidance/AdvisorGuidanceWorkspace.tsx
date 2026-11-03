@@ -599,7 +599,7 @@ export function AdvisorGuidanceWorkspace({
           {!state.privateDenied && !state.history.complete ? "load the complete history before preparing a response." : null}
         </StatusNotice>
         {!state.privateDenied ? selectedReport : null}
-        {!state.privateDenied && !state.history.complete ? (
+        {!state.history.complete ? (
           <Button
             variant="secondary"
             busy={state.busy.includes("history")}
