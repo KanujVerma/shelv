@@ -42,3 +42,26 @@ PR219 [offline delivery recovery](https://github.com/KanujVerma/shelv/pull/219#d
 The advisor presentation now binds the existing notification view's refresh callback through `refreshPublicationDelivery`: use its retained selected-event read when still bound, otherwise call canonical `openPublication` with the retained original command/receipt. Existing mutation/status/retry handlers remain unchanged. This restores the event after suspension without republishing, recreating a receipt, changing dates or replacing currentness/authorization.
 
 Current new8 plus unchanged47 controller/race controls pass55/55 with no skips; frontend strict and diff checks pass. Raw `delivery-hosted-{red,current,types}.log` live in `.local-artifacts/w2/` under `/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-delivery-review-r2-20261103`. The old source/worktree and all prior qualifications remain preserved. Actual browser click, genuine Auth/outbox/provider, full-frame and new independent exact-head review remain pending.
+
+## Authorized truthful browser assertion successor, 3 November
+
+W7's complete seven-file independent source/finite/SSR PASS for unchanged product head `527b04b44bc1e493cb6a12796b9e3ff2288ff276` is preserved in [W2 delivery review](../w7/reviews/W2_DELIVERY_527.md), report commit `622f611079c39725bf61e854b637a5f0c6a7ca95`. It does not override the hosted portal failure: run `41711456980`, job `126180656920`, completed with3319/3320 and one failure in `rebuild-advisor-browser.test.mjs` publication journey. Its missing-controller branch expected `/queued/`; the observed DOM correctly had event recorded/current delivery unavailable. Raw failure is retained private0600 at `.local-artifacts/w2/PR219_527_PORTAL_CI_FAILED.log`, SHA256 `6bc3e10dea4087802e1a5832337a6f6ecdbae59085fad3e37cdbbf046428d3b7`. That original run remains failed.
+
+W0 explicitly allocated only the superseded assertion block in `apps/portal/tests/rebuild-advisor-browser.test.mjs`. The replacement requires the recorded event and unavailable current-delivery facts, and rejects a false current queued label. All other publication/preview/clock predicates and every byte outside the exact block remain unchanged. No production source changed in this successor.
+
+```diff
+-      /queued/,
++      /notification event recorded/,
++    );
++    assert.match(
++      await p.locator("[data-advisor-receipt]").innerText(),
++      /current delivery status is unavailable/,
++    );
++    assert.doesNotMatch(
++      await p.locator("[data-advisor-receipt]").innerText(),
++      /notification queued/,
+```
+
+Original full-file SHA256 `47108bf91f675a3207b06f74f1a60a9e17a416bce8cc7bf4b491e576aa79151c`; successor `466c1bcbe91058b45912257213825837b580cb500dca6cd54556d84cf3feb6aa`. Original exact block `67b56c935a7dd669ac472b3e248cd0571557171a753266cf7f28b978d719a6e9`; successor block `bc8d95e9cd3c1ec7a8392db42488e7a7ec9c529446973f3fbca245f966fc78e1`. Replacing the new block with the old in actual bytes equals the immutable Git original. Scope receipt and exact blocks are in `.local-artifacts/w2/browser-assertion-*` under `/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-delivery-test-r3-20261103`.
+
+Explicit Node22 syntax check, unchanged product model/finite/SSR55/55, frontend strict and diff checks pass. No author browser run was granted or performed. New immutable test-source/W7 gate, actual serialized browser execution and exact-head hosted CI are required; this edit alone is not a new browser PASS, full A06 acceptance or a relabeling of the original failure. All held audits remain unchanged.
