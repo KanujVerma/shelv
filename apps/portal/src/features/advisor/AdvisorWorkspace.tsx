@@ -15,7 +15,6 @@ import {
   Select,
   SaveStatus,
   StatusNotice,
-  Textarea,
   Icon,
 } from "../../ui/index.ts";
 import {
@@ -39,6 +38,7 @@ import type { AdvisorController, AdvisorState } from "./types.ts";
 import "./advisor.css";
 import { DependencyReview } from "./DependencyReview.tsx";
 import { FirstServiceQuote } from "./FirstServiceQuote.tsx";
+import { AgentImportDialog } from "./AgentImportDialog.tsx";
 
 export type AdvisorRoute =
   | Extract<PortalRoute, { name: "advisor-editor" }>
@@ -83,10 +83,10 @@ export function AdvisorWorkspace({
   const [search, setSearch] = useState(""),
     [filter, setFilter] = useState("all"),
     [importOpen, setImportOpen] = useState(false),
-    [raw, setRaw] = useState(""),
     [assignOpen, setAssignOpen] = useState(false),
     [client, setClient] = useState(""),
     [paymentOpen, setPaymentOpen] = useState(false);
+  useEffect(() => { setImportOpen(false); }, [c, s.view?.draft.id, s.ended, c.permissions.actorId]);
   useEffect(() => {
     if (
       route.name === "advisor-editor" &&
@@ -108,7 +108,6 @@ export function AdvisorWorkspace({
   }, [c, route.name, route.name === "advisor-editor" ? route.draftId : null]);
   useEffect(() => {
     if (s.ended) {
-      setRaw("");
       setImportOpen(false);
       setAssignOpen(false);
       setClient("");
@@ -479,7 +478,7 @@ export function AdvisorWorkspace({
           {c.permissions.edit ? (
             <Button
               variant="secondary"
-              disabled={s.busy || !!s.pending}
+              disabled={s.busy || !!s.pending || view.draft.state !== "working"}
               onClick={() => setImportOpen(true)}
             >
               import agent draft
@@ -638,36 +637,8 @@ export function AdvisorWorkspace({
           <Button onClick={() => go("review-publish")}>review & publish</Button>
         </div>
       </footer>
-      <Dialog
-        open={importOpen}
-        onOpenChange={(open) => {
-          setImportOpen(open);
-          if (!open) setRaw("");
-        }}
-        title="import agent draft"
-        description="compare structured plan content before applying it. manual work is retained."
-      >
-        <div className="advisor-fields">
-          <Field label="plan JSON">
-            <Textarea
-              rows={10}
-              value={raw}
-              onChange={(e) => setRaw(e.target.value)}
-            />
-          </Field>
-          <Button
-            disabled={!raw || s.busy}
-            onClick={async () => {
-              const value = raw;
-              setRaw("");
-              setImportOpen(false);
-              await c.compareImport(value);
-            }}
-          >
-            compare import
-          </Button>
-        </div>
-      </Dialog>
+      <AgentImportDialog key={`${view.draft.id}:${c.permissions.actorId}`} controller={c}
+        open={importOpen} onOpenChange={setImportOpen} />
       <Dialog
         open={assignOpen}
         onOpenChange={setAssignOpen}

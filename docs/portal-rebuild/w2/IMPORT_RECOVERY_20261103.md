@@ -1,0 +1,20 @@
+# Agent import text recovery checkpoint
+
+Owner: Kanuj. Independent advisor-only branch `kanuj/w2-import-recovery-20261103` from published8893. This local checkpoint is separate from the requested quote/delivery composition; no shared routing/transport/contracts/backend or other feature changed.
+
+The old AdvisorWorkspace compare click cleared pasted JSON and closed the dialog before awaiting `compareImport`. Invalid data or an unavailable comparison therefore lost the input. The new AgentImportDialog retains its text on failure, shows local recovery feedback and clears only after a fresh matching comparison or deliberate close. While the comparison is running it prevents duplicate submission/edits/dismissal; actual existing transport lifetime is unchanged. Draft/actor/controller ownership and unmount retirement reject stale UI completions. Immutable published drafts cannot open an import.
+
+The helper reuses canonical PlanContent parsing and the existing controller.compare operation. It requires a new matching proposed content/result, the same view/local/actor, current view/edit flags, no pending work and no error before the dialog may dismiss. Prior comparison, wrong draft, manual replacement, session retirement or permission loss cannot settle a pasted import. It never applies, saves, reviews or publishes, and changes no comparison engine or server authority. No private browser storage or logging is introduced.
+
+| Priority | Advisor goal | Observed issue / correction | Regression and evidence |
+| --- | --- | --- | --- |
+| P2 | correct or retry pasted agent content | text was discarded before comparison; retain until a fresh match | malformed/unsupported/failing/stale/foreign/denied comparison controls; source/model |
+| P2 | inspect immutable content | an edit-capable viewer could see the import opener on a published draft | actual editor opener disabled, helper refuses; source/SSR |
+
+Before: compare click clears and closes immediately. After: **preparing import comparison**, then either the existing comparison view or **comparison unavailable / the pasted import is kept here**. Closing explicitly says it discards the pasted import. Manual draft content remains under the existing authoring controller.
+
+Observed Node22.23.0: initial helper absence0/10, raw `.local-artifacts/w2/import-OLD.log`; first10 helper cases pass10/10. The first configured graph found one TS2304 obsolete parent setRaw cleanup reference, retained in `import-types.log`; removal of that obsolete reference gives actual configured frontend0 in `import-final-types.log`. Expanded14 candidate cases (11 comparison/helper+3 actual workbench SSR) plus47 retained controller/races,170 unchanged followup and9 quote cases pass240/240 with0skip/cancel/fail; raw `import-final-SSR-CURRENT.log`. Earlier236/237 runs remain separately retained. `git diff --check` is clean.
+
+Command: explicit Node22 PATH `node --experimental-strip-types --test apps/portal/tests/w2-advisor-import-recovery.test.mjs apps/portal/tests/rebuild-advisor-controller.test.mjs apps/portal/tests/rebuild-advisor-races.test.mjs apps/portal/tests/rebuild-advisor-followup.test.mjs apps/portal/tests/w2-advisor-service-quote.test.mjs`; `npm --prefix apps/portal run typecheck:rebuild`. Actual comparison controller uses finite synthetic memory ports. The original UI loss is inspected source evidence; factory absence is not a hydrated OLD reproduction. SSR covers workbench mount/opener permissions, not dialog typing/clicks or focus. Those remain independent browser gates.
+
+Approved A02 Figma context500:383 was read with its high-fidelity code/screenshot; the existing import opener/shared dialog and Lucide wrappers are reused, with no new asset/style system or frame redesign. Full A02/A03, hydrated retention/retry/cancel/owner-change behavior, keyboard/focus/narrow/zoom/a11y, current hosted/source review and authenticated persistence remain open. This checkpoint is not reviewed/admitted or full advisor acceptance. All A07/provider/principal44/Source/private-return/M65/photo holds remain unchanged. No Chrome/Auth/SQL/resource was acquired.
