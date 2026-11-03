@@ -22,6 +22,7 @@ export interface AdvisorAdmissionState {
   readonly fields: Readonly<AdmissionFields>;
   readonly confirmation: Readonly<AddClientCommand> | null;
   readonly pending: Readonly<AddClientCommand> | null;
+  readonly recovery: "unresolved" | "rejected_no_intent" | null;
   readonly receipt: Readonly<AdmissionReceipt> | null;
   readonly busy: "capabilities" | "add" | "status" | "connection" | null;
   readonly message: string | null;
@@ -37,6 +38,7 @@ export interface AdvisorAdmissionController {
   confirm(): Promise<void>;
   checkStatus(): Promise<void>;
   retry(): Promise<void>;
+  correctDetails(): void;
   addAnother(): void;
   dispose(): void;
 }

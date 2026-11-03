@@ -36,7 +36,7 @@ export function ClientAdmission({ controller: c, onOpenClient, onAdmitted }: {
       canClose={() => !busy} title={s.receipt ? "client record ready" : "add a client"}
       description="review the exact name and sign-in email. this is separate from creating a plan draft.">
       <div className="advisor-fields">
-        {s.message ? <StatusNotice tone={s.pending ? "uncertain" : "neutral"} title={s.message} /> : null}
+        {s.message ? <StatusNotice tone={s.pending && s.recovery !== "rejected_no_intent" ? "uncertain" : "neutral"} title={s.message} /> : null}
         {s.receipt ? <>
           <h2>{s.receipt.status === "already_admitted" ? "client already admitted" : "client added"}</h2>
           <p>{s.receipt.displayName} · {s.receipt.email}</p>
@@ -50,14 +50,18 @@ export function ClientAdmission({ controller: c, onOpenClient, onAdmitted }: {
             <Button variant="secondary" onClick={() => c.addAnother()}>add another client</Button>
           </div>
         </> : s.pending ? <>
-          <h2>original add needs confirmation</h2>
+          <h2>{s.recovery === "rejected_no_intent" ? "client add was rejected" : "original add needs confirmation"}</h2>
           <p>{s.pending.displayName} · {s.pending.email}</p>
-          <p>check the original result or retry the same add. closing keeps it for this session and does not cancel the add.</p>
+          {s.recovery === "rejected_no_intent"
+            ? <p>return to the details to review a corrected add.</p>
+            : <p>check the original result or retry the same add. closing keeps it for this session and does not cancel the add.</p>}
           <div className="advisor-actions">
             <Button variant="secondary" busy={s.busy === "status"} disabled={busy}
               onClick={() => void c.checkStatus()}>check original add status</Button>
             <Button busy={s.busy === "add"} disabled={busy}
               onClick={() => void c.retry()}>retry same add</Button>
+            {s.recovery === "rejected_no_intent" ? <Button variant="secondary" disabled={busy}
+              onClick={() => c.correctDetails()}>correct client details</Button> : null}
           </div>
         </> : s.confirmation ? <>
           <h2>confirm the intended client</h2>

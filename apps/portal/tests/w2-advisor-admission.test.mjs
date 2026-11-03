@@ -15,7 +15,7 @@ async function setup(t){
  assert.equal(typeof api.createAdvisorAdmissionController,'function');
  let enterAdd;const addStarted=new Promise(r=>enterAdd=r);
  const calls=[],login={signedIn:true,ownerId:ids.actor,generation:1,csrf:'SYNTHETIC-admission-csrf',capabilities:{view:true,edit:false,publish:false,confirmPayments:false},idleExpiresAt:'2099-01-01T00:00:00Z',absoluteExpiresAt:'2099-01-02T00:00:00Z'};
- let cap=true,failAdd=0,status='pending',overrideReceipt=null,hold=null,offlineNext=false;
+ let cap=true,failAdd=0,status='pending',statusFailure=0,overrideReceipt=null,hold=null,offlineNext=false;
  const runtime=createApplicationSession({audience:'advisor',locks:{request:async(_n,_o,run)=>run()},fetcher:async(url,init)=>{
   if(url==='/api/advisor/session')return Response.json(login);
   if(url==='/api/advisor/logout')return Response.json({ok:true});
@@ -23,9 +23,10 @@ async function setup(t){
   if(offlineNext){offlineNext=false;throw new TypeError('SYNTHETIC connection failure');}
   if(command.action==='capabilities')return Response.json({canAddClient:cap});
   if(command.action==='add_client'){
-   enterAdd();if(hold)await hold;if(failAdd)return Response.json({code:'unavailable'},{status:failAdd});
+   enterAdd();if(hold)await hold;if(failAdd)return Response.json({code:failAdd===409?'concierge_admission_conflict':'unavailable'},{status:failAdd});
    return Response.json(overrideReceipt?overrideReceipt(command):receipt(command));
   }
+  if(statusFailure)return Response.json({code:statusFailure===404?'concierge_admission_not_found':'unavailable'},{status:statusFailure});
   return Response.json({requestId:command.requestId,status,client:status==='ready'?(overrideReceipt?overrideReceipt(command):receipt({...calls.find(c=>c.action==='add_client'),requestId:command.requestId})):null});
  }});t.after(()=>runtime.dispose());await runtime.restore();
  const request=advisorCookieRequest('admission',runtime.cookie);
@@ -33,7 +34,7 @@ async function setup(t){
  const c=api.createAdvisorAdmissionController({runtime,ports});t.after(()=>c.dispose());
  const f=fixture({ready:true});f.options.session=runtime.getSnapshot().boundary;const workspace=api.createAdvisorController(f.options);t.after(()=>workspace.dispose());
  const html=()=>api.render({controller:workspace,admission:c,navigation:{route:{name:'advisor-clients'},navigate(){}},onOpenClient(){}});
- return {c,runtime,ports,calls,html,addStarted,cap(v){cap=v},fail(v){failAdd=v},status(v){status=v},receipt(v){overrideReceipt=v},hold(v){hold=v},offline(){offlineNext=true},login};
+ return {c,runtime,ports,calls,html,addStarted,cap(v){cap=v},fail(v){failAdd=v},status(v){status=v},statusFailure(v){statusFailure=v},receipt(v){overrideReceipt=v},hold(v){hold=v},offline(){offlineNext=true},login};
 }
 function receipt(command){return {requestId:command.requestId,status:'admitted',clientId:ids.client,email:command.email,displayName:command.displayName,emailSent:false,portalUrl:'https://portal.goshelv.com/'};}
 async function prepared(t){const h=await setup(t);await h.c.refreshCapabilities();h.c.editFields({email:' Client@Example.TEST ',displayName:' Synthetic Client '});h.c.prepare();assert.ok(h.c.getSnapshot().confirmation);return h;}
@@ -93,4 +94,46 @@ test('a malformed email-sent receipt cannot become a completed client add',async
 test('truthy malformed capability data never exposes or dispatches client admission',async t=>{
  const h=await setup(t);h.cap('true');await h.c.refreshCapabilities();assert.equal(h.c.getSnapshot().canAddClient,null);assert.doesNotMatch(h.html(),/>add client</);
  h.c.editFields({email:'client@example.test',displayName:'Synthetic Client'});h.c.prepare();await h.c.confirm();assert.equal(h.calls.filter(x=>x.action==='add_client').length,0);
+});
+
+
+test('a definitively conflicted add and matching not-found status allow deliberate details correction',async t=>{
+ const h=await prepared(t);h.fail(409);await h.c.confirm();const original=structuredClone(h.c.getSnapshot().pending);assert.ok(original);
+ h.statusFailure(404);await h.c.checkStatus();assert.equal(h.c.getSnapshot().recovery,'rejected_no_intent');assert.equal(h.c.getSnapshot().pending.requestId,original.requestId);
+ h.c.correctDetails();assert.equal(h.c.getSnapshot().pending,null);assert.equal(h.c.getSnapshot().fields.email,original.email);
+ h.c.editFields({email:'corrected@example.test'});h.c.prepare();assert.notEqual(h.c.getSnapshot().confirmation.requestId,original.requestId);h.fail(0);await h.c.confirm();assert.equal(h.c.getSnapshot().receipt.email,'corrected@example.test');
+});
+test('bare not-found status after an uncertain write cannot abandon the original',async t=>{
+ const h=await prepared(t);h.fail(503);await h.c.confirm();const original=structuredClone(h.c.getSnapshot().pending);h.fail(0);await h.c.checkConnection();await h.c.refreshCapabilities();h.statusFailure(404);await h.c.checkStatus();
+ assert.equal(h.c.getSnapshot().recovery,'unresolved');h.c.correctDetails();assert.equal(h.c.getSnapshot().pending.requestId,original.requestId);
+});
+test('a conflict with a still-pending journal remains unresolved and cannot be discarded',async t=>{
+ const h=await prepared(t);h.fail(409);await h.c.confirm();await h.c.checkStatus();const original=structuredClone(h.c.getSnapshot().pending);h.c.correctDetails();assert.equal(h.c.getSnapshot().pending.requestId,original.requestId);assert.equal(h.c.getSnapshot().recovery,'unresolved');
+});
+test('retrying a previously absent rejected add invalidates that absence before a new uncertain attempt',async t=>{
+ const h=await prepared(t);h.fail(409);await h.c.confirm();h.statusFailure(404);await h.c.checkStatus();assert.equal(h.c.getSnapshot().recovery,'rejected_no_intent');const original=structuredClone(h.c.getSnapshot().pending);
+ h.fail(503);await h.c.retry();assert.equal(h.c.getSnapshot().recovery,'unresolved');await h.c.checkConnection();await h.c.refreshCapabilities();await h.c.checkStatus();h.c.correctDetails();assert.equal(h.c.getSnapshot().pending.requestId,original.requestId);
+});
+
+test('a later conflict cannot erase an earlier uncertain attempt of the same original',async t=>{
+ const h=await prepared(t);h.fail(503);await h.c.confirm();const original=structuredClone(h.c.getSnapshot().pending);await h.c.checkConnection();await h.c.refreshCapabilities();
+ h.fail(409);await h.c.retry();h.statusFailure(404);await h.c.checkStatus();assert.equal(h.c.getSnapshot().recovery,'unresolved');h.c.correctDetails();assert.equal(h.c.getSnapshot().pending.requestId,original.requestId);
+});
+test('a remount keeps a definitive conflict but requires current access and a fresh absence read',async t=>{
+ const h=await prepared(t);h.fail(409);await h.c.confirm();const original=structuredClone(h.c.getSnapshot().pending);h.c.dispose();
+ const next=api.createAdvisorAdmissionController({runtime:h.runtime,ports:h.ports});t.after(()=>next.dispose());assert.equal(next.getSnapshot().recovery,'unresolved');next.correctDetails();assert.equal(next.getSnapshot().pending.requestId,original.requestId);
+ await next.refreshCapabilities();h.statusFailure(404);await next.checkStatus();assert.equal(next.getSnapshot().recovery,'rejected_no_intent');next.correctDetails();assert.equal(next.getSnapshot().pending,null);assert.equal(next.getSnapshot().fields.email,original.email);
+});
+test('a status number without the canonical conflict code never proves rejection',async t=>{
+ const h=await prepared(t);h.ports.add.execute=async()=>{throw Object.assign(Error('synthetic unrelated conflict'),{status:409,code:'unavailable'});};await h.c.confirm();const original=structuredClone(h.c.getSnapshot().pending);
+ h.statusFailure(404);await h.c.checkStatus();assert.equal(h.c.getSnapshot().recovery,'unresolved');h.c.correctDetails();assert.equal(h.c.getSnapshot().pending.requestId,original.requestId);
+});
+
+test('not-found status without the canonical absence code cannot unlock details',async t=>{
+ const h=await prepared(t);h.fail(409);await h.c.confirm();const original=structuredClone(h.c.getSnapshot().pending);
+ h.ports.status.execute=async()=>{throw Object.assign(Error('synthetic unrelated missing record'),{status:404,code:'unavailable'});};await h.c.checkStatus();h.c.correctDetails();assert.equal(h.c.getSnapshot().recovery,'unresolved');assert.equal(h.c.getSnapshot().pending.requestId,original.requestId);
+});
+test('confirmed absence never substitutes for a current admission capability',async t=>{
+ const h=await prepared(t);h.fail(409);await h.c.confirm();h.statusFailure(404);await h.c.checkStatus();const original=structuredClone(h.c.getSnapshot().pending);
+ h.cap(false);await h.c.refreshCapabilities();h.c.correctDetails();assert.equal(h.c.getSnapshot().pending.requestId,original.requestId);h.c.editFields({email:'other@example.test'});assert.equal(h.c.getSnapshot().fields.email,original.email);assert.equal(h.calls.filter(x=>x.action==='add_client').length,1);
 });
