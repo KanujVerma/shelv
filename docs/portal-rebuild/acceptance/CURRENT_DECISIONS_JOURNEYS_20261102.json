@@ -135,7 +135,7 @@
       "kind": "decision",
       "id": "D02",
       "title": "Approved baseline, not a new design competition",
-      "normativeText": "Implement the consolidated 26-screen set, not the earlier A/B/C/D experiments. Most frames are 1440 \u00d7 960. D01's guide specimen is 1800 \u00d7 960 and requires a usable narrower-desktop adaptation. Preserve the approved hierarchy, spacing, typography, density, content and patterns. Do not choose an older frame because it is easier.",
+      "normativeText": "Implement the consolidated 26-screen set, not the earlier A/B/C/D experiments. Most frames are 1440 × 960. D01's guide specimen is 1800 × 960 and requires a usable narrower-desktop adaptation. Preserve the approved hierarchy, spacing, typography, density, content and patterns. Do not choose an older frame because it is easier.",
       "normativeLine": 17,
       "criterion": "Compare the implemented content, geometry, hierarchy, type and density of all 26 approved frames, including the 1800px guide and usable narrower desktop. Manifest identity alone is insufficient.",
       "normativeSource": {
@@ -5428,5 +5428,10 @@
     "noNewWholeAcceptance": true,
     "sourceDelta": "Account name/current-contact and recorded Orders list/detail now mounted before clinical read. Service/cancel still future, all genuine/browser/financial/full-feature gates remain.",
     "baselineLedger": "immutable1a6 original artifact retains all original186 pins/history. Current-head implementation notes below supersede stale unmounted descriptions only."
+  },
+  "boundedCapabilities": {
+    "accepted": 1,
+    "ledger": "ACCEPTED_CAPABILITIES_20261103.json",
+    "qualification": "M01 is not a whole decision, screen or complete J06; all existing whole-decision/journey rows and counts stay unchanged."
   }
 }

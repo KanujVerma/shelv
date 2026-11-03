@@ -43,3 +43,8 @@ The separate Wisconsin service-scope question and environment prerequisites rema
 Later founder clarifications are recorded in [approved decision addenda](DECISION_ADDENDA.md); the imported decision register/input/specification/manifest retain their original hashes.
 
 The next bounded [care API contract](CARE_API_V1.md) pins actual use/identity, bounded v2 views and dependency rebasing after the source-backed [remaining-domain reconciliation](research/W1_REMAINING_API.md). It is not an implemented endpoint or permission to bypass the first-slice review gate.
+
+
+## Current bounded delivery
+
+The [capability ledger](acceptance/ACCEPTED_CAPABILITIES_20261103.json) records1 independently accepted bounded capability (own Account Name persistence),0/26 fully accepted screens and0/10 complete journeys. Follow [current status](CURRENT_STATUS.md) and [milestone scheduling](END_TO_END_MILESTONES_20261103.md); the complete master scope and all held policies remain unchanged.

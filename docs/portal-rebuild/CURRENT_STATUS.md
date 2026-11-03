@@ -1,3 +1,17 @@
+## 2026-11-03T12:39:29.064Z: M01 accepted, next capability is recorded Orders
+
+Owner: Kanuj / coordinator. Independent [ACTUAL R2](research/W7_M01_ACCOUNT_PROFILE_GENUINE_ACCEPTANCE_R2.md) accepts **one bounded own Account name-persistence capability**, on integrated source72edabab3afe2532580da4a4069dea1edbd1b952 / productd4eb83de. Canonical counts are **1 accepted bounded capability; 0/26 fully accepted screens; 0/10 complete accepted journeys** in the [capability ledger](acceptance/ACCEPTED_CAPABILITIES_20261103.json). Mounted24/26, complete SOURCE wiring12/26 and whole SOURCE decisionD06/48 are separate. Full C08/C08R/J06, all remaining original requirements and release remain open.
+
+Actual ordinary Auth read, exact Unicode/space save, canonical reread, refresh/fresh login, B own positive and selector/session/CSRF denials pass. Actual lost-ACK original6 retry preserves command/UUID/CAS/historical receipt with one SQL effect; the new unchanged genuine result returning after completed logout cannot restore private UI. The new current-source capture has31 bodies/all13 API bodies/zero capture errors and37 private-literal scan0 matches. R1 failed delivery and its exact missing response body stay FAILED/UNPROVEN, never retroactively scanned. Name/dialog keyboard and390px operability pass; exact approved summary alignment/separator remains a nonblocking capability appearance qualification and full C08 visual gate. The review's diagnostic-output redaction exception is disclosed in its report.
+
+Every browser and portal host joined. The reviewed captured-ID-only R8 stop completed at12:27:51.780Z; all119 native commands exited0/joined. Containers, volume, network, keys,2,976,893-byte private dump and all evidence are retained. No future engine/DB/Auth query, restart, reuse or reset of that stopped fixture is authorized.
+
+Next: M02 recorded Orders on a NEW uniquely owned isolated environment and exact new source packet; then M04 deliberate advisor publication feeds M03 notification acknowledgement and M05 immutable history. Reviewed M02/M04/M05 observation assets are admitted as source/test data only; SQL parser and genuine dependent execution remain UNRUN. M03 NIR2 is corrected in an unadmitted candidate and requires a NEW complete review. No production, real-client, money, purchase, fulfillment or external email actions; Guidance private-return/M65/provider-photo holds stay HELD.
+
+---
+
+## Preserved earlier checkpoints
+
 ## Admitted Account and recorded Orders source 2026-11-03T01:58:07.894680+00:00
 
 ## 3 November 2026: acceptance-first execution and reviewed CI repair

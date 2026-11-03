@@ -1,3 +1,7 @@
+## 2026-11-03T12:39:29.064Z: one bounded portal capability accepted
+
+M01 own Account name persistence has independent ACTUAL R2 PASS on Root72ed/productd4eb. Counts:1 bounded capability,0/26 fully accepted screens,0/10 complete journeys. [Canonical receipt](portal-rebuild/acceptance/ACCEPTED_CAPABILITIES_20261103.json) and [current status](portal-rebuild/CURRENT_STATUS.md) retain exact source/requests/SQL/privacy/joins and old failures. R8 is STOPPED_RETAINED with private dump/evidence/containers/volume/network retained; no further stopped-fixture queries or reuse. Next NEW environment: recorded Orders, then deliberate publication feeding notifications/history. M02/M04/M05 assets have scoped Source review and are now admitted; actual SQL/browser execution and M03 correction review remain pending. No complete Account, whole journey, Guidance/M65/photo hold or release accepted.
+
 ## Portal administrative source admission — 3 November 2026
 
 Root code `5d07d95819f5363795b9c942eec78f145b37a265` mounts Account name/current-email and recorded Orders list/detail before clinical loading through fixed own-client admin channels. Complete independent compatibility review `bfd572e7` approves the historical/current successors. Four configured type graphs, preservation30, controller225 and selected App/SSR/finite329 pass. Census:24/26 mounted/controllers,12 complete SOURCE frame wiring,0 current genuine/browser signoffs,1 SOURCE whole decision and0 complete current journeys. Source mounting is not full feature or release acceptance.

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "Current approved 26-screen source and verification inventory",
-  "date": "2026-11-03T01:55:01.602349+00:00",
+  "date": "2026-11-03T12:39:29.064Z",
   "owner": "Kanuj",
   "taskId": null,
   "sourcePin": {
@@ -1199,7 +1199,7 @@
       "requiredWriteProducersReason": "Exact display-name CAS write plus canonical reread is connected. Email mutation/status explicitly unavailable; address/consent/cancellation/export and remaining controls are incomplete, so full-frame write wiring stays false.",
       "principalJourneyImplemented": false,
       "principalActions": [
-        "Name read/save/canonical reread/remount and canonical current-email read: implemented SOURCE/finite/SSR",
+        "Name read/save/canonical reread/refresh/new login/owner/session/recovery: M01 independently ACTUAL accepted on Root72ed; canonical current-email read remains SOURCE.",
         "Email verification, address, service/coverage/cancellation, privacy/consent/final export and unfinished administration: incomplete"
       ],
       "requiredNegativeAndReturningCases": [
@@ -1225,7 +1225,7 @@
       "genuineConnectedReceipt": null,
       "genuineConnectedReason": "No complete current-source ordinary route/handler/real authorized persistent read or required effect/readback plus negative/return receipt. D01 instead requires complete current isolated-demo behavior and no-business-effects proof. Historical source equivalence is not established.",
       "verificationDisposition": "unverified, not failed",
-      "exactRemainingGate": "Run ordinary real Account read/name-save/reload/owner/session negative browser+SQL proof; then admit reviewed service/cancellation channel/lifecycle and final-export/unfinished-admin/privacy/address/contact-verification flows. No full-C08 acceptance yet.",
+      "exactRemainingGate": "Complete verified-email mutation, address, service/coverage/cancellation, consent/privacy/final-export/unfinished administration and exact approved frame appearance/accessibility. Name-summary aligned row/separator qualification retained. No full C08/J06 acceptance.",
       "owner": "Kanuj / W6 and W0; Sami / frozen order facts",
       "completeSourceWiring": false,
       "title": "account",
@@ -1235,7 +1235,7 @@
         "height": 960
       },
       "currentReconciliationHead": "5d07d95819f5363795b9c942eec78f145b37a265",
-      "currentProofLimit": "Source mount/controller classification only. Existing browser/genuine records remain historical/unverified; shared authority composition is covered by scoped R1bfd572e7, not actual external execution.",
+      "currentProofLimit": "M01 own Name persistence has ACTUAL R2 PASS on Root72ed/productd4eb. This is a bounded subcapability; full Account source/visual/functional acceptance remains false.",
       "mountedRouteVariants": [
         "/account"
       ],
@@ -1246,7 +1246,9 @@
       "browserVerified": false,
       "accepted": false,
       "acceptanceScope": "Whole approved frame; individual later accepted subcapabilities tracked separately",
-      "acceptedCapabilities": []
+      "acceptedCapabilities": [
+        "M01"
+      ]
     },
     {
       "id": "C08C",
@@ -4474,12 +4476,10 @@
     "notes": "All other selected frame branches remain mounted as previously classified; full behavior/care/private-return/visual/native proof is not inferred. Existing sourceManifest identities are historical reference pins, not rewritten as current runtime equivalence."
   },
   "milestoneExecution": {
-    "schedule": "../END_TO_END_MILESTONES_20261103.md",
-    "acceptedBoundedCapabilities": 0,
+    "acceptedBoundedCapabilities": 1,
     "acceptedScreens": 0,
     "acceptedJourneys": 0,
-    "current": "M01 own Account profile persistence",
-    "gate": "real first read503 preserved; reviewed772c correction plus same-live V2 host update underway; no capability accepted",
-    "owner": "Kanuj / coordinator"
+    "receipt": "ACCEPTED_CAPABILITIES_20261103.json",
+    "scope": "M01 Name only; complete frame predicates unchanged"
   }
 }

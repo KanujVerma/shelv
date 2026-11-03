@@ -12377,12 +12377,12 @@
     "ci": "exact-new-head pending publication"
   },
   "milestoneExecution20261103": {
-    "at": "2026-11-03T07:53:02.471Z",
+    "at": "2026-11-03T12:39:29.064Z",
     "coordinator": "9b085ada-435f-48d6-8886-957c1ce3e82d",
     "goal": "same existing native goal, active",
     "integrationAuthority": "coordinator only",
     "counts": {
-      "acceptedBoundedCapabilities": 0,
+      "acceptedBoundedCapabilities": 1,
       "acceptedScreens": 0,
       "screenTotal": 26,
       "acceptedJourneys": 0,
@@ -12393,61 +12393,226 @@
         "key": "M01-fixture",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture",
-        "state": "implementation; live stack custody retained, no outstanding native command",
+        "state": "terminal; source claims released; not executing",
         "owns": [
           "apps/portal/scripts/genuine-account-fixture.mjs",
           "apps/portal/tests/genuine/account-fixture-unit.test.mjs"
         ],
-        "resource": "no new action until reviewed roll_forward_code grant"
+        "resource": "STOPPED_RETAINED all119 exit0 joined; no future query/reuse"
       },
       {
         "key": "M01-host",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Aacceptance-20261103-live-host-code-rollforward",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-local-bindings",
-        "state": "source implementation",
+        "state": "terminal; source claims released; not executing",
         "owns": [
           "apps/portal/scripts/genuine-account-host.mjs",
           "apps/portal/tests/genuine/account-local-bindings.mjs",
           "apps/portal/tests/genuine/account-host-unit.test.mjs",
           "apps/portal/tests/genuine/account-local-bindings.test.mjs"
         ],
-        "resource": "none, source plus builtins"
+        "resource": "none"
       },
       {
         "key": "M01-review",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-workerd-private-redirect-review-r2",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-workerd-private-redirect-review-r2",
-        "state": "completed independent Source PASS, not executing",
+        "state": "terminal; source claims released; not executing",
         "resource": "none"
       },
       {
         "key": "M02-orders",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-recorded-orders-oracle",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey",
-        "state": "source implementation",
+        "state": "terminal; source claims released; not executing",
         "resource": "none"
       },
       {
         "key": "milestone-20261103-notifications-inbox",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notifications-inbox",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notifications-inbox",
-        "state": "source implementation; actual self/Parent Sol xhigh/default READ reported",
+        "state": "terminal; source claims released; not executing",
         "resource": "none"
       },
       {
         "key": "milestone-20261103-advisor-publication",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-advisor-publication",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-advisor-publication",
-        "state": "source implementation; actual self/Parent Sol xhigh/default READ reported",
+        "state": "terminal; source claims released; not executing",
         "resource": "none"
       },
       {
         "key": "milestone-20261103-history-current-snapshot",
         "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-current-snapshot",
         "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-current-snapshot",
-        "state": "source implementation; actual self/Parent Sol xhigh/default READ reported",
+        "state": "terminal; source claims released; not executing",
         "resource": "none"
       }
-    ]
+    ],
+    "acceptedCapabilities": [
+      {
+        "id": "M01",
+        "source": "72edabab3afe2532580da4a4069dea1edbd1b952",
+        "receipt": "acceptance/ACCEPTED_CAPABILITIES_20261103.json",
+        "report": "research/W7_M01_ACCOUNT_PROFILE_GENUINE_ACCEPTANCE_R2.md"
+      }
+    ],
+    "currentReviewReceipts": [
+      {
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-account-profile-genuine-acceptance-r2",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-account-profile-genuine-acceptance-r2",
+        "provider": "codex",
+        "model": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default",
+        "state": "terminal review result received; not executing"
+      },
+      {
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r2",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r2",
+        "provider": "codex",
+        "model": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default",
+        "state": "terminal review result received; not executing"
+      },
+      {
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-assets-review-r2",
+        "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-assets-review-r2",
+        "provider": "codex",
+        "model": "gpt-6.1-sol",
+        "reasoningEffort": "xhigh",
+        "serviceTier": "default",
+        "state": "terminal review result received; not executing"
+      }
+    ],
+    "integration": {
+      "at": "2026-11-03T12:39:29.064Z",
+      "selectedPostimagesOnly": [
+        {
+          "path": "apps/portal/tests/genuine/account-orders-seed.sql",
+          "sourceCommit": "7798332f47597df2b6c15cc521fd2bc50e14e3f9",
+          "sha256": "4dfbbdd6c79b6ccf95db8b9215f1c93a519e86178130b85b459f5e4ba773d292",
+          "bytes": 5262
+        },
+        {
+          "path": "apps/portal/tests/genuine/recorded-orders.browser.mjs",
+          "sourceCommit": "7798332f47597df2b6c15cc521fd2bc50e14e3f9",
+          "sha256": "0f90bd06fc52f4292a73babd0a534c2ab2afe16bedf20855485795fb8dc08597",
+          "bytes": 29736
+        },
+        {
+          "path": "apps/portal/tests/genuine/recorded-orders-observation.sql",
+          "sourceCommit": "7798332f47597df2b6c15cc521fd2bc50e14e3f9",
+          "sha256": "1fcfcf837f9c25d5172e2bc2b72f6acf293143d1b6185583a1b74358fe3a1ed6",
+          "bytes": 12064
+        },
+        {
+          "path": "apps/portal/tests/genuine/recorded-orders-oracle.test.mjs",
+          "sourceCommit": "7798332f47597df2b6c15cc521fd2bc50e14e3f9",
+          "sha256": "0e9bac0cc603d63c329b6d19e8a43e6ff6579a30fd11a52cb89c665615c41e68",
+          "bytes": 19787
+        },
+        {
+          "path": "docs/portal-rebuild/research/W5_GENUINE_RECORDED_ORDERS_ACCEPTANCE.md",
+          "sourceCommit": "7798332f47597df2b6c15cc521fd2bc50e14e3f9",
+          "sha256": "0e46968f5a74cbfb20e6b15be06c218dc63dafa8a1cc6d839f40335472053b56",
+          "bytes": 21746
+        },
+        {
+          "path": "apps/portal/tests/genuine/advisor-publication.browser.mjs",
+          "sourceCommit": "7a599011ded98b2c87d96f975a66de9c274c7c87",
+          "sha256": "e4f2b9d7ef653525636416836c18d763185b137426c071aa69193b1c259d2aab",
+          "bytes": 29462
+        },
+        {
+          "path": "apps/portal/tests/genuine/advisor-publication-arrange.sql",
+          "sourceCommit": "7a599011ded98b2c87d96f975a66de9c274c7c87",
+          "sha256": "0221ee86b4f2f6282234ac00a3de0781cb753715a204a26643f682855ede1ac0",
+          "bytes": 7120
+        },
+        {
+          "path": "apps/portal/tests/genuine/advisor-publication-oracle.test.mjs",
+          "sourceCommit": "7a599011ded98b2c87d96f975a66de9c274c7c87",
+          "sha256": "e2f4e8b6aabf127b778c8f8b30c03982bcd493219c209b381f9a17a293ec6ec2",
+          "bytes": 12307
+        },
+        {
+          "path": "docs/portal-rebuild/research/W2_GENUINE_PUBLICATION_MILESTONE.md",
+          "sourceCommit": "7a599011ded98b2c87d96f975a66de9c274c7c87",
+          "sha256": "1d27d8da305d58bb0eccb465d32a234303604e7970a6f162830d8f576e227ddf",
+          "bytes": 14536
+        },
+        {
+          "path": "apps/portal/tests/genuine/client-history.browser.mjs",
+          "sourceCommit": "2b50d7e83f58bf57723cf828d362c84e473a299f",
+          "sha256": "f1c9fd837d1388cf33525cf5fe4798dd0fa79de27cac1959285386689ffd5599",
+          "bytes": 23293
+        },
+        {
+          "path": "apps/portal/tests/genuine/client-history-observation.sql",
+          "sourceCommit": "2b50d7e83f58bf57723cf828d362c84e473a299f",
+          "sha256": "467093bc482779cad587cc04437081acb7579238ff0439640e5632c2420bbfe8",
+          "bytes": 2837
+        },
+        {
+          "path": "apps/portal/tests/genuine/client-history-oracle.test.mjs",
+          "sourceCommit": "2b50d7e83f58bf57723cf828d362c84e473a299f",
+          "sha256": "a0c9d09784740ffaa9c72b256386199055026e0a1ea8eb46d9c645997e35f00f",
+          "bytes": 18787
+        },
+        {
+          "path": "docs/portal-rebuild/research/W4_GENUINE_HISTORY_MILESTONE.md",
+          "sourceCommit": "2b50d7e83f58bf57723cf828d362c84e473a299f",
+          "sha256": "99f16604091936ecfa344fbedb88ff31b32888528cd950a8b023c5e18ddaec0a",
+          "bytes": 27709
+        },
+        {
+          "path": "docs/portal-rebuild/research/W7_M01_ACCOUNT_PROFILE_GENUINE_ACCEPTANCE_R1.md",
+          "sha256": "87ab65ad9f07d1c8873351607de863aacdbea0a5a216a44cf082e52770851651",
+          "bytes": 26546,
+          "scope": "report-only postimage, no INPUT ancestry"
+        },
+        {
+          "path": "docs/portal-rebuild/research/W7_M01_ACCOUNT_PROFILE_GENUINE_ACCEPTANCE_R2.md",
+          "sha256": "e440772a86eb6707bb1800e3c80c39865c8b753b97332532ff4ee7a0bf9c26a7",
+          "bytes": 18479,
+          "scope": "report-only postimage, no INPUT ancestry"
+        },
+        {
+          "path": "docs/portal-rebuild/research/W7_GENUINE_RECORDED_ORDERS_SOURCE_R2.md",
+          "sha256": "61f1a7738c0d6d3b31f96cb9156c4b09cbb49c95133e624d320141090564b77f",
+          "bytes": 22557,
+          "scope": "report-only postimage, no INPUT ancestry"
+        },
+        {
+          "path": "docs/portal-rebuild/research/W7_GENUINE_PUBLICATION_SOURCE_R1.md",
+          "sha256": "e1ff152897e61c14f43e2c1ba3e355067db28b747d7016ff8c8ad9e24cec06c6",
+          "bytes": 17915,
+          "scope": "report-only postimage, no INPUT ancestry"
+        },
+        {
+          "path": "docs/portal-rebuild/research/W7_GENUINE_HISTORY_SOURCE_R2.md",
+          "sha256": "ab2c5369c80ce9848611b681d213bae2bcbd3248c1362ac66499cca32143c05e",
+          "bytes": 13785,
+          "scope": "report-only postimage, no INPUT ancestry"
+        }
+      ],
+      "InputAncestryImported": false
+    },
+    "readyQueue": [
+      "NEW complete M03 NIR2 Source R3 review at5d66c8a4",
+      "Fresh M02 producer/host exact new-Root pin and resource packet, then real Orders seed/browser/oracle",
+      "M04 actual ordinary advisor/viewer permissions and canonical synthetic payment/approval setup after M02 interval",
+      "M03/M05 consume actual M04 publication/event/delivery/snapshot IDs",
+      "Remaining consent/source/service/export/admin capabilities remain in master scope"
+    ],
+    "resourceState": {
+      "stage": "STOPPED_RETAINED",
+      "ownerId": "2a771cf9-1a2c-4b60-9569-71d175d26011",
+      "at": "2026-11-03T12:27:51.780Z",
+      "all119Exit0Joined": true,
+      "noFutureQueryOrReuse": true
+    }
   }
 }
