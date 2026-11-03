@@ -1,0 +1,2298 @@
+{
+  "schemaVersion": 1,
+  "owner": "Kanuj",
+  "baseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "productCode": "d4eb83dec33ec68cc553228fa87922ce14de1b80",
+  "recordedAt": "2026-11-03T19:46:33.946705+00:00",
+  "verdict": "NOT_ACCEPTED_COMPLETE_PORTAL",
+  "scope": "W7 canonical independent acceptance ledger; original evidence and failures remain immutable. No percentage. W0 owns integration status.",
+  "proofRules": {
+    "source": "Read wiring/contract proof only. No genuine execution inferred.",
+    "browser": "Complete current frame/task/return/negative plus compared desktop and required responsive/a11y evidence. Partial screenshots do not count.",
+    "genuine": "Ordinary actual isolated authentication, authorized persistent effects/readbacks, cross-owner/role/session negatives and recovery at pinned source.",
+    "acceptedScreen": "All frame-local source, genuine behavior where applicable, complete browser/visual/a11y and applicable independent gates.",
+    "decision": "Whole normative predicate at appropriate proof level. D06 is SOURCE only. Runtime/financial/legal predicates cannot inherit source status.",
+    "journey": "Complete current required chain, actors, persistence, no-effects, denials and returning paths, not a bounded subcapability.",
+    "unrun": "Unknown is neither failed nor passed.",
+    "reconciliation": "Accepted M01/M02 preserved through offline packet/stop/source hash verification, never rerun."
+  },
+  "sources": [
+    {
+      "path": "docs/portal-rebuild/APPROVED_DECISIONS.md",
+      "sha256": "eefc74fcc1498cdbbe5ac21d4215cfb9c8936545a6dcc6437bf9e0dd98c21e60",
+      "bytes": 24755
+    },
+    {
+      "path": "docs/portal-rebuild/DECISION_ADDENDA.md",
+      "sha256": "aaa150a5673d23c13ec9ad6a9fc6fc784668cdeb35c34785a1514051ed439e63",
+      "bytes": 4264
+    },
+    {
+      "path": "docs/portal-rebuild/APPROVED_DESKTOP_SPEC.md",
+      "sha256": "4ceafbaca13ab9324ea35e5e3cb94d09ba76178c9c5127a93da87c5b9c7e59a0",
+      "bytes": 36823
+    },
+    {
+      "path": "docs/portal-rebuild/IMPLEMENTATION_CONTRACTS.md",
+      "sha256": "accd8509abf63978e37a96cc55c0b8673419b8ab207cdfaf5a395f708aa8d5da",
+      "bytes": 21280
+    },
+    {
+      "path": "docs/portal-rebuild/SCREEN_MANIFEST.json",
+      "sha256": "55a375ede66a3c9c13139d90246fbc096b6bd1a11cb8c2ce49d30ee8bb44519b",
+      "bytes": 4300
+    },
+    {
+      "path": "docs/portal-rebuild/shelv_desktop_design_manifest.json",
+      "sha256": "64e9c782657dc6d927ddf255bc983e863c89974c13418287fa980e9f5ed35307",
+      "bytes": 12642
+    },
+    {
+      "path": "docs/portal-rebuild/ACCEPTANCE_MATRIX.md",
+      "sha256": "fe0d479f2d7d0306d828817f85e83d1bdd9ba73a099f232020b764e95c009e72",
+      "bytes": 55905
+    },
+    {
+      "path": "docs/portal-rebuild/EIGHT_THREAD_RULES.md",
+      "sha256": "3ca1bd87b93b6935f891686517c9933a90272134619d3038fa4d831069b9af88",
+      "bytes": 11214
+    },
+    {
+      "path": "docs/portal-rebuild/acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+      "sha256": "2ba4f80c6012ae278805a5dfcb366f5da61d83c5331fe2c411914c4730d170ed",
+      "bytes": 206204
+    },
+    {
+      "path": "docs/portal-rebuild/acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+      "sha256": "19eee77289686b5928b122f338b1cdc6073092603f5d17ca4dbbd9bc06983945",
+      "bytes": 275983
+    },
+    {
+      "path": "docs/portal-rebuild/acceptance/ACCEPTED_CAPABILITIES_20261103.json",
+      "sha256": "6b887c9adb090aa2b7d8d6571d224dd84f5cb3c62b6264895079d04a2a445abc",
+      "bytes": 8888
+    },
+    {
+      "path": "docs/portal-rebuild/transition/20261103/legacy-review-holds.json",
+      "sha256": "a8dbdaf17a0aa7ae73f65eadcc62378a75322ea1445c52ccd654b3729ade6411",
+      "bytes": 4175
+    },
+    {
+      "path": "docs/portal-rebuild/transition/20261103/resources.json",
+      "sha256": "56b0da1c0417245dff23b586fd59e3aacf5a35791f7519e555dc879f06c63109",
+      "bytes": 5977
+    }
+  ],
+  "counters": {
+    "mountedScreens": 24,
+    "fullySourceWiredScreens": 12,
+    "browserVerifiedScreens": 0,
+    "fullyAcceptedScreens": 0,
+    "screenDenominator": 26,
+    "verifiedDecisions": 1,
+    "decisionDenominator": 48,
+    "verifiedDecisionProofLevels": {
+      "SOURCE": [
+        "D06"
+      ],
+      "genuine": []
+    },
+    "completeJourneys": 0,
+    "journeyDenominator": 10,
+    "acceptedBoundedCapabilities": [
+      "M01",
+      "M02"
+    ]
+  },
+  "baselineProof": {
+    "offline": "BASELINE_RECONCILIATION.json",
+    "types": "BASELINE_TYPES.json",
+    "runtimeDeltaFromAcceptedProduct": [],
+    "sourceClassification": "Preserved prior 26-row classification plus current mount/renderer inspection. No fresh genuine/browser signoff."
+  },
+  "screens": [
+    {
+      "id": "C01",
+      "title": "your plan · morning",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "498:85",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/plan?routine=morning",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W3",
+      "journeys": [
+        "J03"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "preparation exposes no private draft",
+        "no proposal/no date/none-versus-unknown/extreme content",
+        "Stop/paused state retains advice history without unqualified continue",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Execute current entitled V3 content/manifest hydration, Stop/no-proposal/preparation/negative/return cases and compare1440 frame with required narrow/mobile/a11y. Full destination-photo and J05 flows remain separately incomplete.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C01"
+      },
+      "currentEvidence": [
+        {
+          "level": "INTERCEPTED_SYNTHETIC_BROWSER_BOUNDED",
+          "record": "reviews/W3_BROWSER_96B_R2_RESULT.json",
+          "scope": "approved unstarted next-action, explicit self-purchase unknown-date Start at3widths; no full-frame/genuine signoff"
+        }
+      ]
+    },
+    {
+      "id": "C01E",
+      "title": "your plan · evening",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "503:926",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/plan?routine=evening",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W3",
+      "journeys": [
+        "J03"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "conditional/as-needed and gradual schedule preserve actual Start",
+        "proposed/paid/delivered treatment remains out before Start",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Prove current conditional evening content, no auto-Start/escalation, returning routine/Stop and full approved comparison/a11y.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C01E"
+      },
+      "currentEvidence": [
+        {
+          "level": "INTERCEPTED_SYNTHETIC_BROWSER_BOUNDED",
+          "record": "reviews/W3_BROWSER_96B_R2_RESULT.json",
+          "scope": "approved unstarted next-action, explicit self-purchase unknown-date Start at3widths; no full-frame/genuine signoff"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "title": "review a recommendation",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "498:212",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/plan/recommendations/:decisionId",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W3",
+      "journeys": [
+        "J03",
+        "J04"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "wrong decision/publication/basis and read-only deny",
+        "choice does not charge/order/Start",
+        "stale/uncertain original retains exact request",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Run all current V3 choices, changed basis/conflict/uncertain/reload and no-charge/no-Start readbacks; compare selected recommendation frame. Full purchasing is J04, still absent.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C02"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "C02D",
+      "title": "directions & evidence",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "499:766",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/plan/products/:productId/evidence (recommended treatment ID)",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W3",
+      "journeys": [
+        "J03"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "unknown product unavailable without guessed record",
+        "no private consultation bytes in public source projection",
+        "complete azelaic cautions and formulation limits",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Read current exact treatment/caution/limits projection through ordinary authenticated route, verify unknown-ID/privacy/return and compare full evidence frame/a11y.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C02D"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "C03",
+      "title": "product details sheet",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "499:151",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/plan/products/:productId[?routine=evening]",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W3",
+      "journeys": [
+        "J03"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "unrecognized or ambiguous selected ID unavailable",
+        "only one overlay",
+        "CeraVe actions retain CeraVe identity",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Prove same-product Sheet/Escape/Back/Forward/direct-entry/focus/scroll/unsent behavior on current Root and compare actual selected product frame.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C03"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "C03D",
+      "title": "CeraVe PM reasoning",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "503:1083",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/plan/products/:productId/evidence (CeraVe PM ID)",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W3",
+      "journeys": [
+        "J03"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "CeraVe ID never routes to treatment evidence",
+        "unknown ID unavailable",
+        "formula unknown remains unknown",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Verify complete CeraVe-specific current content and accessible return/unknown-ID handling; C02D navigation proof alone cannot sign off C03D.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C03D"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "C04",
+      "title": "check-ins & history",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "498:304",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/history; /history/:eventId; /history/versions/:version",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W4",
+      "journeys": [
+        "J05",
+        "J03"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "no advisor-private notes/autosave churn in client projection",
+        "pagination403 removes denied record",
+        "event/version unavailable remains explicit",
+        "amendments retain originals",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Run current ordinary history/event/version/filter/restore/denied/return cases and private-byte exclusions, then complete C05→A07→C04 J05 separately.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C04"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "C05",
+      "title": "send an update",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "499:305",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/history/new; existing report amendment",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W4",
+      "journeys": [
+        "J05",
+        "J07"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "submission works without a required photo/form gate",
+        "current record must be re-read before editing",
+        "correction preserves original/date/channel",
+        "no-change human conclusion/alert is distinct from automated acknowledgement",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Connect reviewed optional-photo upload/complete collection/actual private bytes without making photos mandatory; complete ordinary no-photo and photo report/amendment/alert/A07/history persistence with current returning/privacy cases. Failed-photo-review hold remains HELD.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C05"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "C06",
+      "title": "orders · quote preparation",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "499:446",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/orders",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W5",
+      "journeys": [
+        "J04",
+        "J06",
+        "J08"
+      ],
+      "boundedCapabilities": [
+        "M02"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "unknown seller/tax/shipping/returns blocks payable quote",
+        "claimed funds ≠ verified receipt ≠ order ≠ shipment/delivery",
+        "plan/address changes never rewrite frozen order",
+        "wrong owner and ended-care outstanding admin",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Complete the approved quote/claim/frozen payable/delivery/return/Start path and missing authoritative facts; prove real own read persistence and wrong-owner/session/refused private results in ordinary browser. M65 remains HELD.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C06"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "C06D",
+      "title": "delivered, not started",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "503:808",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/orders/:orderId",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W5",
+      "journeys": [
+        "J04",
+        "J06",
+        "J08"
+      ],
+      "boundedCapabilities": [
+        "M02"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "unknown seller/tax/shipping/returns blocks payable quote",
+        "claimed funds ≠ verified receipt ≠ order ≠ shipment/delivery",
+        "plan/address changes never rewrite frozen order",
+        "wrong owner and ended-care outstanding admin",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Complete the approved quote/claim/frozen payable/delivery/return/Start path and missing authoritative facts; prove real own read persistence and wrong-owner/session/refused private results in ordinary browser. M65 remains HELD.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C06D"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "C07",
+      "title": "record actual use",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "499:584",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/plan/products/:productId/use; /plan/use",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W3",
+      "journeys": [
+        "J03",
+        "J04",
+        "J05"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "Stop does not require advisor permission",
+        "self-purchase creates no fake funds/order",
+        "different/unknown product cannot silently activate advised recommendation",
+        "recorded time is not occurrence/Start",
+        "partial write/conflict/uncertain retains exact original",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Complete optional label/mismatch byte workflow and current full identity/use/amendment/negative/return matrix with real persisted reported-use/attention readback and visual/a11y.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C07"
+      },
+      "currentEvidence": [
+        {
+          "level": "INTERCEPTED_SYNTHETIC_BROWSER_BOUNDED",
+          "record": "reviews/W3_BROWSER_96B_R2_RESULT.json",
+          "scope": "approved unstarted next-action, explicit self-purchase unknown-date Start at3widths; no full-frame/genuine signoff"
+        }
+      ]
+    },
+    {
+      "id": "C07C",
+      "title": "report a CeraVe PM change",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "503:1174",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/plan/products/:productId/use (CeraVe PM ID)",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W3",
+      "journeys": [
+        "J03",
+        "J05"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "CeraVe identity never becomes treatment report",
+        "Stop visible separately from advice",
+        "known/unknown occurrence and correction retain attribution",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Run current CeraVe-bound Stop/change/correction and sheet/return/session negatives plus optional label path; compare C07C separately.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C07C"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "C08",
+      "title": "account",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "498:399",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/account; /account/service",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W6",
+      "journeys": [
+        "J06",
+        "J07",
+        "J08"
+      ],
+      "boundedCapabilities": [
+        "M01"
+      ],
+      "requiredNegativeAndReturningCases": [
+        "Account administration must not require a clinical plan read",
+        "profile/address cannot rewrite paid order",
+        "unknown contact pending/change/verification remains unavailable",
+        "wrong client/late callback/logout denied"
+      ],
+      "remainingGate": "Complete verified-email mutation, address, service/coverage/cancellation, consent/privacy/final-export/unfinished administration and exact approved frame appearance/accessibility. Name-summary aligned row/separator qualification retained. No full C08/J06 acceptance.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C08"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "C08C",
+      "title": "cancel service",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "499:927",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/account/cancel",
+      "mounted": false,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W6",
+      "journeys": [
+        "J08"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "ordinary cancel preserves paid coverage and stops renewal only",
+        "explicit early support end is distinct from refund movement",
+        "calendar +30 boundary and last entitlement",
+        "wrong owner/uncertain command/cancelled confirmation"
+      ],
+      "remainingGate": "Correct stored-confirmation/deadline producer findings ADPR1/2, admit reviewed own-client cancellation/departure read/write/confirmation, then prove canonical support/read-only dates, no care writes, lasting public export and separate unfinished administration.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C08C"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "C08R",
+      "title": "read-only access",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "504:621",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/plan and /history under authoritative read_only entitlement",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W6",
+      "journeys": [
+        "J08"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "exact exclusive cutoff at +30 Chicago calendar days",
+        "no new care writes via direct API",
+        "static last-entitled instructions exclude private/unentitled updates",
+        "unfinished administration independently reachable",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Admit actual departure/final-export/admin producer+Account paths and prove support-end/+30 boundaries, lasting real browser download/readback and care-write denial. Historical suite named readonly is not this boundary proof.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "C08R"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "A00",
+      "title": "clients",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "503:449",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/advisor/clients",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W2",
+      "journeys": [
+        "J01"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "not enrolled/other advisor/role denied",
+        "no placeholder Auth/client on view or draft creation",
+        "no unavailable task query treated as full client workspace",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Run current ordinary advisor directory/client entry/roles/Back/reload and compare A00; broader client-work/service/admission tasks remain distinct incomplete flows.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "A00"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "A01",
+      "title": "plans",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "500:299",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/advisor/plans",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W2",
+      "journeys": [
+        "J01"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "no Auth/placeholder client on draft create",
+        "one working assigned draft/concurrent assignment",
+        "incomplete draft survives reload",
+        "stale template/unknown import does not rewrite published history"
+      ],
+      "remainingGate": "Implement admitted reusable template and checkpoint/restore selection using fixed contracts, then genuine list/create/incomplete/assign/return/concurrency and compared A01 proof.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "A01"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "A02",
+      "title": "plan editor",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "500:383",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/advisor/plans/:draftId/:section; /advisor/plans/:draftId/preview",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W2",
+      "journeys": [
+        "J01",
+        "J02"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "unsupported/code import rejected",
+        "manual newer edits survive stale compare/apply",
+        "uncertain save not labeled saved",
+        "edit/reassign invalidates exact human approval; payment-only does not",
+        "private notes/sources excluded from preview",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Complete admitted Source/template/checkpoint/agent interfaces and current ordinary autosave/conflict/uncertain/preview/approval/unsent-return matrix against actual persistence; compare full editor.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "A02"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "A03",
+      "title": "sources & agent changes",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "500:500",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/advisor/plans/:draftId/sources",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W2",
+      "journeys": [
+        "J01",
+        "J07"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "source text is untrusted data, never instruction/authority",
+        "unsupported/code/stale import cannot overwrite human work",
+        "wrong scope/revoked consent/expired private return denied",
+        "unknown retention/obligations never deletion clearance"
+      ],
+      "remainingGate": "Resolve preserved Source kernel SK2-SK4/final-authority findings and admit exact consent/credential/Storage/inspection/egress/lifecycle plus scoped-agent workflow; exact disclosure approval and separately granted private-byte proof.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "A03"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "A04",
+      "title": "publication blocked",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "500:592",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/advisor/plans/:draftId/review-publish (blocked)",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W2",
+      "journeys": [
+        "J02"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "missing payment/review/approval/assignment/authority deny",
+        "stale revision/reassignment/legacy bypass deny",
+        "neither approval nor payment auto-publishes or starts clocks",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Run current complete wrong-target/stale/reassignment/role/payment/coverage/legacy-bypass negatives and blocked UI under ordinary Auth/SQL; compare A04.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "A04"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "A04P",
+      "title": "verify service payment",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "503:672",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "editor-local paymentOpen under /advisor/plans/:draftId/review-publish",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W2",
+      "journeys": [
+        "J02",
+        "J04"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "late or multiple claim ambiguity must be re-read",
+        "wrong amount/recipient/method/version/role denied",
+        "screenshot/sent claim is not verified receipt",
+        "verification alone does not publish/charge/order/Start",
+        "Back/Forward, deep-link/refresh, same product/routine, focus/scroll and unsent-state return",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Reprove current payment-context/late-claim/denial/renewal/approval-preservation under actual isolated bookkeeping and compare full A04P. M65 held financial scope remains separately unaccepted.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "A04P"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "A05",
+      "title": "ready to publish",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "500:686",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/advisor/plans/:draftId/review-publish (ready)",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W2",
+      "journeys": [
+        "J02"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "either review/payment order leaves clocks unset until publish",
+        "content/reassignment invalidates approval, payment-only does not",
+        "wrong client/role/agent grant/replay denied",
+        "concurrent retry yields one version/start/review/outbox"
+      ],
+      "remainingGate": "Run current either-order/stale/content/ledger-only/authority/agent/concurrency/retry full ordinary UI/API matrix and stored version/clock/outbox readbacks; compare ready frame.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "A05"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "A06",
+      "title": "published / notification failure",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "500:779",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/advisor/plans/:draftId/review-publish (published receipt)",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W2",
+      "journeys": [
+        "J02",
+        "J09"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "email failure preserves publication/access/coverage",
+        "retry notification never republishes/resets dates",
+        "queued/accepted/delivered/failed/bounced/seen remain distinct",
+        "draft/private edits silent; neutral deep link checks auth"
+      ],
+      "remainingGate": "Compose advisor A06 status/confirmation/retry and reviewed worker/current-context/SMTP adapter, then separately authorized actual local sink failure/retry/dedup/readback with no-republish/date-reset proof. Client inbox23 is source-only secondary progress.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "A06"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "A07",
+      "title": "review a check-in",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "500:846",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/advisor/reviews/:reportId",
+      "mounted": false,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W2",
+      "journeys": [
+        "J05"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "exact report/version/dependency binding and wrong client deny",
+        "no-change conclusion does not create care plan",
+        "private notes excluded from client response/export bytes",
+        "revocation/late private return remains held, not silently accepted",
+        "wrong owner/role, expired/logout/replaced session and delayed response cannot disclose/apply old data"
+      ],
+      "remainingGate": "Admit actual A07 report entry/controller/producer composition after its required gates, then prove C05→A07→C04 no-change/immutable/private/public/return journey. Original Guidance private-return provider hold remains HELD; no rephrase/retry/reroute performed.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "A07"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "A08",
+      "title": "workspace permissions",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "503:558",
+        "viewport": {
+          "width": 1440,
+          "height": 960
+        }
+      },
+      "route": "/advisor/permissions",
+      "mounted": true,
+      "fullySourceWired": false,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W6",
+      "journeys": [
+        "J02",
+        "J07"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "nonowner/publish-denied cannot mutate policy",
+        "toggle never grants external-agent publication or source rights",
+        "wrong revision/uncertain original retain exact operation",
+        "replaced owner/route cannot apply late result"
+      ],
+      "remainingGate": "Prove real owner-only policy persistence/audit/reload and role/uncertainty negatives; implement the remaining approved workspace task/source controls without conflating rights; compare A08.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "A08"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D01",
+      "title": "guided Maya",
+      "figma": {
+        "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+        "nodeId": "503:1271",
+        "viewport": {
+          "width": 1800,
+          "height": 960
+        }
+      },
+      "route": "/maya; /maya?stage=2..5",
+      "mounted": true,
+      "fullySourceWired": true,
+      "browserVerified": false,
+      "fullyAccepted": false,
+      "genuineProof": "UNRUN_COMPLETE_FRAME",
+      "ownerLane": "W3",
+      "journeys": [
+        "J10"
+      ],
+      "boundedCapabilities": [],
+      "requiredNegativeAndReturningCases": [
+        "reset/retirement clears private transient sample memory and rejects old handles",
+        "no real account/payment/order/upload/message request",
+        "staged story does not become observed outcome",
+        "essential controls/cautions visible at1800/1440/narrow/320/390",
+        "keyboard/focus/Back and complete return/replay"
+      ],
+      "remainingGate": "Admit reviewed shared client chrome and perform a complete current Root five-stage/forms/isolation/Back/reset/return browser run with approved1800/1440/narrow/mobile/a11y comparisons. Historical partial browser visual FAIL remains; source wiring is not D42 acceptance.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+        "row": "D01"
+      },
+      "currentEvidence": []
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D01",
+      "title": "One client experience",
+      "criterion": "One actual client plan destination, the exact four navigation labels, and usable consistent personal contact across the client application. The contact destination must exist; a visible placeholder alone does not meet the whole rule.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Usable text shelv contact destination and complete four-route behavior; full Account and Orders remain partial."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D01"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D02",
+      "title": "Approved baseline, not a new design competition",
+      "criterion": "Compare the implemented content, geometry, hierarchy, type and density of all 26 approved frames, including the 1800px guide and usable narrower desktop. Manifest identity alone is insufficient.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "All26 compared state/content/geometry, including1800 guide and narrower adaptation. Hashes establish approved identity, not a match."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D02"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D03",
+      "title": "Full frontend rebuild, bounded backend changes",
+      "criterion": "Inspect the actual React/TypeScript/shadcn/Lucide frontend and bounded compatible backend changes, complete the required frontend, and verify retained auth/access/records/payment/history protections. Technology selection is source-verifiable; complete rebuild and preservation are not established by a package declaration.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Complete connected frontend and retained backend preservation/rehearsal; no whole-product/current runtime signoff."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D03"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D04",
+      "title": "Enforced consistency",
+      "criterion": "Exhaustively inspect rebuild control composition, shared overlays/navigation/status, shared product/routine modules, fixed plan-data schema and ownership. All controls must use the approved wrappers and no per-client executable page system may exist. Source is sufficient to find a violation; genuine Auth/browser is irrelevant to the native-control bypass itself.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "W0/Root must route native checkbox fields through the approved shared shadcn wrapper with coordinated consumers and recheck all controls; preserve shared overlay and fixed plan-data architecture. No browser gate is needed to prove the present source bypass."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D04"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D05",
+      "title": "Brand and copy",
+      "criterion": "Review all authored UI/guidance and styles for lowercase with proper-source exceptions, no global lowercase CSS/em dashes, necessary instructions/cautions/terms/recovery, approved fonts/tokens and restrained hierarchy. A token scan alone does not establish the whole copy/meaning rule.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Complete current copy audit, no global lowercase filter across all completed pages, fonts/density/necessary cautions compared."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D05"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D06",
+      "title": "Icons have consistent meaning",
+      "criterion": "Inspect every current rebuild interface pictogram and its call site: only the shared Lucide map, uniform outline/sizes, no emoji/Unicode/custom SVG substitutes, visible action text/accessibility names, and yes/no/not-sure identity controls. This is a finite source design rule; it does not assert visual/a11y/browser acceptance under D07/D46.",
+      "wholeVerified": true,
+      "proofLevel": "SOURCE",
+      "remainingGates": [],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D06"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D07",
+      "title": "Desktop first, responsive before release",
+      "criterion": "Compare approved desktop and narrower views and execute 320/390px, keyboard, zoom, reduced-motion and screen-reader checks before release. Responsive CSS or isolated width samples cover only part of this rule.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Compared approved desktop/narrow,320/390, keyboard/zoom/reduced-motion/screen-reader and human usability; samples do not establish these."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D07"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D08",
+      "title": "Your plan is useful immediately",
+      "criterion": "Observe authoritative current morning/evening directions, real decision/review/date when present, imagery fallback and honest empty/prepublication states. Verify inline practical usefulness and absence of invented metrics/dates.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Actual current V3 content, no-proposal/no-date/preparation/extreme-content states, photos/fallback and useful inline instructions across real clients."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D08"
+      },
+      "currentEvidence": [
+        {
+          "level": "INTERCEPTED_SYNTHETIC_BROWSER_BOUNDED",
+          "record": "reviews/W3_BROWSER_96B_R2_RESULT.json",
+          "wholeDecision": false
+        }
+      ]
+    },
+    {
+      "id": "D09",
+      "title": "Proposals do not become actual use",
+      "criterion": "Observe proposed/approved/paid/delivered versus reported active use across plan and Orders, including paused/excluded reasons and honest review dates. Persisted choice/payment/delivery must never infer Start.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current UI prompt Stop/change projection and full proposed/approved/paid/delivered versus actual-use/order integration."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D09"
+      },
+      "currentEvidence": [
+        {
+          "level": "INTERCEPTED_SYNTHETIC_BROWSER_BOUNDED",
+          "record": "reviews/W3_BROWSER_96B_R2_RESULT.json",
+          "wholeDecision": false
+        }
+      ]
+    },
+    {
+      "id": "D10",
+      "title": "Detail without a maze",
+      "criterion": "Execute selected-product sheet/evidence/use Back/close/Forward/refresh/deep-link/no-predecessor/unsent/scroll/focus flows with one overlay. Source history helpers establish implementation, not the complete navigation behavior.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "All current deep-link/refresh/no-predecessor/unsent/work and one-overlay permutations, including new pages."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D10"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D11",
+      "title": "Correct content binding",
+      "criterion": "Verify exact selected-product evidence/report binding and complete original Maya directions, cautions and conditional morning/evening content. Shared IDs and a few sample observations do not cover all contextual bindings/content.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current source-faithful full Maya/practical directions and every product context/evidence/use selection, compared frames; public marker is not clinical validation."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D11"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D12",
+      "title": "Check-ins & history",
+      "criterion": "Execute optional portal/text/call/video goal reports, comfort/use/notes/photos and meaningful occurred/recorded/channel/conclusion history. Establish subjective labeling and absence of service/refund form/photo prerequisites.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Actual complete current form/photo/text alternatives, report-to-advisor review loop and meaningful client history."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D12"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D13",
+      "title": "Account",
+      "criterion": "Execute own-client profile/contact/address verification and goal/product reports with advisor attention, frozen paid-order isolation and separate service/privacy versus product purchasing.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "M01 Name bounded acceptance preserved; contact verification/address, goal/product advisor report, service/cancellation/privacy/consent/final export/admin and full C08 visual remain open."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D13"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D14",
+      "title": "Plan lifecycle",
+      "criterion": "Exercise template/draft/publication separation, many unassigned drafts, one current plan/one working assigned draft with checkpoints, deliberate assignment, and no new Auth/fake client, including concurrency and historical preservation.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Selectable reusable templates/checkpoint/restore and complete current lifecycle/one-current/one-working concurrency. API availability is not the full UI."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D14"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D15",
+      "title": "Guided, not forced",
+      "criterion": "Exercise all six freely navigable editor sections and persistent checklist, relevant edit entry, agent review and semantic readiness invalidation on substantive changes.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current complete section/source/dependency/agent-filled review invalidation and task-first ordinary browser usability."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D15"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D16",
+      "title": "Save incomplete work",
+      "criterion": "Exercise incomplete storage versus publish validation, honest autosave acknowledgment, conflict/import CAS/idempotent uncertainty recovery, preserved later manual/agent edits and session-bound private work.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current autosave conflict/base/latest/proposed and later-return behavior across manual/agent writes; actual dialogs/unsent private lifetime."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D16"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D17",
+      "title": "Unique cases use approved modules",
+      "criterion": "Exercise all eight approved decision kinds, repeated same-category identities, multiple/no goals/products/purchases, nonproduct guidance and escalation, with none distinct from unknown.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Complete genuine difficult-case matrix: repeated category/no product/no purchase/optional alternative/escalation, without unsupported deductions."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D17"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D18",
+      "title": "Schedules are authored",
+      "criterion": "Verify authored periods/days/conditions/as-needed/gradual stages use actual Start and never auto-escalate from elapsed time or require per-client scheduling code.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current authored gradual instructions and no timer-driven escalation, full schedule anchoring/conditional UI matrix."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D18"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D19",
+      "title": "External AI workflow",
+      "criterion": "Execute an actually task-authorized external agent through the same authenticated operations for permitted context, source attach, draft create/edit/save/validate/preview and exact publication authority. JSON import or an SDK alone is not the complete workflow.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Actual task enrollment/grants/revocation, permitted complete client context/source attach, draft save/validate/preview and exact authorized publication end-to-end. Not only JSON import."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D19"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D20",
+      "title": "Source and import truth",
+      "criterion": "Execute source upload/store/provenance/contradiction and compare/apply import, strict unsupported/code rejection, source-location links and later manual-edit preservation under actual source permissions. Schema success is not clinical validation.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Real source upload/storage/private access/contradiction provenance/inspection and retention; kernel/credential/bytes integration held. Source input remains untrusted data."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D20"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D21",
+      "title": "First-publication gate",
+      "criterion": "Execute commit-time server and alternate-path denials for each missing/wrong assigned client, completeness/review, exact human approval, applicable verified first payment and deliberate authority; exercise either gate order with neither alone publishing.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current full server/legacy-path/role/coverage/approval/payment/retry negative matrix and normal UI at pinned graph."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D21"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D22",
+      "title": "Precise approval",
+      "criterion": "Execute exact target/actor/content/grant binding, agent-specific Kanuj authorization, invalidation on edit/reassignment but not ledger-only changes, replay/concurrent publish and identical receipt retry.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current changed-content/reassignment/stale/wrong-client/replay/concurrent tests plus external-agent specific grant, full ordinary recovery."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D22"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D23",
+      "title": "Sami and owner authority",
+      "criterion": "Exercise real Sami operations and owner-only audited policy confirmation/persistence, exact self-approval by Kanuj and independent agent/source rules. A policy view/controller source pass is only part.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Actual policy persistence/audit/owner-only denial, Sami operations and external-agent/source rights stay independent in genuine flows; full permissions UI incomplete."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D23"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D24",
+      "title": "First publication starts clocks",
+      "criterion": "Observe first publication alone starting authoritative access/service/reviews, Chicago calendar-month/DST/leap/month-end rules, later publications/retries preserving clocks/Start and migration preserving genuine legacy facts.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current full date/month-end/DST/leap/migration/later-publication cases and real legacy amounts; old genuine source differs."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D24"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D25",
+      "title": "Review cadence and service access",
+      "criterion": "Verify two-week/month-one/two/three and ongoing/as-needed cadence, truthful effective/use/review dates, active coverage on later publish and prepublication payment/preparation without private draft advice.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Complete review cadence/UI, current-coverage later publish, no booked-call implication and Account/support boundary behavior."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D25"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D26",
+      "title": "Product identity",
+      "criterion": "Exercise missing-product authoring and stable exact identity/variant/source/photo, possible/client-confirmed/formula-verified distinctions, yes/no/not-sure and consequential unknowns without blocking all draft saves.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Complete missing catalog draft workflow, consequential label/variant/strength verification and actual optional private label/photo upload."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D26"
+      },
+      "currentEvidence": [
+        {
+          "level": "INTERCEPTED_SYNTHETIC_BROWSER_BOUNDED",
+          "record": "reviews/W3_BROWSER_96B_R2_RESULT.json",
+          "wholeDecision": false
+        }
+      ]
+    },
+    {
+      "id": "D27",
+      "title": "Choice and self-purchase",
+      "criterion": "Exercise primary and deliberate optional choices, independent approve/defer/decline and arranged/self acquisition with equivalent support and no fake funds/order/Start.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current all choices/primary/alternatives and Shelv-vs-self complete support/order/identity flow. Orders remains unavailable."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D27"
+      },
+      "currentEvidence": [
+        {
+          "level": "INTERCEPTED_SYNTHETIC_BROWSER_BOUNDED",
+          "record": "reviews/W3_BROWSER_96B_R2_RESULT.json",
+          "wholeDecision": false
+        }
+      ]
+    },
+    {
+      "id": "D28",
+      "title": "No product margin",
+      "criterion": "Verify item-specific actual approved retailer cost/tax/shipping, no markup/commission/partnership, separate service, no new recurring/product fee and explicit material product/seller/amount/address/return-term reconciliation.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Actual item-specific approved retailer cost/tax/shipping/no markup/commission and changed seller/amount/address/terms reconciliation."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D28"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D29",
+      "title": "Quote and payment integrity",
+      "criterion": "Exercise frozen exact product/variant/size/quantity/seller/total/address/payment-method version/checked return terms, unknown blocking, claim versus actual gross receipt and bookkeeping versus purchase/shipment/delivery.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Full product/size/quantity/seller/total/address/method-version/return-terms quote, unknown blocking, genuine current bookkeeping and no implied retailer fulfillment."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D29"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D30",
+      "title": "Delivery and actual use",
+      "criterion": "Exercise recorded delivery and optional explicit actual-use action, all use actions/known-unknown occurrence dates, reporter/recorder/channel, prompt display/advisor attention, no permission needed to Stop and no overwritten advice.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current delivery-to-prompt link, immediate truthful reported display/advisor alert, no permission to stop and no erased advice; full Orders delivery missing."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D30"
+      },
+      "currentEvidence": [
+        {
+          "level": "INTERCEPTED_SYNTHETIC_BROWSER_BOUNDED",
+          "record": "reviews/W3_BROWSER_96B_R2_RESULT.json",
+          "wholeDecision": false
+        }
+      ]
+    },
+    {
+      "id": "D31",
+      "title": "Orders survive plan updates",
+      "criterion": "Exercise plan/address/variant changes against frozen old order/publication/terms, self-purchase bypass and truthful actual recorded financial/fulfillment events with explicit reconciliation.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current plan/address/variant changes reconcile without rewriting frozen order; self-purchase and actual return/admin lifecycle."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D31"
+      },
+      "currentEvidence": [
+        {
+          "level": "INTERCEPTED_SYNTHETIC_BROWSER_BOUNDED",
+          "record": "reviews/W3_BROWSER_96B_R2_RESULT.json",
+          "wholeDecision": false
+        }
+      ]
+    },
+    {
+      "id": "D32",
+      "title": "Immutable meaningful history",
+      "criterion": "Exercise no-change review without republishing, instruction-only Start preservation, append-only amendments/attention, restore-to-new-draft, linked current/care/audit projections and server-side private exclusion from clients/exports.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Ordinary current C05->A07->C04 no-change conclusion/version/export/private exclusion and restore UI; A07 still unavailable."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D32"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D33",
+      "title": "Automatic notification scope",
+      "criterion": "Verify actual publication/review and material goal/use/check-in/correction producers and recipients, neutral email plus portal attention, silence for drafts/private notes, human text and reply distinct from automatic acknowledgment.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "W1/W0/W2: actual event-to-recipient email/portal production and normal mounted inbox/seen persistence, advisor inbox/A06/bell/authorized destination recovery; prove drafts/private notes silent and acknowledgment distinct from promised human response. D33 source pass cannot complete J09 delivery/retry."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D33"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D34",
+      "title": "Reliable event delivery",
+      "criterion": "Exercise transactional dedup outbox, actual separate delivery/failure/retry without republish/date/access loss, truthful channel/seen states, authenticated webhooks and neutral authorized links using isolated recipients.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "W1/W0/W2: reviewed worker/context/SMTP union and actual authorized isolated sink; publication survives failure, exact retry/dedup/date preservation, delivery reconciliation/webhook authenticity and A06/advisor integration. Persistent seen state and mounted ordinary browser remain UNRUN."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D34"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D35",
+      "title": "Existing service terms preserved",
+      "criterion": "Verify actual complete service terms/role split/adult-Wisconsin scope and $100 calendar billing plus 24/48h delivery/payment blocker and useful 24h weekend human-response practice. Policy prose or automated tests do not verify actual human/legal obligations.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Actual complete billing/response/first-delivery guarantees, adults/Wisconsin terms and founder operations; legal/scope verification is external and unproved."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D35"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D36",
+      "title": "Service refund",
+      "criterion": "Verify dissatisfaction/early first-three-actual-period fees, through 30 calendar days after period three, no photo/adherence/improvement/fourth-payment gate, distinct product costs/history and 48h repayment initiation after necessary details. A paid-fee record alone is not refund implementation or actual repayment.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "W6/W5 with Kanuj/Sami: substantiate/implement own-client service-guarantee and first-three-actual-period refund request/history, exact early/30-calendar-day/necessary-details/48h rules, no prohibited eligibility gates and separate repayment facts; verify synthetic persisted behavior and actual operational policy separately."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D36"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D37",
+      "title": "Product return and referral",
+      "criterion": "Exercise exact item return eligibility/founder-error/retailer-funds/client-repayment distinction and 48h policy, plus genuine-new-referral $100 payee/payment/no-clawback rules. No real money movement is authorized by this audit.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Actual seller/item/condition/deadline, retailer funds/client repayment distinction, founder mistakes,48-hour/referral/payee/no-clawback rules; no automatic payouts."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D37"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D38",
+      "title": "Cancellation",
+      "criterion": "Exercise ordinary/confirmed early departure, correct support/+30 read-only boundaries, last-entitled complete static public export including post-window Account download, denied care writes and separate unfinished administration, without implied money/support.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Canonical ordinary/early departure dates,+30 care window, continued static last-entitled export afterward, separate unfinished admin; no new support/care writes/funds."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D38"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D39",
+      "title": "Source retention and access",
+      "criterion": "Verify private source service and 12-calendar-month retention, actual trusted end/holds/deletion, separate plan/finance/access retention and adult-only scope. Apply never-started manual-delete addendum without invented timer or unknown-basis clearance.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Trusted actual support-end/holds, recording/consent/Storage/lifecycle/deletion processing and separate history/finance retention; unknown basis not clearance."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D39"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D40",
+      "title": "Data use",
+      "criterion": "Verify actual task-scoped full-source permissions, role-specific Sami access, synthetic-only development and no private Git/log/demo/monitoring leakage, no training/secondary-use inference, and exact disclosed separate consent/Account review-withdrawal current-return enforcement.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Actual scoped full-source agent access/revocation/final egress, safe own-client disclosure/withdrawal, no training/secondary-use inference, no private logs/public demos; approved final wording pending."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D40"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D41",
+      "title": "Truth and scope",
+      "criterion": "Verify truthful fictional/staged/early-retention/credential/scanner claims and current selective revocable private shares. Actual Wisconsin scope/credential launch clearance is separate and cannot be established by a source assertion.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current selective/revocable four-client private-share compatibility and accurate business/credential/clinical claims; Wisconsin service clearance not established."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D41"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D42",
+      "title": "Same renderer, isolated demo",
+      "criterion": "Execute the same client/preview/Maya renderer through five stages and all exit/explore/replay/reset/return/isolation actions, with guide controls/cautions usable and private-share boundaries preserved. Source sharing is a verifiable subpredicate, not the whole tour.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Complete actual five stages/exit/explore/replay/reset/no business writes, approved/narrow/mobile/focus/a11y and private-share compatibility at current graph."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D42"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D43",
+      "title": "Model and agent rules",
+      "criterion": "Verify effective Sol/xhigh/default for every actual author/reviewer/researcher/tester/explorer with task-specific runtime receipts and no fallback/nesting or excess current approved total. The continuation supersedes old cap semantics with one coordinator plus seven useful children; this pair read is not a whole-roster audit.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Kanuj coordinator must maintain exact effective-runtime receipts for every actual active/replacement/reviewer task and current total, including continuation semantics. Two verified selections do not establish every participant or historical run."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D43"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D44",
+      "title": "Parallel ownership",
+      "criterion": "Verify eight named domains, coordinator integration and named notification/source/permission ownership, isolated tasks/file claims, one writer for shared contracts/dependencies/auth/migrations and contract-first sequencing in actual ongoing work.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Kanuj coordinator must verify current whole-project file-claim/workflow allocation and original contract-first sequencing from actual task/integration receipts. This research verifies only its own clean isolated two-path custody and Parent sole-Root authorization, not every live task or ownership event."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D44"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D45",
+      "title": "Documentation is a deliverable",
+      "criterion": "Verify pre-page committed original decisions/spec/manifest/contracts/ownership/matrix, prospective instruction/policy supersession, preserved historical evidence and current per-slice/PR decision-frame-code-test/status records. Stale canonical acceptance rows prevent whole current closure.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Kanuj Root must reconcile the stale canonical48 rows and all26/10 evidence with current source/dependency pins, maintain actual per-PR/slice decision/frame/code/test status and supersession. These two research outputs are inputs for that update, not permission to write the canonical matrix."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D45"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D46",
+      "title": "Real verification",
+      "criterion": "Complete current exact integrated synthetic/domain/permission/SQL/genuine-Auth/persistence/browser/negative/content/visual comparison and independent full-diff reproduction; actual human comprehension remains separate. Historical scoped passes and source-only suites do not satisfy whole current meaning.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Complete current integrated negatives/full suites/Auth/Storage/sink/browser/visual/human acceptance. No new resources/tests here; old currentness cannot be assumed."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D46"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D47",
+      "title": "Cutover, not destructive replacement",
+      "criterion": "Prepare and verify current staged single cutover, migration/backup/rollback preserving existing IDs/dates/receipts/entitlements/instructions/private shares, and obtain separate production approval. No deployment or money/client action is inferred.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "Current complete migration/upgrade/backup/rollback rehearsal preserving IDs/dates/receipts/instructions/shares; explicit production approval not granted."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D47"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "D48",
+      "title": "Gaps are bounded",
+      "criterion": "Complete the fixed secondary sign-in/profile/contact/renewal/quote/returns/mismatch/denial/conflict/upload/snapshot/amendment/inbox/tour/mobile flows through actual contracts with no required placeholder/dead control. Bounded engineering choices are not a scope reset.",
+      "wholeVerified": false,
+      "proofLevel": "UNVERIFIED_WHOLE",
+      "remainingGates": [
+        "W0/W1/W2/W3/W4/W5/W6: complete real secondary auth/profile/contact/renewal/quote/returns/mismatch/conflict/upload/historical amendment/notification retry/all tour/mobile flows. Current inbox source does not complete bell/advisor/A06 delivery, current browser or every secondary state."
+      ],
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "D48"
+      },
+      "currentEvidence": []
+    }
+  ],
+  "journeys": [
+    {
+      "id": "J01",
+      "requiredMeaning": "Create an unassigned draft -> provide source/context manually or with an authorized agent -> save incomplete/return without loss -> resolve semantic validation -> assign intended existing client without Auth duplication -> actual shared preview -> human section/exact revision review. Include unsupported import, stale concurrent/manual edit and uncertainty recovery.",
+      "requiredSteps": [
+        "Create unassigned draft without Auth/fake-client creation",
+        "Provide permitted source/context manually or through a real authorized agent",
+        "Save incomplete work and return without loss",
+        "Reject unsupported/code imports and preserve later manual/concurrent edits with uncertainty recovery",
+        "Resolve semantic validation and deliberately assign intended existing client",
+        "Render actual shared preview and complete human exact-revision review"
+      ],
+      "requiredActors": [
+        "authorized advisor",
+        "task-scoped external plan agent",
+        "intended client",
+        "human reviewer"
+      ],
+      "executedCompleteCurrent": false,
+      "completeAccepted": false,
+      "status": "UNRUN_COMPLETE_JOURNEY",
+      "remainingGate": "Complete admitted manual+agent/source interfaces, actual canonical session/permissions and fresh ordinary fixture; capture persisted draft/revision/client/no-Auth side effects plus later return/failure evidence.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "J01"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "J02",
+      "requiredMeaning": "Review and genuinely verified applicable first service payment may occur in either order; neither publishes -> exact assigned/reviewed/approved/current-authority deliberate publication -> one immutable version/start/review/outbox. Deny stale content/reassignment/wrong client/authority/unverifiable funds; payment-only ledger change preserves unchanged approval; concurrent/exact retry stays one receipt.",
+      "requiredSteps": [
+        "Review and verify applicable first service payment in either order without publishing",
+        "Deny missing/stale/wrong-client/reassignment/current-authority/unverified-funds cases",
+        "Keep unchanged approval valid on unrelated payment-ledger changes",
+        "Deliberately publish with all exact gates",
+        "Create one immutable version/service/review/outbox",
+        "Concurrent and exact retry return one receipt without clock/Start duplication"
+      ],
+      "requiredActors": [
+        "assigned authorized advisor/publisher",
+        "Kanuj exact human approver",
+        "Sami/manual financial recorder",
+        "authorized external agent when specifically granted"
+      ],
+      "executedCompleteCurrent": false,
+      "completeAccepted": false,
+      "status": "UNRUN_COMPLETE_JOURNEY",
+      "remainingGate": "Current either-order and full negative/concurrent ordinary-UI/API matrix against exact Auth/SQL/permission source, plus no republish/Start/date mutation on retry.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "J02"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "J03",
+      "requiredMeaning": "Normal client Auth -> intended entitled plan/version -> follow actual morning/evening routine -> selected recommendation/product evidence -> approve/defer/decline without charge/order/Start -> navigate away and return with routine/product/scroll/focus/unsent work. Include preparation/unknown ID/read-only/session/owner/denial/uncertain and reload behavior.",
+      "requiredSteps": [
+        "Authenticate ordinary intended client and read entitled version",
+        "Use actual morning/evening routine",
+        "Open selected recommendation and product-specific evidence",
+        "Approve/defer/decline without charge/order/Start",
+        "Navigate away and return with product/routine/scroll/focus/unsent work",
+        "Exercise preparation/unknown ID/read-only/session/owner/denial/uncertain/refresh cases"
+      ],
+      "requiredActors": [
+        "authenticated entitled client"
+      ],
+      "executedCompleteCurrent": false,
+      "completeAccepted": false,
+      "status": "UNRUN_COMPLETE_JOURNEY",
+      "remainingGate": "W0/W3/W7: correct and review CJ1-CJ3 before using the proposed seven-case executor; acquire a separately authorized current fixture/browser and execute the full actual normal session/plan/choice/navigation/negative/return chain, with content/accessibility evidence. Existing P/U source chain is present; current runtime is unknown.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "J03"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "J04",
+      "requiredMeaning": "Shelv-arranged exact product/variant/seller/total/address/method/return terms -> client acceptance/claim vs actual synthetic verified funds -> recorded order vs shipment/delivery -> separate explicit Start. Self-purchase reaches equivalent use support with no fake quote/funds/order. Mismatch/unknown identity and plan/address changes reconcile honestly; return/refund records stay distinct.",
+      "requiredSteps": [
+        "Freeze exact product/variant/seller/all-in total/address/payment method/checked returns",
+        "Client accepts quote and records claim distinct from actual verified synthetic receipt",
+        "Record purchase then shipment/delivery as separate facts",
+        "Record explicit actual Start independently of delivery",
+        "Support self-purchase with no fake quote/funds/order",
+        "Reconcile unknown/mismatched identity and plan/address changes without rewriting frozen records",
+        "Keep return/retailer-funds/client repayment separate"
+      ],
+      "requiredActors": [
+        "client",
+        "Sami/purchasing and receipt recorder",
+        "advisor"
+      ],
+      "executedCompleteCurrent": false,
+      "completeAccepted": false,
+      "status": "UNRUN_COMPLETE_JOURNEY",
+      "remainingGate": "Admit agreed Orders/read/mutation producers and corrected UI/current authority; real isolated product/quote/order/delivery/Start/self-purchase/return readback and immutable financial/address comparison. No actual money/retailer action.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "J04"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "J05",
+      "requiredMeaning": "Client sends update without required form/photo, with optional photo path -> correction preserves original/attribution -> advisor receives intended report -> public meaningful reviewed conclusion and separate private notes -> client sees immutable history and linked source-bound publication. No-change review does not publish a plan; Stop is visible without pretending advisor recommended it.",
+      "requiredSteps": [
+        "Accept optional-form/photo report including no-photo path and alternative channels",
+        "Append correction retaining original and attribution",
+        "Route intended report to actual advisor A07",
+        "Review public conclusion separately from private notes",
+        "Return meaningful immutable history and source-bound publication",
+        "No-change conclusion does not republish; Stop stays reported use",
+        "Exercise optional authorized photo bytes and private exclusion/readback"
+      ],
+      "requiredActors": [
+        "client",
+        "advisor reviewer/recorder"
+      ],
+      "executedCompleteCurrent": false,
+      "completeAccepted": false,
+      "status": "UNRUN_COMPLETE_JOURNEY",
+      "remainingGate": "Reviewed current C05/A07/C04 composition with actual report/version dependency heads; optional no-photo and real private-media cases; persistent public/private/alert/no-change readbacks and actual returning browser history. Preserve refused-scope gates.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "J05"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "J06",
+      "requiredMeaning": "Own profile/address/contact edits or goal/current-product reports -> appropriate real verification/review -> correct advisor alert -> fresh displayed readback. Existing paid-order address and original source facts remain frozen; delayed callbacks/replaced owners cannot overwrite later work.",
+      "requiredSteps": [
+        "Read and change own profile/address/contact or report goals/current products",
+        "Perform appropriate actual contact/identity verification and advisor review",
+        "Create correct advisor alert and fresh readback",
+        "Preserve frozen order address and original source facts",
+        "Reject delayed/replaced-owner callbacks without overwriting newer work"
+      ],
+      "requiredActors": [
+        "own authenticated client",
+        "advisor",
+        "Sami for frozen order facts"
+      ],
+      "executedCompleteCurrent": false,
+      "completeAccepted": false,
+      "status": "UNRUN_COMPLETE_JOURNEY",
+      "remainingGate": "Bounded corrected consumers plus real profile/contact/address/alert registry/handlers, Account independent of clinical entitlement; ordinary name/contact/address/report/persisted alert/frozen-order and owner/lifetime negatives.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "J06"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "J07",
+      "requiredMeaning": "Review exact versioned separate source purposes/disclosures -> actual own-client withdrawal/revocation -> prevent new and pending stale private returns -> truthful private Storage/inspection/adoption/retention/deletion outcomes. Never infer consent from enrollment/file/grant; unknown obligations stay unknown; no training. Include same-client scope and cross-client/expired/revoked denial.",
+      "requiredSteps": [
+        "Present exact versioned distinct source purposes/disclosures",
+        "Record actual confirmation then own-client review/withdrawal and scoped revocation",
+        "Deny future and pending stale private returns including cross-client/expired/revoked cases",
+        "Protect actual uploaded/stored/inspected bytes and lawful adoption",
+        "Apply trusted retention/obligation/manual-delete or12-calendar-month lifecycle facts",
+        "Report physical deletion truthfully and infer no training or automatic transcription"
+      ],
+      "requiredActors": [
+        "client",
+        "authorized source advisor",
+        "task-scoped plan agent",
+        "trusted lifecycle producer"
+      ],
+      "executedCompleteCurrent": false,
+      "completeAccepted": false,
+      "status": "UNRUN_COMPLETE_JOURNEY",
+      "remainingGate": "Kernel/current-rights and actual grant/consent/credential/Vault/final-egress chain, exact disclosure approval and trusted lifecycle/obligation facts; separately authorized actual private bytes/withdrawal/late return/deletion proof.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "J07"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "J08",
+      "requiredMeaning": "Ordinary cancellation retains paid support/stops renewal; explicit early departure uses confirmed support end -> authoritative read-only end30 calendar days later -> care/history read-only and no new care writes/support promise -> lasting authenticated static last-entitled plan/instructions export afterward -> separate unfinished order/refund administration. Preserve last entitlement and real downloaded public bytes.",
+      "requiredSteps": [
+        "Ordinary cancel stops renewal and retains paid coverage",
+        "Explicit early departure uses confirmed support end",
+        "Derive authoritative30-calendar-day read-only boundary",
+        "Allow entitled read-only history/plan while denying new care writes/support promise",
+        "After window download actual static last-entitled public plan plus applicable instructions",
+        "Verify real saved-file bytes and no private/unentitled content",
+        "Keep unfinished orders/refunds separately administratively reachable"
+      ],
+      "requiredActors": [
+        "client",
+        "authorized service advisor",
+        "Sami for unfinished administration"
+      ],
+      "executedCompleteCurrent": false,
+      "completeAccepted": false,
+      "status": "UNRUN_COMPLETE_JOURNEY",
+      "remainingGate": "Correct and review exact producer/consumer, real own-client channel/mount and supported export basis; actual canonical departure,+30 boundaries, downloaded file readback/private exclusion and continuing order/refund access under fresh authority.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "J08"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "J09",
+      "requiredMeaning": "Commit publication/review/client attention -> durable deduplicated event/portal state -> actual authorized isolated email sink. Email failure must preserve publication/access/service clocks -> explicit notification retry/status delivers only intended event without republishing/resetting dates. Queued/accepted/delivered-if-known/failed/bounced/seen separate; neutral authenticated link, no private body, drafts/private notes silent.",
+      "requiredSteps": [
+        "Commit publication/review/material client attention with durable dedup outbox",
+        "Expose truthful portal state and intended neutral authenticated link",
+        "Attempt actual authorized isolated sink delivery",
+        "Preserve publication/access/service clocks on forced email failure",
+        "Retry only exact notification and deduplicate without republishing/resetting dates",
+        "Separate queued/accepted/delivered-if-known/failed/bounced from persisted seen/read",
+        "Keep drafts/private notes silent; verify exact recipient and private-byte exclusion"
+      ],
+      "requiredActors": [
+        "business-event actor",
+        "notification worker",
+        "own recipient",
+        "authorized retry actor"
+      ],
+      "executedCompleteCurrent": false,
+      "completeAccepted": false,
+      "status": "UNRUN_COMPLETE_JOURNEY",
+      "remainingGate": "W1/W0/W2: reviewed worker/context/SMTP union, actual authorized isolated sink and no-relay recipient restrictions; actual queue/sink ACK/failure/retry/dedup/date preservation plus ordinary browser inbox/seen persistence. Source INBOX23 does not satisfy any genuine delivery step.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "J09"
+      },
+      "currentEvidence": []
+    },
+    {
+      "id": "J10",
+      "requiredMeaning": "Public fictional Maya through all five shared-renderer stages -> meaningful choice -> actual shared form/post-preset daily use -> personal follow-up -> next step -> exit/explore/reopen/replay/reset. No live account/payment/order/message/upload actions. Compare approved1800 and narrower/mobile, keep controls/cautions visible and test Back/focus/keyboard/a11y; human comprehension separate.",
+      "requiredSteps": [
+        "Meet fictional Maya with shared client renderer",
+        "Make meaningful decision",
+        "Use actual shared form and post-preset daily-use choices",
+        "Show personal follow-up and next step across all five stages",
+        "Exit/explore/reopen/replay/reset and return with correct Back/focus",
+        "Observe no live account/financial/message/upload operations",
+        "Compare1800/1440/narrow/mobile and essential controls/cautions",
+        "Execute keyboard/a11y; preserve separate human comprehension gate"
+      ],
+      "requiredActors": [
+        "public fictional Maya visitor"
+      ],
+      "executedCompleteCurrent": false,
+      "completeAccepted": false,
+      "status": "UNRUN_COMPLETE_JOURNEY",
+      "remainingGate": "Reviewed chrome/current-context ownership repair then actual Root composition; controlled public current browser complete stages/forms/isolation/return, approved comparisons and a11y/narrow/mobile plus human review.",
+      "historicalRecord": {
+        "path": "../acceptance/CURRENT_DECISIONS_JOURNEYS_20261102.json",
+        "row": "J10"
+      },
+      "currentEvidence": []
+    }
+  ],
+  "secondaryVariants": [
+    {
+      "id": "S01",
+      "requirement": "ordinary sign-in/callback/deep-link recovery",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S02",
+      "requirement": "prepublication/empty client",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S03",
+      "requirement": "profile/address/contact verification",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S04",
+      "requirement": "service payment/renewal",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S05",
+      "requirement": "final product quote/claim",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S06",
+      "requirement": "returns/service refunds",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S07",
+      "requirement": "product mismatch/unreviewed use/optional label",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S08",
+      "requirement": "save conflict/uncertain retry",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S09",
+      "requirement": "denied/unavailable sources/upload recovery",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S10",
+      "requirement": "historical publication/amendment",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S11",
+      "requirement": "notification inbox/retry",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S12",
+      "requirement": "no-change review",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S13",
+      "requirement": "ordinary/early cancellation/read-only/expired care/static export/admin",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S14",
+      "requirement": "difficult content/none/unknown",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S15",
+      "requirement": "five-stage Maya/exit/explore/replay/reset",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S16",
+      "requirement": "desktop/narrow/390/320/200%zoom/keyboard/focus/reduced-motion/a11y",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    },
+    {
+      "id": "S17",
+      "requirement": "private walkthrough compatibility",
+      "status": "UNVERIFIED_COMPLETE_VARIANT"
+    }
+  ],
+  "holds": [
+    {
+      "id": "Guidance private-return provider refusal",
+      "status": "HELD_PRESERVED",
+      "rule": "No retry/rephrase/reroute or acceptance inferred."
+    },
+    {
+      "id": "M65 financial provider refusal",
+      "status": "HELD_PRESERVED",
+      "rule": "No retry/rephrase/reroute or acceptance inferred."
+    },
+    {
+      "id": "photo provider refusal",
+      "status": "HELD_PRESERVED",
+      "rule": "No retry/rephrase/reroute or acceptance inferred."
+    },
+    {
+      "id": "A07 dependent provider hold",
+      "status": "HELD_PRESERVED",
+      "rule": "No retry/rephrase/reroute or acceptance inferred."
+    },
+    {
+      "id": "source consent final disclosure",
+      "status": "EXTERNAL_APPROVAL_UNPROVEN",
+      "rule": "Versioned final disclosure words require actual founder approval; workflow approval is not wording approval."
+    },
+    {
+      "id": "human comprehension",
+      "status": "EXTERNAL_UNRUN",
+      "rule": "Cannot be established by agent or automated tests."
+    },
+    {
+      "id": "Wisconsin service-scope/credential clearance",
+      "status": "EXTERNAL_UNPROVEN",
+      "rule": "Software proof does not establish business launch clearance."
+    },
+    {
+      "id": "production release",
+      "status": "NOT_AUTHORIZED",
+      "rule": "No main/PR210/PR211 merge, production deployment, real-client/funds/retailer action."
+    },
+    {
+      "id": "principal v2 signal review at44e90f6b",
+      "status": "UNACCEPTED_PROVIDER_REFUSAL",
+      "rule": "Explicit user boundary: preserve failed audit/partial evidence; no resume/retry/rephrase/reroute/model substitution/nested reviewer. Ordinary A06 message grants no continuation of this scope.",
+      "reportedActivityPosition": 370
+    }
+  ],
+  "resourceQueue": {
+    "admissionOwner": "W0",
+    "executionOwner": "W7",
+    "freshGrantIssued": false,
+    "browserConcurrency": 1,
+    "nativeFixtureConcurrency": 1,
+    "rule": "Any suite launching Chrome uses browser slot, including intercepted synthetic/npm globs. Pure/SSR/compiler/finite HTTP are separate.",
+    "stoppedFixtures": "Never query/reuse/restart/reset/adopt; saved-FS audit only."
+  },
+  "independentReviewVerdicts": [
+    {
+      "head": "706b323d6b0969a090fd70cae1c9919ea15cc3be",
+      "report": "reviews/W0_P1_706B.md",
+      "level": "SOURCE_INTERCEPTED_WORKERD"
+    },
+    {
+      "head": "efd533bcabe8537a134206d71e8bd04b4929acab",
+      "report": "reviews/W1_SERVICE_DTO_EFD.md",
+      "level": "SOURCE_DTO"
+    },
+    {
+      "head": "54646ac03a4fdf00f09cf435b76250f14eaa8217",
+      "report": "reviews/W0_WITNESS_546.md",
+      "level": "SOURCE_PRESERVATION"
+    },
+    {
+      "head": "96bfe2428d32eacdef5f4c9e184af7b5ef39a95e",
+      "report": "reviews/W3_NEXT_ACTION_96B.md",
+      "level": "SOURCE_SSR"
+    },
+    {
+      "head": "ee0fddda8b3ad961cf5d3139f887137b328b013b",
+      "report": "reviews/W4_LINKAGE_EE0.md",
+      "level": "SOURCE_SSR"
+    },
+    {
+      "head": "8642079c14c601ad1c763b564b2bf83831b9b842",
+      "report": "reviews/W6_SERVICE_864.md",
+      "level": "SOURCE_FINITE_HTTP_SSR_OLD_HEAD_ONLY"
+    },
+    {
+      "head": "f49a15a2aab8d13877a26bf98e969c8950f1d014",
+      "report": "reviews/W1_PRINCIPAL_F49_FAIL.md",
+      "level": "FAIL"
+    },
+    {
+      "head": "44e90f6bd8d68d4411e5fe1c02df418d022cf225",
+      "report": "PRINCIPAL_44_PROVIDER_REFUSAL.json",
+      "level": "UNACCEPTED_PROVIDER_REFUSAL"
+    }
+  ]
+}
