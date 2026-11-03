@@ -43,7 +43,7 @@ export async function handleClientOrdersReadRequest(request:Request,ports:Client
      if(response.error){
       const status=response.error.status;if(status===401||status===403)throw new ClientOrdersReadFailure(status,status===401?'session_ended':'forbidden');
       const code=Object.keys(clientOrdersReadErrorStatuses).find(key=>response.error?.message===`concierge_${key}`);
-      throw new ClientOrdersReadFailure(code?clientOrdersReadErrorStatuses[code]:503,code??'unavailable');
+      throw new ClientOrdersReadFailure(code?(clientOrdersReadErrorStatuses[code]??503):503,code??'unavailable');
      }
      try{return mapClientOrdersReadResult(response.data,call.args.p_command);}catch{throw new ClientOrdersReadFailure(503,'unavailable');}
     };

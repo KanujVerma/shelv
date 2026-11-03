@@ -33,3 +33,13 @@ test('the annotation preimage receives only reversible inventory additions and r
   assert.throws(()=>withApprovedInventoryHandler(historical,current.replace("new HttpFailure(403,'forbidden')","new HttpFailure(200,'forbidden')")),/noninventory handler bytes/);
   assert.throws(()=>withApprovedInventoryHandler(historical,current.replace("call.name === 'concierge_checkin_photo_inventory_v1'","call.name === 'other'")),/one exact inventory/);
 });
+
+test('privacy prerequisite normalization keeps credential values, unknown types and executable drift visible',()=>{
+ const file='supabase/functions/concierge-operations/runtime.ts',body=readFileSync(new URL(file,root),'utf8');
+ for(const mutation of [
+  body.replace("credentials: 'omit', redirect:","credentials: 'include', redirect:"),
+  body.replace("RequestInit & {credentials: 'omit'}","RequestInit & {credentials: 'same-origin'}"),
+  body.replace("RequestInit & {credentials: 'omit'}","RequestInit & {credentials: 'omit'; privateExtra: true}"),
+  body.replace('new Set<string>(config.allowedRpcNames)','new Set<string>([])'),
+ ]){assert.notEqual(mutation,body);assert.notEqual(withoutPhotoInventory(mutation,file),withoutPhotoInventory(body,file));}
+});

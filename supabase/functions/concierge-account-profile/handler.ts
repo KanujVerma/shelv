@@ -37,7 +37,7 @@ export async function handleAccountProfileRequest(request:Request,ports:AccountP
    if(result.error){
     const status=result.error.status;if(status===401||status===403)throw new AccountProfileFailure(status,status===401?'session_ended':'forbidden');
     const code=Object.keys(accountProfileErrorStatuses).find(k=>result.error?.message===`concierge_${k}`);
-    throw new AccountProfileFailure(code?accountProfileErrorStatuses[code]:503,code??'unavailable');
+    throw new AccountProfileFailure(code?(accountProfileErrorStatuses[code]??503):503,code??'unavailable');
    }
    try{return mapAccountProfileResult(result.data,command.args.p_command);}catch{throw new AccountProfileFailure(503,'unavailable');}
   };

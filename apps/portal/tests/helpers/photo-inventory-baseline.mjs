@@ -8,10 +8,20 @@ const types=new Set(['CheckinPhotoInventory','CheckinPhotoInventoryPage']);
 const imports=new Set([...functions,...types,'exactKeys','readInteger','readObject','requireValue']);
 const owned=new Set(['commands','types','projection','handler','index'].map(n=>'supabase/functions/concierge-checkins/'+n+'.ts').concat('supabase/functions/concierge-operations/runtime.ts'));
 
+/** Reverse only the approved Worker/DOM privacy return annotation. Runtime nodes stay exact. */
+export function withoutApprovedFetchPrivacyType(text,file){
+  if(file!=='supabase/functions/concierge-operations/runtime.ts')return text;
+  const current="const options = (token: string, signal?: AbortSignal): RequestInit & {credentials: 'omit'} =>";
+  const previous="const options = (token: string, signal?: AbortSignal): RequestInit =>";
+  const matches=text.split(current).length-1;
+  assert.ok(matches<=1,'at most one exact approved privacy return annotation');
+  return matches===1?text.replace(current,previous):text;
+}
+
 /** Erase only this separately approved additive producer for older AST witnesses. */
 export function withoutPhotoInventory(text,file){
   if(!owned.has(file))return text;
-  const source=ts.createSourceFile(file,text,ts.ScriptTarget.ESNext,true);
+  const source=ts.createSourceFile(file,withoutApprovedFetchPrivacyType(text,file),ts.ScriptTarget.ESNext,true);
   const result=ts.transform(source,[context=>{
     const visit=node=>{
       if(ts.isTypeAliasDeclaration(node)&&types.has(node.name.text)||ts.isFunctionDeclaration(node)&&functions.has(node.name?.text))return undefined;

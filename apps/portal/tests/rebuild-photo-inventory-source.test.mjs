@@ -5,6 +5,7 @@ import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import ts from '../node_modules/typescript/lib/typescript.js';
+import {withoutApprovedFetchPrivacyType} from './helpers/photo-inventory-baseline.mjs';
 import {buildCheckinCall} from '../../../supabase/functions/concierge-checkins/commands.ts';
 import {mapCheckinPhotoInventory} from '../../../supabase/functions/concierge-checkins/projection.ts';
 
@@ -51,7 +52,7 @@ test('removing only allocated inventory nodes leaves every old executable Root n
  const names=new Set([...functions,...types,'exactKeys','readInteger','readObject','requireValue']);
  const newText=/['"](?:read_photo_inventory_v1|concierge_checkin_photo_inventory_v1)['"]/;
  function normalize(text,file,strip){
-  const source=ts.createSourceFile(file,text,ts.ScriptTarget.ESNext,true);
+  const source=ts.createSourceFile(file,withoutApprovedFetchPrivacyType(text,file),ts.ScriptTarget.ESNext,true);
   const transformed=ts.transform(source,[context=>{
    const visit=node=>{
     if(strip){

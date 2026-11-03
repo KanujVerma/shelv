@@ -9,6 +9,8 @@ import { mayaPlan } from "./rebuild/plan-fixture.mjs";
 import { projectClientPlan } from "../../../src/contracts/PortalRebuild.ts";
 import { parseRoute, buildRoute } from "../src/navigation/routes.ts";
 import { browserCareView, browserReviewFacts, browserReviewResponse } from "./rebuild-app-browser-model.mjs";
+import { readClientOrdersReadCommand } from "../../../src/contracts/PortalClientOrdersValidation.ts";
+import { mapClientOrdersReadResult } from "../../../src/contracts/PortalClientOrdersMapping.ts";
 const portal = path.resolve(import.meta.dirname, ".."),
   output = path.resolve(
     portal,
@@ -147,6 +149,21 @@ async function setup(initial = "/plan", width = 1440, s = state()) {
       if (audience === "client" && endpoint === "reviews" && request.method() === "POST") {
         const response = await browserReviewResponse(s, command);
         if (response) return route.fulfill(response);
+      }
+      if (audience === "client" && endpoint === "client-orders" &&
+          request.method() === "POST" && command?.action === "read_client_orders_v1") {
+        // SYNTHETIC intercepted HTTP only. The mounted app still uses its real
+        // registered cookie request, transport and strict Root response decoder.
+        const read = readClientOrdersReadCommand(command);
+        assert.deepEqual(read, { schemaVersion: 1, action: "read_client_orders_v1" });
+        const headers = request.headers();
+        assert.equal(headers["x-shelv-csrf"], s.csrf);
+        assert.equal(headers["content-type"], "application/json");
+        assert.equal(headers.authorization, undefined);
+        assert.equal(headers.apikey, undefined);
+        return route.fulfill({ json: mapClientOrdersReadResult({
+          schemaVersion: 1, revision: 0, purchases: [], returns: [],
+        }, read) });
       }
       if (endpoint === "care" && request.method() === "POST") {
         if (s.failure) return route.fulfill({status:s.failure,json:{code:"unavailable"}});
@@ -457,10 +474,17 @@ test("actual client app reads/decides through fixed cookie ports and restores pr
       path: path.join(artifacts, "client-1440.png"),
       fullPage: true,
     });
+    const beforeOrders = f.s.calls.length;
     await p.getByRole("link", { name: "orders", exact: true }).click();
     await p
-      .getByText("this page is not connected yet", { exact: true })
+      .getByText("no recorded purchases", { exact: true })
       .waitFor();
+    await p.getByText("no return requests recorded.", { exact: true }).waitFor();
+    assert.deepEqual(f.s.calls.slice(beforeOrders).filter(c => c.command), [{
+      audience: "client", endpoint: "client-orders",
+      command: { schemaVersion: 1, action: "read_client_orders_v1" },
+    }]);
+    assert.deepEqual(f.s.view.actualUse, []);
     await p.getByRole("button", { name: "sign out", exact: true }).click();
     await p
       .getByRole("button", { name: "send sign-in link", exact: true })

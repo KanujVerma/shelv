@@ -68,7 +68,7 @@ export function createAccountContactProvider(config:ConciergeTransportConfigurat
           if(raw.error){
             if(raw.error.status===401||raw.error.status===403)throw new AccountProfileFailure(raw.error.status,raw.error.status===401?'session_ended':'forbidden');
             const code=Object.keys(accountProfileErrorStatuses).find(key=>raw.error?.message===`concierge_${key}`);
-            throw new AccountProfileFailure(code?accountProfileErrorStatuses[code]:503,code??'unavailable');
+            throw new AccountProfileFailure(code?(accountProfileErrorStatuses[code]??503):503,code??'unavailable');
           }
           try{
             const mapped=mapAccountProfileResult(raw.data,call.args.p_command);requireValue('currentEmail' in mapped);check();return mapped;

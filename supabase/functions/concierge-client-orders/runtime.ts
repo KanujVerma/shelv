@@ -43,8 +43,8 @@ export function createClientOrdersReadPorts(config:ConciergeTransportConfigurati
    // Only correlation. Authenticating the actual user and trusted SQL session lookup are mandatory.
    let payload:Record<string,unknown>;
    try{
-    const parts=token.split('.');requireValue(parts.length===3&&parts[1].length<=8192&&/^[A-Za-z0-9_-]+$/.test(parts[1]));
-    payload=readObject(JSON.parse(atob(parts[1].replace(/-/g,'+').replace(/_/g,'/'))));
+    const parts=token.split('.'),encoded=parts[1];requireValue(parts.length===3&&typeof encoded==='string'&&encoded.length<=8192&&/^[A-Za-z0-9_-]+$/.test(encoded));
+    payload=readObject(JSON.parse(atob(encoded.replace(/-/g,'+').replace(/_/g,'/'))));
     requireValue(payload.role==='authenticated'&&typeof payload.exp==='number'&&Number.isSafeInteger(payload.exp));readUuid(payload.sub);readUuid(payload.session_id);readUuid(user.id);
    }catch{throw new ClientOrdersReadFailure(401,'session_ended');}
    if(String(payload.sub).toLowerCase()!==String(user.id).toLowerCase())throw new ClientOrdersReadFailure(403,'forbidden');
