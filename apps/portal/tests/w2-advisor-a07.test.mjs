@@ -72,7 +72,7 @@ test('A07 complete report resolution waits for all history pages without inventi
 test('A07 view-only session cannot read private check-in data or prepare a response',async t=>{
  const h=await guidanceApp(t,createAdvisorGuidanceController);await h.caps({edit:false,publish:false});await h.c.open(selection);
  const markup=html(h.c);assert.doesNotMatch(markup,/SYNTHETIC original comfort|<textarea|prepare review|save private note/);
- assert.equal(h.calls.filter(c=>c.action==='read_advisor_care_history_v1').length,0);
+ assert.equal(h.calls.filter(c=>c.command.action==='read_advisor_care_history_v1').length,0);
 });
 
 test('A07 stale pagination keeps an independent first-page refresh recovery',async t=>{
@@ -106,4 +106,21 @@ test('A07 denied report keeps a safe refresh action and recovers after access re
  assert.match(denied,/>refresh care history</);
  h.clear('read_advisor_care_history_v1');await h.c.refreshHistory();
  assert.equal(h.c.getSnapshot().privateDenied,false);assert.equal(h.c.getSnapshot().history.complete,true);assert.match(html(h.c),/SYNTHETIC original comfort/);
+});
+
+test('A07 report denial keeps the exact unresolved-request recovery while private content stays cleared',{timeout:5000},async t=>{
+ const h=await guidanceApp(t,createAdvisorGuidanceController);await h.c.open(selection);
+ h.c.editBody({...clone(h.data.body),conclusion:'SYNTHETIC retained uncertain save'});assert.equal(h.c.can('save'),true);
+ const held=h.hold('save_guidance_draft_v1'),saving=h.c.save();await held.ready;
+ const original=h.calls.at(-1).command;
+ h.override('read_advisor_care_history_v1',{code:'forbidden'},403);await h.c.refreshHistory();held.release();await saving;
+ assert.equal(h.c.getSnapshot().privateDenied,true);assert.equal(h.c.getSnapshot().pending.requestId,original.requestId);
+ const markup=html(h.c);assert.match(markup,/>check original request status</);assert.match(markup,/>retry the same request</);
+ assert.doesNotMatch(markup,/SYNTHETIC retained uncertain save|SYNTHETIC original comfort|<textarea/);
+ await h.c.checkStatus();assert.equal(h.c.getSnapshot().pending,null);assert.equal(h.c.getSnapshot().draft,null);assert.equal(h.c.getSnapshot().body,null);assert.equal(h.c.getSnapshot().history.entries.length,0);
+});
+test('A07 incomplete selected history retains the actual connection recovery control',async t=>{
+ const h=await guidanceApp(t,createAdvisorGuidanceController);h.override('read_advisor_care_history_v1',{code:'unavailable'},503);await h.c.open(selection);
+ assert.notEqual(h.c.getSnapshot().connection,'ready');const markup=html(h.c);assert.match(markup,/>check connection</);assert.doesNotMatch(markup,/SYNTHETIC original comfort/);
+ h.clear('read_advisor_care_history_v1');await h.c.checkConnection();await h.c.refreshHistory();assert.match(html(h.c),/SYNTHETIC original comfort/);
 });

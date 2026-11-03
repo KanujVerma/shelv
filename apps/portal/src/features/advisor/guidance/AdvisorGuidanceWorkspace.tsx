@@ -30,6 +30,79 @@ import { ConversationComposer } from "./ConversationComposer.tsx";
 import { newReviewBody, newReplyBody, newInstructionBody } from "./drafts.ts";
 import "./guidance.css";
 
+function GuidanceRecovery({ controller, state }: {
+  controller: AdvisorGuidanceController;
+  state: AdvisorGuidanceState;
+}) {
+  return <>
+      {state.connection !== "ready" ? (
+        <StatusNotice
+          tone="warning"
+          title="connection unavailable"
+          action={
+            <Button
+              variant="secondary"
+              busy={state.busy.includes("connection")}
+              onClick={() => void controller.checkConnection()}
+            >
+              check connection
+            </Button>
+          }
+        >
+          your loaded information is retained. restore the connection, then
+          retry the original read.
+        </StatusNotice>
+      ) : null}
+      {state.notice ? (
+        <StatusNotice
+          tone={
+            state.pending
+              ? "uncertain"
+              : state.privateDenied
+                ? "denied"
+                : "neutral"
+          }
+          title={state.notice}
+        />
+      ) : null}
+      {state.pending ? (
+        <section
+          className="shelv-panel advisor-guidance-fields"
+          aria-label="unresolved request"
+        >
+          <h2>
+            request{" "}
+            {state.pending.state === "sending"
+              ? "in progress"
+              : "result uncertain"}
+          </h2>
+          <p>
+            {state.pending.action.replaceAll("_", " ")} ·{" "}
+            {state.pending.requestId}
+          </p>
+          <div className="advisor-guidance-actions">
+            <Button
+              variant="secondary"
+              disabled={state.pending.state !== "uncertain"}
+              busy={state.busy.includes("status")}
+              onClick={() => void controller.checkStatus()}
+            >
+              check original request status
+            </Button>
+            <Button
+              variant="secondary"
+              disabled={state.pending.state !== "uncertain"}
+              busy={state.busy.includes("write")}
+              onClick={() => void controller.retry()}
+            >
+              retry the same request
+            </Button>
+          </div>
+        </section>
+      ) : null}
+  </>;
+}
+
 function PrivatePreparation({
   controller,
   state,
@@ -594,6 +667,7 @@ export function AdvisorGuidanceWorkspace({
       <div className="advisor-view advisor-guidance" data-design-frame="500:846">
         <Button variant="ghost" onClick={navigation.onBack}>back to client</Button>
         <h1>{clientLabel ?? `client ${selection.clientId}`} · review a check-in</h1>
+        <GuidanceRecovery controller={controller} state={state} />
         <StatusNotice tone={state.privateDenied ? "denied" : "warning"} title={title}>
           {!matches ? "your existing work is preserved. return to its draft before preparing another review." : null}
           {!state.privateDenied && !state.history.complete ? "load the complete history before preparing a response." : null}
@@ -655,71 +729,7 @@ export function AdvisorGuidanceWorkspace({
             : "advisor workspace"}
         </p>
       </header>
-      {state.connection !== "ready" ? (
-        <StatusNotice
-          tone="warning"
-          title="connection unavailable"
-          action={
-            <Button
-              variant="secondary"
-              busy={state.busy.includes("connection")}
-              onClick={() => void controller.checkConnection()}
-            >
-              check connection
-            </Button>
-          }
-        >
-          your loaded information is retained. restore the connection, then
-          retry the original read.
-        </StatusNotice>
-      ) : null}
-      {state.notice ? (
-        <StatusNotice
-          tone={
-            state.pending
-              ? "uncertain"
-              : state.privateDenied
-                ? "denied"
-                : "neutral"
-          }
-          title={state.notice}
-        />
-      ) : null}
-      {state.pending ? (
-        <section
-          className="shelv-panel advisor-guidance-fields"
-          aria-label="unresolved request"
-        >
-          <h2>
-            request{" "}
-            {state.pending.state === "sending"
-              ? "in progress"
-              : "result uncertain"}
-          </h2>
-          <p>
-            {state.pending.action.replaceAll("_", " ")} ·{" "}
-            {state.pending.requestId}
-          </p>
-          <div className="advisor-guidance-actions">
-            <Button
-              variant="secondary"
-              disabled={state.pending.state !== "uncertain"}
-              busy={state.busy.includes("status")}
-              onClick={() => void controller.checkStatus()}
-            >
-              check original request status
-            </Button>
-            <Button
-              variant="secondary"
-              disabled={state.pending.state !== "uncertain"}
-              busy={state.busy.includes("write")}
-              onClick={() => void controller.retry()}
-            >
-              retry the same request
-            </Button>
-          </div>
-        </section>
-      ) : null}
+      <GuidanceRecovery controller={controller} state={state} />
       <div className="advisor-guidance-columns">
         <main className="advisor-guidance-fields">
           {selectedReport}
