@@ -1,4 +1,5 @@
 export { AdvisorGuidanceWorkspace } from "./AdvisorGuidanceWorkspace.tsx";
+export type { AdvisorGuidanceWorkspaceProps } from "./AdvisorGuidanceWorkspace.tsx";
 export { createAdvisorGuidanceController } from "./controller.ts";
 export type {
   AdvisorGuidanceController,
