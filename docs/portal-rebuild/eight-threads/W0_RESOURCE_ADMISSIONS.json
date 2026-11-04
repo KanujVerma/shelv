@@ -190,7 +190,7 @@
     "packetSha256": "0fde103308926333f891f5fc323b60d0ff79fd5ae33efc135de69e03566f521e",
     "head": "3a90573080ccbe1924d20afccfd0718b3302c923",
     "kind": "PUBLIC_MAYA_ACTUAL_PINNED_PAGE_ONLY",
-    "status": "ADMITTED_ONCE_PENDING_EXECUTION",
+    "status": "RETURNED_CLOSED_INCOMPLETE_CAPTURE",
     "scope": "Exact frozen published3a PUBLIC build only, not currentf060 whole portal",
     "harnessCommit": "25804d1ee16c6de8987b668613437bc1c2bd7848",
     "harnessSha256": "d724047a430eef3c2a43e3fcd077390c2bbfdf8dbf767af5c8907744048c4e89",
@@ -281,6 +281,29 @@
       "Principal44/Guidance/private-return/M65/photo/final-egress auditresumption/alternate setup"
     ],
     "genuineGrant": null,
-    "acceptanceEffect": "NONE_UNTIL_ACTUAL_SCOPED_RETURN"
+    "acceptanceEffect": "ZERO",
+    "result": {
+      "verdict": "INCOMPLETE_CAPTURE_PREVIEW_SNAPSHOT_TIMEOUT_CAUSE_UNKNOWN",
+      "candidate": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "rawManifestSha256": "352d68101515187d6e34e0fd2c4c1aeb990fe612e95f39625d592ed1f22c25e8",
+      "rawFilesVerified": 12,
+      "ownTab": "tab_3_b8a52f0a-7d61-4512-b1fb-53d0f4cc8fc7",
+      "ownTabCloseRequested": true,
+      "ownIdPostStatus": {
+        "available": false,
+        "tabId": null
+      },
+      "hostPid": 92615,
+      "execSession": 62353,
+      "hostExit": 0,
+      "closedReason": "owned SIGTERM",
+      "elapsedSeconds": 228.99891745799687,
+      "hostRequests": 16,
+      "hostApiRequests": 0,
+      "returnedScreenshotOrAXTree": false,
+      "productControlActions": 0,
+      "qualification": "Raw failure/one read-only diagnostic/owned tab close-status and exact observed exec join verified; no global absence or zero-browser-attempt/geometry/visual/product claim",
+      "followingGate": "No automatic retry/fallback; new exact packet and admission required"
+    }
   }
 ]

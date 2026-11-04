@@ -2259,7 +2259,7 @@
     "stoppedFixtures": "Never query/reuse/restart/reset/adopt; saved-FS audit only.",
     "activeGrant": null,
     "freshGenuineGrantIssued": false,
-    "freshGrantIssuedMeaning": "Two prior once-only intercepted packets and one new blank preview capability packet admitted/consumed; no active grant or genuine fixture authority.",
+    "freshGrantIssuedMeaning": "Two prior intercepted packets, one blank-preview probe and one initialpublic-page packet admitted/consumed; no active grant or genuine fixture authority.",
     "completedBrowserExecutions": [
       {
         "executionId": "7550b318-23a3-4aa4-ae34-1ff80f9daf3a",
@@ -2273,6 +2273,11 @@
         "executionId": "e7c5e427-1109-4064-b502-8e0267b77a65",
         "status": "PREVIEW_SUPPORTED_OWN_BLANK_TAB_CLOSED_INTERVAL_RETURNED",
         "kind": "PUBLIC_BLANK_CAPABILITY_PROBE_ONLY"
+      },
+      {
+        "executionId": "5ded069b-2fb7-4f56-846e-8497efe58690",
+        "status": "INCOMPLETE_CAPTURE_PREVIEW_SNAPSHOT_TIMEOUT_CAUSE_UNKNOWN_CLOSED_RETURNED",
+        "kind": "PUBLIC_PAGE_INITIAL_CAPTURE_ONLY_NO_ACCEPTANCE"
       }
     ],
     "pendingPublicMayaProposal": {
@@ -2283,6 +2288,14 @@
       "sha256": "540bf6dd9d95c536402ec5043fe718b82bd483a6dd150b991afdd1dc07da6606",
       "scope": "Requiredbrowsercapability/blank-onlyprobe; no server/app/browseracceptance",
       "result": "browser/PUBLIC_MAYA_PREVIEW_PROBE_R1_RESULT.json"
+    },
+    "pendingActualPublicPageProposal": {
+      "executionId": "5ded069b-2fb7-4f56-846e-8497efe58690",
+      "status": "INCOMPLETE_CAPTURE_PREVIEW_SNAPSHOT_TIMEOUT_CAUSE_UNKNOWN_CLOSED_RETURNED",
+      "head": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "packet": "resource-packets/PUBLIC_MAYA_3A905_PAGE_R1.json",
+      "sha256": "0fde103308926333f891f5fc323b60d0ff79fd5ae33efc135de69e03566f521e",
+      "result": "browser/PUBLIC_MAYA_3A905_PAGE_R1_RESULT.json"
     }
   },
   "independentReviewVerdicts": [
@@ -2607,6 +2620,16 @@
       "head": "35eaefd5b3dd18588cb1b81acaf44462eb8e5648",
       "report": "reviews/W0_CLIENT_ENTRY_35E.md",
       "level": "PASS_SCOPED_COMPLETE_CLIENT_ENTRY_SOURCE_MODEL_FINITE_SSR"
+    },
+    {
+      "head": "48141c31b11ebb2bdb13c73ad5c20ec5af83d50b",
+      "report": "reviews/DTO_CORRESPONDENCES_481_B02.md",
+      "level": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "b02e0f8196642f1ec52666ce8ce3c88ee1dc78bb",
+      "report": "reviews/DTO_CORRESPONDENCES_481_B02.md",
+      "level": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY"
     }
   ],
   "placementClarifications": [
@@ -2629,7 +2652,7 @@
       "owningLane": "W5"
     }
   ],
-  "lastReconciledAt": "2026-11-04T02:27:50.192831+00:00",
+  "lastReconciledAt": "2026-11-04T03:10:54.335370+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
@@ -2718,10 +2741,10 @@
     "separatePermittedWork": "Distinct expressly permitted source reviews may continue. Public Maya browser would need actual shell/composition proof and its own admitted packet; it has no current grant."
   },
   "integrationSourceReference": {
-    "head": "df230eca6017f8dd330cceb83eb11b18193937e5",
+    "head": "3a90573080ccbe1924d20afccfd0718b3302c923",
     "ref": "refs/heads/kanuj/portal-rebuild-integration-20261030",
-    "verification": "All2298 actualcompilerinput bytes/SHA and29sourceasset bytes checked;161repoowned compilerinputs byteexactGitdf230;101builtoutputfiles copied and independently pinned. No new runtime/browser/Auth/SQL execution.",
-    "record": "PUBLISHED_DF230_SOURCE_REFERENCE.json",
+    "verification": "gitlsremoteexact3a; onlyPortalShellliteralvsDF; actualPortalShellblobexactc9. Actualdetached3abuild all2298inputs/161repoGitexact/29assets/95outputs independentlyverifiedandcopied.",
+    "record": "PUBLISHED_3A905_SOURCE_REFERENCE.json",
     "wholeIntegratedCensus": "NOT_MEASURED",
     "noCounterAdvance": true
   },
