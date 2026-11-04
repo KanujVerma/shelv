@@ -5,7 +5,12 @@ import {serviceFinancialsCommandMaxBytes,serviceFinancialsErrorStatuses,serviceF
 import {readUuid} from '../../../src/contracts/ConciergePortalValidation.ts';
 import {ClientOrdersReadFailure,clientOrdersReadWait as wait,readClientOrdersReadJson as readJson,setClientOrdersReadDeadline as setDeadline} from '../concierge-client-orders/body.ts';
 
-export type ServiceFinancialsPorts=ConciergeAuthenticatedPorts<ServiceFinancialsRpcCall>;
+export type ServiceFinancialsReceivedDenial={readonly status:401;readonly code:'unauthorized'|'session_ended'}|{readonly status:403;readonly code:'forbidden'};
+export type ServiceFinancialsPorts=ConciergeAuthenticatedPorts<ServiceFinancialsRpcCall>&{
+  /** Runtime-only receipt observation, keyed by this exact handler operation.
+   * It can classify a denial, never authorize success or expose private data. */
+  receivedDenial?(signal:AbortSignal):ServiceFinancialsReceivedDenial|undefined;
+};
 const errors=new Map(Object.entries(serviceFinancialsErrorStatuses).map(([code,status])=>['concierge_'+code,{code,status}]));
 function failure(error:{status?:number;message?:string}){
   if(error.status===401)return {status:401,code:'session_ended'};
@@ -56,6 +61,10 @@ export async function handleServiceFinancialsRequest(request:Request,ports:Servi
   }catch(cause){
     // A received authentication/authorization denial is not a retryable read.
     if(observed.denial)return reply(observed.denial.status,{code:observed.denial.code});
+    try{
+      const received=ports.receivedDenial?.(signal);
+      if(received&&(received.status===401&&(received.code==='unauthorized'||received.code==='session_ended')||received.status===403&&received.code==='forbidden'))return reply(received.status,{code:received.code});
+    }catch{/* A local observation failure cannot admit a private response. */}
     if(!signal.aborted&&cause instanceof ClientOrdersReadFailure&&(cause.status===400||cause.status===413))return reply(cause.status,{code:cause.status===413?'too_large':'invalid_input'});
     if(!signal.aborted&&cause instanceof Error&&cause.message==='invalid_input')return reply(400,{code:'invalid_input'});
     return reply(503,{code:'unavailable'});

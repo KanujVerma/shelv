@@ -1,7 +1,7 @@
 import {createConciergeAuthenticatedPorts} from '../concierge-operations/runtime.ts';
 import type {ConciergeTransportConfiguration} from '../concierge-operations/runtime.ts';
-import type {ConciergeAuthenticatedPorts} from '../../../src/contracts/ConciergePortal.ts';
 import type {ServiceFinancialsRpcCall} from '../../../src/contracts/PortalServiceFinancials.ts';
+import type {ServiceFinancialsPorts,ServiceFinancialsReceivedDenial} from './service-financials-handler.ts';
 import {buildServiceFinancialsRpc} from '../../../src/contracts/PortalServiceFinancialsMapping.ts';
 import {serviceFinancialsCommandMaxBytes,serviceFinancialsResultMaxBytes,serviceFinancialsAuthMaxBytes,serviceFinancialsOperationMilliseconds} from '../../../src/contracts/PortalServiceFinancialsValues.ts';
 import {clientOrdersReadWait as wait,readClientOrdersReadJson as readJson,setClientOrdersReadDeadline as setDeadline} from '../concierge-client-orders/body.ts';
@@ -12,13 +12,16 @@ function operation(signal?:AbortSignal):AbortSignal {
   return signal?AbortSignal.any([signal,AbortSignal.timeout(serviceFinancialsOperationMilliseconds)]):AbortSignal.timeout(serviceFinancialsOperationMilliseconds);
 }
 function discard(response:Response):void {try{void response.body?.cancel().catch(()=>{});}catch{/* Refusal cannot wait for remote cleanup. */}}
+function redirected(response:Response):boolean {return response.redirected||response.status===0||response.status>=300&&response.status<400;}
 
 /** Fixed read transport only. The W1 builder/mapper and SQL still supply strict
  * business parsing, own-client/session authorization and actual financial truth.
  * Construction registers no gateway/route and changes no existing V2 port. */
-export function createServiceFinancialsPorts(config:ConciergeTransportConfiguration):ConciergeAuthenticatedPorts<ServiceFinancialsRpcCall> {
+export function createServiceFinancialsPorts(config:ConciergeTransportConfiguration):ServiceFinancialsPorts {
   const send=config.fetch??globalThis.fetch;
-  const bounded:typeof fetch=async(input,init)=>{
+  const captured={supabaseUrl:config.supabaseUrl,publicKey:config.publicKey,allowedOrigins:Object.freeze([...config.allowedOrigins])};
+  const received=new WeakMap<AbortSignal,ServiceFinancialsReceivedDenial>();
+  const bounded=(observe?:(status:401|403)=>void):typeof fetch=>async(input,init)=>{
     const signal=init?.signal;if(!signal)throw new Error('unavailable');
     available(signal);const deadline=Date.now()+serviceFinancialsOperationMilliseconds;
     // Reuse the unchanged pure bounded-reader mechanics. No Orders read,
@@ -29,18 +32,21 @@ export function createServiceFinancialsPorts(config:ConciergeTransportConfigurat
       response=await wait(()=>send(input,{...init,redirect:'manual'}).then(value=>{
         observed=value;
         if(retired){discard(value);throw new Error('unavailable');}
+        // Observe at actual header receipt, before the handler's outer abort
+        // race can settle and before any remote body decode/cancel is awaited.
+        if(!redirected(value)&&(value.status===401||value.status===403))observe?.(value.status);
         return value;
       }),signal);
     }catch{
       retired=true;
       // A denial already observed before settlement remains authoritative.
-      if(observed&&(observed.status===401||observed.status===403)){
+      if(observed&&!redirected(observed)&&(observed.status===401||observed.status===403)){
         discard(observed);return new Response(null,{status:observed.status});
       }
       if(observed)discard(observed);
       throw new Error('unavailable');
     }
-    if(response.redirected||response.status===0||response.status>=300&&response.status<400){discard(response);throw new Error('unavailable');}
+    if(redirected(response)){discard(response);throw new Error('unavailable');}
     if(response.status===401||response.status===403){discard(response);return new Response(null,{status:response.status});}
     try{
       available(signal);
@@ -51,12 +57,17 @@ export function createServiceFinancialsPorts(config:ConciergeTransportConfigurat
         headers:{'content-type':'application/json','cache-control':'private, no-store'}});
     }catch{discard(response);throw new Error('unavailable');}
   };
-  const retained=createConciergeAuthenticatedPorts<ServiceFinancialsRpcCall>({...config,fetch:bounded,allowedRpcNames:[rpcName]});
+  // Each call gets its own receipt observer; concurrent requests cannot share
+  // an ambient signal or overwrite each other's denial classification.
+  const retained=(observe?:(status:401|403)=>void)=>createConciergeAuthenticatedPorts<ServiceFinancialsRpcCall>({...captured,fetch:bounded(observe),allowedRpcNames:[rpcName]});
+  const validated=retained(); // Preserve synchronous configuration validation.
   return {
-    allowedOrigins:retained.allowedOrigins,
+    allowedOrigins:validated.allowedOrigins,
+    receivedDenial:signal=>received.get(signal),
     async authenticate(token,signal){
       const live=operation(signal);available(live);
-      const user=await retained.authenticate(token,live);
+      const transport=retained(()=>received.set(signal??live,Object.freeze({status:401,code:'unauthorized'})));
+      const user=await transport.authenticate(token,live);
       // Received identity denial wins over a coincident cancellation.
       if(user===null)return null;
       available(live);return user;
@@ -72,7 +83,11 @@ export function createServiceFinancialsPorts(config:ConciergeTransportConfigurat
       available(live);
       const frozen=buildServiceFinancialsRpc(JSON.parse(wire));
       available(live);
-      const result=await retained.rpc(token,frozen,live);
+      const transport=retained(status=>{
+        const denial:ServiceFinancialsReceivedDenial=status===401?{status:401,code:'session_ended'}:{status:403,code:'forbidden'};
+        received.set(signal??live,Object.freeze(denial));
+      });
+      const result=await transport.rpc(token,frozen,live);
       if(result.error&&(result.error.status===401||result.error.status===403))return result;
       available(live);return result;
     },
