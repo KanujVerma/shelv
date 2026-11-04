@@ -1,0 +1,16 @@
+{
+  "owner": "Kanuj",
+  "head": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+  "recordedAt": "2026-11-04T09:43:24.885950+00:00",
+  "ref": "refs/heads/kanuj/portal-rebuild-integration-20261030",
+  "remoteObservation": {
+    "method": "git ls-remote origin refs/heads/kanuj/portal-rebuild-integration-20261030",
+    "exitCode": 0,
+    "toolChunk": "614ffd"
+  },
+  "scope": "Bounded source/document correspondence only",
+  "report": "reviews/PUBLISHED_SPINE_94607_SOURCE.md",
+  "wholeIntegratedCensus": "NOT_MEASURED",
+  "ownNewerLedgerNotRolledBack": "b2bf1075974d2ee223c868535abb5070e14d578f",
+  "noResourceOrCounterAdvance": true
+}
