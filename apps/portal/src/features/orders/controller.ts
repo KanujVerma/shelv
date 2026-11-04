@@ -161,7 +161,12 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
    if(!mutationReady()||d?.kind!=='purchase'||!dependency.available||input.quantity>d.quantity)return;
    await send({schemaVersion:1,action:'request_product_return_v1',requestId:crypto.randomUUID(),purchaseId:d.id,expectedReturnRevision:dependency.expectedReturnRevision,...input});
   },
-  close(){if(!live())return;cancelUnsent();selectedRef=null;readToken++;readAbort?.abort();emit({selection:null,reviewed:false,phase:state.index?'ready':'initial'});},
+  close(){
+   if(!live())return;
+   const token=++readToken,previous=readAbort;readAbort=null;selectedRef=null;
+   try{cancelUnsent();}finally{previous?.abort();}
+   if(matches(token))emit({selection:null,reviewed:false,phase:state.index?'ready':'initial'});
+  },
   dispose(){
    if(disposed)return;
    // Terminal state and detached owned references precede every callback.
