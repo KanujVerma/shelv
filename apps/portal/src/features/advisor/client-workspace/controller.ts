@@ -9,7 +9,7 @@ const limit = 25;
 
 /** Read-only, route-owned presentation. Client identity is correlation, never authority. */
 export function createAdvisorClientWorkspaceController({ runtime, clientId, readPlans }: AdvisorClientWorkspaceOptions): AdvisorClientWorkspaceController {
-  clientId = readUuid(clientId);
+  clientId = readUuid(clientId).toLowerCase();
   const captured = runtime.getSnapshot().boundary, cookie = runtime.cookie, identity = cookie.identity, view = cookie._view;
   if (!captured || cookie.audience !== "advisor" || identity?.role !== "advisor" || !view)
     throw Error("client workspace unavailable");
@@ -90,9 +90,10 @@ export function createAdvisorClientWorkspaceController({ runtime, clientId, read
       if (!owns(op)) return;
       const page = mapPlanResult(value, { schemaVersion: 1, action: "list_plans_v1", clientId, cursor, limit }) as PlanDirectory;
       if (!owns(op)) return;
-      if (page.drafts.some(row => row.clientId !== clientId) || page.publications.some(row => row.clientId !== clientId)) throw Error("unavailable");
+      if (page.drafts.some(row => row.clientId?.toLowerCase() !== clientId) || page.publications.some(row => row.clientId.toLowerCase() !== clientId)) throw Error("unavailable");
       if (page.nextCursor !== null && (page.nextCursor === cursor || op.seen.has(page.nextCursor))) throw Error("unavailable");
-      const drafts = [...(op.base?.drafts ?? []), ...page.drafts], publications = [...(op.base?.publications ?? []), ...page.publications];
+      const drafts = [...(op.base?.drafts ?? []), ...page.drafts].map(row => ({ ...row, id: row.id.toLowerCase(), clientId })),
+        publications = [...(op.base?.publications ?? []), ...page.publications].map(row => ({ ...row, clientId }));
       if (new Set(drafts.map(row => row.id)).size !== drafts.length ||
         new Set(publications.map(row => row.version)).size !== publications.length) throw Error("unavailable");
       const directory: AdvisorClientWorkspaceDirectory = Object.freeze({ nextCursor: page.nextCursor,
