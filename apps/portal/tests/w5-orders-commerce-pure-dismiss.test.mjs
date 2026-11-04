@@ -48,3 +48,42 @@ test('current sheet dismissal remains closed when React replays a functional upd
  assert.equal(f.calls.filter(c=>!c.action.startsWith('read_')).length,0);
  assert.equal(after.props.children[1],null,'the current owned sheet should close after a replayed state updater');
 });
+
+// Owner extensions use the same controlled, non-hydrated scheduling scope.
+const sheetOf=tree=>tree.props.children[1];
+async function openSheet(f,selected,kind='review',line){const ready=await f.settle(selected);view(ready).onSheet(kind,line);return sheetOf(f.render(selected));}
+function replayUpdates(f,afterDiscard=()=>{}){
+ const state=f.h.state.bind(f.h);
+ f.h.state=initial=>{const [value,set]=state(initial);return [value,update=>set(typeof update==='function'?prior=>{update(prior);afterDiscard();return update(prior);}:update)];};
+}
+test('replayed current dismissal does not retire ownership in the discarded invocation',async t=>{
+ const f=await fixture(t);await openSheet(f,f.a);let current,discards=0;
+ replayUpdates(f,()=>{discards++;assert.equal(current.props.canClose(),true);});
+ current=sheetOf(f.render(f.a));current.props.onOpenChange(false);
+ assert.equal(discards,1);assert.equal(sheetOf(f.render(f.a)),null);assert.equal(f.controller.getSnapshot().selection.entity.id,f.a.id);
+});
+test('replayed current completion is idempotent before render and cannot close a replacement',async t=>{
+ const f=await fixture(t);await openSheet(f,f.a);replayUpdates(f);
+ const old=sheetOf(f.render(f.a));old.props.children.props.onDone();old.props.children.props.onDone();old.props.onOpenChange(false);assert.equal(sheetOf(f.render(f.a)),null);
+ const next=await openSheet(f,f.a,'review');assert.notEqual(next.props.children.key,old.props.children.key);
+ old.props.children.props.onDone();old.props.onOpenChange(false);assert.ok(sheetOf(f.render(f.a)));
+ next.props.children.props.onDone();assert.equal(sheetOf(f.render(f.a)),null);assert.equal(f.calls.filter(c=>!c.action.startsWith('read_')).length,0);
+});
+test('a queued replayed A dismissal cannot erase B even when scheduled before B was installed',async t=>{
+ const f=await fixture(t);await openSheet(f,f.a);const originalState=f.h.state.bind(f.h),queued=[];
+ f.h.state=initial=>{const [value,set]=originalState(initial);return [value,update=>{if(typeof update==='function')queued.push(()=>set(prior=>{update(prior);return update(prior);}));else set(update);}];};
+ const old=sheetOf(f.render(f.a));old.props.children.props.onDone();assert.equal(queued.length,1);
+ const next=await openSheet(f,f.b,'product',f.qB.lines[0]);assert.ok(next);for(const run of queued.splice(0))run();
+ const after=sheetOf(f.render(f.b));assert.ok(after);assert.equal(after.props.children.key,next.props.children.key);assert.equal(after.props.children.props.state.selection.entity.id,f.b.id);assert.equal(f.calls.filter(c=>!c.action.startsWith('read_')).length,0);
+});
+test('replayed stale-context cleanup clears only its captured A sheet',async t=>{
+ const f=await fixture(t);await openSheet(f,f.a);replayUpdates(f);
+ await f.settle(f.b);assert.equal(sheetOf(f.render(f.b)),null);
+ const current=await openSheet(f,f.b,'product',f.qB.lines[0]);assert.ok(current);current.props.onOpenChange(false);assert.equal(sheetOf(f.render(f.b)),null);assert.equal(f.calls.filter(c=>!c.action.startsWith('read_')).length,0);
+});
+test('delayed replayed context cleanup preserves an already installed B sheet',async t=>{
+ const f=await fixture(t);await openSheet(f,f.a);replayUpdates(f);const register=f.h.effect;let delayed;
+ f.h.effect=(fn,deps)=>{if(!delayed&&deps.length===2&&deps[0]===f.controller&&deps[1]?.includes(f.b.id)){delayed=fn;register(()=>{},deps);}else register(fn,deps);};
+ const next=await openSheet(f,f.b,'product',f.qB.lines[0]);assert.equal(typeof delayed,'function');delayed();
+ const after=sheetOf(f.render(f.b));assert.ok(after);assert.equal(after.props.children.key,next.props.children.key);assert.equal(after.props.children.props.state.selection.entity.id,f.b.id);assert.equal(f.calls.filter(c=>!c.action.startsWith('read_')).length,0);
+});
