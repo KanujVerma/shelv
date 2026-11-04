@@ -29,11 +29,12 @@ export function createMayaChromeController(controller:MayaDemoController){
   const next=controller.getSnapshot(),nextSession=controller.getPlanProps().session;
   if(!nextSession.isCurrent()){end();return;}
   if(next===current&&nextSession===session)return;
-  const detach=stopSession;
-  current=next;session=nextSession;stopSession=()=>{};
+  const changedSession=nextSession!==session,detach=stopSession;
+  current=next;session=nextSession;
   state=Object.freeze({opening:null,revision:state.revision+1,retired:false});
-  safe(detach);
-  stopSession=nextSession.subscribeInvalidation(refresh);
+  // Same-session view changes keep the original listener's insertion order.
+  // Rebinding it would put chrome retirement behind later session observers.
+  if(changedSession){stopSession=()=>{};safe(detach);stopSession=nextSession.subscribeInvalidation(refresh);}
   // No mutation follows callbacks: a reentrant new opening/context keeps custody.
   notify();
  }

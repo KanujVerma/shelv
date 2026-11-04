@@ -2,6 +2,14 @@
 
 Owner: Kanuj. Base published8a2be1cab5980f5aa92698268568ed5345bd84e8. Sol6.1/xhigh/default, explicit Node22.23.0; no subagents. Complete candidate is four shared production paths, three new focused test/helper paths and this report. W3 feature/controller/fixture/CSS/image source, old tests and all original evidence remain unchanged. This is SOURCE/SSR/model/asset-build evidence, pending independent W7 and actual browser/visual acceptance.
 
+## R2 correction after independent MSC3 ordering failure
+
+W7 withheld the original5a1cd82a gate on W7-W0-MSC3-ORDER/P2. Its independent original16 passed, but an additional actual session-observer control failed0/1: a same-session navigation detached and re-added the chrome invalidation listener behind a later observer. That observer saw the still-open cached rendered handle before notification; lazy getSnapshot freshness did not meet clear/notify-before-observer ordering. Original5a author16/191 and W7 failure remain historical, not current acceptance.
+
+The owner copied W7's original1204-byte control byte-exact, SHA256771890829e2cdb1e989680b0d3d965f38c8386e8e3130f6da7a56eba5173af88. It independently fails0/1 on the exact old maya-chrome.ts postimage. The correction preserves the original listener position during same-session view refreshes and rebinds only when the actual session changes. No getter/assertion/controller/session substitution occurs. Original1 plus retained16 now pass17/17. New raw proof: MAYA-ORDER-ORIGINAL-OLD.log and MAYA-ORDER-CURRENT-17.log. Corrected full immutable Git-export source/type/build results will be pinned with the new complete9-path intake; the older191 cannot supply that gate.
+
+Uncommitted disjoint Root self-purchase source/tests are retained separately and excluded from the corrected Git export. No private source/authority/provider scope, browser, actual Auth/SQL or genuine acceptance is reviewed by this ordinary public UI ordering correction. Prior MSC3 is not declared closed until W7 accepts the new complete successor.
+
 ## Task and observed gap
 
 | Priority | Persona and immediate task | Observed source issue | Correction | Regression and evidence |
