@@ -1,6 +1,6 @@
 # W7 continuation, 3 November 2026
 
-Owner: Kanuj. Own worktree `/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103`; branch `kanuj/w7-independent-acceptance-20261103`. Verified parent before latest checkpoint: `5b98ae3f9d4945d7776836ce3bc8428e99b09cc5`. Starting frozen W0 baseline `8c5c6b2d72e75f620487f1b2b110655b03551b17`. Newer Git/history and user steering supersede this continuation record.
+Owner: Kanuj. Own worktree `/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103`; branch `kanuj/w7-independent-acceptance-20261103`. Verified parent before latest checkpoint: `4490505626f5d5d751a131e62a185239b57a43c9`. Starting frozen W0 baseline `8c5c6b2d72e75f620487f1b2b110655b03551b17`. Newer Git/history and user steering supersede this continuation record.
 
 ## Goal and boundaries
 
@@ -67,7 +67,11 @@ Newqueues: W0scoped-client-plans adapter5e5db6b1389bfd21ad1a32af711d8f8c015ebc34
 
 - `5b98`: Account7e6 exact4 source52/frontend0; actual450/7cdependencieschecked, inertprepubSSR; no M01/M02fixture or actualfinancial/grant.
 
-NEWpriority perW0 AFTER5e5: W1e37b21a723447ecb4539be2f23cb6a8a679b4cbe base8893 exact6 inertlookup original/successor4groupingbytes/helperlineage/directRPCtestPROPOSALonly. Patch8aaef3c5/packet260a99f6; no canonicalSQL/parser/catalog/Auth/directRPC/scan/repair/resources orprivateSource/refauthorityaudit; native4460794439 staysOPEN. Sourceoriginal68 immutable. Queuethisbeforetemplates/followupifneeded, no alternateprincipal setup.
+NEWpriority perW0 AFTER5e5: W1e37b21a723447ecb4539be2f23cb6a8a679b4cbe base8893 exact6 inertlookup original/successor4groupingbytes/helperlineage/directRPCtestPROPOSALonly. Patch8aaef3c5/packet260a99f6; no canonicalSQL/parser/catalog/Auth/directRPC/scan/repair/resources orprivateSource/refauthorityaudit; native4460794439 staysOPEN. Sourceoriginal68 immutable. NowboundedSOURCEFIDELITY/proposalPASS: oldlexical5/2,current7/7; body4300->4304/declarationstrictinverse/canonicalpreimage/68hashes/14callcitations+3renamesteps verified. No SQLparser/SQL/Auth/catalog/scan/repair/privateSource/refauthorityaudit; native4460794439OPEN. Reports W1_PLAN_LOOKUP_E37. No alternateprincipal setup.
+
+- `4490`: Scopedclientplans5e5 source12/frontend0; actualVIEW-onlyreadinessnotproved, legacyeditguardexplicit.
+
+PUBLICATIONREFERENCE now8a2be1cab5980f5aa92698268568ed5345bd84e8 verifiedgitlsremoteexit0. Q1two+Accountfour+scopedporttwo exactreviewedRootpostimages/68migrationpins/ownedledgerthrough4490checked. WholecensusNOT_MEASURED/countersstillbaseline. PUBLISHED_8A2_SOURCE_REFERENCE.json recordsmetadata, no newruntime. Native8a2ownerreportsfindings true; SQL4460794439OPEN; NEWphoto4461800685UNACCEPTED_HELD_PHOTO_SCOPE, ownerreportedonly/noindependentverdict. NOnewphotoaudit/sourcefix/repro/resources/retry/reroute. CurrentC1/Q1sourceclosedonly originalsremain; genuineprincipal44blocked.
 
 Full SHA and exact result paths are in ledger/queue/reports. Completed source results are not full feature/financial/SQL/browser/CI/visual/a11y acceptance. Full original W0Portal3311/3312 and source witnesses retain their failures; later inverse passes do not relabel them.
 

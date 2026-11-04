@@ -1,0 +1,124 @@
+{
+  "owner": "Kanuj",
+  "head": "e37b21a723447ecb4539be2f23cb6a8a679b4cbe",
+  "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w1-plan-platform-plan-content-lookup-source.test.mjs",
+      "bytes": 5540,
+      "sha256": "ff601feca974799fd9b764a4e692cdf6256165d3da77dbb6e632be9e8cad1239"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_PLAN_CONTENT_LOOKUP_SUCCESSOR/DIRECT_RPC_TEST_PROPOSAL.json",
+      "bytes": 2790,
+      "sha256": "9e7d5fae3f730ca822e44cbf7b5c442bb39aeea80886e6f7ade51d2766042292"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_PLAN_CONTENT_LOOKUP_SUCCESSOR/README.md",
+      "bytes": 9147,
+      "sha256": "37ca422d71b2b86384755cf5616b3c128b5f4cdc859da9fa3a97780c633dca44"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_PLAN_CONTENT_LOOKUP_SUCCESSOR/SOURCE-MANIFEST.json",
+      "bytes": 22950,
+      "sha256": "90e602a1968110ac7f550e9547ea0f56ac71526eda7b1023ba053d9eff7a1f41"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_PLAN_CONTENT_LOOKUP_SUCCESSOR/original.sql.inert",
+      "bytes": 4452,
+      "sha256": "bd4b9ee75bfe28cd326429b8c541a9008b4d5382ad523f40cc420a5d892502db"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_PLAN_CONTENT_LOOKUP_SUCCESSOR/successor.sql.inert",
+      "bytes": 4467,
+      "sha256": "3e152f2587d740c6fb33b75a4d5ba33ef9ec2d6dc78cdfb6e838fb4cd718bd7e"
+    }
+  ],
+  "patchSha256": "8aaef3c5c7c82ad46a5522d11e348c69452670e3bb18018f676a9fd134146fb1",
+  "ownerPacketSha256": "260a99f60922f1ba6271f4edbd7351f529d0b711ee01228d7ceebd940951a59b",
+  "literalBodyBytes": {
+    "original": 4300,
+    "successor": 4304
+  },
+  "strictInverseExactOriginal": true,
+  "originalDeclarationMatchesCanonicalSource": true,
+  "migrationHashPinsVerified": 68,
+  "staticCallCitationsAndDeclaredSourceCallersVerified": 14,
+  "definitionCountInDeclaredManifest": 1,
+  "scope": "Fidelity/preimage/static lineage/directRPC proposal only; no privateSource/refauthority audit, SQL/parser/catalog/Auth/resources.",
+  "verdict": "PASS_SCOPED_INERT_FIDELITY_LINEAGE_PROPOSAL_ONLY",
+  "originalSourceControls": {
+    "tests": 7,
+    "pass": 5,
+    "fail": 2,
+    "exitCode": 1,
+    "classification": "Lexical source controls only; not executed OLD SQL result"
+  },
+  "currentSourceControls": {
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0"
+  },
+  "staticWrapperRenameSteps": [
+    {
+      "path": "supabase/migrations/20261031003846_portal_rebuild_advisor_reads_v1.sql",
+      "line": 5,
+      "text": "alter function concierge.concierge_plan_command_v1(jsonb) rename to plan_command_base_v1;"
+    },
+    {
+      "path": "supabase/migrations/20261031043655_portal_rebuild_care_use_v1.sql",
+      "line": 367,
+      "text": "alter function concierge.concierge_plan_command_v1(jsonb) rename to plan_command_before_care_v1;"
+    },
+    {
+      "path": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+      "line": 561,
+      "text": "alter function concierge.concierge_plan_command_v1(jsonb) rename to review_plan_command_before_v1;"
+    }
+  ],
+  "officialReference": "https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-PRECEDENCE",
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-plan-lookup-e37/W7-ORIGINAL-SOURCE7.log",
+      "bytes": 15936,
+      "sha256": "9bbe8f3eab4842c585f51b294bd6a6ae5545d421b7384dce3183a91345fb7055",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-plan-lookup-e37/W7-CURRENT-SOURCE7.log",
+      "bytes": 2493,
+      "sha256": "2aead0d3374069f0764c23229c35f49e253a824c6ac4cd9e7588832ee8bc91dc",
+      "exitCode": 0
+    }
+  ],
+  "nativeFinding": {
+    "id": 4460794439,
+    "status": "OPEN",
+    "reason": "Current published canonicalhelper unchanged; inert proposal and lexical7 are not SQL/native acceptance"
+  },
+  "readiness": {
+    "canonicalMigration": "NOT_ALLOCATED_OR_AUTHORED",
+    "sqlParser": "UNRUN",
+    "sqlExecution": "UNRUN",
+    "catalogOidOwnerAclAttributes": "UNKNOWN",
+    "actualBadDraftPresence": "UNKNOWN_NO_SCAN_OR_REPAIR",
+    "authOrDirectRpc": "UNRUN_NO_RESOURCE_GRANT"
+  },
+  "limits": [
+    "Only original/successor4groupingbytes/declaration/fidelity/staticlineage/testPROPOSAL reviewed",
+    "PrivateSource/refauthority clauses byte-preserved only, not audited or accepted",
+    "No old68 mutation, SQL/M65/Guidance/photo/principal44/finalegress or alternatefreshsetup",
+    "Future packet must pin complete p_command/schemaVersion wire, actual fresh identities/revisions/noeffects and reviewed source/catalog/order; this is not an executable grant"
+  ],
+  "literalHelperDefinitionsIndependentlyFound": [
+    {
+      "path": "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+      "line": 133
+    }
+  ],
+  "futureProposalQualification": "Access-denial cases must bind actual principal/client/task scopes. A different client ID alone does not imply denial for a globally authorized human/owner; no authorization semantics are changed here."
+}

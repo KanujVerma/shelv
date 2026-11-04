@@ -2242,6 +2242,11 @@
       "status": "UNACCEPTED_PROVIDER_REFUSAL",
       "rule": "Explicit user boundary: preserve failed audit/partial evidence; no resume/retry/rephrase/reroute/model substitution/nested reviewer. Ordinary A06 message grants no continuation of this scope.",
       "reportedActivityPosition": 370
+    },
+    {
+      "id": "native photo finding4461800685",
+      "status": "UNACCEPTED_HELD_PHOTO_SCOPE",
+      "rule": "Ownerreportednative8a2 only; no independentverdict/audit/correction/repro/resources or retry/reroute."
     }
   ],
   "resourceQueue": {
@@ -2460,6 +2465,12 @@
       "report": "reviews/W0_CLIENT_PLANS_5E5.md",
       "level": "PASS_SCOPED_SOURCE_CLIENT_PLANS_TRANSPORT",
       "readiness": "ActualVIEW-only private-directory authorization remainsunproved/legacyeditguard"
+    },
+    {
+      "head": "e37b21a723447ecb4539be2f23cb6a8a679b4cbe",
+      "report": "reviews/W1_PLAN_LOOKUP_E37.md",
+      "level": "PASS_SCOPED_INERT_FIDELITY_LINEAGE_PROPOSAL_ONLY",
+      "nativeFinding4460794439": "OPEN"
     }
   ],
   "placementClarifications": [
@@ -2470,7 +2481,7 @@
     }
   ],
   "openIndependentFindings": [],
-  "lastReconciledAt": "2026-11-03T23:38:47.998825+00:00",
+  "lastReconciledAt": "2026-11-03T23:49:14.810530+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
@@ -2544,5 +2555,30 @@
     "reference": "PRINCIPAL_44_PROVIDER_REFUSAL.json",
     "preservedAcceptedEvidence": "M01/M02 terminal saved evidence remains accepted within bounded scope and cannot be reused for fresh execution.",
     "separatePermittedWork": "Distinct expressly permitted source reviews may continue. Public Maya browser would need actual shell/composition proof and its own admitted packet; it has no current grant."
-  }
+  },
+  "integrationSourceReference": {
+    "head": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+    "ref": "refs/heads/kanuj/portal-rebuild-integration-20261030",
+    "verification": "git ls-remote exit0 and bounded8Rootpostimage/68migration/sourceledger correspondence",
+    "record": "PUBLISHED_8A2_SOURCE_REFERENCE.json",
+    "wholeIntegratedCensus": "NOT_MEASURED",
+    "noCounterAdvance": true
+  },
+  "externalNativeFindings": [
+    {
+      "id": 4460794439,
+      "head": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+      "publishedHeadStillAffectedAtSource": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "status": "OPEN",
+      "inertSourceProposalReview": "reviews/W1_PLAN_LOOKUP_E37.md",
+      "sqlOrActualAcceptance": "UNRUN"
+    },
+    {
+      "id": 4461800685,
+      "head": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "status": "UNACCEPTED_HELD_PHOTO_SCOPE",
+      "proofLevel": "OWNER_REPORTED_NATIVE_FINDING_ONLY_NO_INDEPENDENT_VERDICT",
+      "rule": "No photoaudit/sourcecorrection/repro/resources, retry/rephrase/reroute or heldscope continuation."
+    }
+  ]
 }

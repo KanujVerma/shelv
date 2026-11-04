@@ -399,7 +399,9 @@
       "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
       "lane": "W1",
       "scope": "Priority perW0 after5e5: exact6 inert original/successor4 groupingbytes/helperlineage/directRPCtestPROPOSAL only. No privateSource/refauthority audit, canonicalSQL/parser/catalog/Auth/scan/repair/resources. Native4460794439 remainsOPEN.",
-      "status": "QUEUED_PRIORITY_NARROW_INERT_PLAN_LOOKUP_SOURCE_ONLY"
+      "status": "PASS_SCOPED_INERT_FIDELITY_LINEAGE_PROPOSAL_ONLY",
+      "report": "reviews/W1_PLAN_LOOKUP_E37.md",
+      "nativeFinding": "4460794439 remainsOPEN"
     }
   ],
   "freshGenuineGrant": null,
@@ -416,7 +418,8 @@
     "W2 2073/6887 owner HOLD means no further oldhead review/test/audit. W7 accidental2073 checks are PARTIAL/NO_VERDICT; noapproval. Await newcorrected heads.",
     "Lifecycle tool currently reports original goal paused despite newer user continuation/intakes. No newgoal created and no completion asserted; current authorized work continues.",
     "W2 owner reports admission1c hostedPortalCI52fail/3416 and nativeclean; W7 has not independently inspected CI. Source89 pass stays scoped; no currentCIgreen/integration acceptance.",
-    "W1 owner reports distinct Root PlanP2/native4460794439 dangling-product SQLreference hold; W7 has not independently audited it. No Rootbackend/templateproducer safety inferred from DTO/source passes."
+    "W1 owner reports distinct Root PlanP2/native4460794439 dangling-product SQLreference hold; W7 has not independently audited it. No Rootbackend/templateproducer safety inferred from DTO/source passes.",
+    "Published8a2 verifiedlsremote/sourcecorrespondenceonly. Native2118a2 ownerreports findings true; SQL4460794439OPEN/photo4461800685UNACCEPTED_HELD/noindependentverdict; no wholeheadclean or census inference."
   ],
   "browserSlot": {
     "state": "R2_RETURNED_NORMAL_TEARDOWN_EXIT0; NO_FOLLOW_ON_GRANT",
@@ -424,7 +427,7 @@
     "at": "2026-11-03T20:04:32.743040+00:00",
     "report": "reviews/W3_BROWSER_96B_R2_RESULT.json"
   },
-  "lastReconciledAt": "2026-11-03T23:38:47.999612+00:00",
+  "lastReconciledAt": "2026-11-03T23:49:14.811332+00:00",
   "pendingIntakes": [],
   "artifactCustody": [
     {
