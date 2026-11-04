@@ -50,3 +50,27 @@ test('a retained old A sheet completion cannot close the newer current B sheet',
  assert.ok(after.props.children[1],'a stale A completion must not close B');
  assert.equal(after.props.children[1].props.children.props.state.selection.entity.id,f.b.id);
 });
+
+// Owner current-successor extensions. The original W7 program above remains
+// byte-exact; no stopped R8 or financial submit/child promise executes here.
+const sheetOf=tree=>tree.props.children[1];
+async function openSheet(f,selected,kind,line){const ready=await f.settle(selected);view(ready).onSheet(kind,line);const tree=f.render(selected);assert.ok(sheetOf(tree));return sheetOf(tree);}
+test('a retained old A dismissal cannot close B and its canClose no longer owns the current sheet',async t=>{
+ const f=await fixture(t),old=await openSheet(f,f.a,'review');await openSheet(f,f.b,'product',f.qB.lines[0]);assert.equal(old.props.canClose(),false);old.props.onOpenChange(false);const current=sheetOf(f.render(f.b));assert.ok(current);assert.equal(current.props.children.props.state.selection.entity.id,f.b.id);assert.equal(f.calls.filter(c=>!c.action.startsWith('read_')).length,0);
+});
+test('same-context same-target replacement still has a distinct sheet token',async t=>{
+ const f=await fixture(t),old=await openSheet(f,f.a,'review');const current=await openSheet(f,f.a,'product',f.qA.lines[0]);assert.equal(old.props.canClose(),false);old.props.children.props.onDone();old.props.onOpenChange(false);const after=sheetOf(f.render(f.a));assert.ok(after);assert.equal(after.props.children.props.kind,'product');assert.equal(after.props.children.props.line,f.qA.lines[0]);assert.equal(current.props.canClose(),true);
+});
+test('a current owned sheet completion closes that sheet without changing selection or dispatching',async t=>{
+ const f=await fixture(t),current=await openSheet(f,f.a,'product',f.qA.lines[0]),before=f.calls.length;current.props.children.props.onDone();const after=f.render(f.a);assert.equal(sheetOf(after),null);assert.equal(f.controller.getSnapshot().selection.entity.id,f.a.id);assert.equal(f.calls.length,before);
+});
+test('current dismissal preserves normal close behavior while later retained completion is inert',async t=>{
+ const f=await fixture(t),first=await openSheet(f,f.a,'review');assert.equal(first.props.canClose(),true);first.props.onOpenChange(false);assert.equal(sheetOf(f.render(f.a)),null);const second=await openSheet(f,f.a,'product',f.qA.lines[0]);first.props.children.props.onDone();assert.ok(sheetOf(f.render(f.a)));second.props.onOpenChange(false);assert.equal(sheetOf(f.render(f.a)),null);
+});
+test('a delayed context cleanup cannot erase a newly opened sheet in that same current context',async t=>{
+ const f=await fixture(t);await openSheet(f,f.a,'review');const register=f.h.effect;let delayed=null;
+ // This controlled scheduler defers only the actual context effect; the
+ // component/controller/read path and all other effects remain unchanged.
+ f.h.effect=(fn,deps)=>{if(!delayed&&deps.length===2&&deps[0]===f.controller&&typeof deps[1]==='string'&&deps[1].includes(f.b.id)){delayed=fn;register(()=>{},deps);}else register(fn,deps);};
+ await openSheet(f,f.b,'product',f.qB.lines[0]);assert.equal(typeof delayed,'function');delayed();const current=sheetOf(f.render(f.b));assert.ok(current);assert.equal(current.props.children.props.state.selection.entity.id,f.b.id);assert.equal(f.calls.filter(c=>!c.action.startsWith('read_')).length,0);
+});
