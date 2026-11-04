@@ -1,0 +1,54 @@
+{
+  "base": "c83cd7714bc877a3557c654babb3f3e832be1661",
+  "head": "bd1dd9e0765f83a096a8caea78babb18b01b363d",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/app/ports.ts",
+      "bytes": 15419,
+      "sha256": "562d27983c8020358739a9fff1a890462cef0d7550fade248db4988b3a7cba9c"
+    },
+    {
+      "path": "apps/portal/tests/w0-advisor-service-quote-request.test.mjs",
+      "bytes": 6738,
+      "sha256": "ac593cdd7fb029df7e0e83fa4605b7a5f675fa0dc4aa55bb5dea63980ecedec3"
+    }
+  ],
+  "owner": "Kanuj",
+  "id": "W7-W0-Q1",
+  "severity": "P2",
+  "verdict": "FAIL_SOURCE_SELECTED_CLIENT_INTENT_BINDING",
+  "originalCurrent": {
+    "tests": 11,
+    "pass": 11,
+    "fail": 0,
+    "exitCode": 0
+  },
+  "independentControl": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "exitCode": 1,
+    "error": "Missing expected rejection"
+  },
+  "controlArchive": "../source-controls/W0_Q1/w7-advisor-quote-target-alias.test.mjs",
+  "controlSha256": "7af6f3976069f581fe7096722cf8e1bdb74e3df54110f17a054ca261ab82c7fc",
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-advisor-quote-bd1/W7-TARGET-ALIAS.log",
+      "bytes": 1790,
+      "sha256": "7ea45bfab589e9161b499249091df80138ad18c9112583d393e21274ef8766eb",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-advisor-quote-bd1/W7-CURRENT11.log",
+      "bytes": 2946,
+      "sha256": "db1323bb8fd03b1fc72ccb896923adf44429db789c40952ced3cfc068420e767",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "Frontend selected-customer/intent binding failure only; no actual SQL authorization bypass or business effect established",
+    "Review stopped at this material finding; broader covering/types and genuine unrun independently",
+    "No M65/principal/private-return/financial authority audit or resource acquisition"
+  ]
+}

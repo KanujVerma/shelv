@@ -1,0 +1,10 @@
+{
+  "owner": "Kanuj",
+  "finding": "W7-W0-Q1",
+  "head": "bd1dd9e0765f83a096a8caea78babb18b01b363d",
+  "base": "c83cd7714bc877a3557c654babb3f3e832be1661",
+  "path": "w7-advisor-quote-target-alias.test.mjs",
+  "bytes": 3477,
+  "sha256": "7af6f3976069f581fe7096722cf8e1bdb74e3df54110f17a054ca261ab82c7fc",
+  "scope": "Inert exact regression archive; prefix copied from frozen owner test, actual session/factory/ports/codecs, closed synthetic HTTP only. No realfinancial/Auth/SQL/resources."
+}

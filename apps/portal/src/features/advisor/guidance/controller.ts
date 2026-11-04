@@ -1826,6 +1826,8 @@ export function createAdvisorGuidanceController({
     refreshDraft: () => refreshDraft(true),
     loadMoreReportedProducts,
     loadInstructions,
+    /** Read affordance only; the actual history operation keeps its same guard. */
+    canReadHistory() { return permitted("edit") && state.selection !== null; },
     canEditBody() {
       return (
         permitted("edit") &&

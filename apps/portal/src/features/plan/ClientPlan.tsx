@@ -19,6 +19,7 @@ import {GuidanceBoundary,GuidanceDirections,GuidanceForDecision,useGuidance} fro
 import {visibleInstructionScopes,guidedRoutineFor} from './guidancePresentation.ts';
 import {DecisionReviewBoundary} from './reviewBasis.tsx';
 import {observeGuidanceFeatureContext} from './guidanceContext.ts';
+import {prepareSelfPurchase} from './useEntry.ts';
 import './plan.css';
 function usePlanNavigation(port?:PlanNavigationPort) {
     const shared=usePortalNavigation();
@@ -34,7 +35,13 @@ function PlanBack({navigation,children}:{navigation?:PlanNavigationPort;children
 }
 /** One renderer for entitled client data, previews, historical reads and Maya.
  * Mount inside the shared shell/navigation/overlay providers. No auth or fetch. */
-export function ClientPlan(props: ClientPlanProps) { observeGuidanceFeatureContext(props);return <DecisionReviewBoundary key={props.session.key} props={props}><SessionPlan {...props}/></DecisionReviewBoundary>; }
+export function ClientPlan(props: ClientPlanProps) {
+    observeGuidanceFeatureContext(props);
+    const onSelfPurchase=props.onSelfPurchase?(productId:string,decisionId:string)=>{
+        if(prepareSelfPurchase(props,productId,decisionId)&&props.session.isCurrent())props.onSelfPurchase?.(productId,decisionId);
+    }:undefined;
+    return <DecisionReviewBoundary key={props.session.key} props={props}><SessionPlan {...props} onSelfPurchase={onSelfPurchase}/></DecisionReviewBoundary>;
+}
 type RenderProps=(ClientPlanProps&{kind:'published'})|{kind:'unpublished';view:UnpublishedPlanView;preview:PlanPreview;navigation:PlanNavigationPort};
 function SessionPlan(props:ClientPlanProps) {
     const {session,view}=props;

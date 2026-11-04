@@ -20,6 +20,7 @@ export type ClientPaymentSnapshot=Readonly<{
   phase:'idle'|'loading'|'ready'|'submitting'|'unavailable'|'denied'|'ended';
   view:ClientPaymentView|null;
   pending:ClientPaymentClaim|null;
+  /** Immutable acknowledgement of a command; current status belongs to view.claims. */
   receipt:ClientPaymentReceipt|null;
   outcome:'none'|'uncertain'|'submitted_unverified'|'rejected';
   error:number|null;
