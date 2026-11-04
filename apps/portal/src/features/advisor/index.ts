@@ -32,3 +32,5 @@ export { createAdvisorAdmissionController } from "./admission/controller.ts";
 export type { AdvisorAdmissionController, AdvisorAdmissionOptions, AdvisorAdmissionPorts, AdvisorAdmissionState, AdvisorAdmissionStatus } from "./admission/types.ts";
 
 export { ClientAdmission } from "./admission/ClientAdmission.tsx";
+export { createAdvisorInlinePreviewController } from "./inline-preview/controller.ts";
+export type { AdvisorInlinePreviewController, AdvisorInlinePreviewOptions, AdvisorInlinePreviewState, AdvisorInlinePreviewRead } from "./inline-preview/types.ts";
