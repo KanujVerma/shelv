@@ -2,13 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
+import {selfPurchaseApplicationPreimage} from './helpers/self-purchase-application-preimage.mjs';
 
 const applicationPath = new URL('../src/app/Application.tsx',import.meta.url);
 // Immutable Root68 block hashes; CI does not require historical Git objects.
 const sha = source => createHash('sha256').update(source).digest('hex');
 function block(source, begin, end) { return source.slice(source.indexOf(begin), source.indexOf(end, source.indexOf(begin))); }
-test('Account and Notifications are routed before clinical composition; existing care and advisor blocks stay exact', async () => {
-  const current = await readFile(applicationPath, 'utf8');
+test('Account and Notifications retain their original witness outside the exact reviewed self-purchase seam', async () => {
+  const current = selfPurchaseApplicationPreimage(await readFile(applicationPath, 'utf8'));
   assert.match(current, /createNotificationsEntry/);
   assert.match(current, /createAccountEntry/);
   const route = block(current, 'function ConnectedRoute(', 'function ClientApplication(');

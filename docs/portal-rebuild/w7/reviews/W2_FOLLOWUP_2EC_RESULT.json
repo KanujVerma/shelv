@@ -1,0 +1,189 @@
+{
+  "owner": "Kanuj",
+  "head": "2ec0ad959045174b455d05c568f10f28b7aeb54f",
+  "base": "1c39946a77ce06a9bd9cf7208cceacd637542a54",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/rebuild-advisor-followup.test.mjs",
+      "bytes": 11535,
+      "sha256": "ab93c0e8cde162deaf4c83d3bfcc31d4219a651f4851b7f41fe08f0619b6564b"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-followup-sensitivity.mjs",
+      "bytes": 3407,
+      "sha256": "726dfe50474b56b26f00765842b5ba8d2d9de1c24d59e9016c06e042a8400555"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/FOLLOWUP_TEST_PARITY_20261103.md",
+      "bytes": 6063,
+      "sha256": "958f2f374148681acbd92d5eb2b92492d761969be02ffe2f2e161fbe231b5f93"
+    }
+  ],
+  "patchSha256": "231cd336f629545b6074b85fe8f3b9d951846da4b889aab6e53cb1971e74e09d",
+  "sharedTestBeforeSha256": "86a66a6be5a03bd5cb2bef24ff042914a3afb1af128555f7057740b2ee233e5d",
+  "sharedTestAfterSha256": "ab93c0e8cde162deaf4c83d3bfcc31d4219a651f4851b7f41fe08f0619b6564b",
+  "regeneratedGitSharedDeltaSha256": "09a0042d8a9440355596ae31e965f3cdf06b144cfcef4c497224344e8075b032",
+  "approvedUnifiedPatchPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-admission-recovery-20261103/.local-artifacts/w2/followup-shared-test-proposal.patch",
+  "approvedUnifiedPatchSha256": "f78fd2305572bdd7b5fd7f56c3f8ef811a79feda9538914fd83a60bbdc8d9804",
+  "gitWrapperAndSectionLabelsDifferenceOnly": true,
+  "hunkBodiesUntouched": true,
+  "exactPrior14Postimages": true,
+  "changedBlocks": [
+    {
+      "operation": "insert",
+      "oldLines": [
+        66,
+        65
+      ],
+      "newLines": [
+        66,
+        76
+      ]
+    },
+    {
+      "operation": "replace",
+      "oldLines": [
+        101,
+        101
+      ],
+      "newLines": [
+        112,
+        112
+      ]
+    },
+    {
+      "operation": "replace",
+      "oldLines": [
+        205,
+        205
+      ],
+      "newLines": [
+        216,
+        216
+      ]
+    },
+    {
+      "operation": "replace",
+      "oldLines": [
+        234,
+        238
+      ],
+      "newLines": [
+        245,
+        256
+      ]
+    },
+    {
+      "operation": "replace",
+      "oldLines": [
+        302,
+        305
+      ],
+      "newLines": [
+        320,
+        321
+      ]
+    }
+  ],
+  "classification": "Newtest-only successor; no old06666/0d source/test/audit, no productsource change.",
+  "verdict": "PASS_SCOPED_TEST_PARITY_SENSITIVITY_SOURCE_ONLY",
+  "current": {
+    "tests": 170,
+    "pass": 170,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0"
+  },
+  "sensitivity": {
+    "controllerSHA256": "a657e4c93351344c977a45e06ce7adbebe5ee0fcd31282a5d6853489284bfafe",
+    "testSHA256": "ab93c0e8cde162deaf4c83d3bfcc31d4219a651f4851b7f41fe08f0619b6564b",
+    "results": [
+      {
+        "variant": "CURRENT",
+        "sourceSHA256": "a657e4c93351344c977a45e06ce7adbebe5ee0fcd31282a5d6853489284bfafe",
+        "testSHA256": "ab93c0e8cde162deaf4c83d3bfcc31d4219a651f4851b7f41fe08f0619b6564b",
+        "exit": 0,
+        "pass": 170,
+        "fail": 0
+      },
+      {
+        "variant": "REMOVE_OPERATION_AND_VIEW",
+        "sourceSHA256": "93cf7d0c714cee338d2deb2dbee54c46794bff9220d70e19def8fbc0e77a0c41",
+        "testSHA256": "ab93c0e8cde162deaf4c83d3bfcc31d4219a651f4851b7f41fe08f0619b6564b",
+        "exit": 1,
+        "pass": 97,
+        "fail": 73
+      },
+      {
+        "variant": "REMOVE_PURPOSE_GENERATION",
+        "sourceSHA256": "e812de74fd12eb4d3aae25e705ef178b5668931bcf795ebb7f40a48b7173a781",
+        "testSHA256": "ab93c0e8cde162deaf4c83d3bfcc31d4219a651f4851b7f41fe08f0619b6564b",
+        "exit": 1,
+        "pass": 147,
+        "fail": 23
+      }
+    ]
+  },
+  "configuredFrontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-followup-2ec/W7-PIN-SETUP.json",
+      "bytes": 192,
+      "sha256": "5c39ba4699ca2069cb61c1de1059f8d7f4c5a8d333047534c1c879f29c1abdc1",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-followup-2ec/W7-PIN-SETUP-SECTION-HEADERS.json",
+      "bytes": 250,
+      "sha256": "98380b2a35bffe828015e06ce7595799401010e0660dc6ac0be3a14e852076ea",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-followup-2ec/W7-CURRENT170.log",
+      "bytes": 36556,
+      "sha256": "83f8f6c1bc29f636339139c1e1f5d80a59e818a16fe9f2d345f528d0fdf52bfa",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-followup-2ec/W7-SENSITIVITY.log",
+      "bytes": 676,
+      "sha256": "1e59b6d0a88ad0e4c49281473dcfd0ac3b5babcd8a64af34de0771114e62a441",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-followup-2ec/W7-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-followup-2ec/.local-artifacts/w2/followup-sensitivity-configured/CURRENT.log",
+      "bytes": 35921,
+      "sha256": "51e6a2e802991b5ec8c9ccdbb3d39176d8746ceb297f6fad335e545584bfe75b",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-followup-2ec/.local-artifacts/w2/followup-sensitivity-configured/REMOVE_OPERATION_AND_VIEW.log",
+      "bytes": 868337,
+      "sha256": "3907594fc912b2602b74f2cf7a658d4638c3bb5c3028c72e7f6d7c8f560d7959",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-followup-2ec/.local-artifacts/w2/followup-sensitivity-configured/REMOVE_PURPOSE_GENERATION.log",
+      "bytes": 239932,
+      "sha256": "467c880f633ac83306c16ae1513052f1f84b92daac335f26c284f308ce4a9ff6",
+      "exitCode": 1
+    }
+  ],
+  "limits": [
+    "170direct and170bundledcurrent repeat samepredicates; mutants are expectednegativecontrols, no aggregatecoverage claim",
+    "All14 priorpostimages byteexact1c; originalcomplete89sourceproof staysat1c, no old06666/0d/0e run",
+    "Original1c118/170/hosted3364of3416 failures preserved, no currentCIgreen or genuineclaim",
+    "No browser/AuthSQL/privatereturn/provider/principal44/photoresourceoractivation"
+  ]
+}

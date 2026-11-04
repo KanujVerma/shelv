@@ -1,0 +1,95 @@
+{
+  "owner": "Kanuj",
+  "head": "5a1cd82acde8c3ef7d678bb1aee6b1213fd8dd65",
+  "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/app/MayaApplication.tsx",
+      "bytes": 5390,
+      "sha256": "7c762e73a5ee2e576711c2a94c911f03eaedfdff41fcef738a58e658ed35be25"
+    },
+    {
+      "path": "apps/portal/src/app/MayaClientChrome.tsx",
+      "bytes": 1135,
+      "sha256": "c42a8a935adfffd2d56f4b3c72ac5e7a4712da08548df01748302458d72518cc"
+    },
+    {
+      "path": "apps/portal/src/app/maya-chrome.ts",
+      "bytes": 3070,
+      "sha256": "7a35c17b2d36153231613d0295be84e05c6cbe78bdc64bcc534a934496017143"
+    },
+    {
+      "path": "apps/portal/src/shell/PortalShell.tsx",
+      "bytes": 5531,
+      "sha256": "ee0e67892a4884217a2004df4f573516e1fac3d6bf93237699f6e485efac95d1"
+    },
+    {
+      "path": "apps/portal/tests/w0-maya-chrome.test.mjs",
+      "bytes": 4117,
+      "sha256": "8f01ab9732219f556487ccfb54606ee625eb8519a4dc69bcdd66dfb67b23f77c"
+    },
+    {
+      "path": "apps/portal/tests/w0-maya-shell-ssr.ts",
+      "bytes": 726,
+      "sha256": "b885cbdd312adccce95c7a388219f338f2d76326ebb2f7de43b05a319266d233"
+    },
+    {
+      "path": "apps/portal/tests/w0-maya-shell.test.mjs",
+      "bytes": 7702,
+      "sha256": "dde3d1d8bf4f376765fe0144af0fc51d6b2e9821ae4ae4ea5cd41b5d6d84b6c6"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_MAYA_SHARED_CHROME_20261103.md",
+      "bytes": 6957,
+      "sha256": "13b9a6056cfc5067c5d51bf544af2d74011be3ff991136b49723e2c407d748ee"
+    }
+  ],
+  "patchSha256": "a5d886793cdb3fd618f9fc80db93595fe68717e46c68830bbc6bf024d8906345",
+  "scope": "PublicMaya sharedchrome/MSC3UI source only; no browser/resource/oldfailedcandidate execution.",
+  "id": "W7-W0-MSC3-ORDER",
+  "severity": "P2",
+  "verdict": "FAIL_SOURCE_MSC3_CLEAR_BEFORE_OBSERVER_ORDER",
+  "ownerPacketSha256": "f1d1a5e5f99210bdf21632251d8b20857c00536352c75fe6adc744f16b361743",
+  "originalCurrent": {
+    "tests": 16,
+    "pass": 16,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "independentControl": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "exitCode": 1,
+    "trace": [
+      "later-session-observer",
+      "chrome-cleared",
+      "chrome-cleared"
+    ],
+    "observerCachedOpeningStillPresent": true
+  },
+  "controlArchive": "../source-controls/W0_MSC3_ORDER/w7-maya-retirement-order.test.mjs",
+  "controlSha256": "771890829e2cdb1e989680b0d3d965f38c8386e8e3130f6da7a56eba5173af88",
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-maya-5a1/W7-CURRENT16.log",
+      "bytes": 4352,
+      "sha256": "88f9b79763b45c8b36319188afd07cdfd10d53723b53912460288c7616119215",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-maya-5a1/W7-RETIREMENT-ORDER.log",
+      "bytes": 1977,
+      "sha256": "fbbcc1dc4e51d682d8b4ed1f8beb940df7310e82191cbb6ef7cc953a7f4202dc",
+      "exitCode": 1
+    }
+  ],
+  "limits": [
+    "Clear/notify-before-observer source contract only; no mounted popup/focus/visibility/privacy leak/genuine claim",
+    "Getter can lazily refresh current state; it does not establish notification order already met",
+    "No oldfailedcandidate replay; new5a source only",
+    "Full191/compiler/UI/fullbuild/browser/geometry gates not independently continued after materialfinding"
+  ]
+}

@@ -21,4 +21,8 @@ export type {
   AdvisorPaymentCommand,
   AdvisorPaymentReceipt,
   AdvisorState,
+  AdvisorPublicationNotification,
 } from "./types.ts";
+
+export { ClientWorkspace, createAdvisorClientWorkspaceController } from "./client-workspace/index.ts";
+export type { AdvisorClientPlansReadPort, AdvisorClientWorkspaceOptions, AdvisorClientWorkspaceController, AdvisorClientWorkspaceState, AdvisorClientWorkspaceDirectory, ClientWorkspaceProps } from "./client-workspace/index.ts";
