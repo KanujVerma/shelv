@@ -1,3 +1,7 @@
+## W0 advisor email audience correction: source integration, 4 November UTC
+
+Owner: Kanuj. The [bounded composition receipt](portal-rebuild/eight-threads/W0_ADVISOR_EMAIL_ROUTING_20261104.md) combines W1's two-line neutral payload/decoder correction with Root's pure actual-router regression. The regression is in Portal's existing test target; OLD4/7 becomes7/7, selected pure worker1/1 and all four configured graphs pass. Initial Root-test-target TS2578 is preserved separately; no production comment/configuration/flag was relaxed. Advisor attention uses the existing advisor inbox, with client/history links and strict decoder restrictions retained. No email/Auth/provider/browser/SQL resource or A07 activation occurred. Fresh exact-source/hosted gates remain required; absent old artifacts were not reconstructed.
+
 ## W0 app-router extraction dependency correction, 4 November UTC
 
 Owner: Kanuj. The [three-file test-only source successor](portal-rebuild/eight-threads/W0_NOTIFICATION_ROUTER_BINDING_20261104.md) binds the actual reviewed publication-delivery helper in the pure AST-router model. Exact current negative control0/1 ReferenceError becomes1/1; removing only the import/dependency entry restores the entire original file and every negative assertion. No browser or held callee audit ran. Original4012/1 and adjacent failed CIs remain FAILED; source review and fresh hosted CI are still required. Production, permission, workflow, SQL, resource and acceptance state are unchanged.
