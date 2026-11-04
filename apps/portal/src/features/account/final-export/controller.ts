@@ -16,6 +16,7 @@ export function createAccountFinalExport(runtime: ApplicationSession, host?: Fin
   let disposed = false, notifying=false;
   type Attempt={abort:AbortController; writer:BrowserFinalExportStaging|null; collection:ReturnType<typeof createFinalExportCollection>|null};
   let active: Attempt | null = null;
+  let cleaning: BrowserFinalExportStaging | null = null;
   let detachBoundary: (()=>void) | undefined, detachRuntime: (()=>void) | undefined;
   const publish = (phase: AccountFinalExportPhase, writer: WriterDisposition = snapshot.writer) => {
     const next = Object.freeze({phase,writer}); snapshot = next;
@@ -29,20 +30,28 @@ export function createAccountFinalExport(runtime: ApplicationSession, host?: Fin
     return next;
   };
   const detach = () => { const a=detachBoundary,b=detachRuntime;detachBoundary=detachRuntime=undefined;a?.();b?.(); };
+  function settledCleanup(writer: BrowserFinalExportStaging) {
+    if (cleaning !== writer || writer.getDisposition() === 'aborting') return;
+    cleaning = null;
+    // Later retirement can change the presentation without replacing ownership
+    // of the exact cleanup. Its disposition grants no content/session authority.
+    if (!active) publish(snapshot.phase,writer.getDisposition());
+  }
   function retire(phase: 'cancelled'|'retired'|'unavailable') {
     const prior = active;
     active = null; // Deny old relevance before observers, abort or cleanup.
     if (phase === 'retired') { disposed = true; detach(); }
     const closeStarted = prior?.writer?.getDisposition().startsWith('close-') || snapshot.phase==='unknown';
+    if (prior?.writer) cleaning = prior.writer;
     const cleanup=prior?.collection?.abort()??prior?.writer?.abort();
-    const published=publish(closeStarted ? 'unknown' : phase, closeStarted ? 'close-unconfirmed' : prior?.writer ? 'aborting' : snapshot.writer);
+    publish(closeStarted ? 'unknown' : phase, closeStarted ? 'close-unconfirmed' : prior?.writer ? 'aborting' : snapshot.writer);
     prior?.abort.abort();
     if (prior?.writer && cleanup) {
       const writer = prior.writer;
       void cleanup.then(() => {
-        if (!active && snapshot === published) publish(published.phase,writer.getDisposition());
+        settledCleanup(writer);
       }, () => {
-        if (!active && snapshot === published) publish(published.phase,writer.getDisposition());
+        settledCleanup(writer);
       });
     }
   }
@@ -55,7 +64,7 @@ export function createAccountFinalExport(runtime: ApplicationSession, host?: Fin
     });
   }
   async function saveFromUserAction(options: {signal?:AbortSignal} = {}): Promise<void> {
-    if (disposed || notifying || active || snapshot.phase === 'unknown' || ['aborting','abort-unconfirmed'].includes(snapshot.writer)) return;
+    if (disposed || notifying || active || cleaning || snapshot.phase === 'unknown' || ['aborting','abort-unconfirmed'].includes(snapshot.writer)) return;
     const signal=options.signal;
     const attempt:Attempt = {abort:new AbortController(), writer:null, collection:null};
     active = attempt;
@@ -92,6 +101,7 @@ export function createAccountFinalExport(runtime: ApplicationSession, host?: Fin
           else { disposed=true;detach();phase='retired'; }
         }
         const writer=attempt.writer;
+        if (writer) cleaning = writer;
         const cleanup=attempt.collection?.abort()??writer?.abort();
         if (writer?.getDisposition().startsWith('close-')) phase='unknown';
         if (!phase) {
@@ -100,15 +110,19 @@ export function createAccountFinalExport(runtime: ApplicationSession, host?: Fin
           else if (error instanceof Error && error.name==='AbortError') phase='cancelled';
           else phase='unavailable';
         }
-        const published=publish(phase,writer?.getDisposition()??'unopened');
+        publish(phase,writer?.getDisposition()??'unopened');
         attempt.abort.abort();
         if (writer && cleanup) {
           try { await cleanup; } catch { /* Retain explicit disposition. */ }
-          if (!active && snapshot===published) publish(phase,writer.getDisposition());
+          settledCleanup(writer);
         }
       }
     } finally {
       signal?.removeEventListener('abort',callerAbort);
+      // A collection may already own the abort when retirement requests another
+      // one. The overlapping call rejects; only the actual disposition can settle
+      // cleanup ownership after the original collection/open has returned.
+      if (attempt.writer) settledCleanup(attempt.writer);
       // Cleanup hooks may synchronously retire/replace the actual session.
       if (!disposed) {
         try { client.assertReady(); }

@@ -49,6 +49,16 @@ All commands use explicit Node 22.23.0. Local raw evidence is outside Git under 
 
 The primary Account Name files and accepted M01 evidence are untouched. No test or source evidence accepts a complete screen, J08, actual download or release.
 
+## Repeated-retirement cleanup successor
+
+Hosted Codex found P2 [4463701284](https://github.com/KanujVerma/shelv/pull/237#discussion_r4463701284) at exact `4bbb313d9053c6bb1e9134bfcc2612cd7a165a40`: cancel a pending writer acquisition, then suspend the actual session before cleanup finishes. The second retirement changes the presentation snapshot. The original snapshot-identity check then discards the late cleanup disposition and leaves saving blocked in `aborting`.
+
+`retirement-OLD-4BBB.log` preserves the unchanged old controller with six original recovery passes and four new failures. The added cases cover cancel then offline, cancel then disposal, refused cleanup, and an already-running error-path cleanup followed by offline retirement. The original six-case file is an exact byte prefix; its assertions and all other retained scenarios are unchanged.
+
+The controller now owns cleanup by the exact writer independently of presentation snapshots. Subsequent retirement keeps its latest phase while that writer's actual acknowledgement or uncertainty updates the cleanup disposition. New attempts remain blocked while cleanup is outstanding; acknowledgement never revives a disposed controller or grants session/content authority. A rejected overlapping abort does not settle the original cleanup. The original open/collection completion also reconciles its actual writer disposition, while the existing overlapping/reentrant abort rejection stays unchanged.
+
+The first owner correction passed53/54 but still lost the already-running error-path cleanup. That result and its patch remain in `retirement-CURRENT.log` and `retirement-FIRST-FIX.patch`; they are not relabeled green. The corrected covering run in `retirement-R2-CURRENT.log` passes54/54 with zero failure/skip/cancel. These are source/finite/SSR results using the actual controller/session/writer with the same explicitly pinned missing request and historical unregistered constructor. The actual configured frontend still lacks W0's request. The prior W7 complete62f/ccb verdicts do not approve this behavioral successor; a fresh complete source gate is required.
+
 ## Next gates
 
 - Freeze this exact owned delta and obtain W7 complete independent source review, including AFEC1/AFEC2, overlapping/reentrant cleanup and all retained predicates.

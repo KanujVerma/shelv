@@ -60,3 +60,60 @@ for (const action of ['cancel', 'dispose']) for (const supported of [true, false
     assert.equal(c.getSnapshot().phase, action === 'cancel' ? 'cancelled' : 'retired');
     assert.equal(picks, 0); assert.deepEqual(f.calls, ['/api/client/session']);
   });
+
+for (const retirement of ['offline', 'disposed'])
+  test(`cleanup ownership survives cancel then ${retirement} while writer acquisition is pending`, async t => {
+    const f = await session(t); let release, entered, picks = 0, aborts = 0, writes = 0, closes = 0;
+    const opening = new Promise(resolve => { release = resolve; }), acquired = new Promise(resolve => { entered = resolve; });
+    const stream = { async write() { writes++; }, async close() { closes++; }, async abort() { aborts++; } };
+    t.after(() => release(stream));
+    const c = createAccountFinalExport(f.runtime, { async showSaveFilePicker() {
+      picks++; return { async createWritable() { if (picks > 1) throw Error('synthetic acquisition rejection'); entered(); return opening; } };
+    } }); t.after(() => c.dispose());
+    const saving = c.saveFromUserAction(); await acquired; c.cancel();
+    if (retirement === 'offline') f.runtime.cookie.suspend(); else c.dispose();
+    const phase = retirement === 'offline' ? 'unavailable' : 'retired';
+    assert.deepEqual(c.getSnapshot(), { phase, writer: 'aborting' });
+    await c.saveFromUserAction(); assert.equal(picks, 1, 'no replacement while late acquisition cleanup is outstanding');
+    release(stream); await saving; await new Promise(resolve => setImmediate(resolve));
+    assert.deepEqual(c.getSnapshot(), { phase, writer: 'abort-acknowledged' });
+    assert.deepEqual({ aborts, writes, closes }, { aborts: 1, writes: 0, closes: 0 });
+    if (retirement === 'offline') {
+      await f.runtime.restore(); await c.saveFromUserAction(); assert.equal(picks, 2, 'new user action is available after real session recovery and cleanup');
+      assert.deepEqual(f.calls, ['/api/client/session', '/api/client/session']);
+    } else {
+      await c.saveFromUserAction(); assert.equal(picks, 1, 'cleanup acknowledgement never revives a disposed export');
+      assert.deepEqual(f.calls, ['/api/client/session']);
+    }
+  });
+
+test('repeated offline retirement preserves failed cleanup and continues to deny another destination', async t => {
+  const f = await session(t); let release, entered, picks = 0, aborts = 0;
+  const opening = new Promise(resolve => { release = resolve; }), acquired = new Promise(resolve => { entered = resolve; });
+  const stream = { async write() { assert.fail('retired content write'); }, async close() { assert.fail('retired close'); }, async abort() { aborts++; throw Error('synthetic cleanup refusal'); } };
+  t.after(() => release(stream));
+  const c = createAccountFinalExport(f.runtime, { async showSaveFilePicker() {
+    picks++; return { async createWritable() { entered(); return opening; } };
+  } }); t.after(() => c.dispose());
+  const saving = c.saveFromUserAction(); await acquired; c.cancel(); f.runtime.cookie.suspend();
+  release(stream); await saving; await new Promise(resolve => setImmediate(resolve));
+  assert.deepEqual(c.getSnapshot(), { phase: 'unavailable', writer: 'abort-unconfirmed' });
+  assert.equal(aborts, 1); await f.runtime.restore(); await c.saveFromUserAction(); assert.equal(picks, 1);
+});
+
+test('error-path cleanup ownership survives a later offline presentation', async t => {
+  const f = await session(t); let release, entered, picks = 0, aborts = 0;
+  const cleanup = new Promise(resolve => { release = resolve; }), aborting = new Promise(resolve => { entered = resolve; });
+  t.after(() => release());
+  const c = createAccountFinalExport(f.runtime, { async showSaveFilePicker() {
+    picks++; return { async createWritable() { return {
+      async write() { assert.fail('unregistered export must not write'); }, async close() { assert.fail('unregistered export must not close'); },
+      async abort() { aborts++; entered(); await cleanup; },
+    }; } };
+  } }); t.after(() => c.dispose());
+  const saving = c.saveFromUserAction(); await aborting; f.runtime.cookie.suspend();
+  assert.deepEqual(c.getSnapshot(), { phase: 'unavailable', writer: 'aborting' });
+  release(); await saving;
+  assert.deepEqual(c.getSnapshot(), { phase: 'unavailable', writer: 'abort-acknowledged' });
+  assert.equal(aborts, 1); assert.equal(picks, 1); assert.deepEqual(f.calls, ['/api/client/session']);
+});
