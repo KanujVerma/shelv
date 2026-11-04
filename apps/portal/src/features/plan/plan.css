@@ -27,6 +27,8 @@
 .plan-product-identity h2 {font-size:28px;line-height:34px;}
 .plan-product-compact {gap:var(--space-16);}
 .plan-product-compact h2 {font-size:var(--text-heading);line-height:var(--line-heading);}
+.plan-unpublished-card {gap:var(--space-16);min-width:0;overflow-wrap:anywhere;}
+.plan-unpublished-card>.shelv-badge {justify-self:start;min-width:112px;}
 .plan-proposal {gap:var(--space-12);}
 .plan-proposal>.shelv-badge {width:220px;max-width:100%;}
 .plan-view .plan-follow-up {background:var(--color-successBg);}
