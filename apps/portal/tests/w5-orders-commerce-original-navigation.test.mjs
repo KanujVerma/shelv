@@ -49,3 +49,29 @@ test('an internally opened original quote remains visible while the requested pu
  assert.equal(real.getSnapshot().selection?.entity.kind,'quote','the original quote read must not be undone by a prop that has not changed');
  assert.deepEqual(current.props.children[0].props.state.selection?.entity,quote);
 });
+
+// Owner extensions on the corrected successor. The complete original W7
+// program above is an unchanged byte prefix, not a replay of the stopped head.
+async function navigationFixture(t){
+ const q=await quoteFixture(),purchase=purchaseFixture(q),p={kind:'purchase',id:purchase.id,revision:purchase.revision},quote={kind:'quote',id:q.header.target.quoteId,revision:q.header.target.quoteVersion},other=await quoteFixture();other.header.target.quoteId=id(22);other.header.target.termsHash=await hashFrozenCommerceTerms(other.header,other.lines,other.options);const next={kind:'quote',id:other.header.target.quoteId,revision:1};
+ const index=[{entity:p,label:'Exact purchase',state:'ordered',recordedAt:purchase.recordedAt},{entity:quote,label:'Original quote',state:'awaiting_acceptance',recordedAt:q.header.issuedAt},{entity:next,label:'Other exact quote',state:'awaiting_acceptance',recordedAt:other.header.issuedAt}],purchaseRead=finiteRequest(q,{detail:purchase,index}),quoteRead=finiteRequest(q,{index}),otherRead=finiteRequest(other,{index}),calls=[];let hold=null;
+ const request={family:'commerce-v1',async execute(command,options){calls.push(structuredClone(command));if(hold&&command.action==='read_commerce_detail_v1'&&command.entity.id===quote.id){const value=hold;hold=null;value.entered.resolve();await value.wait.promise;}return (command.entity?.kind==='purchase'?purchaseRead:command.entity?.id===next.id||command.quote?.target?.quoteId===next.id?otherRead:quoteRead).execute(command,options);}};
+ const session=boundary(),real=createOrdersController({port:createCommercePort(runtime(session),request),session,ownerId:owner,mode:'client',contextKey:'owner-original-navigation-r7'}),pending=[];
+ const controller={...real,refresh(){const value=real.refresh();pending.push(value);return value;},open(ref){const value=real.open(ref);pending.push(value);return value;},openOriginalQuote(){const value=real.openOriginalQuote();pending.push(value);return value;}};
+ const h=hooks();globalThis[hookKey]=h;t.after(()=>{delete globalThis[hookKey];real.dispose();});
+ const render=(selected=p)=>{h.reset();return api.exports.OrdersPage({controller,selected});};
+ async function settle(selected=p){let tree;for(let turn=0;turn<8;turn++){tree=render(selected);if(!h.queued&&!pending.length)return tree;h.flush();await Promise.all(pending.splice(0));}throw Error('controlled page did not settle');}
+ return {p,quote,next,real,controller,calls,pending,render,settle,h,holdOriginal(){let enter,release;const entered={promise:new Promise(r=>enter=r),resolve:()=>enter()},wait={promise:new Promise(r=>release=r)};hold={entered,wait};t.after(()=>release());return {entered:entered.promise,release:()=>release()};}};
+}
+test('actual Back returns to the order index without an unchanged selected prop reopening the purchase',async t=>{
+ const f=await navigationFixture(t),first=await f.settle(),back=findButton(api.exports.OrdersView(first.props.children[0].props),'back to orders');assert.ok(back);back.props.onClick();const current=await f.settle();assert.equal(f.real.getSnapshot().selection,null);assert.equal(current.props.children[0].props.state.selection,null);assert.equal(current.props.children[0].props.state.phase,'ready');assert.equal(f.calls.filter(c=>!c.action.startsWith('read_')).length,0);
+});
+test('equal requested values do not undo a deliberately opened internal quote or acquire another read',async t=>{
+ const f=await navigationFixture(t);await f.settle();await f.controller.openOriginalQuote();await f.settle();const before=f.calls.length,current=await f.settle({...f.p});assert.deepEqual(f.real.getSnapshot().selection.entity,f.quote);assert.deepEqual(current.props.children[0].props.state.selection.entity,f.quote);assert.equal(f.calls.length,before);
+});
+test('a genuinely changed parent tuple still masks the internal quote then opens the newly requested target',async t=>{
+ const f=await navigationFixture(t);await f.settle();await f.controller.openOriginalQuote();await f.settle();const before=f.render(f.next);assert.equal(before.props.children[0].props.state.selection,null);assert.equal(before.props.children[0].props.state.phase,'loading');const current=await f.settle(f.next);assert.deepEqual(f.real.getSnapshot().selection.entity,f.next);assert.deepEqual(current.props.children[0].props.state.selection.entity,f.next);assert.equal(f.calls.filter(c=>c.action==='read_commerce_detail_v1'&&c.entity.id===f.next.id).length,1);
+});
+test('a parent target changed during an internal quote read wins after completion without displaying the old quote',async t=>{
+ const f=await navigationFixture(t);await f.settle();const hold=f.holdOriginal(),opening=f.controller.openOriginalQuote();let timer;try{await Promise.race([hold.entered,new Promise((_r,reject)=>timer=setTimeout(()=>reject(Error('expected internal quote read')),2000))]);}finally{clearTimeout(timer);}const waiting=f.render(f.next);assert.equal(waiting.props.children[0].props.state.selection,null);f.h.flush();hold.release();await opening;const current=await f.settle(f.next);assert.deepEqual(f.real.getSnapshot().selection.entity,f.next);assert.deepEqual(current.props.children[0].props.state.selection.entity,f.next);assert.equal(f.calls.filter(c=>!c.action.startsWith('read_')).length,0);
+});
