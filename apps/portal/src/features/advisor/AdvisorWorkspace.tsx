@@ -15,7 +15,6 @@ import {
   Select,
   SaveStatus,
   StatusNotice,
-  Textarea,
   Icon,
 } from "../../ui/index.ts";
 import {
@@ -44,6 +43,7 @@ import type { AdvisorAdmissionController } from "./admission/types.ts";
 import { FirstServiceQuote } from "./FirstServiceQuote.tsx";
 import { PublicationDelivery } from "./PublicationDelivery.tsx";
 import type { NotificationController } from "../notifications/index.ts";
+import { AgentImportDialog, AgentImportNotice, useAgentImportForm } from "./AgentImportDialog.tsx";
 
 export type AdvisorRoute =
   | Extract<PortalRoute, { name: "advisor-editor" }>
@@ -92,11 +92,10 @@ export function AdvisorWorkspace({
     route = navigation.route;
   const [search, setSearch] = useState(""),
     [filter, setFilter] = useState("all"),
-    [importOpen, setImportOpen] = useState(false),
-    [raw, setRaw] = useState(""),
     [assignOpen, setAssignOpen] = useState(false),
     [client, setClient] = useState(""),
     [paymentOpen, setPaymentOpen] = useState(false);
+  const importForm = useAgentImportForm(c, route.name === "advisor-editor" && s.view?.draft.id === route.draftId);
   useEffect(() => {
     if (
       route.name === "advisor-editor" &&
@@ -118,8 +117,6 @@ export function AdvisorWorkspace({
   }, [c, route.name, route.name === "advisor-editor" ? route.draftId : null]);
   useEffect(() => {
     if (s.ended) {
-      setRaw("");
-      setImportOpen(false);
       setAssignOpen(false);
       setClient("");
       setPaymentOpen(false);
@@ -519,8 +516,8 @@ export function AdvisorWorkspace({
           {c.permissions.edit ? (
             <Button
               variant="secondary"
-              disabled={s.busy || !!s.pending}
-              onClick={() => setImportOpen(true)}
+              disabled={s.busy || !!s.pending || view.draft.state !== "working"}
+              onClick={importForm.show}
             >
               import agent draft
             </Button>
@@ -537,6 +534,7 @@ export function AdvisorWorkspace({
           ) : null}
         </div>
       </div>
+      <AgentImportNotice form={importForm} />
       <div className="advisor-meta">
         <Badge>draft r{view.draft.contentRevision}</Badge>
         <span>{clientName(s, view.draft.clientId)}</span>
@@ -678,36 +676,7 @@ export function AdvisorWorkspace({
           <Button onClick={() => go("review-publish")}>review & publish</Button>
         </div>
       </footer>
-      <Dialog
-        open={importOpen}
-        onOpenChange={(open) => {
-          setImportOpen(open);
-          if (!open) setRaw("");
-        }}
-        title="import agent draft"
-        description="compare structured plan content before applying it. manual work is retained."
-      >
-        <div className="advisor-fields">
-          <Field label="plan JSON">
-            <Textarea
-              rows={10}
-              value={raw}
-              onChange={(e) => setRaw(e.target.value)}
-            />
-          </Field>
-          <Button
-            disabled={!raw || s.busy}
-            onClick={async () => {
-              const value = raw;
-              setRaw("");
-              setImportOpen(false);
-              await c.compareImport(value);
-            }}
-          >
-            compare import
-          </Button>
-        </div>
-      </Dialog>
+      <AgentImportDialog form={importForm} />
       <Dialog
         open={assignOpen}
         onOpenChange={setAssignOpen}
