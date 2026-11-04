@@ -1,4 +1,4 @@
-import {useEffect,useState,useSyncExternalStore} from 'react';
+import {useEffect,useRef,useState,useSyncExternalStore} from 'react';
 import {quoteWriteDependency} from './dependencies.ts';
 import type {CommerceEntityRef,FrozenProductLine} from '../../../../../src/contracts/PortalCommerce.ts';
 import {Badge,Button,Sheet,StatusNotice} from '../../ui/index.ts';
@@ -69,9 +69,19 @@ export interface OrdersPageProps {controller:OrdersController;navigation?:Orders
  * controller. This module does not register routes or create a transport. */
 export function OrdersPage({controller,navigation,selected,useDisplay}:OrdersPageProps){
  const state=useSyncExternalStore(controller.subscribe,controller.getSnapshot,controller.getSnapshot);
- const [sheet,setSheet]=useState<{kind:OrderSheetKind;line?:FrozenProductLine}|null>(null);
+ const sameEntity=(a:CommerceEntityRef|undefined,b:CommerceEntityRef|undefined)=>a?.kind===b?.kind&&a?.id===b?.id&&a?.revision===b?.revision;
+ const requestedKey=selected?`${selected.kind}:${selected.id}:${selected.revision}`:null,context=useRef({controller,requestedKey});
+ if(context.current.controller!==controller||context.current.requestedKey!==requestedKey)context.current={controller,requestedKey};
+ const renderedContext=context.current;
+ const [sheet,setSheet]=useState<{kind:OrderSheetKind;line?:FrozenProductLine;context:typeof renderedContext;entity:CommerceEntityRef}|null>(null);
+ const mismatch=selected!==undefined&&!sameEntity(selected,state.selection?.entity),indexed=state.index?.entries.some(entry=>sameEntity(entry.entity,selected));
+ // A requested target is not evidence that the previous target is still its
+ // financial detail. Mask the prior selection before effects acquire the next.
+ const visibleState:OrdersState=mismatch?{...state,selection:null,reviewed:false,phase:state.phase==='ready'?(indexed?'loading':'unavailable'):state.phase}:state;
+ const visibleSheet=sheet&&sheet.context===renderedContext&&!mismatch&&sameEntity(sheet.entity,state.selection?.entity)?sheet:null;
  useEffect(()=>{void controller.refresh();return()=>controller.close();},[controller]);
- useEffect(()=>{if(selected&&state.index&&state.phase==='ready'&&!state.selection)void controller.open(selected);},[controller,selected,state.index]);
+ useEffect(()=>{if(selected&&state.index&&state.phase==='ready'&&!sameEntity(selected,state.selection?.entity))void controller.open(selected);},[controller,selected,state.index,state.phase,state.selection?.entity]);
+ useEffect(()=>{setSheet(null);},[controller,requestedKey]);
  useEffect(()=>{if(['ended','denied','conflict'].includes(state.phase))setSheet(null);},[state.phase]);
- return <><OrdersView state={state} controller={controller} navigation={navigation} useDisplay={useDisplay} onSheet={(kind,line)=>setSheet({kind,line})}/>{sheet&&state.selection?<Sheet open={true} title={sheet.kind==='product'?'frozen product details':sheet.kind==='review'?'review final quote':sheet.kind==='payment'?'payment instructions':sheet.kind==='received'?'report actual receipt':'request product return'} backLabel="back to order" onOpenChange={open=>{if(!open)setSheet(null);}} canClose={()=>state.pending?.phase!=='sending'}><OrderSheetContent key={sheet.kind+':'+state.selection.entity.id} {...sheet} state={state} controller={controller} onDone={()=>setSheet(null)}/></Sheet>:null}</>;
+ return <><OrdersView state={visibleState} controller={controller} navigation={navigation} useDisplay={useDisplay} onSheet={(kind,line)=>{if(context.current===renderedContext&&controller.getSnapshot()===state&&!mismatch&&state.phase==='ready'&&state.selection)setSheet({kind,line,context:renderedContext,entity:state.selection.entity});}}/>{visibleSheet&&state.selection?<Sheet open={true} title={visibleSheet.kind==='product'?'frozen product details':visibleSheet.kind==='review'?'review final quote':visibleSheet.kind==='payment'?'payment instructions':visibleSheet.kind==='received'?'report actual receipt':'request product return'} backLabel="back to order" onOpenChange={open=>{if(!open)setSheet(null);}} canClose={()=>state.pending?.phase!=='sending'}><OrderSheetContent key={visibleSheet.kind+':'+state.selection.entity.id} kind={visibleSheet.kind} line={visibleSheet.line} state={state} controller={controller} onDone={()=>setSheet(null)}/></Sheet>:null}</>;
 }
