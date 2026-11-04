@@ -178,5 +178,109 @@
       "rawPrivatePath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-df230/preview-probe-r1/RESULT_RAW.json",
       "qualification": "Only own blank tab closure verified; no global absence, app navigation, product/browser acceptance or Node fallback eligibility"
     }
+  },
+  {
+    "owner": "Kanuj",
+    "admittedByLane": "W0",
+    "admittedAt": "2026-11-04T02:58:54.776174+00:00",
+    "ownerThreadId": "99021859-4f2e-43f7-a067-53166931c0c3",
+    "ownerActiveRunId": "run:thread:99021859-4f2e-43f7-a067-53166931c0c3:ordinal:4",
+    "executionId": "5ded069b-2fb7-4f56-846e-8497efe58690",
+    "packetPath": "docs/portal-rebuild/w7/resource-packets/PUBLIC_MAYA_3A905_PAGE_R1.json",
+    "packetSha256": "0fde103308926333f891f5fc323b60d0ff79fd5ae33efc135de69e03566f521e",
+    "head": "3a90573080ccbe1924d20afccfd0718b3302c923",
+    "kind": "PUBLIC_MAYA_ACTUAL_PINNED_PAGE_ONLY",
+    "status": "ADMITTED_ONCE_PENDING_EXECUTION",
+    "scope": "Exact frozen published3a PUBLIC build only, not currentf060 whole portal",
+    "harnessCommit": "25804d1ee16c6de8987b668613437bc1c2bd7848",
+    "harnessSha256": "d724047a430eef3c2a43e3fcd077390c2bbfdf8dbf767af5c8907744048c4e89",
+    "testPlanSha256": "c283dab83de6306abbe37f94013e6dd25aaf7adc055dcbeaa3d20d5d98cfcf2d",
+    "buildPinsSha256": "08741db9b1f2cfeb4ce9117cadd5d8a2ccbfb0f3b41bbb04e95b850df49fa74f",
+    "preflight": {
+      "compilerInputsExact": 2298,
+      "repoGitInputsExact": 161,
+      "assetsExact": 29,
+      "outputsExact": 95,
+      "pythonExact": true,
+      "referenceExact": true
+    },
+    "bootstrap4462894740Disposition": "Advisor inbox audience only; unchanged maya audience-null/PublicEntry path, no Auth or API in admitted public scope; finding not closed",
+    "literalHostArgv": [
+      "/opt/homebrew/opt/python@3.15/bin/python3.15",
+      "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/tests/genuine/w7_public_maya_host.py",
+      "--build-root",
+      "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/build",
+      "--build-pins",
+      "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/BUILD-PINS.json",
+      "--expected-pins-sha",
+      "08741db9b1f2cfeb4ce9117cadd5d8a2ccbfb0f3b41bbb04e95b850df49fa74f",
+      "--source-head",
+      "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "--execution-id",
+      "5ded069b-2fb7-4f56-846e-8497efe58690",
+      "--port",
+      "61937",
+      "--deadline-seconds",
+      "270",
+      "--evidence",
+      "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690"
+    ],
+    "literalFirstBrowserOpenAfterReady": {
+      "tool": "mcp__t3_code__preview_open",
+      "args": {
+        "open": false,
+        "profileId": "incognito",
+        "reuseExistingTab": false,
+        "url": "http://127.0.0.1:61937/maya"
+      }
+    },
+    "resourceBounds": {
+      "newHostProcesses": 1,
+      "newOwnIncognitoTabs": 1,
+      "bind": "127.0.0.1",
+      "port": 61937,
+      "portOccupied": "FAIL_SETUP_NO_QUERY_REUSE_OR_ALTERNATE_PORT",
+      "totalSecondsFromHostInvocation": 300,
+      "stopPageActivityBySeconds": 225,
+      "hostSelfDeadlineSeconds": 270,
+      "maxHostRequests": 1200,
+      "maxPreviewActions": 160,
+      "viewports": [
+        {
+          "width": 1800,
+          "height": 960,
+          "purpose": "nativeD01"
+        },
+        {
+          "width": 1440,
+          "height": 960,
+          "purpose": "narrowdesktop"
+        },
+        {
+          "width": 390,
+          "height": 844
+        },
+        {
+          "width": 320,
+          "height": 800
+        }
+      ],
+      "screenshotsMax": 24,
+      "firstMaterialFailure": "Record/stop/cleanup; no repeat or repair withinpacket"
+    },
+    "cleanup": "OwnactualreturnedtabID window.close then preview_status; terminate/joinONLYreadyPID/execsession, retainCLOSED. Ifunconfirmedrecordexactcustody/no furtherresource. No globalabsenceclaim.",
+    "restrictions": [
+      "Auth/Admin/DB/SQL/Storage/workerd/mailsink/provider/realbusiness setup or action",
+      "Any oldfixture/grant/tab/server adoption/reset/reuse or portscan",
+      "Authenticated /plan/client/advisor fixture paths or captureClientFrames helper",
+      "Actualpayment/order/purchase/fulfillment/payout/publication/Start/message outside fictionalMaya memory",
+      "Upload/download/externalcitation-retailer navigation",
+      "Node/Playwright/otherbrowser fallback",
+      "Page source/currentness/authority/hook/CSS overrides",
+      "OriginalfailedCI relabeling/counterorwholeframepassfrompartialcapture",
+      "Principal44/Guidance/private-return/M65/photo/final-egress auditresumption/alternate setup"
+    ],
+    "genuineGrant": null,
+    "acceptanceEffect": "NONE_UNTIL_ACTUAL_SCOPED_RETURN"
   }
 ]
