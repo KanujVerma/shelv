@@ -82,7 +82,9 @@ export function createAdvisorClientWorkspaceController({ runtime, clientId, read
       seen: cursor === null ? new Set() : new Set(seen), abort: new AbortController() };
     active = op; failed = null;
     old?.abort.abort();
-    if (!owns(op) || !emit({ phase: "loading", complete: false }) || !owns(op)) return;
+    if (!owns(op)) return;
+    emit({ phase: "loading", complete: false });
+    if (!owns(op)) return;
     try {
       const value = await readPlans.execute({ cursor, limit }, { signal: op.abort.signal, isApplicable: () => owns(op) });
       if (!owns(op)) return;
@@ -124,7 +126,8 @@ export function createAdvisorClientWorkspaceController({ runtime, clientId, read
         await runtime.restore();
         if (!owns(op)) return;
         active = null;
-        if (emit({ phase: "idle", directory: null, complete: false }) && ready() && !active) await read(null);
+        emit({ phase: "idle", directory: null, complete: false });
+        if (ready() && !active) await read(null);
       } catch {
         reconcile();
       } finally { if (active === op) active = null; reconcile(); }
