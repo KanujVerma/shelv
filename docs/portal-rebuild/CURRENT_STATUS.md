@@ -1,3 +1,7 @@
+## W0 caption CI and scoped entry, 4 November UTC
+
+Owner: Kanuj. Published3a905730 has all3 exact-head CI checks successful, including the unchanged foundation contact geometry assertion. Original df2303754/1 remains failed. Native3a remains completed with findings: plan SQL open, photo held and new bootstrap notification-audience4462894740 under investigation. The [W0 record](eight-threads/W0.md) separates that hosted result from literal-only SOURCE17, scoped client-entry SOURCE66 and the consumed blank Preview probe. No full frame/journey, current census or genuine capability advances. Principal44 STOP and all existing holds remain.
+
 ## W0 shared continuation after8a2
 
 Owner: Kanuj. The W0 receipt records SOURCE-approved corrected Maya73e and self-navigation369, locally integrated reviewed PR227/231/233/219, all4 type graphs0 and unchanged original68 migrations/evidence. Actual public browser/Figma/focus/a11y, Root single notification owner/admission/scoped client/service/resolver/export/contact/billing boundaries and all authenticated/persistence gates remain unfinished. Current complete integrated census is NOT_MEASURED; baseline24mounted/12SOURCEwired and bounded M01/M02 remain attributed to their original evidence.

@@ -1,0 +1,7 @@
+# Template and Directory DTO published-base correspondence
+
+Owner: Kanuj. **PASS for bounded immutable source/dependency correspondence only.** Templates head `bab86af33829636f304ceb5bc6f8a98d387063dd` and Directory head `13997462f2b948165305253a36b3b712a90fd3cd`, both based on published `df230eca6017f8dd330cceb83eb11b18193937e5`. [Exact comparisons](DTO_CORRESPONDENCES_BAB_139_RESULT.json).
+
+W7 compared every Git blob: each family's six owned postimages, full binary delta and nine recorded canonical dependencies equal the separately reviewed fef/145 source. The complete Root src/contracts delta8a2..df230 is empty. No new production behavior or dependency postimage was introduced by either rollforward.
+
+No new W7test run is claimed for identical inputs. Original template30/30+legacy42 and Directory29/29+legacy42/configured graphs remain attributed to their original reports. Owner fresh30/29 and current types, pending hosted checks/reviews and PR publication are separate evidence. The full earlier format limits apply: no actual template journal/storage/CAS/tombstone/collision/hash provenance, human VIEW/EDIT permission or Directory producer/whole-scope classification/cursor-lock consistency is accepted. No SQL, backend/dispatch/registration, Source authority, Auth/browser/genuine/resource grant or counter advance. Native Plan/photo and all principal44/Guidance/private-return/M65/final-egress holds remain unchanged.

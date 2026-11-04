@@ -1,0 +1,587 @@
+{
+  "owner": "Kanuj",
+  "head": "62f3bd18a04c65413d5a93574e2924a3f5fff998",
+  "base": "c075cbd4ea4b2f4d75959370233745d07145c069",
+  "patchSha256": "31cbef8a6352c38c1c6db5c414b15851015e2706a443e862b103642aea1f03d5",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/account/final-export/client.ts",
+      "bytes": 1225,
+      "sha256": "207aa0880a558f00b3cf1977e74eb5db7b0951205d00e92803d5769a5bd4cc0d"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/controller.ts",
+      "bytes": 7157,
+      "sha256": "0b6aa7a57176967dc254d9a9b09819a01de71be9956ebb62367e8d8ab0ddf5cc"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/index.ts",
+      "bytes": 260,
+      "sha256": "81683d8975e3a50cc160726cbfabffdd24b6a1d1017eccc1a667855a92222664"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/transfer.ts",
+      "bytes": 2373,
+      "sha256": "462e46a62505395c4eef2a7d84bc97acb50a615aaa1e4f206d85a24144599267"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/view.tsx",
+      "bytes": 2154,
+      "sha256": "c34ef68fa3ddac7d88b25d7095eff9f010cb51753ca1bdcc00401564586dc0bc"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/writer.ts",
+      "bytes": 5257,
+      "sha256": "ff7b10e7c00208ebaf397c471130d62a94839d0860c017849dfe9fa2c5b5f290"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-abort-reentry.test.mjs",
+      "bytes": 2203,
+      "sha256": "a2c840e04889df87802b5c5aaa48047ff8434d500c8b956d49febeb1093575d6"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-fixture.mjs",
+      "bytes": 4558,
+      "sha256": "d88c63d5c9116cb9c1d9a331b2ab539945f5ef5f6aa71c36dd88b5d4143adf8b"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-inputs/client-cookie-session.c075.js.txt",
+      "bytes": 6833,
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-inputs/final-export-request.e949.ts.txt",
+      "bytes": 3347,
+      "sha256": "28f8335679f700d4bee3c2550276f7cf2f2a9f85a95c7b3c60852a58eb6ffb98"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-recovery-cases.mjs",
+      "bytes": 3999,
+      "sha256": "c69c59c9b799809af9268856001ebb62972bb01c38f75492af08bebbfeabd5db"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-recovery.test.mjs",
+      "bytes": 220,
+      "sha256": "dc22e6e15c2ef0abe0889d718aaf15ced1fd61f7934f5298a89d1d9b868609b1"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-retained-consumer-cases.mjs",
+      "bytes": 19484,
+      "sha256": "29b786db05231d882bfcddf27ec670fd57cf84930279eb37d6c671fde8106e8a"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-retained-consumer.test.mjs",
+      "bytes": 226,
+      "sha256": "b4daf7913c2c29ee3c199cc562316f15200454c4a7674f9d69b583fccc8c8f39"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-retained-ssr.test.mjs",
+      "bytes": 5231,
+      "sha256": "ae1a9bd6e47b0b544e5b0c197cf6e003020543fc34668a91932f754c1b74cf4d"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W6_EXPORT.md",
+      "bytes": 7631,
+      "sha256": "ea20f9563580d36ba440faf670e458555ec863f2a801a4a67231600902d2bfcf"
+    }
+  ],
+  "sixProductBlobsEqualFed": true,
+  "publicSnapshotInputsExactHistoricalBytes": [
+    {
+      "snapshot": "apps/portal/tests/w6-account-export-inputs/client-cookie-session.c075.js.txt",
+      "sourceHead": "c075cbd4ea4b2f4d75959370233745d07145c069",
+      "sourcePath": "apps/portal/site/auth/client-cookie-session.js",
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0"
+    },
+    {
+      "snapshot": "apps/portal/tests/w6-account-export-inputs/final-export-request.e949.ts.txt",
+      "sourceHead": "e949c9cc4a352c57d0aebb796c175370f72bd052",
+      "sourcePath": "apps/portal/src/app/final-export-request.ts",
+      "sha256": "28f8335679f700d4bee3c2550276f7cf2f2a9f85a95c7b3c60852a58eb6ffb98"
+    }
+  ],
+  "retainedConsumerInverseWholeFileExactE949": true,
+  "retainedConsumerOriginalSha256": "b9edffafbdafa9634c983f024b9879f5c2b6316811f3259c6e7a8393d2cd0908",
+  "projectionInputs": [
+    {
+      "path": "apps/portal/site/auth/advisor-cookie-session.js",
+      "bytes": 30545,
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/site/auth/care-actions.js",
+      "bytes": 592,
+      "sha256": "af283c549a1a1b7a404f44c387921991b7cdcd2f52a4a63af3c2e194e737e17b",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/site/auth/client-cookie-session.js",
+      "bytes": 6833,
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0",
+      "selection": "EXPLICIT HISTORICAL UNREGISTERED constructor at c075"
+    },
+    {
+      "path": "apps/portal/site/auth/commerce-actions.js",
+      "bytes": 1980,
+      "sha256": "795d37a5ec1f6451c4318234f2636e834849c0c1ce0c8fc19815b3c6655d7acc",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/site/auth/navigation-return.js",
+      "bytes": 3284,
+      "sha256": "aab8c07b9c589e1af4bf521716407e35bb97574664196b3e58b2d1a9485e4dcd",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/site/auth/plan-actions.js",
+      "bytes": 805,
+      "sha256": "64d758036946cd2fa2109a23e46066e0fa350347e45f84f1861d6d47190a9a23",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/site/auth/portal-routes.js",
+      "bytes": 8717,
+      "sha256": "2b9faceb7ccc5e700f68b6f6fffc79b5928004050273b88cd5b04dde884645c3",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/site/auth/review-actions.js",
+      "bytes": 1904,
+      "sha256": "6796d30a8b774559cac3924c9db7c5528358dd672b1cdabe060a428be881fcb4",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/app/final-export-request.ts",
+      "bytes": 3347,
+      "sha256": "28f8335679f700d4bee3c2550276f7cf2f2a9f85a95c7b3c60852a58eb6ffb98",
+      "selection": "W0-owned pending exact e949 request; not product admission"
+    },
+    {
+      "path": "apps/portal/src/app/retained.ts",
+      "bytes": 1671,
+      "sha256": "146d949005acc395692eca804824c2a67fb0c9bfbe5b0be98d4018f8a265b5a1",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/app/session.ts",
+      "bytes": 6061,
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/client.ts",
+      "bytes": 1225,
+      "sha256": "207aa0880a558f00b3cf1977e74eb5db7b0951205d00e92803d5769a5bd4cc0d",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/controller.ts",
+      "bytes": 7157,
+      "sha256": "0b6aa7a57176967dc254d9a9b09819a01de71be9956ebb62367e8d8ab0ddf5cc",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/index.ts",
+      "bytes": 260,
+      "sha256": "81683d8975e3a50cc160726cbfabffdd24b6a1d1017eccc1a667855a92222664",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/transfer.ts",
+      "bytes": 2373,
+      "sha256": "462e46a62505395c4eef2a7d84bc97acb50a615aaa1e4f206d85a24144599267",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/view.tsx",
+      "bytes": 2154,
+      "sha256": "c34ef68fa3ddac7d88b25d7095eff9f010cb51753ca1bdcc00401564586dc0bc",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/writer.ts",
+      "bytes": 5257,
+      "sha256": "ff7b10e7c00208ebaf397c471130d62a94839d0860c017849dfe9fa2c5b5f290",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/features/plan/guidancePort.ts",
+      "bytes": 2771,
+      "sha256": "b662e06cb8c7afdbdfd86a0f112c8fb75e76d0dab08eddf6a9b67a3e7cf85cce",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/features/plan/types.ts",
+      "bytes": 3661,
+      "sha256": "fbe01cfc12787827752a40dd264fd59c92d18f7b2da4798fee99c4cde824d095",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/features/plan/useModel.ts",
+      "bytes": 3908,
+      "sha256": "40316bd1f8b4386d4dbf8ef70afc5f84a5ad73f0a673325ea80e7a0eaf390fc9",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/navigation/routes.ts",
+      "bytes": 1470,
+      "sha256": "8ada4a24e8250121f10a6254d4102d26810b0433c20f2efa76060f9cea7e954d",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/transport/error.ts",
+      "bytes": 725,
+      "sha256": "1b6be9efd7f110c93d909ee8a2f44e805b3de51f32bfd0715ddf7cdf4c93f034",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/transport/session.ts",
+      "bytes": 10195,
+      "sha256": "deeb60865d92b6a7a0feb1b86a78193a7c093005d0e225cf5554ece1539e46bd",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/ui/icons.tsx",
+      "bytes": 990,
+      "sha256": "3f105dd9e5093041018b55bcce853cc6a095325fb797d7cda673f5cf2c5f2d63",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/ui/index.ts",
+      "bytes": 444,
+      "sha256": "b44a16821e22ef4d6bb1f4eb9db180bd391a1f2fd97b90a1e75cd8a9a096f3a2",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/ui/overlay-state.ts",
+      "bytes": 557,
+      "sha256": "30b5a7ea05c0a45036e6b7f9023a9316315b78d9dcfeb78920f30277a6821a67",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/ui/overlay.tsx",
+      "bytes": 4637,
+      "sha256": "281b97d62325283ff72fccd2a2db96e2207b3d63e470a7be554f16b80cd4b3fd",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/src/ui/primitives.tsx",
+      "bytes": 7512,
+      "sha256": "990d356778a7c828b85896fb44585df9e07a182687338dd190f2cb129073b925",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-recovery-cases.mjs",
+      "bytes": 3999,
+      "sha256": "c69c59c9b799809af9268856001ebb62972bb01c38f75492af08bebbfeabd5db",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-retained-consumer-cases.mjs",
+      "bytes": 19484,
+      "sha256": "29b786db05231d882bfcddf27ec670fd57cf84930279eb37d6c671fde8106e8a",
+      "selection": "current own source"
+    },
+    {
+      "path": "apps/portal/tsconfig.frontend.json",
+      "bytes": 480,
+      "sha256": "b930ae73c53ea9dbdd895de85fccbac714e5526ba62a78537d0d72f149437003",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/ConciergePortal.ts",
+      "bytes": 5083,
+      "sha256": "3fbf69f328c73cd10926dd446df4e266393f69e9fc37943888eabc46271c6dcd",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/ConciergePortalValidation.ts",
+      "bytes": 2880,
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/ConciergePresentation.ts",
+      "bytes": 3497,
+      "sha256": "c48cc446b71eaa416c1b084af17db1eda033566518ebe2e1259822e825b795cd",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/ConciergePresentationValidation.ts",
+      "bytes": 11722,
+      "sha256": "b93b9eab1b55cfb828677067990985716e71c23550662a06782038226cdca33a",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/ConciergeService.ts",
+      "bytes": 13695,
+      "sha256": "bb27d2a38f7d39b90181852d1e005c448df992883cf40623ce6b57c9222bab4a",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalCare.ts",
+      "bytes": 6874,
+      "sha256": "6c66bcad8909eb843c6cf0c9432721e124c42c157b59db0846a58dacd511c469",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalCareMapping.ts",
+      "bytes": 9657,
+      "sha256": "675135cbb83611bbc8c63ed2c5a7e33b17a1f16cc1b48839358c1f45672d1439",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalCareValidation.ts",
+      "bytes": 7336,
+      "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalCareValues.ts",
+      "bytes": 1079,
+      "sha256": "31c485f83a7ce142231dd90da43ad402215078419230248a103e3544a275a404",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalFinalExport.ts",
+      "bytes": 3498,
+      "sha256": "86ceac2755c5554fe2ae132c0201579c33cd36ebcbdff8b15f216fd9d1049551",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalFinalExportMapping.ts",
+      "bytes": 10363,
+      "sha256": "bcc9f8f0d77accda21b713e69ec7a068055246b3df342f9b4ef2454a694f232b",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalFinalExportValidation.ts",
+      "bytes": 14440,
+      "sha256": "df1f3e100150a51224d4a16727b82cc4aad9021f6cb451a1241166418506327a",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalFinalExportValues.ts",
+      "bytes": 1509,
+      "sha256": "e0da7f27f8df40e991690c27f8d67fc80ad899cd478786a02f531fc12f546bac",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalRebuild.ts",
+      "bytes": 14140,
+      "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalRebuildMapping.ts",
+      "bytes": 10694,
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "bytes": 12947,
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValues.ts",
+      "bytes": 1206,
+      "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalReview.ts",
+      "bytes": 13982,
+      "sha256": "78e06f5af74ad3d17cd5d30e03fce0faca505cb7e5f0e32961dbdb942ff33b74",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalReviewMapping.ts",
+      "bytes": 35451,
+      "sha256": "de2c64e152156656e7748c5f12c49dd115c6bc88411e488d29bde2e0d122a550",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalReviewValidation.ts",
+      "bytes": 15488,
+      "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23",
+      "selection": "current own source"
+    },
+    {
+      "path": "src/contracts/PortalReviewValues.ts",
+      "bytes": 3909,
+      "sha256": "cce2545be9626e1a1abf8fb4e6a0e783c53831af9740110db26f37a397457000",
+      "selection": "current own source"
+    },
+    {
+      "path": "supabase/functions/concierge-final-export/serializer.ts",
+      "bytes": 21710,
+      "sha256": "05a271fb0e89ff70d516243739cb2383d7512615583f224a065711d13d425cf0",
+      "selection": "current own source"
+    },
+    {
+      "path": "tests/portal-final-export-fixtures.ts",
+      "bytes": 10532,
+      "sha256": "f586d40394fc88829083253d46faef8f150a524f9f033fd724bd9f8936dd31d4",
+      "selection": "current own source"
+    }
+  ],
+  "projectionManifests": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/source/.local-artifacts/w6-account-export/source-d3E0e3/SOURCE.json",
+      "sha256": "1c6cba0e82135964f9dc2c3a890054d3077240b95f97e42331a1d6959a672d5d",
+      "enclosingGitHead": "a308d313e702ddcaa0c1da42aa7aef7e993fda13"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/source/.local-artifacts/w6-account-export/source-Y8HidB/SOURCE.json",
+      "sha256": "1c6cba0e82135964f9dc2c3a890054d3077240b95f97e42331a1d6959a672d5d",
+      "enclosingGitHead": "a308d313e702ddcaa0c1da42aa7aef7e993fda13"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/source/.local-artifacts/w6-account-export/source-sm0D76/SOURCE.json",
+      "sha256": "1c6cba0e82135964f9dc2c3a890054d3077240b95f97e42331a1d6959a672d5d",
+      "enclosingGitHead": "a308d313e702ddcaa0c1da42aa7aef7e993fda13"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/source/.local-artifacts/w6-account-export/source-Xl790r/SOURCE.json",
+      "sha256": "1c6cba0e82135964f9dc2c3a890054d3077240b95f97e42331a1d6959a672d5d",
+      "enclosingGitHead": "a308d313e702ddcaa0c1da42aa7aef7e993fda13"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/source/.local-artifacts/w6-account-export/source-NSI4oP/SOURCE.json",
+      "sha256": "1c6cba0e82135964f9dc2c3a890054d3077240b95f97e42331a1d6959a672d5d",
+      "enclosingGitHead": "a308d313e702ddcaa0c1da42aa7aef7e993fda13"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/source/.local-artifacts/w6-account-export/source-HUWguY/SOURCE.json",
+      "sha256": "1c6cba0e82135964f9dc2c3a890054d3077240b95f97e42331a1d6959a672d5d",
+      "enclosingGitHead": "a308d313e702ddcaa0c1da42aa7aef7e993fda13"
+    }
+  ],
+  "browserSourceBuild": {
+    "executedBrowser": false,
+    "compilerOnly": true,
+    "inputCount": 2154
+  },
+  "dependencySetup": {
+    "classification": "W7_DEPENDENCY_SETUP_DUPLICATE_REACT",
+    "original": {
+      "tests": 50,
+      "pass": 46,
+      "fail": 4,
+      "exitCode": 1,
+      "rootReact": "19.2.3",
+      "portalReact": "19.3.1",
+      "portalReactDOM": "19.3.1"
+    },
+    "cause": "W7 archive root node_modules symlink selected root React ahead of fixture nodePaths for some imports, while Portal packages used19.3.1",
+    "correctedOwnSymlink": {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/source/node_modules",
+      "before": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/node_modules",
+      "after": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/node_modules"
+    },
+    "candidateSourceOrAssertionsChanged": false
+  },
+  "verdict": "PASS_SCOPED_COMPLETE_FINAL_EXPORT_CONSUMER_SOURCE_DEPENDENCY_HELD",
+  "node": "v22.23.0",
+  "current": {
+    "tests": 50,
+    "pass": 50,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "candidateSourceChanged": false,
+    "syntheticFixtureInputs": [
+      "historical unregistered c075 client cookie",
+      "exact missing e949 request snapshot"
+    ]
+  },
+  "physicalFrontend": {
+    "diagnostics": 1,
+    "codes": [
+      2307
+    ],
+    "exitCode": 2,
+    "reason": "Missing W0 app/final-export-request.ts"
+  },
+  "projectedFrontend": {
+    "diagnostics": 0,
+    "exitCode": 0,
+    "virtualSource": "app/final-export-request.ts",
+    "sha256": "28f8335679f700d4bee3c2550276f7cf2f2a9f85a95c7b3c60852a58eb6ffb98",
+    "actualIntegrationGreen": false
+  },
+  "limits": [
+    "No real FileSystemAccess picker/writer/file delivery or physical durability/erasure/recall proved",
+    "Controller actual HTTP is unsupported/unregistered; positive collection/serialization uses a separately labeled synthetic reader",
+    "W0 fixed request/namespace/route/Account lifetime and genuine entitlement/auth/privacy/noeffects remain separate",
+    "Six export postimages equal heldfed by Git blob identity; no oldfed/e949 test or refused audit rerun",
+    "Source fixture metadata enclosingGitHead is W7 scaffolding identity, not candidate provenance; all54 actualselectedsourcebytes independently rebound to62f or exact input snapshots",
+    "No principal44/Guidance/private-return/M65/photo/final-egress-held audit cleared or resumed"
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/W7-CURRENT50.log",
+      "bytes": 26270,
+      "sha256": "565ee9decfe0b23a9501e122e205db52b174d67a4a4be72c0ddd3c989aafe6bb",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/EXEC.json",
+      "bytes": 588,
+      "sha256": "de20dee18422279f84d9e15ccedf689beb7bd375732434f148863e69c2fa683d",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/REACT-SETUP.json",
+      "bytes": 834,
+      "sha256": "17040e2f1bdb0070c50dc45b381e5792eae6477c34127652b45e25fada0b4091",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/W7-CURRENT50-ONE-REACT.log",
+      "bytes": 12544,
+      "sha256": "86e1981ce47d08e16238714583f9ec5c40cf046a68f6a19226d6dc83fd198bfe",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/EXEC-ONE-REACT.json",
+      "bytes": 773,
+      "sha256": "c70241a99debaae8f5c054b81186dddebdf95e3bf340fb12dc3b0ac588059d88",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/W7-FRONTEND-PHYSICAL.log",
+      "bytes": 423,
+      "sha256": "44d36e6834bf3a22898390da863150f90b92f13d6f438c36ba8b1f54729aebbc",
+      "exitCode": 2
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/W7-FRONTEND-PROJECTED.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/TYPE-RESULT.json",
+      "bytes": 397,
+      "sha256": "5802989c77bc5694575078d2f3518ddd9330c731d30762599908206696782231",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/W7-TYPES.mjs",
+      "bytes": 2218,
+      "sha256": "1106e799bcee0039fd5cf1803454754e9e76ef0770de1d31c14d739ed67d2435",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-export-62f/BROWSER-SOURCE-CLOSURE-CURRENT.json",
+      "bytes": 1987691,
+      "sha256": "160a3918eb34bd0abdcf1a81fffc7aff92ba188e0fc8dcff03c0565e5cdbba37",
+      "exitCode": 0
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "owner": "Kanuj",
+  "head": "fef98c75702900295783ba7b8514e2b6bb092b1a",
+  "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+  "patchSha256": "490425fcf5d12c637c45103bb7f1b45cf60b80c1f0fc17faa5a64d51f26c37f0",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w1-plan-platform-templates.test.mjs",
+      "bytes": 14222,
+      "sha256": "38b6e1802cbc7061f3b48de58eb15ffcf42c5684ea7005abb42a880a44792192"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_PLAN_TEMPLATE_DTO_20261103.md",
+      "bytes": 10481,
+      "sha256": "4b9a8ba1156d0ae4558f94977fa7c83433ac6dbb6e417a0a75a17e7401f30983"
+    },
+    {
+      "path": "src/contracts/PortalPlanTemplate.ts",
+      "bytes": 2047,
+      "sha256": "480980473105c65e28a5ad11f5b5dea3b2d9c239981bd5c766aa671a51dfaab6"
+    },
+    {
+      "path": "src/contracts/PortalPlanTemplateMapping.ts",
+      "bytes": 623,
+      "sha256": "24fdc334d9d7ca25ffb50b9eec2bd2394fa0f014da2f1dda1c8b526a008f6142"
+    },
+    {
+      "path": "src/contracts/PortalPlanTemplateValidation.ts",
+      "bytes": 9038,
+      "sha256": "9e07c282a321a5e218275aee26a0d8f7fd9e76ad5ed16ce6b2601bddf06cc857"
+    },
+    {
+      "path": "src/contracts/PortalPlanTemplateValues.ts",
+      "bytes": 1309,
+      "sha256": "a517623623b065b5aa3e0a66fb53c75c3008909adcfcfa56d4cee6d2740f0dea"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "src/contracts/PortalRebuild.ts",
+      "bytes": 14140,
+      "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValues.ts",
+      "bytes": 1206,
+      "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "bytes": 12947,
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+    },
+    {
+      "path": "src/contracts/PortalRebuildMapping.ts",
+      "bytes": 10694,
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+    },
+    {
+      "path": "src/contracts/PortalCareValidation.ts",
+      "bytes": 7336,
+      "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d"
+    },
+    {
+      "path": "src/contracts/PortalReviewValidation.ts",
+      "bytes": 15488,
+      "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+    },
+    {
+      "path": "src/contracts/ConciergePortalValidation.ts",
+      "bytes": 2880,
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 303079,
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "bytes": 123808,
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "canonicalDependenciesByteEqualBase": true,
+  "verdict": "PASS_SCOPED_PLAN_TEMPLATE_DTO_FORMAT_SOURCE_ONLY",
+  "node": "v22.23.0",
+  "current": {
+    "tests": 30,
+    "pass": 30,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "retainedCompatibility": {
+    "tests": 42,
+    "pass": 42,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "configuredTypes": {
+    "rootApp": {
+      "exitCode": 0,
+      "diagnostics": 0
+    },
+    "rootTests": {
+      "exitCode": 0,
+      "diagnostics": 0
+    }
+  },
+  "sourceOverrides": false,
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-templates-fef/W7-CURRENT30.log",
+      "bytes": 8129,
+      "sha256": "0a8a04f69139ee1c16b76426e478492f6886750e78872e864a5f6d07ee495bc3",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-templates-fef/W7-LEGACY42.log",
+      "bytes": 11944,
+      "sha256": "30d5c32237729e63538ac9593a5738a3837241e86faa7c989e005816f5b4bde7",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-templates-fef/W7-ROOT-APP.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-templates-fef/W7-ROOT-TESTS.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-templates-fef/EXEC.json",
+      "bytes": 1006,
+      "sha256": "1ce0db197d06afe5fdfa18193ea1d694688beb23068d9b9b39e1226656e53ce0",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-templates-fef/TYPES-EXEC.json",
+      "bytes": 459,
+      "sha256": "558a515a40119d0a835c03a56c02e4be6069e5e49bfa37d4e2d5937bbf1dbdee",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "Format only: no actual template journal/head/version/CAS/immutable storage or collision/purge/tombstone behavior",
+    "Human READ/WRITE labels do not authenticate or grant actual VIEW/EDIT; actor-own status must be enforced by a future producer",
+    "Hash format and domain constant do not verify actual JSONB preimage or produced versionHash",
+    "No old create/template action change or new task/client management grant; actual original agent instantiation remains unrun",
+    "No SQL allocation/backend/dispatch/transport/route/Auth/browser/resource/heldscope or genuine acceptance"
+  ]
+}
