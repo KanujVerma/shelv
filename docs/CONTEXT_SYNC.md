@@ -1,3 +1,13 @@
+## W0 address source dependency and bounded handoff allocation, 4 November UTC
+
+Owner: Kanuj. Published `ad0d6947073f56b32d8fb3a76d93801ddf0cff86` adds only the reviewed Account address request, its test/report and the independent W7 report pair to published34239. The [address source gate](portal-rebuild/w7/reviews/W0_ADDRESS_REQUEST_34C.md) records independent36/36, configured frontend0 and browser-target compilation only; exact-head hosted checks and the actual W6 consumer dependency gate are separate. No address mount, backend persistence, paid-order history, browser or genuine acceptance follows from this source publication.
+
+W2 has an [exact one-hunk allocation](portal-rebuild/eight-threads/W0_PR239_CONTEXT_SYNC_ALLOCATION_20261104.md) to add its PR239 consumer handoff to a documentation-only successor. Its original39c native finding remains open, and the actual inline-preview port/lifetime/mount remain pending. The reviewed notification module/composition and admission adapter have separate source passes; the corrected current-spine coverage successor3d9 and inline portb039 still await independent gates and are excluded from this address publication. Public R1 remains closed INCOMPLETE_CAPTURE; all principal44, photo, Guidance/private-return, M65 and final-egress holds and baseline acceptance counts remain unchanged.
+
+## W0 startup source successor and public return, 4 November UTC
+
+Owner: Kanuj. Published99bf372d carries eb7513eb complete10 SOURCE82/four graphs0; old78 failure is preserved. New standalone owner608d complete7 authored24 awaits review, is unconnected and excluded from publication. Public3a packet0fde is consumed/closed INCOMPLETE_CAPTURE after a snapshot timeout; all12 raw records, owned tab closure and host join verified, no resource grant or acceptance advances. [W0](portal-rebuild/eight-threads/W0.md) and the [W7 ledger](portal-rebuild/w7/ACCEPTANCE_LEDGER.json) preserve all limits and holds. Root continues; no main/release/real-client action or held-principal retry.
+
 ## W0 caption CI and scoped entry, 4 November UTC
 
 Owner: Kanuj. Published3a905730 has all3 exact-head CI checks successful; original df2303754/1 remains failed. Native review still has open plan SQL, held photo and new ordinary bootstrap audience4462894740. Reviewed client entry35E SOURCE66 and consumed9second blank Preview probe remain separate from actual VIEW, browser, genuine and whole-journey acceptance. See [W0](portal-rebuild/eight-threads/W0.md) and the [canonical W7 ledger](portal-rebuild/w7/ACCEPTANCE_LEDGER.json). Full W0 remains active; no new grant, stopped-fixture reuse or held-principal retry.
