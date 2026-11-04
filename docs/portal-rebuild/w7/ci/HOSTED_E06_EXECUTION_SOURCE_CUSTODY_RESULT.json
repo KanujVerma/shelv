@@ -1,0 +1,181 @@
+{
+  "owner": "Kanuj",
+  "classification": "VERIFIED_FAILED_CI_SELECTED_EXECUTION_SOURCE_CUSTODY_ONLY",
+  "associatedHead": "e06ff5b90bb795190efe1cb42a723592c019f848",
+  "executionCommit": "3d3e795922ef4fcc7181c81a26185a851eb99cbb",
+  "parents": [
+    "c39fa32083d19bc2d021a1e2c6438ff731a02b46",
+    "e06ff5b90bb795190efe1cb42a723592c019f848"
+  ],
+  "ownerPacket": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/ci-custody/e06-execution-source/EXECUTED-SOURCE-CUSTODY.json",
+    "bytes": 5833,
+    "sha256": "aae4b56a6846e159ee050c1fd432973b15ff0c123c255717f5301dbecb6266ee"
+  },
+  "originalFailurePacket": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/CI-E06/PORTAL-FAILURE.json",
+    "bytes": 16312,
+    "sha256": "8cba377b5e6abee1d7ee08eb40a6f2164fa43bc0c475e93ab65b33e2d7f89dc6"
+  },
+  "fullRaw": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/ci-custody/e06-execution-source/PORTAL-COMPLETE-84399a632806b6684fea5fae08a80b2212df5c99e3cd0ddb0ca1129a9aaba8b2.log",
+    "bytes": 2107574,
+    "sha256": "84399a632806b6684fea5fae08a80b2212df5c99e3cd0ddb0ca1129a9aaba8b2"
+  },
+  "fullRawMode": "0400",
+  "checkoutAndCountsExcerpt": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/ci-custody/e06-execution-source/CHECKOUT-COUNTS-EXCERPT.txt",
+    "bytes": 961,
+    "sha256": "e5c6e5b0e1332609d3334b094856ef81370f6a86f57033edfec24495991f3409"
+  },
+  "job": 126434760870,
+  "run": 41788083841,
+  "tests": 4126,
+  "pass": 4124,
+  "fail": 2,
+  "status": "FAILED",
+  "selectedFiveGitComparisons": [
+    {
+      "path": "apps/portal/tests/rebuild-app-browser.test.mjs",
+      "authoredE06": "26dba35a7a4f25040da6b9890a0a5be5c8a98b6aeb1c291bc5f02a3c97eff02b",
+      "executedMerge": "26dba35a7a4f25040da6b9890a0a5be5c8a98b6aeb1c291bc5f02a3c97eff02b",
+      "executedBaseC39": "26dba35a7a4f25040da6b9890a0a5be5c8a98b6aeb1c291bc5f02a3c97eff02b",
+      "publishedE964": "26dba35a7a4f25040da6b9890a0a5be5c8a98b6aeb1c291bc5f02a3c97eff02b"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-advisor-dependencies-browser.test.mjs",
+      "authoredE06": "3349ce72b2b21c8aafe422b3f5c7e35804c9e16cdece00e2b756bca7d823ded0",
+      "executedMerge": "3349ce72b2b21c8aafe422b3f5c7e35804c9e16cdece00e2b756bca7d823ded0",
+      "executedBaseC39": "3349ce72b2b21c8aafe422b3f5c7e35804c9e16cdece00e2b756bca7d823ded0",
+      "publishedE964": "3349ce72b2b21c8aafe422b3f5c7e35804c9e16cdece00e2b756bca7d823ded0"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-advisor-dependencies-browser-helper.mjs",
+      "authoredE06": "f391334cd6ce99618aedda9a61deb5e1cad72988481dc40ed317b79296d8f327",
+      "executedMerge": "f391334cd6ce99618aedda9a61deb5e1cad72988481dc40ed317b79296d8f327",
+      "executedBaseC39": "f391334cd6ce99618aedda9a61deb5e1cad72988481dc40ed317b79296d8f327",
+      "publishedE964": "f391334cd6ce99618aedda9a61deb5e1cad72988481dc40ed317b79296d8f327"
+    },
+    {
+      "path": "apps/portal/src/app/Application.tsx",
+      "authoredE06": "02acf950ab71a21cbe71bdb6ddd83c458173120f8a4791d9ebb4f5b4f365d11b",
+      "executedMerge": "9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510",
+      "executedBaseC39": "9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510",
+      "publishedE964": "9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/PublicationDelivery.tsx",
+      "authoredE06": "f70725ea217fb84317f10827f97820be4e69fbbc75e34a5e60208776d485c1c0",
+      "executedMerge": "f70725ea217fb84317f10827f97820be4e69fbbc75e34a5e60208776d485c1c0",
+      "executedBaseC39": "f70725ea217fb84317f10827f97820be4e69fbbc75e34a5e60208776d485c1c0",
+      "publishedE964": "f70725ea217fb84317f10827f97820be4e69fbbc75e34a5e60208776d485c1c0"
+    }
+  ],
+  "stepOutcomesFromOwnerPacket": [
+    [
+      "Set up job",
+      "success"
+    ],
+    [
+      "Checkout repository",
+      "success"
+    ],
+    [
+      "Setup Node.js",
+      "success"
+    ],
+    [
+      "Install portal dependencies",
+      "success"
+    ],
+    [
+      "Setup local Supabase CLI",
+      "success"
+    ],
+    [
+      "Install Chrome and browser dependencies",
+      "success"
+    ],
+    [
+      "Install native PostgreSQL fixture tools",
+      "success"
+    ],
+    [
+      "Build combined client and advisor package",
+      "success"
+    ],
+    [
+      "Verify strict React application types",
+      "success"
+    ],
+    [
+      "Build isolated React application candidate",
+      "success"
+    ],
+    [
+      "Verify package and synthetic client journeys",
+      "failure"
+    ],
+    [
+      "Retain synthetic guidance diagnostics",
+      "success"
+    ],
+    [
+      "Verify approval recovery keyboard journeys",
+      "skipped"
+    ],
+    [
+      "Verify session types",
+      "skipped"
+    ],
+    [
+      "Verify native session lifecycle and audience isolation",
+      "skipped"
+    ],
+    [
+      "Verify session package contracts",
+      "skipped"
+    ],
+    [
+      "Verify backend contracts",
+      "skipped"
+    ],
+    [
+      "Verify isolated native SQL workflows",
+      "skipped"
+    ],
+    [
+      "Verify actual check-in reply handler against native SQL",
+      "skipped"
+    ],
+    [
+      "Verify actual three-method payment handler against native SQL",
+      "skipped"
+    ],
+    [
+      "Verify empty starting routines and follow-up plan updates",
+      "skipped"
+    ],
+    [
+      "Verify founder admission with local Auth, SQL and Chrome",
+      "skipped"
+    ],
+    [
+      "Post Setup Node.js",
+      "skipped"
+    ],
+    [
+      "Post Checkout repository",
+      "success"
+    ],
+    [
+      "Complete job",
+      "success"
+    ]
+  ],
+  "reportSha256": "e0db8dc96650eda64a200df53f79817ea6ba95b2865cad03e86f7ed9c50852a8",
+  "noOldSourceAuditOrExecution": true,
+  "noBaselineFlakeCausalityOrAcceptanceClaim": true,
+  "resourceGrant": null,
+  "recordedAt": "2026-11-04T08:03:55.164970+00:00"
+}

@@ -1,0 +1,11 @@
+# PR2398d failed Portal step custody
+
+Owner: Kanuj. **FAILED current Portal test step; raw custody verified only. Executed checkout is UNVERIFIED.** Associated authored head `8d454b8015940ed29d2432635251bdbaba8b70da`, owner-reported job126467820168. [Exact raw/failure/identity pins](HOSTED_8D_PORTAL_FAILURE_RESULT.json).
+
+The retained failed-step log is3984726bytes/SHA `22a23038c22791265f7478e5d6c241c5f1d6089731df6ef291f1e40e1e34e5b8`; the owner file is0600 and W7's byte-exact copy is0400. It begins at npm test and contains no checkout/git-log/merge-parent section. No executed SHA/tree or complete-job provenance is inferred from associated8d. Actual full checkout evidence remains pending.
+
+Raw4031pass/1fail/4032total, zero skips/cancellations, matches the negative unknown-request assertion at rebuild-app-browser-model.test.mjs:203/209. It expects /unexpected finite HTTP request/ and receives ReferenceError: publicationDeliveryReadUnavailable is not defined from the extracted router. The three selected authored8d model/browser/helper files are byte-equal to base9c; this is source identity, not execution-tree equality. The owner identifies missing helper binding in AST dependencies and has sent W0 an unapplied proposal. W7 has not inspected that moving proposal, reproduced this case, altered a fixture or supplied a fix. W0 owns the fresh source successor and its separate gate.
+
+No hosted browser scenario pass is claimed by this narrow raw inspection. Owner-reported Root9c failure and old2e/e964 failures remain separately attributed; this one-failure run is not a baseline/flake explanation or a green replacement. The prior independent438 source/finite/SSR and frontend results at8d are a different proof scope and do not establish Portal CI or integration readiness.
+
+No local test/browser/server/SQL/Auth/resource, held Guidance-model/private-authority audit or old-run retry was performed. A legitimate published shared-fixture fix, exact new composition and fresh hosted/native gates remain required. W4 no-photo source priority, principal44 STOP, A07/HN1/Guidance/private-return/photo/Source/M65/final-egress holds and every acceptance counter/resource grant remain unchanged.

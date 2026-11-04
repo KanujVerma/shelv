@@ -1,0 +1,17 @@
+{
+  "owner": "Kanuj",
+  "head": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+  "recordedAt": "2026-11-04T08:08:28.458657+00:00",
+  "branch": "refs/heads/kanuj/portal-rebuild-integration-20261030",
+  "remoteObservation": {
+    "method": "git ls-remote origin refs/heads/kanuj/portal-rebuild-integration-20261030",
+    "head": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+    "exitCode": 0,
+    "toolChunk": "5d6692"
+  },
+  "scope": "Bounded published test-fixture source and exact W7 documentation correspondence only",
+  "report": "reviews/PUBLISHED_SPINE_9C255_SOURCE.md",
+  "wholeIntegratedCensus": "NOT_MEASURED",
+  "currentOwnW7SnapshotNotRolledBack": "705889b875ff32b0854486f2ccb47356865d2810",
+  "noResourceOrCounterAdvance": true
+}
