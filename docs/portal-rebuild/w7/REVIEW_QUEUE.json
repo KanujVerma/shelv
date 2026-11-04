@@ -361,7 +361,8 @@
       "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
       "lane": "W2",
       "scope": "New7 readonly scoped ClientWorkspace source/UI/finite only; no actualadapter/route/Auth/backend/browser",
-      "status": "QUEUED_SOURCE_CLIENT_WORKSPACE_ONLY"
+      "status": "HOLD_OWNER_REENTRANT_FILTER_LOADING_NO_VERDICT",
+      "reason": "Owner reproduced loading observer setFilter leaves activeop/calls0/loading; W7 has not read/tested this old head and will not resume it. Await new exact successor."
     },
     {
       "head": "7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db",
@@ -385,7 +386,8 @@
       "base": "1c39946a77ce06a9bd9cf7208cceacd637542a54",
       "lane": "W2",
       "scope": "Exact3 test-only followup parity/sensitivity plus all14 priorpostimage correspondence; no old06666/0d audit, no productsource change.",
-      "status": "QUEUED_SOURCE_TEST_SUCCESSOR_SENSITIVITY"
+      "status": "PASS_SCOPED_TEST_PARITY_SENSITIVITY_SOURCE_ONLY",
+      "report": "reviews/W2_FOLLOWUP_2EC.md"
     },
     {
       "head": "fef98c75702900295783ba7b8514e2b6bb092b1a",
@@ -402,6 +404,105 @@
       "status": "PASS_SCOPED_INERT_FIDELITY_LINEAGE_PROPOSAL_ONLY",
       "report": "reviews/W1_PLAN_LOOKUP_E37.md",
       "nativeFinding": "4460794439 remainsOPEN"
+    },
+    {
+      "head": "a1e89386d296815efad377ab157dc910e3bb5d8d",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "scope": "Bounded actualRoot correspondence only; no actualfinancial/resource/heldaudit grant.",
+      "status": "PASS_BOUNDED_ACTUAL_ROOT_SOURCE_DEPENDENCY_CORRESPONDENCE",
+      "report": "reviews/ROOT_ROLLFORWARDS_A1E_956_1543.md"
+    },
+    {
+      "head": "95678689e7dc151148898aba18cd483aebd3043f",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "scope": "Bounded actualRoot correspondence only; no actualfinancial/resource/heldaudit grant.",
+      "status": "HOLD_OWNER_NATIVE_P2_4462020377_WAIT_NEW_SUCCESSOR",
+      "report": "reviews/ROOT_ROLLFORWARDS_A1E_956_1543.md",
+      "reason": "Ownerreports alreadyreceivedAuth/RPCdenial outrunbyouterabort race. No W7newreview/test/audit atheld956; prior c8/Rootcorrespondence passes remainhistorical."
+    },
+    {
+      "head": "154311290595b163481e4f935765f34a451c1810",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "scope": "Bounded actualRoot correspondence only; no actualfinancial/resource/heldaudit grant.",
+      "status": "PASS_BOUNDED_ACTUAL_ROOT_SOURCE_DEPENDENCY_CORRESPONDENCE",
+      "report": "reviews/ROOT_ROLLFORWARDS_A1E_956_1543.md"
+    },
+    {
+      "head": "49b011b094b674f01d141559439164d3ba0a0bfa",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W2",
+      "scope": "Complete10 quote/delivery composition incl actualsession finiteHTTP, priorbrowserassertion byteparity only/noChrome",
+      "status": "QUEUED_COMPLETE_SOURCE_QUOTE_DELIVERY_COMPOSITION"
+    },
+    {
+      "head": "5a1cd82acde8c3ef7d678bb1aee6b1213fd8dd65",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W0",
+      "scope": "Complete8 PUBLIC Maya sharedchrome/source/MSC3UIconstraint; no browser/resources/Auth/private-egress orprincipal review",
+      "status": "FAIL_SOURCE_MSC3_CLEAR_BEFORE_OBSERVER_ORDER",
+      "report": "reviews/W0_MAYA_5A1_FAIL.md"
+    },
+    {
+      "head": "145966d4b6de7f3e40f8c6b69d66a3027913c91d",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W1",
+      "scope": "Complete6 DirectoryV2 DTOformat only/newprospectiveactualVIEWproducer absent. No oldeditguard relaxation/sourceprivateaudit/SQLcatalog/Auth/resources",
+      "status": "QUEUED_SOURCE_DIRECTORY_V2_DTO_ONLY"
+    },
+    {
+      "head": "ec81afcdbc7525b72357057623cfec35bd056385",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W2",
+      "scope": "New5 import dialog/helper/editor composition only, parser/controllercompare soleengine; no apply/save/publication/browser/resources/heldaudit",
+      "status": "HOLD_OWNER_HOSTED_IMPORT_MODAL_FAILURE_WAIT_NEW_PRODUCT_SUCCESSOR",
+      "reason": "Ownerreports Portal3604/3606 twooldbrowserimportflows timeout. W7hasnotread/testedauditedEC; no existingtestrewrite approved, awaitnewproductsourcehead."
+    },
+    {
+      "head": "91ca6c2332bfd982dbf4837512f4a0e25675bc3a",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W2",
+      "scope": "Newcomplete8 correctedClientWorkspace sourceonly; old0eheld/no oldreview/tests, actualVIEWreadqualification preserved",
+      "status": "HOLD_OWNER_NATIVE_P2_4462056413_WAIT_NEW_SUCCESSOR",
+      "reason": "Ownerreports mixedcaseUUID scope/duplicate identity bug; no W7source/test/audit started at91. Old0eHOLD remains, await freshcorrectedhead."
+    },
+    {
+      "head": "860c0f74e8a7b8d596c7c7d37088e9e94b2d3041",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W3",
+      "scope": "Newexact4 CSS/oneallocatedtestSHA/pageassertionexports/report; driverfunctionsUNRUN, no Page/server/browser/Auth/oldgrantreuse",
+      "status": "PASS_SCOPED_CSS_PIN_AND_ASSERTION_EXPORT_SOURCE_ONLY",
+      "report": "reviews/W3_CSS_EXPORTS_860.md"
+    },
+    {
+      "head": "73eddff523f68afeb1a4980547c9e1fc3a294ec9",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W0",
+      "scope": "Newcomplete9 PUBLIC Maya MSC3ordersuccessor, exactoriginalW7program; no old5aaudit/browser/resource/heldscope",
+      "status": "PASS_SCOPED_PUBLIC_MAYA_SOURCE_MSC3_ORDER_CLOSED",
+      "report": "reviews/W0_MAYA_73E.md"
+    },
+    {
+      "head": "e93ecfc8438e5949352c3727b7447208f671a2c7",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W1",
+      "scope": "Newcomplete4 canonicalforwardSOURCE only/71allocatedafter69+70; no parser/SQL/catalog/Auth/publication orresources untilseparateW0packet",
+      "status": "QUEUED_PRIORITY_SOURCE_PLAN_FORWARD_ONLY"
+    },
+    {
+      "head": "cb05840bfd95fae87f956fd7fffc2ec116cd251f",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "correctionBase": "95678689e7dc151148898aba18cd483aebd3043f",
+      "lane": "W5",
+      "scope": "Newcomplete7 finitefinancialtransport denialrace successor; serveronlydenyobserver/no positiveauthority, no old956audit orfacts/SQL/M65/private-return/resources",
+      "status": "QUEUED_FRESH_SOURCE_FINANCIAL_DENIAL_SUCCESSOR"
+    },
+    {
+      "head": "369c216d43dd417b0290cacedb3201daf977d63e",
+      "base": "73eddff523f68afeb1a4980547c9e1fc3a294ec9",
+      "lane": "W0",
+      "scope": "Newcomplete8 actualSelfPurchase navigator/App/witness source only afterMayaR2, no W3featurechange/businessoperation/AuthSQL/browser/resource orheldaudit grant",
+      "status": "PASS_SCOPED_SELF_PURCHASE_NAVIGATION_APP_WITNESS_SOURCE",
+      "report": "reviews/W0_SELF_369.md"
     }
   ],
   "freshGenuineGrant": null,
@@ -419,7 +520,9 @@
     "Lifecycle tool currently reports original goal paused despite newer user continuation/intakes. No newgoal created and no completion asserted; current authorized work continues.",
     "W2 owner reports admission1c hostedPortalCI52fail/3416 and nativeclean; W7 has not independently inspected CI. Source89 pass stays scoped; no currentCIgreen/integration acceptance.",
     "W1 owner reports distinct Root PlanP2/native4460794439 dangling-product SQLreference hold; W7 has not independently audited it. No Rootbackend/templateproducer safety inferred from DTO/source passes.",
-    "Published8a2 verifiedlsremote/sourcecorrespondenceonly. Native2118a2 ownerreports findings true; SQL4460794439OPEN/photo4461800685UNACCEPTED_HELD/noindependentverdict; no wholeheadclean or census inference."
+    "Published8a2 verifiedlsremote/sourcecorrespondenceonly. Native2118a2 ownerreports findings true; SQL4460794439OPEN/photo4461800685UNACCEPTED_HELD/noindependentverdict; no wholeheadclean or census inference.",
+    "W5 prematureFINALreceipt/countnotice withdrawn; finala612/641metadatahashes verified, broadchecks notindependentlyrepeated. No243/216guess used. W3newpageassertiondriverproposal awaits exacthead/W0freshpublicpacket; consumedlegacybrowser grants not reusable, no driver/resourceexecution.",
+    "W3 Source860 unchanged nowPR233 owner-opened/nativeCIpending. W7 source162/importsafety isnotcombinedRoot publication/browser/Figmapass; no grants transferred."
   ],
   "browserSlot": {
     "state": "R2_RETURNED_NORMAL_TEARDOWN_EXIT0; NO_FOLLOW_ON_GRANT",
@@ -427,7 +530,7 @@
     "at": "2026-11-03T20:04:32.743040+00:00",
     "report": "reviews/W3_BROWSER_96B_R2_RESULT.json"
   },
-  "lastReconciledAt": "2026-11-03T23:49:14.811332+00:00",
+  "lastReconciledAt": "2026-11-04T00:44:38.926516+00:00",
   "pendingIntakes": [],
   "artifactCustody": [
     {

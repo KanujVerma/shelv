@@ -2471,6 +2471,51 @@
       "report": "reviews/W1_PLAN_LOOKUP_E37.md",
       "level": "PASS_SCOPED_INERT_FIDELITY_LINEAGE_PROPOSAL_ONLY",
       "nativeFinding4460794439": "OPEN"
+    },
+    {
+      "head": "a1e89386d296815efad377ab157dc910e3bb5d8d",
+      "report": "reviews/ROOT_ROLLFORWARDS_A1E_956_1543.md",
+      "level": "PASS_BOUNDED_ACTUAL_ROOT_SOURCE_DEPENDENCY_CORRESPONDENCE"
+    },
+    {
+      "head": "95678689e7dc151148898aba18cd483aebd3043f",
+      "report": "reviews/ROOT_ROLLFORWARDS_A1E_956_1543.md",
+      "level": "PASS_BOUNDED_ACTUAL_ROOT_SOURCE_DEPENDENCY_CORRESPONDENCE",
+      "historicalVerdictPreserved": true,
+      "latestDisposition": "HOLD_OWNER_NATIVE_P2_4462020377",
+      "newIndependentVerdict": "NONE"
+    },
+    {
+      "head": "154311290595b163481e4f935765f34a451c1810",
+      "report": "reviews/ROOT_ROLLFORWARDS_A1E_956_1543.md",
+      "level": "PASS_BOUNDED_ACTUAL_ROOT_SOURCE_DEPENDENCY_CORRESPONDENCE"
+    },
+    {
+      "head": "2ec0ad959045174b455d05c568f10f28b7aeb54f",
+      "report": "reviews/W2_FOLLOWUP_2EC.md",
+      "level": "PASS_SCOPED_TEST_PARITY_SENSITIVITY_SOURCE_ONLY"
+    },
+    {
+      "head": "5a1cd82acde8c3ef7d678bb1aee6b1213fd8dd65",
+      "report": "reviews/W0_MAYA_5A1_FAIL.md",
+      "level": "FAIL_SOURCE_MSC3_CLEAR_BEFORE_OBSERVER_ORDER",
+      "historicalVerdictPreserved": true,
+      "correctedSourceHead": "73eddff523f68afeb1a4980547c9e1fc3a294ec9"
+    },
+    {
+      "head": "860c0f74e8a7b8d596c7c7d37088e9e94b2d3041",
+      "report": "reviews/W3_CSS_EXPORTS_860.md",
+      "level": "PASS_SCOPED_CSS_PIN_AND_ASSERTION_EXPORT_SOURCE_ONLY"
+    },
+    {
+      "head": "73eddff523f68afeb1a4980547c9e1fc3a294ec9",
+      "report": "reviews/W0_MAYA_73E.md",
+      "level": "PASS_SCOPED_PUBLIC_MAYA_SOURCE_MSC3_ORDER_CLOSED"
+    },
+    {
+      "head": "369c216d43dd417b0290cacedb3201daf977d63e",
+      "report": "reviews/W0_SELF_369.md",
+      "level": "PASS_SCOPED_SELF_PURCHASE_NAVIGATION_APP_WITNESS_SOURCE"
     }
   ],
   "placementClarifications": [
@@ -2481,7 +2526,7 @@
     }
   ],
   "openIndependentFindings": [],
-  "lastReconciledAt": "2026-11-03T23:49:14.810530+00:00",
+  "lastReconciledAt": "2026-11-04T00:44:38.924204+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
@@ -2525,6 +2570,19 @@
       "correctedHead": "677604e514565d113738dcf733ae502e0c3ca6f8",
       "correctionReport": "reviews/W0_QUOTE_677.md",
       "preservedOriginal": "Old failed head/report/control remain unchanged; no genuine closure."
+    },
+    {
+      "id": "W7-W0-MSC3-ORDER",
+      "severity": "P2",
+      "head": "5a1cd82acde8c3ef7d678bb1aee6b1213fd8dd65",
+      "status": "CLOSED_SOURCE_ONLY_AT_SUCCESSOR",
+      "scope": "PublicMaya clear/notify-before-retirement-observer source contract only",
+      "claim": "Same-session refresh reorders invalidation subscription behind laterobservers",
+      "reproduction": "Existing16pass/new1FAIL; cachedopening present before clear notifications",
+      "report": "reviews/W0_MAYA_5A1_FAIL.md",
+      "correctedHead": "73eddff523f68afeb1a4980547c9e1fc3a294ec9",
+      "correctionReport": "reviews/W0_MAYA_73E.md",
+      "preservedOriginal": "5a current16pass/new1FAIL remains immutable, no browser/genuine closure."
     }
   ],
   "sourceCorrespondences": [
@@ -2579,6 +2637,13 @@
       "status": "UNACCEPTED_HELD_PHOTO_SCOPE",
       "proofLevel": "OWNER_REPORTED_NATIVE_FINDING_ONLY_NO_INDEPENDENT_VERDICT",
       "rule": "No photoaudit/sourcecorrection/repro/resources, retry/rephrase/reroute or heldscope continuation."
+    },
+    {
+      "id": 4462020377,
+      "head": "95678689e7dc151148898aba18cd483aebd3043f",
+      "status": "HOLD_OWNER_WAIT_FROZEN_SUCCESSOR",
+      "proofLevel": "OWNER_REPORTED_FINITE_SETTLEMENT_FINDING_NO_NEW_W7_VERDICT",
+      "scope": "Outerhandlerwait/receivedAuthRPCdenialrace only, no SQLfinancial/M65/privateauthorityaudit"
     }
   ]
 }
