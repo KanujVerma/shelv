@@ -2532,6 +2532,22 @@
       "head": "49b011b094b674f01d141559439164d3ba0a0bfa",
       "report": "reviews/W2_QUOTE_DELIVERY_49B.md",
       "level": "PASS_SCOPED_COMPLETE_QUOTE_DELIVERY_COMPOSITION_SOURCE"
+    },
+    {
+      "head": "9cbc6289c8c12b8c724516206ebae0b7377bde39",
+      "report": "reviews/W2_CLIENT_9CBC.md",
+      "level": "PASS_SCOPED_COMPLETE_CLIENT_WORKSPACE_SOURCE"
+    },
+    {
+      "head": "3aa244c474a288149491462ee5046e57cc330c43",
+      "report": "reviews/W2_IMPORT_3AA.md",
+      "level": "PASS_SCOPED_COMPLETE_BACKGROUND_IMPORT_SOURCE"
+    },
+    {
+      "head": "fd923f8f83c06b20ed37f057d43a2e2e8b542c21",
+      "report": "reviews/W1_PLAN_FORWARD_FD9.md",
+      "level": "PASS_SCOPED_FORWARD_SOURCE_TEST_CORRESPONDENCE_WAIT_W0_PACKET",
+      "nativeFinding4460794439": "OPEN"
     }
   ],
   "placementClarifications": [
@@ -2542,7 +2558,7 @@
     }
   ],
   "openIndependentFindings": [],
-  "lastReconciledAt": "2026-11-04T01:10:18.682179+00:00",
+  "lastReconciledAt": "2026-11-04T01:16:45.267399+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
@@ -2647,7 +2663,8 @@
       "inertSourceProposalReview": "reviews/W1_PLAN_LOOKUP_E37.md",
       "sqlOrActualAcceptance": "UNRUN",
       "forwardSourceReview": "reviews/W1_PLAN_FORWARD_E93.md",
-      "actualSqlAcceptance": "UNRUN"
+      "actualSqlAcceptance": "UNRUN",
+      "forwardTestSuccessorReview": "reviews/W1_PLAN_FORWARD_FD9.md"
     },
     {
       "id": 4461800685,

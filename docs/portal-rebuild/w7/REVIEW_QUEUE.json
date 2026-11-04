@@ -514,21 +514,24 @@
       "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
       "lane": "W2",
       "scope": "New9 UUID/callback-corrected ClientWorkspace, old0e/91held/noaudit; exactadapter/readonlyview qualification retained",
-      "status": "QUEUED_FRESH_COMPLETE_CLIENT_WORKSPACE_SOURCE"
+      "status": "PASS_SCOPED_COMPLETE_CLIENT_WORKSPACE_SOURCE",
+      "report": "reviews/W2_CLIENT_9CBC.md"
     },
     {
       "head": "3aa244c474a288149491462ee5046e57cc330c43",
       "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
       "lane": "W2",
       "scope": "New5 backgroundimport productcorrection, oldEC held/noaudit/browserrerun; rawtext/sourceRootowner retention, no newapply/save/authority",
-      "status": "QUEUED_FRESH_IMPORT_BACKGROUND_SOURCE"
+      "status": "PASS_SCOPED_COMPLETE_BACKGROUND_IMPORT_SOURCE",
+      "report": "reviews/W2_IMPORT_3AA.md"
     },
     {
       "head": "fd923f8f83c06b20ed37f057d43a2e2e8b542c21",
       "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
       "lane": "W1",
       "scope": "Fresh5 forward71 test-only manifest/CWD/shallow-Gitless correspondence; SQL/pgTAP byteexacte93 and UNRUN, no SQL push/CI/resource grant",
-      "status": "QUEUED_SOURCE_FORWARD_TEST_RUNNER_SUCCESSOR"
+      "status": "PASS_SCOPED_FORWARD_SOURCE_TEST_CORRESPONDENCE_WAIT_W0_PACKET",
+      "report": "reviews/W1_PLAN_FORWARD_FD9.md"
     }
   ],
   "freshGenuineGrant": null,
