@@ -1,3 +1,7 @@
+## W0 template and Directory source integration, 4 November UTC
+
+Owner: Kanuj. PR234 templates and PR235 Directory DTOs are normally merged as bab92fb9 and c39fa320, retaining all12 reviewed postimages and unchanged dependencies. The [integration record](portal-rebuild/eight-threads/W0_TEMPLATE_DIRECTORY_INTEGRATION_20261104.md) preserves the failed post234 readiness assertion and the orchestration error that allowed the next command to run; its cause is unresolved and later passes do not relabel it. Fresh c39 code checks pass59 DTO cases, four type graphs, application/package builds, one serialized Root suite1923/0fail/18 retained skips and Expo. New hosted exact-head CI/native and actual producers/VIEW/template persistence/browser/genuine gates remain separate. No SQL, authority, resource, held-scope or counter grant follows.
+
 ## W0 reviewed current-spine source composition, 4 November UTC
 
 Owner: Kanuj. This checkpoint publishes the reviewed notification owner608 and actual inbox/A06 composition657 with the actual admission adaptera5 and corrected current-spine tests3d9. The [independent current-spine report](portal-rebuild/w7/reviews/W0_CURRENT_SPINE_3D9.md) records26 actual-adapter/consumer and157 named source/finite/SSR checks, all four configured graphs0 and the actual consumer-port ABI. The fresh fixture closure is2254 selected inputs, not a whole-runtime census. The earlier01b coverage gap and all original failures remain preserved; the status request is now actually dispatched and sensitivity-checked.
