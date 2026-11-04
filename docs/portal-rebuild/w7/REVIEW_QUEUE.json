@@ -933,7 +933,7 @@
       "scope": "NEW FULL9 inline source+exactallocatedposition-onlyCONTEXT_SYNC successor; all8unreviewedcodeexact39c/3c, oldholdsNOTresumed; sixentrylinesunchanged, removeentrywholebaseDocproof",
       "packetSha256": "0c6e613e674e2a3d12de5c27c03fd49faf8e93236185183974f03aee438a47a6",
       "patchSha256": "21880647576c673fc82c388bd7c2eb266898afd3cd86c3852fda903cb93b0c1f",
-      "status": "QUEUED_FRESH_COMPLETE9_POSITIONED_INLINE_SOURCE",
+      "status": "SUPERSEDED_BEFORE_FURTHER_UNSTARTED_REVIEW_BY_8D454",
       "evidenceQualification": "Ownernewmergeable/3checksINPROGRESS/currentdocchecksonly, prior415/25remain39c; no newSource/CI/genuine/admission/Resource/Root657b039inheritance",
       "metadataOnlyCIUpdate": "OwnerreportsPortaljob126440899477FAILED4007/4009/twounexpectednotificationreads/raw7d66ac; checkoutSHAUNVERIFIED, associated2eNOTassumedexecution. BuildDB/nativecleanseparate/no Source9admission orrerun."
     },
@@ -944,8 +944,10 @@
       "scope": "NEW COMPLETE28 nativeP2selectedpropA->B correction/fullconsumer Source; masksoldprojectionbeforeread/bindssheetcontrollerrequestedtupleloadedentity/retainsuncertainoriginalA; oldE06holdnotresumed",
       "packetSha256": "5d9c4e6f0cc9c12730f8cff1e58d6aaa18883c558a9ab4264ee86a038d7300de",
       "patchSha256": "cc28d8126dec1591e19bf0ce7d14cf461e9fef4c9e4db5ec3e2464f05bee6512",
-      "status": "QUEUED_FRESH_COMPLETE28_ORDERS_SELECTION_SOURCE",
-      "evidenceQualification": "Owner150+4overlap/4types/Root1923+18; controlledhook scheduler+actualcontroller/port+runtime-shapedfinitefixture NOThydratedbrowser/actualAuth. Old77deadlineUNKNOWN/M02/heldaudits untouched; no fullEE1/E06genuineprooftransfer"
+      "status": "WITHHELD_FIRST_MATERIAL_FINDING_O5_COMPLETE28_REVIEW_INCOMPLETE",
+      "evidenceQualification": "Pinned28/64/current DTO4; current source control0/1 original quote undone by unchanged purchase prop. STOP further bb1 review/tests. No full150/type/browser/financial pass. Old held candidates not resumed.",
+      "report": "reviews/W5_ORDERS_BB1_O5.md",
+      "finding": "W7-W5-O5/P2"
     },
     {
       "head": "fc2404740e2140486b7de66de9845cf928d63881",
@@ -967,6 +969,82 @@
       "patchSha256": "724fe980225526ada3d801e0d0d4bcc5f6a6c3135da8f09c2393b6196cd9aa4a",
       "status": "QUEUED_FRESH_COMPLETE15_PRODUCT_VERIFICATION_SOURCE",
       "evidenceQualification": "Only packet bytes/head/15-path metadata checked so far. Owner current128/types/compile proof; broader Root/Expo/app/UI are earlier c1d6 evidence. CURRENT_TYPED_PRODUCT_PAYMENT_CLAIM_SOURCE and PRODUCT_CLAIM_REJECTION_ELIGIBILITY remain OPEN; no producer/permission/financial authority, resources or held audit."
+    },
+    {
+      "head": "e1829fad1bd3ac0c25f447dcde19fc38dfb39bcf",
+      "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+      "lane": "W6",
+      "scope": "Bounded9 exact reviewed address postimages on published9c; all2153 selected inputs match retained W7 independent8f71 graph, actual70d1/450/noVirtual",
+      "packetSha256": "f6d51a96cb553c756b80cc7773c2134dade3e615719e981cc6c5edcdb1a8a1a1",
+      "patchSha256": "c7d873f52b64493c5a46f1ed343f2aa960c424ad21cac27a931f32db24cad328",
+      "status": "PASS_BOUNDED_ADDRESS9_PUBLISHED_SPINE_DEPENDENCY_SOURCE_CORRESPONDENCE",
+      "report": "reviews/W6_ADDRESS_E1829_CORRESPONDENCE.md",
+      "evidenceQualification": "Owner65/frontend0/syntax4 raw byte hashes verified, not rerun by W7; old independent46 remains8f71/fc240180 separate. OldCI3988/2/provenance/lost2230/holds/counters unchanged; actual mounting/AuthSQL/history/browser/genuine open.",
+      "currentHostedCi": {
+        "status": "FAILED_PENDING_W0_SHARED_FIXTURE_SOURCE",
+        "counts": {
+          "tests": 4013,
+          "pass": 4012,
+          "fail": 1,
+          "skip": 0,
+          "cancel": 0
+        },
+        "executionCommit": "245ff3e63c1d4f8b3ec10701d6ba13357d3f13d1",
+        "associatedTreeEqualityVerified": true,
+        "report": "ci/HOSTED_E1829_PORTAL_FAILURE.md",
+        "sourceCorrespondenceVerdictUnchanged": true
+      }
+    },
+    {
+      "lane": "W4",
+      "head": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+      "scope": "User-priority no-photo check-in->advisor review->client history published interface/eligibility inventory only; no new candidate Source approval or execution",
+      "status": "INELIGIBLE_REAL_EXECUTION_SOURCE_WORK_ONLY",
+      "report": "reviews/W4_NO_PHOTO_ELIGIBILITY_9C255.md",
+      "evidenceQualification": "Source gaps separated from principal44 refusal/A07 activation hold/HN1 unreviewed-userSTOP. body.photoIds[] does not waive holds; existing client composition not genuine acceptance."
+    },
+    {
+      "lane": "W2",
+      "head": "8d454b8015940ed29d2432635251bdbaba8b70da",
+      "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+      "scope": "NEW complete9 inline UI/controller/consumer+relocatedDoc/currentfixture-dependency",
+      "packetSha256": "9d5122f9a935c20313f042cf9b6e2ac472653b4e9629161ac8326a01b229434d",
+      "patchSha256": "a9154345a4740fd528b6442c92cf7963673a53a9ecce1ece20091f3b4f8dac62",
+      "status": "PASS_SCOPED_COMPLETE9_INLINE_SOURCE_FINITE_SSR_DEPENDENCY_HELD_CURRENT_PORTAL_FAILED",
+      "evidenceQualification": "Independent current438/438 includes25inline; actualfrontend0/strictwholefileinverses/all9+21/tree verified. FullPortal4031/1 FAILED/sharedASTbinding fix+newexactdependency/currentCI/native required. No browser/Auth/SQL/realport/mount/activation/genuine/heldscope/counter grant.",
+      "hostedCi": {
+        "status": "FAILED_PENDING_W0_SHARED_FIXTURE_SOURCE",
+        "executionCheckoutVerified": false,
+        "counts": {
+          "tests": 4032,
+          "pass": 4031,
+          "fail": 1,
+          "skip": 0,
+          "cancel": 0
+        },
+        "report": "ci/HOSTED_8D_PORTAL_FAILURE.md"
+      },
+      "report": "reviews/W2_INLINE_8D454_SOURCE.md"
+    },
+    {
+      "lane": "W5",
+      "head": "9ab334791c2a70c80b93cb188273b22225621248",
+      "base": "d31c901aaed51ae4cc283eec8ea9d2374bd1a88b",
+      "scope": "NEW complete29 R7 O5 correction/fullconsumer; oldbb1 STOP retained",
+      "packetSha256": "e24cbfe8f8b79a7d6af0accf09288b06d9f4af6ecc2d7ebc99bcfbff773b8cb3",
+      "patchSha256": "63ae61da5c27f40b0ef3aac9d67993fccd248f36f1612cc4e6f7213fde8a530f",
+      "status": "QUEUED_FRESH_COMPLETE29_SOURCE_AFTER_USER_W4_PRIORITY",
+      "evidenceQualification": "Metadata-only packet SHA/head/29-path count verified. Owner155+5overlaps/earlyfirst-replay raw TOOLONLY overwritten-name limitation retained, not reconstructed; no currentSource/hydrated/Auth/finance/resource proof or old stopped-head audit."
+    },
+    {
+      "lane": "W4",
+      "head": "39b384a169742d3dc4151058f81979256aa9393f",
+      "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+      "scope": "One allocated no-photo flow report only: source/interface fidelity, no callee or real-execution review",
+      "status": "PASS_SCOPED_ONE_REPORT_SOURCE_FIDELITY_INTERFACE_INVENTORY_ONLY",
+      "report": "reviews/W4_NO_PHOTO_39B384_REPORT.md",
+      "sourceReportSha256": "207afcc399612491a2236baa500fbde656c66f510bacbfd8cb56d9694121e803",
+      "evidenceQualification": "W7 fullreport/21pins/16links/W1receipt/W6public12 verified; owner3+4logs only, not W7reruns; no production/test delta, no real eligibility/activation/principal/HN1/photo/Source/Guidance/private-return clearance."
     }
   ],
   "freshGenuineGrant": null,
@@ -993,7 +1071,8 @@
     "Owner reports PR2343784/1, PR2353783/1 and PR226a93787/1 terminalCI failures solely known unchanged contact.y720vs740; no W7rerun/currentCIgreen inferred.",
     "W0reportsSourcePR22695d/2364dactuallymerged9bca then34239c0e3e31fee213ffdcca4d175c296b4c5797/published342. Custodyonlyhere, no combinedCI/currentSourcecensus/notification657correspondenceinferred; Rootphysical657unchanged.",
     "W2ownerFA3 exactheadall3CI/nativeclean/Portal3853 sourcepacketunchanged, rawbaceacf3 custodyonly; no W7FA3full6/currentRoot/genuinegate inferred.",
-    "W0ownerreportsad0d6947073f56b32d8fb3a76d93801ddf0cff86publishedONLYreviewed34address3+exactbd8dreportpair,parent342/depsunchanged. NoCurrent01b/3d9publication/wholecensus/genuineinference."
+    "W0ownerreportsad0d6947073f56b32d8fb3a76d93801ddf0cff86publishedONLYreviewed34address3+exactbd8dreportpair,parent342/depsunchanged. NoCurrent01b/3d9publication/wholecensus/genuineinference.",
+    "Published9c255666 independentlyremoteverified: sixfc240postimages+16exactW7d73copies only. Own705O5ledgerretained/newer, no oldCI relabel/currentCI/browser/genuine/resources/counter grant. Freshconsumercompositiongates stillrequired."
   ],
   "browserSlot": {
     "state": "R2_RETURNED_NORMAL_TEARDOWN_EXIT0; NO_FOLLOW_ON_GRANT",
@@ -1001,7 +1080,7 @@
     "at": "2026-11-03T20:04:32.743040+00:00",
     "report": "reviews/W3_BROWSER_96B_R2_RESULT.json"
   },
-  "lastReconciledAt": "2026-11-04T07:52:56.607549+00:00",
+  "lastReconciledAt": "2026-11-04T09:13:42.061946+00:00",
   "pendingIntakes": [],
   "artifactCustody": [
     {
@@ -1032,6 +1111,29 @@
       "rawSha256": "5b578524db4993de5c876205eaf28a74104ae1ed206d6dddef36195f72e9ccda",
       "classification": "VERIFIED_CI_EXECUTION_SOURCE_PROVENANCE_CORRECTION_ONLY",
       "report": "ci/HOSTED_8F71_EXECUTION_SOURCE_ADDENDUM.md"
+    },
+    {
+      "associatedHead": "e06ff5b90bb795190efe1cb42a723592c019f848",
+      "executionCommit": "3d3e795922ef4fcc7181c81a26185a851eb99cbb",
+      "packetSha256": "aae4b56a6846e159ee050c1fd432973b15ff0c123c255717f5301dbecb6266ee",
+      "rawSha256": "84399a632806b6684fea5fae08a80b2212df5c99e3cd0ddb0ca1129a9aaba8b2",
+      "classification": "VERIFIED_FAILED_CI_SELECTED_EXECUTION_SOURCE_CUSTODY_ONLY",
+      "report": "ci/HOSTED_E06_EXECUTION_SOURCE_CUSTODY.md"
+    },
+    {
+      "associatedHead": "e1829fad1bd3ac0c25f447dcde19fc38dfb39bcf",
+      "executionCommit": "245ff3e63c1d4f8b3ec10701d6ba13357d3f13d1",
+      "packetSha256": "d93d0956d1897716953de3c44fdb69aef819af92236b956b3e3eb111cc89a593",
+      "rawSha256": "4642223944e686b7ae98d69f21660cb43194b6170739b936e942a1c6ba17d791",
+      "report": "ci/HOSTED_E1829_PORTAL_FAILURE.md",
+      "classification": "VERIFIED_FAILED_CURRENT_CI_EXECUTION_CUSTODY_PENDING_W0_FIXTURE_SOURCE"
+    },
+    {
+      "associatedHead": "8d454b8015940ed29d2432635251bdbaba8b70da",
+      "executionCommit": null,
+      "rawSha256": "22a23038c22791265f7478e5d6c241c5f1d6089731df6ef291f1e40e1e34e5b8",
+      "report": "ci/HOSTED_8D_PORTAL_FAILURE.md",
+      "classification": "VERIFIED_FAILED_STEP_RAW_CUSTODY_EXECUTION_CHECKOUT_UNVERIFIED"
     }
   ]
 }
