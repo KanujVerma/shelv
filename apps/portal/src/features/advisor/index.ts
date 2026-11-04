@@ -26,3 +26,6 @@ export type {
 
 export { ClientWorkspace, createAdvisorClientWorkspaceController } from "./client-workspace/index.ts";
 export type { AdvisorClientPlansReadPort, AdvisorClientWorkspaceOptions, AdvisorClientWorkspaceController, AdvisorClientWorkspaceState, AdvisorClientWorkspaceDirectory, ClientWorkspaceProps } from "./client-workspace/index.ts";
+
+export { createAdvisorInlinePreviewController } from "./inline-preview/controller.ts";
+export type { AdvisorInlinePreviewController, AdvisorInlinePreviewOptions, AdvisorInlinePreviewState, AdvisorInlinePreviewRead } from "./inline-preview/types.ts";
