@@ -41,6 +41,14 @@ const clientEntryChanges=[
 /** Preserve the original Account integration witness only after exact whole-file
  * identity and exact five-clause reversal. This does not accept the new action. */
 export function selfPurchaseApplicationPreimage(source){
+ if(sha(source)==='02acf950ab71a21cbe71bdb6ddd83c458173120f8a4791d9ebb4f5b4f365d11b'){
+  const after='{route.name === "notifications" || route.name === "advisor-notifications" ? (';
+  const original='{route.name === "notifications" ? (';
+  const index=source.indexOf(after);
+  if(index<0||source.indexOf(after,index+1)>=0)throw Error('ambiguous notification route seam');
+  source=source.slice(0,index)+original+source.slice(index+after.length);
+  if(sha(source)!==clientEntryAfterHash)throw Error('notification route inverse mismatch');
+ }
  if(sha(source)===clientEntryAfterHash){
   for(const [after,original] of clientEntryChanges){
    const index=source.indexOf(after);

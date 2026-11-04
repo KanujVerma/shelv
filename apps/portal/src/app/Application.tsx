@@ -347,7 +347,7 @@ function ConnectedRoute({
           </StatusNotice>
         </div>
       ) : null}
-      {route.name === "notifications" ? (
+      {route.name === "notifications" || route.name === "advisor-notifications" ? (
         <ApplicationShell audience={audience} onSignOut={signOut} readOnly>
           <ClientNotificationsApplication runtime={runtime}/>
         </ApplicationShell>

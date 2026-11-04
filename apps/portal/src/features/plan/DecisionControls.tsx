@@ -1,3 +1,4 @@
+import {DecisionChoiceButton} from './DecisionChoiceButton.tsx';
 import {PendingGuidanceDecisionReviews} from './GuidancePendingReviews.tsx';
 import {GuidanceDecisionControls} from './GuidanceDecisionControls.tsx';
 import { useEffect, useRef, useState } from 'react';
@@ -175,9 +176,9 @@ function LegacyDecisionControls(props: ClientPlanProps & {decision:PlanDecision}
     const recorded=view.decisions.find(d=>d.decisionId===decision.id),purchase=isPurchaseDecision(decision);
     if(!port&&!(demoChoice&&demoChoice.isCurrent()))return <div className="plan-stack"><h2>your choice</h2><StatusNotice title={view.access==='read_only' ? 'read-only plan' : mode==='historical' ? 'historical plan' : mode==='public-demo' ? 'demo preview' : 'preview only'}>choices are unavailable in this view.</StatusNotice>{recorded ? <p>recorded choice: {recorded.choice}</p> : null}</div>;
     return <div className="plan-stack"><h2>your choice</h2>
-      <Button busy={intent.phase==='saving'} disabled={locked} onClick={()=>void submit('approved')}>{purchase ? 'approve product' : 'approve decision'}</Button>
-      <Button variant="secondary" disabled={locked} onClick={()=>void submit('deferred')}>decide later</Button>
-      <Button variant="ghost" disabled={locked} onClick={()=>void submit('declined')}>decline</Button>
+      <DecisionChoiceButton choice="approved" purchase={purchase} busy={intent.phase==='saving'} disabled={locked} onClick={()=>void submit('approved')}/>
+      <DecisionChoiceButton choice="deferred" purchase={purchase} disabled={locked} onClick={()=>void submit('deferred')}/>
+      <DecisionChoiceButton choice="declined" purchase={purchase} disabled={locked} onClick={()=>void submit('declined')}/>
       {recorded ? <p className="plan-muted">{demoChoice?'demo choice':'recorded choice'}: {recorded.choice}</p> : null}
       {intent.attemptedChoice && intent.phase!=='saved' ? <p>attempted choice: {intent.attemptedChoice}</p> : null}
       {intent.phase==='refreshing' ? <StatusNotice tone="loading" title="checking your choice"/> : null}

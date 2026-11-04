@@ -47,12 +47,12 @@ export function ApplicationShell({
   const status = (
     <div className="app-session-actions">
       {preview ? <Badge>advisor preview</Badge> : null}
-      {audience === "client" && !preview ? (
+      {!preview ? (
         <Button variant="ghost" asChild>
           <RouteLink
             id="portal-notifications"
-            route={{ name: "notifications" }}
-            aria-current={route?.name === "notifications" ? "page" : undefined}
+            route={{ name: audience === "advisor" ? "advisor-notifications" : "notifications" }}
+            aria-current={route?.name === "notifications" || route?.name === "advisor-notifications" ? "page" : undefined}
           >
             <Icon name="bell" />
             notifications
@@ -90,7 +90,9 @@ export function ApplicationShell({
       </>
     );
   const active =
-    route?.name === "advisor-clients" || route?.name === "advisor-client"
+    route?.name === "advisor-notifications" || route?.name === "notifications"
+      ? "advisor-notifications"
+      : route?.name === "advisor-clients" || route?.name === "advisor-client"
       ? "advisor-clients"
       : route?.name === "advisor-permissions"
         ? "advisor-permissions"

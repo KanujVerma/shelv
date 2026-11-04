@@ -10,3 +10,6 @@ export type {ClientGuidanceCommand,GuidanceDecisionCommand,ClientGuidancePort} f
 export {selectOrderProductUse} from './orderUse.ts';
 export type {OrderProductUseSelection,OrderProductUseView} from './orderUse.ts';
 export {UseFacts} from './UseFacts.tsx';
+
+export {UnpublishedDecisionCard} from './UnpublishedDecisionCard.tsx';
+export type {UnpublishedDecisionCardProps} from './UnpublishedDecisionCard.tsx';

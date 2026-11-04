@@ -1,0 +1,149 @@
+{
+  "owner": "Kanuj",
+  "executionId": "5ded069b-2fb7-4f56-846e-8497efe58690",
+  "packetSha256": "0fde103308926333f891f5fc323b60d0ff79fd5ae33efc135de69e03566f521e",
+  "candidateHead": "3a90573080ccbe1924d20afccfd0718b3302c923",
+  "admission": "ExplicitW0literalonce; actualW7ordinal4 as supplied. Scopefrozen3apublicbuild evencurrentremoteadvancedf060; no currentf060claim.",
+  "verdict": "INCOMPLETE_CAPTURE_PREVIEW_SNAPSHOT_TIMEOUT_CAUSE_UNKNOWN",
+  "stage": "Initial1800x960 publicMaya; no completed task/stage2/referencecapture",
+  "host": {
+    "pid": 92615,
+    "execSessionId": 62353,
+    "literalArgvExecuted": true,
+    "startedAt": "2026-11-04T03:00:06Z",
+    "closedAt": "2026-11-04T03:03:55.650049+00:00",
+    "closedReason": "owned SIGTERM",
+    "hostElapsedSeconds": 228.99891745799687,
+    "exitCode": 0,
+    "requests": 16,
+    "hostAPIRequests": 0,
+    "statuses": [
+      200
+    ],
+    "evidence": {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/CLOSED.json",
+      "bytes": 267,
+      "sha256": "6d5408746dd27f0e3c8e4103bbad0e8a47c07433bb1212b636fcbd0986185997",
+      "mode": "0600"
+    }
+  },
+  "browser": {
+    "ownedTabId": "tab_3_b8a52f0a-7d61-4512-b1fb-53d0f4cc8fc7",
+    "profile": "incognito",
+    "initialURL": "http://127.0.0.1:61937/maya",
+    "requestedViewport": {
+      "width": 1800,
+      "height": 960
+    },
+    "captureToolError": {
+      "operation": "snapshot",
+      "message": "Preview automation snapshot timed out after15000ms",
+      "failureCount": 1,
+      "retry": false
+    },
+    "oneReadOnlyDiagnostic": {
+      "url": "http://127.0.0.1:61937/maya",
+      "title": "shelv",
+      "width": 1800,
+      "height": 960,
+      "ready": "complete",
+      "publicShell": 1,
+      "maya": 1,
+      "at": "2026-11-04T03:01:34Z"
+    },
+    "close": "OwnactualIDwindow.close returnedclose-requested, ownIDstatusavailablefalse/tabnull at03:03:55Z",
+    "returnedScreenshotOrAXTree": false,
+    "productControlActions": 0
+  },
+  "rawEvidenceManifest": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/RAW-MANIFEST.json",
+    "bytes": 3912,
+    "sha256": "352d68101515187d6e34e0fd2c4c1aeb990fe612e95f39625d592ed1f22c25e8",
+    "mode": "0600"
+  },
+  "rawEvidence": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/CLOSED.json",
+      "bytes": 267,
+      "sha256": "6d5408746dd27f0e3c8e4103bbad0e8a47c07433bb1212b636fcbd0986185997",
+      "mode": "0600"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/EXECUTION-CLOCK.json",
+      "bytes": 143,
+      "sha256": "dbf225a8155eeef44c474cd26b0cdf2b77035891d469809596bee2437aa4d294",
+      "mode": "0600"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/HOST-EXEC-JOIN.json",
+      "bytes": 418,
+      "sha256": "e6494ca40b84c4911fd6b578791367728f2b13b8677972188eac6d3de54a38b5",
+      "mode": "0600"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/HOST-EXEC-LAUNCH.json",
+      "bytes": 381,
+      "sha256": "62c64aa4760691ff8ee63a640dca889a8f42be8c88c42ebfba30cb3439731276",
+      "mode": "0600"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/READY.json",
+      "bytes": 245,
+      "sha256": "c00f6bc72870b7f8b8f88ee81ed4df733d7649050adedbbd66686d05db94a65f",
+      "mode": "0600"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/TOOL-CLOSE-STATUS.json",
+      "bytes": 727,
+      "sha256": "96169fe1dee6181ff52be69946238f45f0a1fe50de2cb43fb7db77a9c70979f0",
+      "mode": "0600"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/TOOL-CLOSE.json",
+      "bytes": 363,
+      "sha256": "1b9694e8375c573c8b7c1b44ec7faead14b1ec04001a89e92f1e9d862c6f424e",
+      "mode": "0600"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/TOOL-DIAGNOSTIC.json",
+      "bytes": 659,
+      "sha256": "4bef546371b6b0085bf2c159216379405d8d68c16def0a6431ad19c320496adf",
+      "mode": "0600"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/TOOL-OPEN.json",
+      "bytes": 1825,
+      "sha256": "319580dc6bc3040e8bf38d7fb77751949a88c5dc5174d881da0362aa3df2690a",
+      "mode": "0600"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/TOOL-PRE-STATUS.json",
+      "bytes": 727,
+      "sha256": "96169fe1dee6181ff52be69946238f45f0a1fe50de2cb43fb7db77a9c70979f0",
+      "mode": "0600"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/TOOL-SNAPSHOT-FAILED.json",
+      "bytes": 396,
+      "sha256": "b5a504205938a52043327dd29bf9b476165c96366402134ddf3ab37a07e2efe8",
+      "mode": "0600"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690/REQUESTS.jsonl",
+      "bytes": 1830,
+      "sha256": "bd4d3217cdc95e2bdbc7d3f909f38f23ce13451d12826f7e2aea1784a0a0078b",
+      "mode": "0600"
+    }
+  ],
+  "precision": "Use actualCLOSED228.998917s(229.0srounded) and toolUTCseconds. Earlier229.2s chat approximation is not precision evidence.",
+  "interpretation": [
+    "Actualpublicpage loaded/read-onlyDOMpresence wasobserved; no geometry/font-render/image-decode/Figma/keyboard/a11y result",
+    "Host0API is an observedhostlog fact, not proof ofzero browser attempted/externalrequests; console/performance attempt gate incomplete",
+    "No visual/product failure cause inferred, not declaredflake; originaltimeout retained and no retry/fallback",
+    "No otherfixture/tab/portadoption/AuthSQL/business or heldscope operation; no actualMaya form mutation",
+    "OwnTabclosed+ownHostjoined/CLOSED; no globalprocessabsenceclaim"
+  ],
+  "remainingGate": "New separatelyreviewed/onceadmitted capability/capture packet required; no further resource operation authorized bythis consumedgrant",
+  "acceptance": "No wholeD01/J10/currentframe/genuine/counteradvance; originalDFCIandallholds unchanged",
+  "activeResourceGrant": null
+}

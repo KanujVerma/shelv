@@ -38,6 +38,9 @@ import {
 import type { AdvisorController, AdvisorState } from "./types.ts";
 import "./advisor.css";
 import { DependencyReview } from "./DependencyReview.tsx";
+import { ClientAssignment, ClientDirectoryFeedback } from "./ClientAssignment.tsx";
+import { ClientAdmission } from "./admission/ClientAdmission.tsx";
+import type { AdvisorAdmissionController } from "./admission/types.ts";
 import { FirstServiceQuote } from "./FirstServiceQuote.tsx";
 import { PublicationDelivery } from "./PublicationDelivery.tsx";
 import type { NotificationController } from "../notifications/index.ts";
@@ -56,6 +59,7 @@ export interface AdvisorWorkspaceProps {
   onOpenClient?: (clientId: string) => void;
   /** Actual W0-owned notification controller; never a caller-created authority. */
   publicationNotifications?: NotificationController;
+  admission?: AdvisorAdmissionController;
 }
 const editorSections: readonly {
   section: EditorSection;
@@ -82,6 +86,7 @@ export function AdvisorWorkspace({
   navigation,
   onOpenClient,
   publicationNotifications,
+  admission,
 }: AdvisorWorkspaceProps) {
   const s = useSyncExternalStore(c.subscribe, c.getSnapshot, c.getSnapshot),
     route = navigation.route;
@@ -208,10 +213,27 @@ export function AdvisorWorkspace({
           : null}
     </StatusNotice>
   ) : null;
+  const query = search.trim().toLowerCase();
+  const visibleClients = s.clients?.clients.filter((client) =>
+    (client.displayName + " " + client.clientId).toLowerCase().includes(query),
+  ) ?? [];
+  const visibleDrafts = s.directory?.drafts.filter((draft) =>
+    (filter !== "unassigned" || !draft.clientId) &&
+    (draft.id + " " + clientName(s, draft.clientId)).toLowerCase().includes(query),
+  ) ?? [];
+  const visiblePublications = filter === "all" ? s.directory?.publications.filter((publication) =>
+    (publication.clientId + " " + clientName(s, publication.clientId)).toLowerCase().includes(query),
+  ) ?? [] : [];
   if (route.name === "advisor-clients")
     return (
       <div className="advisor-view">
-        <PageHeader title="clients" />
+        <PageHeader title="clients" action={s.clientsRead === "error" || s.clientsRead === "denied" ? undefined : (
+          <Button variant="secondary" busy={s.clientsRead === "loading"}
+            onClick={() => void c.loadClients()}>
+            {s.clients ? "refresh clients" : "load clients"}
+          </Button>
+        )} />
+        <div className="advisor-search">
         <Field label="find a client">
           <Input
             placeholder="search by name or client identity"
@@ -219,16 +241,14 @@ export function AdvisorWorkspace({
             onChange={(e) => setSearch(e.target.value)}
           />
         </Field>
+          {admission ? <ClientAdmission controller={admission} onOpenClient={onOpenClient}
+            onAdmitted={() => void c.loadClients()} /> : null}
+        </div>
         {notice}
+        <ClientDirectoryFeedback controller={c} state={s} />
         <Panel>
           <div className="advisor-directory">
-            {s.clients?.clients
-              .filter((client) =>
-                (client.displayName + " " + client.clientId)
-                  .toLowerCase()
-                  .includes(search.toLowerCase()),
-              )
-              .map((client) => (
+            {visibleClients.map((client) => (
                 <div className="advisor-directory-row" key={client.clientId}>
                   <strong>{client.displayName}</strong>
                   <span>{client.enrollmentStatus}</span>
@@ -248,9 +268,15 @@ export function AdvisorWorkspace({
                     </Button>
                   ) : null}
                 </div>
-              )) ?? <p>loading clients</p>}
-            {s.clients && !s.clients.clients.length ? (
+              ))}
+            {!s.clients && s.clientsRead === "idle" ? <p>load clients to view the directory.</p> : null}
+            {s.clientsRead === "ready" && s.clients && !s.clients.clients.length ? (
               <p>no clients available</p>
+            ) : null}
+            {s.clients && s.clients.clients.length > 0 && !visibleClients.length ? (
+              <StatusNotice tone="empty" title="no clients match this search" action={
+                <Button variant="ghost" onClick={() => setSearch("")}>clear search</Button>
+              } />
             ) : null}
           </div>
         </Panel>
@@ -289,6 +315,22 @@ export function AdvisorWorkspace({
           }
         />
         {notice}
+        <div className="advisor-actions">
+          <Button variant="secondary" busy={s.directoryRead === "loading"}
+            onClick={() => void c.loadDirectory()}>
+            {s.directoryRead === "error" || s.directoryRead === "denied"
+              ? "retry plans" : s.directory ? "refresh plans" : "load plans"}
+          </Button>
+        </div>
+        {s.directoryRead === "loading" ? (
+          <StatusNotice tone="loading" title={s.directory ? "refreshing plans" : "loading plans"} />
+        ) : s.directoryRead === "error" ? (
+          <StatusNotice tone="error" title="could not load plans">
+            {s.directory ? "the loaded page is retained. retry from the first page." : null}
+          </StatusNotice>
+        ) : s.directoryRead === "denied" ? (
+          <StatusNotice tone="denied" title="plans unavailable with current access" />
+        ) : null}
         <div className="advisor-search">
           <Field label="find a plan">
             <Input
@@ -307,15 +349,7 @@ export function AdvisorWorkspace({
               <span>state</span>
               <span>updated</span>
             </div>
-            {s.directory?.drafts
-              .filter(
-                (d) =>
-                  (filter !== "unassigned" || !d.clientId) &&
-                  (d.id + " " + clientName(s, d.clientId))
-                    .toLowerCase()
-                    .includes(search.toLowerCase()),
-              )
-              .map((d) => (
+            {visibleDrafts.map((d) => (
                 <div className="advisor-directory-row" key={d.id}>
                   <Button
                     variant="ghost"
@@ -334,14 +368,7 @@ export function AdvisorWorkspace({
                   <span>{d.savedAt}</span>
                 </div>
               ))}
-            {filter === "all"
-              ? s.directory?.publications
-                  .filter((p) =>
-                    (p.clientId + " " + clientName(s, p.clientId))
-                      .toLowerCase()
-                      .includes(search.toLowerCase()),
-                  )
-                  .map((p) => (
+            {visiblePublications.map((p) => (
                     <div
                       className="advisor-directory-row"
                       key={`${p.clientId}:${p.version}`}
@@ -351,22 +378,32 @@ export function AdvisorWorkspace({
                       <Badge tone="active">published</Badge>
                       <span>{p.publishedAt}</span>
                     </div>
-                  ))
-              : null}
-            {s.directory &&
+                  ))}
+            {s.directoryRead === "ready" && s.directory &&
             !s.directory.drafts.length &&
             !s.directory.publications.length ? (
               <p>no plans yet. create an unassigned draft to begin.</p>
             ) : null}
-            {!s.directory ? <p>loading plans</p> : null}
+            {s.directory && (s.directory.drafts.length + s.directory.publications.length > 0) &&
+              !visibleDrafts.length && !visiblePublications.length ? (
+              <StatusNotice tone="empty" title="no matching plans on this page" action={
+                <Button variant="ghost" onClick={() => { setSearch(""); setFilter("all"); }}>clear filters</Button>
+              } />
+            ) : null}
+            {!s.directory && s.directoryRead === "idle" ? <p>load plans to view this page.</p> : null}
           </div>
           {s.directory?.nextCursor ? (
             <Button
               variant="secondary"
+              busy={s.directoryRead === "loading"}
               onClick={() => void c.loadDirectory(s.directory!.nextCursor)}
             >
               next plans
             </Button>
+          ) : null}
+          {s.directoryCursor ? (
+            <Button variant="secondary" busy={s.directoryRead === "loading"}
+              onClick={() => void c.loadDirectory()}>first plans</Button>
           ) : null}
         </Panel>
         <StatusNotice title="one template. your advice.">
@@ -677,33 +714,8 @@ export function AdvisorWorkspace({
         title="assign an existing client"
         description="check the intended recipient before assigning this private draft."
       >
-        <div className="advisor-fields">
-          <Field label="admitted client">
-            <Select
-              value={client}
-              placeholder="select a client"
-              options={(s.clients?.clients ?? [])
-                .filter((v) => v.enrollmentStatus === "active")
-                .map((v) => ({ value: v.clientId, label: v.displayName }))}
-              onValueChange={setClient}
-            />
-          </Field>
-          {client ? (
-            <p>
-              {clientName(s, client)} · {client}
-            </p>
-          ) : null}
-          <Button
-            disabled={!client || s.busy}
-            onClick={async () => {
-              await c.assign(client);
-              if (c.getSnapshot().view?.draft.clientId === client)
-                setAssignOpen(false);
-            }}
-          >
-            confirm intended client
-          </Button>
-        </div>
+        <ClientAssignment controller={c} state={s} selectedClient={client} onSelect={setClient}
+          onAssigned={() => setAssignOpen(false)} />
       </Dialog>
     </div>
   );
