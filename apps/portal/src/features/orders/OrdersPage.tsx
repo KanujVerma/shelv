@@ -29,7 +29,8 @@ export function OrdersView({state,controller,navigation,onSheet,useDisplay}:Orde
  const use=state.phase==='ready'&&target&&useDisplay!==undefined&&useDisplay.clientId===d?.clientId&&
   useDisplay.selection.productId===target.productId&&useDisplay.selection.decisionId===target.decisionId&&
   useDisplay.selection.publication.version===target.publication.version&&useDisplay.selection.publication.documentSchemaVersion===target.publication.documentSchemaVersion&&
-  useDisplay.view.status==='available'&&useDisplay.view.use.product.kind==='plan_product'&&useDisplay.view.use.product.productId===target.productId?useDisplay.view.use:null;
+  useDisplay.view.status==='available'&&useDisplay.view.use.product.kind==='plan_product'&&useDisplay.view.use.product.productId===target.productId&&
+  useDisplay.view.use.product.publication?.version===target.publication.version&&useDisplay.view.use.product.publication?.documentSchemaVersion===target.publication.documentSchemaVersion?useDisplay.view.use:null;
  const detailAction=(line:FrozenProductLine)=>onSheet?.('product',line);
  return <div className="orders-view" data-orders-source>
   <header className="orders-heading" data-delivered={d?.kind==='purchase'&&!!d.delivery}><h1 data-page-heading tabIndex={-1}>{d?.kind==='purchase'&&d.delivery?'your order has arrived':'orders'}</h1>{selection?<Button variant="ghost" onClick={()=>{controller?.close();navigation?.back();}}>back to orders</Button>:null}<p className="orders-muted">product approval, payment and delivery are separate steps</p></header>
