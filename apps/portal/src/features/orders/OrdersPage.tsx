@@ -70,9 +70,12 @@ export interface OrdersPageProps {controller:OrdersController;navigation?:Orders
 export function OrdersPage({controller,navigation,selected,useDisplay}:OrdersPageProps){
  const state=useSyncExternalStore(controller.subscribe,controller.getSnapshot,controller.getSnapshot);
  const sameEntity=(a:CommerceEntityRef|undefined,b:CommerceEntityRef|undefined)=>a?.kind===b?.kind&&a?.id===b?.id&&a?.revision===b?.revision;
- const requestedKey=selected?`${selected.kind}:${selected.id}:${selected.revision}`:null,context=useRef({controller,requestedKey,request:selected?{...selected}:undefined,pending:selected!==undefined});
- if(context.current.controller!==controller||context.current.requestedKey!==requestedKey)context.current={controller,requestedKey,request:selected?{...selected}:undefined,pending:selected!==undefined};
+ const requestedKey=selected?`${selected.kind}:${selected.id}:${selected.revision}`:null,context=useRef({controller,requestedKey,request:selected?{...selected}:undefined,pending:selected!==undefined,opening:false});
+ if(context.current.controller!==controller||context.current.requestedKey!==requestedKey)context.current={controller,requestedKey,request:selected?{...selected}:undefined,pending:selected!==undefined,opening:false};
  const renderedContext=context.current;
+ // Starting open is not acquisition. Only an actual matching ready snapshot
+ // releases the request mask; cancellation/abort observers can still see A.
+ if(renderedContext.pending&&renderedContext.request&&state.phase==='ready'&&sameEntity(renderedContext.request,state.selection?.entity)&&controller.getSnapshot()===state)renderedContext.pending=false;
  const [sheet,setSheet]=useState<{kind:OrderSheetKind;line?:FrozenProductLine;context:typeof renderedContext;entity:CommerceEntityRef}|null>(null);
  const mismatch=renderedContext.pending&&renderedContext.request!==undefined&&!sameEntity(renderedContext.request,state.selection?.entity),indexed=state.index?.entries.some(entry=>sameEntity(entry.entity,renderedContext.request));
  // A requested target is not evidence that the previous target is still its
@@ -82,13 +85,12 @@ export function OrdersPage({controller,navigation,selected,useDisplay}:OrdersPag
  useEffect(()=>{void controller.refresh();return()=>controller.close();},[controller]);
  useEffect(()=>{
   const request=renderedContext.request;
-  if(context.current!==renderedContext||!renderedContext.pending||!request||controller.getSnapshot()!==state||!state.index||state.phase!=='ready')return;
+  if(context.current!==renderedContext||!renderedContext.pending||renderedContext.opening||!request||controller.getSnapshot()!==state||!state.index||state.phase!=='ready')return;
   if(sameEntity(request,state.selection?.entity)){renderedContext.pending=false;return;}
   if(!state.index.entries.some(entry=>sameEntity(entry.entity,request)))return;
-  // A changed tuple is a navigation request, not a permanent selection lock.
-  // Consume it before open's synchronous observers; later internal quote/Back
-  // navigation remains usable until the parent requests another tuple.
-  renderedContext.pending=false;void controller.open(request);
+  // Prevent reentrant opens without dropping the mask before accepted state.
+  renderedContext.opening=true;
+  void controller.open(request).then(()=>{renderedContext.opening=false;},()=>{renderedContext.opening=false;});
  },[controller,requestedKey,state]);
  useEffect(()=>{setSheet(null);},[controller,requestedKey]);
  useEffect(()=>{if(['ended','denied','conflict'].includes(state.phase))setSheet(null);},[state.phase]);
