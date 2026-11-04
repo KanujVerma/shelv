@@ -1,0 +1,277 @@
+{
+  "owner": "Kanuj",
+  "head": "e964cb6d103483757eea884c574cb6fa93b9ce34",
+  "verdict": "PASS_BOUNDED_PUBLISHED_SPINE_SOURCE_CORRESPONDENCE_ONLY_ORCHESTRATION_FAILURE_PRESERVED",
+  "sourceComposition": {
+    "head": "a96e26dccc20851c490c22c6d6d9d30d0b05f30a",
+    "selectedReviewedPostimages": 27,
+    "canonicalIntegrationStatusDocs": 3,
+    "exactW7DocumentControlCopies": 50,
+    "w7Version": "0af28ce99569973bbbe6148bc9992ed1bd58909f",
+    "allExact": true
+  },
+  "DTOs": [
+    {
+      "family": "templates",
+      "merge": "bab92fb9aeba39e6470d84ec1d1ef66f8e74c534",
+      "head": "48141c31b11ebb2bdb13c73ad5c20ec5af83d50b",
+      "postimages": [
+        {
+          "path": "apps/portal/tests/w1-plan-platform-templates.test.mjs",
+          "bytes": 14222,
+          "sha256": "38b6e1802cbc7061f3b48de58eb15ffcf42c5684ea7005abb42a880a44792192"
+        },
+        {
+          "path": "docs/portal-rebuild/research/W1_PLAN_TEMPLATE_DTO_20261103.md",
+          "bytes": 10481,
+          "sha256": "4b9a8ba1156d0ae4558f94977fa7c83433ac6dbb6e417a0a75a17e7401f30983"
+        },
+        {
+          "path": "src/contracts/PortalPlanTemplate.ts",
+          "bytes": 2047,
+          "sha256": "480980473105c65e28a5ad11f5b5dea3b2d9c239981bd5c766aa671a51dfaab6"
+        },
+        {
+          "path": "src/contracts/PortalPlanTemplateMapping.ts",
+          "bytes": 623,
+          "sha256": "24fdc334d9d7ca25ffb50b9eec2bd2394fa0f014da2f1dda1c8b526a008f6142"
+        },
+        {
+          "path": "src/contracts/PortalPlanTemplateValidation.ts",
+          "bytes": 9038,
+          "sha256": "9e07c282a321a5e218275aee26a0d8f7fd9e76ad5ed16ce6b2601bddf06cc857"
+        },
+        {
+          "path": "src/contracts/PortalPlanTemplateValues.ts",
+          "bytes": 1309,
+          "sha256": "a517623623b065b5aa3e0a66fb53c75c3008909adcfcfa56d4cee6d2740f0dea"
+        }
+      ],
+      "dependencies": [
+        {
+          "path": "src/contracts/PortalRebuild.ts",
+          "bytes": 14140,
+          "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc"
+        },
+        {
+          "path": "src/contracts/PortalRebuildValues.ts",
+          "bytes": 1206,
+          "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+        },
+        {
+          "path": "src/contracts/PortalRebuildValidation.ts",
+          "bytes": 12947,
+          "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+        },
+        {
+          "path": "src/contracts/PortalRebuildMapping.ts",
+          "bytes": 10694,
+          "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+        },
+        {
+          "path": "src/contracts/PortalCareValidation.ts",
+          "bytes": 7336,
+          "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d"
+        },
+        {
+          "path": "src/contracts/PortalReviewValidation.ts",
+          "bytes": 15488,
+          "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+        },
+        {
+          "path": "src/contracts/ConciergePortalValidation.ts",
+          "bytes": 2880,
+          "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+        },
+        {
+          "path": "package-lock.json",
+          "bytes": 303079,
+          "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+        },
+        {
+          "path": "apps/portal/package-lock.json",
+          "bytes": 123808,
+          "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+        }
+      ],
+      "exactFirstParentDelta": true
+    },
+    {
+      "family": "directory",
+      "merge": "c39fa32083d19bc2d021a1e2c6438ff731a02b46",
+      "head": "b02e0f8196642f1ec52666ce8ce3c88ee1dc78bb",
+      "postimages": [
+        {
+          "path": "apps/portal/tests/w1-plan-platform-directory-v2.test.mjs",
+          "bytes": 13826,
+          "sha256": "cb9ea22a32ab9906ab1a608a97369c4fe4cecdf48e40542f7f85e8b78205a421"
+        },
+        {
+          "path": "docs/portal-rebuild/research/W1_PLAN_DIRECTORY_V2_DTO_20261103.md",
+          "bytes": 13017,
+          "sha256": "d4b0eff93d2a88a8a9af0372240e36b22a757d68d3314a3c4f2550d3884f3815"
+        },
+        {
+          "path": "src/contracts/PortalPlanDirectoryV2.ts",
+          "bytes": 1968,
+          "sha256": "22dae793cd097b4e0377f7d7304d850194238e82cfa36a874edce3f6c8593d04"
+        },
+        {
+          "path": "src/contracts/PortalPlanDirectoryV2Mapping.ts",
+          "bytes": 653,
+          "sha256": "69c2687f445be202aef093d697a72bdd7c9068443c110e44ac3438658c72c6de"
+        },
+        {
+          "path": "src/contracts/PortalPlanDirectoryV2Validation.ts",
+          "bytes": 4896,
+          "sha256": "4e1b94731adf514953295472094c095b09b9ed53487c1db3265a96c5ce4464ff"
+        },
+        {
+          "path": "src/contracts/PortalPlanDirectoryV2Values.ts",
+          "bytes": 1056,
+          "sha256": "46419fa0c1520fab72b0ff3fa0287d3e2336c23d1e364a8440d6d99d140f8eda"
+        }
+      ],
+      "dependencies": [
+        {
+          "path": "src/contracts/PortalRebuild.ts",
+          "bytes": 14140,
+          "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc"
+        },
+        {
+          "path": "src/contracts/PortalRebuildValidation.ts",
+          "bytes": 12947,
+          "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+        },
+        {
+          "path": "src/contracts/PortalRebuildMapping.ts",
+          "bytes": 10694,
+          "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+        },
+        {
+          "path": "src/contracts/PortalRebuildValues.ts",
+          "bytes": 1206,
+          "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+        },
+        {
+          "path": "src/contracts/PortalCareValidation.ts",
+          "bytes": 7336,
+          "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d"
+        },
+        {
+          "path": "src/contracts/PortalReviewValidation.ts",
+          "bytes": 15488,
+          "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+        },
+        {
+          "path": "src/contracts/ConciergePortalValidation.ts",
+          "bytes": 2880,
+          "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+        },
+        {
+          "path": "package-lock.json",
+          "bytes": 303079,
+          "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+        },
+        {
+          "path": "apps/portal/package-lock.json",
+          "bytes": 123808,
+          "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+        }
+      ],
+      "exactFirstParentDelta": true
+    }
+  ],
+  "b039ThreeFilesAbsent": true,
+  "old68BlobsExact": true,
+  "receiptCopies": [
+    {
+      "name": "REVIEWED-CURRENT-SPINE-PUBLISH-RECEIPT.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/published-spine-e964/be7296a6363b66bb30c288ede04b3d4438e5e2b86292b36b86288dc294ad84d9-REVIEWED-CURRENT-SPINE-PUBLISH-RECEIPT.json",
+      "bytes": 24159,
+      "sha256": "be7296a6363b66bb30c288ede04b3d4438e5e2b86292b36b86288dc294ad84d9"
+    },
+    {
+      "name": "REVIEWED-CURRENT-SPINE-FINAL-CHECKS.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/published-spine-e964/873c86405d56654a8b83812a0d5c815101d9299680838fe8f82a24148b1a5789-REVIEWED-CURRENT-SPINE-FINAL-CHECKS.json",
+      "bytes": 8592,
+      "sha256": "873c86405d56654a8b83812a0d5c815101d9299680838fe8f82a24148b1a5789"
+    },
+    {
+      "name": "W1-234-235-MERGE-READBACK.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/published-spine-e964/b8c5b9ffbef07a400dda06e5dcedf31466f6239b64ffbdac8a1e971fd55945ff-W1-234-235-MERGE-READBACK.json",
+      "bytes": 2640,
+      "sha256": "b8c5b9ffbef07a400dda06e5dcedf31466f6239b64ffbdac8a1e971fd55945ff"
+    },
+    {
+      "name": "W1-234-235-PREMERGE-GATES.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/published-spine-e964/9d604c074cbb8072ade53856d631f0459cfc482ab5141db26d84e400aa541d1a-W1-234-235-PREMERGE-GATES.json",
+      "bytes": 2980,
+      "sha256": "9d604c074cbb8072ade53856d631f0459cfc482ab5141db26d84e400aa541d1a"
+    },
+    {
+      "name": "MERGED-W1-FINAL-CHECKS.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/published-spine-e964/68c05ea42665fa1ab93ef3a792749647746d2006f2821d6c631e65c87f05ceda-MERGED-W1-FINAL-CHECKS.json",
+      "bytes": 6709,
+      "sha256": "68c05ea42665fa1ab93ef3a792749647746d2006f2821d6c631e65c87f05ceda"
+    }
+  ],
+  "independentPureDtoExecution": {
+    "tests": 59,
+    "pass": 59,
+    "fail": 0,
+    "skip": 0,
+    "cancel": 0,
+    "command": {
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "apps/portal/tests/w1-plan-platform-templates.test.mjs",
+        "apps/portal/tests/w1-plan-platform-directory-v2.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/published-spine-e964/source",
+      "exitCode": 0,
+      "sha256": "5c63c1f84e36a4c145a8907510ab1a962601f088a8dd7c3859431607c9a7a064"
+    }
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/published-spine-e964/PINS.json",
+      "bytes": 44380,
+      "sha256": "6afaed72d1f618b82eb683ced2d75b18b95e224047c661c301ba11989fc4b124"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/published-spine-e964/COMMAND.json",
+      "bytes": 516,
+      "sha256": "bbad280beae4a88bb828ff08644491d7bad4730851d1a57d24f59aa7bd259f95"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/published-spine-e964/DTO-CURRENT59.log",
+      "bytes": 15557,
+      "sha256": "5c63c1f84e36a4c145a8907510ab1a962601f088a8dd7c3859431607c9a7a064"
+    }
+  ],
+  "orchestration": {
+    "disposition": "ORIGINAL_POST234_ASSERTION_FAILED_UNRESOLVED_NOT_RETROACTIVELY_APPROVED",
+    "ownerRecord": {
+      "originalPremergeBothReadyReceipt": "W1-234-235-PREMERGE-GATES.json",
+      "post234ReadinessScript": "compound PR235 head/open/mergeable/clean assertion failed; exact failed predicate/value was not printed; cause unresolved",
+      "orchestrationError": "shell command did not stop after Python exit1 and invoked pinned-head normal235 merge",
+      "noBypass": true,
+      "originalAssertionFailurePreserved": true,
+      "postMergeVerificationDoesNotRelabelOriginalGate": true,
+      "followup": "no further feature merges before current merged-spine verification"
+    },
+    "independentScope": "Gitparents/deltas/postimages/dependencies verified; originalfailedvalueunprinted andcauseunknown. Latermetadata/Git/CI snapshots donotrepairpremergegate. No independentadmin/force/workflowcompliance verdict."
+  },
+  "proofLimits": [
+    "Currentremotee964 observedviaexactlsremoteexit0; this isnot wholePortal/runtime/sourcewiredcensus",
+    "Sourcecomposition/DTOrestoration preservespriorcheckout-specificgates; no sourcepass promotedtogenuinepermission",
+    "Authora96/c39Root1923+18/fourgraphs/builds/Expo/157/26 retainedloghashes verified butnotindependentlyrepeated; pureDTO59onlynewexecution",
+    "Exact-currente964CI/nativepending atintake, notrepresentedasclean orrelease/mergeeligibility",
+    "No actualtemplate/Directoryproducer/registration/journal/CAS/whole-workingclassification/currenthumanVIEW/AuthSQL/browser/provider/genuine acceptance",
+    "Principal44/provider/Source/Guidance/private-return/M65/photo/final-egress/nativePlan andprotectedM01M02holds unchanged; no resource/counter/activationgrant"
+  ]
+}
