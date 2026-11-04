@@ -1,0 +1,22 @@
+{
+  "owner": "Kanuj",
+  "head": "df230eca6017f8dd330cceb83eb11b18193937e5",
+  "ref": "refs/heads/kanuj/portal-rebuild-integration-20261030",
+  "gitLsRemoteExitCode": 0,
+  "buildProvenanceSha256": "96c860984a1be1218825718f9700236f0450e52b541b06679396a22112c4173c",
+  "verification": "All2298 actualcompilerinput bytes/SHA and29sourceasset bytes checked;161repoowned compilerinputs byteexactGitdf230;101builtoutputfiles copied and independently pinned. No new runtime/browser/Auth/SQL execution.",
+  "buildPinsPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-df230/BUILD-PINS.json",
+  "buildPinsSha256": "0b2c2562315d8a4078d8aa0b2d6ded1d64abe793347241e421ec0e43b7ea9644",
+  "sourceDirty": true,
+  "sourceDirtyQualification": "Owner states only preserved original untracked handoff; every actual2298 compiler input and29 asset bytes independentlyverified; repo-owned inputs Git-byte-exactdf230",
+  "wholeIntegratedCensus": "NOT_MEASURED",
+  "sourceProofOnly": true,
+  "nativeHostedState": "Owner-reported PortalCI terminal3754pass1foundationgeometryFAIL(contact.y720vs740); raw retained byW0. No W7rerun/independentbrowserverdict. Earlier pending state superseded, originalfailure preserved.",
+  "inheritedNativeFindings": {
+    "4460794439": "OPEN SQL/productlookup; forward71sourceWAITparents/catalog/hostedpacket",
+    "4461800685": "UNACCEPTED_HELD_PHOTO_SCOPE; no new inspection/repro/audit"
+  },
+  "genuineGrant": null,
+  "browserGrant": null,
+  "publicPageExecution": "HOLD_DF230_KNOWN_GEOMETRY_FAILURE_WAIT_REVIEWED_PUBLISHED_SUCCESSOR_BUILD"
+}

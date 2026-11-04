@@ -8,7 +8,7 @@ export type PortalRoute =
   | {name: 'report-use'; routine: RoutinePeriod}
   | {name: 'recommendation'; decisionId: string; routine: RoutinePeriod}
   | {name: 'product' | 'product-evidence' | 'product-use'; productId: string; routine: RoutinePeriod}
-  | {name: 'history' | 'history-new' | 'orders' | 'account' | 'account-service' | 'account-cancel' | 'notifications' | 'advisor-clients' | 'advisor-plans' | 'advisor-permissions'}
+  | {name: 'history' | 'history-new' | 'orders' | 'account' | 'account-service' | 'account-cancel' | 'notifications' | 'advisor-notifications' | 'advisor-clients' | 'advisor-plans' | 'advisor-permissions'}
   | {name: 'history-event'; eventId: string}
   | {name: 'history-version'; version: string}
   | {name: 'order'; orderId: string}

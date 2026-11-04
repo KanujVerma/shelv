@@ -1,0 +1,9 @@
+# W6 export published-base source correspondence
+
+Owner: Kanuj. **PASS for bounded source/dependency correspondence only.** Head `ccb28da2ce48b2fdc7aa029645bb3f3688a5e9b3` normally merges reviewed62f with published8a2. [Exact independent comparisons](W6_EXPORT_CCB_CORRESPONDENCE_RESULT.json).
+
+W7 directly compared immutable Git blobs: all16 owned postimages and the full delta31cbef8a equal reviewed62f; all54 effective fixture source inputs and both package locks also match. The fixture still selects its explicit historical unregistered c075 cookie and the exact missing e949 request snapshot. The actual shared app/final-export-request.ts remains absent. This proves source correspondence, not current namespace or frontend integration.
+
+No new W7test run was needed for byte-identical owned/effective inputs. The preceding50/50 finite source proof remains scoped to that declared projection and its single locked Portal dependency set. Owner-reported fresh50 is separate evidence. The owner's first8A2-ROLLFORWARD lookup failed on an earlier run-head label and remains separate setup evidence. Its corrected receipt SHA256c86ccf75227d1838a52e42a0039593112e7f470c133e1028caf5b7edb0495ea8 is now verified, and W7 read both named source manifests: each matches the independently pinned54 effective inputs with zero changes. The initial independent parity came from Git and prior W7 pins, not the failed lookup. No owner test was rerun or promoted into W7 execution.
+
+The original setup46/50, physical missing-module type failure, projected-only zero types, old author failures and all held gates remain attributed. W0 actual request/registration/route/Account lifetime, actual Auth/SQL/entitlement/privacy/destination/browser delivery, hosted gates and whole-screen/journey acceptance remain open. No resource grant, held-audit resumption, new OLD/genuine/runtime pass or product counter advances.
