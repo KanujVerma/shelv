@@ -7,10 +7,17 @@ import type { AdvisorController } from "./types.ts";
 export async function prepareAgentImportComparison(c: AdvisorController, raw: string): Promise<boolean> {
   const before = c.getSnapshot(), actor = c.permissions.actorId;
   if (before.ended || !c.permissions.view || !c.permissions.edit || !before.view ||
-    before.view.draft.state !== "working" || before.pending || before.busy) return false;
+    before.view.draft.state !== "working" || before.receipt || before.pending || before.busy) return false;
   try {
-    const proposed = readPlanContent(JSON.parse(raw));
-    await c.compare(proposed);
+    let proposed;
+    try { proposed = readPlanContent(JSON.parse(raw)); }
+    catch {
+      // Preserve the existing canonical invalid-import feedback as well as the
+      // dialog's retained text; no comparison/write is dispatched.
+      await c.compareImport(raw);
+      return false;
+    }
+    await c.compareImport(raw);
     const after = c.getSnapshot(), comparison = after.comparison;
     return !after.ended && c.permissions.actorId === actor && c.permissions.view && c.permissions.edit &&
       after.view === before.view && after.local === before.local && !after.pending && !after.busy &&

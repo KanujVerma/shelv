@@ -38,7 +38,7 @@ import type { AdvisorController, AdvisorState } from "./types.ts";
 import "./advisor.css";
 import { DependencyReview } from "./DependencyReview.tsx";
 import { FirstServiceQuote } from "./FirstServiceQuote.tsx";
-import { AgentImportDialog } from "./AgentImportDialog.tsx";
+import { AgentImportDialog, AgentImportNotice, useAgentImportForm } from "./AgentImportDialog.tsx";
 
 export type AdvisorRoute =
   | Extract<PortalRoute, { name: "advisor-editor" }>
@@ -82,11 +82,10 @@ export function AdvisorWorkspace({
     route = navigation.route;
   const [search, setSearch] = useState(""),
     [filter, setFilter] = useState("all"),
-    [importOpen, setImportOpen] = useState(false),
     [assignOpen, setAssignOpen] = useState(false),
     [client, setClient] = useState(""),
     [paymentOpen, setPaymentOpen] = useState(false);
-  useEffect(() => { setImportOpen(false); }, [c, s.view?.draft.id, s.ended, c.permissions.actorId]);
+  const importForm = useAgentImportForm(c, route.name === "advisor-editor" && s.view?.draft.id === route.draftId);
   useEffect(() => {
     if (
       route.name === "advisor-editor" &&
@@ -108,7 +107,6 @@ export function AdvisorWorkspace({
   }, [c, route.name, route.name === "advisor-editor" ? route.draftId : null]);
   useEffect(() => {
     if (s.ended) {
-      setImportOpen(false);
       setAssignOpen(false);
       setClient("");
       setPaymentOpen(false);
@@ -479,7 +477,7 @@ export function AdvisorWorkspace({
             <Button
               variant="secondary"
               disabled={s.busy || !!s.pending || view.draft.state !== "working"}
-              onClick={() => setImportOpen(true)}
+              onClick={importForm.show}
             >
               import agent draft
             </Button>
@@ -496,6 +494,7 @@ export function AdvisorWorkspace({
           ) : null}
         </div>
       </div>
+      <AgentImportNotice form={importForm} />
       <div className="advisor-meta">
         <Badge>draft r{view.draft.contentRevision}</Badge>
         <span>{clientName(s, view.draft.clientId)}</span>
@@ -637,8 +636,7 @@ export function AdvisorWorkspace({
           <Button onClick={() => go("review-publish")}>review & publish</Button>
         </div>
       </footer>
-      <AgentImportDialog key={`${view.draft.id}:${c.permissions.actorId}`} controller={c}
-        open={importOpen} onOpenChange={setImportOpen} />
+      <AgentImportDialog form={importForm} />
       <Dialog
         open={assignOpen}
         onOpenChange={setAssignOpen}
