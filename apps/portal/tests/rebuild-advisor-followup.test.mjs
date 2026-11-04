@@ -63,6 +63,17 @@ const setup = async () => {
 };
 const bytes = (value) => JSON.stringify(value);
 
+// List reads now own only their feedback lane; every other state byte must stay exact.
+const listFeedback = (path) => path === "loadDirectory" ? "directoryRead" : path === "loadClients" ? "clientsRead" : null;
+function afterStaleListRead(before, path, canView) {
+  const key = listFeedback(path);
+  if (!key || before[key] !== "loading" || before.ended) return before;
+  if (canView) return { ...before, [key]: "idle" };
+  return path === "loadDirectory"
+    ? { ...before, directoryRead: "denied", directory: null, directoryCursor: null }
+    : { ...before, clientsRead: "denied", clients: null };
+}
+
 // Removing a read's operation/view fence must fail these assertions, including success paths.
 for (const path of paths)
   for (const result of ["success", "malformed", 401, 403, 409, 503]) {
@@ -98,7 +109,7 @@ for (const path of paths)
             previews = f.previews.length;
           old.release();
           await reading;
-          assert.deepEqual(c.getSnapshot(), before);
+          assert.deepEqual(c.getSnapshot(), afterStaleListRead(before, path, c.permissions.view));
           assert.equal(f.previews.length, previews);
           if (ordering === "B-pending") {
             assert.equal(c.getSnapshot().busy, true);
@@ -202,7 +213,7 @@ for (const path of paths)
             previews = f.previews.length;
           old.release();
           await reading;
-          assert.deepEqual(c.getSnapshot(), before);
+          assert.deepEqual(c.getSnapshot(), afterStaleListRead(before, path, c.permissions.view));
           assert.equal(f.previews.length, previews);
         } finally {
           c.dispose();
@@ -231,11 +242,18 @@ for (const path of paths)
           assert.equal(s.local, null);
           assert.equal(f.memory.size, 0);
         } else {
-          assert.equal(
-            s.notice.kind,
-            status === 403 ? "denied" : status === 409 ? "conflict" : "error",
-          );
-          assert.equal(s.needsComparison, status === 409);
+          const feedback = listFeedback(path);
+          if (feedback) {
+            assert.equal(s.notice, null);
+            assert.equal(s[feedback], status === 403 ? "denied" : "error");
+            assert.equal(s.needsComparison, false);
+          } else {
+            assert.equal(
+              s.notice.kind,
+              status === 403 ? "denied" : status === 409 ? "conflict" : "error",
+            );
+            assert.equal(s.needsComparison, status === 409);
+          }
           assert.equal(s.local.summary, "reviewed synthetic plan");
           assert.equal(s.busy, false);
           assert.equal(s.pending, null);
@@ -299,10 +317,8 @@ for (const path of ["loadDirectory", "loadClients"])
         assert.equal(c.getSnapshot().busy, true);
         assert.equal(bytes(c.getSnapshot().pending), command);
         assert.equal(c.getSnapshot().local.summary, "manual B still pending");
-        assert.equal(
-          c.getSnapshot().notice.kind,
-          status === 403 ? "denied" : status === 409 ? "conflict" : "error",
-        );
+        assert.equal(c.getSnapshot().notice, null);
+        assert.equal(c.getSnapshot()[listFeedback(path)], status === 403 ? "denied" : "error");
         save.release();
         await saving;
         assert.equal(c.getSnapshot().save, "saved");

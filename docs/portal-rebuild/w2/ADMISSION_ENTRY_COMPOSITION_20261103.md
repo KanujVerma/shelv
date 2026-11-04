@@ -1,0 +1,23 @@
+# Admission, Directory and published advisor entry composition
+
+Owner: Kanuj. This separate advisor-owned worktree `kanuj-w2-admission-entry-composition-20261103` starts at published `df230eca6017f8dd330cceb83eb11b18193937e5` and normally merges exact reviewed admission/test successor `2ec0ad959045174b455d05c568f10f28b7aeb54f`. Both histories are retained. No inline-preview WIP or import3aa feature is mixed in.
+
+## Actual conflict resolution
+
+Read-only merge-tree and the actual normal merge found conflicts only in advisor/AdvisorWorkspace.tsx, controller.ts and index.ts. Original unresolved files are retained under `.local-artifacts/w2/*.UNRESOLVED`. Resolution is additive: keep both publicationNotifications and admission props/destructuring; retain publicationNotification restoration and Directory read-feedback restoration; export both delivery/ClientWorkspace and admission/Directory types. No Root routing/auth/port/contract/other-feature file was manually edited. ClientAssignment/feedback and admission continue using their existing operation/controller, not another engine.
+
+Nine incoming module/test files are byte-exact2ec, including all four admission files, ClientAssignment, both new feature tests, the exact W0-allocated common followup afterab93 and owned sensitivity helper. Seven published files are byte-exactdf, including FirstServiceQuote, PublicationDelivery, the entire truthful browser assertion and all four ClientWorkspace files.
+
+The controller union is checked in full, not just by selected methods: removing only the four exact previously reviewed publication-pair additions from the current controller restores the **entire2ec controller byte for byte**, SHA256 `a657e4c93351344c977a45e06ce7adbebe5ee0fcd31282a5d6853489284bfafe`. Removing those same exact additions from publisheddf restores the entire original8893 controller. This preserves the admitted publication pair while retaining every Directory/quote/approval/save/retry predicate from2ec. Static receipts are in `entry-composition-parity.json`. An initial generic line-diff inverse failed on a nonunique short hunk before file mutation; the corrected explicit four-addition comparison is separately recorded, not a product/test failure.
+
+## Current proof
+
+Explicit Node22.23.0: **345/345** pass,0fail/skip/cancel:20 admission,13 Directory,170 allocated followup,9 quote,8 delivery,3 quote/delivery composition,29 ClientWorkspace (20+4callback+5UUID),47 controller/races,12 actual quote-port and34 app-integration. Actual configured frontend exits0 with zero diagnostics; worktree/index diff checks clean. Raw `.local-artifacts/w2/entry-composition-{CURRENT,TYPES}.log`. No browser was launched.
+
+Exact command: `node --experimental-strip-types --test apps/portal/tests/w2-advisor-admission.test.mjs apps/portal/tests/w2-advisor-directory.test.mjs apps/portal/tests/rebuild-advisor-followup.test.mjs apps/portal/tests/w2-advisor-service-quote.test.mjs apps/portal/tests/w2-advisor-publication-delivery.test.mjs apps/portal/tests/w2-advisor-quote-delivery-composition.test.mjs apps/portal/tests/w2-advisor-client-workspace.test.mjs apps/portal/tests/w2-advisor-client-reentrant.test.mjs apps/portal/tests/w2-advisor-client-uuid.test.mjs apps/portal/tests/rebuild-advisor-controller.test.mjs apps/portal/tests/rebuild-advisor-races.test.mjs apps/portal/tests/w0-advisor-service-quote-request.test.mjs apps/portal/tests/rebuild-advisor-app-integration.test.mjs`; `npm --prefix apps/portal run typecheck:rebuild`, using explicit Node22 PATH. These are model/actual-cookie fixed synthetic HTTP/SSR checks, not genuine server/business persistence.
+
+W7's prior complete1c product source pass and exact2ec test parity/sensitivity pass remain attributed to their immutable heads. The old118/170 and hosted52 failures remain FAILED; no held0d/0666/0e/91/EC audit or test was resumed. A new complete combined postimage/source gate and current hosted/native checks are required for this composition; previous passes do not approve a merge conflict automatically.
+
+## Scope and remaining authority
+
+W0 still supplies actual admission capabilities/add/status with canonical finite status/code, one actual runtime owner and route-bound lifetime; UI props do not create Auth authority. W0 also owns actual single notification owner and scoped client entry. The old plan backend EDIT guard remains unchanged: finite VIEW200 is not actual VIEW permission. No Auth/Admin account write, email, money, provider, source grant, SQL or browser resource is acquired. Full A00/A01/A04P/A06, publication/history, genuine authorization/persistence and visual/a11y/journey acceptance remain open; all principal44/Guidance/private-return/M65/photo/A07 holds remain.
