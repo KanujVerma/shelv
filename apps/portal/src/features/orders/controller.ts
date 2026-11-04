@@ -147,7 +147,7 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
  }
  const mutationReady=()=>live()&&state.phase==='ready'&&mode!=='historical'&&!state.pending;
  return {
-  getSnapshot:()=>state,subscribe(fn:()=>void){listeners.add(fn);return()=>listeners.delete(fn);},refresh,loadMore,open,openOriginalQuote,reviewQuote,checkStatus,
+  getSnapshot:()=>state,subscribe(fn:()=>void){if(disposed)return()=>{};listeners.add(fn);return()=>listeners.delete(fn);},refresh,loadMore,open,openOriginalQuote,reviewQuote,checkStatus,
   async retryIntent(){const p=state.pending;if(p?.phase==='uncertain')await send(p.command,true);},
   async acceptQuote(){const q=state.selection?.quote;if(!quoteWriteDependency(q).available)return;if(!mutationReady()||!state.reviewed||!q||q.header.status!=='payable'||q.header.acceptance)return;await send({schemaVersion:1,action:'accept_product_quote_v1',requestId:crypto.randomUUID(),quote:q.header.target});},
   async claimPayment(optionId:string){const s=state.selection,q=s?.quote,dependency=quoteWriteDependency(q);if(!dependency.available)return;if(!mutationReady()||!state.reviewed||!q||!q.header.canPay||!q.header.acceptance||!q.options.some(o=>o.id===optionId&&o.available))return;const h=q.header;await send({schemaVersion:1,action:'submit_payment_claim_v1',requestId:crypto.randomUUID(),quote:h.target,expectedPaymentRevision:s!.snapshot.paymentRevision,payment:{currency:dependency.currency,quoteId:h.target.quoteId,quoteVersion:h.target.quoteVersion,shippingAddressVersion:h.address.version,serviceCents:h.serviceCents,productCents:h.productSubtotalCents+h.tax.cents+h.shipping.cents,totalCents:h.totalCents,paymentOptionId:optionId},evidenceId:null});},
@@ -158,6 +158,15 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
    await send({schemaVersion:1,action:'request_product_return_v1',requestId:crypto.randomUUID(),purchaseId:d.id,expectedReturnRevision:dependency.expectedReturnRevision,...input});
   },
   close(){if(!live())return;cancelUnsent();selectedRef=null;readToken++;readAbort?.abort();emit({selection:null,reviewed:false,phase:state.index?'ready':'initial'});},
-  dispose(){if(disposed)return;cancelUnsent();activeWrite=null;readToken++;writeToken++;readAbort?.abort();stop();disposed=true;selectedRef=null;state={...state,index:null,selection:null,pending:null,reviewed:false,phase:'ended',notice:null};listeners.forEach(fn=>fn());listeners.clear();},
+  dispose(){
+   if(disposed)return;
+   // Terminal state and detached owned references precede every callback.
+   disposed=true;const abort=readAbort,observers=[...listeners];readAbort=null;
+   activeWrite=null;selectedRef=null;readToken++;writeToken++;listeners.clear();
+   state={...state,index:null,selection:null,pending:null,reviewed:false,phase:'ended',notice:null};
+   try{stop();}catch{/* Failed cleanup cannot reactivate this controller. */}
+   try{abort?.abort();}catch{/* Continue the remaining terminal cleanup. */}
+   for(const fn of observers)try{fn();}catch{/* One observer cannot hide termination from the rest. */}
+  },
  };
 }
