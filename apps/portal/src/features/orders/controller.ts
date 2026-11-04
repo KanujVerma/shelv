@@ -46,9 +46,13 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
  });
  function begin(){
   if(!live())return null;
-  cancelUnsent();if(!live())return null;
-  readAbort?.abort();if(!live())return null;
-  const abort=new AbortController();readAbort=abort;const token=++readToken;
+  // Reserve this read before cancellation observers can start a newer one.
+  // Detach the previous signal so reentry cannot abort it recursively or let
+  // this older continuation replace the new owner's controller afterward.
+  const token=++readToken,previous=readAbort;readAbort=null;
+  try{cancelUnsent();}finally{previous?.abort();}
+  if(!matches(token))return null;
+  const abort=new AbortController();readAbort=abort;
   emit({phase:'loading',selection:null,reviewed:false,notice:null});
   if(!matches(token)||abort.signal.aborted)return null;
   return {token,signal:abort.signal};
