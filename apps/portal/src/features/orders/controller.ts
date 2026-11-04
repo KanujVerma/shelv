@@ -44,12 +44,16 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
   readToken++;writeToken++;activeWrite=null;readAbort?.abort();selectedRef=null;session.memory?.delete(key);
   state={...state,phase:'ended',index:null,selection:null,reviewed:false,pending:null,notice:null};listeners.forEach(fn=>fn());
  });
+ function claimRead(){
+  if(disposed||session.key!==boundaryKey||contextKey!==context)return null;
+  const token=++readToken;return matches(token)?token:null;
+ }
  function begin(){
-  if(!live())return null;
+  const token=claimRead();if(token===null)return null;
   // Reserve this read before cancellation observers can start a newer one.
   // Detach the previous signal so reentry cannot abort it recursively or let
   // this older continuation replace the new owner's controller afterward.
-  const token=++readToken,previous=readAbort;readAbort=null;
+  const previous=readAbort;readAbort=null;
   try{cancelUnsent();}finally{previous?.abort();}
   if(!matches(token))return null;
   const abort=new AbortController();readAbort=abort;
@@ -162,8 +166,8 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
    await send({schemaVersion:1,action:'request_product_return_v1',requestId:crypto.randomUUID(),purchaseId:d.id,expectedReturnRevision:dependency.expectedReturnRevision,...input});
   },
   close(){
-   if(!live())return;
-   const token=++readToken,previous=readAbort;readAbort=null;selectedRef=null;
+   const token=claimRead();if(token===null)return;
+   const previous=readAbort;readAbort=null;selectedRef=null;
    try{cancelUnsent();}finally{previous?.abort();}
    if(matches(token))emit({selection:null,reviewed:false,phase:state.index?'ready':'initial'});
   },

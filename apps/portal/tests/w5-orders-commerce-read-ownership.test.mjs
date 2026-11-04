@@ -38,7 +38,8 @@ async function readFixture(t){
  for(const q of quotes)q.header.target.termsHash=await hashFrozenCommerceTerms(q.header,q.lines,q.options);
  const refs=quotes.map(q=>({kind:'quote',id:q.header.target.quoteId,revision:1})),index=refs.map(entity=>({entity,label:'Exact quote',state:'awaiting_acceptance',recordedAt:quotes[0].header.issuedAt})),requests=quotes.map(q=>finiteRequest(q,{index})),calls=[],signals=[];
  const port=createCommercePort(runtime,{family:'commerce-v1',async execute(c,options){calls.push(c);signals.push(options.signal);const target=c.entity?.id??c.quote?.target?.quoteId;const i=Math.max(0,refs.findIndex(ref=>ref.id===target));return requests[i].execute(c,options);}});
- const controller=createOrdersController({port,session:runtime.getSnapshot().boundary,ownerId:owner,mode:'client',contextKey:'read-ownership-source'});t.after(()=>controller.dispose());await controller.refresh();return {controller,runtime,calls,signals,a:refs[0],b:refs[1],c:refs[2]};
+ const current=runtime.getSnapshot().boundary;let onCurrent;const session={...current,isCurrent(){const callback=onCurrent;onCurrent=undefined;callback?.();return current.isCurrent();}};
+ const controller=createOrdersController({port,session,ownerId:owner,mode:'client',contextKey:'read-ownership-source'});t.after(()=>controller.dispose());await controller.refresh();return {controller,runtime,calls,signals,a:refs[0],b:refs[1],c:refs[2],onCurrent(callback){onCurrent=callback;}};
 }
 const detailIds=f=>f.calls.filter(c=>c.action==='read_commerce_detail_v1').map(c=>c.entity.id);
 const writes=f=>f.calls.filter(c=>!c.action.startsWith('read_'));
@@ -69,4 +70,15 @@ test('an older close cannot erase a newer open started by unsent-intent cancella
 test('terminal disposal from previous-read abort cannot acquire another fixed read',async t=>{
  const f=await readFixture(t);let later;f.signals[0].addEventListener('abort',()=>{f.controller.dispose();later=f.controller.open(f.b);},{once:true});await f.controller.open(f.a);await later;
  assert.equal(f.controller.getSnapshot().phase,'ended');assert.equal(f.controller.getSnapshot().selection,null);assert.equal(f.calls.length,1);assert.equal(f.runtime.cookie.status,'ready');
+});
+
+// Explicit adversarial relevance callback around the actual current boundary;
+// this does not claim the native boundary itself invokes a consumer callback.
+test('a currentness callback cannot let an older begin claim ownership after newer open',async t=>{
+ const f=await readFixture(t);let newer;f.onCurrent(()=>{newer=f.controller.open(f.b);});await f.controller.open(f.a);await newer;
+ assert.equal(f.controller.getSnapshot().selection.entity.id,f.b.id);assert.deepEqual(detailIds(f),[f.b.id]);assert.equal(writes(f).length,0);
+});
+test('a currentness callback cannot let an older close erase newer open',async t=>{
+ const f=await readFixture(t);let newer;f.onCurrent(()=>{newer=f.controller.open(f.b);});f.controller.close();await newer;
+ assert.equal(f.controller.getSnapshot().selection.entity.id,f.b.id);assert.deepEqual(detailIds(f),[f.b.id]);assert.equal(writes(f).length,0);
 });
