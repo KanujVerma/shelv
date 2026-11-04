@@ -1,3 +1,7 @@
+## W0 caption CI and scoped entry, 4 November UTC
+
+Owner: Kanuj. Published3a905730 has all3 exact-head CI checks successful; original df2303754/1 remains failed. Native review still has open plan SQL, held photo and new ordinary bootstrap audience4462894740. Reviewed client entry35E SOURCE66 and consumed9second blank Preview probe remain separate from actual VIEW, browser, genuine and whole-journey acceptance. See [W0](portal-rebuild/eight-threads/W0.md) and the [canonical W7 ledger](portal-rebuild/w7/ACCEPTANCE_LEDGER.json). Full W0 remains active; no new grant, stopped-fixture reuse or held-principal retry.
+
 ## W0 shared continuation after8a2
 
 Owner: Kanuj. The W0 receipt records SOURCE-approved corrected Maya73e and self-navigation369, locally integrated reviewed PR227/231/233/219, all4 type graphs0 and unchanged original68 migrations/evidence. Actual public browser/Figma/focus/a11y, Root single notification owner/admission/scoped client/service/resolver/export/contact/billing boundaries and all authenticated/persistence gates remain unfinished. Current complete integrated census is NOT_MEASURED; baseline24mounted/12SOURCEwired and bounded M01/M02 remain attributed to their original evidence.

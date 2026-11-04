@@ -1,0 +1,161 @@
+{
+  "owner": "Kanuj",
+  "head": "145966d4b6de7f3e40f8c6b69d66a3027913c91d",
+  "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "patchSha256": "870d26c2432452099c2fefedd9ff7ecafb4093b25859fd46d9fceee69e2b52fb",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w1-plan-platform-directory-v2.test.mjs",
+      "bytes": 13826,
+      "sha256": "cb9ea22a32ab9906ab1a608a97369c4fe4cecdf48e40542f7f85e8b78205a421"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_PLAN_DIRECTORY_V2_DTO_20261103.md",
+      "bytes": 13017,
+      "sha256": "d4b0eff93d2a88a8a9af0372240e36b22a757d68d3314a3c4f2550d3884f3815"
+    },
+    {
+      "path": "src/contracts/PortalPlanDirectoryV2.ts",
+      "bytes": 1968,
+      "sha256": "22dae793cd097b4e0377f7d7304d850194238e82cfa36a874edce3f6c8593d04"
+    },
+    {
+      "path": "src/contracts/PortalPlanDirectoryV2Mapping.ts",
+      "bytes": 653,
+      "sha256": "69c2687f445be202aef093d697a72bdd7c9068443c110e44ac3438658c72c6de"
+    },
+    {
+      "path": "src/contracts/PortalPlanDirectoryV2Validation.ts",
+      "bytes": 4896,
+      "sha256": "4e1b94731adf514953295472094c095b09b9ed53487c1db3265a96c5ce4464ff"
+    },
+    {
+      "path": "src/contracts/PortalPlanDirectoryV2Values.ts",
+      "bytes": 1056,
+      "sha256": "46419fa0c1520fab72b0ff3fa0287d3e2336c23d1e364a8440d6d99d140f8eda"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "src/contracts/PortalRebuild.ts",
+      "bytes": 14140,
+      "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "bytes": 12947,
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+    },
+    {
+      "path": "src/contracts/PortalRebuildMapping.ts",
+      "bytes": 10694,
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValues.ts",
+      "bytes": 1206,
+      "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+    },
+    {
+      "path": "src/contracts/PortalCareValidation.ts",
+      "bytes": 7336,
+      "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d"
+    },
+    {
+      "path": "src/contracts/PortalReviewValidation.ts",
+      "bytes": 15488,
+      "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+    },
+    {
+      "path": "src/contracts/ConciergePortalValidation.ts",
+      "bytes": 2880,
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 303079,
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "bytes": 123808,
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "allCanonicalDependenciesByteEqualBase": true,
+  "verdict": "PASS_SCOPED_DIRECTORY_V2_DTO_FORMAT_SOURCE_ONLY",
+  "node": "v22.23.0",
+  "current": {
+    "tests": 29,
+    "pass": 29,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "retainedCompatibility": {
+    "tests": 42,
+    "pass": 42,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "configuredTypes": {
+    "rootApp": {
+      "exitCode": 0,
+      "diagnostics": 0
+    },
+    "rootTests": {
+      "exitCode": 0,
+      "diagnostics": 0
+    }
+  },
+  "sourceOverrides": false,
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-directory-1459/W7-CURRENT29.log",
+      "bytes": 7532,
+      "sha256": "3f167a026a175a8e19e338feeb09cf8332be7beb1ed28239915585d11912bd7d",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-directory-1459/W7-LEGACY.log",
+      "bytes": 11949,
+      "sha256": "190c054315a04bd48d713acae5a0d10c3bf4e4d530ab33494a527595a9b8ec2e",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-directory-1459/W7-ROOT-APP.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-directory-1459/W7-ROOT-TESTS.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-directory-1459/EXEC.json",
+      "bytes": 1009,
+      "sha256": "e05f1b5b6b69ac4ded9e09f65b89229128d3981f62e68114dfbee72d346577bf",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-directory-1459/TYPES-EXEC.json",
+      "bytes": 459,
+      "sha256": "558a515a40119d0a835c03a56c02e4be6069e5e49bfa37d4e2d5937bbf1dbdee",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "One closed prospective READ format only; no installed RPC/producer/SQL/ACL/Auth or actual VIEW-only success",
+    "Returned human UUID and complete classification are typed observations; runtime must bind actual actor and producer must establish full authorized prefilter scope",
+    "No workflow/policy/payment/source fact provenance computed or independently proved by parsing",
+    "Future cursor codec/set-based authorization/lock/current-snapshot/permission and postwait plan remains separately reviewable before allocation",
+    "LegacyPlan/agent/shared scalar bytes unchanged; no oldguard relaxation, held Source/private-return/photo/M65/principal audit",
+    "No browser/Figma/fullA01/J01/genuine or resource grant/counter advance"
+  ]
+}
