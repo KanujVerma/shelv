@@ -1,0 +1,212 @@
+{
+  "owner": "Kanuj",
+  "head": "c75df7f56e3ee63e0847efc3f1d893097df1c294",
+  "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+  "parentW1Exact": "52faec7918e534747a9a20e81f9411fbf0b9f72d",
+  "verdict": "PASS_SCOPED_COMPLETE6_ADVISOR_EMAIL_COMPOSITION_SOURCE_PURE_ROUTING_ONLY",
+  "materialFindings": [],
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w0-email-c75/PACKET.json",
+    "bytes": 10210,
+    "sha256": "798a94b9d4e158a7e522d756459da993206a996a03c3683646e4c45cc70447c7"
+  },
+  "patchSha256": "b0f2b88aec535680b249b1f73ce950aad81929f5381accd40b486428ba5d70e4",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w0-advisor-notification-email.test.mjs",
+      "bytes": 4112,
+      "sha256": "b1884d4c99ba1b4007fe11ae6e0c6b8da166a45ad3d9eab959d3dbdc7c6465a6"
+    },
+    {
+      "path": "docs/CONTEXT_SYNC.md",
+      "bytes": 412026,
+      "sha256": "8e5bd37d155496fc462e55ead83668121a507d6b14c75f3dd7a4878d33950f24"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_ADVISOR_EMAIL_ROUTING_20261104.md",
+      "bytes": 4038,
+      "sha256": "608cf319202c16b20f6854ad1f228068016d9b0a6f1fd027dae6ff6ff0f4bea8"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_ADVISOR_NEUTRAL_EMAIL_20261104.md",
+      "bytes": 5949,
+      "sha256": "24ab24395341f5374f1f1386d7220f7b3682b7a7591821b7616caa37ff7ab6a6"
+    },
+    {
+      "path": "supabase/functions/concierge-notifications/neutralPayload.ts",
+      "bytes": 3200,
+      "sha256": "e86ff766dc9ba39ef5f25d48c5e5879b8985dd51cddccdcf26f3e72931bc527d"
+    },
+    {
+      "path": "tests/portal-notification-worker.test.ts",
+      "bytes": 14500,
+      "sha256": "37d238377d412ba807c1fb264ca469d554e484743843ad3f764864fa37187340"
+    }
+  ],
+  "pinVerification": {
+    "head": "c75df7f56e3ee63e0847efc3f1d893097df1c294",
+    "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+    "sourcePins6": true,
+    "W1ThreeExact52fa": true,
+    "staticDeps13Exact": true,
+    "bootstrapConfigsLocksExactBase": true,
+    "RootTSTestAbsent": true,
+    "efffbHeldBodyNotReadOrExecuted": true,
+    "ownerRawRowsVerified": 12
+  },
+  "independentCommands": [
+    {
+      "name": "PURE7-OLD",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--test",
+        "apps/portal/tests/w0-advisor-notification-email.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w0-email-c75/source-old",
+      "exitCode": 1,
+      "sha256": "7e0e77358ffca22fdf6eaff28e9ae976e7a56029ad23c97723467d18fd7447ff",
+      "bytes": 5968
+    },
+    {
+      "name": "PURE7-CURRENT",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--test",
+        "apps/portal/tests/w0-advisor-notification-email.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w0-email-c75/source-current",
+      "exitCode": 0,
+      "sha256": "be0c61d080b16a2dd818b4782b5546e3108065ddb638d1a4897fa64025cee36d",
+      "bytes": 2331
+    },
+    {
+      "name": "SELECTED-WORKER-CURRENT",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-name-pattern=^deterministic neutral source links preserve exact event kind while A07 uses explicit unavailable resolution$",
+        "tests/portal-notification-worker.test.ts"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w0-email-c75/source-current",
+      "exitCode": 0,
+      "sha256": "a7ea28742e4e7c9d45745c1419b139eb301adb0a7d8d5bba0dc1a17a5494f602",
+      "bytes": 1101
+    }
+  ],
+  "independentResults": {
+    "oldPure7": {
+      "pass": 4,
+      "fail": 3
+    },
+    "currentPure7": {
+      "pass": 7,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "currentSelectedPureWorker": {
+      "pass": 1,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "otherWorkerOrDeliveryOrNetworkExecuted": false
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w0-email-c75/PURE7-OLD.log",
+      "bytes": 5968,
+      "sha256": "7e0e77358ffca22fdf6eaff28e9ae976e7a56029ad23c97723467d18fd7447ff"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w0-email-c75/PURE7-CURRENT.log",
+      "bytes": 2331,
+      "sha256": "be0c61d080b16a2dd818b4782b5546e3108065ddb638d1a4897fa64025cee36d"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w0-email-c75/SELECTED-WORKER-CURRENT.log",
+      "bytes": 1101,
+      "sha256": "a7ea28742e4e7c9d45745c1419b139eb301adb0a7d8d5bba0dc1a17a5494f602"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w0-email-c75/COMMANDS.json",
+      "bytes": 1595,
+      "sha256": "f44edc1be49269417fdf92979e019163cb70a0f80d3fe34c13cf6000a24d204e"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w0-email-c75/PINS.json",
+      "bytes": 333,
+      "sha256": "24767f78acf4c6b356544e8f9d8cdefa91357bb90440e122d88a514f240f70e4"
+    }
+  ],
+  "ownerRawHashesVerified": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/ADVISOR-EMAIL-OLD.log",
+      "bytes": 5217,
+      "sha256": "97d2b9e63eb82c8abd4354f71599bdae0bbfe11e7f00d7048d3a0c7fd7f86770"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/ADVISOR-EMAIL-OLD.json",
+      "bytes": 615,
+      "sha256": "b0a687799b7953284b8ed700e571289283606219747781e9052c781aa1b3cfa3"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/PORTAL-EMAIL-OLD.log",
+      "bytes": 5313,
+      "sha256": "3d8357d23121f2b55aea3f1f9ad451e38317c7597cf7b249c903371b53a0ef91"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/EMAIL-COMPOSITION-CHECKS.json",
+      "bytes": 3007,
+      "sha256": "cad6ec20aa7eabd53608050a169704a018e7346038a1b99a8b2480e7bc6100e0"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/EMAIL-COMPOSITION-TEST-TYPES.log",
+      "bytes": 90,
+      "sha256": "1a210b8d57706e69b0721533fa1abd58cb2aaa5b004b41d4c06fa9faa3a31cc5"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/EMAIL-PORTAL-CHECKS.json",
+      "bytes": 4496,
+      "sha256": "8265351cadd4a32d48c3f67a88102141d6ddd89e194e56c24231fdef8906eee8"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/EMAIL-PORTAL-PURE7.log",
+      "bytes": 2347,
+      "sha256": "d897f599b458d03ee22cc6cb699d53d8857c78fa3481c177bdd1a0f9edee28c4"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/EMAIL-PORTAL-PURE-WORKER.log",
+      "bytes": 1117,
+      "sha256": "6e5b8920d4e0c76c459a3704dbf95918375469d823a3480efd05211aa0e0e88b"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/EMAIL-PORTAL-ROOT.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/EMAIL-PORTAL-TESTS.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/EMAIL-PORTAL-FRONTEND.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/EMAIL-PORTAL-SESSION.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "ownerFourConfiguredGraph0NotW7Rerun": true,
+  "oldEfffbStatus": "OWNER_HOLD_TS2578_NOT_RESUMED_OR_RELABELLED",
+  "RootOldTSTestAbsent": true,
+  "runtimeAuthOrEmailAcceptance": false,
+  "resourceGrant": null,
+  "reportSha256": "4b874eaf590c614464f2b0e55c9c8ec0a7bcf1ad8ef06d9b17f3e29ced1d1ce8",
+  "recordedAt": "2026-11-04T22:46:51.659210+00:00"
+}

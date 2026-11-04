@@ -1033,8 +1033,10 @@
       "scope": "NEW complete29 R7 O5 correction/fullconsumer; oldbb1 STOP retained",
       "packetSha256": "e24cbfe8f8b79a7d6af0accf09288b06d9f4af6ecc2d7ebc99bcfbff773b8cb3",
       "patchSha256": "63ae61da5c27f40b0ef3aac9d67993fccd248f36f1612cc4e6f7213fde8a530f",
-      "status": "QUEUED_FRESH_COMPLETE29_SOURCE_AFTER_USER_W4_PRIORITY",
-      "evidenceQualification": "Metadata-only packet SHA/head/29-path count verified. Owner155+5overlaps/earlyfirst-replay raw TOOLONLY overwritten-name limitation retained, not reconstructed; no currentSource/hydrated/Auth/finance/resource proof or old stopped-head audit."
+      "status": "WITHHELD_FIRST_MATERIAL_FINDING_O6_COMPLETE29_REVIEW_INCOMPLETE",
+      "evidenceQualification": "All29/64/DTO4/26identity/full63ae+19rawpins verified; independentoriginalO5CURRENT1/1 then newO6CURRENT0/1, zero fixedwritecalls. STOP furtherR7 review/tests; no full155/type/build acceptance. Oldstoppedheads/77UNKNOWN/earlyR7TOOLONLY gap/holds preserved.",
+      "report": "reviews/W5_ORDERS_9AB334_O6.md",
+      "finding": "W7-W5-O6/P2"
     },
     {
       "lane": "W4",
@@ -1045,6 +1047,82 @@
       "report": "reviews/W4_NO_PHOTO_39B384_REPORT.md",
       "sourceReportSha256": "207afcc399612491a2236baa500fbde656c66f510bacbfd8cb56d9694121e803",
       "evidenceQualification": "W7 fullreport/21pins/16links/W1receipt/W6public12 verified; owner3+4logs only, not W7reruns; no production/test delta, no real eligibility/activation/principal/HN1/photo/Source/Guidance/private-return clearance."
+    },
+    {
+      "lane": "W0",
+      "head": "686734c6bb51197d93e2c86046f16337223ab1b4",
+      "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+      "scope": "Complete3 bounded actual-helper AST dependency binding/test documentation only; broader held model bodies excluded",
+      "packetSha256": "d4f97174f7ad81084ae837f63523bc139ab41f44131da87b6617d8730473eb84",
+      "patchSha256": "f149465963b8cc10757b63718bf3f630464709ca7f35f17712faf3d2fce57672",
+      "status": "PASS_SCOPED_COMPLETE3_AST_DEPENDENCY_BINDING_SOURCE_FINITE_ONLY",
+      "report": "reviews/W0_ROUTER_BINDING_686734.md",
+      "evidenceQualification": "Independent exactselected1/1+syntax0, actualhelperunchanged/entiretwo-clauseinverse/all3+5rawpins verified; no othermodel/browser/heldcallee/SQLAuth/setup; freshhosted/currentcomposition required, oldfailures unchanged."
+    },
+    {
+      "lane": "W6",
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+      "scope": "Previously user-intaked bounded correspondence; no current gate from unavailable original packet",
+      "packetSha256": "3fbf5c57aa46d753b10baa4da9c946257dac8ff4c2890cd8126bf17f0d034453",
+      "packetSha256Qualification": "Expected intake hash only, original bytes NOT currently verified",
+      "status": "OWNER_HOLD_ORIGINAL_PACKET_RAW_F96_PENDING_DISTINCT_FRESH_INTAKE",
+      "report": "ci/RESUME_ARTIFACT_AVAILABILITY_20261104.md",
+      "intakeGeneration": "ORIGINAL_MISSING_NOT_RECOVERED",
+      "freshSameHeadPacketRequiresSeparateGeneration": true
+    },
+    {
+      "lane": "W2",
+      "head": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
+      "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+      "scope": "Previously user-intaked bounded correspondence; no current gate from unavailable original packet",
+      "packetSha256": "cb9c0a6edcf8b7015ac8b5ab756dd2cd78d5a13688df63504d760392aa6ce5ed",
+      "packetSha256Qualification": "Expected intake hash only, original bytes NOT currently verified",
+      "status": "ORIGINAL_PACKET_UNAVAILABLE_DISTINCT_RECOVERY_PACKET_PENDING",
+      "report": "ci/RESUME_ARTIFACT_AVAILABILITY_20261104.md",
+      "intakeGeneration": "ORIGINAL_MISSING_NOT_RECOVERED",
+      "freshSameHeadPacketRequiresSeparateGeneration": true
+    },
+    {
+      "lane": "W2",
+      "head": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
+      "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+      "scope": "Fresh generation: unchanged9 current source/dependency correspondence + existing full hosted log/API custody only",
+      "packetSha256": "57cab4e4fb2cf62f454f9ecb9605cd39d435f644d7995c67a2ad4671d1cbe67d",
+      "intakeGeneration": "FRESH_CURRENT_57CAB_NOT_CB9C_RECOVERY",
+      "status": "PASS_BOUNDED_CURRENT_GIT_SOURCE_CORRESPONDENCE_FRESH_HOSTED_CUSTODY_NATIVE_QUOTA_UNACCEPTED",
+      "report": "reviews/W2_B7BF_FRESH_CORRESPONDENCE.md",
+      "evidenceQualification": "All9/21/entry/parents/tree/freshderivedpatch and3full-log SHA/mode/checkout/API tree+parents/Portal4032+selector verified. No oldcb9c/localraw recovery, no test rerun or sourcebodyaudit. NativeFAILEDquota/unaccepted/no retry/sub/paidfallback; actualport/mount/genuine/holds remainopen."
+    },
+    {
+      "lane": "W1",
+      "head": "52faec7918e534747a9a20e81f9411fbf0b9f72d",
+      "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+      "scope": "Complete3 tiny neutral builder/decoder advisor-inbox URL correction + exact one-literal worker test/report",
+      "packetSha256": "f625c1be95c5d9635fa82b9aadf277c7e5f2751d28b8bae2db333e711409fc0f",
+      "patchSha256": "aac32aa042d63e1a376caa63ee1579442a9245f271d3b3b4b2eeec42e1471fa4",
+      "status": "PASS_SCOPED_COMPLETE3_NEUTRAL_ADVISOR_INBOX_SOURCE_PURE_FORMAT_ONLY",
+      "report": "reviews/W1_NEUTRAL_EMAIL_52FA_SOURCE.md",
+      "evidenceQualification": "IndependentpureOLD20/22 expected2fail CURRENT22/22+exactselectedworker1/1; all3/13static/16ownerproofs/wholeinverses verified. No otherworker/sink/SMTP/network/AuthSQL/held authority/resource; Rootnewtest/composition/CI/activation separate."
+    },
+    {
+      "lane": "W0",
+      "head": "efffb51e17953091bd85e99cfacd2e2fb8daa735",
+      "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+      "scope": "Original combined6 email composition",
+      "status": "OWNER_HOLD_TEST_TARGET_TS2578_BEFORE_W7_REVIEW",
+      "evidenceQualification": "Owner reports Root new TS test imports frontend intoRoot testgraph, unusedts-expect-error. No W7source review or approval; replaced by distinctc75 intake, oldfailure retained."
+    },
+    {
+      "lane": "W0",
+      "head": "c75df7f56e3ee63e0847efc3f1d893097df1c294",
+      "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+      "scope": "Freshcomplete6 W1exact3+RootnewPortalpure7/regressionreport/Context, oldeff hold notresumed",
+      "packetSha256": "798a94b9d4e158a7e522d756459da993206a996a03c3683646e4c45cc70447c7",
+      "patchSha256": "b0f2b88aec535680b249b1f73ce950aad81929f5381accd40b486428ba5d70e4",
+      "status": "PASS_SCOPED_COMPLETE6_ADVISOR_EMAIL_COMPOSITION_SOURCE_PURE_ROUTING_ONLY",
+      "evidenceQualification": "IndependentnewPortalOLD4/7->CURRENT7/7+exactselectedworker1/1; W1exact3/all6+13deps/12raws/config-bootstrap-lock identities verified. Owner4graph0 remainsowner. OldefffbTS2578HOLD/notresumed, no actualemail/Auth/provider/browser/SQL/resources/activation/countergrant.",
+      "report": "reviews/W0_ADVISOR_EMAIL_C75_SOURCE.md"
     }
   ],
   "freshGenuineGrant": null,
@@ -1072,7 +1150,8 @@
     "W0reportsSourcePR22695d/2364dactuallymerged9bca then34239c0e3e31fee213ffdcca4d175c296b4c5797/published342. Custodyonlyhere, no combinedCI/currentSourcecensus/notification657correspondenceinferred; Rootphysical657unchanged.",
     "W2ownerFA3 exactheadall3CI/nativeclean/Portal3853 sourcepacketunchanged, rawbaceacf3 custodyonly; no W7FA3full6/currentRoot/genuinegate inferred.",
     "W0ownerreportsad0d6947073f56b32d8fb3a76d93801ddf0cff86publishedONLYreviewed34address3+exactbd8dreportpair,parent342/depsunchanged. NoCurrent01b/3d9publication/wholecensus/genuineinference.",
-    "Published9c255666 independentlyremoteverified: sixfc240postimages+16exactW7d73copies only. Own705O5ledgerretained/newer, no oldCI relabel/currentCI/browser/genuine/resources/counter grant. Freshconsumercompositiongates stillrequired."
+    "Published9c255666 independentlyremoteverified: sixfc240postimages+16exactW7d73copies only. Own705O5ledgerretained/newer, no oldCI relabel/currentCI/browser/genuine/resources/counter grant. Freshconsumercompositiongates stillrequired.",
+    "Published94607ac independentlyremote/Gitverified Source3exact686+23W7exact502+W4report39b only, all27paths. Ownb2newer O6/SourceO5 ledger preserved; no newtest/CI/consumerrollforward/authority/genuine/resource/counter/hold clearance."
   ],
   "browserSlot": {
     "state": "R2_RETURNED_NORMAL_TEARDOWN_EXIT0; NO_FOLLOW_ON_GRANT",
@@ -1080,7 +1159,7 @@
     "at": "2026-11-03T20:04:32.743040+00:00",
     "report": "reviews/W3_BROWSER_96B_R2_RESULT.json"
   },
-  "lastReconciledAt": "2026-11-04T09:13:42.061946+00:00",
+  "lastReconciledAt": "2026-11-04T22:46:51.659210+00:00",
   "pendingIntakes": [],
   "artifactCustody": [
     {
@@ -1134,6 +1213,19 @@
       "rawSha256": "22a23038c22791265f7478e5d6c241c5f1d6089731df6ef291f1e40e1e34e5b8",
       "report": "ci/HOSTED_8D_PORTAL_FAILURE.md",
       "classification": "VERIFIED_FAILED_STEP_RAW_CUSTODY_EXECUTION_CHECKOUT_UNVERIFIED"
+    },
+    {
+      "classification": "CURRENT_SESSION_ARTIFACT_UNAVAILABILITY_NO_RECOVERY_OR_NEW_GATE",
+      "report": "ci/RESUME_ARTIFACT_AVAILABILITY_20261104.md",
+      "originalPacketsVerifiedThisSession": false,
+      "noRecoveryOrReconstruction": true
+    },
+    {
+      "classification": "FRESH_CURRENT_GENERATION_DISTINCT_FROM_MISSING_ORIGINAL",
+      "head": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
+      "packetSha256": "57cab4e4fb2cf62f454f9ecb9605cd39d435f644d7995c67a2ad4671d1cbe67d",
+      "report": "reviews/W2_B7BF_FRESH_CORRESPONDENCE.md",
+      "oldCb9cStillMissing": true
     }
   ]
 }

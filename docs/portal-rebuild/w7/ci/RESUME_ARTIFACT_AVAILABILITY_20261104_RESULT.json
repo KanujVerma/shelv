@@ -1,0 +1,148 @@
+{
+  "owner": "Kanuj",
+  "classification": "CURRENT_SESSION_ARTIFACT_UNAVAILABILITY_NO_RECOVERY_OR_NEW_GATE",
+  "recordedAt": "2026-11-04T22:27:58.278569+00:00",
+  "resumeOwnHead": "23cb4f39c8acbeef61a7b60ededf1a1e1187c07d",
+  "initialObservations": {
+    "toolChunk": "eb6182",
+    "locations": [
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/node_modules",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/node_modules",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w6-account-service-20261103/.local-artifacts",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w6-account-address-20261103",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w6-account-export-20261103",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-inline-router-binding-20261104",
+        "exists": false,
+        "isSymlink": false
+      }
+    ]
+  },
+  "laterObservations": {
+    "priorToolChunk": "fc118d",
+    "locations": [
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/node_modules",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/node_modules",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w6-account-service-20261103/.local-artifacts",
+        "exists": true,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w6-account-address-20261103",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w6-account-export-20261103",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-inline-router-binding-20261104",
+        "exists": false,
+        "isSymlink": false
+      },
+      {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-resume-gates-20261104",
+        "exists": true,
+        "isSymlink": false
+      }
+    ]
+  },
+  "initialW7MetadataWriteAttempt": {
+    "toolChunk": "cc0828",
+    "status": "ASSERTION_FAILED_BEFORE_FILE_WRITES",
+    "cause": "Incorrect assumption that all initially absent locations would remain absent",
+    "candidateTestOrProductFailure": false
+  },
+  "intakes": [
+    {
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "expectedOriginalPacketSha256FromUser": "3fbf5c57aa46d753b10baa4da9c946257dac8ff4c2890cd8126bf17f0d034453",
+      "packetCurrentlyVerified": false,
+      "status": "OWNER_HOLD_ORIGINAL_PACKET_RAW_F96_PENDING_DISTINCT_FRESH_INTAKE",
+      "gitObjectAvailabilityCheckedBeforeHold": true,
+      "sourceGateIssued": false
+    },
+    {
+      "head": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
+      "expectedOriginalPacketSha256FromUser": "cb9c0a6edcf8b7015ac8b5ab756dd2cd78d5a13688df63504d760392aa6ce5ed",
+      "packetCurrentlyVerified": false,
+      "status": "ORIGINAL_PACKET_UNAVAILABLE_DISTINCT_RECOVERY_PACKET_PENDING",
+      "sourceGateIssued": false
+    }
+  ],
+  "W2NewCustodyOwnerReportedNotW7Verified": {
+    "recoveryCheckout": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w2-resume-gates-20261104",
+    "head": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
+    "existingJobs": [
+      "126504692001",
+      "126504688893",
+      "126504688784"
+    ],
+    "checkout": "c5cc542c8c92580e23b305f38381121f98377560",
+    "nativeStatus": "FAILED_USAGE_QUOTA_NO_COMPLETED_CLEAN_REVIEW",
+    "nativeComment": "6627713885",
+    "noRepeatSubstitutionOrPaidFallback": true,
+    "newSourceGateRequestedByStatus": false
+  },
+  "W6Primary13OwnerReportedCheckpoint": "718ea21c0142dcf071782f1998ca48217a45d819",
+  "W6CheckpointContentInspectedByW7": false,
+  "priorReportsHistoricalAttributionUnchanged": true,
+  "currentRawAvailabilityInferred": false,
+  "reconstructionOrRecoveryClaim": false,
+  "newTestsInstallsSetupResources": false,
+  "principal44OrHeldScopeResumed": false,
+  "counterAdvance": false,
+  "reportSha256": "ae6cc3f7f5a99e8cccd1c5bb34e0fb13db5eda1508c4db73216a8021c02a8bc7",
+  "freshPacketSameHeadMustRemainSeparateEvidenceGeneration": true
+}
