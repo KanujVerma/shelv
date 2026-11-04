@@ -2648,6 +2648,93 @@
       "head": "eb7513eb5d776b2480a5ea68746baca40e0f43ee",
       "report": "reviews/W0_NOTIFICATION_EB75.md",
       "level": "PASS_SCOPED_COMPLETE_NOTIFICATION_STARTUP_OWNER_SUCCESSOR_SOURCE_ONLY"
+    },
+    {
+      "head": "227d29ad49f9e4e2ea8dce9383b1e722ea5bfb7f",
+      "report": "reviews/W0_NOTIFICATION_OWNER_227_FAIL.md",
+      "level": "WITHHELD_STANDALONE_NOTIFICATION_OWNER_SOURCE_REENTRANT_PHASE_FINDING"
+    },
+    {
+      "head": "a05505e60495d5023cd30d6fa4962638a6501f25",
+      "report": "reviews/W5_ORDERS_A055_O3.md",
+      "level": "WITHHELD_COMPLETE_ORDERS_O2_SUCCESSOR_SOURCE_DISPOSED_REFRESH_FINDING",
+      "O1": "SOURCE_CLOSED",
+      "O2": "SOURCE_CLOSED"
+    },
+    {
+      "head": "608d7075706560aa2712926a0094f4a1a4a1d57f",
+      "report": "reviews/W0_NOTIFICATION_OWNER_608.md",
+      "level": "PASS_SCOPED_COMPLETE_STANDALONE_NOTIFICATION_OWNER_SOURCE_ONLY"
+    },
+    {
+      "head": "92f5cdb162423303389098644bcc94c3a5f5542d",
+      "report": "reviews/W1_SERVICE69_92F.md",
+      "level": "PASS_SCOPED_OWN_CLIENT_SERVICE69_SOURCE_WAIT_W0_SQL_PACKET"
+    },
+    {
+      "head": "8a0fc2ae127270836406abf7abe9d76ff7d3b41b",
+      "report": "reviews/W6_ADDRESS_8A0.md",
+      "level": "PASS_SCOPED_ACCOUNT_ADDRESS_SOURCE_DEPENDENCY_HELD"
+    },
+    {
+      "head": "41d864b077a41568994850dbb6ff27e86c85f9e7",
+      "report": "reviews/W3_UNPUBLISHED_41.md",
+      "level": "PASS_SCOPED_UNPUBLISHED_DECISION_CARD_SOURCE_ONLY"
+    },
+    {
+      "head": "95d98bd5ff02aba43b39b5b3d209c69f38ed3b90",
+      "report": "reviews/W2_ADMISSION_95D.md",
+      "level": "PASS_SCOPED_COMPLETE_ADMISSION_ENTRY_COMPOSITION_SOURCE_ONLY"
+    },
+    {
+      "head": "85617d0a8f1d1ef028a1c4c2fda877d848ab02a5",
+      "report": "reviews/CORRESPONDENCES_4D360_ADDRESS856.md",
+      "level": "PASS_COMPLETE9_TEST_CUSTODY_SUCCESSOR_AND_SOURCE_CORRESPONDENCE_DEPENDENCY_HELD"
+    },
+    {
+      "head": "77defdf4211358ba76f33d68e2c3ad1f7f623e24",
+      "report": "reviews/W5_ORDERS_77DEF_O4.md",
+      "level": "WITHHELD_COMPLETE26_ORDERS_SOURCE_DISPOSAL_REENTRY_FINDING"
+    },
+    {
+      "head": "db7ab1b708a33b5f7bf56c1ba7aba351e12a55a6",
+      "report": "reviews/W2_IMPORT_DB7.md",
+      "level": "PASS_SCOPED_COMPLETE_IMPORT_ENTRY_COMPOSITION_SOURCE_ONLY"
+    },
+    {
+      "head": "657705a6aa705d59d8efa0fd95f6d5df41d77ff8",
+      "report": "reviews/W0_NOTIFICATION_COMPOSITION_657.md",
+      "level": "PASS_SCOPED_COMPLETE_NOTIFICATION_COMPOSITION_SOURCE_WAIT_CURRENT_SPINE_GATE"
+    },
+    {
+      "head": "34c7459c8f79599611f1d3adbb7c6509fb2ac740",
+      "report": "reviews/W0_ADDRESS_REQUEST_34C.md",
+      "level": "PASS_SCOPED_COMPLETE_ACCOUNT_ADDRESS_REQUEST_SOURCE_ONLY"
+    },
+    {
+      "head": "a5b45f9d0936a6c53c5760042ad3a3df315c2606",
+      "report": "reviews/W0_ADMISSION_ADAPTER_A5B.md",
+      "level": "PASS_SCOPED_COMPLETE_ADVISOR_ADMISSION_ADAPTER_SOURCE_ONLY"
+    },
+    {
+      "head": "01b6e5f125f19f2a404bef528c90572e33cb29fe",
+      "report": "reviews/W0_CURRENT_SPINE_01B_GAP.md",
+      "level": "WITHHELD_CURRENT_SPINE_ADMISSION_ABSENCE_PROOF_GAP"
+    },
+    {
+      "head": "ee1f1dc4df2de0b31f01dcca75d155a25672ffde",
+      "report": "reviews/W5_ORDERS_EE1.md",
+      "level": "PASS_SCOPED_COMPLETE_ORDERS_CONSUMER_SOURCE_DEPENDENCY_HELD"
+    },
+    {
+      "head": "b039b248b448b9d5c26d558138562532aa42eb91",
+      "report": "reviews/W0_INLINE_PORT_B039.md",
+      "level": "PASS_SCOPED_COMPLETE_INLINE_PREVIEW_READ_PORT_SOURCE_ONLY"
+    },
+    {
+      "head": "fc2404740e2140486b7de66de9845cf928d63881",
+      "report": "reviews/W0_NOTIFICATION_FIXTURE_FC240.md",
+      "level": "PASS_SCOPED_COMPLETE6_TEST_FIXTURE_SOURCE_FINITE_ONLY"
     }
   ],
   "placementClarifications": [
@@ -2657,20 +2744,8 @@
       "scope": "Neutral W5 component and existing command/source gate unchanged; no new permission or genuine execution."
     }
   ],
-  "openIndependentFindings": [
-    {
-      "id": "W7-W5-O2",
-      "severity": "P2",
-      "head": "acc76e23c65b2ce59d9d01bbf43392227a9991fd",
-      "status": "OPEN_CONSUMER_CORRELATION_OR_ENFORCED_BINDING_DISPOSITION_REQUIRED",
-      "scope": "ReadonlyOrdersUseDisplay outerpurchase vsinnercurrentPlanProductRef publication; no actualfinancial/privateauthorityaudit",
-      "claim": "Matchingouterpub2purchase acceptsinneruse.product.pub1 asuse-not-reported",
-      "reproduction": "IndependentactualcomponentSSR0/1 fallbackabsent",
-      "report": "reviews/W5_ORDERS_ACC76_O2.md",
-      "owningLane": "W5"
-    }
-  ],
-  "lastReconciledAt": "2026-11-04T03:46:07.361943+00:00",
+  "openIndependentFindings": [],
+  "lastReconciledAt": "2026-11-04T07:52:56.607549+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
@@ -2755,6 +2830,76 @@
       "correctedHead": "eb7513eb5d776b2480a5ea68746baca40e0f43ee",
       "correctionReport": "reviews/W0_NOTIFICATION_EB75.md",
       "preservedOriginal": "Old78W70/1/report/control unchanged; no genuineclosure"
+    },
+    {
+      "id": "W7-W5-O2",
+      "severity": "P2",
+      "head": "acc76e23c65b2ce59d9d01bbf43392227a9991fd",
+      "status": "CLOSED_SOURCE_ONLY_AT_SUCCESSOR",
+      "scope": "ReadonlyOrdersUseDisplay outerpurchase vsinnercurrentPlanProductRef publication; no actualfinancial/privateauthorityaudit",
+      "claim": "Matchingouterpub2purchase acceptsinneruse.product.pub1 asuse-not-reported",
+      "reproduction": "IndependentactualcomponentSSR0/1 fallbackabsent",
+      "report": "reviews/W5_ORDERS_ACC76_O2.md",
+      "owningLane": "W5",
+      "correctedHead": "a05505e60495d5023cd30d6fa4962638a6501f25",
+      "correctionReport": "reviews/W5_ORDERS_A055_O3.md",
+      "preservedOriginal": "Oldacc0/1/report/controlunchanged; a055whole25withheldonO3/no genuineclosure"
+    },
+    {
+      "id": "W7-W0-NOTIF-RELEVANCE-01",
+      "severity": "P2",
+      "head": "227d29ad49f9e4e2ea8dce9383b1e722ea5bfb7f",
+      "status": "CLOSED_SOURCE_ONLY_AT_SUCCESSOR",
+      "scope": "StandaloneordinaryUIviewlease relevance reentry; phase-only no privatepayload/Authaudit",
+      "claim": "Nestedphaseobservedreadywhileouterrelevancecallbackdenies/outerended",
+      "reproduction": "Independent0/1 actualsingleRootgraph/closedHTTP",
+      "report": "reviews/W0_NOTIFICATION_OWNER_227_FAIL.md",
+      "owningLane": "W0",
+      "correctedHead": "608d7075706560aa2712926a0094f4a1a4a1d57f",
+      "correctionReport": "reviews/W0_NOTIFICATION_OWNER_608.md",
+      "preservedOriginal": "Old2270/1/report/control/setupunchanged; standaloneunmounted/no genuineclosure"
+    },
+    {
+      "id": "W7-W5-O3",
+      "severity": "P2",
+      "head": "a05505e60495d5023cd30d6fa4962638a6501f25",
+      "status": "CLOSED_SOURCE_ONLY_AT_ORIGINAL_AFTER_DISPOSAL_CONTROL",
+      "scope": "Ordersconsumerrefreshafterpermanentdispose withactualsameRootsessionready",
+      "claim": "Disposedcontroller startsfreshfixedread thoughstateends/doesnotrestorerows",
+      "reproduction": "Independent0/1 fixedcalls1expected0",
+      "report": "reviews/W5_ORDERS_A055_O3.md",
+      "owningLane": "W5",
+      "correctedAt": "77defdf4211358ba76f33d68e2c3ad1f7f623e24",
+      "currentReproduction": "exact89605 original1/1; no full26 approval",
+      "correctionReport": "reviews/W5_ORDERS_77DEF_O4.md"
+    },
+    {
+      "id": "W7-W5-O4",
+      "severity": "P2",
+      "head": "77defdf4211358ba76f33d68e2c3ad1f7f623e24",
+      "status": "CLOSED_SOURCE_ONLY",
+      "scope": "OwnOrderscontrollercallbackacquisitionduringdispose",
+      "claim": "Oldreadabortcleanup callsrefresh while disposed stillfalse; newfixedread2expected1; finalprojectionended",
+      "reproduction": "Independent0/1 currentonly",
+      "report": "reviews/W5_ORDERS_77DEF_O4.md",
+      "owningLane": "W5",
+      "correctedAt": "ee1f1dc4df2de0b31f01dcca75d155a25672ffde",
+      "currentReproduction": "exact02e210 original1/1 +owned142pass",
+      "correctionReport": "reviews/W5_ORDERS_EE1.md"
+    },
+    {
+      "id": "W7-W0-ADMISSION-CURRENT-01",
+      "severity": "P2",
+      "head": "01b6e5f125f19f2a404bef528c90572e33cb29fe",
+      "status": "CLOSED_SOURCE_TEST_ONLY",
+      "scope": "CurrentRootnewactualconsumer/adaptertestcase",
+      "claim": "checkConnectionclearscapability; checkStatusearlyreturnscalls0 so404claimnotexercised; no productionAuthfailure",
+      "reproduction": "Original26pass; retained4prefixpass+newcoverage1fail",
+      "report": "reviews/W0_CURRENT_SPINE_01B_GAP.md",
+      "owningLane": "W0",
+      "correctedAt": "3d9d1b805d3e8b042008cb4d7f9a4074e82740e5",
+      "currentReproduction": "Actualcorrected26pass/statuscallsassertion+newstatus-omission3pass1expectedfail",
+      "correctionReport": "reviews/W0_CURRENT_SPINE_3D9.md"
     }
   ],
   "sourceCorrespondences": [
@@ -2775,6 +2920,31 @@
       "reviewedHead": "d0b0d87b7328d323562d353ca8d946213860413a",
       "level": "PASS_SOURCE_CORRESPONDENCE_ONLY",
       "report": "reviews/SOURCE_ROLLFORWARDS_6ED_9C3_469.md"
+    },
+    {
+      "head": "4d36072f9312d29299991edfcaef620ac15dabdd",
+      "report": "reviews/CORRESPONDENCES_4D360_ADDRESS856.md",
+      "level": "PASS_BOUNDED_13_POSTIMAGE_AND_CURRENT_BASE_SOURCE_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "3d9d1b805d3e8b042008cb4d7f9a4074e82740e5",
+      "report": "reviews/W0_CURRENT_SPINE_3D9.md",
+      "level": "PASS_BOUNDED_CURRENT_SPINE_SOURCE_CORRESPONDENCE_AND_ADMISSION_TEST_FIX"
+    },
+    {
+      "head": "e06ff5b90bb795190efe1cb42a723592c019f848",
+      "report": "reviews/CORRESPONDENCES_E06_ADDRESS8F71.md",
+      "level": "PASS_BOUNDED_ORDERS_27_CURRENT64_SOURCE_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "8f71a74738ee1f9b73cf13cad9cee41ec65cfec5",
+      "report": "reviews/CORRESPONDENCES_E06_ADDRESS8F71.md",
+      "level": "PASS_BOUNDED_ADDRESS9_ACTUAL_REQUEST_DEPENDENCY_SOURCE_CORRESPONDENCE"
+    },
+    {
+      "head": "e964cb6d103483757eea884c574cb6fa93b9ce34",
+      "report": "reviews/PUBLISHED_SPINE_E964_SOURCE.md",
+      "level": "PASS_BOUNDED_PUBLISHED_SPINE_SOURCE_CORRESPONDENCE_ONLY_ORCHESTRATION_FAILURE_PRESERVED"
     }
   ],
   "currentGenuineExecutionGate": {
@@ -2792,7 +2962,12 @@
     "verification": "gitlsremoteexact3a; onlyPortalShellliteralvsDF; actualPortalShellblobexactc9. Actualdetached3abuild all2298inputs/161repoGitexact/29assets/95outputs independentlyverifiedandcopied.",
     "record": "PUBLISHED_3A905_SOURCE_REFERENCE.json",
     "wholeIntegratedCensus": "NOT_MEASURED",
-    "noCounterAdvance": true
+    "noCounterAdvance": true,
+    "latestObservedRemote": {
+      "head": "e964cb6d103483757eea884c574cb6fa93b9ce34",
+      "reference": "PUBLISHED_E964_SOURCE_REFERENCE.json",
+      "wholeCensus": "NOT_MEASURED"
+    }
   },
   "externalNativeFindings": [
     {
@@ -2829,6 +3004,23 @@
       "proofLevel": "3754pass1fail reported; no newW7browserverdict",
       "sourceCorrectionReview": "reviews/W0_CAPTION_C9B.md",
       "correctedSourceHead": "c9b4fb3b8f8cc594d954eb2963e15176ed53d0ab"
+    }
+  ],
+  "hostedCiEvidence": [
+    {
+      "head": "8f71a74738ee1f9b73cf13cad9cee41ec65cfec5",
+      "classification": "VERIFIED_HOSTED_CI_FAILURE_CUSTODY_NO_DIAGNOSIS",
+      "status": "FAILED_3988_PASS_2_FAIL_OF3990_PENDING_W0_SHARED_DISPOSITION",
+      "report": "ci/HOSTED_8F71_PORTAL_FAILURE.md",
+      "noCounterAdvance": true
+    },
+    {
+      "associatedHead": "8f71a74738ee1f9b73cf13cad9cee41ec65cfec5",
+      "executionCommit": "0a2741ca474aebb0e9fba979a62584282de4337c",
+      "status": "FAILED_3988_PASS_2_FAIL_ORIGINAL_UNCHANGED",
+      "classification": "VERIFIED_CI_EXECUTION_SOURCE_PROVENANCE_CORRECTION_ONLY",
+      "report": "ci/HOSTED_8F71_EXECUTION_SOURCE_ADDENDUM.md",
+      "noCounterAdvance": true
     }
   ]
 }

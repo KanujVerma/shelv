@@ -1,0 +1,202 @@
+{
+  "owner": "Kanuj",
+  "head": "a5b45f9d0936a6c53c5760042ad3a3df315c2606",
+  "base": "2380a1b2982c74aa8ffe1f4248f8cfe8145bc04c",
+  "verdict": "PASS_SCOPED_COMPLETE_ADVISOR_ADMISSION_ADAPTER_SOURCE_ONLY",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/app/advisor-admission-request.ts",
+      "bytes": 6561,
+      "sha256": "adb4ceb13bf45afdc691a360e3453afa14b244c0f6f823fa2b0fe585a793596d"
+    },
+    {
+      "path": "apps/portal/tests/w0-advisor-admission-request.test.mjs",
+      "bytes": 9249,
+      "sha256": "4a9e8dcfc60fbd827b0af3eca0d62c42da0b919cda5c7e651660ccf35af9f02e"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_ADMISSION_PORTS_20261104.md",
+      "bytes": 2877,
+      "sha256": "9c1cc13eeeb224eb345da60cb5b3499b66fc93e34bd66db6301c2998d207ad5f"
+    }
+  ],
+  "closurePins": [
+    {
+      "path": "apps/portal/site/auth/commerce-actions.js",
+      "bytes": 1980,
+      "sha256": "795d37a5ec1f6451c4318234f2636e834849c0c1ce0c8fc19815b3c6655d7acc"
+    },
+    {
+      "path": "apps/portal/site/auth/portal-routes.js",
+      "bytes": 8889,
+      "sha256": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5"
+    },
+    {
+      "path": "apps/portal/site/auth/navigation-return.js",
+      "bytes": 3284,
+      "sha256": "aab8c07b9c589e1af4bf521716407e35bb97574664196b3e58b2d1a9485e4dcd"
+    },
+    {
+      "path": "apps/portal/site/auth/plan-actions.js",
+      "bytes": 805,
+      "sha256": "64d758036946cd2fa2109a23e46066e0fa350347e45f84f1861d6d47190a9a23"
+    },
+    {
+      "path": "apps/portal/site/auth/care-actions.js",
+      "bytes": 592,
+      "sha256": "af283c549a1a1b7a404f44c387921991b7cdcd2f52a4a63af3c2e194e737e17b"
+    },
+    {
+      "path": "apps/portal/site/auth/review-actions.js",
+      "bytes": 1904,
+      "sha256": "6796d30a8b774559cac3924c9db7c5528358dd672b1cdabe060a428be881fcb4"
+    },
+    {
+      "path": "apps/portal/site/auth/advisor-cookie-session.js",
+      "bytes": 30545,
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5"
+    },
+    {
+      "path": "apps/portal/site/auth/client-cookie-session.js",
+      "bytes": 6833,
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0"
+    },
+    {
+      "path": "apps/portal/src/app/retained.ts",
+      "bytes": 1671,
+      "sha256": "146d949005acc395692eca804824c2a67fb0c9bfbe5b0be98d4018f8a265b5a1"
+    },
+    {
+      "path": "apps/portal/src/transport/error.ts",
+      "bytes": 725,
+      "sha256": "1b6be9efd7f110c93d909ee8a2f44e805b3de51f32bfd0715ddf7cdf4c93f034"
+    },
+    {
+      "path": "apps/portal/src/transport/session.ts",
+      "bytes": 10195,
+      "sha256": "deeb60865d92b6a7a0feb1b86a78193a7c093005d0e225cf5554ece1539e46bd"
+    },
+    {
+      "path": "src/contracts/ConciergePortalValidation.ts",
+      "bytes": 2880,
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+    },
+    {
+      "path": "src/contracts/ConciergeAdmission.ts",
+      "bytes": 2060,
+      "sha256": "615750c0bd8cd85ac731449c4e25132f8ceedab27f3b51e953a3fd61cd407da0"
+    },
+    {
+      "path": "apps/portal/src/app/advisor-admission-request.ts",
+      "bytes": 6561,
+      "sha256": "adb4ceb13bf45afdc691a360e3453afa14b244c0f6f823fa2b0fe585a793596d"
+    }
+  ],
+  "lockPins": [
+    {
+      "path": "package-lock.json",
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "packetSha256": "0cc8144c79491ccb2b1b72cb8513d33dcf75977bce2c38060c0fd71d9bbb314f",
+  "patchSha256": "aa00f229807c8d1895b22fb6e88c0a84a9caf287848eacedbcb64442906fd4d0",
+  "independentCommands": [
+    {
+      "name": "CURRENT-22",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--test",
+        "--test-concurrency=1",
+        "apps/portal/tests/w0-advisor-admission-request.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-admission-a5b/source",
+      "exitCode": 0,
+      "sha256": "5f3ffab4cc1abc7f14b1d99c777e787233f6e23e925cee471cb8dbe0cc16ab76"
+    },
+    {
+      "name": "TYPES-frontend",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.frontend.json",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-admission-a5b/source/apps/portal",
+      "exitCode": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "independentResults": {
+    "sourceFinite": {
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "actualConfiguredFrontend": 0,
+    "browserCompileInputs": 14,
+    "browserExecution": "UNRUN"
+  },
+  "authorSupplement": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-admission-a5b/RAW-RECEIPT-4f93d54ef76e8b86a513753e23a6ccddbce8fda39a1a4fc94279334455879f04.json",
+    "sha256": "4f93d54ef76e8b86a513753e23a6ccddbce8fda39a1a4fc94279334455879f04",
+    "rawHashesVerified": 6,
+    "originalPacketOmittedRawEntries": true,
+    "originalCompileConsole": "TOOLONLY_NO_SEPARATE_STDOUT_NOT_RECONSTRUCTED"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-admission-a5b/PINS.json",
+      "bytes": 4104,
+      "sha256": "0cc8144c79491ccb2b1b72cb8513d33dcf75977bce2c38060c0fd71d9bbb314f"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-admission-a5b/COMMANDS.json",
+      "bytes": 1027,
+      "sha256": "345d3b45ea4b018b9588cc4cc468e582bd5649b56c9185bef952d906d54b3c0c"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-admission-a5b/CURRENT-22.log",
+      "bytes": 5208,
+      "sha256": "5f3ffab4cc1abc7f14b1d99c777e787233f6e23e925cee471cb8dbe0cc16ab76"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-admission-a5b/TYPES-frontend.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-admission-a5b/BROWSER-COMPILE.json",
+      "bytes": 5470,
+      "sha256": "cca276a3d3685f08a3d9a30106961c4d57abfc9eb9d0ea5b21fb810579d4cc21"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-admission-a5b/COMPILE.log",
+      "bytes": 24,
+      "sha256": "2bdc4fffd74abad7406a6ac934346247cf3a5cb832b93c2e92447e0e196fb070"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-admission-a5b/RAW-RECEIPT-4f93d54ef76e8b86a513753e23a6ccddbce8fda39a1a4fc94279334455879f04.json",
+      "bytes": 3725,
+      "sha256": "4f93d54ef76e8b86a513753e23a6ccddbce8fda39a1a4fc94279334455879f04"
+    }
+  ],
+  "reviewedInvariants": [
+    "Actualruntimecapture/lifetime/READY/view/options/getter/clone/parser/map/finalfences; fixedcapabilities/add/status only",
+    "Capabilityactualboolean independentclinicalEDIT; immutableoriginalrequest/email/newname correlation/existingnamepreservation",
+    "Finite receivedSDKCookieSessionError code/status scoped percall; finalstatus+READYview+context match; transportclassifiesnon-denialrelevance beforebusinesscode application",
+    "No localerror/barewrongcode/malformed200 positiveconflict/nointent proof"
+  ],
+  "limits": [
+    "No actualAuth/Admin/backend identitycreate/journal/persistence/permission/email/sourcegrant/namespace/SQL orliveprovider",
+    "ActualRootconsumer/mount/current01bspine/dependency/ABI andhostedgatesremainseparate; own3Sourcegateonly",
+    "No browser/Figma/hydration/fullA00/J01/genuine/acceptedcapability/resource/counteradvance",
+    "Principal44/provider/Guidance/private-return/M65/photo/final-egress andprotectedM01M02fixtures unchanged"
+  ]
+}

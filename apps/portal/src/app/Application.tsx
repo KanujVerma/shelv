@@ -22,7 +22,7 @@ import type {
   PlanNavigationPort,
   PlanSessionBoundary,
 } from "../features/plan/types.ts";
-import { AdvisorWorkspace } from "../features/advisor/AdvisorWorkspace.tsx";
+import { AdvisorWorkspaceNotifications } from "./AdvisorWorkspaceNotifications.tsx";
 import { createAdvisorController } from "../features/advisor/controller.ts";
 import type { AdvisorController } from "../features/advisor/types.ts";
 import { createClientPorts, createAdvisorPorts } from "./ports.ts";
@@ -544,8 +544,10 @@ function AdvisorApplication({
   const [connection, setConnection] = useState<{
     adapter: ReturnType<typeof createAdvisorPorts>;
     controller: AdvisorController;
+    isApplicable(): boolean;
   } | null>(null);
   useEffect(() => {
+    let active = true;
     const adapter = createAdvisorPorts(runtime, { care: true });
     const controller = createAdvisorController({
       session: boundary,
@@ -570,8 +572,14 @@ function AdvisorApplication({
         });
       },
     });
-    setConnection({ adapter, controller });
+    const isApplicable = () => {
+      if (!active || runtime.getSnapshot().boundary !== boundary) return false;
+      const current = boundary.isCurrent();
+      return current && active && runtime.getSnapshot().boundary === boundary;
+    };
+    setConnection({ adapter, controller, isApplicable });
     return () => {
+      active = false;
       controller.dispose();
       adapter.dispose();
     };
@@ -600,7 +608,9 @@ function AdvisorApplication({
       route.name === "advisor-editor"
     )
       content = (
-        <AdvisorWorkspace
+        <AdvisorWorkspaceNotifications
+          runtime={runtime}
+          isApplicable={connection.isApplicable}
           controller={connection.controller}
           navigation={{
             route:

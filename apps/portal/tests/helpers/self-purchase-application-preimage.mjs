@@ -41,6 +41,31 @@ const clientEntryChanges=[
 /** Preserve the original Account integration witness only after exact whole-file
  * identity and exact five-clause reversal. This does not accept the new action. */
 export function selfPurchaseApplicationPreimage(source){
+ if(sha(source)==='9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510'){
+  for(const [after,original] of [
+   ['    isApplicable(): boolean;\n',''],
+   ['    let active = true;\n    const adapter = createAdvisorPorts(runtime, { care: true });','    const adapter = createAdvisorPorts(runtime, { care: true });'],
+   ['    const isApplicable = () => {\n      if (!active || runtime.getSnapshot().boundary !== boundary) return false;\n      const current = boundary.isCurrent();\n      return current && active && runtime.getSnapshot().boundary === boundary;\n    };\n    setConnection({ adapter, controller, isApplicable });','    setConnection({ adapter, controller });'],
+   ['      active = false;\n      controller.dispose();\n      adapter.dispose();','      controller.dispose();\n      adapter.dispose();'],
+   ['          isApplicable={connection.isApplicable}\n',''],
+  ]){
+   const index=source.indexOf(after);
+   if(index<0||source.indexOf(after,index+1)>=0)throw Error('ambiguous advisor lifetime seam');
+   source=source.slice(0,index)+original+source.slice(index+after.length);
+  }
+  if(sha(source)!=='640839a7abaa2079c60665e89896c05d87fe57fe7a6d12eb99b6d8a8f1dcbec5')throw Error('advisor lifetime inverse mismatch');
+ }
+ if(sha(source)==='640839a7abaa2079c60665e89896c05d87fe57fe7a6d12eb99b6d8a8f1dcbec5'){
+  for(const [after,original] of [
+   ['import { AdvisorWorkspaceNotifications } from "./AdvisorWorkspaceNotifications.tsx";','import { AdvisorWorkspace } from "../features/advisor/AdvisorWorkspace.tsx";'],
+   ['<AdvisorWorkspaceNotifications\n          runtime={runtime}\n','<AdvisorWorkspace\n'],
+  ]){
+   const index=source.indexOf(after);
+   if(index<0||source.indexOf(after,index+1)>=0)throw Error('ambiguous notification composition seam');
+   source=source.slice(0,index)+original+source.slice(index+after.length);
+  }
+  if(sha(source)!=='02acf950ab71a21cbe71bdb6ddd83c458173120f8a4791d9ebb4f5b4f365d11b')throw Error('notification composition inverse mismatch');
+ }
  if(sha(source)==='02acf950ab71a21cbe71bdb6ddd83c458173120f8a4791d9ebb4f5b4f365d11b'){
   const after='{route.name === "notifications" || route.name === "advisor-notifications" ? (';
   const original='{route.name === "notifications" ? (';
