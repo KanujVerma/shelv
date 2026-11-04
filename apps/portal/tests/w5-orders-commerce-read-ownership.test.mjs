@@ -33,7 +33,7 @@ test('a newer open from old-read abort cleanup keeps the read claim',async t=>{
 
 // Owner current-only callback schedules. Same finite source boundary as above.
 async function readFixture(t){
- const runtime=createApplicationSession({audience:'client',locks:{request:async(_n,_o,run)=>run()},fetcher:async()=>Response.json({signedIn:true,ownerId:owner,generation:1,csrf:'SYNTHETIC-read-ownership',capabilities:{view:true,edit:false,publish:false,confirmPayments:false},idleExpiresAt:'2099-01-01T00:00:00Z',absoluteExpiresAt:'2099-01-02T00:00:00Z'})});t.after(()=>runtime.dispose());await runtime.restore();
+ const runtime=createApplicationSession({audience:'client',locks:{request:async(_n,_o,run)=>run()},fetcher:async url=>{assert.equal(url,'/api/client/session');return Response.json({signedIn:true,ownerId:owner,generation:1,csrf:'SYNTHETIC-read-ownership',capabilities:{view:true,edit:false,publish:false,confirmPayments:false},idleExpiresAt:'2099-01-01T00:00:00Z',absoluteExpiresAt:'2099-01-02T00:00:00Z'});}});t.after(()=>runtime.dispose());await runtime.restore();
  const quotes=await Promise.all([quoteFixture(),quoteFixture(),quoteFixture()]);quotes[1].header.target.quoteId=id(22);quotes[2].header.target.quoteId=id(23);
  for(const q of quotes)q.header.target.termsHash=await hashFrozenCommerceTerms(q.header,q.lines,q.options);
  const refs=quotes.map(q=>({kind:'quote',id:q.header.target.quoteId,revision:1})),index=refs.map(entity=>({entity,label:'Exact quote',state:'awaiting_acceptance',recordedAt:quotes[0].header.issuedAt})),requests=quotes.map(q=>finiteRequest(q,{index})),calls=[],signals=[];
