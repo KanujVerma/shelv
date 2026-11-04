@@ -23,6 +23,14 @@ Observed explicit Node22.23.0 evidence:
 - The prior primary missing-fragment assertion failed0/1, then its rendering probe passed1/1. Those earlier fake-snapshot SSR observations remain historical; this successor's current SSR uses the actual session/controller and canonical decoder.
 - Actual configured frontend remains blocked on the missing shared request and resulting unknown payment typing. The separate exact-request compiler projection has zero diagnostics under unchanged strict/noUnchecked settings; it is not current Root integration green. Raw logs and `TYPE-PROJECTION.json` remain in this checkout's ignored evidence directory.
 
+## Evidence custody correction
+
+The fixture originally overwrote a fixed `SOURCE.json` filename on each run. The author rerun after advancing to published99bf replaced the original author manifest (SHA-256 `2230fb6ea858ebcec874a74460e1e51bda1470c4c49aee092a1df92717fe8346`). Those exact original author bytes are lost and are not reconstructed or relabeled. The original TAP logs, Git postimages, freeze/hash records and contemporaneous W7 verification remain separate evidence.
+
+W7 independently retained its own 436991-byte compiler manifest, SHA-256 `5d9066bcfae3ab4bd8dc96b5479867fa8028d3a80a7048feff95b5aff518dd34`, with contemporaneous author-hash verification and logical2155-input parity. That is independently captured evidence, not a replacement for the lost author file. W7's committed `W6_ADDRESS_MANIFEST_CUSTODY.json` records the distinction. Its old8a0 source verdict is not a new99bf verdict.
+
+The test-only successor preserves each new metadata record at `SOURCE-<sha256>.json` using an exclusive write and exact-byte comparison for an existing record. `SOURCE.json` is explicitly only a replaceable latest-result convenience. Future evidence packets bind immutable files. No product module, case assertion, permission, API or Source role changes through this custody correction.
+
 ## Required next gates
 
 W7 must review the complete owned delta, exact pending dependency and original OLD/current scope. W0 must independently admit the real minimal request and compose the controller/card under actual current session/route ownership. No new Source/financial permission, migration or backend write is granted here.

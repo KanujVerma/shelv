@@ -28,7 +28,12 @@ export function accountAddressSourceApi() {
     }}]}).then(output=>{
       const home=fileURLToPath(new URL('../../../.local-artifacts/w6-account-address/',import.meta.url));mkdirSync(home,{recursive:true});
       const inputs=Object.keys(output.metafile.inputs).filter(path=>path!=='<stdin>').map(path=>path.startsWith('pending-address:')?{path,selected:'EXACT c06 missing W0 request; not canonical admission',sha256:'0a718365fd86adb37501c940011474e3b979b9ff405d1c498f9a95cd1e5ef7d6'}:{path,sha256:hash(readFileSync(resolve(portal,path)))});
-      writeFileSync(resolve(home,'SOURCE.json'),JSON.stringify({scope:'SOURCE ONLY: current actual SDK/controller with one pinned pending request; no authority/currentness substitution or real Auth/SQL',inputs,outputSha256:hash(output.outputFiles[0].contents)},null,2)+'\n');
+      const metadata=JSON.stringify({scope:'SOURCE ONLY: current actual SDK/controller with one pinned pending request; no authority/currentness substitution or real Auth/SQL',inputs,outputSha256:hash(output.outputFiles[0].contents)},null,2)+'\n';
+      const immutable=resolve(home,'SOURCE-'+hash(metadata)+'.json');
+      try{writeFileSync(immutable,metadata,{flag:'wx'});}catch(error){if(error.code!=='EEXIST')throw error;assert.equal(readFileSync(immutable,'utf8'),metadata);}
+      // SOURCE.json is a latest-result convenience pointer. Evidence packets
+      // bind the immutable content-addressed file, not this replaceable path.
+      writeFileSync(resolve(home,'SOURCE.json'),metadata);
       const module={exports:{}};new Function('module','exports','require',output.outputFiles[0].text)(module,module.exports,createRequire(import.meta.url));return module.exports;
     });
   return built;
