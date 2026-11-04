@@ -1,0 +1,13 @@
+# W0 notification-startup source review withheld
+
+Owner: Kanuj. **WITHHELD: complete nine-path source gate stopped at a material ownership finding.** Head `78ea50d28a3a20bbc5c25bae0d3b3d3250570ca8`, base `f060f225983d388bccf5423983e8e0beca540251`. Exact packet3a41f7f1, full patch76e57e29, nine source and14 dependency/lock pins match. [Original control and proof](W0_NOTIFICATION_STARTUP_78E_FAIL_RESULT.json).
+
+**W7-W0-NOTIF-OWNER-01, P2.** The entry tracks only active owners. stop() removes its owners-map registration without retaining a lifetime predecessor. When a newer entry starts on the same live navigation/session, it therefore cannot mark that older stopped handle superseded. Restarting the old handle replaces and retires the newer owner, causing the live inbox to say its session ended while the actual cookie is still READY.
+
+The independent control uses the current actual Root entry fixture, canonical /advisor/notifications route, actual runtime/navigator/feature/handler and closed synthetic HTTP. Sequence: await old.start(), old.stop(), await current.start(), verify current active/cookie ready, await old.start(). Current becomes ended, expected active; cookie remains ready. **0/1, exit1** under Node22.23.0. [Byte-exact inert control](../source-controls/W0_NOTIF_OWNER/w7-notifications-stopped-owner.test.mjs) and [execution binding](../source-controls/W0_NOTIF_OWNER/SOURCE.json) are preserved. This is an in-memory stopped entry handle, not reuse of a stopped acceptance fixture.
+
+This lifecycle exists in the modified entry's prior implementation; W7 does not attribute its introduction to the new routing clause. The explicit advisor URL/return/bell changes may correct native4462894740, but the complete candidate cannot receive an ownership pass with this known result. No browser reachability, privilege bypass, cross-actor disclosure, lost original write or duplicate backend effect is demonstrated. The observed effect is newer UI/controller retirement under a still-ready session.
+
+Review stops here. No81-suite/current-type/fullhead/genuine/notification-delivery pass is claimed. Original native startup1/7 and witness1/2 failures remain separately owner-attributed. One W7 preliminary filename read guessed a nonexistent retained test name; that metadata setup record is separate from the meaningful failing control. No source override, real Auth/SQL/browser/native resource or protected fixture was used.
+
+W0 owns correction and a separately frozen complete successor. Preserve this original/control and recheck independently. Principal44/Guidance/private-return/M65/photo/final-egress holds and all acceptance numerators remain unchanged. W7 makes no production correction.

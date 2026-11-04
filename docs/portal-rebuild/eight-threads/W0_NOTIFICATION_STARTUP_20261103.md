@@ -2,6 +2,14 @@
 
 Owner: Kanuj. This source correction addresses native review4462894740 at published3a905730. It is separate from the existing plan SQL finding, held photo finding and principal44 provider-refusal STOP.
 
+## Ownership successor after the78ea gate stopped
+
+W7 found NOTIF-OWNER-01/P2 during the complete78ea review: stopping an entry deleted its active owner record, so it could later start again, retire a newer live inbox and show a false ended session while the actual cookie remained READY. The earlier81 author passes are historical and did not cover that condition. W7's byte-exact regression SHA3eecd4a0c06359da87828d58cc59dc03c52ae0969fd5c57292c5cc2de5b41620 is retained as the new w0-notifications-stopped-owner test; owner reproduction fails0/1 before correction.
+
+The correction retains a separate latest-claim WeakMap across stop(). The existing active map still controls applicability and is removed on stop. A newer start records its claim before retiring its predecessor, including a stopped predecessor. Same-entry StrictMode restart remains available when no newer claim exists. Reentrant C replacement, session lifetime, actor, READY, retry custody and route checks keep their original implementation. This is local view arbitration, not a session, permission or wire change. The nine78ea postimages plus this original regression require a NEW complete successor gate; the old gate remains stopped/unaccepted.
+
+Separate new notification-owner module work is untracked and unconnected, outside this correction's scope and commit. It is not adopted by these views and supplies no source or product acceptance here.
+
 | Priority | Task | Observed issue | Correction | Regression | Evidence level |
 | --- | --- | --- | --- | --- | --- |
 | P2 | Advisor opens or reloads their inbox | Bare /notifications selects client startup and the client cookie endpoint, although a pre-created advisor runtime can display the inbox | Explicit /advisor/notifications URL, advisor header bell and audience-preserving recovery return | Fresh startup endpoint, signed-out recovery, actual entry and shared view, client cross-audience refusal | Source, real runtime with finite closed HTTP and SSR only |
@@ -17,3 +25,5 @@ Original seven new controls reproduce1pass/6fail, exit1. After the correction th
 No browser, actual authentication, database, delivery, genuine notification, Figma, geometry, a11y, complete frame/journey or acceptance counter is proved. No existing test assertion, migration, feature controller, private-source/Guidance/photo/provider-return audit or held principal scope is changed. A fresh complete W7 source gate and current hosted gates remain required before source admission; full portal acceptance remains unfinished.
 
 Observed current checks: covering81/81,0fail/skip/cancel; all four configured type graphs0; Root npm1923pass/0fail/18retained native opt-in skips; Portal package, application and Expo web exports all exit0. Node22.23.0 is used throughout. The build ran against these product bytes before the freeze commit and honestly records its enclosing head and dirty status; it is not a release-provenance artifact. Existing client-bell10/10 also passed during the earlier narrow check. Old witness1/2 and original startup1/7 remain separate failed logs.
+
+Successor observed current: byte-exact original W7 regression now passes within82/82 covering controls,0fail/skip/cancel. A strict three-clause reversal restores the entire78ea notifications-entry SHA; no other entry code or existing test assertion changed. The separate unconnected notification-owner WIP remains excluded. Exact committed frontend verification is recorded separately from the physical WIP graph.

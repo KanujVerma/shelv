@@ -2295,7 +2295,9 @@
       "head": "3a90573080ccbe1924d20afccfd0718b3302c923",
       "packet": "resource-packets/PUBLIC_MAYA_3A905_PAGE_R1.json",
       "sha256": "0fde103308926333f891f5fc323b60d0ff79fd5ae33efc135de69e03566f521e",
-      "result": "browser/PUBLIC_MAYA_3A905_PAGE_R1_RESULT.json"
+      "result": "browser/PUBLIC_MAYA_3A905_PAGE_R1_RESULT.json",
+      "admissionOwnerVerifiedReturn": true,
+      "admissionOwnerReturnStatus": "RETURNED_CLOSED_INCOMPLETE_CAPTURE_ZERO_ACCEPTANCE"
     }
   },
   "independentReviewVerdicts": [
@@ -2630,6 +2632,11 @@
       "head": "b02e0f8196642f1ec52666ce8ce3c88ee1dc78bb",
       "report": "reviews/DTO_CORRESPONDENCES_481_B02.md",
       "level": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "78ea50d28a3a20bbc5c25bae0d3b3d3250570ca8",
+      "report": "reviews/W0_NOTIFICATION_STARTUP_78E_FAIL.md",
+      "level": "WITHHELD_COMPLETE_STARTUP_SOURCE_ENTRY_OWNERSHIP_FINDING"
     }
   ],
   "placementClarifications": [
@@ -2650,9 +2657,20 @@
       "reproduction": "Independent0/1 fail; expected0 calls/actual1/offline final status",
       "report": "reviews/W5_ORDERS_A5BC_FAIL.md",
       "owningLane": "W5"
+    },
+    {
+      "id": "W7-W0-NOTIF-OWNER-01",
+      "severity": "P2",
+      "head": "78ea50d28a3a20bbc5c25bae0d3b3d3250570ca8",
+      "status": "OPEN_SOURCE_OWNERSHIP_CORRECTION_REQUIRED",
+      "scope": "Ordinary notification entry lifecycle within startup9; same actor/session, no genuineAuth/privateaudit",
+      "claim": "StoppedoldentrycanrestartandretiretheneweractiveentrywhilecookieREADY",
+      "reproduction": "Independent0/1 expectedactive/actualended fornewerowner",
+      "report": "reviews/W0_NOTIFICATION_STARTUP_78E_FAIL.md",
+      "owningLane": "W0"
     }
   ],
-  "lastReconciledAt": "2026-11-04T03:10:54.335370+00:00",
+  "lastReconciledAt": "2026-11-04T03:26:20.041416+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",

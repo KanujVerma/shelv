@@ -594,7 +594,8 @@
       "lane": "W2",
       "scope": "Freshcomplete18 admission/Directory/currentpublished quoteDeliveryClientWorkspace composition, fullcontroller4-addition inverse; old1c/2ec/49b/9cbc passes notwholecomposition. No AuthSQL/Resource/heldaudit",
       "patchSha256": "17a03cff53306f40f9ac88ea428632d8a439e1d88a164f3e8b7fae6fe35fd135",
-      "status": "QUEUED_FRESH_COMPLETE_ADVISOR_ENTRY_COMPOSITION_SOURCE"
+      "status": "OWNER_HOLD_BEFORE_W7_REVIEW_PENDING_CAPTION_SUCCESSOR",
+      "reason": "Olda9 neverread/testedbyW7; awaitfresh95d complete18review, notoldcontinuation"
     },
     {
       "head": "acc76e23c65b2ce59d9d01bbf43392227a9991fd",
@@ -620,6 +621,59 @@
       "scope": "One literal publiccaption only; allCSS/tests/740predicate unchanged, new geometry unrun; parent35 complete10 separate",
       "status": "PASS_SCOPED_LITERAL_PUBLIC_CAPTION_SOURCE_ONLY_GEOMETRY_UNRUN",
       "report": "reviews/W0_CAPTION_C9B.md"
+    },
+    {
+      "head": "48141c31b11ebb2bdb13c73ad5c20ec5af83d50b",
+      "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "lane": "W1",
+      "scope": "Bounded6+9 exactcaption-base DTO correspondence only; oldfailedCIpreserved/currentCIseparate",
+      "status": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY",
+      "report": "reviews/DTO_CORRESPONDENCES_481_B02.md"
+    },
+    {
+      "head": "b02e0f8196642f1ec52666ce8ce3c88ee1dc78bb",
+      "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "lane": "W1",
+      "scope": "Bounded6+9 exactcaption-base DTO correspondence only; oldfailedCIpreserved/currentCIseparate",
+      "status": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY",
+      "report": "reviews/DTO_CORRESPONDENCES_481_B02.md"
+    },
+    {
+      "head": "95d98bd5ff02aba43b39b5b3d209c69f38ed3b90",
+      "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "lane": "W2",
+      "scope": "FreshCOMPLETE18 admission/Directory/publishedentry composition aftera9HOLD;17postimagesexacta9/reportupdated, fullunreviewednotcaptiononly",
+      "packetSha256": "8195f5b3e6f70cb5efce7a944b92207fbe2ce82f8b776bf33f3c6df1aa51b7e0",
+      "patchSha256": "8c68140cda32f796200bfe9cda10239c8f7677404fd12207eceb30f15e71097a",
+      "status": "QUEUED_FRESH_COMPLETE_ADVISOR_ENTRY_CAPTION_COMPOSITION_SOURCE"
+    },
+    {
+      "head": "db7ab1b708a33b5f7bf56c1ba7aba351e12a55a6",
+      "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "lane": "W2",
+      "scope": "FreshCOMPLETE6 import+publisheddeliveryWorkspace composition; incoming3aabytes/surroundingpublishedexact, oldECheldnotreadorcontinued",
+      "packetSha256": "022fb90ee0ba7e9ccf0cfe2fa3a8e42b0738f020dae344f8edcb7a8911d27060",
+      "patchSha256": "5ae2b0e1b42ee9024aa35d9072fe24281dedb6de4b607ac025f81b4abb48556f",
+      "status": "QUEUED_FRESH_COMPLETE_IMPORT_COMPOSITION_SOURCE"
+    },
+    {
+      "head": "a9b721ccdb4a36d2471ff98d0b18d8cc88f15b2e",
+      "base": "df230eca6017f8dd330cceb83eb11b18193937e5",
+      "lane": "W5",
+      "scope": "FreshCOMPLETE23 ProductQuoteAdminfrontend/controller/model/retainedSDKfinite Source only, actualRootDTO4/nooverride; no M65/CBfinancialauthority/SQL/audit/resourcegrant",
+      "packetSha256": "21a40d1e4dd556ae11b4d987cf24a6d72f236bd482a8f0ba7a8014a131d75cea",
+      "patchSha256": "736f1c212658fc4688b814e2a3c4b3ca8f2ff46c7344f4436492c37257f65309",
+      "status": "QUEUED_FRESH_COMPLETE_PRODUCT_QUOTE_ADMIN_SOURCE"
+    },
+    {
+      "head": "78ea50d28a3a20bbc5c25bae0d3b3d3250570ca8",
+      "base": "f060f225983d388bccf5423983e8e0beca540251",
+      "lane": "W0",
+      "scope": "FreshCOMPLETE9 ordinaryadvisornotificationstartup routing Source/finite/SSR/native4462894740 only; unchangedbootstrap/start/session/transport, Maya audiencenull ownerdeclaredunaffected. No heldaudit/Authsetupgrant",
+      "packetSha256": "3a41f7f194c18d62c2cfed9f32cacdd6cdad1248e2b9cbbc2a20906546b3920e",
+      "patchSha256": "76e57e2966586691e327c92f2c620b288ee53a7a4b813c7b02d7e55b4ce0b7fd",
+      "status": "WITHHELD_COMPLETE_STARTUP_SOURCE_ENTRY_OWNERSHIP_FINDING",
+      "report": "reviews/W0_NOTIFICATION_STARTUP_78E_FAIL.md"
     }
   ],
   "freshGenuineGrant": null,

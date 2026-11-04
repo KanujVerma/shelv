@@ -22,6 +22,9 @@ export type NotificationsEntry = Readonly<{
 type Owner = { retire(): void };
 // Local lifetime arbitration only. No event, recipient, authority or client lookup.
 const owners = new WeakMap<PortalNavigationCore, Owner>();
+// Keep the latest claim across stop(). Its predecessor stays superseded even
+// when no view is active; an old stopped handle cannot retire a newer entry.
+const latestOwners = new WeakMap<PortalNavigationCore, Owner>();
 const idle: EntrySnapshot = Object.freeze({ phase: 'idle', controller: null });
 const inactive: EntrySnapshot = Object.freeze({ phase: 'inactive', controller: null });
 const ended: EntrySnapshot = Object.freeze({ phase: 'ended', controller: null });
@@ -112,8 +115,9 @@ export function createNotificationsEntry(
       return Promise.resolve();
     }
     if (!onRoute()) { if (sequence === token) retire(inactive); return Promise.resolve(); }
-    const previous = owners.get(navigation);
+    const previous = latestOwners.get(navigation);
     running = true; owners.set(navigation, owner);
+    latestOwners.set(navigation, owner);
     if (previous !== owner) previous?.retire();
     if (sequence !== token || !applicable()) {
       if (sequence === token) {
