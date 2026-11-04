@@ -25,7 +25,7 @@ const owners = new WeakMap<PortalNavigationCore, Owner>();
 const idle: EntrySnapshot = Object.freeze({ phase: 'idle', controller: null });
 const inactive: EntrySnapshot = Object.freeze({ phase: 'inactive', controller: null });
 const ended: EntrySnapshot = Object.freeze({ phase: 'ended', controller: null });
-const notificationsPath = buildRoute({ name: 'notifications' });
+const legacyNotificationsPath = buildRoute({ name: 'notifications' });
 
 /** Binds the real session and canonical navigator once. Construction has no
  * subscriptions, controller, read, write or automatic session restoration. */
@@ -35,6 +35,7 @@ export function createNotificationsEntry(
 ): NotificationsEntry {
   const boundary = runtime.getSnapshot().boundary;
   const audience = runtime.cookie.audience;
+  const notificationsPath = buildRoute({ name: audience === 'advisor' ? 'advisor-notifications' : 'notifications' });
   const actor = runtime.cookie.identity?.ownerId;
   const epoch = runtime.cookie._epoch;
   const generation = runtime.cookie.generation;
@@ -61,7 +62,9 @@ export function createNotificationsEntry(
   }
   function onRoute() {
     const path = navigation.getSnapshot();
-    return path === notificationsPath && parseRoute(path)?.name === 'notifications';
+    const name = parseRoute(path)?.name;
+    return (path === notificationsPath || audience === 'advisor' && path === legacyNotificationsPath) &&
+      (name === 'notifications' || name === 'advisor-notifications');
   }
   // This callback can only deny. Actual session/role/rights stay in the feature
   // and retained transport; a route never supplies positive currentness.
