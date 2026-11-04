@@ -1,0 +1,93 @@
+{
+  "owner": "Kanuj",
+  "head": "369c216d43dd417b0290cacedb3201daf977d63e",
+  "base": "73eddff523f68afeb1a4980547c9e1fc3a294ec9",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/app/Application.tsx",
+      "bytes": 24653,
+      "sha256": "cca8c3f3f5c7e5fef8ba48ef4fafc8cea113e05ca68ae974530ecd044f68d4f9"
+    },
+    {
+      "path": "apps/portal/src/app/self-purchase-navigation.ts",
+      "bytes": 3004,
+      "sha256": "4a24961aa9c07de468236fb2d90038094a7bab4af81b9dff751be7a71a034ec6"
+    },
+    {
+      "path": "apps/portal/tests/helpers/self-purchase-application-preimage.mjs",
+      "bytes": 1483,
+      "sha256": "9e2994f0d70bb834f02bbb8eefdb824735148c499f66d3055eb6c0ea00755559"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-account-entry-source.test.mjs",
+      "bytes": 2223,
+      "sha256": "beaf67c899a84d7f661320ad303dd1fdd41f07a47dc6b4835826150b56ffc5ab"
+    },
+    {
+      "path": "apps/portal/tests/w0-self-purchase-app.test.mjs",
+      "bytes": 4100,
+      "sha256": "1f0ffd3076596fa7a51cb996841040d1539580fcbeaaa13fc2fa318de3b2b887"
+    },
+    {
+      "path": "apps/portal/tests/w0-self-purchase-navigation.test.mjs",
+      "bytes": 3901,
+      "sha256": "cdeb44bc73ce8395f3f2ad684ea1715cc3e5a15352e8ef2cee82d5eada2658a4"
+    },
+    {
+      "path": "apps/portal/tests/w0-self-purchase-preservation.test.mjs",
+      "bytes": 1158,
+      "sha256": "24bdb88058def3e3270c043eba9179b29ddf70275a303f00685422e808dbfaae"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_SELF_PURCHASE_20261103.md",
+      "bytes": 5703,
+      "sha256": "6b88e36d8c2a0fa920dd8f08170f6da1afeabc86e95c94553ee02cc38777e6fb"
+    }
+  ],
+  "patchSha256": "73a47dcbfdaf33912ef747ea898a94e4e8a20d5ac5710079cab7e2ff9470630c",
+  "applicationBeforeSha256": "c242959d3f600cf28ce24f1af8ba6221c44ea24c54b9bfb7552f93c09536504f",
+  "applicationAfterSha256": "cca8c3f3f5c7e5fef8ba48ef4fafc8cea113e05ca68ae974530ecd044f68d4f9",
+  "existingWitnessThreeEditReverseExact": true,
+  "witnessPreimageSha256": "ecd2d251213207c619a8ea7a42baf0e79ff5b2171189959646419c1f91482f0b",
+  "W3AndDomainFeatureSourcesUnchanged": true,
+  "scope": "ActualRoot navigation/strictwitness source only, no operationdispatch or genuinefixture",
+  "verdict": "PASS_SCOPED_SELF_PURCHASE_NAVIGATION_APP_WITNESS_SOURCE",
+  "current": {
+    "tests": 17,
+    "navigation": 7,
+    "actualAppSSR": 3,
+    "preservation": 5,
+    "originalWitnessSuccessor": 2,
+    "pass": 17,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0"
+  },
+  "configuredFrontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-self-369/W7-CURRENT17.log",
+      "bytes": 5181,
+      "sha256": "b98162fcf8e99b6fe92d8ff819dc2ecd1b4b851fc788ad3742ee7457bd5f7028",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-self-369/W7-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "ActualV2nativehost callback/form/selfSelect sourcepositive, V3callbackpresenceonly withindependentguidancereadiness preserved",
+    "No hydratedDOM/keyboard/focus/V3selfacquisition task/persistence/SQL/genuinejourney",
+    "No new choice/order/payment/Start/use operation; W3session-memory intent remainsits own behavior",
+    "Author83/typeinitialfailure/OLDwitnessfailures separatelyattributed; no oldcandidate rerun or M01/M02genuinefixture",
+    "No source/publicMaya/browser/resource or heldscope grant"
+  ]
+}

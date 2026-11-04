@@ -1,0 +1,51 @@
+{
+  "owner": "Kanuj",
+  "head": "c9b4fb3b8f8cc594d954eb2963e15176ed53d0ab",
+  "base": "35eaefd5b3dd18588cb1b81acaf44462eb8e5648",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/shell/PortalShell.tsx",
+      "bytes": 5514,
+      "sha256": "02f529e521bf147de2f4a2bebd81d50e2005b260383ab039ce4d10500f071832"
+    }
+  ],
+  "oldWholeSourceSha256": "ee0e67892a4884217a2004df4f573516e1fac3d6bf93237699f6e485efac95d1",
+  "inverseWholeSourceExact": true,
+  "allExistingTestCssAndNonCaptionBytesUnchanged": true,
+  "verdict": "PASS_SCOPED_LITERAL_PUBLIC_CAPTION_SOURCE_ONLY_GEOMETRY_UNRUN",
+  "current": {
+    "tests": 17,
+    "pass": 17,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0",
+    "proof": "model/sharedSSR only; no Chrome"
+  },
+  "originalCI": {
+    "head": "df230eca6017f8dd330cceb83eb11b18193937e5",
+    "proof": "OWNER_REPORTED_TERMINAL_PORTAL_CI_FAIL",
+    "passed": 3754,
+    "failed": 1,
+    "assertion": "foundation-browser contact.y expected740 actual720 at stack126",
+    "status": "FAILED_PRESERVED",
+    "independentW7Rerun": false
+  },
+  "geometryAtSuccessor": "UNRUN; no y740/browser/visual pass inferred",
+  "parent35EntryGate": "Now separately Source-reviewed in W0_CLIENT_ENTRY_35E.md; not included in this literal caption gate",
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-caption-c9b/W7-SOURCE17.log",
+      "bytes": 5361,
+      "sha256": "c08dfb0034995c44fbdc7b078391a77776a88353e923434a41113a16bc6e8a19",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-caption-c9b/EXEC.json",
+      "bytes": 458,
+      "sha256": "9d54768fac4ceb3957a703a7c7d40a3c456887151c227eaeb604c04680acb61a",
+      "exitCode": 0
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "owner": "Kanuj",
+  "executionId": "e7c5e427-1109-4064-b502-8e0267b77a65",
+  "candidateHead": "df230eca6017f8dd330cceb83eb11b18193937e5",
+  "packetSha256": "540bf6dd9d95c536402ec5043fe718b82bd483a6dd150b991afdd1dc07da6606",
+  "admission": "Explicit W0 once-only literal grant; W7ordinal4 preserved as supplied",
+  "status": "PREVIEW_SUPPORTED_OWN_BLANK_TAB_CLOSED_INTERVAL_RETURNED",
+  "startedAt": "2026-11-04T01:48:45Z",
+  "ownClosureConfirmedAt": "2026-11-04T01:48:54Z",
+  "elapsedSeconds": 9,
+  "budgetSeconds": 30,
+  "openCalls": 1,
+  "ownTabId": "tab_2_b8a52f0a-7d61-4512-b1fb-53d0f4cc8fc7",
+  "ownProfile": "incognito",
+  "navigation": "NONE; initialblank URLnull/titleNull",
+  "cleanupCalls": [
+    "preview_evaluate(window.close) returnedclose-requested",
+    "preview_status(ownreturnedID) availablefalse/tabnull"
+  ],
+  "rawEvidence": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-df230/preview-probe-r1/RESULT_RAW.json",
+    "bytes": 3214,
+    "sha256": "a0dfefc601e4bfa3429acdd20ccba0590cbf4ed627c3f3f5a656e770a9706916",
+    "mode": "0600"
+  },
+  "resources": {
+    "ownTabClosed": true,
+    "serverStarted": false,
+    "appPageLoaded": false,
+    "NodePlaywrightFallback": false,
+    "existingTabsAdopted": false,
+    "businessAuthSQLStorageCalls": false,
+    "screenshots": false,
+    "activeW7Grant": null,
+    "globalProcessAbsenceClaim": false
+  },
+  "acceptance": "Capabilityprobeonly; no product/browser/Figma/a11y/genuine/J10 orcounterpass",
+  "followingGate": "Use supportedPreviewinterface. A NEW exact PUBLICMaya server/page packet must be read/admitted byW0; no reuse of this grant or Node/browserfallback inferred."
+}

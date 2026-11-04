@@ -1,0 +1,93 @@
+{
+  "owner": "Kanuj",
+  "head": "cb05840bfd95fae87f956fd7fffc2ec116cd251f",
+  "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w5-orders-financials-denial-race.test.mjs",
+      "bytes": 5295,
+      "sha256": "dbe641aac66da1ceb703eb3f47bd21488e7296a2da0c79bf7a72a76f199ac070"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-financials-handler.test.mjs",
+      "bytes": 4347,
+      "sha256": "7e4ca0c6dd27f7e637a83737f6993d1403fde694a3fa4befc28d34564b2e9d45"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-financials-helper.mjs",
+      "bytes": 2974,
+      "sha256": "d9c1ece53a610e68985ef2b13648ff5ee7d10ed8d3d3278b318a3e399f6ac03e"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-financials-runtime.test.mjs",
+      "bytes": 7555,
+      "sha256": "d8d4e8318a8d2d27bb7fbd66f8aa430884feaf6c2009575b3ddc2745a76791cf"
+    },
+    {
+      "path": "supabase/functions/concierge-payments/SERVICE_FINANCIALS.md",
+      "bytes": 7700,
+      "sha256": "58f9cf93d1ad560cfc7b4f37818fc6b007eeb6119a3143a911b52096a8f3b54b"
+    },
+    {
+      "path": "supabase/functions/concierge-payments/service-financials-handler.ts",
+      "bytes": 5384,
+      "sha256": "0c5274a8c01c851ee5f46f1397044b068cdaa2984efd467cf4077704243b7da7"
+    },
+    {
+      "path": "supabase/functions/concierge-payments/service-financials-runtime.ts",
+      "bytes": 6276,
+      "sha256": "7d6fed5235410e7ccc8a7c5b7142bb3d04d0c42ce67e6979e873defea8044cb0"
+    }
+  ],
+  "patchSha256": "8d73dfa0c5518bd3c8b48767a0fe1bf0477f79af33f0a4209cace6272d246576",
+  "ownerPacketSha256": "908e2d0d8e061ba8f2c84001f231efe86d3ce6a867b03870624fe175a4bd7930",
+  "retainedTestsHelperUnchanged": [
+    "apps/portal/tests/w5-orders-financials-handler.test.mjs",
+    "apps/portal/tests/w5-orders-financials-runtime.test.mjs",
+    "apps/portal/tests/w5-orders-financials-helper.mjs"
+  ],
+  "actualCanonicalDTO4Exact4031": true,
+  "pureM02BodySourceUnchanged": true,
+  "scope": "Fresh7 finitefinancialtransport source only, no old956audit/test/GuidanceCIlog or actualfinancial/SQL/privateauthority/resources",
+  "verdict": "PASS_SCOPED_FINITE_FINANCIAL_DENIAL_SUCCESSOR_SOURCE_ONLY",
+  "current": {
+    "tests": 49,
+    "retained": 38,
+    "newDenialControls": 11,
+    "pass": 49,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "sourceOverrides": false,
+    "node": "v22.23.0"
+  },
+  "strictTransitiveTypes": {
+    "exitCode": 0,
+    "diagnostics": 0,
+    "configuration": "strict/noUncheckedIndexedAccess/verbatim/skipLibCheckfalse; actualcanonicalimports"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-financial-cb0/W7-CURRENT49.log",
+      "bytes": 13097,
+      "sha256": "6599ecee7b1a467851d5133dd6a0eea5e163765dc09c7c4c10e987e0f0285fbd",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-financial-cb0/W7-TYPES-STRICT.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ],
+  "sourceCorrectionForNative4462020377": true,
+  "nativeHostedResolution": "NOT_INFERRED; original956finding/CIHOLD preserved",
+  "limits": [
+    "Denial-only server observation atactualheader receipt beforetransportretirement, keyed handleroperation; no positiveauthority method",
+    "RealW0compositionmustpreservereceivedDenial method; no route/namespace/installedRPC/factsproducer proved",
+    "No old956/c8/newGuidanceCIlog audit/test/browser oractualAuthSQL/financial/M65/private-return/heldscope/resourceactivity",
+    "Old c8/956narrowpasses/native4OLDfail and initialSourcechecks remain attributed/unrelabeled",
+    "No legacy/policy/supportedguarantee/currencyprovenance or genuinecapability"
+  ]
+}

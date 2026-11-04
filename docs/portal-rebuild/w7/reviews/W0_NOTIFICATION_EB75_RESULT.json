@@ -1,0 +1,273 @@
+{
+  "owner": "Kanuj",
+  "head": "eb7513eb5d776b2480a5ea68746baca40e0f43ee",
+  "base": "f060f225983d388bccf5423983e8e0beca540251",
+  "sourcePins": [
+    {
+      "path": "apps/portal/site/auth/portal-routes.js",
+      "bytes": 8889,
+      "sha256": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5"
+    },
+    {
+      "path": "apps/portal/src/app/Application.tsx",
+      "bytes": 22958,
+      "sha256": "02acf950ab71a21cbe71bdb6ddd83c458173120f8a4791d9ebb4f5b4f365d11b"
+    },
+    {
+      "path": "apps/portal/src/app/Shell.tsx",
+      "bytes": 5340,
+      "sha256": "5650f3f4ac3f2cac71ef8a2c142c1dd6a8c16f2685115710ab39115994476661"
+    },
+    {
+      "path": "apps/portal/src/app/notifications-entry.tsx",
+      "bytes": 8261,
+      "sha256": "66e8132ff4c50efaad7fe69496bb296dacb94439850d0a8d470125316e698fe9"
+    },
+    {
+      "path": "apps/portal/src/navigation/routes.ts",
+      "bytes": 1496,
+      "sha256": "48a7efc90a6b94d062010e30f0a31b99393c85cf14a804b2426d7b62d921032d"
+    },
+    {
+      "path": "apps/portal/tests/helpers/self-purchase-application-preimage.mjs",
+      "bytes": 5106,
+      "sha256": "c33394877613268b7469ed290005c5dd5b15ad3b4bf08e122bc1d96db54ea98c"
+    },
+    {
+      "path": "apps/portal/tests/w0-notifications-startup-preservation.test.mjs",
+      "bytes": 1227,
+      "sha256": "d46d6b0a914e9c3cfe61707d4293e27b3d2b84106aec6f070e9f2734fa53be0c"
+    },
+    {
+      "path": "apps/portal/tests/w0-notifications-startup.test.mjs",
+      "bytes": 7419,
+      "sha256": "3ad1f2b6e16a5a139dae38d0f93773d113e6a11b266519cc4ad782ed51bcdb19"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_STARTUP_20261103.md",
+      "bytes": 6260,
+      "sha256": "2c0d4e53d7022e4d4846d35da286bc4621f2358e7a8d15aecc26a003fd310435"
+    },
+    {
+      "path": "apps/portal/tests/w0-notifications-stopped-owner.test.mjs",
+      "bytes": 871,
+      "sha256": "3eecd4a0c06359da87828d58cc59dc03c52ae0969fd5c57292c5cc2de5b41620"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "apps/portal/src/app/bootstrap.ts",
+      "bytes": 1391,
+      "sha256": "198f56211fd06cf3f553bcf457ce1133a9bcc1274b19616dc1bbf0e1c9101a71"
+    },
+    {
+      "path": "apps/portal/src/app/start.tsx",
+      "bytes": 1796,
+      "sha256": "8bb306e44bc26401ff187e3c6cbd9918324d128611902ddb47b3b1461ac9c213"
+    },
+    {
+      "path": "apps/portal/src/app/session.ts",
+      "bytes": 6061,
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    {
+      "path": "apps/portal/site/auth/advisor-cookie-session.js",
+      "bytes": 30545,
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5"
+    },
+    {
+      "path": "apps/portal/site/auth/client-cookie-session.js",
+      "bytes": 6833,
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0"
+    },
+    {
+      "path": "apps/portal/site/auth/navigation-return.js",
+      "bytes": 3284,
+      "sha256": "aab8c07b9c589e1af4bf521716407e35bb97574664196b3e58b2d1a9485e4dcd"
+    },
+    {
+      "path": "apps/portal/src/navigation/history.ts",
+      "bytes": 11750,
+      "sha256": "8819dd47dd9b966f63e580fbc6a24d77dec98ab64cfd45f4d2c5adb3fd5e52df"
+    },
+    {
+      "path": "apps/portal/src/navigation/react.tsx",
+      "bytes": 2701,
+      "sha256": "686317041523a29dd750ac5ba88387199b6239634ebae460e5c32617619db7fa"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/controller.ts",
+      "bytes": 19282,
+      "sha256": "685a1c9643c861b362f958bc73fadecb2fc3448d84b11131805899319f529c26"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/types.ts",
+      "bytes": 2474,
+      "sha256": "ff6b738bc27d9f3a8b675b1cf091d068c844b2fe874880f60e530ae65e5196a3"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-notifications-entry-fixture.mjs",
+      "bytes": 12044,
+      "sha256": "016cb32809c28204cb51ccac3d345529c1f5f2f7a6e16a461fcdfd151c694423"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-account-entry-fixture.mjs",
+      "bytes": 19609,
+      "sha256": "545191973f14f7d64ec050d7b5d499d44e97e8ffe61e6ec5e30b2759427178cf"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 303079,
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "bytes": 123808,
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "patchSha256": "a465328fc9fd37a2eb0e6238d4c097f9405cbb4437303439ef616026353001a0",
+  "ownerPacketSha256": "b90e10afd7f7c532870ba1012bdc455a107dbb826bbc9074066a646647170ef1",
+  "enclosingDeltaPaths": [
+    "apps/portal/site/auth/portal-routes.js",
+    "apps/portal/src/app/Application.tsx",
+    "apps/portal/src/app/Shell.tsx",
+    "apps/portal/src/app/notifications-entry.tsx",
+    "apps/portal/src/navigation/routes.ts",
+    "apps/portal/tests/genuine/w7_public_maya_host.py",
+    "apps/portal/tests/helpers/self-purchase-application-preimage.mjs",
+    "apps/portal/tests/w0-notifications-startup-preservation.test.mjs",
+    "apps/portal/tests/w0-notifications-startup.test.mjs",
+    "apps/portal/tests/w0-notifications-stopped-owner.test.mjs",
+    "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_STARTUP_20261103.md",
+    "docs/portal-rebuild/eight-threads/W0_RESOURCE_ADMISSIONS.json",
+    "docs/portal-rebuild/w7/ACCEPTANCE_LEDGER.json",
+    "docs/portal-rebuild/w7/REVIEW_QUEUE.json",
+    "docs/portal-rebuild/w7/SESSION_HANDOFF_20261103.md",
+    "docs/portal-rebuild/w7/browser/PUBLIC_MAYA_3A905_PAGE_R1.md",
+    "docs/portal-rebuild/w7/browser/PUBLIC_MAYA_3A905_PAGE_R1_RESULT.json",
+    "docs/portal-rebuild/w7/browser/PUBLIC_MAYA_3A905_TEST_PLAN.md",
+    "docs/portal-rebuild/w7/resource-packets/PUBLIC_MAYA_3A905_PAGE_R1.json",
+    "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_STARTUP_78E_FAIL.md",
+    "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_STARTUP_78E_FAIL_RESULT.json",
+    "docs/portal-rebuild/w7/source-controls/W0_NOTIF_OWNER/SOURCE.json",
+    "docs/portal-rebuild/w7/source-controls/W0_NOTIF_OWNER/w7-notifications-stopped-owner.test.mjs"
+  ],
+  "outsideOwnedScope": [
+    "apps/portal/tests/genuine/w7_public_maya_host.py",
+    "docs/portal-rebuild/eight-threads/W0_RESOURCE_ADMISSIONS.json",
+    "docs/portal-rebuild/w7/ACCEPTANCE_LEDGER.json",
+    "docs/portal-rebuild/w7/REVIEW_QUEUE.json",
+    "docs/portal-rebuild/w7/SESSION_HANDOFF_20261103.md",
+    "docs/portal-rebuild/w7/browser/PUBLIC_MAYA_3A905_PAGE_R1.md",
+    "docs/portal-rebuild/w7/browser/PUBLIC_MAYA_3A905_PAGE_R1_RESULT.json",
+    "docs/portal-rebuild/w7/browser/PUBLIC_MAYA_3A905_TEST_PLAN.md",
+    "docs/portal-rebuild/w7/resource-packets/PUBLIC_MAYA_3A905_PAGE_R1.json",
+    "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_STARTUP_78E_FAIL.md",
+    "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_STARTUP_78E_FAIL_RESULT.json",
+    "docs/portal-rebuild/w7/source-controls/W0_NOTIF_OWNER/SOURCE.json",
+    "docs/portal-rebuild/w7/source-controls/W0_NOTIF_OWNER/w7-notifications-stopped-owner.test.mjs"
+  ],
+  "entryThreeClauseWholeInverseExact78": true,
+  "entryPreimageSha256": "9ede760c0ef1e40c5cfa03274ecd5b30323f52b0c1f0e0509ef833d822a3fdec",
+  "unchangedSevenSourcePostimages": [
+    "apps/portal/site/auth/portal-routes.js",
+    "apps/portal/src/app/Application.tsx",
+    "apps/portal/src/app/Shell.tsx",
+    "apps/portal/src/navigation/routes.ts",
+    "apps/portal/tests/helpers/self-purchase-application-preimage.mjs",
+    "apps/portal/tests/w0-notifications-startup-preservation.test.mjs",
+    "apps/portal/tests/w0-notifications-startup.test.mjs"
+  ],
+  "originalControlByteExact": true,
+  "verdict": "PASS_SCOPED_COMPLETE_NOTIFICATION_STARTUP_OWNER_SUCCESSOR_SOURCE_ONLY",
+  "closedFinding": "W7-W0-NOTIF-OWNER-01",
+  "current": {
+    "tests": 82,
+    "pass": 82,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0",
+    "sourceInputOverride": false,
+    "includesByteExactOriginal3EEC": true
+  },
+  "configuredTypes": {
+    "root": {
+      "exitCode": 0,
+      "diagnostics": 0
+    },
+    "root-tests": {
+      "exitCode": 0,
+      "diagnostics": 0
+    },
+    "frontend": {
+      "exitCode": 0,
+      "diagnostics": 0
+    },
+    "runtime": {
+      "exitCode": 0,
+      "diagnostics": 0
+    }
+  },
+  "wholeAppInverseEqualsActual8A2Git": true,
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-owner-eb75/W7-CURRENT-COVERING.log",
+      "bytes": 20465,
+      "sha256": "df334b937d75334ca88be4dbc1156a25dcd5736b7c623749b4351023bef26e61",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-owner-eb75/CURRENT-EXEC.json",
+      "bytes": 1261,
+      "sha256": "caeb6d5293d31e0285fe914d98c5a10044ddbdc1ad326eb18e866eacdd306fd1",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-owner-eb75/W7-TYPES-root.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-owner-eb75/W7-TYPES-root-tests.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-owner-eb75/W7-TYPES-frontend.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-owner-eb75/W7-TYPES-runtime.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-owner-eb75/TYPES-EXEC.json",
+      "bytes": 1559,
+      "sha256": "24c413ab72fd88d7a147156633adb8d6642cbda30c6e50b5923c02f1a5228f43",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-owner-eb75/W7-WHOLE-INVERSE.log",
+      "bytes": 108,
+      "sha256": "11feebd49de4d03625d90c90d379d88e324ef2fa91b8f91ca80ea98662fd777f",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "All actualsessions/handlers/gatewayVault transcripts here closed syntheticHTTP, not actualpermanentAuth/SQL/RLS/nativebusiness/notificationdelivery",
+    "No browser/geometry/Figma/responsive/a11y/fullscreen orjourney accepted",
+    "Separate standaloneowner227 sixfiles notincandidate/unconnected/notreviewedbythisgate",
+    "Enclosing23-pathdelta includes10owned+13alreadyrecordedtestinfra/admission/W7docs, not23productchanges",
+    "Original78W7control0/1/startupOLD1/7/witness1/2 and setup/outcomes remain attributed; no old78 rerun",
+    "No principal44/Guidance/private-return/M65/photo/final-egress audit/grant or genuine eligibility"
+  ]
+}

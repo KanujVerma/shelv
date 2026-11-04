@@ -126,5 +126,184 @@
       "closure": "Three test context finally closures and awaited browser.close; physical browser PID not separately captured, no global absence claim.",
       "acceptedCountersChanged": false
     }
+  },
+  {
+    "owner": "Kanuj",
+    "admittedByLane": "W0",
+    "admittedAt": "2026-11-04T01:48:25.287140+00:00",
+    "ownerThreadId": "99021859-4f2e-43f7-a067-53166931c0c3",
+    "ownerActiveRunId": "run:thread:99021859-4f2e-43f7-a067-53166931c0c3:ordinal:4",
+    "executionId": "e7c5e427-1109-4064-b502-8e0267b77a65",
+    "packetSha256": "540bf6dd9d95c536402ec5043fe718b82bd483a6dd150b991afdd1dc07da6606",
+    "head": "df230eca6017f8dd330cceb83eb11b18193937e5",
+    "kind": "PUBLIC_MAYA_PREVIEW_CAPABILITY_PROBE_ONLY",
+    "status": "RETURNED_CLOSED_BLANK_PROBE",
+    "literalFirstExecutionToolCall": {
+      "tool": "mcp__t3_code__preview_open",
+      "args": {
+        "open": false,
+        "profileId": "incognito",
+        "reuseExistingTab": false
+      }
+    },
+    "timeoutMilliseconds": 30000,
+    "durationBegins": "first tool invocation; cleanup only after budget if needed",
+    "allowedScope": "one fresh incognito blank tab capability probe only, URL omitted, no app/server/fallback",
+    "cleanup": "only own actual returned blank tab, window.close then preview_status; unsupported -> exact error/status return, no retry/fallback",
+    "followingGate": "Supported Preview required for fresh actual PUBLIC page packet; no automatic transfer or fallback grant",
+    "genuineGrant": null,
+    "acceptanceEffect": "ZERO",
+    "restrictions": [
+      "Any app or external navigation",
+      "Server start or endpoint probe",
+      "Node/Playwright/Chrome fallback within this packet",
+      "Existing or stopped fixtures/profiles/tabs adoption",
+      "Auth/DB/SQL/Storage/native mail sink or real business operations",
+      "Product screenshots/UI/genuine/visual/a11y/J10 acceptance claim",
+      "Principal44 or any held audit resume/alternate mechanism"
+    ],
+    "result": {
+      "startedAt": "2026-11-04T01:48:45Z",
+      "returnedAt": "2026-11-04T01:48:54Z",
+      "elapsedSeconds": 9,
+      "supported": true,
+      "ownBlankTab": "tab_2_b8a52f0a-7d61-4512-b1fb-53d0f4cc8fc7",
+      "ownedByCaller": true,
+      "closeRequested": true,
+      "ownIdPostStatus": {
+        "available": false,
+        "tabId": null
+      },
+      "rawSha256": "a0dfefc601e4bfa3429acdd20ccba0590cbf4ed627c3f3f5a656e770a9706916",
+      "rawPrivatePath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-df230/preview-probe-r1/RESULT_RAW.json",
+      "qualification": "Only own blank tab closure verified; no global absence, app navigation, product/browser acceptance or Node fallback eligibility"
+    }
+  },
+  {
+    "owner": "Kanuj",
+    "admittedByLane": "W0",
+    "admittedAt": "2026-11-04T02:58:54.776174+00:00",
+    "ownerThreadId": "99021859-4f2e-43f7-a067-53166931c0c3",
+    "ownerActiveRunId": "run:thread:99021859-4f2e-43f7-a067-53166931c0c3:ordinal:4",
+    "executionId": "5ded069b-2fb7-4f56-846e-8497efe58690",
+    "packetPath": "docs/portal-rebuild/w7/resource-packets/PUBLIC_MAYA_3A905_PAGE_R1.json",
+    "packetSha256": "0fde103308926333f891f5fc323b60d0ff79fd5ae33efc135de69e03566f521e",
+    "head": "3a90573080ccbe1924d20afccfd0718b3302c923",
+    "kind": "PUBLIC_MAYA_ACTUAL_PINNED_PAGE_ONLY",
+    "status": "RETURNED_CLOSED_INCOMPLETE_CAPTURE",
+    "scope": "Exact frozen published3a PUBLIC build only, not currentf060 whole portal",
+    "harnessCommit": "25804d1ee16c6de8987b668613437bc1c2bd7848",
+    "harnessSha256": "d724047a430eef3c2a43e3fcd077390c2bbfdf8dbf767af5c8907744048c4e89",
+    "testPlanSha256": "c283dab83de6306abbe37f94013e6dd25aaf7adc055dcbeaa3d20d5d98cfcf2d",
+    "buildPinsSha256": "08741db9b1f2cfeb4ce9117cadd5d8a2ccbfb0f3b41bbb04e95b850df49fa74f",
+    "preflight": {
+      "compilerInputsExact": 2298,
+      "repoGitInputsExact": 161,
+      "assetsExact": 29,
+      "outputsExact": 95,
+      "pythonExact": true,
+      "referenceExact": true
+    },
+    "bootstrap4462894740Disposition": "Advisor inbox audience only; unchanged maya audience-null/PublicEntry path, no Auth or API in admitted public scope; finding not closed",
+    "literalHostArgv": [
+      "/opt/homebrew/opt/python@3.15/bin/python3.15",
+      "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/tests/genuine/w7_public_maya_host.py",
+      "--build-root",
+      "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/build",
+      "--build-pins",
+      "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/BUILD-PINS.json",
+      "--expected-pins-sha",
+      "08741db9b1f2cfeb4ce9117cadd5d8a2ccbfb0f3b41bbb04e95b850df49fa74f",
+      "--source-head",
+      "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "--execution-id",
+      "5ded069b-2fb7-4f56-846e-8497efe58690",
+      "--port",
+      "61937",
+      "--deadline-seconds",
+      "270",
+      "--evidence",
+      "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-3a905/public-page-r1-5ded069b-2fb7-4f56-846e-8497efe58690"
+    ],
+    "literalFirstBrowserOpenAfterReady": {
+      "tool": "mcp__t3_code__preview_open",
+      "args": {
+        "open": false,
+        "profileId": "incognito",
+        "reuseExistingTab": false,
+        "url": "http://127.0.0.1:61937/maya"
+      }
+    },
+    "resourceBounds": {
+      "newHostProcesses": 1,
+      "newOwnIncognitoTabs": 1,
+      "bind": "127.0.0.1",
+      "port": 61937,
+      "portOccupied": "FAIL_SETUP_NO_QUERY_REUSE_OR_ALTERNATE_PORT",
+      "totalSecondsFromHostInvocation": 300,
+      "stopPageActivityBySeconds": 225,
+      "hostSelfDeadlineSeconds": 270,
+      "maxHostRequests": 1200,
+      "maxPreviewActions": 160,
+      "viewports": [
+        {
+          "width": 1800,
+          "height": 960,
+          "purpose": "nativeD01"
+        },
+        {
+          "width": 1440,
+          "height": 960,
+          "purpose": "narrowdesktop"
+        },
+        {
+          "width": 390,
+          "height": 844
+        },
+        {
+          "width": 320,
+          "height": 800
+        }
+      ],
+      "screenshotsMax": 24,
+      "firstMaterialFailure": "Record/stop/cleanup; no repeat or repair withinpacket"
+    },
+    "cleanup": "OwnactualreturnedtabID window.close then preview_status; terminate/joinONLYreadyPID/execsession, retainCLOSED. Ifunconfirmedrecordexactcustody/no furtherresource. No globalabsenceclaim.",
+    "restrictions": [
+      "Auth/Admin/DB/SQL/Storage/workerd/mailsink/provider/realbusiness setup or action",
+      "Any oldfixture/grant/tab/server adoption/reset/reuse or portscan",
+      "Authenticated /plan/client/advisor fixture paths or captureClientFrames helper",
+      "Actualpayment/order/purchase/fulfillment/payout/publication/Start/message outside fictionalMaya memory",
+      "Upload/download/externalcitation-retailer navigation",
+      "Node/Playwright/otherbrowser fallback",
+      "Page source/currentness/authority/hook/CSS overrides",
+      "OriginalfailedCI relabeling/counterorwholeframepassfrompartialcapture",
+      "Principal44/Guidance/private-return/M65/photo/final-egress auditresumption/alternate setup"
+    ],
+    "genuineGrant": null,
+    "acceptanceEffect": "ZERO",
+    "result": {
+      "verdict": "INCOMPLETE_CAPTURE_PREVIEW_SNAPSHOT_TIMEOUT_CAUSE_UNKNOWN",
+      "candidate": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "rawManifestSha256": "352d68101515187d6e34e0fd2c4c1aeb990fe612e95f39625d592ed1f22c25e8",
+      "rawFilesVerified": 12,
+      "ownTab": "tab_3_b8a52f0a-7d61-4512-b1fb-53d0f4cc8fc7",
+      "ownTabCloseRequested": true,
+      "ownIdPostStatus": {
+        "available": false,
+        "tabId": null
+      },
+      "hostPid": 92615,
+      "execSession": 62353,
+      "hostExit": 0,
+      "closedReason": "owned SIGTERM",
+      "elapsedSeconds": 228.99891745799687,
+      "hostRequests": 16,
+      "hostApiRequests": 0,
+      "returnedScreenshotOrAXTree": false,
+      "productControlActions": 0,
+      "qualification": "Raw failure/one read-only diagnostic/owned tab close-status and exact observed exec join verified; no global absence or zero-browser-attempt/geometry/visual/product claim",
+      "followingGate": "No automatic retry/fallback; new exact packet and admission required"
+    }
   }
 ]

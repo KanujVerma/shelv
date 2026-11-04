@@ -6,22 +6,22 @@ import {RouteLink,usePortalNavigation} from '../navigation/react.tsx';
 import {Badge,Button,Icon} from '../ui/index.ts';
 
 export interface ContactPort {onContact: ()=>void;availability: 'service'|'administration'}
-export interface PortalShellProps {children: ReactNode;identity: string;contact: ContactPort;mode: PresentationMode;context?: ReactNode;status?: ReactNode}
+export interface PortalShellProps {children: ReactNode;identity: string;contact: ContactPort;mode: PresentationMode;context?: ReactNode;status?: ReactNode;publicDemoNavigation?:{onPlan:()=>void}}
 function activeSection(route: PortalRoute|null): string {
   const name=route?.name??'plan';
   return name==='notifications'?'notifications':name.startsWith('history')?'history':name==='order'||name==='orders'?'orders':name.startsWith('account')?'account':'plan';
 }
-function ContactCard({contact}: {contact: ContactPort}) {
+function ContactCard({contact,demo=false}: {contact: ContactPort;demo?:boolean}) {
   return <div className="shelv-contact-card" data-foundation="contact">
-    <p>{contact.availability==='service'?'a person, a text away':'orders or refunds?'}</p>
+    <p>{demo?'sample contact':contact.availability==='service'?'a person, a text away':'orders or refunds?'}</p>
     <Button variant="secondary" onClick={contact.onContact}>text shelv</Button>
-    {contact.availability==='service'?<span>replies within 24 hours</span>:null}
+    {demo?<span>no message is sent</span>:contact.availability==='service'?<span>replies within 24 hours</span>:null}
   </div>;
 }
 /** The client shell is shared by client, preview, public demo and historical modes.
  * Mode changes presentation only. Server projections decide capabilities/access.
  */
-export function PortalShell({children,identity,contact,mode,context,status}: PortalShellProps) {
+export function PortalShell({children,identity,contact,mode,context,status,publicDemoNavigation}: PortalShellProps) {
   const {route}=usePortalNavigation(),section=activeSection(route),[menuOpen,setMenuOpen]=useState(false);
   const toggle=useRef<HTMLButtonElement>(null);
   const navigation=useRef<HTMLElement>(null);
@@ -39,9 +39,16 @@ export function PortalShell({children,identity,contact,mode,context,status}: Por
         <div className="shelv-mobile-controls"><Button variant="ghost" onClick={contact.onContact}>text shelv</Button><Button ref={toggle} variant="ghost" aria-expanded={menuOpen} aria-controls="client-navigation" onClick={()=>setMenuOpen(!menuOpen)}><Icon name={menuOpen?'close':'menu'}/>menu</Button></div>
       </div>
       <nav ref={navigation} id="client-navigation" aria-label="main navigation" className="shelv-client-nav" data-open={menuOpen}>
-        {CLIENT_NAVIGATION.map(item=><RouteLink key={item.label} route={item.route} className="shelv-nav-link" aria-current={item.icon===section?'page':undefined} onClick={()=>setMenuOpen(false)}><Icon name={item.icon}/><span>{item.label}</span></RouteLink>)}
+        {CLIENT_NAVIGATION.map(item=>mode==='public-demo'?
+          item.icon==='plan'?<RouteLink key={item.label} route={route?.name==='maya'?route:{name:'maya',stage:1}} className="shelv-nav-link" aria-current="page" onClick={event=>{
+            if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.altKey||event.shiftKey)return;
+            event.preventDefault();publicDemoNavigation?.onPlan();setMenuOpen(false);
+          }}><Icon name={item.icon}/><span>{item.label}</span></RouteLink>:
+          <span key={item.label} role="link" tabIndex={0} aria-disabled="true" aria-describedby="public-demo-navigation-note" className="shelv-nav-link"><Icon name={item.icon}/><span>{item.label}</span></span>:
+          <RouteLink key={item.label} route={item.route} className="shelv-nav-link" aria-current={item.icon===section?'page':undefined} onClick={()=>setMenuOpen(false)}><Icon name={item.icon}/><span>{item.label}</span></RouteLink>)}
       </nav>
-      <ContactCard contact={contact}/>
+      {mode==='public-demo'?<p id="public-demo-navigation-note">history, orders and account are unavailable in this demo.</p>:null}
+      <ContactCard contact={contact} demo={mode==='public-demo'}/>
       <div className="shelv-identity" data-foundation="identity"><Icon name="account"/><span>{identity}</span></div>
     </aside>
     <div className="shelv-main">

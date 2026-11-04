@@ -1,3 +1,13 @@
+## W0 caption CI and scoped entry, 4 November UTC
+
+Owner: Kanuj. Published3a905730 has all3 exact-head CI checks successful; original df2303754/1 remains failed. Native review still has open plan SQL, held photo and new ordinary bootstrap audience4462894740. Reviewed client entry35E SOURCE66 and consumed9second blank Preview probe remain separate from actual VIEW, browser, genuine and whole-journey acceptance. See [W0](portal-rebuild/eight-threads/W0.md) and the [canonical W7 ledger](portal-rebuild/w7/ACCEPTANCE_LEDGER.json). Full W0 remains active; no new grant, stopped-fixture reuse or held-principal retry.
+
+## W0 shared continuation after8a2
+
+Owner: Kanuj. The W0 receipt records SOURCE-approved corrected Maya73e and self-navigation369, locally integrated reviewed PR227/231/233/219, all4 type graphs0 and unchanged original68 migrations/evidence. Actual public browser/Figma/focus/a11y, Root single notification owner/admission/scoped client/service/resolver/export/contact/billing boundaries and all authenticated/persistence gates remain unfinished. Current complete integrated census is NOT_MEASURED; baseline24mounted/12SOURCEwired and bounded M01/M02 remain attributed to their original evidence.
+
+Published8a2 all3 CI now pass after its separately retained initdb setup timeout/retry. Native plan lookup remains OPEN; photo finding is UNACCEPTED_HELD_PHOTO_SCOPE. Principal44 STOP/no alternate setup, Guidance/private-return/M65/Source holds and no fresh resource grant remain. The next normal source publication requires its own current CI/native review; no main/210/211 merge, release, real client/funds or stopped-fixture reuse.
+
 ## Reviewed W0 source ready for normal publication
 
 Owner: Kanuj. Account/service entry7e6 has independent SOURCE52/52 and scoped-client-list adapter5e5 has SOURCE transport12/12; exact reports are in the canonical W7 ledger through44905056. All four current configured type graphs exit0. The old list RPC still requires EDIT, so no actual VIEW path is proved. Native plan SQL P2 remains open and no genuine packet or release is admitted. Exact local merges, source/CI attributions, current root1923pass/18retained skips and preserved originals remain in the W0 record below. The next normal integration push, not a force push, publishes this bounded development continuation.

@@ -36,7 +36,7 @@ import { createBrowserPreviewNavigation } from "./preview-navigation.ts";
 import type { ApplicationSession } from "./session.ts";
 import type { PreparedApplication } from "./bootstrap.ts";
 import { ApplicationShell } from "./Shell.tsx";
-import { PublicationAudit } from "./PublicationAudit.tsx";
+import {AdvisorClientApplication} from "./AdvisorClientEntry.tsx";
 import { OwnerPolicyApplication } from "./OwnerPolicyApplication.tsx";
 import { MayaApplication } from "./MayaApplication.tsx";
 import {createNotificationsEntry, NotificationsEntryView} from "./notifications-entry.tsx";
@@ -44,6 +44,7 @@ import {createAccountEntry, AccountEntryView} from "./account-entry.tsx";
 import {createServicePaymentEntry} from './service-payment-entry.ts';
 import {ServicePaymentEntryView} from './ServicePaymentEntry.tsx';
 import {createClientOrdersEntry, ClientOrdersEntryView} from "./client-orders-entry.tsx";
+import {createSelfPurchaseNavigation} from './self-purchase-navigation.ts';
 import "./application.css";
 
 export function UnavailableModule({
@@ -346,7 +347,7 @@ function ConnectedRoute({
           </StatusNotice>
         </div>
       ) : null}
-      {route.name === "notifications" ? (
+      {route.name === "notifications" || route.name === "advisor-notifications" ? (
         <ApplicationShell audience={audience} onSignOut={signOut} readOnly>
           <ClientNotificationsApplication runtime={runtime}/>
         </ApplicationShell>
@@ -412,6 +413,7 @@ function ClientApplication({
     <ClientHistoryContent connection={connection} boundary={boundary} route={route} win={win} onSignOut={onSignOut}/>
   ) : (
     <ClientContent
+      runtime={runtime}
       controller={connection.controller}
       ports={connection.ports}
       boundary={boundary}
@@ -425,12 +427,14 @@ function ClientApplication({
   );
 }
 export function ClientContent({
+  runtime,
   controller,
   ports,
   boundary,
   route,
   onSignOut,
 }: {
+  runtime?: ApplicationSession;
   controller: ReturnType<typeof createClientPlanController>;
   ports: ReturnType<typeof createClientPorts>;
   boundary: PlanSessionBoundary;
@@ -507,6 +511,7 @@ export function ClientContent({
           view={state.view}
           ports={ports}
           onViewChange={controller.acceptFrom(state.view)}
+          onSelfPurchase={runtime&&ports.care?createSelfPurchaseNavigation(runtime,controller,boundary,navigator):undefined}
           onSendUpdate={ports.review ? () => {if(boundary.isCurrent())navigator.navigate({name:'history-new'});} : undefined}
           onHistory={ports.review ? () => {if(boundary.isCurrent())navigator.navigate({name:'history'});} : undefined}
         />
@@ -609,9 +614,10 @@ function AdvisorApplication({
       );
     else if (route.name === "advisor-client")
       content = (
-        <AdvisorClientRecovery
+        <AdvisorClientApplication
+          runtime={runtime}
           clientId={route.clientId}
-          controller={connection.controller}
+          clientName={connection.controller.getSnapshot().clients?.clients.find(c=>c.clientId.toLowerCase()===route.clientId.toLowerCase())?.displayName??null}
           publication={connection.adapter.publication}
           adapterCare={connection.adapter.care}
           boundary={boundary}
@@ -630,69 +636,6 @@ function AdvisorApplication({
     >
       {content}
     </ApplicationShell>
-  );
-}
-function AdvisorClientRecovery({
-  clientId,
-  controller,
-  publication,
-  adapterCare,
-  boundary,
-}: {
-  clientId: string;
-  controller: AdvisorController;
-  publication: ReturnType<typeof createAdvisorPorts>["publication"];
-  adapterCare: ReturnType<typeof createAdvisorPorts>["care"];
-  boundary: PlanSessionBoundary;
-}) {
-  const [audit, setAudit] = useState(false);
-  const state = useSyncExternalStore(
-    controller.subscribe,
-    controller.getSnapshot,
-    controller.getSnapshot,
-  );
-  useEffect(() => {
-    void controller.loadClients();
-    void controller.loadDirectory();
-  }, [controller]);
-  const client = state.clients?.clients.find((c) => c.clientId === clientId),
-    drafts =
-      state.directory?.drafts.filter((d) => d.clientId === clientId) ?? [];
-  return (
-    <>
-      <PageHeader title={client?.displayName ?? "client workspace"} />
-      {state.notice ? (
-        <StatusNotice tone="error" title={state.notice.title} />
-      ) : null}
-      {drafts.map((d) => (
-        <RouteLink
-          key={d.id}
-          route={{ name: "advisor-editor", draftId: d.id, section: "sources" }}
-        >
-          open draft
-        </RouteLink>
-      ))}
-      {state.clients && state.directory && !drafts.length ? (
-        <StatusNotice title="no draft found">
-          open plans to create and deliberately assign an unassigned draft.
-        </StatusNotice>
-      ) : null}
-      <RouteLink route={{ name: "advisor-plans" }}>open plans</RouteLink>
-      {client && client.publishedVersion > 0 ? (
-        <Button variant="secondary" onClick={() => setAudit(true)}>
-          read current publication
-        </Button>
-      ) : null}
-      {audit ? (
-        <PublicationAudit
-          key={clientId}
-          clientId={clientId}
-          read={publication}
-          care={adapterCare}
-          session={boundary}
-        />
-      ) : null}
-    </>
   );
 }
 function AdvisorPreview({

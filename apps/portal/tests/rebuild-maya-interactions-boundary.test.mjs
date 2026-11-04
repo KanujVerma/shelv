@@ -151,7 +151,7 @@ test('public emitted module closure contains no live factory, endpoint or effect
     'fixture.ts':'ae452056969baccbb34d6fbb9934d80a6465fb0546e7d9b680161baee3f52083',
     'images.ts':'76762196709b90c118fa016e8c44889b746257f947a425bed0fa2e52c97d5014',
     'model.ts':'b8af3631bdac6875c306495775eda66d3d3884d450ef4862fd641484b3d3160b',
-    'maya.css':'6cdb2064162ef35aab8b1f08da1c7b95dd0f6ef04f51a5f0b089998c84b89112',
+    'maya.css':'0053430c056d7c723b2572be038122408c77caf7df7502f543cf1ca142ebe007',
     'public-source.d.ts':'cf789c309c965a1222d671d7192afc3970898e7263526831fc2842406728788e',
     'index.ts':'747f8ad964c23f2ebef651afba6b3c43b388f36c78933acebad9bb74baffd0c9',
   };

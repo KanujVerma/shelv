@@ -15,6 +15,7 @@ const simpleRoutes = {
   "account-service": "/account/service",
   "account-cancel": "/account/cancel",
   notifications: "/notifications",
+  "advisor-notifications": "/advisor/notifications",
   "advisor-clients": "/advisor/clients",
   "advisor-plans": "/advisor/plans",
   "advisor-permissions": "/advisor/permissions"
@@ -140,6 +141,7 @@ function parseRoute(path) {
 }
 function safeReturnPath(path, audience) {
   const route = parseRoute(path);
+  if (route?.name === "notifications" && audience === "advisor") return buildRoute({ name: "advisor-notifications" });
   if (!route || route.name === "maya" || route.name !== "notifications" && route.name.startsWith("advisor-") !== (audience === "advisor")) return null;
   return buildRoute(route);
 }

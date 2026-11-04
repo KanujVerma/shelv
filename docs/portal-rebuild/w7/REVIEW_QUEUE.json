@@ -189,7 +189,8 @@
       "lane": "W5",
       "head": "a5bcfa28d2e279481d6076381c071d9b7faad35b",
       "scope": "OrdersUI23; final current-a5bc-postimages.json only",
-      "status": "QUEUED"
+      "status": "FAIL_SOURCE_POST_DISPATCH_CALLBACK_FENCE_REVIEW_INCOMPLETE",
+      "report": "reviews/W5_ORDERS_A5BC_FAIL.md"
     },
     {
       "lane": "W6",
@@ -201,7 +202,8 @@
       "lane": "W6",
       "head": "62f3bd18a04c65413d5a93574e2924a3f5fff998",
       "scope": "Finalexport complete16 selfcontainedsnapshot successor",
-      "status": "QUEUED"
+      "status": "PASS_SCOPED_COMPLETE_FINAL_EXPORT_CONSUMER_SOURCE_DEPENDENCY_HELD",
+      "report": "reviews/W6_EXPORT_62F.md"
     },
     {
       "lane": "W1",
@@ -361,7 +363,8 @@
       "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
       "lane": "W2",
       "scope": "New7 readonly scoped ClientWorkspace source/UI/finite only; no actualadapter/route/Auth/backend/browser",
-      "status": "QUEUED_SOURCE_CLIENT_WORKSPACE_ONLY"
+      "status": "HOLD_OWNER_REENTRANT_FILTER_LOADING_NO_VERDICT",
+      "reason": "Owner reproduced loading observer setFilter leaves activeop/calls0/loading; W7 has not read/tested this old head and will not resume it. Await new exact successor."
     },
     {
       "head": "7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db",
@@ -385,21 +388,312 @@
       "base": "1c39946a77ce06a9bd9cf7208cceacd637542a54",
       "lane": "W2",
       "scope": "Exact3 test-only followup parity/sensitivity plus all14 priorpostimage correspondence; no old06666/0d audit, no productsource change.",
-      "status": "QUEUED_SOURCE_TEST_SUCCESSOR_SENSITIVITY"
+      "status": "PASS_SCOPED_TEST_PARITY_SENSITIVITY_SOURCE_ONLY",
+      "report": "reviews/W2_FOLLOWUP_2EC.md"
     },
     {
       "head": "fef98c75702900295783ba7b8514e2b6bb092b1a",
       "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
       "lane": "W1",
       "scope": "New exact6 prospective Template DTO format/source only, fiveclosed actions and immutableversion metadata; no SQL/dispatch/auth/CAS/resource or heldaudit.",
-      "status": "QUEUED_SOURCE_TEMPLATE_DTO_ONLY"
+      "status": "PASS_SCOPED_PLAN_TEMPLATE_DTO_FORMAT_SOURCE_ONLY",
+      "report": "reviews/W1_TEMPLATES_FEF.md"
     },
     {
       "head": "e37b21a723447ecb4539be2f23cb6a8a679b4cbe",
       "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
       "lane": "W1",
       "scope": "Priority perW0 after5e5: exact6 inert original/successor4 groupingbytes/helperlineage/directRPCtestPROPOSAL only. No privateSource/refauthority audit, canonicalSQL/parser/catalog/Auth/scan/repair/resources. Native4460794439 remainsOPEN.",
-      "status": "QUEUED_PRIORITY_NARROW_INERT_PLAN_LOOKUP_SOURCE_ONLY"
+      "status": "PASS_SCOPED_INERT_FIDELITY_LINEAGE_PROPOSAL_ONLY",
+      "report": "reviews/W1_PLAN_LOOKUP_E37.md",
+      "nativeFinding": "4460794439 remainsOPEN"
+    },
+    {
+      "head": "a1e89386d296815efad377ab157dc910e3bb5d8d",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "scope": "Bounded actualRoot correspondence only; no actualfinancial/resource/heldaudit grant.",
+      "status": "PASS_BOUNDED_ACTUAL_ROOT_SOURCE_DEPENDENCY_CORRESPONDENCE",
+      "report": "reviews/ROOT_ROLLFORWARDS_A1E_956_1543.md"
+    },
+    {
+      "head": "95678689e7dc151148898aba18cd483aebd3043f",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "scope": "Bounded actualRoot correspondence only; no actualfinancial/resource/heldaudit grant.",
+      "status": "HOLD_OWNER_NATIVE_P2_4462020377_WAIT_NEW_SUCCESSOR",
+      "report": "reviews/ROOT_ROLLFORWARDS_A1E_956_1543.md",
+      "reason": "Ownerreports alreadyreceivedAuth/RPCdenial outrunbyouterabort race. No W7newreview/test/audit atheld956; prior c8/Rootcorrespondence passes remainhistorical."
+    },
+    {
+      "head": "154311290595b163481e4f935765f34a451c1810",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "scope": "Bounded actualRoot correspondence only; no actualfinancial/resource/heldaudit grant.",
+      "status": "PASS_BOUNDED_ACTUAL_ROOT_SOURCE_DEPENDENCY_CORRESPONDENCE",
+      "report": "reviews/ROOT_ROLLFORWARDS_A1E_956_1543.md"
+    },
+    {
+      "head": "49b011b094b674f01d141559439164d3ba0a0bfa",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W2",
+      "scope": "Complete10 quote/delivery composition incl actualsession finiteHTTP, priorbrowserassertion byteparity only/noChrome",
+      "status": "PASS_SCOPED_COMPLETE_QUOTE_DELIVERY_COMPOSITION_SOURCE",
+      "report": "reviews/W2_QUOTE_DELIVERY_49B.md"
+    },
+    {
+      "head": "5a1cd82acde8c3ef7d678bb1aee6b1213fd8dd65",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W0",
+      "scope": "Complete8 PUBLIC Maya sharedchrome/source/MSC3UIconstraint; no browser/resources/Auth/private-egress orprincipal review",
+      "status": "FAIL_SOURCE_MSC3_CLEAR_BEFORE_OBSERVER_ORDER",
+      "report": "reviews/W0_MAYA_5A1_FAIL.md"
+    },
+    {
+      "head": "145966d4b6de7f3e40f8c6b69d66a3027913c91d",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W1",
+      "scope": "Complete6 DirectoryV2 DTOformat only/newprospectiveactualVIEWproducer absent. No oldeditguard relaxation/sourceprivateaudit/SQLcatalog/Auth/resources",
+      "status": "PASS_SCOPED_DIRECTORY_V2_DTO_FORMAT_SOURCE_ONLY",
+      "report": "reviews/W1_DIRECTORY_1459.md"
+    },
+    {
+      "head": "ec81afcdbc7525b72357057623cfec35bd056385",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W2",
+      "scope": "New5 import dialog/helper/editor composition only, parser/controllercompare soleengine; no apply/save/publication/browser/resources/heldaudit",
+      "status": "HOLD_OWNER_HOSTED_IMPORT_MODAL_FAILURE_WAIT_NEW_PRODUCT_SUCCESSOR",
+      "reason": "Ownerreports Portal3604/3606 twooldbrowserimportflows timeout. W7hasnotread/testedauditedEC; no existingtestrewrite approved, awaitnewproductsourcehead."
+    },
+    {
+      "head": "91ca6c2332bfd982dbf4837512f4a0e25675bc3a",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W2",
+      "scope": "Newcomplete8 correctedClientWorkspace sourceonly; old0eheld/no oldreview/tests, actualVIEWreadqualification preserved",
+      "status": "HOLD_OWNER_NATIVE_P2_4462056413_WAIT_NEW_SUCCESSOR",
+      "reason": "Ownerreports mixedcaseUUID scope/duplicate identity bug; no W7source/test/audit started at91. Old0eHOLD remains, await freshcorrectedhead."
+    },
+    {
+      "head": "860c0f74e8a7b8d596c7c7d37088e9e94b2d3041",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W3",
+      "scope": "Newexact4 CSS/oneallocatedtestSHA/pageassertionexports/report; driverfunctionsUNRUN, no Page/server/browser/Auth/oldgrantreuse",
+      "status": "PASS_SCOPED_CSS_PIN_AND_ASSERTION_EXPORT_SOURCE_ONLY",
+      "report": "reviews/W3_CSS_EXPORTS_860.md"
+    },
+    {
+      "head": "73eddff523f68afeb1a4980547c9e1fc3a294ec9",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W0",
+      "scope": "Newcomplete9 PUBLIC Maya MSC3ordersuccessor, exactoriginalW7program; no old5aaudit/browser/resource/heldscope",
+      "status": "PASS_SCOPED_PUBLIC_MAYA_SOURCE_MSC3_ORDER_CLOSED",
+      "report": "reviews/W0_MAYA_73E.md"
+    },
+    {
+      "head": "e93ecfc8438e5949352c3727b7447208f671a2c7",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W1",
+      "scope": "Newcomplete4 canonicalforwardSOURCE only/71allocatedafter69+70; no parser/SQL/catalog/Auth/publication orresources untilseparateW0packet",
+      "status": "PASS_SCOPED_CANONICAL_FORWARD_SOURCE_ONLY_WAIT_W0_PACKET",
+      "report": "reviews/W1_PLAN_FORWARD_E93.md",
+      "sqlPrCi": "WAIT_W0_EXACT_PACKET"
+    },
+    {
+      "head": "cb05840bfd95fae87f956fd7fffc2ec116cd251f",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "correctionBase": "95678689e7dc151148898aba18cd483aebd3043f",
+      "lane": "W5",
+      "scope": "Newcomplete7 finitefinancialtransport denialrace successor; serveronlydenyobserver/no positiveauthority, no old956audit orfacts/SQL/M65/private-return/resources",
+      "status": "PASS_SCOPED_FINITE_FINANCIAL_DENIAL_SUCCESSOR_SOURCE_ONLY",
+      "report": "reviews/W5_FINANCIAL_CB0.md",
+      "nativeHostedResolution": "NOT_INFERRED"
+    },
+    {
+      "head": "369c216d43dd417b0290cacedb3201daf977d63e",
+      "base": "73eddff523f68afeb1a4980547c9e1fc3a294ec9",
+      "lane": "W0",
+      "scope": "Newcomplete8 actualSelfPurchase navigator/App/witness source only afterMayaR2, no W3featurechange/businessoperation/AuthSQL/browser/resource orheldaudit grant",
+      "status": "PASS_SCOPED_SELF_PURCHASE_NAVIGATION_APP_WITNESS_SOURCE",
+      "report": "reviews/W0_SELF_369.md"
+    },
+    {
+      "head": "9cbc6289c8c12b8c724516206ebae0b7377bde39",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W2",
+      "scope": "New9 UUID/callback-corrected ClientWorkspace, old0e/91held/noaudit; exactadapter/readonlyview qualification retained",
+      "status": "PASS_SCOPED_COMPLETE_CLIENT_WORKSPACE_SOURCE",
+      "report": "reviews/W2_CLIENT_9CBC.md"
+    },
+    {
+      "head": "3aa244c474a288149491462ee5046e57cc330c43",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W2",
+      "scope": "New5 backgroundimport productcorrection, oldEC held/noaudit/browserrerun; rawtext/sourceRootowner retention, no newapply/save/authority",
+      "status": "PASS_SCOPED_COMPLETE_BACKGROUND_IMPORT_SOURCE",
+      "report": "reviews/W2_IMPORT_3AA.md"
+    },
+    {
+      "head": "fd923f8f83c06b20ed37f057d43a2e2e8b542c21",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W1",
+      "scope": "Fresh5 forward71 test-only manifest/CWD/shallow-Gitless correspondence; SQL/pgTAP byteexacte93 and UNRUN, no SQL push/CI/resource grant",
+      "status": "PASS_SCOPED_FORWARD_SOURCE_TEST_CORRESPONDENCE_WAIT_W0_PACKET",
+      "report": "reviews/W1_PLAN_FORWARD_FD9.md"
+    },
+    {
+      "head": "ccb28da2ce48b2fdc7aa029645bb3f3688a5e9b3",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W6",
+      "scope": "Bounded16+54+locks directGit correspondence to62f; initial ownerlabel lookupfailed, correctedc86receipt+both54 manifests verified; historicalcookie/missingrequest inputs retained",
+      "status": "PASS_BOUNDED_FINAL_EXPORT_SOURCE_DEPENDENCY_CORRESPONDENCE_ONLY",
+      "report": "reviews/W6_EXPORT_CCB_CORRESPONDENCE.md"
+    },
+    {
+      "head": "bab86af33829636f304ceb5bc6f8a98d387063dd",
+      "base": "df230eca6017f8dd330cceb83eb11b18193937e5",
+      "lane": "W1",
+      "scope": "Bounded6+9 exactpublishedbase DTO correspondence only",
+      "status": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY",
+      "report": "reviews/DTO_CORRESPONDENCES_BAB_139.md"
+    },
+    {
+      "head": "13997462f2b948165305253a36b3b712a90fd3cd",
+      "base": "df230eca6017f8dd330cceb83eb11b18193937e5",
+      "lane": "W1",
+      "scope": "Bounded6+9 exactpublishedbase DTO correspondence only",
+      "status": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY",
+      "report": "reviews/DTO_CORRESPONDENCES_BAB_139.md"
+    },
+    {
+      "head": "92f5cdb162423303389098644bcc94c3a5f5542d",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W1",
+      "scope": "Freshcomplete5 service69 ownclient read/status/cancel/typedprojection/current7 lineage SOURCE only; parserbudget clauses only permittednewdelta, optionalSource9unadmitted/heldauthoritypredicates BYTEPRESERVED not audited. No SQL/CI/resources",
+      "packetSha256": "7f5ed1fe9f0233bd9ae0c382364f5be15d271c2de4bb2ea71b76a2fe9bf52b95",
+      "patchSha256": "9cdfb8d2df3f956cafc6763967aacd6b52576704750f540f4da04772299dd546",
+      "status": "QUEUED_FRESH_SCOPED_SERVICE69_SOURCE"
+    },
+    {
+      "head": "8a0fc2ae127270836406abf7abe9d76ff7d3b41b",
+      "base": "df230eca6017f8dd330cceb83eb11b18193937e5",
+      "lane": "W6",
+      "scope": "Freshcomplete9 addressonly core/controller/fragment/actualSSR with one inertmissingc06request input; no legacycare reacquisition/M01edit/AuthSQL orfinancialgrant",
+      "packetSha256": "3063729223a838b7a2fb6c6ace912127a4ba0b068ffc7662b7de86bd2dc6cd0b",
+      "patchSha256": "33d9066cec2463246ef225bc365eaf2b2b8e105a5fe7b011e374976e7ed390c9",
+      "status": "QUEUED_FRESH_ADDRESS_SOURCE"
+    },
+    {
+      "head": "41d864b077a41568994850dbb6ff27e86c85f9e7",
+      "base": "df230eca6017f8dd330cceb83eb11b18193937e5",
+      "lane": "W3",
+      "scope": "Freshcomplete13 unpublisheddecisioncard/sharedpresentation Source only; actualsourcepreview/sessionguard/handlersbytepreservation, no actualpreviewport/A02genuine",
+      "patchSha256": "6a0e8f1a684ecb4c0dcaeeecfe91164518f2aeed19a85813e3ec8a34b7605dd9",
+      "status": "QUEUED_FRESH_UNPUBLISHED_CARD_SOURCE",
+      "evidenceQualification": "CURRENT final-head41-types.log0 /final-head41-compatibility.log284/final-card.log15; oldtypes.log TS2688SETUP notcurrent"
+    },
+    {
+      "head": "a9a0177f4664fdf63439b67eb8f54d1c1f6a635d",
+      "base": "df230eca6017f8dd330cceb83eb11b18193937e5",
+      "lane": "W2",
+      "scope": "Freshcomplete18 admission/Directory/currentpublished quoteDeliveryClientWorkspace composition, fullcontroller4-addition inverse; old1c/2ec/49b/9cbc passes notwholecomposition. No AuthSQL/Resource/heldaudit",
+      "patchSha256": "17a03cff53306f40f9ac88ea428632d8a439e1d88a164f3e8b7fae6fe35fd135",
+      "status": "OWNER_HOLD_BEFORE_W7_REVIEW_PENDING_CAPTION_SUCCESSOR",
+      "reason": "Olda9 neverread/testedbyW7; awaitfresh95d complete18review, notoldcontinuation"
+    },
+    {
+      "head": "acc76e23c65b2ce59d9d01bbf43392227a9991fd",
+      "base": "df230eca6017f8dd330cceb83eb11b18193937e5",
+      "lane": "W5",
+      "scope": "FRESH COMPLETE24 O1successor, actualRootDTO4/newdispatchcontrol/21otherpostimages unchanged; mustreviewallremainingviewsCSS/tests notpatch-only. Originala5bc stoppedFAIL preserved/no oldretry; finiteSourceonly no private/M65financialaudit",
+      "packetSha256": "847760c1973026c5720235a49bfcc900f74f5f5deed0decf8161c4f47dff98ff",
+      "patchSha256": "23f027627e6880436cc729565b6d919e58c73cd2a03dca44eda5753a22e0d3e8",
+      "status": "WITHHELD_COMPLETE_ORDERS_SUCCESSOR_SOURCE_USE_REFERENCE_FINDING",
+      "report": "reviews/W5_ORDERS_ACC76_O2.md"
+    },
+    {
+      "head": "35eaefd5b3dd18588cb1b81acaf44462eb8e5648",
+      "base": "6ad70da73583a2e40254a42194bb74310e7b95e1",
+      "lane": "W0",
+      "scope": "NEWcomplete10 actualscopedClientWorkspace entry/App/lifetimes/strictAppinverse SOURCE; actualVIEW backendEDITconstraint preserved/noAuthSQL/browser/genuinegrant",
+      "status": "PASS_SCOPED_COMPLETE_CLIENT_ENTRY_SOURCE_MODEL_FINITE_SSR",
+      "report": "reviews/W0_CLIENT_ENTRY_35E.md"
+    },
+    {
+      "head": "c9b4fb3b8f8cc594d954eb2963e15176ed53d0ab",
+      "base": "35eaefd5b3dd18588cb1b81acaf44462eb8e5648",
+      "lane": "W0",
+      "scope": "One literal publiccaption only; allCSS/tests/740predicate unchanged, new geometry unrun; parent35 complete10 separate",
+      "status": "PASS_SCOPED_LITERAL_PUBLIC_CAPTION_SOURCE_ONLY_GEOMETRY_UNRUN",
+      "report": "reviews/W0_CAPTION_C9B.md"
+    },
+    {
+      "head": "48141c31b11ebb2bdb13c73ad5c20ec5af83d50b",
+      "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "lane": "W1",
+      "scope": "Bounded6+9 exactcaption-base DTO correspondence only; oldfailedCIpreserved/currentCIseparate",
+      "status": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY",
+      "report": "reviews/DTO_CORRESPONDENCES_481_B02.md"
+    },
+    {
+      "head": "b02e0f8196642f1ec52666ce8ce3c88ee1dc78bb",
+      "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "lane": "W1",
+      "scope": "Bounded6+9 exactcaption-base DTO correspondence only; oldfailedCIpreserved/currentCIseparate",
+      "status": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY",
+      "report": "reviews/DTO_CORRESPONDENCES_481_B02.md"
+    },
+    {
+      "head": "95d98bd5ff02aba43b39b5b3d209c69f38ed3b90",
+      "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "lane": "W2",
+      "scope": "FreshCOMPLETE18 admission/Directory/publishedentry composition aftera9HOLD;17postimagesexacta9/reportupdated, fullunreviewednotcaptiononly",
+      "packetSha256": "8195f5b3e6f70cb5efce7a944b92207fbe2ce82f8b776bf33f3c6df1aa51b7e0",
+      "patchSha256": "8c68140cda32f796200bfe9cda10239c8f7677404fd12207eceb30f15e71097a",
+      "status": "QUEUED_FRESH_COMPLETE_ADVISOR_ENTRY_CAPTION_COMPOSITION_SOURCE"
+    },
+    {
+      "head": "db7ab1b708a33b5f7bf56c1ba7aba351e12a55a6",
+      "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "lane": "W2",
+      "scope": "FreshCOMPLETE6 import+publisheddeliveryWorkspace composition; incoming3aabytes/surroundingpublishedexact, oldECheldnotreadorcontinued",
+      "packetSha256": "022fb90ee0ba7e9ccf0cfe2fa3a8e42b0738f020dae344f8edcb7a8911d27060",
+      "patchSha256": "5ae2b0e1b42ee9024aa35d9072fe24281dedb6de4b607ac025f81b4abb48556f",
+      "status": "QUEUED_FRESH_COMPLETE_IMPORT_COMPOSITION_SOURCE"
+    },
+    {
+      "head": "a9b721ccdb4a36d2471ff98d0b18d8cc88f15b2e",
+      "base": "df230eca6017f8dd330cceb83eb11b18193937e5",
+      "lane": "W5",
+      "scope": "FreshCOMPLETE23 ProductQuoteAdminfrontend/controller/model/retainedSDKfinite Source only, actualRootDTO4/nooverride; no M65/CBfinancialauthority/SQL/audit/resourcegrant",
+      "packetSha256": "21a40d1e4dd556ae11b4d987cf24a6d72f236bd482a8f0ba7a8014a131d75cea",
+      "patchSha256": "736f1c212658fc4688b814e2a3c4b3ca8f2ff46c7344f4436492c37257f65309",
+      "status": "QUEUED_FRESH_COMPLETE_PRODUCT_QUOTE_ADMIN_SOURCE"
+    },
+    {
+      "head": "78ea50d28a3a20bbc5c25bae0d3b3d3250570ca8",
+      "base": "f060f225983d388bccf5423983e8e0beca540251",
+      "lane": "W0",
+      "scope": "FreshCOMPLETE9 ordinaryadvisornotificationstartup routing Source/finite/SSR/native4462894740 only; unchangedbootstrap/start/session/transport, Maya audiencenull ownerdeclaredunaffected. No heldaudit/Authsetupgrant",
+      "packetSha256": "3a41f7f194c18d62c2cfed9f32cacdd6cdad1248e2b9cbbc2a20906546b3920e",
+      "patchSha256": "76e57e2966586691e327c92f2c620b288ee53a7a4b813c7b02d7e55b4ce0b7fd",
+      "status": "WITHHELD_COMPLETE_STARTUP_SOURCE_ENTRY_OWNERSHIP_FINDING",
+      "report": "reviews/W0_NOTIFICATION_STARTUP_78E_FAIL.md"
+    },
+    {
+      "head": "eb7513eb5d776b2480a5ea68746baca40e0f43ee",
+      "base": "f060f225983d388bccf5423983e8e0beca540251",
+      "lane": "W0",
+      "scope": "NEWcomplete10ordinaryinboxstartup+latestclaimOwnercorrection/fullentryinverse/exactoriginal3eec control; old78WITHHELD preserved/nooldresume; untrackedownerModuleWIPexcluded",
+      "packetSha256": "b90e10afd7f7c532870ba1012bdc455a107dbb826bbc9074066a646647170ef1",
+      "patchSha256": "a465328fc9fd37a2eb0e6238d4c097f9405cbb4437303439ef616026353001a0",
+      "status": "PASS_SCOPED_COMPLETE_NOTIFICATION_STARTUP_OWNER_SUCCESSOR_SOURCE_ONLY",
+      "report": "reviews/W0_NOTIFICATION_EB75.md"
+    },
+    {
+      "head": "227d29ad49f9e4e2ea8dce9383b1e722ea5bfb7f",
+      "base": "eb7513eb5d776b2480a5ea68746baca40e0f43ee",
+      "lane": "W0",
+      "scope": "NEW standalone6 notification-owner Source only/oneprivateactualBoundarycontroller+revocableviewhandles; nomount/inboxA06claim/noactualAuthSQL/resource/heldaudit",
+      "packetSha256": "3a6655f50a1ddfc19bdbf316f66facb2a5461e99cccd4662a08c8fd7e8961002",
+      "patchSha256": "e908c2301965e03e227300f286f133d79a552cd70e5d947d62e59e5ec5986492",
+      "status": "QUEUED_FRESH_STANDALONE_NOTIFICATION_OWNER_SOURCE"
     }
   ],
   "freshGenuineGrant": null,
@@ -416,7 +710,14 @@
     "W2 2073/6887 owner HOLD means no further oldhead review/test/audit. W7 accidental2073 checks are PARTIAL/NO_VERDICT; noapproval. Await newcorrected heads.",
     "Lifecycle tool currently reports original goal paused despite newer user continuation/intakes. No newgoal created and no completion asserted; current authorized work continues.",
     "W2 owner reports admission1c hostedPortalCI52fail/3416 and nativeclean; W7 has not independently inspected CI. Source89 pass stays scoped; no currentCIgreen/integration acceptance.",
-    "W1 owner reports distinct Root PlanP2/native4460794439 dangling-product SQLreference hold; W7 has not independently audited it. No Rootbackend/templateproducer safety inferred from DTO/source passes."
+    "W1 owner reports distinct Root PlanP2/native4460794439 dangling-product SQLreference hold; W7 has not independently audited it. No Rootbackend/templateproducer safety inferred from DTO/source passes.",
+    "Published8a2 verifiedlsremote/sourcecorrespondenceonly. Native2118a2 ownerreports findings true; SQL4460794439OPEN/photo4461800685UNACCEPTED_HELD/noindependentverdict; no wholeheadclean or census inference.",
+    "W5 prematureFINALreceipt/countnotice withdrawn; finala612/641metadatahashes verified, broadchecks notindependentlyrepeated. No243/216guess used. W3newpageassertiondriverproposal awaits exacthead/W0freshpublicpacket; consumedlegacybrowser grants not reusable, no driver/resourceexecution.",
+    "W3 Source860 unchanged nowPR233 owner-opened/nativeCIpending. W7 source162/importsafety isnotcombinedRoot publication/browser/Figmapass; no grants transferred.",
+    "PR232956 extraGuidancebrowserCI case2787 ownercustodyONLY/causeUNKNOWN, rawlog8aef7467... notopened/auditedbyW7; no old956/Guidance/browser rerun/testchange orheldauditrequest.",
+    "Owner reports cb058 PR232 current native clean/all3CI success; W7 custody-only, not independently verified or actual financial/genuine acceptance. Old956native/CI failures preserved.",
+    "Owner reports df230 PortalCI3754pass1foundationgeometryFAIL contact.y720vs740. Knownfailure preserved; actualPUBLICMaya page must bind reviewed/publishedcaption successor/newbuild. R1blankprobe was not app execution and remains returned.",
+    "Owner reports PR2343784/1, PR2353783/1 and PR226a93787/1 terminalCI failures solely known unchanged contact.y720vs740; no W7rerun/currentCIgreen inferred."
   ],
   "browserSlot": {
     "state": "R2_RETURNED_NORMAL_TEARDOWN_EXIT0; NO_FOLLOW_ON_GRANT",
@@ -424,7 +725,7 @@
     "at": "2026-11-03T20:04:32.743040+00:00",
     "report": "reviews/W3_BROWSER_96B_R2_RESULT.json"
   },
-  "lastReconciledAt": "2026-11-03T23:38:47.999612+00:00",
+  "lastReconciledAt": "2026-11-04T01:01:38.233598+00:00",
   "pendingIntakes": [],
   "artifactCustody": [
     {
