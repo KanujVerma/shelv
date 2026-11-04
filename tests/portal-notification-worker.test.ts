@@ -61,7 +61,7 @@ test('deterministic neutral source links preserve exact event kind while A07 use
  const {buildNeutralNotificationEmail}=await import('../supabase/functions/concierge-notifications/neutralPayload.ts');const c=context();
  const g={...c,event:{...event,source:{kind:'guidance',recordId:eventId,version:1,eventKind:'instruction_published'},destination:{kind:'public_history',recordKind:'instruction',recordId:eventId}}};
  const p=buildNeutralNotificationEmail(g as never,'https://portal.synthetic.invalid');assert.equal(p.link,`https://portal.synthetic.invalid/history/public_instruction%3A${eventId}`);assert.equal(p.subject,'an update from shelv');assert.doesNotMatch(p.text.split('\n')[0]!,/instruction|skin|PRIVATE|source/);
- const a={...c,event:{...event,source:{kind:'review',recordId:eventId,version:1,eventKind:'goal_reported'},destination:{kind:'unavailable',reason:'advisor_review_resolution_unavailable'}}};assert.equal(buildNeutralNotificationEmail(a as never,'https://portal.synthetic.invalid').link,'https://portal.synthetic.invalid/notifications');
+ const a={...c,event:{...event,source:{kind:'review',recordId:eventId,version:1,eventKind:'goal_reported'},destination:{kind:'unavailable',reason:'advisor_review_resolution_unavailable'}}};assert.equal(buildNeutralNotificationEmail(a as never,'https://portal.synthetic.invalid').link,'https://portal.synthetic.invalid/advisor/notifications');
 });
 test('actual fixed service HTTP transport resolves IDs then writes real sink before existing result RPC',async()=>{
  const {runNotificationBatch,createNotificationWorkerPorts}=await import('../supabase/functions/concierge-notifications/worker.ts');const {createLocalNotificationSink}=await import('../supabase/functions/concierge-notifications/localSink.ts');
