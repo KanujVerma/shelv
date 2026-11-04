@@ -24,6 +24,10 @@ test('self purchase navigates to exact actual-use form, preserving routine and p
 test('a replacement canonical read retires an old callback even with the same product',async t=>{
  const f=await setup(t),run=f.callback(),path=f.navigation.getSnapshot();await f.connection.controller.refresh();run(product,decision);assert.equal(f.navigation.getSnapshot(),path);
 });
+test('a callback from an earlier route cannot replace a newer navigation intent',async t=>{
+ const f=await setup(t),run=f.callback();f.navigation.navigate({name:'plan',routine:'evening'});const current=f.navigation.getSnapshot();
+ run(product,decision);assert.equal(f.navigation.getSnapshot(),current);
+});
 test('an offline but lifetime-current real cookie cannot navigate from the old render',async t=>{
  const f=await setup(t),run=f.callback(),path=f.navigation.getSnapshot();f.runtime.cookie.status='offline';assert.equal(f.boundary.isCurrent(),true);
  run(product,decision);assert.equal(f.navigation.getSnapshot(),path);

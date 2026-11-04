@@ -20,12 +20,12 @@ M01 Account entry/profile/contact and M02 Orders/read files are unchanged. Their
 
 ## Observed checks and retained failures
 
-- Missing new navigation export:0/6 new-feature assertions. Current6/6 uses actual V3 ApplicationSession, controller/read, canonical navigation and closed HTTP; exact route/no writes, stale read, offline lifetime-current cookie, actual actor replacement, returned-view alias mutation and read-only/denied cases.
+- Missing new navigation export:0/6 new-feature assertions. Current7/7 (including a later route-intent control) uses actual V3 ApplicationSession, controller/read, canonical navigation and closed HTTP; exact route/no writes, stale read, offline lifetime-current cookie, actual actor replacement, returned-view alias mutation and read-only/denied cases.
 - Actual App SSR missing callback:0/3; current3/3 observes real native host handlers/shared form without hook or authority substitution. V2 positive enters the exact form with acquisition:self/no writes; V3 preserves independent readiness; offline old handler never navigates.
-- New preservation helper baseline0/5; current5/5 including four meaningful mutation refusals. Original old witness1/2 remains failed; wrapper successor2/2 preserves all original predicates. New complete16/16 plus covering W3 self-purchase/order-use, Account lifetime, App care/V3/session cases82/82,0fail/skip/cancel, explicit Node22.23.0.
+- New preservation helper baseline0/5; current5/5 including four meaningful mutation refusals. Original old witness1/2 remains failed; wrapper successor2/2 preserves all original predicates. New complete17/17 plus covering W3 self-purchase/order-use, Account lifetime, App care/V3/session cases83/83,0fail/skip/cancel, explicit Node22.23.0.
 - Initial frontend TS2345 nullable-capture diagnostic is retained in SELF-PURCHASE-FINAL-TYPES.log. An explicit narrowed immutable local capture fixes it; actual unmodified configured frontend exits0 in SELF-PURCHASE-TYPES-0.log. No cast/flag relaxation.
 
-Raw evidence under .local-artifacts/portal-rebuild/w0-20261103: SELF-PURCHASE-OLD.log, SELF-PURCHASE-CURRENT.log, SELF-PURCHASE-APP-OLD.log, SELF-PURCHASE-APP-CURRENT.log, SELF-PURCHASE-PRESERVATION-OLD.log, SELF-PURCHASE-WITNESS-NEW-OLD.log, SELF-PURCHASE-FINAL-16.log, SELF-PURCHASE-COVERING.log and the type logs above. Full immutable source/type correspondence and independent W7 review remain required after freezing this complete eight-path candidate.
+Raw evidence under .local-artifacts/portal-rebuild/w0-20261103: SELF-PURCHASE-OLD.log, SELF-PURCHASE-CURRENT.log, SELF-PURCHASE-APP-OLD.log, SELF-PURCHASE-APP-CURRENT.log, SELF-PURCHASE-PRESERVATION-OLD.log, SELF-PURCHASE-WITNESS-NEW-OLD.log, SELF-PURCHASE-FINAL-16.log, SELF-PURCHASE-COVERING.log, SELF-PURCHASE-FINAL-83.log and the type logs above. Full immutable source/type correspondence and independent W7 review remain required after freezing this complete eight-path candidate.
 
 ## Remaining gates
 
