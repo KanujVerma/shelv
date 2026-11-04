@@ -74,3 +74,6 @@ test('a delayed context cleanup cannot erase a newly opened sheet in that same c
  f.h.effect=(fn,deps)=>{if(!delayed&&deps.length===2&&deps[0]===f.controller&&typeof deps[1]==='string'&&deps[1].includes(f.b.id)){delayed=fn;register(()=>{},deps);}else register(fn,deps);};
  await openSheet(f,f.b,'product',f.qB.lines[0]);assert.equal(typeof delayed,'function');delayed();const current=sheetOf(f.render(f.b));assert.ok(current);assert.equal(current.props.children.props.state.selection.entity.id,f.b.id);assert.equal(f.calls.filter(c=>!c.action.startsWith('read_')).length,0);
 });
+test('reopening the same sheet kind and target creates a fresh child generation and refuses old completion',async t=>{
+ const f=await fixture(t),first=await openSheet(f,f.a,'review'),second=await openSheet(f,f.a,'review');assert.notEqual(second.props.children.key,first.props.children.key,'fresh review form must not reuse the previous sheet instance');first.props.children.props.onDone();assert.ok(sheetOf(f.render(f.a)));second.props.children.props.onDone();assert.equal(sheetOf(f.render(f.a)),null);
+});
