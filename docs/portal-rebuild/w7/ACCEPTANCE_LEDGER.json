@@ -2516,6 +2516,22 @@
       "head": "369c216d43dd417b0290cacedb3201daf977d63e",
       "report": "reviews/W0_SELF_369.md",
       "level": "PASS_SCOPED_SELF_PURCHASE_NAVIGATION_APP_WITNESS_SOURCE"
+    },
+    {
+      "head": "e93ecfc8438e5949352c3727b7447208f671a2c7",
+      "report": "reviews/W1_PLAN_FORWARD_E93.md",
+      "level": "PASS_SCOPED_CANONICAL_FORWARD_SOURCE_ONLY_WAIT_W0_PACKET",
+      "nativeFinding4460794439": "OPEN"
+    },
+    {
+      "head": "cb05840bfd95fae87f956fd7fffc2ec116cd251f",
+      "report": "reviews/W5_FINANCIAL_CB0.md",
+      "level": "PASS_SCOPED_FINITE_FINANCIAL_DENIAL_SUCCESSOR_SOURCE_ONLY"
+    },
+    {
+      "head": "49b011b094b674f01d141559439164d3ba0a0bfa",
+      "report": "reviews/W2_QUOTE_DELIVERY_49B.md",
+      "level": "PASS_SCOPED_COMPLETE_QUOTE_DELIVERY_COMPOSITION_SOURCE"
     }
   ],
   "placementClarifications": [
@@ -2526,7 +2542,7 @@
     }
   ],
   "openIndependentFindings": [],
-  "lastReconciledAt": "2026-11-04T00:44:38.924204+00:00",
+  "lastReconciledAt": "2026-11-04T01:10:18.682179+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
@@ -2629,7 +2645,9 @@
       "publishedHeadStillAffectedAtSource": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
       "status": "OPEN",
       "inertSourceProposalReview": "reviews/W1_PLAN_LOOKUP_E37.md",
-      "sqlOrActualAcceptance": "UNRUN"
+      "sqlOrActualAcceptance": "UNRUN",
+      "forwardSourceReview": "reviews/W1_PLAN_FORWARD_E93.md",
+      "actualSqlAcceptance": "UNRUN"
     },
     {
       "id": 4461800685,
@@ -2641,9 +2659,11 @@
     {
       "id": 4462020377,
       "head": "95678689e7dc151148898aba18cd483aebd3043f",
-      "status": "HOLD_OWNER_WAIT_FROZEN_SUCCESSOR",
+      "status": "ORIGINAL_956_NATIVE_AND_CI_HOLD_PRESERVED_SOURCE_SUCCESSOR_REVIEWED",
       "proofLevel": "OWNER_REPORTED_FINITE_SETTLEMENT_FINDING_NO_NEW_W7_VERDICT",
-      "scope": "Outerhandlerwait/receivedAuthRPCdenialrace only, no SQLfinancial/M65/privateauthorityaudit"
+      "scope": "Outerhandlerwait/receivedAuthRPCdenialrace only, no SQLfinancial/M65/privateauthorityaudit",
+      "sourceCorrectionReview": "reviews/W5_FINANCIAL_CB0.md",
+      "correctedSourceHead": "cb05840bfd95fae87f956fd7fffc2ec116cd251f"
     }
   ]
 }

@@ -432,7 +432,8 @@
       "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
       "lane": "W2",
       "scope": "Complete10 quote/delivery composition incl actualsession finiteHTTP, priorbrowserassertion byteparity only/noChrome",
-      "status": "QUEUED_COMPLETE_SOURCE_QUOTE_DELIVERY_COMPOSITION"
+      "status": "PASS_SCOPED_COMPLETE_QUOTE_DELIVERY_COMPOSITION_SOURCE",
+      "report": "reviews/W2_QUOTE_DELIVERY_49B.md"
     },
     {
       "head": "5a1cd82acde8c3ef7d678bb1aee6b1213fd8dd65",
@@ -486,7 +487,9 @@
       "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
       "lane": "W1",
       "scope": "Newcomplete4 canonicalforwardSOURCE only/71allocatedafter69+70; no parser/SQL/catalog/Auth/publication orresources untilseparateW0packet",
-      "status": "QUEUED_PRIORITY_SOURCE_PLAN_FORWARD_ONLY"
+      "status": "PASS_SCOPED_CANONICAL_FORWARD_SOURCE_ONLY_WAIT_W0_PACKET",
+      "report": "reviews/W1_PLAN_FORWARD_E93.md",
+      "sqlPrCi": "WAIT_W0_EXACT_PACKET"
     },
     {
       "head": "cb05840bfd95fae87f956fd7fffc2ec116cd251f",
@@ -494,7 +497,9 @@
       "correctionBase": "95678689e7dc151148898aba18cd483aebd3043f",
       "lane": "W5",
       "scope": "Newcomplete7 finitefinancialtransport denialrace successor; serveronlydenyobserver/no positiveauthority, no old956audit orfacts/SQL/M65/private-return/resources",
-      "status": "QUEUED_FRESH_SOURCE_FINANCIAL_DENIAL_SUCCESSOR"
+      "status": "PASS_SCOPED_FINITE_FINANCIAL_DENIAL_SUCCESSOR_SOURCE_ONLY",
+      "report": "reviews/W5_FINANCIAL_CB0.md",
+      "nativeHostedResolution": "NOT_INFERRED"
     },
     {
       "head": "369c216d43dd417b0290cacedb3201daf977d63e",
@@ -503,6 +508,27 @@
       "scope": "Newcomplete8 actualSelfPurchase navigator/App/witness source only afterMayaR2, no W3featurechange/businessoperation/AuthSQL/browser/resource orheldaudit grant",
       "status": "PASS_SCOPED_SELF_PURCHASE_NAVIGATION_APP_WITNESS_SOURCE",
       "report": "reviews/W0_SELF_369.md"
+    },
+    {
+      "head": "9cbc6289c8c12b8c724516206ebae0b7377bde39",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W2",
+      "scope": "New9 UUID/callback-corrected ClientWorkspace, old0e/91held/noaudit; exactadapter/readonlyview qualification retained",
+      "status": "QUEUED_FRESH_COMPLETE_CLIENT_WORKSPACE_SOURCE"
+    },
+    {
+      "head": "3aa244c474a288149491462ee5046e57cc330c43",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W2",
+      "scope": "New5 backgroundimport productcorrection, oldEC held/noaudit/browserrerun; rawtext/sourceRootowner retention, no newapply/save/authority",
+      "status": "QUEUED_FRESH_IMPORT_BACKGROUND_SOURCE"
+    },
+    {
+      "head": "fd923f8f83c06b20ed37f057d43a2e2e8b542c21",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "lane": "W1",
+      "scope": "Fresh5 forward71 test-only manifest/CWD/shallow-Gitless correspondence; SQL/pgTAP byteexacte93 and UNRUN, no SQL push/CI/resource grant",
+      "status": "QUEUED_SOURCE_FORWARD_TEST_RUNNER_SUCCESSOR"
     }
   ],
   "freshGenuineGrant": null,
@@ -522,7 +548,8 @@
     "W1 owner reports distinct Root PlanP2/native4460794439 dangling-product SQLreference hold; W7 has not independently audited it. No Rootbackend/templateproducer safety inferred from DTO/source passes.",
     "Published8a2 verifiedlsremote/sourcecorrespondenceonly. Native2118a2 ownerreports findings true; SQL4460794439OPEN/photo4461800685UNACCEPTED_HELD/noindependentverdict; no wholeheadclean or census inference.",
     "W5 prematureFINALreceipt/countnotice withdrawn; finala612/641metadatahashes verified, broadchecks notindependentlyrepeated. No243/216guess used. W3newpageassertiondriverproposal awaits exacthead/W0freshpublicpacket; consumedlegacybrowser grants not reusable, no driver/resourceexecution.",
-    "W3 Source860 unchanged nowPR233 owner-opened/nativeCIpending. W7 source162/importsafety isnotcombinedRoot publication/browser/Figmapass; no grants transferred."
+    "W3 Source860 unchanged nowPR233 owner-opened/nativeCIpending. W7 source162/importsafety isnotcombinedRoot publication/browser/Figmapass; no grants transferred.",
+    "PR232956 extraGuidancebrowserCI case2787 ownercustodyONLY/causeUNKNOWN, rawlog8aef7467... notopened/auditedbyW7; no old956/Guidance/browser rerun/testchange orheldauditrequest."
   ],
   "browserSlot": {
     "state": "R2_RETURNED_NORMAL_TEARDOWN_EXIT0; NO_FOLLOW_ON_GRANT",
@@ -530,7 +557,7 @@
     "at": "2026-11-03T20:04:32.743040+00:00",
     "report": "reviews/W3_BROWSER_96B_R2_RESULT.json"
   },
-  "lastReconciledAt": "2026-11-04T00:44:38.926516+00:00",
+  "lastReconciledAt": "2026-11-04T01:01:38.233598+00:00",
   "pendingIntakes": [],
   "artifactCustody": [
     {

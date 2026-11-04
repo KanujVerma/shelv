@@ -1,0 +1,202 @@
+{
+  "head": "49b011b094b674f01d141559439164d3ba0a0bfa",
+  "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "patchSha256": "16f9ee7244642ef0c92f2b378201e09ee7d49cf3afd653f188ac2a9909645978",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+      "bytes": 42211,
+      "sha256": "2069a123ba27219391e4212d536b69c2761a43ecc186c2ab69c7162723be7d17"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/PublicationDelivery.tsx",
+      "bytes": 4465,
+      "sha256": "f70725ea217fb84317f10827f97820be4e69fbbc75e34a5e60208776d485c1c0"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/controller.ts",
+      "bytes": 48678,
+      "sha256": "8ec3701b3ed38892eb023719db2a838a96be3c5d568b50870828e318483bc752"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/index.ts",
+      "bytes": 627,
+      "sha256": "4a1356b332b647fccafda6ad7fe6b9ff6b8dc2eae64c0c35ca47610ba4a180ca"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/types.ts",
+      "bytes": 7108,
+      "sha256": "890b49b5f08798925a4944ecd6463fa0547761f855b0ba9437939e87269cb39b"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-advisor-browser.test.mjs",
+      "bytes": 30259,
+      "sha256": "466c1bcbe91058b45912257213825837b580cb500dca6cd54556d84cf3feb6aa"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-publication-delivery.test.mjs",
+      "bytes": 8297,
+      "sha256": "63be852eecaca652cca89123b30a70bafdb88f341baa78adc0b535dbb4a8309f"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-quote-delivery-composition.test.mjs",
+      "bytes": 9136,
+      "sha256": "0f52b1cd13d1ea9f250c53cf94477bd4769a3026574abfd838238a03756bd4bd"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/PUBLICATION_DELIVERY_20261103.md",
+      "bytes": 9155,
+      "sha256": "9fdc3f10f4c52526e0af112a4ac3b91c4d6e14d48619e60b80b5dde48d5a44e2"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/QUOTE_DELIVERY_COMPOSITION_20261103.md",
+      "bytes": 6127,
+      "sha256": "ca4b1b5a7f15ed476054894a21ce36210a8e9422879e0d306bb99e9b72398bb3"
+    }
+  ],
+  "parity": [
+    {
+      "path": "apps/portal/src/features/advisor/FirstServiceQuote.tsx",
+      "equals": "40c96273292345812b6d465436c800cbf7ba2f9f",
+      "sha256": "d35a2f2bb32a3e4b1de0caee27f46122c0b1f90568527443f2f6270f0076d5bd"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/PublicationDelivery.tsx",
+      "equals": "527b04b44bc1e493cb6a12796b9e3ff2288ff276",
+      "sha256": "f70725ea217fb84317f10827f97820be4e69fbbc75e34a5e60208776d485c1c0"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-service-quote.test.mjs",
+      "equals": "40c96273292345812b6d465436c800cbf7ba2f9f",
+      "sha256": "4ac29eaf8aa93d0aadd037cfe93ca5dcf819c3bdebba2e31471a5cfff024d1f4"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-publication-delivery.test.mjs",
+      "equals": "527b04b44bc1e493cb6a12796b9e3ff2288ff276",
+      "sha256": "63be852eecaca652cca89123b30a70bafdb88f341baa78adc0b535dbb4a8309f"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-advisor-browser.test.mjs",
+      "equals": "b2377598b22caf684a2a18da1dfb580f9208e5b2",
+      "sha256": "466c1bcbe91058b45912257213825837b580cb500dca6cd54556d84cf3feb6aa"
+    }
+  ],
+  "quoteCoreSha256": "21494c9d10f83a71d01a7c87a9596d2a83165eadea7ae569499e9aa835ed908d",
+  "browserInverseWholeFileExact": true,
+  "dependencies": [
+    {
+      "path": "package-lock.json",
+      "bytes": 303079,
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "bytes": 123808,
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    },
+    {
+      "path": "apps/portal/src/app/ports.ts",
+      "bytes": 15627,
+      "sha256": "6b99db6882bb26d0c3dd44c18c36f2b010ad609b1b101a21bd0a5ff920a19eaf"
+    },
+    {
+      "path": "apps/portal/src/app/session.ts",
+      "bytes": 6061,
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/controller.ts",
+      "bytes": 19282,
+      "sha256": "685a1c9643c861b362f958bc73fadecb2fc3448d84b11131805899319f529c26"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/recovery.ts",
+      "bytes": 2740,
+      "sha256": "b29a389e016cbab378af68eec37027e6219d12a1e7b6e4437635796a98eeceb5"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/Notifications.tsx",
+      "bytes": 9026,
+      "sha256": "619342ebf026e8cfab2503ef032d328a456d406e4fdc1e5fded43de0e6f9f5d4"
+    },
+    {
+      "path": "apps/portal/tests/rebuild/advisor-fixture.mjs",
+      "bytes": 11429,
+      "sha256": "63475f1a03e7ddd8f8d75f13421086b34ed6b88be170a79f16a40d26b77a6954"
+    }
+  ],
+  "owner": "Kanuj",
+  "verdict": "PASS_SCOPED_COMPLETE_QUOTE_DELIVERY_COMPOSITION_SOURCE",
+  "current": {
+    "tests": 113,
+    "pass": 113,
+    "fail": 0,
+    "skip": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0",
+    "sourceOverrides": false
+  },
+  "configuredFrontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "browser": {
+    "executed": false,
+    "syntaxOnlyExitCode": 0,
+    "wholeFileSha256": "466c1bcbe91058b45912257213825837b580cb500dca6cd54556d84cf3feb6aa",
+    "inverseOldWholeFileSha256": "47108bf91f675a3207b06f74f1a60a9e17a416bce8cc7bf4b491e576aa79151c"
+  },
+  "coverage": {
+    "newCombined": 3,
+    "retainedQuote": 9,
+    "retainedDelivery": 8,
+    "retainedControllerRaces": 47,
+    "actualQuotePort": 12,
+    "actualAppIntegration": 34
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-composition-49b/W7-CURRENT113.log",
+      "bytes": 31165,
+      "sha256": "039569ffef7d56edab47250300b2ef12182c665ec097cf019a831a3a19aea4f2",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-composition-49b/W7-FRONTEND.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-composition-49b/W7-BROWSER-SYNTAX.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-composition-49b/CURRENT-EXEC.json",
+      "bytes": 778,
+      "sha256": "dab8560e2fecfff6cad160b1ee4335c2f9de96f81e8836585e862380d42d2fad",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-composition-49b/METADATA-SETUP.json",
+      "bytes": 287,
+      "sha256": "d6b36e4a92ec6b83677037195f0fb6e5a5e8e288c8778321a9130f76bae6f904",
+      "exitCode": 1
+    }
+  ],
+  "setupQualification": {
+    "classification": "W7_METADATA_SETUP_PATH_ERROR_AFTER_TESTS",
+    "exitCode": 1,
+    "reason": "Initial dependency inventory requested nonexistent notifications/NotificationsView.tsx; actual index exports NotificationsView from Notifications.tsx. No candidate change or test failure."
+  },
+  "limits": [
+    "Actual session/cookie/quote adapter/notification controller with closed synthetic HTTP only",
+    "Approval/payment confirmation/publication persistence is an in-memory fixture, not actual Auth/SQL/outbox/provider",
+    "W0 actual single notification owner, route/mount, hosted exact-head gates and fresh browser/genuine/visual/a11y remain open",
+    "Original separate findings and failed browser CI remain preserved; no rerun of old held heads or held scopes",
+    "No whole screen/decision/journey or accepted capability numerator change"
+  ]
+}
