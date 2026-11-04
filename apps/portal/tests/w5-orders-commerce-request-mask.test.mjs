@@ -55,3 +55,28 @@ test('a new requested B stays masked through cancellation notifications from an 
  t.diagnostic(JSON.stringify({requested:f.b,observedDuringCancel:observed,final:f.controller.getSnapshot().selection?.entity,writes:0}));
  assert.equal(observed.filter(x=>x.visible!==null).length,0,'a cancellation observer must not render old A after B was requested');
 });
+
+// Owner extensions on the corrected successor. The original committed W7
+// program is an unchanged byte prefix; stopped R7 is never executed here.
+function unsent(f){f.controller.reviewQuote();const writing=f.controller.acceptQuote();assert.equal(f.controller.getSnapshot().pending?.dispatched,false);return writing;}
+async function finishSwitch(f,writing){const before=f.render(f.b);assert.equal(view(before).state.selection,null);f.h.flush();await f.settle(f.b);await writing;assert.equal(f.controller.getSnapshot().selection?.entity.id,f.b.id);assert.equal(f.calls.filter(c=>!c.action.startsWith('read_')).length,0);}
+test('every cancellation/loading/accepted subscriber snapshot keeps A hidden until matching B',async t=>{
+ const f=await fixture(t);await f.settle(f.a);const writing=unsent(f),seen=[];let watching=true;
+ const off=f.controller.subscribe(()=>{if(watching){const rendered=f.render(f.b);seen.push({phase:view(rendered).state.phase,id:view(rendered).state.selection?.entity.id??null});}});t.after(off);
+ await finishSwitch(f,writing);watching=false;assert.ok(seen.some(x=>x.id===null));assert.ok(seen.some(x=>x.id===f.b.id));assert.equal(seen.some(x=>x.id===f.a.id),false);
+});
+test('an actual native abort listener sees the requested-target mask before loading clears old A',async t=>{
+ const f=await fixture(t);await f.settle(f.a);const writing=unsent(f),seen=[];let watching=true;const original=AbortController.prototype.abort;
+ AbortController.prototype.abort=function(...args){if(watching&&!this.signal.aborted)this.signal.addEventListener('abort',()=>{if(watching)seen.push(view(f.render(f.b)).state.selection?.entity.id??null);},{once:true});return original.apply(this,args);};
+ t.after(()=>{AbortController.prototype.abort=original;});
+ try{await finishSwitch(f,writing);}finally{watching=false;AbortController.prototype.abort=original;}
+ assert.ok(seen.length>0,'the real abort notification was observed');assert.equal(seen.includes(f.a.id),false);
+});
+test('a cancellation observer flushing current effects cannot recursively open B or expose A',async t=>{
+ const f=await fixture(t);await f.settle(f.a);const writing=unsent(f),seen=[];let watching=true;
+ const off=f.controller.subscribe(()=>{const state=f.controller.getSnapshot();if(watching&&state.phase==='ready'&&state.selection?.entity.id===f.a.id&&state.pending===null){seen.push(view(f.render(f.b)).state.selection);f.h.flush();}});t.after(off);
+ await finishSwitch(f,writing);watching=false;assert.ok(seen.length>0);assert.equal(seen.some(Boolean),false);assert.equal(f.opened.filter(x=>x.id===f.b.id).length,1);
+});
+test('after actual B acceptance the mask releases and local Back remains usable without reselecting B',async t=>{
+ const f=await fixture(t);await f.settle(f.a);const writing=unsent(f);await finishSwitch(f,writing);const accepted=await f.settle(f.b);assert.equal(view(accepted).state.selection?.entity.id,f.b.id);f.controller.close();const index=await f.settle({...f.b});assert.equal(f.controller.getSnapshot().selection,null);assert.equal(view(index).state.selection,null);assert.equal(view(index).state.phase,'ready');assert.equal(f.opened.filter(x=>x.id===f.b.id).length,1);
+});
