@@ -22,7 +22,11 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
  const retained=session.memory?.get<OrdersPending>(key);
  let state:OrdersState={phase:'initial',index:null,selection:null,reviewed:false,pending:retained&&retained.dispatched!==false?{...retained,phase:'uncertain'}:null,notice:null,mode,available:port.availability==='available'},disposed=false,readToken=0,writeToken=0,readAbort:AbortController|null=null,selectedRef:CommerceEntityRef|null=null;
  let activeWrite:{token:number;requestId:string;dispatched:boolean}|null=null;
- const live=()=>!disposed&&session.key===boundaryKey&&contextKey===context&&session.isCurrent();
+ const live=()=>{
+  if(disposed||session.key!==boundaryKey||contextKey!==context)return false;
+  const current=session.isCurrent();
+  return current&&!disposed&&session.key===boundaryKey&&contextKey===context;
+ };
  const matches=(token:number)=>live()&&token===readToken;
  const emit=(patch:Partial<OrdersState>)=>{if(!live())return;state={...state,...patch};listeners.forEach(fn=>fn());};
  function remember(pending:OrdersPending|null){if(!live())return;if(pending)session.memory?.set(key,structuredClone(pending));else session.memory?.delete(key);}
@@ -40,33 +44,42 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
   readToken++;writeToken++;activeWrite=null;readAbort?.abort();selectedRef=null;session.memory?.delete(key);
   state={...state,phase:'ended',index:null,selection:null,reviewed:false,pending:null,notice:null};listeners.forEach(fn=>fn());
  });
- function begin(){cancelUnsent();readAbort?.abort();readAbort=new AbortController();const token=++readToken;emit({phase:'loading',selection:null,reviewed:false,notice:null});return {token,signal:readAbort.signal};}
+ function begin(){
+  if(!live())return null;
+  cancelUnsent();if(!live())return null;
+  readAbort?.abort();if(!live())return null;
+  const abort=new AbortController();readAbort=abort;const token=++readToken;
+  emit({phase:'loading',selection:null,reviewed:false,notice:null});
+  if(!matches(token)||abort.signal.aborted)return null;
+  return {token,signal:abort.signal};
+ }
  function failure(error:unknown,token:number){if(!matches(token))return;const status=(error as {status?:number}).status;if(status===401||status===403){retireView(status===401?'ended':'denied');return;}emit({phase:status===409?'conflict':status===503?(port.availability==='unavailable'?'unavailable':'offline'):'error',selection:null,reviewed:false,notice:status===409?'review-required':null});}
  async function refresh(){
-  const selected=selectedRef,{token,signal}=begin();
+  const selected=selectedRef,operation=begin();if(!operation)return;const {token,signal}=operation;
   try{
    let index=await readOrdersIndex(port,ownerId,null,null,signal);if(!matches(token))return;
    // A selected order may be beyond the first index page. Find its current exact
    // revision before refresh; do not reuse the prior snapshot/terms.
    if(selected){const seen=new Set<string>();while(!index.entries.some(e=>e.entity.kind===selected.kind&&e.entity.id===selected.id)&&index.nextCursor){if(seen.has(index.nextCursor))throw new CommerceError(503);seen.add(index.nextCursor);const page=await readOrdersIndex(port,ownerId,index.snapshot,index.nextCursor,signal);if(!matches(token))return;index={...page,entries:[...index.entries,...page.entries]};}}
    emit({index,phase:index.entries.length||index.nextCursor?'ready':'empty'});
+   if(!matches(token)||signal.aborted)return;
    if(selected){const ref=index.entries.find(e=>e.entity.kind===selected.kind&&e.entity.id===selected.id)?.entity;if(ref){const selection=await loadOrdersSelection(port,ref,index.snapshot,ownerId,signal);if(!matches(token))return;emit({selection,phase:'ready',reviewed:false});}}
   }catch(error){failure(error,token);}
  }
  async function loadMore(){
   const prior=state.index;if(!prior?.nextCursor)return;
-  const {token,signal}=begin();
+  const operation=begin();if(!operation)return;const {token,signal}=operation;
   try{const page=await readOrdersIndex(port,ownerId,prior.snapshot,prior.nextCursor,signal);if(!matches(token))return;const keys=new Set(prior.entries.map(e=>e.entity.kind+':'+e.entity.id));if(page.entries.some(e=>keys.has(e.entity.kind+':'+e.entity.id)))throw new CommerceError(503);emit({index:{...page,entries:[...prior.entries,...page.entries]},phase:'ready'});}catch(error){failure(error,token);}
  }
  async function open(entity:CommerceEntityRef){
   const index=state.index;if(!index||!index.entries.some(e=>e.entity.kind===entity.kind&&e.entity.id===entity.id&&e.entity.revision===entity.revision))return;
-  selectedRef=structuredClone(entity);const {token,signal}=begin();
+  selectedRef=structuredClone(entity);const operation=begin();if(!operation)return;const {token,signal}=operation;
   try{const selection=await loadOrdersSelection(port,entity,index.snapshot,ownerId,signal);if(!matches(token))return;emit({selection,phase:'ready'});}catch(error){failure(error,token);}
  }
  async function openOriginalQuote(){
   const prior=state.selection;if(!live()||prior?.detail.kind!=='purchase')return;
   const expected=prior.detail.quote,ref:CommerceEntityRef={kind:'quote',id:expected.quoteId,revision:expected.quoteVersion};
-  selectedRef=ref;const {token,signal}=begin();
+  selectedRef=ref;const operation=begin();if(!operation)return;const {token,signal}=operation;
   try{
    const selection=await loadOrdersSelection(port,ref,prior.snapshot,ownerId,signal);if(!matches(token))return;
    const target=selection.quote?.header.target;
