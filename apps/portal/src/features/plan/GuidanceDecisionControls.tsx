@@ -1,3 +1,4 @@
+import {DecisionChoiceButton} from './DecisionChoiceButton.tsx';
 import {useEffect,useState,useSyncExternalStore} from 'react';
 import type {PlanDecision} from '../../../../../src/contracts/PortalRebuild.ts';
 import type {ClientPlanViewV3} from '../../../../../src/contracts/PortalReview.ts';
@@ -23,8 +24,8 @@ export function GuidanceDecisionControls(props:ClientPlanProps&{view:ClientPlanV
  {!allowed?<StatusNotice title={view.access==='read_only'?'read-only plan':view.currentGuidance?.mode==='historical_document'||props.mode==='historical'?'historical plan':'choices unavailable'}>choices are unavailable in this view.</StatusNotice>:<>
  {!ready?<StatusNotice title="check current guidance">current directions must be checked before a new choice can be recorded.</StatusNotice>:null}
  {recorded&&provenance?.basisStatus==='stale'?<Button disabled={locked} onClick={()=>void controller.submit(recorded.choice,recorded.reason)}>keep my choice after reviewing</Button>:null}
- <Button busy={busy} disabled={locked} onClick={()=>void controller.submit('approved',null)}>{isPurchaseDecision(decision)?'approve product':'approve decision'}</Button>
- <Button variant="secondary" disabled={locked} onClick={()=>void controller.submit('deferred',null)}>decide later</Button><Button variant="ghost" disabled={locked} onClick={()=>void controller.submit('declined',null)}>decline</Button>
+ <DecisionChoiceButton choice="approved" purchase={isPurchaseDecision(decision)} busy={busy} disabled={locked} onClick={()=>void controller.submit('approved',null)}/>
+ <DecisionChoiceButton choice="deferred" purchase={isPurchaseDecision(decision)} disabled={locked} onClick={()=>void controller.submit('deferred',null)}/><DecisionChoiceButton choice="declined" purchase={isPurchaseDecision(decision)} disabled={locked} onClick={()=>void controller.submit('declined',null)}/>
  {state.attemptedChoice&&state.phase!=='saved'?<p>attempted choice: {state.attemptedChoice}{state.reason?` · ${state.reason}`:''}</p>:null}
  {busy?<StatusNotice tone="loading" title="checking your choice"/>:null}
  {state.phase==='conflict'?<StatusNotice tone="warning" title="plan changed" action={<Button variant="secondary" onClick={()=>void controller.review()}>review latest plan</Button>}>your attempted choice is retained. review the fetched current guidance before choosing again.</StatusNotice>:null}

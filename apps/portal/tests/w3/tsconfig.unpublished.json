@@ -1,0 +1,4 @@
+{
+  "extends": "../../tsconfig.frontend.json",
+  "files": ["unpublished-card-types.ts"]
+}

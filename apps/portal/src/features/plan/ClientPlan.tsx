@@ -1,7 +1,7 @@
 import { useRef, useSyncExternalStore } from 'react';
 import type { RefObject } from 'react';
 import type {ReportedProductUse} from '../../../../../src/contracts/PortalCare.ts';
-import type { PlanDecision, PlanProduct, RoutineStep } from '../../../../../src/contracts/PortalRebuild.ts';
+import type { PlanDecision, RoutineStep } from '../../../../../src/contracts/PortalRebuild.ts';
 import { Button, Badge, Sheet, StatusNotice, Tabs } from '../../ui/index.ts';
 import { PageHeader, Panel } from '../../shell/PortalShell.tsx';
 import { BackButton, usePortalNavigation } from '../../navigation/react.tsx';
@@ -13,6 +13,7 @@ import { DecisionControls, PendingDecisionReviews } from './DecisionControls.tsx
 import { decisionNames, isPurchaseDecision, productContext, routineFor, planContent, effectiveUse, suppressContinue, awaitingProductUse } from './model.ts';
 import { ProductPhoto, GuideContent, Sources, Facts, ScheduleContent, DecisionReasons, DecisionComparisons, DecisionDirections, ProductAdviceStatus, ProductDirections } from './content.tsx';
 import {UseReport} from './UseReport.tsx';
+import {ProductIdentity} from './ProductIdentity.tsx';
 import {ReportedProducts} from './ReportedProducts.tsx';
 import {UseFacts,useLabels} from './UseFacts.tsx';
 import {GuidanceBoundary,GuidanceDirections,GuidanceForDecision,useGuidance} from './Guidance.tsx';
@@ -77,11 +78,6 @@ export function PlanRenderer({props}:{props:RenderProps}) {
  </div>;
     return props.kind==='published'&&props.view.schemaVersion===3?<GuidanceBoundary props={props} scopes={visibleInstructionScopes(props.view,route)}>{body}</GuidanceBoundary>:body;
 }
-function ProductIdentity({ product, compact = false, sheet = false }: {
-    product: PlanProduct;
-    compact?: boolean;
-    sheet?: boolean;
-}) { return <div className={`plan-product-identity ${compact ? 'plan-product-compact' : ''}`}><ProductPhoto product={product} size={compact ? 'summary' : 'identity'}/><div>{product.brand && !sheet ? <p className="plan-meta">{product.brand}</p> : null}<h2>{(sheet ? product.name : product.variant) || product.name || 'product name not recorded'}</h2>{!compact ? <p className="plan-meta">{sheet && product.variant ? product.variant + ' · ' : ''}{product.sizeLabel || 'size not recorded'}{product.strength.state === 'known' ? ` · ${product.strength.value}` : null}</p> : null}</div></div>; }
 function Routine({ props, period, openerFor }: {
     props: RenderProps;
     period: RoutinePeriod;
