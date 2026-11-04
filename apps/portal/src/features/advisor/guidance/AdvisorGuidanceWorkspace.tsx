@@ -17,6 +17,8 @@ import type {
 import type {
   GuidanceBody,
   PrivateNoteSubject,
+  ReportRef,
+  AdvisorCareHistoryEntry,
   ReviewInputRef,
 } from "../../../../../../src/contracts/PortalReview.ts";
 import { instructionScopes } from "../../../../../../src/contracts/PortalReviewMapping.ts";
@@ -28,15 +30,105 @@ import { ConversationComposer } from "./ConversationComposer.tsx";
 import { newReviewBody, newReplyBody, newInstructionBody } from "./drafts.ts";
 import "./guidance.css";
 
+function GuidanceRecovery({ controller, state, reportRef }: {
+  controller: AdvisorGuidanceController;
+  state: AdvisorGuidanceState;
+  reportRef?: ReportRef;
+}) {
+  const readAllowed = reportRef ? controller.canReadHistory() : false;
+  return <>
+      {state.connection !== "ready" ? (
+        <StatusNotice
+          tone="warning"
+          title="connection unavailable"
+          action={
+            <Button
+              variant="secondary"
+              busy={state.busy.includes("connection")}
+              onClick={() => void controller.checkConnection()}
+            >
+              check connection
+            </Button>
+          }
+        >
+          your loaded information is retained. restore the connection, then
+          retry the original read.
+        </StatusNotice>
+      ) : null}
+      {state.notice ? (
+        <StatusNotice
+          tone={
+            state.pending
+              ? "uncertain"
+              : state.privateDenied
+                ? "denied"
+                : "neutral"
+          }
+          title={state.notice}
+        />
+      ) : null}
+      {state.pending ? (
+        <section
+          className="shelv-panel advisor-guidance-fields"
+          aria-label="unresolved request"
+        >
+          <h2>
+            request{" "}
+            {state.pending.state === "sending"
+              ? "in progress"
+              : "result uncertain"}
+          </h2>
+          <p>
+            {state.pending.action.replaceAll("_", " ")} ·{" "}
+            {state.pending.requestId}
+          </p>
+          <div className="advisor-guidance-actions">
+            <Button
+              variant="secondary"
+              disabled={state.pending.state !== "uncertain"}
+              busy={state.busy.includes("status")}
+              onClick={() => void controller.checkStatus()}
+            >
+              check original request status
+            </Button>
+            <Button
+              variant="secondary"
+              disabled={state.pending.state !== "uncertain"}
+              busy={state.busy.includes("write")}
+              onClick={() => void controller.retry()}
+            >
+              retry the same request
+            </Button>
+          </div>
+        </section>
+      ) : null}
+    {reportRef ? <section className="advisor-guidance-fields" aria-label="selected check-in history controls">
+      <div className="advisor-guidance-actions">
+        <Button variant="secondary" disabled={!readAllowed} busy={state.busy.includes("history")}
+          onClick={() => void controller.refreshHistory()}>refresh care history</Button>
+        {!state.history.complete && state.history.nextCursor && !state.privateDenied ? (
+          <Button variant="secondary" disabled={!readAllowed} busy={state.busy.includes("history")}
+            onClick={() => void controller.loadMoreHistory()}>load more care history</Button>
+        ) : null}
+      </div>
+      {!readAllowed && state.connection === "ready" ? <p>private history needs current advisor editing access.</p> : null}
+    </section> : null}
+  </>;
+}
+
 function PrivatePreparation({
   controller,
   state,
+  reportRef,
 }: {
   controller: AdvisorGuidanceController;
   state: AdvisorGuidanceState;
+  reportRef?: ReportRef;
 }) {
   const [note, setNote] = useState(""),
-    [subjectKey, setSubjectKey] = useState("");
+    [subjectKey, setSubjectKey] = useState(
+      reportRef ? `${reportRef.kind}:${reportRef.id}` : "",
+    );
   const subjects = new Map<string, PrivateNoteSubject>();
   for (const entry of state.history.entries) {
     const subject: PrivateNoteSubject | null =
@@ -52,7 +144,8 @@ function PrivatePreparation({
               : entry.kind === "legacy_review"
                 ? { kind: "review", id: entry.review.id }
                 : null;
-    if (subject) subjects.set(`${subject.kind}:${subject.id}`, subject);
+    if (subject && (!reportRef || sameCareValue(subject, reportRef)))
+      subjects.set(`${subject.kind}:${subject.id}`, subject);
   }
   return (
     <section
@@ -61,7 +154,10 @@ function PrivatePreparation({
     >
       <h2>private advisor notes</h2>
       <p>excluded from client history, notifications and plan exports.</p>
-      <Field label="attach private note to">
+      {reportRef ? (
+        <p>attached to the selected check-in</p>
+      ) : (
+        <Field label="attach private note to">
         <Select
           value={subjectKey}
           placeholder="select a report or conversation"
@@ -72,7 +168,8 @@ function PrivatePreparation({
           }))}
           onValueChange={setSubjectKey}
         />
-      </Field>
+        </Field>
+      )}
       <Field label="private working note">
         <Textarea
           value={note}
@@ -484,15 +581,46 @@ function ConflictComparison({
     </section>
   );
 }
+function SelectedCheckIn({ entries }: { entries: AdvisorCareHistoryEntry[] }) {
+  return entries.length ? (
+    <section className="shelv-panel advisor-guidance-fields" aria-label="selected check-in">
+      <h2>selected check-in</h2>
+      {entries.map((entry) => (
+        <GuidanceHistoryEntry key={guidanceHistoryKey(entry)} entry={entry} />
+      ))}
+    </section>
+  ) : null;
+}
+function SelectedPrivateNotes({ state, reportRef }: {
+  state: AdvisorGuidanceState;
+  reportRef: ReportRef;
+}) {
+  const entries = state.history.entries.filter((entry) =>
+    entry.kind === "private_note" && sameCareValue(entry.note.reviewEvent, reportRef),
+  );
+  return <section className="shelv-panel advisor-guidance-private advisor-guidance-fields"
+    aria-label="saved private notes">
+    <h2>saved private notes</h2>
+    {entries.length ? entries.map((entry) => (
+      <GuidanceHistoryEntry key={guidanceHistoryKey(entry)} entry={entry} />
+    )) : <p>no private notes saved for this check-in.</p>}
+  </section>;
+}
+
+export interface AdvisorGuidanceWorkspaceProps {
+  controller: AdvisorGuidanceController;
+  navigation: AdvisorGuidanceNavigation;
+  clientLabel?: string;
+  /** Presentation target only. The parent resolves the authorized client and
+   * publication; this ref supplies no permission, authority or missing record. */
+  reportRef?: ReportRef;
+}
 export function AdvisorGuidanceWorkspace({
   controller,
   navigation,
   clientLabel,
-}: {
-  controller: AdvisorGuidanceController;
-  navigation: AdvisorGuidanceNavigation;
-  clientLabel?: string;
-}) {
+  reportRef,
+}: AdvisorGuidanceWorkspaceProps) {
   const state = useSyncExternalStore(
       controller.subscribe,
       controller.getSnapshot,
@@ -520,6 +648,47 @@ export function AdvisorGuidanceWorkspace({
     return <StatusNotice tone="loading" title="loading the selected client" />;
   const publication = state.publication,
     editorDisabled = !controller.canEditBody();
+  const reportEntries = reportRef
+    ? state.history.entries.filter((entry) =>
+        entry.kind === "report"
+          ? entry.event.kind === reportRef.kind && entry.event.id === reportRef.id
+          : entry.kind === "report_amendment" &&
+            entry.original.kind === reportRef.kind && entry.original.id === reportRef.id,
+      )
+    : [];
+  const selectedReport = reportRef ? (
+    <SelectedCheckIn entries={reportEntries} />
+  ) : null;
+  if (reportRef) {
+    const body = state.body;
+    const matches = !body || (
+      body.kind === "reply"
+        ? sameCareValue(body.reportRef, reportRef)
+        : body.kind === "review" &&
+          body.reportRefs.some((ref) => sameCareValue(ref, reportRef))
+    );
+    const title = state.privateDenied
+      ? "check-in access unavailable"
+      : !state.history.complete
+        ? "check-in history incomplete"
+        : !reportEntries.length
+          ? "selected check-in unavailable"
+          : !matches
+            ? "another guidance draft is open"
+            : null;
+    if (title) return (
+      <div className="advisor-view advisor-guidance" data-design-frame="500:846">
+        <Button variant="ghost" onClick={navigation.onBack}>back to client</Button>
+        <h1>{clientLabel ?? `client ${selection.clientId}`} · review a check-in</h1>
+        <GuidanceRecovery controller={controller} state={state} reportRef={reportRef} />
+        <StatusNotice tone={state.privateDenied ? "denied" : "warning"} title={title}>
+          {!matches ? "your existing work is preserved. return to its draft before preparing another review." : null}
+          {!state.privateDenied && !state.history.complete ? "load the complete history before preparing a response." : null}
+        </StatusNotice>
+        {!state.privateDenied ? selectedReport : null}
+      </div>
+    );
+  }
   const prepare = (body: GuidanceBody) => {
     controller.startDraft(body);
     const next = controller.getSnapshot().selection;
@@ -535,7 +704,8 @@ export function AdvisorGuidanceWorkspace({
     );
   const uniqueRefs = references.filter(
     (ref, index) =>
-      references.findIndex((r) => sameCareValue(r, ref)) === index,
+      references.findIndex((r) => sameCareValue(r, ref)) === index &&
+      (!reportRef || sameCareValue(ref, reportRef)),
   );
   return (
     <div className="advisor-view advisor-guidance" data-design-frame="500:846">
@@ -557,78 +727,25 @@ export function AdvisorGuidanceWorkspace({
             : "advisor workspace"}
         </p>
       </header>
-      {state.connection !== "ready" ? (
-        <StatusNotice
-          tone="warning"
-          title="connection unavailable"
-          action={
-            <Button
-              variant="secondary"
-              busy={state.busy.includes("connection")}
-              onClick={() => void controller.checkConnection()}
-            >
-              check connection
-            </Button>
-          }
-        >
-          your loaded information is retained. restore the connection, then
-          retry the original read.
-        </StatusNotice>
-      ) : null}
-      {state.notice ? (
-        <StatusNotice
-          tone={
-            state.pending
-              ? "uncertain"
-              : state.privateDenied
-                ? "denied"
-                : "neutral"
-          }
-          title={state.notice}
-        />
-      ) : null}
-      {state.pending ? (
-        <section
-          className="shelv-panel advisor-guidance-fields"
-          aria-label="unresolved request"
-        >
-          <h2>
-            request{" "}
-            {state.pending.state === "sending"
-              ? "in progress"
-              : "result uncertain"}
-          </h2>
-          <p>
-            {state.pending.action.replaceAll("_", " ")} ·{" "}
-            {state.pending.requestId}
-          </p>
-          <div className="advisor-guidance-actions">
-            <Button
-              variant="secondary"
-              disabled={state.pending.state !== "uncertain"}
-              busy={state.busy.includes("status")}
-              onClick={() => void controller.checkStatus()}
-            >
-              check original request status
-            </Button>
-            <Button
-              variant="secondary"
-              disabled={state.pending.state !== "uncertain"}
-              busy={state.busy.includes("write")}
-              onClick={() => void controller.retry()}
-            >
-              retry the same request
-            </Button>
-          </div>
-        </section>
-      ) : null}
+      <GuidanceRecovery controller={controller} state={state} reportRef={reportRef} />
       <div className="advisor-guidance-columns">
         <main className="advisor-guidance-fields">
+          {selectedReport}
           <section className="shelv-panel advisor-guidance-fields">
             <Badge tone="active">client-visible after publication</Badge>
             <h2>
               {state.body ? `${state.body.kind} draft` : "prepare guidance"}
             </h2>
+            {reportRef && publication && !state.body && controller.canEditBody() ? (
+              <div className="advisor-guidance-actions">
+                <Button variant="secondary" onClick={() => prepare(newReviewBody(publication, [reportRef]))}>
+                  prepare review
+                </Button>
+                <Button variant="ghost" onClick={() => prepare(newReplyBody(publication, reportRef))}>
+                  prepare client-visible reply
+                </Button>
+              </div>
+            ) : null}
             {state.body ? (
               <GuidanceBodyEditor
                 body={state.body}
@@ -637,8 +754,9 @@ export function AdvisorGuidanceWorkspace({
               />
             ) : (
               <p>
-                select an actual report or instruction below to prepare
-                guidance.
+                {reportRef
+                  ? "prepare a review or reply for this check-in."
+                  : "select an actual report or instruction below to prepare guidance."}
               </p>
             )}
             <div className="advisor-guidance-actions">
@@ -684,7 +802,7 @@ export function AdvisorGuidanceWorkspace({
             ) : null}
           </section>
           <ConflictComparison controller={controller} state={state} />
-          <section
+          {!reportRef ? <section
             className="shelv-panel advisor-guidance-fields"
             aria-label="care history"
           >
@@ -760,8 +878,8 @@ export function AdvisorGuidanceWorkspace({
                 ))}
               </div>
             ) : null}
-          </section>
-          {publication &&
+          </section> : null}
+          {!reportRef && publication &&
           controller.canEditBody() &&
           state.instructions.complete ? (
             <section className="shelv-panel advisor-guidance-fields">
@@ -799,7 +917,7 @@ export function AdvisorGuidanceWorkspace({
               ) : null}
             </section>
           ) : null}
-          {publication &&
+          {!reportRef && publication &&
           !state.privateDenied &&
           state.history.complete &&
           controller.canEditBody() ? (
@@ -818,10 +936,16 @@ export function AdvisorGuidanceWorkspace({
           state.history.complete &&
           controller.canEditBody() ? (
             <PrivatePreparation
-              key={`${selection.clientId}:${selection.draftId ?? "new"}`}
+              key={reportRef
+                ? `${selection.clientId}:${reportRef.kind}:${reportRef.id}`
+                : `${selection.clientId}:${selection.draftId ?? "new"}`}
               controller={controller}
               state={state}
+              reportRef={reportRef}
             />
+          ) : null}
+          {reportRef && !state.privateDenied && state.history.complete ? (
+            <SelectedPrivateNotes state={state} reportRef={reportRef} />
           ) : null}
           <DraftReview controller={controller} state={state} />
           <CurrentInformation controller={controller} state={state} />

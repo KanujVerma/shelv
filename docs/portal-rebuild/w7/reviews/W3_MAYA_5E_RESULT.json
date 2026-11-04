@@ -1,0 +1,94 @@
+{
+  "base": "96bfe2428d32eacdef5f4c9e184af7b5ef39a95e",
+  "head": "5e18a8f21d2cadbb3cdbe5f54966884224952080",
+  "verdict": "PASS_SCOPED_SOURCE_IMAGES_AND_RENDER_SLOT",
+  "node": "v22.23.0",
+  "oldFocused": {
+    "tests": 32,
+    "pass": 27,
+    "fail": 5,
+    "exitCode": 1
+  },
+  "current": {
+    "tests": 162,
+    "pass": 162,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "frontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/walkthrough/maya/fixture.ts",
+      "sha256": "ae452056969baccbb34d6fbb9934d80a6465fb0546e7d9b680161baee3f52083"
+    },
+    {
+      "path": "apps/portal/src/features/walkthrough/maya/images.ts",
+      "sha256": "76762196709b90c118fa016e8c44889b746257f947a425bed0fa2e52c97d5014"
+    },
+    {
+      "path": "apps/portal/src/features/walkthrough/maya/view.tsx",
+      "sha256": "5f8ac309e5a7e069652f357f292bdecf040f9c9151ae06a8e85399c95cc8547e"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-maya-five-stage-boundary.test.mjs",
+      "sha256": "5430e8b002ad2beaacafc23e2db1b5c25dff572d97f3dabc9bab1173a32d4eac"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-maya-five-stage-content.test.mjs",
+      "sha256": "451fa55003f9fbdaf5026ccf6dfaf5e9183c212d08d7be709febd7e02966f0e3"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-maya-interactions-boundary.test.mjs",
+      "sha256": "952cd4687ecb83ebac22a7fb0108f46ca6a4ceeeea8b48cc20b47f6562048013"
+    },
+    {
+      "path": "apps/portal/tests/w3-maya-images.test.mjs",
+      "sha256": "55828e83c776ec8ac68591e6dab8282765d1691604c63d231a5d3d2684116d87"
+    },
+    {
+      "path": "apps/portal/tests/w3-maya-shell-slot.test.mjs",
+      "sha256": "d2a588352b3394a083852deab4adab3a6242ae384ff3b2bc4831d9f2f8a0d304"
+    },
+    {
+      "path": "apps/portal/tests/w3-maya-static-boundary.test.mjs",
+      "sha256": "87331b11899732d2b8989afd7d1bf5f91596754dd412568e0eff44e19887f9f4"
+    },
+    {
+      "path": "apps/portal/tests/w3/maya-shell-slot.tsx",
+      "sha256": "d032272c3711fdd86ebb9460f70eddde7c7df8fc99362bac12af74a093680699"
+    },
+    {
+      "path": "apps/portal/tests/w3/maya-static-images.mjs",
+      "sha256": "7feda575964218edead71241cfaabf1602d2502b24c824fd050f35943144f207"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W3_MAYA_IMAGE_SLOT.md",
+      "sha256": "b6eebf4e9a1909113009db71b045f36017e6b42afb6fec12e10c1dac390397b1"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-maya-5e-old/W7-OLD.log",
+      "sha256": "a9ef2b9ac04154ea76aadbd5abc0ba1775c5c7c248cf48afa151337cd2be9da4"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-maya-5e/W7-CURRENT.log",
+      "sha256": "ded40d3f897168364e0e4d038b55e435ca8cb1fab778244fab7c068467f94f13"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-maya-5e/W7-TYPES.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "scopeLimits": [
+    "No browser, actualassetdelivery, Figma/geometry/a11y",
+    "W0publicasset9ba separatelysourcepassed; actualsharedshell/contextcomposition stillmissing",
+    "No fullD01/J10/screen/capability acceptance",
+    "Laterd0/uncommittedW3inputs excluded"
+  ]
+}

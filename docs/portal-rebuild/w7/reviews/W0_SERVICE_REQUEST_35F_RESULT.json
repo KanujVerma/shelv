@@ -1,0 +1,28 @@
+{
+  "base": "28b38d486d0df4c6c59d1af6abe8437197d745f1",
+  "head": "35f177c82288b673516b3b07b536560814c1c59b",
+  "verdict": "PASS_SCOPED_FIXED_PENDING_REQUEST_SOURCE",
+  "scope": "Type/request dependency only; unsupported channel stays unavailable without egress",
+  "files": [
+    {
+      "path": "apps/portal/src/app/account-service-request.ts",
+      "sha256": "86bfb72d056b494b99368da1c50e9d7c945aa733293212e0b91e8fe7ac7f2887"
+    },
+    {
+      "path": "apps/portal/tests/w0-account-service-request.test.mjs",
+      "sha256": "b73ca9c35566db4ef96af2ec2af224ad8712cdbfecb3334074e59424eac8c86a"
+    }
+  ],
+  "independent": {
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "node": "v22.23.0",
+    "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-service-request/W7-CURRENT.log",
+    "sha256": "d57f35222417678a9122fdbb2ec06f864d8f73398e5a913ed0f3a78939a51254"
+  },
+  "retained76bExact": true
+}

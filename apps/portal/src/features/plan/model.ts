@@ -30,6 +30,12 @@ export function safePublicUrl(value: string | null, asset = false): string | nul
 export type PlanRenderView=ClientPlanReadView|UnpublishedPlanView;
 export const planContent=(view:PlanRenderView)=>'kind' in view?view.content:view.plan?.content;
 export const effectiveUse=(view:PlanRenderView,id:string)=>!('kind' in view)&&view.schemaVersion!==1?view.use.planProducts.find(s=>s.product.productId===id)??null:null;
+/** A product choice is not a use report. Keep its next step discoverable until
+ * actual use is reported, without inserting the product into the routine. */
+export function awaitingProductUse(view:PlanRenderView,decision:PlanDecision):boolean {
+    if('kind' in view||!isPurchaseDecision(decision)||!view.decisions.some(choice=>choice.decisionId===decision.id&&choice.choice==='approved'))return false;
+    return view.schemaVersion===1?!view.actualUse.some(use=>use.productId===decision.primaryProductId):effectiveUse(view,decision.primaryProductId!)?.state==='not_reported';
+}
 export const suppressContinue=(view:PlanRenderView,id:string)=>{const s=effectiveUse(view,id);return !!s&&(s.contradiction||['paused','stopped','using_differently','unreviewed'].includes(s.state)||!!s.identity&&s.identity.match!=='yes');};
 export function productContext(view: PlanRenderView, productId: string) {
     const c = planContent(view), product = c?.products.find(p => p.id === productId);

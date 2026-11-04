@@ -1,0 +1,19 @@
+{
+  "owner": "Kanuj",
+  "scope": "Immutable original independent W7-W5-S1 source controls; never application imports",
+  "records": [
+    {
+      "path": "w7-historical-claim-recovery.test.mjs",
+      "sha256": "e4212ed9e79d147097b7e3c23699336615f1e4b2106a313f6eebd68b50dfdc20",
+      "bytes": 1578
+    },
+    {
+      "path": "w7-historical-claim-behavior.test.mjs",
+      "sha256": "72e3ccb4475e7d9b22a0f4e38b775e8014cbd4cd9a9b79f8f6b9b2c9960fe913",
+      "bytes": 2203
+    }
+  ],
+  "originalFailedTarget": "4a9b97d2623f0b4a63de840c2c634e2abf04c214",
+  "correctedSourceTarget": "7c50044df9b6b559e48362ba23da7726064c4dba",
+  "proof": "Each program2cases original0/2; byte-exact reruns on7c5 each2/2; source/finiteHTTP/SSR only"
+}

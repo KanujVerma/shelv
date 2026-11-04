@@ -1,0 +1,86 @@
+{
+  "base": "c075cbd4ea4b2f4d75959370233745d07145c069",
+  "head": "99dc0cee13804ef878298547f53859166352a07a",
+  "patchSha256": "a47054405de45b918f8f63d9cd4adad7c9076f18824ca5d15d663cee36aaa975",
+  "pins": [
+    {
+      "path": "docs/portal-rebuild/research/W1_COMMERCE_DTO_PIN_20261103.md",
+      "bytes": 5975,
+      "sha256": "8d4344a05e4a4c533c514d49dedeb8be8b31a4970ad2bb07ec90a8a454ca145a",
+      "exact60332e7f": null
+    },
+    {
+      "path": "src/contracts/PortalCommerce.ts",
+      "bytes": 19204,
+      "sha256": "af2d1316434cca41ab78ae4b3bed54cb3a5a348c8e915caaa2f84c0aac9a2c38",
+      "exact60332e7f": true
+    },
+    {
+      "path": "src/contracts/PortalCommerceMapping.ts",
+      "bytes": 30476,
+      "sha256": "79d265ab4963cde159c21ff1138c292c80a5ad8548bb45cd843efbd04b706934",
+      "exact60332e7f": true
+    },
+    {
+      "path": "src/contracts/PortalCommerceValidation.ts",
+      "bytes": 28017,
+      "sha256": "32e19f6ab8c85d5f52024ccf8aa114a088de270b005a806e3600191e4cfe7459",
+      "exact60332e7f": true
+    },
+    {
+      "path": "src/contracts/PortalCommerceValues.ts",
+      "bytes": 5365,
+      "sha256": "ac8c72ca26be1ab1c4f3275b75260cd78e0cdbbebad26524ad7e442a1bb8d27f",
+      "exact60332e7f": true
+    },
+    {
+      "path": "tests/portal-commerce-contract.test.ts",
+      "bytes": 67723,
+      "sha256": "36dc19840b3d81e981255eaab4700984c35d1132b44edb13bee826def223aa31",
+      "exact60332e7f": true
+    }
+  ],
+  "owner": "Kanuj",
+  "verdict": "PASS_SCOPED_DTO_FORMAT_RESTORATION_ONLY",
+  "node": "v22.23.0",
+  "current": {
+    "tests": 56,
+    "pass": 56,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "configuredRootTypes": {
+    "app": 0,
+    "tests": 0,
+    "diagnostics": 0
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-commerce-99/W7-CURRENT56.log",
+      "bytes": 15684,
+      "sha256": "03101030975120254ecf1add5ed9674881ba432491cdd3259945392234002f34",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-commerce-99/W7-TYPES-app.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-commerce-99/W7-TYPES-tests.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ],
+  "oldBehavior": "No changed production behavior versus retained60332e7f; no new OLD defect or failure invented.",
+  "limits": [
+    "No endpoint, SQL, gateway, registration or execution authority added",
+    "Named current68/service69 collision, typed-purchase/M02 and service-wrapper compatibility remain held",
+    "Schema-consistent synthetic rows are not actual records, payment verification, policy assignment or legacy provenance",
+    "No Auth/RLS/browser/financial/M65/provider-held audit or resource execution"
+  ]
+}

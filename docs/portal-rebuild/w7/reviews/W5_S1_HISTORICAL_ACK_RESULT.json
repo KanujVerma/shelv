@@ -1,0 +1,40 @@
+{
+  "id": "W7-W5-S1",
+  "severity": "P2 should fix before genuine first-service acceptance",
+  "head": "4a9b97d2623f0b4a63de840c2c634e2abf04c214",
+  "currentDisposition": "HOLD_NEW_INDEPENDENT_FINDING",
+  "priorProof": "Original independent22/22 and hostedclean remain historical narrow proof; no relabeling.",
+  "internalReproduction": {
+    "tests": 2,
+    "pass": 0,
+    "fail": 2,
+    "exitCode": 1
+  },
+  "behaviorReproduction": {
+    "tests": 2,
+    "pass": 0,
+    "fail": 2,
+    "exitCode": 1
+  },
+  "method": "Actual session/cookie/transport/Root codecs with closed syntheticHTTP plus actual component SSR; no SQL, bank, Auth, browser or M65audit.",
+  "naturalReplaySource": "20261024234059_concierge_manual_payment_methods.sql:71 returns prior.result for the immutable exact retry.",
+  "evidence": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-service-r2/apps/portal/tests/w7-historical-claim-recovery.test.mjs",
+      "sha256": "e4212ed9e79d147097b7e3c23699336615f1e4b2106a313f6eebd68b50dfdc20"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-service-r2/W7-HISTORICAL-RETRY-CONTROLS.log",
+      "sha256": "bc6d1b39fc4b4231000b1aae83adffb7c26e20adce76155ff7d8ff987f961e60"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-service-r2/apps/portal/tests/w7-historical-claim-behavior.test.mjs",
+      "sha256": "72e3ccb4475e7d9b22a0f4e38b775e8014cbd4cd9a9b79f8f6b9b2c9960fe913"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-service-r2/W7-HISTORICAL-RETRY-BEHAVIOR.log",
+      "sha256": "2aea25580daa277962a359bab38a5764cfd97c800e97739c57e656629c3ec6f3"
+    }
+  ],
+  "setupQualification": "Initial own write used incorrect relative path and failed before test creation; raw W7-HISTORICAL-RETRY.log remains separate."
+}

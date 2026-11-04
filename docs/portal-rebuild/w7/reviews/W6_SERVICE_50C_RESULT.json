@@ -1,0 +1,167 @@
+{
+  "base": "9ab1b6d65d1027e0515e1b2fd0c6788a3d5842b9",
+  "head": "50c33b81a2f8f02455e4c9167f6de2ec69e7aa7d",
+  "pins": [
+    {
+      "path": "apps/portal/src/features/account/service/AccountService.tsx",
+      "bytes": 5957,
+      "sha256": "e8e983222c54204f105462cd7978e68c28805c8e15c9ebfa379c9789a0cec70a",
+      "same3b1": true
+    },
+    {
+      "path": "apps/portal/src/features/account/service/CancelService.tsx",
+      "bytes": 5188,
+      "sha256": "e6b6bd41f0920bc66c0091890d16b9afb36dca8b49fefef7ee4d18e56144c231",
+      "same3b1": true
+    },
+    {
+      "path": "apps/portal/src/features/account/service/controller.ts",
+      "bytes": 18348,
+      "sha256": "17107e3b2cac914a78f781311b478eb1cc359f4ea3d0161563e0dc09172f812b",
+      "same3b1": true
+    },
+    {
+      "path": "apps/portal/src/features/account/service/index.ts",
+      "bytes": 264,
+      "sha256": "61e5be8970ee2738f9fcde0a8ee9c98d7836179dab06dbe792c13ad5b7c2b8ec",
+      "same3b1": true
+    },
+    {
+      "path": "apps/portal/src/features/account/service/model.ts",
+      "bytes": 1704,
+      "sha256": "44e0dadf677527086127b001497d2b1f23030029f39de28ae28fe61b84e2a098",
+      "same3b1": true
+    },
+    {
+      "path": "apps/portal/src/features/account/service/types.ts",
+      "bytes": 1557,
+      "sha256": "e85d02c01060823ff423e509fe5e934e038cc1647bef7f22686ac22f12d988b3",
+      "same3b1": true
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-model.test.mjs",
+      "bytes": 2261,
+      "sha256": "992e9216320bc105046956f09a00364d2b807d9dd0a2d021e56b92723b53e69b",
+      "same3b1": true
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-presence.test.mjs",
+      "bytes": 583,
+      "sha256": "8278cebb08c18dbf8a2e33029b23da0eafb2875e8676b4328468add143cd7e55",
+      "same3b1": true
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-producer-cases.ts",
+      "bytes": 19776,
+      "sha256": "fa67fadc5045878543ad7e32dd6bcb169bb7ebd26d619e20445b8968a08df9e3",
+      "same3b1": true
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-producer.test.mjs",
+      "bytes": 120,
+      "sha256": "58e5c08d81cef2456ce09062f529ceac329d696f5ac7bb176b6db75b159c7db1",
+      "same3b1": true
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-recovery.test.mjs",
+      "bytes": 7235,
+      "sha256": "5e24b13ce2004703c751e9331bcbc429528f9cb12e87e81ed2d6b479ecbed076",
+      "same3b1": false
+    },
+    {
+      "path": "apps/portal/tests/w6-account-service-ssr.test.mjs",
+      "bytes": 2962,
+      "sha256": "0c6acdf2306457b4062dacf7734fa428790b11ceb18e0c8fdd574437565d4346",
+      "same3b1": true
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W6.md",
+      "bytes": 14844,
+      "sha256": "8bf2be392be1ef5fa411ef0901637f0763db3aa3e3e28da8d8e2b49c5d99260d",
+      "same3b1": false
+    },
+    {
+      "path": "supabase/functions/concierge-client-service/body.ts",
+      "bytes": 2782,
+      "sha256": "2dc55df3d9c7737cdbd3a97b3cf667a1c69bbae1662e5cb87a513770386f8b97",
+      "same3b1": true
+    },
+    {
+      "path": "supabase/functions/concierge-client-service/handler.ts",
+      "bytes": 6349,
+      "sha256": "25260b9f2a7d0a90a0202f05242a2daccef8712d50f09cc5586fa675b6492a25",
+      "same3b1": true
+    },
+    {
+      "path": "supabase/functions/concierge-client-service/runtime.ts",
+      "bytes": 5327,
+      "sha256": "0f60d7ca521f7ffe6430dc0d7c870c611e6512280bf7b6c02d3d60edc4bb830a",
+      "same3b1": true
+    }
+  ],
+  "scenarioBodyExact3b1": true,
+  "requestExactReviewed35f": true,
+  "classification": "SOURCE/finite synthetic HTTP; test-only three-action namespace projection",
+  "owner": "Kanuj",
+  "verdict": "PASS_SCOPED_SOURCE_TEST_SUCCESSOR",
+  "patchSha256": "2411e1e730ec89423a6761cf584eaa8a4bcac1e44ddb6061f788a57653b3c97f",
+  "current": {
+    "tests": 51,
+    "pass": 51,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "oldPhysical": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "exitCode": 1,
+    "observation": "Unregistered actual cookie rejects initial load; fixture gap, not authority defect."
+  },
+  "frontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "dependencyInputCount": 19,
+  "constructorProjection": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-service-50c/apps/portal/site/auth/client-cookie-session.js",
+    "scope": "SYNTHETIC THREE-ACTION NAMESPACE ONLY",
+    "constructorBefore": "8f175a8dcbdfb4aed067c7adc90d3a5fcfaad26745139c5300d26d65cfbbb147",
+    "constructorAfter": "d3051850bdf1543b47b832d5a1e61def0cce3a834d9df19fbbc21ae44bb9164d",
+    "fileBefore": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0",
+    "fileAfter": "28edbf19d8a7c0ac61533bfba1eda165d183ccaa714db4c06cef5814bed86ad7"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-service-50c/W7-OLD-SETUP.json",
+      "bytes": 182,
+      "sha256": "cbe6f877218d3fdfc1e7dcfefd8fefe99936e7e4aaccff50c9c06e54183f9f61",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-service-50c/W7-OLD-PHYSICAL.log",
+      "bytes": 1835,
+      "sha256": "ce9355d966641434af3eb6386c5f22c9c4902b5eed106213cd613e656ce50438",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-service-50c/W7-CURRENT51.log",
+      "bytes": 13155,
+      "sha256": "311ff5abbed7b7e209585d768c379c5b650a675475c06ffe2c0301a6cf5be493",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-service-50c/W7-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "Synthetic three-action namespace only in positive recovery fixture; no production registration or authority facade",
+    "No workerd/Auth/SQL/browser/download/genuine C08 or J08 acceptance",
+    "W0 actual shared runtime/route/lifetime/SQL composition remains unaccepted"
+  ]
+}

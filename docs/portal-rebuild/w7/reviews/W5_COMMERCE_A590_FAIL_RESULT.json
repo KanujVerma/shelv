@@ -1,0 +1,98 @@
+{
+  "head": "a590dfd51b069df65f3edf50c50073ca9355f27f",
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-endpoint.test.mjs",
+      "bytes": 7054,
+      "sha256": "6aa6eda3d04f7ed78a080cfced030577f15ad9f1483ef35af3ed6673fdfc3af6"
+    },
+    {
+      "path": "supabase/functions/concierge-commerce/README.md",
+      "bytes": 4454,
+      "sha256": "9fcc5bcc8cc185768a2a7fd17c576e99c93705429606485b3a5b52fa13bd6c2d"
+    },
+    {
+      "path": "supabase/functions/concierge-commerce/handler.ts",
+      "bytes": 3396,
+      "sha256": "14b2610a3baea72622a130d408c1b3a1dc0e9cc51054ac8154656269528d2405"
+    },
+    {
+      "path": "supabase/functions/concierge-commerce/index.ts",
+      "bytes": 619,
+      "sha256": "9e16a7122ed52eafac9ab484044ba3c769377f5f58ec3b62ca4b071550c22268"
+    },
+    {
+      "path": "supabase/functions/concierge-commerce/runtime.ts",
+      "bytes": 1724,
+      "sha256": "dcbd4d61a19cf9bae19f63b543fefc2700c7bcaa9fadd5df32808493edc868e7"
+    }
+  ],
+  "dependencyProjection": [
+    {
+      "path": "src/contracts/PortalCommerce.ts",
+      "head": "99dc0cee13804ef878298547f53859166352a07a",
+      "sha256": "af2d1316434cca41ab78ae4b3bed54cb3a5a348c8e915caaa2f84c0aac9a2c38",
+      "classification": "Exact reviewed DTO dependency in ignored projection only"
+    },
+    {
+      "path": "src/contracts/PortalCommerceValues.ts",
+      "head": "99dc0cee13804ef878298547f53859166352a07a",
+      "sha256": "ac8c72ca26be1ab1c4f3275b75260cd78e0cdbbebad26524ad7e442a1bb8d27f",
+      "classification": "Exact reviewed DTO dependency in ignored projection only"
+    },
+    {
+      "path": "src/contracts/PortalCommerceValidation.ts",
+      "head": "99dc0cee13804ef878298547f53859166352a07a",
+      "sha256": "32e19f6ab8c85d5f52024ccf8aa114a088de270b005a806e3600191e4cfe7459",
+      "classification": "Exact reviewed DTO dependency in ignored projection only"
+    },
+    {
+      "path": "src/contracts/PortalCommerceMapping.ts",
+      "head": "99dc0cee13804ef878298547f53859166352a07a",
+      "sha256": "79d265ab4963cde159c21ff1138c292c80a5ad8548bb45cd843efbd04b706934",
+      "classification": "Exact reviewed DTO dependency in ignored projection only"
+    }
+  ],
+  "owner": "Kanuj",
+  "id": "W7-W5-C1",
+  "severity": "P2",
+  "verdict": "FAIL_SOURCE_ABORT_BODY_SETTLEMENT",
+  "originalCurrent": {
+    "tests": 10,
+    "pass": 10,
+    "fail": 0,
+    "exitCode": 0
+  },
+  "independentControl": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "exitCode": 1,
+    "earlyAfterAbort": "waiting",
+    "afterRelease": "fulfilled"
+  },
+  "controlArchive": "../source-controls/W5_C1/w7-commerce-abort-body.test.mjs",
+  "controlSha256": "4dc48148eb25e396ed983f4c764201221f170ab66ccbeef47f5dd75f8e68508a",
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-commerce-a590/W7-CURRENT10.log",
+      "bytes": 3101,
+      "sha256": "da853be9749ce2768c247568636bad3e7d97c24355a58308672cebace1f50405",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-commerce-a590/W7-ABORT-BODY.log",
+      "bytes": 1887,
+      "sha256": "6cc60261d265dd3be075aef758c32997cebd6eb0bd73b898b868969968b2317f",
+      "exitCode": 1
+    }
+  ],
+  "scope": "Complete five-file read, finite transport abort/body review only. No SQL/M65/private-return/financial authority audit.",
+  "limits": [
+    "No actual provider/network/Auth/SQL or financial business state",
+    "Handler has later aborted check, so no real private delivery or authority bypass established",
+    "Current10 are mixed finite ports/mocks; no genuine pass",
+    "Stop oldcandidate review at confirmedfinding; no W7 product correction"
+  ]
+}
