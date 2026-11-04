@@ -13,7 +13,7 @@ function activeSection(route: PortalRoute|null): string {
 }
 function ContactCard({contact,demo=false}: {contact: ContactPort;demo?:boolean}) {
   return <div className="shelv-contact-card" data-foundation="contact">
-    <p>{demo?'contact in the fictional sample':contact.availability==='service'?'a person, a text away':'orders or refunds?'}</p>
+    <p>{demo?'sample contact':contact.availability==='service'?'a person, a text away':'orders or refunds?'}</p>
     <Button variant="secondary" onClick={contact.onContact}>text shelv</Button>
     {demo?<span>no message is sent</span>:contact.availability==='service'?<span>replies within 24 hours</span>:null}
   </div>;

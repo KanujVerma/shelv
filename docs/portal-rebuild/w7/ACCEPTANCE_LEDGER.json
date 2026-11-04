@@ -2259,7 +2259,7 @@
     "stoppedFixtures": "Never query/reuse/restart/reset/adopt; saved-FS audit only.",
     "activeGrant": null,
     "freshGenuineGrantIssued": false,
-    "freshGrantIssuedMeaning": "Two once-only intercepted browser packets were admitted and consumed; no active grant or genuine fixture authority.",
+    "freshGrantIssuedMeaning": "Two prior once-only intercepted packets and one new blank preview capability packet admitted/consumed; no active grant or genuine fixture authority.",
     "completedBrowserExecutions": [
       {
         "executionId": "7550b318-23a3-4aa4-ae34-1ff80f9daf3a",
@@ -2268,8 +2268,22 @@
       {
         "executionId": "eeb42e98-3844-4698-aebb-6d4c67a76271",
         "status": "PASS_BOUNDED_INTERCEPTED_BROWSER_RETURNED"
+      },
+      {
+        "executionId": "e7c5e427-1109-4064-b502-8e0267b77a65",
+        "status": "PREVIEW_SUPPORTED_OWN_BLANK_TAB_CLOSED_INTERVAL_RETURNED",
+        "kind": "PUBLIC_BLANK_CAPABILITY_PROBE_ONLY"
       }
-    ]
+    ],
+    "pendingPublicMayaProposal": {
+      "executionId": "e7c5e427-1109-4064-b502-8e0267b77a65",
+      "status": "PREVIEW_SUPPORTED_OWN_BLANK_TAB_CLOSED_INTERVAL_RETURNED",
+      "head": "df230eca6017f8dd330cceb83eb11b18193937e5",
+      "packet": "resource-packets/PUBLIC_MAYA_DF230_PREVIEW_PROBE_R1.json",
+      "sha256": "540bf6dd9d95c536402ec5043fe718b82bd483a6dd150b991afdd1dc07da6606",
+      "scope": "Requiredbrowsercapability/blank-onlyprobe; no server/app/browseracceptance",
+      "result": "browser/PUBLIC_MAYA_PREVIEW_PROBE_R1_RESULT.json"
+    }
   },
   "independentReviewVerdicts": [
     {
@@ -2548,6 +2562,51 @@
       "report": "reviews/W1_PLAN_FORWARD_FD9.md",
       "level": "PASS_SCOPED_FORWARD_SOURCE_TEST_CORRESPONDENCE_WAIT_W0_PACKET",
       "nativeFinding4460794439": "OPEN"
+    },
+    {
+      "head": "145966d4b6de7f3e40f8c6b69d66a3027913c91d",
+      "report": "reviews/W1_DIRECTORY_1459.md",
+      "level": "PASS_SCOPED_DIRECTORY_V2_DTO_FORMAT_SOURCE_ONLY"
+    },
+    {
+      "head": "fef98c75702900295783ba7b8514e2b6bb092b1a",
+      "report": "reviews/W1_TEMPLATES_FEF.md",
+      "level": "PASS_SCOPED_PLAN_TEMPLATE_DTO_FORMAT_SOURCE_ONLY"
+    },
+    {
+      "head": "62f3bd18a04c65413d5a93574e2924a3f5fff998",
+      "report": "reviews/W6_EXPORT_62F.md",
+      "level": "PASS_SCOPED_COMPLETE_FINAL_EXPORT_CONSUMER_SOURCE_DEPENDENCY_HELD"
+    },
+    {
+      "head": "a5bcfa28d2e279481d6076381c071d9b7faad35b",
+      "report": "reviews/W5_ORDERS_A5BC_FAIL.md",
+      "level": "FAIL_SOURCE_POST_DISPATCH_CALLBACK_FENCE_REVIEW_INCOMPLETE"
+    },
+    {
+      "head": "ccb28da2ce48b2fdc7aa029645bb3f3688a5e9b3",
+      "report": "reviews/W6_EXPORT_CCB_CORRESPONDENCE.md",
+      "level": "PASS_BOUNDED_FINAL_EXPORT_SOURCE_DEPENDENCY_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "bab86af33829636f304ceb5bc6f8a98d387063dd",
+      "report": "reviews/DTO_CORRESPONDENCES_BAB_139.md",
+      "level": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "13997462f2b948165305253a36b3b712a90fd3cd",
+      "report": "reviews/DTO_CORRESPONDENCES_BAB_139.md",
+      "level": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "c9b4fb3b8f8cc594d954eb2963e15176ed53d0ab",
+      "report": "reviews/W0_CAPTION_C9B.md",
+      "level": "PASS_SCOPED_LITERAL_PUBLIC_CAPTION_SOURCE_ONLY_GEOMETRY_UNRUN"
+    },
+    {
+      "head": "35eaefd5b3dd18588cb1b81acaf44462eb8e5648",
+      "report": "reviews/W0_CLIENT_ENTRY_35E.md",
+      "level": "PASS_SCOPED_COMPLETE_CLIENT_ENTRY_SOURCE_MODEL_FINITE_SSR"
     }
   ],
   "placementClarifications": [
@@ -2557,8 +2616,20 @@
       "scope": "Neutral W5 component and existing command/source gate unchanged; no new permission or genuine execution."
     }
   ],
-  "openIndependentFindings": [],
-  "lastReconciledAt": "2026-11-04T01:16:45.267399+00:00",
+  "openIndependentFindings": [
+    {
+      "id": "W7-W5-O1",
+      "severity": "P2",
+      "head": "a5bcfa28d2e279481d6076381c071d9b7faad35b",
+      "status": "OPEN_SOURCE_CORRECTION_REQUIRED",
+      "scope": "Orders consumer fixed-request invocation after supported onDispatch callback retires READY",
+      "claim": "Callback suspends actual session but request.execute still invokes once before503",
+      "reproduction": "Independent0/1 fail; expected0 calls/actual1/offline final status",
+      "report": "reviews/W5_ORDERS_A5BC_FAIL.md",
+      "owningLane": "W5"
+    }
+  ],
+  "lastReconciledAt": "2026-11-04T02:27:50.192831+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
@@ -2647,10 +2718,10 @@
     "separatePermittedWork": "Distinct expressly permitted source reviews may continue. Public Maya browser would need actual shell/composition proof and its own admitted packet; it has no current grant."
   },
   "integrationSourceReference": {
-    "head": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+    "head": "df230eca6017f8dd330cceb83eb11b18193937e5",
     "ref": "refs/heads/kanuj/portal-rebuild-integration-20261030",
-    "verification": "git ls-remote exit0 and bounded8Rootpostimage/68migration/sourceledger correspondence",
-    "record": "PUBLISHED_8A2_SOURCE_REFERENCE.json",
+    "verification": "All2298 actualcompilerinput bytes/SHA and29sourceasset bytes checked;161repoowned compilerinputs byteexactGitdf230;101builtoutputfiles copied and independently pinned. No new runtime/browser/Auth/SQL execution.",
+    "record": "PUBLISHED_DF230_SOURCE_REFERENCE.json",
     "wholeIntegratedCensus": "NOT_MEASURED",
     "noCounterAdvance": true
   },
@@ -2681,6 +2752,14 @@
       "scope": "Outerhandlerwait/receivedAuthRPCdenialrace only, no SQLfinancial/M65/privateauthorityaudit",
       "sourceCorrectionReview": "reviews/W5_FINANCIAL_CB0.md",
       "correctedSourceHead": "cb05840bfd95fae87f956fd7fffc2ec116cd251f"
+    },
+    {
+      "id": "CI_DF230_FOUNDATION_CONTACT_GEOMETRY",
+      "head": "df230eca6017f8dd330cceb83eb11b18193937e5",
+      "status": "OWNER_REPORTED_CI_FAILURE_PRESERVED_SUCCESSOR_GEOMETRY_UNRUN",
+      "proofLevel": "3754pass1fail reported; no newW7browserverdict",
+      "sourceCorrectionReview": "reviews/W0_CAPTION_C9B.md",
+      "correctedSourceHead": "c9b4fb3b8f8cc594d954eb2963e15176ed53d0ab"
     }
   ]
 }

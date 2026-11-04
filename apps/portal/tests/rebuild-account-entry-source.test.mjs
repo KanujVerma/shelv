@@ -8,7 +8,7 @@ const applicationPath = new URL('../src/app/Application.tsx',import.meta.url);
 // Immutable Root68 block hashes; CI does not require historical Git objects.
 const sha = source => createHash('sha256').update(source).digest('hex');
 function block(source, begin, end) { return source.slice(source.indexOf(begin), source.indexOf(end, source.indexOf(begin))); }
-test('Account and Notifications retain their original witness outside the exact reviewed self-purchase seam', async () => {
+test('Account and Notifications retain their original witness outside exact reviewed shared entry seams', async () => {
   const current = selfPurchaseApplicationPreimage(await readFile(applicationPath, 'utf8'));
   assert.match(current, /createNotificationsEntry/);
   assert.match(current, /createAccountEntry/);

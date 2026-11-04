@@ -126,5 +126,57 @@
       "closure": "Three test context finally closures and awaited browser.close; physical browser PID not separately captured, no global absence claim.",
       "acceptedCountersChanged": false
     }
+  },
+  {
+    "owner": "Kanuj",
+    "admittedByLane": "W0",
+    "admittedAt": "2026-11-04T01:48:25.287140+00:00",
+    "ownerThreadId": "99021859-4f2e-43f7-a067-53166931c0c3",
+    "ownerActiveRunId": "run:thread:99021859-4f2e-43f7-a067-53166931c0c3:ordinal:4",
+    "executionId": "e7c5e427-1109-4064-b502-8e0267b77a65",
+    "packetSha256": "540bf6dd9d95c536402ec5043fe718b82bd483a6dd150b991afdd1dc07da6606",
+    "head": "df230eca6017f8dd330cceb83eb11b18193937e5",
+    "kind": "PUBLIC_MAYA_PREVIEW_CAPABILITY_PROBE_ONLY",
+    "status": "RETURNED_CLOSED_BLANK_PROBE",
+    "literalFirstExecutionToolCall": {
+      "tool": "mcp__t3_code__preview_open",
+      "args": {
+        "open": false,
+        "profileId": "incognito",
+        "reuseExistingTab": false
+      }
+    },
+    "timeoutMilliseconds": 30000,
+    "durationBegins": "first tool invocation; cleanup only after budget if needed",
+    "allowedScope": "one fresh incognito blank tab capability probe only, URL omitted, no app/server/fallback",
+    "cleanup": "only own actual returned blank tab, window.close then preview_status; unsupported -> exact error/status return, no retry/fallback",
+    "followingGate": "Supported Preview required for fresh actual PUBLIC page packet; no automatic transfer or fallback grant",
+    "genuineGrant": null,
+    "acceptanceEffect": "ZERO",
+    "restrictions": [
+      "Any app or external navigation",
+      "Server start or endpoint probe",
+      "Node/Playwright/Chrome fallback within this packet",
+      "Existing or stopped fixtures/profiles/tabs adoption",
+      "Auth/DB/SQL/Storage/native mail sink or real business operations",
+      "Product screenshots/UI/genuine/visual/a11y/J10 acceptance claim",
+      "Principal44 or any held audit resume/alternate mechanism"
+    ],
+    "result": {
+      "startedAt": "2026-11-04T01:48:45Z",
+      "returnedAt": "2026-11-04T01:48:54Z",
+      "elapsedSeconds": 9,
+      "supported": true,
+      "ownBlankTab": "tab_2_b8a52f0a-7d61-4512-b1fb-53d0f4cc8fc7",
+      "ownedByCaller": true,
+      "closeRequested": true,
+      "ownIdPostStatus": {
+        "available": false,
+        "tabId": null
+      },
+      "rawSha256": "a0dfefc601e4bfa3429acdd20ccba0590cbf4ed627c3f3f5a656e770a9706916",
+      "rawPrivatePath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-df230/preview-probe-r1/RESULT_RAW.json",
+      "qualification": "Only own blank tab closure verified; no global absence, app navigation, product/browser acceptance or Node fallback eligibility"
+    }
   }
 ]

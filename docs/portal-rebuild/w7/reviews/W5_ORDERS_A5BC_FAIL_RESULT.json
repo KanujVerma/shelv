@@ -1,0 +1,200 @@
+{
+  "owner": "Kanuj",
+  "head": "a5bcfa28d2e279481d6076381c071d9b7faad35b",
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "patchSha256": "8e2718ee57e83e494354662b5c4f5b81e7b55f4fe094aa185ebba30f2f9b275a",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/orders/OrderSheets.tsx",
+      "bytes": 6802,
+      "sha256": "80feb45e2361e73da01b2326431653d24cbff9ef6f9d3bf4fb5dab1b35713c54"
+    },
+    {
+      "path": "apps/portal/src/features/orders/OrdersPage.tsx",
+      "bytes": 17032,
+      "sha256": "91c394568d400d506acabd12ec7091ed9c050149d2aa49d743ecaad585d3e2d3"
+    },
+    {
+      "path": "apps/portal/src/features/orders/README.md",
+      "bytes": 7743,
+      "sha256": "05f0e6d23214d24a6e57189238b6f1875867eef3cea9d3f9b7bb4a267817d20e"
+    },
+    {
+      "path": "apps/portal/src/features/orders/contract.typecheck.ts",
+      "bytes": 1112,
+      "sha256": "40f804136a9681fcb2e70d960f419090e36b735f705ad38a7e7908eb52f22f2c"
+    },
+    {
+      "path": "apps/portal/src/features/orders/controller.ts",
+      "bytes": 14317,
+      "sha256": "9c774ebd0e26ee877b7c23cacb3c507aaaebcd90f7129d74cf98beae97a1666c"
+    },
+    {
+      "path": "apps/portal/src/features/orders/dependencies.ts",
+      "bytes": 3721,
+      "sha256": "2a3bb9dc4e1726d13056e7f1f148aecd27bc96489d711676601d60a3b8ff3a4f"
+    },
+    {
+      "path": "apps/portal/src/features/orders/index.ts",
+      "bytes": 828,
+      "sha256": "213b2ef70d15279a1847877ee17a92d644ba0cf6aae544ce7f1aec8632c2474c"
+    },
+    {
+      "path": "apps/portal/src/features/orders/model.ts",
+      "bytes": 3952,
+      "sha256": "9fc69f7315eabfa2a2052d9a08d9f39113c592d14a397611a180dd088d4cca07"
+    },
+    {
+      "path": "apps/portal/src/features/orders/orders.css",
+      "bytes": 2876,
+      "sha256": "78f516531c150949a077ad7d584563c7929517765dfe3884f6e0c6140272a590"
+    },
+    {
+      "path": "apps/portal/src/features/orders/port.ts",
+      "bytes": 5446,
+      "sha256": "3c4a1460de19ee9e24e6ba4c60fdce565a69b946a4238a09722c06dee6509cea"
+    },
+    {
+      "path": "apps/portal/src/features/orders/presentation.tsx",
+      "bytes": 5738,
+      "sha256": "30fc7f547e09b075249cef85e9c465788d246487d437d3fa263aa4a97ffc24bc"
+    },
+    {
+      "path": "apps/portal/src/features/orders/types.ts",
+      "bytes": 2998,
+      "sha256": "431a6c7daea6f1b2546df42d91ceee9cf9519125d2b0a8a17febcacb19b146b8"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-build.test.mjs",
+      "bytes": 1082,
+      "sha256": "952f1293b6a8f548a1adbc5c034defc0f4b17eec1a4a2c8dd1506237a2e471a3"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cab.test.mjs",
+      "bytes": 12317,
+      "sha256": "a6416ca1d7cfe208e2f416661c025f8210bfd3503c5e92e084c09d49107e66a5"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-controller.test.mjs",
+      "bytes": 10937,
+      "sha256": "45529da6b5aefdb424694f4b7601ca0d0f13356374626c00366b96c59a8af9fd"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu-fixtures.mjs",
+      "bytes": 5953,
+      "sha256": "aa3ed692cf72be1e6c460d7e14bec2961246bfec8ca6f333a0d19fe586b198c4"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu.test.mjs",
+      "bytes": 16411,
+      "sha256": "11c23fa1801cb3abf394307cde8a2175d131f8f85a6c3b89817723520d97e9b1"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu4-fixtures.mjs",
+      "bytes": 1850,
+      "sha256": "1899ea22c6d3a32f853e0501e09e8a6c665ad8e5218ac6bb43a02f9bec24d074"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu4.test.mjs",
+      "bytes": 9752,
+      "sha256": "cedf4a80dec55775c8bb2cbf731a87a532f3c6a46315d20f6944682e4dbec1f4"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-fixtures.mjs",
+      "bytes": 4918,
+      "sha256": "a3dd90632167a29d4132e1b07242419796f05ea928d30ef5bf6592778fb319ea"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-model.test.mjs",
+      "bytes": 4312,
+      "sha256": "a142bda6a28a75a1bc746da145504fa1e575ad93e44c40e968957ae189775d74"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-port.test.mjs",
+      "bytes": 4923,
+      "sha256": "06e58eb740e7fac80704921d8942d3391baf859edb7ca11917247f55a5a3bdd8"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-render.test.mjs",
+      "bytes": 11072,
+      "sha256": "19d75f90d82d8228dac57eedc9382f3cc4f28ba0bebad2ce211fbbf4efb3583b"
+    }
+  ],
+  "explicitDTOProjection": [
+    {
+      "path": "src/contracts/PortalCommerce.ts",
+      "source": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 19204,
+      "sha256": "af2d1316434cca41ab78ae4b3bed54cb3a5a348c8e915caaa2f84c0aac9a2c38"
+    },
+    {
+      "path": "src/contracts/PortalCommerceValues.ts",
+      "source": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 5365,
+      "sha256": "ac8c72ca26be1ab1c4f3275b75260cd78e0cdbbebad26524ad7e442a1bb8d27f"
+    },
+    {
+      "path": "src/contracts/PortalCommerceValidation.ts",
+      "source": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 28017,
+      "sha256": "32e19f6ab8c85d5f52024ccf8aa114a088de270b005a806e3600191e4cfe7459"
+    },
+    {
+      "path": "src/contracts/PortalCommerceMapping.ts",
+      "source": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 30476,
+      "sha256": "79d265ab4963cde159c21ff1138c292c80a5ad8548bb45cd843efbd04b706934"
+    }
+  ],
+  "verdict": "FAIL_SOURCE_POST_DISPATCH_CALLBACK_FENCE_REVIEW_INCOMPLETE",
+  "finding": "W7-W5-O1",
+  "severity": "P2",
+  "reviewStoppedAtFirstMaterialFinding": true,
+  "reviewedSourcePaths": [
+    "apps/portal/src/features/orders/types.ts",
+    "apps/portal/src/features/orders/controller.ts",
+    "apps/portal/src/features/orders/port.ts",
+    "apps/portal/src/features/orders/model.ts",
+    "apps/portal/src/features/orders/dependencies.ts",
+    "apps/portal/src/features/orders/README.md"
+  ],
+  "currentIndependentControl": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 1,
+    "node": "v22.23.0",
+    "expectedFixedRequestCalls": 0,
+    "actualFixedRequestCalls": 1,
+    "finalCookieStatus": "offline",
+    "finalPortResult": "503 rejection after invocation"
+  },
+  "originalControl": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-a5bc/source/apps/portal/tests/w7-orders-dispatch-cancellation.test.mjs",
+    "archivePath": "source-controls/W5_O1/w7-orders-dispatch-cancellation.test.mjs",
+    "bytes": 1300,
+    "sha256": "a44ce83ad8e4be3292ac9a0fce772bbb602c842798300c3ff021e7f820baf354"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-a5bc/W7-DISPATCH-ORIGINAL.log",
+      "bytes": 1883,
+      "sha256": "a76901af1e830e065a92e07c17945f9e638ea319cfbb1c03f34b91771ac8312e",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-a5bc/DISPATCH-EXEC.json",
+      "bytes": 343,
+      "sha256": "d1343e3ec45f0a32b89ad137f6a0ae8e8eafc9e0646a5f21decfd441b1cd4fb3",
+      "exitCode": 1
+    }
+  ],
+  "limits": [
+    "Closed synthetic session HTTP; fixed request is an invocation counter, not an actual business/network operation",
+    "Source-level supported callback dispatch/lifetime defect only; no actual Auth/SQL financial effect or backendauthorization bypass demonstrated",
+    "No candidate production edit or original112/type/build pass claimed; complete23 review stopped/incomplete",
+    "No M02 operation/protectedfixture/financial/M65/private-return/heldscope/browser/resource audit"
+  ]
+}
