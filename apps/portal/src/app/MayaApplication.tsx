@@ -8,6 +8,8 @@ import {MayaWalkthrough} from '../features/walkthrough/maya/view.tsx';
 import type {MayaStageNumber} from '../features/walkthrough/maya/model.ts';
 import {PageHeader} from '../shell/PortalShell.tsx';
 import {StatusNotice} from '../ui/index.ts';
+import {createMayaChromeController} from './maya-chrome.ts';
+import {MayaClientChrome} from './MayaClientChrome.tsx';
 
 const scopeBrand:unique symbol=Symbol('public-maya-application');
 const owners=new WeakMap<Window,{dispose():void}>();
@@ -20,6 +22,9 @@ export function createMayaApplicationScope(win:Window) {
   if(initial?.name!=='maya')throw new TypeError('Maya requires its public route');
   const navigator=createPortalNavigator(win,{scopeKey:'public-maya:'+crypto.randomUUID()});
   const controller=createMayaDemoController({initialStage:initial.stage});
+  // Subscribe before later navigation/view observers so transitions retire a
+  // contact opening before those observers can throw or reenter.
+  const chrome=createMayaChromeController(controller);
   const listeners=new Set<()=>void>();
   const active=Object.freeze({controller});
   const ended=Object.freeze({controller:null});
@@ -29,6 +34,7 @@ export function createMayaApplicationScope(win:Window) {
     if(disposed)return;
     disposed=true;
     snapshot=ended;
+    chrome.dispose();
     if(owners.get(win)===scope)owners.delete(win);
     stopNavigation();
     stopController();
@@ -68,6 +74,7 @@ export function createMayaApplicationScope(win:Window) {
   const scope=Object.freeze({
     [scopeBrand]:true as const,
     navigator:navigation,
+    chrome,
     getSnapshot:()=>snapshot,
     subscribe(fn:()=>void){if(disposed)return()=>{};listeners.add(fn);return()=>{listeners.delete(fn);};},
     dispose,
@@ -84,7 +91,7 @@ export type MayaApplicationScope=ReturnType<typeof createMayaApplicationScope>;
 export function MayaApplicationContent({scope}:{scope:MayaApplicationScope}) {
   const state=useSyncExternalStore(scope.subscribe,scope.getSnapshot,scope.getSnapshot);
   return state.controller?<NavigationProvider navigator={scope.navigator}>
-    <MayaWalkthrough controller={state.controller}/>
+    <MayaWalkthrough controller={state.controller} renderClient={children=><MayaClientChrome chrome={scope.chrome}>{children}</MayaClientChrome>}/>
   </NavigationProvider>:<StatusNotice title="page unavailable"/>;
 }
 
