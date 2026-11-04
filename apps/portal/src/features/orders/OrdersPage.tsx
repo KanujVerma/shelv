@@ -70,17 +70,26 @@ export interface OrdersPageProps {controller:OrdersController;navigation?:Orders
 export function OrdersPage({controller,navigation,selected,useDisplay}:OrdersPageProps){
  const state=useSyncExternalStore(controller.subscribe,controller.getSnapshot,controller.getSnapshot);
  const sameEntity=(a:CommerceEntityRef|undefined,b:CommerceEntityRef|undefined)=>a?.kind===b?.kind&&a?.id===b?.id&&a?.revision===b?.revision;
- const requestedKey=selected?`${selected.kind}:${selected.id}:${selected.revision}`:null,context=useRef({controller,requestedKey});
- if(context.current.controller!==controller||context.current.requestedKey!==requestedKey)context.current={controller,requestedKey};
+ const requestedKey=selected?`${selected.kind}:${selected.id}:${selected.revision}`:null,context=useRef({controller,requestedKey,request:selected?{...selected}:undefined,pending:selected!==undefined});
+ if(context.current.controller!==controller||context.current.requestedKey!==requestedKey)context.current={controller,requestedKey,request:selected?{...selected}:undefined,pending:selected!==undefined};
  const renderedContext=context.current;
  const [sheet,setSheet]=useState<{kind:OrderSheetKind;line?:FrozenProductLine;context:typeof renderedContext;entity:CommerceEntityRef}|null>(null);
- const mismatch=selected!==undefined&&!sameEntity(selected,state.selection?.entity),indexed=state.index?.entries.some(entry=>sameEntity(entry.entity,selected));
+ const mismatch=renderedContext.pending&&renderedContext.request!==undefined&&!sameEntity(renderedContext.request,state.selection?.entity),indexed=state.index?.entries.some(entry=>sameEntity(entry.entity,renderedContext.request));
  // A requested target is not evidence that the previous target is still its
  // financial detail. Mask the prior selection before effects acquire the next.
  const visibleState:OrdersState=mismatch?{...state,selection:null,reviewed:false,phase:state.phase==='ready'?(indexed?'loading':'unavailable'):state.phase}:state;
  const visibleSheet=sheet&&sheet.context===renderedContext&&!mismatch&&sameEntity(sheet.entity,state.selection?.entity)?sheet:null;
  useEffect(()=>{void controller.refresh();return()=>controller.close();},[controller]);
- useEffect(()=>{if(selected&&state.index&&state.phase==='ready'&&!sameEntity(selected,state.selection?.entity))void controller.open(selected);},[controller,selected,state.index,state.phase,state.selection?.entity]);
+ useEffect(()=>{
+  const request=renderedContext.request;
+  if(context.current!==renderedContext||!renderedContext.pending||!request||controller.getSnapshot()!==state||!state.index||state.phase!=='ready')return;
+  if(sameEntity(request,state.selection?.entity)){renderedContext.pending=false;return;}
+  if(!state.index.entries.some(entry=>sameEntity(entry.entity,request)))return;
+  // A changed tuple is a navigation request, not a permanent selection lock.
+  // Consume it before open's synchronous observers; later internal quote/Back
+  // navigation remains usable until the parent requests another tuple.
+  renderedContext.pending=false;void controller.open(request);
+ },[controller,requestedKey,state]);
  useEffect(()=>{setSheet(null);},[controller,requestedKey]);
  useEffect(()=>{if(['ended','denied','conflict'].includes(state.phase))setSheet(null);},[state.phase]);
  return <><OrdersView state={visibleState} controller={controller} navigation={navigation} useDisplay={useDisplay} onSheet={(kind,line)=>{if(context.current===renderedContext&&controller.getSnapshot()===state&&!mismatch&&state.phase==='ready'&&state.selection)setSheet({kind,line,context:renderedContext,entity:state.selection.entity});}}/>{visibleSheet&&state.selection?<Sheet open={true} title={visibleSheet.kind==='product'?'frozen product details':visibleSheet.kind==='review'?'review final quote':visibleSheet.kind==='payment'?'payment instructions':visibleSheet.kind==='received'?'report actual receipt':'request product return'} backLabel="back to order" onOpenChange={open=>{if(!open)setSheet(null);}} canClose={()=>state.pending?.phase!=='sending'}><OrderSheetContent key={visibleSheet.kind+':'+state.selection.entity.id} kind={visibleSheet.kind} line={visibleSheet.line} state={state} controller={controller} onDone={()=>setSheet(null)}/></Sheet>:null}</>;
