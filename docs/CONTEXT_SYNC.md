@@ -1,3 +1,11 @@
+## W0 address and routine source integration, 4 November UTC
+
+Owner: Kanuj. PR238 normally merged as ce9c07bb, then PR241 as251bc62e, after separate exact-head/native/CI gates and new-spine composition checks. The [serial integration record](portal-rebuild/eight-threads/W0_ADDRESS_ROUTINE_INTEGRATION_20261104.md) pins all nine address and two routine postimages, actual peer-job checkouts, unchanged contracts/migrations/locks/workflows and the exact W7 snapshot c765 including R10/O9 withholding. Current combined Root CI/native remain separate; actual Account mounting/persistence, routine rendered-frame/a11y, no-photo full review/history and all genuine/held gates remain open. No resource or acceptance counter advances.
+
+## W0 current advisor-email hosted proof, 4 November UTC
+
+Owner: Kanuj. Published8d3893 now has all three checks SUCCESS. The [completed-check custody record](portal-rebuild/eight-threads/W0_ADVISOR_EMAIL_ROUTING_20261104.md#published-source-and-completed-hosted-checks) binds all three complete job logs to actual checkout89e2223, its two actual parents and the entire tree equal to authored8d; Portal ordinary suite4014/4014. Only advisor-email URL finding4464598929 was resolved after proof reply4474570687. Native unresolved flags, plan SQL and held photo findings remain; PR211 stays draft and unmerged. No actual email, no-photo journey, principal/setup/resource or held-scope acceptance follows. Existing failures and missing original artifacts retain their prior dispositions.
+
 ## W0 advisor email audience correction: source integration, 4 November UTC
 
 Owner: Kanuj. The [bounded composition receipt](portal-rebuild/eight-threads/W0_ADVISOR_EMAIL_ROUTING_20261104.md) combines W1's two-line neutral payload/decoder correction with Root's pure actual-router regression. The regression is in Portal's existing test target; OLD4/7 becomes7/7, selected pure worker1/1 and all four configured graphs pass. Initial Root-test-target TS2578 is preserved separately; no production comment/configuration/flag was relaxed. Advisor attention uses the existing advisor inbox, with client/history links and strict decoder restrictions retained. No email/Auth/provider/browser/SQL resource or A07 activation occurred. Fresh exact-source/hosted gates remain required; absent old artifacts were not reconstructed.

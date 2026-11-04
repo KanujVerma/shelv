@@ -669,7 +669,10 @@
       "scope": "FreshCOMPLETE23 ProductQuoteAdminfrontend/controller/model/retainedSDKfinite Source only, actualRootDTO4/nooverride; no M65/CBfinancialauthority/SQL/audit/resourcegrant",
       "packetSha256": "21a40d1e4dd556ae11b4d987cf24a6d72f236bd482a8f0ba7a8014a131d75cea",
       "patchSha256": "736f1c212658fc4688b814e2a3c4b3ca8f2ff46c7344f4436492c37257f65309",
-      "status": "QUEUED_FRESH_COMPLETE_PRODUCT_QUOTE_ADMIN_SOURCE"
+      "status": "ORIGINAL_PACKET_RAW_UNAVAILABLE_INFO_ONLY_NO_CURRENT_INTAKE",
+      "statusBeforeArtifactInfo": "QUEUED_FRESH_COMPLETE_PRODUCT_QUOTE_ADMIN_SOURCE",
+      "artifactInfoReceiptSha256": "d5a5fd08b377be030a85fd6faeb1ec0d822b6185b8beeb541824bb6283040118",
+      "availabilityQualification": "Knownformerpaths absent perownerreceipt; no exhaustive recovery/sourcecode audit/currentintake or originalraw verification"
     },
     {
       "head": "78ea50d28a3a20bbc5c25bae0d3b3d3250570ca8",
@@ -866,8 +869,11 @@
       "scope": "NEW COMPLETE18 focusedmanualproductbookkeepingconsumer SOURCE ONLY, unitderivationgate only; actualRootlivefinanceport/typedcurrentclaim/reconciliationcreate/legacy/policy/backend/M65auditsNOTadmitted",
       "packetSha256": "f352f0724531493da8bf65323e6745e6cf96e4168a0bb27ff884b30f39c201a5",
       "patchSha256": "6abe96a7144addb249545202480dd74b734b9651ece1202f83e0822ab78dc7ac",
-      "status": "QUEUED_FRESH_SCOPED_MANUAL_BOOKKEEPING_SOURCE",
-      "evidenceQualification": "Owner111+canonical56=167finite/memory/SSR+types, notfunds/CAS/rights/actualfinance/genuine; nameddependenciesOPEN, nofullCommerce/M65/providerheldreroute"
+      "status": "ORIGINAL_PACKET_RAW_UNAVAILABLE_INFO_ONLY_NO_CURRENT_INTAKE",
+      "evidenceQualification": "Owner111+canonical56=167finite/memory/SSR+types, notfunds/CAS/rights/actualfinance/genuine; nameddependenciesOPEN, nofullCommerce/M65/providerheldreroute",
+      "statusBeforeArtifactInfo": "QUEUED_FRESH_SCOPED_MANUAL_BOOKKEEPING_SOURCE",
+      "artifactInfoReceiptSha256": "d5a5fd08b377be030a85fd6faeb1ec0d822b6185b8beeb541824bb6283040118",
+      "availabilityQualification": "Knownformerpaths absent perownerreceipt; no exhaustive recovery/sourcecode audit/currentintake or originalraw verification"
     },
     {
       "head": "3d9d1b805d3e8b042008cb4d7f9a4074e82740e5",
@@ -967,8 +973,11 @@
       "scope": "NEW complete15 ProductVerificationAdmin consumer/controller source/finite/SSR; priority AFTER R6 bb1 complete28",
       "packetSha256": "fffe064a38194b8f33b2823f4ade6450836dd4e908ba9be554f5f7f360e49dd0",
       "patchSha256": "724fe980225526ada3d801e0d0d4bcc5f6a6c3135da8f09c2393b6196cd9aa4a",
-      "status": "QUEUED_FRESH_COMPLETE15_PRODUCT_VERIFICATION_SOURCE",
-      "evidenceQualification": "Only packet bytes/head/15-path metadata checked so far. Owner current128/types/compile proof; broader Root/Expo/app/UI are earlier c1d6 evidence. CURRENT_TYPED_PRODUCT_PAYMENT_CLAIM_SOURCE and PRODUCT_CLAIM_REJECTION_ELIGIBILITY remain OPEN; no producer/permission/financial authority, resources or held audit."
+      "status": "ORIGINAL_PACKET_RAW_UNAVAILABLE_INFO_ONLY_NO_CURRENT_INTAKE",
+      "evidenceQualification": "Only packet bytes/head/15-path metadata checked so far. Owner current128/types/compile proof; broader Root/Expo/app/UI are earlier c1d6 evidence. CURRENT_TYPED_PRODUCT_PAYMENT_CLAIM_SOURCE and PRODUCT_CLAIM_REJECTION_ELIGIBILITY remain OPEN; no producer/permission/financial authority, resources or held audit.",
+      "statusBeforeArtifactInfo": "QUEUED_FRESH_COMPLETE15_PRODUCT_VERIFICATION_SOURCE",
+      "artifactInfoReceiptSha256": "d5a5fd08b377be030a85fd6faeb1ec0d822b6185b8beeb541824bb6283040118",
+      "availabilityQualification": "Knownformerpaths absent perownerreceipt; no exhaustive recovery/sourcecode audit/currentintake or originalraw verification"
     },
     {
       "head": "e1829fad1bd3ac0c25f447dcde19fc38dfb39bcf",
@@ -1123,6 +1132,91 @@
       "status": "PASS_SCOPED_COMPLETE6_ADVISOR_EMAIL_COMPOSITION_SOURCE_PURE_ROUTING_ONLY",
       "evidenceQualification": "IndependentnewPortalOLD4/7->CURRENT7/7+exactselectedworker1/1; W1exact3/all6+13deps/12raws/config-bootstrap-lock identities verified. Owner4graph0 remainsowner. OldefffbTS2578HOLD/notresumed, no actualemail/Auth/provider/browser/SQL/resources/activation/countergrant.",
       "report": "reviews/W0_ADVISOR_EMAIL_C75_SOURCE.md"
+    },
+    {
+      "lane": "W6",
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+      "intakeGeneration": "FRESH_RESUME_20261104T2227Z_NOT_OLD_PACKET_RECOVERY",
+      "packetSha256": "0a15c356c63b872a138bc6632481c9eca1e8ba5bed9bfc5f33461e4efb931814",
+      "scope": "FreshcompleteCURRENT9 source/dependency gate; old3fbfHOLD notcontinued/restored",
+      "status": "PASS_FRESH_CURRENT_COMPLETE9_ADDRESS_SOURCE_DEPENDENCIES_NO_HISTORICAL_RAW_RECOVERY",
+      "report": "reviews/W6_EE00_FRESH_CURRENT_SOURCE.md",
+      "evidenceQualification": "Current9/2153physical/13raws/fullc7delta verified, independent65+selector1/frontend0/newcurrentGraphpair2153. FreshNpmONLY/nohistoricalf96comparison/recovered3fbf. Actualmount/AuthSQL/history/paidorders/browser/genuine/counters/holds open."
+    },
+    {
+      "lane": "W5",
+      "head": "0d603c261e707b29923a2ca80afbf101670dc3bb",
+      "base": "d31c901aaed51ae4cc283eec8ea9d2374bd1a88b",
+      "packetSha256": "1e2b2f9cb81b1f8ae9dc671ef726d0cfdffb99187dd57f18ccd4b93e1fed9ed9",
+      "patchSha256": "8b0e541f1fc2d04b1e529be4b8666a2251fc906ef94d1e8bb3307a7eecfa8c0f",
+      "scope": "NEW complete31 current Sourceconsumer; no stoppedhead retry, Gitprogramrecoverynotrawrecovery",
+      "status": "WITHHELD_FIRST_MATERIAL_FINDING_O7_COMPLETE31_SOURCE_REVIEW_INCOMPLETE",
+      "report": "reviews/W5_R8_0D603_O7.md",
+      "finding": "W7-W5-O7/P2",
+      "evidenceQualification": "All31/64/DTO4/27blobidentity/21freshraws pinned; six BYTEEXACT originalcurrentcontrols each1/1 then newO7current0/1/writes0, STOP. No full160/types/build/genuine/resource/heldscope acceptance."
+    },
+    {
+      "lane": "W3",
+      "head": "8bc1ee73ca1d363aacf12ec870f571e14d419237",
+      "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+      "scope": "Complete2 two-declaration CSS +lane report, savedC01/C01E source-to-reference only",
+      "packetSha256": "a0e9ca32320fadb266dc01c4a014fcf548ab74ff39c9132e7ca442bd14d6bda0",
+      "patchSha256": "ddc8cde887e632a0ca2d5d4ca5b9f0632f8c5841744e4e8a2834c2034e66e32e",
+      "status": "PASS_SCOPED_COMPLETE2_ROUTINE_CSS_SAVED_FRAME_DECLARATION_CORRESPONDENCE_ONLY",
+      "report": "reviews/W3_ROUTINE_8BC_SOURCE_FRAME.md",
+      "evidenceQualification": "All2/4refs/7deps/proofs/emittedCSS/2310input+29asset hashes/entireoldCSSinverse verified. Owner45/types0/UI11/build0 only; no W7suite rerun/currentcapture/computedfont/geometry/a11y/fullframe/genuine."
+    },
+    {
+      "lane": "W3",
+      "head": "df8309bc3b632c13e4f3cc9357aa1a0d40e94a2c",
+      "base": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+      "scope": "Bounded2 routineCSS pair/4refs/7deps correspondence with separateexclusivecurrentDFcaptures",
+      "packetSha256": "42e0ae09abc02726fe0e762eebd6d2993961f28809fb333e8bb9dc7fb1f02e4d",
+      "patchSha256": "ddc8cde887e632a0ca2d5d4ca5b9f0632f8c5841744e4e8a2834c2034e66e32e",
+      "status": "PASS_BOUNDED_TWO_FILE_ROUTINE_SAVED_FRAME_SOURCE_DEPENDENCY_CORRESPONDENCE_ONLY",
+      "report": "reviews/W3_DF830_CORRESPONDENCE.md",
+      "evidenceQualification": "All2/4/7exact8bc/patchddc8 +rawDF45/typeUIbuild/provenanceheadclean/emittedCSS +input2310/assets29 rowidentity verified. No W7runs/currentframe/font/geometry/mobile/focus/a11y/genuine."
+    },
+    {
+      "lane": "W5",
+      "head": "14954044a5f9296bdb85cef052da21ab02bc754f",
+      "base": "d31c901aaed51ae4cc283eec8ea9d2374bd1a88b",
+      "scope": "NEW complete32 R9 sheetcompletion-custody successor, stoppedR8notresumed",
+      "packetSha256": "cee69f527a7b3af721f6cf00e9474813be65b1bb14ed7f59024393f26af80e3b",
+      "patchSha256": "35fe4b7823d0956fdbdbdd934072414cb50315925bb6cd3a8cc8c381ad92b0b7",
+      "status": "WITHHELD_FIRST_NEW_O8_P2_COMPLETE32_INCOMPLETE_STOP",
+      "evidenceQualification": "Owner167+7overlappingcurrentoriginals/types/builds/Root1923+18, notW7proof; actualoldO7rawavailableownerclaim/oldO6rawmissing; no oldstoppedScope/44/private/M65/resource permission.",
+      "report": "reviews/W5_R9_149540_O8.md",
+      "firstNewFinding": "W7-W5-O8",
+      "full32Incomplete": true,
+      "originalO7CurrentSourceOnlyClosed": true
+    },
+    {
+      "lane": "W6",
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "scope": "NEW current greenCI custody and executed9/current8d source/dependency correspondence only",
+      "packetSha256": "b173585079bb6859b1bac9e07255679b1274bc0d49a0d8830f38a2a71611e522",
+      "intakeGeneration": "NEW_GREEN_EXECUTION_NOT_OLD_PACKET_RECOVERY",
+      "status": "PASS_READ_ONLY_CURRENT_CI_CUSTODY_EXECUTED9_ACTUAL8D_DEPENDENCY_CORRESPONDENCE_ONLY",
+      "evidenceQualification": "Owneractual92b347 parents8d+ee00/tree004f differsauthored;9pins/24deps/current3CInativeclean/Portal4020 ALLlatersteps ownerreports pendingW7packetread. No authoredtreeequality assumed/no genuine/mount/paidorder/guard proof.",
+      "report": "reviews/W6_EE00_GREEN_EXECUTED_CORRESPONDENCE.md",
+      "executedHead": "92b347a35f50723ac6e330712eb22614aac31812",
+      "authoredVsExecutedTreeEqual": false
+    },
+    {
+      "lane": "W5",
+      "head": "73cf36378a9e507280fd69de1927e4490768ad41",
+      "base": "d31c901aaed51ae4cc283eec8ea9d2374bd1a88b",
+      "scope": "FreshCOMPLETE33R10source/finite, no oldstoppedhead resume",
+      "packetSha256": "67eba359116a952eb44665adebdeae9d0b89b74613c0051a2fc2b9bb4e689ce4",
+      "patchSha256": "3e7fe2741e69d371b7a5016d81a806c5d4239cd258d45eb4d875f32ee45adeea",
+      "status": "WITHHELD_FIRST_NEW_O9_P2_COMPLETE33_INCOMPLETE_STOP",
+      "report": "reviews/W5_R10_73CF_O9.md",
+      "firstNewFinding": "W7-W5-O9",
+      "full33Incomplete": true,
+      "originalO8CurrentSourceOnlyClosed": true,
+      "resourceGrant": null
     }
   ],
   "freshGenuineGrant": null,
@@ -1151,7 +1245,8 @@
     "W2ownerFA3 exactheadall3CI/nativeclean/Portal3853 sourcepacketunchanged, rawbaceacf3 custodyonly; no W7FA3full6/currentRoot/genuinegate inferred.",
     "W0ownerreportsad0d6947073f56b32d8fb3a76d93801ddf0cff86publishedONLYreviewed34address3+exactbd8dreportpair,parent342/depsunchanged. NoCurrent01b/3d9publication/wholecensus/genuineinference.",
     "Published9c255666 independentlyremoteverified: sixfc240postimages+16exactW7d73copies only. Own705O5ledgerretained/newer, no oldCI relabel/currentCI/browser/genuine/resources/counter grant. Freshconsumercompositiongates stillrequired.",
-    "Published94607ac independentlyremote/Gitverified Source3exact686+23W7exact502+W4report39b only, all27paths. Ownb2newer O6/SourceO5 ledger preserved; no newtest/CI/consumerrollforward/authority/genuine/resource/counter/hold clearance."
+    "Published94607ac independentlyremote/Gitverified Source3exact686+23W7exact502+W4report39b only, all27paths. Ownb2newer O6/SourceO5 ledger preserved; no newtest/CI/consumerrollforward/authority/genuine/resource/counter/hold clearance.",
+    "Published8d3893 independentlyGit/remoteverified exactc75source6+19W7copies8046/all25only; ownnewerledger retained/no candidate rollforward/test/CI/native/genuine/resource/hold/counter inference."
   ],
   "browserSlot": {
     "state": "R2_RETURNED_NORMAL_TEARDOWN_EXIT0; NO_FOLLOW_ON_GRANT",
@@ -1159,7 +1254,7 @@
     "at": "2026-11-03T20:04:32.743040+00:00",
     "report": "reviews/W3_BROWSER_96B_R2_RESULT.json"
   },
-  "lastReconciledAt": "2026-11-04T22:46:51.659210+00:00",
+  "lastReconciledAt": "2026-11-04T23:27:46.487615+00:00",
   "pendingIntakes": [],
   "artifactCustody": [
     {
@@ -1226,6 +1321,26 @@
       "packetSha256": "57cab4e4fb2cf62f454f9ecb9605cd39d435f644d7995c67a2ad4671d1cbe67d",
       "report": "reviews/W2_B7BF_FRESH_CORRESPONDENCE.md",
       "oldCb9cStillMissing": true
+    },
+    {
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "packetSha256": "0a15c356c63b872a138bc6632481c9eca1e8ba5bed9bfc5f33461e4efb931814",
+      "classification": "FRESH_CURRENT_NOT_ORIGINAL_3FBF_RECOVERY",
+      "report": "reviews/W6_EE00_FRESH_CURRENT_SOURCE.md"
+    },
+    {
+      "classification": "INFO_ONLY_CUSTODY_NO_NEW_AUDIT_INTAKE_EXECUTION",
+      "report": "ci/INFO_CUSTODY_W5_PACKETS_ROOT8D_20261104.md",
+      "W5ReceiptSha256": "d5a5fd08b377be030a85fd6faeb1ec0d822b6185b8beeb541824bb6283040118",
+      "RootReceiptSha256": "eb413b759254fdeba76fb0859f09833771189eddeb019719d5b4fa552ce08765"
+    },
+    {
+      "classification": "NEW_GREEN_EXECUTED_CUSTODY_DISTINCT_FROM_MISSING_OLD_GENERATIONS",
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "executedHead": "92b347a35f50723ac6e330712eb22614aac31812",
+      "packetSha256": "b173585079bb6859b1bac9e07255679b1274bc0d49a0d8830f38a2a71611e522",
+      "report": "reviews/W6_EE00_GREEN_EXECUTED_CORRESPONDENCE.md",
+      "originalMissingRowsStillMissing": true
     }
   ]
 }

@@ -1,0 +1,14 @@
+{
+  "owner": "Kanuj",
+  "head": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+  "recordedAt": "2026-11-04T22:58:23.828873+00:00",
+  "scope": "PASS_BOUNDED_PUBLISHED_EMAIL_SOURCE_AND_EXACT_DOC_CORRESPONDENCE_ONLY",
+  "remoteObservation": {
+    "method": "git ls-remote origin exactintegrationbranch",
+    "exitCode": 0,
+    "toolChunk": "a21ecd"
+  },
+  "report": "reviews/PUBLISHED_8D3893_SOURCE.md",
+  "wholeIntegratedCensus": "NOT_MEASURED",
+  "noCounterOrGrantAdvance": true
+}

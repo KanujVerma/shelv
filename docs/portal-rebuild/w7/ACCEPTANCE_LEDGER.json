@@ -2770,6 +2770,33 @@
       "head": "c75df7f56e3ee63e0847efc3f1d893097df1c294",
       "report": "reviews/W0_ADVISOR_EMAIL_C75_SOURCE.md",
       "level": "PASS_SCOPED_COMPLETE6_ADVISOR_EMAIL_COMPOSITION_SOURCE_PURE_ROUTING_ONLY"
+    },
+    {
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "generation": "FRESH_RESUME_20261104T2227Z_NOT_OLD_PACKET_RECOVERY",
+      "packetSha256": "0a15c356c63b872a138bc6632481c9eca1e8ba5bed9bfc5f33461e4efb931814",
+      "report": "reviews/W6_EE00_FRESH_CURRENT_SOURCE.md",
+      "level": "PASS_FRESH_CURRENT_COMPLETE9_ADDRESS_SOURCE_DEPENDENCIES_NO_HISTORICAL_RAW_RECOVERY"
+    },
+    {
+      "head": "0d603c261e707b29923a2ca80afbf101670dc3bb",
+      "report": "reviews/W5_R8_0D603_O7.md",
+      "level": "WITHHELD_FIRST_MATERIAL_FINDING_O7_COMPLETE31_SOURCE_REVIEW_INCOMPLETE"
+    },
+    {
+      "head": "8bc1ee73ca1d363aacf12ec870f571e14d419237",
+      "report": "reviews/W3_ROUTINE_8BC_SOURCE_FRAME.md",
+      "level": "PASS_SCOPED_COMPLETE2_ROUTINE_CSS_SAVED_FRAME_DECLARATION_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "14954044a5f9296bdb85cef052da21ab02bc754f",
+      "report": "reviews/W5_R9_149540_O8.md",
+      "level": "WITHHELD_FIRST_NEW_O8_P2_COMPLETE32_INCOMPLETE_STOP"
+    },
+    {
+      "head": "73cf36378a9e507280fd69de1927e4490768ad41",
+      "report": "reviews/W5_R10_73CF_O9.md",
+      "level": "WITHHELD_FIRST_NEW_O9_P2_COMPLETE33_INCOMPLETE_STOP"
     }
   ],
   "placementClarifications": [
@@ -2793,12 +2820,21 @@
       "id": "W7-W5-O6",
       "head": "9ab334791c2a70c80b93cb188273b22225621248",
       "priority": "P2",
-      "status": "OPEN_SOURCE_CORRECTION_REQUIRED_STOP_CURRENT_HEAD",
+      "status": "CLOSED_ORIGINAL_SOURCE_CONTROL_ONLY_R8_OLD_FAILURE_RAW_UNAVAILABLE_HISTORICAL",
       "report": "reviews/W5_ORDERS_9AB334_O6.md",
-      "finding": "Consumed pending request removes masking before actual open cancellation notification; controlled render shows A under B request, writes0; no hydrated/RootVM/Auth/financial/private-payload claim"
+      "finding": "Consumed pending request removes masking before actual open cancellation notification; controlled render shows A under B request, writes0; no hydrated/RootVM/Auth/financial/private-payload claim",
+      "sourceClosureReport": "reviews/W5_R8_0D603_O7.md"
+    },
+    {
+      "id": "W7-W5-O9",
+      "head": "73cf36378a9e507280fd69de1927e4490768ad41",
+      "priority": "P2",
+      "status": "OPEN_SOURCE_CORRECTION_REQUIRED_STOP_CURRENT_HEAD",
+      "report": "reviews/W5_R10_73CF_O9.md",
+      "finding": "Older begin after abort cleanup steals newer same-client open read claim;0/1/AfinalinsteadB/writes0/READY, noactualRootUI/financial/privatepayload claim"
     }
   ],
-  "lastReconciledAt": "2026-11-04T22:46:51.659210+00:00",
+  "lastReconciledAt": "2026-11-04T23:27:46.487615+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
@@ -2959,6 +2995,36 @@
       "head": "9ab334791c2a70c80b93cb188273b22225621248",
       "report": "reviews/W5_ORDERS_9AB334_O6.md",
       "scope": "Byte-exact original current control1/1 only, oldbb1 failure retained; no fullR7 or Back/browser acceptance"
+    },
+    {
+      "id": "W7-W5-O6",
+      "head": "0d603c261e707b29923a2ca80afbf101670dc3bb",
+      "report": "reviews/W5_R8_0D603_O7.md",
+      "scope": "Exact original current control1/1, not fullR8/real acceptance; oldraw89995missing/historical retained"
+    },
+    {
+      "id": "W7-W5-O7",
+      "head": "0d603c261e707b29923a2ca80afbf101670dc3bb",
+      "priority": "P2",
+      "status": "CLOSED_ORIGINAL_SOURCE_PREDICATE_ON_NEW_R9_ONLY",
+      "report": "reviews/W5_R8_0D603_O7.md",
+      "finding": "Retained A sheet onDone closes newer B sheet, controlledsourcecallback0/1/writes0, nothydration/Auth/finance/privatepayload claim",
+      "priorStatus": "OPEN_SOURCE_CORRECTION_REQUIRED_STOP_CURRENT_HEAD",
+      "closedOnHead": "14954044a5f9296bdb85cef052da21ab02bc754f",
+      "currentOriginalPass": 1,
+      "newFindingDoesNotGrantWholeHead": true
+    },
+    {
+      "id": "W7-W5-O8",
+      "head": "14954044a5f9296bdb85cef052da21ab02bc754f",
+      "priority": "P2",
+      "status": "CLOSED_ORIGINAL_SOURCE_PREDICATE_ON_NEW_R10_ONLY",
+      "report": "reviews/W5_R9_149540_O8.md",
+      "finding": "Current sheet functional-updater replay leaves sheet open0/1; controlledsource/nothydration/finance/privatepayload",
+      "priorStatus": "OPEN_SOURCE_CORRECTION_REQUIRED_STOP_CURRENT_HEAD",
+      "closedOnHead": "73cf36378a9e507280fd69de1927e4490768ad41",
+      "currentOriginalPass": 1,
+      "newFindingDoesNotGrantWholeHead": true
     }
   ],
   "sourceCorrespondences": [
@@ -3026,6 +3092,24 @@
       "generation": "FRESH_CURRENT_57CAB_NOT_CB9C_RECOVERY",
       "report": "reviews/W2_B7BF_FRESH_CORRESPONDENCE.md",
       "level": "PASS_BOUNDED_CURRENT_GIT_SOURCE_CORRESPONDENCE_FRESH_HOSTED_CUSTODY_NATIVE_QUOTA_UNACCEPTED"
+    },
+    {
+      "head": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+      "report": "reviews/PUBLISHED_8D3893_SOURCE.md",
+      "level": "PASS_BOUNDED_PUBLISHED_EMAIL_SOURCE_AND_EXACT_DOC_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "df8309bc3b632c13e4f3cc9357aa1a0d40e94a2c",
+      "report": "reviews/W3_DF830_CORRESPONDENCE.md",
+      "level": "PASS_BOUNDED_TWO_FILE_ROUTINE_SAVED_FRAME_SOURCE_DEPENDENCY_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "executedHead": "92b347a35f50723ac6e330712eb22614aac31812",
+      "actualBase": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+      "report": "reviews/W6_EE00_GREEN_EXECUTED_CORRESPONDENCE.md",
+      "status": "PASS_READ_ONLY_CURRENT_CI_CUSTODY_EXECUTED9_ACTUAL8D_DEPENDENCY_CORRESPONDENCE_ONLY",
+      "noNewExecution": true
     }
   ],
   "currentGenuineExecutionGate": {
@@ -3045,8 +3129,8 @@
     "wholeIntegratedCensus": "NOT_MEASURED",
     "noCounterAdvance": true,
     "latestObservedRemote": {
-      "head": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
-      "reference": "PUBLISHED_94607_SOURCE_REFERENCE.json",
+      "head": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+      "reference": "PUBLISHED_8D3893_SOURCE_REFERENCE.json",
       "wholeCensus": "NOT_MEASURED"
     }
   },
@@ -3149,6 +3233,34 @@
       "portalMainFail": 0,
       "nativeGate": "FAILED_USAGE_QUOTA_NOT_CLEAN",
       "notGenuine": true
+    },
+    {
+      "associatedHead": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+      "executionCommit": "89e2223177bf603a2a32798d11dd5ff7c9c668bb",
+      "executionTree": "01309cc9e4f2f8d62e2f31fa1115ed7e339cda2f",
+      "report": "ci/INFO_CUSTODY_W5_PACKETS_ROOT8D_20261104.md",
+      "classification": "FRESH_EXISTING_COMPLETE_JOB_LOG_CUSTODY_INFO_ONLY",
+      "PortalMainPass": 4014,
+      "PortalMainFail": 0,
+      "nativeFlagsTrueNoReadiness": true,
+      "noGenuineClaim": true
+    },
+    {
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "executedHead": "92b347a35f50723ac6e330712eb22614aac31812",
+      "executedTreeDiffersAuthored": true,
+      "report": "reviews/W6_EE00_GREEN_EXECUTED_CORRESPONDENCE.md",
+      "all3Success": true,
+      "nativeCodeReviewCompletedFalseFalse": true,
+      "portalOrdinary": {
+        "tests": 4020,
+        "pass": 4020,
+        "fail": 0,
+        "skip": 0,
+        "cancel": 0
+      },
+      "proofLevel": "HOSTED_CUSTODY_AND_SELECTED_SOURCE_CORRESPONDENCE_NOT_GENUINE",
+      "newW7Execution": false
     }
   ],
   "noPhotoCheckinEligibility": {
@@ -3169,6 +3281,12 @@
         "packetSha256": "57cab4e4fb2cf62f454f9ecb9605cd39d435f644d7995c67a2ad4671d1cbe67d",
         "head": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
         "storage": "fresh-current-20261104/b7bf-57cab",
+        "originalGenerationRecovery": false
+      },
+      {
+        "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+        "packetSha256": "0a15c356c63b872a138bc6632481c9eca1e8ba5bed9bfc5f33461e4efb931814",
+        "storage": "fresh-current-20261104/w6-ee00-0a15",
         "originalGenerationRecovery": false
       }
     ]
