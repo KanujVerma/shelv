@@ -83,6 +83,10 @@ export type AdvisorWrite = Exclude<
   Extract<AdvisorCommand, { requestId: string }>,
   { action: "request_status_v1" }
 >;
+export interface AdvisorPublicationNotification {
+  command: Extract<PlanCommand, { action: "publish_plan_v1" }>;
+  receipt: PublishReceipt;
+}
 export type AdvisorPayments = PaymentView | ReturnType<typeof mapPaymentViewV2>;
 /** The coordinator supplies authenticated capabilities, never a display-name policy. SQL rechecks every command. */
 export interface AdvisorPermissions {
@@ -198,6 +202,8 @@ export interface AdvisorState {
   comparisonLocal: PlanContent | null;
   pending: AdvisorWrite | AdvisorPaymentCommand | null;
   receipt: PublishReceipt | null;
+  /** Exact acknowledged original, not a reconstructed publication command. */
+  publicationNotification: AdvisorPublicationNotification | null;
 }
 export type AdvisorController = ReturnType<
   typeof import("./controller.ts").createAdvisorController

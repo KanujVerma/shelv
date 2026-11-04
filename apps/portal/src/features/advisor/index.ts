@@ -21,4 +21,5 @@ export type {
   AdvisorPaymentCommand,
   AdvisorPaymentReceipt,
   AdvisorState,
+  AdvisorPublicationNotification,
 } from "./types.ts";
