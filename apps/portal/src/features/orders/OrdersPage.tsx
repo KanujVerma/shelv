@@ -82,10 +82,9 @@ export function OrdersPage({controller,navigation,selected,useDisplay}:OrdersPag
  const ownsSheet=(expected:SheetState)=>sheetOwner.current===expected&&sheetOwner.current.token===expected.token&&context.current===expected.context&&expected.context.controller===controller&&sameEntity(sheetOwner.current.entity,expected.entity);
  const dismissSheet=(expected:SheetState)=>{
   if(!ownsSheet(expected))return;
-  setSheet(current=>{
-   if(current!==expected||!ownsSheet(expected)||!sameEntity(current.entity,expected.entity))return current;
-   sheetOwner.current=null;return null;
-  });
+  // React can discard and replay an updater. Captured sheet identity binds its
+  // token/context/target; consult mutable ownership only before scheduling.
+  setSheet(current=>current===expected?null:current);
  };
  const mismatch=renderedContext.pending&&renderedContext.request!==undefined&&!sameEntity(renderedContext.request,state.selection?.entity),indexed=state.index?.entries.some(entry=>sameEntity(entry.entity,renderedContext.request));
  // A requested target is not evidence that the previous target is still its
@@ -102,10 +101,12 @@ export function OrdersPage({controller,navigation,selected,useDisplay}:OrdersPag
   renderedContext.opening=true;
   void controller.open(request).then(()=>{renderedContext.opening=false;},()=>{renderedContext.opening=false;});
  },[controller,requestedKey,state]);
- useEffect(()=>{setSheet(current=>{
-  if(context.current!==renderedContext||!current||current.context===renderedContext)return current;
-  if(sheetOwner.current===current)sheetOwner.current=null;return null;
- });},[controller,requestedKey]);
+ useEffect(()=>{
+  const expected=sheet;
+  if(context.current!==renderedContext||!expected||expected.context===renderedContext)return;
+  // A delayed cleanup can remove only the exact stale sheet it captured.
+  setSheet(current=>current===expected?null:current);
+ },[controller,requestedKey]);
  useEffect(()=>{if(['ended','denied','conflict'].includes(state.phase)&&sheet)dismissSheet(sheet);},[state.phase]);
  return <><OrdersView state={visibleState} controller={controller} navigation={navigation} useDisplay={useDisplay} onSheet={(kind,line)=>{if(context.current===renderedContext&&controller.getSnapshot()===state&&!mismatch&&state.phase==='ready'&&state.selection){const next={kind,line,context:renderedContext,entity:state.selection.entity,token:++sheetSequence.current};sheetOwner.current=next;setSheet(next);}}}/>{visibleSheet&&state.selection?<Sheet open={true} title={visibleSheet.kind==='product'?'frozen product details':visibleSheet.kind==='review'?'review final quote':visibleSheet.kind==='payment'?'payment instructions':visibleSheet.kind==='received'?'report actual receipt':'request product return'} backLabel="back to order" onOpenChange={open=>{if(!open)dismissSheet(visibleSheet);}} canClose={()=>ownsSheet(visibleSheet)&&sameEntity(controller.getSnapshot().selection?.entity,visibleSheet.entity)&&controller.getSnapshot().pending?.phase!=='sending'}><OrderSheetContent key={visibleSheet.kind+':'+state.selection.entity.id+':'+visibleSheet.token} kind={visibleSheet.kind} line={visibleSheet.line} state={state} controller={controller} onDone={()=>dismissSheet(visibleSheet)}/></Sheet>:null}</>;
 }
