@@ -15,6 +15,7 @@ import {mapCareResult} from '../../../src/contracts/PortalCareMapping.ts';
 import {readCareCommand} from '../../../src/contracts/PortalCareValidation.ts';
 import {createGuidanceHydrator} from '../src/features/plan/guidanceHydration.ts';
 import {createGuidanceDecisionController} from '../src/features/plan/guidanceDecision.ts';
+import {publicationDeliveryReadUnavailable} from './helpers/publication-notification-fixture.mjs';
 
 // Read and execute ONLY the actual state() and context.route callback ASTs.
 // No module import means no before/after hook, build, Chrome, DOM or listener.
@@ -30,7 +31,7 @@ function router(text) {
   }
   visit(ast);
   assert.ok(state && callback && ts.isArrowFunction(callback), 'exact finite HTTP router must exist');
-  const deps = {assert, path, fixture, ids, stamp, mayaPlan, origin:'https://shelv-app.invalid', ...model};
+  const deps = {assert, path, fixture, ids, stamp, mayaPlan, publicationDeliveryReadUnavailable, origin:'https://shelv-app.invalid', ...model};
   return new Function(...Object.keys(deps), `return {state:${state.getText(ast)},handle:(s,unexpected)=>${callback.getText(ast)}}`)(...Object.values(deps));
 }
 const actual = router(source);

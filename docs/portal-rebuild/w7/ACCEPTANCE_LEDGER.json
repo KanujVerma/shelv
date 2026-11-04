@@ -2735,6 +2735,21 @@
       "head": "fc2404740e2140486b7de66de9845cf928d63881",
       "report": "reviews/W0_NOTIFICATION_FIXTURE_FC240.md",
       "level": "PASS_SCOPED_COMPLETE6_TEST_FIXTURE_SOURCE_FINITE_ONLY"
+    },
+    {
+      "head": "bb1f96a32195638ef11d4efc3d9551f695784c0c",
+      "report": "reviews/W5_ORDERS_BB1_O5.md",
+      "level": "WITHHELD_FIRST_MATERIAL_FINDING_O5_COMPLETE28_REVIEW_INCOMPLETE"
+    },
+    {
+      "head": "39b384a169742d3dc4151058f81979256aa9393f",
+      "report": "reviews/W4_NO_PHOTO_39B384_REPORT.md",
+      "level": "PASS_SCOPED_ONE_REPORT_SOURCE_FIDELITY_INTERFACE_INVENTORY_ONLY"
+    },
+    {
+      "head": "8d454b8015940ed29d2432635251bdbaba8b70da",
+      "report": "reviews/W2_INLINE_8D454_SOURCE.md",
+      "level": "PASS_SCOPED_COMPLETE9_INLINE_SOURCE_FINITE_SSR_DEPENDENCY_HELD_CURRENT_PORTAL_FAILED"
     }
   ],
   "placementClarifications": [
@@ -2744,8 +2759,17 @@
       "scope": "Neutral W5 component and existing command/source gate unchanged; no new permission or genuine execution."
     }
   ],
-  "openIndependentFindings": [],
-  "lastReconciledAt": "2026-11-04T07:52:56.607549+00:00",
+  "openIndependentFindings": [
+    {
+      "id": "W7-W5-O5",
+      "head": "bb1f96a32195638ef11d4efc3d9551f695784c0c",
+      "priority": "P2",
+      "status": "OPEN_SOURCE_CORRECTION_REQUIRED_STOP_CURRENT_HEAD",
+      "report": "reviews/W5_ORDERS_BB1_O5.md",
+      "finding": "Legitimate internal original quote is reopened as the unchanged externally selected purchase; controlled source/effect/callback only, zero writes"
+    }
+  ],
+  "lastReconciledAt": "2026-11-04T09:13:42.061946+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
@@ -2945,6 +2969,16 @@
       "head": "e964cb6d103483757eea884c574cb6fa93b9ce34",
       "report": "reviews/PUBLISHED_SPINE_E964_SOURCE.md",
       "level": "PASS_BOUNDED_PUBLISHED_SPINE_SOURCE_CORRESPONDENCE_ONLY_ORCHESTRATION_FAILURE_PRESERVED"
+    },
+    {
+      "head": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+      "report": "reviews/PUBLISHED_SPINE_9C255_SOURCE.md",
+      "level": "PASS_BOUNDED_PUBLISHED_TEST_FIXTURE_SOURCE_AND_EXACT_W7_COPY_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "e1829fad1bd3ac0c25f447dcde19fc38dfb39bcf",
+      "report": "reviews/W6_ADDRESS_E1829_CORRESPONDENCE.md",
+      "level": "PASS_BOUNDED_ADDRESS9_PUBLISHED_SPINE_DEPENDENCY_SOURCE_CORRESPONDENCE"
     }
   ],
   "currentGenuineExecutionGate": {
@@ -2964,8 +2998,8 @@
     "wholeIntegratedCensus": "NOT_MEASURED",
     "noCounterAdvance": true,
     "latestObservedRemote": {
-      "head": "e964cb6d103483757eea884c574cb6fa93b9ce34",
-      "reference": "PUBLISHED_E964_SOURCE_REFERENCE.json",
+      "head": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+      "reference": "PUBLISHED_9C255_SOURCE_REFERENCE.json",
       "wholeCensus": "NOT_MEASURED"
     }
   },
@@ -3021,6 +3055,50 @@
       "classification": "VERIFIED_CI_EXECUTION_SOURCE_PROVENANCE_CORRECTION_ONLY",
       "report": "ci/HOSTED_8F71_EXECUTION_SOURCE_ADDENDUM.md",
       "noCounterAdvance": true
+    },
+    {
+      "associatedHead": "e06ff5b90bb795190efe1cb42a723592c019f848",
+      "executionCommit": "3d3e795922ef4fcc7181c81a26185a851eb99cbb",
+      "classification": "VERIFIED_FAILED_CI_SELECTED_EXECUTION_SOURCE_CUSTODY_ONLY",
+      "status": "FAILED",
+      "report": "ci/HOSTED_E06_EXECUTION_SOURCE_CUSTODY.md"
+    },
+    {
+      "associatedHead": "e1829fad1bd3ac0c25f447dcde19fc38dfb39bcf",
+      "executionCommit": "245ff3e63c1d4f8b3ec10701d6ba13357d3f13d1",
+      "executionTree": "f8e8694f910b4234af853bc91e824850beb29bda",
+      "report": "ci/HOSTED_E1829_PORTAL_FAILURE.md",
+      "classification": "VERIFIED_FAILED_CURRENT_CI_EXECUTION_CUSTODY_PENDING_W0_FIXTURE_SOURCE",
+      "status": "FAILED",
+      "counts": {
+        "tests": 4013,
+        "pass": 4012,
+        "fail": 1,
+        "skip": 0,
+        "cancel": 0
+      }
+    },
+    {
+      "associatedHead": "8d454b8015940ed29d2432635251bdbaba8b70da",
+      "executionCommit": null,
+      "report": "ci/HOSTED_8D_PORTAL_FAILURE.md",
+      "classification": "VERIFIED_FAILED_STEP_RAW_CUSTODY_EXECUTION_CHECKOUT_UNVERIFIED",
+      "status": "FAILED",
+      "counts": {
+        "tests": 4032,
+        "pass": 4031,
+        "fail": 1,
+        "skip": 0,
+        "cancel": 0
+      }
     }
-  ]
+  ],
+  "noPhotoCheckinEligibility": {
+    "head": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+    "report": "reviews/W4_NO_PHOTO_ELIGIBILITY_9C255.md",
+    "status": "INELIGIBLE_REAL_EXECUTION_SOURCE_WORK_ONLY",
+    "sourceStatus": "UNMET_PUBLISHED_ADVISOR_ROUTE_CONTEXT_AND_CURRENT_INTEGRATION_GATES",
+    "freshResourceGrant": null,
+    "photoHoldCleared": false
+  }
 }

@@ -1,0 +1,292 @@
+{
+  "owner": "Kanuj",
+  "head": "39b384a169742d3dc4151058f81979256aa9393f",
+  "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+  "verdict": "PASS_SCOPED_ONE_REPORT_SOURCE_FIDELITY_INTERFACE_INVENTORY_ONLY",
+  "materialFindings": [],
+  "declaredReport": {
+    "path": "docs/portal-rebuild/eight-threads/W4_NO_PHOTO_FLOW.md",
+    "bytes": 26045,
+    "sha256": "207afcc399612491a2236baa500fbde656c66f510bacbfd8cb56d9694121e803"
+  },
+  "ownerReceipt": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-no-photo-39b384/SOURCE-RECEIPT.json",
+    "bytes": 5103,
+    "sha256": "ee9fb693d9d34c6208d3714e25e1f65ef125ed420800c7e76aa7de5b8813dfd6"
+  },
+  "declaredSourcePinsVerified": [
+    {
+      "path": "apps/portal/src/features/history/index.ts",
+      "bytes": 804,
+      "sha256": "f27deeebcefd1ee02fffd4059463b6996a3f0e3b51a1d6c76787ffe684714fb7"
+    },
+    {
+      "path": "apps/portal/src/features/history/types.ts",
+      "bytes": 4374,
+      "sha256": "03c9b80cfff417b1590b7c82e5495d202408582e42ad3be78eb6a2c2723792de"
+    },
+    {
+      "path": "apps/portal/src/features/history/model.ts",
+      "bytes": 4789,
+      "sha256": "786cf55f9c2d86265ada04ceaff3f50d94da15c24ccfcf9090f654396cf3a07a"
+    },
+    {
+      "path": "apps/portal/src/features/history/controller.ts",
+      "bytes": 36913,
+      "sha256": "c5329af695d6981bd0a6e1f9f358724e404c061ed5863d4b177ad703ba98d376"
+    },
+    {
+      "path": "apps/portal/src/features/history/port.ts",
+      "bytes": 3457,
+      "sha256": "4f1fd4c461985311372832dfa5898a2965c65e903795a317c2242d1c931360f0"
+    },
+    {
+      "path": "apps/portal/src/features/history/Timeline.tsx",
+      "bytes": 14890,
+      "sha256": "08b196e8451028ac43ba40a59395213ba319d0b4420486e92c4ef7143a7b1987"
+    },
+    {
+      "path": "apps/portal/src/app/Application.tsx",
+      "bytes": 23387,
+      "sha256": "9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510"
+    },
+    {
+      "path": "apps/portal/src/app/ClientHistory.tsx",
+      "bytes": 13059,
+      "sha256": "dfa0a29f18c1fa19cba37b53d68a0edda82ad1bff5599f17934ce00ec7703ec5"
+    },
+    {
+      "path": "apps/portal/src/app/client-composition.ts",
+      "bytes": 11854,
+      "sha256": "9791f57787725ce7e0e4b6490670ec8955d86670115e7e4d6f8cbd4617bddb6c"
+    },
+    {
+      "path": "apps/portal/src/app/review-request.ts",
+      "bytes": 2818,
+      "sha256": "66d84f88cc2b2040078dcc0026374d2715e48ff6b8a0d7e3923f72507762c6e0"
+    },
+    {
+      "path": "apps/portal/src/app/advisor-review-request.ts",
+      "bytes": 3229,
+      "sha256": "1eeaeed5e8caae6e3c0e292c600cd46745a594d84ffa53d259ad6a67c09a0963"
+    },
+    {
+      "path": "apps/portal/src/app/advisor-guidance-context.ts",
+      "bytes": 13725,
+      "sha256": "055b051f8f3d6fee0ad01c2dc9d6d526c796fc7ea0343789f8def3bb263aeaa5"
+    },
+    {
+      "path": "apps/portal/site/auth/review-actions.js",
+      "bytes": 1904,
+      "sha256": "6796d30a8b774559cac3924c9db7c5528358dd672b1cdabe060a428be881fcb4"
+    },
+    {
+      "path": "src/contracts/PortalReview.ts",
+      "bytes": 13982,
+      "sha256": "78e06f5af74ad3d17cd5d30e03fce0faca505cb7e5f0e32961dbdb942ff33b74"
+    },
+    {
+      "path": "src/contracts/PortalReviewValues.ts",
+      "bytes": 3909,
+      "sha256": "cce2545be9626e1a1abf8fb4e6a0e783c53831af9740110db26f37a397457000"
+    },
+    {
+      "path": "src/contracts/PortalReviewValidation.ts",
+      "bytes": 15488,
+      "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+    },
+    {
+      "path": "src/contracts/PortalReviewMapping.ts",
+      "bytes": 35451,
+      "sha256": "de2c64e152156656e7748c5f12c49dd115c6bc88411e488d29bde2e0d122a550"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/guidance/index.ts",
+      "bytes": 787,
+      "sha256": "15c1a88ab0c7a2e1505336b11c30de3a9543e6f4b9b3f6c6479b5d175f249781"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/guidance/types.ts",
+      "bytes": 3955,
+      "sha256": "242e4faacfa576145b6569122ea24308edcc7fe4c52b68fe0977467bad5918de"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/guidance/AdvisorGuidanceWorkspace.tsx",
+      "bytes": 34971,
+      "sha256": "c0ced0f976a08917c120cb3b7949136c59896b0f21285b068d4e51aeb6ebedef"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/guidance/drafts.ts",
+      "bytes": 2858,
+      "sha256": "678f881bab1fd83c8df5262b4ff8ac0b544e3861eda580eeff7c029b8fd418ee"
+    }
+  ],
+  "verification": {
+    "head": "39b384a169742d3dc4151058f81979256aa9393f",
+    "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+    "reportSha256": "207afcc399612491a2236baa500fbde656c66f510bacbfd8cb56d9694121e803",
+    "reportBytes": 26045,
+    "deltaPaths": 1,
+    "declaredSourcePinsVerified": 21,
+    "w6PublicPinsVerified": 12,
+    "reportLinksVerified": 16,
+    "ownerTestsRawHashesVerified": {
+      "selectedFiniteControllerSsr": 3,
+      "retainedNarrowLinkage": 4
+    },
+    "w7TestsRerun": false,
+    "heldCalleeBodiesAudited": false,
+    "realEligibilityChanged": false
+  },
+  "links": [
+    {
+      "target": "../../../apps/portal/src/app/Application.tsx#L390",
+      "gitPath": "apps/portal/src/app/Application.tsx"
+    },
+    {
+      "target": "../../../apps/portal/src/app/ClientHistory.tsx#L20",
+      "gitPath": "apps/portal/src/app/ClientHistory.tsx"
+    },
+    {
+      "target": "../../../apps/portal/src/app/client-composition.ts#L87",
+      "gitPath": "apps/portal/src/app/client-composition.ts"
+    },
+    {
+      "target": "../../../apps/portal/src/features/history/index.ts",
+      "gitPath": "apps/portal/src/features/history/index.ts"
+    },
+    {
+      "target": "../../../apps/portal/src/app/review-request.ts#L10",
+      "gitPath": "apps/portal/src/app/review-request.ts"
+    },
+    {
+      "target": "../../../supabase/functions/concierge-reviews/handler.ts",
+      "gitPath": "supabase/functions/concierge-reviews/handler.ts"
+    },
+    {
+      "target": "../../../supabase/functions/concierge-reviews/runtime.ts",
+      "gitPath": "supabase/functions/concierge-reviews/runtime.ts"
+    },
+    {
+      "target": "../../../apps/portal/src/navigation/routes.ts#L18",
+      "gitPath": "apps/portal/src/navigation/routes.ts"
+    },
+    {
+      "target": "../../../apps/portal/src/app/Application.tsx#L530",
+      "gitPath": "apps/portal/src/app/Application.tsx"
+    },
+    {
+      "target": "../../../apps/portal/src/features/advisor/guidance/index.ts",
+      "gitPath": "apps/portal/src/features/advisor/guidance/index.ts"
+    },
+    {
+      "target": "../../../apps/portal/src/features/history/Timeline.tsx#L66",
+      "gitPath": "apps/portal/src/features/history/Timeline.tsx"
+    },
+    {
+      "target": "../../../apps/portal/src/features/plan/ClientPlan.tsx#L111",
+      "gitPath": "apps/portal/src/features/plan/ClientPlan.tsx"
+    },
+    {
+      "target": "../../../src/contracts/PortalReview.ts",
+      "gitPath": "src/contracts/PortalReview.ts"
+    },
+    {
+      "target": "../../../apps/portal/src/features/history/model.ts#L6",
+      "gitPath": "apps/portal/src/features/history/model.ts"
+    },
+    {
+      "target": "../../../apps/portal/src/features/history/controller.ts#L378",
+      "gitPath": "apps/portal/src/features/history/controller.ts"
+    },
+    {
+      "target": "../APPROVED_DECISIONS.md",
+      "gitPath": "docs/portal-rebuild/APPROVED_DECISIONS.md"
+    }
+  ],
+  "W1DependencyReceipt": {
+    "commit": "5fc90de027aedd514958b0050bded0a8a605243e",
+    "report": {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-no-photo-39b384/W1-DEPENDENCIES.md",
+      "bytes": 16541,
+      "sha256": "e0de88d9820ef17f42d1473a2d35697d9e3dd7a0875a041bcc0c37c5ddf832d1"
+    },
+    "json": {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-no-photo-39b384/W1-DEPENDENCIES.json",
+      "bytes": 12333,
+      "sha256": "ff271369b07673f70db7e168b1b45a34b1da8dc24eb3350f245ebbdef3a2682b"
+    },
+    "scope": "Source owner receipt only; no SQL/guard-body/authority review imported"
+  },
+  "W6PublicCoverageReceipt": {
+    "report": {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-no-photo-39b384/W6-COVERAGE.md",
+      "bytes": 9443,
+      "sha256": "9b4b017d3bfb2532b98c99da696447be5a5f0cafedbb775d4b7acc0638c569b4"
+    },
+    "json": {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-no-photo-39b384/W6-COVERAGE.json",
+      "bytes": 4098,
+      "sha256": "777e76ac9e7610b171982b5f4b70ab1ed3b7a63b9375d82b955ec1180a8fa293"
+    },
+    "publicPinsMatch9c": 12,
+    "scope": "Public policy/interface only, not actual care authority"
+  },
+  "ownerEvidence": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-no-photo-39b384/client-factory-selected.tap",
+      "bytes": 1491,
+      "sha256": "4a35722fcbfaf3f83436338d0b436d712a8f29b099e65bd30aac9ffe9eed774c"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-no-photo-39b384/retained-linkage.tap",
+      "bytes": 1632,
+      "sha256": "5775932a5ed20c30acd4eebb844c8afa412e55149360c84a799ef148c9932af9"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-no-photo-39b384/SETUP-1.txt",
+      "bytes": 315,
+      "sha256": "07adb4c6bd7ce2f92d958b555634c0fa77182ea17782839ad563c4dde4b9e1b0"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-no-photo-39b384/metadata-probe.json",
+      "bytes": 309,
+      "sha256": "492b62ff06a9da39d350e36600eea77b9c50d93cc03a219d588e69c606069694"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w4-no-photo-39b384/w6-public-pin-comparison.json",
+      "bytes": 1011,
+      "sha256": "1cedf8e2cb938f61cecaf5ae3551603d97612ba0a544125339c40dae6b91ef73"
+    }
+  ],
+  "ownerSourceControls": [
+    {
+      "file": "client-factory-selected.tap",
+      "pass": 3,
+      "fail": 0,
+      "exit": 0,
+      "scope": "selected in-process finite HTTP/controller/SSR",
+      "sha256": "4a35722fcbfaf3f83436338d0b436d712a8f29b099e65bd30aac9ffe9eed774c"
+    },
+    {
+      "file": "retained-linkage.tap",
+      "pass": 4,
+      "fail": 0,
+      "exit": 0,
+      "scope": "retained narrow controller/mapper/SSR",
+      "sha256": "5775932a5ed20c30acd4eebb844c8afa412e55149360c84a799ef148c9932af9"
+    }
+  ],
+  "newW7TestExecution": false,
+  "supplementalPublicDeclarationsChecked": [
+    "historyKey guidance public_${record.kind}:${record.id}",
+    "AdvisorGuidanceState.lastReceipt action/requestId/recordedAt only"
+  ],
+  "realExecutionEligibility": "INELIGIBLE_UNCHANGED",
+  "sourceCalleeAudit": false,
+  "productionOrTestChanges": false,
+  "resourcesAcquired": false,
+  "principalSetupOrAlternativeMechanism": false,
+  "recordedAt": "2026-11-04T08:59:32.520160+00:00",
+  "reportSha256": "cd2102f350a97c31c961efe85c20f6858abb9f00e54955904e7f10d30d578609"
+}

@@ -1,0 +1,224 @@
+{
+  "owner": "Kanuj",
+  "classification": "VERIFIED_FAILED_CURRENT_CI_EXECUTION_CUSTODY_PENDING_W0_FIXTURE_SOURCE",
+  "associatedHead": "e1829fad1bd3ac0c25f447dcde19fc38dfb39bcf",
+  "executionCommit": "245ff3e63c1d4f8b3ec10701d6ba13357d3f13d1",
+  "executionParents": [
+    "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+    "e1829fad1bd3ac0c25f447dcde19fc38dfb39bcf"
+  ],
+  "executionTree": "f8e8694f910b4234af853bc91e824850beb29bda",
+  "completeTreeEqualsAssociatedVerified": true,
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/ci-custody/e1829-current-failure/PACKET-d93d0956.json",
+    "bytes": 8253,
+    "sha256": "d93d0956d1897716953de3c44fdb69aef819af92236b956b3e3eb111cc89a593"
+  },
+  "raw": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/ci-custody/e1829-current-failure/FULLJOB-46422239.log",
+    "bytes": 4043371,
+    "sha256": "4642223944e686b7ae98d69f21660cb43194b6170739b936e942a1c6ba17d791"
+  },
+  "rawMode": "0400",
+  "selectedExcerpts": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/ci-custody/e1829-current-failure/SELECTED-EXCERPTS.json",
+    "bytes": 2930,
+    "sha256": "68842e2802a26b89ee0e3af9a63845c537c21929e49e792fc50fb65fe9a54bf1"
+  },
+  "verification": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/ci-custody/e1829-current-failure/VERIFICATION.json",
+    "bytes": 750,
+    "sha256": "4ac49608576ce496ad7a603e24485fd0c33805368d5d442f27fe6eccf36939a8"
+  },
+  "jobUrl": "https://github.com/KanujVerma/shelv/actions/runs/41798704060/job/126468906266",
+  "counts": {
+    "tests": 4013,
+    "pass": 4012,
+    "fail": 1,
+    "skip": 0,
+    "cancel": 0
+  },
+  "failure": {
+    "title": "not ok 1441 - selectors/extra authority are rejected before egress and unknown action/audience/origin/channel remain unexpected",
+    "block": [
+      "not ok 1441 - selectors/extra authority are rejected before egress and unknown action/audience/origin/channel remain unexpected",
+      "  ---",
+      "  duration_ms: 3.495231",
+      "  type: 'test'",
+      "  location: '/home/runner/work/shelv/shelv/apps/portal/tests/rebuild-app-browser-model.test.mjs:203:1'",
+      "  failureType: 'testCodeFailure'",
+      "  error: |-",
+      "    The input did not match the regular expression /unexpected finite HTTP request/. Input:",
+      "    ",
+      "    'ReferenceError: publicationDeliveryReadUnavailable is not defined'",
+      "    ",
+      "  code: 'ERR_ASSERTION'",
+      "  name: 'AssertionError'",
+      "  expected:",
+      "  actual:",
+      "  error: 'publicationDeliveryReadUnavailable is not defined'",
+      "  name: 'ReferenceError'",
+      "  stack: |-",
+      "    eval (eval at router (file:///home/runner/work/shelv/shelv/apps/portal/tests/rebuild-app-browser-model.test.mjs:34:10), <anonymous>:275:28)",
+      "  operator: 'rejects'",
+      "  stack: |-",
+      "    async TestContext.<anonymous> (file:///home/runner/work/shelv/shelv/apps/portal/tests/rebuild-app-browser-model.test.mjs:209:5)",
+      "    async Test.run (node:internal/test_runner/test:1054:7)",
+      "    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)",
+      "  ..."
+    ]
+  },
+  "selectedExecutedSourcePins": [
+    {
+      "path": "apps/portal/tests/rebuild-app-browser-model.test.mjs",
+      "bytes": 17636,
+      "sha256": "c860890202c76b91b2dd5b721cb2f2d8d241a624fb991b311659fdb66ddce81c",
+      "verifiedExecutedAndAssociatedTree": true
+    },
+    {
+      "path": "apps/portal/tests/rebuild-app-browser.test.mjs",
+      "bytes": 44480,
+      "sha256": "c80ceb266faabe527d8fa133d7edb62ec555ef8b11e18287fe0b03fcc555c37f",
+      "verifiedExecutedAndAssociatedTree": true
+    },
+    {
+      "path": "apps/portal/tests/helpers/publication-notification-fixture.mjs",
+      "bytes": 1809,
+      "sha256": "96588892f6cf0ac2db967be071b5b0bb35c77b98d90ba12f07d162f065c09c55",
+      "verifiedExecutedAndAssociatedTree": true
+    },
+    {
+      "path": "apps/portal/src/app/Application.tsx",
+      "bytes": 23387,
+      "sha256": "9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510",
+      "verifiedExecutedAndAssociatedTree": true
+    }
+  ],
+  "currentHostedSyntheticScenarioPasses": [
+    {
+      "title": "actual Application exposes current reports and requires separate acknowledgement/rebase, five reviews and new exact approval before later publication",
+      "rawPassLine": "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:39.7063818Z ok 536 - actual Application exposes current reports and requires separate acknowledgement/rebase, five reviews and new exact approval before later publication",
+      "qualification": "Current hosted synthetic case only; original0a2741 failures remain FAILED and no genuine acceptance follows."
+    },
+    {
+      "title": "first publication needs current approval and separately verified manual receipt plus deliberate publish",
+      "rawPassLine": "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:26:59.5973728Z ok 1446 - first publication needs current approval and separately verified manual receipt plus deliberate publish",
+      "qualification": "Current hosted synthetic case only; original0a2741 failures remain FAILED and no genuine acceptance follows."
+    }
+  ],
+  "jobStepMetadataFromOwnerPacket": [
+    {
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "name": "Checkout repository",
+      "conclusion": "success"
+    },
+    {
+      "name": "Setup Node.js",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install portal dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Setup local Supabase CLI",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install Chrome and browser dependencies",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install native PostgreSQL fixture tools",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build combined client and advisor package",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify strict React application types",
+      "conclusion": "success"
+    },
+    {
+      "name": "Build isolated React application candidate",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify package and synthetic client journeys",
+      "conclusion": "failure"
+    },
+    {
+      "name": "Retain synthetic guidance diagnostics",
+      "conclusion": "success"
+    },
+    {
+      "name": "Verify approval recovery keyboard journeys",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Verify session types",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Verify native session lifecycle and audience isolation",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Verify session package contracts",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Verify backend contracts",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Verify isolated native SQL workflows",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Verify actual check-in reply handler against native SQL",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Verify actual three-method payment handler against native SQL",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Verify empty starting routines and follow-up plan updates",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Verify founder admission with local Auth, SQL and Chrome",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Post Setup Node.js",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Post Checkout repository",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "conclusion": "success"
+    }
+  ],
+  "ownerDiagnosisNotIndependentlyReproduced": {
+    "owner": "W0",
+    "observed": "The extracted actual context.route callback now references publicationDeliveryReadUnavailable. rebuild-app-browser-model.test.mjs router deps at33/34 do not bind that imported helper; the unknown-request assertion at209 receives ReferenceError instead of its unchanged unexpected-request trap.",
+    "scope": "CI failure plus read-only source binding inspection only. No W6 local test/browser/resource execution or independent baseline/flake/security-exploit claim.",
+    "necessaryOwnerSeam": "Restore the actual shared helper as an explicit dependency of the finite AST extraction, preserving every original negative assertion and trap. W0 owns the correction/review/publication."
+  },
+  "noNewTestOrSourceFix": true,
+  "boundedAddressSourceGateUnchanged": true,
+  "priorFailedRunsUnchanged": true,
+  "integrationReadiness": "NOT_ACCEPTED_CURRENT_PORTAL_FAILED",
+  "resourceGrant": null,
+  "reportSha256": "5c0f607f1c341dcbcf544bce8bc26f8ae68c35d21519e1331c57b1474df025fc",
+  "recordedAt": "2026-11-04T08:49:05.586761+00:00"
+}
