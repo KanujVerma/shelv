@@ -22,7 +22,13 @@ export type {
   AdvisorPaymentReceipt,
   AdvisorState,
   AdvisorPublicationNotification,
+  AdvisorListReadState,
 } from "./types.ts";
 
 export { ClientWorkspace, createAdvisorClientWorkspaceController } from "./client-workspace/index.ts";
 export type { AdvisorClientPlansReadPort, AdvisorClientWorkspaceOptions, AdvisorClientWorkspaceController, AdvisorClientWorkspaceState, AdvisorClientWorkspaceDirectory, ClientWorkspaceProps } from "./client-workspace/index.ts";
+
+export { createAdvisorAdmissionController } from "./admission/controller.ts";
+export type { AdvisorAdmissionController, AdvisorAdmissionOptions, AdvisorAdmissionPorts, AdvisorAdmissionState, AdvisorAdmissionStatus } from "./admission/types.ts";
+
+export { ClientAdmission } from "./admission/ClientAdmission.tsx";
