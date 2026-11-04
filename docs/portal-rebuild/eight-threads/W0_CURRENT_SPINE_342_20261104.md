@@ -1,0 +1,15 @@
+# Current-spine source reconciliation
+
+Owner: Kanuj. Local normal merge d412a248cebb6ab47ce27f55a7ba335b912d8973 reconciles published34239c0e with frozen Root notification657, address34c and admission-porta5b candidates. There was no manual product conflict resolution. All12+3+3 Root owned postimages remain exact; all18 admission and13 card postimages match their admitted heads. No canonical migration or package/lock change occurred.
+
+## Test-only successor after the01b verification gap
+
+W7 stopped01b at ADMISSION-CURRENT-01/P2: checkConnection clears the consumer's capability, so its fourth case never dispatched the claimed404 status read. The old26 author pass did not prove that branch. Adding the exact same-original status-call assertion to the unchanged flow gives3pass/1fail; that original failed result is preserved. The correction adds an actual capability refresh before status and explicitly checks the canonical status request/call count, retained original and exactly one add. All original assertions and the other three cases remain. Production port/controller code is unchanged. The original01b gate remains withheld; this test-only successor requires a fresh scope gate.
+
+The notification2252 closure differs only in the accepted advisor controller and AdvisorWorkspace. The current157 named-file controls pass again,0fail/skip/cancel, with no source/input overlays. All four current unmodified configured type graphs exit0. This is new author current-spine evidence, not an inherited W7 pass; the new gate remains required before publication.
+
+Four new tests connect the actual admitted admission controller to the actual Root three ports and ApplicationSession through closed HTTP. They verify actual VIEW-only capability/receipt, false capability, canonical add409 plus same-original status404 enabling deliberate correction, and uncertain add plus absence retaining its original. With the22 port tests,26/26 pass. One additional ABI file assigns the actual Root return type to the admitted feature's AdvisorAdmissionPorts under the complete unmodified frontend configuration;0 diagnostics. No constructor, currentness, permission or successful port is replaced. No real Auth/Admin endpoint is called, and Root has not mounted this admission controller yet.
+
+The companion status/code adapter remains its separate complete3 source candidate a5b45f9d. The actual notifier composition remains the complete12 candidate657 with its independent source pass. The address binding remains complete3 candidate34c, source gate pending. Current root tests do not independently accept those interfaces, actual permissions, lifetime/UI hydration, namespace/backend/persistence, Figma/browser, genuine admission/delivery/address or complete frames/journeys.
+
+Published Root remains34239c0e until the exact current-spine gate. PR211 stays draft on210, with existing SQL/photo holds. Principal44 STOP, current census NOT_MEASURED, accepted bounded M01/M02 and all source/private/provider/financial holds remain unchanged. No resource, SQL or release permission follows.

@@ -1,0 +1,239 @@
+{
+  "head": "95d98bd5ff02aba43b39b5b3d209c69f38ed3b90",
+  "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+  "packetSha256": "8195f5b3e6f70cb5efce7a944b92207fbe2ce82f8b776bf33f3c6df1aa51b7e0",
+  "patchSha256": "8c68140cda32f796200bfe9cda10239c8f7677404fd12207eceb30f15e71097a",
+  "ownedSourcePins": [
+    {
+      "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+      "bytes": 44170,
+      "sha256": "a62f12dd966411184a0b12add5a51bbe8387a5a25db3e98ad5ad1822bfe58fb8",
+      "gitBlob": "bca2cbd6be14e7e096ac2269d51ffdd28df0962d"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/ClientAssignment.tsx",
+      "bytes": 3302,
+      "sha256": "7df71ad1b0b98557c74d413c2d66f3be7a1aca50b68e9269359ad6a9ecf11366",
+      "gitBlob": "e72bae22375557566515deb2b610ce9c7d59a6a7"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/admission/ClientAdmission.tsx",
+      "bytes": 5564,
+      "sha256": "7a57bf162f9bc10d2b90b5c0b05540beeb80f77ee7f6f374d656137f3a23b283",
+      "gitBlob": "073ccd3e17750bcef9b634f6eb759a6302cf9da9"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/admission/controller.ts",
+      "bytes": 12875,
+      "sha256": "0ec2a00649c7a9d488288e959205247baedd4fcc95dacbab453b7b2789ff2dfb",
+      "gitBlob": "7c9c91407238c1d3fab88f2a8a971bf11786f5d2"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/admission/index.ts",
+      "bytes": 283,
+      "sha256": "1e20304fe395a92ce31522fd1cf9f3a77134338084d3fda521ff277bc85954a7",
+      "gitBlob": "f3ec83cb5bc73dd6b179a9f8dbe38088b3411466"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/admission/types.ts",
+      "bytes": 2111,
+      "sha256": "ca736bcb634b7aaa832fc7d9bfef1d6a82380b376b3caeb533d25737981062be",
+      "gitBlob": "56bc5e5a742cb7938542d10d5384ab6fa93cdc59"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/controller.ts",
+      "bytes": 50735,
+      "sha256": "d0bd4ea15c908c9c1e80e303cf52d16c7413326bb4f51d27c7d6856dcae3c990",
+      "gitBlob": "9d10ac02d428a0cf85887c4c0d54c8666a6c9b42"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/index.ts",
+      "bytes": 1297,
+      "sha256": "7bddeb7bb88bb953c7cfd17d281184f8241ff77bc91fa1da5d3e45c02c2f4bbd",
+      "gitBlob": "162a9700d4a4dfd0fd55754af853817b8d7051b5"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/types.ts",
+      "bytes": 7384,
+      "sha256": "3ddfcdb186556b09eba06d3eb9a17462e06130149ba0a25ca36a85cf6cc6672c",
+      "gitBlob": "e761feb255d878d03ef7f72c4f5797bdf1d2ef4d"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-advisor-followup.test.mjs",
+      "bytes": 11535,
+      "sha256": "ab93c0e8cde162deaf4c83d3bfcc31d4219a651f4851b7f41fe08f0619b6564b",
+      "gitBlob": "fc14c608314b56552f0732e334e233bbc4531454"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-admission.test.mjs",
+      "bytes": 15816,
+      "sha256": "276b1a7b31c6009e7645392fc5bb1dc630b1d49011a7edb0f781494b086968b8",
+      "gitBlob": "ac92f0da7edf884b039d5c8e78a074e5668a375c"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-directory.test.mjs",
+      "bytes": 9545,
+      "sha256": "b82211d2a199da91c9dfec5151e363754bac607d6bb7584bdf4d639269c68dd2",
+      "gitBlob": "99625ca7e4dc32006fad3cd992adba79d6bd3c4b"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-followup-sensitivity.mjs",
+      "bytes": 3407,
+      "sha256": "726dfe50474b56b26f00765842b5ba8d2d9de1c24d59e9016c06e042a8400555",
+      "gitBlob": "2916dbd033e476212a879c34f055aa81262af9a1"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/ADMISSION_ENTRY_COMPOSITION_20261103.md",
+      "bytes": 6466,
+      "sha256": "82d21503a9c949a30bc6ec1ae0a4dfbadda3a43b98028a332fee301455538913",
+      "gitBlob": "0533db25b9936a00abfc1ada672c6c8f393438f6"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/ADMISSION_SOURCE_20261103.md",
+      "bytes": 13666,
+      "sha256": "6e8bf148a7aee39af455deeb4b85a5df7ba7411117a415f2d2a6641fed4a7ffe",
+      "gitBlob": "15340083302c2a868339b0d0d6bffbe7b4008dbb"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/DIRECTORY_RECOVERY_20261103.md",
+      "bytes": 6401,
+      "sha256": "79f5e2beb048be25f7392904d5f279ee26869746cb973dcd105226232882ce71",
+      "gitBlob": "b3796aa43774fd8337c344b9393808526c050b8f"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/FOLLOWUP_TEST_PARITY_20261103.md",
+      "bytes": 6063,
+      "sha256": "958f2f374148681acbd92d5eb2b92492d761969be02ffe2f2e161fbe231b5f93",
+      "gitBlob": "280675a41cac88b80ff08e1188b4a2b9d7f8dd3d"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/WORKSTREAM_MATRIX_20261103.md",
+      "bytes": 6361,
+      "sha256": "b516aecde473fd6076dcccefc97c62c505d6a7e474833d25770e17e8f7dbe01e",
+      "gitBlob": "bc9805a2564649ff4935febecc72d3e0ae4f0ed5"
+    }
+  ],
+  "incomingExactApproved2ec": [
+    "apps/portal/src/features/advisor/admission/ClientAdmission.tsx",
+    "apps/portal/src/features/advisor/admission/controller.ts",
+    "apps/portal/src/features/advisor/admission/index.ts",
+    "apps/portal/src/features/advisor/admission/types.ts",
+    "apps/portal/src/features/advisor/ClientAssignment.tsx",
+    "apps/portal/tests/rebuild-advisor-followup.test.mjs",
+    "apps/portal/tests/w2-advisor-admission.test.mjs",
+    "apps/portal/tests/w2-advisor-directory.test.mjs",
+    "apps/portal/tests/w2-advisor-followup-sensitivity.mjs"
+  ],
+  "publishedExactBase": [
+    "apps/portal/src/features/advisor/FirstServiceQuote.tsx",
+    "apps/portal/src/features/advisor/PublicationDelivery.tsx",
+    "apps/portal/tests/rebuild-advisor-browser.test.mjs",
+    "apps/portal/src/features/advisor/client-workspace/ClientWorkspace.tsx",
+    "apps/portal/src/features/advisor/client-workspace/controller.ts",
+    "apps/portal/src/features/advisor/client-workspace/index.ts",
+    "apps/portal/src/features/advisor/client-workspace/types.ts"
+  ],
+  "strictWholeControllerInverse": "a657e4c93351344c977a45e06ce7adbebe5ee0fcd31282a5d6853489284bfafe",
+  "oldStoppedHeadsExecutedOrSourceAudited": false,
+  "owner": "Kanuj",
+  "verdict": "PASS_SCOPED_COMPLETE_ADMISSION_ENTRY_COMPOSITION_SOURCE_ONLY",
+  "independentResults": {
+    "sourceFiniteModelSsr": {
+      "tests": 345,
+      "pass": 345,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0,
+      "fileConcurrency": 1
+    },
+    "configuredFrontend": {
+      "exitCode": 0,
+      "overlays": false,
+      "flagsUnchanged": true
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "apps/portal/tests/w2-advisor-admission.test.mjs",
+        "apps/portal/tests/w2-advisor-directory.test.mjs",
+        "apps/portal/tests/rebuild-advisor-followup.test.mjs",
+        "apps/portal/tests/w2-advisor-service-quote.test.mjs",
+        "apps/portal/tests/w2-advisor-publication-delivery.test.mjs",
+        "apps/portal/tests/w2-advisor-quote-delivery-composition.test.mjs",
+        "apps/portal/tests/w2-advisor-client-workspace.test.mjs",
+        "apps/portal/tests/w2-advisor-client-reentrant.test.mjs",
+        "apps/portal/tests/w2-advisor-client-uuid.test.mjs",
+        "apps/portal/tests/rebuild-advisor-controller.test.mjs",
+        "apps/portal/tests/rebuild-advisor-races.test.mjs",
+        "apps/portal/tests/w0-advisor-service-quote-request.test.mjs",
+        "apps/portal/tests/rebuild-advisor-app-integration.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-admission-95d/source",
+      "exitCode": 0,
+      "logSha256": "d43456310278e2975aa2163478db947a624aaeaaa2b79aad8851b84a3be5bbc3"
+    },
+    {
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.frontend.json",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-admission-95d/source/apps/portal",
+      "exitCode": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-admission-95d/PINS.json",
+      "bytes": 5993,
+      "sha256": "16696ba37650990609453c51f2b58e564c370c708989085b43767af09acaa068"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-admission-95d/COMMAND.json",
+      "bytes": 1187,
+      "sha256": "c00b31a1edee99b349e26c0c43882834b7ee3b9fb6f06a96d7cbf71a9c1f8c89"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-admission-95d/CURRENT.log",
+      "bytes": 85653,
+      "sha256": "d43456310278e2975aa2163478db947a624aaeaaa2b79aad8851b84a3be5bbc3"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-admission-95d/TYPES.json",
+      "bytes": 504,
+      "sha256": "9e55da7cbb266d89eed1f4e33ba5d521af977714b482293dbde543dd1dcac8da"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-admission-95d/TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-admission-95d/PUBLISHED-CONTROLLER-PARITY.json",
+      "bytes": 167,
+      "sha256": "bc6a2e032f4cc70058cd91d664028a9cfac40992780d09a7ffeaad01a6d1cee6"
+    }
+  ],
+  "sourceReviewScope": "Complete18 incoming admission/Directory plus published quote/delivery/ClientWorkspace composition; Rootactualports/mount/lifetime remain separate",
+  "qualifications": [
+    "Admission capabilities/add/status use actualRootCookieFactory with syntheticfixedHTTP; general advisor edit/view is notadmissionauthority",
+    "Clinical approval/confirmation/publication state in compatibilityfixture is MEMORY, notAuthSQL/businessproof",
+    "Allocated170followup postimage+helper exactaccepted2ec; no newarbitraryafterstate normalization; prior sensitivityresults remainattributed",
+    "No olda9/0d327/06666/0e/91/EC source audit/test resumed; their failures/owner/provider holds unchanged",
+    "Owner reports exact95d3hostedchecks/nativeclean and3788Portalpass separately; no independent CI/release/current99bfcomposition verdict"
+  ],
+  "limits": [
+    "Rootmust preserveactual3fixedports/canonicalfiniteerrorstatus+code/owner/generation/READY/lifetime and oneNotificationController; newcomposedRootheadneedscorrespondence",
+    "OldbackendEDITguard remains unchanged; syntheticVIEW200 is not actualVIEW permission",
+    "FullA00/A01/A02/A04P/A06, metadata/templates/import/privateSource/Authcreation/SQL/outbox/provider/permanentauth/persistence/negativeauthorization/browsers/Figma/a11y/journeys/genuine remainopen",
+    "No resourcegrant, acceptedcapability, screen/decision/journeycounter advance or heldscopeclearance"
+  ]
+}

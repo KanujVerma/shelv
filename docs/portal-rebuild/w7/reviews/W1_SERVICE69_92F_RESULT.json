@@ -1,0 +1,265 @@
+{
+  "owner": "Kanuj",
+  "head": "92f5cdb162423303389098644bcc94c3a5f5542d",
+  "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "verdict": "PASS_SCOPED_OWN_CLIENT_SERVICE69_SOURCE_WAIT_W0_SQL_PACKET",
+  "proofLevel": "SOURCE_CURRENT7_OWN_CLIENT_ONLY",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w1-plan-platform-service69-budget-source.test.mjs",
+      "gitBlob": "a2c694757dad8a74788b2a59edfd9cad694557ec",
+      "sha256": "3496f77bafe374b6bd6b56dd090b8cd1c4782737344d9b080fe6118fd9e251d4"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_SERVICE69_BUDGET_SUCCESSOR/README.md",
+      "gitBlob": "7f5eeede10f68eb31b148e221a47c9d377e4958d",
+      "sha256": "ba9a877cfff7a69a8a1be27b1cac01b4e85ab8a60218de0a7a809996404f40d3"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_SERVICE69_BUDGET_SUCCESSOR/budget.test.sql.inert",
+      "gitBlob": "b98a9187154c7dbca18eb9a3e985ab9c5d8707e8",
+      "sha256": "efe7c89974b67cedf054e55010ac48175281dec91f81ad53ac99c11afaf3d586"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_SERVICE69_BUDGET_SUCCESSOR/original.sql.inert",
+      "gitBlob": "bfea03545719fe4487177bb6eb1fbb79d2040558",
+      "sha256": "6e013b9249d737ea62de0f048ad37a0d3847ef7c6a615d392e403790aee673f1"
+    },
+    {
+      "path": "supabase/migrations/20261102143000_portal_rebuild_client_service_admin_v1.sql",
+      "gitBlob": "f5400bff96c9ca48fa6033eb061e7c3617bc3a3d",
+      "sha256": "a01fa910a878fb120c21d4e85f04ca377c1134c1f916935ca974a971f6e7a8b2"
+    }
+  ],
+  "packetSha256": "7f5ed1fe9f0233bd9ae0c382364f5be15d271c2de4bb2ea71b76a2fe9bf52b95",
+  "patchSha256": "9cdfb8d2df3f956cafc6763967aacd6b52576704750f540f4da04772299dd546",
+  "wholeOriginalInverse": {
+    "oldBytes": 22246,
+    "oldSha256": "6e013b9249d737ea62de0f048ad37a0d3847ef7c6a615d392e403790aee673f1",
+    "newBytes": 22420,
+    "newSha256": "a01fa910a878fb120c21d4e85f04ca377c1134c1f916935ca974a971f6e7a8b2",
+    "exact": true
+  },
+  "canonical68Unchanged": true,
+  "canonicalDTO4": [
+    {
+      "path": "src/contracts/PortalClientService.ts",
+      "bytes": 3025,
+      "sha256": "f8823ef0035cfb0a3912e469c4dc227bf3320ff3a901c9b9ccb7282c025a88a4"
+    },
+    {
+      "path": "src/contracts/PortalClientServiceValues.ts",
+      "bytes": 778,
+      "sha256": "ed5b2686237260f4596357886baeb6563754a4180fae7af25618288593e592d6"
+    },
+    {
+      "path": "src/contracts/PortalClientServiceValidation.ts",
+      "bytes": 8111,
+      "sha256": "b5c6e52f88fb5b9423b1cc5440899585725af388d9f16366af4b4f017508d4a5"
+    },
+    {
+      "path": "src/contracts/PortalClientServiceMapping.ts",
+      "bytes": 913,
+      "sha256": "998794007f12d639f483ee87d53b926258548f6fdcaf3f373cfb6fb2d7d632d3"
+    }
+  ],
+  "lineage": {
+    "predecessorAndCounterSourceBodies": [
+      {
+        "name": "concierge.account_profile_authorize_v1",
+        "path": "supabase/migrations/20261102110000_portal_rebuild_account_profile_v1.sql",
+        "bodySha256": "f05a9dcce6503611208bd2245a8d3d36c01b6275f513a5683cbad22b5c467f4e",
+        "uniqueDeclaration": true
+      },
+      {
+        "name": "public.concierge_account_profile_command_v1",
+        "path": "supabase/migrations/20261102110000_portal_rebuild_account_profile_v1.sql",
+        "bodySha256": "9622d00b8660f22070b1b812de607e283fe31c977ee7a625a78b475a25ac8825",
+        "uniqueDeclaration": true
+      },
+      {
+        "name": "concierge.client_orders_projection_v1",
+        "path": "supabase/migrations/20261102130000_portal_rebuild_client_orders_read_v1.sql",
+        "bodySha256": "2b699adfa2c579d73501e702bfec3dccb6db4d555b305e1b3e413cf3e6e29166",
+        "uniqueDeclaration": true
+      },
+      {
+        "name": "public.concierge_client_orders_read_v1",
+        "path": "supabase/migrations/20261102130000_portal_rebuild_client_orders_read_v1.sql",
+        "bodySha256": "d9bef9409d14c0b7a286166cc724b63cc16ee5f5a56e8b42536a6582cde88662",
+        "uniqueDeclaration": true
+      },
+      {
+        "name": "concierge.plan_wire_count_v1",
+        "path": "supabase/migrations/20261031132531_portal_rebuild_plan_wire_budget_v1.sql",
+        "bodySha256": "ba8d94dadf94221745ab8222ca34b6e923370bcbc4346a0ebf4fb3a6dc43ac61",
+        "uniqueDeclaration": true
+      }
+    ],
+    "notificationSixBodySha256": "26afa4244895b19a260c379b57a0c2a4292cd18983fa90241b805b8d102cc7dc",
+    "literalProfileAppendDerivedSevenBodySha256": "a2fa686e99df7ef887af273922b012b08a26ce52b854babcf180bcb27644364e",
+    "currentSevenUuidJournalSourceDeclarations": [
+      {
+        "table": "plan_requests",
+        "declarationPath": "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+        "declarationSha256": "9a14eb916dc286cebcb3020778f34fa0cfac3bd93a4b48985e715e9b0bbf2c59",
+        "actorIdType": "uuid",
+        "requestIdType": "uuid"
+      },
+      {
+        "table": "requests",
+        "declarationPath": "supabase/migrations/20261017190016_concierge_persistence_r1.sql",
+        "declarationSha256": "0590cfd70b90c2e3ef7d26241d836dda6d3f9260e8f1f0992c75971080ff3ea5",
+        "actorIdType": "uuid",
+        "requestIdType": "uuid"
+      },
+      {
+        "table": "workflow_requests",
+        "declarationPath": "supabase/migrations/20261018234537_concierge_portal_workflows.sql",
+        "declarationSha256": "5c57be7f062b8edb25890dfd7f5f43b68a7fc2082258edb30e08c496339d0c90",
+        "actorIdType": "uuid",
+        "requestIdType": "uuid"
+      },
+      {
+        "table": "care_requests",
+        "declarationPath": "supabase/migrations/20261031043655_portal_rebuild_care_use_v1.sql",
+        "declarationSha256": "98c2b28deccdf3a59b6a0d25a7ae958fdb6da055e3505628065a1e8214decd97",
+        "actorIdType": "uuid",
+        "requestIdType": "uuid"
+      },
+      {
+        "table": "review_requests",
+        "declarationPath": "supabase/migrations/20261031091520_portal_rebuild_reviews_guidance_v1.sql",
+        "declarationSha256": "827a3b12e3066f8d473e2ae6dfa6091e6c22fb83f50952e8492e838cee84cfba",
+        "actorIdType": "uuid",
+        "requestIdType": "uuid"
+      },
+      {
+        "table": "notification_requests",
+        "declarationPath": "supabase/migrations/20261101191527_portal_rebuild_notifications_v1.sql",
+        "declarationSha256": "f33196233c9fab23b26cf175dd9ea84860e040794577c72f55013c2ac1a41632",
+        "actorIdType": "uuid",
+        "requestIdType": "uuid"
+      },
+      {
+        "table": "account_profile_requests_v1",
+        "declarationPath": "supabase/migrations/20261102110000_portal_rebuild_account_profile_v1.sql",
+        "declarationSha256": "b7636fa8967eba76f540653ca861137af66c84be47625122fc4ca94d1fefd9de",
+        "actorIdType": "uuid",
+        "requestIdType": "uuid"
+      }
+    ],
+    "candidateFunctions": [
+      {
+        "name": "concierge.client_service_predecessors_v1",
+        "bodySha256": "9c7ab039cdff30c500d05214ed7e2aad6f433508e2bf5dc0cb69b860a02756b0"
+      },
+      {
+        "name": "concierge.client_service_parse_v1",
+        "bodySha256": "b37354d32e2a68793178b7c13f7edb68eafeaced61e591bdac9c624e56e12ed5"
+      },
+      {
+        "name": "concierge.client_service_projection_v1",
+        "bodySha256": "7bb825e272b9f663b7e5b57a2d7dd2974a1b8bfd3d2940edef303183a032ff7e"
+      },
+      {
+        "name": "public.concierge_client_service_command_v1",
+        "bodySha256": "8c030c8663e94bad7b42b9a86bb1575097f3f2e042dafc8624cdc5cfa3fb64de"
+      }
+    ],
+    "optionalNineDisposition": "UNADMITTED_UNACCEPTED_NOT_AUDITED",
+    "authorityIntersections": "BYTE_PRESERVED_NOT_AUTHORITY_AUDITED",
+    "catalogOidAclRlsTriggerActualProof": "UNRUN"
+  },
+  "independentCommands": [
+    {
+      "name": "CURRENT-ROOT",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--experimental-strip-types",
+        "--test",
+        "apps/portal/tests/w1-plan-platform-service69-budget-source.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service69-92f/source",
+      "exitCode": 0,
+      "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service69-92f/CURRENT-ROOT.log",
+      "bytes": 2629,
+      "sha256": "0ee882e1dcd4020400d19d32c3d7a494d6b0ef17b2252a6884d79dc25f646e68"
+    },
+    {
+      "name": "CURRENT-PORTAL",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--experimental-strip-types",
+        "--test",
+        "tests/w1-plan-platform-service69-budget-source.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service69-92f/source/apps/portal",
+      "exitCode": 0,
+      "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service69-92f/CURRENT-PORTAL.log",
+      "bytes": 2633,
+      "sha256": "96ee4ecaaedc253729e584941d3718e9efe938ba1c170f91c856dea953a91a14"
+    }
+  ],
+  "uniqueNodeControls": 8,
+  "repeatedContexts": [
+    "repository root",
+    "apps/portal"
+  ],
+  "observations": {
+    "currentRoot": "8/8 exit0;0fail/skip/cancel",
+    "currentPortal": "8/8 exit0; same8controls",
+    "originalOwnerRaw": "Corrected extractor6pass2lexicalfail; initial4pass4fail includes2extractorsetupfailures; hashesverified, notSQLreproduction",
+    "inertPgTap": "20 authored, never executed",
+    "wireBoundary": "8192 actual compact DTO;8205 native is derived only",
+    "oldGenericCounter": "Bodyhashba8d94 verified unchanged; no Plan-action budget dispatcher",
+    "currentSeven": "Six-family body26afa and literal Profile append derivea2fa;7uniqueUUIDjournal declarations; catalog/OID/RLS/trigger behaviorUNRUN"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service69-92f/PINS.json",
+      "bytes": 4512,
+      "sha256": "9a8b2b8045872d4a37aba94b5326b42ca72e13a5d206ed41d735e4f06310a2d4"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service69-92f/LINEAGE.json",
+      "bytes": 4638,
+      "sha256": "58df25f8641e2a05b6643f5972e3704aa07f222db6a7d1e13186a9c971ac5f1c"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service69-92f/COMMANDS.json",
+      "bytes": 1315,
+      "sha256": "cadfa89742070916b35d93538b34000452a75aa70e7eda8166cd6df8d057a57f"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service69-92f/W7-SETUP.json",
+      "bytes": 220,
+      "sha256": "e791b59e4300a3d249d22ea4a3c4c3bd4db9872bdbb5b0929d6575bd2cd1db39"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service69-92f/CURRENT-ROOT.log",
+      "bytes": 2629,
+      "sha256": "0ee882e1dcd4020400d19d32c3d7a494d6b0ef17b2252a6884d79dc25f646e68"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-service69-92f/CURRENT-PORTAL.log",
+      "bytes": 2633,
+      "sha256": "96ee4ecaaedc253729e584941d3718e9efe938ba1c170f91c856dea953a91a14"
+    }
+  ],
+  "references": [
+    {
+      "title": "PostgreSQL JSON types/input-output",
+      "url": "https://www.postgresql.org/docs/current/datatype-json.html",
+      "use": "Reformatted native JSONB and numeric-printing context only; no installed-version/SQL observation"
+    }
+  ],
+  "limits": [
+    "Optional Source9 and all Source/Guidance/photo/final-egress authority intersections UNADMITTED/UNACCEPTED; preserved bytes do not receive authority approval",
+    "No SQL parsing/reset/pgTAP/catalog/OID/owner/ACL/RLS/trigger/Auth read/status/cancel/replay/no-effects proof",
+    "No service/payment/legacy financial fact truth, policy, care/export/retention entitlement or producer acceptance",
+    "W0 must roll full69 file hash and exact69->70->71 stack plus installed generic-counter/current7 and source-parent facts into a newly admitted packet before SQL-containing PR/CI or execution",
+    "Principal44 provider-refusal STOP, native Plan/photo findings, M65/private-return/Guidance/photo holds unchanged",
+    "No browser/Figma/a11y/frame/decision/journey/genuine acceptance/counter advance or resource grant"
+  ]
+}

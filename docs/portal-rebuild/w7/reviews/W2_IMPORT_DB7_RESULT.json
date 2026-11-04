@@ -1,0 +1,152 @@
+{
+  "head": "db7ab1b708a33b5f7bf56c1ba7aba351e12a55a6",
+  "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+  "packetSha256": "022fb90ee0ba7e9ccf0cfe2fa3a8e42b0738f020dae344f8edcb7a8911d27060",
+  "patchSha256": "5ae2b0e1b42ee9024aa35d9072fe24281dedb6de4b607ac025f81b4abb48556f",
+  "ownedSourcePins": [
+    {
+      "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+      "bytes": 41535,
+      "sha256": "d626868d4b232921582e9d73e5e6d8bb11c503479df774ae92e320b8221e9094",
+      "gitBlob": "f8f748ef233dba1d5b9ef00d8671ba3fc77320ab"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/AgentImportDialog.tsx",
+      "bytes": 4743,
+      "sha256": "898f25110781f7d082fea657ce04505da3668a8bffa86684150d45f7362b5970",
+      "gitBlob": "6d139c0c6f81790ca94c3bbde8e426dea0661a5c"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/agent-import.ts",
+      "bytes": 1590,
+      "sha256": "e1c72545a45809e92546349a13a73eba90329734c57c366f440248b21ec775d2",
+      "gitBlob": "7f48172bf0ee6be791770dfac85bcba5e51c78cb"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-import-recovery.test.mjs",
+      "bytes": 7496,
+      "sha256": "1c91197fc2ebeee72df0bf79e50e3ed209848dd4b67651309da9cb8d35b964f9",
+      "gitBlob": "a43f82cfa45fe6ab00d4830ff1d3ad5cc6e7ed96"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/IMPORT_ENTRY_COMPOSITION_20261103.md",
+      "bytes": 5110,
+      "sha256": "be054b062d55cc4ba60dc0409038e52d1c4405f13bc2b80c1c141e61197214d8",
+      "gitBlob": "0128875b7033c79666fa23b0f9ad1d25bf23ebd6"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/IMPORT_RECOVERY_20261103.md",
+      "bytes": 8660,
+      "sha256": "718b2ce3d2318a85a9cb3b62515f9139a8d15312a68c339a2ea659a3fd6ad2dd",
+      "gitBlob": "a83c528ac7b852e87de49dc8386db8e869acdf66"
+    }
+  ],
+  "incoming3ExactReviewed3aa": [
+    "apps/portal/src/features/advisor/AgentImportDialog.tsx",
+    "apps/portal/src/features/advisor/agent-import.ts",
+    "apps/portal/tests/w2-advisor-import-recovery.test.mjs"
+  ],
+  "published7ExactBase": [
+    "apps/portal/src/features/advisor/controller.ts",
+    "apps/portal/src/features/advisor/types.ts",
+    "apps/portal/src/features/advisor/index.ts",
+    "apps/portal/src/features/advisor/FirstServiceQuote.tsx",
+    "apps/portal/src/features/advisor/PublicationDelivery.tsx",
+    "apps/portal/tests/rebuild-advisor-browser.test.mjs",
+    "apps/portal/tests/rebuild-advisor-followup-browser.test.mjs"
+  ],
+  "strictWorkspaceInverseEntire3aa": "3d33a36bc591123c72a13b0a24b0d05c1f58a12a8679dcb067a4d1f03debf87a",
+  "inverseIsMemoryOnly": "Old falsequeued text neverwritten toproduct/tests",
+  "heldECSourceReadOrExecuted": false,
+  "owner": "Kanuj",
+  "verdict": "PASS_SCOPED_COMPLETE_IMPORT_ENTRY_COMPOSITION_SOURCE_ONLY",
+  "independentResults": {
+    "sourceFiniteModelSsr": {
+      "tests": 299,
+      "pass": 299,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0,
+      "fileConcurrency": 1
+    },
+    "actualConfiguredFrontend": {
+      "exitCode": 0,
+      "overlays": false,
+      "flagsUnchanged": true
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-concurrency=1",
+        "apps/portal/tests/w2-advisor-import-recovery.test.mjs",
+        "apps/portal/tests/rebuild-advisor-controller.test.mjs",
+        "apps/portal/tests/rebuild-advisor-races.test.mjs",
+        "apps/portal/tests/rebuild-advisor-followup.test.mjs",
+        "apps/portal/tests/w2-advisor-service-quote.test.mjs",
+        "apps/portal/tests/w2-advisor-publication-delivery.test.mjs",
+        "apps/portal/tests/w2-advisor-quote-delivery-composition.test.mjs",
+        "apps/portal/tests/w0-advisor-service-quote-request.test.mjs",
+        "apps/portal/tests/rebuild-advisor-app-integration.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-import-db7/source",
+      "exitCode": 0,
+      "sha256": "8673a6fec4370b9625ace495605ecba2a94181570882802217a9d74709a31acd"
+    },
+    {
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.frontend.json",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-import-db7/source/apps/portal",
+      "exitCode": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-import-db7/PINS.json",
+      "bytes": 2675,
+      "sha256": "51bc1a6fdfc5a5e457f899d7f0d3fc50a4969060a6ec8de9a197ecffe4fe2fd4"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-import-db7/COMMAND.json",
+      "bytes": 951,
+      "sha256": "a01c71a7e1fc6a932e7f247b0c70d274dd832269ccfd07d5d2f1cda503bfa0ed"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-import-db7/CURRENT.log",
+      "bytes": 71653,
+      "sha256": "8673a6fec4370b9625ace495605ecba2a94181570882802217a9d74709a31acd"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-import-db7/TYPES.json",
+      "bytes": 501,
+      "sha256": "59517f7cb3b275866a2be3ab1f491d2f41ab97b55df2bfd9c13c470788b7ffc0"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-import-db7/TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-import-db7/W7-SETUP.json",
+      "bytes": 234,
+      "sha256": "37e2751ff1f0e9c1251d1dd3c6c4043570e4904336b553fdfcc8a5190656ed80"
+    }
+  ],
+  "scope": "Complete6 mergedimport/caption/publisheddelivery correspondence, notinheritingwhole3aaorcurrentRootmergeapproval",
+  "limits": [
+    "Modelcompareusescanonicalreader/actualauthoringcontroller butsyntheticmemoryclinical/payment/publication/permissions fixtures; actualRootcookie tests closedHTTP, notAuthSQL",
+    "Unconditionalworkbenchhook/committedowner lifecycle reviewed; hydratedtextretention/backgroundediting/focus/concurrentReactunrun",
+    "OldEC3604/3606FAILED/nooldsource/test/audit/rawreopened; currentownerreporteddb7CI/nativeclean separate",
+    "Noadmission95d/card4d/W5admincomposition included; actualRootpublished342/integrationnewhead requiresfurtherexactcompositiongate",
+    "No Source/private-return/Guidance/principal44/M65/photo/final-egress heldaudit, actualagentSDK/SQL/persistence/browser/genuine/resource/countergrant"
+  ]
+}
