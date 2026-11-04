@@ -11,6 +11,7 @@ import { parseRoute, buildRoute } from "../src/navigation/routes.ts";
 import { browserCareView, browserReviewFacts, browserReviewResponse } from "./rebuild-app-browser-model.mjs";
 import { readClientOrdersReadCommand } from "../../../src/contracts/PortalClientOrdersValidation.ts";
 import { mapClientOrdersReadResult } from "../../../src/contracts/PortalClientOrdersMapping.ts";
+import { publicationDeliveryReadUnavailable } from "./helpers/publication-notification-fixture.mjs";
 const portal = path.resolve(import.meta.dirname, ".."),
   output = path.resolve(
     portal,
@@ -293,10 +294,11 @@ async function setup(initial = "/plan", width = 1440, s = state()) {
             "publish_plan_v1",
             "request_status_v1",
           ];
-          if (actions.includes(command.action))
-            return route.fulfill({
-              json: await s.f.options.ports.plans.execute(command),
-            });
+          if (actions.includes(command.action)) {
+            const result = await s.f.options.ports.plans.execute(command);
+            if (command.action === "publish_plan_v1") s.publicationNotificationReceipt = structuredClone(result);
+            return route.fulfill({ json: result });
+          }
         }
       }
       if (
@@ -336,6 +338,12 @@ async function setup(initial = "/plan", width = 1440, s = state()) {
             json: await s.f.options.ports.payments.execute(command),
           });
       }
+      const deliveryRead = publicationDeliveryReadUnavailable({
+        pathname: url.pathname, method: request.method(),
+        csrf: request.headers()["x-shelv-csrf"], command,
+      }, { csrf: s.csrf, publication: s.publicationNotificationReceipt });
+      if (deliveryRead)
+        return route.fulfill({ status: deliveryRead.status, json: deliveryRead.json });
       unexpected.push(
         request.method() + " " + url.pathname + " " + (command?.action ?? ""),
       );

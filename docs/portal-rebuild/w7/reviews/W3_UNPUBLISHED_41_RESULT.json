@@ -1,0 +1,198 @@
+{
+  "head": "41d864b077a41568994850dbb6ff27e86c85f9e7",
+  "base": "df230eca6017f8dd330cceb83eb11b18193937e5",
+  "patchSha256": "6a0e8f1a684ecb4c0dcaeeecfe91164518f2aeed19a85813e3ec8a34b7605dd9",
+  "ownedSourcePins": [
+    {
+      "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+      "bytes": 28358,
+      "sha256": "0dfe4517e70713ec590b725c0777c84dc4f54d85bff7e81992f1d826669a20e1",
+      "gitBlob": "e4ebf48c19d7d5c649ab906c062bd1458996b526"
+    },
+    {
+      "path": "apps/portal/src/features/plan/DecisionChoiceButton.tsx",
+      "bytes": 853,
+      "sha256": "7e09e11c9b529179fdb6f21fa5080e055e5c68738fe3a261c8e80d5094da3db2",
+      "gitBlob": "5566feb6558ddc18801f48e008f65002825e9991"
+    },
+    {
+      "path": "apps/portal/src/features/plan/DecisionControls.tsx",
+      "bytes": 16182,
+      "sha256": "d71fa56c1c100dc03cd3a5f42ed443f8560cd4eed0be72c5f87e8b6d607bd5d3",
+      "gitBlob": "63daf98ba5573c4d7f4ef8411bab81efc975c368"
+    },
+    {
+      "path": "apps/portal/src/features/plan/GuidanceDecisionControls.tsx",
+      "bytes": 5381,
+      "sha256": "128f01ab44a3031b1056dbd2c73c785d85fce3332664fd62a47879c24df3e57d",
+      "gitBlob": "a49672f089f5c9df401fcf633f127a6e983b2753"
+    },
+    {
+      "path": "apps/portal/src/features/plan/ProductIdentity.tsx",
+      "bytes": 865,
+      "sha256": "e19085dc43dd642ae285668b9ca48d207d445b62a417719b9923ef78e5aff9f0",
+      "gitBlob": "b067ea17e69ff75c8a269274f5ced3a317218d8f"
+    },
+    {
+      "path": "apps/portal/src/features/plan/UnpublishedDecisionCard.tsx",
+      "bytes": 2858,
+      "sha256": "e95b086ea9bb72bb7b1c2e3009875596891b85d5d873617e261497e785bae203",
+      "gitBlob": "8a42b97358bd70ee549da520d9b3233ef3a1d91c"
+    },
+    {
+      "path": "apps/portal/src/features/plan/index.ts",
+      "bytes": 910,
+      "sha256": "a890b363c3a03f6d851db5bb3f3bccd28e93c2095c82631c9a6255ba06fe1e3b",
+      "gitBlob": "95945c60cd3151285fbbeacbe2ef1b9dd42ff8c6"
+    },
+    {
+      "path": "apps/portal/src/features/plan/plan.css",
+      "bytes": 8698,
+      "sha256": "4e9640a6cfe639150a2a9a243650e4863120fcbbdc1eb71599c371278a6bab4f",
+      "gitBlob": "a23a58fd08548598055ccedf1694bbb07ecaa433"
+    },
+    {
+      "path": "apps/portal/tests/w3-unpublished-card.test.mjs",
+      "bytes": 7146,
+      "sha256": "578259d0fc2559575a21e3c19567d815beadadd97587439ae441c6d8cd9b4b75",
+      "gitBlob": "da37ce72fb3339fbc7fc587e09c1e8605653e816"
+    },
+    {
+      "path": "apps/portal/tests/w3/tsconfig.unpublished.json",
+      "bytes": 90,
+      "sha256": "58a9cdee2a1e8953140886a1824547ec7514d85668dec0a105713561e86e467f",
+      "gitBlob": "02c89e0a1089803fbcb8fc585a306fc117d41017"
+    },
+    {
+      "path": "apps/portal/tests/w3/unpublished-card-render.tsx",
+      "bytes": 835,
+      "sha256": "6eba3abc401ebd8959badc4211dac42d5c89113c7fd0b581f8d9e23abd167941",
+      "gitBlob": "17341e82a6459b73b0d19696943ce25844f1c2b6"
+    },
+    {
+      "path": "apps/portal/tests/w3/unpublished-card-types.ts",
+      "bytes": 1487,
+      "sha256": "6525ae11703d8a21e8005d76ece4f419bf9102fa349c84d302c2221789c4e441",
+      "gitBlob": "716fb3aba2aad6385f7ec872c77770e4a48ab94c"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W3_UNPUBLISHED_CARD.md",
+      "bytes": 6747,
+      "sha256": "8d2e794b4948f40272b9aeade60b512530b0fc6497e507810c61459967b23295",
+      "gitBlob": "8f74e2c31826fa6be110a2738a4e2413ef0345e4"
+    }
+  ],
+  "presentationCorrespondence": {
+    "DecisionControls.tsx": {
+      "wholeFileInverseExact": true,
+      "beforeSha256": "7242d34254d7f036c20d4ddb74f960f27ff35f7c1bb41513e41a92b1bdc05451",
+      "afterSha256": "d71fa56c1c100dc03cd3a5f42ed443f8560cd4eed0be72c5f87e8b6d607bd5d3",
+      "presentationElements": 3
+    },
+    "GuidanceDecisionControls.tsx": {
+      "wholeFileInverseExact": true,
+      "beforeSha256": "11df5eaf2cdcb922001586b2c39f069e71038dcebee206626d93e4aa22faae29",
+      "afterSha256": "128f01ab44a3031b1056dbd2c73c785d85fce3332664fd62a47879c24df3e57d",
+      "presentationElements": 3
+    },
+    "ClientPlan.tsx": {
+      "wholeFileExtractionCorrespondence": true,
+      "identityFunctionBodyByteExact": true,
+      "beforeSha256": "f00672a6ef8e35221fcfef45a712e607ab2df422f8332627cca72d78d59b232c",
+      "afterSha256": "0dfe4517e70713ec590b725c0777c84dc4f54d85bff7e81992f1d826669a20e1"
+    }
+  },
+  "scope": "SOURCE_PRESENTATION_ONLY_NO_HELD_CONTROLLER_AUDIT",
+  "owner": "Kanuj",
+  "verdict": "PASS_SCOPED_UNPUBLISHED_DECISION_CARD_SOURCE_ONLY",
+  "independentResults": {
+    "sourceSsr": {
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "configuredFrontendAndAbi": {
+      "exitCode": 0,
+      "flagsUnchanged": true
+    },
+    "browserTargetCompile": {
+      "inputs": 2156,
+      "execution": "UNRUN",
+      "noBackendDependencies": true
+    }
+  },
+  "commands": [
+    {
+      "name": "CARD",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--experimental-strip-types",
+        "--test",
+        "tests/w3-unpublished-card.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-unpublished-41/source/apps/portal",
+      "exitCode": 0,
+      "logSha256": "ee3a5f4ad095ac53685eb20f0fa02521ee3107fc1edc5846042146415c27763a"
+    },
+    {
+      "name": "TYPES-ABI",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/node_modules/typescript/bin/tsc",
+        "-p",
+        "tests/w3/tsconfig.unpublished.json",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-unpublished-41/source/apps/portal",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "testQualification": "SSR uses synthetic memorySession invalidation; wraps JSX to observe real returned host props/handlers unchanged. No actualAuth/session establishment/DOM/browser interaction proof",
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-unpublished-41/PINS.json",
+      "bytes": 4380,
+      "sha256": "aa0ed885482bfaacca3943216f3524a4a753bfb5100ec62a05f3bcdb40ee9cc4"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-unpublished-41/COMMANDS.json",
+      "bytes": 1033,
+      "sha256": "59d62a6f083c474ba455d9f901cbc41f569af613301ecf638dc204ea76c9dfd3"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-unpublished-41/W7-SETUP.json",
+      "bytes": 247,
+      "sha256": "df7cd2a5691e54002288736ef158f8a210eac409d7e88c00a8021d52cabe6874"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-unpublished-41/CARD.log",
+      "bytes": 3873,
+      "sha256": "ee3a5f4ad095ac53685eb20f0fa02521ee3107fc1edc5846042146415c27763a"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-unpublished-41/TYPES-ABI.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-unpublished-41/BROWSER-COMPILE.json",
+      "bytes": 480090,
+      "sha256": "25ce73f27985941c1a8fc6f801ccd737151b8ce5926d177aaeb98b288c306050"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-unpublished-41/COMPILE.log",
+      "bytes": 51,
+      "sha256": "f069013356ee6f135dab097df3adf556d2600030515753896f9c70507d83b756"
+    }
+  ],
+  "limits": [
+    "Shared ProductIdentity pure extraction; Legacy/V3 entire outside-presentation bytes exact; held Guidance/controller/private-return scopes not audited",
+    "Full284 author source compatibility is not independently repeated or promoted here",
+    "W0 actual fixed preview read/owner/route/lifetime +W2 A02 composition need separate exact integration source/permission gates",
+    "Hydrated invalidation/focus/keyboard/images/Figma/390/320/zoom/reducedmotion/a11y/genuine/frame/journey remainUNRUN",
+    "No live ports/callbacks/navigation/published adapter or newpermission/entitlement supplied; no resources/counters/holds changed"
+  ]
+}

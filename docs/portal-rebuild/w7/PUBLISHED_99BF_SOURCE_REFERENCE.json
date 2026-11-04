@@ -1,0 +1,15 @@
+{
+  "owner": "Kanuj",
+  "recordedAt": "2026-11-04T04:56:19.329890+00:00",
+  "head": "99bf372d32619035a6bc279c37adf86db804033d",
+  "branch": "refs/heads/kanuj/portal-rebuild-integration-20261030",
+  "observation": {
+    "method": "git ls-remote origin exactbranch",
+    "exitCode": 0,
+    "toolChunk": "583448",
+    "receiptType": "copied exact already observed tool result; no repeat query"
+  },
+  "scope": "Current publishedsourceidentity only. Whole source/browser/genuine census NOT_MEASURED; baseline counters remain8c5 attributed.",
+  "holds": "Principal44/provider/Plan/photo/Guidance/private-return/M65/final-egress and protected fixtures unchanged",
+  "resources": "Noactivegrant; PUBLIC3aR1closedincompletecapture"
+}

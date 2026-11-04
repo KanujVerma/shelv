@@ -1,0 +1,232 @@
+{
+  "owner": "Kanuj",
+  "head": "657705a6aa705d59d8efa0fd95f6d5df41d77ff8",
+  "base": "8e509bf639f1db1df277a99412292a44e6529ec1",
+  "verdict": "PASS_SCOPED_COMPLETE_NOTIFICATION_COMPOSITION_SOURCE_WAIT_CURRENT_SPINE_GATE",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/app/AdvisorWorkspaceNotifications.tsx",
+      "bytes": 2179,
+      "sha256": "a83ad27c7088b390513a36ad6c74031b0601413a0408118e18c6a246795683f4"
+    },
+    {
+      "path": "apps/portal/src/app/Application.tsx",
+      "bytes": 23387,
+      "sha256": "9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510"
+    },
+    {
+      "path": "apps/portal/src/app/advisor-notifications.ts",
+      "bytes": 3078,
+      "sha256": "b7ebf71be7d97c97e7ba255f5b400070c2165e20dff418a45b2c02385ab41310"
+    },
+    {
+      "path": "apps/portal/src/app/notifications-entry.tsx",
+      "bytes": 8464,
+      "sha256": "c9bbb238a557cfea16c0c932f3024c42292f148107ea04915e13ed612466db2d"
+    },
+    {
+      "path": "apps/portal/tests/helpers/self-purchase-application-preimage.mjs",
+      "bytes": 7113,
+      "sha256": "98f069d7ec063bd675c2f6edaf3b013bf25e0fe983b1c2b511708b7e7722999c"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-notifications-entry-fixture.mjs",
+      "bytes": 13841,
+      "sha256": "14c023490411a1f0ba57a43002d3fa732e88b84d82fe6910ec64a3b9bfe495d6"
+    },
+    {
+      "path": "apps/portal/tests/w0-notification-composition-preservation.test.mjs",
+      "bytes": 1324,
+      "sha256": "a5e902972826d350ab66258fb9e6c9be6458fe4de6937130f16f6699206a86c1"
+    },
+    {
+      "path": "apps/portal/tests/w0-notification-composition-types.test.ts",
+      "bytes": 1051,
+      "sha256": "6d972db1ebc9db5ffd37193cdc20d5131cfdfb7b86edc7ac18189240881bbe0e"
+    },
+    {
+      "path": "apps/portal/tests/w0-notification-composition.test.mjs",
+      "bytes": 10430,
+      "sha256": "55e3c87ec93a3553001ee84c7a40367b9b617870e5a4028ca9a57a7d96f0dcde"
+    },
+    {
+      "path": "apps/portal/tests/w0-notification-owner-types.test.mjs",
+      "bytes": 1267,
+      "sha256": "ed939d23d2ebfc644e36d3f5a21695d9e856ace378765789bb620847d34fcc74"
+    },
+    {
+      "path": "apps/portal/tests/w0-notifications-startup-preservation.test.mjs",
+      "bytes": 1240,
+      "sha256": "43347f0dc9c8dd29f6d17f602c9401076b1685225ef2cb023c19ac47c2b2f974"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_COMPOSITION_20261104.md",
+      "bytes": 6209,
+      "sha256": "fcfed329e69924da9f487ca2da867d7807b5c2b58b473421c3d5ab343ef7b406"
+    }
+  ],
+  "packetSha256": "7023105b460bfaf22720ab9437da3a0858806ac41ccba0244ad91d4f77c2140b",
+  "patchSha256": "64b858b4ab302998696971f471c23b24ff95778ffa7b0c1d81d1cd3ca1c019d4",
+  "compilerClosure": {
+    "total": 2252,
+    "git": 103,
+    "npm": 2148,
+    "virtual": 1,
+    "allByteSizeHashesVerified": true,
+    "literalInput": {
+      "bytes": 1654,
+      "sha256": "e993616bf1079f3ff346bd542ca7a0ba9ae41da5632a1eed22d662d2c5f14955",
+      "derivedFromPinnedFixture": true
+    },
+    "fullPinsPrivateReference": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/PINS.json"
+  },
+  "lockPins": [
+    {
+      "path": "package-lock.json",
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "module608ProductionExact": true,
+  "sourceOrCompilerOverlays": "NONE; inputProjection env ABSENT",
+  "independentResults": {
+    "literal20FileCommand": {
+      "tests": 157,
+      "pass": 157,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "configuredTypeGraphs": [
+      {
+        "name": "root",
+        "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/source",
+        "argv": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/node_modules/typescript/bin/tsc",
+          "--noEmit"
+        ],
+        "exitCode": 0,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "tests",
+        "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/source",
+        "argv": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/node_modules/typescript/bin/tsc",
+          "-p",
+          "tsconfig.tests.json",
+          "--noEmit"
+        ],
+        "exitCode": 0,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "frontend",
+        "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/source/apps/portal",
+        "argv": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/node_modules/typescript/bin/tsc",
+          "-p",
+          "tsconfig.frontend.json",
+          "--noEmit"
+        ],
+        "exitCode": 0,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "runtime",
+        "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/source/apps/portal/session-integration/runtime",
+        "argv": [
+          "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+          "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/node_modules/typescript/bin/tsc",
+          "-p",
+          "tsconfig.json",
+          "--noEmit"
+        ],
+        "exitCode": 0,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "appInverse": {
+      "currentSha256": "9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510",
+      "actual8a2Sha256": "c242959d3f600cf28ce24f1af8ba6221c44ea24c54b9bfb7552f93c09536504f",
+      "inverseSha256": "c242959d3f600cf28ce24f1af8ba6221c44ea24c54b9bfb7552f93c09536504f",
+      "completeBytesEqual": true,
+      "bytes": 24385,
+      "proofLevel": "SOURCE_ONLY"
+    }
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/PINS.json",
+      "bytes": 459880,
+      "sha256": "80384ecb19afe8dcc5b45e557b5a09facd16e6169308faf6396bcd700b2950be"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/COMMAND-157.json",
+      "bytes": 1720,
+      "sha256": "5757ae5b4db5785dced6d97e9ac7fb340640c1d2a93b25cfd5ede61e251b1376"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/CURRENT-157.log",
+      "bytes": 39268,
+      "sha256": "cf2d97611809d3701bb26afc0bdd0a42e0fa6e178548372cea270ae99827681f"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/TYPES.json",
+      "bytes": 2255,
+      "sha256": "d2ab93f57c1efcb8dab9ce48e79cd5d8ac010d6f879950a0dc299054d9265e2d"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/TYPES-root.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/TYPES-tests.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/TYPES-frontend.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/TYPES-runtime.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/APP-INVERSE.json",
+      "bytes": 345,
+      "sha256": "988025e3e44c2b936bc7e3f29a99723d0661cce835ed2305d0d188d487a05392"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-composition-657/SOURCE-PACKET-7023105b460bfaf22720ab9437da3a0858806ac41ccba0244ad91d4f77c2140b.json",
+      "bytes": 460526,
+      "sha256": "7023105b460bfaf22720ab9437da3a0858806ac41ccba0244ad91d4f77c2140b"
+    }
+  ],
+  "proofCalibration": [
+    "ActualRootSDK/cookie/transport/Gateway/Vault/provider/handler with finite syntheticHTTP and in-memory Vault read/write, notpermanentAuth/provider/SQL",
+    "Clinicalgate/approval/payment/publication responses remain syntheticcompatibilitydata",
+    "Manualeffect cleanup/setup model and inert SSR, nothydrated ReactStrictMode/focus/browser proof",
+    "Complete sourcecompositiongateat657 only; actualpublished342/currentRootmerge andCI neednewexactcorrespondence",
+    "OwnerbroaderRootnpm1923+18/package/app/Expo andfirstsetup failures remainseparate/notindependentlyrepeatedhere"
+  ],
+  "limits": [
+    "No newnotificationengine/domain/backend/contract/permission, actualoutboxdelivery/retry/idempotency/persistence acceptance",
+    "No completeInbox/A06/J09/frame/decision/journey/genuinecapability/acceptancecounter/resourcegrant",
+    "Principal44 STOP/noalternate, Source/Guidance/private-return/M65/photo/final-egress/SQL/financialholds preserved"
+  ]
+}

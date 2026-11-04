@@ -1,0 +1,11 @@
+{
+  "owner": "Kanuj",
+  "head": "01b6e5f125f19f2a404bef528c90572e33cb29fe",
+  "finding": "W7-W0-ADMISSION-CURRENT-01",
+  "kind": "VERIFICATION_PATH_GAP_NOT_PRODUCTION_AUTH_FAILURE",
+  "programSha256": "eb5fe10d70d825430c7dd419d8993d6f2a31cfd45d6a0a9a85d4232a8be3963d",
+  "originalFourCaseFixturePrefixSha256": "26aea344d059a065e5f694280a0d4365665898a0a8679ff0ceaa3b85c35472f8",
+  "binding": "Exactoriginalfour-casefixture plusoneindependent request-countassertion; copyunderimmutableCurrentapps/portal/tests; no source/runtimeoverride",
+  "result": "Original4pass,new1fail expectedstatuscalls1 actual0; combined5=4pass1fail",
+  "resources": "ActualRootSDK+controller+ports withsyntheticclosedHTTP only; no AuthAdmin/backend/browser/protectedfixture"
+}

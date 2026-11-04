@@ -1,0 +1,477 @@
+{
+  "owner": "Kanuj",
+  "head": "fc2404740e2140486b7de66de9845cf928d63881",
+  "base": "e964cb6d103483757eea884c574cb6fa93b9ce34",
+  "verdict": "PASS_SCOPED_COMPLETE6_TEST_FIXTURE_SOURCE_FINITE_ONLY",
+  "materialFindings": [],
+  "recordedAt": "2026-11-04T07:52:56.607549+00:00",
+  "runtime": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "xhigh",
+    "serviceTier": "default",
+    "node": "v22.23.0"
+  },
+  "packetSha256": "f8857c06498e639fd2b658090c15eddee4fe5366d3c531a3454943b1c197fdba",
+  "patchSha256": "af3cd5ec463ee5e88eb3b02a1a48f0db49f7820e92e7a0f37a90a29e453f66ca",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/helpers/publication-notification-fixture.mjs",
+      "bytes": 1809,
+      "sha256": "96588892f6cf0ac2db967be071b5b0bb35c77b98d90ba12f07d162f065c09c55"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-advisor-dependencies-browser-helper.mjs",
+      "bytes": 22968,
+      "sha256": "f5647395e451c309d68e7fe305ca31d9aec86cefa7d736424a1bbf3cf06173a0"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-app-browser.test.mjs",
+      "bytes": 44480,
+      "sha256": "c80ceb266faabe527d8fa133d7edb62ec555ef8b11e18287fe0b03fcc555c37f"
+    },
+    {
+      "path": "apps/portal/tests/w0-publication-notification-fixture.test.mjs",
+      "bytes": 7263,
+      "sha256": "909ae235659da195d7121c1c2f9ee8300e64af78751f962062490a64b30e92eb"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_BROWSER_FIXTURE_20261104.md",
+      "bytes": 4319,
+      "sha256": "6b8b98f0e8f3e594d26f915be089bea4ac741e2db9c59eabcdd30a0c30d7b7d0"
+    },
+    {
+      "path": "docs/CONTEXT_SYNC.md",
+      "bytes": 410525,
+      "sha256": "e654742fd48dcbd9413ca4b025a8c269543d86480038252e703f2166955d7c13"
+    }
+  ],
+  "originalExistingFilePins": [
+    {
+      "path": "apps/portal/tests/rebuild-advisor-dependencies-browser-helper.mjs",
+      "sha256": "f391334cd6ce99618aedda9a61deb5e1cad72988481dc40ed317b79296d8f327"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-app-browser.test.mjs",
+      "sha256": "26dba35a7a4f25040da6b9890a0a5be5c8a98b6aeb1c291bc5f02a3c97eff02b"
+    }
+  ],
+  "selectedCompilerInputs": [
+    {
+      "path": "apps/portal/site/auth/commerce-actions.js",
+      "bytes": 1980,
+      "sha256": "795d37a5ec1f6451c4318234f2636e834849c0c1ce0c8fc19815b3c6655d7acc"
+    },
+    {
+      "path": "apps/portal/site/auth/portal-routes.js",
+      "bytes": 8889,
+      "sha256": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5"
+    },
+    {
+      "path": "apps/portal/site/auth/navigation-return.js",
+      "bytes": 3284,
+      "sha256": "aab8c07b9c589e1af4bf521716407e35bb97574664196b3e58b2d1a9485e4dcd"
+    },
+    {
+      "path": "apps/portal/site/auth/plan-actions.js",
+      "bytes": 805,
+      "sha256": "64d758036946cd2fa2109a23e46066e0fa350347e45f84f1861d6d47190a9a23"
+    },
+    {
+      "path": "apps/portal/site/auth/care-actions.js",
+      "bytes": 592,
+      "sha256": "af283c549a1a1b7a404f44c387921991b7cdcd2f52a4a63af3c2e194e737e17b"
+    },
+    {
+      "path": "apps/portal/site/auth/review-actions.js",
+      "bytes": 1904,
+      "sha256": "6796d30a8b774559cac3924c9db7c5528358dd672b1cdabe060a428be881fcb4"
+    },
+    {
+      "path": "apps/portal/site/auth/advisor-cookie-session.js",
+      "bytes": 30545,
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5"
+    },
+    {
+      "path": "apps/portal/site/auth/client-cookie-session.js",
+      "bytes": 6833,
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0"
+    },
+    {
+      "path": "apps/portal/src/app/retained.ts",
+      "bytes": 1671,
+      "sha256": "146d949005acc395692eca804824c2a67fb0c9bfbe5b0be98d4018f8a265b5a1"
+    },
+    {
+      "path": "apps/portal/src/transport/error.ts",
+      "bytes": 725,
+      "sha256": "1b6be9efd7f110c93d909ee8a2f44e805b3de51f32bfd0715ddf7cdf4c93f034"
+    },
+    {
+      "path": "apps/portal/src/transport/session.ts",
+      "bytes": 10195,
+      "sha256": "deeb60865d92b6a7a0feb1b86a78193a7c093005d0e225cf5554ece1539e46bd"
+    },
+    {
+      "path": "apps/portal/src/app/session.ts",
+      "bytes": 6061,
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValues.ts",
+      "bytes": 1206,
+      "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+    },
+    {
+      "path": "src/contracts/ConciergePortalValidation.ts",
+      "bytes": 2880,
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+    },
+    {
+      "path": "src/contracts/ConciergePresentationValidation.ts",
+      "bytes": 11722,
+      "sha256": "b93b9eab1b55cfb828677067990985716e71c23550662a06782038226cdca33a"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "bytes": 12947,
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+    },
+    {
+      "path": "src/contracts/PortalNotificationValues.ts",
+      "bytes": 1094,
+      "sha256": "5902a0989888fa7dad045cfc205ac85648b659f7189617c3db3db8479fb7eddf"
+    },
+    {
+      "path": "src/contracts/PortalNotificationValidation.ts",
+      "bytes": 4294,
+      "sha256": "fed7b4ad0e8493ae223a39786283b01d0137e083cbad67338f1664aec0d6e27f"
+    },
+    {
+      "path": "src/contracts/PortalNotificationMapping.ts",
+      "bytes": 4137,
+      "sha256": "36c0f8632a823a0ae4e639cb82a59dd2d069a53656e9589452db92aa0ce25dc5"
+    },
+    {
+      "path": "apps/portal/src/app/notification-request.ts",
+      "bytes": 6090,
+      "sha256": "2118ec95a62a3f66dd80fd409862d60f9947c7f97b4ef00736c003e3976611b7"
+    },
+    {
+      "path": "apps/portal/src/navigation/routes.ts",
+      "bytes": 1496,
+      "sha256": "48a7efc90a6b94d062010e30f0a31b99393c85cf14a804b2426d7b62d921032d"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/model.ts",
+      "bytes": 2863,
+      "sha256": "3d8c1fde35feeee1c32952e2c205ae2666044de5f36dbd042a01ab0dce4a2b67"
+    },
+    {
+      "path": "src/contracts/PortalRebuildMapping.ts",
+      "bytes": 10694,
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/recovery.ts",
+      "bytes": 2740,
+      "sha256": "b29a389e016cbab378af68eec37027e6219d12a1e7b6e4437635796a98eeceb5"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/controller.ts",
+      "bytes": 19282,
+      "sha256": "685a1c9643c861b362f958bc73fadecb2fc3448d84b11131805899319f529c26"
+    },
+    {
+      "path": "apps/portal/src/app/notification-owner.ts",
+      "bytes": 9308,
+      "sha256": "4bbaf0389780a2b4bffcf7250665b1ee79cfc50fbe1cb4b8eae72312c6f82141"
+    },
+    {
+      "path": "src/contracts/PortalRebuild.ts",
+      "bytes": 14140,
+      "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc"
+    },
+    {
+      "path": "apps/portal/tests/rebuild/advisor-fixture.mjs",
+      "bytes": 11429,
+      "sha256": "63475f1a03e7ddd8f8d75f13421086b34ed6b88be170a79f16a40d26b77a6954"
+    },
+    {
+      "path": "apps/portal/tests/helpers/publication-notification-fixture.mjs",
+      "bytes": 1809,
+      "sha256": "96588892f6cf0ac2db967be071b5b0bb35c77b98d90ba12f07d162f065c09c55"
+    },
+    {
+      "path": "apps/portal/tests/w0-publication-notification-fixture.test.mjs",
+      "bytes": 7263,
+      "sha256": "909ae235659da195d7121c1c2f9ee8300e64af78751f962062490a64b30e92eb"
+    }
+  ],
+  "lockPins": [
+    {
+      "path": "package-lock.json",
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "authorRawByteHashesVerified": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/MISSING-HELPER-RED.log",
+      "bytes": 1767,
+      "sha256": "6aa6cab16683d384264a1e2a64235e228e503911fabd54c23dcfe05282a3b220"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/HELPER-CURRENT.log",
+      "bytes": 5858,
+      "sha256": "47533532bc8fe51e0b22b0ea42b86416f584e99248fa2ba539f427c6ba9db5aa"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/SOURCE-CURRENT23.log",
+      "bytes": 6475,
+      "sha256": "97facb90ad71d7e1c26c22260f267610ea619b5d73b203e9ec1110828420b54e"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/SOURCE-COVERING180.log",
+      "bytes": 45266,
+      "sha256": "29012a9aa04d19f4a8502a4d0cc4d6a343188d52d0c6dd55a99191466ca73a1e"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/SOURCE-COVERING180.json",
+      "bytes": 1738,
+      "sha256": "9cb793293393df0916f59ba8b0bc04de01c89c7938b73b8d509caf3d7ea57c39"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/IMMUTABLE-CURRENT180.log",
+      "bytes": 45966,
+      "sha256": "24d3b7bf3672c86842d216b2bfc08e9ee7e8174f8b45b9564a9b4de6d1236df1"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/IMMUTABLE-CHECKS.json",
+      "bytes": 4385,
+      "sha256": "3ba920404b225a0e302173f2238cf72d91458d796ef7d3a4d47430306ad9184f"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/SENSITIVITY.json",
+      "bytes": 1957,
+      "sha256": "be66b5613e9a84398c919253d544e43fe520cc5796021caa8db435823f090ce0"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/CSRF-ORIGINAL.log",
+      "bytes": 554,
+      "sha256": "9ddb5434c6873972f05a5b85c7a8a5d6da7f70e979dc3cf4092c0a40c94e95fc"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/CSRF-MUTANT.log",
+      "bytes": 533,
+      "sha256": "c8195afb1942d5b5014961b8d7e781bee394d9b61b9a8fa17148862e7511b00e"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/EVENT-ORIGINAL.log",
+      "bytes": 554,
+      "sha256": "a746c16e6df16a9f99294a76854a3ee0c4f2108b14f70738b185f8dff2ed6460"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/EVENT-MUTANT.log",
+      "bytes": 533,
+      "sha256": "e16054b35e79e767ca6b6c15aba0399d00b9b9f8e03325b1af3f8b1c48930704"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/RUN-METADATA.json",
+      "bytes": 979,
+      "sha256": "6bbe297343086f9d6373f6cfcb41f9abb49ac46de614fb6de2facbb567045121"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/CHECKOUT-EXCERPT.txt",
+      "bytes": 1788,
+      "sha256": "bdf8b213397770c9f0f0cd015a36628f0d73bd148f2b1e492187a88ce51c2343"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/ACTUAL-CI-COMPOSITION.json",
+      "bytes": 1508,
+      "sha256": "41d5ca543124d1e21189a30323b222b69d88b141042c63730793bb4c84bc5b93"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-fixture-r1/NEW-CONTROL-COMPILER-INPUTS.json",
+      "bytes": 5834,
+      "sha256": "ee53be214a3d7c0b7aab5b90c2c95bc24f8187b639bbf2402a0437ef79b06ea2"
+    }
+  ],
+  "independentCommand": {
+    "head": "fc2404740e2140486b7de66de9845cf928d63881",
+    "argv": [
+      "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "--test",
+      "--test-concurrency=1",
+      "apps/portal/tests/w0-notification-composition.test.mjs",
+      "apps/portal/tests/w0-notification-composition-preservation.test.mjs",
+      "apps/portal/tests/w0-notification-owner.test.mjs",
+      "apps/portal/tests/w0-notification-owner-types.test.mjs",
+      "apps/portal/tests/w0-notification-owner-relevance-phase.test.mjs",
+      "apps/portal/tests/w0-notifications-stopped-owner.test.mjs",
+      "apps/portal/tests/w0-notifications-startup.test.mjs",
+      "apps/portal/tests/w0-notifications-startup-preservation.test.mjs",
+      "apps/portal/tests/rebuild-app-start.test.mjs",
+      "apps/portal/tests/rebuild-app-session.test.mjs",
+      "apps/portal/tests/rebuild-app-callback.test.mjs",
+      "apps/portal/tests/rebuild-foundation-navigation.test.mjs",
+      "apps/portal/tests/rebuild-notifications-entry-source.test.mjs",
+      "apps/portal/tests/rebuild-notifications-entry-lifetime.test.mjs",
+      "apps/portal/tests/rebuild-notifications-entry-reentrant.test.mjs",
+      "apps/portal/tests/rebuild-account-entry-source.test.mjs",
+      "apps/portal/tests/w0-self-purchase-preservation.test.mjs",
+      "apps/portal/tests/w0-advisor-client-entry-preservation.test.mjs",
+      "apps/portal/tests/rebuild-client-inbox-navigation.test.mjs",
+      "apps/portal/tests/rebuild-advisor-app-integration.test.mjs",
+      "apps/portal/tests/w0-publication-notification-fixture.test.mjs"
+    ],
+    "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/source",
+    "exitCode": 0,
+    "seconds": 10.53,
+    "sha256": "eb8c2cc00007e0fc4863fe706f488ee76ed38d8ccbc65d883456319f7773ffb5",
+    "bytes": 45790,
+    "executionScopeFiles": 21,
+    "browserExecuted": false
+  },
+  "syntaxAndCompile": [
+    {
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--check",
+        "apps/portal/tests/helpers/publication-notification-fixture.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/source",
+      "exitCode": 0,
+      "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/publication-notification-fixture.mjs.syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--check",
+        "apps/portal/tests/w0-publication-notification-fixture.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/source",
+      "exitCode": 0,
+      "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/w0-publication-notification-fixture.test.mjs.syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--check",
+        "apps/portal/tests/rebuild-app-browser.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/source",
+      "exitCode": 0,
+      "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/rebuild-app-browser.test.mjs.syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--check",
+        "apps/portal/tests/rebuild-advisor-dependencies-browser-helper.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/source",
+      "exitCode": 0,
+      "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/rebuild-advisor-dependencies-browser-helper.mjs.syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "compileInputs": 30,
+      "exitCode": 0,
+      "executed": false,
+      "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/COMPILE.log",
+      "sha256": "da3b73c68e640837e1ab3b0736110bb29dc35dd39c18d211a9e99c66d0dd8e58"
+    }
+  ],
+  "independentResults": {
+    "namedSourceFiniteSsrMutationAbi": {
+      "tests": 180,
+      "pass": 180,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "extraIndependentClassifierControls": {
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "wholeFileInverses": 2,
+    "syntax": 4,
+    "compileOnlyInputs": 30,
+    "browserExecution": "UNRUN"
+  },
+  "setupFailure": {
+    "classification": "W7_COMPILER_PACKAGE_RESOLUTION_SETUP_ERROR",
+    "error": "ERR_MODULE_NOT_FOUND: esbuild at repository root",
+    "preserved": true,
+    "resolution": "Use unchanged Portal package compiler; no source/configuration/flag change"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/PIN-VERIFICATION.json",
+      "bytes": 1310,
+      "sha256": "9e33e8929895b238fe0b0e5253dc05ed7baf946346f62ed9645244e70cb97c8e"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/CURRENT180.json",
+      "bytes": 1875,
+      "sha256": "7a7179ee534f7a0bf3434b92bb95ad16d0c2da1efa5680a941aabb27b7b1c4a9"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/CURRENT180.log",
+      "bytes": 45790,
+      "sha256": "eb8c2cc00007e0fc4863fe706f488ee76ed38d8ccbc65d883456319f7773ffb5"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/independent-controls.mjs",
+      "bytes": 2558,
+      "sha256": "43df82a159055876c1909d5109740d68ed661f31a75f07031c761f211f382417"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/INDEPENDENT-CONTROLS.log",
+      "bytes": 1932,
+      "sha256": "80bd27894d5c5f64fc18d104a8b23de12ca91b045e9fa6228b199368866b548d"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/SYNTAX-COMPILE.json",
+      "bytes": 2812,
+      "sha256": "667f14ee6fc73e06ea0bd17e9bec6a1978316a5d741ca1c990ef7322a828744d"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/COMPILE.json",
+      "bytes": 25647,
+      "sha256": "310503070541524175b166284c0c8504bbd9d97ba5c8dbede0ba15a4c169f400"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/COMPILE.log",
+      "bytes": 31,
+      "sha256": "da3b73c68e640837e1ab3b0736110bb29dc35dd39c18d211a9e99c66d0dd8e58"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/COMPILE-ROOT-RESOLUTION-SETUP-FAILED.log",
+      "bytes": 975,
+      "sha256": "78b2f94f7fa23cb2d88eb2202b7c530b63a0ef6e474bef091e2dc65efdcd2b42"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-fixture-fc240/EXECUTION-SCOPE-SCAN.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "reportSha256": "f2c8e22a9c725d15a6b3fa35644ca05cb8ded5ec3922ccbb2ab440b62ed14909",
+  "limits": [
+    "Source/finite scope only, no hydrated browser or exact-head CI pass",
+    "Original hosted3988/2 and adjacent reported failures remain FAILED; no old baseline execution/flake/causality claim",
+    "Synthetic session/publication inputs are not permanent Auth/persistence/delivery acceptance",
+    "No resources, foreign writes, activation, counter or hold changes"
+  ]
+}
