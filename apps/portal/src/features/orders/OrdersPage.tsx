@@ -76,7 +76,17 @@ export function OrdersPage({controller,navigation,selected,useDisplay}:OrdersPag
  // Starting open is not acquisition. Only an actual matching ready snapshot
  // releases the request mask; cancellation/abort observers can still see A.
  if(renderedContext.pending&&renderedContext.request&&state.phase==='ready'&&sameEntity(renderedContext.request,state.selection?.entity)&&controller.getSnapshot()===state)renderedContext.pending=false;
- const [sheet,setSheet]=useState<{kind:OrderSheetKind;line?:FrozenProductLine;context:typeof renderedContext;entity:CommerceEntityRef}|null>(null);
+ type SheetState={kind:OrderSheetKind;line?:FrozenProductLine;context:typeof renderedContext;entity:CommerceEntityRef};
+ const [sheet,setSheet]=useState<SheetState|null>(null),sheetOwner=useRef<SheetState|null>(sheet);
+ sheetOwner.current=sheet;
+ const ownsSheet=(expected:SheetState)=>sheetOwner.current===expected&&context.current===expected.context&&expected.context.controller===controller&&sameEntity(sheetOwner.current.entity,expected.entity);
+ const dismissSheet=(expected:SheetState)=>{
+  if(!ownsSheet(expected))return;
+  setSheet(current=>{
+   if(current!==expected||!ownsSheet(expected)||!sameEntity(current.entity,expected.entity))return current;
+   sheetOwner.current=null;return null;
+  });
+ };
  const mismatch=renderedContext.pending&&renderedContext.request!==undefined&&!sameEntity(renderedContext.request,state.selection?.entity),indexed=state.index?.entries.some(entry=>sameEntity(entry.entity,renderedContext.request));
  // A requested target is not evidence that the previous target is still its
  // financial detail. Mask the prior selection before effects acquire the next.
@@ -92,7 +102,10 @@ export function OrdersPage({controller,navigation,selected,useDisplay}:OrdersPag
   renderedContext.opening=true;
   void controller.open(request).then(()=>{renderedContext.opening=false;},()=>{renderedContext.opening=false;});
  },[controller,requestedKey,state]);
- useEffect(()=>{setSheet(null);},[controller,requestedKey]);
- useEffect(()=>{if(['ended','denied','conflict'].includes(state.phase))setSheet(null);},[state.phase]);
- return <><OrdersView state={visibleState} controller={controller} navigation={navigation} useDisplay={useDisplay} onSheet={(kind,line)=>{if(context.current===renderedContext&&controller.getSnapshot()===state&&!mismatch&&state.phase==='ready'&&state.selection)setSheet({kind,line,context:renderedContext,entity:state.selection.entity});}}/>{visibleSheet&&state.selection?<Sheet open={true} title={visibleSheet.kind==='product'?'frozen product details':visibleSheet.kind==='review'?'review final quote':visibleSheet.kind==='payment'?'payment instructions':visibleSheet.kind==='received'?'report actual receipt':'request product return'} backLabel="back to order" onOpenChange={open=>{if(!open)setSheet(null);}} canClose={()=>state.pending?.phase!=='sending'}><OrderSheetContent key={visibleSheet.kind+':'+state.selection.entity.id} kind={visibleSheet.kind} line={visibleSheet.line} state={state} controller={controller} onDone={()=>setSheet(null)}/></Sheet>:null}</>;
+ useEffect(()=>{setSheet(current=>{
+  if(context.current!==renderedContext||!current||current.context===renderedContext)return current;
+  if(sheetOwner.current===current)sheetOwner.current=null;return null;
+ });},[controller,requestedKey]);
+ useEffect(()=>{if(['ended','denied','conflict'].includes(state.phase)&&sheet)dismissSheet(sheet);},[state.phase]);
+ return <><OrdersView state={visibleState} controller={controller} navigation={navigation} useDisplay={useDisplay} onSheet={(kind,line)=>{if(context.current===renderedContext&&controller.getSnapshot()===state&&!mismatch&&state.phase==='ready'&&state.selection){const next={kind,line,context:renderedContext,entity:state.selection.entity};sheetOwner.current=next;setSheet(next);}}}/>{visibleSheet&&state.selection?<Sheet open={true} title={visibleSheet.kind==='product'?'frozen product details':visibleSheet.kind==='review'?'review final quote':visibleSheet.kind==='payment'?'payment instructions':visibleSheet.kind==='received'?'report actual receipt':'request product return'} backLabel="back to order" onOpenChange={open=>{if(!open)dismissSheet(visibleSheet);}} canClose={()=>ownsSheet(visibleSheet)&&sameEntity(controller.getSnapshot().selection?.entity,visibleSheet.entity)&&controller.getSnapshot().pending?.phase!=='sending'}><OrderSheetContent key={visibleSheet.kind+':'+state.selection.entity.id} kind={visibleSheet.kind} line={visibleSheet.line} state={state} controller={controller} onDone={()=>dismissSheet(visibleSheet)}/></Sheet>:null}</>;
 }
