@@ -12,6 +12,8 @@ void selected;void unselected;
 props.ports;
 // @ts-expect-error compact preview accepts no business callback
 props.onSelfPurchase;
+// @ts-expect-error runtime click callbacks are not part of the read-only card
+props.onClick;
 // @ts-expect-error compact preview accepts no publication callback
 props.onPublish;
 // @ts-expect-error compact preview accepts no navigation capability

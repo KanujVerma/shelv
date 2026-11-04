@@ -44,3 +44,11 @@ The card relies on real shared controls and reader behavior; no live-operation p
 ## Open gates
 
 A complete fresh independent source review is required before W2 adopts the export. Actual W0 preview read, advisor composition, fresh browser/asset/focus/390/320/desktop comparison and genuine permission/persistence acceptance remain open. The Root PUBLIC Maya packet, existing860 scope, principal44 no-alternate boundary and all other held gates remain independent. This compact card does not complete A02 or the full W3 goal.
+
+## Published-spine reconciliation
+
+The feature commit `89f61a22702d96f3612b1ae089b4dcaba9fb0b25` normally merges published integration `df230eca6017f8dd330cceb83eb11b18193937e5` as `c5337a3e3f9f6d43854d4254db2415756d97517d`. All thirteen feature postimages stayed exact; the relative binary delta remained `f2f9fcdccc443b24c3e5b14a9eec431f27943bd21210051589a32c56642a7795`. No force, rebase or prepared foreign ancestry import occurred.
+
+On that reconciled production graph, selected card/Maya/V3-SSR/navigation/use/Root public-chrome/Self compatibility passes284/284 with zero fail/cancel/skip (`compatibility-rootdf.log`); the unchanged-flag ABI/frontend graph exits0 (`types-rootdf.log`) and UI guard passes11 (`ui-guard-rootdf.log`). These are source/model/SSR/closed-HTTP/build cases, not a browser or genuine acceptance run. The final fixture additionally supplies a runtime `onClick` extra and a negative type probe for it; that strengthening changes no production behavior. Original API-absent and type-location failures remain retained.
+
+PR233's completed watch was retired after actual merge confirmation. Root's reviewed/published PUBLIC chrome and guide assertions keep their separate fresh-packet requirement; no card test calls those browser exports, obtains a Page or supplies an auth fixture. The new card still requires its own frozen review/admission before W2 imports it.

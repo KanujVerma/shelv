@@ -44,7 +44,7 @@ test('selected canonical unpublished decision shows its own identity/reason and 
 
 test('runtime extra operations and callbacks never cross the compact adapter',()=>{
   let calls=0;const denied=()=>{calls++;throw Error('operation attempted');};
-  const props={...packet(),mode:'client',published:true,ports:{read:{execute:denied},care:{execute:denied}},onApprove:denied,onRecordUse:denied,onSelfPurchase:denied,onExport:denied,navigation:{navigate:denied}};
+  const props={...packet(),mode:'client',published:true,ports:{read:{execute:denied},care:{execute:denied}},onClick:denied,onApprove:denied,onRecordUse:denied,onSelfPurchase:denied,onExport:denied,navigation:{navigate:denied}};
   const html=render(props);assert.match(html,/Azelaic Acid/);assert.equal(calls,0);
   for(const button of buttons){assert.equal(button.props.disabled,true);assert.equal(button.props.onClick,undefined);}
 });
