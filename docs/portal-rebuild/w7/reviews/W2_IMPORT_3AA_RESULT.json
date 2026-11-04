@@ -1,0 +1,129 @@
+{
+  "owner": "Kanuj",
+  "head": "3aa244c474a288149491462ee5046e57cc330c43",
+  "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "patchSha256": "ce1c7beb6676cd9cd32bb6b14fd2fd3b6861d80d5ae099f7d18b12c5461d8633",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+      "bytes": 41297,
+      "sha256": "3d33a36bc591123c72a13b0a24b0d05c1f58a12a8679dcb067a4d1f03debf87a"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/AgentImportDialog.tsx",
+      "bytes": 4743,
+      "sha256": "898f25110781f7d082fea657ce04505da3668a8bffa86684150d45f7362b5970"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/agent-import.ts",
+      "bytes": 1590,
+      "sha256": "e1c72545a45809e92546349a13a73eba90329734c57c366f440248b21ec775d2"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-import-recovery.test.mjs",
+      "bytes": 7496,
+      "sha256": "1c91197fc2ebeee72df0bf79e50e3ed209848dd4b67651309da9cb8d35b964f9"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/IMPORT_RECOVERY_20261103.md",
+      "bytes": 8660,
+      "sha256": "718b2ce3d2318a85a9cb3b62515f9139a8d15312a68c339a2ea659a3fd6ad2dd"
+    }
+  ],
+  "unchangedFromPublishedBase": [
+    "apps/portal/src/features/advisor/controller.ts",
+    "apps/portal/src/features/advisor/model.ts",
+    "src/contracts/PortalRebuildValidation.ts",
+    "apps/portal/tests/rebuild-advisor-followup.test.mjs"
+  ],
+  "verdict": "PASS_SCOPED_COMPLETE_BACKGROUND_IMPORT_SOURCE",
+  "current": {
+    "tests": 288,
+    "pass": 288,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0",
+    "sourceOverrides": false
+  },
+  "coverage": {
+    "newCandidateHelperWorkbenchSSR": 16,
+    "retained": 272
+  },
+  "configuredFrontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-import-3aa/W7-CURRENT288.log",
+      "bytes": 67632,
+      "sha256": "eca33825b84b02a645a4586b2180ee62d9f591da34330047ad9c870a4edf7b3f",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-import-3aa/W7-FRONTEND.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-import-3aa/CURRENT-EXEC.json",
+      "bytes": 755,
+      "sha256": "c212c8a68d9e0baaf251c8f6603f8df9c8f845a34ab43bda492a7755435c565f",
+      "exitCode": 0
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "apps/portal/src/features/advisor/controller.ts",
+      "bytes": 48387,
+      "sha256": "d371d8367d066049e5845e4a37944576c26603c4325426c75395a9316ad91bd7"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/model.ts",
+      "bytes": 4149,
+      "sha256": "f609a9c43653c0f7a9a3ad7798b95e291d601402b5bcd9ff27b1ac63247cc803"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "bytes": 12947,
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-advisor-followup.test.mjs",
+      "bytes": 10557,
+      "sha256": "86a66a6be5a03bd5cb2bef24ff042914a3afb1af128555f7057740b2ee233e5d"
+    },
+    {
+      "path": "apps/portal/src/app/session.ts",
+      "bytes": 6061,
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 303079,
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "bytes": 123808,
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "originalHostedFailure": {
+    "head": "ec81afcdbc7525b72357057623cfec35bd056385",
+    "reportedResult": "3604/3606 with two import modal browser failures",
+    "status": "FAILED_PRESERVED_OWNER_REPORTED",
+    "rerunByW7": false,
+    "rawOpenedByW7": false
+  },
+  "limits": [
+    "Workbench hook/source and helper model/SSR reviewed; no hydrated typing/dismiss/reopen/focus/StrictMode or browser execution",
+    "OldEC read/test/audit not resumed; original failure remains FAILED, not inferred resolved by source",
+    "Actual controller/parser/shared followup tests unchanged; no apply/save/review/publication behavior added",
+    "W0 integrated source correspondence and fresh exact hosted/browser/genuine/visual/a11y/fullA02-A03 gates remain open",
+    "No AuthSQL/resource/held-scope audit or acceptance numerator advances"
+  ]
+}

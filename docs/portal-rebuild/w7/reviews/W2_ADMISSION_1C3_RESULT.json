@@ -1,0 +1,135 @@
+{
+  "owner": "Kanuj",
+  "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+  "head": "1c39946a77ce06a9bd9cf7208cceacd637542a54",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+      "bytes": 43932,
+      "sha256": "ed145b21fa5ebe47dd249b5d78d83f58b3b1a8988b2488c9da14d09fed0320b4"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/ClientAssignment.tsx",
+      "bytes": 3302,
+      "sha256": "7df71ad1b0b98557c74d413c2d66f3be7a1aca50b68e9269359ad6a9ecf11366"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/admission/ClientAdmission.tsx",
+      "bytes": 5564,
+      "sha256": "7a57bf162f9bc10d2b90b5c0b05540beeb80f77ee7f6f374d656137f3a23b283"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/admission/controller.ts",
+      "bytes": 12875,
+      "sha256": "0ec2a00649c7a9d488288e959205247baedd4fcc95dacbab453b7b2789ff2dfb"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/admission/index.ts",
+      "bytes": 283,
+      "sha256": "1e20304fe395a92ce31522fd1cf9f3a77134338084d3fda521ff277bc85954a7"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/admission/types.ts",
+      "bytes": 2111,
+      "sha256": "ca736bcb634b7aaa832fc7d9bfef1d6a82380b376b3caeb533d25737981062be"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/controller.ts",
+      "bytes": 50444,
+      "sha256": "a657e4c93351344c977a45e06ce7adbebe5ee0fcd31282a5d6853489284bfafe"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/index.ts",
+      "bytes": 931,
+      "sha256": "23aa3ffe7af39ccab8fb57ce9fefb3b65c9d21633cdab2a9ef987ae2af1e1ccf"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/types.ts",
+      "bytes": 7096,
+      "sha256": "9d1bb9344114c449450bbd26a1477c2b4e7eb0a4e0884d57411034bc1639ec57"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-admission.test.mjs",
+      "bytes": 15816,
+      "sha256": "276b1a7b31c6009e7645392fc5bb1dc630b1d49011a7edb0f781494b086968b8"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-directory.test.mjs",
+      "bytes": 9545,
+      "sha256": "b82211d2a199da91c9dfec5151e363754bac607d6bb7584bdf4d639269c68dd2"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/ADMISSION_SOURCE_20261103.md",
+      "bytes": 13666,
+      "sha256": "6e8bf148a7aee39af455deeb4b85a5df7ba7411117a415f2d2a6641fed4a7ffe"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/DIRECTORY_RECOVERY_20261103.md",
+      "bytes": 6401,
+      "sha256": "79f5e2beb048be25f7392904d5f279ee26869746cb973dcd105226232882ce71"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/WORKSTREAM_MATRIX_20261103.md",
+      "bytes": 6361,
+      "sha256": "b516aecde473fd6076dcccefc97c62c505d6a7e474833d25770e17e8f7dbe01e"
+    }
+  ],
+  "patchSha256": "3544092de22da40a6fb86d48edeb8d1fc68890eb4f085339f5cb8e1bf4d57184",
+  "authorPacketSha256": "610ffdfdabf7897c0dcdba278b5aeba8797f01a44af00d8b6406eb0a5fa6f69c",
+  "correctionArtifactHashOnly": "1a3e46d3deeeb69cb72c1cc15828802049557b8fb7063abda331fc0407a566b5",
+  "directoryExact8f10": [
+    "apps/portal/src/features/advisor/ClientAssignment.tsx",
+    "apps/portal/tests/w2-advisor-directory.test.mjs",
+    "docs/portal-rebuild/w2/DIRECTORY_RECOVERY_20261103.md"
+  ],
+  "directoryControllerMethodsAndHelperExact8f10": true,
+  "remainingControllerBytesExact8893AfterStrictDirectoryInverse": true,
+  "quoteComponentExact8893": true,
+  "heldOldHeads": "No source/test/audit executed at06666/0d327; correction artifact hash only, current delta reviewed against approved8893.",
+  "verdict": "PASS_SCOPED_COMPLETE_ADMISSION_DIRECTORY_QUOTE_SOURCE_FINITE_SSR",
+  "current": {
+    "tests": 89,
+    "admission": 20,
+    "directory": 13,
+    "quote": 9,
+    "retainedControllerRaces": 47,
+    "pass": 89,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0"
+  },
+  "configuredFrontend": {
+    "exitCode": 0,
+    "diagnostics": 0,
+    "sourceOverlay": false
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-admission-1c3/W7-PIN-SETUP.json",
+      "bytes": 227,
+      "sha256": "9e2adf8fee6135f479fb243ea011116516188a2b3c8bd26950b593e16d4b9439",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-admission-1c3/W7-CURRENT89.log",
+      "bytes": 24518,
+      "sha256": "5d659eee41c3e5d141c382add7d940397dbfd8607b787b5b9a6b429527dc8e17",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-admission-1c3/W7-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ],
+  "scope": "Complete14 current postimages; full original admission consumer and reviewed Directory/quote composition, not only recovery correction.",
+  "limits": [
+    "No current/old Auth/Admin server writes, SQL/persistence, browser/resources or held lifetime/private-return audit",
+    "Old06666/0d327 source/test/audit not resumed; original hostedOLD evidence preserved",
+    "W0 actual three-port error status/code and single-runtime/entry/lifetime composition remain separate",
+    "No full A00/decision/J01/genuine capability or product numerator"
+  ]
+}

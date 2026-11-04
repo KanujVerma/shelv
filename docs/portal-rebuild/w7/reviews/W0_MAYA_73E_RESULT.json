@@ -1,0 +1,145 @@
+{
+  "owner": "Kanuj",
+  "head": "73eddff523f68afeb1a4980547c9e1fc3a294ec9",
+  "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/app/MayaApplication.tsx",
+      "bytes": 5390,
+      "sha256": "7c762e73a5ee2e576711c2a94c911f03eaedfdff41fcef738a58e658ed35be25"
+    },
+    {
+      "path": "apps/portal/src/app/MayaClientChrome.tsx",
+      "bytes": 1135,
+      "sha256": "c42a8a935adfffd2d56f4b3c72ac5e7a4712da08548df01748302458d72518cc"
+    },
+    {
+      "path": "apps/portal/src/app/maya-chrome.ts",
+      "bytes": 3279,
+      "sha256": "598e2dc386b095c28de2cfc98898b6ab43f065c31104548f07b8cd2372742ab4"
+    },
+    {
+      "path": "apps/portal/src/shell/PortalShell.tsx",
+      "bytes": 5531,
+      "sha256": "ee0e67892a4884217a2004df4f573516e1fac3d6bf93237699f6e485efac95d1"
+    },
+    {
+      "path": "apps/portal/tests/w0-maya-chrome.test.mjs",
+      "bytes": 4117,
+      "sha256": "8f01ab9732219f556487ccfb54606ee625eb8519a4dc69bcdd66dfb67b23f77c"
+    },
+    {
+      "path": "apps/portal/tests/w0-maya-shell-ssr.ts",
+      "bytes": 726,
+      "sha256": "b885cbdd312adccce95c7a388219f338f2d76326ebb2f7de43b05a319266d233"
+    },
+    {
+      "path": "apps/portal/tests/w0-maya-shell.test.mjs",
+      "bytes": 7702,
+      "sha256": "dde3d1d8bf4f376765fe0144af0fc51d6b2e9821ae4ae4ea5cd41b5d6d84b6c6"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_MAYA_SHARED_CHROME_20261103.md",
+      "bytes": 9447,
+      "sha256": "589c707da86bcd842a938bdf2f01e696fbd50d46324a3cd0f45b62da9328e801"
+    },
+    {
+      "path": "apps/portal/tests/w0-maya-session-order.test.mjs",
+      "bytes": 1204,
+      "sha256": "771890829e2cdb1e989680b0d3d965f38c8386e8e3130f6da7a56eba5173af88"
+    }
+  ],
+  "ownedPatchSha256": "20aef6023d898a064be07b73af364de3d074496643f1f88baf54bc10d7fc140c",
+  "ownerPacketSha256": "b42addf54c945b1850e171c8471b4bbfec3713a917835435d86cda1a068ef53f",
+  "enclosingDeltaPaths": 16,
+  "excludedEnclosingDocs": [
+    "docs/portal-rebuild/EIGHT_THREAD_RULES.md",
+    "docs/portal-rebuild/w7/ACCEPTANCE_LEDGER.json",
+    "docs/portal-rebuild/w7/PUBLISHED_8A2_SOURCE_REFERENCE.json",
+    "docs/portal-rebuild/w7/REVIEW_QUEUE.json",
+    "docs/portal-rebuild/w7/SESSION_HANDOFF_20261103.md",
+    "docs/portal-rebuild/w7/reviews/W1_PLAN_LOOKUP_E37.md",
+    "docs/portal-rebuild/w7/reviews/W1_PLAN_LOOKUP_E37_RESULT.json"
+  ],
+  "sixPriorPostimagesUnchanged": [
+    "apps/portal/src/app/MayaApplication.tsx",
+    "apps/portal/src/app/MayaClientChrome.tsx",
+    "apps/portal/src/shell/PortalShell.tsx",
+    "apps/portal/tests/w0-maya-chrome.test.mjs",
+    "apps/portal/tests/w0-maya-shell-ssr.ts",
+    "apps/portal/tests/w0-maya-shell.test.mjs"
+  ],
+  "originalW7ControlByteExact": true,
+  "selectedSourceTests": [
+    "apps/portal/tests/rebuild-maya-application-source.test.mjs",
+    "apps/portal/tests/rebuild-maya-application.test.mjs",
+    "apps/portal/tests/rebuild-maya-five-stage-boundary.test.mjs",
+    "apps/portal/tests/rebuild-maya-five-stage-content.test.mjs",
+    "apps/portal/tests/rebuild-maya-five-stage-controller.test.mjs",
+    "apps/portal/tests/rebuild-maya-five-stage-model.test.mjs",
+    "apps/portal/tests/rebuild-maya-five-stage-render.test.mjs",
+    "apps/portal/tests/rebuild-maya-five-stage-reopen.test.mjs",
+    "apps/portal/tests/rebuild-maya-five-stage-seam.test.mjs",
+    "apps/portal/tests/rebuild-maya-interactions-application.test.mjs",
+    "apps/portal/tests/rebuild-maya-interactions-boundary.test.mjs",
+    "apps/portal/tests/rebuild-maya-interactions-controls.test.mjs",
+    "apps/portal/tests/rebuild-maya-interactions-retirement.test.mjs",
+    "apps/portal/tests/rebuild-maya-retirement.test.mjs",
+    "apps/portal/tests/w3-maya-images.test.mjs",
+    "apps/portal/tests/w3-maya-shell-slot.test.mjs",
+    "apps/portal/tests/w3-maya-static-boundary.test.mjs",
+    "apps/portal/tests/w0-maya-chrome.test.mjs",
+    "apps/portal/tests/w0-maya-shell.test.mjs",
+    "apps/portal/tests/w0-maya-session-order.test.mjs",
+    "apps/portal/tests/w0-maya-asset-aliases.test.mjs"
+  ],
+  "scope": "Complete9publicMaya source successor; extra7docs are ownreviewpostimages+W0allocation only. No uncommittedSelfWIP/old5areplay/browser/resources.",
+  "id": "W7-W0-MSC3-ORDER",
+  "verdict": "PASS_SCOPED_PUBLIC_MAYA_SOURCE_MSC3_ORDER_CLOSED",
+  "current": {
+    "testsIncludingNested": 192,
+    "topLevelTAP": 180,
+    "retainedMaya": 162,
+    "newFocusedIncludingOriginal": 17,
+    "asset": 13,
+    "pass": 192,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0"
+  },
+  "configuredFrontend": {
+    "exitCode": 0,
+    "diagnostics": 0,
+    "sourceOverlay": false
+  },
+  "originalRegression": {
+    "byteExact": true,
+    "sha256": "771890829e2cdb1e989680b0d3d965f38c8386e8e3130f6da7a56eba5173af88",
+    "pass": 1,
+    "fail": 0,
+    "order": "chrome-cleared before later-session-observer",
+    "observerSawOpening": false
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-maya-73e/W7-CURRENT192.log",
+      "bytes": 51193,
+      "sha256": "6e19180c439d978841e4c15f701c15a090b14b76f927c61fbcb367a70a2f4f01",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-maya-73e/W7-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "Original5a16pass/controlFAIL preserved and notrerun",
+    "Owned9 versus enclosing16 differentiated; excluded7docs boundtoownreviewpostimages/W0allocation only",
+    "Git-export asset-build enclosingmetadata is not releaseidentity/provenance at73e",
+    "No CSS860adoption/computedfont/geometry/DOMfocus/browser/a11y/J10/genuine/resource or heldscope acceptance"
+  ]
+}

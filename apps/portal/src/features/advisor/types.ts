@@ -83,6 +83,10 @@ export type AdvisorWrite = Exclude<
   Extract<AdvisorCommand, { requestId: string }>,
   { action: "request_status_v1" }
 >;
+export interface AdvisorPublicationNotification {
+  command: Extract<PlanCommand, { action: "publish_plan_v1" }>;
+  receipt: PublishReceipt;
+}
 export type AdvisorPayments = PaymentView | ReturnType<typeof mapPaymentViewV2>;
 /** The coordinator supplies authenticated capabilities, never a display-name policy. SQL rechecks every command. */
 export interface AdvisorPermissions {
@@ -126,6 +130,30 @@ export type ConfirmPaymentCommand = {
   | { bankReceiptVerified: true }
   | { schemaVersion: 2; paymentOptionId: string; receiptVerified: true }
 );
+/** Bounded client of the existing v2 payment operation. No receiving method,
+ * service date, payment verification or publication authority is caller-authored. */
+export type IssueServiceQuoteCommand = {
+  schemaVersion: 2;
+  action: "issue_quote";
+  requestId: string;
+  clientId: string;
+  expectedRevision: number;
+  publicationVersion: 0;
+  serviceCents: 10000;
+  servicePeriod: null;
+  shippingAddressVersion: null;
+  items: [];
+  productSubtotalCents: 0;
+  taxCents: 0;
+  shippingCents: 0;
+  productTotalCents: 0;
+  totalCents: 10000;
+};
+export type AdvisorPaymentCommand = ConfirmPaymentCommand | IssueServiceQuoteCommand;
+export type AdvisorPaymentReceipt = PaymentReceipt & {
+  schemaVersion: 2;
+  paymentOptionId: string | null;
+};
 export interface AdvisorPorts {
   plans: OperationPort<AdvisorCommand, PlanResult>;
   /** Explicit opt-in to existing M56 commands, never a second backend. */
@@ -137,6 +165,9 @@ export interface AdvisorPorts {
     AdvisorGateAuthority
   >;
   paymentRead: OperationPort<AdvisorPaymentRead, AdvisorPayments>;
+  /** W0 composes this optional port with the same authenticated v2 payments
+   * transport. Missing transport remains unavailable. */
+  issueQuote?: OperationPort<IssueServiceQuoteCommand, AdvisorPaymentReceipt>;
   payments?: OperationPort<
     ConfirmPaymentCommand,
     | PaymentReceipt
@@ -169,8 +200,10 @@ export interface AdvisorState {
   context: AdvisorGateContext | null;
   comparison: PlanImportComparison | null;
   comparisonLocal: PlanContent | null;
-  pending: AdvisorWrite | ConfirmPaymentCommand | null;
+  pending: AdvisorWrite | AdvisorPaymentCommand | null;
   receipt: PublishReceipt | null;
+  /** Exact acknowledged original, not a reconstructed publication command. */
+  publicationNotification: AdvisorPublicationNotification | null;
 }
 export type AdvisorController = ReturnType<
   typeof import("./controller.ts").createAdvisorController

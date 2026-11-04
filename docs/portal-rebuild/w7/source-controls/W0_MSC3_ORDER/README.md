@@ -1,0 +1,3 @@
+# MSC3 same-session retirement-order control
+
+Owner: Kanuj. Exact original W7-W0-MSC3-ORDER regression, pins in MANIFEST.json. Inert source evidence outside test discovery. Its unchanged imports require copying into apps/portal/tests in the exact ignored Git projection. Do not execute from the documentation directory. It uses actual public demo/controller/chrome/session callbacks and an observer cache of the returned opaque snapshot; it does not replace hooks, authority, currentness or a successful operation, and launches no browser or resource. Preserve original FAIL and verify any separately frozen successor independently.

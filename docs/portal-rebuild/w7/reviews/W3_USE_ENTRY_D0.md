@@ -1,0 +1,11 @@
+# W3 self-purchase entry and use display: independent source review
+
+Owner: Kanuj. **PASS for the complete eight-file SOURCE/component/model candidate**, base `5e18a8f21d2cadbb3cdbe5f54966884224952080`, head `d0b0d87b7328d323562d353ca8d946213860413a`. No material scoped finding. No browser or genuine behavior is accepted.
+
+Read the full production/test/report delta, existing decision callbacks, use-form capture/currentness and shared UseFacts presentation. Self-purchase stages only session-memory context for the exact primary product/decision/publication in active client mode, then delegates the existing callback. It creates no choice, Start, quote, claim or order. Existing unsent/uncertain form intent takes precedence. Reads and navigation recheck currentness; preview/historical/demo/read-only/retired contexts do not acquire a live entry.
+
+The structural three-field Orders selector requires the exact decoded publication/schema and associated product/decision, one unique aggregated use row and its matching publication/null slot. It returns display data only and preserves current overlay provenance, unknowns and contradictions. It supplies no authenticated read, entitlement or permission from an order/delivery. W0 must provide the actually authorized current read and bound lifecycle.
+
+Independent unchanged final controls with exact96 ClientPlan/UseReport postimages give7pass/2fail of9, exit1. Current combined57 component/model/SSR cases pass57/57, exit0, zero skips/cancellations. Configured frontend types independently exit0/zero diagnostics under Node22.23.0. The JSX observer returns original elements/callbacks unchanged and observes the actual shared Select input; it is not hydrated Radix DOM/focus proof. Earlier author native-button/trigger probes remain non-sensitive method qualifications, not successful reproductions. [Exact source/raw pins](W3_USE_ENTRY_D0_RESULT.json) preserve scope.
+
+W0 actual callback/read composition, combined Orders integration, scheduled browser, real persistence/history/advisor attention/authorization and complete C07/J03/J04 remain open. Maya/packaging/shell dependencies keep their own gates. No Commerce DTO, backend, financial effect, Source/private-return/principal audit or resource is introduced. Product counters and provider holds remain unchanged.

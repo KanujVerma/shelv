@@ -1,0 +1,52 @@
+{
+  "base": "706b323d6b0969a090fd70cae1c9919ea15cc3be",
+  "head": "54646ac03a4fdf00f09cf435b76250f14eaa8217",
+  "verdict": "PASS_SCOPED_SOURCE_WITNESS",
+  "files": [
+    {
+      "path": "apps/portal/tests/rebuild-photo-head-source.test.mjs",
+      "sha256": "e421948bdd7099d0f30eca8028870ef673a2340c40f7f2db3bcc738b84223224"
+    },
+    {
+      "path": "tests/helpers/portal-private-redirect-preimage.ts",
+      "sha256": "44cb738608c9cb2efb0547250b93a3cd06b16009211122183f7a85ebe3fe0306"
+    },
+    {
+      "path": "tests/portal-notification-source-mask.test.mjs",
+      "sha256": "e9756e04b77565da2fc01d85f6ce0e48f1da76efc50d14b62345caec91956936"
+    },
+    {
+      "path": "tests/portal-own-admin-source-baselines.test.ts",
+      "sha256": "f7ee55ac9ca18016c5ad75ad4207d059ec2ecddde7adbec9b9613c6209d08ec2"
+    },
+    {
+      "path": "tests/portal-photo-inventory-source.test.mjs",
+      "sha256": "aec226f971225efb443f6e2984584ed7db77fcc0b0c51fd15e129903ae5968a6"
+    },
+    {
+      "path": "tests/portal-private-redirect-preimage.test.ts",
+      "sha256": "012394a21b26c8bd49678891c99bd6c1e1ff4bf4829a7a76aa2fbbeb142a5321"
+    }
+  ],
+  "independent": {
+    "tests": 41,
+    "pass": 41,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "node": "v22.23.0",
+    "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-witness/W7-WITNESS-546.log",
+    "sha256": "a2cad3f1a33f0ce1283e14078ccd396d321c03b64edd74de31d16a06043d8041"
+  },
+  "qualification": "Author43 is attributed separately; independent explicit5file invocation totals41, not a fabricated43. WholeCI remains unrun.",
+  "reviewerSetup": [
+    "First invocation wrong cwd ran30 baseline checks0fail; not target successor evidence.",
+    "First projected39 run38pass1fail because SQL source fixture omitted; original raw retained, exact migration/test source added before41 pass."
+  ],
+  "preservedOriginalFailures": [
+    "Author original Root25=22pass3fail",
+    "Author original full Portal3312=3311pass1fail",
+    "Author subsequent own-admin identity failure"
+  ]
+}

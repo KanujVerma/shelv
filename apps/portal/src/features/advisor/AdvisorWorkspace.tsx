@@ -38,6 +38,9 @@ import {
 import type { AdvisorController, AdvisorState } from "./types.ts";
 import "./advisor.css";
 import { DependencyReview } from "./DependencyReview.tsx";
+import { FirstServiceQuote } from "./FirstServiceQuote.tsx";
+import { PublicationDelivery } from "./PublicationDelivery.tsx";
+import type { NotificationController } from "../notifications/index.ts";
 
 export type AdvisorRoute =
   | Extract<PortalRoute, { name: "advisor-editor" }>
@@ -51,6 +54,8 @@ export interface AdvisorWorkspaceProps {
   controller: AdvisorController;
   navigation: AdvisorNavigationPort;
   onOpenClient?: (clientId: string) => void;
+  /** Actual W0-owned notification controller; never a caller-created authority. */
+  publicationNotifications?: NotificationController;
 }
 const editorSections: readonly {
   section: EditorSection;
@@ -76,6 +81,7 @@ export function AdvisorWorkspace({
   controller: c,
   navigation,
   onOpenClient,
+  publicationNotifications,
 }: AdvisorWorkspaceProps) {
   const s = useSyncExternalStore(c.subscribe, c.getSnapshot, c.getSnapshot),
     route = navigation.route;
@@ -418,10 +424,8 @@ export function AdvisorWorkspace({
               </div>
             </dl>
           </Panel>
-          <StatusNotice title="notification queued">
-            email and the portal indicator have a durable event. delivery has
-            not been confirmed.
-          </StatusNotice>
+          <PublicationDelivery controller={publicationNotifications}
+            publication={s.publicationNotification} />
         </div>
         <StatusNotice
           tone="success"
@@ -962,7 +966,8 @@ function PublicationChecks({
             publishing is a deliberate action. payment verification alone does
             not publish.
           </p>
-          {first && c.permissions.confirmPayments && c.hasPayments ? (
+          <FirstServiceQuote controller={c} state={s} />
+          {first && c.permissions.confirmPayments && (c.hasPayments || c.hasIssueQuote) ? (
             <Button
               variant="secondary"
               disabled={!context || s.busy || !!s.pending}

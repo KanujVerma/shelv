@@ -1,0 +1,9 @@
+# W0 Q1 private selected-target successor
+
+Owner: Kanuj. **PASS for the exact Q1 source correction.** Head `677604e514565d113738dcf733ae502e0c3ca6f8`, parent `370c30fca7b688af3bd29b36b65e9887b4f35d2e`. Exact two paths; patch8c9c7113 and both source hashes match W0's receipt. [Source/control/raw results](W0_QUOTE_677_RESULT.json).
+
+The trusted selection step stores a frozen copy of the parsed target rather than aliasing the caller-returned DraftView. Its fields are scalar exact-target values; a shallow copy removes the caller alias. The current adapter, original context/cookie/role/READY/options/callback/decoder/final fences and shared selection uses were reviewed. Reversing only the exact private-copy clause reproduces the entire prior ports file hash. New gate comparisons therefore retain their original semantics while caller mutation no longer changes the private selected client.
+
+The byte-exact original W7 regression, SHA7af6f397, now passes1/1. Independent Node22.23.0 current runs pass **47/47 executions**:12 candidate cases+34 existing advisor app integration cases+the original1. The owner candidate includes the same alias behavior, so47 executions are not47 distinct predicates. Configured frontend exits0 with zero diagnostics, no source overlay. All HTTP is synthetic/intercepted through actual ApplicationSession/cookie/factory/ports/mappers; no actual Auth/SQL/browser/resource was acquired.
+
+Q1 is closed at SOURCE only on677. Original bd1 eleven passes and the one independent FAIL remain immutable and unrelabeled. No oldcandidate was rerun. No actual financial authorization, persisted quote, funds, first-publication journey, client-payment mount, unrelated S1/Maya/DTO integration or genuine capability is accepted by this two-file correction. Provider-refused scopes remain held; no W7 product source was changed and no product numerator advances.

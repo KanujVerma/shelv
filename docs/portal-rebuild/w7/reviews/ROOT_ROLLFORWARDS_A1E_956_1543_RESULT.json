@@ -1,0 +1,649 @@
+{
+  "owner": "Kanuj",
+  "publishedBase": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "verdict": "PASS_BOUNDED_SOURCE_ACTUAL_DEPENDENCY_CORRESPONDENCE_ONLY",
+  "records": [
+    {
+      "owner": "Kanuj",
+      "family": "C1",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "head": "a1e89386d296815efad377ab157dc910e3bb5d8d",
+      "reviewedHead": "0b39b3461a234558230bb06c47c2fd391076d562",
+      "sourcePins": [
+        {
+          "path": "apps/portal/tests/w5-orders-commerce-abort.test.mjs",
+          "bytes": 10798,
+          "sha256": "048b788dd7bece4b643ecb32930424102c0688be6e49508a610ca0b0b3f6f946"
+        },
+        {
+          "path": "apps/portal/tests/w5-orders-commerce-endpoint.test.mjs",
+          "bytes": 7054,
+          "sha256": "6aa6eda3d04f7ed78a080cfced030577f15ad9f1483ef35af3ed6673fdfc3af6"
+        },
+        {
+          "path": "supabase/functions/concierge-commerce/README.md",
+          "bytes": 8197,
+          "sha256": "439f9952d6062b733b95fe0ea97ea846f5260d6009bbdf1048aed4e491874861"
+        },
+        {
+          "path": "supabase/functions/concierge-commerce/body.ts",
+          "bytes": 2298,
+          "sha256": "351d2b887604c1445ce68d7e617be5365267f5dc40cfcc83f82041abe712ff0a"
+        },
+        {
+          "path": "supabase/functions/concierge-commerce/handler.ts",
+          "bytes": 3795,
+          "sha256": "279c423c8517ce9a0ee40927c5c1a8221d809ebb17fe76264f5f750542596300"
+        },
+        {
+          "path": "supabase/functions/concierge-commerce/index.ts",
+          "bytes": 619,
+          "sha256": "9e16a7122ed52eafac9ab484044ba3c769377f5f58ec3b62ca4b071550c22268"
+        },
+        {
+          "path": "supabase/functions/concierge-commerce/runtime.ts",
+          "bytes": 3501,
+          "sha256": "69b66bb9cf65920803fb8a6e65a997facf1824f59fa80c58801d1c965636b331"
+        }
+      ],
+      "patchSha256": "84fd9801a9b61efcf4c9e8e24b8ea0cb4d5db8a0d089de304a3ac949cff11844",
+      "ownerPacketSha256": "233fe70da57775a1c11e411b96289624de90028ea6b5c00c89da9be0b7d2b6ee",
+      "actualClosurePins": [
+        {
+          "path": "src/contracts/ConciergePresentation.ts",
+          "sha256": "c48cc446b71eaa416c1b084af17db1eda033566518ebe2e1259822e825b795cd",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergePortalValidation.ts",
+          "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergePresentationValidation.ts",
+          "sha256": "b93b9eab1b55cfb828677067990985716e71c23550662a06782038226cdca33a",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergeService.ts",
+          "sha256": "bb27d2a38f7d39b90181852d1e005c448df992883cf40623ce6b57c9222bab4a",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergePortal.ts",
+          "sha256": "3fbf69f328c73cd10926dd446df4e266393f69e9fc37943888eabc46271c6dcd",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalRebuildValues.ts",
+          "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalRebuildValidation.ts",
+          "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalRebuild.ts",
+          "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalCare.ts",
+          "sha256": "6c66bcad8909eb843c6cf0c9432721e124c42c157b59db0846a58dacd511c469",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-payments/types.ts",
+          "sha256": "05263edb7471942b64e151fef23f5a57287511d6e3b2c18974984c5eeeea4b98",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-payments/contract.ts",
+          "sha256": "843f746ee73c7a3d38832a75bb7cd4c518fb92d93714438434d7bd15964b75f0",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-payments/methods.ts",
+          "sha256": "136aed10e5a1c2e74b9297a41f13a8698106c32b182bea6ea4ae8d0c0ee57f24",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalCommerceValues.ts",
+          "sha256": "ac8c72ca26be1ab1c4f3275b75260cd78e0cdbbebad26524ad7e442a1bb8d27f",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalCommerce.ts",
+          "sha256": "af2d1316434cca41ab78ae4b3bed54cb3a5a348c8e915caaa2f84c0aac9a2c38",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalRebuildMapping.ts",
+          "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalReviewValues.ts",
+          "sha256": "cce2545be9626e1a1abf8fb4e6a0e783c53831af9740110db26f37a397457000",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalReview.ts",
+          "sha256": "78e06f5af74ad3d17cd5d30e03fce0faca505cb7e5f0e32961dbdb942ff33b74",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalCareValues.ts",
+          "sha256": "31c485f83a7ce142231dd90da43ad402215078419230248a103e3544a275a404",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalCareValidation.ts",
+          "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalReviewValidation.ts",
+          "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalCommerceValidation.ts",
+          "sha256": "32e19f6ab8c85d5f52024ccf8aa114a088de270b005a806e3600191e4cfe7459",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalCommerceMapping.ts",
+          "sha256": "79d265ab4963cde159c21ff1138c292c80a5ad8548bb45cd843efbd04b706934",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-commerce/body.ts",
+          "sha256": "351d2b887604c1445ce68d7e617be5365267f5dc40cfcc83f82041abe712ff0a",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-commerce/handler.ts",
+          "sha256": "279c423c8517ce9a0ee40927c5c1a8221d809ebb17fe76264f5f750542596300",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-operations/body.ts",
+          "sha256": "3ff59a377550c6b1c3864f81d614748b304d9cb89fdb8acef0e124e833215e13",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergePortalMapping.ts",
+          "sha256": "ed47f24b910c854d45b1f7420b23eab29f7455c1d0d43fbf8000c5bbf8f5e453",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergePresentationMapping.ts",
+          "sha256": "1fb8a2c2e8b7cff3fcd6c3a9384aa9fe0597ab734560ea50d14421099314cf66",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-checkins/validation.ts",
+          "sha256": "522e48174818f404d883c396ead07554f2194f6689021b5fcd77612e411cfac7",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-checkins/dates.ts",
+          "sha256": "d02e57c631decd37c4fe8100aeee35d3bd11be2c975402cc71bf7cbd41c2b9bb",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-checkins/photos.ts",
+          "sha256": "7b27a1b64592fbd66f18621eba902340624d83763b95e107aabec0ee39311f67",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-checkins/types.ts",
+          "sha256": "79953bde739422c4360df31647efc34ec7ae58ecdea767554aca76173d5f0d5e",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-checkins/projection.ts",
+          "sha256": "802bb9c7e31fb368478b7d8233af0a3a17ed4ac5bbd3429cc7c4c85233682405",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-operations/preview.ts",
+          "sha256": "5a5d05c8666deb1bc2199ae8df0e82f0a9885ea09627fdfb115b305694916e2f",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-operations/commands.ts",
+          "sha256": "0bd59e2c20cd98d1a97be8866c53a73befdaae5e96904dcfe3fd6158d5497f90",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-operations/handler.ts",
+          "sha256": "942626809373d0d6e13fac302b29b6b122d3270adba42731f033daf9b6eebc7a",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-operations/runtime.ts",
+          "sha256": "884ef99812aa150df942ce906e109ee47f9940368099df1aec0b3751b91ae5a0",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-commerce/runtime.ts",
+          "sha256": "69b66bb9cf65920803fb8a6e65a997facf1824f59fa80c58801d1c965636b331",
+          "actualGitExactPriorW7Projection": true
+        }
+      ],
+      "sourceOverrides": false,
+      "locksExactPriorW7Projection": true,
+      "verdict": "PASS_BOUNDED_ACTUAL_ROOT_SOURCE_DEPENDENCY_CORRESPONDENCE",
+      "independentCurrent": {
+        "testExecutions": 34,
+        "pass": 34,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "exitCode": 0,
+        "sourceOverrides": false,
+        "node": "v22.23.0",
+        "scope": "33retained/owner cases plus byte-exact overlapping originalW7one; not34unique predicates."
+      },
+      "logs": [
+        {
+          "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/root-roll-c1/W7-ACTUAL34.log",
+          "bytes": 9417,
+          "sha256": "77daf46a3bc93d1505424b8d2e5deade6c6f682a4b8630c16208ab721b266ac1",
+          "exitCode": 0
+        }
+      ],
+      "limits": [
+        "New ordinary dependency import closure only; prior product/sourcebehavior verdicts preserved",
+        "No actual Auth/RLS/SQL/installedRPC/namespace/financialfacts/legacy/policy/browser/genuine or heldaudit acceptance",
+        "No new OLD execution and no old failure relabel",
+        "No rootnpm/Expo/fullbuild/currentCI repeated independently; ownerchecks separatelyattributed"
+      ]
+    },
+    {
+      "owner": "Kanuj",
+      "family": "FIN",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "head": "95678689e7dc151148898aba18cd483aebd3043f",
+      "reviewedHead": "c8d604809bf7ac340345df591d371b6da31b954b",
+      "sourcePins": [
+        {
+          "path": "apps/portal/tests/w5-orders-financials-handler.test.mjs",
+          "bytes": 4347,
+          "sha256": "7e4ca0c6dd27f7e637a83737f6993d1403fde694a3fa4befc28d34564b2e9d45"
+        },
+        {
+          "path": "apps/portal/tests/w5-orders-financials-helper.mjs",
+          "bytes": 2974,
+          "sha256": "d9c1ece53a610e68985ef2b13648ff5ee7d10ed8d3d3278b318a3e399f6ac03e"
+        },
+        {
+          "path": "apps/portal/tests/w5-orders-financials-runtime.test.mjs",
+          "bytes": 7555,
+          "sha256": "d8d4e8318a8d2d27bb7fbd66f8aa430884feaf6c2009575b3ddc2745a76791cf"
+        },
+        {
+          "path": "supabase/functions/concierge-payments/SERVICE_FINANCIALS.md",
+          "bytes": 5297,
+          "sha256": "5567387cba79e0cfc3368784f4819e64b632e5d526be827046b2a5f622434108"
+        },
+        {
+          "path": "supabase/functions/concierge-payments/service-financials-handler.ts",
+          "bytes": 4623,
+          "sha256": "0320589165a4b0c0f58ce2f58d17ac512d4166ba34daf3b2724f699e9cb9b597"
+        },
+        {
+          "path": "supabase/functions/concierge-payments/service-financials-runtime.ts",
+          "bytes": 5006,
+          "sha256": "2a6841771ba82209cad058acb6a474418b54dc09707e42c96df2e951979d1303"
+        }
+      ],
+      "patchSha256": "d0ebd68e8acf010c78cab4ad2a79fb7020002401e54f9240168773af87c631cf",
+      "ownerPacketSha256": "fc083ad920b9f6fd9343d6956aaa7e6d921799d2c13fea1a9227cdcddbb66a0b",
+      "actualClosurePins": [
+        {
+          "path": "src/contracts/ConciergePresentation.ts",
+          "sha256": "c48cc446b71eaa416c1b084af17db1eda033566518ebe2e1259822e825b795cd",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergePortalValidation.ts",
+          "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergePresentationValidation.ts",
+          "sha256": "b93b9eab1b55cfb828677067990985716e71c23550662a06782038226cdca33a",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergeService.ts",
+          "sha256": "bb27d2a38f7d39b90181852d1e005c448df992883cf40623ce6b57c9222bab4a",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergePortal.ts",
+          "sha256": "3fbf69f328c73cd10926dd446df4e266393f69e9fc37943888eabc46271c6dcd",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalRebuildValues.ts",
+          "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalRebuildValidation.ts",
+          "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalRebuild.ts",
+          "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalServiceFinancials.ts",
+          "sha256": "40e18ad7d702578e26bf1c9876002b120b336c18fe9d5931e8f75ed701ceff16",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalCare.ts",
+          "sha256": "6c66bcad8909eb843c6cf0c9432721e124c42c157b59db0846a58dacd511c469",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalRebuildMapping.ts",
+          "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalReviewValues.ts",
+          "sha256": "cce2545be9626e1a1abf8fb4e6a0e783c53831af9740110db26f37a397457000",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalReview.ts",
+          "sha256": "78e06f5af74ad3d17cd5d30e03fce0faca505cb7e5f0e32961dbdb942ff33b74",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalCareValues.ts",
+          "sha256": "31c485f83a7ce142231dd90da43ad402215078419230248a103e3544a275a404",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalCareValidation.ts",
+          "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalReviewValidation.ts",
+          "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalServiceFinancialsValues.ts",
+          "sha256": "2a7c0cd2a8437e8ad09fa3f397270511de61e926e2654604c645edc0d379a9bb",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalServiceFinancialsValidation.ts",
+          "sha256": "1cb733cf3fd15fe74b9de33f6233e4dc32ae48060da0d8e4162980fe42a4e220",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/PortalServiceFinancialsMapping.ts",
+          "sha256": "3f5fced46c02b52d45a6338be6a088e841553e242d7e3de6ef4ae3b310c1533e",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-client-orders/body.ts",
+          "sha256": "df06fd9432e53ec8c42b6aa0791ba9b87fc3f4e107b1477a67de8c4838e24a4d",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-payments/service-financials-handler.ts",
+          "sha256": "0320589165a4b0c0f58ce2f58d17ac512d4166ba34daf3b2724f699e9cb9b597",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-operations/body.ts",
+          "sha256": "3ff59a377550c6b1c3864f81d614748b304d9cb89fdb8acef0e124e833215e13",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergePortalMapping.ts",
+          "sha256": "ed47f24b910c854d45b1f7420b23eab29f7455c1d0d43fbf8000c5bbf8f5e453",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "src/contracts/ConciergePresentationMapping.ts",
+          "sha256": "1fb8a2c2e8b7cff3fcd6c3a9384aa9fe0597ab734560ea50d14421099314cf66",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-payments/types.ts",
+          "sha256": "05263edb7471942b64e151fef23f5a57287511d6e3b2c18974984c5eeeea4b98",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-payments/contract.ts",
+          "sha256": "843f746ee73c7a3d38832a75bb7cd4c518fb92d93714438434d7bd15964b75f0",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-payments/methods.ts",
+          "sha256": "136aed10e5a1c2e74b9297a41f13a8698106c32b182bea6ea4ae8d0c0ee57f24",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-checkins/validation.ts",
+          "sha256": "522e48174818f404d883c396ead07554f2194f6689021b5fcd77612e411cfac7",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-checkins/dates.ts",
+          "sha256": "d02e57c631decd37c4fe8100aeee35d3bd11be2c975402cc71bf7cbd41c2b9bb",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-checkins/photos.ts",
+          "sha256": "7b27a1b64592fbd66f18621eba902340624d83763b95e107aabec0ee39311f67",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-checkins/types.ts",
+          "sha256": "79953bde739422c4360df31647efc34ec7ae58ecdea767554aca76173d5f0d5e",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-checkins/projection.ts",
+          "sha256": "802bb9c7e31fb368478b7d8233af0a3a17ed4ac5bbd3429cc7c4c85233682405",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-operations/preview.ts",
+          "sha256": "5a5d05c8666deb1bc2199ae8df0e82f0a9885ea09627fdfb115b305694916e2f",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-operations/commands.ts",
+          "sha256": "0bd59e2c20cd98d1a97be8866c53a73befdaae5e96904dcfe3fd6158d5497f90",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-operations/handler.ts",
+          "sha256": "942626809373d0d6e13fac302b29b6b122d3270adba42731f033daf9b6eebc7a",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-operations/runtime.ts",
+          "sha256": "884ef99812aa150df942ce906e109ee47f9940368099df1aec0b3751b91ae5a0",
+          "actualGitExactPriorW7Projection": true
+        },
+        {
+          "path": "supabase/functions/concierge-payments/service-financials-runtime.ts",
+          "sha256": "2a6841771ba82209cad058acb6a474418b54dc09707e42c96df2e951979d1303",
+          "actualGitExactPriorW7Projection": true
+        }
+      ],
+      "sourceOverrides": false,
+      "locksExactPriorW7Projection": true,
+      "verdict": "PASS_BOUNDED_ACTUAL_ROOT_SOURCE_DEPENDENCY_CORRESPONDENCE",
+      "independentCurrent": {
+        "testExecutions": 38,
+        "pass": 38,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "exitCode": 0,
+        "sourceOverrides": false,
+        "node": "v22.23.0"
+      },
+      "logs": [
+        {
+          "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/root-roll-fin/W7-ACTUAL38.log",
+          "bytes": 9996,
+          "sha256": "905a777aeca3dec320843061332befb4d07b66748c0667b816e2118346e65bc6",
+          "exitCode": 0
+        }
+      ],
+      "limits": [
+        "New ordinary dependency import closure only; prior product/sourcebehavior verdicts preserved",
+        "No actual Auth/RLS/SQL/installedRPC/namespace/financialfacts/legacy/policy/browser/genuine or heldaudit acceptance",
+        "No new OLD execution and no old failure relabel",
+        "No rootnpm/Expo/fullbuild/currentCI repeated independently; ownerchecks separatelyattributed"
+      ]
+    },
+    {
+      "owner": "Kanuj",
+      "family": "VIEW",
+      "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+      "head": "154311290595b163481e4f935765f34a451c1810",
+      "reviewedHead": "2cb04d933622123ca927c4f9b38de0af5e589fd0",
+      "sourcePins": [
+        {
+          "path": "apps/portal/src/features/account/financials/AccountServiceFinancials.tsx",
+          "bytes": 3352,
+          "sha256": "ae678bd5ce02ef781e8661368b9eb00aa09eaedca2d528e45938d230caa7f593"
+        },
+        {
+          "path": "apps/portal/src/features/account/financials/index.ts",
+          "bytes": 172,
+          "sha256": "081f13755be500969bb8de1ab51562e82d231b90ce12a7d316679318a7a5ea37"
+        },
+        {
+          "path": "apps/portal/tests/w6-account-financials-presentation.test.mjs",
+          "bytes": 7001,
+          "sha256": "833fbe557ad4eac24082241c4b077ed63d959b7427479518be092e2b4b009fb3"
+        },
+        {
+          "path": "docs/portal-rebuild/eight-threads/W6_FINANCIALS.md",
+          "bytes": 4977,
+          "sha256": "3ea1306090e19ae7bcbc79b087df8d0b9d84ac25686bd59c41ffd7e18ab73b2c"
+        }
+      ],
+      "patchSha256": "5d660b13625fc0681391341d5bb436c576110ca830fcdd98ba2153ab8b164dfe",
+      "actualCanonicalDTO4": [
+        {
+          "path": "src/contracts/PortalServiceFinancials.ts",
+          "sha256": "40e18ad7d702578e26bf1c9876002b120b336c18fe9d5931e8f75ed701ceff16",
+          "actualCanonical": true
+        },
+        {
+          "path": "src/contracts/PortalServiceFinancialsValues.ts",
+          "sha256": "2a7c0cd2a8437e8ad09fa3f397270511de61e926e2654604c645edc0d379a9bb",
+          "actualCanonical": true
+        },
+        {
+          "path": "src/contracts/PortalServiceFinancialsValidation.ts",
+          "sha256": "1cb733cf3fd15fe74b9de33f6233e4dc32ae48060da0d8e4162980fe42a4e220",
+          "actualCanonical": true
+        },
+        {
+          "path": "src/contracts/PortalServiceFinancialsMapping.ts",
+          "sha256": "3f5fced46c02b52d45a6338be6a088e841553e242d7e3de6ef4ae3b310c1533e",
+          "actualCanonical": true
+        }
+      ],
+      "sourceOverrides": false,
+      "verdict": "PASS_BOUNDED_ACTUAL_ROOT_SOURCE_DEPENDENCY_CORRESPONDENCE",
+      "independentCurrent": {
+        "testExecutions": 38,
+        "pass": 38,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "exitCode": 0,
+        "sourceOverrides": false,
+        "node": "v22.23.0"
+      },
+      "logs": [
+        {
+          "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/root-roll-view/W7-ACTUAL38.log",
+          "bytes": 8530,
+          "sha256": "5319025da34ee4bd5d7cfae1fb242722508bf461961a192df195b674184a0b59",
+          "exitCode": 0
+        },
+        {
+          "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/root-roll-view/W7-TYPES-ACTUAL.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "exitCode": 0
+        }
+      ],
+      "configuredFrontend": {
+        "exitCode": 0,
+        "diagnostics": 0,
+        "sourceOverlay": false
+      },
+      "limits": [
+        "New ordinary dependency import closure only; prior product/sourcebehavior verdicts preserved",
+        "No actual Auth/RLS/SQL/installedRPC/namespace/financialfacts/legacy/policy/browser/genuine or heldaudit acceptance",
+        "No new OLD execution and no old failure relabel",
+        "No rootnpm/Expo/fullbuild/currentCI repeated independently; ownerchecks separatelyattributed"
+      ]
+    }
+  ],
+  "ownerFinalReceipts": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-product-commerce-20261103/.local-artifacts/w5-commerce-root/FINAL-ROOT-CHECKS.json",
+      "sha256": "a6123d5fc767a608023ac36c5a1e198779fe0958cf889b68f27f1201ba9dbd04",
+      "classification": "Owner finalreceipt metadata hash verified only; checks not independentlyrerun or broadlogs audited",
+      "rootSuite": {
+        "programsInRootLoop": 241,
+        "tapSummaries": 214,
+        "summedTapCounts": {
+          "tests": 1941,
+          "pass": 1923,
+          "fail": 0,
+          "skipped": 18,
+          "cancelled": 0
+        },
+        "note": "Other direct-assertion programs do not contribute TAP totals; native opt-in skips remain unrun, no actual DB/fixture acceptance"
+      }
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-service-financials-20261103/.local-artifacts/w5-financials-root/FINAL-ROOT-CHECKS.json",
+      "sha256": "641c034d1c3944f5844b967758347c65927d1f641fa30c890cd4f75cc4f45ebd",
+      "classification": "Owner finalreceipt metadata hash verified only; checks not independentlyrerun or broadlogs audited",
+      "rootSuite": {
+        "programsInRootLoop": 241,
+        "tapSummaries": 214,
+        "summedTapCounts": {
+          "tests": 1941,
+          "pass": 1923,
+          "fail": 0,
+          "skipped": 18,
+          "cancelled": 0
+        },
+        "note": "Other direct-assertion programs do not contribute TAP totals; native opt-in skips remain unrun, no actual DB/fixture acceptance"
+      }
+    }
+  ],
+  "withdrawnMetadata": "Earlier243/216 guess and premature artifact notice withdrawn byowner; no W7 evidence uses those counts. Exactowner241programs/214TAP/1923pass18skips remain ownermetadata, not distinct coverage or independentwholeRootacceptance."
+}

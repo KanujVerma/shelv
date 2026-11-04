@@ -1,4 +1,5 @@
 import {useEffect,useRef,useSyncExternalStore} from 'react';
+import type {ReactNode} from 'react';
 import {ClientPlan} from '../../plan/ClientPlan.tsx';
 import {Button,Badge} from '../../../ui/index.ts';
 import {PageHeader,Panel} from '../../../shell/PortalShell.tsx';
@@ -10,7 +11,7 @@ import './maya.css';
 /** Mount within the shared NavigationProvider and OverlayProvider. The parent
  * owns /maya and browser-history composition. No live application is created.
  * The rail is a sibling of the real renderer; it never overlays plan controls. */
-export function MayaWalkthrough({controller}:{controller:MayaDemoController}) {
+export function MayaWalkthrough({controller,renderClient}:{controller:MayaDemoController;renderClient?:(children:ReactNode)=>ReactNode}) {
   const state=useSyncExternalStore(controller.subscribe,controller.getSnapshot,controller.getSnapshot),stage=mayaStage(state.stage);
   const planProps=controller.getPlanProps();
   const action=(run:()=>void)=>()=>{
@@ -25,8 +26,7 @@ export function MayaWalkthrough({controller}:{controller:MayaDemoController}) {
     }
   },[state]);
   const guided=state.guide==='open';
-  return <div className={`maya-five-stage ${guided?'maya-guide-open':''}`} data-maya-stage={stage.id}>
-    <div className="maya-client-canvas">
+  const clientContent=<>
       <div className="maya-sample-status"><Badge>fictional staged sample</Badge><p>all choices, reports and example receipt states stay in this demo. nothing is sent, purchased or paid.</p>
         {!guided?<Button ref={launcher} variant="secondary" onClick={action(controller.reopen)}>{state.guide==='collapsed'?'show guide':'view tour'}</Button>:null}
         <Button variant="ghost" onClick={action(controller.reset)}>reset demo</Button>
@@ -58,6 +58,10 @@ export function MayaWalkthrough({controller}:{controller:MayaDemoController}) {
           <Button variant="ghost" onClick={action(()=>controller.navigate({name:'product-evidence',productId:MAYA_TREATMENT,routine:state.route.routine}))}>azelaic directions & evidence</Button>
         </div>
       </>:null}
+  </>;
+  return <div className={`maya-five-stage ${guided?'maya-guide-open':''}`} data-maya-stage={stage.id}>
+    <div className="maya-client-canvas">
+      {renderClient?renderClient(clientContent):clientContent}
     </div>
     {guided?<aside className="maya-guide-rail" aria-labelledby="maya-guide-heading" onKeyDown={event=>{if(event.key==='Escape'){event.stopPropagation();action(controller.exit)();}}}>
       <Panel><p className="maya-stage-count" role="status">stage {state.stage} of 5</p><h2 ref={heading} id="maya-guide-heading" tabIndex={-1}>{stage.title}</h2><p>{stage.body}</p>

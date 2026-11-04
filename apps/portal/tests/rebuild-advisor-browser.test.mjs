@@ -382,7 +382,15 @@ test("SYNTHETIC/DO NOT FULFILL: A04/A04P/A05/A06 publication is deliberate and p
       .waitFor();
     assert.match(
       await p.locator("[data-advisor-receipt]").innerText(),
-      /queued/,
+      /notification event recorded/,
+    );
+    assert.match(
+      await p.locator("[data-advisor-receipt]").innerText(),
+      /current delivery status is unavailable/,
+    );
+    assert.doesNotMatch(
+      await p.locator("[data-advisor-receipt]").innerText(),
+      /notification queued/,
     );
     assert.doesNotMatch(
       await p.locator("[data-advisor-receipt]").innerText(),

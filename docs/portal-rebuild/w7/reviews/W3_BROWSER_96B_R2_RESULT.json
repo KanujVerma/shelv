@@ -1,0 +1,46 @@
+{
+  "executionId": "eeb42e98-3844-4698-aebb-6d4c67a76271",
+  "packetSha256": "cfa1b1b80fa4bc7162f9a144ac91d592c8750b1e16f4f98ada2c68ad012b69bd",
+  "head": "96bfe2428d32eacdef5f4c9e184af7b5ef39a95e",
+  "argv": [
+    "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-concurrency=1",
+    "tests/w3-next-action-browser.test.mjs"
+  ],
+  "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w3-next-action/apps/portal",
+  "admission": "W0 explicit once R2; received in actual W7ordinal2",
+  "startedAt": "2026-11-03T20:04:26.618905+00:00",
+  "sourcePinsVerified": 521,
+  "dependencyPinsVerified": 7,
+  "compilerInputPinsVerified": 2204,
+  "pid": 64072,
+  "timedOut": false,
+  "exitCode": 0,
+  "joined": true,
+  "finishedAt": "2026-11-03T20:04:32.743040+00:00",
+  "seconds": 6.124,
+  "stdoutSha256": "95d39f8cb02946d5d0c5a43846bb207f17db3b9e149cd8281819bde344b65959",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "verdict": "PASS_BOUNDED_INTERCEPTED_BROWSER",
+  "tests": 3,
+  "passCount": 3,
+  "failCount": 0,
+  "widths": [
+    1440,
+    390,
+    320
+  ],
+  "closure": {
+    "testContexts": "all3 finally(f.close) completed before passing cases",
+    "browser": "after(stop) awaited browser.close; no teardown error",
+    "outerProcess": "joined exit0 no timeout",
+    "physicalBrowserPid": "not separately captured; no global absence claim"
+  },
+  "scopeLimits": [
+    "synthetic session/business replies intercepted; no realAuthSQLStorage",
+    "no screenshot/Figma/full-frame/accessibility signoff",
+    "0newaccepted product capabilities/screens/wholedecisions/journeys"
+  ]
+}

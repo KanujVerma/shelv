@@ -1,3 +1,47 @@
+## W0 shared continuation after8a2
+
+Owner: Kanuj. The W0 receipt records SOURCE-approved corrected Maya73e and self-navigation369, locally integrated reviewed PR227/231/233/219, all4 type graphs0 and unchanged original68 migrations/evidence. Actual public browser/Figma/focus/a11y, Root single notification owner/admission/scoped client/service/resolver/export/contact/billing boundaries and all authenticated/persistence gates remain unfinished. Current complete integrated census is NOT_MEASURED; baseline24mounted/12SOURCEwired and bounded M01/M02 remain attributed to their original evidence.
+
+Published8a2 all3 CI now pass after its separately retained initdb setup timeout/retry. Native plan lookup remains OPEN; photo finding is UNACCEPTED_HELD_PHOTO_SCOPE. Principal44 STOP/no alternate setup, Guidance/private-return/M65/Source holds and no fresh resource grant remain. The next normal source publication requires its own current CI/native review; no main/210/211 merge, release, real client/funds or stopped-fixture reuse.
+
+## Reviewed W0 source ready for normal publication
+
+Owner: Kanuj. Account/service entry7e6 has independent SOURCE52/52 and scoped-client-list adapter5e5 has SOURCE transport12/12; exact reports are in the canonical W7 ledger through44905056. All four current configured type graphs exit0. The old list RPC still requires EDIT, so no actual VIEW path is proved. Native plan SQL P2 remains open and no genuine packet or release is admitted. Exact local merges, source/CI attributions, current root1923pass/18retained skips and preserved originals remain in the W0 record below. The next normal integration push, not a force push, publishes this bounded development continuation.
+
+## New plan SQL content-validation finding at published8893
+
+Owner: Kanuj. Umbrella PR211 native review is completed on8893 with a new unresolved P2, discussion4460794439: unparenthesized JSON product-array extractions may bypass the direct-RPC dangling-reference validation loop. Existing original migration bytes remain unchanged. W1 is tracing the exact current helper/predecessor and preparing a narrow forward-source/direct-RPC negative-test proposal; no migration allocation/execution or new genuine packet is inferred. Published8893 has all3 CI successful but its native review is not clean. This finding remains open during bounded development integration and will be independently reviewed; prior P1/S1/Q1 corrections do not close it.
+
+## Current local W0 continuation, 3 November 2026
+
+Owner: Kanuj. [Exact current W0 receipt](eight-threads/W0.md) records local reviewed source merges222/221/223/224/225/215, source-only S1/Q1 closure, current Account/service entry and scoped-client-list adapters pending their new independent gates. Origin remains8893 until normal publication; no force push or main merge. Latest DTO controls85/85 and Account covering75/75 pass; four configured type graphs and isolated application build pass. This is not whole-current-head CI/browser/genuine acceptance.
+
+[Canonical W7 ledger](w7/ACCEPTANCE_LEDGER.json) now includes exact owned checkpoints throughd475. Current complete integrated census is NOT_MEASURED;24mounted/12SOURCEwired remain frozen-baseline attribution, zero full accepted screens/journeys, bounded M01/M02 preserved. Principal44 provider refusal STOP, missing eligible genuine packet, retained SQL/Source/policy/legacy/Commerce gates and original failures remain unchanged. No stopped fixture or real client/funds operation occurred.
+
+## New W7-W5-S1 hold after batch publication
+
+Owner: Kanuj. New independent source/closed-HTTP controls found a P2 in the integrated4a9 first-service payment consumer: exact retry returns an immutable historical submitted receipt while the last canonical view already shows confirmed or rejected; the consumer then claims awaiting verification and can hide the rejection form. Independent2 controls0/2 fail. Original22/22 and hosted clean checks remain historical narrow evidence, not current approval of this new path. Source4a9 disposition is HOLD_NEW_FINDING until W5's minimal frozen complete9-file successor plus the2 regressions and W7 re-review. Do not erase newer pending custody, create a replacement request or auto-verify. Batch9ab normal push was issued before this finding arrived; it is a draft development integration, no genuine feature or counter was accepted and no main/release/client action occurred. No force/reset/unmerge; append the reviewed owner correction.
+
+## W0 reviewed source integration batch, 3 November 2026
+
+Owner: Kanuj. Exact [W0 receipt and remaining queue](eight-threads/W0.md) records serial source merges of PR213/214/216/218 after W7 review and re-read exact-head all3 CI/native clean gates, plus independently reviewed shared request35f and public image aliases9ba. Latest focused55/55 (quote9 plus prior46), four configured types0, assets13/13 and package0 pass. Earlier c075 all3 hosted CI and full-head native review are independently confirmed; newer batch needs its own CI/review after normal publication. No new accepted capability/frame/journey follows.
+
+[Canonical W7 acceptance ledger](w7/ACCEPTANCE_LEDGER.json) owns exact26/48/10 rows:24 mounted,12 full SOURCE wiring,0 full browser/accepted screens,1 SOURCE decision(D06),0 complete journeys,2 bounded accepted capabilities(M01/M02). Its baseline reconciliation and bounded newer proofs stay distinct. Original failures/resources/dirty worktrees remain preserved. Principal44 provider refusal remains unaccepted with no retry/resume/reroute or setup eligibility. No SQL/native/browser grant is active.
+
+D13 places first-service billing in prepublication Account/service, independent of service-read availability; product Orders/M02 stays unchanged. Shared service request fixes missing imports only, deliberately no namespace grant. W6's additional ordinary recovery-test namespace fixture gap is retained for an explicit test-only successor. Actual adapters/routes/gateway/SQL/connected behavior, Maya shell/HTTP/visuals and all original remaining scope are unfinished. No main merge, release, production, client/funds action or stopped-fixture reuse.
+
+## W0 reviewed continuation, 3 November 2026
+
+Owner: Kanuj. Full W0 remains active. Published baseline8c5c6b2d72e75f620487f1b2b110655b03551b17 permits W1-W7 branching; [current W0 record](eight-threads/W0.md) owns exact source/review/test/PR queue and [exclusive rules](EIGHT_THREAD_RULES.md) own allocations. W0 verified Sol/xhigh/default/Node22.23, no subagents. All original dirty worktrees/evidence and accepted M01/M02 remain preserved.
+
+P1 source706b and exact witness successor276/546 have independent W7 scoped PASS, with all original failures retained. Current focused43/43 and workerd40/40 pass. Root npm1867pass/0fail/18native-optin skips, four configured types0, Portal combined/application and Expo web builds0. ORIGINAL complete Portal3311/3312 remains FAILED at old full-source identity; no exact-new-head full Portal/CI PASS is claimed. W1 DTO PR212 exactefd has W7/21 controls, native full-head clean review and all3 hosted checks SUCCESS; selected5-file mergeef067 is local pending normal publication. No service producer/SQL or feature acceptance follows.
+
+W7 owns canonical acceptance evidence and serialized browser/genuine custody. The exact W3 R2 synthetic3width packet passed3/3/returned; original missing-transitive setup attempt failed beforeChrome and stays separate. No full frame/Figma/a11y/genuine inference. NEW principal44 gate is UNACCEPTED_PROVIDER_REFUSAL at verified W7timeline370; user prohibits resuming/retrying/rephrasing/rerouting/substituting models/nested review. No new principal finding/pass or setup eligibility comes from partials. Original f49FAIL, DTOefdPASS and older Guidance/M65/photo/A07 holds stay separate.
+
+Acceptance counts remain2 bounded capabilities,24/26 mounted,12/26 full SOURCE wiring,0/26 fully accepted screens,1/48 whole SOURCE decision(D06),0/10 complete accepted journeys. Shared cancellation/payment/quote/A07/notification/demo/contact adapters and reviewed feature integration remain unfinished in the W0 queue. No main merge/deployment/real-client/funds/retailer/release or protected-fixture reuse.
+
+Earlier snapshots below are historical.
+
 ## W0 ownership freeze, 3 November 2026
 
 Owner: Kanuj. [Eight-thread rules](EIGHT_THREAD_RULES.md) now define W0-W7 exclusive ownership and frozen interfaces. W0 owns migration allocation/order and Root integration; W1 authors shared DTOs and only explicitly allocated migrations. Former coordinator final receipt relinquishes ownership; live T3 status is cancelled/no active run and only W0 is active at preflight. Runtime is verified codex/gpt-6.1-sol/xhigh/default; Node22.23.0. No subagents.

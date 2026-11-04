@@ -1,0 +1,13 @@
+# Ordinary Root source/dependency correspondences
+
+Owner: Kanuj. **PASS for these bounded source/dependency rollforwards only.** All use published base `8a2be1cab5980f5aa92698268568ed5345bd84e8`. [Exact postimages, closure and raw observations](ROOT_ROLLFORWARDS_A1E_956_1543_RESULT.json).
+
+- C1 `a1e89386d296815efad377ab157dc910e3bb5d8d`: all7 postimages/delta equal reviewed0b39. Each of37 actual Git closure files independently equals W7's prior reviewed dependency projection, with unchanged locks. Direct canonical execution without SOURCE_ROOT overrides passes33 owner/retained cases plus the byte-exact overlapping original1,34/34 executions. This clears the prior missing-DTo import limitation on this branch; the old dependency failure remains historical.
+- Own-financials boundary `95678689e7dc151148898aba18cd483aebd3043f`: all6 postimages/delta equal reviewedc8; all37 actual closure files equal W7's reviewed projection. Direct canonical38/38 passes without source overrides. No producer or actual financial fact is established by successful synthetic HTTP.
+- Financial presentation `154311290595b163481e4f935765f34a451c1810`: all4 postimages/delta equal reviewed2cb/53b; actual canonical DTO4 equal reviewed4031. Domain29+presentation9 pass38/38 and actual unmodified frontend CLI exits0 with zero diagnostics, without the earlier conditional type projection. Numeric fixtures and unavailable guarantee remain format/presentation proof only.
+
+All runs use Node22.23.0 and finite HTTP/model/SSR/build checks, with no skipped/cancelled cases. No new OLD vector was run or failure relabeled. Native C1 timeout and the original abort regression remain part of the bounded current tests, not actual provider/account activity.
+
+W5 final receipt files were readback-hash verified; their nine-command/root-loop/build/Expo results remain owner evidence, not a repeated W7 full-root run. The owner's earlier243/216 guesses and premature artifact notice were withdrawn and are unused. Reported241 programs/214 TAP summaries and1923pass18native skips are not distinct test predicates or genuine evidence. Those native opt-ins remain unrun. No broad root/photo logs or held scopes were audited.
+
+Ordinary import/type closure does not install an RPC, register a namespace, authorize data, verify financial/legacy/currency/policy lineage, create a supported guarantee, prove browser/Figma/a11y/full screens/journeys or grant resources. Actual Root integration/hosted/genuine/production gates and every principal44/Guidance/private-return/M65/photo/final-egress hold remain open as applicable. Published Root reference stays8a2 and the complete census remains NOT_MEASURED; no numerator advances.

@@ -2,6 +2,7 @@ import {createMayaSample} from '../../../../site/advisor/maya-sample.js';
 import {adaptLegacyPlan,projectClientPlan} from '../../../../../../src/contracts/PortalRebuild.ts';
 import type {ClientPlanView} from '../../../../../../src/contracts/PortalRebuild.ts';
 import type {ClientPlanViewV2,PublicReviewSummary,UseProjection} from '../../../../../../src/contracts/PortalCare.ts';
+import {localMayaImage} from './images.ts';
 
 export const MAYA_TREATMENT='ordinary-azelaic-10';
 export const MAYA_MOISTURIZER='cerave-pm';
@@ -10,12 +11,12 @@ export const SAMPLE_ACTOR='ec000000-0000-4000-8000-00000000a002';
 export const sampleId=(n:number)=>`ec000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
 
 /** Lossless directions/identities/evidence from the approved public sample.
- * Images use the renderer's neutral unavailable fallback, so mounting this
- * feature cannot initiate image requests. Links remain optional public sources. */
+ * Available recognition images use the existing packaged same-origin assets.
+ * Unknown images keep the shared neutral fallback; no external image is used. */
 export function createMayaFixture():{base:ClientPlanView;use:UseProjection} {
   const source=createMayaSample().clientView.plan;
   const content=projectClientPlan(adaptLegacyPlan({version:source.version,presentation:source.presentation,recommendations:source.recommendations},2).content);
-  for(const product of content.products)product.imageUrl=null;
+  for(const product of content.products)product.imageUrl=localMayaImage(product.imageUrl);
   const makeup=content.routine.find(s=>s.productId==='maybelline-fit-me');
   const remover=content.routine.find(s=>s.productId==='bioderma-sensibio-h2o');
   if(!makeup||!remover)throw Error('approved public Maya routine unavailable');

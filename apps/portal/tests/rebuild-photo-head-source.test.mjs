@@ -4,6 +4,7 @@ import {readFileSync} from 'node:fs';
 import {portalCiBaselines} from '../../../tests/helpers/portal-ci-baselines.ts';
 import {currentSourceSha256} from '../../../tests/helpers/portal-shared-ci-baselines.ts';
 import {ownAdminSourceBytes,ownAdminSourceCommit} from '../../../tests/helpers/portal-own-admin-source-baselines.ts';
+import {privateRedirectHistoricalPreimage} from '../../../tests/helpers/portal-private-redirect-preimage.ts';
 import {withoutPhotoInventory} from './helpers/photo-inventory-baseline.mjs';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
@@ -99,7 +100,8 @@ test('five historical photo-head AST rows and four reviewed admin-composition id
   // Four admin rows bind complete37's reviewed identity and unchanged normalizers.
   // These are explicit current composition pins, not old clinical equivalence.
   const reference=file==='supabase/functions/concierge-checkins/handler.ts'?'d4a3314ecd81e4c3b544a8919834429e90c05d06':'d4125cca52cb21d0c0a79a5733662f782a0dea76';
-  const current=readFileSync(new URL('../../../'+file,import.meta.url),'utf8');
+  // Compare the complete historical bytes after only the exact706b redirect inverse.
+  const current=privateRedirectHistoricalPreimage(readFileSync(new URL('../../../'+file,import.meta.url),'utf8'),file);
   const combined=file.startsWith('apps/portal/');
   if(combined)assert.equal(createHash('sha256').update(current).digest('hex'),currentSourceSha256(file),file+' reviewed full-source identity');
   const original=(combined?ownAdminSourceBytes(file):portalCiBaselines.readBytes(reference,file)).toString('utf8');

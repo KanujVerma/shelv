@@ -1,0 +1,67 @@
+{
+  "recordedAt": "2026-11-03T19:40:21.205046+00:00",
+  "node": "v22.23.0",
+  "checks": [
+    {
+      "config": "tsconfig.json",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.json",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103",
+      "exitCode": 0,
+      "seconds": 29.99,
+      "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/baseline/tsconfig.json.log",
+      "joined": true
+    },
+    {
+      "config": "tsconfig.tests.json",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/node_modules/typescript/bin/tsc",
+        "--project",
+        "tsconfig.tests.json",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103",
+      "exitCode": 0,
+      "seconds": 25.861,
+      "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/baseline/tsconfig.tests.json.log",
+      "joined": true
+    },
+    {
+      "config": "apps/portal/tsconfig.frontend.json",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/node_modules/typescript/bin/tsc",
+        "--project",
+        "apps/portal/tsconfig.frontend.json",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103",
+      "exitCode": 0,
+      "seconds": 23.825,
+      "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/baseline/apps_portal_tsconfig.frontend.json.log",
+      "joined": true
+    },
+    {
+      "config": "apps/portal/session-integration/runtime/tsconfig.json",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/node_modules/typescript/bin/tsc",
+        "--project",
+        "apps/portal/session-integration/runtime/tsconfig.json",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103",
+      "exitCode": 0,
+      "seconds": 7.511,
+      "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/baseline/apps_portal_session-integration_runtime_tsconfig.json.log",
+      "joined": true
+    }
+  ],
+  "proofLevel": "Configured compiler checks only; no Auth/DB/browser execution"
+}

@@ -1,0 +1,119 @@
+{
+  "base": "9ab1b6d65d1027e0515e1b2fd0c6788a3d5842b9",
+  "head": "2cb04d933622123ca927c4f9b38de0af5e589fd0",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/account/financials/AccountServiceFinancials.tsx",
+      "bytes": 3352,
+      "sha256": "ae678bd5ce02ef781e8661368b9eb00aa09eaedca2d528e45938d230caa7f593"
+    },
+    {
+      "path": "apps/portal/src/features/account/financials/index.ts",
+      "bytes": 172,
+      "sha256": "081f13755be500969bb8de1ab51562e82d231b90ce12a7d316679318a7a5ea37"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-financials-presentation.test.mjs",
+      "bytes": 7001,
+      "sha256": "833fbe557ad4eac24082241c4b077ed63d959b7427479518be092e2b4b009fb3"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W6_FINANCIALS.md",
+      "bytes": 4977,
+      "sha256": "3ea1306090e19ae7bcbc79b087df8d0b9d84ac25686bd59c41ffd7e18ab73b2c"
+    }
+  ],
+  "typeInputProjection": [
+    {
+      "path": "src/contracts/PortalServiceFinancials.ts",
+      "head": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "sha256": "40e18ad7d702578e26bf1c9876002b120b336c18fe9d5931e8f75ed701ceff16"
+    },
+    {
+      "path": "src/contracts/PortalServiceFinancialsValues.ts",
+      "head": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "sha256": "2a7c0cd2a8437e8ad09fa3f397270511de61e926e2654604c645edc0d379a9bb"
+    },
+    {
+      "path": "src/contracts/PortalServiceFinancialsValidation.ts",
+      "head": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "sha256": "1cb733cf3fd15fe74b9de33f6233e4dc32ae48060da0d8e4162980fe42a4e220"
+    },
+    {
+      "path": "src/contracts/PortalServiceFinancialsMapping.ts",
+      "head": "4031d19be20cf170c5e58e45da063d2463d82b39",
+      "sha256": "3f5fced46c02b52d45a6338be6a088e841553e242d7e3de6ef4ae3b310c1533e"
+    }
+  ],
+  "scope": "Pure presentation only; dependency type bytes supplied by read-only compiler host, no canonical source edits",
+  "owner": "Kanuj",
+  "verdict": "PASS_SCOPED_PURE_PRESENTATION_ONLY",
+  "current": {
+    "tests": 9,
+    "pass": 9,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "absenceRed": {
+    "tests": 9,
+    "pass": 0,
+    "fail": 9,
+    "exitCode": 1,
+    "classification": "New feature absent at exact9ab plus unchanged new test; no historical financial defect claimed."
+  },
+  "types": {
+    "physical": {
+      "exitCode": 2,
+      "cause": "Shared DTO absent plus derived row-any diagnostics"
+    },
+    "projected": {
+      "exitCode": 0,
+      "diagnostics": 0,
+      "scope": "Only exact reviewed4031 DTO4 via read-only compiler host; configuration otherwise unchanged."
+    },
+    "setup": {
+      "exitCode": 1,
+      "cause": "W7 initial custom compiler omitted configFilePath, resolving react-dom types from wrong base; separate retained setup log."
+    }
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-financials-2cb-old/W7-RED-ABSENT.log",
+      "bytes": 15327,
+      "sha256": "1e826e0dc422eb20112b44c7defbfba5612b946e3082b5bf3e307095e9a1421a",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-financials-2cb/W7-CURRENT9.log",
+      "bytes": 2337,
+      "sha256": "51c6d1ed94eb5d1501c8be6c06d79836ba0aba3ca0185ea27c51ffe3315b9014",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-financials-2cb/W7-TYPES-PHYSICAL.log",
+      "bytes": 496,
+      "sha256": "24641fdd06ef53c2581cb90ca93c1f0603f70e8a301873b336ce556bf3640e11",
+      "exitCode": 2
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-financials-2cb/W7-TYPES-PROJECTED-SETUP.log",
+      "bytes": 175,
+      "sha256": "21c9a3a9601cb0a2e9b10b05106d8f7eb4f3241ce4feed7123cf2cb8a44c04bd",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-financials-2cb/W7-TYPES-PROJECTED.log",
+      "bytes": 14,
+      "sha256": "b8f8172bd413e27800118fa45613f8ac23c3e74688c2d6b1fc7d05f3b42ba69d",
+      "exitCode": 0
+    }
+  ],
+  "currencySemanticPin": "Canonical V1 USD only by verified payment quote/validator/quote_json protocol; no currency field silently added and no legacy receipt/currency inference.",
+  "limits": [
+    "Actual parent/session-bound read and stale callback retirement unimplemented by this pure slice",
+    "No canonical/legacy payment provenance, supported guarantee, policy, financial read or actual currentness proof",
+    "No browser/Auth/SQL/resources/Figma/a11y/full Account/J08 acceptance"
+  ]
+}

@@ -3,6 +3,7 @@ import ts from '../apps/portal/node_modules/typescript/lib/typescript.js';
 import {createHash} from 'node:crypto';
 import {sharedCiBaselines,currentSourceSha256} from './helpers/portal-shared-ci-baselines.ts';
 import {ownAdminSourceBytes} from './helpers/portal-own-admin-source-baselines.ts';
+import {privateRedirectHistoricalPreimage} from './helpers/portal-private-redirect-preimage.ts';
 const base='07c4ae82def408bf9526f48a48eb987e4506f83e';
 const files=['apps/portal/site/auth/client-cookie-session.js','apps/portal/site/auth/advisor-cookie-session.js',...['client-policy','client-upstream','gateway'].map(n=>`apps/portal/session-integration/runtime/server/${n}.ts`),...['commands','types','projection','handler','index'].map(n=>`supabase/functions/concierge-checkins/${n}.ts`),'supabase/functions/concierge-operations/runtime.ts'];
 const names=new Set(['photoInventoryJson','parseClientPhotoInventoryPage','mapClientPhotoInventoryResponse','mapCheckinPhotoInventory','CheckinPhotoInventoryPage','CheckinPhotoInventory']);
@@ -31,7 +32,7 @@ function normalized(text,file,mask){
  const value=ts.createPrinter({removeComments:true}).printFile(transformed.transformed[0]);transformed.dispose();return {value,removed};
 }
 for(const file of files)test(`${ownAdminSourceBytes(file)?'reviewed admin source identity and inventory erasure shape':'inventory-only erasure preserves all other executable nodes'}: ${file}`,()=>{
- const old=sharedCiBaselines.readBytes(base,file).toString('utf8'),current=readFileSync(file,'utf8'),result=normalized(current,file,true);
+ const old=sharedCiBaselines.readBytes(base,file).toString('utf8'),current=privateRedirectHistoricalPreimage(readFileSync(file,'utf8'),file),result=normalized(current,file,true);
  assert.ok(result.removed.length>0);
  const admin=ownAdminSourceBytes(file);
  if(admin){
@@ -59,8 +60,8 @@ test('preservation witnesses detect a real original denial or head-budget mutati
 });
 test('reviewed generic source and historical NT1 provider/Vault stay pinned',()=>{
  for(const file of ['apps/portal/src/transport/session.ts','apps/portal/session-integration/runtime/server/upstream.ts','apps/portal/session-integration/runtime/server/session-vault.ts']){
-  const current=readFileSync(file);
+  const current=privateRedirectHistoricalPreimage(readFileSync(file,'utf8'),file);
   if(file==='apps/portal/src/transport/session.ts')assert.equal(createHash('sha256').update(current).digest('hex'),currentSourceSha256(file));
-  else assert.equal(current.toString('utf8'),sharedCiBaselines.readBytes(base,file).toString('utf8'));
+  else assert.equal(current,sharedCiBaselines.readBytes(base,file).toString('utf8'));
  }
 });

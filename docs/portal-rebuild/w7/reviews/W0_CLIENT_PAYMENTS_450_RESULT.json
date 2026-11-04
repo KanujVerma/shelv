@@ -1,0 +1,44 @@
+{
+  "base": "8893b0a4bd0fc9e3c485a99d63dcbee7faeb11e0",
+  "head": "450a803d67aaf3fa2293b606698e51cda7fd790c",
+  "verdict": "PASS_SCOPED_SOURCE_FIXED_CLIENT_PAYMENTS",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/app/client-payments-request.ts",
+      "sha256": "2b8d9910e6bce226eed4a5e8fd2d27ff3685f5aeef72c6531a0d8c69aee03826"
+    },
+    {
+      "path": "apps/portal/tests/w0-client-payments-request.test.mjs",
+      "sha256": "0d37f6d904c76d3d184d8504610467beb56a2fe7e05de1b5674b2b6ac00fc15f"
+    }
+  ],
+  "independent": {
+    "tests": 15,
+    "pass": 15,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0"
+  },
+  "configuredFrontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-client-payments-450/W7-CURRENT15.log",
+      "sha256": "917b63be4487fa6d2a4efee578b5274f4f016bed227a41ebedca8b2feb6b7c77"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-client-payments-450/W7-TYPES.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-client-payments-450/SETUP-missing-root-fixture-14pass1fail.log",
+      "sha256": "fb9bbe2754738f0a6cc376f85bef7dcaa0784cc1b1b8020f565804a79a26be64"
+    }
+  ],
+  "setupQualification": "First W7 projection omitted root historical fixture imports:14pass1setupfail; exact450 rootfixtures supplied before15pass. No test/assertion/product changed.",
+  "scope": "Actual registered cookie/session/transport with closed syntheticHTTP only; no AuthSQL/funds/browser/genuine"
+}

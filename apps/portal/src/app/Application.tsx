@@ -41,7 +41,10 @@ import { OwnerPolicyApplication } from "./OwnerPolicyApplication.tsx";
 import { MayaApplication } from "./MayaApplication.tsx";
 import {createNotificationsEntry, NotificationsEntryView} from "./notifications-entry.tsx";
 import {createAccountEntry, AccountEntryView} from "./account-entry.tsx";
+import {createServicePaymentEntry} from './service-payment-entry.ts';
+import {ServicePaymentEntryView} from './ServicePaymentEntry.tsx';
 import {createClientOrdersEntry, ClientOrdersEntryView} from "./client-orders-entry.tsx";
+import {createSelfPurchaseNavigation} from './self-purchase-navigation.ts';
 import "./application.css";
 
 export function UnavailableModule({
@@ -67,7 +70,12 @@ function ClientNotificationsApplication({runtime}:{runtime:ApplicationSession}) 
 function AccountApplication({runtime}:{runtime:ApplicationSession}) {
   const {navigator}=usePortalNavigation();
   const entry=useMemo(()=>createAccountEntry(runtime,navigator),[runtime,navigator]);
-  return <AccountEntryView entry={entry}/>;
+  return <><AccountEntryView entry={entry}/><RouteLink route={{name:'account-service'}}>service &amp; payments</RouteLink></>;
+}
+function AccountServiceApplication({runtime}:{runtime:ApplicationSession}) {
+  const {navigator}=usePortalNavigation();
+  const entry=useMemo(()=>createServicePaymentEntry(runtime,navigator),[runtime,navigator]);
+  return <><ServicePaymentEntryView entry={entry}/><RouteLink route={{name:'account'}}>back to account</RouteLink></>;
 }
 function ClientOrdersApplication({runtime}:{runtime:ApplicationSession}) {
   const {navigator}=usePortalNavigation();
@@ -347,6 +355,10 @@ function ConnectedRoute({
         <ApplicationShell audience="client" onSignOut={signOut} readOnly>
           <AccountApplication runtime={runtime}/>
         </ApplicationShell>
+      ) : audience === "client" && route.name === "account-service" ? (
+        <ApplicationShell audience="client" onSignOut={signOut} readOnly>
+          <AccountServiceApplication runtime={runtime}/>
+        </ApplicationShell>
       ) : audience === "client" && (route.name === "orders" || route.name === "order") ? (
         <ApplicationShell audience="client" onSignOut={signOut} readOnly>
           <ClientOrdersApplication runtime={runtime}/>
@@ -401,6 +413,7 @@ function ClientApplication({
     <ClientHistoryContent connection={connection} boundary={boundary} route={route} win={win} onSignOut={onSignOut}/>
   ) : (
     <ClientContent
+      runtime={runtime}
       controller={connection.controller}
       ports={connection.ports}
       boundary={boundary}
@@ -414,12 +427,14 @@ function ClientApplication({
   );
 }
 export function ClientContent({
+  runtime,
   controller,
   ports,
   boundary,
   route,
   onSignOut,
 }: {
+  runtime?: ApplicationSession;
   controller: ReturnType<typeof createClientPlanController>;
   ports: ReturnType<typeof createClientPorts>;
   boundary: PlanSessionBoundary;
@@ -496,6 +511,7 @@ export function ClientContent({
           view={state.view}
           ports={ports}
           onViewChange={controller.acceptFrom(state.view)}
+          onSelfPurchase={runtime&&ports.care?createSelfPurchaseNavigation(runtime,controller,boundary,navigator):undefined}
           onSendUpdate={ports.review ? () => {if(boundary.isCurrent())navigator.navigate({name:'history-new'});} : undefined}
           onHistory={ports.review ? () => {if(boundary.isCurrent())navigator.navigate({name:'history'});} : undefined}
         />
