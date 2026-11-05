@@ -41,11 +41,14 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
  let activeWrite:{token:number;requestId:string;view:number;attempted:boolean;signal:AbortController;prior:ProductQuoteAdminPending|null}|null=null;
  const empty=newProductQuotePreparation();
  let state:ProductQuoteAdminState=copy({phase:request?'initial':'unavailable',index:null,loaded:null,latest:null,preparation:empty,inputs:productQuoteInputs(empty),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,pending:null,receipt:null,error:null,available:!!request,choosingProduct:null,choosingAddress:false});
- function alive():boolean {
-  if(disposed||!boundary||runtime.getSnapshot().boundary!==boundary||cookie.audience!=='advisor'||cookie.identity?.role!=='advisor')return false;
+ // Creation binding is also used by terminal cache cleanup, never as a
+ // replacement for alive/READY or the actual finance-bound operation port.
+ function ownerCurrent():boolean {
+  if(!boundary||runtime.getSnapshot().boundary!==boundary||cookie.audience!=='advisor'||cookie.identity?.role!=='advisor')return false;
   const valid=boundary.isCurrent();
-  return !disposed&&valid&&runtime.getSnapshot().boundary===boundary&&cookie.identity?.ownerId===owner&&cookie.generation===generation&&cookie._epoch===epoch&&cookie._view?.generation===serverGeneration&&cookie._view?.csrf===csrf;
+  return valid&&runtime.getSnapshot().boundary===boundary&&cookie.identity?.ownerId===owner&&cookie.generation===generation&&cookie._epoch===epoch&&cookie._view?.generation===serverGeneration&&cookie._view?.csrf===csrf;
  }
+ function alive():boolean {if(disposed)return false;const valid=ownerCurrent();return !disposed&&valid;}
  function ready():boolean{return alive()&&cookie.status==='ready'&&cookie._view?.capabilities.view===true;}
  function notify(){const published=state;for(const fn of [...listeners]){if(state!==published)break;if(listeners.has(fn)){try{fn();}catch{/* Observers can only retire their own local work. */}}}}
  function emit(patch:Partial<ProductQuoteAdminState>){if(!alive())return;state=frozen({...state,...copy(patch)});notify();}
@@ -190,7 +193,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
  }
  function mutate(preparation:ProductQuotePreparation){return mutateInputs(preparation,rebaseProductQuoteInputs(state.preparation,state.inputs,preparation));}
  return {
-  clientId, getSnapshot:()=>state,subscribe(fn:()=>void){listeners.add(fn);return()=>listeners.delete(fn);},refresh:()=>refresh(),openDraft,checkStatus,
+  clientId, getSnapshot:()=>state,subscribe(fn:()=>void){if(disposed)return()=>{};listeners.add(fn);return()=>listeners.delete(fn);},refresh:()=>refresh(),openDraft,checkStatus,
   newDraft(){if(!ready()||!request||!state.index||state.pending||state.dirty||activeWrite)return false;selectedId=null;editBase=null;review=null;pickerToken++;const preparation=newProductQuotePreparation();emit({phase:'ready',loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,error:null,choosingProduct:null,choosingAddress:false});return true;},
   setHeaderInputs(value:ProductQuoteHeaderInputs){try{const header=readProductQuoteHeaderInputs(value);return mutateInputs(state.preparation,{...state.inputs,header});}catch{return false;}},
   setLineInputs(id:string,value:ProductQuoteLineInputs){try{if(!state.preparation.lines.some(line=>line.lineId===id))return false;const line=readProductQuoteLineInputs(value);return mutateInputs(state.preparation,{...state.inputs,lines:{...state.inputs.lines,[id]:line}});}catch{return false;}},
@@ -277,9 +280,24 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    emit({loaded,latest:null,preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty:!same(parsed.preparation,canonical)||productQuoteHasInputErrors(parsed.errors),reviewed:false,phase:'ready',error:null,choosingProduct:null,choosingAddress:false});rememberEdits();return ready();
   },
   dispose(){
-   if(disposed)return;if(alive()&&state.dirty)rememberEdits();
-   const op=activeWrite;readToken++;writeToken++;pickerToken++;readAbort?.abort();op?.signal.abort();activeWrite=null;review=null;stopBoundary();stopRuntime();disposed=true;
-   const preparation=newProductQuotePreparation();state=copy({...state,phase:'ended',index:null,loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,pending:null,receipt:null,choosingProduct:null,choosingAddress:false});notify();listeners.clear();
+   if(disposed)return;
+   const edits=state.dirty?copy({version:1,selectedId,preparation:state.preparation,inputs:state.inputs,base:state.loaded?fingerprint(state.loaded):editBase}):null;
+   disposed=true;
+   const abort=readAbort,op=activeWrite,observers=[...listeners];
+   readToken++;writeToken++;pickerToken++;readAbort=null;activeWrite=null;review=null;selectedId=null;editBase=null;listeners.clear();
+   const preparation=newProductQuotePreparation();state=copy({...state,phase:'ended',index:null,loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,pending:null,receipt:null,choosingProduct:null,choosingAddress:false});
+   // State is already terminal before any callback-capable cleanup. Preserve
+   // only this still-bound owner's unsent cache, without erasing a replacement
+   // written during a relevance callback. Dispatched original custody stays.
+   if(edits&&boundary)try{
+    const prior=boundary.memory.get(editKey),before=prior===undefined?null:commerceCanonicalJson(prior);
+    if(ownerCurrent()){
+     const current=boundary.memory.get(editKey),after=current===undefined?null:commerceCanonicalJson(current);
+     if(before===after)boundary.memory.set(editKey,edits);
+    }
+   }catch{/* Cache failure cannot reopen a terminal controller. */}
+   for(const cleanup of [stopBoundary,stopRuntime,()=>abort?.abort(),()=>op?.signal.abort()])try{cleanup();}catch{/* Attempt every remaining cleanup. */}
+   for(const fn of observers)try{fn();}catch{/* One observer cannot hide termination from others. */}
   },
  };
 }
