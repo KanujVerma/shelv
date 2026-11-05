@@ -51,7 +51,22 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
  function alive():boolean {if(disposed)return false;const valid=ownerCurrent();return !disposed&&valid;}
  function ready():boolean{return alive()&&cookie.status==='ready'&&cookie._view?.capabilities.view===true;}
  function notify(){const published=state;for(const fn of [...listeners]){if(state!==published)break;if(listeners.has(fn)){try{fn();}catch{/* Observers can only retire their own local work. */}}}}
- function emit(patch:Partial<ProductQuoteAdminState>){if(!alive())return;state=frozen({...state,...copy(patch)});notify();}
+ type ReadClaim={read:number;view:typeof cookie._view;signal?:AbortSignal};
+ // Internal deny-only publication fence, never operation authority.
+ function emit(patch:Partial<ProductQuoteAdminState>,fence?:{read?:number;write?:number;view?:typeof cookie._view;signal?:AbortSignal;ready?:true}){
+  if(!alive()||fence?.read!==undefined&&readToken!==fence.read||fence?.write!==undefined&&writeToken!==fence.write||fence?.view!==undefined&&cookie._view!==fence.view||fence?.signal?.aborted||fence?.ready&&(cookie.status!=='ready'||cookie._view?.capabilities.view!==true))return;
+  const published=frozen({...state,...copy(patch)});state=published;notify();return state===published;
+ }
+ function readCurrent(claim:ReadClaim){return ready()&&readToken===claim.read&&cookie._view===claim.view&&!claim.signal?.aborted;}
+ function claimRead():ReadClaim|null {
+  if(disposed)return null;
+  if(!request){if(alive())emit({phase:'unavailable'});return null;}
+  const read=++readToken,view=cookie._view,allowed=ready();
+  if(disposed||readToken!==read||cookie._view!==view)return null;
+  if(!allowed){if(alive())emit({phase:'offline'},{read,view});return null;}
+  return {read,view};
+ }
+ function emitRead(patch:Partial<ProductQuoteAdminState>,claim:ReadClaim){if(readCurrent(claim))return emit(patch,{...claim,ready:true});return false;}
  function forgetIntent(pending:ProductQuoteAdminPending):boolean {
   if(!alive())return false;const saved=boundary!.memory.get<{requestId?:string;wire?:string;hash?:string}>(intentKey);
   if(!alive())return false;
@@ -98,20 +113,30 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
   emit({phase:safe===409?'conflict':cookie.status==='offline'?'offline':safe===503?'unavailable':'error',reviewed:false,error:safe});
  }
  function writeReady(){return ready()&&!!request&&!activeWrite&&!state.pending&&state.phase==='ready'&&state.index!==null;}
- function cancelUnsent(){if(activeWrite&&!activeWrite.attempted){const prior=activeWrite.prior;writeToken++;activeWrite.signal.abort();activeWrite=null;emit({pending:prior?(storedPending()??{...prior,phase:'uncertain'}):null});}}
- async function refresh(ack?:{command:AdminQuoteWrite;receipt:CommerceReceipt}){
-  if(!ready()||!request){if(alive())emit({phase:request?'offline':'unavailable'});return;}
-  cancelUnsent();readAbort?.abort();readAbort=new AbortController();const token=++readToken,view=cookie._view;
-  const current=()=>ready()&&readToken===token&&cookie._view===view&&!readAbort?.signal.aborted;
-  review=null;pickerToken++;emit({phase:'loading',reviewed:false,error:null,choosingProduct:null,choosingAddress:false});
+ function cancelUnsent(){
+  const op=activeWrite;if(!op||op.attempted)return;
+  const prior=op.prior,write=++writeToken;activeWrite=null;op.signal.abort();
+  if(!alive()||writeToken!==write)return;
+  const pending=prior?(storedPending()??{...prior,phase:'uncertain' as const}):null;
+  emit({pending},{write});
+ }
+ async function refresh(ack?:{command:AdminQuoteWrite;receipt:CommerceReceipt},claimed?:ReadClaim){
+  const claim=claimed??claimRead();if(!claim||!request||!readCurrent(claim))return;
+  const previous=readAbort;readAbort=null;
+  try{cancelUnsent();}finally{previous?.abort();}
+  if(!readCurrent(claim))return;
+  const abort=new AbortController(),operation={...claim,signal:abort.signal},token=claim.read;readAbort=abort;
+  const current=()=>readCurrent(operation);
+  review=null;pickerToken++;emitRead({phase:'loading',reviewed:false,error:null,choosingProduct:null,choosingAddress:false},operation);
+  if(!current())return;
   try{
-   const index=await readAdminQuoteIndex(request,{actorId:owner!,clientId},{signal:readAbort.signal,isApplicable:current});if(!current())return;
-   if(!selectedId){emit({index,loaded:null,latest:null,phase:index.entries.length?'ready':'empty'});return;}
+   const index=await readAdminQuoteIndex(request,{actorId:owner!,clientId},{signal:abort.signal,isApplicable:current});if(!current())return;
+   if(!selectedId){emitRead({index,loaded:null,latest:null,phase:index.entries.length?'ready':'empty'},operation);return;}
    const entity=index.entries.find(entry=>entry.entity.kind==='quote_draft'&&entry.entity.id===selectedId)?.entity;
-   if(!entity){emit({index,phase:'conflict',latest:null,error:409});return;}
-   const loaded=await loadAdminQuoteDraft(request,{actorId:owner!,clientId},{entity,snapshot:index.snapshot},{signal:readAbort.signal,isApplicable:current});if(!current())return;
+   if(!entity){emitRead({index,phase:'conflict',latest:null,error:409},operation);return;}
+   const loaded=await loadAdminQuoteDraft(request,{actorId:owner!,clientId},{entity,snapshot:index.snapshot},{signal:abort.signal,isApplicable:current});if(!current())return;
    const receipt=ack?.receipt??state.receipt;
-   if(receipt&&((receipt.entity.kind==='quote_draft'&&receipt.entity.id===selectedId&&loaded.draft.target.revision<receipt.entity.revision)||(receipt.action==='issue_product_quote_v1'&&loaded.snapshot.paymentRevision<receipt.revision))){emit({index,latest:loaded,phase:'conflict',error:409});return;}
+   if(receipt&&((receipt.entity.kind==='quote_draft'&&receipt.entity.id===selectedId&&loaded.draft.target.revision<receipt.entity.revision)||(receipt.action==='issue_product_quote_v1'&&loaded.snapshot.paymentRevision<receipt.revision))){emitRead({index,latest:loaded,phase:'conflict',error:409},operation);return;}
    const canonical=preparationFromRead(loaded),base=state.loaded?fingerprint(state.loaded):editBase;
    let ownSave=false;
    if(ack&&ack.receipt.entity.kind==='quote_draft'&&ack.receipt.entity.id===selectedId&&loaded.draft.target.revision===ack.receipt.entity.revision){
@@ -119,16 +144,18 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
     if(saved.action==='save_product_quote_draft_v1')ownSave=same(loaded.draft.body,saved.body);
     else if(saved.action==='save_product_quote_line_v1'){const body=saved.body;ownSave=loaded.lines.some(line=>line.lineId===body.lineId&&same(line,body));}
    }
-   if(state.dirty&&base!==null&&fingerprint(loaded)!==base&&!ownSave){emit({index,latest:loaded,phase:'conflict',error:409});return;}
+   if(state.dirty&&base!==null&&fingerprint(loaded)!==base&&!ownSave){emitRead({index,latest:loaded,phase:'conflict',error:409},operation);return;}
    const preparation=state.dirty?state.preparation:canonical,parsed=parseProductQuoteInputs(preparation,state.dirty?state.inputs:productQuoteInputs(canonical)),dirty=!same(parsed.preparation,canonical)||productQuoteHasInputErrors(parsed.errors);
-   editBase=fingerprint(loaded);emit({index,loaded,latest:null,preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty,phase:'ready',reviewed:false,error:null});
+   editBase=fingerprint(loaded);const published=emitRead({index,loaded,latest:null,preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty,phase:'ready',reviewed:false,error:null},operation);
+   if(!published||!current())return;
    if(dirty)rememberEdits();else boundary!.memory.delete(editKey);
   }catch(error){if(alive()&&token===readToken)fail(error);}
  }
  async function openDraft(id:string){
-  if(!ready()||!state.index||state.dirty||activeWrite)return;
+  if(!request||!state.index||state.dirty||activeWrite)return;
   const found=state.index.entries.some(entry=>entry.entity.kind==='quote_draft'&&entry.entity.id===id);if(!found)return;
-  selectedId=id;editBase=null;const preparation=newProductQuotePreparation();emit({loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false});await refresh();
+  const claim=claimRead();if(!claim||!readCurrent(claim))return;
+  selectedId=id;editBase=null;const preparation=newProductQuotePreparation();emitRead({loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false},claim);await refresh(undefined,claim);
  }
  async function send(command:AdminQuoteWrite,retry=false){
   if(!ready()||!request||activeWrite||(!retry&&state.pending))return;
