@@ -43,7 +43,8 @@ test('replacement constructed during old final edit can persist its later B edit
  assert.equal(recovered.preparation.body.note,'current replacement B edit','current replacement must not permanently lose cache custody after old final-edit cleanup');
 });
 
-// The original W7 program above remains byte-identical. These are new owner
+// The W7 program above changes only its helper URL binding; canonical inert
+// bytes remain preserved separately. These are current owner
 // extensions on the R6 successor, never execution of stopped c56.
 async function handoffFixture(t){
  const f=await fixture(t),idB='e0000000-0000-4000-8000-000000000009';

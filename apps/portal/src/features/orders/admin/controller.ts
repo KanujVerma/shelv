@@ -200,7 +200,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
  }
  async function send(command:AdminQuoteWrite,retry=false){
   if(!ready()||!request||activeWrite||(!retry&&state.pending))return;
-  const token=++writeToken,viewToken=readToken,view=cookie._view,preparation=state.preparation,loaded=state.loaded;
+  const token=++writeToken,viewToken=readToken,view=cookie._view,preparation=state.preparation,loaded=state.loaded,inputs=state.inputs,selected=selectedId,edit=editGeneration;
   const op={token,requestId:command.requestId,view:viewToken,attempted:false,signal:new AbortController(),prior:retry?state.pending:null};activeWrite=op;
   const owns=()=>alive()&&activeWrite===op&&writeToken===token;
   const applicable=()=>owns()&&ready()&&cookie._view===view&&!op.signal.signal.aborted&&(op.attempted||readToken===viewToken&&state.preparation===preparation&&state.loaded===loaded);
@@ -221,10 +221,19 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    const raw=await request.execute(command,{signal:op.signal.signal,isApplicable:applicable});if(!owns())return;
    if(!ready()||cookie._view!==view||op.signal.signal.aborted)throw Error('unavailable');
    const receipt=mapCommerceResult(command,raw,{actorId:owner!,requestHash:hash}) as CommerceReceipt;
+   if(!owns()||!ready())return;
+   const sameForm=(selection:string|null)=>selectedId===selection&&editGeneration===edit&&same(state.preparation,preparation)&&same(state.inputs,inputs)&&same(state.loaded?.draft.target??null,loaded?.draft.target??null);
+   const follow=sameForm(selected);let acknowledgedSelection=selected;
+   if(follow&&command.action==='save_product_quote_draft_v1'&&command.draftId===null&&selectedId===null){
+    acknowledgedSelection=receipt.entity.id;selectedId=acknowledgedSelection;
+    // Preserve the acknowledged entity before clearing original custody or
+    // exposing its receipt to an observer that may dispose/replace this owner.
+    if(!rememberEdits())throw Error('unavailable');
+   }
    if(!owns()||!ready()||!forgetIntent(pending))return;
-   emit({pending:null,receipt,reviewed:false,error:null});
-   activeWrite=null;
-   if(readToken===viewToken){if(command.action==='save_product_quote_draft_v1'&&selectedId===null)selectedId=receipt.entity.id;await refresh({command,receipt});}
+   const reconciliationRead=readToken;activeWrite=null;
+   const published=emit({pending:null,receipt,reviewed:false,error:null,...(follow?{phase:'loading' as const}:{})},{write:token,view});
+   if(published&&follow&&ready()&&writeToken===token&&cookie._view===view&&readToken===reconciliationRead&&sameForm(acknowledgedSelection))await refresh({command,receipt});
   }catch(error){
    if(!owns())return;
    const status=(error as {status?:number}|null)?.status;

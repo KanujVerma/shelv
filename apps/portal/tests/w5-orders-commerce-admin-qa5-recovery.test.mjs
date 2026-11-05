@@ -41,7 +41,8 @@ test('replacement after the first final-edit handoff can edit chosen B or expose
  assert.ok(accepted||!sourceFieldsEnabled||after.error!==null,'a current loaded B must not look editable while silently rejecting its valid edit');
 });
 
-// Unchanged3805-byte W7 original above. Current R7 extensions below exercise
+// Canonical3805-byte W7 original is preserved inert; above only its helper URL
+// binding changes. Current owner extensions below exercise
 // explicit recovery; SSR is static source behavior, never hydration/typing.
 const {deferred}=await import('./w5-orders-commerce-admin-helper.mjs');
 async function firstHandoff(t){
