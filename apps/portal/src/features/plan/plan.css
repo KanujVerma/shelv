@@ -102,3 +102,10 @@
 .plan-use-match button[aria-pressed="false"]:nth-child(-n+2) {background:var(--color-quiet);border-color:var(--color-quiet);justify-content:flex-start;}
 
 @media(min-width:701px){.plan-product-sheet .plan-photo-identity{width:88px;height:112px;}.plan-product-sheet .plan-product-identity{gap:var(--space-20);}}
+
+@media(min-width:701px){
+  .plan-view .plan-evidence-context {padding:var(--space-24);gap:var(--space-16);}
+  .plan-product-evidence .plan-evidence-main {gap:var(--space-20);}
+  .plan-caution.plan-stack {gap:var(--space-12);}
+  .plan-caution.plan-stack h2 {font-size:var(--text-body);line-height:var(--line-body);}
+}
