@@ -52,3 +52,23 @@ test('older recovered-creation controller disposal preserves newer replacement d
  t.diagnostic(JSON.stringify({cookie:f.runtime.cookie.status,oldPhase:old.getSnapshot().phase,currentDraft:next.getSnapshot().loaded.draft.target.draftId,currentNote:next.getSnapshot().preparation.body.note,recoveredNote:recovered.preparation.body.note,recoveredDirty:recovered.dirty,writeCalls:f.calls.filter(x=>x.command.action==='save_product_quote_draft_v1').length}));
  assert.equal(recovered.preparation.body.note,'newer draft B unsent edits','terminal older controller must not overwrite a newer current unsent cache');
 });
+
+const {body:canonicalBody}=await import(pathToFileURL(resolve('apps/portal/tests/w5-orders-commerce-admin-helper.mjs')));
+async function newerCache(t){
+ const f=await fixture(t),idB='e0000000-0000-4000-8000-000000000009';
+ f.setReply(async command=>{
+  if(command.action==='read_advisor_commerce_v1')return Response.json({...index(),entries:[...index().entries,{...index().entries[0],entity:{kind:'quote_draft',id:idB,revision:7},label:'synthetic B'}]});
+  if(command.action==='read_advisor_commerce_detail_v1')return Response.json(command.entity.id===idB?{...detail(),detail:{...draft(),target:{...draft().target,draftId:idB}}}:detail());
+  if(command.action==='read_advisor_quote_components_v1')return Response.json({...components(command),quote:command.quote});
+  throw Error('unexpected finite read-only command');
+ });
+ const old=createProductQuoteAdminController({runtime:f.runtime,clientId:client,request:f.request});t.after(()=>old.dispose());await old.refresh();await old.openDraft(draftId);old.setBody({...canonicalBody(),note:'older A raw'});
+ const next=createProductQuoteAdminController({runtime:f.runtime,clientId:client,request:f.request});t.after(()=>next.dispose());await next.refresh();assert.equal(next.discardLocal(),true);await next.openDraft(idB);assert.equal(next.setBody({...canonicalBody(),note:'new B raw'}),true);
+ return {...f,old,next,idB,remount(){const c=createProductQuoteAdminController({runtime:f.runtime,clientId:client,request:f.request});t.after(()=>c.dispose());return c;}};
+}
+test('an older background refresh cannot replace an already newer draft cache',async t=>{
+ const f=await newerCache(t);await f.old.refresh();assert.equal(f.old.getSnapshot().preparation.body.note,'older A raw');const restored=f.remount();assert.equal(restored.getSnapshot().preparation.body.note,'new B raw');assert.equal(f.calls.some(x=>!x.command.action.startsWith('read_')),false);
+});
+test('older local discard cannot clear newer cache and the new owner continues editing',async t=>{
+ const f=await newerCache(t);assert.equal(f.old.discardLocal(),true);assert.equal(f.remount().getSnapshot().preparation.body.note,'new B raw');assert.equal(f.next.setBody({...canonicalBody(),note:'newest B raw'}),true);f.old.dispose();assert.equal(f.remount().getSnapshot().preparation.body.note,'newest B raw');assert.equal(f.calls.some(x=>!x.command.action.startsWith('read_')),false);
+});
