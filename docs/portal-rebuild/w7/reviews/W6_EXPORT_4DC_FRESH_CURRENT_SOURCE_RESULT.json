@@ -1,0 +1,613 @@
+{
+  "owner": "Kanuj",
+  "head": "4dc6f7230c80d20cfa2c6178bdbcb9e2448a2990",
+  "base": "99bf372d32619035a6bc279c37adf86db804033d",
+  "verdict": "PASS_FRESH_CURRENT_COMPLETE16_CONSUMER_SOURCE_ONLY_DEPENDENCY_HELD",
+  "generation": "FRESH_EXPORT_CURRENT_20261104_NOT_HISTORICAL_RECOVERY",
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/OWNER-PACKET.json",
+    "bytes": 24298,
+    "sha256": "f20cf5d59eae91aacdedcd564b067c1400122adf9327e2cc22a9525e06b71f0d"
+  },
+  "owned16": [
+    {
+      "path": "apps/portal/src/features/account/final-export/client.ts",
+      "bytes": 1225,
+      "sha256": "207aa0880a558f00b3cf1977e74eb5db7b0951205d00e92803d5769a5bd4cc0d",
+      "gitBlob": "5be97a0b7a5f7723c389c5ae136c15049e8536fe"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/controller.ts",
+      "bytes": 7791,
+      "sha256": "67276313570160cc9d71066a9fb7f433b9e59d75c80b2b826c1316fb32afe8fb",
+      "gitBlob": "b618844b32e96cfcbf60422a20190900f982a5ea"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/index.ts",
+      "bytes": 260,
+      "sha256": "81683d8975e3a50cc160726cbfabffdd24b6a1d1017eccc1a667855a92222664",
+      "gitBlob": "d63ba5bfbb158f05d93bef5eb5aadf70559087e8"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/transfer.ts",
+      "bytes": 2373,
+      "sha256": "462e46a62505395c4eef2a7d84bc97acb50a615aaa1e4f206d85a24144599267",
+      "gitBlob": "a39b8844934331b63367b8914d0e217bafe4884a"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/view.tsx",
+      "bytes": 2154,
+      "sha256": "c34ef68fa3ddac7d88b25d7095eff9f010cb51753ca1bdcc00401564586dc0bc",
+      "gitBlob": "fbdbeec16505c3d8cb15da62c8a1b5b03303a106"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/writer.ts",
+      "bytes": 5257,
+      "sha256": "ff7b10e7c00208ebaf397c471130d62a94839d0860c017849dfe9fa2c5b5f290",
+      "gitBlob": "54b8d0d5c9c2894fe030faec0d718bb9e3073cf2"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-abort-reentry.test.mjs",
+      "bytes": 2203,
+      "sha256": "a2c840e04889df87802b5c5aaa48047ff8434d500c8b956d49febeb1093575d6",
+      "gitBlob": "b6f58b796d34f63e9f37a9e41d25d9207c514517"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-fixture.mjs",
+      "bytes": 4558,
+      "sha256": "d88c63d5c9116cb9c1d9a331b2ab539945f5ef5f6aa71c36dd88b5d4143adf8b",
+      "gitBlob": "f9d4d40409b87813087ffcdbf1057acb74e22473"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-inputs/client-cookie-session.c075.js.txt",
+      "bytes": 6833,
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0",
+      "gitBlob": "07e720e9e2ddbe982af483d8def7b99a3d45b903"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-inputs/final-export-request.e949.ts.txt",
+      "bytes": 3347,
+      "sha256": "28f8335679f700d4bee3c2550276f7cf2f2a9f85a95c7b3c60852a58eb6ffb98",
+      "gitBlob": "47f63e6940daa7d84de97351a162d593e37bdb70"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-recovery-cases.mjs",
+      "bytes": 8179,
+      "sha256": "fd86ef4b3ddd18b9e2000ad20b5e5bc2ea2b1f5c1a2c4cb128d7cfb0e73972a0",
+      "gitBlob": "ee861debd4b97c001e0937e8b121d60e093df783"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-recovery.test.mjs",
+      "bytes": 220,
+      "sha256": "dc22e6e15c2ef0abe0889d718aaf15ced1fd61f7934f5298a89d1d9b868609b1",
+      "gitBlob": "ce4790e67e4db53f32e6c8ce71ef531e15025ed2"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-retained-consumer-cases.mjs",
+      "bytes": 19484,
+      "sha256": "29b786db05231d882bfcddf27ec670fd57cf84930279eb37d6c671fde8106e8a",
+      "gitBlob": "c8876b20f6996d4b4314e80f057374f8a75155dc"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-retained-consumer.test.mjs",
+      "bytes": 226,
+      "sha256": "b4daf7913c2c29ee3c199cc562316f15200454c4a7674f9d69b583fccc8c8f39",
+      "gitBlob": "085088a56d96992376c1d4e829d3c5cc5702cf1b"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-retained-ssr.test.mjs",
+      "bytes": 5231,
+      "sha256": "ae1a9bd6e47b0b544e5b0c197cf6e003020543fc34668a91932f754c1b74cf4d",
+      "gitBlob": "905db6959b358be5cbc0b7814ac07d337e26bdc7"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W6_EXPORT.md",
+      "bytes": 9770,
+      "sha256": "b2d6d9c8bad7640480ca035bdaa6c5be86beee27b2fae211a828ef3ad0217767",
+      "gitBlob": "4ea9a269552fe11753bdda42dc76fc958c76cca2"
+    }
+  ],
+  "fullPatchSha256": "382ebc7345b7f83b477fe71cb8d43ef0240588fd331ec6840c248ef2330510be",
+  "all16Verified": true,
+  "all54SelectedSourceRowsVerified": true,
+  "all2154PhysicalCompileInputsVerified": true,
+  "compileKinds": {
+    "current-selected-source-copy": 33,
+    "locked-npm-current": 2121
+  },
+  "canonicalDTO4SerializerBothLocksEqualPublished03": [
+    {
+      "path": "package-lock.json",
+      "candidateSha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2",
+      "publishedSha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2",
+      "equal": true
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "candidateSha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203",
+      "publishedSha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203",
+      "equal": true
+    },
+    {
+      "path": "src/contracts/PortalFinalExport.ts",
+      "candidateSha256": "86ceac2755c5554fe2ae132c0201579c33cd36ebcbdff8b15f216fd9d1049551",
+      "publishedSha256": "86ceac2755c5554fe2ae132c0201579c33cd36ebcbdff8b15f216fd9d1049551",
+      "equal": true
+    },
+    {
+      "path": "src/contracts/PortalFinalExportValues.ts",
+      "candidateSha256": "e0da7f27f8df40e991690c27f8d67fc80ad899cd478786a02f531fc12f546bac",
+      "publishedSha256": "e0da7f27f8df40e991690c27f8d67fc80ad899cd478786a02f531fc12f546bac",
+      "equal": true
+    },
+    {
+      "path": "src/contracts/PortalFinalExportValidation.ts",
+      "candidateSha256": "df1f3e100150a51224d4a16727b82cc4aad9021f6cb451a1241166418506327a",
+      "publishedSha256": "df1f3e100150a51224d4a16727b82cc4aad9021f6cb451a1241166418506327a",
+      "equal": true
+    },
+    {
+      "path": "src/contracts/PortalFinalExportMapping.ts",
+      "candidateSha256": "bcc9f8f0d77accda21b713e69ec7a068055246b3df342f9b4ef2454a694f232b",
+      "publishedSha256": "bcc9f8f0d77accda21b713e69ec7a068055246b3df342f9b4ef2454a694f232b",
+      "equal": true
+    },
+    {
+      "path": "supabase/functions/concierge-final-export/serializer.ts",
+      "candidateSha256": "05a271fb0e89ff70d516243739cb2383d7512615583f224a065711d13d425cf0",
+      "publishedSha256": "05a271fb0e89ff70d516243739cb2383d7512615583f224a065711d13d425cf0",
+      "equal": true
+    }
+  ],
+  "ownerProofs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/OWNER-CHECKOUT.json",
+      "bytes": 2611,
+      "sha256": "92b647db98952ab816635a76befb385cc5baf8eb6027a7984c9707e3a6f4fff6"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/OWNER-FRESH-current54.log",
+      "bytes": 13265,
+      "sha256": "e6d5c4be716396ab84672f57adbc94501753ad584256737251465e422399a1b2"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/OWNER-FRESH-current54.json",
+      "bytes": 1065,
+      "sha256": "a545dafc0bf3017f05e05398ccda889ecd16132c31639a8ae5b8195d3185f2da"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/OWNER-FRESH-frontend-UNINTEGRATED.log",
+      "bytes": 179,
+      "sha256": "d9da2affc8135c98fa31ca1450db13cd4bb61ae0e8283b64f0b3a22e5620d809"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/OWNER-FRESH-frontend-UNINTEGRATED.json",
+      "bytes": 890,
+      "sha256": "d7ea8713530d688543b3d4d3445cd4f16eafe65fcdc9b342a477a942fc5d9138"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/OWNER-FRESH-OWNED16.patch",
+      "bytes": 84594,
+      "sha256": "382ebc7345b7f83b477fe71cb8d43ef0240588fd331ec6840c248ef2330510be"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/OWNER-FRESH-SELECTED-SOURCE-a789839fa0dc70048cde3732b888e03d92ccf8720c9ef558250b91f47777adfd.json",
+      "bytes": 11919,
+      "sha256": "a789839fa0dc70048cde3732b888e03d92ccf8720c9ef558250b91f47777adfd"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/OWNER-FRESH-BROWSER-TARGET-INPUTS.json",
+      "bytes": 893203,
+      "sha256": "ff6e95d3838b86a79f1c9acd0e8237d3245e7e6de959101e59775bd2d735b004"
+    }
+  ],
+  "currentSelectedRows": [
+    {
+      "path": "apps/portal/tests/w6-account-export-retained-consumer-cases.mjs",
+      "selected": "current own source",
+      "bytes": 19484,
+      "sha256": "29b786db05231d882bfcddf27ec670fd57cf84930279eb37d6c671fde8106e8a"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/controller.ts",
+      "selected": "current own source",
+      "bytes": 7791,
+      "sha256": "67276313570160cc9d71066a9fb7f433b9e59d75c80b2b826c1316fb32afe8fb"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/transfer.ts",
+      "selected": "current own source",
+      "bytes": 2373,
+      "sha256": "462e46a62505395c4eef2a7d84bc97acb50a615aaa1e4f206d85a24144599267"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/writer.ts",
+      "selected": "current own source",
+      "bytes": 5257,
+      "sha256": "ff7b10e7c00208ebaf397c471130d62a94839d0860c017849dfe9fa2c5b5f290"
+    },
+    {
+      "path": "supabase/functions/concierge-final-export/serializer.ts",
+      "selected": "current own source",
+      "bytes": 21710,
+      "sha256": "05a271fb0e89ff70d516243739cb2383d7512615583f224a065711d13d425cf0"
+    },
+    {
+      "path": "src/contracts/PortalFinalExportMapping.ts",
+      "selected": "current own source",
+      "bytes": 10363,
+      "sha256": "bcc9f8f0d77accda21b713e69ec7a068055246b3df342f9b4ef2454a694f232b"
+    },
+    {
+      "path": "src/contracts/PortalRebuild.ts",
+      "selected": "current own source",
+      "bytes": 14140,
+      "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "selected": "current own source",
+      "bytes": 12947,
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+    },
+    {
+      "path": "src/contracts/ConciergePresentation.ts",
+      "selected": "current own source",
+      "bytes": 3497,
+      "sha256": "c48cc446b71eaa416c1b084af17db1eda033566518ebe2e1259822e825b795cd"
+    },
+    {
+      "path": "src/contracts/ConciergePortal.ts",
+      "selected": "current own source",
+      "bytes": 5083,
+      "sha256": "3fbf69f328c73cd10926dd446df4e266393f69e9fc37943888eabc46271c6dcd"
+    },
+    {
+      "path": "src/contracts/ConciergeService.ts",
+      "selected": "current own source",
+      "bytes": 13695,
+      "sha256": "bb27d2a38f7d39b90181852d1e005c448df992883cf40623ce6b57c9222bab4a"
+    },
+    {
+      "path": "src/contracts/ConciergePresentationValidation.ts",
+      "selected": "current own source",
+      "bytes": 11722,
+      "sha256": "b93b9eab1b55cfb828677067990985716e71c23550662a06782038226cdca33a"
+    },
+    {
+      "path": "src/contracts/ConciergePortalValidation.ts",
+      "selected": "current own source",
+      "bytes": 2880,
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValues.ts",
+      "selected": "current own source",
+      "bytes": 1206,
+      "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+    },
+    {
+      "path": "src/contracts/PortalFinalExportValues.ts",
+      "selected": "current own source",
+      "bytes": 1509,
+      "sha256": "e0da7f27f8df40e991690c27f8d67fc80ad899cd478786a02f531fc12f546bac"
+    },
+    {
+      "path": "src/contracts/PortalCareValues.ts",
+      "selected": "current own source",
+      "bytes": 1079,
+      "sha256": "31c485f83a7ce142231dd90da43ad402215078419230248a103e3544a275a404"
+    },
+    {
+      "path": "src/contracts/PortalReviewValues.ts",
+      "selected": "current own source",
+      "bytes": 3909,
+      "sha256": "cce2545be9626e1a1abf8fb4e6a0e783c53831af9740110db26f37a397457000"
+    },
+    {
+      "path": "src/contracts/PortalReview.ts",
+      "selected": "current own source",
+      "bytes": 13982,
+      "sha256": "78e06f5af74ad3d17cd5d30e03fce0faca505cb7e5f0e32961dbdb942ff33b74"
+    },
+    {
+      "path": "src/contracts/PortalCare.ts",
+      "selected": "current own source",
+      "bytes": 6874,
+      "sha256": "6c66bcad8909eb843c6cf0c9432721e124c42c157b59db0846a58dacd511c469"
+    },
+    {
+      "path": "src/contracts/PortalFinalExportValidation.ts",
+      "selected": "current own source",
+      "bytes": 14440,
+      "sha256": "df1f3e100150a51224d4a16727b82cc4aad9021f6cb451a1241166418506327a"
+    },
+    {
+      "path": "src/contracts/PortalFinalExport.ts",
+      "selected": "current own source",
+      "bytes": 3498,
+      "sha256": "86ceac2755c5554fe2ae132c0201579c33cd36ebcbdff8b15f216fd9d1049551"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/client.ts",
+      "selected": "current own source",
+      "bytes": 1225,
+      "sha256": "207aa0880a558f00b3cf1977e74eb5db7b0951205d00e92803d5769a5bd4cc0d"
+    },
+    {
+      "path": "apps/portal/src/transport/session.ts",
+      "selected": "current own source",
+      "bytes": 10195,
+      "sha256": "deeb60865d92b6a7a0feb1b86a78193a7c093005d0e225cf5554ece1539e46bd"
+    },
+    {
+      "path": "apps/portal/src/transport/error.ts",
+      "selected": "current own source",
+      "bytes": 725,
+      "sha256": "1b6be9efd7f110c93d909ee8a2f44e805b3de51f32bfd0715ddf7cdf4c93f034"
+    },
+    {
+      "path": "apps/portal/src/navigation/routes.ts",
+      "selected": "current own source",
+      "bytes": 1496,
+      "sha256": "48a7efc90a6b94d062010e30f0a31b99393c85cf14a804b2426d7b62d921032d"
+    },
+    {
+      "path": "apps/portal/site/auth/portal-routes.js",
+      "selected": "current own source",
+      "bytes": 8889,
+      "sha256": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5"
+    },
+    {
+      "path": "apps/portal/site/auth/advisor-cookie-session.js",
+      "selected": "current own source",
+      "bytes": 30545,
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5"
+    },
+    {
+      "path": "apps/portal/site/auth/review-actions.js",
+      "selected": "current own source",
+      "bytes": 1904,
+      "sha256": "6796d30a8b774559cac3924c9db7c5528358dd672b1cdabe060a428be881fcb4"
+    },
+    {
+      "path": "apps/portal/site/auth/care-actions.js",
+      "selected": "current own source",
+      "bytes": 592,
+      "sha256": "af283c549a1a1b7a404f44c387921991b7cdcd2f52a4a63af3c2e194e737e17b"
+    },
+    {
+      "path": "apps/portal/site/auth/plan-actions.js",
+      "selected": "current own source",
+      "bytes": 805,
+      "sha256": "64d758036946cd2fa2109a23e46066e0fa350347e45f84f1861d6d47190a9a23"
+    },
+    {
+      "path": "apps/portal/site/auth/navigation-return.js",
+      "selected": "current own source",
+      "bytes": 3284,
+      "sha256": "aab8c07b9c589e1af4bf521716407e35bb97574664196b3e58b2d1a9485e4dcd"
+    },
+    {
+      "path": "apps/portal/site/auth/commerce-actions.js",
+      "selected": "current own source",
+      "bytes": 1980,
+      "sha256": "795d37a5ec1f6451c4318234f2636e834849c0c1ce0c8fc19815b3c6655d7acc"
+    },
+    {
+      "path": "apps/portal/src/app/session.ts",
+      "selected": "current own source",
+      "bytes": 6061,
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    {
+      "path": "apps/portal/src/features/plan/types.ts",
+      "selected": "current own source",
+      "bytes": 3661,
+      "sha256": "fbe01cfc12787827752a40dd264fd59c92d18f7b2da4798fee99c4cde824d095"
+    },
+    {
+      "path": "apps/portal/src/features/plan/useModel.ts",
+      "selected": "current own source",
+      "bytes": 3908,
+      "sha256": "40316bd1f8b4386d4dbf8ef70afc5f84a5ad73f0a673325ea80e7a0eaf390fc9"
+    },
+    {
+      "path": "apps/portal/src/features/plan/guidancePort.ts",
+      "selected": "current own source",
+      "bytes": 2771,
+      "sha256": "b662e06cb8c7afdbdfd86a0f112c8fb75e76d0dab08eddf6a9b67a3e7cf85cce"
+    },
+    {
+      "path": "src/contracts/PortalReviewMapping.ts",
+      "selected": "current own source",
+      "bytes": 35451,
+      "sha256": "de2c64e152156656e7748c5f12c49dd115c6bc88411e488d29bde2e0d122a550"
+    },
+    {
+      "path": "src/contracts/PortalReviewValidation.ts",
+      "selected": "current own source",
+      "bytes": 15488,
+      "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+    },
+    {
+      "path": "src/contracts/PortalCareValidation.ts",
+      "selected": "current own source",
+      "bytes": 7336,
+      "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d"
+    },
+    {
+      "path": "src/contracts/PortalCareMapping.ts",
+      "selected": "current own source",
+      "bytes": 9657,
+      "sha256": "675135cbb83611bbc8c63ed2c5a7e33b17a1f16cc1b48839358c1f45672d1439"
+    },
+    {
+      "path": "src/contracts/PortalRebuildMapping.ts",
+      "selected": "current own source",
+      "bytes": 10694,
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+    },
+    {
+      "path": "apps/portal/src/app/retained.ts",
+      "selected": "current own source",
+      "bytes": 1671,
+      "sha256": "146d949005acc395692eca804824c2a67fb0c9bfbe5b0be98d4018f8a265b5a1"
+    },
+    {
+      "path": "apps/portal/site/auth/client-cookie-session.js",
+      "selected": "EXPLICIT HISTORICAL UNREGISTERED constructor at c075",
+      "bytes": 6833,
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0"
+    },
+    {
+      "path": "apps/portal/src/app/final-export-request.ts",
+      "selected": "W0-owned pending exact e949 request; not product admission",
+      "bytes": 3347,
+      "sha256": "28f8335679f700d4bee3c2550276f7cf2f2a9f85a95c7b3c60852a58eb6ffb98"
+    },
+    {
+      "path": "tests/portal-final-export-fixtures.ts",
+      "selected": "current own source",
+      "bytes": 10532,
+      "sha256": "f586d40394fc88829083253d46faef8f150a524f9f033fd724bd9f8936dd31d4"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-recovery-cases.mjs",
+      "selected": "current own source",
+      "bytes": 8179,
+      "sha256": "fd86ef4b3ddd18b9e2000ad20b5e5bc2ea2b1f5c1a2c4cb128d7cfb0e73972a0"
+    },
+    {
+      "path": "apps/portal/tsconfig.frontend.json",
+      "selected": "current own source",
+      "bytes": 480,
+      "sha256": "b930ae73c53ea9dbdd895de85fccbac714e5526ba62a78537d0d72f149437003"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/index.ts",
+      "selected": "current own source",
+      "bytes": 260,
+      "sha256": "81683d8975e3a50cc160726cbfabffdd24b6a1d1017eccc1a667855a92222664"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/view.tsx",
+      "selected": "current own source",
+      "bytes": 2154,
+      "sha256": "c34ef68fa3ddac7d88b25d7095eff9f010cb51753ca1bdcc00401564586dc0bc"
+    },
+    {
+      "path": "apps/portal/src/ui/index.ts",
+      "selected": "current own source",
+      "bytes": 444,
+      "sha256": "b44a16821e22ef4d6bb1f4eb9db180bd391a1f2fd97b90a1e75cd8a9a096f3a2"
+    },
+    {
+      "path": "apps/portal/src/ui/icons.tsx",
+      "selected": "current own source",
+      "bytes": 990,
+      "sha256": "3f105dd9e5093041018b55bcce853cc6a095325fb797d7cda673f5cf2c5f2d63"
+    },
+    {
+      "path": "apps/portal/src/ui/overlay.tsx",
+      "selected": "current own source",
+      "bytes": 4637,
+      "sha256": "281b97d62325283ff72fccd2a2db96e2207b3d63e470a7be554f16b80cd4b3fd"
+    },
+    {
+      "path": "apps/portal/src/ui/primitives.tsx",
+      "selected": "current own source",
+      "bytes": 7512,
+      "sha256": "990d356778a7c828b85896fb44585df9e07a182687338dd190f2cb129073b925"
+    },
+    {
+      "path": "apps/portal/src/ui/overlay-state.ts",
+      "selected": "current own source",
+      "bytes": 557,
+      "sha256": "30b5a7ea05c0a45036e6b7f9023a9316315b78d9dcfeb78920f30277a6821a67"
+    }
+  ],
+  "newW7Current54": {
+    "candidateSourceCommit": "4dc6f7230c80d20cfa2c6178bdbcb9e2448a2990",
+    "argv": [
+      "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "--test",
+      "--test-concurrency=1",
+      "apps/portal/tests/w6-account-export-abort-reentry.test.mjs",
+      "apps/portal/tests/w6-account-export-recovery.test.mjs",
+      "apps/portal/tests/w6-account-export-retained-consumer.test.mjs",
+      "apps/portal/tests/w6-account-export-retained-ssr.test.mjs"
+    ],
+    "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/source",
+    "exit": 0,
+    "raw": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/W7-CURRENT54.log",
+    "bytes": 13568,
+    "sha256": "30485ff6a2928e9b4bd4c63712afe38ab54c099ec82bc0859f83456eed82c1cb",
+    "recordedAt": "2026-11-05T00:15:38.262880+00:00",
+    "sourceExportGitQualification": "Literal helper git rev-parse can resolve enclosing W7 repository; no source override. Candidate code pinned independently."
+  },
+  "newW7ConfiguredFrontend": {
+    "candidateSourceCommit": "4dc6f7230c80d20cfa2c6178bdbcb9e2448a2990",
+    "argv": [
+      "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "apps/portal/node_modules/typescript/bin/tsc",
+      "--noEmit",
+      "-p",
+      "apps/portal/tsconfig.frontend.json"
+    ],
+    "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/source",
+    "exit": 2,
+    "raw": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/W7-FRONTEND-UNINTEGRATED.log",
+    "bytes": 179,
+    "sha256": "d9da2affc8135c98fa31ca1450db13cd4bb61ae0e8283b64f0b3a22e5620d809",
+    "recordedAt": "2026-11-05T00:15:40.047950+00:00",
+    "virtualInput": false
+  },
+  "selectedW7Manifests": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/source/.local-artifacts/w6-account-export/source-kXxaPK/SOURCE.json",
+      "bytes": 11919,
+      "sha256": "f27bc981145089139994f196cfcbb2fa4015523de0f79371681d756c93bb7e10",
+      "enclosingGitHead": "cf781e6683421e133a86efe0d08f1829ecbd001b",
+      "rowCount": 54
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/source/.local-artifacts/w6-account-export/source-KTMS4B/SOURCE.json",
+      "bytes": 11919,
+      "sha256": "f27bc981145089139994f196cfcbb2fa4015523de0f79371681d756c93bb7e10",
+      "enclosingGitHead": "cf781e6683421e133a86efe0d08f1829ecbd001b",
+      "rowCount": 54
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/source/.local-artifacts/w6-account-export/source-GnVHXU/SOURCE.json",
+      "bytes": 11919,
+      "sha256": "f27bc981145089139994f196cfcbb2fa4015523de0f79371681d756c93bb7e10",
+      "enclosingGitHead": "cf781e6683421e133a86efe0d08f1829ecbd001b",
+      "rowCount": 54
+    }
+  ],
+  "browserTargetInputCapture": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-4dc-fresh/OWNER-BROWSER-TARGET-INPUTS.json",
+    "bytes": 893203,
+    "sha256": "ff6e95d3838b86a79f1c9acd0e8237d3245e7e6de959101e59775bd2d735b004"
+  },
+  "actualConfiguredFrontendTypePass": false,
+  "virtualTypecheckPerformed": false,
+  "pendingRequestNamespaceProducerAdmission": false,
+  "actualBrowserOrFileDelivery": false,
+  "historicalRawRecovery": false,
+  "oldOriginalUnavailableRowsUnchanged": true,
+  "noOldHeldOrProtectedScopeExecution": true,
+  "noAddressGateTransfer": true,
+  "historicalLimits": {
+    "old4dcPacketAndRaw": "UNAVAILABLE in resumedFS; not reconstructed or relabeled",
+    "oldAFECAndNativeP2BeforeFailures": "Committed source report/case definitions retain historical attribution, old raw currently unavailable; no OLD replay",
+    "prior62fAndCcbSourceVerdicts": "Historical separate scope only, not a current4dc gate",
+    "currentRawGeneration": "New UTC00:07 captures in present source checkout, not recovered original stdout",
+    "address": "PR238 MERGEDce9/source published03; localaddressref03 saved, no Source/genuine/gate transfer",
+    "primary13": "Retained separately in service checkpoint718, not used as current exporter"
+  },
+  "resourceGrant": null,
+  "reportSha256": "9dad25d39dbf713cd54617e127c46c9dd8005a22424bad23a0ef8ca556e9948a",
+  "recordedAt": "2026-11-05T00:18:23.379643+00:00"
+}

@@ -22,6 +22,14 @@ Address still needs actual Account mount/load/disposal and route lifetime, backe
 
 Fresh combined Root CI/native gates remain separate after publication. PR211 remains draft on PR210; no main merge or release is authorized. The umbrella's plan SQL4460794439 and held photo4461800685 findings remain open.
 
+## Completed hosted checks on published03
+
+All three checks subsequently completed SUCCESS on full head `03ceede4070b87fb60a705e92109a6126cd2b567`: [Portal](https://github.com/KanujVerma/shelv/actions/runs/41937520388/job/126950148068), [Verify & Build](https://github.com/KanujVerma/shelv/actions/runs/41937520413/job/126949637972) and [Database & Integration](https://github.com/KanujVerma/shelv/actions/runs/41937520413/job/126949638325). The Portal ordinary suite records 4020 pass, 0 fail, 0 skip and 0 cancel. This is a new completed hosted result; older failed runs retain their results.
+
+Fresh complete-log downloads from all three jobs identify actual executed checkout `3cb3ba4f2b18a008e781d908fbc23ba22144a648`. GitHub commit metadata pins ordered parents `8ac0826f79b4299b0249c5e18003b6ce08593c60` and full03. Its tree `e6fa68c33145f87d67d94729cdced8a918cd0d03` equals the entire authored03 tree. Root retained private0600 copies and the executed-source receipt under hosted-03cee in the current resume artifact generation. Complete raw SHA256/bytes: Portal `352f6dee97facdf1315e6ab3f284a692c7e3c57b53f7423ba1052fb4d6881295`/2224746; Verify `86b7e1bb925d0b7747b57786e41009f275a3e46ca9ed45eed566b6889777923d`/1140273; Database `e892a14f9102f713af516dbe258ec90c5210c75cbdb877d1bbbdf93433ce71b4`/131219. These are new downloads of existing completed jobs, not job reruns or recovered older evidence.
+
+Full03 native code review is completed with both finding flags true. Read-only thread metadata confirms only plan SQL4460794439 and held photo4461800685 remain unresolved. Neither was reopened for source audit, retried or cleared. PR211 remains draft and unmerged. Hosted step labels and log custody do not prove the actual Account mount, address/paid-order history, current routine geometry, no-photo full review/history, permanent authority or genuine acceptance. All holds and counters remain unchanged.
+
 ## Evidence preservation and independent work
 
 The copied W7 postimages use its clean committed snapshot `c765a7da5034767a4e0d94f5ebb195247735690f`, including the exact canonical ledger/queue/handoff. Root does not edit those verdicts or replace them with an older snapshot. This includes R9/O8 and R10/O9 withholding and the source-only original-case closures. Archived controls are copied as inert evidence, not executed. R10 complete33 at73cf remains INCOMPLETE/WITHHELD at O9; W5 owns a fresh complete frozen successor. Its original-case passes are not full173/types/build acceptance.

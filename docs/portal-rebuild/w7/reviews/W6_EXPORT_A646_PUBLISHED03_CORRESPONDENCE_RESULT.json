@@ -1,0 +1,218 @@
+{
+  "owner": "Kanuj",
+  "head": "a646257554cea9c31265fafc5745e9e90edc7134",
+  "base": "03ceede4070b87fb60a705e92109a6126cd2b567",
+  "verdict": "PASS_BOUNDED_COMPLETE16_PUBLISHED03_CONSUMER_SOURCE_DEPENDENCY_CORRESPONDENCE_ONLY_DEPENDENCY_HELD",
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/OWNER-PACKET.json",
+    "bytes": 23120,
+    "sha256": "6f4dd1b444db18db989ff8b583fba7b0d46f2b02c08171a376abbb821aea2ea1"
+  },
+  "parents": [
+    "4dc6f7230c80d20cfa2c6178bdbcb9e2448a2990",
+    "03ceede4070b87fb60a705e92109a6126cd2b567"
+  ],
+  "owned16": [
+    {
+      "path": "apps/portal/src/features/account/final-export/client.ts",
+      "bytes": 1225,
+      "sha256": "207aa0880a558f00b3cf1977e74eb5db7b0951205d00e92803d5769a5bd4cc0d",
+      "gitBlob": "5be97a0b7a5f7723c389c5ae136c15049e8536fe"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/controller.ts",
+      "bytes": 7791,
+      "sha256": "67276313570160cc9d71066a9fb7f433b9e59d75c80b2b826c1316fb32afe8fb",
+      "gitBlob": "b618844b32e96cfcbf60422a20190900f982a5ea"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/index.ts",
+      "bytes": 260,
+      "sha256": "81683d8975e3a50cc160726cbfabffdd24b6a1d1017eccc1a667855a92222664",
+      "gitBlob": "d63ba5bfbb158f05d93bef5eb5aadf70559087e8"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/transfer.ts",
+      "bytes": 2373,
+      "sha256": "462e46a62505395c4eef2a7d84bc97acb50a615aaa1e4f206d85a24144599267",
+      "gitBlob": "a39b8844934331b63367b8914d0e217bafe4884a"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/view.tsx",
+      "bytes": 2154,
+      "sha256": "c34ef68fa3ddac7d88b25d7095eff9f010cb51753ca1bdcc00401564586dc0bc",
+      "gitBlob": "fbdbeec16505c3d8cb15da62c8a1b5b03303a106"
+    },
+    {
+      "path": "apps/portal/src/features/account/final-export/writer.ts",
+      "bytes": 5257,
+      "sha256": "ff7b10e7c00208ebaf397c471130d62a94839d0860c017849dfe9fa2c5b5f290",
+      "gitBlob": "54b8d0d5c9c2894fe030faec0d718bb9e3073cf2"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-abort-reentry.test.mjs",
+      "bytes": 2203,
+      "sha256": "a2c840e04889df87802b5c5aaa48047ff8434d500c8b956d49febeb1093575d6",
+      "gitBlob": "b6f58b796d34f63e9f37a9e41d25d9207c514517"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-fixture.mjs",
+      "bytes": 4558,
+      "sha256": "d88c63d5c9116cb9c1d9a331b2ab539945f5ef5f6aa71c36dd88b5d4143adf8b",
+      "gitBlob": "f9d4d40409b87813087ffcdbf1057acb74e22473"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-inputs/client-cookie-session.c075.js.txt",
+      "bytes": 6833,
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0",
+      "gitBlob": "07e720e9e2ddbe982af483d8def7b99a3d45b903"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-inputs/final-export-request.e949.ts.txt",
+      "bytes": 3347,
+      "sha256": "28f8335679f700d4bee3c2550276f7cf2f2a9f85a95c7b3c60852a58eb6ffb98",
+      "gitBlob": "47f63e6940daa7d84de97351a162d593e37bdb70"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-recovery-cases.mjs",
+      "bytes": 8179,
+      "sha256": "fd86ef4b3ddd18b9e2000ad20b5e5bc2ea2b1f5c1a2c4cb128d7cfb0e73972a0",
+      "gitBlob": "ee861debd4b97c001e0937e8b121d60e093df783"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-recovery.test.mjs",
+      "bytes": 220,
+      "sha256": "dc22e6e15c2ef0abe0889d718aaf15ced1fd61f7934f5298a89d1d9b868609b1",
+      "gitBlob": "ce4790e67e4db53f32e6c8ce71ef531e15025ed2"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-retained-consumer-cases.mjs",
+      "bytes": 19484,
+      "sha256": "29b786db05231d882bfcddf27ec670fd57cf84930279eb37d6c671fde8106e8a",
+      "gitBlob": "c8876b20f6996d4b4314e80f057374f8a75155dc"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-retained-consumer.test.mjs",
+      "bytes": 226,
+      "sha256": "b4daf7913c2c29ee3c199cc562316f15200454c4a7674f9d69b583fccc8c8f39",
+      "gitBlob": "085088a56d96992376c1d4e829d3c5cc5702cf1b"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-export-retained-ssr.test.mjs",
+      "bytes": 5231,
+      "sha256": "ae1a9bd6e47b0b544e5b0c197cf6e003020543fc34668a91932f754c1b74cf4d",
+      "gitBlob": "905db6959b358be5cbc0b7814ac07d337e26bdc7"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W6_EXPORT.md",
+      "bytes": 9770,
+      "sha256": "b2d6d9c8bad7640480ca035bdaa6c5be86beee27b2fae211a828ef3ad0217767",
+      "gitBlob": "4ea9a269552fe11753bdda42dc76fc958c76cca2"
+    }
+  ],
+  "patchSha256": "382ebc7345b7f83b477fe71cb8d43ef0240588fd331ec6840c248ef2330510be",
+  "previousFreshSourceHead": "4dc6f7230c80d20cfa2c6178bdbcb9e2448a2990",
+  "verification": {
+    "head": "a646257554cea9c31265fafc5745e9e90edc7134",
+    "base": "03ceede4070b87fb60a705e92109a6126cd2b567",
+    "parents": [
+      "4dc6f7230c80d20cfa2c6178bdbcb9e2448a2990",
+      "03ceede4070b87fb60a705e92109a6126cd2b567"
+    ],
+    "all16ExactFresh4dc": true,
+    "fullDelta382Unchanged": true,
+    "all54SelectedRowsExactPriorFreshGeneration": true,
+    "all2154LogicalPathHashPairsExactPriorFreshGeneration": true,
+    "allCurrentPhysical2154BytesVerified": true,
+    "canonicalProtocol4SerializerBothLocksEqual03": true,
+    "Root03RequestAndClientHelperAbsent": true,
+    "candidateRequestAbsent": true,
+    "inertE949IsNotAdmittedActualSuccessor": true,
+    "owner54AndFrontendExit2NotW7Rerun": true,
+    "newW7Execution": false,
+    "oldMissingHistoricalRawRecovered": false,
+    "resourceGrant": null
+  },
+  "proofs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/PUBLISHED03-MERGE.log",
+      "bytes": 29848,
+      "sha256": "fe6c1b2df4ef573664a545cfff89a2c695d1c3d734dd5f98741b5891cd99bbc8"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/PUBLISHED03-MERGE.json",
+      "bytes": 604,
+      "sha256": "f1b9cfaaa2f1ecacd1d13b4a6018bbf16dce626c3ebda97c647ecffdf7d24939"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/PUBLISHED03-OWNED16.patch",
+      "bytes": 84594,
+      "sha256": "382ebc7345b7f83b477fe71cb8d43ef0240588fd331ec6840c248ef2330510be"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/03-current54.log",
+      "bytes": 13267,
+      "sha256": "3fe742f2463deb21d5eb9476be067b84a64e591c17abc04d6779720da520861a"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/03-current54.json",
+      "bytes": 1057,
+      "sha256": "bac46b9fe2afcd78511ee4019872042e2f52a9c18a3627b8f75221084d58538f"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/03-frontend-UNINTEGRATED.log",
+      "bytes": 179,
+      "sha256": "d9da2affc8135c98fa31ca1450db13cd4bb61ae0e8283b64f0b3a22e5620d809"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/03-frontend-UNINTEGRATED.json",
+      "bytes": 882,
+      "sha256": "ac9c7f666f1b26f46aa217b1b191554ac8782fc9a4dbb76b8fcc07cb7fefbf70"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/03-FRESH-SELECTED-SOURCE.json",
+      "bytes": 11919,
+      "sha256": "878ab9401a3e512431bd03b313e36a4b8f6dfc0cd53d8402e9e957a1ed85d3a2"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/03-BROWSER-TARGET-INPUTS.json",
+      "bytes": 893143,
+      "sha256": "82ae7d479958726656cae33d80e64f0736db1e0140bda9b3e13ab90f1ab73898"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/W0-ACTUAL-EXPORT-REQUEST-SEAM.json",
+      "bytes": 2534,
+      "sha256": "f69aa5e9589d0732c4b9766c6ad5b68f8d7b77a94c1c627afd642fb985e8e60c"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-export-a646-correspondence/W0-REFERENCE-ONLY-e949-request.patch",
+      "bytes": 3619,
+      "sha256": "0292886952e0065152fac6e513aa28aa3ce3f22df59928445d6df8596a68f98a"
+    }
+  ],
+  "ownerCurrentResultsNotW7Rerun": {
+    "consumerFiniteHttpMemorySsrCompileCases": {
+      "pass": 54,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "actualConfiguredFrontend": {
+      "exitCode": 2,
+      "oneTS2307MissingActualW0Request": true,
+      "virtualTypecheck": "NOT_PERFORMED"
+    }
+  },
+  "selected54Changes": [],
+  "compiler2154Changes": [],
+  "missingActualRootRequestAndFeatureHelperVerified": true,
+  "inertE949ReferenceAdmittedAsFuturePostimage": false,
+  "runtimeImportCycleDiagnosisClaimed": false,
+  "newW7Execution": false,
+  "oldHistoricalRawRecovery": false,
+  "noAddressGateTransfer": true,
+  "historicalLimits": "All oldraws/OLD/nativeP2/intermediate/shallow captures remain historical/unavailable; new captures never replace them. AddressScope separate; no actualgenuine/resource/counter grant.",
+  "resourceGrant": null,
+  "reportSha256": "89f43ff4c4fac4523e6cd50e043f41efe5574b5fa0c216cdd925ffe7b6f653ed",
+  "recordedAt": "2026-11-05T00:33:52.976768+00:00"
+}

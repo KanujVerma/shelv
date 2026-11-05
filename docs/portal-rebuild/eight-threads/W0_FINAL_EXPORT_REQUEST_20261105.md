@@ -1,0 +1,33 @@
+# Standalone final-export request: source candidate
+
+Owner: Kanuj. This is an unpublished shared request source candidate on exact published `2fae8269dcd8bd7e9d07a1aadf6e009e70c87ace`. It does not integrate W6's consumer or register final export. The owned scope is the new app/final-export-request.ts, its new Root test and this report. No existing source, contract, dependency, allowlist, route, gateway, SQL or test is edited.
+
+## Binding and actual unavailable behavior
+
+The exported API is `createClientFinalExportRequest(ApplicationSession): OperationPort<FinalExportCommand, FinalExportResult>`. It imports the canonical DTO/validator/mapper and existing shared session transport. It imports no unpublished W6 feature helper. The original seam is unpublished-module availability; no runtime import-cycle diagnosis is asserted. The old e949 request snapshot is reference-only and was not adopted.
+
+Only the two canonical READ commands are accepted, through the fixed expected RPC `concierge_final_export_command_v1`. Descriptor-first detachment rejects accessors without evaluating them; the existing 100000-byte UTF8 cap and canonical command parser remain authoritative. The supplied command cannot choose a client, owner, role, RPC, URL or active-care flag. Result mapping remains command-correlated, including part basis/index. Formatting and mapping do not attest entitlement, public provenance or private exclusion.
+
+Creation captures the actual cookie object, App boundary, client owner, generation, epoch, view identity, server generation and CSRF. It checks actual currentness and READY before use and after callback-capable reads. Signal and local applicability are captured with intervening guards. Local applicability can deny only; false, exceptions and non-boolean promises do not grant access or manufacture a received denial. The same signal/applicability are forwarded to the existing transport, with decoder, wait, cleanup and final-return checks retained in the source path.
+
+The retained client namespace is still unregistered. Its actual factory refuses the unknown literal synchronously with local403/action_forbidden; this binding classifies that construction failure as503/unavailable before any export invocation. It is not a received HTTP403. Current tests observe both valid manifest and part requests rejected503, no non-session HTTP, no namespace insertion and the actual synthetic SDK session remaining READY. There is no fabricated empty/success result, new caller capability, alternate endpoint, source registration or runtime authority.
+
+Because the namespace is unregistered, the current positive invoke/decode/await-return branch cannot be reached through the real factory. Those source fences are present for independent review but are not claimed exercised by successful export traffic. Actual received-HTTP denial behavior and registered transport require their own later eligible gate. No registration or successful request facade was supplied to test that branch.
+
+## Current evidence
+
+An immutable Git archive of the exact published base contains only the two new code/test postimages and two unchanged dependency symlinks. No compiler manifest, configuration, declaration, warning flag, source input or namespace override is applied. The new module loads while features/account/final-export/client.ts is absent from that base.
+
+The unchanged absence control on the base plus only the new test fails0/1 because the factory is missing. The same source export plus the actual new module passes32/32 current controls, zero fail/skip/cancel. These are actual ApplicationSession/retained-cookie/transport objects with finite synthetic session replies, native AbortControllers, parser/option callbacks and no export egress. They cover the two valid-but-unavailable commands, closed selectors/actions, un-restored/advisor/invalid-client-lease denial, creation-bound replacement/disposal/offline behavior, abort/local applicability, accessor refusal, clone-time retirement, forged local errors and the byte cap. They are not32 Auth/financial/privacy predicates or a real download.
+
+All four UNMODIFIED configured graphs exit0 in that source export: Root, Root tests, Portal frontend and session runtime. This compiles the actual standalone module, not an inert request or virtual substitution. A separate browser-TARGET compile pins21 source inputs and emits no executed application. It is not W6's consumer graph or current published-type integration. No full Root suite, app/Expo build, browser, server, Auth/SQL/Storage, picker, backing file, provider, protected fixture or held callee was run for this candidate.
+
+Initial author records remain separate. The first physical missing-factory0/1 and first current31pass/1 fixture-SETUP failure are tool-output-only; no saved raw is invented. That fixture assumed a READY no-view client lease. The actual retained SDK rejects it during restore, so the corrected current test asserts native rejection before request creation. Production guards were not weakened. Node's existing MODULE_TYPELESS_PACKAGE_JSON warning is retained; no package/loader/flag change suppresses it. Fresh saved OLD/current/configured-graph logs are a new source-export generation, not recovered historical evidence.
+
+## Remaining gates
+
+Independent fresh source review, actual shared-source publication/current CI/native and W6's exact consumer/dependency reconciliation remain required. W6 a646/4dc consumer gates and their actual missing-module type failure keep their original scopes until the reviewed actual binding is published. No old consumer packet, namespace, producer/basis/entitlement/private exclusion, final-egress, Account mount/lifetime, actual download or genuine proof is borrowed from these checks.
+
+The source base includes normally merged PR242 at2fae: exactly its reviewed CSS/W3.md pair and predicted tree07cbcf56, with full-head native/CI and complete hosted checkout6dfd0251/parents03+cdbe/tree equal authored cdbe verified separately. Its current rendered-font/geometry/a11y/genuine gates remain open. Root private/unadopted ancestry is excluded from this candidate.
+
+W4's no-photo real test remains ineligible: actual A07 context/route/lifetime, admitted resolver70/Review16/SDK metadata and current care/review/private-return guards are still missing or unaccepted. Principal44 REFUSAL_STOP, HN1 DO-NOT-START, A07/Guidance/private-return/photo/Source/M65/final-egress and all financial/legacy/guarantee holds remain. R12/O11 is withheld and stopped; no stopped-head source or tests were reopened. No authority, resource or screen/journey acceptance counter advances.
