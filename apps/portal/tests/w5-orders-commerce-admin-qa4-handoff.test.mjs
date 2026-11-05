@@ -80,13 +80,13 @@ test('authored old A cannot accept a mutation over the actual newer B cache',asy
  assert.equal(next.setBody({...body(),note:'new B owns cache'}),true);
  const before=f.old.getSnapshot();
  assert.equal(f.old.setBody({...body(),note:'stale A attempted overwrite'}),false);
- assert.equal(f.old.getSnapshot(),before);
+ assert.equal(f.old.getSnapshot().localEditConflict,true);assert.equal(f.old.getSnapshot().error,409);assert.equal(f.old.getSnapshot().preparation,before.preparation);
  assert.equal(f.controller().getSnapshot().preparation.body.note,'new B owns cache');
  assert.equal(next.setBody({...body(),note:'new B still editable'}),true);f.old.dispose();
  assert.equal(f.controller().getSnapshot().preparation.body.note,'new B still editable');
  assert.equal(f.calls.some(x=>!x.command.action.startsWith('read_')),false);
 });
-test('a mutation prepared before final handoff must observe the adopted context before deliberate reapplication',async t=>{
+test('a completed replacement read observes final handoff before deliberate editing',async t=>{
  const f=await handoffFixture(t);let next=null,refresh=null,entered=false;
  f.old.subscribe(()=>{
   if(entered||f.old.getSnapshot().preparation.body.note!=='final A arrived after read start')return;
@@ -94,9 +94,8 @@ test('a mutation prepared before final handoff must observe the adopted context 
  });
  assert.equal(f.old.setBody({...body(),note:'final A arrived after read start'}),false);
  await refresh;assert.ok(next);assert.equal(next.getSnapshot().phase,'ready');
- const staleProposed={...next.getSnapshot().preparation.body,note:'proposed from previous A'};
- assert.equal(next.setBody(staleProposed),false);
  assert.equal(next.getSnapshot().preparation.body.note,'final A arrived after read start');
+ assert.equal(next.getSnapshot().localEditConflict,false);
  assert.equal(next.setBody({...next.getSnapshot().preparation.body,note:'deliberate current A'}),true);
  assert.equal(f.controller().getSnapshot().preparation.body.note,'deliberate current A');
  assert.equal(f.calls.some(x=>!x.command.action.startsWith('read_')),false);

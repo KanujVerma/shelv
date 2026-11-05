@@ -189,7 +189,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    const preparation=state.dirty?state.preparation:canonical,parsed=parseProductQuoteInputs(preparation,state.dirty?state.inputs:productQuoteInputs(canonical)),dirty=!same(parsed.preparation,canonical)||productQuoteHasInputErrors(parsed.errors);
    editBase=fingerprint(loaded);const published=emitRead({index,loaded,latest:null,preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty,phase:'ready',reviewed:false,error:state.localEditConflict?409:null},operation);
    if(!published||!current())return;
-   if(!(dirty?rememberEdits():forgetEdits())&&current())blockLocalEdits(operation);
+   if(!(dirty?rememberEdits():forgetEdits())&&current()&&!reconcileEditHandoff()&&current())blockLocalEdits(operation);
   }catch(error){if(alive()&&token===readToken)fail(error);}
  }
  async function openDraft(id:string){
