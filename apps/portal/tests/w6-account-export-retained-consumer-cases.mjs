@@ -55,7 +55,7 @@ test('request rejects extra selectors, abort and wrong audience without export H
   const abort=new AbortController();abort.abort();
   await assert.rejects(p.execute({schemaVersion:1,action:'read_final_export_manifest_v1'},{signal:abort.signal}),e=>e.status===503);
   const a=await session(t,'advisor');
-  await assert.rejects(requestApi.createClientFinalExportRequest(a.runtime).execute({schemaVersion:1,action:'read_final_export_manifest_v1'}),e=>e.status===401);
+  await assert.rejects(async()=>requestApi.createClientFinalExportRequest(a.runtime).execute({schemaVersion:1,action:'read_final_export_manifest_v1'}),e=>e.status===401);
   assert.equal(f.calls.length,1);assert.equal(a.calls.length,1);
 });
 for(const [name,record] of [['V3',finalExportFixture],['R2',finalExportLegacyFixture]]) test(`actual ${name} collector/serializer writes sequential HTML and closes only after final manifest`,async t=>{

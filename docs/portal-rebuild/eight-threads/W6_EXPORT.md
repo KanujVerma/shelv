@@ -61,6 +61,14 @@ The first owner correction passed53/54 but still lost the already-running error-
 
 ## Next gates
 
+### Actual published request binding, 5 November 2026
+
+W0 published the distinct standalone request from `cd8b47334524d98b0f548ab1d1c98e8f97f990b9` through `970ba9e2`; the consumer reconciles normally against published `3f9e2527df9eefcdb3f762c746bd631c9fe6e171`. The actual unmodified frontend now exits0 with the physical request and no virtual declaration. The inert e949 request remains historical input, not the actual binding. Namespace registration, registered invoke/decode/HTTP-denial/private-return behavior, producer facts, entitlement and final-egress acceptance remain held.
+
+The first unchanged consumer run on that actual binding is53/54 (`ACTUAL-BINDING-consumer54.log`): the factory correctly rejects a wrong-audience advisor synchronously at construction, before the old negative assertion receives its promise. The owned test-only successor moves that same factory/execute expression into the assertion's async thunk. Its exact401 predicate, selector/abort predicates, both no-egress call counts and every other scenario assertion remain unchanged. Six product modules and all other helpers/cases are unchanged. This setup correction and the new actual dependency require a new complete exact-head source/hosted gate; the earlier4dc/a646 source verdicts do not approve it.
+
+These are current source captures, not recovery or relabeling of missing old AFEC/native/intermediate raw evidence. Source/finite/SSR and actual type success do not establish a registered export, a real destination, private exclusion or genuine post-window download.
+
 - Freeze this exact owned delta and obtain W7 complete independent source review, including AFEC1/AFEC2, overlapping/reentrant cleanup and all retained predicates.
 - W0 independently admits the fixed request/namespace and composes Account under the actual route/session lifetime. Recheck current configured types and affected tests without virtual inputs.
 - W7 executes a separately admitted fresh packet: own-client final export after read-only expiry, cross-client/session/logout/late-return denials, trusted last-entitled version/instructions, no private data, actual destination/cleanup semantics, desktop/narrow/keyboard/accessibility and refresh/relogin.
