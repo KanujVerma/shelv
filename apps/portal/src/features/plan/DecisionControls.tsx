@@ -9,6 +9,7 @@ import type {ReviewBasis} from './reviewBasis.tsx';
 import {readCurrentPlan} from './care.ts';
 import { isPurchaseDecision } from './model.ts';
 import type { ClientPlanProps, DecisionCommand } from './types.ts';
+import {canOpenDemoSelfPurchase} from './useEntry.ts';
 
 type Phase = 'idle' | 'saving' | 'refreshing' | 'uncertain' | 'conflict' | 'denied' | 'error' | 'saved';
 interface Intent {
@@ -174,6 +175,7 @@ function LegacyDecisionControls(props: ClientPlanProps & {decision:PlanDecision}
     }
     const locked=intent.phase==='saving'||intent.phase==='refreshing'||!!intent.command||intent.phase==='conflict';
     const recorded=view.decisions.find(d=>d.decisionId===decision.id),purchase=isPurchaseDecision(decision);
+    const selfPurchaseEntry=mode==='client'||canOpenDemoSelfPurchase(props,decision.primaryProductId,decision.id)?onSelfPurchase:undefined;
     if(!port&&!(demoChoice&&demoChoice.isCurrent()))return <div className="plan-stack"><h2>your choice</h2><StatusNotice title={view.access==='read_only' ? 'read-only plan' : mode==='historical' ? 'historical plan' : mode==='public-demo' ? 'demo preview' : 'preview only'}>choices are unavailable in this view.</StatusNotice>{recorded ? <p>recorded choice: {recorded.choice}</p> : null}</div>;
     return <div className="plan-stack"><h2>your choice</h2>
       <DecisionChoiceButton choice="approved" purchase={purchase} busy={intent.phase==='saving'} disabled={locked} onClick={()=>void submit('approved')}/>
@@ -189,6 +191,6 @@ function LegacyDecisionControls(props: ClientPlanProps & {decision:PlanDecision}
       {intent.phase==='denied' ? <StatusNotice tone="denied" title="action unavailable">your choice was not saved. your attempted choice is kept.</StatusNotice> : null}
       {intent.phase==='error' ? <StatusNotice tone="error" title="choice not saved" action={<Button variant="secondary" onClick={()=>void reviewLatest()}>refresh plan</Button>}>your attempted choice is kept. check the latest plan before trying again.</StatusNotice> : null}
       <p className="plan-meta">{purchase ? 'no order or charge yet. we confirm the all-in total and return terms before you pay.' : 'this records your choice about the guidance. it does not place an order or record product use.'}</p>
-      {onSelfPurchase && mode==='client' && purchase ? <><hr/><Button variant="secondary" disabled={locked} onClick={()=>onSelfPurchase(decision.primaryProductId!,decision.id)}>i’ll buy it myself</Button></> : null}
+      {selfPurchaseEntry && purchase ? <><hr/><Button variant="secondary" disabled={locked} onClick={()=>selfPurchaseEntry(decision.primaryProductId!,decision.id)}>i’ll buy it myself</Button></> : null}
     </div>;
 }
