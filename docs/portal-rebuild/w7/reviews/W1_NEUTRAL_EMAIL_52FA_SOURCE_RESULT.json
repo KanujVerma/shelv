@@ -1,0 +1,302 @@
+{
+  "owner": "Kanuj",
+  "head": "52faec7918e534747a9a20e81f9411fbf0b9f72d",
+  "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+  "verdict": "PASS_SCOPED_COMPLETE3_NEUTRAL_ADVISOR_INBOX_SOURCE_PURE_FORMAT_ONLY",
+  "materialFindings": [],
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w1-neutral-52fa/PACKET.json",
+    "bytes": 10425,
+    "sha256": "f625c1be95c5d9635fa82b9aadf277c7e5f2751d28b8bae2db333e711409fc0f"
+  },
+  "binaryDiffSha256": "aac32aa042d63e1a376caa63ee1579442a9245f271d3b3b4b2eeec42e1471fa4",
+  "postimages": [
+    {
+      "path": "docs/portal-rebuild/research/W1_ADVISOR_NEUTRAL_EMAIL_20261104.md",
+      "bytes": 5949,
+      "sha256": "24ab24395341f5374f1f1386d7220f7b3682b7a7591821b7616caa37ff7ab6a6",
+      "blob": "2232d3e3b060dc14b14b86cc1e79ebc8e5433148"
+    },
+    {
+      "path": "supabase/functions/concierge-notifications/neutralPayload.ts",
+      "bytes": 3200,
+      "sha256": "e86ff766dc9ba39ef5f25d48c5e5879b8985dd51cddccdcf26f3e72931bc527d",
+      "blob": "ed4cb7335442c0f778a453924d09cdce38ea4b62"
+    },
+    {
+      "path": "tests/portal-notification-worker.test.ts",
+      "bytes": 14500,
+      "sha256": "37d238377d412ba807c1fb264ca469d554e484743843ad3f764864fa37187340",
+      "blob": "a56f53088471a3f1b17637cbc8b6aee64547ef8f"
+    }
+  ],
+  "staticDependencyPins": [
+    {
+      "path": "supabase/functions/concierge-notifications/neutralPayload.ts",
+      "sha256": "e86ff766dc9ba39ef5f25d48c5e5879b8985dd51cddccdcf26f3e72931bc527d",
+      "blob": "ed4cb7335442c0f778a453924d09cdce38ea4b62"
+    },
+    {
+      "path": "src/contracts/ConciergePortalValidation.ts",
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697",
+      "blob": "85a8c8120bcd01f26d19f781494e7beef25fdfb9"
+    },
+    {
+      "path": "src/contracts/ConciergePortal.ts",
+      "sha256": "3fbf69f328c73cd10926dd446df4e266393f69e9fc37943888eabc46271c6dcd",
+      "blob": "496385bb792055cff9c705bc5f630d68f5274c23"
+    },
+    {
+      "path": "src/contracts/ConciergePresentation.ts",
+      "sha256": "c48cc446b71eaa416c1b084af17db1eda033566518ebe2e1259822e825b795cd",
+      "blob": "621833c2248c3a54f785d46a83d8c7dbc97bc591"
+    },
+    {
+      "path": "src/contracts/ConciergeService.ts",
+      "sha256": "bb27d2a38f7d39b90181852d1e005c448df992883cf40623ce6b57c9222bab4a",
+      "blob": "8d2a990b89c35b38e8cf32d9d68fcdb7b28bf649"
+    },
+    {
+      "path": "src/contracts/ConciergePresentationValidation.ts",
+      "sha256": "b93b9eab1b55cfb828677067990985716e71c23550662a06782038226cdca33a",
+      "blob": "0c615f2f4658f6a26ab30e8435d98daa9f4c0a04"
+    },
+    {
+      "path": "src/contracts/PortalNotificationValidation.ts",
+      "sha256": "fed7b4ad0e8493ae223a39786283b01d0137e083cbad67338f1664aec0d6e27f",
+      "blob": "d4b41ef32f60a0b5f3f4960ab2bf6545a05bbaf4"
+    },
+    {
+      "path": "src/contracts/PortalNotificationValues.ts",
+      "sha256": "5902a0989888fa7dad045cfc205ac85648b659f7189617c3db3db8479fb7eddf",
+      "blob": "09bc3ee8dfd1fcb57684081a5c6af0aaaab40b88"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc",
+      "blob": "05882d2aaf175888c718d31cd3d19d9c883b14e4"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValues.ts",
+      "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9",
+      "blob": "3b034ae42f05a1f21fe9aac9b5c54e9b44243dd1"
+    },
+    {
+      "path": "src/contracts/PortalRebuild.ts",
+      "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc",
+      "blob": "b1d78b1366aec0117682a5389d9785c9362a5e5d"
+    },
+    {
+      "path": "src/contracts/PortalNotification.ts",
+      "sha256": "4b72ce525d87739514845326b8b77bee4eb641041083f43c946c63f4b8e0ec3f",
+      "blob": "b205850326db4558acb7e6a0de23a8dab93f0a1b"
+    },
+    {
+      "path": "src/contracts/PortalNotificationMapping.ts",
+      "sha256": "36c0f8632a823a0ae4e639cb82a59dd2d069a53656e9589452db92aa0ce25dc5",
+      "blob": "ac658e0ee3e2ffbf4ec1698b31373f4471baefbd"
+    }
+  ],
+  "pinVerification": {
+    "head": "52faec7918e534747a9a20e81f9411fbf0b9f72d",
+    "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+    "paths": [
+      "docs/portal-rebuild/research/W1_ADVISOR_NEUTRAL_EMAIL_20261104.md",
+      "supabase/functions/concierge-notifications/neutralPayload.ts",
+      "tests/portal-notification-worker.test.ts"
+    ],
+    "all3PostimagesVerified": true,
+    "staticDependencyRows": 13,
+    "proofFilesVerified": 16,
+    "productionTwoClauseInverseEntireBase": true,
+    "workerOneLiteralInverseEntireBase": true,
+    "RootOwnedNewTestAbsent": true,
+    "controlsByteExact": true
+  },
+  "independentCommands": [
+    {
+      "name": "PURE-OLD",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--experimental-strip-types",
+        "--test",
+        ".local-artifacts/w1-advisor-neutral-email/controls.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w1-neutral-52fa/source-old",
+      "exitCode": 1,
+      "sha256": "dfcea173dd68b0dfdd01f005fa2a785731850c2a2e8883a5f0dacbe1fbba53af",
+      "bytes": 7684,
+      "seconds": 0.239
+    },
+    {
+      "name": "PURE-CURRENT",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--experimental-strip-types",
+        "--test",
+        ".local-artifacts/w1-advisor-neutral-email/controls.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w1-neutral-52fa/source-current",
+      "exitCode": 0,
+      "sha256": "8d5948a2285a5fd36a8b8a75bccd813631243efabbfaf50f1c1fb07ade04a070",
+      "bytes": 5148,
+      "seconds": 0.123
+    },
+    {
+      "name": "SELECTED-WORKER-CURRENT",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-name-pattern=^deterministic neutral source links preserve exact event kind while A07 uses explicit unavailable resolution$",
+        "tests/portal-notification-worker.test.ts"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w1-neutral-52fa/source-current",
+      "exitCode": 0,
+      "sha256": "4ec38145fb97ea5f6b701f6fa6a4a1ca8b3e4870ab0adbb8a443051ecfd467ec",
+      "bytes": 1107
+    }
+  ],
+  "independentResults": {
+    "pureOld": {
+      "tests": 22,
+      "pass": 20,
+      "fail": 2,
+      "expectedFailures": [
+        "advisor generation",
+        "advisor decoder"
+      ]
+    },
+    "pureCurrent": {
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "selectedCurrentWorker": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "deliveryOrNetworkOrOtherWorkerExecuted": false
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w1-neutral-52fa/PURE-OLD.log",
+      "bytes": 7684,
+      "sha256": "dfcea173dd68b0dfdd01f005fa2a785731850c2a2e8883a5f0dacbe1fbba53af"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w1-neutral-52fa/PURE-CURRENT.log",
+      "bytes": 5148,
+      "sha256": "8d5948a2285a5fd36a8b8a75bccd813631243efabbfaf50f1c1fb07ade04a070"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w1-neutral-52fa/SELECTED-WORKER-CURRENT.log",
+      "bytes": 1107,
+      "sha256": "4ec38145fb97ea5f6b701f6fa6a4a1ca8b3e4870ab0adbb8a443051ecfd467ec"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w1-neutral-52fa/COMMANDS.json",
+      "bytes": 1714,
+      "sha256": "ef1523f0fb48dcd95dff2d2e929e26cf11686fd8c3081950e30107f030561c74"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w1-neutral-52fa/PINS.json",
+      "bytes": 565,
+      "sha256": "18177b07c85f599909a8d00d8fec38399af86aa5ad8551ff9d25adc7b7611ac9"
+    }
+  ],
+  "ownerProofHashesVerified": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/CURRENT-CONTROLS.json",
+      "bytes": 237,
+      "sha256": "293b17d88ef6b146905b8ea0d5e84920e9990e03450e4e9795b3134da898b7f4"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/CURRENT-CONTROLS.log",
+      "bytes": 4993,
+      "sha256": "4193dd7440a59ec3a9eb09c8dcc0fcd2b5c93ab98aa5e3fd353e602da7a1a6cb"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/CURRENT-WORKER-NEUTRAL.json",
+      "bytes": 360,
+      "sha256": "bba1253444123b3170328524bf3e31d1c9536d1a077c0c91253c44afa3187809"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/CURRENT-WORKER-NEUTRAL.log",
+      "bytes": 958,
+      "sha256": "06e189c7235529594ab517f12fa3636956e6fbd034d7f10366e2614c5ec2c117"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/NATIVE-4464598929.json",
+      "bytes": 5637,
+      "sha256": "df8fa847c4ca36e7fb2bae221b32e4c1014d39a9b20866c4cc47f2b403b1bf11"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/OLD-CONTROLS.json",
+      "bytes": 237,
+      "sha256": "b1ac84f659d77ba00af3e22e80975f914189c680aaa6e71cf3178eb0c70869fa"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/OLD-CONTROLS.log",
+      "bytes": 7119,
+      "sha256": "b47bb0a62c61c3801e2500355039a1cef500c441ce86d67497b6a0e34b6b8d1b"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/OLD-WORKER-NEUTRAL.json",
+      "bytes": 360,
+      "sha256": "34675633fbd68708329498e1c0df6fbd3a38760b5bba6dc151eda727a827d997"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/OLD-WORKER-NEUTRAL.log",
+      "bytes": 957,
+      "sha256": "16175ea0867ff94ce0163c0a9e6625611a4c067793c329465192024137ab4d64"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/PORTAL-FRONTEND-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/PORTAL-SESSION-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/ROOT-APP-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/ROOT-TEST-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/SOURCE-PINS.json",
+      "bytes": 453,
+      "sha256": "6bd1771882be1d69e26cca1234c20c7b60d3aa89d8eb4c520e7c1b2523b0b28a"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/SOURCE.patch",
+      "bytes": 10711,
+      "sha256": "aac32aa042d63e1a376caa63ee1579442a9245f271d3b3b4b2eeec42e1471fa4"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w1-advisor-neutral-email-20261104/.local-artifacts/w1-advisor-neutral-email/controls.mjs",
+      "bytes": 4301,
+      "sha256": "e8f20ecf139d8cedb4ce586382ab105583282751959b70b9691b39050b67639b"
+    }
+  ],
+  "ownerFourTypegraphsNotW7Rerun": true,
+  "RootOwnedTestAbsent": true,
+  "efffbOwnerHoldNotApproved": true,
+  "nativeFinding": "4464598929 source-format correction only; current hosted/composition/actual acceptance separate",
+  "resourceGrant": null,
+  "reportSha256": "6882f946c5e81150ecd654abfdabfb0031f21c942bfc0e387b9c754dc1578d8e",
+  "recordedAt": "2026-11-04T22:42:37.290959+00:00"
+}

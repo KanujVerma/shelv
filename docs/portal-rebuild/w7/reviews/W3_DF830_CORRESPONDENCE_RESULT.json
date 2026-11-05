@@ -1,0 +1,67 @@
+{
+  "owner": "Kanuj",
+  "head": "df8309bc3b632c13e4f3cc9357aa1a0d40e94a2c",
+  "base": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+  "verdict": "PASS_BOUNDED_TWO_FILE_ROUTINE_SAVED_FRAME_SOURCE_DEPENDENCY_CORRESPONDENCE_ONLY",
+  "receipt": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-df830-correspondence/ROLLFORWARD.json",
+    "bytes": 1720,
+    "sha256": "42e0ae09abc02726fe0e762eebd6d2993961f28809fb333e8bb9dc7fb1f02e4d"
+  },
+  "verification": {
+    "head": "df8309bc3b632c13e4f3cc9357aa1a0d40e94a2c",
+    "base": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+    "parents": [
+      "8bc1ee73ca1d363aacf12ec870f571e14d419237",
+      "8d3893faba7bd16d8d0f98dda46783d449ae8dd4"
+    ],
+    "all2Exact8bc": true,
+    "all4Refs7DepsExact": true,
+    "samePatchDdc8": true,
+    "exclusiveProvenanceHead": "df8309bc3b632c13e4f3cc9357aa1a0d40e94a2c",
+    "exclusiveProvenanceDirty": false,
+    "exclusiveCSSSha256": "8fa9ac76984690e371aad6b07aa5e84c00d4e8b440071fce31ae20b0e5febaa8",
+    "newW7SuiteOrBuildRun": false
+  },
+  "currentProofs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-df830-correspondence/DF830-SOURCE-SSR.log",
+      "bytes": 12188,
+      "sha256": "d625f1da128e5dbd42c811dabd008fe585af2e762f323fed0888a675c54d0416"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-df830-correspondence/DF830-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-df830-correspondence/DF830-UI.log",
+      "bytes": 115,
+      "sha256": "6392de7331e66c3f4f4165a5bca39dadd470fc45c737652af0a4f4520265bddd"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-df830-correspondence/DF830-BUILD.log",
+      "bytes": 178,
+      "sha256": "0efd75a10b853c334913aa46f4e70b7f9ac5fd93c37433ea4256605fe0f138ab"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-df830-correspondence/DF830-PROVENANCE.json",
+      "bytes": 474992,
+      "sha256": "18d8628a3a56ada72790fc15e014c2f06d55ad2bfa150ad7ff60b5a5afd0b4b8"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-df830-correspondence/DF830-EMITTED.css",
+      "bytes": 44425,
+      "sha256": "8fa9ac76984690e371aad6b07aa5e84c00d4e8b440071fce31ae20b0e5febaa8"
+    }
+  ],
+  "newInputRowsEqualRetained8bcCapture": true,
+  "newAssetRowsEqualRetained8bcCapture": true,
+  "ownRetainedOldCaptureIsHistoricalNotRelabeled": true,
+  "owner45AndTypesUiBuildNotW7Rerun": true,
+  "newW7SuiteBuildOrResourceRun": false,
+  "currentRenderedFrameAcceptance": false,
+  "resourceGrant": null,
+  "reportSha256": "44cb746de636d7066f347efd9322b88bbb6052a30b15870e78d2ce51b9cdbdbb",
+  "recordedAt": "2026-11-04T23:27:46.487615+00:00"
+}

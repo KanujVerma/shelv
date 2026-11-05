@@ -1,0 +1,442 @@
+{
+  "owner": "Kanuj",
+  "verdict": "PASS_READ_ONLY_CURRENT_CI_CUSTODY_EXECUTED9_ACTUAL8D_DEPENDENCY_CORRESPONDENCE_ONLY",
+  "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+  "authoredBase": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+  "actualExecutedBase": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+  "executedCommit": "92b347a35f50723ac6e330712eb22614aac31812",
+  "executedParents": [
+    "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+    "ee00ac9932a1fae9225e8624cccabc6121bbcd35"
+  ],
+  "executedTree": "004f85cb66ba135b92cf65212ee2f918c31581f1",
+  "authoredTree": "24396abbb1ecfd99786fa3b5b082c2b781eefeb4",
+  "treesDifferConfirmed": true,
+  "executedCommitParentsTreeFromLocalImmutableGit": true,
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/OWNER-PACKET.json",
+    "bytes": 120543,
+    "sha256": "b173585079bb6859b1bac9e07255679b1274bc0d49a0d8830f38a2a71611e522",
+    "mode": "0o600"
+  },
+  "executedOwned9": [
+    {
+      "path": "apps/portal/src/features/account/core/AccountAddress.tsx",
+      "bytes": 5749,
+      "sha256": "94b4ac006ce4043f3359f80dbe36a6e804d5ba2146a6a8a9ef09741b4d4b746f"
+    },
+    {
+      "path": "apps/portal/src/features/account/core/controller.ts",
+      "bytes": 9135,
+      "sha256": "a6f715bcbe36ff23bcf16f0902da33de7474cfbe658129c1c9efa4506c3e9fa4"
+    },
+    {
+      "path": "apps/portal/src/features/account/core/index.ts",
+      "bytes": 196,
+      "sha256": "f001ca5e4401d79e35415abf342b0628d33c6af15509316327fb66cdf3b4ecb2"
+    },
+    {
+      "path": "apps/portal/src/features/account/core/model.ts",
+      "bytes": 2793,
+      "sha256": "395b009c405849145bfad3dbd2664f402aa3c508476018c058a36bf6d6338890"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-address-authority.test.mjs",
+      "bytes": 2214,
+      "sha256": "39237172883ebd7d08ae08ea745bfb2a457e540a7e3206d016ce2eb96394cf89"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-address-fixture.mjs",
+      "bytes": 3509,
+      "sha256": "18e199fc0e83a10d28d329153916aa70215bda8a1ff293af1884878217221e56"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-address-inputs/account-address-request.c06.ts.txt",
+      "bytes": 4541,
+      "sha256": "0a718365fd86adb37501c940011474e3b979b9ff405d1c498f9a95cd1e5ef7d6"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-address-ssr.test.mjs",
+      "bytes": 3313,
+      "sha256": "d2bcff2ebd6eea8ae3385be9ed5b253b58a26bd21cb179e123292ef6acc86185"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W6_ADDRESS.md",
+      "bytes": 6154,
+      "sha256": "36b31c64c07f5abbecbd348c60ff46a8954807772d24b153974f6b3adae00301"
+    }
+  ],
+  "all9AuthoredEqual": true,
+  "entireExecutedDeltaOnly9": true,
+  "fullPatchSha256": "c7d873f52b64493c5a46f1ed343f2aa960c424ad21cac27a931f32db24cad328",
+  "selectedCurrent24Git": [
+    {
+      "path": "apps/portal/site/auth/commerce-actions.js",
+      "bytes": 1980,
+      "sha256": "795d37a5ec1f6451c4318234f2636e834849c0c1ce0c8fc19815b3c6655d7acc",
+      "executedBlob": "ed443be9aadcab7fe75093e41cf7ae389bc1dcbc",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/site/auth/portal-routes.js",
+      "bytes": 8889,
+      "sha256": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5",
+      "executedBlob": "8191a06f8e0cbcb52e842d4acd391d96da54129a",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/site/auth/navigation-return.js",
+      "bytes": 3284,
+      "sha256": "aab8c07b9c589e1af4bf521716407e35bb97574664196b3e58b2d1a9485e4dcd",
+      "executedBlob": "4e33b85d6790798604f7ebf76ccaff8ddaf07f44",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/site/auth/plan-actions.js",
+      "bytes": 805,
+      "sha256": "64d758036946cd2fa2109a23e46066e0fa350347e45f84f1861d6d47190a9a23",
+      "executedBlob": "aa9755b5ab80094f694ef56560595933c94ef147",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/site/auth/care-actions.js",
+      "bytes": 592,
+      "sha256": "af283c549a1a1b7a404f44c387921991b7cdcd2f52a4a63af3c2e194e737e17b",
+      "executedBlob": "b8d6da010cd397c4e4996ec754588a1e92553014",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/site/auth/review-actions.js",
+      "bytes": 1904,
+      "sha256": "6796d30a8b774559cac3924c9db7c5528358dd672b1cdabe060a428be881fcb4",
+      "executedBlob": "33a57a1a843d150e26a2ac44383bddecf33b6466",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/site/auth/advisor-cookie-session.js",
+      "bytes": 30545,
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5",
+      "executedBlob": "e959cb31e994464343eb5002a4f90fe3b5de12b0",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/site/auth/client-cookie-session.js",
+      "bytes": 6833,
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0",
+      "executedBlob": "07e720e9e2ddbe982af483d8def7b99a3d45b903",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/app/retained.ts",
+      "bytes": 1671,
+      "sha256": "146d949005acc395692eca804824c2a67fb0c9bfbe5b0be98d4018f8a265b5a1",
+      "executedBlob": "9267598f1acf848668196e20e373cb7403bed1a0",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/transport/error.ts",
+      "bytes": 725,
+      "sha256": "1b6be9efd7f110c93d909ee8a2f44e805b3de51f32bfd0715ddf7cdf4c93f034",
+      "executedBlob": "57616ffdeacea1281547879cab4d949bdb6928ac",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/transport/session.ts",
+      "bytes": 10195,
+      "sha256": "deeb60865d92b6a7a0feb1b86a78193a7c093005d0e225cf5554ece1539e46bd",
+      "executedBlob": "d15f31a1ab408c057819c1e42a1b58ee6a0c8c80",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/app/session.ts",
+      "bytes": 6061,
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea",
+      "executedBlob": "7ee99d5d0d13d0d316b86b894ec525520616897e",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "supabase/functions/concierge-payments/contract.ts",
+      "bytes": 15102,
+      "sha256": "843f746ee73c7a3d38832a75bb7cd4c518fb92d93714438434d7bd15964b75f0",
+      "executedBlob": "15419bf71a2c1e396c3ea1e733ed2a603948e563",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "supabase/functions/concierge-payments/methods.ts",
+      "bytes": 4568,
+      "sha256": "136aed10e5a1c2e74b9297a41f13a8698106c32b182bea6ea4ae8d0c0ee57f24",
+      "executedBlob": "3e0a1bfe60bc03592801ac357b1e63fcb58013b8",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/app/client-payments-request.ts",
+      "bytes": 4571,
+      "sha256": "2b8d9910e6bce226eed4a5e8fd2d27ff3685f5aeef72c6531a0d8c69aee03826",
+      "executedBlob": "3cba747e22c61a4c2eee9e14cdb68c66b5bfea93",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/app/account-address-request.ts",
+      "bytes": 5217,
+      "sha256": "70d1acab8a36ab5a990addc89814dea84e841036b7c9cedc7729d02f1168b6e6",
+      "executedBlob": "3b7b668052051816db11e84b926ad76cd6e73706",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/features/account/core/model.ts",
+      "bytes": 2793,
+      "sha256": "395b009c405849145bfad3dbd2664f402aa3c508476018c058a36bf6d6338890",
+      "executedBlob": "3cd48b08f90fbcb2da5eecfc5cea127faaf9adde",
+      "authoredExact": true,
+      "baseExact": false
+    },
+    {
+      "path": "apps/portal/src/features/account/core/controller.ts",
+      "bytes": 9135,
+      "sha256": "a6f715bcbe36ff23bcf16f0902da33de7474cfbe658129c1c9efa4506c3e9fa4",
+      "executedBlob": "f8af0f97705f76faa4ab43246505dd32fe84d77a",
+      "authoredExact": true,
+      "baseExact": false
+    },
+    {
+      "path": "apps/portal/src/ui/icons.tsx",
+      "bytes": 990,
+      "sha256": "3f105dd9e5093041018b55bcce853cc6a095325fb797d7cda673f5cf2c5f2d63",
+      "executedBlob": "f4d5ad1c5f48f5b94189b0ceb9be6a683fe1f001",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/ui/primitives.tsx",
+      "bytes": 7512,
+      "sha256": "990d356778a7c828b85896fb44585df9e07a182687338dd190f2cb129073b925",
+      "executedBlob": "2427d21acbc786cf6247c823ca843b20a63750c3",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/ui/overlay-state.ts",
+      "bytes": 557,
+      "sha256": "30b5a7ea05c0a45036e6b7f9023a9316315b78d9dcfeb78920f30277a6821a67",
+      "executedBlob": "72a10d16ce0b42190a3355fa0d9210c7cedccd59",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/ui/overlay.tsx",
+      "bytes": 4637,
+      "sha256": "281b97d62325283ff72fccd2a2db96e2207b3d63e470a7be554f16b80cd4b3fd",
+      "executedBlob": "1a4d5c20612eb2151b7c22bb7824c4a9f76fc3dc",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/ui/index.ts",
+      "bytes": 444,
+      "sha256": "b44a16821e22ef4d6bb1f4eb9db180bd391a1f2fd97b90a1e75cd8a9a096f3a2",
+      "executedBlob": "3f108c3b739bf589a86aee525d1fe872e92d9f43",
+      "authoredExact": true,
+      "baseExact": true
+    },
+    {
+      "path": "apps/portal/src/features/account/core/AccountAddress.tsx",
+      "bytes": 5749,
+      "sha256": "94b4ac006ce4043f3359f80dbe36a6e804d5ba2146a6a8a9ef09741b4d4b746f",
+      "executedBlob": "5c8d2b6c188458fed0f8b8980994692da81dd83c",
+      "authoredExact": true,
+      "baseExact": false
+    }
+  ],
+  "selectedLocksAndConfig": [
+    {
+      "path": "package-lock.json",
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2",
+      "equalEe00": true
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203",
+      "equalEe00": true
+    },
+    {
+      "path": "apps/portal/tsconfig.frontend.json",
+      "sha256": "b930ae73c53ea9dbdd895de85fccbac714e5526ba62a78537d0d72f149437003",
+      "equalEe00": true
+    }
+  ],
+  "actualVsAuthoredOnlyPublished946To8dPaths": [
+    "apps/portal/tests/w0-advisor-notification-email.test.mjs",
+    "docs/CONTEXT_SYNC.md",
+    "docs/portal-rebuild/eight-threads/W0_ADVISOR_EMAIL_ROUTING_20261104.md",
+    "docs/portal-rebuild/research/W1_ADVISOR_NEUTRAL_EMAIL_20261104.md",
+    "docs/portal-rebuild/w7/ACCEPTANCE_LEDGER.json",
+    "docs/portal-rebuild/w7/PUBLISHED_94607_SOURCE_REFERENCE.json",
+    "docs/portal-rebuild/w7/REVIEW_QUEUE.json",
+    "docs/portal-rebuild/w7/SESSION_HANDOFF_20261103.md",
+    "docs/portal-rebuild/w7/ci/RESUME_ARTIFACT_AVAILABILITY_20261104.md",
+    "docs/portal-rebuild/w7/ci/RESUME_ARTIFACT_AVAILABILITY_20261104_RESULT.json",
+    "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_94607_SOURCE.md",
+    "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_94607_SOURCE_RESULT.json",
+    "docs/portal-rebuild/w7/reviews/W0_ADVISOR_EMAIL_C75_SOURCE.md",
+    "docs/portal-rebuild/w7/reviews/W0_ADVISOR_EMAIL_C75_SOURCE_RESULT.json",
+    "docs/portal-rebuild/w7/reviews/W0_ROUTER_BINDING_686734.md",
+    "docs/portal-rebuild/w7/reviews/W0_ROUTER_BINDING_686734_RESULT.json",
+    "docs/portal-rebuild/w7/reviews/W1_NEUTRAL_EMAIL_52FA_SOURCE.md",
+    "docs/portal-rebuild/w7/reviews/W1_NEUTRAL_EMAIL_52FA_SOURCE_RESULT.json",
+    "docs/portal-rebuild/w7/reviews/W2_B7BF_FRESH_CORRESPONDENCE.md",
+    "docs/portal-rebuild/w7/reviews/W2_B7BF_FRESH_CORRESPONDENCE_RESULT.json",
+    "docs/portal-rebuild/w7/reviews/W5_ORDERS_9AB334_O6.md",
+    "docs/portal-rebuild/w7/reviews/W5_ORDERS_9AB334_O6_RESULT.json",
+    "docs/portal-rebuild/w7/source-controls/W5_O6/w7-orders-selection-cancel-mask.test.mjs",
+    "supabase/functions/concierge-notifications/neutralPayload.ts",
+    "tests/portal-notification-worker.test.ts"
+  ],
+  "publishedSharedSourceReferencePinsOnlyNotNewCalleeAudit": [
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W0_ADVISOR_EMAIL_C75_SOURCE.md",
+      "atPublishedBase": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+      "bytes": 3290,
+      "sha256": "4b874eaf590c614464f2b0e55c9c8ec0a7bcf1ad8ef06d9b17f3e29ced1d1ce8",
+      "scope": "Reference to already published shared-owner source gate, not a new W6 callee audit"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W1_NEUTRAL_EMAIL_52FA_SOURCE.md",
+      "atPublishedBase": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+      "bytes": 3304,
+      "sha256": "6882f946c5e81150ecd654abfdabfb0031f21c942bfc0e387b9c754dc1578d8e",
+      "scope": "Reference to already published shared-owner source gate, not a new W6 callee audit"
+    }
+  ],
+  "jobs": [
+    {
+      "key": "Portal",
+      "jobId": "126923626091",
+      "url": "https://github.com/KanujVerma/shelv/actions/runs/41929833868/job/126923626091",
+      "raw": {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/Portal-COMPLETE.log",
+        "bytes": 4412434,
+        "sha256": "819613db5c04b079533a8a855fe20dfdf2ed3c75ba61523c20b81e1eace0c255",
+        "mode": "0o400"
+      },
+      "checkoutExcerpt": {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/Portal-CHECKOUT-EXCERPT.txt",
+        "bytes": 357,
+        "sha256": "6c9d0a87bb846045216d7cbac9245b4daf3738eb304f6c1a0401bf1c5e637da5",
+        "mode": "0o600"
+      },
+      "jobMetadata": {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/Portal-JOB-METADATA.json",
+        "bytes": 5333,
+        "sha256": "08ed0776962cda595c6ae1cc1fe3d06d95ea8bebbbfb082a2b2e44557d74dd7b",
+        "mode": "0o600"
+      },
+      "conclusion": "success",
+      "allStepConclusionsSuccess": true
+    },
+    {
+      "key": "VerifyBuild",
+      "jobId": "126923627626",
+      "url": "https://github.com/KanujVerma/shelv/actions/runs/41929833986/job/126923627626",
+      "raw": {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/VerifyBuild-COMPLETE.log",
+        "bytes": 1677731,
+        "sha256": "0c5edb1f6f2e11e9cfadc66473ae1f3e5f0a3f67eaff8fcf2de7dc5bb38dbaa9",
+        "mode": "0o400"
+      },
+      "checkoutExcerpt": {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/VerifyBuild-CHECKOUT-EXCERPT.txt",
+        "bytes": 306,
+        "sha256": "ce1ce3a0f8b66bbfa9444408d352bce138f7c521753f2eb4a0f928a5597dc1ff",
+        "mode": "0o600"
+      },
+      "jobMetadata": {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/VerifyBuild-JOB-METADATA.json",
+        "bytes": 2665,
+        "sha256": "25ba2fecdd1eb033da34b7b07e775dd025c750f108c1abb9a18296ee44a93440",
+        "mode": "0o600"
+      },
+      "conclusion": "success",
+      "allStepConclusionsSuccess": true
+    },
+    {
+      "key": "Database",
+      "jobId": "126923627294",
+      "url": "https://github.com/KanujVerma/shelv/actions/runs/41929833986/job/126923627294",
+      "raw": {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/Database-COMPLETE.log",
+        "bytes": 233555,
+        "sha256": "cbc5d5b6cb34aa5acba0b42ff294a0b1e31325699cf461e719b16dda72686f1d",
+        "mode": "0o400"
+      },
+      "checkoutExcerpt": {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/Database-CHECKOUT-EXCERPT.txt",
+        "bytes": 330,
+        "sha256": "f2bd0c63a68b4f518f062f121bd54f712826a3c0eddd7f5bab762bdcd5ab14a3",
+        "mode": "0o600"
+      },
+      "jobMetadata": {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/Database-JOB-METADATA.json",
+        "bytes": 7952,
+        "sha256": "e0120c4ca8bf10cb1d0a16794fcd8cef45bfaa774ac1a1ad81fb2c0bf8f4c279",
+        "mode": "0o600"
+      },
+      "conclusion": "success",
+      "allStepConclusionsSuccess": true
+    }
+  ],
+  "liveRequiredCheckStatusCapture": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/CURRENT-PR238-STATUS.json",
+    "bytes": 995,
+    "sha256": "9f31f4c6c88b5052f04199d9b3c87cbc9341102190504d8eda35b7d4179d2de4",
+    "mode": "0o600"
+  },
+  "exactNativeCodeReview": {
+    "commentId": 6622825416,
+    "url": "https://github.com/KanujVerma/shelv/pull/238#issuecomment-6622825416",
+    "codeReview": {
+      "commit_sha": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "has_any_findings": false,
+      "has_unresolved_findings": false,
+      "status": "completed"
+    }
+  },
+  "nativeStatusCapture": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w6-ee00-green-executed/NATIVE-SUMMARY-COMMENT.json",
+    "bytes": 1412,
+    "sha256": "9698c66f29e69f76069981df1f2c085cc5c64e0d01d30100c566fca306f64282",
+    "mode": "0o600"
+  },
+  "portalOrdinary": {
+    "tests": 4020,
+    "pass": 4020,
+    "fail": 0,
+    "skip": 0,
+    "cancel": 0
+  },
+  "laterHostedJobStepsSuccessMetadataOnly": true,
+  "newW7TestsBuildsBrowserServerAuthSqlResources": false,
+  "oldRawRecoveryOrHistoricalNpmComparison": false,
+  "oldFailedRunsRemainFailed": true,
+  "originalMissingArtifactRowsUnchanged": true,
+  "rootOwnsIntegrationDisposition": true,
+  "initialComparisonSetupFailure": "Unnormalized package-relative apps/portal/../../ Git path refused; corrected posix normpath before successful24 comparison. No test execution or source mutation.",
+  "reportSha256": "ffe5e9e85609fc2fdec8cf2e256a5a75a94eae46efd50699183bd88efbf2c969",
+  "recordedAt": "2026-11-04T23:37:58.695858+00:00",
+  "resourceGrant": null
+}

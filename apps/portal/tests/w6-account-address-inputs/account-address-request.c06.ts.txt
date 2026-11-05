@@ -1,0 +1,64 @@
+import type {ApplicationSession} from './session.ts';
+import {clientCookieRequest} from './retained.ts';
+import {TransportError} from '../transport/session.ts';
+import type {OperationOptions,OperationKind} from '../transport/session.ts';
+import {buildPaymentCall,mapPaymentReceipt,paymentUuid} from '../../../../supabase/functions/concierge-payments/contract.ts';
+import {buildPaymentCallV2,mapPaymentViewV2} from '../../../../supabase/functions/concierge-payments/methods.ts';
+import {buildServiceRpc,mapServiceView} from '../../../../src/contracts/ConciergeService.ts';
+import type {ShippingAddressReceipt} from '../../../../supabase/functions/concierge-payments/types.ts';
+
+/** Creation-bound client-only seam. No owner selector, URL, credentials, RPC or
+ * caller authority is accepted. Both retained lease waits stay on the real path. */
+export function createAccountAddressRequest(runtime:ApplicationSession){
+ const boundary=runtime.getSnapshot().boundary,owner=runtime.cookie.identity?.ownerId;
+ const generation=runtime.cookie.generation,epoch=runtime.cookie._epoch;
+ function current(){
+  if(!boundary||!owner||runtime.cookie.audience!=='client'||runtime.cookie.identity?.role!=='client'||runtime.cookie.identity.ownerId!==owner||runtime.cookie.generation!==generation||runtime.cookie._epoch!==epoch||runtime.getSnapshot().boundary!==boundary||!boundary.isCurrent())throw new TransportError(401);
+ }
+ current();paymentUuid(owner);
+ async function execute<T>(channel:'payments'|'operations',input:unknown,kind:OperationKind,decode:(value:unknown)=>T,options:OperationOptions={}){
+  current();
+  const signal=options.signal,local=options.isApplicable;
+  const applicable=()=>{
+   current();if(signal?.aborted)return false;
+   let allowed=true;try{if(local!==undefined)allowed=local()===true;}catch{allowed=false;}
+   current();return allowed&&!signal?.aborted;
+  };
+  // Detach before any await, including serialization callbacks.
+  let command:unknown;
+  try{const wire=JSON.stringify(input);current();if(typeof wire!=='string')throw Error();if(new TextEncoder().encode(wire).length>100000)throw new TransportError(413);command=JSON.parse(wire);}catch(error){current();if(error instanceof TransportError)throw error;throw new TransportError(400);}
+  if(!applicable())throw new TransportError(503,kind);
+  const invoke=clientCookieRequest(channel,runtime.cookie);
+  try{
+   const result=await runtime.transport.bind<unknown,T>({kind,invoke,decode:value=>{current();if(!applicable())throw new TransportError(503,kind);try{return decode(value);}catch(error){if(error instanceof TransportError)throw error;throw new TransportError(503,kind);}}}).execute(command,{...(signal?{signal}:{}),isApplicable:applicable});
+   current();if(!applicable())throw new TransportError(503,kind);return result;
+  }catch(error){current();throw error;}
+ }
+ return {
+  isCurrent(){try{current();return true;}catch{return false;}},
+  readPayments(options?:OperationOptions){
+   current();const command={schemaVersion:2,action:'client_read'};buildPaymentCallV2(command,owner!);
+   return execute('payments',command,'read',value=>{
+    const view=mapPaymentViewV2(value),latest=Math.max(0,...view.shippingAddresses.map(a=>a.version));
+    if((view.shippingAddress?.version??0)!==latest||view.revision<latest)throw Error('unavailable');
+    return view;
+   },options);
+  },
+  readService(options?:OperationOptions){
+   current();const command={action:'service_client_read'};buildServiceRpc(command,owner!);
+   return execute('operations',command,'read',value=>mapServiceView(value,false),options);
+  },
+  async confirmAddress(input:unknown,options?:OperationOptions){
+   current();let call:ReturnType<typeof buildPaymentCall>;
+   try{call=buildPaymentCall(input,owner!);current();if(call.name!=='concierge_payment_write'||call.args.p_action!=='confirm_shipping_address')throw Error();}catch{current();throw new TransportError(400);}
+   if(call.name!=='concierge_payment_write')throw new TransportError(400);
+   const command={action:'confirm_shipping_address',requestId:call.args.p_request_id,expectedRevision:call.args.p_expected_revision,address:call.args.p_payload.address};
+   return execute('payments',command,'write',value=>{
+    const result=mapPaymentReceipt(value,call) as ShippingAddressReceipt;
+    if(result.operation!=='confirm_shipping_address'||result.revision!==command.expectedRevision+1)throw Error('unavailable');
+    return result;
+   },options);
+  },
+ };
+}
+export type AccountAddressRequest=ReturnType<typeof createAccountAddressRequest>;

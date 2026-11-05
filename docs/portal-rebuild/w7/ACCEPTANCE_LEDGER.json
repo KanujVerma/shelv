@@ -2750,6 +2750,85 @@
       "head": "8d454b8015940ed29d2432635251bdbaba8b70da",
       "report": "reviews/W2_INLINE_8D454_SOURCE.md",
       "level": "PASS_SCOPED_COMPLETE9_INLINE_SOURCE_FINITE_SSR_DEPENDENCY_HELD_CURRENT_PORTAL_FAILED"
+    },
+    {
+      "head": "686734c6bb51197d93e2c86046f16337223ab1b4",
+      "report": "reviews/W0_ROUTER_BINDING_686734.md",
+      "level": "PASS_SCOPED_COMPLETE3_AST_DEPENDENCY_BINDING_SOURCE_FINITE_ONLY"
+    },
+    {
+      "head": "9ab334791c2a70c80b93cb188273b22225621248",
+      "report": "reviews/W5_ORDERS_9AB334_O6.md",
+      "level": "WITHHELD_FIRST_MATERIAL_FINDING_O6_COMPLETE29_REVIEW_INCOMPLETE"
+    },
+    {
+      "head": "52faec7918e534747a9a20e81f9411fbf0b9f72d",
+      "report": "reviews/W1_NEUTRAL_EMAIL_52FA_SOURCE.md",
+      "level": "PASS_SCOPED_COMPLETE3_NEUTRAL_ADVISOR_INBOX_SOURCE_PURE_FORMAT_ONLY"
+    },
+    {
+      "head": "c75df7f56e3ee63e0847efc3f1d893097df1c294",
+      "report": "reviews/W0_ADVISOR_EMAIL_C75_SOURCE.md",
+      "level": "PASS_SCOPED_COMPLETE6_ADVISOR_EMAIL_COMPOSITION_SOURCE_PURE_ROUTING_ONLY"
+    },
+    {
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "generation": "FRESH_RESUME_20261104T2227Z_NOT_OLD_PACKET_RECOVERY",
+      "packetSha256": "0a15c356c63b872a138bc6632481c9eca1e8ba5bed9bfc5f33461e4efb931814",
+      "report": "reviews/W6_EE00_FRESH_CURRENT_SOURCE.md",
+      "level": "PASS_FRESH_CURRENT_COMPLETE9_ADDRESS_SOURCE_DEPENDENCIES_NO_HISTORICAL_RAW_RECOVERY"
+    },
+    {
+      "head": "0d603c261e707b29923a2ca80afbf101670dc3bb",
+      "report": "reviews/W5_R8_0D603_O7.md",
+      "level": "WITHHELD_FIRST_MATERIAL_FINDING_O7_COMPLETE31_SOURCE_REVIEW_INCOMPLETE"
+    },
+    {
+      "head": "8bc1ee73ca1d363aacf12ec870f571e14d419237",
+      "report": "reviews/W3_ROUTINE_8BC_SOURCE_FRAME.md",
+      "level": "PASS_SCOPED_COMPLETE2_ROUTINE_CSS_SAVED_FRAME_DECLARATION_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "14954044a5f9296bdb85cef052da21ab02bc754f",
+      "report": "reviews/W5_R9_149540_O8.md",
+      "level": "WITHHELD_FIRST_NEW_O8_P2_COMPLETE32_INCOMPLETE_STOP"
+    },
+    {
+      "head": "73cf36378a9e507280fd69de1927e4490768ad41",
+      "report": "reviews/W5_R10_73CF_O9.md",
+      "level": "WITHHELD_FIRST_NEW_O9_P2_COMPLETE33_INCOMPLETE_STOP"
+    },
+    {
+      "head": "58f66a4e549461887bc6b8bbd33873e09edd8397",
+      "report": "reviews/W5_R11_58F66_O10.md",
+      "level": "WITHHELD_FIRST_NEW_O10_P2_COMPLETE34_INCOMPLETE_STOP"
+    },
+    {
+      "head": "cdbe0d2646162feb8c13c67c99b5718163c7e6f2",
+      "report": "reviews/W3_PRODUCT_IDENTITY_CDBE_SOURCE_FRAME.md",
+      "level": "PASS_SCOPED_COMPLETE2_PRODUCT_IDENTITY_CSS_SAVED_FRAME_DECLARATION_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "4dc6f7230c80d20cfa2c6178bdbcb9e2448a2990",
+      "generation": "FRESH_EXPORT_CURRENT_20261104_NOT_HISTORICAL_RECOVERY",
+      "packetSha256": "f20cf5d59eae91aacdedcd564b067c1400122adf9327e2cc22a9525e06b71f0d",
+      "report": "reviews/W6_EXPORT_4DC_FRESH_CURRENT_SOURCE.md",
+      "level": "PASS_FRESH_CURRENT_COMPLETE16_CONSUMER_SOURCE_ONLY_DEPENDENCY_HELD"
+    },
+    {
+      "head": "565f3662a4ba48b33fbad85ea02f45e5f1eb6699",
+      "report": "reviews/W5_R12_565F_O11.md",
+      "level": "WITHHELD_FIRST_NEW_O11_P2_COMPLETE35_INCOMPLETE_STOP"
+    },
+    {
+      "head": "ad8a726175e712d7f59125353ca9128bb48ea99b",
+      "report": "reviews/W5_R13_AD8A_SOURCE.md",
+      "level": "PASS_SCOPED_COMPLETE36_SOURCE_FINITE_CONSUMER_DEPENDENCY_HELD"
+    },
+    {
+      "head": "cd8b47334524d98b0f548ab1d1c98e8f97f990b9",
+      "report": "reviews/W0_FINAL_EXPORT_REQUEST_CD8_SOURCE.md",
+      "level": "PASS_SCOPED_COMPLETE3_SOURCE_NEGATIVE_UNREGISTERED_BINDING_ONLY_REGISTRATION_PRODUCER_CONSUMER_HELD"
     }
   ],
   "placementClarifications": [
@@ -2764,12 +2843,22 @@
       "id": "W7-W5-O5",
       "head": "bb1f96a32195638ef11d4efc3d9551f695784c0c",
       "priority": "P2",
-      "status": "OPEN_SOURCE_CORRECTION_REQUIRED_STOP_CURRENT_HEAD",
+      "status": "CLOSED_ORIGINAL_SOURCE_CONTROL_ONLY_9AB334_OLD_FAILURE_PRESERVED",
       "report": "reviews/W5_ORDERS_BB1_O5.md",
-      "finding": "Legitimate internal original quote is reopened as the unchanged externally selected purchase; controlled source/effect/callback only, zero writes"
+      "finding": "Legitimate internal original quote is reopened as the unchanged externally selected purchase; controlled source/effect/callback only, zero writes",
+      "sourceClosureReport": "reviews/W5_ORDERS_9AB334_O6.md"
+    },
+    {
+      "id": "W7-W5-O6",
+      "head": "9ab334791c2a70c80b93cb188273b22225621248",
+      "priority": "P2",
+      "status": "CLOSED_ORIGINAL_SOURCE_CONTROL_ONLY_R8_OLD_FAILURE_RAW_UNAVAILABLE_HISTORICAL",
+      "report": "reviews/W5_ORDERS_9AB334_O6.md",
+      "finding": "Consumed pending request removes masking before actual open cancellation notification; controlled render shows A under B request, writes0; no hydrated/RootVM/Auth/financial/private-payload claim",
+      "sourceClosureReport": "reviews/W5_R8_0D603_O7.md"
     }
   ],
-  "lastReconciledAt": "2026-11-04T09:13:42.061946+00:00",
+  "lastReconciledAt": "2026-11-04T23:27:46.487615+00:00",
   "counterProvenance": {
     "frozenBaseline": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
     "currentIntegratedCensus": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
@@ -2924,6 +3013,78 @@
       "correctedAt": "3d9d1b805d3e8b042008cb4d7f9a4074e82740e5",
       "currentReproduction": "Actualcorrected26pass/statuscallsassertion+newstatus-omission3pass1expectedfail",
       "correctionReport": "reviews/W0_CURRENT_SPINE_3D9.md"
+    },
+    {
+      "id": "W7-W5-O5",
+      "head": "9ab334791c2a70c80b93cb188273b22225621248",
+      "report": "reviews/W5_ORDERS_9AB334_O6.md",
+      "scope": "Byte-exact original current control1/1 only, oldbb1 failure retained; no fullR7 or Back/browser acceptance"
+    },
+    {
+      "id": "W7-W5-O6",
+      "head": "0d603c261e707b29923a2ca80afbf101670dc3bb",
+      "report": "reviews/W5_R8_0D603_O7.md",
+      "scope": "Exact original current control1/1, not fullR8/real acceptance; oldraw89995missing/historical retained"
+    },
+    {
+      "id": "W7-W5-O7",
+      "head": "0d603c261e707b29923a2ca80afbf101670dc3bb",
+      "priority": "P2",
+      "status": "CLOSED_ORIGINAL_SOURCE_PREDICATE_ON_NEW_R9_ONLY",
+      "report": "reviews/W5_R8_0D603_O7.md",
+      "finding": "Retained A sheet onDone closes newer B sheet, controlledsourcecallback0/1/writes0, nothydration/Auth/finance/privatepayload claim",
+      "priorStatus": "OPEN_SOURCE_CORRECTION_REQUIRED_STOP_CURRENT_HEAD",
+      "closedOnHead": "14954044a5f9296bdb85cef052da21ab02bc754f",
+      "currentOriginalPass": 1,
+      "newFindingDoesNotGrantWholeHead": true
+    },
+    {
+      "id": "W7-W5-O8",
+      "head": "14954044a5f9296bdb85cef052da21ab02bc754f",
+      "priority": "P2",
+      "status": "CLOSED_ORIGINAL_SOURCE_PREDICATE_ON_NEW_R10_ONLY",
+      "report": "reviews/W5_R9_149540_O8.md",
+      "finding": "Current sheet functional-updater replay leaves sheet open0/1; controlledsource/nothydration/finance/privatepayload",
+      "priorStatus": "OPEN_SOURCE_CORRECTION_REQUIRED_STOP_CURRENT_HEAD",
+      "closedOnHead": "73cf36378a9e507280fd69de1927e4490768ad41",
+      "currentOriginalPass": 1,
+      "newFindingDoesNotGrantWholeHead": true
+    },
+    {
+      "id": "W7-W5-O9",
+      "head": "73cf36378a9e507280fd69de1927e4490768ad41",
+      "priority": "P2",
+      "status": "CLOSED_ORIGINAL_SOURCE_PREDICATE_ON_NEW_R11_ONLY",
+      "report": "reviews/W5_R10_73CF_O9.md",
+      "finding": "Older begin after abort cleanup steals newer same-client open read claim;0/1/AfinalinsteadB/writes0/READY, noactualRootUI/financial/privatepayload claim",
+      "priorStatus": "OPEN_SOURCE_CORRECTION_REQUIRED_STOP_CURRENT_HEAD",
+      "closedOnHead": "58f66a4e549461887bc6b8bbd33873e09edd8397",
+      "currentOriginalPass": 1,
+      "newFindingDoesNotGrantWholeHead": true
+    },
+    {
+      "id": "W7-W5-O10",
+      "head": "58f66a4e549461887bc6b8bbd33873e09edd8397",
+      "priority": "P2",
+      "status": "CLOSED_ORIGINAL_SOURCE_PREDICATE_ON_NEW_R12_ONLY",
+      "report": "reviews/W5_R11_58F66_O10.md",
+      "finding": "Original-quote preclaim currentness-wrapper reentry supersedes newerB;0/1/oldquoteAfinal/writes0/READY; notnativecallback/RootVM/finance/privatepayload proof",
+      "priorStatus": "OPEN_SOURCE_CORRECTION_REQUIRED_STOP_CURRENT_HEAD",
+      "closedOnHead": "565f3662a4ba48b33fbad85ea02f45e5f1eb6699",
+      "currentOriginalPass": 1,
+      "newFindingDoesNotGrantWholeHead": true
+    },
+    {
+      "id": "W7-W5-O11",
+      "head": "565f3662a4ba48b33fbad85ea02f45e5f1eb6699",
+      "priority": "P2",
+      "status": "CLOSED_ORIGINAL_SOURCE_PREDICATE_ON_NEW_R13_ONLY",
+      "report": "reviews/W5_R12_565F_O11.md",
+      "finding": "After permanent disposal during actual port status hash, fixed status invocation1; no newwrites/presentationrevival/actualHTTP/privatepayload/finance proof",
+      "priorStatus": "OPEN_SOURCE_CORRECTION_REQUIRED_STOP_CURRENT_HEAD",
+      "closedOnHead": "ad8a726175e712d7f59125353ca9128bb48ea99b",
+      "currentOriginalPass": 1,
+      "noActualNamespaceFinancialOrGenuineAcceptance": true
     }
   ],
   "sourceCorrespondences": [
@@ -2979,6 +3140,52 @@
       "head": "e1829fad1bd3ac0c25f447dcde19fc38dfb39bcf",
       "report": "reviews/W6_ADDRESS_E1829_CORRESPONDENCE.md",
       "level": "PASS_BOUNDED_ADDRESS9_PUBLISHED_SPINE_DEPENDENCY_SOURCE_CORRESPONDENCE"
+    },
+    {
+      "head": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+      "report": "reviews/PUBLISHED_SPINE_94607_SOURCE.md",
+      "level": "PASS_BOUNDED_PUBLISHED_BINDING_SOURCE_AND_EXACT_DOCUMENT_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
+      "packetSha256": "57cab4e4fb2cf62f454f9ecb9605cd39d435f644d7995c67a2ad4671d1cbe67d",
+      "generation": "FRESH_CURRENT_57CAB_NOT_CB9C_RECOVERY",
+      "report": "reviews/W2_B7BF_FRESH_CORRESPONDENCE.md",
+      "level": "PASS_BOUNDED_CURRENT_GIT_SOURCE_CORRESPONDENCE_FRESH_HOSTED_CUSTODY_NATIVE_QUOTA_UNACCEPTED"
+    },
+    {
+      "head": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+      "report": "reviews/PUBLISHED_8D3893_SOURCE.md",
+      "level": "PASS_BOUNDED_PUBLISHED_EMAIL_SOURCE_AND_EXACT_DOC_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "df8309bc3b632c13e4f3cc9357aa1a0d40e94a2c",
+      "report": "reviews/W3_DF830_CORRESPONDENCE.md",
+      "level": "PASS_BOUNDED_TWO_FILE_ROUTINE_SAVED_FRAME_SOURCE_DEPENDENCY_CORRESPONDENCE_ONLY"
+    },
+    {
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "executedHead": "92b347a35f50723ac6e330712eb22614aac31812",
+      "actualBase": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+      "report": "reviews/W6_EE00_GREEN_EXECUTED_CORRESPONDENCE.md",
+      "status": "PASS_READ_ONLY_CURRENT_CI_CUSTODY_EXECUTED9_ACTUAL8D_DEPENDENCY_CORRESPONDENCE_ONLY",
+      "noNewExecution": true
+    },
+    {
+      "head": "a646257554cea9c31265fafc5745e9e90edc7134",
+      "base": "03ceede4070b87fb60a705e92109a6126cd2b567",
+      "sourcePredecessor": "4dc6f7230c80d20cfa2c6178bdbcb9e2448a2990",
+      "report": "reviews/W6_EXPORT_A646_PUBLISHED03_CORRESPONDENCE.md",
+      "status": "PASS_BOUNDED_COMPLETE16_PUBLISHED03_CONSUMER_SOURCE_DEPENDENCY_CORRESPONDENCE_ONLY_DEPENDENCY_HELD",
+      "newW7Execution": false
+    },
+    {
+      "head": "05d8bbc0ea81c88b647bc6cdc284cfed0874a8a0",
+      "base": "2fae8269dcd8bd7e9d07a1aadf6e009e70c87ace",
+      "sourcePredecessor": "ad8a726175e712d7f59125353ca9128bb48ea99b",
+      "report": "reviews/W5_R13_05D8_PUBLISHED_CORRESPONDENCE.md",
+      "status": "PASS_BOUNDED_COMPLETE36_PUBLISHED_SPINE_SOURCE_DEPENDENCY_CORRESPONDENCE_ONLY_DEPENDENCY_HELD",
+      "newW7Execution": false
     }
   ],
   "currentGenuineExecutionGate": {
@@ -2998,8 +3205,8 @@
     "wholeIntegratedCensus": "NOT_MEASURED",
     "noCounterAdvance": true,
     "latestObservedRemote": {
-      "head": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
-      "reference": "PUBLISHED_9C255_SOURCE_REFERENCE.json",
+      "head": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+      "reference": "PUBLISHED_8D3893_SOURCE_REFERENCE.json",
       "wholeCensus": "NOT_MEASURED"
     }
   },
@@ -3091,6 +3298,45 @@
         "skip": 0,
         "cancel": 0
       }
+    },
+    {
+      "associatedHead": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
+      "executionCommit": "c5cc542c8c92580e23b305f38381121f98377560",
+      "generation": "FRESH_CURRENT_57CAB_NOT_CB9C_RECOVERY",
+      "report": "reviews/W2_B7BF_FRESH_CORRESPONDENCE.md",
+      "classification": "FRESH_COMPLETE_JOB_LOG_AND_API_CHECKOUT_CUSTODY_NOT_OLD_RECOVERY",
+      "portalMainPass": 4032,
+      "portalMainFail": 0,
+      "nativeGate": "FAILED_USAGE_QUOTA_NOT_CLEAN",
+      "notGenuine": true
+    },
+    {
+      "associatedHead": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+      "executionCommit": "89e2223177bf603a2a32798d11dd5ff7c9c668bb",
+      "executionTree": "01309cc9e4f2f8d62e2f31fa1115ed7e339cda2f",
+      "report": "ci/INFO_CUSTODY_W5_PACKETS_ROOT8D_20261104.md",
+      "classification": "FRESH_EXISTING_COMPLETE_JOB_LOG_CUSTODY_INFO_ONLY",
+      "PortalMainPass": 4014,
+      "PortalMainFail": 0,
+      "nativeFlagsTrueNoReadiness": true,
+      "noGenuineClaim": true
+    },
+    {
+      "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+      "executedHead": "92b347a35f50723ac6e330712eb22614aac31812",
+      "executedTreeDiffersAuthored": true,
+      "report": "reviews/W6_EE00_GREEN_EXECUTED_CORRESPONDENCE.md",
+      "all3Success": true,
+      "nativeCodeReviewCompletedFalseFalse": true,
+      "portalOrdinary": {
+        "tests": 4020,
+        "pass": 4020,
+        "fail": 0,
+        "skip": 0,
+        "cancel": 0
+      },
+      "proofLevel": "HOSTED_CUSTODY_AND_SELECTED_SOURCE_CORRESPONDENCE_NOT_GENUINE",
+      "newW7Execution": false
     }
   ],
   "noPhotoCheckinEligibility": {
@@ -3100,5 +3346,25 @@
     "sourceStatus": "UNMET_PUBLISHED_ADVISOR_ROUTE_CONTEXT_AND_CURRENT_INTEGRATION_GATES",
     "freshResourceGrant": null,
     "photoHoldCleared": false
+  },
+  "currentArtifactAvailability": {
+    "status": "CURRENT_SESSION_ARTIFACT_UNAVAILABILITY_NO_RECOVERY_OR_NEW_GATE",
+    "report": "ci/RESUME_ARTIFACT_AVAILABILITY_20261104.md",
+    "observedAt": "2026-11-04T22:27:58.278569+00:00",
+    "priorReportsHistoricalNotCurrentRawAvailability": true,
+    "freshCurrentGenerations": [
+      {
+        "packetSha256": "57cab4e4fb2cf62f454f9ecb9605cd39d435f644d7995c67a2ad4671d1cbe67d",
+        "head": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
+        "storage": "fresh-current-20261104/b7bf-57cab",
+        "originalGenerationRecovery": false
+      },
+      {
+        "head": "ee00ac9932a1fae9225e8624cccabc6121bbcd35",
+        "packetSha256": "0a15c356c63b872a138bc6632481c9eca1e8ba5bed9bfc5f33461e4efb931814",
+        "storage": "fresh-current-20261104/w6-ee00-0a15",
+        "originalGenerationRecovery": false
+      }
+    ]
   }
 }

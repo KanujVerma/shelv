@@ -1,3 +1,23 @@
+## W0 product metadata and standalone export request source, 5 November UTC
+
+Owner: Kanuj. The [source integration record](portal-rebuild/eight-threads/W0_PRODUCT_IDENTITY_EXPORT_REQUEST_INTEGRATION_20261105.md) pins normal PR242 merge2fae, its exact pair and complete peer/Root checkout proofs. Root2fae checks pass; native retains only known SQL/photo findings. Independently reviewed cd8b adds the actual standalone shared export request, its test and original source report, with no W6 helper import. W7 passes32 actual-unregistered negative controls and four unchanged graphs; namespace remains503/no export egress. Registered/producer/consumer/privacy/final-egress/genuine gates remain held, and actual consumer reconciliation plus fresh publication CI/native are separate. The exact current W7 snapshot is f1d0fc, preserving newer R13/source closures and all stops without rollback. W4's real no-photo review/history gate and all principal/resource/counter holds remain unchanged.
+
+## W0 completed 03ceede hosted checks, 5 November UTC
+
+Owner: Kanuj. All three checks pass on exact published03ceede. The [completed-hosted receipt](portal-rebuild/eight-threads/W0_ADDRESS_ROUTINE_INTEGRATION_20261104.md#completed-hosted-checks-on-published03) binds all three complete logs to executed3cb3ba4, its actual parents and an entire tree equal to authored03; Portal ordinary suite4020/4020 with zero fail/skip/cancel. Native code review still reports the known plan SQL and held photo findings; PR211 stays draft and unmerged. This is hosted validation, not actual Account, no-photo review/history, rendered-frame or genuine acceptance. No old failure, missing artifact, protected fixture, refusal, resource or counter disposition changes.
+
+## W0 address and routine source integration, 4 November UTC
+
+Owner: Kanuj. PR238 normally merged as ce9c07bb, then PR241 as251bc62e, after separate exact-head/native/CI gates and new-spine composition checks. The [serial integration record](portal-rebuild/eight-threads/W0_ADDRESS_ROUTINE_INTEGRATION_20261104.md) pins all nine address and two routine postimages, actual peer-job checkouts, unchanged contracts/migrations/locks/workflows and the exact W7 snapshot c765 including R10/O9 withholding. Current combined Root CI/native remain separate; actual Account mounting/persistence, routine rendered-frame/a11y, no-photo full review/history and all genuine/held gates remain open. No resource or acceptance counter advances.
+
+## W0 current advisor-email hosted proof, 4 November UTC
+
+Owner: Kanuj. Published8d3893 now has all three checks SUCCESS. The [completed-check custody record](portal-rebuild/eight-threads/W0_ADVISOR_EMAIL_ROUTING_20261104.md#published-source-and-completed-hosted-checks) binds all three complete job logs to actual checkout89e2223, its two actual parents and the entire tree equal to authored8d; Portal ordinary suite4014/4014. Only advisor-email URL finding4464598929 was resolved after proof reply4474570687. Native unresolved flags, plan SQL and held photo findings remain; PR211 stays draft and unmerged. No actual email, no-photo journey, principal/setup/resource or held-scope acceptance follows. Existing failures and missing original artifacts retain their prior dispositions.
+
+## W0 advisor email audience correction: source integration, 4 November UTC
+
+Owner: Kanuj. The [bounded composition receipt](portal-rebuild/eight-threads/W0_ADVISOR_EMAIL_ROUTING_20261104.md) combines W1's two-line neutral payload/decoder correction with Root's pure actual-router regression. The regression is in Portal's existing test target; OLD4/7 becomes7/7, selected pure worker1/1 and all four configured graphs pass. Initial Root-test-target TS2578 is preserved separately; no production comment/configuration/flag was relaxed. Advisor attention uses the existing advisor inbox, with client/history links and strict decoder restrictions retained. No email/Auth/provider/browser/SQL resource or A07 activation occurred. Fresh exact-source/hosted gates remain required; absent old artifacts were not reconstructed.
+
 ## W0 app-router extraction dependency correction, 4 November UTC
 
 Owner: Kanuj. The [three-file test-only source successor](portal-rebuild/eight-threads/W0_NOTIFICATION_ROUTER_BINDING_20261104.md) binds the actual reviewed publication-delivery helper in the pure AST-router model. Exact current negative control0/1 ReferenceError becomes1/1; removing only the import/dependency entry restores the entire original file and every negative assertion. No browser or held callee audit ran. Original4012/1 and adjacent failed CIs remain FAILED; source review and fresh hosted CI are still required. Production, permission, workflow, SQL, resource and acceptance state are unchanged.
