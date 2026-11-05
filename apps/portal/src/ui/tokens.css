@@ -1,0 +1,48 @@
+/* Native page 498:32. C01.variables.json records exact approved token evidence. */
+:root {
+  --color-brand: #25452f;
+  --color-canvas: #f6f3ec;
+  --color-surface: #fffefb;
+  --color-ink: #171a18;
+  --color-muted: #626760;
+  --color-line: #dedbd2;
+  --color-quiet: #eeece5;
+  --color-success: #315b35;
+  --color-successBg: #edf2e9;
+  --color-warning: #72501f;
+  --color-warningBg: #fbf1df;
+  --color-white: #ffffff;
+  /* Retained portal danger roles, needed for the approved recovery specimens. */
+  --color-danger: #8e3c2f;
+  --color-dangerBg: #fff0eb;
+  --color-overlay: rgba(23,33,26,0.18);
+  --color-focus: var(--color-brand);
+  --font-body: 'Inter', sans-serif;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --text-body: 16px;
+  --line-body: 23px;
+  --text-label: 14px;
+  --line-label: 20px;
+  --text-meta: 12px;
+  --line-meta: 17px;
+  --text-display: 34px;
+  --line-display: 39px;
+  --text-heading: 20px;
+  --line-heading: 26px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --control-height: 48px;
+  --sidebar-width: 224px;
+  --topbar-height: 80px;
+  --content-inset: 40px;
+  --sheet-width: 536px;
+  --sheet-top: 72px;
+  --layer-overlay: 30;
+  --layer-popover: 40;
+}

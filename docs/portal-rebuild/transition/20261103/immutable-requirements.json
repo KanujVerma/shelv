@@ -1,0 +1,47 @@
+[
+  {
+    "file": "docs/portal-rebuild/source/APPROVED_INPUT.txt",
+    "bytes": 95388,
+    "sha256": "c45701f9f54fd2b1dbb09bbd7aa2b9b437e9059aa6032b6f39411fe2e7f6efbd"
+  },
+  {
+    "file": "docs/portal-rebuild/source/CONTINUATION_INPUT_20261102.txt",
+    "bytes": 100187,
+    "sha256": "b428b318598df52f12ce3e6ea4ebd350ff9333ee05d9fd8f04a8e845d0c722bc"
+  },
+  {
+    "file": "docs/portal-rebuild/source/CORRECTIVE_EXECUTION_STEER_20261102.txt",
+    "bytes": 5323,
+    "sha256": "71b1d405ead39abbfe3f0ada02fcbcc6a7e86199990df07ec621d1a116830d31"
+  },
+  {
+    "file": "docs/portal-rebuild/source/ACCEPTANCE_FIRST_EXECUTION_STEER_20261103.txt",
+    "bytes": 2604,
+    "sha256": "7d77c04d411a52a7594001ee8ddf042c3e1349e5f1f488851487f0c30f3f78eb"
+  },
+  {
+    "file": "docs/portal-rebuild/APPROVED_DECISIONS.md",
+    "bytes": 24755,
+    "sha256": "eefc74fcc1498cdbbe5ac21d4215cfb9c8936545a6dcc6437bf9e0dd98c21e60"
+  },
+  {
+    "file": "docs/portal-rebuild/DECISION_ADDENDA.md",
+    "bytes": 4264,
+    "sha256": "aaa150a5673d23c13ec9ad6a9fc6fc784668cdeb35c34785a1514051ed439e63"
+  },
+  {
+    "file": "docs/portal-rebuild/APPROVED_DESKTOP_SPEC.md",
+    "bytes": 36823,
+    "sha256": "4ceafbaca13ab9324ea35e5e3cb94d09ba76178c9c5127a93da87c5b9c7e59a0"
+  },
+  {
+    "file": "docs/portal-rebuild/IMPLEMENTATION_CONTRACTS.md",
+    "bytes": 21280,
+    "sha256": "accd8509abf63978e37a96cc55c0b8673419b8ab207cdfaf5a395f708aa8d5da"
+  },
+  {
+    "file": "docs/portal-rebuild/SCREEN_MANIFEST.json",
+    "bytes": 4300,
+    "sha256": "55a375ede66a3c9c13139d90246fbc096b6bd1a11cb8c2ce49d30ee8bb44519b"
+  }
+]

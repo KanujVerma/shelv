@@ -1,5 +1,11 @@
 # Shelv portal
 
+## Approved rebuild precedence
+
+The 30 October 2026 [approved rebuild](../../docs/portal-rebuild/README.md) governs this work. Read its full specification, D01-D48, implementation contracts, workstream registry, acceptance matrix and current status before editing. Build the approved React/TypeScript frontend in `src/` with one shared shadcn-based Shelv wrapper layer and Lucide. Preserve existing `site/` source, secure gateway, canonical root backend, immutable records and release provenance until a reviewed compatible integration. Older plain-JavaScript/minimal-polish guidance below is historical context, not an alternative implementation target.
+
+Page workers compose shared components and pinned API contracts; they do not change dependencies, shared routes/types, auth or migration order independently. Use separate T3-managed worktrees, explicit owned paths and verified Sol/xhigh for every task. The rebuild authorization covers reviewable development commits/PRs and isolated synthetic verification, not production deployment/merge, real-client publication/messages, money movement, retailer orders or permission weakening. Approved payment-before-first-publication, exact approval, durable notifications and 30-day read-only rules supersede conflicting prospective statements in older source/docs; historical records remain intact.
+
 Reuse the [portal UI system](../../docs/PORTAL_UI_SYSTEM.md) for shared components, semantic tokens, dialog/disclosure behavior, and necessary-copy review. Run `npm run check:ui` for CSS changes; do not increase legacy color budgets to bypass it. Every added explanatory sentence must serve a task, decision, real status, consequence, safety/privacy/financial meaning, or recovery.
 
 This subtree owns the consultation-led web portal. The current objective is the complete referral-partner demonstration using the existing cream, forest-green and editorial design. Consultation happens with the founders; a new questionnaire or scanner dependency is not required.

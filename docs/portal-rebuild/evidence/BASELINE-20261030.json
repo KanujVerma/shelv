@@ -1,0 +1,191 @@
+{
+  "recordedOn": "2026-10-30",
+  "applicationSourceCommit": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
+  "scope": "Pre-rebuild existing application baseline only. No new portal behavior, hosted acceptance, human review or deployment is proven. Later docs-only commits do not change application source.",
+  "node": "22.23.0",
+  "supabaseCLI": "2.121.0",
+  "nodeInvocation": "Explicit nvm Node22.23.0 bin directory prepended to PATH for every portal/root invocation.",
+  "checks": [
+    {
+      "suite": "portal",
+      "command": "npm test",
+      "cwd": "apps/portal",
+      "exitCode": 0,
+      "counts": {
+        "tests": 344,
+        "pass": 344,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "scope": "existing portal synthetic/browser suite",
+      "logPath": ".local-artifacts/portal-rebuild/baseline-portal.log",
+      "logSha256": "76044b3a22b2ac633348a79c1eb4cdd9a8dd5d4a894c83780f693bf30c865925"
+    },
+    {
+      "suite": "session",
+      "command": "npm run test:session",
+      "cwd": "apps/portal",
+      "exitCode": 0,
+      "counts": {
+        "tests": 148,
+        "pass": 148,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "scope": "existing cookie/gateway/session suite",
+      "logPath": ".local-artifacts/portal-rebuild/baseline-session.log",
+      "logSha256": "beceaef3685356b874a081d5acea26db925220b1848be10b679dc29193258029"
+    },
+    {
+      "suite": "backend",
+      "command": "npm run test:backend",
+      "cwd": "apps/portal",
+      "exitCode": 0,
+      "counts": {
+        "tests": 40,
+        "pass": 40,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "scope": "existing backend contract suite",
+      "logPath": ".local-artifacts/portal-rebuild/baseline-backend.log",
+      "logSha256": "0e689c1df0516bc0e3b3168862cae92f5bce74bfaaa410d196586f7bf2db2e54"
+    },
+    {
+      "suite": "root-tests",
+      "command": "npm test",
+      "cwd": "root",
+      "exitCode": 0,
+      "counts": {
+        "tests": 1194,
+        "pass": 1176,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 18,
+        "todo": 0
+      },
+      "scope": "root application suite; 18 explicit opt-in skips remain unexecuted",
+      "logPath": ".local-artifacts/portal-rebuild/baseline-root-tests.log",
+      "logSha256": "dab828b76fb75086fd82e70ba52517a9badaf201f331e0e0b103482d43479cb6"
+    },
+    {
+      "suite": "session-types",
+      "command": "npm run typecheck:session",
+      "cwd": "apps/portal",
+      "exitCode": 0,
+      "logPath": ".local-artifacts/portal-rebuild/baseline-session-types.log",
+      "logSha256": "fd818405d0adf819c6b054f776b50a35b279bc3b3e64d7a9ee207cede024b8f0"
+    },
+    {
+      "suite": "root-types",
+      "command": "npx tsc --noEmit",
+      "cwd": "root",
+      "exitCode": 0,
+      "logPath": ".local-artifacts/portal-rebuild/baseline-root-types.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "suite": "root-test-types",
+      "command": "npm run typecheck:tests",
+      "cwd": "root",
+      "exitCode": 0,
+      "logPath": ".local-artifacts/portal-rebuild/baseline-root-test-types.log",
+      "logSha256": "4d9a002a4bc06fc267986e16b8505d5278453da95f3437a75987164dfe76bced"
+    },
+    {
+      "suite": "ui",
+      "command": "npm run check:ui",
+      "cwd": "apps/portal",
+      "exitCode": 0,
+      "logPath": ".local-artifacts/portal-rebuild/baseline-ui.log",
+      "logSha256": "1580eaf5e9a7a7ff5b1da8a38588855a5f59dd477629e3fde20fa0be2403f003"
+    },
+    {
+      "suite": "build",
+      "command": "npm run build",
+      "cwd": "apps/portal",
+      "exitCode": 0,
+      "logPath": ".local-artifacts/portal-rebuild/baseline-build.log",
+      "logSha256": "be188ad01067b22b4b4ed4e15c034fba31ce4343c56dcf59ce753665e44d896d"
+    },
+    {
+      "suite": "web-export",
+      "command": "EXPO_NO_TELEMETRY=1 npx expo export -p web",
+      "cwd": "root",
+      "exitCode": 0,
+      "logPath": ".local-artifacts/portal-rebuild/baseline-web-export.log",
+      "logSha256": "a41caad7559ee6e1936c3f42a7502ca47d157677f63d40e8e5d0bb6ff0fbe4e3"
+    },
+    {
+      "suite": "sql",
+      "command": "npm run test:sql",
+      "cwd": "apps/portal",
+      "exitCode": 0,
+      "logPath": ".local-artifacts/portal-rebuild/baseline-sql.log",
+      "logSha256": "b058db3f3d26dad5ca9758e0755f0fe91c7ccb482d0a0741bf7704f2fef9bad4",
+      "nativeSuites": [
+        {
+          "tests": 12,
+          "seconds": 4.866,
+          "status": "OK"
+        },
+        {
+          "tests": 15,
+          "seconds": 8.445,
+          "status": "OK"
+        },
+        {
+          "tests": 12,
+          "seconds": 4.02,
+          "status": "OK"
+        }
+      ]
+    }
+  ],
+  "realIsolatedAuthBrowser": {
+    "command": "node apps/portal/scripts/local-admission.mjs start; then test --browser; then stop (separate commands)",
+    "result": {
+      "mode": "test",
+      "projectId": "shelv-portal-admission-8cb3813a54e9",
+      "migrationCount": 53,
+      "snapshotSha256": "838cd6623315abfebddeff665c8b764852fe1377868a5cf852b22b6db0f1e186",
+      "ledgerSha256": "6c71b732a6ff1e1bdf8504d120aae2a0845bf4f5a30ef5c2c59b36c0f966bf14",
+      "fresh": false,
+      "status": "PASS",
+      "cases": 15,
+      "browser": true,
+      "hostedChanges": false,
+      "realEmails": 0
+    },
+    "scope": "Existing normal local Auth, PostgREST, SQL permissions and synthetic founder/client browser journey. Local Mailpit only; no hosted sessions/emails or real client writes.",
+    "cleanup": {
+      "fixtureStopped": true,
+      "volumesRetained": true,
+      "otherProjectsStopped": false
+    }
+  },
+  "package": {
+    "output": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-build",
+    "assetCount": 132,
+    "gatewayRoutes": [
+      "/api/client/*",
+      "/api/advisor/*",
+      "/api/walkthroughs/*"
+    ],
+    "zipSha256": "307472c8b6836ae5858d625cd6b0e36748cf8f8b32054967af38b862b2062875",
+    "vaultSha256": "12ccdf38776e434a5e53233cf3806d755e8cf50a1cd028e8989fe5dd73b99126",
+    "productionDeploymentChanged": false
+  },
+  "limitations": [
+    "No rebuild code implemented/integrated yet.",
+    "Root suite has 18 explicit opt-in skips; none counted as passes.",
+    "Supabase db reset and pgTAP gate are still required for future backend changes.",
+    "No signed device/mobile native, hosted recipient, production or representative-human acceptance."
+  ]
+}

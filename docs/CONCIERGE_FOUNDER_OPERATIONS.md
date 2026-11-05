@@ -2,6 +2,18 @@
 
 Owner: Kanuj. Last founder-decision review: 25 October 2026, America/Chicago.
 
+## Approved prospective rebuild rules, 30 October 2026
+
+The [approved rebuild decisions](portal-rebuild/APPROVED_DECISIONS.md) and [implementation contracts](portal-rebuild/IMPLEMENTATION_CONTRACTS.md) govern the new portal candidate. They do not claim deployed behavior. [Current rebuild status](portal-rebuild/CURRENT_STATUS.md) and [acceptance matrix](portal-rebuild/ACCEPTANCE_MATRIX.md) track implementation separately from the historical release facts retained below.
+
+First publication now requires the assigned intended client, complete reviewed content, exact human approval, verified applicable first service payment and a deliberate authorized command. Review and payment may occur in either order; publication cannot precede verified payment in the rebuild. Approval binds to publishable content/client, not unrelated payment-ledger changes. First successful publication starts service and review clocks; later versions and notification retries never reset them. External agents need Kanuj's specific publication grant; Sami's owner-controlled approval policy is independent.
+
+The rebuild automatically queues a durable neutral transactional email and portal indicator for a published client-visible plan/review. Material client reports/corrections alert the advisor. Draft saves/private notes never notify clients. Email failure leaves publication/access intact and retries only the notification. Personal texting remains human-operated; no automatic SMS or claim that acknowledgement satisfies a useful human response.
+
+Ordinary cancellation retains support through paid coverage; early departure uses an explicitly confirmed support end. Provide final entitled-plan/current-instructions export and exactly 30 calendar days of read-only plan/history access after support ends. New care writes and support promises end; unfinished order/refund administration remains reachable separately. Raw-source retention is during service plus 12 months, with defined deletion processing and separate history/financial retention.
+
+These rules explicitly supersede the older prospective publication-before-payment, manual-only notifications and unspecified post-service access window. Statements below describing deployed source and past acceptance retain their original historical scope. No record is retroactively paid, published, started or re-dated. All other accepted service, manual payment, no-markup, refund/referral and privacy terms remain applicable. Development uses synthetic data and does not authorize live business actions or resolve the external Wisconsin service-scope gate.
+
 This is the canonical current record of concierge operating decisions, manual responsibilities and unresolved choices. It supersedes older business-policy summaries where they conflict. [Acceptance](PORTAL_ACCEPTANCE.md) and [release result](PORTAL_RELEASE_RESULT.md) describe implementation evidence; an agreed policy in this file is not proof that matching UI or automation exists. Historical scanner plans do not supersede this concierge offer.
 
 Kanuj leads the consultation, skincare reasoning, research, recommendations and review decisions. Sammy leads outreach, scheduling, payment verification, purchasing, tracking, returns and administration. Both have authorized advisor access and can enter an approved update. Account access does not establish independent skincare expertise; Sammy is not a required consultation co-lead. Count his actual participation separately.

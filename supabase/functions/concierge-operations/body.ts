@@ -8,13 +8,17 @@ export async function readConciergeJson(stream: ReadableStream<Uint8Array> | nul
       const { value, done } = await reader.read();
       if (done) break;
       size += value.length;
-      if (size > maximum) { await reader.cancel(); throw new Error('too_large'); }
+      if (size > maximum) {
+        // Refusal cannot depend on the underlying source acknowledging cleanup.
+        try { void reader.cancel().catch(() => {}); } catch {}
+        throw new Error('too_large');
+      }
       chunks.push(value);
     }
   } finally { reader.releaseLock(); }
   const bytes = new Uint8Array(size);
   let offset = 0;
   for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
-  try { return JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes)); }
+  try { return JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(bytes)); }
   catch { throw new Error('invalid_input'); }
 }

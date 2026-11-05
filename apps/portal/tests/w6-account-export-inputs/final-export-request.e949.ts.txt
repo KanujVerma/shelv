@@ -1,0 +1,67 @@
+import type {ApplicationSession} from './session.ts';
+import {clientCookieRequest} from './retained.ts';
+import {TransportError} from '../transport/session.ts';
+import type {OperationOptions, OperationPort, CookieSessionPort} from '../transport/session.ts';
+import type {FinalExportCommand, FinalExportResult} from '../../../../src/contracts/PortalFinalExport.ts';
+import {readFinalExportCommand, freezeFinalExport} from '../../../../src/contracts/PortalFinalExportValidation.ts';
+import {mapFinalExportResult} from '../../../../src/contracts/PortalFinalExportMapping.ts';
+import {finalExportCommandMaxBytes} from '../../../../src/contracts/PortalFinalExportValues.ts';
+import {captureFinalExportClient} from '../features/account/final-export/client.ts';
+
+// Pending coordinator admission: the real retained JS factory rejects this
+// unregistered literal today. This local facade changes no runtime allowlist.
+const finalExportCookieRequest = clientCookieRequest as unknown as (
+  channel: 'final-export', session: CookieSessionPort,
+) => (command: unknown, options?: OperationOptions) => Promise<unknown>;
+
+export function createClientFinalExportRequest(runtime: ApplicationSession): OperationPort<FinalExportCommand, FinalExportResult> {
+  const client = captureFinalExportClient(runtime);
+  return {async execute(input, options = {}) {
+    client.assertReady();
+    const signal=options.signal, isApplicable=options.isApplicable;
+    client.assertReady();
+    let command: FinalExportCommand;
+    try {
+      command = readFinalExportCommand(input);
+      freezeFinalExport(command);
+      if (new TextEncoder().encode(JSON.stringify(command)).length > finalExportCommandMaxBytes) throw new TransportError(413);
+    } catch (error) {
+      client.assertReady();
+      if (error instanceof TransportError) throw error;
+      throw new TransportError(400);
+    }
+    const relevant = () => {
+      client.assertReady();
+      let applies = signal?.aborted !== true;
+      try { if (isApplicable !== undefined) applies = isApplicable() === true && applies; }
+      catch { applies = false; }
+      const aborted=signal?.aborted===true;
+      client.assertReady();
+      return applies && !aborted;
+    };
+    const check = () => { if (!relevant()) throw new TransportError(503); };
+    check();
+    let request: ReturnType<typeof finalExportCookieRequest>;
+    try { request = finalExportCookieRequest('final-export', runtime.cookie); }
+    catch {
+      // Local unsupported-channel denial is unavailability, not received HTTP
+      // authorization or a fabricated successful empty export.
+      check(); throw new TransportError(503);
+    }
+    check();
+    try {
+      const result = await runtime.transport.bind({kind:'read',
+        invoke:(value: FinalExportCommand, opts) => request(value, opts),
+        decode:value => { check(); const mapped = mapFinalExportResult(value, command); check(); return mapped; },
+      }).execute(command, {signal, isApplicable:relevant});
+      // Includes the retained transport's finally/listener cleanup interval.
+      check();
+      return result;
+    } catch (error) {
+      client.assertCurrent();
+      if (error instanceof TransportError && [401,403].includes(error.status)) throw error;
+      check();
+      throw error instanceof TransportError ? error : new TransportError(503);
+    }
+  }};
+}

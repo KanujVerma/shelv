@@ -1,0 +1,244 @@
+const imgLucidePanelsTopLeft = "[temporary-asset-url-removed]";
+const imgLucideUserRound = "[temporary-asset-url-removed]";
+
+type ShelvV1PrimaryProps = {
+  className?: string;
+  label?: string;
+};
+
+function ShelvV1Primary({ className, label = "Action" }: ShelvV1PrimaryProps) {
+  return (
+    <div className={className || "bg-[var(--color-brand,#25452f)] content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] w-[204px]"} data-node-id="498:33" data-name="shelv/v1/primary">
+      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Semi_Bold'] font-semibold leading-[23px] min-w-px not-italic relative text-[16px] text-[color:var(--color-white,white)] text-center" data-node-id="498:34">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+type ShelvV1ActiveProps = {
+  className?: string;
+  label?: string;
+};
+
+function ShelvV1Active({ className, label = "Active" }: ShelvV1ActiveProps) {
+  return (
+    <div className={className || "bg-[var(--color-successBg,#edf2e9)] content-stretch flex h-[28px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] w-[180px]"} data-node-id="498:47" data-name="shelv/v1/active">
+      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[17px] min-w-px not-italic relative text-[12px] text-[color:var(--color-success,#315b35)] text-center" data-node-id="498:48">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+type ShelvV1NeutralProps = {
+  className?: string;
+  label?: string;
+};
+
+function ShelvV1Neutral({ className, label = "Neutral" }: ShelvV1NeutralProps) {
+  return (
+    <div className={className || "bg-[var(--color-quiet,#eeece5)] content-stretch flex h-[28px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] w-[180px]"} data-node-id="498:43" data-name="shelv/v1/neutral">
+      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[17px] min-w-px not-italic relative text-[12px] text-[color:var(--color-muted,#626760)] text-center" data-node-id="498:44">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+type ShelvV1GhostProps = {
+  className?: string;
+  label?: string;
+};
+
+function ShelvV1Ghost({ className, label = "Action" }: ShelvV1GhostProps) {
+  return (
+    <div className={className || "content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] w-[204px]"} data-node-id="498:37" data-name="shelv/v1/ghost">
+      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Semi_Bold'] font-semibold leading-[23px] min-w-px not-italic relative text-[16px] text-[color:var(--color-brand,#25452f)] text-center" data-node-id="498:38">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+function LucidePanelsTopLeft({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="498:57" data-name="lucide/panels-top-left">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgLucidePanelsTopLeft} />
+    </div>
+  );
+}
+
+function LucideUserRound({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="498:71" data-name="lucide/user-round">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgLucideUserRound} />
+    </div>
+  );
+}
+
+export default function A06Published() {
+  return (
+    <div className="bg-[var(--color-canvas,#f6f3ec)] relative size-full" data-node-id="500:779" data-name="A06 · published">
+      <div className="absolute bg-[var(--color-surface,#fffefb)] content-stretch flex flex-col gap-[12px] h-[960px] items-start left-0 p-[20px] top-0 w-[224px]" data-node-id="500:780" data-name="advisor/sidebar">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[34px] not-italic relative shrink-0 text-[28px] text-[color:var(--color-brand,#25452f)] w-[184px]" data-node-id="500:781">
+          shelv
+        </p>
+        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[184px]" data-node-id="500:782">
+          advisor workspace
+        </p>
+        <div className="h-[12px] relative shrink-0 w-[184px]" data-node-id="500:783" data-name="space" />
+        <a className="content-stretch cursor-pointer flex gap-[12px] h-[48px] items-center p-[12px] relative shrink-0 w-[184px]" data-node-id="500:784" data-name="advisor nav/clients">
+          <LucideUserRound className="relative shrink-0 size-[20px]" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] text-left w-[128px]" data-node-id="500:788">
+            clients
+          </p>
+        </a>
+        <a className="bg-[var(--color-successBg,#edf2e9)] content-stretch cursor-pointer flex gap-[12px] h-[48px] items-center p-[12px] relative rounded-[12px] shrink-0 w-[184px]" data-node-id="500:789" data-name="advisor nav/plans">
+          <LucidePanelsTopLeft className="relative shrink-0 size-[20px]" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-brand,#25452f)] text-left w-[128px]" data-node-id="500:794">
+            plans
+          </p>
+        </a>
+        <div className="content-stretch flex gap-[12px] h-[48px] items-center p-[12px] relative shrink-0 w-[184px]" data-node-id="500:795" data-name="advisor nav/templates">
+          <LucidePanelsTopLeft className="relative shrink-0 size-[20px]" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[128px]" data-node-id="500:800">
+            templates
+          </p>
+        </div>
+        <a className="content-stretch cursor-pointer flex gap-[12px] h-[48px] items-center p-[12px] relative shrink-0 w-[184px]" data-node-id="500:801" data-name="advisor nav/walkthroughs">
+          <LucidePanelsTopLeft className="relative shrink-0 size-[20px]" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] text-left w-[128px]" data-node-id="500:806">
+            walkthroughs
+          </p>
+        </a>
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[8px] items-start left-[20px] top-[840px] w-[184px]" data-node-id="500:807" data-name="advisor/identity">
+        <ShelvV1Ghost className="content-stretch cursor-pointer flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[184px]" label="workspace settings" />
+        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-ink,#171a18)] w-[184px]" data-node-id="500:810">
+          Kanuj · owner
+        </p>
+      </div>
+      <div className="absolute bg-[var(--color-surface,#fffefb)] content-stretch flex gap-[16px] h-[80px] items-center left-[224px] px-[40px] py-[12px] rounded-[12px] top-0 w-[1216px]" data-node-id="500:811" data-name="advisor/topbar">
+        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[800px]" data-node-id="500:812">
+          private advisor workspace
+        </p>
+        <ShelvV1Neutral className="bg-[var(--color-quiet,#eeece5)] content-stretch flex h-[28px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[184px]" label="fictional demo" />
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[24px] items-start left-[264px] top-[104px] w-[1136px]" data-node-id="500:815" data-name="page/content">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[34px] not-italic relative shrink-0 text-[28px] text-[color:var(--color-ink,#171a18)] w-[1136px]" data-node-id="500:816">
+          the plan is published
+        </p>
+        <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-muted,#626760)] w-[1136px]" data-node-id="500:817">
+          Maya · plan version 1 · draft r17
+        </p>
+        <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-[1136px]" data-node-id="500:818" data-name="columns">
+          <div className="content-stretch flex flex-col items-start relative shrink-0 w-[736px]" data-node-id="500:819" data-name="main">
+            <div className="bg-[var(--color-surface,#fffefb)] content-stretch flex flex-col gap-[20px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[736px]" data-node-id="500:821" data-name="publication receipt">
+              <ShelvV1Active className="bg-[var(--color-successBg,#edf2e9)] content-stretch flex h-[28px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[220px]" label="published successfully" />
+              <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[34px] not-italic relative shrink-0 text-[28px] text-[color:var(--color-ink,#171a18)] w-[688px]" data-node-id="500:824">
+                accessible to Maya
+              </p>
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-muted,#626760)] w-[688px]" data-node-id="500:825">
+                sample publication: 20 october · 10:15 a.m. America/Chicago
+              </p>
+              <div className="[word-break:break-word] content-stretch flex gap-[20px] items-center not-italic relative shrink-0 w-[688px]" data-node-id="500:826" data-name="service period">
+                <p className="font-['Inter:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[180px]" data-node-id="500:827">
+                  service period
+                </p>
+                <p className="font-['Inter:Regular'] font-normal leading-[23px] relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[488px]" data-node-id="500:828">
+                  20 october – 19 november
+                </p>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex gap-[20px] items-center not-italic relative shrink-0 w-[688px]" data-node-id="500:829" data-name="first review">
+                <p className="font-['Inter:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[180px]" data-node-id="500:830">
+                  first review
+                </p>
+                <p className="font-['Inter:Regular'] font-normal leading-[23px] relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[488px]" data-node-id="500:831">
+                  3 november
+                </p>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex gap-[20px] items-center not-italic relative shrink-0 w-[688px]" data-node-id="500:832" data-name="approval used">
+                <p className="font-['Inter:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[180px]" data-node-id="500:833">
+                  approval used
+                </p>
+                <p className="font-['Inter:Regular'] font-normal leading-[23px] relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[488px]" data-node-id="500:834">
+                  Kanuj · Maya · revision r17
+                </p>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex gap-[20px] items-center not-italic relative shrink-0 w-[688px]" data-node-id="500:835" data-name="next plan update">
+                <p className="font-['Inter:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[180px]" data-node-id="500:836">
+                  next plan update
+                </p>
+                <p className="font-['Inter:Regular'] font-normal leading-[23px] relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[488px]" data-node-id="500:837">
+                  will not reset these dates
+                </p>
+              </div>
+              <ShelvV1Primary className="bg-[var(--color-brand,#25452f)] content-stretch cursor-pointer flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[688px]" label="view published plan" />
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start relative shrink-0 w-[376px]" data-node-id="500:820" data-name="context">
+            <div className="bg-[var(--color-warningBg,#fbf1df)] content-stretch flex flex-col gap-[16px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[376px]" data-node-id="500:840" data-name="email retry">
+              <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[26px] not-italic relative shrink-0 text-[20px] text-[color:var(--color-warning,#72501f)] w-[328px]" data-node-id="500:841">
+                email needs a retry
+              </p>
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[328px]" data-node-id="500:842">
+                the plan is published and the portal indicator is visible. email delivery failed.
+              </p>
+              <ShelvV1Primary className="bg-[var(--color-brand,#25452f)] content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[328px]" label="retry notification" />
+              <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[328px]" data-node-id="500:845">
+                retry only the message. do not republish, create another plan or restart the service period.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: Portal lab / title: Font(family: "Inter", style: Semi Bold, size: 28, weight: 600, lineHeight: 34, letterSpacing: 0), Portal lab / label: Font(family: "Inter", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: 0), Portal lab / strong: Font(family: "Inter", style: Semi Bold, size: 16, weight: 600, lineHeight: 23, letterSpacing: 0), Portal lab / meta: Font(family: "Inter", style: Medium, size: 12, weight: 500, lineHeight: 17, letterSpacing: 0), Portal lab / body: Font(family: "Inter", style: Regular, size: 16, weight: 400, lineHeight: 23, letterSpacing: 0), Portal lab / heading: Font(family: "Inter", style: Semi Bold, size: 20, weight: 600, lineHeight: 26, letterSpacing: 0).
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## lucide/user-round
+**Node ID:** 498:71
+
+Lucide source: lucide-icons/lucide/icons/user-round.svg. 24px grid, 2px stroke. ISC license.
+
+## lucide/panels-top-left
+**Node ID:** 498:57
+
+Lucide source: lucide-icons/lucide/icons/panels-top-left.svg. 24px grid, 2px stroke. ISC license.
+
+## shelv/v1/ghost
+**Node ID:** 498:37
+
+Review-spec equivalent of approved shadcn control. Reuses Shelv tokens. Copy comes from canonical action keys, never client content.
+
+## shelv/v1/neutral
+**Node ID:** 498:43
+
+Review-spec equivalent of approved shadcn control. Reuses Shelv tokens. Copy comes from canonical action keys, never client content.
+
+## shelv/v1/active
+**Node ID:** 498:47
+
+Review-spec equivalent of approved shadcn control. Reuses Shelv tokens. Copy comes from canonical action keys, never client content.
+
+## shelv/v1/primary
+**Node ID:** 498:33
+
+Review-spec equivalent of approved shadcn control. Reuses Shelv tokens. Copy comes from canonical action keys, never client content.
+
+The generated code contains image and SVG URL constants, e.g. const image = '[temporary-asset-url-removed]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

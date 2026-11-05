@@ -1,0 +1,192 @@
+type ShelvV1SecondaryProps = {
+  className?: string;
+  label?: string;
+};
+
+function ShelvV1Secondary({ className, label = "Action" }: ShelvV1SecondaryProps) {
+  return (
+    <div className={className || "bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] w-[204px]"} data-node-id="498:35" data-name="shelv/v1/secondary">
+      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Semi_Bold'] font-semibold leading-[23px] min-w-px not-italic relative text-[16px] text-[color:var(--color-brand,#25452f)] text-center" data-node-id="498:36">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+export default function S01StatesAndRecovery() {
+  return (
+    <div className="bg-[var(--color-quiet,#eeece5)] content-stretch flex flex-col gap-[24px] items-start p-[40px] relative rounded-[12px] size-full" data-node-id="504:736" data-name="S01 · states and recovery">
+      <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[34px] not-italic relative shrink-0 text-[28px] text-[color:var(--color-brand,#25452f)] w-[1720px]" data-node-id="504:737">
+        states are part of the design
+      </p>
+      <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-muted,#626760)] w-[1720px]" data-node-id="504:738">
+        review specimens for the same shared components. these are not real client events or production transactions.
+      </p>
+      <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-[1720px]" data-node-id="504:739" data-name="state row 0">
+        <div className="bg-[var(--color-surface,#fffefb)] content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[557.33px]" data-node-id="504:740" data-name="before first publication">
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="504:741">
+            before first publication
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[26px] not-italic relative shrink-0 text-[20px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:742">
+            your plan is being prepared
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:743">
+            we’re preparing your reviewed plan. you can check your service payment or text us while it’s being finished.
+          </p>
+          <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[509.33px]" label="service payment" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="510:648">
+            implementation note, not UI copy: you can review service-payment information and contact shelv. no draft advice or invented routine is shown.
+          </p>
+        </div>
+        <div className="bg-[var(--color-warningBg,#fbf1df)] content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[557.33px]" data-node-id="504:746" data-name="payment received, review incomplete">
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="504:747">
+            payment received, review incomplete
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[26px] not-italic relative shrink-0 text-[20px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:748">
+            payment verified · plan still private
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:749">
+            the first payment is verified. this draft still needs approval before publication.
+          </p>
+          <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[509.33px]" label="review draft" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="510:649">
+            implementation note, not UI copy: verification does not publish. publication stays blocked until this client and exact revision are approved.
+          </p>
+        </div>
+        <div className="bg-[var(--color-warningBg,#fbf1df)] content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[557.33px]" data-node-id="504:752" data-name="revision changed after approval">
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="504:753">
+            revision changed after approval
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[26px] not-italic relative shrink-0 text-[20px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:754">
+            this draft needs approval again
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:755">
+            the draft changed after approval. review the changes and approve the current revision.
+          </p>
+          <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[509.33px]" label="review changes" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="510:650">
+            implementation note, not UI copy: an edit or a changed client invalidates prior authorization. show the changes, then request approval for the new revision.
+          </p>
+        </div>
+      </div>
+      <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-[1720px]" data-node-id="504:758" data-name="state row 3">
+        <div className="bg-[var(--color-warningBg,#fbf1df)] content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[557.33px]" data-node-id="504:759" data-name="save conflict or uncertain result">
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="504:760">
+            save conflict or uncertain result
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[26px] not-italic relative shrink-0 text-[20px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:761">
+            your changes are still here
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:762">
+            we couldn’t confirm this save. your local changes are still available.
+          </p>
+          <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[509.33px]" label="review saved version" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="510:651">
+            implementation note, not UI copy: do not claim success. reload and compare a conflict; retry an uncertain request with the same request identity.
+          </p>
+        </div>
+        <div className="bg-[var(--color-warningBg,#fbf1df)] content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[557.33px]" data-node-id="504:765" data-name="notification failure">
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="504:766">
+            notification failure
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[26px] not-italic relative shrink-0 text-[20px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:767">
+            published · email needs retry
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:768">
+            the plan is published, but the email was not sent. retry the message without publishing again.
+          </p>
+          <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[509.33px]" label="retry notification" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="510:652">
+            implementation note, not UI copy: the portal state and service dates remain correct. retry the notification, not the publication.
+          </p>
+        </div>
+        <div className="bg-[var(--color-surface,#fffefb)] content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[557.33px]" data-node-id="504:771" data-name="no new recommendation">
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="504:772">
+            no new recommendation
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[26px] not-italic relative shrink-0 text-[20px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:773">
+            your current routine continues
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:774">
+            there are no new decisions to review. your current routine and check-ins remain available.
+          </p>
+          <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[509.33px]" label="view history" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="510:653">
+            implementation note, not UI copy: omit an empty decision widget. keep the routine, next review and latest published conclusion visible.
+          </p>
+        </div>
+      </div>
+      <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-[1720px]" data-node-id="504:777" data-name="state row 6">
+        <div className="bg-[var(--color-successBg,#edf2e9)] content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[557.33px]" data-node-id="504:778" data-name="update submitted">
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="504:779">
+            update submitted
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[26px] not-italic relative shrink-0 text-[20px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:780">
+            your update is in your history
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:781">
+            we received your update. you can review it or add a correction in your history.
+          </p>
+          <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[509.33px]" label="view update" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="510:654">
+            implementation note, not UI copy: notify the advisor. a correction becomes a dated amendment; it does not rewrite the report that informed an earlier decision.
+          </p>
+        </div>
+        <div className="bg-[var(--color-surface,#fffefb)] content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[557.33px]" data-node-id="504:784" data-name="product identity uncertain">
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="504:785">
+            product identity uncertain
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[26px] not-italic relative shrink-0 text-[20px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:786">
+            let’s check the exact product
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:787">
+            send a photo of the product label, or tell us the full name and strength.
+          </p>
+          <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[509.33px]" label="add a label photo" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="510:655">
+            implementation note, not UI copy: save the draft with the uncertainty. ask for the name, strength or label before advice or purchasing that depends on it.
+          </p>
+        </div>
+        <div className="bg-[var(--color-warningBg,#fbf1df)] content-stretch flex flex-col gap-[12px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[557.33px]" data-node-id="504:790" data-name="source upload or access fails">
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="504:791">
+            source upload or access fails
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[26px] not-italic relative shrink-0 text-[20px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:792">
+            the file was not attached
+          </p>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[509.33px]" data-node-id="504:793">
+            the file was not added. try again, or continue with your saved notes.
+          </p>
+          <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[509.33px]" label="retry upload" />
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[509.33px]" data-node-id="510:656">
+            implementation note, not UI copy: do not invent a transcript or lose the plan draft. permit retry; reject unapproved file types and cross-client access.
+          </p>
+        </div>
+      </div>
+      <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-brand,#25452f)] w-[1720px]" data-node-id="504:796">
+        approval ≠ payment ≠ order ≠ delivery ≠ actual start. saved ≠ published. source material ≠ client-visible advice.
+      </p>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: Portal lab / title: Font(family: "Inter", style: Semi Bold, size: 28, weight: 600, lineHeight: 34, letterSpacing: 0), Portal lab / body: Font(family: "Inter", style: Regular, size: 16, weight: 400, lineHeight: 23, letterSpacing: 0), Portal lab / meta: Font(family: "Inter", style: Medium, size: 12, weight: 500, lineHeight: 17, letterSpacing: 0), Portal lab / heading: Font(family: "Inter", style: Semi Bold, size: 20, weight: 600, lineHeight: 26, letterSpacing: 0), Portal lab / strong: Font(family: "Inter", style: Semi Bold, size: 16, weight: 600, lineHeight: 23, letterSpacing: 0).
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## shelv/v1/secondary
+**Node ID:** 498:35
+
+Review-spec equivalent of approved shadcn control. Reuses Shelv tokens. Copy comes from canonical action keys, never client content.
+
+The generated code contains image and SVG URL constants, e.g. const image = '[temporary-asset-url-removed]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

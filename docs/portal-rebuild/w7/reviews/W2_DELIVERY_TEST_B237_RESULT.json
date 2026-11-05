@@ -1,0 +1,15 @@
+{
+  "base": "527b04b44bc1e493cb6a12796b9e3ff2288ff276",
+  "head": "b2377598b22caf684a2a18da1dfb580f9208e5b2",
+  "verdict": "PASS_SCOPED_TEST_SOURCE_PARITY_ONLY",
+  "changedPaths": [
+    "apps/portal/tests/rebuild-advisor-browser.test.mjs",
+    "docs/portal-rebuild/w2/PUBLICATION_DELIVERY_20261103.md"
+  ],
+  "beforeSha256": "47108bf91f675a3207b06f74f1a60a9e17a416bce8cc7bf4b491e576aa79151c",
+  "afterSha256": "466c1bcbe91058b45912257213825837b580cb500dca6cd54556d84cf3feb6aa",
+  "exactReversalMatchesOriginal": true,
+  "productBytesUnchanged": true,
+  "newBrowserExecution": "UNRUN_NO_GRANT",
+  "originalCI": "FAILED1of3320 retained; not relabeled"
+}

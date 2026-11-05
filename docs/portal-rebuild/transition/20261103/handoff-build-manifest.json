@@ -1,0 +1,149 @@
+{
+  "generatedAt": "2026-11-03T18:38:48.407Z",
+  "baseCommit": "359c6bf0c759357df648ca441e9e3d1c3d29398c",
+  "written": [
+    "docs/portal-rebuild/transition/20261103/git-worktrees.json",
+    "docs/portal-rebuild/transition/20261103/tasks-and-github.json",
+    "docs/portal-rebuild/transition/20261103/immutable-requirements.json",
+    "docs/portal-rebuild/research/W7_M02_RECORDED_ORDERS_GENUINE_ACCEPTANCE_R1.md",
+    "docs/portal-rebuild/research/W7_M02_ENDED_SESSION_SOURCE_R4.md",
+    "docs/portal-rebuild/research/W7_M02_VALID_URL_BUNDLE_SOURCE_R1.md",
+    "docs/portal-rebuild/research/W7_M04_ADVISOR_FIXTURE_SOURCE_R1.md",
+    "docs/portal-rebuild/research/W7_M04_TRUSTED_PRINCIPAL_SOURCE_R1.md",
+    "docs/portal-rebuild/research/W7_M05_HISTORY_NEGATIVE_SOURCE_R1.md",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/adapter/account-advisor-local-bindings.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/adapter/projected-source/client-upstream.ts.source.txt",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/adapter/projected-source/fixed-handlers.source.txt",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/adapter/projected-source/gateway-entry.source.txt",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/adapter/projected-source/upstream.ts.source.txt",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/caller/genuine-advisor-host.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/unit/observation-input.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/unit/source-controls.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/receipts/HANDOFF.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/receipts/IMPLEMENTATION-FREEZE.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/receipts/FULL-EXACT-INVERSE.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/receipts/ROOT-PROVIDER-EXACT-INVERSE.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/executor/principal-setup.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/ACK-REFINEMENTS.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/API-PROPOSAL.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/EXECUTOR-PINS.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/ROOT_359C_SOURCE_TARGET.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/SCHEMA-BINDINGS.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/native-read-joined.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/principal-setup.sql",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/unit/CASE-DESIGN.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/unit/captured-start-refusals.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/unit/grant-refusals.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/unit/native-slot-refusals.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/receipts/HANDOFF.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/receipts/SOURCE-FREEZE.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/source/PINS.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/source/native-lifetime.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/source/negative-observation.sql",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/source/negative-schedules.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/source/page-observer.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/unit/lifetime-and-callback.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/unit/negative-schedules.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/unit/old-adapted.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/unit/run-controls.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/receipts/FREEZE-R1.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/receipts/FREEZE-R2.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/source/PINS.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/source/native-lifetime.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/source/negative-observation.sql",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/source/negative-schedules.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/source/page-observer.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/unit/held-json-error.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/unit/lifetime-and-callback.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/unit/negative-schedules.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/unit/old-adapted.test.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/unit/run-controls.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m02-browser-b2e/EXACT-DELTA.json",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m02-browser-b2e/recorded-orders.browser.mjs",
+    "docs/portal-rebuild/transition/20261103/source-bundles/m02-browser-b2e/orders-probe-page-actions.mjs",
+    "docs/portal-rebuild/transition/20261103/source-archive-manifest.json",
+    "docs/portal-rebuild/transition/20261103/resources.json",
+    "docs/portal-rebuild/transition/20261103/evidence-references.json",
+    "docs/portal-rebuild/transition/20261103/literal-dispatch-receipts.json",
+    "docs/portal-rebuild/transition/20261103/eight-goal-ownership.json",
+    "docs/portal-rebuild/acceptance/ACCEPTED_CAPABILITIES_20261103.json",
+    "docs/portal-rebuild/acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+    "docs/portal-rebuild/transition/20261103/legacy-review-holds.json",
+    "docs/portal-rebuild/TASKS.json",
+    "docs/portal-rebuild/CURRENT_STATUS.md",
+    "docs/portal-rebuild/ACCEPTANCE_MATRIX.md",
+    "docs/portal-rebuild/WORKSTREAMS.md",
+    "docs/CONTEXT_SYNC.md",
+    "docs/portal-rebuild/END_TO_END_MILESTONES_20261103.md",
+    "docs/portal-rebuild/transition/20261103/SOURCE-BUNDLES-README.md",
+    "docs/portal-rebuild/transition/20261103/handoff-build-manifest.json",
+    "docs/handoffs/2026-11-03-portal-eight-goal-transition.md",
+    "docs/portal-rebuild/transition/20261103/report-link-origins.md"
+  ],
+  "preEditHashes": [
+    {
+      "file": "docs/portal-rebuild/acceptance/ACCEPTED_CAPABILITIES_20261103.json",
+      "sha256": "9f84c0f67475e42cd46945977bad4e74c286b24160fc22b8c8f56747da5219c2",
+      "bytes": 5268
+    },
+    {
+      "file": "docs/portal-rebuild/acceptance/CURRENT_SCREEN_INVENTORY_20261102.json",
+      "sha256": "96eb43ddb8092acd303eea7f4a898cb53e400693002f1e8a82a9031266bce54a",
+      "bytes": 206123
+    },
+    {
+      "file": "docs/portal-rebuild/TASKS.json",
+      "sha256": "f57f4db27720a144e681c0886c7b69449740ed78a5781a89ee9705a00f61c86e",
+      "bytes": 699673
+    },
+    {
+      "file": "docs/portal-rebuild/CURRENT_STATUS.md",
+      "sha256": "13019b6afdbff144519ec0dcf5b882af24a74d95d598c08c87323edb463c4497",
+      "bytes": 77874
+    },
+    {
+      "file": "docs/portal-rebuild/ACCEPTANCE_MATRIX.md",
+      "sha256": "416925683a6ca4f39dd2dbbbf02b56947ba34511fcd87da477a8bba9c9493894",
+      "bytes": 54666
+    },
+    {
+      "file": "docs/portal-rebuild/WORKSTREAMS.md",
+      "sha256": "75925757679e7fb3c213e93776c62c58017186a35d25cdc36c96befe841fe8f5",
+      "bytes": 28233
+    },
+    {
+      "file": "docs/CONTEXT_SYNC.md",
+      "sha256": "ce7bdd09f84ca89979ef0c87bfe3c4dfef3ce51489a2a58e5fb95e201760c6ce",
+      "bytes": 397228
+    },
+    {
+      "file": "docs/portal-rebuild/END_TO_END_MILESTONES_20261103.md",
+      "sha256": "4d37d9ecbe6cc1a9cc4571c558a6ffb2f196cc687c78600b74ee0948d0115afb",
+      "bytes": 11985
+    }
+  ],
+  "sourceArchives": 56,
+  "scope": "Final planned documentation/public-report/inert-source set. Raw TAP never normalized or committed; exact originals and duplicate raw copies retained locally.",
+  "localOnlyRawEvidence": [
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/receipts/HN1-OLD-RED.raw",
+      "sha256": "2bea762916122b47ba3fb3f1afc5f6479ec740719fdde9ccd01247004e0a43a2",
+      "bytes": 1170,
+      "originalMode": 420,
+      "label": "Exact denial-only RED/current output; no private/resource data",
+      "reason": "Exact generated raw TAP stays local; do not normalize whitespace or commit raw output. Source/tests remain committed byte-exact.",
+      "previousPlannedArchive": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/receipts/HN1-OLD-RED.raw",
+      "retainedDuplicate": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/transition-audit/retained-duplicate-raw/HN1-OLD-RED.raw"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/receipts/CURRENT43.raw",
+      "sha256": "2adeea906c35e942e343ed480fb415f4ab7cfd145615e48e2ff323cb3e53c65a",
+      "bytes": 9334,
+      "originalMode": 420,
+      "label": "Exact denial-only RED/current output; no private/resource data",
+      "reason": "Exact generated raw TAP stays local; do not normalize whitespace or commit raw output. Source/tests remain committed byte-exact.",
+      "previousPlannedArchive": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/receipts/CURRENT43.raw",
+      "retainedDuplicate": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/transition-audit/retained-duplicate-raw/CURRENT43.raw"
+    }
+  ]
+}

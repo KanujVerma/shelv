@@ -3,16 +3,53 @@ import { isCheckinPhotoAngle } from './photos.ts';
 import type { CheckinPhotoAngle } from './photos.ts';
 import { checkinFailure, isCheckinUuid, validateCheckinSubmission, validateCheckinReply } from './validation.ts';
 import type { CheckinResult } from './validation.ts';
+import type { CheckinPhotoInventoryPage } from './types.ts';
+import { exactKeys, readInteger, readObject, requireValue } from '../../../src/contracts/ConciergePortalValidation.ts';
 export type CheckinReport = Readonly<{
   id: string; submittedAt: string; comfort: string; consistency: string; changes: string;
   photos: readonly Readonly<{ id: string; angle: CheckinPhotoAngle }>[];
   advisorReplies?: readonly Readonly<{ id: string; reply: string; authorId: string; createdAt: string }>[];
 }>;
 export type CheckinClientView = Readonly<{ revision: number; nextCheckinOn: string | null; reports: readonly CheckinReport[] }>;
+export type CheckinPhotoHead = Readonly<{ revision: number }>;
+export type CheckinPhotoInventory = Readonly<{ revision: number; photos: readonly Readonly<{ id: string; angle: CheckinPhotoAngle }>[]; nextCursor: string | null }>;
 export type CheckinSubmitReceipt = Readonly<{ revision: number; operation: 'submit_report'; reportId: string }>;
 
 export function isCheckinRevision(value: unknown): value is number {
   return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0;
+}
+/** Metadata only. A missing head response or additional data is never a valid initial revision. */
+export function mapCheckinPhotoHead(input: unknown): CheckinResult<CheckinPhotoHead> {
+  if (!input || typeof input !== 'object' || Array.isArray(input)) return checkinFailure('unavailable');
+  const value = input as Record<string, unknown>;
+  if (Object.keys(value).length !== 1 || !Object.hasOwn(value, 'revision') || !isCheckinRevision(value.revision)) return checkinFailure('unavailable');
+  return { ok: true, value: Object.freeze({ revision: value.revision }) };
+}
+/** One exact snapshot-bound page, never a clinical-history or partial-ready collection. */
+export function mapCheckinPhotoInventory(input: unknown, page: CheckinPhotoInventoryPage): CheckinResult<CheckinPhotoInventory> {
+  try {
+    const canonicalUuid = (value: unknown): value is string => isCheckinUuid(value) && value === value.toLowerCase();
+    const { cursor, limit, expectedRevision } = page;
+    requireValue(cursor === null || canonicalUuid(cursor));
+    readInteger(limit,1,50);
+    requireValue(expectedRevision === null || isCheckinRevision(expectedRevision));
+    requireValue(cursor === null || expectedRevision !== null);
+    const value = readObject(input); exactKeys(value,['revision','photos','nextCursor']);
+    const revision = readInteger(value.revision);
+    requireValue(expectedRevision === null || revision === expectedRevision);
+    requireValue(Array.isArray(value.photos) && value.photos.length <= limit);
+    const photos: { readonly id: string; readonly angle: CheckinPhotoAngle }[] = [];
+    let previous = cursor;
+    for (const raw of value.photos) {
+      const row = readObject(raw); exactKeys(row,['id','angle']);
+      requireValue(canonicalUuid(row.id) && isCheckinPhotoAngle(row.angle));
+      requireValue(previous === null || row.id > previous);
+      photos.push(Object.freeze({ id: row.id, angle: row.angle })); previous = row.id;
+    }
+    const nextCursor = value.nextCursor;
+    requireValue(nextCursor === null || (canonicalUuid(nextCursor) && photos.length === limit && nextCursor === previous));
+    return { ok: true, value: Object.freeze({ revision, photos: Object.freeze(photos), nextCursor }) };
+  } catch { return checkinFailure('unavailable'); }
 }
 export function isCheckinInstant(value: unknown): value is string {
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}T([01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d{1,6})?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)$/.test(value)) return false;

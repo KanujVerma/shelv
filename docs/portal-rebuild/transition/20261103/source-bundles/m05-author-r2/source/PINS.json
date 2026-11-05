@@ -1,0 +1,58 @@
+{
+  "root": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030",
+  "pin": "359c6bf0c759357df648ca441e9e3d1c3d29398c",
+  "source": [
+    {
+      "path": "apps/portal/tests/genuine/client-history.browser.mjs",
+      "bytes": 23293,
+      "sha256": "f1c9fd837d1388cf33525cf5fe4798dd0fa79de27cac1959285386689ffd5599"
+    },
+    {
+      "path": "apps/portal/tests/genuine/client-history-oracle.test.mjs",
+      "bytes": 18787,
+      "sha256": "a0c9d09784740ffaa9c72b256386199055026e0a1ea8eb46d9c645997e35f00f"
+    },
+    {
+      "path": "apps/portal/tests/genuine/client-history-observation.sql",
+      "bytes": 2837,
+      "sha256": "467093bc482779cad587cc04437081acb7579238ff0439640e5632c2420bbfe8"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W4_GENUINE_HISTORY_MILESTONE.md",
+      "bytes": 27709,
+      "sha256": "99f16604091936ecfa344fbedb88ff31b32888528cd950a8b023c5e18ddaec0a"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W7_GENUINE_HISTORY_SOURCE_R2.md",
+      "bytes": 13785,
+      "sha256": "ab2c5369c80ce9848611b681d213bae2bcbd3248c1362ac66499cca32143c05e"
+    },
+    {
+      "path": "apps/portal/site/auth/advisor-cookie-session.js",
+      "bytes": 30545,
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/gateway.ts",
+      "bytes": 18313,
+      "sha256": "ccd4eac2886ae19d177fc9f4f935aea19481111f4054491726c4374a5414b132"
+    },
+    {
+      "path": "apps/portal/src/app/Shell.tsx",
+      "bytes": 5156,
+      "sha256": "6d1bc4cd66d36594c3990c1dd32d619735168eb8832c4ad0dc27549026d522b5"
+    },
+    {
+      "path": "apps/portal/src/app/ClientHistory.tsx",
+      "bytes": 13059,
+      "sha256": "dfa0a29f18c1fa19cba37b53d68a0edda82ad1bff5599f17934ce00ec7703ec5"
+    },
+    {
+      "path": "apps/portal/site/auth/portal-routes.js",
+      "bytes": 8717,
+      "sha256": "2b9faceb7ccc5e700f68b6f6fffc79b5928004050273b88cd5b04dde884645c3"
+    }
+  ],
+  "localPreparedHead": "2b50d7e83f58bf57723cf828d362c84e473a299f",
+  "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m05-real-negative-schedules-source"
+}

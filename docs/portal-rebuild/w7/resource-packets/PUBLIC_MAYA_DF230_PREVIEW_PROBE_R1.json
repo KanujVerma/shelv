@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "owner": "Kanuj",
+  "executionOwner": "W7",
+  "admissionOwner": "W0",
+  "executionId": "e7c5e427-1109-4064-b502-8e0267b77a65",
+  "kind": "PUBLIC_MAYA_PREVIEW_CAPABILITY_PROBE_ONLY",
+  "status": "PROPOSED_NOT_ADMITTED",
+  "candidateHead": "df230eca6017f8dd330cceb83eb11b18193937e5",
+  "purpose": "Resolve required T3 preview browser availability before proposing actual publicMaya page execution. No product/browser result inferred.",
+  "preparation": {
+    "gitLsRemote": "exit0 exactdf230",
+    "buildProvenanceSha256": "96c860984a1be1218825718f9700236f0450e52b541b06679396a22112c4173c",
+    "buildPins": {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-df230/BUILD-PINS.json",
+      "sha256": "0b2c2562315d8a4078d8aa0b2d6ded1d64abe793347241e421ec0e43b7ea9644",
+      "compilerInputs": 2298,
+      "repoOwnedInputsExactGit": 161,
+      "assets": 29,
+      "copiedBuildFiles": 101
+    },
+    "previewStatusReadOnlyObserved": {
+      "available": false,
+      "tabId": null,
+      "tabsCount": 0,
+      "browserOrServerOpened": false
+    },
+    "sourceDirtyQualification": "Owner states only preserved original untracked handoff; every actual2298 compiler input and29 asset bytes independentlyverified; repo-owned inputs Git-byte-exactdf230"
+  },
+  "literalFirstExecutionToolCall": {
+    "tool": "mcp__t3_code__preview_open",
+    "args": {
+      "open": false,
+      "profileId": "incognito",
+      "reuseExistingTab": false
+    }
+  },
+  "allowed": {
+    "newTabs": 1,
+    "target": "blank only; URL argument omitted",
+    "profile": "incognito only",
+    "durationSeconds": 30,
+    "metadata": "Own result/tab state only, raw private0600 evidence",
+    "ifUnavailable": "Record exact unsupported/unavailable error and status, no automatic retry or fallback; return interval with no productexecution.",
+    "ifUnexpectedlyAvailable": "Require caller ownership and blank URL; close ONLY returned own tab using preview_evaluate window.close(), verify with preview_status. No app navigation. If closure unconfirmed, retain gate/return exact custody state; no other browser."
+  },
+  "conditionalCleanupCalls": [
+    {
+      "tool": "mcp__t3_code__preview_evaluate",
+      "argsTemplate": {
+        "tabId": "ACTUAL_RETURNED_OWN_TAB_ID",
+        "expression": "window.close(); 'close-requested'"
+      }
+    },
+    {
+      "tool": "mcp__t3_code__preview_status",
+      "argsTemplate": {
+        "tabId": "ACTUAL_RETURNED_OWN_TAB_ID"
+      }
+    }
+  ],
+  "forbidden": [
+    "Any app or external navigation",
+    "Server start or endpoint probe",
+    "Node/Playwright/Chrome fallback within this packet",
+    "Existing or stopped fixtures/profiles/tabs adoption",
+    "Auth/DB/SQL/Storage/native mail sink or real business operations",
+    "Product screenshots/UI/genuine/visual/a11y/J10 acceptance claim",
+    "Principal44 or any held audit resume/alternate mechanism"
+  ],
+  "evidenceDirectory": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/public-maya-df230/preview-probe-r1",
+  "closure": "No existing user tab touched; own new blank tab must be verified closed, or exact unclosed custody recorded. No global absence assertion.",
+  "followingGate": "After exact result/closure, prepare separately pinned fresh PUBLICMaya actualpage packet using supported browser interface; W0 must admit that new exact packet. No grant transfer.",
+  "currentAcceptanceEffect": "ZERO; counters unchanged, whole current census NOT_MEASURED"
+}

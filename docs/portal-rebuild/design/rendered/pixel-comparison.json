@@ -1,0 +1,42 @@
+{
+  "sidebar": {
+    "bounds": [
+      0,
+      0,
+      224,
+      960
+    ],
+    "mean_absolute_rgb_difference": 0.6993,
+    "fraction_with_any_channel_difference_over_24": 0.01204
+  },
+  "topbar": {
+    "bounds": [
+      224,
+      0,
+      1440,
+      80
+    ],
+    "mean_absolute_rgb_difference": 0.1196,
+    "fraction_with_any_channel_difference_over_24": 0.00195
+  },
+  "contact": {
+    "bounds": [
+      20,
+      740,
+      204,
+      869
+    ],
+    "mean_absolute_rgb_difference": 2.5987,
+    "fraction_with_any_channel_difference_over_24": 0.04167
+  },
+  "wordmark": {
+    "bounds": [
+      20,
+      20,
+      204,
+      58
+    ],
+    "mean_absolute_rgb_difference": 2.441,
+    "fraction_with_any_channel_difference_over_24": 0.04334
+  }
+}

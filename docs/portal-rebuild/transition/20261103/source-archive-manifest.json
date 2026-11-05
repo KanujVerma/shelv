@@ -1,0 +1,475 @@
+{
+  "scope": "Byte-exact inert archives of uncommitted source/test work. No implementation is activated by this handoff. Source paths/SELF/modes/pins/grants must be revalidated in new ownership before any execution; do not run these archives directly.",
+  "archives": [
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-de92158a/docs/portal-rebuild/research/W7_M02_RECORDED_ORDERS_GENUINE_ACCEPTANCE_R1.md",
+      "archived": "docs/portal-rebuild/research/W7_M02_RECORDED_ORDERS_GENUINE_ACCEPTANCE_R1.md",
+      "sha256": "27f9c14fefbc8301fdfb3c528bf65fd8b460f8faeaa000065b2fb2a26d1329d6",
+      "bytes": 12326,
+      "originalMode": 420,
+      "label": "ACTUAL PASS one bounded M02 only"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-abf51ae6/docs/portal-rebuild/research/W7_M02_ENDED_SESSION_SOURCE_R4.md",
+      "archived": "docs/portal-rebuild/research/W7_M02_ENDED_SESSION_SOURCE_R4.md",
+      "sha256": "050ecf4e65cb5541bd3ee46f3ee371ba9edfccc4332460fe9485667ee7031ae9",
+      "bytes": 10445,
+      "originalMode": 420,
+      "label": "SOURCE PASS external test driver b2e; not independently accepted screen"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-bc61e77e/docs/portal-rebuild/research/W7_M02_VALID_URL_BUNDLE_SOURCE_R1.md",
+      "archived": "docs/portal-rebuild/research/W7_M02_VALID_URL_BUNDLE_SOURCE_R1.md",
+      "sha256": "466a7531ddf0a4a932153e41c7ece2cd902bfc6cef73393e10f93cc273456db8",
+      "bytes": 15145,
+      "originalMode": 420,
+      "label": "SOURCE PASS nine-file fresh bundle"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-9d43a79d/docs/portal-rebuild/research/W7_M04_ADVISOR_FIXTURE_SOURCE_R1.md",
+      "archived": "docs/portal-rebuild/research/W7_M04_ADVISOR_FIXTURE_SOURCE_R1.md",
+      "sha256": "d3d94b7dc8824e68fb22fb87d1e5a0a720ae167c47360d7afd9896ed030f6d8a",
+      "bytes": 11555,
+      "originalMode": 420,
+      "label": "Conditional SOURCE PASS fresh schema1 only; actual setup/genuine unrun"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-03465987/docs/portal-rebuild/research/W7_M04_TRUSTED_PRINCIPAL_SOURCE_R1.md",
+      "archived": "docs/portal-rebuild/research/W7_M04_TRUSTED_PRINCIPAL_SOURCE_R1.md",
+      "sha256": "cbdd44f7aecafc5755f85d44ce2f40f180433acededa4e10c5322c5160d0d6fd",
+      "bytes": 9177,
+      "originalMode": 420,
+      "label": "SOURCE FAIL PRINCIPAL-R1-01 native signal boundary"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-e5646e71/docs/portal-rebuild/research/W7_M05_HISTORY_NEGATIVE_SOURCE_R1.md",
+      "archived": "docs/portal-rebuild/research/W7_M05_HISTORY_NEGATIVE_SOURCE_R1.md",
+      "sha256": "e7dad6530e4631784127b73a509f94dc5b0f94dadb71c068def95545833a0800",
+      "bytes": 7870,
+      "originalMode": 420,
+      "label": "SOURCE HOLD/quality FAIL HN1"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/adapter/account-advisor-local-bindings.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/adapter/account-advisor-local-bindings.mjs",
+      "sha256": "65a1830172bafccc00f59001f1ec346738297c5ced99fe5e554dc59313010322",
+      "bytes": 48493,
+      "originalMode": 420,
+      "label": "Exact inert SOURCE candidate, conditional review PASS; no resource authority"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/adapter/projected-source/client-upstream.ts.source.txt",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/adapter/projected-source/client-upstream.ts.source.txt",
+      "sha256": "79c2a78373d27965259a8a558fed5ba9d0ca1f31962241b99872a68213df9917",
+      "bytes": 17679,
+      "originalMode": 420,
+      "label": "Exact inert SOURCE candidate, conditional review PASS; no resource authority"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/adapter/projected-source/fixed-handlers.source.txt",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/adapter/projected-source/fixed-handlers.source.txt",
+      "sha256": "1d80001c562cfc46e986c393a6e78c76cf9250b004dccbc23d7a2c5d92ccf95e",
+      "bytes": 4161,
+      "originalMode": 420,
+      "label": "Exact inert SOURCE candidate, conditional review PASS; no resource authority"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/adapter/projected-source/gateway-entry.source.txt",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/adapter/projected-source/gateway-entry.source.txt",
+      "sha256": "e16531d0937fcb734b6f84deac8fcc15c50e45b908a3f971b29b3d9c6ba38d6a",
+      "bytes": 915,
+      "originalMode": 420,
+      "label": "Exact inert SOURCE candidate, conditional review PASS; no resource authority"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/adapter/projected-source/upstream.ts.source.txt",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/adapter/projected-source/upstream.ts.source.txt",
+      "sha256": "722395def695b028423b27a7e5846304a3c0db3c005cdeacaeb018e52a753bf8",
+      "bytes": 25587,
+      "originalMode": 420,
+      "label": "Exact inert SOURCE candidate, conditional review PASS; no resource authority"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/caller/genuine-advisor-host.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/caller/genuine-advisor-host.mjs",
+      "sha256": "bac0459987d1e40bb90bef1e51091e80bbcd0e37e61281f302410ca54e24e198",
+      "bytes": 52629,
+      "originalMode": 420,
+      "label": "Exact inert SOURCE candidate, conditional review PASS; no resource authority"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/unit/observation-input.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/unit/observation-input.test.mjs",
+      "sha256": "afb65d964bb7b7d7d5a7d1084c281b92a51b0a318aa155fe374b5fdedbdca81b",
+      "bytes": 9976,
+      "originalMode": 420,
+      "label": "Exact inert SOURCE candidate, conditional review PASS; no resource authority"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/unit/source-controls.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/unit/source-controls.test.mjs",
+      "sha256": "2ca42353e77d0967c90474157b35796035e4e73659f3e7f8b33645d5dad4032d",
+      "bytes": 9904,
+      "originalMode": 420,
+      "label": "Exact inert SOURCE candidate, conditional review PASS; no resource authority"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/receipts/HANDOFF.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/receipts/HANDOFF.json",
+      "sha256": "e010c10778b1208b6cdfb17bd67c8f3d0d9c699298910dd0541e84f7d92e7c3b",
+      "bytes": 3277,
+      "originalMode": 420,
+      "label": "Exact source provenance, not executable grant"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/receipts/IMPLEMENTATION-FREEZE.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/receipts/IMPLEMENTATION-FREEZE.json",
+      "sha256": "3a31920d2ace24ec9187b5eedae3b9c27f4fbad5c356b8cfd0cf6a37312dd70f",
+      "bytes": 8807,
+      "originalMode": 420,
+      "label": "Exact source provenance, not executable grant"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/receipts/FULL-EXACT-INVERSE.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/receipts/FULL-EXACT-INVERSE.json",
+      "sha256": "6fd6b6e092fc19532f9cf59dcb238474615022f90b2a29688ade45e0f25564d8",
+      "bytes": 33060,
+      "originalMode": 420,
+      "label": "Exact source provenance, not executable grant"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-setup-source/implementation/receipts/ROOT-PROVIDER-EXACT-INVERSE.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-host/receipts/ROOT-PROVIDER-EXACT-INVERSE.json",
+      "sha256": "e7cd601744d8a7c064bcc0d5ddf73c19d943c0bfe3e365eccebe6ada7533f969",
+      "bytes": 1429,
+      "originalMode": 420,
+      "label": "Exact source provenance, not executable grant"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/executor/principal-setup.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/executor/principal-setup.mjs",
+      "sha256": "bd17da2313016872a994270c7217aa9ffd795ad2dee281661e4ae00f68ba2bc5",
+      "bytes": 31507,
+      "originalMode": 384,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/source/ACK-REFINEMENTS.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/ACK-REFINEMENTS.json",
+      "sha256": "feef2d364cbbe0274a226dfd6a42563818abc0ff2d745f5d9efc20b0b7364b96",
+      "bytes": 3405,
+      "originalMode": 420,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/source/API-PROPOSAL.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/API-PROPOSAL.json",
+      "sha256": "048434a52b64024dd3605edde71a555f1205118cf7a3b2d216380d823c7db502",
+      "bytes": 8840,
+      "originalMode": 384,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/source/EXECUTOR-PINS.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/EXECUTOR-PINS.json",
+      "sha256": "217e0c9490579249e9cbebba922923431c325c7b56a8aa3a81a34949fde484b6",
+      "bytes": 675,
+      "originalMode": 420,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/source/ROOT_359C_SOURCE_TARGET.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/ROOT_359C_SOURCE_TARGET.json",
+      "sha256": "be2e06bcbd45665e2f2e191dafb5d6d284f0a2591987ad236a6efce02e21eb1e",
+      "bytes": 532362,
+      "originalMode": 384,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/source/SCHEMA-BINDINGS.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/SCHEMA-BINDINGS.json",
+      "sha256": "02875725217e86ea2dcb703c152d00fa3967724b2ea04c785b89c6d44381cdae",
+      "bytes": 2789,
+      "originalMode": 420,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/source/native-read-joined.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/native-read-joined.mjs",
+      "sha256": "ce531f59f8460ac4e1df7c750401b01d3f69250da3c857ad3ff2108d610e835d",
+      "bytes": 70025,
+      "originalMode": 384,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/source/principal-setup.sql",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/source/principal-setup.sql",
+      "sha256": "5a7963f718a6322cb56e88711823ee3e389ec1951f2285e91f1c2dae00345f49",
+      "bytes": 8326,
+      "originalMode": 384,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/unit/CASE-DESIGN.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/unit/CASE-DESIGN.json",
+      "sha256": "b10315bac277a3e098fe789d63d480e4c7fd2d83df2f6bd295621b46ca08c387",
+      "bytes": 1543,
+      "originalMode": 420,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/unit/captured-start-refusals.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/unit/captured-start-refusals.test.mjs",
+      "sha256": "6391d42c46f886761c7b3f1a846050ea381a118112d195d42855e0f539b6c472",
+      "bytes": 1301,
+      "originalMode": 420,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/unit/grant-refusals.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/unit/grant-refusals.test.mjs",
+      "sha256": "382fa3a25ab2c3e3e24c49885c963da80b7e7921873ac66c819cdc5bc46ed16f",
+      "bytes": 6949,
+      "originalMode": 420,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/unit/native-slot-refusals.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/unit/native-slot-refusals.test.mjs",
+      "sha256": "d811410969a57373d524598fe5d56c2c4708db4187e7a142ddd3f8e4691cc20f",
+      "bytes": 2054,
+      "originalMode": 420,
+      "label": "HELD bd17 native signal defect; never execute before fix/new review"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/receipts/HANDOFF.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/receipts/HANDOFF.json",
+      "sha256": "678c9e1f4621843e454dd5dfdc922e76a752e21dc8a81c644ba56ecd97dcb37a",
+      "bytes": 2935,
+      "originalMode": 420,
+      "label": "Original source freeze"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-65d2a888/.local-artifacts/m04-trusted-principal-executor/receipts/SOURCE-FREEZE.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m04-principal/receipts/SOURCE-FREEZE.json",
+      "sha256": "5431e2bc0df14db29bd5ecbd62ef34cd42cc844e121af5e4b4cf0f13a93f16fd",
+      "bytes": 9740,
+      "originalMode": 420,
+      "label": "Original source freeze"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-8b0c20b0/.local-artifacts/m05-history-negative-schedules/source/PINS.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/source/PINS.json",
+      "sha256": "01fb96863f1132e8b9a51bee133e84d4cf14d471824ef24268699cc8f3ff722f",
+      "bytes": 2236,
+      "originalMode": 384,
+      "label": "HELD author R2/independent R1 HN1, no actual invocation"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-8b0c20b0/.local-artifacts/m05-history-negative-schedules/source/native-lifetime.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/source/native-lifetime.mjs",
+      "sha256": "a735d6c56c92925a3f4814600a99ac895a9ae0e9f9b49e7d9e59aac1d5089a15",
+      "bytes": 2792,
+      "originalMode": 420,
+      "label": "HELD author R2/independent R1 HN1, no actual invocation"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-8b0c20b0/.local-artifacts/m05-history-negative-schedules/source/negative-observation.sql",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/source/negative-observation.sql",
+      "sha256": "c9d0711fde01418563231ca6a910cd7476a413165b1918ee069b4b60b3002339",
+      "bytes": 6245,
+      "originalMode": 420,
+      "label": "HELD author R2/independent R1 HN1, no actual invocation"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-8b0c20b0/.local-artifacts/m05-history-negative-schedules/source/negative-schedules.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/source/negative-schedules.mjs",
+      "sha256": "55e88ec5182cbf85a4dfa9b595ac3bbc113c475b3eebb40285113894f64a338f",
+      "bytes": 34454,
+      "originalMode": 420,
+      "label": "HELD author R2/independent R1 HN1, no actual invocation"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-8b0c20b0/.local-artifacts/m05-history-negative-schedules/source/page-observer.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/source/page-observer.mjs",
+      "sha256": "a277b4130903077bd489ff3abf6ff539701e4b37af1ea42938d300b5e83d141c",
+      "bytes": 8816,
+      "originalMode": 420,
+      "label": "HELD author R2/independent R1 HN1, no actual invocation"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-8b0c20b0/.local-artifacts/m05-history-negative-schedules/unit/lifetime-and-callback.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/unit/lifetime-and-callback.test.mjs",
+      "sha256": "35ad8c0a0907d109e25473007178ff38814c00cb78d5e6ab929c8c05b84dc5d6",
+      "bytes": 9618,
+      "originalMode": 420,
+      "label": "HELD author R2/independent R1 HN1, no actual invocation"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-8b0c20b0/.local-artifacts/m05-history-negative-schedules/unit/negative-schedules.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/unit/negative-schedules.test.mjs",
+      "sha256": "b1f09a4d549b78a50c190db42b0daa34eb486c06d30c5e57de8f9c3eb981620c",
+      "bytes": 2389,
+      "originalMode": 420,
+      "label": "HELD author R2/independent R1 HN1, no actual invocation"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-8b0c20b0/.local-artifacts/m05-history-negative-schedules/unit/old-adapted.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/unit/old-adapted.test.mjs",
+      "sha256": "330bc9513b70f44a2cc544d4b444704a3a8b9e6594b491723b7e8abb37c8e1e9",
+      "bytes": 1258,
+      "originalMode": 384,
+      "label": "HELD author R2/independent R1 HN1, no actual invocation"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-8b0c20b0/.local-artifacts/m05-history-negative-schedules/unit/run-controls.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/unit/run-controls.mjs",
+      "sha256": "fbe3f375880ab3cfd90122a636644bedf27dafe09335ac45c2ed2b60001696be",
+      "bytes": 1174,
+      "originalMode": 420,
+      "label": "HELD author R2/independent R1 HN1, no actual invocation"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-8b0c20b0/.local-artifacts/m05-history-negative-schedules/receipts/FREEZE-R1.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/receipts/FREEZE-R1.json",
+      "sha256": "d92e82c045f859cd52ba9fc250e606f683684c3ec4eed9ebb517732f341fd7cb",
+      "bytes": 911,
+      "originalMode": 384,
+      "label": "Old and current source freezes separate"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/t3-8b0c20b0/.local-artifacts/m05-history-negative-schedules/receipts/FREEZE-R2.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-author-r2/receipts/FREEZE-R2.json",
+      "sha256": "7a59d6c1c1b8ffef27bb132a5f541b8f20f2c1d7930536f5df7b38333b217f47",
+      "bytes": 1636,
+      "originalMode": 384,
+      "label": "Old and current source freezes separate"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/source/PINS.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/source/PINS.json",
+      "sha256": "01fb96863f1132e8b9a51bee133e84d4cf14d471824ef24268699cc8f3ff722f",
+      "bytes": 2236,
+      "originalMode": 384,
+      "label": "IN PROGRESS Parent correction:43/43 source controls, NEW independent review not run"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/source/native-lifetime.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/source/native-lifetime.mjs",
+      "sha256": "a735d6c56c92925a3f4814600a99ac895a9ae0e9f9b49e7d9e59aac1d5089a15",
+      "bytes": 2792,
+      "originalMode": 420,
+      "label": "IN PROGRESS Parent correction:43/43 source controls, NEW independent review not run"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/source/negative-observation.sql",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/source/negative-observation.sql",
+      "sha256": "c9d0711fde01418563231ca6a910cd7476a413165b1918ee069b4b60b3002339",
+      "bytes": 6245,
+      "originalMode": 420,
+      "label": "IN PROGRESS Parent correction:43/43 source controls, NEW independent review not run"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/source/negative-schedules.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/source/negative-schedules.mjs",
+      "sha256": "55e88ec5182cbf85a4dfa9b595ac3bbc113c475b3eebb40285113894f64a338f",
+      "bytes": 34454,
+      "originalMode": 420,
+      "label": "IN PROGRESS Parent correction:43/43 source controls, NEW independent review not run"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/source/page-observer.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/source/page-observer.mjs",
+      "sha256": "0547b4a7cb6f5c4ecfcf237fe856b79c7dcf1a52aa6fefc11ea777f8907fd985",
+      "bytes": 9381,
+      "originalMode": 384,
+      "label": "IN PROGRESS Parent correction:43/43 source controls, NEW independent review not run"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/unit/held-json-error.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/unit/held-json-error.test.mjs",
+      "sha256": "ec8f234526d61ba7ef8d114ca6defbac40116797081f0e996fd501a0b5838afc",
+      "bytes": 3316,
+      "originalMode": 420,
+      "label": "IN PROGRESS Parent correction:43/43 source controls, NEW independent review not run"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/unit/lifetime-and-callback.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/unit/lifetime-and-callback.test.mjs",
+      "sha256": "35ad8c0a0907d109e25473007178ff38814c00cb78d5e6ab929c8c05b84dc5d6",
+      "bytes": 9618,
+      "originalMode": 420,
+      "label": "IN PROGRESS Parent correction:43/43 source controls, NEW independent review not run"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/unit/negative-schedules.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/unit/negative-schedules.test.mjs",
+      "sha256": "b1f09a4d549b78a50c190db42b0daa34eb486c06d30c5e57de8f9c3eb981620c",
+      "bytes": 2389,
+      "originalMode": 420,
+      "label": "IN PROGRESS Parent correction:43/43 source controls, NEW independent review not run"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/unit/old-adapted.test.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/unit/old-adapted.test.mjs",
+      "sha256": "330bc9513b70f44a2cc544d4b444704a3a8b9e6594b491723b7e8abb37c8e1e9",
+      "bytes": 1258,
+      "originalMode": 384,
+      "label": "IN PROGRESS Parent correction:43/43 source controls, NEW independent review not run"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/unit/run-controls.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/unit/run-controls.mjs",
+      "sha256": "fbe3f375880ab3cfd90122a636644bedf27dafe09335ac45c2ed2b60001696be",
+      "bytes": 1174,
+      "originalMode": 420,
+      "label": "IN PROGRESS Parent correction:43/43 source controls, NEW independent review not run"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m02-ended-session-source/EXACT-DELTA.json",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m02-browser-b2e/EXACT-DELTA.json",
+      "sha256": "0b714ecec1786a6939d8ace6c0b622b97617dfbf2bfd1549d9f75befeff28d33",
+      "bytes": 1759,
+      "originalMode": 384,
+      "label": "Accepted actual test driver; not silently substituted into Root apps/portal/tests/genuine"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m02-ended-session-source/recorded-orders.browser.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m02-browser-b2e/recorded-orders.browser.mjs",
+      "sha256": "b2e45539f75e95d814a66345d4ca8822c49f18ad3826b3c4d4f114a8f8701570",
+      "bytes": 30444,
+      "originalMode": 256,
+      "label": "Accepted actual test driver; not silently substituted into Root apps/portal/tests/genuine"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/orders-probe-page-actions.mjs",
+      "archived": "docs/portal-rebuild/transition/20261103/source-bundles/m02-browser-b2e/orders-probe-page-actions.mjs",
+      "sha256": "79e5213e7a8688d103405e78457825772ec22cda48047ad479f43e50bc17ac5f",
+      "bytes": 26363,
+      "originalMode": 256,
+      "label": "Exact one-literal Mailpit guard Orders probe helper"
+    }
+  ],
+  "localOnlyRawEvidence": [
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/receipts/HN1-OLD-RED.raw",
+      "sha256": "2bea762916122b47ba3fb3f1afc5f6479ec740719fdde9ccd01247004e0a43a2",
+      "bytes": 1170,
+      "originalMode": 420,
+      "label": "Exact denial-only RED/current output; no private/resource data",
+      "reason": "Exact generated raw TAP stays local; do not normalize whitespace or commit raw output. Source/tests remain committed byte-exact.",
+      "previousPlannedArchive": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/receipts/HN1-OLD-RED.raw",
+      "retainedDuplicate": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/transition-audit/retained-duplicate-raw/HN1-OLD-RED.raw"
+    },
+    {
+      "source": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/m05-hn1-correction/receipts/CURRENT43.raw",
+      "sha256": "2adeea906c35e942e343ed480fb415f4ab7cfd145615e48e2ff323cb3e53c65a",
+      "bytes": 9334,
+      "originalMode": 420,
+      "label": "Exact denial-only RED/current output; no private/resource data",
+      "reason": "Exact generated raw TAP stays local; do not normalize whitespace or commit raw output. Source/tests remain committed byte-exact.",
+      "previousPlannedArchive": "docs/portal-rebuild/transition/20261103/source-bundles/m05-parent-hn1/receipts/CURRENT43.raw",
+      "retainedDuplicate": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/transition-audit/retained-duplicate-raw/CURRENT43.raw"
+    }
+  ]
+}

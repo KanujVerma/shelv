@@ -1,0 +1,39 @@
+{
+  "scope": "Original native Figma product assets for future data-bound renderer; not page screenshots or evidence of implemented product content.",
+  "assets": [
+    {
+      "path": "assets/C02-imgProductPhoto.png",
+      "identity": "The Ordinary Azelaic Acid 10%",
+      "sha1": "f9b2e001ce48b89618aa2602b2a5794cf1539b3d",
+      "sha256": "118d93c1ad24efd48090a9e91d246eb87567471db99024b9eb9b89a8ae535df1",
+      "bytes": 114872,
+      "approvedSourceHashMatches": true
+    },
+    {
+      "path": "assets/C03-imgProductPhoto.png",
+      "identity": "CeraVe PM",
+      "sha1": "ae5d3a6ba7a77e5849f9b1750ce6dc183a010539",
+      "sha256": "af135b13a07dd0ab5e24e0c297ffd2243a85a65fb6d2bcaa7604fe707aef719d",
+      "bytes": 128570,
+      "approvedSourceHashMatches": true
+    },
+    {
+      "path": "assets/C03-imgProductPhoto1.png",
+      "identity": "The Ordinary Azelaic Acid 10%",
+      "sha1": "f9b2e001ce48b89618aa2602b2a5794cf1539b3d",
+      "sha256": "118d93c1ad24efd48090a9e91d246eb87567471db99024b9eb9b89a8ae535df1",
+      "bytes": 114872,
+      "approvedSourceHashMatches": true
+    },
+    {
+      "path": "assets/imgProductPhoto.png",
+      "identity": "The Ordinary Azelaic Acid 10%",
+      "sha1": "f9b2e001ce48b89618aa2602b2a5794cf1539b3d",
+      "sha256": "118d93c1ad24efd48090a9e91d246eb87567471db99024b9eb9b89a8ae535df1",
+      "bytes": 114872,
+      "approvedSourceHashMatches": true
+    }
+  ],
+  "lucide": "Interface pictograms use lucide-react 1.65.0 as explicitly required; source icons are not redrawn.",
+  "runtimePolicy": "Known product assets stay data-bound. Do not use any baseline screenshot as a runtime UI asset."
+}

@@ -1,0 +1,226 @@
+{
+  "owner": "Kanuj",
+  "head": "a05505e60495d5023cd30d6fa4962638a6501f25",
+  "base": "f060f225983d388bccf5423983e8e0beca540251",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/orders/OrderSheets.tsx",
+      "bytes": 6802,
+      "sha256": "80feb45e2361e73da01b2326431653d24cbff9ef6f9d3bf4fb5dab1b35713c54"
+    },
+    {
+      "path": "apps/portal/src/features/orders/OrdersPage.tsx",
+      "bytes": 17221,
+      "sha256": "bbbac84c4a524a4c823df7f4beec6a698abee240e07355271281f4d8a039fde3"
+    },
+    {
+      "path": "apps/portal/src/features/orders/README.md",
+      "bytes": 13658,
+      "sha256": "2e52cacd4d01fddbf7573e454148dd60dc115e9d5c66326b9db9493eb53dec98"
+    },
+    {
+      "path": "apps/portal/src/features/orders/contract.typecheck.ts",
+      "bytes": 1112,
+      "sha256": "40f804136a9681fcb2e70d960f419090e36b735f705ad38a7e7908eb52f22f2c"
+    },
+    {
+      "path": "apps/portal/src/features/orders/controller.ts",
+      "bytes": 14317,
+      "sha256": "9c774ebd0e26ee877b7c23cacb3c507aaaebcd90f7129d74cf98beae97a1666c"
+    },
+    {
+      "path": "apps/portal/src/features/orders/dependencies.ts",
+      "bytes": 3721,
+      "sha256": "2a3bb9dc4e1726d13056e7f1f148aecd27bc96489d711676601d60a3b8ff3a4f"
+    },
+    {
+      "path": "apps/portal/src/features/orders/index.ts",
+      "bytes": 828,
+      "sha256": "213b2ef70d15279a1847877ee17a92d644ba0cf6aae544ce7f1aec8632c2474c"
+    },
+    {
+      "path": "apps/portal/src/features/orders/model.ts",
+      "bytes": 3952,
+      "sha256": "9fc69f7315eabfa2a2052d9a08d9f39113c592d14a397611a180dd088d4cca07"
+    },
+    {
+      "path": "apps/portal/src/features/orders/orders.css",
+      "bytes": 2876,
+      "sha256": "78f516531c150949a077ad7d584563c7929517765dfe3884f6e0c6140272a590"
+    },
+    {
+      "path": "apps/portal/src/features/orders/port.ts",
+      "bytes": 5883,
+      "sha256": "f529beb8c42de6dd67192c70cce9d0659d764babebd6e7dbf018d7cb17f76480"
+    },
+    {
+      "path": "apps/portal/src/features/orders/presentation.tsx",
+      "bytes": 5738,
+      "sha256": "30fc7f547e09b075249cef85e9c465788d246487d437d3fa263aa4a97ffc24bc"
+    },
+    {
+      "path": "apps/portal/src/features/orders/types.ts",
+      "bytes": 2998,
+      "sha256": "431a6c7daea6f1b2546df42d91ceee9cf9519125d2b0a8a17febcacb19b146b8"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-build.test.mjs",
+      "bytes": 1082,
+      "sha256": "952f1293b6a8f548a1adbc5c034defc0f4b17eec1a4a2c8dd1506237a2e471a3"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cab.test.mjs",
+      "bytes": 12317,
+      "sha256": "a6416ca1d7cfe208e2f416661c025f8210bfd3503c5e92e084c09d49107e66a5"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-controller.test.mjs",
+      "bytes": 10937,
+      "sha256": "45529da6b5aefdb424694f4b7601ca0d0f13356374626c00366b96c59a8af9fd"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu-fixtures.mjs",
+      "bytes": 5953,
+      "sha256": "aa3ed692cf72be1e6c460d7e14bec2961246bfec8ca6f333a0d19fe586b198c4"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu.test.mjs",
+      "bytes": 16411,
+      "sha256": "11c23fa1801cb3abf394307cde8a2175d131f8f85a6c3b89817723520d97e9b1"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu4-fixtures.mjs",
+      "bytes": 1850,
+      "sha256": "1899ea22c6d3a32f853e0501e09e8a6c665ad8e5218ac6bb43a02f9bec24d074"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu4.test.mjs",
+      "bytes": 9752,
+      "sha256": "cedf4a80dec55775c8bb2cbf731a87a532f3c6a46315d20f6944682e4dbec1f4"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-dispatch-cancellation.test.mjs",
+      "bytes": 6233,
+      "sha256": "374fc03f25115d2dcd45a1f9d05cbc092522209368237519042b417f51e7642a"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-fixtures.mjs",
+      "bytes": 4918,
+      "sha256": "a3dd90632167a29d4132e1b07242419796f05ea928d30ef5bf6592778fb319ea"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-model.test.mjs",
+      "bytes": 4312,
+      "sha256": "a142bda6a28a75a1bc746da145504fa1e575ad93e44c40e968957ae189775d74"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-port.test.mjs",
+      "bytes": 4923,
+      "sha256": "06e58eb740e7fac80704921d8942d3391baf859edb7ca11917247f55a5a3bdd8"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-render.test.mjs",
+      "bytes": 11072,
+      "sha256": "19d75f90d82d8228dac57eedc9382f3cc4f28ba0bebad2ce211fbbf4efb3583b"
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-use-reference.test.mjs",
+      "bytes": 4891,
+      "sha256": "90816404b571e9ba80289ecea34d597894b1592a67e618513d63e874c92ca2a7"
+    }
+  ],
+  "actualCanonicalDTO4Exact99": [
+    {
+      "path": "src/contracts/PortalCommerce.ts",
+      "bytes": 19204,
+      "sha256": "af2d1316434cca41ab78ae4b3bed54cb3a5a348c8e915caaa2f84c0aac9a2c38"
+    },
+    {
+      "path": "src/contracts/PortalCommerceValues.ts",
+      "bytes": 5365,
+      "sha256": "ac8c72ca26be1ab1c4f3275b75260cd78e0cdbbebad26524ad7e442a1bb8d27f"
+    },
+    {
+      "path": "src/contracts/PortalCommerceValidation.ts",
+      "bytes": 28017,
+      "sha256": "32e19f6ab8c85d5f52024ccf8aa114a088de270b005a806e3600191e4cfe7459"
+    },
+    {
+      "path": "src/contracts/PortalCommerceMapping.ts",
+      "bytes": 30476,
+      "sha256": "79d265ab4963cde159c21ff1138c292c80a5ad8548bb45cd843efbd04b706934"
+    }
+  ],
+  "patchSha256": "9cf16ed53f0d7bffc24e7e55ad0fb4a525405f70185d3e8f3a4603d1b0ec6062",
+  "ownerPacketSha256": "a902df317a23824850a4188c458353a37762a36075dac33493039e994fcd1e11",
+  "verdict": "WITHHELD_COMPLETE_ORDERS_O2_SUCCESSOR_SOURCE_DISPOSED_REFRESH_FINDING",
+  "finding": "W7-W5-O3",
+  "severity": "P2",
+  "originalCorrections": {
+    "O1": {
+      "byteExactSha256": "a44ce83ad8e4be3292ac9a0fce772bbb602c842798300c3ff021e7f820baf354",
+      "pass": 1,
+      "fail": 0,
+      "exitCode": 0
+    },
+    "O2": {
+      "byteExactSha256": "aa497313fcda3de30d9f146199c906963617da7ff69508ff72b9be9f0d1b0b4a",
+      "pass": 1,
+      "fail": 0,
+      "exitCode": 0
+    },
+    "meaning": "NamedSourcecorrectionsonly/oldfailsunchanged/no fullcandidateacceptance"
+  },
+  "newIndependentControl": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "exitCode": 1,
+    "node": "v22.23.0",
+    "proof": "ActualRootApplicationSession/createCommercePort/controller; closedSessionHTTP+countedfixedreadreturnscanonicalemptyDTO",
+    "sequence": "controller.dispose();await controller.refresh()",
+    "actualFixedRequestCalls": 1,
+    "expectedFixedRequestCalls": 0,
+    "finalControllerPhase": "ended",
+    "actualSessionStatus": "ready"
+  },
+  "control": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-a055/source/apps/portal/tests/w7-orders-disposed-refresh.test.mjs",
+    "archive": "source-controls/W5_O3/w7-orders-disposed-refresh.test.mjs",
+    "bytes": 1538,
+    "sha256": "89605d619d0826fc7abd33fd9e03e9ac7e397fa6ce7149c75f44ae170f4354f3"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-a055/W7-O1-EXACT.log",
+      "bytes": 1055,
+      "sha256": "e5327e869f15504a1255fef062d215f832d1db59602d8267f9b0e28e979c6760",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-a055/W7-O2-EXACT.log",
+      "bytes": 1025,
+      "sha256": "3dda493bbfbbda89fc90ae6ecd6bd7a31f9216d9f6786a24fb815679a5f606c6",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-a055/W7-DISPOSED-REFRESH.log",
+      "bytes": 1839,
+      "sha256": "ae92c2abbfb12e88a5cb399932bb696936a1e0547cef32469a86fb507976efed",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-a055/CONTROL-EXEC.json",
+      "bytes": 1136,
+      "sha256": "87d6d0f38269be77f749aaea6eee571755d2475317656538e43682eac85f8e64",
+      "exitCode": 1
+    }
+  ],
+  "reviewStop": "Firstnewmaterialfinding; remainingfull25 source/tests incomplete, no independent126/type/build claims",
+  "limits": [
+    "Newfixedrequestinvocationafterlocalpermanentdisposal only; no actualnetwork/privatepayloadleak/UIrestoration/Authbypass/financialeffect oruser-browserreachability demonstrated",
+    "ActualRootVM/lifetime/registerednamespace/entitledread/typedWRITE/backend/persistence/Figma/browser/genuine remain open",
+    "Oldacc/a5 executions not resumed; originalO1/O2failuresandintermediates remain attributed",
+    "No M02fixture/CB/M65/Guidance/private-return/photo/principal44/heldscope audit or resources/grant"
+  ]
+}

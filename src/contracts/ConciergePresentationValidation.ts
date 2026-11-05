@@ -31,7 +31,7 @@ export function readPresentationUrl(value:unknown,image=false):string {
  requireValue(!/[\s\\\u0000-\u001f\u007f]/u.test(s) && /^https:\/\//.test(s));
  const host=/^https:\/\/([^/?#]+)(?:[/?#]|$)/.exec(s)?.[1];
  requireValue(host && !host.includes('@') && /^(?=.{1,259}$)(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,63}(?::[0-9]{1,5})?$/.test(host));
- const name=host.split(':')[0].toLowerCase();
+ const name=host.split(':')[0]!.toLowerCase();
  requireValue(name.length<=253&&!/(?:^|\.)(?:localhost|local|internal|lan|home|test|invalid)$/.test(name));
  requireValue(!/(?:^|\.)xn--/i.test(name));
  let parsed:URL;try{parsed=new URL(s);}catch{throw new Error('invalid_input');}

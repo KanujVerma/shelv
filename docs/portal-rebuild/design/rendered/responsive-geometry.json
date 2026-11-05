@@ -1,0 +1,17 @@
+[
+  {
+    "width": 1280,
+    "scrollWidth": 1280,
+    "contactButtons": 1
+  },
+  {
+    "width": 390,
+    "scrollWidth": 390,
+    "contactButtons": 1
+  },
+  {
+    "width": 320,
+    "scrollWidth": 320,
+    "contactButtons": 1
+  }
+]

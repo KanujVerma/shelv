@@ -1,0 +1,58 @@
+// Actual canonical navigator on plain objects; no DOM/browser implementation.
+import test from 'node:test';import assert from 'node:assert/strict';
+import {createPortalNavigator} from '../src/navigation/history.ts';
+import {virtualNavigationWindow} from './rebuild-app-v3-history-helper.mjs';
+function setup({path='/plan',defer=true}={}){
+ const f=virtualNavigationWindow(path),frames=[],events=[];
+ const history=f.win.history,state=Object.getOwnPropertyDescriptor(history,'state').get,replace=history.replaceState,push=history.pushState;
+ Object.defineProperty(history,'state',{get:()=>structuredClone(state.call(history))});history.replaceState=(value,title,url)=>replace.call(history,structuredClone(value),title,url);history.pushState=(value,title,url)=>push.call(history,structuredClone(value),title,url);
+ f.win.requestAnimationFrame=fn=>{frames.push(fn);return frames.length;};f.win.cancelAnimationFrame=()=>{};
+ f.win.document.getElementById=id=>({focus(){events.push(['focus',id]);}});f.win.document.querySelector=()=>({focus(){events.push(['focus','heading']);}});f.win.scrollTo=({top})=>{f.win.scrollY=top;events.push(['scroll',top]);};
+ const navigator=createPortalNavigator(f.win,{scopeKey:'canonical-test',...(defer?{deferRestoration:route=>route.name.startsWith('history')}:{})}),stop=navigator.subscribe(()=>{});
+ return {...f,frames,events,navigator,stop,flush(){frames.splice(0).forEach(fn=>fn());}};
+}
+test('requirement: canonical History has zero effects while data is not ready, then exactly its own completion',()=>{
+ const f=setup();try{f.navigator.navigate({name:'history'});f.flush();assert.deepEqual(f.events,[],'historyReady:false must never focus or scroll');const ticket=f.navigator.restoration.getSnapshot();assert.ok(ticket);assert.ok(Object.isFrozen(ticket));assert.equal(f.navigator.restoration.complete(ticket,'fallback',()=>true),true);assert.deepEqual(f.events,[]);f.flush();assert.deepEqual(f.events,[['focus','heading'],['scroll',0]]);assert.equal(f.navigator.restoration.isCurrent(ticket),false);}finally{f.stop();f.navigator.dispose();}
+});
+test('requirement: nondeferred routes keep their immediate canonical rAF behavior',()=>{
+ const f=setup();try{f.navigator.navigate({name:'plan',routine:'evening'});assert.deepEqual(f.events,[]);f.flush();assert.deepEqual(f.events,[['focus','heading'],['scroll',0]]);}finally{f.stop();f.navigator.dispose();}
+});
+test('requirement: Back reconstructs the actual saved780/opener without pre-data effects or blank capture overwrite',()=>{
+ const f=setup();try{f.navigator.navigate({name:'history'});let ticket=f.navigator.restoration.getSnapshot();f.navigator.restoration.complete(ticket,'fallback',()=>true);f.flush();f.events.length=0;f.win.scrollY=780;f.win.document.activeElement.id='history-correction-opener:report:11111111-1111-4111-8111-111111111111';f.fire('scroll');f.navigator.navigate({name:'history-new'});f.win.history.back();ticket=f.navigator.restoration.getSnapshot();assert.equal(f.navigator.restoration.read(ticket).scrollY,780);f.win.scrollY=0;f.win.document.activeElement.id='blank-loading';f.fire('scroll');f.fire('focusin');f.flush();assert.deepEqual(f.events,[]);assert.equal(f.navigator.restoration.read(ticket).scrollY,780);f.navigator.restoration.complete(ticket,'saved',()=>true);f.flush();assert.deepEqual(f.events,[['focus','history-correction-opener:report:11111111-1111-4111-8111-111111111111'],['scroll',780]]);}finally{f.stop();f.navigator.dispose();}
+});
+test('old cancellation cannot release a replacement ticket, including same-path entries',()=>{
+ const f=setup();try{f.navigator.navigate({name:'history'});const old=f.navigator.restoration.getSnapshot();f.navigator.restoration.complete(old,'saved',()=>true);f.navigator.navigate({name:'history'});const current=f.navigator.restoration.getSnapshot();assert.notEqual(old,current);f.navigator.restoration.cancel(old);assert.equal(f.navigator.restoration.isCurrent(current),true);f.flush();assert.deepEqual(f.events,[]);f.navigator.restoration.complete(current,'fallback',()=>true);f.flush();assert.equal(f.events.length,2);}finally{f.stop();f.navigator.dispose();}
+});
+test('source guard is rechecked in rAF; failed old work preserves the entry for a replacement source',()=>{
+ const f=setup();try{f.navigator.navigate({name:'history'});const ticket=f.navigator.restoration.getSnapshot();let live=true;f.navigator.restoration.complete(ticket,'saved',()=>live);live=false;f.flush();assert.deepEqual(f.events,[]);assert.equal(f.navigator.restoration.isCurrent(ticket),true);f.navigator.restoration.cancel(ticket);f.win.scrollY=250;f.fire('scroll');assert.equal(f.win.history.state.shelvNavigation.restore.scrollY,250);}finally{f.stop();f.navigator.dispose();}
+});
+test('two navigators share only actual manual-mode ownership; old completion/stop cannot restore globally',()=>{
+ const f=setup();f.navigator.navigate({name:'history'});const old=f.navigator.restoration.getSnapshot();f.navigator.restoration.complete(old,'saved',()=>true);const second=createPortalNavigator(f.win,{scopeKey:'second-root',deferRestoration:()=>true}),stop=second.subscribe(()=>{});try{assert.equal(f.navigator.restoration.isCurrent(old),false);f.stop();assert.equal(f.win.history.scrollRestoration,'manual');f.flush();assert.deepEqual(f.events,[]);const current=second.restoration.getSnapshot();second.restoration.complete(current,'fallback',()=>true);f.flush();assert.equal(f.events.length,2);}finally{stop();second.dispose();f.navigator.dispose();assert.equal(f.win.history.scrollRestoration,'auto');}
+});
+test('notification reentry cannot schedule the old route restoration before or after a replacement',()=>{
+ const f=setup();let changed=false;const stop=f.navigator.subscribe(()=>{if(!changed&&f.navigator.getSnapshot()==='/history'){changed=true;f.navigator.navigate({name:'history-new'});}});try{f.navigator.navigate({name:'history'});f.flush();assert.deepEqual(f.events,[]);assert.equal(f.navigator.getSnapshot(),'/history/new');const ticket=f.navigator.restoration.getSnapshot();assert.ok(ticket);assert.equal(f.navigator.restoration.complete(ticket,'saved',()=>{f.navigator.navigate({name:'account'});return true;}),false);f.flush();assert.deepEqual(f.events,[['focus','heading'],['scroll',0]]);}finally{stop();f.stop();f.navigator.dispose();}
+});
+test('focus reentry during a completed ticket cannot scroll or release the next route owner',()=>{
+ const f=setup();try{f.navigator.navigate({name:'history'});const ticket=f.navigator.restoration.getSnapshot();f.win.document.querySelector=()=>({focus(){f.events.push(['focus','old']);f.navigator.navigate({name:'history-new'});}});f.navigator.restoration.complete(ticket,'fallback',()=>true);f.flush();assert.deepEqual(f.events,[['focus','old']]);assert.ok(f.navigator.restoration.getSnapshot());}finally{f.stop();f.navigator.dispose();}
+});
+test('cancelled pending context survives unmount/resubscribe without a blank outgoing capture',()=>{
+ const f=setup({path:'/history'});let stop=f.stop;try{let ticket=f.navigator.restoration.getSnapshot();f.navigator.restoration.complete(ticket,'fallback',()=>true);f.flush();f.win.scrollY=780;f.win.document.activeElement.id='real-opener';f.fire('scroll');f.navigator.navigate({name:'history-new'});f.win.history.back();ticket=f.navigator.restoration.getSnapshot();f.win.scrollY=0;f.navigator.restoration.cancel(ticket);stop();stop=f.navigator.subscribe(()=>{});const current=f.navigator.restoration.getSnapshot();assert.equal(f.navigator.restoration.read(current).scrollY,780);f.events.length=0;f.flush();assert.deepEqual(f.events,[]);}finally{stop();f.navigator.dispose();}
+});
+test('actual context-map position is preserved into the marker before a pending navigator is disposed',()=>{
+ const f=setup({path:'/history'});let second=null,stopSecond=()=>{};try{let ticket=f.navigator.restoration.getSnapshot();f.navigator.restoration.complete(ticket,'fallback',()=>true);f.flush();f.navigator.navigate({name:'history-new'});ticket=f.navigator.restoration.getSnapshot();f.navigator.restoration.complete(ticket,'fallback',()=>true);f.flush();f.win.scrollY=780;f.win.document.activeElement.id='actual-form-opener';f.win.history.back();ticket=f.navigator.restoration.getSnapshot();f.navigator.restoration.complete(ticket,'fallback',()=>true);f.flush();f.win.history.go(1);ticket=f.navigator.restoration.getSnapshot();assert.equal(f.navigator.restoration.read(ticket).scrollY,780);f.navigator.dispose();second=createPortalNavigator(f.win,{scopeKey:'canonical-test',deferRestoration:()=>true});stopSecond=second.subscribe(()=>{});assert.equal(second.restoration.read(second.restoration.getSnapshot()).scrollY,780);}finally{stopSecond();second?.dispose();f.stop();f.navigator.dispose();}
+});
+test('a new source on the same entry can finish after old queued source work retires',()=>{
+ const f=setup();try{f.navigator.navigate({name:'history'});const ticket=f.navigator.restoration.getSnapshot();let oldLive=true;f.navigator.restoration.complete(ticket,'saved',()=>oldLive);oldLive=false;const current=f.navigator.restoration.begin();assert.ok(current);f.flush();assert.deepEqual(f.events,[]);assert.equal(f.navigator.restoration.isCurrent(current),true);assert.equal(f.navigator.restoration.complete(current,'fallback',()=>true),true);f.flush();assert.deepEqual(f.events,[['focus','heading'],['scroll',0]]);}finally{f.stop();f.navigator.dispose();}
+});
+test('late cleanup of the same callback subscription cannot stop a new subscription/ticket',()=>{
+ const f=setup({path:'/history'});f.stop();const listener=()=>{},old=f.navigator.subscribe(listener);old();const current=f.navigator.subscribe(listener);try{const ticket=f.navigator.restoration.getSnapshot();old();assert.equal(f.navigator.restoration.isCurrent(ticket),true);}finally{current();f.navigator.dispose();}
+});
+test('tickets/context cannot be forged or mutated, and a changed actual marker retires reads and queued work',()=>{
+ const f=setup();try{f.navigator.navigate({name:'history'});const ticket=f.navigator.restoration.getSnapshot(),saved=f.navigator.restoration.read(ticket);assert.ok(Object.isFrozen(ticket)&&Object.isFrozen(saved));assert.equal(f.navigator.restoration.read({}),null);assert.equal(f.navigator.restoration.complete({},'saved',()=>true),false);assert.throws(()=>f.navigator.restoration.complete(ticket,{scrollY:999},()=>true));f.navigator.restoration.complete(ticket,'saved',()=>true);const state=f.win.history.state;state.shelvNavigation.restore.scrollY=999;f.win.history.replaceState(state,'','/history');assert.equal(f.navigator.restoration.read(ticket),null);f.flush();assert.deepEqual(f.events,[]);assert.ok(!JSON.stringify(f.entries).includes('completion'));}finally{f.stop();f.navigator.dispose();}
+});
+for(const replace of [false,true])test('new entry before the old rAF invalidates only old work; replace='+replace,()=>{
+ const f=setup();try{f.navigator.navigate({name:'history'});const old=f.navigator.restoration.getSnapshot();f.navigator.restoration.complete(old,'saved',()=>true);f.navigator.navigate({name:'history-event',eventId:'report-1'},{replace});const next=f.navigator.restoration.getSnapshot();f.navigator.restoration.cancel(old);f.flush();assert.deepEqual(f.events,[]);assert.equal(f.navigator.restoration.isCurrent(next),true);}finally{f.stop();f.navigator.dispose();}
+});
+test('manual mode remains the previous manual mode, and nondeferred begin is unavailable',()=>{
+ const f=virtualNavigationWindow('/plan');f.win.history.scrollRestoration='manual';const n=createPortalNavigator(f.win,{scopeKey:'prior-manual'}),stop=n.subscribe(()=>{});assert.equal(n.restoration.begin(),null);stop();n.dispose();assert.equal(f.win.history.scrollRestoration,'manual');
+});

@@ -1,0 +1,11 @@
+# direct care-route read recovery
+
+Owner: Kanuj. 31 October 2026. Response to CA1/P2 in [the independent application review](W7_CARE_APP_COMPOSITION_REVIEW.md). Author verified; fresh independent review is required.
+
+CA1 came from classifying product-use/report-use as supported only after a v2 view existed. On a failed first read, view was null and the unconnected-module branch hid the existing error and retry. The general route also inherited the notifications title. No server authorization bypass or saved report loss was demonstrated.
+
+Application now recognizes the two route names before data arrives. Existing loading, denial/error and controller retry run normally. Error headings say record actual use. A confirmed v2 remains required before composing the care form; legacy v1 callers retain their unconnected-care behavior and cannot obtain a form. No permission, transport, Root schema/API, callback, care action or fallback changed.
+
+Meaningful RED before production: three new actual-cookie/controller/Root-mapper/ClientContent SSR cases fail, prior four pass. Six durable actual-Application direct URL cases fail0/6 at the missing retry, statuses403/409/503 on product and general routes. Corrective code then passes25 affected source/SSR/factory/controller cases and all19 application browser journeys (old13 plus six recovery cases),0 failures/skips. New browser cases retain the exact route/evening context, no form before confirmed read, normal check connection for503, deliberate same-controller retry, no v1 read and no mutation. Strict frontend types exit0.
+
+The original independent report and its failures remain frozen at18c78b7. Full portal1030/session171/Root1213+18oldskips/types/export and genuine R7 Node11/all13 remain scoped to their recorded source. This small route/recovery correction does not itself recertify them or establish genuine care browser, CI or full-goal acceptance. Current focused logs are ignored app-care-ca1-{ssr-red,browser-red,source-green,browser-green,types}.log. Browser DOM and finite HTTP boundaries are synthetic; actual application/session/cookie/port/parser/mapper/controller execute. No Root/backend/native source changed, no real Auth/DB resources were used, and no production action occurred.

@@ -1,0 +1,11 @@
+# W0 redirect historical witnesses: independent source review
+
+Owner: Kanuj. **PASS for the exact six-file witness delta** from `706b323d6b0969a090fd70cae1c9919ea15cc3be` through `54646ac03a4fdf00f09cf435b76250f14eaa8217`. This includes original five-file `276105fc885129f681c371466c206ad50c85f01d` plus the one-file own-admin witness follow-up. The three P1 runtime postimages remain unchanged. No material scoped finding.
+
+Read the entire helper, nine new controls and all four affected witness call sites. The helper accepts only the complete known preimage or complete known postimage for two exact paths. A postimage must contain exactly one complete correction clause; its exact inverse must reproduce the complete original file hash. Every other path remains unchanged. Original fixture bytes, full-source equality, AST erasures, denial/budget assertions and mutation checks remain intact. This is historical preservation; the separate workerd regression proves the corrected runtime. Unknown unrelated source changes cannot be hidden by the inverse.
+
+Independent exact-Git projection under Node 22.23.0 passes 41/41, exit 0, no skips/cancellations, across the explicit new helper test, notification mask, photo-inventory source, own-admin baseline and Portal photo-head source test files. That invocation totals 41; the author's separately reported 43 is not substituted for an observed count. [Exact source pins and raw log](W0_WITNESS_546_RESULT.json) preserve scope and qualifications.
+
+Reviewer setup is separate: an initial wrong-cwd invocation ran 30 unchanged baseline checks; it was not successor proof. An incomplete exported fixture then gave 38 pass / 1 fail because a SQL source file was missing. That raw is preserved, and exact migration/test source was supplied before the 41-case pass. No SQL executed, and no assertion, filter, timeout, fixture or runtime production code was weakened.
+
+Original Root 22/25, original Portal 3311/3312 and subsequent own-admin identity failure stay failed in their own records. This source gate does not make either old run green. Exact current full root/Portal suites, hosted CI/Codex, genuine behavior and all screen/journey/provider-held gates remain separate.

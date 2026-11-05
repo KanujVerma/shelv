@@ -1,0 +1,181 @@
+{
+  "owner": "Kanuj",
+  "items": [
+    {
+      "family": "templates",
+      "head": "48141c31b11ebb2bdb13c73ad5c20ec5af83d50b",
+      "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "reviewedHead": "fef98c75702900295783ba7b8514e2b6bb092b1a",
+      "sourcePins": [
+        {
+          "path": "apps/portal/tests/w1-plan-platform-templates.test.mjs",
+          "bytes": 14222,
+          "sha256": "38b6e1802cbc7061f3b48de58eb15ffcf42c5684ea7005abb42a880a44792192"
+        },
+        {
+          "path": "docs/portal-rebuild/research/W1_PLAN_TEMPLATE_DTO_20261103.md",
+          "bytes": 10481,
+          "sha256": "4b9a8ba1156d0ae4558f94977fa7c83433ac6dbb6e417a0a75a17e7401f30983"
+        },
+        {
+          "path": "src/contracts/PortalPlanTemplate.ts",
+          "bytes": 2047,
+          "sha256": "480980473105c65e28a5ad11f5b5dea3b2d9c239981bd5c766aa671a51dfaab6"
+        },
+        {
+          "path": "src/contracts/PortalPlanTemplateMapping.ts",
+          "bytes": 623,
+          "sha256": "24fdc334d9d7ca25ffb50b9eec2bd2394fa0f014da2f1dda1c8b526a008f6142"
+        },
+        {
+          "path": "src/contracts/PortalPlanTemplateValidation.ts",
+          "bytes": 9038,
+          "sha256": "9e07c282a321a5e218275aee26a0d8f7fd9e76ad5ed16ce6b2601bddf06cc857"
+        },
+        {
+          "path": "src/contracts/PortalPlanTemplateValues.ts",
+          "bytes": 1309,
+          "sha256": "a517623623b065b5aa3e0a66fb53c75c3008909adcfcfa56d4cee6d2740f0dea"
+        }
+      ],
+      "dependencies": [
+        {
+          "path": "src/contracts/PortalRebuild.ts",
+          "bytes": 14140,
+          "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc"
+        },
+        {
+          "path": "src/contracts/PortalRebuildValues.ts",
+          "bytes": 1206,
+          "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+        },
+        {
+          "path": "src/contracts/PortalRebuildValidation.ts",
+          "bytes": 12947,
+          "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+        },
+        {
+          "path": "src/contracts/PortalRebuildMapping.ts",
+          "bytes": 10694,
+          "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+        },
+        {
+          "path": "src/contracts/PortalCareValidation.ts",
+          "bytes": 7336,
+          "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d"
+        },
+        {
+          "path": "src/contracts/PortalReviewValidation.ts",
+          "bytes": 15488,
+          "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+        },
+        {
+          "path": "src/contracts/ConciergePortalValidation.ts",
+          "bytes": 2880,
+          "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+        },
+        {
+          "path": "package-lock.json",
+          "bytes": 303079,
+          "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+        },
+        {
+          "path": "apps/portal/package-lock.json",
+          "bytes": 123808,
+          "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+        }
+      ],
+      "patchSha256": "490425fcf5d12c637c45103bb7f1b45cf60b80c1f0fc17faa5a64d51f26c37f0",
+      "level": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY"
+    },
+    {
+      "family": "directory",
+      "head": "b02e0f8196642f1ec52666ce8ce3c88ee1dc78bb",
+      "base": "3a90573080ccbe1924d20afccfd0718b3302c923",
+      "reviewedHead": "145966d4b6de7f3e40f8c6b69d66a3027913c91d",
+      "sourcePins": [
+        {
+          "path": "apps/portal/tests/w1-plan-platform-directory-v2.test.mjs",
+          "bytes": 13826,
+          "sha256": "cb9ea22a32ab9906ab1a608a97369c4fe4cecdf48e40542f7f85e8b78205a421"
+        },
+        {
+          "path": "docs/portal-rebuild/research/W1_PLAN_DIRECTORY_V2_DTO_20261103.md",
+          "bytes": 13017,
+          "sha256": "d4b0eff93d2a88a8a9af0372240e36b22a757d68d3314a3c4f2550d3884f3815"
+        },
+        {
+          "path": "src/contracts/PortalPlanDirectoryV2.ts",
+          "bytes": 1968,
+          "sha256": "22dae793cd097b4e0377f7d7304d850194238e82cfa36a874edce3f6c8593d04"
+        },
+        {
+          "path": "src/contracts/PortalPlanDirectoryV2Mapping.ts",
+          "bytes": 653,
+          "sha256": "69c2687f445be202aef093d697a72bdd7c9068443c110e44ac3438658c72c6de"
+        },
+        {
+          "path": "src/contracts/PortalPlanDirectoryV2Validation.ts",
+          "bytes": 4896,
+          "sha256": "4e1b94731adf514953295472094c095b09b9ed53487c1db3265a96c5ce4464ff"
+        },
+        {
+          "path": "src/contracts/PortalPlanDirectoryV2Values.ts",
+          "bytes": 1056,
+          "sha256": "46419fa0c1520fab72b0ff3fa0287d3e2336c23d1e364a8440d6d99d140f8eda"
+        }
+      ],
+      "dependencies": [
+        {
+          "path": "src/contracts/PortalRebuild.ts",
+          "bytes": 14140,
+          "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc"
+        },
+        {
+          "path": "src/contracts/PortalRebuildValidation.ts",
+          "bytes": 12947,
+          "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+        },
+        {
+          "path": "src/contracts/PortalRebuildMapping.ts",
+          "bytes": 10694,
+          "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+        },
+        {
+          "path": "src/contracts/PortalRebuildValues.ts",
+          "bytes": 1206,
+          "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+        },
+        {
+          "path": "src/contracts/PortalCareValidation.ts",
+          "bytes": 7336,
+          "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d"
+        },
+        {
+          "path": "src/contracts/PortalReviewValidation.ts",
+          "bytes": 15488,
+          "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+        },
+        {
+          "path": "src/contracts/ConciergePortalValidation.ts",
+          "bytes": 2880,
+          "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+        },
+        {
+          "path": "package-lock.json",
+          "bytes": 303079,
+          "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+        },
+        {
+          "path": "apps/portal/package-lock.json",
+          "bytes": 123808,
+          "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+        }
+      ],
+      "patchSha256": "870d26c2432452099c2fefedd9ff7ecafb4093b25859fd46d9fceee69e2b52fb",
+      "level": "PASS_BOUNDED_DTO_POSTIMAGE_DEPENDENCY_CORRESPONDENCE_ONLY"
+    }
+  ],
+  "execution": "No repeatedW7test; directGit6+9/delta parity only, oldtests correctlyattributed",
+  "limits": "No geometry/CI/runtime/AuthSQL/actualVIEW/templatejournalproducer/storage/CAS/Sourceauthority orresourcegrant"
+}

@@ -1,0 +1,428 @@
+{
+  "note": "Actual recorded IDs only, never inferred from thread/run strings. Older missing literal IDs remain in preserved T3 activity; do not infer them. T3 terminal state overrides stale dispatch status.",
+  "latestDispatches": [
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M01_ACTUAL_R2_DISPATCH.json",
+      "sha256": "741fc19dff0439d5f20c52af751d7def6608949f92c524f832ae19c507d9b845",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-account-profile-genuine-acceptance-r2",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-account-profile-genuine-acceptance-r2",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-account-profile-genuine-acceptance-r2:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-account-profile-genuine-acceptance-r2>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02-ACCEPTED-STOP-DISPATCH.json",
+      "sha256": "c4989413fa0e99aedfce901ec2629c842507d6d56a91aa1eda36fcff73917148",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m02-accepted-stopped-retained",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Aacceptance-20261103-native-account-fixture:ordinal:9",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02-ACTUAL-REVIEW-DISPATCH.json",
+      "sha256": "f85212f39dd5886e3b4633374a5d29f9ea2144de83469f5300fc273e5fc12e5e",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-recorded-orders-genuine-acceptance-r1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-recorded-orders-genuine-acceptance-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-m02-recorded-orders-genuine-acceptance-r1:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-recorded-orders-genuine-acceptance-r1>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02-ENDED-SESSION-REVIEW-DISPATCH.json",
+      "sha256": "5913c05f2a42d571efc48f522566fe12db4db72b3a3d544534dc77e83fa5c1e6",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-ended-session-source-r4",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-ended-session-source-r4",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-m02-ended-session-source-r4:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-ended-session-source-r4>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_BASELINE_CORRECTED_DISPATCH.json",
+      "sha256": "a4bebd9fd03063a86de9cdbcd7d9aeceb4fd44935d07497b831d75020deed86e",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m02-baseline-corrected-authority",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Aacceptance-20261103-orders-browser-journey:ordinal:7",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_BASELINE_DISPATCH.json",
+      "sha256": "ddaae0b2650d4d1d1da636301e43f89b55d948926f8b96bebea1cdd8b50dd425",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m02-observation-baseline",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Aacceptance-20261103-orders-browser-journey:ordinal:6",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_ENV_SOURCE_R1_DISPATCH.json",
+      "sha256": "c4a6a8f5bcf135082e2657393d2ef2246ea771fc04e306a7421660e3c158f5fd",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-fresh-environment-source-r1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-fresh-environment-source-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-m02-fresh-environment-source-r1:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-fresh-environment-source-r1>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_FAILED_FINAL_DISPATCH.json",
+      "sha256": "e81acf40892da48e3d5ec67b68351ede3fd34d6ba55df0329ea7bfef6e236004",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m02-failed-browser-final-observation",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Aacceptance-20261103-orders-browser-journey:ordinal:8",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_FRESH_BINDING_DISPATCH.json",
+      "sha256": "c7c62bd029d4cc34d3e9b3e5e8bd2ee5c05fd7d3e82bf6127663558a9b7344c6",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m02-fresh-source-binding",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Aacceptance-20261103-native-account-fixture:ordinal:2",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_NORMAL_EXECUTION_DISPATCH.json",
+      "sha256": "70c3983ba059a84e85d264b73d4c70a4abea8c12496366c019f33fe568538056",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m02-normal-provisioning-execution",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Aacceptance-20261103-native-account-fixture:ordinal:3",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_SEED_ISSUED_DISPATCH.json",
+      "sha256": "a19b0f83efa8c86cf73a6a8dcc347b85041c6a3f259f63d7ab60882abb6b79a3",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m02-seed-issued-now",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Aacceptance-20261103-orders-browser-journey:ordinal:5",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_SQL_EXECUTOR_SOURCE_DISPATCH.json",
+      "sha256": "9c8407e1087e4344f95a6bfae41360ba249f6bcee3dd213bfdba4ebac6534dd9",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m02-actual-sql-executor-source",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Aacceptance-20261103-orders-browser-journey:ordinal:3",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-orders-browser-journey>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_SQL_EXECUTOR_SOURCE_R1_DISPATCH.json",
+      "sha256": "e34362d2ccbc6becf5f385c167bdad0371e30fe8c107302b6d6f0ec213e97bf1",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-sql-executor-source-r1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-sql-executor-source-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-m02-sql-executor-source-r1:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-sql-executor-source-r1>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_URL_SOURCE_R3_DISPATCH.json",
+      "sha256": "e9b0b3c48069a593ea5bd0bf9ee9dfa8bce97805bc0166fde12bae52f2e7c78f",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-orders-valid-url-source-r3",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-orders-valid-url-source-r3",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-orders-valid-url-source-r3:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-orders-valid-url-source-r3>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_VALID_BINDING_DISPATCH.json",
+      "sha256": "e5ca70b8fb35ac7743dbbb9210a486d5706f5d6ce7ebe92c704103f03b9998a8",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m02-valid-url-fresh-binding",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Aacceptance-20261103-native-account-fixture:ordinal:4",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_VALID_BUNDLE_REVIEW_DISPATCH.json",
+      "sha256": "7124447de0c181404426d373a272d124a26617c9a3b290b136c1782a99d3cf85",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-valid-url-bundle-source-r1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-valid-url-bundle-source-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-m02-valid-url-bundle-source-r1:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-valid-url-bundle-source-r1>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M02_VALID_NORMAL_DISPATCH.json",
+      "sha256": "ecd4f0fbace0df12162704844c13728043bc696178c0488e83076c19da3d1884",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m02-valid-normal-execution",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Aacceptance-20261103-native-account-fixture:ordinal:5",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Aacceptance-20261103-native-account-fixture>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M03_SOURCE_R2_DISPATCH.json",
+      "sha256": "5b0c4cb546dcc3c94284c1394dbff740593bb8c6d85ad6deb34b10f2ea62396a",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r2",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r2",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-notification-assets-review-r2:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r2>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M03_SOURCE_R3_DISPATCH.json",
+      "sha256": "f8fd9f00caa006a9a387ecf1c11b0ab8c226ac242b921567343a46b98c807a24",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r3",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r3",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-notification-assets-review-r3:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r3>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M03_SOURCE_R4_DISPATCH.json",
+      "sha256": "3e2500886b7ca3a0f55c9de0bb444595e990f0ff0d1b4be47ab3458d450312d4",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r4",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r4",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-notification-assets-review-r4:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r4>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M04-ADVISOR-FIXTURE-REVIEW-DISPATCH.json",
+      "sha256": "0a4ac2c99bcf3b95700136d5a812373fd55b1de6983d497f0028265c96dd89db",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m04-advisor-fixture-source-r1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m04-advisor-fixture-source-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-m04-advisor-fixture-source-r1:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m04-advisor-fixture-source-r1>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M04-PRINCIPAL-EXECUTOR-DISPATCH.json",
+      "sha256": "4009c62d5ff7241a2593fce10aeff361e9c26ac01f5d82a167df7b0daf92feef",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m04-trusted-principal-executor-source",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-advisor-publication",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-advisor-publication:ordinal:4",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-advisor-publication>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M04-PRINCIPAL-SOURCE-REVIEW-DISPATCH.json",
+      "sha256": "c7f0a9bb85ea5cb886e5c25edbc47d0b67d388526a7da49c758209f62c0f1b33",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m04-principal-executor-source-r1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m04-principal-executor-source-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-m04-principal-executor-source-r1:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m04-principal-executor-source-r1>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M04_SETUP_SOURCE_DISPATCH.json",
+      "sha256": "dfec1462354a47bc948f4a3bd6376af93aab651305edac5d2f2856d12f7330b7",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m04-trusted-setup-source-plan",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-advisor-publication",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-advisor-publication:ordinal:2",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-advisor-publication>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M05-NEGATIVE-SCHEDULES-DISPATCH.json",
+      "sha256": "f449efd4693f5465297a0a2df73285bd02fbc01495ff03982c8406cc9b15664f",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m05-real-negative-schedules-source",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-current-snapshot",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-history-current-snapshot:ordinal:2",
+      "status": "starting",
+      "model": null,
+      "options": null,
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-current-snapshot>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M05-NEGATIVE-SOURCE-REVIEW-DISPATCH.json",
+      "sha256": "28420fc3b5ac6425396c54b46342abc6bb1aa08bafa9fac94940ad00fc658bf0",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m05-negative-schedules-source-r1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m05-negative-schedules-source-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-m05-negative-schedules-source-r1:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m05-negative-schedules-source-r1>"
+    },
+    {
+      "file": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M05_SOURCE_R2_DISPATCH.json",
+      "sha256": "067cbb27b0969a0e1fbefa720f57ee9036c9458859fef4adc8700216c633865d",
+      "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-assets-review-r2",
+      "threadId": "thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-assets-review-r2",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aa56eb6fa-1435-4927-8890-15373d05f366%253Adelegate-task%253Amilestone-20261103-history-assets-review-r2:ordinal:1",
+      "status": "running",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "xhigh"
+        },
+        {
+          "id": "serviceTier",
+          "value": "default"
+        }
+      ],
+      "link": "<t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/thread:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-history-assets-review-r2>"
+    }
+  ]
+}

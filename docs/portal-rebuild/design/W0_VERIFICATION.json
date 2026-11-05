@@ -1,0 +1,136 @@
+{
+  "date": "2026-10-30",
+  "scope": "W0 task 2 shared foundation; no final portal/hosted acceptance",
+  "workspace": "/Users/kanuj/.t3/worktrees/shelv/t3-128ab5a5",
+  "base": "9be041db5b7227637f0c3ba964d932c6bc6d0e06",
+  "implementationHead": "0f89b37dba39c89071802ce9ad78345aa51392ab",
+  "runtime": {
+    "providerInstanceId": "codex",
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "xhigh",
+    "serviceTier": "default",
+    "node": "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+    "nodeVersion": "v22.23.0"
+  },
+  "commands": [
+    {
+      "command": "npm ci",
+      "result": "pass",
+      "notes": "After final dependency pin; 130 packages added, 132 audited. Three advisory counts predated the additions; identities not compared."
+    },
+    {
+      "command": "npm test (initial retained baseline)",
+      "result": "pass",
+      "tests": 344,
+      "failed": 0
+    },
+    {
+      "command": "npm run test:rebuild",
+      "result": "pass",
+      "tests": 18,
+      "failed": 0
+    },
+    {
+      "command": "npm test -- --test-concurrency=1",
+      "result": "pass",
+      "tests": 362,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 69854.948708,
+      "log": ".local-artifacts/portal-rebuild/w0/final-suite-compatible.log"
+    },
+    {
+      "command": "node --test tests/production-release.test.mjs",
+      "result": "pass",
+      "tests": 63,
+      "failed": 0,
+      "notes": "Verified compatible TypeScript 6.0.3 parser after rejecting the initial 7.0.2 addition."
+    },
+    {
+      "command": "npm run typecheck:rebuild",
+      "result": "pass",
+      "errors": 0
+    },
+    {
+      "command": "npm run typecheck:session",
+      "result": "pass",
+      "errors": 0
+    },
+    {
+      "command": "npm run build:rebuild",
+      "result": "pass",
+      "warnings": 0,
+      "notes": "Includes semantic color guard for new frontend CSS."
+    },
+    {
+      "command": "npm run check:ui",
+      "result": "pass",
+      "stylesheets": 11
+    },
+    {
+      "command": "npm run build",
+      "result": "pass",
+      "assetCount": 132,
+      "zipSha256": "307472c8b6836ae5858d625cd6b0e36748cf8f8b32054967af38b862b2062875",
+      "vaultSha256": "12ccdf38776e434a5e53233cf3806d755e8cf50a1cd028e8989fe5dd73b99126",
+      "notes": "Existing combined gateway build. Three missing expo/tsconfig.base warnings in this portal-only install; release source unchanged."
+    },
+    {
+      "command": "git diff --check",
+      "result": "pass"
+    }
+  ],
+  "browser": {
+    "workflow": "Existing repository Playwright; one Chromium browser per focused suite, synthetic intercepted local assets, deny unexpected network, service workers blocked",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 960
+      },
+      {
+        "width": 1280,
+        "height": 960
+      },
+      {
+        "width": 390,
+        "height": 960
+      },
+      {
+        "width": 320,
+        "height": 960
+      }
+    ],
+    "unexpectedRequests": 0,
+    "browserErrors": 0,
+    "checks": [
+      "native shell geometry",
+      "536x888 sheet at 904,72",
+      "tabs/select keyboard",
+      "field labels/errors",
+      "single overlay",
+      "guarded dismissal",
+      "focus containment/restoration",
+      "Back/Forward/direct entry",
+      "product/routine context",
+      "session-memory retention without browser storage",
+      "responsive overflow/contact",
+      "reduced motion"
+    ],
+    "previewFallback": "T3 snapshot failed twice: Preview automation snapshot timed out after 15000ms. T3 tab closed before repository fallback."
+  },
+  "retainedNativeFrames": 26,
+  "retainedNativeStateBoards": 1,
+  "retainedPrimitiveSpecimens": 11,
+  "hostedTests": false,
+  "databaseStackStarted": false,
+  "finalPagesImplemented": false,
+  "skipped": [
+    "root Expo tests/types/exports",
+    "mobile/native runtime",
+    "database/real Auth/Storage/outbox/email acceptance",
+    "five-stage guide/final portal pages",
+    "human comprehension/accessibility sign-off",
+    "exact-head CI",
+    "independent review"
+  ]
+}

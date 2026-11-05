@@ -1,0 +1,143 @@
+{
+  "owner": "Kanuj",
+  "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "head": "9cbc6289c8c12b8c724516206ebae0b7377bde39",
+  "patchSha256": "26aef0fa3d6d620e9419bea88d29802fd1c409182eb15239b5f26523472ab859",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/advisor/client-workspace/ClientWorkspace.tsx",
+      "bytes": 5104,
+      "sha256": "d2d4dd3331ea80414deb2de3a91390e7a3eb7430a17a0b5eba887a875d4a2dc0"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/client-workspace/controller.ts",
+      "bytes": 7961,
+      "sha256": "fda63de123e9963f7f7de69eaae30b442d6b53297f32524d943852ffa6a2a706"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/client-workspace/index.ts",
+      "bytes": 342,
+      "sha256": "b807274965a8f444d7b01cb4e18a776f7765e39a9ee8b7d671bb61e71271a00a"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/client-workspace/types.ts",
+      "bytes": 1891,
+      "sha256": "6f7c3edd5f12e2ac0c6421aff279cc345b718f8dcdef8ec31ed1489c69a69e5a"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/index.ts",
+      "bytes": 925,
+      "sha256": "9e404acf544ea15be2cb3c1739fe49c4fe8499503374030943787e1ee13fef66"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-client-reentrant.test.mjs",
+      "bytes": 3489,
+      "sha256": "0f5242963915977ad1b6c1cd28ac0ea5c1f27557c70926f43888d67802a08c32"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-client-uuid.test.mjs",
+      "bytes": 2888,
+      "sha256": "14e48c506048800b525bc5de401030969782e51d154d683754870cd278c74f49"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-client-workspace.test.mjs",
+      "bytes": 13232,
+      "sha256": "2eac121140632edb30741d830274a434ea4fafe7494ff28b87c948e78f213e3a"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/CLIENT_WORKSPACE_SOURCE_20261103.md",
+      "bytes": 13475,
+      "sha256": "8302b0556cf961f1c1c3bda470205da56c6db6f4d2016dfbd48f2f3da7b91119"
+    }
+  ],
+  "actualScopedPortExact5e5": true,
+  "requestSha256": "d0236bfd130faa62decdb995babb278b641f905802cdbc98d76ba668f969097c",
+  "verdict": "PASS_SCOPED_COMPLETE_CLIENT_WORKSPACE_SOURCE",
+  "current": {
+    "tests": 131,
+    "pass": 131,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0",
+    "sourceOverrides": false
+  },
+  "coverage": {
+    "clientWorkspace": 20,
+    "callbackRecovery": 4,
+    "uuidIdentity": 5,
+    "retainedControllerRacesQuotePortApp": 102
+  },
+  "configuredFrontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "ownerOldEvidence": {
+    "old0e": "HELD owner original0/1 callback liveness failure; not read or executed by W7",
+    "old91": "HELD owner mixedcase actual-adapter1pass/4fail; not read or executed by W7"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-client-9cbc/W7-CURRENT131.log",
+      "bytes": 35841,
+      "sha256": "0463eed70c71895a76ad703dcd4363ee16545f120ed0d7d479715980ea4fdfc7",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-client-9cbc/W7-FRONTEND.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-client-9cbc/CURRENT-EXEC.json",
+      "bytes": 817,
+      "sha256": "0b5e75511a60af6d959a09b6b12d85685a160b83c09edcc376ac28bddf2c0e3a",
+      "exitCode": 0
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "apps/portal/src/app/advisor-client-plans-request.ts",
+      "bytes": 3746,
+      "sha256": "d0236bfd130faa62decdb995babb278b641f905802cdbc98d76ba668f969097c"
+    },
+    {
+      "path": "apps/portal/src/app/session.ts",
+      "bytes": 6061,
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    {
+      "path": "src/contracts/ConciergePortalValidation.ts",
+      "bytes": 2880,
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+    },
+    {
+      "path": "src/contracts/PortalRebuildMapping.ts",
+      "bytes": 10694,
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "bytes": 12947,
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 303079,
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "bytes": 123808,
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "limits": [
+    "Actual scoped port equals reviewed5e5; only synthetic HTTP proves VIEW projection while unchanged legacy backend guard still requires EDIT",
+    "W0 actual route/lifetime/context/version callbacks remain unmounted/unverified",
+    "No old0e/91 read/test/audit; original findings and all held scopes preserved",
+    "No browser/AuthSQL/RLS/persistence/fullA00/J01/genuine/visual/a11y acceptance or resourcegrant"
+  ]
+}

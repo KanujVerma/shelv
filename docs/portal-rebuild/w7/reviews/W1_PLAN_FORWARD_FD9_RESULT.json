@@ -1,0 +1,141 @@
+{
+  "owner": "Kanuj",
+  "head": "fd923f8f83c06b20ed37f057d43a2e2e8b542c21",
+  "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "priorSourceReviewed": "e93ecfc8438e5949352c3727b7447208f671a2c7",
+  "patchSha256": "c081cd992b7354455a642ab8df543592b2392179a5db8e039138a3fa38bfd726",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w1-plan-platform-plan-content-forward-source.test.mjs",
+      "bytes": 5326,
+      "sha256": "6770027e9f9333f57d9c7c0697cac47795a829cf008cc9b6ed08be47498a8506"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_PLAN_CONTENT_FORWARD_20261103.md",
+      "bytes": 13588,
+      "sha256": "26ab6ab98db8b5f6a2e1f72e0824d8ca4b9218f57c51f7ff37eaab006376bd16"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_PLAN_CONTENT_FORWARD_68_PREIMAGES_20261103.json",
+      "bytes": 12614,
+      "sha256": "0b17da1376dd56f0872859c0fc608c7d633e5c2bea41571d681f38040db710a7"
+    },
+    {
+      "path": "supabase/migrations/20261104000256_portal_rebuild_plan_content_lookup_v1.sql",
+      "bytes": 6319,
+      "sha256": "b2fe162fbdb5c3ef93fad7ae6bee7eeba97cfb062319ec4c3f37773d9934712d"
+    },
+    {
+      "path": "supabase/tests/portal_plan_content_lookup_v1.test.sql",
+      "bytes": 9520,
+      "sha256": "b5fa2d65140056723bd56d8d72a965bab1c2cdd4bf5c4ce1f3b5873c2c84b655"
+    }
+  ],
+  "manifestSha256": "0b17da1376dd56f0872859c0fc608c7d633e5c2bea41571d681f38040db710a7",
+  "all68ManifestMatchesCanonicalBefore": true,
+  "unchangedSQLAndPgTAP": [
+    "supabase/migrations/20261104000256_portal_rebuild_plan_content_lookup_v1.sql",
+    "supabase/tests/portal_plan_content_lookup_v1.test.sql"
+  ],
+  "gitless": "/tmp/w7-forward-fd9-source-8bjimyi9",
+  "setupQualification": {
+    "classification": "W7_METADATA_READ_PATH_ERROR",
+    "reason": "Initial report read omitted docs/portal-rebuild prefix and returned fatal path-not-found; corrected actual Git path read, no source/test mutation."
+  },
+  "verdict": "PASS_SCOPED_FORWARD_SOURCE_TEST_CORRESPONDENCE_WAIT_W0_PACKET",
+  "node": "v22.23.0",
+  "current": {
+    "distinctPredicates": 7,
+    "runs": [
+      {
+        "context": "ROOT",
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "exitCode": 0
+      },
+      {
+        "context": "PORTAL",
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "exitCode": 0
+      },
+      {
+        "context": "NON-GIT-CWD",
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "exitCode": 0
+      },
+      {
+        "context": "GITLESS",
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "exitCode": 0
+      }
+    ],
+    "repeatedRunsNotUniqueTests": true
+  },
+  "sensitivity": {
+    "onlyCopiedOriginalMigration": "supabase/migrations/20260915_init.sql",
+    "mutation": "one appended newline in ignored Gitless copy",
+    "pass": 6,
+    "fail": 1,
+    "exitCode": 1,
+    "expectedFailedPredicate": "all68 original migration bytes remain exact",
+    "copyRestored": true,
+    "canonicalEdited": false
+  },
+  "sqlAndAuth": "UNRUN; no SQL/parser/catalog/pgTAP/Auth/resources/publication or CI grant",
+  "nativeFinding4460794439": "OPEN",
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-forward-fd9/W7-ROOT.log",
+      "bytes": 1815,
+      "sha256": "3c466fd46939225a66b7f115c274f8b51cb078d969bb779daa33c92f3ddf4ecf",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-forward-fd9/W7-PORTAL.log",
+      "bytes": 1809,
+      "sha256": "ceeffef470c67ce29699b00ce656edf7556373be4719d94cd3e08052081e0260",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-forward-fd9/W7-NON-GIT-CWD.log",
+      "bytes": 1811,
+      "sha256": "d34f541a6b63b209e5dc11a91e228d8018d045bb860fbc8b422303eece1008c9",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-forward-fd9/W7-GITLESS.log",
+      "bytes": 1816,
+      "sha256": "46f17458df0fd3d235963fc45937f766fe7ee79e4bc1ed86d280e9fc2c14d291",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-forward-fd9/W7-PREIMAGE-MUTANT.log",
+      "bytes": 2985,
+      "sha256": "1f79ef65db64e00696ba5f86b12a0ac483fd27111cbc8468019b903803378ec7",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-forward-fd9/EXEC.json",
+      "bytes": 2132,
+      "sha256": "0c00879090cd5a856949383ce790d382a4cb6e26bb341807aab7b3c2970ccc8d",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-forward-fd9/READ-SETUP.json",
+      "bytes": 216,
+      "sha256": "7377ec770c1163344d22ad4ea068ea2c51c0d786c45e5eaf9ad9a7973a2b248c",
+      "exitCode": 1
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "owner": "Kanuj",
+  "classification": "VERIFIED_CI_EXECUTION_SOURCE_PROVENANCE_CORRECTION_ONLY",
+  "associatedPullRequestHead": "8f71a74738ee1f9b73cf13cad9cee41ec65cfec5",
+  "authoredDependencyBase": "ad0d6947073f56b32d8fb3a76d93801ddf0cff86",
+  "executionCommit": "0a2741ca474aebb0e9fba979a62584282de4337c",
+  "executionParents": [
+    "c39fa32083d19bc2d021a1e2c6438ff731a02b46",
+    "8f71a74738ee1f9b73cf13cad9cee41ec65cfec5"
+  ],
+  "executionComparisonPublished": "e964cb6d103483757eea884c574cb6fa93b9ce34",
+  "correctionPacket": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/ci-custody/8f71-execution-source/CORRECTION-80850f8252f765423921d306455bbc2b611ac7a3535c83d19446f31848fb0433.json",
+    "bytes": 4948,
+    "sha256": "80850f8252f765423921d306455bbc2b611ac7a3535c83d19446f31848fb0433"
+  },
+  "completeJobLog": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/ci-custody/8f71-execution-source/FULL-JOB-5b578524db4993de5c876205eaf28a74104ae1ed206d6dddef36195f72e9ccda.log",
+    "bytes": 4025091,
+    "sha256": "5b578524db4993de5c876205eaf28a74104ae1ed206d6dddef36195f72e9ccda",
+    "mode": "0400"
+  },
+  "checkoutEvidenceVerifiedInRaw": [
+    "Portal build and local journeys\tCheckout repository\t2026-11-04T06:48:35.6129259Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0a2741ca474aebb0e9fba979a62584282de4337c:refs/remotes/pull/238/merge",
+    "Portal build and local journeys\tCheckout repository\t2026-11-04T06:48:37.2070468Z  * [new ref]         0a2741ca474aebb0e9fba979a62584282de4337c -> pull/238/merge",
+    "Portal build and local journeys\tCheckout repository\t2026-11-04T06:48:37.4097504Z HEAD is now at 0a2741c Merge 8f71a74738ee1f9b73cf13cad9cee41ec65cfec5 into c39fa32083d19bc2d021a1e2c6438ff731a02b46",
+    "Portal build and local journeys\tCheckout repository\t2026-11-04T06:48:37.4167889Z 0a2741ca474aebb0e9fba979a62584282de4337c"
+  ],
+  "pairedFivePins": [
+    {
+      "path": "apps/portal/tests/rebuild-advisor-dependencies-browser.test.mjs",
+      "authored8f71AndAd0Sha256": "3349ce72b2b21c8aafe422b3f5c7e35804c9e16cdece00e2b756bca7d823ded0",
+      "executedMergeAndPublishedE964Sha256": "3349ce72b2b21c8aafe422b3f5c7e35804c9e16cdece00e2b756bca7d823ded0",
+      "authorEqualsExecuted": true,
+      "bytesExecuted": 31660
+    },
+    {
+      "path": "apps/portal/tests/rebuild-advisor-dependencies-browser-helper.mjs",
+      "authored8f71AndAd0Sha256": "f391334cd6ce99618aedda9a61deb5e1cad72988481dc40ed317b79296d8f327",
+      "executedMergeAndPublishedE964Sha256": "f391334cd6ce99618aedda9a61deb5e1cad72988481dc40ed317b79296d8f327",
+      "authorEqualsExecuted": true,
+      "bytesExecuted": 22101
+    },
+    {
+      "path": "apps/portal/tests/rebuild-app-browser.test.mjs",
+      "authored8f71AndAd0Sha256": "26dba35a7a4f25040da6b9890a0a5be5c8a98b6aeb1c291bc5f02a3c97eff02b",
+      "executedMergeAndPublishedE964Sha256": "26dba35a7a4f25040da6b9890a0a5be5c8a98b6aeb1c291bc5f02a3c97eff02b",
+      "authorEqualsExecuted": true,
+      "bytesExecuted": 43876
+    },
+    {
+      "path": "apps/portal/src/app/Application.tsx",
+      "authored8f71AndAd0Sha256": "02acf950ab71a21cbe71bdb6ddd83c458173120f8a4791d9ebb4f5b4f365d11b",
+      "executedMergeAndPublishedE964Sha256": "9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510",
+      "authorEqualsExecuted": false,
+      "bytesExecuted": 23387
+    },
+    {
+      "path": "apps/portal/src/features/advisor/PublicationDelivery.tsx",
+      "authored8f71AndAd0Sha256": "f70725ea217fb84317f10827f97820be4e69fbbc75e34a5e60208776d485c1c0",
+      "executedMergeAndPublishedE964Sha256": "f70725ea217fb84317f10827f97820be4e69fbbc75e34a5e60208776d485c1c0",
+      "authorEqualsExecuted": true,
+      "bytesExecuted": 4465
+    }
+  ],
+  "original081ReportPairByteExact": true,
+  "originalFe85And4218Unchanged": true,
+  "failureResult": {
+    "tests": 3990,
+    "pass": 3988,
+    "fail": 2,
+    "skip": 0,
+    "cancel": 0
+  },
+  "diagnosis": {
+    "owner": "W0",
+    "ownerReported": "Executed notification wrapper deliberately mounts post-publication read_event_deliveries_v1; two finite interceptors omit it.",
+    "W7Scope": "Verified checkout/parents/Git byte equality only; no independent causal baseline/browser/source-fixture execution",
+    "fixtureSuccessor": "Pendingfreshcomplete6frozenhead/sourcegate; owner23/180 areauthorreports,notW7executionoracceptance"
+  },
+  "adjacentPR239Metadata": {
+    "associatedHead": "2e8d294d7e5c04f498659e7ffdc662aaa5eb4553",
+    "ownerReportedPortalJob": "126440899477",
+    "counts": {
+      "pass": 4007,
+      "fail": 2,
+      "tests": 4009
+    },
+    "ownerRawSha256": "7d66ac04529816dfb8eb51560bc8cbfb30b7bdb3d7c789b3f7234c487dbb3ca5",
+    "executionCommit": "NOT_VERIFIED_NO_ASSOCIATED_HEAD_ASSUMPTION",
+    "classification": "OWNER_REPORTED_FAILURE_CUSTODY_ONLY_NO_GREEN_OR_GENUINE"
+  },
+  "noActions": [
+    "No rewriteoforiginalpacket/raw/report",
+    "No production/sharedfixture/assertionedit",
+    "No localSource/browser/native/AuthSQL/baseline/heldsuite/CIrerun/resource",
+    "No flake/genuine/merge/readiness/countergrant"
+  ]
+}

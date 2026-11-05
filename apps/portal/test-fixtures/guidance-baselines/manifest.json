@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Exact immutable historical build inputs for synthetic guidance sensitivity selectors. No runtime authority or credentials.",
+  "sources": [
+    {
+      "sourceCommit": "c4d5a9e0ed86c2ca703f6e5d0ac73988a4f6af77",
+      "sourcePath": "apps/portal/src/features/plan/ClientPlan.tsx",
+      "blob": "b73d51763f5d291708a163fa78b972d1fb4d4257",
+      "sha256": "a7e88669566cbdd0d8fa6e65ba38cb595ef1024472c538c30300003a2a9838f2",
+      "bytes": 27488,
+      "fixture": "c4-ClientPlan.tsx.txt"
+    },
+    {
+      "sourceCommit": "c4d5a9e0ed86c2ca703f6e5d0ac73988a4f6af77",
+      "sourcePath": "apps/portal/src/features/plan/guidanceDecision.ts",
+      "blob": "5ba7ee7db52611a07185ccd2923debc235b7f5f6",
+      "sha256": "abbac671fd539bfe135323ea91f599df32a0776408240402d6071bb8a24bc190",
+      "bytes": 9485,
+      "fixture": "c4-guidanceDecision.ts.txt"
+    },
+    {
+      "sourceCommit": "e093dd018d59bd1657297f0a7a186179e59d5fc3",
+      "sourcePath": "apps/portal/site/auth/advisor-cookie-session.js",
+      "blob": "62b507e4518c95e794f59d6c487dd500031c37a1",
+      "sha256": "a6fd9e6da6e00056dffd1110b912f259e10ba0ce643b7af0b56175263e367896",
+      "bytes": 16028,
+      "fixture": "e093-advisor-cookie-session.js.txt"
+    },
+    {
+      "sourceCommit": "e093dd018d59bd1657297f0a7a186179e59d5fc3",
+      "sourcePath": "apps/portal/site/auth/client-cookie-session.js",
+      "blob": "2f05dc15b3155d476d7a8aa188ab4a1a4c5c3582",
+      "sha256": "c6e92830abf91ea02ee281fe4988195a3ea49b643d391b9ab1a84ae075b458ef",
+      "bytes": 5311,
+      "fixture": "e093-client-cookie-session.js.txt"
+    }
+  ]
+}

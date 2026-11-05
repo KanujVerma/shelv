@@ -24,7 +24,7 @@ export function createConciergeAuthenticatedPorts<Call extends { name: string; a
   } catch { throw new Error('unavailable'); }
   const send = config.fetch ?? globalThis.fetch;
   const headers = (token: string) => ({ authorization: `Bearer ${token}`, apikey: config.publicKey, 'content-type': 'application/json' });
-  const options = (token: string, signal?: AbortSignal): RequestInit => ({ headers: headers(token), credentials: 'omit', redirect: 'error', cache: 'no-store',
+  const options = (token: string, signal?: AbortSignal): RequestInit & {credentials: 'omit'} => ({ headers: headers(token), credentials: 'omit', redirect: 'error', cache: 'no-store',
     signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(10000)]) : AbortSignal.timeout(10000) });
   const decode = async (response: Response, maximum = 2097152): Promise<unknown> => {
     try { return await readConciergeJson(response.body, maximum); } catch { throw new Error('unavailable'); }
@@ -45,7 +45,8 @@ export function createConciergeAuthenticatedPorts<Call extends { name: string; a
       if (!allowedRpcNames.has(call.name)) throw new Error('unavailable');
       const response = await send(new URL(`/rest/v1/rpc/${call.name}`, base).href, { ...options(token, signal), method: 'POST', body: JSON.stringify(call.args) });
       // R1 returns complete immutable history without pagination or a SQL size cap.
-      if (response.ok) return { data: await decode(response, Number.MAX_SAFE_INTEGER), error: null };
+      // Only the fixed photo metadata RPCs have finite success-response budgets.
+      if (response.ok) return { data: await decode(response, call.name === 'concierge_checkin_photo_inventory_v1' ? 8192 : call.name === 'concierge_checkin_head_v1' ? 4096 : Number.MAX_SAFE_INTEGER), error: null };
       let message: string | undefined;
       try { const value = readObject(await decode(response)); if (typeof value.message === 'string') message = value.message; } catch { /* Status still reports rejected sessions. */ }
       return { data: null, error: { status: response.status, ...(message === undefined ? {} : { message }) } };

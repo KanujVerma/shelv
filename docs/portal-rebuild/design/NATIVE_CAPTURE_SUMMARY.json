@@ -1,0 +1,439 @@
+{
+  "capturedOn": "2026-10-30",
+  "sessionId": "fc266b30-cac3-4567-a1a7-9c3a689d0aad",
+  "fileKey": "WGbMylNV4rPoMw3r0nceaw",
+  "pageId": "498:32",
+  "fileVersion": "Not exposed by native metadata/context tools; hashes identify this capture.",
+  "initialC01": "Reused coordinator context and retained native PNG; not requested again.",
+  "captures": [
+    {
+      "code": "C01E",
+      "textLength": 29693,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C02",
+      "textLength": 24158,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C02D",
+      "textLength": 19677,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C03",
+      "textLength": 37564,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C03D",
+      "textLength": 15631,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C04",
+      "textLength": 24647,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C05",
+      "textLength": 20999,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C06",
+      "textLength": 21697,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C06D",
+      "textLength": 20031,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C07",
+      "textLength": 24858,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C07C",
+      "textLength": 24173,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C08",
+      "textLength": 23455,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C08C",
+      "textLength": 18696,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "C08R",
+      "textLength": 16019,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "A00",
+      "textLength": 16758,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "A01",
+      "textLength": 20978,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "A02",
+      "textLength": 29422,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "A03",
+      "textLength": 21061,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "A04",
+      "textLength": 23586,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "A04P",
+      "textLength": 21660,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "A05",
+      "textLength": 23046,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "A06",
+      "textLength": 17830,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "A07",
+      "textLength": 21279,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "A08",
+      "textLength": 17025,
+      "sparse": false,
+      "screenshot": {
+        "width": 1440,
+        "height": 960,
+        "original_width": 1440,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "D01",
+      "textLength": 27000,
+      "sparse": false,
+      "screenshot": {
+        "width": 1800,
+        "height": 960,
+        "original_width": 1800,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "S01",
+      "textLength": 20765,
+      "sparse": false,
+      "screenshot": {
+        "width": 1800,
+        "height": 1081,
+        "original_width": 1800,
+        "original_height": 1081
+      }
+    },
+    {
+      "code": "buttonPrimary",
+      "textLength": 2387,
+      "sparse": false,
+      "screenshot": {
+        "width": 204,
+        "height": 48,
+        "original_width": 204,
+        "original_height": 48
+      }
+    },
+    {
+      "code": "buttonSecondary",
+      "textLength": 2456,
+      "sparse": false,
+      "screenshot": {
+        "width": 204,
+        "height": 48,
+        "original_width": 204,
+        "original_height": 48
+      }
+    },
+    {
+      "code": "buttonGhost",
+      "textLength": 2347,
+      "sparse": false,
+      "screenshot": {
+        "width": 204,
+        "height": 48,
+        "original_width": 204,
+        "original_height": 48
+      }
+    },
+    {
+      "code": "tabInactive",
+      "textLength": 2372,
+      "sparse": false,
+      "screenshot": {
+        "width": 160,
+        "height": 44,
+        "original_width": 160,
+        "original_height": 44
+      }
+    },
+    {
+      "code": "tabActive",
+      "textLength": 2367,
+      "sparse": false,
+      "screenshot": {
+        "width": 160,
+        "height": 44,
+        "original_width": 160,
+        "original_height": 44
+      }
+    },
+    {
+      "code": "badgeNeutral",
+      "textLength": 2380,
+      "sparse": false,
+      "screenshot": {
+        "width": 180,
+        "height": 28,
+        "original_width": 180,
+        "original_height": 28
+      }
+    },
+    {
+      "code": "badgePending",
+      "textLength": 2386,
+      "sparse": false,
+      "screenshot": {
+        "width": 180,
+        "height": 28,
+        "original_width": 180,
+        "original_height": 28
+      }
+    },
+    {
+      "code": "badgeActive",
+      "textLength": 2380,
+      "sparse": false,
+      "screenshot": {
+        "width": 180,
+        "height": 28,
+        "original_width": 180,
+        "original_height": 28
+      }
+    },
+    {
+      "code": "textarea",
+      "textLength": 2381,
+      "sparse": false,
+      "screenshot": {
+        "width": 480,
+        "height": 112,
+        "original_width": 480,
+        "original_height": 112
+      }
+    },
+    {
+      "code": "select",
+      "textLength": 3016,
+      "sparse": false,
+      "screenshot": {
+        "width": 480,
+        "height": 48,
+        "original_width": 480,
+        "original_height": 48
+      }
+    },
+    {
+      "code": "input",
+      "textLength": 2366,
+      "sparse": false,
+      "screenshot": {
+        "width": 480,
+        "height": 48,
+        "original_width": 480,
+        "original_height": 48
+      }
+    },
+    {
+      "code": "shell-sidebar",
+      "textLength": 5886,
+      "sparse": false,
+      "screenshot": {
+        "width": 224,
+        "height": 960,
+        "original_width": 224,
+        "original_height": 960
+      }
+    },
+    {
+      "code": "shell-topbar",
+      "textLength": 3230,
+      "sparse": false,
+      "screenshot": {
+        "width": 1216,
+        "height": 80,
+        "original_width": 1216,
+        "original_height": 80
+      }
+    }
+  ]
+}

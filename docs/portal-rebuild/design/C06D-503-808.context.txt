@@ -1,0 +1,258 @@
+const imgProductPhoto = "[temporary-asset-url-removed]";
+const imgLucidePanelsTopLeft = "[temporary-asset-url-removed]";
+const imgLucideClock3 = "[temporary-asset-url-removed]";
+const imgLucidePackage = "[temporary-asset-url-removed]";
+const imgLucideUserRound = "[temporary-asset-url-removed]";
+
+type ShelvV1SecondaryProps = {
+  className?: string;
+  label?: string;
+};
+
+function ShelvV1Secondary({ className, label = "Action" }: ShelvV1SecondaryProps) {
+  return (
+    <div className={className || "bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] w-[204px]"} data-node-id="498:35" data-name="shelv/v1/secondary">
+      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Semi_Bold'] font-semibold leading-[23px] min-w-px not-italic relative text-[16px] text-[color:var(--color-brand,#25452f)] text-center" data-node-id="498:36">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+type ShelvV1PrimaryProps = {
+  className?: string;
+  label?: string;
+};
+
+function ShelvV1Primary({ className, label = "Action" }: ShelvV1PrimaryProps) {
+  return (
+    <div className={className || "bg-[var(--color-brand,#25452f)] content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] w-[204px]"} data-node-id="498:33" data-name="shelv/v1/primary">
+      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Semi_Bold'] font-semibold leading-[23px] min-w-px not-italic relative text-[16px] text-[color:var(--color-white,white)] text-center" data-node-id="498:34">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+type ShelvV1ActiveProps = {
+  className?: string;
+  label?: string;
+};
+
+function ShelvV1Active({ className, label = "Active" }: ShelvV1ActiveProps) {
+  return (
+    <div className={className || "bg-[var(--color-successBg,#edf2e9)] content-stretch flex h-[28px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] w-[180px]"} data-node-id="498:47" data-name="shelv/v1/active">
+      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[17px] min-w-px not-italic relative text-[12px] text-[color:var(--color-success,#315b35)] text-center" data-node-id="498:48">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+type ShelvV1NeutralProps = {
+  className?: string;
+  label?: string;
+};
+
+function ShelvV1Neutral({ className, label = "Neutral" }: ShelvV1NeutralProps) {
+  return (
+    <div className={className || "bg-[var(--color-quiet,#eeece5)] content-stretch flex h-[28px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] w-[180px]"} data-node-id="498:43" data-name="shelv/v1/neutral">
+      <p className="[word-break:break-word] flex-[1_0_0] font-['Inter:Medium'] font-medium leading-[17px] min-w-px not-italic relative text-[12px] text-[color:var(--color-muted,#626760)] text-center" data-node-id="498:44">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+export default function C06DYourOrderHasArrived() {
+  return (
+    <div className="bg-[var(--color-canvas,#f6f3ec)] relative size-full" data-node-id="503:808" data-name="C06D · your order has arrived">
+      <div className="absolute bg-[var(--color-surface,#fffefb)] content-stretch flex flex-col gap-[var(--space-12,12px)] h-[960px] items-start left-0 p-[20px] top-0 w-[224px]" data-node-id="503:809" data-name="app/sidebar">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[38px] not-italic relative shrink-0 text-[30px] text-[color:var(--color-brand,#25452f)] w-[184px]" data-node-id="503:810">
+          shelv
+        </p>
+        <div className="h-[20px] relative shrink-0 w-[184px]" data-node-id="503:811" data-name="spacing" />
+        <a className="content-stretch cursor-pointer flex gap-[var(--space-12,12px)] h-[48px] items-center p-[12px] relative shrink-0 w-[184px]" data-node-id="503:812" data-name="nav/your plan">
+          <div className="relative shrink-0 size-[20px]" data-node-id="503:813" data-name="lucide/panels-top-left">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgLucidePanelsTopLeft} />
+          </div>
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] text-left w-[128px]" data-node-id="503:814">
+            your plan
+          </p>
+        </a>
+        <a className="content-stretch cursor-pointer flex gap-[var(--space-12,12px)] h-[48px] items-center p-[12px] relative shrink-0 w-[184px]" data-node-id="503:815" data-name="nav/check-ins & history">
+          <div className="relative shrink-0 size-[20px]" data-node-id="503:816" data-name="lucide/clock-3">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgLucideClock3} />
+          </div>
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] text-left w-[128px]" data-node-id="503:817">{`check-ins & history`}</p>
+        </a>
+        <a className="bg-[var(--color-successBg,#edf2e9)] content-stretch cursor-pointer flex gap-[var(--space-12,12px)] h-[48px] items-center p-[12px] relative shrink-0 w-[184px]" data-node-id="503:818" data-name="nav/orders">
+          <div className="relative shrink-0 size-[20px]" data-node-id="503:819" data-name="lucide/package">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgLucidePackage} />
+          </div>
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] text-left w-[128px]" data-node-id="503:820">
+            orders
+          </p>
+        </a>
+        <a className="content-stretch cursor-pointer flex gap-[var(--space-12,12px)] h-[48px] items-center p-[12px] relative rounded-[var(--radius-12,12px)] shrink-0 w-[184px]" data-node-id="503:821" data-name="nav/account">
+          <div className="relative shrink-0 size-[20px]" data-node-id="503:822" data-name="lucide/user-round">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgLucideUserRound} />
+          </div>
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-brand,#25452f)] text-left w-[128px]" data-node-id="503:823">
+            account
+          </p>
+        </a>
+      </div>
+      <div className="absolute bg-[var(--color-successBg,#edf2e9)] content-stretch flex flex-col gap-[var(--space-8,8px)] items-start left-[20px] p-[14px] rounded-[var(--radius-12,12px)] top-[740px] w-[184px]" data-node-id="503:824" data-name="app/contact">
+        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-brand,#25452f)] w-[156px]" data-node-id="503:825">
+          a person, a text away
+        </p>
+        <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[156px]" label="text shelv" />
+        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[17px] not-italic relative shrink-0 text-[12px] text-[color:var(--color-muted,#626760)] w-[156px]" data-node-id="503:827">
+          replies within 24 hours
+        </p>
+      </div>
+      <div className="absolute content-stretch flex gap-[var(--space-12,12px)] items-center left-[20px] top-[910px] w-[184px]" data-node-id="503:828" data-name="app/identity">
+        <div className="relative shrink-0 size-[20px]" data-node-id="503:829" data-name="lucide/user-round">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgLucideUserRound} />
+        </div>
+        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-ink,#171a18)] w-[140px]" data-node-id="503:830">
+          Maya
+        </p>
+      </div>
+      <div className="absolute bg-[var(--color-surface,#fffefb)] content-stretch flex gap-[var(--space-16,16px)] h-[80px] items-center left-[224px] px-[40px] py-[12px] rounded-[var(--radius-12,12px)] top-0 w-[1216px]" data-node-id="503:831" data-name="app/topbar">
+        <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[20px] not-italic relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[800px]" data-node-id="503:832">
+          ​
+        </p>
+        <ShelvV1Neutral className="bg-[var(--color-quiet,#eeece5)] content-stretch flex h-[28px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[184px]" label="fictional demo" />
+      </div>
+      <div className="absolute content-stretch flex flex-col gap-[24px] items-start left-[264px] top-[104px] w-[1136px]" data-node-id="503:891" data-name="page/content">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[34px] not-italic relative shrink-0 text-[28px] text-[color:var(--color-ink,#171a18)] w-[1136px]" data-node-id="503:892">
+          your order has arrived
+        </p>
+        <div className="content-stretch flex gap-[24px] items-start relative shrink-0 w-[1136px]" data-node-id="503:893" data-name="two columns">
+          <div className="content-stretch flex flex-col items-start relative shrink-0 w-[736px]" data-node-id="503:894" data-name="main">
+            <div className="bg-[var(--color-surface,#fffefb)] content-stretch flex flex-col gap-[20px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[736px]" data-node-id="503:896" data-name="delivered purchase">
+              <ShelvV1Active className="bg-[var(--color-successBg,#edf2e9)] content-stretch flex h-[28px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[196px]" label="delivery recorded" />
+              <div className="content-stretch flex gap-[20px] items-center relative shrink-0 w-[688px]" data-node-id="503:899" data-name="product">
+                <div className="h-[112px] relative shrink-0 w-[88px]" data-node-id="503:900" data-name="product photo">
+                  <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgProductPhoto} />
+                </div>
+                <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start not-italic relative shrink-0 w-[580px]" data-node-id="503:901" data-name="identity">
+                  <p className="font-['Inter:Semi_Bold'] font-semibold leading-[26px] relative shrink-0 text-[20px] text-[color:var(--color-ink,#171a18)] w-[580px]" data-node-id="503:902">
+                    The Ordinary Azelaic Acid Suspension 10%
+                  </p>
+                  <p className="font-['Inter:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[580px]" data-node-id="503:903">
+                    30 mL · correct variant from the approved quote
+                  </p>
+                </div>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex gap-[20px] items-center not-italic relative shrink-0 w-[688px]" data-node-id="503:904" data-name="order">
+                <p className="font-['Inter:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[180px]" data-node-id="503:905">
+                  order
+                </p>
+                <p className="font-['Inter:Regular'] font-normal leading-[23px] relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[488px]" data-node-id="503:906">
+                  sample order 001
+                </p>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex gap-[20px] items-center not-italic relative shrink-0 w-[688px]" data-node-id="503:907" data-name="delivery">
+                <p className="font-['Inter:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[180px]" data-node-id="503:908">
+                  delivery
+                </p>
+                <p className="font-['Inter:Regular'] font-normal leading-[23px] relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[488px]" data-node-id="503:909">
+                  26 october · recorded by Sami
+                </p>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex gap-[20px] items-center not-italic relative shrink-0 w-[688px]" data-node-id="503:910" data-name="actual use">
+                <p className="font-['Inter:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[180px]" data-node-id="503:911">
+                  actual use
+                </p>
+                <p className="font-['Inter:Regular'] font-normal leading-[23px] relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[488px]" data-node-id="503:912">
+                  not started
+                </p>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex gap-[20px] items-center not-italic relative shrink-0 w-[688px]" data-node-id="503:913" data-name="return conditions">
+                <p className="font-['Inter:Medium'] font-medium leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color-muted,#626760)] w-[180px]" data-node-id="503:914">
+                  return conditions
+                </p>
+                <p className="font-['Inter:Regular'] font-normal leading-[23px] relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[488px]" data-node-id="503:915">
+                  view the policy saved with your approved quote
+                </p>
+              </div>
+              <div className="bg-[var(--color-line,#dedbd2)] h-px relative shrink-0 w-[688px]" data-node-id="503:916" data-name="separator" />
+              <ShelvV1Primary className="bg-[var(--color-brand,#25452f)] content-stretch cursor-pointer flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[360px]" label="record when you started" />
+              <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[360px]" label="get return help" />
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col items-start relative shrink-0 w-[376px]" data-node-id="503:895" data-name="context">
+            <div className="bg-[var(--color-successBg,#edf2e9)] content-stretch flex flex-col gap-[16px] items-start p-[24px] relative rounded-[12px] shrink-0 w-[376px]" data-node-id="503:921" data-name="start reminder">
+              <p className="[word-break:break-word] font-['Inter:Semi_Bold'] font-semibold leading-[26px] not-italic relative shrink-0 text-[20px] text-[color:var(--color-brand,#25452f)] w-[328px]" data-node-id="503:922">
+                arrived is not the same as started
+              </p>
+              <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[23px] not-italic relative shrink-0 text-[16px] text-[color:var(--color-ink,#171a18)] w-[328px]" data-node-id="503:923">
+                keep following your current routine until you actually begin. record the real date, including an earlier date if needed.
+              </p>
+              <ShelvV1Secondary className="bg-[var(--color-surface,#fffefb)] border border-[var(--color-line,#dedbd2)] border-solid content-stretch cursor-pointer flex h-[48px] items-center justify-center px-[12px] relative rounded-[var(--radius-8,8px)] shrink-0 w-[328px]" label="read introduction guide" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: Portal lab / label: Font(family: "Inter", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: 0), Portal lab / strong: Font(family: "Inter", style: Semi Bold, size: 16, weight: 600, lineHeight: 23, letterSpacing: 0), Portal lab / meta: Font(family: "Inter", style: Medium, size: 12, weight: 500, lineHeight: 17, letterSpacing: 0), Portal lab / title: Font(family: "Inter", style: Semi Bold, size: 28, weight: 600, lineHeight: 34, letterSpacing: 0), Portal lab / heading: Font(family: "Inter", style: Semi Bold, size: 20, weight: 600, lineHeight: 26, letterSpacing: 0), Portal lab / body: Font(family: "Inter", style: Regular, size: 16, weight: 400, lineHeight: 23, letterSpacing: 0).
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## lucide/panels-top-left
+**Node ID:** 498:57
+
+Lucide source: lucide-icons/lucide/icons/panels-top-left.svg. 24px grid, 2px stroke. ISC license.
+
+## lucide/clock-3
+**Node ID:** 498:61
+
+Lucide source: lucide-icons/lucide/icons/clock-3.svg. 24px grid, 2px stroke. ISC license.
+
+## lucide/package
+**Node ID:** 498:67
+
+Lucide source: lucide-icons/lucide/icons/package.svg. 24px grid, 2px stroke. ISC license.
+
+## lucide/user-round
+**Node ID:** 498:71
+
+Lucide source: lucide-icons/lucide/icons/user-round.svg. 24px grid, 2px stroke. ISC license.
+
+## shelv/v1/secondary
+**Node ID:** 498:35
+
+Review-spec equivalent of approved shadcn control. Reuses Shelv tokens. Copy comes from canonical action keys, never client content.
+
+## shelv/v1/neutral
+**Node ID:** 498:43
+
+Review-spec equivalent of approved shadcn control. Reuses Shelv tokens. Copy comes from canonical action keys, never client content.
+
+## shelv/v1/active
+**Node ID:** 498:47
+
+Review-spec equivalent of approved shadcn control. Reuses Shelv tokens. Copy comes from canonical action keys, never client content.
+
+## shelv/v1/primary
+**Node ID:** 498:33
+
+Review-spec equivalent of approved shadcn control. Reuses Shelv tokens. Copy comes from canonical action keys, never client content.
+
+The generated code contains image and SVG URL constants, e.g. const image = '[temporary-asset-url-removed]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

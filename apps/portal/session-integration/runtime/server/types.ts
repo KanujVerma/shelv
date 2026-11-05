@@ -14,15 +14,9 @@ export type SessionView = {
     csrf: string;
     remembered?: boolean;
 };
-export type Credentials = {
-    access_token: string;
-    refresh_token: string;
-    expires_at: number;
-    user: {
-        id: string;
-    };
-    providerSessionId: string;
-};
+export type {Credentials} from './credentials.ts';
+import type {Credentials} from './credentials.ts';
+
 export type AdvisorContext = {
     sessionNotAfter?: number | null;
     ownerId: string;

@@ -1,0 +1,179 @@
+{
+  "owner": "Kanuj",
+  "base": "df230eca6017f8dd330cceb83eb11b18193937e5",
+  "head": "8a0fc2ae127270836406abf7abe9d76ff7d3b41b",
+  "verdict": "PASS_SCOPED_ACCOUNT_ADDRESS_SOURCE_DEPENDENCY_HELD",
+  "ownedSourcePins": [
+    {
+      "path": "apps/portal/src/features/account/core/AccountAddress.tsx",
+      "bytes": 5749,
+      "sha256": "94b4ac006ce4043f3359f80dbe36a6e804d5ba2146a6a8a9ef09741b4d4b746f",
+      "gitBlob": "5c8d2b6c188458fed0f8b8980994692da81dd83c"
+    },
+    {
+      "path": "apps/portal/src/features/account/core/controller.ts",
+      "bytes": 9135,
+      "sha256": "a6f715bcbe36ff23bcf16f0902da33de7474cfbe658129c1c9efa4506c3e9fa4",
+      "gitBlob": "f8af0f97705f76faa4ab43246505dd32fe84d77a"
+    },
+    {
+      "path": "apps/portal/src/features/account/core/index.ts",
+      "bytes": 196,
+      "sha256": "f001ca5e4401d79e35415abf342b0628d33c6af15509316327fb66cdf3b4ecb2",
+      "gitBlob": "7a46e5216521db2093891fe178dc854866363c0c"
+    },
+    {
+      "path": "apps/portal/src/features/account/core/model.ts",
+      "bytes": 2793,
+      "sha256": "395b009c405849145bfad3dbd2664f402aa3c508476018c058a36bf6d6338890",
+      "gitBlob": "3cd48b08f90fbcb2da5eecfc5cea127faaf9adde"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-address-authority.test.mjs",
+      "bytes": 2214,
+      "sha256": "39237172883ebd7d08ae08ea745bfb2a457e540a7e3206d016ce2eb96394cf89",
+      "gitBlob": "fe716018368185f8eaae4ff2142b17ab83d9ffc9"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-address-fixture.mjs",
+      "bytes": 3088,
+      "sha256": "c66bfd34ddf5ac7d7fc544d49ac6c135bd3f473a01d56f8a23faf3a7c38ed4da",
+      "gitBlob": "5b0b15917905b38f5d5418067b4a0689babcba79"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-address-inputs/account-address-request.c06.ts.txt",
+      "bytes": 4541,
+      "sha256": "0a718365fd86adb37501c940011474e3b979b9ff405d1c498f9a95cd1e5ef7d6",
+      "gitBlob": "554df6c599cca9f74b37472ec62fdcee59fd8482"
+    },
+    {
+      "path": "apps/portal/tests/w6-account-address-ssr.test.mjs",
+      "bytes": 3313,
+      "sha256": "d2bcff2ebd6eea8ae3385be9ed5b253b58a26bd21cb179e123292ef6acc86185",
+      "gitBlob": "f91ae3968860c7536a4cb35365bf05bbb391413d"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W6_ADDRESS.md",
+      "bytes": 4856,
+      "sha256": "b8d7ba75c372b3a19a4dbf2f076d586b6cd927c81ef43b1e3453a23d0ee3e4d2",
+      "gitBlob": "b43b5b34d465267427489035c0812d0eda5e6d65"
+    }
+  ],
+  "packetSha256": "3063729223a838b7a2fb6c6ace912127a4ba0b068ffc7662b7de86bd2dc6cd0b",
+  "patchSha256": "33d9066cec2463246ef225bc365eaf2b2b8e105a5fe7b011e374976e7ed390c9",
+  "sourceOnlyRequestInput": {
+    "path": "apps/portal/tests/w6-account-address-inputs/account-address-request.c06.ts.txt",
+    "sha256": "0a718365fd86adb37501c940011474e3b979b9ff405d1c498f9a95cd1e5ef7d6",
+    "actualRootModule": "ABSENT",
+    "authoritySubstitution": false
+  },
+  "independentResults": {
+    "suppliedSourceFiniteSsr": "6/6 exit0 nofail/skip/cancel",
+    "w7SourceFiniteRecovery": "4/4 exit0 nofail/skip/cancel",
+    "uniqueControls": 10,
+    "actualConfiguredFrontend": {
+      "exitCode": 2,
+      "diagnostics": [
+        "TS2307 missing shared account-address-request",
+        "TS2345 derived unknown payment input"
+      ]
+    },
+    "exactOneInputProjectedFrontend": {
+      "exitCode": 0,
+      "diagnostics": 0,
+      "flagsUnchanged": true
+    },
+    "compilerInputs": {
+      "total": 2155,
+      "repository": 25,
+      "lockedNpm": 2129,
+      "inertVirtualRequest": 1,
+      "allHashesChecked": true,
+      "ownerNormalizedDependencyRootParity": true
+    }
+  },
+  "w7Controls": [
+    "Exact uncertain original UUID/body retry; ACK appends new address without changing retained older client snapshot",
+    "409 conflict requires canonical current read and deliberate reapply/new request review",
+    "Canonical cancelled service read blocks new reapply without care fetch or automatic write",
+    "Disposed controller and synchronous saving observer retirement cannot acquire a fresh write"
+  ],
+  "setupQualifications": [
+    "Initial W7 command used rootCWD/tests path; no test ran, exact generated missing-file log relocated into own evidence",
+    "Initial direct compiler path-key parity failed because esbuild follows own dependency symlinks; normalized only dependency-root prefix, preserved package/subpath+all2155SHA with no duplicates; no source/test correction"
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/PINS.json",
+      "bytes": 3848,
+      "sha256": "8bbbfa90323e96fc2639f943d93ddef0833e3923a162fe3469cedff1c9057343"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/COMMAND.json",
+      "bytes": 636,
+      "sha256": "8104fa82dcfde9d26a33eecd93a501d60241f3be539eb48c5de8d62e477f9e57"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/CURRENT.log",
+      "bytes": 1511,
+      "sha256": "9a50531fddf66fcfffb60d96ba437268cca0267907909b34c80e114afcd30b4e"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/W7-RECOVERY.log",
+      "bytes": 1028,
+      "sha256": "92c5a4d84dd071afe7bf3d103c20612dc8734570fd90b044a93d90f3c1c08aef"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/W7-WRONG-CWD-SETUP.log",
+      "bytes": 100,
+      "sha256": "8b45286b61a02723512fd232ec6b1d624736f641f05c2d66c737df59f0661490"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/CLOSURE-DIFF-SETUP.json",
+      "bytes": 343995,
+      "sha256": "60201c1ed5a92a488485135f4aec6c2f08a23306ae0f99bedbc8343af45ed252"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/CLOSURE-PARITY.json",
+      "bytes": 532,
+      "sha256": "19ebd47676af2dd53be667b6d03b7cb21bfd9abeb985ea9ee6489753f0d0d1e7"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/TYPES-ACTUAL.log",
+      "bytes": 305,
+      "sha256": "79f5d388e4fdb5256d6f93ccc8a989b0630a2f3945f09d328fbddfd8622628ba"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/TYPES-ACTUAL.json",
+      "bytes": 502,
+      "sha256": "04173f1b80c70455c37b02e9a2abb7e5d853a48819c19df72369b134ea91d911"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/TYPES-PROJECTED.log",
+      "bytes": 391,
+      "sha256": "38b050ecd41e41fab483a46d06b7ac0c7885aa33ca85e9785995d6771dc19bad"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/projected-types.cjs",
+      "bytes": 1797,
+      "sha256": "3289515beb5ad3bdf5636fafa5a9c98d3c056a0323c570f9ff755d47abd8b830"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/source/apps/portal/tests/w7-address-recovery.test.mjs",
+      "bytes": 4541,
+      "sha256": "83fdb0622bad491e3b814e7cb7e4cd3fb07ed5eb09a97d901f96f033da4c05d2"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/source/.local-artifacts/w6-account-address/SOURCE.json",
+      "bytes": 436991,
+      "sha256": "5d9066bcfae3ab4bd8dc96b5479867fa8028d3a80a7048feff95b5aff518dd34"
+    }
+  ],
+  "limits": [
+    "No actual Root account-address-request admission/mount/route/lifetime/gateway/backend binding or integrated typegreen",
+    "No actualAuth/SQL/address versions/CAS/replay/paid-order address immutability/service permission/legacy-financial proof",
+    "Synthetic finite HTTP, actualRootSDK/controller/strictcodecs and SSR; no constructor/currentness/authority replacement",
+    "No browser/Figma/keyboard/focus/zoom/reducedmotion/a11y/fullAccount/wholeJ06J08/genuine acceptance/counter/resource grant",
+    "M01/M02 and provider/principal44/Guidance/private-return/M65/photo/final-egress holds unchanged"
+  ]
+}

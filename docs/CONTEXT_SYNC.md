@@ -1,3 +1,324 @@
+## W0 advisor-client route recovery source, 5 November UTC
+
+Owner: Kanuj. Exact bdc3b972 source correction is selected on published4f73 with independent W7 complete3 gate0ffc3f69. The [publication record](portal-rebuild/eight-threads/W0_ADVISOR_ROUTE_PUBLICATION_20261105.md) preserves all three postimages/full6539,20 selected dependencies and the exact review pair. Malformed UUID input now renders existing unavailable/open-plans recovery before constructing an entry; factory validation/full EntryView/permissions remain unchanged. Independent20/20 (16 finite/session/SSR +4 lexical) and four unchanged configured graphs0 remain source evidence. Saved OLD4f1pass1fail stays failed. Fresh published-head CI/native/checkout custody and native-thread resolution remain pending; all genuine/no-photo/principal/refusal/resource/hold/counter limits remain unchanged.
+
+## W0 product metadata and standalone export request source, 5 November UTC
+
+Owner: Kanuj. The [source integration record](portal-rebuild/eight-threads/W0_PRODUCT_IDENTITY_EXPORT_REQUEST_INTEGRATION_20261105.md) pins normal PR242 merge2fae, its exact pair and complete peer/Root checkout proofs. Root2fae checks pass; native retains only known SQL/photo findings. Independently reviewed cd8b adds the actual standalone shared export request, its test and original source report, with no W6 helper import. W7 passes32 actual-unregistered negative controls and four unchanged graphs; namespace remains503/no export egress. Registered/producer/consumer/privacy/final-egress/genuine gates remain held, and actual consumer reconciliation plus fresh publication CI/native are separate. The exact current W7 snapshot is f1d0fc, preserving newer R13/source closures and all stops without rollback. W4's real no-photo review/history gate and all principal/resource/counter holds remain unchanged.
+
+## W0 completed 03ceede hosted checks, 5 November UTC
+
+Owner: Kanuj. All three checks pass on exact published03ceede. The [completed-hosted receipt](portal-rebuild/eight-threads/W0_ADDRESS_ROUTINE_INTEGRATION_20261104.md#completed-hosted-checks-on-published03) binds all three complete logs to executed3cb3ba4, its actual parents and an entire tree equal to authored03; Portal ordinary suite4020/4020 with zero fail/skip/cancel. Native code review still reports the known plan SQL and held photo findings; PR211 stays draft and unmerged. This is hosted validation, not actual Account, no-photo review/history, rendered-frame or genuine acceptance. No old failure, missing artifact, protected fixture, refusal, resource or counter disposition changes.
+
+## W0 address and routine source integration, 4 November UTC
+
+Owner: Kanuj. PR238 normally merged as ce9c07bb, then PR241 as251bc62e, after separate exact-head/native/CI gates and new-spine composition checks. The [serial integration record](portal-rebuild/eight-threads/W0_ADDRESS_ROUTINE_INTEGRATION_20261104.md) pins all nine address and two routine postimages, actual peer-job checkouts, unchanged contracts/migrations/locks/workflows and the exact W7 snapshot c765 including R10/O9 withholding. Current combined Root CI/native remain separate; actual Account mounting/persistence, routine rendered-frame/a11y, no-photo full review/history and all genuine/held gates remain open. No resource or acceptance counter advances.
+
+## W0 current advisor-email hosted proof, 4 November UTC
+
+Owner: Kanuj. Published8d3893 now has all three checks SUCCESS. The [completed-check custody record](portal-rebuild/eight-threads/W0_ADVISOR_EMAIL_ROUTING_20261104.md#published-source-and-completed-hosted-checks) binds all three complete job logs to actual checkout89e2223, its two actual parents and the entire tree equal to authored8d; Portal ordinary suite4014/4014. Only advisor-email URL finding4464598929 was resolved after proof reply4474570687. Native unresolved flags, plan SQL and held photo findings remain; PR211 stays draft and unmerged. No actual email, no-photo journey, principal/setup/resource or held-scope acceptance follows. Existing failures and missing original artifacts retain their prior dispositions.
+
+## W0 advisor email audience correction: source integration, 4 November UTC
+
+Owner: Kanuj. The [bounded composition receipt](portal-rebuild/eight-threads/W0_ADVISOR_EMAIL_ROUTING_20261104.md) combines W1's two-line neutral payload/decoder correction with Root's pure actual-router regression. The regression is in Portal's existing test target; OLD4/7 becomes7/7, selected pure worker1/1 and all four configured graphs pass. Initial Root-test-target TS2578 is preserved separately; no production comment/configuration/flag was relaxed. Advisor attention uses the existing advisor inbox, with client/history links and strict decoder restrictions retained. No email/Auth/provider/browser/SQL resource or A07 activation occurred. Fresh exact-source/hosted gates remain required; absent old artifacts were not reconstructed.
+
+## W0 app-router extraction dependency correction, 4 November UTC
+
+Owner: Kanuj. The [three-file test-only source successor](portal-rebuild/eight-threads/W0_NOTIFICATION_ROUTER_BINDING_20261104.md) binds the actual reviewed publication-delivery helper in the pure AST-router model. Exact current negative control0/1 ReferenceError becomes1/1; removing only the import/dependency entry restores the entire original file and every negative assertion. No browser or held callee audit ran. Original4012/1 and adjacent failed CIs remain FAILED; source review and fresh hosted CI are still required. Production, permission, workflow, SQL, resource and acceptance state are unchanged.
+
+## W0 finite notification fixture successor, 4 November UTC
+
+Owner: Kanuj. The [test-only source successor](portal-rebuild/eight-threads/W0_NOTIFICATION_BROWSER_FIXTURE_20261104.md) addresses two missing exact publication-delivery read responses in the shared finite browser fixtures. Executed PR238 merge0a2741ca includes Rootc39 notification composition; authored8f71/ad0 Application pins are not its executed Application. The successor permits only the receipt-correlated, CSRF-checked initial advisor delivery read and returns404/not_found. All original assertions and remaining traps restore by whole-file inverses. Source23/180 and syntax checks pass; browser scenarios remain unrun locally and the original3988/2 hosted result stays FAILED. Independent source review and fresh exact-head hosted CI remain required. No production logic, workflow, SQL, permission, resource or acceptance count changes.
+
+## W0 template and Directory source integration, 4 November UTC
+
+Owner: Kanuj. PR234 templates and PR235 Directory DTOs are normally merged as bab92fb9 and c39fa320, retaining all12 reviewed postimages and unchanged dependencies. The [integration record](portal-rebuild/eight-threads/W0_TEMPLATE_DIRECTORY_INTEGRATION_20261104.md) preserves the failed post234 readiness assertion and the orchestration error that allowed the next command to run; its cause is unresolved and later passes do not relabel it. Fresh c39 code checks pass59 DTO cases, four type graphs, application/package builds, one serialized Root suite1923/0fail/18 retained skips and Expo. New hosted exact-head CI/native and actual producers/VIEW/template persistence/browser/genuine gates remain separate. No SQL, authority, resource, held-scope or counter grant follows.
+
+## W0 reviewed current-spine source composition, 4 November UTC
+
+Owner: Kanuj. This checkpoint publishes the reviewed notification owner608 and actual inbox/A06 composition657 with the actual admission adaptera5 and corrected current-spine tests3d9. The [independent current-spine report](portal-rebuild/w7/reviews/W0_CURRENT_SPINE_3D9.md) records26 actual-adapter/consumer and157 named source/finite/SSR checks, all four configured graphs0 and the actual consumer-port ABI. The fresh fixture closure is2254 selected inputs, not a whole-runtime census. The earlier01b coverage gap and all original failures remain preserved; the status request is now actually dispatched and sensitivity-checked.
+
+The shared card and admitted advisor features retain their reviewed bytes. This publication excludes the unconnected inline-preview portb039, PR239 consumer and all69/70/71 SQL source staging. Actual admission UI mount/AuthAdmin persistence, notification provider delivery, backend VIEW, browser/Figma/accessibility and complete frames/journeys remain open. New exact-head hosted CI/native review is required. Address8f71 consumer correspondence remains separate from the published34c request. Public R1 stays closed INCOMPLETE_CAPTURE; principal44 and all private/Source/Guidance/M65/photo/final-egress holds and baseline acceptance counts remain unchanged.
+
+## W0 address source dependency and bounded handoff allocation, 4 November UTC
+
+Owner: Kanuj. Published `ad0d6947073f56b32d8fb3a76d93801ddf0cff86` adds only the reviewed Account address request, its test/report and the independent W7 report pair to published34239. The [address source gate](portal-rebuild/w7/reviews/W0_ADDRESS_REQUEST_34C.md) records independent36/36, configured frontend0 and browser-target compilation only; exact-head hosted checks and the actual W6 consumer dependency gate are separate. No address mount, backend persistence, paid-order history, browser or genuine acceptance follows from this source publication.
+
+W2 has an [exact one-hunk allocation](portal-rebuild/eight-threads/W0_PR239_CONTEXT_SYNC_ALLOCATION_20261104.md) to add its PR239 consumer handoff to a documentation-only successor. Its original39c native finding remains open, and the actual inline-preview port/lifetime/mount remain pending. The reviewed notification module/composition and admission adapter have separate source passes; the corrected current-spine coverage successor3d9 and inline portb039 still await independent gates and are excluded from this address publication. Public R1 remains closed INCOMPLETE_CAPTURE; all principal44, photo, Guidance/private-return, M65 and final-egress holds and baseline acceptance counts remain unchanged.
+
+## W0 startup source successor and public return, 4 November UTC
+
+Owner: Kanuj. Published99bf372d carries eb7513eb complete10 SOURCE82/four graphs0; old78 failure is preserved. New standalone owner608d complete7 authored24 awaits review, is unconnected and excluded from publication. Public3a packet0fde is consumed/closed INCOMPLETE_CAPTURE after a snapshot timeout; all12 raw records, owned tab closure and host join verified, no resource grant or acceptance advances. [W0](portal-rebuild/eight-threads/W0.md) and the [W7 ledger](portal-rebuild/w7/ACCEPTANCE_LEDGER.json) preserve all limits and holds. Root continues; no main/release/real-client action or held-principal retry.
+
+## W0 caption CI and scoped entry, 4 November UTC
+
+Owner: Kanuj. Published3a905730 has all3 exact-head CI checks successful; original df2303754/1 remains failed. Native review still has open plan SQL, held photo and new ordinary bootstrap audience4462894740. Reviewed client entry35E SOURCE66 and consumed9second blank Preview probe remain separate from actual VIEW, browser, genuine and whole-journey acceptance. See [W0](portal-rebuild/eight-threads/W0.md) and the [canonical W7 ledger](portal-rebuild/w7/ACCEPTANCE_LEDGER.json). Full W0 remains active; no new grant, stopped-fixture reuse or held-principal retry.
+
+## W2 saved decision preview checkpoint, 4 November 2026
+
+Owner: Kanuj. [PR239](https://github.com/KanujVerma/shelv/pull/239), head `39c4bb8608544a94a80701d92830e213b0c71e15`, implements an advisor-owned saved-preview read controller and optional A02 consumer of the admitted shared card. The [pinned source report](https://github.com/KanujVerma/shelv/blob/39c4bb8608544a94a80701d92830e213b0c71e15/docs/portal-rebuild/w2/INLINE_PREVIEW_SOURCE_20261103.md) records exact source binding, unavailable/dirty/denied/offline states and preserved full preview. Owner proof is25 focused cases included in415 covering source/model/SSR cases, frontend/UI/application build0 and all3 same-head CI checks. Complete independent source review and current Root composition remain pending.
+
+W0 still owns the actual fixed preview read, route/session lifetime and mount. Its local `b039b248b448b9d5c26d558138562532aa42eb91` dependency is queued for review and is not published or adopted by W2; absent transport remains unavailable. No live read, Auth/SQL/persistence, hydrated/Figma/accessibility, complete A02/J01 or genuine acceptance is granted. Principal44, Guidance/private-return, M65 and photo holds remain unchanged.
+
+## W0 shared continuation after8a2
+
+Owner: Kanuj. The W0 receipt records SOURCE-approved corrected Maya73e and self-navigation369, locally integrated reviewed PR227/231/233/219, all4 type graphs0 and unchanged original68 migrations/evidence. Actual public browser/Figma/focus/a11y, Root single notification owner/admission/scoped client/service/resolver/export/contact/billing boundaries and all authenticated/persistence gates remain unfinished. Current complete integrated census is NOT_MEASURED; baseline24mounted/12SOURCEwired and bounded M01/M02 remain attributed to their original evidence.
+
+Published8a2 all3 CI now pass after its separately retained initdb setup timeout/retry. Native plan lookup remains OPEN; photo finding is UNACCEPTED_HELD_PHOTO_SCOPE. Principal44 STOP/no alternate setup, Guidance/private-return/M65/Source holds and no fresh resource grant remain. The next normal source publication requires its own current CI/native review; no main/210/211 merge, release, real client/funds or stopped-fixture reuse.
+
+## Reviewed W0 source ready for normal publication
+
+Owner: Kanuj. Account/service entry7e6 has independent SOURCE52/52 and scoped-client-list adapter5e5 has SOURCE transport12/12; exact reports are in the canonical W7 ledger through44905056. All four current configured type graphs exit0. The old list RPC still requires EDIT, so no actual VIEW path is proved. Native plan SQL P2 remains open and no genuine packet or release is admitted. Exact local merges, source/CI attributions, current root1923pass/18retained skips and preserved originals remain in the W0 record below. The next normal integration push, not a force push, publishes this bounded development continuation.
+
+## New plan SQL content-validation finding at published8893
+
+Owner: Kanuj. Umbrella PR211 native review is completed on8893 with a new unresolved P2, discussion4460794439: unparenthesized JSON product-array extractions may bypass the direct-RPC dangling-reference validation loop. Existing original migration bytes remain unchanged. W1 is tracing the exact current helper/predecessor and preparing a narrow forward-source/direct-RPC negative-test proposal; no migration allocation/execution or new genuine packet is inferred. Published8893 has all3 CI successful but its native review is not clean. This finding remains open during bounded development integration and will be independently reviewed; prior P1/S1/Q1 corrections do not close it.
+
+## Current local W0 continuation, 3 November 2026
+
+Owner: Kanuj. [Exact current W0 receipt](portal-rebuild/eight-threads/W0.md) records local reviewed source merges222/221/223/224/225/215, source-only S1/Q1 closure, current Account/service entry and scoped-client-list adapters pending their new independent gates. Origin remains8893 until normal publication; no force push or main merge. Latest DTO controls85/85 and Account covering75/75 pass; four configured type graphs and isolated application build pass. This is not whole-current-head CI/browser/genuine acceptance.
+
+[Canonical W7 ledger](portal-rebuild/w7/ACCEPTANCE_LEDGER.json) now includes exact owned checkpoints throughd475. Current complete integrated census is NOT_MEASURED;24mounted/12SOURCEwired remain frozen-baseline attribution, zero full accepted screens/journeys, bounded M01/M02 preserved. Principal44 provider refusal STOP, missing eligible genuine packet, retained SQL/Source/policy/legacy/Commerce gates and original failures remain unchanged. No stopped fixture or real client/funds operation occurred.
+
+## Payment consumer hold, 3 November 2026
+
+Owner: Kanuj. W7-W5-S1/P2 after9ab publication reproduces immutable submitted retry ACK overriding confirmed/rejected canonical status (2/2 failed). W5 owns minimal correction/new full source gate. Earlier source/CI passes remain historical, no current feature acceptance. [Current status](portal-rebuild/CURRENT_STATUS.md) records exact hold; M01/M02 and counters unchanged. No main merge/release/real-client/SQL action.
+
+## W0 second reviewed source batch, 3 November 2026
+
+Owner: Kanuj. [W0 continuation](portal-rebuild/eight-threads/W0.md) records reviewed PR213/214/216/218 merges, source-only request35f, asset aliases9ba and remaining actual composition work. [W7 canonical acceptance ledger](portal-rebuild/w7/ACCEPTANCE_LEDGER.json) owns all26/48/10 rows and preserved M01/M02; W0 writes only integration summaries. Counts unchanged:2 bounded capabilities,0/26 complete accepted screens,0/10 complete journeys. Original3311/3312 remains failed; c075 all3 CI/native clean is separate from the newer batch. D13 first-service billing is Account/service, product Orders unchanged. Principal44 stays provider-refused/unaccepted with no retry/reroute/setup. No new resource/SQL/release grant. Full W0 remains active.
+
+## W0 reviewed shared continuation, 3 November 2026
+
+Owner: Kanuj. [W0 record](portal-rebuild/eight-threads/W0.md) preserves baseline8c5, reviewed P1/witness source706/546, local reviewed serviceDTO mergeef067, raw OLD/setup/current failures and next shared composition queue. Rules explicitly allocate A08 toW6 and canonical acceptance ledgers toW7. NEW principal44 provider refusal is unaccepted with no retry/resume/reroute or setup eligibility; prior f49 failure and DTOpass remain separate. M01/M02 accepted bounded capabilities stay2, complete screens0/26 and journeys0/10. W0 continues with no subagents/main merge/production/fixture reuse.
+
+## Portal W0 ownership freeze, 3 November 2026
+
+Owner: Kanuj. W0 verifies transition9279914d and former coordinator release, freezes W0-W7 boundaries in [EIGHT_THREAD_RULES](portal-rebuild/EIGHT_THREAD_RULES.md), and preserves all47 recorded dirty worktrees plus nine missing/prunable records. Shared interface/migration hashes and runtime/Git evidence are in the linked preflight. W0 exclusively allocates migrations, authors shared runtime/UI/navigation and integrates reviewed PRs; no W1-W6 implementation rewrite. Exact baseline is the first published commit adding the rules. Full W0 continues after publication with Workers redirect:error P1 reproduction/correction and independent review. M01/M02 stay accepted bounded capabilities; complete screens0/26 and journeys0/10. No subagents, main merge, production action or fixture reuse.
+
+## Eight-goal transition: 2026-11-03T18:38:48.407Z
+
+Owner: Kanuj. The old coordinator has stopped new child scheduling and relinquishes implementation ownership after this handoff commit. **2 accepted bounded capabilities (M01 Account Name, M02 recorded Orders);0/26 fully accepted screens;0/10 complete journeys.** Mounted24/26 and complete SOURCE wiring12/26 remain separate. All original decisions/addenda/full scope are unchanged. Read the [exact transition handoff](handoffs/2026-11-03-portal-eight-goal-transition.md). No new top-level goal is started here.
+
+All known current genuine fixtures are STOPPED_RETAINED, all browser/host/native handles joined, all data/volumes/networks/keys/evidence retained. No stopped-fixture query/reuse/reset. PR211 remains draft/unmerged:359c hosted CI3/3 successful, but Codex completed with unresolved P1 redirect finding; this new local handoff commit has no hosted CI/review. New Source findings PRINCIPAL-R1-01 and HN1 remain open. Parent HN1 correction43/43 is archived unreviewed. Guidance/M65/photo/A07 holds remain. [Ownership map and exact snapshots](portal-rebuild/transition/20261103/eight-goal-ownership.json).
+
+Earlier snapshots below are historical and do not retain active writer claims.
+
+---
+
+## 2026-11-03T15:54:27.141Z: Orders fixture compatibility correction
+
+M01 remains the sole accepted bounded capability; counts1/0/0. Genuine M02 found invalid synthetic policy URL rather than an Auth/RLS defect: RPC200 became503 during correct production DTO validation. The [reviewed successor](portal-rebuild/research/W7_GENUINE_RECORDED_ORDERS_SOURCE_R3.md) uses a valid presentation URL and adds production-reader coverage; old failed data is preserved. Failed3d resources and every browser/host handle are stopped/retained/joined; no further resource queries/reuse/reset. M03's complete R4 source correction is admitted, genuine execution still waits M04. [Current status](portal-rebuild/CURRENT_STATUS.md) owns the exact evidence/gates and next fresh verification case.
+
+## 2026-11-03T12:39:29.064Z: one bounded portal capability accepted
+
+M01 own Account name persistence has independent ACTUAL R2 PASS on Root72ed/productd4eb. Counts:1 bounded capability,0/26 fully accepted screens,0/10 complete journeys. [Canonical receipt](portal-rebuild/acceptance/ACCEPTED_CAPABILITIES_20261103.json) and [current status](portal-rebuild/CURRENT_STATUS.md) retain exact source/requests/SQL/privacy/joins and old failures. R8 is STOPPED_RETAINED with private dump/evidence/containers/volume/network retained; no further stopped-fixture queries or reuse. Next NEW environment: recorded Orders, then deliberate publication feeding notifications/history. M02/M04/M05 assets have scoped Source review and are now admitted; actual SQL/browser execution and M03 correction review remain pending. No complete Account, whole journey, Guidance/M65/photo hold or release accepted.
+
+## Portal administrative source admission — 3 November 2026
+
+Root code `5d07d95819f5363795b9c942eec78f145b37a265` mounts Account name/current-email and recorded Orders list/detail before clinical loading through fixed own-client admin channels. Complete independent compatibility review `bfd572e7` approves the historical/current successors. Four configured type graphs, preservation30, controller225 and selected App/SSR/finite329 pass. Census:24/26 mounted/controllers,12 complete SOURCE frame wiring,0 current genuine/browser signoffs,1 SOURCE whole decision and0 complete current journeys. Source mounting is not full feature or release acceptance.
+
+Service/cancellation producer, UI and next channel layer remain separate; the coordinator's future Account-family changes are not in this Root commit. PR211 stays draft on210, no merge/forcepush/deploy/real-client or funds actions. Guidance/M65/photo holds and fresh genuine-resource gates remain. Canonical per-frame evidence and roster are in docs/portal-rebuild/.
+
+## Reviewed history and inbox publication: 2026-11-02T21:56:10.091519+00:00
+
+Complete independent4531aae4 admits exact9aac five-path history recovery and cwd-bound test corrections at source/SSR/finite scope. Reviewed bell d4 is included. Parent current types/UI/build/Expo and1775 unit checks pass with18 existing native optin skips; no browser/genuine/full-journey acceptance follows. Original37c25 CI failures, OLD missing-recovery assertions and setup failures remain preserved. Profile APC4 current d718 passes67 and awaits NEW complete R6; Root Account/Orders remain unmounted pending shared transport/composition. Goal remains VERIFIED ACTIVE.
+
+## Native goal reconciled: 2026-11-02T21:38:43.150309+00:00
+
+Parent observed no old goal after the owning control cleared it, created the explicitly requested replacement using the saved objective/full-prompt references, and verified ACTIVE in a second get_goal read. CreatedAt1793655482. No rebuild completion, reset, worker interruption, ownership or resource change. Original paused record and full original/corrective text remain preserved. Implementation continues under the same approved scope.
+
+## Portal integration: 2026-11-02T21:26:08.361347+00:00
+
+Reviewed client bell/navigation92b8 + independente3d81 now joins the source-mounted inbox; exact scoped checks and unchanged numeric21/26mounted,12/26SOURCEwired,1/48sourceverified,0/10complete-current outcomes are in [CURRENT_STATUS](portal-rebuild/CURRENT_STATUS.md). Three live children handle platform type freeze, profile R5 and Orders R2; Parent owns COE1/AEC fixes and Root integration. Native paused-goal clear remains blocked by writer ownership, with full replacement packet saved. No browser/genuine/full-feature acceptance or resource grant follows.
+
+## Portal corrective execution: 2026-11-02T21:04:26.023160+00:00
+
+Client inbox source3c and reviewed CI repair3d1 are in Root; exact new-head hosted CI pending publication. Detailed26/48/10 inventory is complete:21mounted/21controllers/12SOURCEwired;0verifiedcurrentgenuine/browser,1whole-source-verifieddecision,0completecurrentjourneys. [Current status](portal-rebuild/CURRENT_STATUS.md) and [exact evidence matrix](portal-rebuild/ACCEPTANCE_MATRIX.md) explain unknown outcomes and owners. Native paused goal replacement is user-authorized but blocked by active-writer control; full originals/steer saved, no false completion. Client navigation child active, other returned tasks terminal. No native/production/release grant or new complete-portal acceptance.
+
+## Portal continuation, 2026-11-02T17:35:22.504377+00:00
+
+Reviewed shared source is integrated as68ed8a54 after independent R8 composition PASS. Account consumer/contact-read source is frozen separately, with small Parent composition fixes and fresh complete reviews pending. Six children plus coordinator are verified Sol/xhigh/default at the refill snapshot; completed/failed tasks are excluded. Photo review was provider-flagged before a final report and remains unaccepted without reroute. [Current status](portal-rebuild/CURRENT_STATUS.md) and [task receipts](portal-rebuild/TASKS.json) govern. Full26/48/10 completion metrics remain not measured, with no newly accepted end-to-end feature evidenced. Hourly read-only delta automation is bound to this current parent. No native/production/release grant.
+
+## portal rebuild continuation, 2 November 2026
+
+Same full approved rebuild continues. Root38415ade admits reviewed unmounted own-client profile source with the independently approved journal-witness successor; actual Root47, app/test types, candidate full unit suite and web export pass. SQL/genuine/Account/contact remain open. SharedR7 and credentialR3 pass their source scopes, while Root/current-consumer and actual private-authority gates remain separate. The remaining contact/admin interface proposal is returned; no new preference choices or implementation are inferred. Current evidence, exact roster, ownership and all remaining gates are canonical in [portal-rebuild/CURRENT_STATUS.md](portal-rebuild/CURRENT_STATUS.md), [TASKS.json](portal-rebuild/TASKS.json) and [ACCEPTANCE_MATRIX.md](portal-rebuild/ACCEPTANCE_MATRIX.md). No release, real-client or resource-reset authority follows.
+
+## Portal restored execution, 1 November 2026
+
+The original goal is restored in the coordinator runtime. Fresh Source R1, Maya R2 and Commerce R8 actually dispatched and received their literal returned IDs, with exact Sol/xhigh/default settings; earlier host-rejected attempts created no tasks and remain separate. Source R1's first syntax finding holds that candidate. [Current execution and exact receipts](portal-rebuild/CURRENT_STATUS.md) govern. Coordinator retains shared transport/grammar corrections; no new native/browser/resource or release grant follows.
+
+## Portal source checkpoint, 1 November 2026, 23:30 Chicago
+
+Reviewed photo inventory producer and explicit historical-test successor are integrated; cold64 and actual types/build/Expo checks pass, with raw29/32 preserved. The f402 database CI exposed an unapplied export CASE syntax error; Parent1982bc7e repairs only its parentheses, and a real isolated PG17.11 grammar control passes. Full corrected native replay remains pending. [Exact source, tests, preserved failures and resource return](portal-rebuild/research/COORDINATOR_PHOTO_INVENTORY_PARENT_INTEGRATION.md). SharedNT2 and nativeNE4 remain unaccepted. New worker starts are host-rejected parent_not_active, with no tasks created; exact restart briefs are saved for a legitimate fresh Parent run. No permission/model fallback or reset is authorized. Full D01-D48/26-screen goal remains active and incomplete.
+
+## Portal Parent integration, 1 November 2026, 22:05 Chicago
+
+Reviewed export source and unmounted Source consent presentation are imported; Parent Root1,595pass/18 retained skips/0fail, consent29, actual types/UI/Expo pass. Small inherited Maya retirement is corrected and verified as1418d724; the full new Maya candidate still needs reconciliation/R2. Shared NT2 is a new held dependency, separate from closed SD1/NT1/AAS5 vectors. [Current integration/evidence and remaining gates](portal-rebuild/research/COORDINATOR_EXPORT_CONSENT_SOURCE_INTEGRATION.md) govern; no runtime/Source/App/download/release acceptance is implied. Full approved goal remains active.
+
+## Portal goal execution recovery, 1 November 2026
+
+The coordinator runtime had no active goal and prior worker starts failed because the old Parent no longer owned an active T3 run. The original full approved objective is now restored; a fresh Source kernel independent R1 actually started and received its exact returned task ID. No code reset, new scope or resource grant occurred. [Current recovery state and receipt](portal-rebuild/CURRENT_STATUS.md) and TASKS govern; earlier failed review attempts remain distinct from this successful dispatch.
+
+## Portal continuation, 1 November 2026, 21:45 Chicago
+
+Maya interaction R1 now holds admission on inherited MIF1/P3, with a deliberately throwing observer and old/current source reproduction; mounted/browser reachability remains unproved. Its production and original208/210 compatibility hold remain unaccepted. [Current source status and exact review](portal-rebuild/CURRENT_STATUS.md) govern. Source/inventory interface pins and current task receipts have been forwarded; raw legacy fixture results remain distinct from new canonical-wire verification. No resource or activation grant follows.
+
+CI historical-input recovery451dc357 is imported as8ee18fda. Parent empty-history checks45/45, Root1,414 pass/18 retained opt-in skips/0fail and both Root typechecks pass. Production/workflow bytes are unchanged. Exact-head CI after push remains pending. Current live acceptance and seven allocated child workflows are recorded in [portal status](portal-rebuild/CURRENT_STATUS.md) and TASKS; Source kernel/inventory transport interfaces are pinned. Full D01-D48/26-screen goal remains active; no deployment, native-resource activation or release acceptance. User manually reset usage, so the prior one-banked-reset permission is disarmed and coordinator consumed zero. Hourly progress is scheduled; future updates must use current evidence.
+
+## 2026-11-01 Parent source checkpoint: Maya, notification kernel and photo head
+
+Current follow-up:4e07119b corrects the inherited standalone TS7016 import-annotation gap without changing actual JavaScript output; configured frontend and both Root type graphs pass. Earlier482 comment-removal failures remain preserved.
+
+Reviewed Maya now mounts on the actual public App route. Notification source kernel/worker and the fixed own-client photo-head read are integrated as source. Parent checks pass notification39, head32, Root1409/0fail/18existing skips, Root/application/test types,2246-input/15-output main and Expo web export. [Exact source/provenance/failure record](portal-rebuild/research/COORDINATOR_MAYA_NOTIFICATION_PHOTO_SOURCE_INTEGRATION.md). Code prerequisite482557b4 changes only artifact-parent setup, obsolete compiler comments and two native-test fixed-RPC signature maps; original test/assertion bodies and retained emitted JavaScript are exact.
+
+New modules remain gated by independent findings NUI1/AC5/RP3/FE6/SD1 and Account's post-invoke offline race. Each has an exact source owner/correction or fresh review; none is a human-key/program dependency. Native notification executor source is correcting missing persisted no-effect assertions and the explicit fresh loopback stack recipe. No new SQL/Auth/Storage/browser/provider fixture or runtime grant is active;64 migrations are source only and original62/113SQL remain exact. R9 stays stopped/preserved.
+
+The complete approved goal remains active. Eight total agents were live-verified, with exact task identities/bases and changing claims in [TASKS](portal-rebuild/TASKS.json); no nesting and every actual runtime Sol/xhigh/default/Node22.23. Private Source lifecycle, missing Account/Commerce/export/agent producers and full26-screen genuine/visual/a11y/CI acceptance remain incomplete. [Current status](portal-rebuild/CURRENT_STATUS.md) supersedes historical live prose. No production deployment/main merge, real-client messaging/publication, funds/orders or permission weakening.
+
+## 2026-11-01 latest portal integration and parallel work
+
+Root source at a06fd056 now includes independently reviewed owner-policy App composition on the actual permissions route. Fresh Parent38/78, frontend/session/strong/UI, complete main2238/15 correspondence, Root1370pass/18existing skips/types/Expo pass. [Integration record](portal-rebuild/research/COORDINATOR_OWNER_POLICY_APP_INTEGRATION.md). SourceAccount74/strict0/R5 model is imported without RPC/consent/storage activation.
+
+A07 authorff2's one reviewed synthetic Chrome run passes10/10 with18 captures; RETURN20:27:03Z,36sampled identities absent/preview noTab/grantnull. No after-return resources. New report1554 remains separate from Root source integration and genuine acceptance. Historical failures remain intact.
+
+Six new independent reviews were launched in parallel, yielding a verified eight total with W0 finalization and coordinator. Maya MF1 gets scoped SOURCE/SSR PASS; actual App composition is now assigned. New review findings AAS2/AC2/N2/PH1/FE3 hold other module admission. Bounded Account test, Commerce controller and notification runtime corrections are assigned; photo ingress and export display need separate scoped follow-ups. Exact tasks and changing allocation snapshots are in [TASKS](portal-rebuild/TASKS.json). Kanuj authorized more than eight agents when useful; eight role domains/config pins are retained, no hard24 ceiling inferred. No nesting or current resource grant. Full approved26-screen goal remains open.
+
+## 2026-11-01 static final export implementation begins
+
+[Approved static export after30days](portal-rebuild/DECISION_ADDENDA.md#static-final-export-after-the-read-only-window-1-november-2026) now has W1 source-producer/serializer ownership in b08e21c9, actual sole migration20261101173223 allocated empty by CLI, current62 preserved. No DB/runtime grant or sharedconsumer activation; early trusted finalbasis/API pending. W2 OP1 and W6 SAC4 source corrections plus W0 returned-attempt report recovery are separately live. Five including coordinator verified at allocation, Sol/xhigh/default. Exact handles/ownership/limits in TASKS.json; full goal remains active.
+
+## 2026-11-01 final export availability selected
+
+Kanuj selected continued static final-plan/instruction download from Account after30days. [Canonical addendum](portal-rebuild/DECISION_ADDENDA.md#static-final-export-after-the-read-only-window-1-november-2026) settles the prior question; interactive care/history and raw-source rights are unchanged. Actual trusted export basis/producer/download still pending. A07 custody returned16:05:57Z after first harness exact-text failure; no completed browser case/production defect claim, no active grant. Later A07 report and OP1 correction provider turns ended with generic failure; saved state must be reconciled before continuing. AccountR4 finds SAC4 intrinsic UUID-domain capacity; models remain unactivated.
+
+## 2026-11-01 current Account/owner-policy reviews and A07 execution
+
+SAC3 source0096 and exact fixture45f are terminal; author64/64/overlapping87/87/strict0, raw failures preserved. [Coordinator input pin](portal-rebuild/research/COORDINATOR_SAC3_FIXTURE_PIN.md) changes no API or rights. New independent Account R4 and owner-policy R1 are active, implementations unimported/unmounted. A07 ordinal18 has the separately bound sole synthetic Chrome grant after successful source lease and supervisor review; finite browser results pending, no genuine provider/SQL/Auth claim. Four active including coordinator at allocation, all Sol/xhigh/default; no nesting or blocked Guidance/M65 retry. Full goal remains open. TASKS.json records exact tasks/grant/return boundaries.
+
+## 2026-11-01 current source holds and external verification gate
+
+PublishedRootb89e96f3 contains reviewedpureUTF8 component, test andreports; Parent1296/0fail/18oldskip/types0/Expo0 atcode03cd, exactnewheadCIpending. A07H2metadata-execution correction ordinal16 and AccountSAC2partial-total correction ordinal3 arecurrentSOURCE-only tasks; no browser/API/rights/schema/storage grant. NewGuidanceprivate-returnauditproviderfailedwithoutacceptedverdict; partialuncommittedbytesretained, no retry/reroute. ProviderrequiresAAS+compatibleFIDO2hardwarekey atchatgpt.com/cyber; requiredSol/xhighunchanged. R9staysSTOPPED/volume+backupretained, nativecandidate88notruntime. TASKS/currentstatuscarryexacthandles/limits; fullgoalopen.
+
+## 2026-11-01 reviewed Source component in Parent
+
+Pure UTF8 component465/e511 +independent168report03cd admittedafterR9freshstopped/volume/backuprecheck. ParentRoot1296pass/0fail/18oldskips/types0/Expo0 at03cd; newnativefilesystemcandidate88/old87exact, no preparedSourcefixture/API/role/profile/storage enabled. [Proof](portal-rebuild/research/COORDINATOR_SOURCE_UTF8_INTEGRATION.md). A07H1source8db and AccountSAC1source4349 correctionsareinNEWindependentR2, Rootimplementationsunimported; provisionalAccountgroup/predecessorpin I10andrawschemaqualificationspreserved. Thirdsource-onlyGuidanceprivate-returncapabilityaudit activeasHypothesis. All4includingRootSol/xhigh/default,noChrome/native/resourcegrant. Latestpublished5834all3green; newerlocalcodeawaitsownCI.
+
+## 2026-11-01 Source prerequisite and component work
+
+Selected R9 is audited/backed up/STOPPED at12:04:38.293Z; all236 protected files/1469 returned rows/Auth0/0/62/native87/core/helpers preserved,4.27MB backup and retainedvolume/sevenstoppedhelpers. [Exact evidence and limits](portal-rebuild/research/COORDINATOR_R9_SOURCE_TRANSITION.md). No restore/newSourceinventory or runtime/API grant. UTF8 component416 returnsauthor40/40+strict0 and enters NEW source-only W7R1; Root component unimported. W6 separately proposes six-file client Account consent review/portal-origin withdrawal/status contract, without changing Source15/manual confirmation or activating clients. W0 actual A07 harness source gate continues. Latestpublished5834 docs-only CI pending at lastread/T3watch; previous05b exactgreen remains historical.
+
+## 2026-11-01 Source consent workflow selected
+
+Kanuj selected advisor-recorded explicit client confirmation, with client review/withdrawal in Account. [Decision addendum](portal-rebuild/DECISION_ADDENDA.md#source-consent-workflow-1-november-2026) is the canonical policy record. Storage and review purposes stay separate; no automatic consent or immediate-purge promise. Safe client projection/withdrawal, disclosure content and Source producers remain unimplemented. Source15 stays advisor-private/unactivated; no resource grant, Root import or live action. A07 source-free browser preparation remains separate.
+
+# Approved portal rebuild, 30 October 2026
+
+## 2026-11-01 full-scope progress estimate
+
+Revalidatedlive05b3checksSUCCESS andtwoactiveagents(Root+A07ordinal14). Fullapprovedscope remainsabout60%completebyengineeringworkestimate, core90%+/advisor80/Commerce45/Source-account-delivery-agents25/walkthrough-visual35. NextA07browsercheckpoint3–6workinghours, full5–8workingdays AFTERfinancialprovider/securityblockandSourcepinsclear, parallelworkassumed; nofirmdate/waittimeexcluded. CURRENT_STATUSstaleCare2/Historyunmounted/advisorfinding lines reconciled; frozenreports untouched. Actualfeature/time matrix inTASKS/currentstatus, notderivedfromtestcounts.
+
+## 2026-11-01 exact published CI green
+
+PR211exact05b3270eALL3SUCCESS; Portal2509/2509/0skip andallsubsequentPortalkeyboard/session/backend/nativeSQL/localAuthadmissionstepssuccess. Mergebc9858tree5130048equalshead; completepasslog/safe4artifact13080449805/currentobserved2202/10/463events0drops retainedci-05b3270e-pass. Watchoff/PRdraftOPEN/unmerged/nodeploy. Localpostpushdocs/typeinputmetadataaheadnotexactheadCIGreen; productioncodeunchanged. A07harnessSource-onlyactive, allremainingSource/financial/account/delivery/visual/fullgoalboundariesopen.
+
+## 2026-11-01 published05b and A07 browser preparation
+
+PR211normalpush05b3270econfirmedDraftOPEN/newCIpending, exactcleanmain2232/15. Source/codefixture+CH6testfixesonly, production/runtime/Root/SQLunchanged;19authorfunctionalpassremainsqualifiedbycapture/CSPissues. FreshA07R34177Source/SSRPASS importedonlybfe, C1/C2closedsource/no mountedproof. RootA07stillunimported; authorordinal14ownsnewactualmainbrowserharness/closedRootDTO/sourcegate/finiteplan only, no browser/resourcegrant orproductionedit. T3watchmonitors05b; localpostpushmetadataisreport/allocationdocsonly.
+
+## 2026-11-01 CI fixture local admission
+
+FixtureSource/TestbddPASS+authorcurrent19/19once/25closedcontexts(qualified46captureerrors/CSP102previewblocks/incompleteearlierPNGbytes), ChromeRETURN10:27:17/all88ownidentitiesabsent/previewnoTab. Rootimportsfixtureab5/reportff5, existingCH6hookc856. FreshParent199/20/types/UI/main2232x15pass, allmainhashesequal6a, allproduction/runtime/Root/SQLtreesunchanged. NewexactheadCIpending; noRootbrowserrepeat/resourcecall. A07R3Source-onlyactive/RootA07unmounted, Source/financialgatesunchanged.
+
+## 2026-11-01 A07 R3 source review
+
+AuthorC2checkpoint083/bb599: originaltwoRED1/1->2GREEN,current15+retainedsuites/types/UI/buildpass, oneprivatecompositionfile/API0delta/1915protected. Parentreadresponse/handoff/provenancequalifications; A07stillunimported. NEWfreshSource-onlyR3 in97a86065 fromb09 imports8ownedrefs through083/fulloriginal/R1/R2/responses, no resources/fixes. CIfixtureb0ea/cbf8solefiniteChromegrant staysseparate/active. RootCIFixtureunimported/currentPR6aoverallred.
+
+## 2026-11-01 CI fixture finite browser grant
+
+IndependentbddSource/TestscopedPASS importedreportonly5223. FreshSOLEsyntheticChromegrant coordinator-ci6a-app-fixture-synthetic-chrome-cbf8a5ba-20261101 bindsONLYb0ea/cbf8 authorordinal2. Onewholeoldfirstscenario(1case3contexts/othersfiltered/expectedcallbackread3failure) thenonecurrent19case25contextfile, eachonce; no test/model/production/timingedits or otherresources. Exactexistingclosure/ownPIDstart/preview/EXPLICITUTC RETURN beforepostrunreport/hash/Git, zeroaftercalls. Rootcandidateunimported/currentCIstillred; A07C2Source-onlyseparate.
+
+## 2026-11-01 CI fixture Source R1 review
+
+Authorcbf8closedcurrentReviewV3/decisionV2fixture source199/new13passes/types/build2232x15/prodprotected.88asserts retained(twoexplicitwireIDsupdated), original19cases25contexts remain; browserUNRUN/UNGRANTED. NEWindependentSourceR1 in05f5e5af from71b importsONLYcbf8, validatesfullmodel/assertion/legacy/failure/Rootmapping/private andexistingRootc856cleanhook, reportonly/noresources. Rootfixturecandidateunimported/currentPR6aPortalstillFAIL13; prior2550PASSfixed/hooklocal20GREEN. A07C2authorfixcontinuesseparately.
+
+## 2026-11-01 A07 C2 source correction
+
+FullR2ded6report importedonly7976, bothsourceverdictsrequireC2/P3: neweracceptededitduringrestore overwrittenbyretainedoldmodelonnextread. OriginalC1sixclosed6/6, newprobe1/1 twice; nomountedReact/DOM/sentUUIDclaim. SameW0ordinal13 source-onlyhelper/newtests/reportfixactive; noRootA07import. CItestfixtureSource-onlyworkerb0eaactive, RootCH6hookfixedlocalc85620/20/all74assertionsunchanged. Linux2550nowPASS; PR6aPortalstillfailed13, watchoffduringcorrection.
+
+## 2026-11-01 CI6a diagnosis
+
+PR2116a PortalFAIL13/2497. The prior2550readinesscase passes inLinuxwithreviewedcurrentobserved2202/10hashes andacceptedmanifestbeforeclick. TwelvefailuresareoldwholeAppbrowserfixtureunexpectedcurrentV3read; newisolatedSource-onlytestwriterb0ea ownsfixturemodel/typedHTTP/newunit/report, no productionorbrowsergrant. OneCH6afterhookmissingdir reproduced20pass+ENOENT thenminimalmkdirfix20/20/all74assertionsunchanged. Watchoffduringcorrection; currentfullCIunaccepted. A07R2newC2/P3reported, fullreport/ownerresponsepending, RootA07unmounted.
+
+## 2026-11-01 draft CI checkpoint and A07 R2
+
+PR211normalpush6a10f5beconfirmedGitHubdraftOPEN, bodyupdatedforV3/Historycandidate+reviewedmanifesttestfix. Actualexact6a cleanmain2232/15; Rootcodechecks7d pass andinterveningdocs-only. ExactheadLinuxCIpending/T3watch, no merge/deploy. A07C1authorc5read/oneprodpathconfirmed; original6RED4/2->6GREEN and27/retainedchecks author-only. NEWindependentR2 source-only starts6a in3d3837fc with6exactownedinputs/fullR1/responses; no A07import/resources. Localpostpushcoordinationmetadata may beahead ofwatched6a; do notclaimitCIgreen.
+
+## 2026-11-01 CI correction admitted, next draft CI checkpoint
+
+IndependentevidenceR2f3bbfa75closesE1/scopedPASS; R1source/testPASS preserved. Rootonlyreport51f498b4 +reviewedtestpatch7d864736 imported; productionUI/runtime/contracts/functions/canonical62treesunchanged. FreshParent36/74/25/strict/UI andRoot1256pass18existingoptinskips/types/Expo pass. Cleanmain2232/15 allinput/outputhashes match priorreviewedApp e6b. NextnormaldraftPRpush intentionallystagescurrentV3/Historycandidate+testfix; exactheadLinuxCIpending, allfullApp/Source/financial/releasegates remain. A07C1successorc5edf655 reportedclean, awaitingfullhandoff/newindependentR2, unimported. No localbrowsergrant/resourceacquisition.
+
+## 2026-11-01 CI provenance E1 correction
+
+IndependentCI R1 a2c75dc5 importedreport-only7093: source/testscopedPASS, evidenceCHANGESREQUIRED E1/P2. Parentincorrectlystatedtwoinputdifferences; actualcurrentgraphfive(client-state,retained,session,history,react). Parentfreshcurrentcompile2195/2200+9/10matchesreviewer; explicitfive-whole-filehistoricaloverlayall2200/10CIhashesmatch; retainedtypeerasedJSidentical. Sourcecandidate9b2unchanged/unimported; no browser/applicationexecution. Fullraws/projection nowcanonicalCIreport; NEWboundedevidenceR2 requiredbeforeadmission/currentCI. A07C1authorfixcontinuesseparately; allChromegrantsreturned.
+
+## 2026-11-01 A07C1 corrective source phase
+
+Full independentA07R1 report85eb importedreport-only5afe. Bothsourceverdicts require A07C1/P2 correction: preparingB/instructionmutates recordbehindolderAentry and hidesAunsentwork. NoDOM/lostsentintent/privateleakclaim. SameW0ordinal12 source-only from0c447 owns privateentry/target/unsentcustody correction/newtests/report, original6RED4/2beforeedit and6GREENafter, freshreads/rights/recovery retained. No W2/nav/runtime/SQL/Source/resources or A07Parentactivation. CI19c independentreview remainsactive; allChromegrants returned.
+
+## 2026-11-01 readiness proof returned, CI review and A07 finding
+
+W3finitecases2/2once pass, controlledactualmanifestoldproxytrue/newacceptancefalse thensameowner2550/0details beforeunchanged original5sec/51assertions. UntouchedMacoriginalpass is non-sensitive; Linux19cFAIL persists. ChromeRETURN07:51:23UTC, savedscoped22absent/previewnoTab, no activebrowsergrant. ParentSourceunchanged; newindependentCIreview imports temporaryindex-assembledtest/reportcandidate9b2ba209 only, with existingParentmetadata preserved/nochilddowngrade. A07reviewreproducesA07C1/P2 reportentryBackunresolvableaftertargetselection; reportfinalizing/sourceonly/noDOMclaim. HoldA07importpendingfullreport/correction/review.
+
+## 2026-11-01 A07 source composition review
+
+Author0c447dfb/c70b11e6/547b72fa completes actual advisor A07 source composition;32new/228App/500Guidance/raw45/Root80/transport256 and strict/UI/clean2246x15 pass. No resources or Parent activation. A NEW independent R1 in a T3 worktree receives the full original+A07 brief and all prior G/CH findings/responses, imports only the three owned commits and writes only its report. Root A07 remains unmounted. W3's separate sole finite Chrome grant remains allocated; SourceAPI and financial provider-block boundaries unchanged.
+
+## 2026-11-01 finite CI-readiness browser phase
+
+W3 source-ready3e8132eb independently clears actual strict checks and matches CI2200/10. New sole synthetic Chrome grant coordinator-w3-ci19c-manifest-observer-synthetic-chrome-3e8132eb-20261101 belongs only to1026/ordinal14 for two serial cases: original first2550 and held-terminal observed comparison, one attempt each. No timeout/assertion/production change or native/R9/Auth/DB/Storage authority. Prompt explicit RETURN after own normal teardown/inventory/preview precedes report/hash/Git. Mounted/CI results remain pending. W0 A07 source-only continues separately.
+
+## 2026-11-01 exact CI observer companion
+
+Root App candidatee6b remains local and unmerged. PublishedPR21119c still fails one2550-case notice wait. W3e220 matches all2200/10 CI runtime inputs/outputs with an explicit readonlytest-buildobserver, but has seven missing advisor-type diagnostics. Parent's pinned erased-only companion independently gives strict7->0/identical emitted JS; same-author ordinal13 owns its exact child dependency and source gate before a new Chrome grant. No browser/native resources authorized. Source readiness plan09cb imported report-only58a; implementation/rights/profile/SQL/resource decisions remain separate.
+
+## 2026-11-01 portal rebuild review continuation
+
+The reviewed V3/History clientApp candidate is nowintegrated at e6b0bd7e, with exact42App/W4targets, W2/37f41/native87/SQL62 preserved. Parent228/198/256/500/strong/types/UI/Root1256+18existing skips/Expo and clean2232/15 matchingreviewerbuild pass. Clientdefault isV3; Guidance isstillunmounted. R6 gives scopedsource/42syntheticgroupsPASS butfullAppacceptance incomplete. Currentf163generationnegative nowpasses1/1; G5producer-returnqualification remains. TargetedR7 returned05:46:10Z; positive nativeB2/matchedlate/D states pass, B3/B4/frame-CremainOPEN, no currentChromelease; no native/Auth/DB/Storage/finance/R9grant. Source d0f ismodel-frozenonly, W1readinessplan isreport-only. [TASKS](portal-rebuild/TASKS.json), [currentstatus](portal-rebuild/CURRENT_STATUS.md) and [Appproof](portal-rebuild/research/COORDINATOR_APP_R6_INTEGRATION.md) retain currentproof/gaps. No deployment/fullgoalacceptance.
+
+## portal rebuild: package and current review checkpoint (1 November 2026)
+
+Parent V3 production875 and exact helper packagingfed90 pass the full ordinary serial portal package1770/1770, with no assertions, waits or timeout limits weakened. Earlier1726/15 package failures remain preserved. M64d6e3 source/native author correction is in a NEW composed backend R2; private Source1279 proposal is in a first source review. Advisor R3eba addresses G4/qualifies original G5 but finds G6/P3 post-emission instruction resurrection; App R2b2a addresses CH1/CH2 but finds CH3/P3 RPC-wrapper compatibility. Both same-owner source corrections are active. No advisor/App/financial/source-lifecycle acceptance or native grant is inferred.
+
+## portal rebuild: CI lineage capture correction (1 November 2026)
+
+PR211 head153d11e passes the corrected package/RPC-loader step and fails the later local-admission probe. Its complete62-migration ledger is larger than Node's default1 MiB capture; the actual probe reproduces ENOBUFS against synthetic CLI output. A bounded16 MiB capture, matching the existing lifecycle runner, passes18 lineage/fixture checks without truncating statements or changing attestation predicates. Exact-head native CI remains pending; no shared R9 fixture was read or modified. [Evidence and limits](portal-rebuild/research/COORDINATOR_CI_LINEAGE_OUTPUT.md).
+
+## portal rebuild: current boundary and expanded execution (31 October 2026)
+
+History RH1/RH2 source is integrated through5cd7ef5a; cookie T1/CK1/CK2 independent R2 is integrated through6f13b82d. Parent256/197/84 controls, both portal strict checks and clean application build pass. Root1256 pass/18 existing opt-in skips, app/test types and Expo export pass at the prior code-equivalent scope. App V3/history/restoration remains an isolated candidate; its canonical pre-data focus/scroll gap now has an explicitly allocated entry-owned deferred restoration API. [Current status](portal-rebuild/CURRENT_STATUS.md), [task ledger](portal-rebuild/TASKS.json) and [handoff](handoffs/2026-10-31-portal-rebuild.md) govern exact state.
+
+Independent current genuine Review/Guidance R4f36 passes Source, functional9/all24, evidence integrity and custody. Current9e401 keeps all16 immutable observer event refs and10 actual raw errors; actual0/10/0 is one error-bearing observation, source10+1 separate. All236 files/1224 originals remain+245new=1469,29users14cases;5closed/14strings2rotations/Auth0/0. Returned23:32:16.392Z, no current resource grants. Old author failures, R2 lost raw10 and R3 failed observer driver remain immutable qualifications; Parent separately closed failedR3 resources.
+
+M63 candidate39/109 passes did not close independent CB1/P1 duplicate repayment bookkeeping and CB2-CB4/P2 authority/linkage/zero-return defects. No financial admission. W1 freezes a coherent private-Source proposal, then prioritizes queued forward correction without altering old63 bytes. W0 Commerce transport and W2 final day/ready fixes are isolated; a local optional deny-only applicability callback supplements, never overrides, actual cookie/Vault authority. V3 R2 residual source paths require author correction before fresh review. Eight-total agent cap remains user-approved, exact Sol/xhigh/default/no nesting; live counts vary. Full App/browser, source lifecycle/account/delivery, CI and release remain incomplete. Earlier sections are historical.
+
+## portal rebuild: composed guidance backend and canonical62 preparation (31 October 2026)
+
+Composed M58-M61 backend is integrated through3edb0700 with scoped independent R3 PASS, Root1256 pass/18 existing opt-in skips, strict types and Expo export. Current fresh canonical61 reset succeeded but pgTAP exposed the original scaled-number source cast; it is not accepted. Coordinator M62 `6e4d38e2` passes unchanged42/new28 rollback probes without changing105 tables, function attributes, ledger or Auth0/0. Fresh R9 canonical62 reset and40-file/930-assertion pgTAP now pass; independent M62 review and genuine new-feature execution remain pending. R7 and R8 were positively audited, privately backed up and stopped with volumes/data retained; no worker has native custody.
+
+W3 owns the sole synthetic Chrome lane for V3 guidance. W0 fixed8/8/9 Review/Guidance transport79d is source-complete and under new independent source review. W4 report/history RH1 fixfe707+006 is parked source-only pending a fresh Chrome followup and new review. Advisor CD1-CD3 have scoped independent PASS; complete reported-product/new report/instruction readers and genuine rebase remain separate. W1 commerce source contracts are in progress before any SQL pin. [Current status](portal-rebuild/CURRENT_STATUS.md), [task ledger](portal-rebuild/TASKS.json) and [execution log](portal-rebuild/EXECUTION_LOG.md) govern current allocations and evidence. Full approved rebuild, genuine new features, CI and release remain incomplete; no merge/deploy/live action.
+
+
+## portal rebuild: independently accepted care and next modules (31 October 2026)
+
+Current [integrated care review](portal-rebuild/research/W7_CARE_INTEGRATED_REVIEW.md), authorf7cc2981/integrationf1e9e911, independently passes current CS1 source correspondence, unchanged genuine Node11/all13 care actions and FIRST unchanged browser15 at1011ae33. Both R7/Chrome returned12:25:55.680349UTC;13 own sessions closed/whole Auth0/0, prior cases/protected files/57 migrations/4x76 source/five helpers/TLS preserved. Representative core care is accepted within that scope; source Storage, complete report/guidance/history, commerce/account/delivery/demo and all-goal/CI/release remain open. No deployment/merge/live action.
+
+W2 isolated advisor dependency UI needs CD1 historical identities/CD2 complete current reported projections before acknowledgement. W1 isolated M58 implements Review15/Guidance9 and a private complete sourceManifest, preserving Care13/Plan26/Task14 and old57 SQL. Valid500k Plan transport vsJSONB storage remains a separately tracked forward-correction proposal. W4 now owns source-only C04/C05 report/history UI in t3-0706fba8 against exact committed30f40da9 target contracts; no browser/native grant. Parent App recovery5029825a and native57/76 remain frozen. [Current status](portal-rebuild/CURRENT_STATUS.md), [task ledger](portal-rebuild/TASKS.json) and [execution log](portal-rebuild/EXECUTION_LOG.md) govern current state; older entries below are historical.
+
+The [approved rebuild record](portal-rebuild/README.md) now preserves the complete supplied specification/manifest/input with hashes, D01-D48, initial contracts, acceptance inventory, ownership and current execution status. Work is isolated on `kanuj/portal-rebuild-integration-20261030` from approved docs head `8ac0826`, atop main `d39a7d4`; unrelated dirty scanner work remains untouched. Fresh coordinator runtime Sol/xhigh is verified, and project/eight-role defaults are explicit.
+
+Prospective rebuild rules supersede publication-before-payment, manual-only notifications and the unspecified post-service window: exact human approval plus verified applicable first payment precede deliberate publication; durable email/portal events retry separately; 30-day post-support read-only access and final export are required. Historical release/hosted evidence and legacy dates/receipts are unchanged. Initial documentation/configuration is not runtime implementation or deployment. Continue from [CURRENT_STATUS](portal-rebuild/CURRENT_STATUS.md); no live business writes or production cutover are authorized.
+
 # Shelv Cross-Agent Context Sync Ledger
 
 ## 2026-10-26: PR 209 portal UX deployed, without merge
@@ -2188,3 +2509,13 @@ Dedicated `kanuj/ux-check-profile-preview` worktree starts at Check commit `f376
 In Development Mock, Check name search and camera-host name search use the existing CheckResultPresentation. My Stuff → Skin profile opens `/personalize/fixture?mode=profile&fresh=1&focused=1`; Done/final Skip returns through the existing stack. Nonfresh profile edits do not replay setup. Both fixture product searches now receive the same local CeraVe catalog search seam as Check. The fixture remains development-only, does not write or persist answers, and does not promote product/formula truth or produce a personal decision. Existing owner/revision guards and sheet appearance are unchanged.
 
 Validation: full `npm test`, app and test typechecks, web and iOS JavaScript exports, and diff whitespace check. Focused host tests exercise entry/camera search → factual sheet → close/reopen and My Stuff → all five profile steps → Done/back; native gesture/camera acceptance remains on the iPhone. Known profile behavior outside this integration (note trimming, goal retap semantics, manual Add query state, reacted labeling) is retained.
+
+
+## 3 November 2026: portal acceptance-first continuation
+
+The same approved rebuild is active. Root now contains the independently reviewed eleven-file CI repair197f27f8 and its R2 report; original failures and source/genuine/CI qualifications remain preserved. The [current status](portal-rebuild/CURRENT_STATUS.md) and [first genuine Account capability contract](portal-rebuild/GENUINE_ACCOUNT_JOURNEY_ACCEPTANCE_20261103.md) are canonical. Fresh Auth/DB startup is blocked at real HTTPS readiness after current68 migrations; no Account browser/persistence capability is accepted. Rebind future fresh resource source pins to this integration checkpoint, preserve older failed packets without query/reuse/reset, and keep all existing held gates.
+
+
+## Portal bounded end-to-end delivery, 3 November 2026
+
+Existing full rebuild goal continues through independently accepted capabilities; see [the milestone schedule](portal-rebuild/END_TO_END_MILESTONES_20261103.md). Counts remain0 bounded capabilities,0/26 fully accepted screens,0/10 complete journeys (mounted24/source12 remain separate). R8 authentic CLI/TLS bootstrap and all68 migrations plus synthetic A/B seed passed; ordinary browser A OTP/PKCE login succeeded, first Account read503 before a write. Actual workerd rejects redirect:error. Corrected772c seven-path transport passes full R2 Source review, independent96/96, primary87/87 and Parent gateway24/24; original late-response retirement defect/raw remains preserved. Four actual configured Root graphs exit0. Parent integrates only reviewed postimages. Same LIVE R8 DB/Auth/SQLite/keys are retained during explicit versioned host-code update; browser and code1 host have joined, no fixture reset/reseed/stop. M02 Orders, M04 publication, M03 notifications and M05 history implementation proceeds with disjoint ownership and no child resource grant. No full Account/C08/J06 or release acceptance. Guidance/M65/provider-refused photo remain held.

@@ -68,8 +68,8 @@ function quoteMoney(row: Record<string, unknown>) {
 function readShippingAddress(raw:unknown):ShippingAddress {
   const row=paymentObject(raw);const fields=['recipientName','line1','line2','city','region','postalCode','countryCode'];paymentKeys(row,fields);
   const limits:Record<string,number>={recipientName:200,line1:200,line2:200,city:100,region:100,postalCode:20,countryCode:2};
-  const result:Record<string,string>={};for(const field of fields){const value=row[field];requirePayment(typeof value==='string'&&Array.from(value).length<=limits[field]&&!/[\x00-\x1f\x7f]/.test(value));result[field]=value.trim();requirePayment(field==='line2'||result[field].length>0);}
-  requirePayment(/^[A-Za-z]{2}$/.test(result.countryCode));result.countryCode=result.countryCode.toUpperCase();return result as ShippingAddress;
+  const result:Record<string,string>={};for(const field of fields){const value=row[field];requirePayment(typeof value==='string'&&Array.from(value).length<=limits[field]!&&!/[\x00-\x1f\x7f]/.test(value));result[field]=value.trim();requirePayment(field==='line2'||result[field]!.length>0);}
+  requirePayment(/^[A-Za-z]{2}$/.test(result.countryCode!));result.countryCode=result.countryCode!.toUpperCase();return result as ShippingAddress;
 }
 
 /** No actor/advisor claims are forwarded. SQL rechecks identity, capabilities and enrollment. */

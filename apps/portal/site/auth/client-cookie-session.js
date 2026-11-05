@@ -1,12 +1,20 @@
+import {clientCommerceActions} from './commerce-actions.js';
 import {navigationReturnTo} from './navigation-return.js';
-import {CookieAdvisorSession, CookieSessionError, createCookieRequest} from './advisor-cookie-session.js';
+import {clientPlanActions} from './plan-actions.js';
+import {clientCareActions} from './care-actions.js';
+import {clientReviewActions} from './review-actions.js';
+import {CookieAdvisorSession, CookieSessionError, CookieRequestCancelled, createCookieRequest, cookieDenialStatus} from './advisor-cookie-session.js';
 export function useClientCookies(config,url,pendingPreview=false){
  return config?.clientSharedSessions===true && url.searchParams.get('preview')!=='1' && !pendingPreview && url.searchParams.get('workspace')!=='advisor' && !url.searchParams.has('advisorPreview') && !url.hash.startsWith('#/advisor');
 }
 export class CookieClientSession extends CookieAdvisorSession {
  constructor(options={}){
   super({...options,audience:'client'});
-  this.actions={operations:['client_read_v2','client_read','decide','receive','start','service_client_read','request_return'],payments:['client_read','submit_claim','confirm_shipping_address','evidence_url'],checkins:['client_read','submit_report','photo_view']};
+  this.actions={operations:['client_read_v2','client_read','decide','receive','start','service_client_read','request_return'],payments:['client_read','submit_claim','confirm_shipping_address','evidence_url'],checkins:['client_read','read_photo_head_v1','read_photo_inventory_v1','submit_report','photo_view'],plans:clientPlanActions,care:clientCareActions,reviews:clientReviewActions,commerce:clientCommerceActions};
+  this.actions.notifications=['list_inbox_v1','mark_seen_v1','request_status_v1'];
+  this.actions['account-profile']=['read_account_profile_v1','set_account_display_name_v1'];
+  this.actions['account-contact']=['read_account_contact_v1','request_account_email_change_v1','read_account_email_change_request_v1'];
+  this.actions['client-orders']=['read_client_orders_v1'];
   this.logoutKey='shelv:client:signout-pending';
   try{this.logoutPending=globalThis.localStorage.getItem(this.logoutKey)==='1';this.logoutPersisted=this.logoutPending;}catch{}
   try{this.channel=new BroadcastChannel('shelv-client-cookie-events');this.channel.addEventListener('message',e=>{if(e.data?.type==='logout'){this.logoutPending=true;this.logoutIntentId=e.data.id;try{this.logoutPersisted=globalThis.localStorage.getItem(this.logoutKey)==='1';}catch{this.logoutPersisted=this._cookiePending();}this._end();}else if(e.data?.type==='logout-complete'&&e.data.id===this.logoutIntentId){this.logoutPending=false;this.logoutPersisted=false;}});}catch{}
@@ -29,22 +37,38 @@ export class CookieClientSession extends CookieAdvisorSession {
  dispose(){this._end();this.channel?.close();}
 }
 export function createClientPhotoUpload(session){
- return async({file,angle,requestId,completionRequestId,expectedRevision},{signal}={})=>{
+ return async({file,angle,requestId,completionRequestId,expectedRevision},{signal,isApplicable}={})=>{
   const lease=await session.acquire();
+  const applicable=isApplicable===undefined?undefined:session._applicability(lease,isApplicable);
   try{
-   const data=await session._fetch('checkins/photos/upload',{body:file,signal,csrf:lease.csrf,headers:{'Content-Type':file.type,'x-request-id':requestId,'x-completion-request-id':completionRequestId,'x-expected-revision':String(expectedRevision),'x-photo-angle':angle}});
+   const data=await session._fetch('checkins/photos/upload',{body:file,signal,csrf:lease.csrf,...(applicable?{isApplicable:applicable}:{}),headers:{'Content-Type':file.type,'x-request-id':requestId,'x-completion-request-id':completionRequestId,'x-expected-revision':String(expectedRevision),'x-photo-angle':angle}});
+   if(applicable&&applicable()!==true)throw new CookieRequestCancelled();
    if(!session.isCurrent(lease))throw new CookieSessionError(401);return data;
-  }catch(error){if(!session.isCurrent(lease))throw new CookieSessionError(401);if(error.status===401)session._end();else if(error.status===503||!error.status)session.suspend();throw error;}
+  }catch(error){
+   const denial=cookieDenialStatus(error,session,lease);
+   if(denial===401){session._end();throw error;}
+   if(denial===403)throw error;
+   if(!session.isCurrent(lease))throw new CookieSessionError(401);
+   if(!(error instanceof CookieRequestCancelled)&&(error.status===503||!error.status&&!(signal?.aborted&&error.name==='AbortError')))session.suspend();throw error;
+  }
  };
 }
 export function createClientCookieRequest(channel,session){
+ if(channel==='guidance'||['reviews','commerce','account-profile','account-contact','client-orders'].includes(channel)&&session.audience!=='client')throw new CookieSessionError(403,'action_forbidden');
  const json=createCookieRequest(channel,session);
  return async(command,options={})=>{
   if(!(command instanceof FormData))return json(command,options);
   if(!['payments','checkins'].includes(channel))throw new CookieSessionError(403,'action_forbidden');
   const file=command.get('file');if(!file||typeof file==='string'||file.size>5242880)throw new CookieSessionError(413,'too_large');
   const lease=await session.acquire();
-  try{const data=await session._fetch(channel,{body:command,signal:options.signal,csrf:lease.csrf});if(!session.isCurrent(lease))throw new CookieSessionError(401);return data;}
-  catch(error){if(!session.isCurrent(lease))throw new CookieSessionError(401);if(error.status===401)session._end();else if(error.status===503)session.suspend();throw error;}
+  const applicable=options.isApplicable===undefined?undefined:session._applicability(lease,options.isApplicable);
+  try{const data=await session._fetch(channel,{body:command,signal:options.signal,csrf:lease.csrf,...(applicable?{isApplicable:applicable}:{})});if(!session.isCurrent(lease))throw new CookieSessionError(401);if(applicable&&applicable()!==true)throw new CookieRequestCancelled();return data;}
+  catch(error){
+   const denial=cookieDenialStatus(error,session,lease);
+   if(denial===401){session._end();throw error;}
+   if(denial===403)throw error;
+   if(!session.isCurrent(lease))throw new CookieSessionError(401);
+   if(error.status===503)session.suspend();throw error;
+  }
  };
 }

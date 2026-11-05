@@ -26,7 +26,7 @@ function clientView(value: unknown, allowAdditions=false): ConciergeClientView {
     return { ...p, itemStates };
   })();
   const history = readArray(v.history).map(p=>publication(p,allowAdditions));
-  requireValue(history.every((p, i) => plan !== null && p.version < plan.version && (i === 0 || history[i - 1].version < p.version)));
+  requireValue(history.every((p, i) => plan !== null && p.version < plan.version && (i === 0 || history[i - 1]!.version < p.version)));
   const proposal = readObject(v.orderProposal);
   requireValue(proposal.kind === 'proposal' && proposal.currency === 'USD' && proposal.payable === false && proposal.shippingAndTaxConfirmed === false);
   const items = readRecommendations(proposal.items,{allowAdditions});

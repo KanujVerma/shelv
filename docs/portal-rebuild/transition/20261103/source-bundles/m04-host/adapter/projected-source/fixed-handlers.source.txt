@@ -1,0 +1,35 @@
+import {PORTAL_ORIGIN,SUPABASE_ORIGIN} from '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/apps/portal/session-integration/runtime/server/policy.ts';
+import {readConciergeJson} from '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/supabase/functions/concierge-operations/body.ts';
+import {handleConciergeRequest} from '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/supabase/functions/concierge-operations/handler.ts';
+import {createConciergeSupabasePorts} from '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/supabase/functions/concierge-operations/runtime.ts';
+import {handlePlanRequest} from '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/supabase/functions/concierge-plans/handler.ts';
+import {createPlanPorts} from '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/supabase/functions/concierge-plans/runtime.ts';
+import {handlePaymentRequest} from '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/supabase/functions/concierge-payments/handler.ts';
+import {createPaymentPorts} from '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/supabase/functions/concierge-payments/runtime.ts';
+import {handleCareRequest} from '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/supabase/functions/concierge-care/handler.ts';
+import {createCarePorts} from '/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/supabase/functions/concierge-care/runtime.ts';
+const m04PlanActions=new Set(["list_plans_v1","create_draft_v1","read_draft_v1","save_draft_v1","compare_import_v1","apply_import_v1","assign_draft_v1","review_section_v1","read_draft_dependencies_v1","validate_draft_v1","read_advisor_gate_v1","approve_publication_v1","publish_plan_v1","request_status_v1","read_advisor_publication_v1","read_client_plan_v1"]);
+const m04PaymentActions=new Set(["advisor_read","client_read","issue_quote","submit_claim","confirm_payment"]);
+const m04CareActions=new Set(["read_advisor_use_history_v1","read_advisor_publication_v2"]);
+const fixtureServiceAction=function fixtureServiceAction(pathname,command){
+  requireM04(command&&typeof command==='object'&&!Array.isArray(command),'fixed service command required');
+  if(pathname==='/functions/v1/concierge-operations'&&command.action==='advisor_list')return 'operations';
+  if(pathname==='/functions/v1/concierge-plans'&&command.schemaVersion===1&&m04PlanActions.has(command.action))return command.action==='read_client_plan_v1'?'diagnostic-v1':'plans';
+  if(pathname==='/functions/v1/concierge-payments'&&command.schemaVersion===2&&m04PaymentActions.has(command.action))return 'payments';
+  if(pathname==='/functions/v1/concierge-care'&&command.schemaVersion===1&&m04CareActions.has(command.action))return 'care-read';
+  throw Error('M04 fixed service/action refused; no held or diagnostic fallback');
+};
+const requireM04=(condition,message)=>{if(!condition)throw Error(message);};
+export async function m04FixedFetch(input,init){
+ const request=new Request(input,init),url=new URL(request.url);
+ if(!url.pathname.startsWith('/functions/'))return globalThis.fetch(request);
+ if(url.origin!==SUPABASE_ORIGIN||url.username||url.password||url.search||url.hash||request.method!=='POST')throw Error('M04 fixed function origin/method refused');
+ const command=await readConciergeJson(request.clone().body,500000);
+ const family=fixtureServiceAction(url.pathname,command);
+ const config={supabaseUrl:SUPABASE_ORIGIN,publicKey:request.headers.get('apikey')??'',allowedOrigins:[PORTAL_ORIGIN],fetch:(input,init)=>globalThis.fetch(input,init)};
+ if(family==='operations')return handleConciergeRequest(request,createConciergeSupabasePorts(config));
+ if(family==='plans'||family==='diagnostic-v1')return handlePlanRequest(request,createPlanPorts(config));
+ if(family==='payments')return handlePaymentRequest(request,createPaymentPorts(config));
+ if(family==='care-read')return handleCareRequest(request,createCarePorts(config));
+ throw Error('M04 service unavailable');
+}

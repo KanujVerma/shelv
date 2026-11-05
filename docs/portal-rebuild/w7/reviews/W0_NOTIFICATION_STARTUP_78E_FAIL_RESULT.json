@@ -1,0 +1,180 @@
+{
+  "owner": "Kanuj",
+  "head": "78ea50d28a3a20bbc5c25bae0d3b3d3250570ca8",
+  "base": "f060f225983d388bccf5423983e8e0beca540251",
+  "sourcePins": [
+    {
+      "path": "apps/portal/site/auth/portal-routes.js",
+      "bytes": 8889,
+      "sha256": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5"
+    },
+    {
+      "path": "apps/portal/src/app/Application.tsx",
+      "bytes": 22958,
+      "sha256": "02acf950ab71a21cbe71bdb6ddd83c458173120f8a4791d9ebb4f5b4f365d11b"
+    },
+    {
+      "path": "apps/portal/src/app/Shell.tsx",
+      "bytes": 5340,
+      "sha256": "5650f3f4ac3f2cac71ef8a2c142c1dd6a8c16f2685115710ab39115994476661"
+    },
+    {
+      "path": "apps/portal/src/app/notifications-entry.tsx",
+      "bytes": 7993,
+      "sha256": "9ede760c0ef1e40c5cfa03274ecd5b30323f52b0c1f0e0509ef833d822a3fdec"
+    },
+    {
+      "path": "apps/portal/src/navigation/routes.ts",
+      "bytes": 1496,
+      "sha256": "48a7efc90a6b94d062010e30f0a31b99393c85cf14a804b2426d7b62d921032d"
+    },
+    {
+      "path": "apps/portal/tests/helpers/self-purchase-application-preimage.mjs",
+      "bytes": 5106,
+      "sha256": "c33394877613268b7469ed290005c5dd5b15ad3b4bf08e122bc1d96db54ea98c"
+    },
+    {
+      "path": "apps/portal/tests/w0-notifications-startup-preservation.test.mjs",
+      "bytes": 1227,
+      "sha256": "d46d6b0a914e9c3cfe61707d4293e27b3d2b84106aec6f070e9f2734fa53be0c"
+    },
+    {
+      "path": "apps/portal/tests/w0-notifications-startup.test.mjs",
+      "bytes": 7419,
+      "sha256": "3ad1f2b6e16a5a139dae38d0f93773d113e6a11b266519cc4ad782ed51bcdb19"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_STARTUP_20261103.md",
+      "bytes": 4419,
+      "sha256": "6665d9e40524a4f3ec6773084ade99d417c0dab7a02d883fedeeb9c684a269be"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "apps/portal/src/app/bootstrap.ts",
+      "bytes": 1391,
+      "sha256": "198f56211fd06cf3f553bcf457ce1133a9bcc1274b19616dc1bbf0e1c9101a71"
+    },
+    {
+      "path": "apps/portal/src/app/start.tsx",
+      "bytes": 1796,
+      "sha256": "8bb306e44bc26401ff187e3c6cbd9918324d128611902ddb47b3b1461ac9c213"
+    },
+    {
+      "path": "apps/portal/src/app/session.ts",
+      "bytes": 6061,
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    {
+      "path": "apps/portal/site/auth/advisor-cookie-session.js",
+      "bytes": 30545,
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5"
+    },
+    {
+      "path": "apps/portal/site/auth/client-cookie-session.js",
+      "bytes": 6833,
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0"
+    },
+    {
+      "path": "apps/portal/site/auth/navigation-return.js",
+      "bytes": 3284,
+      "sha256": "aab8c07b9c589e1af4bf521716407e35bb97574664196b3e58b2d1a9485e4dcd"
+    },
+    {
+      "path": "apps/portal/src/navigation/history.ts",
+      "bytes": 11750,
+      "sha256": "8819dd47dd9b966f63e580fbc6a24d77dec98ab64cfd45f4d2c5adb3fd5e52df"
+    },
+    {
+      "path": "apps/portal/src/navigation/react.tsx",
+      "bytes": 2701,
+      "sha256": "686317041523a29dd750ac5ba88387199b6239634ebae460e5c32617619db7fa"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/controller.ts",
+      "bytes": 19282,
+      "sha256": "685a1c9643c861b362f958bc73fadecb2fc3448d84b11131805899319f529c26"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/types.ts",
+      "bytes": 2474,
+      "sha256": "ff6b738bc27d9f3a8b675b1cf091d068c844b2fe874880f60e530ae65e5196a3"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-notifications-entry-fixture.mjs",
+      "bytes": 12044,
+      "sha256": "016cb32809c28204cb51ccac3d345529c1f5f2f7a6e16a461fcdfd151c694423"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-account-entry-fixture.mjs",
+      "bytes": 19609,
+      "sha256": "545191973f14f7d64ec050d7b5d499d44e97e8ffe61e6ec5e30b2759427178cf"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 303079,
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "bytes": 123808,
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "patchSha256": "76e57e2966586691e327c92f2c620b288ee53a7a4b813c7b02d7e55b4ce0b7fd",
+  "ownerPacketSha256": "3a41f7f194c18d62c2cfed9f32cacdd6cdad1248e2b9cbbc2a20906546b3920e",
+  "verdict": "WITHHELD_COMPLETE_STARTUP_SOURCE_ENTRY_OWNERSHIP_FINDING",
+  "finding": "W7-W0-NOTIF-OWNER-01",
+  "severity": "P2",
+  "origin": "Preexisting lifecycle in modifiednotifications-entry.tsx, not claimedintroducedbyroutingclause",
+  "independentCurrentControl": {
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 1,
+    "node": "v22.23.0",
+    "sequence": "old.start -> old.stop -> new.start -> old.start",
+    "actualNewEntryPhase": "ended",
+    "expectedNewEntryPhase": "active",
+    "actualCookieStatus": "ready"
+  },
+  "reviewStop": "Firstmaterialfinding; no current81/types/fullhead acceptance",
+  "control": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-startup-78e/source/apps/portal/tests/w7-notifications-stopped-owner.test.mjs",
+    "archive": "source-controls/W0_NOTIF_OWNER/w7-notifications-stopped-owner.test.mjs",
+    "bytes": 871,
+    "sha256": "3eecd4a0c06359da87828d58cc59dc03c52ae0969fd5c57292c5cc2de5b41620"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-startup-78e/W7-STOPPED-OWNER-ORIGINAL.log",
+      "bytes": 1221,
+      "sha256": "02c74ae6516369604451d58ce20c5a9e69770d049b2a3055a8c6a1122e38bdd0",
+      "exitCode": 1,
+      "classification": "SOURCE_ORIGINAL_FINDING"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-startup-78e/STOPPED-OWNER-EXEC.json",
+      "bytes": 355,
+      "sha256": "e8ed193ce83d599d0883cd126932945b9fc435ff707421cd4106a765e871a8aa",
+      "exitCode": 1,
+      "classification": "SOURCE_ORIGINAL_FINDING"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notification-startup-78e/READ-SETUP.json",
+      "bytes": 245,
+      "sha256": "3ae243ab563f020897a9205943f65528113bc0da42d6e9c72f1f439db229fd4c",
+      "exitCode": 1,
+      "classification": "SOURCE_METADATA_SETUP"
+    }
+  ],
+  "limits": [
+    "In-memory entry.stop lifecycle sequence, not reuse of a stopped Auth/test fixture",
+    "Actual Root runtime/navigator/notification handler/retainedtransport with closed syntheticHTTP; no actualproviderAuthSQL/browser",
+    "No demonstrated user-browser reachability, cross-actorprivilege/bypass/privatepayloadleak/lostwrite or backendduplicate effect",
+    "Original native4462894740 startup OLD1/7 and witness1/2 remain separatelyownerattributed; routefix may be correct but completecandidate sourcegate withheld",
+    "No featureproductioncode correction or principal44/Guidance/M65/photo/private-return heldaudit/resourcegrant"
+  ]
+}

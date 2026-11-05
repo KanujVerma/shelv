@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "kind": "SOURCE_ONLY_IMMUTABLE_CANDIDATE_MANIFEST",
+  "adapterSha256": "65a1830172bafccc00f59001f1ec346738297c5ced99fe5e554dc59313010322",
+  "callerSha256": "bac0459987d1e40bb90bef1e51091e80bbcd0e37e61281f302410ca54e24e198",
+  "entries": [
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/adapter/account-advisor-local-bindings.mjs",
+      "bytes": 48493,
+      "sha256": "65a1830172bafccc00f59001f1ec346738297c5ced99fe5e554dc59313010322"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/adapter/projected-source/client-upstream.ts.source.txt",
+      "bytes": 17679,
+      "sha256": "79c2a78373d27965259a8a558fed5ba9d0ca1f31962241b99872a68213df9917"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/adapter/projected-source/fixed-handlers.source.txt",
+      "bytes": 4161,
+      "sha256": "1d80001c562cfc46e986c393a6e78c76cf9250b004dccbc23d7a2c5d92ccf95e"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/adapter/projected-source/gateway-entry.source.txt",
+      "bytes": 915,
+      "sha256": "e16531d0937fcb734b6f84deac8fcc15c50e45b908a3f971b29b3d9c6ba38d6a"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/adapter/projected-source/upstream.ts.source.txt",
+      "bytes": 25587,
+      "sha256": "722395def695b028423b27a7e5846304a3c0db3c005cdeacaeb018e52a753bf8"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/caller/genuine-advisor-host.mjs",
+      "bytes": 52629,
+      "sha256": "bac0459987d1e40bb90bef1e51091e80bbcd0e37e61281f302410ca54e24e198"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/CONFIGURE-READ.json",
+      "bytes": 2241,
+      "sha256": "c6f0ada6ffa6f9d56ffa15074390bf7da2f2941a6f4702b00d125b66edfbabae"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/FULL-EXACT-INVERSE.json",
+      "bytes": 33060,
+      "sha256": "6fd6b6e092fc19532f9cf59dcb238474615022f90b2a29688ade45e0f25564d8"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/HANDOFF.json",
+      "bytes": 3277,
+      "sha256": "e010c10778b1208b6cdfb17bd67c8f3d0d9c699298910dd0541e84f7d92e7c3b"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/PROTECTED-SOURCE-PROOF.json",
+      "bytes": 2504,
+      "sha256": "40aeff43025dad81752298ea29e24a799fbeadf83cc9ff162d0e45e579a38027"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/ROOT-PROVIDER-EXACT-INVERSE.json",
+      "bytes": 1429,
+      "sha256": "e7cd601744d8a7c064bcc0d5ddf73c19d943c0bfe3e365eccebe6ada7533f969"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/final-portal.command.json",
+      "bytes": 429,
+      "sha256": "83749880bb4eeec7f0aa6d02b1888354ac9dfb5b113cd8d5bea7fd8b9edb8a1b"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/final-portal.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/final-portal.stdout.txt",
+      "bytes": 16168,
+      "sha256": "de8d0de089f5cbda5d83bc99f109daa13ee316abb8f90063a237dd586ddd9e62"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/final-root.command.json",
+      "bytes": 405,
+      "sha256": "af5aed633aa89a41e2f86a217df75aff36fb0e17e7660b04c19144e0287cdea7"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/final-root.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/final-root.stdout.txt",
+      "bytes": 16157,
+      "sha256": "2b3a890058b5e2d383f3a12a7104b6ea43f09684619ad517c0ee38010a36769a"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/green-combined.command.json",
+      "bytes": 380,
+      "sha256": "fe47ed91982a03efd12710bc4af2dd2270b9c6362e62ddb9c9bcab89e0ca4a7a"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/green-combined.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/green-combined.stdout.txt",
+      "bytes": 14976,
+      "sha256": "b42b916a165ac6f1d5f8b5911adabc93d82a1fa1fdc680db8dce4aefa1ae6761"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/green-initial.command.json",
+      "bytes": 284,
+      "sha256": "839d70663f9c594484718c0a160ebac659162fff593afd92fe8b0dc3b3357f95"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/green-initial.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/green-initial.stdout.txt",
+      "bytes": 8949,
+      "sha256": "4aa34445f451d8c3a3025bc6e4f547e7320b42139d251c3a8516e1096b37975e"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/red-adapter.mjs",
+      "bytes": 38919,
+      "sha256": "b923df607f6491a39ede9b01b7bf60121406775bd9aa4cbb28231eccb82949ce"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/red-caller.mjs",
+      "bytes": 39942,
+      "sha256": "3430d1f79d0b22628c6d0172f677539249d613fd25b134219996a46a79239089"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/red-input-caller.mjs",
+      "bytes": 50674,
+      "sha256": "b0244c0847356e212fee63a41a2a4bfc8fa84a6b5d158f128f79b5433a163910"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/red-input.command.json",
+      "bytes": 268,
+      "sha256": "2ef94b09db9a6ecf638e299fb0f901c301811b7915f720bf6c75c4f45fbac330"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/red-input.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/red-input.stdout.txt",
+      "bytes": 8396,
+      "sha256": "4127389df3cfb0938e778e5776452a0f0eb67f856d6dedba8809d09ad15ae5ac"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/red.command.json",
+      "bytes": 284,
+      "sha256": "560c8d1027dcc6abed37a5c6a6a654ce303c91263895b39d3bd075d3e16d80c5"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/red.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/receipts/red.stdout.txt",
+      "bytes": 40332,
+      "sha256": "a778b8be8edc329874fa206f301d47518663a446d32673026d92d1203dd64c01"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/setup-plan/TRUSTED-SETUP-PLAN.json",
+      "bytes": 14843,
+      "sha256": "b81cd5c70a0bd6779e0ee58540beb367e6019e1c0682bb8edbfcf2bee24e3566"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/setup-plan/adapter-additions.txt",
+      "bytes": 7968,
+      "sha256": "be06f1a506a2a769f74a4005379221dfeb4aec6032ee47ad989138bd2b310b78"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/setup-plan/build-projection.mjs",
+      "bytes": 10909,
+      "sha256": "12d2aca28cae8851d830c469320546c06c2308f1eb6c57082587e0ce52e23fb4"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/setup-plan/caller-additions.txt",
+      "bytes": 12245,
+      "sha256": "99b6d39eba5e7e7b546d5bbb7ff0725d239f763b9bd2db788ded26b682985a96"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/unit/observation-input.test.mjs",
+      "bytes": 9976,
+      "sha256": "afb65d964bb7b7d7d5a7d1084c281b92a51b0a318aa155fe374b5fdedbdca81b"
+    },
+    {
+      "path": ".local-artifacts/m04-trusted-setup-source/implementation/unit/source-controls.test.mjs",
+      "bytes": 9904,
+      "sha256": "2ca42353e77d0967c90474157b35796035e4e73659f3e7f8b33645d5dad4032d"
+    }
+  ]
+}

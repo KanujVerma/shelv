@@ -1,0 +1,60 @@
+{
+  "owner": "Kanuj",
+  "publishedHead": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "ref": "refs/heads/kanuj/portal-rebuild-integration-20261030",
+  "observedAt": "2026-11-03T23:47:16.266366+00:00",
+  "lsRemoteExitCode": 0,
+  "lsRemoteRaw": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-plan-lookup-e37/W7-PUBLISHED-REF.txt",
+    "sha256": "4a19eaa6da107d993b5fe62f582f38b48b3f401e721b52e2a49cca76846bc1a1"
+  },
+  "proofLevel": "SOURCE_REFERENCE_AND_BOUNDED_POSTIMAGE_CORRESPONDENCE_ONLY",
+  "wholeIntegratedCensus": "NOT_MEASURED",
+  "comparisons": [
+    {
+      "reviewedHead": "677604e514565d113738dcf733ae502e0c3ca6f8",
+      "report": "reviews/W0_QUOTE_677_RESULT.json",
+      "paths": [
+        "apps/portal/src/app/ports.ts",
+        "apps/portal/tests/w0-advisor-service-quote-request.test.mjs"
+      ],
+      "allByteIdentical": true
+    },
+    {
+      "reviewedHead": "7e6cc18b1f2e28e98bdd9cb54d27a156b2e456db",
+      "report": "reviews/W0_SERVICE_ENTRY_7E6_RESULT.json",
+      "paths": [
+        "apps/portal/src/app/Application.tsx",
+        "apps/portal/src/app/ServicePaymentEntry.tsx",
+        "apps/portal/src/app/service-payment-entry.ts",
+        "apps/portal/tests/w0-service-payment-entry.test.mjs"
+      ],
+      "allByteIdentical": true
+    },
+    {
+      "reviewedHead": "5e5db6b1389bfd21ad1a32af711d8f8c015ebc34",
+      "report": "reviews/W0_CLIENT_PLANS_5E5_RESULT.json",
+      "paths": [
+        "apps/portal/src/app/advisor-client-plans-request.ts",
+        "apps/portal/tests/w0-advisor-client-plans-request.test.mjs"
+      ],
+      "allByteIdentical": true
+    }
+  ],
+  "all68MigrationPinsStillMatch8893": true,
+  "publishedW7LedgerByteExactOwn44905056": true,
+  "newExecutionAtPublishedHead": "UNRUN",
+  "ownerReportedChecks": "fourgraphs0/root1923pass18nativeoptinskips/builds0; VerifyBuildSUCCESS/otherCIalive/nativehasfindings. Not independently repeated byW7.",
+  "nativeFindings": [
+    {
+      "id": 4460794439,
+      "status": "OPEN",
+      "scope": "Plan lookup, inertsourceproposal separate; canonicalhelperunchanged"
+    },
+    {
+      "id": 4461800685,
+      "status": "UNACCEPTED_HELD_PHOTO_SCOPE",
+      "scope": "Ownerreportedonly; no independentverdict/audit/sourcefix/repro/resources orretry/reroute"
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "owner": "Kanuj",
+  "head": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
+  "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+  "verdict": "PASS_BOUNDED_CURRENT_GIT_SOURCE_CORRESPONDENCE_FRESH_HOSTED_CUSTODY_NATIVE_QUOTA_UNACCEPTED",
+  "evidenceGeneration": "FRESH_CURRENT_57CAB_NOT_CB9C_RECOVERY",
+  "freshPacket": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/b7bf-57cab/W2_B7BF_FRESH_CURRENT_CUSTODY_PACKET.json",
+    "bytes": 7885,
+    "sha256": "57cab4e4fb2cf62f454f9ecb9605cd39d435f644d7995c67a2ad4671d1cbe67d"
+  },
+  "freshOwnerReport": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/b7bf-57cab/W2_B7BF_FRESH_CURRENT_CUSTODY.md",
+    "bytes": 2163,
+    "sha256": "4bad5d869bea50dc12dc88feba16dce4979bf5f43430b4b8cbd211d11703ac56"
+  },
+  "verification": {
+    "head": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
+    "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+    "freshPacketSha256": "57cab4e4fb2cf62f454f9ecb9605cd39d435f644d7995c67a2ad4671d1cbe67d",
+    "newGenerationNotOriginalRecovery": true,
+    "originalCb9cPathStillAbsent": true,
+    "sourcePinsVerified": 9,
+    "eightBlobIdentityOnlyAgainstHistorical8d": true,
+    "selectedDependenciesVerified": 21,
+    "sixEntryLinesRemoveWholeBaseDoc": true,
+    "freshDerivedPatchSha256": "52e563c7761a84559dc151d7ceacbea0e9ad5bea0c105a14802392b164949042",
+    "hostedCheckout": "c5cc542c8c92580e23b305f38381121f98377560",
+    "parentsFromFreshApi": [
+      "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+      "b7bf0b11126a3b3dba3242fd03a7357db47528ca"
+    ],
+    "treeEqualsLocalAuthoredGit": true,
+    "executedCommitAvailableInLocalGit": false,
+    "logPins": [
+      {
+        "file": "PR239_B7BF_BUILD_COMPLETE.log",
+        "bytes": 1570232,
+        "sha256": "623ed5d637d8ddd6f86f158e725c6de1340d0380e36c4990b07ff83bf108b9ad",
+        "mode": "0600",
+        "checkout": "c5cc542c8c92580e23b305f38381121f98377560"
+      },
+      {
+        "file": "PR239_B7BF_DATABASE_COMPLETE.log",
+        "bytes": 195211,
+        "sha256": "a276fdb80b906d1993d54e958f8bb6af9631cb55de762fb7478d62b8cccf57ec",
+        "mode": "0600",
+        "checkout": "c5cc542c8c92580e23b305f38381121f98377560"
+      },
+      {
+        "file": "PR239_B7BF_PORTAL_COMPLETE.log",
+        "bytes": 3509919,
+        "sha256": "1fabfe038799e4cec543b75cfc6302f6b5e756220cb7b135559ccb4072ec0f78",
+        "mode": "0600",
+        "checkout": "c5cc542c8c92580e23b305f38381121f98377560"
+      }
+    ],
+    "portalMain": {
+      "pass": 4032,
+      "fail": 0
+    },
+    "selectorRecordedPassVerified": true,
+    "nativeQuotaFailedNoCleanReview": true,
+    "testsOrReviewsRequested": false
+  },
+  "sourcePins": {
+    "apps/portal/src/features/advisor/AdvisorWorkspace.tsx": {
+      "blob": "6d14e6eeb930b770c4b8a646f126a91f1a4f31ab",
+      "sha256": "c20c3397f893f4a56f9b6bbf4474925c3545a535e721d57e7510670562dd405a",
+      "bytes": 44237
+    },
+    "apps/portal/src/features/advisor/index.ts": {
+      "blob": "8c95cb511480618c27476610b489dd8e2040f828",
+      "sha256": "7dd91464005be3976075f81d00064f186e65b341616116de5c037a1f69533e27",
+      "bytes": 1547
+    },
+    "apps/portal/src/features/advisor/inline-preview/InlinePreview.tsx": {
+      "blob": "52c4ac7698c7e20a0a3046ab4003fc315e6fbc6e",
+      "sha256": "c37af4805a37ead4e02143dfc3e3582e6110ebeb3e55228794f54e053fe1b8b9",
+      "bytes": 3677
+    },
+    "apps/portal/src/features/advisor/inline-preview/controller.ts": {
+      "blob": "93f7a4179a02837f178141459543b22e67f325c2",
+      "sha256": "d784356753d935950abc663c2a452ea9682594efe2e1d6cf210e20220c46712b",
+      "bytes": 8731
+    },
+    "apps/portal/src/features/advisor/inline-preview/types.ts": {
+      "blob": "a1e960be876d076c691b4b347a4bc6f86dcfbc3c",
+      "sha256": "5acff31cfcaac306513cd03be431a1ead84c9d66d553ca85735b72b3bf924c09",
+      "bytes": 1237
+    },
+    "apps/portal/tests/w2-advisor-inline-preview-view.test.mjs": {
+      "blob": "a25b9781e5539ae95132488a586e803efe2416c2",
+      "sha256": "df5ba77dac0879ba10039264ddfe626a4b978e3c56d96a89ec4be1d659b21c56",
+      "bytes": 7910
+    },
+    "apps/portal/tests/w2-advisor-inline-preview.test.mjs": {
+      "blob": "4e207ef5460a9fa8dd42800548e1696b29e137f5",
+      "sha256": "60cb2e263ed7a5a7c21a11b312fb57da9b7c8ee92f4bd47a61d1d3653737879d",
+      "bytes": 8596
+    },
+    "docs/CONTEXT_SYNC.md": {
+      "blob": "4a843dbd4c0123d412c1d468732467aa24f41854",
+      "sha256": "2e99e4452e18c1b9f5c5a2567ec4f949388dd250dd1eae561a40357e2a006f96",
+      "bytes": 412414
+    },
+    "docs/portal-rebuild/w2/INLINE_PREVIEW_SOURCE_20261103.md": {
+      "blob": "59fc8debe8b6adc988646c7580c17108d1cc3b3e",
+      "sha256": "332bc501b9e0ed52937c4d102ea9e9c9a40bb382aa6e134644b1ba3e0abd09b7",
+      "bytes": 9293
+    }
+  },
+  "freshDerivedPatch": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/b7bf-57cab/FRESH-GIT-DERIVED.patch",
+    "bytes": 47046,
+    "sha256": "52e563c7761a84559dc151d7ceacbea0e9ad5bea0c105a14802392b164949042"
+  },
+  "freshCompleteLogs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/b7bf-57cab/PR239_B7BF_BUILD_COMPLETE.log",
+      "bytes": 1570232,
+      "sha256": "623ed5d637d8ddd6f86f158e725c6de1340d0380e36c4990b07ff83bf108b9ad"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/b7bf-57cab/PR239_B7BF_DATABASE_COMPLETE.log",
+      "bytes": 195211,
+      "sha256": "a276fdb80b906d1993d54e958f8bb6af9631cb55de762fb7478d62b8cccf57ec"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/b7bf-57cab/PR239_B7BF_PORTAL_COMPLETE.log",
+      "bytes": 3509919,
+      "sha256": "1fabfe038799e4cec543b75cfc6302f6b5e756220cb7b135559ccb4072ec0f78"
+    }
+  ],
+  "freshApi": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/b7bf-57cab/CHECKOUT_COMMIT_API.json",
+    "bytes": 2850,
+    "sha256": "68c160f2d543106cf5e7c0e504048958ad633155d56e2a1433990a287051e568"
+  },
+  "freshCheckoutReceipt": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/b7bf-57cab/B7BF_COMPLETE_CHECKOUT_RECEIPT.json",
+    "bytes": 2546,
+    "sha256": "7c88fa09d547542a9b9418d022641e48ac4e27e95a7602af7e3efc6ef282e78b"
+  },
+  "nativeQuotaStatus": {
+    "head": "b7bf0b11126a3b3dba3242fd03a7357db47528ca",
+    "status": "FAILED_USAGE_QUOTA",
+    "summaryComment": 6623739942,
+    "quotaComment": 6627713885,
+    "completedClean": false,
+    "newReviewRequestOrPaidFallback": false
+  },
+  "historical8dSourceAttribution": {
+    "commit": "502fff67e0f6cc74a36692a0a2c87b9a6c458962",
+    "reportSHA256": "3bd0b0bf9137a88205f5f514c34c074f5549a433d7c4a4ac54345d7ae857c297",
+    "scope": "8d complete9 source438/frontend0 dependency-held; historical only; original raw current availability not inferred"
+  },
+  "originalCb9cRecoveredOrVerified": false,
+  "newW7TestOrResourceExecution": false,
+  "integrationReadiness": "NOT_ACCEPTED_NATIVE_QUOTA_NO_COMPLETED_CLEAN_REVIEW_AND_ACTUAL_MOUNT_GATES_OPEN",
+  "reportSha256": "a42436021454daff35b9f167c83db5439b7074f95a0c296f2cbf22ee44700bdd",
+  "recordedAt": "2026-11-04T22:36:32.853542+00:00"
+}

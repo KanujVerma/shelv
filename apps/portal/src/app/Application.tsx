@@ -1,0 +1,745 @@
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import type { ReactNode } from "react";
+import {
+  NavigationProvider,
+  RouteLink,
+  usePortalNavigation,
+} from "../navigation/react.tsx";
+import { createPortalNavigator } from "../navigation/history.ts";
+import { safeReturnPath } from "../navigation/routes.ts";
+import type { PortalRoute } from "../navigation/routes.ts";
+import { PageHeader, Panel } from "../shell/PortalShell.tsx";
+import { Badge, Button, Field, Input, StatusNotice } from "../ui/index.ts";
+import { ClientPlan } from "../features/plan/ClientPlan.tsx";
+import { UnpublishedPlanPreview } from "../features/plan/UnpublishedPlanPreview.tsx";
+import type {
+  PlanNavigationPort,
+  PlanSessionBoundary,
+} from "../features/plan/types.ts";
+import { AdvisorWorkspaceNotifications } from "./AdvisorWorkspaceNotifications.tsx";
+import { createAdvisorController } from "../features/advisor/controller.ts";
+import type { AdvisorController } from "../features/advisor/types.ts";
+import { createClientPorts, createAdvisorPorts } from "./ports.ts";
+import { createClientComposition,deferClientHistoryRestoration } from './client-composition.ts';
+import { ClientHistoryContent } from './ClientHistory.tsx';
+export { ClientHistoryContent } from './ClientHistory.tsx';
+import { createClientPlanController } from "./client-state.ts";
+import { bindPreview, loadPreview } from "./preview.ts";
+import type { PreviewRecord } from "./preview.ts";
+import { createBrowserPreviewNavigation } from "./preview-navigation.ts";
+import type { ApplicationSession } from "./session.ts";
+import type { PreparedApplication } from "./bootstrap.ts";
+import { ApplicationShell } from "./Shell.tsx";
+import {AdvisorClientApplication} from "./AdvisorClientEntry.tsx";
+import { OwnerPolicyApplication } from "./OwnerPolicyApplication.tsx";
+import { MayaApplication } from "./MayaApplication.tsx";
+import {createNotificationsEntry, NotificationsEntryView} from "./notifications-entry.tsx";
+import {createAccountEntry, AccountEntryView} from "./account-entry.tsx";
+import {createServicePaymentEntry} from './service-payment-entry.ts';
+import {ServicePaymentEntryView} from './ServicePaymentEntry.tsx';
+import {createClientOrdersEntry, ClientOrdersEntryView} from "./client-orders-entry.tsx";
+import {createSelfPurchaseNavigation} from './self-purchase-navigation.ts';
+import "./application.css";
+
+export function UnavailableModule({
+  title = "page unavailable",
+}: {
+  title?: string;
+}) {
+  return (
+    <>
+      <PageHeader title={title} />
+      <StatusNotice title="this page is not connected yet">
+        no action has been recorded.
+      </StatusNotice>
+    </>
+  );
+}
+/** Client inbox is independent of a successful clinical plan read. */
+function ClientNotificationsApplication({runtime}:{runtime:ApplicationSession}) {
+  const {navigator}=usePortalNavigation();
+  const entry=useMemo(()=>createNotificationsEntry(runtime,navigator),[runtime,navigator]);
+  return <NotificationsEntryView entry={entry}/>;
+}
+function AccountApplication({runtime}:{runtime:ApplicationSession}) {
+  const {navigator}=usePortalNavigation();
+  const entry=useMemo(()=>createAccountEntry(runtime,navigator),[runtime,navigator]);
+  return <><AccountEntryView entry={entry}/><RouteLink route={{name:'account-service'}}>service &amp; payments</RouteLink></>;
+}
+function AccountServiceApplication({runtime}:{runtime:ApplicationSession}) {
+  const {navigator}=usePortalNavigation();
+  const entry=useMemo(()=>createServicePaymentEntry(runtime,navigator),[runtime,navigator]);
+  return <><ServicePaymentEntryView entry={entry}/><RouteLink route={{name:'account'}}>back to account</RouteLink></>;
+}
+function ClientOrdersApplication({runtime}:{runtime:ApplicationSession}) {
+  const {navigator}=usePortalNavigation();
+  const entry=useMemo(()=>createClientOrdersEntry(runtime,navigator),[runtime,navigator]);
+  return <ClientOrdersEntryView entry={entry}/>;
+}
+export function PublicEntry({ route }: { route: PortalRoute | null }) {
+  if (route?.name === "maya") return <MayaApplication stage={route.stage}/>;
+  return (
+    <main className="app-entry">
+      <span className="shelv-wordmark">shelv</span>
+      <PageHeader title="page unavailable" />
+      <StatusNotice title="check the address">
+        open your plan or advisor workspace to continue.
+      </StatusNotice>
+      <div className="app-actions">
+        <a className="shelv-button shelv-button-secondary" href="/plan">
+          your plan
+        </a>
+        <a className="shelv-button shelv-button-ghost" href="/advisor/clients">
+          advisor workspace
+        </a>
+      </div>
+    </main>
+  );
+}
+/** Startup is created once outside React, so StrictMode cannot exchange a PKCE
+ * code twice. It uses only the retained cookie adapter's complete/restore. */
+export function PortalApplication({
+  runtime,
+  startup,
+  win,
+}: {
+  runtime: ApplicationSession;
+  startup: Promise<unknown>;
+  win: Window;
+}) {
+  const state = useSyncExternalStore(
+    runtime.subscribe,
+    runtime.getSnapshot,
+    runtime.getSnapshot,
+  );
+  const [starting, setStarting] = useState(true),
+    [error, setError] = useState<number | null>(null);
+  useEffect(() => {
+    let active = true;
+    void startup.then(
+      () => {
+        if (active) setStarting(false);
+      },
+      (e) => {
+        if (active) {
+          setError((e as { status?: number })?.status ?? 401);
+          setStarting(false);
+        }
+      },
+    );
+    return () => {
+      active = false;
+    };
+  }, [startup]);
+  const boundary = state.boundary;
+  if (boundary)
+    return (
+      <ConnectedApplication
+        key={boundary.key}
+        runtime={runtime}
+        boundary={boundary}
+        win={win}
+      />
+    );
+  return (
+    <main className="app-entry">
+      <span className="shelv-wordmark">shelv</span>
+      <PageHeader
+        title={
+          runtime.cookie.audience === "advisor" ? "advisor sign in" : "sign in"
+        }
+      />
+      {starting ? (
+        <StatusNotice tone="loading" title="checking your session" />
+      ) : (
+        <SignIn runtime={runtime} win={win} error={error} onError={setError} />
+      )}
+    </main>
+  );
+}
+function SignIn({
+  runtime,
+  win,
+  error,
+  onError,
+}: {
+  runtime: ApplicationSession;
+  win: Window;
+  error: number | null;
+  onError(value: number | null): void;
+}) {
+  const [email, setEmail] = useState(""),
+    [remember, setRemember] = useState(false),
+    [busy, setBusy] = useState(false),
+    [sent, setSent] = useState(false);
+  const retry = async () => {
+    setBusy(true);
+    onError(null);
+    try {
+      await runtime.restore();
+    } catch (e) {
+      onError((e as { status?: number })?.status ?? 503);
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <Panel>
+      {error ? (
+        <StatusNotice
+          tone={error === 503 ? "uncertain" : "denied"}
+          title={
+            error === 503
+              ? "session could not be verified"
+              : error === 403
+                ? "access unavailable"
+                : "sign-in link unavailable"
+          }
+        >
+          {error === 503
+            ? "check your connection, then try again."
+            : "request a new link in this browser. an invitation and current access are required."}
+        </StatusNotice>
+      ) : null}
+      <form
+        className="app-stack"
+        onSubmit={(event) => {
+          event.preventDefault();
+          setBusy(true);
+          onError(null);
+          setSent(false);
+          const returnTo =
+            safeReturnPath(
+              win.location.pathname + win.location.search,
+              runtime.cookie.audience,
+            ) ??
+            (runtime.cookie.audience === "advisor"
+              ? "/advisor/clients"
+              : "/plan");
+          void runtime
+            .sendLink(email, win.location.origin + returnTo, remember)
+            .then(
+              () => setSent(true),
+              (e) => onError((e as { status?: number })?.status ?? 503),
+            )
+            .finally(() => setBusy(false));
+        }}
+      >
+        <Field label="email" id="portal-email">
+          <Input
+            id="portal-email"
+            type="email"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            maxLength={320}
+          />
+        </Field>
+        <label className="app-check">
+          <input
+            type="checkbox"
+            checked={remember}
+            onChange={(e) => setRemember(e.target.checked)}
+          />
+          remember me on this browser
+        </label>
+        <Button type="submit" disabled={busy}>
+          send sign-in link
+        </Button>
+      </form>
+      {sent ? (
+        <StatusNotice title="check your email">
+          if your account has access, a sign-in link has been requested. open it
+          in this browser.
+        </StatusNotice>
+      ) : null}
+      <Button variant="ghost" disabled={busy} onClick={() => void retry()}>
+        check session again
+      </Button>
+    </Panel>
+  );
+}
+function ConnectedApplication({
+  runtime,
+  boundary,
+  win,
+}: {
+  runtime: ApplicationSession;
+  boundary: PlanSessionBoundary;
+  win: Window;
+}) {
+  const navigator = useMemo(
+    () => createPortalNavigator(win, { scopeKey: boundary.key, ...(runtime.cookie.audience==='client'?{deferRestoration:deferClientHistoryRestoration}:{}) }),
+    [win, boundary.key, runtime],
+  );
+  useEffect(() => () => navigator.dispose(), [navigator]);
+  return (
+    <NavigationProvider navigator={navigator}>
+      <ConnectedRoute runtime={runtime} boundary={boundary} win={win} />
+    </NavigationProvider>
+  );
+}
+function ConnectedRoute({
+  runtime,
+  boundary,
+  win,
+}: {
+  runtime: ApplicationSession;
+  boundary: PlanSessionBoundary;
+  win: Window;
+}) {
+  const { route } = usePortalNavigation(),
+    state = useSyncExternalStore(
+      runtime.subscribe,
+      runtime.getSnapshot,
+      runtime.getSnapshot,
+    );
+  const audience = runtime.cookie.audience;
+  const signOut = () => {
+    void runtime.signOut().catch(() => {
+      /* retained cookie ending marker remains; recovery uses sign in */
+    });
+  };
+  if (
+    !route ||
+    route.name === "maya" ||
+    (route.name !== "notifications" && route.name.startsWith("advisor-") !== (audience === "advisor"))
+  )
+    return (
+      <ApplicationShell audience={audience} onSignOut={signOut}>
+        <UnavailableModule />
+        <RouteLink
+          route={
+            audience === "advisor"
+              ? { name: "advisor-clients" }
+              : { name: "plan", routine: "morning" }
+          }
+        >
+          return to workspace
+        </RouteLink>
+      </ApplicationShell>
+    );
+  return (
+    <>
+      {state.status === "offline" ? (
+        <div className="app-offline">
+          <StatusNotice
+            tone="uncertain"
+            title="connection unavailable"
+            action={
+              <Button
+                variant="secondary"
+                onClick={() => void runtime.restore().catch(() => {})}
+              >
+                check connection
+              </Button>
+            }
+          >
+            unconfirmed work stays in this session. check its status before
+            retrying.
+          </StatusNotice>
+        </div>
+      ) : null}
+      {route.name === "notifications" || route.name === "advisor-notifications" ? (
+        <ApplicationShell audience={audience} onSignOut={signOut} readOnly>
+          <ClientNotificationsApplication runtime={runtime}/>
+        </ApplicationShell>
+      ) : audience === "client" && route.name === "account" ? (
+        <ApplicationShell audience="client" onSignOut={signOut} readOnly>
+          <AccountApplication runtime={runtime}/>
+        </ApplicationShell>
+      ) : audience === "client" && route.name === "account-service" ? (
+        <ApplicationShell audience="client" onSignOut={signOut} readOnly>
+          <AccountServiceApplication runtime={runtime}/>
+        </ApplicationShell>
+      ) : audience === "client" && (route.name === "orders" || route.name === "order") ? (
+        <ApplicationShell audience="client" onSignOut={signOut} readOnly>
+          <ClientOrdersApplication runtime={runtime}/>
+        </ApplicationShell>
+      ) : audience === "advisor" ? (
+        <AdvisorApplication
+          runtime={runtime}
+          boundary={boundary}
+          route={route}
+          win={win}
+          onSignOut={signOut}
+        />
+      ) : (
+        <ClientApplication
+          runtime={runtime}
+          boundary={boundary}
+          route={route}
+          win={win}
+          onSignOut={signOut}
+        />
+      )}
+    </>
+  );
+}
+function ClientApplication({
+  runtime,
+  boundary,
+  route,
+  win,
+  onSignOut,
+}: {
+  runtime: ApplicationSession;
+  boundary: PlanSessionBoundary;
+  route: PortalRoute;
+  win: Window;
+  onSignOut(): void;
+}) {
+  const [connection, setConnection] = useState<ReturnType<
+    typeof createClientComposition
+  > | null>(null);
+  useEffect(() => {
+    const c = createClientComposition(runtime);
+    setConnection(c);
+    return () => c.dispose();
+  }, [runtime, boundary]);
+  const historyRoute = route.name.startsWith('history');
+  const planRoute = ['plan','recommendation','product','product-evidence','product-use','report-use'].includes(route.name);
+  useEffect(() => {
+    if (connection && planRoute) void connection.controller.refresh();
+  }, [connection, planRoute]);
+  return connection ? historyRoute ? (
+    <ClientHistoryContent connection={connection} boundary={boundary} route={route} win={win} onSignOut={onSignOut}/>
+  ) : (
+    <ClientContent
+      runtime={runtime}
+      controller={connection.controller}
+      ports={connection.ports}
+      boundary={boundary}
+      route={route}
+      onSignOut={onSignOut}
+    />
+  ) : (
+    <ApplicationShell audience="client" onSignOut={onSignOut}>
+      <StatusNotice tone="loading" title="loading your plan" />
+    </ApplicationShell>
+  );
+}
+export function ClientContent({
+  runtime,
+  controller,
+  ports,
+  boundary,
+  route,
+  onSignOut,
+}: {
+  runtime?: ApplicationSession;
+  controller: ReturnType<typeof createClientPlanController>;
+  ports: ReturnType<typeof createClientPorts>;
+  boundary: PlanSessionBoundary;
+  route: PortalRoute;
+  onSignOut(): void;
+}) {
+  const { navigator } = usePortalNavigation();
+  const state = useSyncExternalStore(
+    controller.subscribe,
+    controller.getSnapshot,
+    controller.getSnapshot,
+  );
+  const supported = [
+    "plan",
+    "recommendation",
+    "product",
+    "product-evidence",
+    "product-use",
+    "report-use",
+  ].includes(route.name);
+  const careRoute = route.name === "product-use" || route.name === "report-use";
+  let content: ReactNode;
+  if (!supported)
+    content = (
+      <UnavailableModule
+        title={
+          route.name.startsWith("history")
+            ? "check-ins & history"
+            : route.name.startsWith("account")
+              ? "account"
+              : route.name === "orders" || route.name === "order"
+                ? "orders"
+                : "notifications"
+        }
+      />
+    );
+  else if (state.error && !state.view)
+    content = (
+      <>
+        <PageHeader title={careRoute ? "record actual use" : "your plan"} />
+        <StatusNotice
+          tone={state.error === 403 ? "denied" : "error"}
+          title={
+            state.error === 403 ? "plan access unavailable" : "plan unavailable"
+          }
+          action={
+            <Button
+              variant="secondary"
+              onClick={() => void controller.refresh()}
+            >
+              try again
+            </Button>
+          }
+        >
+          your private plan could not be read. no changes were recorded.
+        </StatusNotice>
+      </>
+    );
+  else if (!state.view)
+    content = <StatusNotice tone="loading" title="loading your plan" />;
+  else if (careRoute && state.view.schemaVersion !== 2 && state.view.schemaVersion !== 3)
+    content = <UnavailableModule title="record actual use" />;
+  else
+    content = (
+      <>
+        {state.error ? (
+          <StatusNotice tone="uncertain" title="refresh unavailable">
+            the last confirmed view is shown.
+          </StatusNotice>
+        ) : null}
+        <ClientPlan
+          session={boundary}
+          mode="client"
+          view={state.view}
+          ports={ports}
+          onViewChange={controller.acceptFrom(state.view)}
+          onSelfPurchase={runtime&&ports.care?createSelfPurchaseNavigation(runtime,controller,boundary,navigator):undefined}
+          onSendUpdate={ports.review ? () => {if(boundary.isCurrent())navigator.navigate({name:'history-new'});} : undefined}
+          onHistory={ports.review ? () => {if(boundary.isCurrent())navigator.navigate({name:'history'});} : undefined}
+        />
+      </>
+    );
+  return (
+    <ApplicationShell
+      audience="client"
+      onSignOut={onSignOut}
+      readOnly={state.view?.access !== "active"}
+    >
+      {content}
+    </ApplicationShell>
+  );
+}
+function AdvisorApplication({
+  runtime,
+  boundary,
+  route,
+  win,
+  onSignOut,
+}: {
+  runtime: ApplicationSession;
+  boundary: PlanSessionBoundary;
+  route: PortalRoute;
+  win: Window;
+  onSignOut(): void;
+}) {
+  const { navigator } = usePortalNavigation();
+  const [connection, setConnection] = useState<{
+    adapter: ReturnType<typeof createAdvisorPorts>;
+    controller: AdvisorController;
+    isApplicable(): boolean;
+  } | null>(null);
+  useEffect(() => {
+    let active = true;
+    const adapter = createAdvisorPorts(runtime, { care: true });
+    const controller = createAdvisorController({
+      session: boundary,
+      permissions: adapter.permissions,
+      ports: adapter.ports,
+      onPreview(preview, draft) {
+        if (!boundary.isCurrent()) return;
+        const record = bindPreview(
+          preview,
+          draft,
+          {
+            draftId: draft.draft.id,
+            contentRevision: draft.draft.contentRevision,
+            assignmentRevision: draft.draft.assignmentRevision,
+          },
+          boundary.key,
+        );
+        boundary.memory.set("preview:" + draft.draft.id, record);
+        navigator.navigate({
+          name: "advisor-preview",
+          draftId: draft.draft.id,
+        });
+      },
+    });
+    const isApplicable = () => {
+      if (!active || runtime.getSnapshot().boundary !== boundary) return false;
+      const current = boundary.isCurrent();
+      return current && active && runtime.getSnapshot().boundary === boundary;
+    };
+    setConnection({ adapter, controller, isApplicable });
+    return () => {
+      active = false;
+      controller.dispose();
+      adapter.dispose();
+    };
+  }, [runtime, boundary, navigator]);
+  let content: ReactNode = (
+    <StatusNotice tone="loading" title="loading advisor workspace" />
+  );
+  if (route.name === "advisor-permissions")
+    content = (
+      <OwnerPolicyApplication runtime={runtime} win={win} />
+    );
+  else if (connection) {
+    if (route.name === "advisor-preview")
+      content = (
+        <AdvisorPreview
+          key={route.draftId}
+          draftId={route.draftId}
+          connection={connection}
+          boundary={boundary}
+          win={win}
+        />
+      );
+    else if (
+      route.name === "advisor-clients" ||
+      route.name === "advisor-plans" ||
+      route.name === "advisor-editor"
+    )
+      content = (
+        <AdvisorWorkspaceNotifications
+          runtime={runtime}
+          isApplicable={connection.isApplicable}
+          controller={connection.controller}
+          navigation={{
+            route:
+              route.name === "advisor-editor" ? route : { name: route.name },
+            navigate: (next) => navigator.navigate(next),
+          }}
+          onOpenClient={(clientId) =>
+            navigator.navigate({ name: "advisor-client", clientId })
+          }
+        />
+      );
+    else if (route.name === "advisor-client")
+      content = (
+        <AdvisorClientApplication
+          runtime={runtime}
+          clientId={route.clientId}
+          clientName={connection.controller.getSnapshot().clients?.clients.find(c=>c.clientId.toLowerCase()===route.clientId.toLowerCase())?.displayName??null}
+          publication={connection.adapter.publication}
+          adapterCare={connection.adapter.care}
+          boundary={boundary}
+        />
+      );
+    else
+      content = (
+        <UnavailableModule title="advisor page unavailable" />
+      );
+  }
+  return (
+    <ApplicationShell
+      audience="advisor"
+      onSignOut={onSignOut}
+      preview={route.name === "advisor-preview"}
+    >
+      {content}
+    </ApplicationShell>
+  );
+}
+function AdvisorPreview({
+  draftId,
+  connection,
+  boundary,
+  win,
+}: {
+  draftId: string;
+  connection: {
+    adapter: ReturnType<typeof createAdvisorPorts>;
+    controller: AdvisorController;
+  };
+  boundary: PlanSessionBoundary;
+  win: Window;
+}) {
+  const { navigator } = usePortalNavigation(),
+    [record, setRecord] = useState<PreviewRecord | null>(null),
+    [error, setError] = useState(false),
+    sequence = useRef(0);
+  const cursor = useMemo(() => {
+    const key = "preview-navigation:" + draftId,
+      prior =
+        boundary.memory.get<ReturnType<typeof createBrowserPreviewNavigation>>(
+          key,
+        );
+    if (prior) return prior;
+    const next = createBrowserPreviewNavigation(win, navigator, draftId, () =>
+      boundary.isCurrent(),
+    );
+    boundary.subscribeInvalidation(() => next.dispose());
+    boundary.memory.set(key, next);
+    return next;
+  }, [win, navigator, draftId, boundary]);
+  const route = useSyncExternalStore(
+    cursor.subscribe,
+    cursor.getSnapshot,
+    cursor.getSnapshot,
+  );
+  useEffect(() => {
+    const token = ++sequence.current,
+      abort = new AbortController();
+    // Cached callback previews may render only after a fresh same-basis read.
+    void loadPreview(connection.adapter.ports.plans, draftId, boundary, {
+      signal: abort.signal,
+    }).then(
+      (current) => {
+        if (
+          boundary.isCurrent() &&
+          sequence.current === token &&
+          !abort.signal.aborted
+        ) {
+          boundary.memory.set("preview:" + draftId, current);
+          setRecord(current);
+        }
+      },
+      () => {
+        if (sequence.current === token && !abort.signal.aborted) setError(true);
+      },
+    );
+    return () => {
+      sequence.current++;
+      abort.abort();
+    };
+  }, [draftId, connection, boundary, cursor]);
+  const navigation: PlanNavigationPort = {
+    route,
+    navigate: cursor.navigate,
+    back: () => cursor.back(),
+    backDestination: cursor.backDestination,
+  };
+  const back = () => cursor.exit();
+  return (
+    <>
+      <div className="app-actions">
+        <Button variant="ghost" onClick={back}>
+          back to draft
+        </Button>
+        <Badge>unpublished preview</Badge>
+      </div>
+      {error ? (
+        <StatusNotice tone="error" title="preview unavailable">
+          return to the draft and request a current preview.
+        </StatusNotice>
+      ) : !record ? (
+        <StatusNotice tone="loading" title="loading current draft preview" />
+      ) : (
+        <UnpublishedPlanPreview
+          preview={record.preview}
+          source={record.source}
+          session={boundary}
+          navigation={navigation}
+        />
+      )}
+    </>
+  );
+}

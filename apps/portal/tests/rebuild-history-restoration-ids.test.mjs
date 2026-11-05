@@ -1,0 +1,6 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {historyElementId,isHistoryEntryKey} from '../src/features/history/restoration.ts';
+const id='33333333-3333-4333-8333-000000000901';
+test('semantic restoration IDs distinguish immutable event and opener meaning without labels or array identity',()=>{assert.equal(historyElementId({kind:'update'}),'history-update-opener');for(const kind of ['entry','correction','version'])assert.equal(historyElementId({kind,entryKey:'report:'+id}),`history-${kind==='entry'?'entry':kind+'-opener'}:report:${id}`);assert.notEqual(historyElementId({kind:'correction',entryKey:'report:'+id}),historyElementId({kind:'correction',entryKey:'report_amendment:'+id}));});
+test('invalid/raw-body/index keys cannot become semantic DOM restoration IDs',()=>{for(const key of ['PRIVATE_NOTES','report:0','publication:0','publication:1.5','publication:9007199254740992','report:'+id+'?notes=private']){assert.equal(isHistoryEntryKey(key),false);assert.throws(()=>historyElementId({kind:'entry',entryKey:key}));}assert.equal(isHistoryEntryKey('publication:1'),true);});
+test('runtime anchor kinds stay closed even for a malformed JavaScript caller',()=>{for(const kind of ['toString','constructor','unknown'])assert.throws(()=>historyElementId({kind,entryKey:'report:'+id}));});

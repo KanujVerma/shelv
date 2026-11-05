@@ -1,0 +1,40 @@
+{
+  "owner": "Kanuj",
+  "finding": "W7-W5-O1",
+  "head": "a5bcfa28d2e279481d6076381c071d9b7faad35b",
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "control": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-a5bc/source/apps/portal/tests/w7-orders-dispatch-cancellation.test.mjs",
+    "archivePath": "source-controls/W5_O1/w7-orders-dispatch-cancellation.test.mjs",
+    "bytes": 1300,
+    "sha256": "a44ce83ad8e4be3292ac9a0fce772bbb602c842798300c3ff021e7f820baf354"
+  },
+  "run": "Place exact archived bytes at apps/portal/tests/w7-orders-dispatch-cancellation.test.mjs in immutable a5bc export with explicitly pinned CommerceDTO4 from99=603. Run Node22.23.0 --experimental-strip-types --test on that file. Do not run from this inert archive or use real resources.",
+  "expectedOriginal": "0pass1fail at fixed request invocation count1!==0",
+  "explicitDTOProjection": [
+    {
+      "path": "src/contracts/PortalCommerce.ts",
+      "source": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 19204,
+      "sha256": "af2d1316434cca41ab78ae4b3bed54cb3a5a348c8e915caaa2f84c0aac9a2c38"
+    },
+    {
+      "path": "src/contracts/PortalCommerceValues.ts",
+      "source": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 5365,
+      "sha256": "ac8c72ca26be1ab1c4f3275b75260cd78e0cdbbebad26524ad7e442a1bb8d27f"
+    },
+    {
+      "path": "src/contracts/PortalCommerceValidation.ts",
+      "source": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 28017,
+      "sha256": "32e19f6ab8c85d5f52024ccf8aa114a088de270b005a806e3600191e4cfe7459"
+    },
+    {
+      "path": "src/contracts/PortalCommerceMapping.ts",
+      "source": "99dc0cee13804ef878298547f53859166352a07a",
+      "bytes": 30476,
+      "sha256": "79d265ab4963cde159c21ff1138c292c80a5ad8548bb45cd843efbd04b706934"
+    }
+  ]
+}

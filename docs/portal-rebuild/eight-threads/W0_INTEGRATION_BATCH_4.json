@@ -1,0 +1,42 @@
+{
+  "owner": "Kanuj",
+  "codeHeadAtRecording": "ce8f7b1512d4a6928b637e4e780550dde71b3fc9",
+  "publishedPredecessor": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "sourceScopes": {
+    "Maya": "73eddff523f68afeb1a4980547c9e1fc3a294ec9",
+    "SelfNavigation": "369c216d43dd417b0290cacedb3201daf977d63e"
+  },
+  "localFeatureHeads": {
+    "227": "154311290595b163481e4f935765f34a451c1810",
+    "231": "a1e89386d296815efad377ab157dc910e3bb5d8d",
+    "233": "860c0f74e8a7b8d596c7c7d37088e9e94b2d3041",
+    "219": "49b011b094b674f01d141559439164d3ba0a0bfa",
+    "229": "9cbc6289c8c12b8c724516206ebae0b7377bde39",
+    "232": "cb05840bfd95fae87f956fd7fffc2ec116cd251f"
+  },
+  "observed": {
+    "combinedMaya": 192,
+    "selfCovering": 83,
+    "financialViewDomain": 38,
+    "commerce": 33,
+    "rootPass": 1923,
+    "rootRetainedSkips": 18,
+    "configuredGraphs": 4,
+    "clientFinancialCurrent": 78,
+    "quoteDeliveryCurrent": 66
+  },
+  "genuineGrant": null,
+  "census": "NOT_MEASURED_COMPLETE_NEW_CENSUS",
+  "nativeFindings": {
+    "4460794439": "OPEN_FORWARD_SOURCE_WAIT_PACKET",
+    "4461800685": "UNACCEPTED_HELD_PHOTO_SCOPE"
+  },
+  "resourceState": "NO_NEW_GRANT",
+  "originalMigrations": 68,
+  "humanReviewRequest": {
+    "pr": 232,
+    "pendingReviewer": "SamiAhmadBeg",
+    "humanApprovalClaimed": false,
+    "changesRequested": false
+  }
+}

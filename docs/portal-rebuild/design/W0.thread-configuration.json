@@ -1,0 +1,19 @@
+{
+  "threadId": "thread:delegated-task:command%3Amcp%3A80ff67d2-459c-49fa-93e3-1b40a1f4cbcd%3Adelegate-task%3Aportal-rebuild-w0-foundation-20261030-r1",
+  "modelSelection": {
+    "instanceId": "codex",
+    "model": "gpt-6.1-sol",
+    "options": [
+      {
+        "id": "reasoningEffort",
+        "value": "xhigh"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ]
+  },
+  "runtimeMode": "full-access",
+  "interactionMode": "default"
+}

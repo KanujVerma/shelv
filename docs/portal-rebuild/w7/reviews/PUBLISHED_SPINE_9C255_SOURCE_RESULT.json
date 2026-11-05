@@ -1,0 +1,170 @@
+{
+  "publishedHead": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+  "parent": "fc2404740e2140486b7de66de9845cf928d63881",
+  "sourceBase": "e964cb6d103483757eea884c574cb6fa93b9ce34",
+  "copiedW7Snapshot": "d73be09bc9a813e8a07aace2ca241b4c9a8e90a4",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/helpers/publication-notification-fixture.mjs",
+      "bytes": 1809,
+      "sha256": "96588892f6cf0ac2db967be071b5b0bb35c77b98d90ba12f07d162f065c09c55"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-advisor-dependencies-browser-helper.mjs",
+      "bytes": 22968,
+      "sha256": "f5647395e451c309d68e7fe305ca31d9aec86cefa7d736424a1bbf3cf06173a0"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-app-browser.test.mjs",
+      "bytes": 44480,
+      "sha256": "c80ceb266faabe527d8fa133d7edb62ec555ef8b11e18287fe0b03fcc555c37f"
+    },
+    {
+      "path": "apps/portal/tests/w0-publication-notification-fixture.test.mjs",
+      "bytes": 7263,
+      "sha256": "909ae235659da195d7121c1c2f9ee8300e64af78751f962062490a64b30e92eb"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_BROWSER_FIXTURE_20261104.md",
+      "bytes": 4319,
+      "sha256": "6b8b98f0e8f3e594d26f915be089bea4ac741e2db9c59eabcdd30a0c30d7b7d0"
+    },
+    {
+      "path": "docs/CONTEXT_SYNC.md",
+      "bytes": 410525,
+      "sha256": "e654742fd48dcbd9413ca4b025a8c269543d86480038252e703f2166955d7c13"
+    }
+  ],
+  "exactCopied16": [
+    {
+      "path": "docs/portal-rebuild/w7/ACCEPTANCE_LEDGER.json",
+      "bytes": 135023,
+      "sha256": "466d22ef9a25cd3a9be01a0b68f59683c1b1e935a4d03ba6bcccd161d657b139"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/PUBLISHED_E964_SOURCE_REFERENCE.json",
+      "bytes": 655,
+      "sha256": "11a1b961b137bc4e4e9250cf9c4934aa2ca801721787a55b721edbd425552391"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/REVIEW_QUEUE.json",
+      "bytes": 61630,
+      "sha256": "c8c0721c26996d9900c17ff46f479ae794f507a6470a36a5c4c4bd965277bbe4"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/SESSION_HANDOFF_20261103.md",
+      "bytes": 69389,
+      "sha256": "0507771be9b33bdfd8d03ce60be3aaab4bea2d0de7aec1f7b28be9317b8fbc2d"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/HOSTED_8F71_EXECUTION_SOURCE_ADDENDUM.md",
+      "bytes": 2336,
+      "sha256": "75fe1eabd8cd0e8dec686fe9ea48fd8a547e0d01772a2306c7f6fd5370aa3c6e"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/HOSTED_8F71_EXECUTION_SOURCE_ADDENDUM_RESULT.json",
+      "bytes": 5255,
+      "sha256": "dc2f252104d81e0d6aca72072813914479ec19af8681d6d333b6bbacac106641"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/HOSTED_8F71_PORTAL_FAILURE.md",
+      "bytes": 2069,
+      "sha256": "449e73e358e9caa0cd263eab3eef70b24a9b634ecd1ea65b41b464a2eb3f10bd"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/HOSTED_8F71_PORTAL_FAILURE_RESULT.json",
+      "bytes": 4780,
+      "sha256": "14b2d5701c48c0af41098918a1d8760a9e3cf72d41947768f67a61221be7ee2d"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/CORRESPONDENCES_E06_ADDRESS8F71.md",
+      "bytes": 3491,
+      "sha256": "7ec8e4356bcf238debef4a1fbf6c093796e13271ba4f4c08c8000854100277fc"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/CORRESPONDENCES_E06_ADDRESS8F71_RESULT.json",
+      "bytes": 27281,
+      "sha256": "f73e1ac10b4f8d393b44f349dc9b112a866f5b613746f105ac79679a8923052f"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_E964_SOURCE.md",
+      "bytes": 3129,
+      "sha256": "ee5fcc7020ad7b004a600c55cd9d61d3c5ffaac7d8e380a92aa3387b9f284792"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_E964_SOURCE_RESULT.json",
+      "bytes": 12279,
+      "sha256": "16c18f005071784edbb2e72897846f0e8106d31df37fa272d6ceed8f7ae8cc0c"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W0_INLINE_PORT_B039.md",
+      "bytes": 2844,
+      "sha256": "afd8c133829de2ed65eb28047807d252d4b798d61f7126b776992e72cad5905e"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W0_INLINE_PORT_B039_RESULT.json",
+      "bytes": 10632,
+      "sha256": "baa799d5b4f574b347c405b172cc4c269477b461ece457d12ad047ecb24bdfaf"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_FIXTURE_FC240.md",
+      "bytes": 4598,
+      "sha256": "f2c8e22a9c725d15a6b3fa35644ca05cb8ded5ec3922ccbb2ab440b62ed14909"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_FIXTURE_FC240_RESULT.json",
+      "bytes": 21561,
+      "sha256": "dce40042de4dfcf63a1b133a936fe029466659d0cb2bf6c0a8d1c1db6b3ad642"
+    }
+  ],
+  "noRuntimeWorkflowMigrationLockDelta": true,
+  "noRerun": true,
+  "currentW7Head": "705889b875ff32b0854486f2ccb47356865d2810",
+  "owner": "Kanuj",
+  "verdict": "PASS_BOUNDED_PUBLISHED_TEST_FIXTURE_SOURCE_AND_EXACT_W7_COPY_CORRESPONDENCE_ONLY",
+  "recordedAt": "2026-11-04T08:08:28.458657+00:00",
+  "remoteObservation": {
+    "method": "git ls-remote origin refs/heads/kanuj/portal-rebuild-integration-20261030",
+    "head": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+    "exitCode": 0,
+    "toolChunk": "5d6692"
+  },
+  "internalCopiedReportLinks": [
+    {
+      "from": "docs/portal-rebuild/w7/ci/HOSTED_8F71_EXECUTION_SOURCE_ADDENDUM.md",
+      "to": "docs/portal-rebuild/w7/ci/HOSTED_8F71_EXECUTION_SOURCE_ADDENDUM_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/ci/HOSTED_8F71_PORTAL_FAILURE.md",
+      "to": "docs/portal-rebuild/w7/ci/HOSTED_8F71_PORTAL_FAILURE_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/CORRESPONDENCES_E06_ADDRESS8F71.md",
+      "to": "docs/portal-rebuild/w7/reviews/CORRESPONDENCES_E06_ADDRESS8F71_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_E964_SOURCE.md",
+      "to": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_E964_SOURCE_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W0_INLINE_PORT_B039.md",
+      "to": "docs/portal-rebuild/w7/reviews/W0_INLINE_PORT_B039_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_FIXTURE_FC240.md",
+      "to": "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_FIXTURE_FC240_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_FIXTURE_FC240.md",
+      "to": "docs/portal-rebuild/w7/ci/HOSTED_8F71_EXECUTION_SOURCE_ADDENDUM.md"
+    }
+  ],
+  "sourceGate": "reviews/W0_NOTIFICATION_FIXTURE_FC240.md",
+  "sourceGateCommit": "d73be09bc9a813e8a07aace2ca241b4c9a8e90a4",
+  "currentOwnW7SnapshotNotRolledBack": "705889b875ff32b0854486f2ccb47356865d2810",
+  "reportSha256": "2e83745cb432f90b308f61bdb720c1deb73543d61e35c3413fb4551f81ddfaa2",
+  "originalFailedCIUnchanged": true,
+  "noCurrentHostedHydratedGenuinePass": true,
+  "resourcesAcquired": false,
+  "wholeIntegratedCensus": "NOT_MEASURED"
+}

@@ -1,0 +1,15 @@
+{
+  "owner": "Kanuj",
+  "finding": "W7-W0-NOTIF-RELEVANCE-01",
+  "head": "227d29ad49f9e4e2ea8dce9383b1e722ea5bfb7f",
+  "base": "eb7513eb5d776b2480a5ea68746baca40e0f43ee",
+  "control": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-owner-227/source/apps/portal/tests/w7-notification-owner-relevance-phase.test.mjs",
+    "archive": "source-controls/W0_NOTIF_RELEVANCE/w7-notification-owner-relevance-phase.test.mjs",
+    "bytes": 971,
+    "sha256": "848d915c338d4e537fecc1253ff38792ef683eee031ae1a35efe1e15032c3d4a"
+  },
+  "reproduce": "Copy exact archive to apps/portal/tests/w7-notification-owner-relevance-phase.test.mjs in immutable227Gitexport with actuallockeddeps; Node22.23.0 --experimental-strip-types --test. No realnetwork/fixtures/browser/privatepayload or sessionmethod substitutions.",
+  "originalOutcome": "0/1: outerphaseendedbutnestedphaseready duringdeny-onlyrelevance evaluation",
+  "scope": "Phase-only ordinaryviewlease check, notheldprivate-return audit"
+}

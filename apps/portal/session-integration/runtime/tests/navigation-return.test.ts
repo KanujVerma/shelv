@@ -14,7 +14,7 @@ for(const audience of ['client','advisor'] as const)test(`${audience} OTP keeps 
 import gateway,{advisorGateway} from '../server/gateway';
 import {CookieAdvisorSession} from '../../../site/auth/advisor-cookie-session.js';
 import {CookieClientSession} from '../../../site/auth/client-cookie-session.js';
-import {portalLoginRedirect} from '../../../site/auth/navigation-return.js';
+import {portalLoginRedirect,portalReturnPath,navigationReturnTo} from '../../../site/auth/navigation-return.js';
 for(const audience of ['client','advisor'] as const)test(`${audience} cookie auth request preserves only validated continuation and gateway rejects unknown input`,async()=>{
  const target=audience==='client'?'/?workspace=client&clientView=history':`/?workspace=advisor&advisorClient=${client}&advisorTask=draft`;
  const outbound:any[]=[];const Session=audience==='client'?CookieClientSession:CookieAdvisorSession;
@@ -37,4 +37,34 @@ test('PKCE flow forwards only the transient return argument without adding persi
  const auth:any={requestOtp:async(_email:string,returnTo?:string)=>{seen=returnTo;return {verifier:'synthetic'};}};
  const flow=new AuthFlow({read:()=>record,write:value=>{record=structuredClone(value);}},new CredentialEnvelope(JSON.stringify({active:'one',keys:{one:Buffer.alloc(32,9).toString('base64url')}}),'flow-synthetic'),auth,()=>({} as any),{now:()=>1800000000000,flowMs:600000});
  const state=await flow.bootstrap();await flow.request(state.csrf,'synthetic@example.invalid',false,target);assert.equal(seen,target);assert.doesNotMatch(JSON.stringify(record),/clientView|returnTo|workspace/);
+});
+
+for(const audience of ['client','advisor'] as const)test(`${audience} semantic continuation survives cookie factory, gateway and OTP without granting owner authority`,async()=>{
+ const target=audience==='client'?'/plan/products/cerave-pm/evidence?routine=evening':'/advisor/plans/draft-opaque/review-publish';
+ const requests:URL[]=[],Provider=audience==='client'?ClientProvider:SupabaseProvider;
+ const provider=new Provider('sb_publishable_synthetic',async(input:any)=>{requests.push(new URL(String(input)));return Response.json({});});
+ await provider.requestOtp('synthetic@example.invalid',target);assert.equal(requests[0].searchParams.get('redirect_to'),origin+target);
+ const outbound:any[]=[],Session=audience==='client'?CookieClientSession:CookieAdvisorSession;
+ const session=new Session({locks:{request:async(_n:any,_o:any,fn:any)=>fn()},fetcher:async(path:any,init:any)=>{outbound.push({path,init});return Response.json(path.endsWith('/session')?{signedIn:false,csrf:'synthetic-flow',flowExpiresAt:'2099-01-01T00:00:00Z'}:{sent:true});}});
+ try{await session.sendLink('synthetic@example.invalid',origin+target);assert.equal(JSON.parse(outbound.at(-1).init.body).returnTo,target);}finally{session.dispose();}
+ const commands:any[]=[],env:any={PORTAL_ORIGIN:origin,CLIENT_SHARED_SESSIONS:'true',ADVISOR_SESSIONS:{getByName:()=>({invoke:async(command:any)=>{commands.push(command);return {ok:true,value:command.type==='limit'?{allowed:true}:{sent:true}};}})}};
+ const request=new Request(origin+`/api/${audience}/auth/request`,{method:'POST',headers:{Origin:origin,'Sec-Fetch-Site':'same-origin','CF-Connecting-IP':'192.0.2.1','Content-Type':'application/json','X-Shelv-CSRF':'synthetic-flow',Cookie:`__Host-shelv_${audience}_flow=${'a'.repeat(43)}`},body:JSON.stringify({email:'synthetic@example.invalid',remember:false,returnTo:target})});
+ assert.equal((await (audience==='client'?gateway:advisorGateway).fetch(request,env)).status,200);assert.equal(commands.at(-1).returnTo,target);
+ assert.equal(navigationReturnTo(origin+(audience==='client'?'/plan':'/advisor/plans'),audience,origin),audience==='client'?'/plan':'/advisor/plans','Paths without query strings remain real destinations');
+});
+test('semantic login return builder strips unrelated query/fragment inputs and uses the shared route grammar',()=>{
+ assert.equal(portalLoginRedirect({href:origin+'/plan/products/cerave-pm/evidence?routine=evening&token=private#access_token=private'},'client'),origin+'/plan/products/cerave-pm/evidence?routine=evening');
+ assert.equal(portalLoginRedirect({href:origin+'/advisor/clients/client-opaque?task=draft&health=private'},'advisor'),origin+'/advisor/clients/client-opaque?task=draft');
+ for(const target of ['/plan','/history/new','/history/versions/3','/orders/order-opaque','/account/service','/notifications'])assert.equal(portalReturnPath(target,'client'),target);
+ for(const target of ['/advisor/clients','/advisor/plans','/advisor/permissions','/advisor/plans/draft-opaque/preview','/advisor/reviews/report-opaque'])assert.equal(portalReturnPath(target,'advisor'),target);
+ assert.equal(portalReturnPath('/plan/products/card%3Atreatment?routine=morning','client'),'/plan/products/card%3Atreatment');
+});
+test('semantic auth recovery rejects cross-audience, unknown, credential-bearing and encoded escape routes before any provider request',async()=>{
+ let calls=0;const provider=new ClientProvider('sb_publishable_synthetic',async()=>{calls++;return Response.json({});});
+ for(const target of ['/maya?stage=2','/advisor/clients','/plan?routine=evening&routine=morning','/plan?workspace=client','/plan?access_token=private','/plan/products/a%2Fb','/plan/products/%2e%2e','/plan/../account','/plan/products/a%5Cb','/plan/products/a%00b','/plan/products/%252e%252e','/account/unknown']){
+  await assert.rejects(provider.requestOtp('synthetic@example.invalid',target),undefined,target);assert.equal(calls,0);
+ }
+ for(const target of ['/plan','/maya','/history'])assert.throws(()=>portalReturnPath(target,'advisor'));
+ assert.throws(()=>navigationReturnTo('https://user:private@portal.goshelv.com/plan','client',origin));
+ assert.equal(portalLoginRedirect({href:origin+'/advisor/plans/draft/preview'},'client'),origin+'/?workspace=client');
 });

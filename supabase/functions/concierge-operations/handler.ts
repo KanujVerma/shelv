@@ -32,23 +32,23 @@ export async function handleConciergeRequest(request: Request, ports: ConciergeP
   if (request.method !== 'POST') return error(405, 'method_not_allowed');
   const bearer = /^Bearer ([^\s]+)$/i.exec(request.headers.get('authorization') ?? '');
   if (!bearer) return error(401, 'unauthorized');
-  if (request.headers.get('content-type')?.split(';')[0].trim().toLowerCase() !== 'application/json') return error(415, 'unsupported_media_type');
+  if (request.headers.get('content-type')?.split(';')[0]!.trim().toLowerCase() !== 'application/json') return error(415, 'unsupported_media_type');
   try {
-    const user = await ports.authenticate(bearer[1], request.signal);
+    const user = await ports.authenticate(bearer[1]!, request.signal);
     if (!user) return error(401, 'unauthorized');
     try { readUuid(user.id); } catch { return error(401, 'unauthorized'); }
     if (user.is_anonymous !== false) return error(403, 'forbidden');
     const call = buildConciergeRpc(await readConciergeJson(request.body, 100000), user.id);
-    const result = await ports.rpc(bearer[1], call, request.signal);
+    const result = await ports.rpc(bearer[1]!, call, request.signal);
     if (result.error) {
       if (result.error.status === 401) return error(401, 'unauthorized');
       if (result.error.status === 403) return error(403, 'forbidden');
       const code = result.error.message ?? '';
       if(call.name==='concierge_advisor_preview_v2') {
         const previewErrors: Readonly<Record<string,number>> = {concierge_stale_draft:409,concierge_draft_missing:404,concierge_unauthorized:401,concierge_forbidden:403,concierge_invalid_input:400};
-        if(Object.hasOwn(previewErrors,code))return error(previewErrors[code],code.slice('concierge_'.length));
+        if(Object.hasOwn(previewErrors,code))return error(previewErrors[code]!,code.slice('concierge_'.length));
       }
-      return Object.hasOwn(sqlErrors, code) ? error(sqlErrors[code], code) : error(503, 'unavailable');
+      return Object.hasOwn(sqlErrors, code) ? error(sqlErrors[code]!, code) : error(503, 'unavailable');
     }
     if(call.name==='concierge_service_client_view')return reply(200,mapServiceView(result.data));
     if(call.name==='concierge_service_advisor_view')return reply(200,mapServiceView(result.data,true));

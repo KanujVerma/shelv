@@ -1,0 +1,11 @@
+# PR240 failed Portal CI execution custody
+
+Owner: Kanuj. **Saved artifact and selected execution-source custody verified only. No old source audit or rerun.** Associated authored head e06ff5b90bb795190efe1cb42a723592c019f848 differs from the actually executed pull-request merge. [Exact custody pins](HOSTED_E06_EXECUTION_SOURCE_CUSTODY_RESULT.json).
+
+The full2107574-byte raw log SHA `84399a632806b6684fea5fae08a80b2212df5c99e3cd0ddb0ca1129a9aaba8b2`, mode0400, proves fetch/check-out refs/pull/240/merge and git log -1 returning `3d3e795922ef4fcc7181c81a26185a851eb99cbb`. Actual Git parents are `c39fa32083d19bc2d021a1e2c6438ff731a02b46` and `e06ff5b90bb795190efe1cb42a723592c019f848`. Run41788083841/job126434760870 remains FAILED:4124pass/2fail/4126total, zero skips/cancellations in that test summary.
+
+The owner supplement SHA `aae4b56a6846e159ee050c1fd432973b15ff0c123c255717f5301dbecb6266ee` and all five selected authored/executed/base/published hashes were verified against literal Git objects. All five executed common postimages equal c39 and published e964. Only Application differs between these authored and executed sets: authored02acf950, executed9ff9dfb2 with Root's notification composition. Selected-file correspondence is not an entire executed-tree census. The original8cba377b failure packet and raw remain preserved, not rewritten.
+
+Both failures are reported as unexpected advisor-notification requests at cleanup. The supplement records downstream session/backend/native SQL and other functional steps as SKIPPED; success of diagnostic upload or housekeeping is not validation of those steps. This is packet/job custody, not new actual backend/Auth/SQL evidence. Root owns shared-fixture diagnosis and its separately reviewed fc240 test-only successor. That source/finite pass does not establish hydrated causality, an old baseline pass, flakiness, a rerun or a green replacement for this run.
+
+No old e06 source/test vector, browser, server, SQL, Auth, provider, M02 or held audit was executed. Native P2 at old e06, current bb1/O5 withholding and all genuine/financial/typed-source/M65/principal44/private-return/Guidance/photo holds remain separate. No acceptance, integration readiness, resource grant or counter changes follow.

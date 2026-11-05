@@ -1,0 +1,76 @@
+{
+  "base": "8c5c6b2d72e75f620487f1b2b110655b03551b17",
+  "head": "a89b24be19ccfb334128fe99601b67985b7af5f8",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/advisor/guidance/AdvisorGuidanceWorkspace.tsx",
+      "bytes": 34971,
+      "sha256": "c0ced0f976a08917c120cb3b7949136c59896b0f21285b068d4e51aeb6ebedef"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/guidance/controller.ts",
+      "bytes": 65173,
+      "sha256": "32020bd14f5c362d4ffbfddf79227d507c727ed27a535bcf6fdaa0710d429c2a"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/guidance/index.ts",
+      "bytes": 787,
+      "sha256": "15c1a88ab0c7a2e1505336b11c30de3a9543e6f4b9b3f6c6479b5d175f249781"
+    },
+    {
+      "path": "apps/portal/tests/w2-advisor-a07.test.mjs",
+      "bytes": 13387,
+      "sha256": "77316409291c37cf59dbc83a17b06f0d4f6f405acffc213f165947be22ed9851"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/A07_REPORT_TARGET_20261103.md",
+      "bytes": 10841,
+      "sha256": "ffd8b14f0443dafe373843fd1de7d031c1e559cfe86f2f71cd1ebebb150402fb"
+    },
+    {
+      "path": "docs/portal-rebuild/w2/IMPLEMENTATION_PLAN.md",
+      "bytes": 3606,
+      "sha256": "aaf42b43533e29b40614772a6502ff870bc0d9eef8339ebbf9b88500921c2540"
+    }
+  ],
+  "patchSha256": "ea6bf3d231f70b2f29c0dc3a028aae129c8eee65ff148f4a0ffd6d7816601c65",
+  "controllerByteExactBaselineExceptReadAffordanceProjection": true,
+  "scope": "Permitted UI source composition only, excludes held private-return audit/activation",
+  "oldHeldScope": "No new read/test/audit of2073/b847/older held candidates",
+  "owner": "Kanuj",
+  "verdict": "PASS_PERMITTED_UI_SOURCE_FINITE_SSR_ONLY",
+  "current": {
+    "tests": 21,
+    "candidateUI": 17,
+    "retainedSSR": 4,
+    "pass": 21,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0
+  },
+  "frontend": {
+    "exitCode": 0,
+    "diagnostics": 0
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-a07-a89/W7-CURRENT21.log",
+      "bytes": 6357,
+      "sha256": "776069a9efc05b6090c0a684b646d9590991a4e9d6599e07d1c55f2f21869d8d",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-a07-a89/W7-TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "No held private-return/lifetime audit or A07 activation approval",
+    "No old2073/b847/earlier held head read/retest/audit",
+    "No browser/genuine/Auth/SQL/source-photo/M65/principal scope",
+    "No complete A07/J05 or product numerator"
+  ]
+}

@@ -1,0 +1,40 @@
+model = "gpt-6.1-sol"
+model_reasoning_effort = "xhigh"
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 8
+default_subagent_model = "gpt-6.1-sol"
+default_subagent_reasoning_effort = "xhigh"
+
+[agents.w0_foundation]
+description = "Shared shell, wrappers, tokens, routes and Back"
+config_file = "agents/w0_foundation.toml"
+
+[agents.w1_plan_platform]
+description = "Plan schemas, drafts, source permissions, publication and notification outbox"
+config_file = "agents/w1_plan_platform.toml"
+
+[agents.w2_advisor]
+description = "Advisor directory, authoring, review and permissions UI"
+config_file = "agents/w2_advisor.toml"
+
+[agents.w3_client_plan]
+description = "Shared client renderer, routine, decisions, product and use reporting"
+config_file = "agents/w3_client_plan.toml"
+
+[agents.w4_checkins_history]
+description = "Goal reports, amendments, reviews, timeline and snapshots"
+config_file = "agents/w4_checkins_history.toml"
+
+[agents.w5_orders]
+description = "Frozen quotes, payment claims, purchases, delivery and returns"
+config_file = "agents/w5_orders.toml"
+
+[agents.w6_account_service]
+description = "Profile, coverage, cancellation, retention and consent"
+config_file = "agents/w6_account_service.toml"
+
+[agents.w7_verification]
+description = "Independent integration, authorization, visual and E2E verification"
+config_file = "agents/w7_verification.toml"

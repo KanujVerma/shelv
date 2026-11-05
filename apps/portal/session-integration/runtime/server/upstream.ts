@@ -1,9 +1,16 @@
 import {validatedReturnPath} from './navigation-return';
+import {planCapability,mapPlanResponse} from './plan-policy';
+import {careCapability,mapCareResponse} from './care-policy';
+import {reviewCapability,mapReviewResponse,reviewTransportError} from './review-policy';
+import {guidanceCapabilities,mapGuidanceResponse,guidanceTransportError} from './guidance-policy';
 import { GoTrueClient, type Session } from '@supabase/auth-js';
 import { demand, decode, SessionError, type AuthProvider, type Credentials, type Capabilities, type AdvisorContext } from './types';
 import { PORTAL_ORIGIN, SUPABASE_ORIGIN, readBounded, parseCommand, object, safeCodes, uuid, type Operation } from './policy';
 import type { FlowAuth, LegacyPair } from './auth-flow';
 import type { WireResponse } from './protocol';
+import {parseNotificationCommand,notificationCapability,mapNotificationResponse} from './policy';
+import {readNotificationCommand} from '../../../../../src/contracts/PortalNotificationValidation.ts';
+import {notificationResponseMaxBytes} from '../../../../../src/contracts/PortalNotificationValues.ts';
 export function claims(token: string) { try {
     demand(token.length <= 16384);
     return object(JSON.parse(new TextDecoder().decode(decode(token.split('.')[1]))));
@@ -112,7 +119,8 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
         }
         if (response.status < 200 || response.status >= 300) {
             const value = data && typeof data === 'object' ? data as Record<string, unknown> : {};
-            const code = typeof value.code === 'string' && safeCodes.has(value.code) ? value.code : response.status === 401 ? 'session_ended' : response.status === 403 ? 'forbidden' : 'unavailable';
+            const codeValue = value.code === 'concierge_content_version_required' ? 'content_version_required' : value.code;
+            const code = typeof codeValue === 'string' && safeCodes.has(codeValue) ? codeValue : response.status === 401 ? 'session_ended' : response.status === 403 ? 'forbidden' : 'unavailable';
             throw new SessionError([400, 401, 403, 404, 409, 413, 415, 429].includes(response.status) ? response.status : 503, code);
         }
         return data;
@@ -141,6 +149,55 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
         check(error);
     }
     protected edge(credentials: Credentials, service: string, command: unknown) { return this.json(`${SUPABASE_ORIGIN}/functions/v1/${service}`, credentials.access_token, command); }
+    /** Fixed authenticated notification handler only. Service worker RPCs are never registered. */
+    protected async notification(credentials:Credentials,capabilities:Capabilities,input:unknown,audience:'client'|'advisor'):Promise<WireResponse>{
+        const command=readNotificationCommand(parseNotificationCommand(input,audience)),required=notificationCapability(command);
+        demand(capabilities[required],403,'forbidden');
+        const writing=command.action==='mark_seen_v1'||command.action==='retry_failed_email_v1';
+        const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),this.timeoutMs);
+        let status=503,body:unknown={code:writing?'uncertain':'unavailable'};
+        try{
+            const response=await this.fetcher(`${SUPABASE_ORIGIN}/functions/v1/concierge-notifications`,{method:'POST',headers:this.headers(credentials.access_token),body:JSON.stringify(command),signal:controller.signal,redirect:'manual',cache:'no-store'});
+            if(response.status>=300&&response.status<400){
+                try{void response.body?.cancel().catch(()=>{});}catch{}
+                throw new SessionError(503,writing?'uncertain':'unavailable');
+            }
+            const headersBeforeAbort=!controller.signal.aborted;
+            if(response.status===401||response.status===403){
+                if(headersBeforeAbort)status=response.status;
+                try{void response.body?.cancel().catch(()=>{});}catch{}
+            }else{
+                const reader=response.body?.getReader(),chunks:Uint8Array[]=[];let length=0;
+                const cancel=()=>{try{void reader?.cancel().catch(()=>{});}catch{}};
+                controller.signal.addEventListener('abort',cancel,{once:true});
+                try{
+                    if(controller.signal.aborted)cancel();
+                    if(reader)for(;;){
+                        const {done,value}=await reader.read();if(done)break;
+                        length+=value.byteLength;
+                        if(length>notificationResponseMaxBytes){cancel();throw new SessionError(503,'unavailable');}
+                        chunks.push(value);
+                    }
+                }finally{controller.signal.removeEventListener('abort',cancel);reader?.releaseLock();}
+                const bytes=new Uint8Array(length);let offset=0;
+                for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.byteLength;}
+                if(!controller.signal.aborted){body=JSON.parse(new TextDecoder('utf-8',{fatal:true,ignoreBOM:false}).decode(bytes));status=response.status;}
+            }
+        }catch{/* A lost/malformed acknowledgement is uncertain for this exact original write. */}
+        finally{clearTimeout(timer);}
+        // Actual provider context, never a role/current port. Recheck the required capability too.
+        try{
+            const current=await this.context(credentials);
+            demand(current.ownerId===credentials.user.id&&current.providerSessionId===credentials.providerSessionId,401,'session_ended');
+            demand(current.capabilities[required],403,'forbidden');
+        }catch(error){
+            if([401,403].includes((error as {status?:number})?.status??0))throw error;
+            if(status!==401&&status!==403)throw new SessionError(503,writing?'uncertain':'unavailable');
+        }
+        const value=mapNotificationResponse(body,command,status);
+        demand(!hasCredentials(value,credentials),503,writing?'uncertain':'unavailable');
+        return {status:200,body:value};
+    }
     private async paymentEvidence(credentials:Credentials,evidenceId:string,v2:boolean,clientId?:string){
         // Reauthorize through the existing Edge/SQL guard on every descriptor and image read.
         const raw=await this.edge(credentials,'concierge-payments',{action:'evidence_url',evidenceId,...(v2?{schemaVersion:2}:{})});
@@ -182,13 +239,20 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
             throw new SessionError(503, 'unavailable');
         }
     }
-    async perform(credentials: Credentials, capabilities: Capabilities, operation: Operation): Promise<WireResponse> {
+    async perform(credentials: Credentials, capabilities: Capabilities, inputOperation: Operation): Promise<WireResponse> {
         demand(capabilities.view, 403, 'forbidden');
+        if(inputOperation.kind==='command'&&inputOperation.channel==='notifications')return this.notification(credentials,capabilities,inputOperation.command,'advisor');
+        const operation=inputOperation.kind==='command'&&(inputOperation.channel==='reviews'||inputOperation.channel==='guidance')
+            ? parseCommand(inputOperation.channel,inputOperation.command) : inputOperation;
         demand(operation.kind !== 'client-media' && operation.kind !== 'client-upload' && operation.kind !== 'walkthrough', 403, 'action_forbidden');
         let body: unknown;
         if (operation.kind === 'command') {
             parseCommand(operation.channel, operation.command);
             const action = operation.command.action;
+            if(operation.channel==='plans')demand(capabilities[planCapability(action)],403,'forbidden');
+            if(operation.channel==='care')demand(capabilities[careCapability(action)],403,'forbidden');
+            if(operation.channel==='reviews')demand(capabilities[reviewCapability(action)],403,'forbidden');
+            if(operation.channel==='guidance')for(const capability of guidanceCapabilities(action))demand(capabilities[capability],403,'forbidden');
             if (action === 'publish_v2' || action === 'publish_instruction_revision')
                 demand(capabilities.publish, 403, 'forbidden');
             else if (action === 'confirm_payment' || action === 'reject_claim' || action === 'record_return_event' && ['retailer_funds_received','client_repaid'].includes(String(operation.command.status)))
@@ -202,6 +266,9 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
             if(action==='evidence_url'){
                 const evidenceId=uuid(operation.command.evidenceId),v2=operation.command.schemaVersion===2,descriptor=await this.paymentEvidence(credentials,evidenceId,v2);
                 body={evidenceId,signedUrl:`${PORTAL_ORIGIN}/api/advisor/media/evidence?clientId=${descriptor.owner}&evidenceId=${evidenceId}&view=${crypto.randomUUID()}${v2?'&v=2':''}`,expiresInSeconds:descriptor.expiresInSeconds,...(v2?{schemaVersion:2,paymentOptionId:descriptor.paymentOptionId}:{})};
+            }else if(operation.channel==='reviews'||operation.channel==='guidance'){
+                try{body=await this.edge(credentials,operation.channel==='reviews'?'concierge-reviews':'concierge-guidance',operation.command);}
+                catch(error){return operation.channel==='reviews'?reviewTransportError(error,operation.command):guidanceTransportError(error,operation.command);}
             }else body = action === 'advisor_preview_read_v2'
                 ? await this.preview(credentials, operation.command.clientId, operation.command.mode, operation.command.expectedRevision)
                 : await this.edge(credentials, `concierge-${operation.channel}`, operation.command);
@@ -235,6 +302,10 @@ export class SupabaseProvider implements AuthProvider, FlowAuth {
             demand(response.status === 200 && ['image/jpeg', 'image/png', 'image/webp'].includes(contentType ?? ''), 503, 'unavailable');
             return { status: 200, bytes: response.bytes, contentType: contentType! };
         }
+        if(operation.kind==='command'&&operation.channel==='plans')body=mapPlanResponse(body,operation.command);
+        if(operation.kind==='command'&&operation.channel==='care')body=mapCareResponse(body,operation.command);
+        if(operation.kind==='command'&&operation.channel==='reviews')body=mapReviewResponse(body,operation.command);
+        if(operation.kind==='command'&&operation.channel==='guidance')body=mapGuidanceResponse(body,operation.command);
         demand(!hasCredentials(body, credentials), 503, 'unavailable');
         return { status: 200, body };
     }

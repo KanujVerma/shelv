@@ -2,6 +2,14 @@
 
 Owner: Kanuj. Applies to `apps/portal/site/`, including client, advisor, and walkthrough surfaces.
 
+## Approved rebuild, 30 October 2026
+
+For the consolidated rebuild, [D01-D48](portal-rebuild/APPROVED_DECISIONS.md), [the approved desktop specification](portal-rebuild/APPROVED_DESKTOP_SPEC.md) and [shared implementation contracts](portal-rebuild/IMPLEMENTATION_CONTRACTS.md) take precedence over older prospective UI choices here. W0 owns the React/TypeScript shell, one Shelv wrapper layer built on shadcn/ui, Lucide and approved semantic tokens. All page workers compose that layer; the historical CSS/DOM primitives below describe compatibility source, not permission for parallel component systems. Client, advisor preview and Maya use one shared renderer. New authored UI is lowercase, preserving proper identities/source text; no global text transformation.
+
+Client navigation is exactly `your plan`, `check-ins & history`, `orders`, `account`, with consistent `text shelv`. Use the approved contextual product sheet and product-bound evidence/report actions, visible practical instructions/cautions, meaningful state feedback and recoverable Back/Forward/deep links. Compare native Figma baselines at approved desktop sizes and verify narrower laptops plus 320/390px before release.
+
+Rebuild UI must reflect exact-human-approval plus verified-payment publication gates, durable email/portal delivery status independent of publication, and 30-day post-support read-only access with final export. These prospectively supersede publication-before-payment, manual-only notification and unspecified read-only-window wording. Historical deployed behavior/acceptance is preserved separately. All existing privacy, focus, uncertainty and financial-state distinctions remain required.
+
 The portal helps clients follow a reviewed skincare plan and helps advisors manage that work. Use the existing cream and forest-green identity. Familiar controls, accurate states, and practical information take priority over decoration.
 
 ## Reuse before adding

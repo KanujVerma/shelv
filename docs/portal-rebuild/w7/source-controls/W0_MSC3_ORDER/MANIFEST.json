@@ -1,0 +1,10 @@
+{
+  "owner": "Kanuj",
+  "finding": "W7-W0-MSC3-ORDER",
+  "head": "5a1cd82acde8c3ef7d678bb1aee6b1213fd8dd65",
+  "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "path": "w7-maya-retirement-order.test.mjs",
+  "bytes": 1204,
+  "sha256": "771890829e2cdb1e989680b0d3d965f38c8386e8e3130f6da7a56eba5173af88",
+  "scope": "Inert exact public-demo controller/session/subscriber regression, no hooks/authority/currentness substitution or browser/resources"
+}

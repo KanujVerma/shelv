@@ -1,0 +1,156 @@
+{
+  "owner": "Kanuj",
+  "head": "686734c6bb51197d93e2c86046f16337223ab1b4",
+  "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+  "verdict": "PASS_SCOPED_COMPLETE3_AST_DEPENDENCY_BINDING_SOURCE_FINITE_ONLY",
+  "materialFindings": [],
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-router-binding-686734/PACKET.json",
+    "bytes": 5578,
+    "sha256": "d4f97174f7ad81084ae837f63523bc139ab41f44131da87b6617d8730473eb84"
+  },
+  "patchSha256": "f149465963b8cc10757b63718bf3f630464709ca7f35f17712faf3d2fce57672",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/rebuild-app-browser-model.test.mjs",
+      "bytes": 17771,
+      "sha256": "fbc8e0e4f5852cf806b84fa9465ec12db4601b41e1aac86b8ee10c16874fbbe6"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_ROUTER_BINDING_20261104.md",
+      "bytes": 2573,
+      "sha256": "8f4d916e77be827c8fb9fba88f4b966a4c15f14131efe687502b49d6bf3ef0c8"
+    },
+    {
+      "path": "docs/CONTEXT_SYNC.md",
+      "bytes": 411204,
+      "sha256": "487a3fd5ec864e91c6f0ce2750828f32d9ea6a7a41c9af99d65fdab07abb8425"
+    }
+  ],
+  "inverseAndHelperVerification": {
+    "head": "686734c6bb51197d93e2c86046f16337223ab1b4",
+    "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+    "sourcePins": [
+      {
+        "path": "apps/portal/tests/rebuild-app-browser-model.test.mjs",
+        "bytes": 17771,
+        "sha256": "fbc8e0e4f5852cf806b84fa9465ec12db4601b41e1aac86b8ee10c16874fbbe6"
+      },
+      {
+        "path": "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_ROUTER_BINDING_20261104.md",
+        "bytes": 2573,
+        "sha256": "8f4d916e77be827c8fb9fba88f4b966a4c15f14131efe687502b49d6bf3ef0c8"
+      },
+      {
+        "path": "docs/CONTEXT_SYNC.md",
+        "bytes": 411204,
+        "sha256": "487a3fd5ec864e91c6f0ce2750828f32d9ea6a7a41c9af99d65fdab07abb8425"
+      }
+    ],
+    "patchSha256": "f149465963b8cc10757b63718bf3f630464709ca7f35f17712faf3d2fce57672",
+    "entireInverseExactBaseGit": true,
+    "beforeSha256": "c860890202c76b91b2dd5b721cb2f2d8d241a624fb991b311659fdb66ddce81c",
+    "afterSha256": "fbc8e0e4f5852cf806b84fa9465ec12db4601b41e1aac86b8ee10c16874fbbe6",
+    "actualHelperUnchangedSha256": "96588892f6cf0ac2db967be071b5b0bb35c77b98d90ba12f07d162f065c09c55",
+    "rawArtifactsVerified": 5,
+    "scope": "Only import/router dependencies/target selected case/session harness/docs examined. Broader held case bodies not reviewed."
+  },
+  "independentSelectedCommand": {
+    "head": "686734c6bb51197d93e2c86046f16337223ab1b4",
+    "argv": [
+      "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "--test",
+      "--test-name-pattern=^selectors/extra authority",
+      "apps/portal/tests/rebuild-app-browser-model.test.mjs"
+    ],
+    "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-router-binding-686734/source",
+    "exitCode": 0,
+    "seconds": 0.595,
+    "sha256": "02d99da6d2387e482869f1fa6007fbe4ad3fd1c190473f5022fa1785b5d5909c",
+    "bytes": 1083
+  },
+  "independentSyntax": {
+    "argv": [
+      "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "--check",
+      "apps/portal/tests/rebuild-app-browser-model.test.mjs"
+    ],
+    "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-router-binding-686734/source",
+    "exitCode": 0,
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "results": {
+    "selectedTests": 1,
+    "pass": 1,
+    "fail": 0,
+    "skip": 0,
+    "cancel": 0,
+    "syntaxExit": 0,
+    "otherModelCasesRun": false,
+    "browserOrHeldCalleeAudit": false
+  },
+  "ownerRedCurrentAndImmutableRawHashesVerified": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-router-binding-r2/RED.json",
+      "bytes": 716,
+      "sha256": "824bb21eadabde709eb2bc636a494ed9b4002ced1e99c8474fd6e10e8735e855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-router-binding-r2/CURRENT-UNBOUND-RED.log",
+      "bytes": 2048,
+      "sha256": "2b19f9fabaef27056e303f41d56c398231cfcde2e690348d4d010db6960d6431"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-router-binding-r2/GREEN.json",
+      "bytes": 622,
+      "sha256": "90580b69f52d639afae32ad8275f5678577cd70e311a8093382c696fb7f78416"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-router-binding-r2/ACTUAL-HELPER-BOUND-GREEN.log",
+      "bytes": 969,
+      "sha256": "f387a14f0fb50246046636755cb9ee7a071eba590d8190a0124c3306cd308979"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/notification-router-binding-r2/IMMUTABLE-ORIGINAL-NEGATIVE-GREEN.log",
+      "bytes": 1156,
+      "sha256": "feb17fabf56567d1bc7c94069f1ac30cf941fc1fab2818b21037158de928bb79"
+    }
+  ],
+  "ownerRedNotW7Rerun": true,
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-router-binding-686734/CURRENT-SELECTED1.log",
+      "bytes": 1083,
+      "sha256": "02d99da6d2387e482869f1fa6007fbe4ad3fd1c190473f5022fa1785b5d5909c"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-router-binding-686734/CURRENT-SELECTED1.json",
+      "bytes": 538,
+      "sha256": "835d637f38945233fdc752d198104e28a394ae33198e2b3da3130a2907ebf90d"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-router-binding-686734/SYNTAX.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-router-binding-686734/SYNTAX.json",
+      "bytes": 408,
+      "sha256": "019e30a90d827f0f76aaaa225a6fe35daf26f25535885f3cfd16fc253e323de9"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-router-binding-686734/VERIFICATION.json",
+      "bytes": 1249,
+      "sha256": "53749f4bf2a0c04c692c34cbfcaa9715cf99fffbf2a5d5a53eecc092dc9cbc22"
+    }
+  ],
+  "scope": "Exact import/dependency binding/AST harness/selected negative case and two docs only; entire unchanged remainder proven by inverse, not re-audited",
+  "physicalMovingRootContextRead": false,
+  "oldHostedFailuresRelabeled": false,
+  "currentWholePortalCi": "NOT_PROVED",
+  "resourceGrant": null,
+  "realEligibilityChanged": false,
+  "recordedAt": "2026-11-04T09:19:39.228402+00:00",
+  "reportSha256": "61d52eb9468f8a099f097a0779fac9bf0d83c714f2f638159ccfadf41748b0ab"
+}

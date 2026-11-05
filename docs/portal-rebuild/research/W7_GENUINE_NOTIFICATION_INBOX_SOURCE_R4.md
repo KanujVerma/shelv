@@ -1,0 +1,83 @@
+# Genuine notification inbox Source R4
+
+**SPEC/source completeness: PASS, scoped. Correctness/quality: PASS, scoped.** Both complete four-source gates were delivered to the sole Parent before this report was written. No material current finding remains at candidate `c8b59c3991d40944ba42dd44d58b3d5db98b7d33`. NIR3 is corrected without losing NIR1/NIR2 or the existing composition. Parent alone owns source admission and Root integration.
+
+Owner: Kanuj. Date: 3 November 2026. This review covers source and finite Node built-in controls only. It accepts no genuine M03 capability, screen, journey, resource, provider delivery or release. Both observer and evaluator remain `OBSERVATIONS_ONLY`; evaluator acceptance remains `NOT_EVALUATED`, including with empty consistency issues.
+
+## Exact identity and custody
+
+- Separately supplied NEW literal taskId from the actual R4 `delegate_task` response, preserved verbatim: `node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-notification-assets-review-r4`. It was not inferred from childThreadId or run metadata.
+- Sole Parent: <t3-thread://v2/3b335212-744e-4ce9-befe-80a8e38dd448/9b085ada-435f-48d6-8886-957c1ce3e82d>.
+- Reviewer: `/Users/kanuj/.t3/worktrees/shelv/t3-020c289e`, clean starting HEAD `772c4fae7904e39a9e793627023adf56de811d8e`. Prepared INPUT ancestry was never imported or executed.
+- Author: `/Users/kanuj/.t3/worktrees/shelv/t3-64b24698`, clean HEAD `c8b59c3991d40944ba42dd44d58b3d5db98b7d33`, direct parent `5d66c8a48d61c4cf55ca4099d23524c5415926d0` (OLD).
+- Actual self and Parent `t3_thread_configure` READs, each omitting `modelSelection`, returned `instanceId=codex`, `model=gpt-6.1-sol`, `reasoningEffort=xhigh`, `serviceTier=default`. [Exact responses and literal receipt](../../../.local-artifacts/notification-inbox-r4/identity.json).
+- Every Node invocation used `/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node`, verified `v22.23.0`. Only own ignored finite controls ran; no author or Root execution occurred.
+- Frozen Root: `/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030`, HEAD `6bb0efe2bedae6d4f014b2e8b84512a05e965a60`. Its sole status entry is the old untracked `docs/handoffs/2026-11-02-portal-rebuild.md`, preserved and unopened.
+- Supplied target: `/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/ROOT_6BB_SOURCE_TARGET.json`, full-byte SHA256 `9b4debdb52a4bab2520203438d4cc4ad2bcfb83e2e337f330176ca283e6460a3`. All2368 tracked Root entries independently match their file bytes, lengths, kinds and modes. Declared Full2368 FS digest is `b8b68b3d165e23ed90519dfc5ca4820cf974b9c0879d17916a4c1b24400fa683`; actual NUL-delimited logical stage digest is `d14c71613f6c3a6c761c70ee6c79cdf0f14c26f88dae5f75deefe6789c49617d`. Raw index cache metadata is not the predicate. [Initial custody](../../../.local-artifacts/notification-inbox-r4/root-custody-initial.json).
+
+Only these four exact CURRENT Git postimages were copied into own ignored `current/`. The two exact OLD `.mjs` blobs were copied separately for reproduction; another own directory pairs unchanged current tests with unchanged OLD source. No foreign prepared inputs or controls were executed. [Extraction manifest](../../../.local-artifacts/notification-inbox-r4/manifest.json), [exact candidate diff](../../../.local-artifacts/notification-inbox-r4/candidate.patch).
+
+| Complete postimage | Lines read | SHA256 |
+| --- | --- | --- |
+| `apps/portal/tests/genuine/notifications-inbox.browser.mjs` |323| `34568495f833dde65baf4aa97a860dbc4389e7dff815959d9dd215b80e9860f5` |
+| `apps/portal/tests/genuine/notifications-inbox-oracle.test.mjs` |178| `7491f2b4cae9bca1628405419726a74193adf17fa66e0bcf7078ee33263ba51d` |
+| `apps/portal/tests/genuine/notifications-inbox-seed.sql` |94| `81d90e7320237b22473c1146a9f91dd9028806c6b783b009719a32851bd61053` |
+| `docs/portal-rebuild/research/W0_GENUINE_NOTIFICATION_INBOX_MILESTONE.md` |119| `9e045d6289290503288f0a73e4f09a17b6f3b57d3ed8472e568476409b49b5d5` |
+
+The candidate changes only the evaluator comparison at line306 and appends four pure negative controls at test lines171-178. The original38-test Git file is an exact byte prefix of current42. SQL and milestone bytes are unchanged. Root's changes from72ed are documentation and M02/M04/M05 observation assets; all22 selected notification/gateway/shell/route/history/plan sources match `72edabab3afe2532580da4a4069dea1edbd1b952`. All68 migrations match both72ed and product `d4eb83dec33ec68cc553228fa87922ce14de1b80`. [Exact source relationships and changed paths](../../../.local-artifacts/notification-inbox-r4/source-relations.json).
+
+## NIR3 reproduction and correction
+
+The complete [R3 report](/Users/kanuj/.t3/worktrees/shelv/t3-25ed8d2d/docs/portal-rebuild/research/W7_GENUINE_NOTIFICATION_INBOX_SOURCE_R3.md) was read and its full-byte SHA256 independently verified as `1fc0b8f88bf56b37b3ea2dfe1746763179e1c732b5a963d0d833a7cb28a82f97`. Relevant findings and limits in [R2](/Users/kanuj/.t3/worktrees/shelv/t3-a42bff77/docs/portal-rebuild/research/W7_GENUINE_NOTIFICATION_INBOX_SOURCE_R2.md) and [R1](/Users/kanuj/.t3/worktrees/shelv/t3-d5167cd2/docs/portal-rebuild/research/W7_GENUINE_NOTIFICATION_INBOX_SOURCE_R1.md) were also read.
+
+NIR3/P2 allowed an alleged B wrong-owner status404 to retain empty issues after changing its outer action to `list_inbox_v1`, because OLD compared only `command.original`. The independent pure control clones only that request's command before changing one leaf, preserving B actor/observed owner/cookie digest, original A command, HTTP404/not_found, privacy, receipt, canonical journal and all no-effects observations.
+
+Exact OLD returns empty issues for all four independent mutations: wrong action, wrong schema, extra client selector and missing action. Their rejection assertions fail0/4, exit1. Its exact original38 suite passes38/38; unchanged current42 against OLD gives38pass/4meaningfulfail, exit1. Those failures remain RED.
+
+CURRENT line306 compares the complete command to `{schemaVersion:1,action:'request_status_v1',original:cmd}`. It retains `sameBSession`, B actor/owner/exact positive-B digest,404/not_found, generic HTTP/wire/privacy checks and unchanged canonical no-effects checks. All four independent envelope controls now produce exactly `owner_denial`,4/4, exit0. Root M64 strict `notification_fields`/`notification_parse` at lines116-121 and status/replay authorization at lines165-188 support the complete envelope requirement. This is an evidence-consistency correction, not proof of a Root authorization defect or genuine denial.
+
+The independent current identity controls pass26/26: original combined NIR1 replay/status vectors2; isolated A actor/owner/digest changes6; all three B denials' actor/owner/digest changes9; and missing/null/malformed B digests9. Together with unchanged original38 controls, these preserve NIR1/NIR2 and current composition. R1/R2/R3 historical OLD27/29 and33pass/5fail results retain their original provenance; those earlier generations were not rerun here. The author's `.local-artifacts/parent-nir3/` was not read or executed. Its BEFORE-test backup reportedly already contains42 tests on OLD source and is not used as an original38 baseline; exact Git5d66 supplies both original source and tests here.
+
+## Complete four-source review
+
+The scoped PASS covers all four assets and their actual Root relationships, not just the changed line:
+
+- **ABI and boundaries:** both exports retain their requested signatures. Exact public descriptorv1 keys, `actors.*.id` and `source/config/images/processes/resources` fingerprint references remain unchanged. Scenario is separate. No authority, currentness, generation or resource substitute is added. The only module import is `node:crypto`; import acquires nothing.
+- **Lifecycle:** `captureCanonical(label)` requires exactly `{observations,errors}`, empty errors and matching label/binding. Baseline refusal precedes page access; later refusal returns bounded phase errors. Browser waiters and triggers are joined with `Promise.allSettled`; failures do not create successful observations. Six canonical phases span baseline, seen, replay, authenticated denials, signed-out denial and relogin. Neither observer nor oracle authenticates supplied JSON or grants acceptance.
+- **Actual metadata:** observer lines81-111 separately derive observed owner from ordinary `/api/client/session`, nominal actor from the scenario target, and SHA256 from the actual request's named `__Host-shelv_client` cookie. Request/response objects supply method, URL, Origin, CSRF presence, Authorization absence, no-store, command and received status/body. Root `gateway.ts:21-26,43-44,83-105` supplies that cookie/control/projection relationship. Direct posts use same-origin browser cookies and fresh actual CSRF, without injected cookies/tokens, SDK, interceptors or an authority callback. Raw cookie/CSRF/DOM/exception text is not returned.
+- **Producer binding:** actual M04 must supply both clients' `clientId/publicationVersion/notificationEventId/publicationReceiptId/publishRequestId`. M54 lines500-510 create the immutable publication, entitlement-associated event, channel rows and receipt. The result includes `notificationEventId`, but no `portalDeliveryId`; that ID must resolve an existing SQL row by event+recipient+portal. The observer's fresh UUID is only a denied mark-seen request, never a producer identity.
+- **Read-only SQL:** the historical seed filename contains `ON_ERROR_STOP`, repeatable-read READ ONLY, CTE/SELECT and rollback. No insert, producer, Auth setting, ACL or RLS mutation occurs. Manual comparison binds publication, entitlement, event, portal delivery, publication receipt and matching plan request. Plan fingerprints are bytea SHA256; notification journal fingerprints use text `plan_hash`. No SQL parser, engine or successful query was used.
+- **Effects and privacy:** twelve full-row digest families cover both clients' cases, publications/documents, entitlements, service periods, review schedule, publication receipts, plan requests, events, other deliveries, attempts and care/check-in heads. Private rows stay inside server-side stable hashes. Target deliveries and actor/request/command/fingerprint/event/delivery/result journal binding remain explicit. Single seen revision/timestamp, exact original replay/status, denial no-effects, refresh, logout, fresh A relogin and strict publication-only response/canary checks remain composed.
+- **Wire and denials:** Root contracts/validation/mapping retain strict discriminants,8192-byte commands, bounded keyset pages and original command/receipt binding. M64 lines99-113 require actual target ownership; lines165-204 authorize original status/replay and preserve a single seen effect/journal. Client policy permits list/mark-seen/status, so private event read expects403/action_forbidden, wrong-owner operations404/not_found and signed-out401/session_ended. HTTP400 establishes none of these.
+- **Actual UI and destination:** C01 shell uses shared wrappers and the ordinary `notifications` link/sign-out control. Application mounts the secondary inbox; the exact `.notification-row`, `open update`, `mark seen`, `seen` and `next page` selectors match UI/controller source. It is not a27th frame. Publication destinations use canonical `/history/versions/<version>`; ClientHistory creates the version controller, client-state reads actual V3, and ClientPlan renders `historical plan`. The observer requires actual reviews POST200/schemaVersion3/matching returned version and historical UI. Refusal stops; no Guidance/M65/provider-photo fallback or reroute exists.
+- **Completeness limits:** this is the bounded two-publication scenario, not every notification event family or complete inbox history. The unchanged milestone preserves original author RED/setup/current history and leaves M04 IDs, genuine execution, provider delivery/retry, complete C01/C04/J09 and visual/accessibility acceptance pending.
+
+## Actual finite evidence
+
+Common directory: `/Users/kanuj/.t3/worktrees/shelv/t3-020c289e/.local-artifacts/notification-inbox-r4`. Every record has exact argv/cwd/exit/input hashes and untouched matching `.stdout`/`.stderr`. The own runner propagates the actual child exit. All test rows have zero skipped/cancelled/todo tests. [Runner](../../../.local-artifacts/notification-inbox-r4/run-control.py), [synthetic factory provenance](../../../.local-artifacts/notification-inbox-r4/controls-source.json), [independent envelope controls](../../../.local-artifacts/notification-inbox-r4/envelope-negative.test.mjs), [independent identity controls](../../../.local-artifacts/notification-inbox-r4/identity-negative.test.mjs).
+
+| Record | Actual cwd beneath common directory | Explicit Node argv after executable | Actual result |
+| --- | --- | --- | --- |
+| `old-original` | `old` | `--test apps/portal/tests/genuine/notifications-inbox-oracle.test.mjs` |38/38; exit0 |
+| `old-envelope` | common directory | `--test envelope-negative.test.mjs`, variant=old |0/4; four empty-issues results; exit1 |
+| `old-current-suite` | `current-suite-against-old` | `--test apps/portal/tests/genuine/notifications-inbox-oracle.test.mjs` |38pass/4fail; exit1 |
+| `current-suite` | `current` | `--test apps/portal/tests/genuine/notifications-inbox-oracle.test.mjs` |42/42; exit0 |
+| `current-suite-other-cwd` | common directory | `--test <absolute current test path>` |42/42; exit0 |
+| `current-envelope` | common directory | `--test envelope-negative.test.mjs`, variant=current |4/4; exit0 |
+| `current-identity` | common directory | `--test identity-negative.test.mjs` |26/26; exit0 |
+| `observer-syntax` | `current` | `--check apps/portal/tests/genuine/notifications-inbox.browser.mjs` |exit0; empty streams |
+| `tests-syntax` | `current` | `--check apps/portal/tests/genuine/notifications-inbox-oracle.test.mjs` |exit0; empty streams |
+
+These are pure synthetic oracle inputs and refusal-only observer controls, explicitly not genuine evidence. No successful permission/Response/DB/Page facade was supplied. Exact OLD/current source and tests were never edited. No failing assertion was weakened, skipped or relabeled.
+
+[Setup-only record](../../../.local-artifacts/notification-inbox-r4/SETUP.json) preserves a nonexistent guessed `server/app.ts` search (exit2), corrected through actual source inventory; an invalid identity-evidence JSON serialization (exit1), whose original bytes remain `identity-setup-invalid.txt` before exact tool responses were rewritten correctly; and display truncation resolved by bounded rereads. None is a candidate or runtime failure. Original author/prior-review failures remain in their unchanged reports and are not replaced by this CURRENT result.
+
+## Remaining gates and preservation
+
+Frozen Root currently records **one accepted bounded M01 Account Name capability;0/26 fully accepted screens;0/10 complete accepted journeys**. This review changes no numerator. Original joined R8 remains STOPPED_RETAINED and was never read or queried. Fresh M02 source-only setup is separate. M03 remains unadmitted and actual M04 IDs remain absent in this handoff.
+
+After any Parent source admission, M03 still needs actual M04 A/B publications and existing portal rows, ordinary A/B sessions, a NEW exact resource/custody/page/relogin/read-only-capture packet, genuine SQL/browser/replay/denial/relogin/privacy evidence, applicable visual/accessibility/integration/exact-head CI and independent acceptance. All26 screens, D01-D48 and ten journeys remain required. Guidance private-return/M65/provider-photo holds stay HELD; manifest assertions or self-reported HTTP400 confer no approval.
+
+No resources/Base/private/fixture access, SQL parser/engine/DB/Auth/browser/network/SDK/dependency/compiler execution or acquisition occurred. No nested agent, Root/foreign/source write, source fix, commit/PR/push/watch/merge/deploy or real-client action occurred. Only this NEW uncommitted report and own ignored finite controls were written; Git optional locks stayed disabled. No Root or prepared ancestry was executed.
+
+[Final validation](../../../.local-artifacts/notification-inbox-r4/final-validation.json) records the sole report write-set, all exact source pins/input hashes, unchanged author/Root status and logical stage, full2368 Root custody, report links/whitespace and `git diff --check`. This documentation/custody validation adds no runtime or acceptance evidence.

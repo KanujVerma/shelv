@@ -1,0 +1,11 @@
+{
+  "node": "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+  "root": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030",
+  "source": "359c6bf0c759357df648ca441e9e3d1c3d29398c",
+  "targetSha256": "be2e06bcbd45665e2f2e191dafb5d6d284f0a2591987ad236a6efce02e21eb1e",
+  "sourceFiles": 2376,
+  "migrations": 68,
+  "helperSha256": "ce531f59f8460ac4e1df7c750401b01d3f69250da3c857ad3ff2108d610e835d",
+  "sqlSha256": "5a7963f718a6322cb56e88711823ee3e389ec1951f2285e91f1c2dae00345f49",
+  "sourceTaskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m04-trusted-principal-executor-source"
+}

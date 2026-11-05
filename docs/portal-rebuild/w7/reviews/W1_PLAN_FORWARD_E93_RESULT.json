@@ -1,0 +1,118 @@
+{
+  "owner": "Kanuj",
+  "head": "e93ecfc8438e5949352c3727b7447208f671a2c7",
+  "base": "8a2be1cab5980f5aa92698268568ed5345bd84e8",
+  "sourcePins": [
+    {
+      "path": "apps/portal/tests/w1-plan-platform-plan-content-forward-source.test.mjs",
+      "bytes": 5026,
+      "sha256": "e5569f5e6960f829769fd3b106b4ce230348142e8e4b8f0fabf6a6f6f9dc360f"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_PLAN_CONTENT_FORWARD_20261103.md",
+      "bytes": 10465,
+      "sha256": "1d9ac98f4e01044e1767d454256604b08a3aa945f4c0ce4c4bbede0522fc1da2"
+    },
+    {
+      "path": "supabase/migrations/20261104000256_portal_rebuild_plan_content_lookup_v1.sql",
+      "bytes": 6319,
+      "sha256": "b2fe162fbdb5c3ef93fad7ae6bee7eeba97cfb062319ec4c3f37773d9934712d"
+    },
+    {
+      "path": "supabase/tests/portal_plan_content_lookup_v1.test.sql",
+      "bytes": 9520,
+      "sha256": "b5fa2d65140056723bd56d8d72a965bab1c2cdd4bf5c4ce1f3b5873c2c84b655"
+    }
+  ],
+  "patchSha256": "1fb3e41376d48635e6da710ed0ad6d4840cf7879146446422a320b2785a97142",
+  "ownerPacketSha256": "c168c5a70b4a0215e3a1b1f1ddc014d2b9cc01ffa36f2aaac60d946f59807f11",
+  "parentSourcePreimages": [
+    {
+      "head": "714d6647b1a92946dbf9c61f2d96f245ffbd845c",
+      "path": "supabase/migrations/20261102143000_portal_rebuild_client_service_admin_v1.sql",
+      "sha256": "6e013b9249d737ea62de0f048ad37a0d3847ef7c6a615d392e403790aee673f1",
+      "bodyPins": [
+        {
+          "name": "concierge.client_service_predecessors_v1",
+          "bodySha256": "9c7ab039cdff30c500d05214ed7e2aad6f433508e2bf5dc0cb69b860a02756b0",
+          "classification": "Literal source body hash only; no SQL/Auth/business predicate executed or audited."
+        },
+        {
+          "name": "public.concierge_client_service_command_v1",
+          "bodySha256": "8c030c8663e94bad7b42b9a86bb1575097f3f2e042dafc8624cdc5cfa3fb64de",
+          "classification": "Literal source body hash only; no SQL/Auth/business predicate executed or audited."
+        }
+      ],
+      "absentFromCandidate": true
+    },
+    {
+      "head": "4238ca3061a29569bb2848fede44b0f073723475",
+      "path": "supabase/migrations/20261103194339_portal_rebuild_advisor_report_context_v1.sql",
+      "sha256": "1f24d8b86d752e7d5ec736181886e542c1d21680b3b8127bc61dd209a1f6a2cd",
+      "bodyPins": [
+        {
+          "name": "concierge.advisor_report_context_v1",
+          "bodySha256": "e46568b504cb6085312dc4063c8b6228ba0b88cd2b7f26f2ada31e21dd5308c5",
+          "classification": "Literal source body hash only; no SQL/Auth/business predicate executed or audited."
+        },
+        {
+          "name": "public.concierge_review_command_v1",
+          "bodySha256": "dc28cfc1b70eee08f832a21d11fb7f59580e3bcb438fe520b3bbd942f4c1bd2f",
+          "classification": "Literal source body hash only; no SQL/Auth/business predicate executed or audited."
+        }
+      ],
+      "absentFromCandidate": true
+    }
+  ],
+  "original68Exact": true,
+  "authoredPgTapPredicates": 30,
+  "pgTapExecution": "UNRUN",
+  "scope": "Complete4 forward SOURCE only. Parent literals hashed only, no private/refauthority/financial/photo audit, SQL/parser/catalog/Auth/resources orCI grant.",
+  "verdict": "PASS_SCOPED_CANONICAL_FORWARD_SOURCE_ONLY_WAIT_W0_PACKET",
+  "currentSourceControls": {
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0"
+  },
+  "metadataDefaultReview": "Source guards exactinvoker/signature/nullUUIDdefault and compares all pg_proc metadata except changedprosrc/rawdefaultparserpositions; independentdefault/argumentdeparses andeffectiveAPI-role EXEC denial before/after. No actualcatalog inspected.",
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-plan-forward-e93/W7-SETUP-CWD-6OF7.log",
+      "bytes": 2863,
+      "sha256": "0370d28ec905ed4f62bfaed1dd5a9a7223d90ba72370337161cd60abd0b7c907",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-plan-forward-e93/W7-SETUP-CWD.json",
+      "bytes": 306,
+      "sha256": "d4cb08955f364581603a8395a898c1fcf420435984606333ba4cdee3d816f9e7",
+      "exitCode": 1
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w1-plan-forward-e93/W7-CURRENT-SOURCE7.log",
+      "bytes": 1818,
+      "sha256": "29f359337829018230c8aa63aaca8f7a776563225698b7f7d9fd999ceaa20c2d",
+      "exitCode": 0
+    }
+  ],
+  "readiness": {
+    "parents69and70": "ABSENT_FROM_CANDIDATE_REQUIRES_EXACT_W0_COMPOSITION",
+    "catalogActualPreimageOidOwnerAclDefaultsAttrs": "UNKNOWN",
+    "sqlParser": "UNRUN",
+    "migrationReplayPgTap30": "UNRUN",
+    "rawAuthenticatedRpc": "UNRUN",
+    "sqlContainingPrOrCi": "WAIT_W0_EXACT_SOURCE_ORDER_CATALOG_HOSTED_PACKET",
+    "native4460794439": "OPEN"
+  },
+  "limits": [
+    "No actualSQL/Auth/DB/parser/catalog/directRPC/scan/repair/resource or alternateprincipalsetup",
+    "Parent service/review bodies hashed asliteralpreimagesonly, notfinancial/privateSource/refauthorityaudit",
+    "Privilegedhelper pgTAP isnot actualAuth or independentOID-beforeafter proof",
+    "SerialcatalogDDLwriterassumption musthold infuturepacket; no arbitraryconcurrentsuperuserDDL guarantee",
+    "Photo4461800685UNACCEPTED_HELD/principal44STOP/allotherholds unchanged"
+  ]
+}

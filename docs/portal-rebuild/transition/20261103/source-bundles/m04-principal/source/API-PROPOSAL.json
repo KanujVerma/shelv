@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "kind": "M04_PRINCIPAL_EXECUTOR_API_PROPOSAL",
+  "state": "WAITING_PARENT_ACK_BEFORE_EXPORTS",
+  "sourceTaskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Athread-send%3Amilestone-20261103-m04-trusted-principal-executor-source",
+  "scope": "SOURCE_ONLY; no live grant or resource check",
+  "source": {
+    "root": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030",
+    "commit": "359c6bf0c759357df648ca441e9e3d1c3d29398c",
+    "targetRawSha256": "be2e06bcbd45665e2f2e191dafb5d6d284f0a2591987ad236a6efce02e21eb1e",
+    "fullTrackedFiles": 2376,
+    "migrations": 68,
+    "helperPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/native-read-joined.mjs",
+    "helperSha256": "ce531f59f8460ac4e1df7c750401b01d3f69250da3c857ad3ff2108d610e835d"
+  },
+  "exports": [
+    {
+      "name": "validateExecutionGrant",
+      "exactInputKeys": [
+        "grantBytes",
+        "expectedGrantSha256",
+        "executionTaskId",
+        "executorSha256",
+        "sqlSha256"
+      ],
+      "behavior": "pure bytes/shape/pin validation only; returns immutable data, never authority/currentness"
+    },
+    {
+      "name": "executePrincipalSetup",
+      "exactInputKeys": [
+        "mode",
+        "grantFile",
+        "expectedGrantSha256",
+        "executionTaskId",
+        "signal"
+      ],
+      "mode": "execute only; inert on import",
+      "behavior": "no callback ports or injected authority/success surfaces; external raw hash before grant parse; exact new execution literal differs from this source task; one singleton execution and immutable attempt CAS before first actual GoTrue mutation"
+    }
+  ],
+  "cli": {
+    "argv": [
+      "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "<new executor path>",
+      "execute",
+      "--grant",
+      "<actual0600 grant path>",
+      "--sha256",
+      "<externally provided rawSHA>",
+      "--execution-id",
+      "<actual new execution literalId>"
+    ],
+    "otherModes": "refused; no sourcecheck mode may inspect a resource"
+  },
+  "grant": {
+    "rawFile": "canonical owned regular0600 bounded65536 bytes, externally hashed; no symlink/alternate Base adoption",
+    "exactTopKeys": [
+      "schemaVersion",
+      "kind",
+      "parentThreadId",
+      "executionTaskId",
+      "ownerId",
+      "projectId",
+      "source",
+      "executor",
+      "helper",
+      "sql",
+      "context",
+      "attempt",
+      "expiresAt",
+      "authorization",
+      "actions"
+    ],
+    "schemaVersion": 1,
+    "kind": "M04_TRUSTED_PRINCIPAL_SETUP",
+    "parentThreadId": "9b085ada-435f-48d6-8886-957c1ce3e82d",
+    "actions": [
+      "create-two-permanent-synthetic-principals",
+      "activate-initial-plan-policy"
+    ],
+    "sourceKeys": [
+      "root",
+      "commit",
+      "targetFile",
+      "targetSha256",
+      "gitMetadata"
+    ],
+    "gitMetadata": "exact source .git pointer/HEAD/ref/index file path+rawSHA observations from later Parent packet; derive/contain paths to this repository, compare target index listing SHA in an initial fixed joined git read. This supplements full2376 filesystem/mode/hash checks so synchronous fences can recheck every await boundary without recursive async Git/inspect.",
+    "executorKeys": [
+      "path",
+      "sha256"
+    ],
+    "helperKeys": [
+      "path",
+      "sha256"
+    ],
+    "sqlKeys": [
+      "path",
+      "sha256"
+    ],
+    "contextKeys": [
+      "fixtureDirectory",
+      "descriptor",
+      "sourceRecord",
+      "resources",
+      "runtimeLedger",
+      "status",
+      "ca",
+      "docker",
+      "database"
+    ],
+    "fileReferences": "each {file,sha256}; descriptor raw/public v1 unchanged, SOURCE/RESOURCES/LEDGER/status/CA are actual NEW future packet files, none read in this source task",
+    "dockerKeys": [
+      "path",
+      "sha256",
+      "host"
+    ],
+    "databaseKeys": [
+      "id",
+      "name",
+      "imageId",
+      "created",
+      "startedAt",
+      "labels",
+      "ports",
+      "networks"
+    ],
+    "databaseRules": "one actual captured DB id; exact image/start/owner/project/workdir/ports/network mapping from raw RESOURCES and fresh inspect; no enumeration, fallback, reset/start/stop/pull",
+    "attemptKeys": [
+      "directory",
+      "claimFile"
+    ],
+    "attemptRules": "new private0700 evidence directory and fixed immutable0600 claimFile opened wx/fsync exactly once. Existing claim/attempt/uncertain history refuses; no amendment, retry, cleanup/delete or adoption."
+  },
+  "awaitDiscipline": {
+    "syncFence": "full2376 actual source kinds/modes/bytes, Root/git metadata/index pins, current68 source files, exact current grant/rawD/SOURCE/RESOURCES/LEDGER/status/CA/self/helper/SQL/Docker binary hashes and modes, owner/context, expiry/abort/operation ownership before and after every executor await and before success/private return",
+    "joinedCommands": "use byte-exact ce531 JoinedCommands.issue; retain actual ChildProcess+join and inspect/psql receipts. Read stdout only synchronously after close/join plus full fence; do not use helper.run private-return shortcut.",
+    "liveDatabase": "fixed captured docker inspect before/after each SQL or HTTPS phase; inspect observation validates against exact pinned live identity at its own joined boundary, not by recursively inspecting inspect. All issued commands and sockets must join even if a post-wait fence fails.",
+    "network": "actual owned HTTPS request/response/socket close promises retained and joined; reject redirects, foreign origin/issuer/CA, oversize, timeout/abort. No mocked responses or credentials. Normal pinnedCA/rejectUnauthorized true.",
+    "uncertainty": "any error after mutation remains failed/uncertain; immutable attempt stays consumed, actual partial GoTrue IDs retained, no retries/reset/deletes or success relabel"
+  },
+  "sqlPlan": {
+    "source": "fixed reviewed SQL text in owned source subtree; no caller SQL or query parameters beyond verified returned UUID/email literals",
+    "argv": [
+      "<pinned Docker binary>",
+      "--host",
+      "<pinned socket>",
+      "exec",
+      "-i",
+      "<one captured DB id>",
+      "psql",
+      "-X",
+      "-qAt",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-U",
+      "postgres",
+      "-d",
+      "postgres",
+      "-f",
+      "-"
+    ],
+    "inspectArgv": [
+      "<pinned Docker binary>",
+      "--host",
+      "<pinned socket>",
+      "inspect",
+      "<one captured DB id>"
+    ],
+    "initialRead": "READ ONLY actual ledger68 + all actual auth.users must be only descriptor A/B, permanent confirmed trigger profiles/enrollment active/case0, zero prior advisors/principals/publications/approvals/payments/service clocks/outbox/entitlements. Record A/B current profile and unrelated bookkeeping without modifying them.",
+    "identityCreate": "actual GoTrue Admin POST /auth/v1/admin/users twice, owner-<lowercase resourceUUID>@example.invalid and viewer-<lowercase resourceUUID>@example.invalid, email_confirm true, no session/JWT insertion or password login; capture actual returned IDs and raw provider/trigger readback",
+    "applyTransaction": "lock exact initial plan_policy singleton FOR UPDATE, assert actual A/B+two returned confirmed permanent users and trigger profiles; require totalusers4, no foreign roles/prior publication/payment/clocks, initial activatedfalse/ownerNULL/rev0/requiretrue. Insert exactly2 advisors(owner view/edit/publish/confirm=true/admit=false; viewer view=true/edit,publish,confirm,admit=false) and2 principals(owner kindowner/viewer kindhuman active). UPDATE policy WHERE initial CAS -> activatedtrue/actual owner/rev1/requiretrue, rowcount1 or full rollback.",
+    "finalRead": "actual four user/profile identities, exact owner/viewer advisor/principal rows/policy plus unchanged A/B fields and no publication/payment/outbox/clock effects; actual command/query/source evidence refs returned OBSERVATIONS_ONLY/NOT_ASSESSED",
+    "manualProfileWrites": 0,
+    "forbidden": [
+      "auth.users/session inserts or JWT forging",
+      "payment confirmations",
+      "approvals",
+      "publication/document/receipt/event/outbox insertion",
+      "Auth/RLS/ACL/schema/migration changes",
+      "source permissions",
+      "resource lifecycle commands"
+    ]
+  },
+  "controls": "malformed/raw600/hash/unknown-field/foreign owner/source/DB/argv/CAS/refusal and native-slot bookkeeping only; no successful HTTP/Page/SQL/Auth/authority facades. Source exact-copy helper tests may use failed child refusal only if specifically needed; no actual resource child in this task.",
+  "held": [
+    "Guidance private-return",
+    "M65",
+    "provider photo",
+    "A07",
+    "frozen90 host candidate",
+    "four tracked M04 assets"
+  ],
+  "actualResourceIds": null
+}

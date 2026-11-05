@@ -49,21 +49,53 @@ export function createPhotoUpload(endpoint,access,fetcher=fetch,publicKey=null) 
     if(!response.ok)throw new PortalError(response.status,result?.code);return result;
   };
 }
+import {portalReturnPath} from '../auth/navigation-return.js';
+import {parseRoute} from '../auth/portal-routes.js';
+import {parsePreviewTarget} from '../preview/target.js';
 export function consumeCallback(location, history) {
-  const url=new URL(location.href), hash=new URLSearchParams(url.hash.slice(1));
-  let tokenHash=url.searchParams.get('token_hash'), accessToken=hash.get('access_token'),
-    refreshToken=hash.get('refresh_token'), code=url.searchParams.get('code');
-  const type=url.searchParams.get('type') || hash.get('type') || 'email';
-  let error=Boolean(hash.get('error') || url.searchParams.get('error'));
-  const secretKeys=['token_hash','type','error','error_code','error_description','code','access_token','refresh_token','expires_at','expires_in','token_type','provider_token','provider_refresh_token'];
-  const hasCredential=tokenHash || accessToken || refreshToken || code || error || secretKeys.some(key=>url.searchParams.has(key));
-  if(hasCredential) {
-    for(const key of secretKeys)url.searchParams.delete(key);
-    url.hash='';history.replaceState(null,'',url.pathname+url.search);
+  const url=new URL(location.href), query=new URLSearchParams(url.search), hash=new URLSearchParams(url.hash.slice(1));
+  const keys=['token_hash','type','error','error_code','error_description','code','access_token','refresh_token','expires_at','expires_in','token_type','provider_token','provider_refresh_token'];
+  const empty={kind:null,tokenHash:null,accessToken:null,refreshToken:null,code:null,type:'email',error:false};
+  const present=keys.filter(key=>query.has(key)||hash.has(key));
+  if(!present.length)return empty;
+
+  // Scrub before returning anything to auth, routing or rendering. Only an
+  // existing validated navigation grammar may survive a callback URL.
+  for(const key of keys)url.searchParams.delete(key);
+  url.hash='';
+  let navigationValid=false;
+  const path=url.pathname+url.search;
+  for(const audience of ['client','advisor']) {
+    try {portalReturnPath(path,audience);navigationValid=true;} catch {}
   }
-  if([tokenHash,accessToken,code].filter(Boolean).length>1 || (accessToken?.length??0)>16384 || (refreshToken?.length??0)>8192 || (tokenHash?.length??0)>2048 || (code?.length??0)>2048) {
-    error=true;tokenHash=null;accessToken=null;refreshToken=null;code=null;
+  if(parseRoute(path)?.name==='maya')navigationValid=true;
+  if(url.pathname==='/'&&url.searchParams.has('advisorPreview')) {
+    try {
+      const allowed=['advisorPreview','clientId','revision','sample','signin'];
+      navigationValid=[...url.searchParams.keys()].every(key=>allowed.includes(key)&&url.searchParams.getAll(key).length===1)
+        &&(!url.searchParams.has('signin')||url.searchParams.get('signin')==='1')&&!!parsePreviewTarget(url.search);
+    } catch {navigationValid=false;}
   }
-  const kind=code?'pkce':tokenHash?'token_hash':accessToken?'implicit':null;
-  return {kind,tokenHash,accessToken,refreshToken,code,type,error};
+  if(!navigationValid)url.search='';
+  history.replaceState(null,'',url.pathname+url.search);
+
+  const invalid=()=>({...empty,error:true});
+  if(!navigationValid||present.some(key=>query.getAll(key).length+hash.getAll(key).length!==1))return invalid();
+  const value=key=>query.get(key)??hash.get(key);
+  if(present.some(key=>!value(key)||value(key).trim()!==value(key)))return invalid();
+  if(['error','error_code','error_description'].some(key=>present.includes(key)))return invalid();
+  const type=value('type')??'email';
+  if(!['email','signup','invite','magiclink','recovery','email_change'].includes(type))return invalid();
+  const code=query.get('code'),tokenHash=query.get('token_hash'),accessToken=hash.get('access_token'),refreshToken=hash.get('refresh_token');
+  if([code,tokenHash,accessToken].filter(Boolean).length!==1)return invalid();
+  const kind=code?'pkce':tokenHash?'token_hash':'implicit';
+  const allowed=kind==='pkce'?['code','type']:kind==='token_hash'?['token_hash','type']:['access_token','refresh_token','expires_at','expires_in','token_type','type','provider_token','provider_refresh_token'];
+  if(present.some(key=>!allowed.includes(key)))return invalid();
+  if(hash.has('code')||hash.has('token_hash')||query.has('access_token')||query.has('refresh_token'))return invalid();
+  if(kind==='implicit'&&present.some(key=>key!=='type'&&query.has(key)))return invalid();
+  const limits={code:2048,token_hash:2048,access_token:16384,refresh_token:8192,provider_token:16384,provider_refresh_token:8192};
+  if(Object.entries(limits).some(([key,max])=>(value(key)?.length??0)>max))return invalid();
+  if(['expires_at','expires_in'].some(key=>present.includes(key)&&(!/^[0-9]{1,16}$/.test(value(key))||!Number.isSafeInteger(Number(value(key)))||Number(value(key))<=0)))return invalid();
+  if(present.includes('token_type')&&value('token_type')!=='bearer')return invalid();
+  return {kind,tokenHash,accessToken,refreshToken,code,type,error:false};
 }

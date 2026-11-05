@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "owner": "Kanuj",
+  "updatedAt": "2026-11-03T18:38:48.407Z",
+  "acceptedBoundedCapabilities": 2,
+  "acceptedScreens": 0,
+  "screenTotal": 26,
+  "acceptedJourneys": 0,
+  "journeyTotal": 10,
+  "scope": "Capability receipts do not accept screens, complete journeys, all decisions or release. Full original specification and held boundaries unchanged.",
+  "capabilities": [
+    {
+      "id": "M01",
+      "name": "Own Account name persistence",
+      "owner": "Kanuj",
+      "status": "accepted",
+      "acceptedAt": "2026-11-03T12:39:29.064Z",
+      "acceptedRevision": "72edabab3afe2532580da4a4069dea1edbd1b952",
+      "productCode": "d4eb83dec33ec68cc553228fa87922ce14de1b80",
+      "affectedScreens": [
+        "C08"
+      ],
+      "wholeScreenAccepted": false,
+      "wholeJourneyAccepted": false,
+      "independentReview": {
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-account-profile-genuine-acceptance-r2",
+        "report": "../research/W7_M01_ACCOUNT_PROFILE_GENUINE_ACCEPTANCE_R2.md",
+        "sha256": "e440772a86eb6707bb1800e3c80c39865c8b753b97332532ff4ee7a0bf9c26a7",
+        "verdict": "PASS, one bounded capability only"
+      },
+      "evidencePacket": {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-co-4bb412d8e34c7ca1/.local-artifacts/portal-rebuild/acceptance-first/M01_ACTUAL_EVIDENCE_PACKET_R2.json",
+        "sha256": "af7902d869b7a12178e08e7155382b7faa45b2b9f89d1e0605aa2a3a8c4c2b59"
+      },
+      "criteria": {
+        "ownAuthenticatedRead": "PASS ordinary OTP/PKCE A and actual profile200 with no clinical plan prerequisite",
+        "exactBrowserSave": "PASS exact Unicode and whitespace UI command, receipt, canonical read and SQL",
+        "refreshRelogin": "PASS actual reload, fresh ordinary login and reopened exact field",
+        "crossClient": "PASS positive B own revision0, A selector400 refusals and no denied SQL effects",
+        "sessionAndRecovery": "PASS CSRF403, ended-session401, exact original retry5, actual committed lost-ACK6 one effect, unchanged genuine result return after completed logout",
+        "currentEvidence": "PASS exact current runtime/source/artifacts, actual SQL, complete successor API captures, privacy, relevant operability and all joins"
+      },
+      "persistentEffects": {
+        "finalARevision": 6,
+        "finalBRevision": 0,
+        "totalANameCommands": 6,
+        "totalBNameCommands": 0,
+        "lostAckOriginalRequestId": "4542740a-9af3-44dc-8bec-60768237f335",
+        "lostAckSqlRevisionSequence": [
+          5,
+          6,
+          6,
+          6
+        ],
+        "lostAckJournalSequence": [
+          0,
+          1,
+          1,
+          1
+        ],
+        "newReturnQualificationNameCommands": 0
+      },
+      "privacy": {
+        "completeSuccessorResponses": 32,
+        "completeBodies": 31,
+        "completeApiBodies": 13,
+        "explicitAuthRedirectBodyExceptions": 1,
+        "captureErrors": 0,
+        "privateLiterals": 37,
+        "literalMatches": 0,
+        "oldMissingResponse": "Historical record34 remains UNPROVEN; prospective successor closes MA2 without reconstructing old bytes"
+      },
+      "visualAndAccessibility": {
+        "boundedNameAndDialogOperability": "PASS",
+        "keyboard": "8 Tab containment, Escape dismissal, trigger focus restoration",
+        "narrow": "390px document equals390px viewport",
+        "exactNameSummaryAppearance": "Not passed: stacked value and missing approved aligned-row separator; nonblocking for functional persistence, retained C08 appearance work",
+        "fullFrame320ZoomAssistiveTechnology": "UNRUN"
+      },
+      "reviewException": "Two exploratory reviewer diagnostic outputs exposed retained ended-session cookie/CSRF values. No credential use or copy in report/reviewer files; exception retained, no clean-output claim.",
+      "historicalEvidence": "R1 HOLD, transport-abort delivery failure, missing body, TLS/429/origin and scan setup failures remain preserved and are not relabeled.",
+      "resourceDisposition": {
+        "stage": "STOPPED_RETAINED",
+        "stoppedAt": "2026-11-03T12:27:51.780Z",
+        "receipt": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/account-2a771cf9-1a2c-4b60-9569-71d175d26011/private/STOPPED.json",
+        "receiptSha256": "9577e7d130293bb2fe2a4c57a605364aed7a9f0bf3ba79af89accfad198ba62d",
+        "allNativeCommands": 119,
+        "allExit0AndJoined": true,
+        "retainedDumpBytes": 2976893,
+        "retainedDumpSha256": "0ec2c2a3b0288ae449c9c148f643c975e1572688c414ef34b0b0f3c08ef9a63e",
+        "retained": [
+          "containers",
+          "volume",
+          "network",
+          "keys",
+          "dump",
+          "evidence"
+        ],
+        "furtherEngineDbAuthQueries": "Forbidden after STOPPED; no reuse/reset/restart"
+      },
+      "remainingAccountScope": [
+        "Canonical verified email mutation",
+        "Address",
+        "Service/coverage/cancellation",
+        "Consent/privacy",
+        "Final export and unfinished administration",
+        "Exact full C08 appearance and complete accessibility/visual acceptance"
+      ]
+    },
+    {
+      "id": "M02",
+      "name": "Own recorded historical Orders ownership and persistence",
+      "owner": "Kanuj",
+      "status": "accepted",
+      "acceptedAt": "2026-11-03T18:38:48.407Z",
+      "acceptedRevision": "359c6bf0c759357df648ca441e9e3d1c3d29398c",
+      "productCode": "d4eb83dec33ec68cc553228fa87922ce14de1b80",
+      "affectedScreens": [
+        "C06",
+        "C06D"
+      ],
+      "wholeScreenAccepted": false,
+      "wholeJourneyAccepted": false,
+      "independentReview": {
+        "taskId": "node:delegated-task:command%3Amcp%3Aa56eb6fa-1435-4927-8890-15373d05f366%3Adelegate-task%3Amilestone-20261103-m02-recorded-orders-genuine-acceptance-r1",
+        "report": "../research/W7_M02_RECORDED_ORDERS_GENUINE_ACCEPTANCE_R1.md",
+        "sha256": "27f9c14fefbc8301fdfb3c528bf65fd8b460f8faeaa000065b2fb2a26d1329d6",
+        "verdict": "PASS one complete bounded recorded-history capability"
+      },
+      "evidencePacket": {
+        "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/account-72d1e2c3-94de-4705-a594-9e9708294965/private/M02-ACTUAL-ACCEPTANCE-PACKET.json",
+        "sha256": "3cb30a10f9ab8a4183821363d38c1622f28af6ac4a192e5119166ac03627382e",
+        "artifacts": 606
+      },
+      "criteria": {
+        "ownReadPersistence": "PASS25 actual checks/32 canonical A/B reads/3ordinary PKCE logins/list/detail/reload/Back/Forward/newA login",
+        "authorization": "PASS B own data,16selector400+unchanged rereads, foreigndetail unavailable, reallogout/privateclear and originalCSRF/natural-cookie401",
+        "canonicalNoEffects": "PASS actual readonly baseline/final complete A/B rows/view/IDs and all27 protected relation counts/digests equal",
+        "visualA11yPrivacy": "PASS keyboard/Enter/Back and320/390 nooverflow;207 captured API bodies/headers/17 privatevalues zero matches; captured bytes only",
+        "custody": "PASS all57 pre-stop native completions0closedjoined, allbrowser/hostclosed0uncertainty[], then17 terminal nativeSTOPcommands0joined"
+      },
+      "qualifications": [
+        "Late real upstream200/fulfill accepted was naturally browser-aborted; no consumer late-byte return claim.",
+        "Prior old3d empty evidence credited only with verified exact relevant runtime-tree equivalence6bb->359; no fresh72d1 emptyexecution claim.",
+        "CoreR2 controller overallFAILED for later AccountMailpit guard; complete core plus separate corrected Orders-onlyprobe compose gate without relabeling failure.",
+        "Root genuine0209 remains unchanged; Source-reviewed external b2e driver used for acceptance, archived in transition; no silent implementation/test integration.",
+        "OldinvalidURL503/emptyCSRF403/setup failures and seed outerargvannotation retained separately.",
+        "No whole C06/C06D/quote/newpurchase/delivery/fulfillment/refund/Start/financial/AT/zoom/fulljourney/release acceptance."
+      ],
+      "resourceDisposition": {
+        "stage": "STOPPED_RETAINED",
+        "receipt": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/account-72d1e2c3-94de-4705-a594-9e9708294965/private/STOPPED.json",
+        "receiptSha256": "58d4193c50f000d97ccfaf5f605b5cb9f678d52a04c97ba08711cf9561e646ee",
+        "stopCommands": 17,
+        "preStopNativeCommands": 57,
+        "allExit0AndJoined": true,
+        "retainedDumpBytes": 2961927,
+        "retainedDumpSha256": "206bc1f8b96caad1ad001a5d65f8705495939df27adf4be8ea6a2b6d3c08cfa4",
+        "furtherEngineDbAuthQueries": "Forbidden; no reuse/reset/restart/adoption"
+      }
+    }
+  ]
+}

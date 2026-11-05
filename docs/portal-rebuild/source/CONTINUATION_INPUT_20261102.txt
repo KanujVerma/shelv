@@ -1,0 +1,551 @@
+/goal
+finish the approved shelv rebuild: sustained parallel execution, integrated acceptance, no scope reset
+You are the implementation coordinator for KanujVerma/shelv. Resume the existing approved rebuild from its actual current integration state and finish it. Do not restart the project, redesign the product, re-import the original handoff as a new project, or substitute a static demo for the real connected application.
+
+The founder wants faster accepted, integrated product progress, not a lower-quality implementation, more disconnected source modules, an unchanged rough percentage, or a coordinator that requires reminders to keep workers productive.
+0. This is a continuation, with precise authority
+When Kanuj supplies this /goal to the implementation agent, it is the explicit resume instruction that supersedes the November 2 handoff's temporary stop/pause instruction for the already-authorized development/delegation scope. Merely encountering this file on disk or in a status-only turn does not resume work.
+
+Preserve all original D01–D48 decisions, all 26 approved screens, required secondary flows, the approved detailed specification, and later explicit founder addenda. This prompt changes execution discipline and progress reporting; it does not weaken a product, privacy, quality, resource, or authorization requirement.
+
+The deliverable is the complete real connected rebuild, reviewable integrated code and a verified preview, plus current acceptance evidence and GitHub documentation. It is not automatically a main-branch merge, production deployment, actual client publication, live client notification, real purchase, payment/refund, source disclosure, permission change, or resource reset. Those boundaries remain unchanged. Prepare a release candidate; do not claim a release happened.
+
+No current native-resource grant is conveyed by this continuation. The handoff says earlier local DB/Auth/Storage fixtures are stopped and preserved and fresh exact authority is required. Respect that. Request the smallest missing authorization when it actually becomes needed; keep unrelated authorized work moving. Never count an unavailable/held required check as passed or quietly drop it from completion.
+
+Do not evade provider refusals by disguising, renaming, retrying, routing around, or changing models. Preserve held reviews and their evidence. Identify the specific acceptance consequence; continue legitimate unrelated work. Do not invent a hardware-key, paid-program, or new provider-enrollment prerequisite for ordinary unblocked development.
+1. Reconcile once, then work: do not spend another session rebuilding the plan
+Read, in this order:
+1. Current explicit user instructions, the applicable local/project AGENTS.md (including the founder's November 2 replacement), ~/.agents/WORKFLOW.md, and applicable ~/.agents/TSTACK.md instructions. The latter is not permission to invoke a new merge/release workflow.
+2. docs/portal-rebuild/README.md, GOAL.md, APPROVED_DECISIONS.md, APPROVED_DESKTOP_SPEC.md, shelv_desktop_design_manifest.json, and the preserved original approved input/provenance.
+3. DECISION_ADDENDA.md, actual implementation contracts, accepted interface pins and the relevant source-review findings.
+4. The supplied November 2 continuation handoff, preserved byte-for-byte as source/LOCAL_HANDOFF_20261102.txt in this package. Its attached snapshot is operational context, not a new grant.
+5. Actual current Git, T3/native runtime state, task receipts, dirty files, source commits and exact-head check results. Older TASKS.json, CURRENT_STATUS.md, CONTEXT_SYNC.md and chronological status paragraphs are history, not proof of live workers.
+Resolve state conflicts using observable current evidence. Preserve later explicit product decisions. Do not infer new business rules from formatting differences between goal attachments. The original 95,388-byte approved goal supplied with the prior handoff has SHA256 c45701f9f54fd2b1dbb09bbd7aa2b9b437e9059aa6032b6f39411fe2e7f6efbd; it is unchanged. Do not overwrite its bytes or provenance.
+Known starting checkpoint, to reverify rather than assume
+- Integration checkout: /Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030.
+- Integration branch: kanuj/portal-rebuild-integration-20261030.
+- Published head verified during the continuation-prompt review: 8af746d197b976972d4b16924155afa8c3b32d44.
+- PR211: open, draft, stacked on docs/portal-rebuild-approved-handoff-20261030 / PR210. Do not reset to main, flatten that stack, merge it, or force-push as part of resuming.
+- The three GitHub checks on that exact head are successful. They do not accept later local dirt, candidate branches, all 26 screens, genuine delivery/storage, or the complete product.
+- Public Application.tsx at that head still renders UnavailableModule for client Account, Orders and Notifications. The handoff also records A07 as unmounted. Owner-policy/A08 and the public Maya shell are mounted. Do not repeat the obsolete claim that those two are unmounted.
+- The latest 26-screen inventory is report-only commit 0d8651debfb9bee711a2696c638b17767e797857, path docs/portal-rebuild/research/W7_26_SCREEN_CONNECTIVITY_AUDIT_R2.md, returned checkout t3-e1dd123f. It was not available through remote GitHub during this review; resolve it from the actual local immutable object/checkout. Do not fabricate its contents or duplicate the audit from scratch if the existing exact report is available.
+- The handoff snapshot records all children terminal, and a reserved/partly applied 17-path Root Maya integration with 16 dirty/untracked paths. Terminal children at a user-requested stop are expected; the coordination defect was failure to refill completed workers before the pause.
+Immediately identify the current T3 parent, native goal identity and any surviving continuation. The earlier T3 parent and native runtime thread IDs are different; do not interchange them. Determine whether the old Root writer is actually active, terminal or superseded. Preserve its reservation and all dirty work until that is reconciled. If it is no longer active, explicitly record the safe ownership transfer before modifying Root. If it completed, inspect the resulting commit and receipts rather than reapplying its changes.
+
+The coordinator becomes the sole integration/Root writer once legitimately reconciled. One migration writer at a time. Children use T3-managed isolated worktrees. Do not shell-create a child's checkout, edit a foreign worktree, execute foreign artifacts, or run a concurrent Root commit. Preserve untracked files, pending evidence and other people's work. Use path-specific staging, never a broad cleanup or git add -A over unrelated dirt.
+
+Do not keep repeating this preflight for every worker. Produce one compact reconciled checkpoint and use immutable task-specific packets thereafter.
+2. Mandatory model, reasoning and concurrency
+Coordinator and EVERY author, reviewer, explorer, tester, replacement and resumed worker must actually run:
+- provider: the configured approved Codex/OpenAI provider;
+- model: gpt-6.1-sol;
+- reasoning effort: xhigh / Extra High;
+- service tier: preserve the recorded default unless the founder separately authorizes another tier.
+No downgrade to high, no alternative model, no automatic cheaper explorer, no switch to max or paid speed tier, and no assertion of compliance based only on prompt wording.
+
+Discover the enabled T3 tool schemas and actual model catalog. The snapshot used a read-only t3_thread_configure({threadId}) with modelSelection omitted. Do not force an old tool name if it no longer exists. Inspect effective runtime values for the coordinator and each actual returned child. A saved project defaultModelSelection=null is not a contradictory runtime selection. Explicit spawn and custom-role overrides must also match.
+
+Use the existing authorized settings. Do not edit global configuration simply to make an inference true. A genuinely unavailable required model/effort is a specific blocker; no fallback.
+Operational concurrency target
+Maintain eight productive workflows total: one coordinator plus seven independently executing child tasks, ordinarily six or seven children while useful independent work exists. This follows the latest recorded founder preference for seven to eight total including the coordinator. Original W0–W7 are eight ownership domains, not an instruction to create eight simultaneous authors plus a ninth coordinator. Rotate ownership tasks through the seven child slots. No nested agents or second coordinator to evade this budget.
+
+Be exact about runtime semantics: current native Codex documentation describes agents.max_concurrent_threads_per_session as excluding the primary. A native setting of 8 can therefore mean 9 total; do not blindly reuse that old number as proof of the intended total. The T3 scheduler must also account for all project tasks it actually launches. Use current verified schema/counters; do not invent unsupported configuration keys.
+
+This is a target for useful progress, not busywork. Fewer workers are acceptable only for a named dependency/resource/capacity boundary, brief ownership/bootstrap work, unavoidable host limit, or final integration/taper. Explain the actual limiting factor and next available work. Do not fill slots with redundant audits or report-only activity just to display a larger number.
+
+Seven workers do not mean seven databases, seven browser stacks or seven full-suite processes. Separate reasoning/source concurrency from heavy-execution capacity. Use the existing resource-grant rules and schedule CPU/memory-intensive authorized tests centrally. Inspect host capacity rather than guessing. Do not lower model/effort or verification requirements to manage load.
+3. The coordinator owns continuous refill; the user does not
+Treat replenishing workers, integrating completed slices, and resolving interface dependencies as first-class coordinator work. Do not wait for the user to ask how many agents are running.
+
+At bootstrap, each child completion/failure/return, each dependency clearance, each integration checkpoint and each resumed coordinator turn:
+1. Reconcile actual task receipts and status. Count only successfully dispatched, currently executing useful tasks. A failed dispatch, finished reviewer, queued idea, open but idle thread, test subprocess, or second continuation of the same parent is not a running worker.
+2. Consume returned artifacts immediately. Record the exact candidate commit, owned paths, review scope, proof type, failures and dependencies.
+3. Put integration-ready work into the coordinator's integration queue. Put actionable review findings back with an implementation owner. Give independent re-review a fresh reviewer/task, never the author's self-acceptance.
+4. Refill freed slots from the dependency-ready queue in the same coordination turn before yielding or emitting a routine progress summary, unless the exact one-writer critical section makes that unsafe. In that exception, refill immediately after the critical section.
+5. Perform the highest-value ready integration or dependency-unblocking work. Do not merely oversee seven isolated branches while Root remains unchanged.
+6. Wait/yield using the supported delegation continuation mechanism only when appropriate. No busy polling, sleep loops, blind repeated dispatch, or nonproductive status churn.
+The queue must contain a short backlog of fully scoped next tasks, with at least two credible alternatives when independent work exists. Each has an explicit upstream gate. A task blocked from integration can still implement or test its isolated side of an agreed contract; an unreviewed dependency must not be represented as accepted.
+
+A dispatch result must provide its literal actual taskId separately from threadId/run ID/ordinal. Record and forward the real task handle through the existing mechanism. A t3_thread_send author continuation has a new task identity; do not keep counting the old terminal one. A fresh independent check uses a NEW delegate_task with a reviewer distinct from the author and the full applicable requirement set.
+
+If dispatch fails with parent_not_active or the native goal is absent, record zero created tasks, restore legitimate coordinator ownership using the supported workflow while preserving this same goal, then verify one successful dispatch before refilling. Do not repeat four failed starts and report four running workers. Do not reset scope, budgets, banked resources or unrelated settings during recovery.
+
+Respect any later user stop. Status-only automation turns remain status-only: no tests, dispatch, services, resets or writes during those turns. Do not create another automation. Ordinary execution turns continue autonomously within the active authorized goal.
+4. Begin with the existing work, not a new implementation wave
+Coordinator's first integration obligation: pending Maya
+Reconcile the active reservation described in the handoff. The owned target is the 17-path projection of b0e3ee5ba667444e477719595c8fc563f6ec6048 with independent source/SSR R2 report-only 79e0a757444dd19275639274fc78650a3e3ee940. Root already contains the separate MIF correction 1418d724c704aac51ed1235ed55c71c12f76bcc2.
+
+Preserve the 16 dirty/untracked paths plus the already-exact 17th target. The handoff itself is separate documentation dirt. Do not overwrite the reservation, duplicate imports, remove the existing MIF regression or sweep unrelated files into the commit. Verify whatever current Root receipts actually exist; finish only the checks still needed on the actual postimage, then make the scoped development commit. Its source/SSR acceptance does not become browser, D42, visual, genuine-session or full-product acceptance.
+
+Once ownership is reconciled, independent returned-worktree tasks may run while the coordinator completes this bounded integration. They must not touch Root or the claimed Maya paths.
+Initial seven child lanes, subject to live-state reconciliation
+Use these as the bootstrap dispatch queue. Skip or replace any task already genuinely completed after the snapshot; never dispatch a duplicate owner. Pin exact input manifests before assignment.
+Slot	Immediate bounded task	Required input / next result
+1	Fresh complete shared transport/inventory/notification R4	bc5651e6b27cd433851a779e57fc02e8f6a433d2; retain SD1/NT1/AAS5/NT2 history, decoder OLD/current, canonical transport pins, photo v1/v2 differences. Review the complete combined source, not just inventory.
+2	Fresh Source kernel R2	Complete original Phase1 + b8a5dac9bb6b6cc69c0d6365d88f71b0b8117218; original R1/SK1 failure and exact static correction. Review semantics beyond the fixed syntax. Source-only until separately authorized execution.
+3	Fresh notification-entry source/lifetime/SSR R1	ceffcb6fa1f7a4978a4a2dda56212253056df3a1; canonical notification 07c4 + 8f9, exact 26-row pin file, prior wrong-pin record and direct/serial Vault distinctions. No App mutation by reviewer.
+4	Fresh SMTP adapter R1	107a0678c58add60a3b47655ada49d3bb47f243d; complete adapter scope, actual frozen neutral codec/worker contract, author VM results. No claim of real socket/delivery.
+5	Fresh native-executor R5	393419ca528047b7f79ebff78870c06a78427526; complete NE1–NE4 history/recipes, setup deadline/finalization, uncertain OS work and truthful cleanup. Source-only review does not grant resource execution.
+6	Account final-export consumer implementation	Agree the precise transport/staging API with coordinator first. Bounded new app/final-export-request.ts and account/final-export subtree, named tests/report; use actual Root collector/public serializer. No silent changes to App/shared exports/SQL.
+7	Own-client departure read producer implementation	Coordinator pins the exact PortalAccountDeparture seam, fixed current-context producer and sole migration writer before allocation. Derive authoritative support/read-only/export/admin facts; no client-selector/date-arithmetic authority or existing financial-write expansion.
+
+
+This starts five finite dependency-closing reviews and two product-enabling implementations, while the coordinator integrates. It is not a permanent five-review staffing model. As reviews finish, move capacity into accepted integration, actual missing producers and mounted flows. Do not endlessly refill all slots with new meta-reviews.
+
+First ready follow-ups include AC8 Commerce correction and fresh independent R9, actual Account composition/profile/contact/cancellation, Source authenticated/storage adapters, notification App mount and worker composition, report-photo upload/collection, scoped external-agent operations, and relevant browser/visual acceptance. Resolve the smallest missing interface instead of redesigning the whole subsystem.
+
+Where earlier task grants restrict files or execution, preserve those restrictions. New allocations must name real paths and exact boundaries after inspection, not copy a proposed API as though already approved. The complete candidate and trap ledger is preserved in the attached handoff; consult the relevant entries rather than dropping them.
+5. Integrate continuously without weakening review
+Every engineering task must end in either:
+- an independently reviewable integrated-closure slice, with its existing feature/route acceptance target identified; or
+- a precise failure/blocker that names the missing dependency and its owner.
+An author must return: owned commit(s), exact base/postimage, allowed-path diff, dependency inputs, original regressions and new tests, exact commands/exits, proof scope, and how the result will enter the real application. A reviewer returns one consolidated actionable finding set and an explicit scope/verdict. Preserve required original matrices. Do not turn a small code fix into a long series of reports that never reaches the application.
+
+Independent review remains mandatory at the agreed boundaries. Review the complete candidate and known findings, not only the most recent four-byte patch. Continue feasible semantic review after a local finding when safe and meaningful; stop dependent executions if the finding invalidates them. Explain which checks are prevented versus which simply have not run. Authors correct code; a fresh independent task checks the correction and remaining scope. Do not conceal the old failure or relabel it green.
+
+The coordinator maintains a short integration-ready queue. As a working discipline, if two useful accepted slices are waiting, clear the earliest critical-path integration before opening another unrelated source-only feature. This is not a reason to idle existing independent tasks. Preserve disjoint scheduling and advance the real Root build.
+
+Before admission, inspect ancestry and diff. Apply only owned production commits/paths and separately reviewed report-only commits; never blindly cherry-pick cumulative INPUT/import ancestors. Reconcile overlaps with the live Root postimage, not a mutable author worktree. Carry exact original regression tests and report links with the correction.
+
+After each coherent integration, run the affected tests/type/build graph and the specific connected-route checks, commit the bounded result, and update the verified preview when authorized. Do not wait for all seven children to finish before integrating a ready result.
+
+Use risk-directed incremental verification during development and the full required suite at acceptance freeze. Reuse valid existing evidence only if exact relevant source/dependency/test/environment fingerprints remain applicable. A documentation-only commit need not invalidate unrelated runtime proof. Conversely, a changed transport/permission/schema invalidates dependent proof even if a top-level component file did not change. Maintain that distinction rather than rerunning everything after every line or trusting an obsolete PASS.
+
+No new generic event framework, proof platform, template engine, scheduler UI or elaborate resource system unless required to close an already approved contract. Reuse the existing protection and evidence infrastructure. Do not gut it to save time.
+6. Close connected user journeys, not just code files
+For every required feature, identify the complete chain:
+
+real route → rendered shared component → actual controller/command → authenticated adapter → authorized handler → persistent state or actual external/test-sink effect → returned state → browser behavior.
+
+A file, parsed route name, interface declaration, SSR render, fake successful port or test-only adapter is not that chain. UnavailableModule can remain for genuinely unauthorized/unknown routes, not as the implementation of a required entitled feature.
+
+Use the latest exact 26-screen audit as the starting inventory, then update it against current Root. Preserve the 26-screen denominator and D01–D48 denominator. Required secondary flows do not disappear because there is no dedicated screenshot.
+Nine stable feature groups for execution and reporting
+1. Session, navigation and shared UI: actual auth/cookie/session/Vault integration; audience/owner/expiry/logout/currentness; canonical lowercase copy, shadcn wrappers, Lucide; Back/Forward/refresh/deep links/unsent work/focus/scroll.
+2. Advisor plans and publication: clients, unassigned drafts, templates, checkpoints, six sections, explicit import/agent changes, assignment, preview, exact human approval, genuine applicable payment gate, deliberate publication and owner policy.
+3. Client plan and actual use: correct current morning/evening content, recommendations, selected-product evidence, uncertainty, pause/stop/different-use reporting, self-purchase and recorded Start, historical and current instructions.
+4. Check-ins, history and A07: actual report/update/amendment flow, optional photos, advisor-origin reviews, no-change conclusions, client-visible versus private notes, meaningful immutable history and linked published versions.
+5. Orders and Commerce: own-client order pages and advisor operations, current trusted producers/CAS/evidence/actor/private quote context, immutable totals/address/terms, real synthetic payment verification, recording purchases/delivery, actual return/refund administration. Correct AC8 without expanding its demonstrated severity.
+6. Account and final export: profile/address/contact verification, service coverage, cancellation/explicit departure, own-client read/withdraw consent, authoritative read-only windows, complete public-only download, continued static final export after 30 days, separate unfinished administration.
+7. Sources, photos, consent and lifecycle: actual private source credentials/adapters, upload/bytes/storage/inspection, scope and consent enforcement, original public/private projections, revocation/late returns, retention/cleanup and truthful deletion status. Photo metadata is not photo upload.
+8. Notifications and external agents: mounted inbox/notification UI, publish/review/goal-change outbox events, worker/retry/deduplication, actual authorized local-sink delivery, correct delivery status, scoped authenticated external-agent read/create/edit/save/validate and exact authorized publication.
+9. Maya, visual and cross-product acceptance: five-stage shared renderer, forms and post-preset actions, exit/explore/replay/reset, no business writes, controlled private walkthroughs, exact approved desktop and narrower/mobile/a11y states, current integrated negative/security/regression checks and human-review readiness.
+Treat horizontal dependencies as engineering prerequisites, not indefinite permission to leave product groups unmounted. Keep one accountable owner and next demonstrable milestone for each missing chain. After the bootstrap reviews close, balance real implementation and testing instead of keeping the team occupied only with source audits.
+Mandatory integrated journeys
+- Advisor creates an unassigned draft, supplies source/context manually or via authorized agent, saves incomplete work, resolves validation, assigns the intended client, reviews the actual preview and authorizes the exact revision.
+- First service payment and review can occur in either order, but neither publishes. First deliberate publication requires both plus current authority. Stale content/assignment approval, wrong-client authority and unverifiable payment are denied. An unrelated ledger change does not invalidate unchanged advice approval.
+- Client authentication reaches the intended plan/version, can follow the actual routine directly, examine a recommendation and product-specific sources, approve/defer/decline, navigate away and return with context preserved.
+- Shelv-arranged product route: confirmed quote/address/returns, claim versus verified funds, recorded order/delivery, explicit actual Start. Self-purchase reaches the same actual-use support without fake money/order rows. Product match uncertainty remains honest.
+- Client submits an optional-form/photo check-in, corrects it, receives a meaningful reviewed conclusion, sees the immutable history and source-bound plan version. No-change review does not fabricate a new plan. A stopped report is visible without pretending the advisor recommended it.
+- Client changes profile/address/contact or reports goals/current-product changes; consequential changes notify the proper advisor and do not rewrite an existing purchase or source fact invisibly.
+- Authorized client reviews/withdraws source purposes, grant revocation prevents new and stale private returns, sources are actually protected, and retention/deletion claims match physical/obligation facts. No training or automatic transcription.
+- Ordinary cancellation and explicit early departure produce authoritative dates. Thirty-day care read-only access, static last-entitled export afterward, and open order/refund administration stay distinct. Real exported bytes contain no private notes/sources/unentitled updates.
+- Notification delivery is tested through an actual authorized isolated sink, not just a queued row or VM SMTP promise. Publication persists through an email failure; retry delivers at most the intended event and does not republish/reset dates. Real client/provider sending remains separately gated.
+- Maya's complete five-stage demonstration uses actual shared components and isolated state, with no live account/financial/message/upload operations.
+Each journey needs failure cases and later-return behavior, not only one happy-path screenshot. All exposed enabled actions must be functional or intentionally unavailable for a true current authorization/state reason. An always-disabled required control is not completion.
+7. Preserve the approved product and subsequent clarifications
+Do not relitigate or narrow these while implementing:
+- One shared React/TypeScript client renderer for actual client, advisor preview and Maya. Plans are data. One approved shadcn wrapper layer and Lucide; no custom per-page controls or random Unicode/emoji icons. Lowercase new UI/guidance preserves names, product identity, technical notation and original quoted/source text. No CSS lowercase filter.
+- Desktop approved geometry first, then narrower desktop and 320/390px before release. Approved Figma file WGbMylNV4rPoMw3r0nceaw, page 498:32, index 504:797, recovery board 504:736. Earlier A/B/C/D are not alternatives. Read native assets/skills as needed; do not write/redesign Figma without authorization. Implementation annotations are not customer copy.
+- One current plan and one working next-version draft per client; multiple unassigned drafts; unknown distinct from confirmed none; incomplete drafts save; received agent material is untrusted source data rather than execution instructions.
+- Shared manual/agent operations, stable IDs, scoped authority and revision checks. External-agent draft assistance is a real capability, not only a JSON-paste fallback. Agents cannot forge owner approval. Sami's publishing toggle does not grant raw-source access or external-agent authority.
+- Approval, quote, verified funds, recorded order, delivery and actual Start stay different. Self-purchase is supported. No automatic strength/frequency escalation, invented dates, fake product matching or overwritten instruction history.
+- One primary recommendation with deliberate alternatives, not a shopping catalog. Multiple product/goals/schedules, no-product/no-purchase cases and appropriate referral/no-recommendation outcomes use shared approved modules.
+- Preserve full source-derived Maya details: morning water rinse, comfortable CeraVe PM, sunscreen/optional makeup and conditional evening makeup-removal/cleanser/moisturizer. Do not turn its proposed treatment into actual use or a staged later event into a real pilot result.
+- Human-led everyday cosmetic service, adults/Wisconsin first; no diagnoses/prescription changes/license/Harvard-professional-certification/scanner claims. The original professional-scope question is a launch/legal question, not solved by a passing test or a disclaimer.
+- $100 per America/Chicago calendar monthly period, no mandatory three-month upfront purchase, no product markup/commission. Products/tax/shipping separate; support and refund rules remain as approved. Calendar months are not fixed 30-day/90-day substitutions. Preserve genuine legacy coverage/payment/publication/use dates during migration.
+- First reviewed delivery aim 24h/max 48 elapsed hours, with real awaiting-payment blockers shown. Personal useful response within 24 elapsed hours including weekends. Optional forms/photos; review at two weeks and monthly/as needed. A scheduled review date is not a booked appointment. Email acknowledgement is not a personal response.
+- Actual first-three-period service fees may be refunded on dissatisfaction, including applicable early requests, through 30 calendar days after period 3. No photo/adherence/improvement/fourth-payment gate. Repayment initiation within 48 elapsed hours after required details; requests are not funds moved. Product-return and $100 referral rules unchanged; no automatic payouts or new analytics project.
+- No automatic SMS, recurring wallet charges, retailer ordering, live carrier synchronization, embedded chatbot, automated recording/transcription, model training, household/minor accounts, or configurable dashboard builder. Recorded tracking/delivery and founder operations remain real and supported.
+- Ordinary cancellation retains paid coverage; early departure has explicit support-end confirmation. Care/history read-only for 30 days after actual support end; authenticated own-client static final plan export remains available thereafter. It does not restore new advice/history/support or later unentitled content. Outstanding order/refund administration stays separately available.
+- Raw source retention during service and 12 calendar months after actual support end is separate from publications/history, financial/audit retention and UI access. For a never-started draft, authorized advisor deletion is manual; do not invent an abandonment timer. Unknown obligations are not deletion clearance.
+- Source consent: authorized advisor records actual explicit confirmation against exact versioned disclosure and separate storage/advice purposes; the client reviews and withdraws in Account. Enrollment, an existing recording or a source grant is not consent. No training at launch. Exact final disclosure wording is still a real approval gate; do not publish a legal policy on the founder's behalf.
+- Withdrawal/revocation prevents affected future operations and stale returns; it does not recall already delivered bytes or prove physical deletion. Raw consultation material/private notes never enter client exports, public demos, logs or development fixtures. Software-development agents use synthetic records.
+- Private four-client walkthroughs remain selectively shared and revocable; public Maya remains fictional. Link possession is not permission to expose private material beyond its actual permitted public snapshot.
+The detailed D01–D48 register and later addenda remain normative. The list above is a preservation checklist, not a replacement or maximum scope.
+8. Specific traps and known failures remain in force
+Consult the handoff's exact input custody sections before touching the relevant lane. In particular:
+- NT2 + decoder: source final-return applicability and stream-overflow cancellation are separate defects. Do not certify physical cancellation merely because the caller promptly refuses the value. The current full correction requires combined independent R4 before shared admission.
+- Photo v1/v2: the reviewed old consumer input is not automatically the later READY-checking facade, and neither is automatic acceptance of new generic/body changes. Pin the actual successor and rerun the applicable composition checks.
+- Notification pins: canonical notification input is 07c4 + 8f9, not the wrongly attributed photo 74eff. Preserve that setup error. The entry has the exact three-export contract and inert constructor/SSR/lazy controller lifecycle in the handoff.
+- Source SK1: four added parenthesis bytes/static 5/5 do not establish PostgreSQL execution or complete semantic safety. Review full kernel plus correction; do not confuse another export migration's native grammar proof with Source execution.
+- Commerce AC8: stale local sending UI after a peer settles the original shared request is the reported defect. Preserve original cases and exact CAS/shared-slot authority, correction and fresh review. Do not exaggerate it into unproved permanent financial/authority loss.
+- Native NE4: deadline/finalization must include setup. Uncancellable pending OS work stays uncertain, not falsely absent/cleaned. Never kill/adopt/delete foreign or unknown resources to satisfy the cleanup report.
+- Source15/Account: retain fixed scope/command contracts, session-derived actor/current scope, separate own-client Account disclosure/withdrawal projection, immutable policy/consent records and tombstones. No caller-supplied actor/client selector as authority.
+- Final export: actual complete authorized public bytes and explicit instruction binding are required. A Blob or click is not proof of a saved file. Verify actual browser downloads in the controlled test environment where granted; do not claim access to an end user's filesystem. Respect the existing bounded collector/staging contracts rather than inventing a weaker fake sink or a new generalized download engine.
+- Legacy R1: missing authentic served-asset lineage cannot be reconstructed from today's assets, private records or a casual attestation. Implement the supported safe producer/recording approach only after its exact contract is established. Unsupported historical content remains explicitly unavailable; do not silently fake migration completeness.
+- Evidence: original failing fixture, minimally fact-bound replay, approved successor and current wire are different. Retain original assertions and raw outcomes. Independent approval is required for a legitimate successor; no skip/filter/waiver to make the numbers green.
+- Types/build: current pure/synthetic graph success under ignored overlays is not a clean physical Root build. Integrate accepted compatibility fixes where authorized and run actual configured graphs. Do not erase types, relax compiler flags, install shims, swap fake authority ports or claim virtual graphs certify the checkout.
+Security-sensitive async behavior retains correct actual identity/context across awaits/callbacks/errors/finalization, revokes/clears before observers/aborts as required, isolates throwing/reentrant observers, and rechecks applicable authority before private return/write. This is a correctness requirement, not optional polishing.
+9. Test execution, permission blockers and legitimate verification
+Preserve source, pure, synthetic HTTP/VM/SSR, isolated native Auth/SQL/Storage, mounted browser, hosted/provider and release evidence as separate scopes. Source PASS cannot promote itself to any later level.
+
+For an exact granted test, preserve the required command, source, recipe/image, fixture, ports, lifecycle limits and cleanup evidence. Existing explicit package/lockfile/dependency custody rules remain. Do not perform installs, resource resets, arbitrary cleanup or foreign fixture reuse because they are convenient. Do not obtain new authority from a NOT-A-GRANT template, historical receipt or green CI.
+
+At the earliest point a reviewed executor and exact recipe are ready, emit one concise execution-permission packet for the required local native preview/testing, naming:
+- exact source/recipe and reviewer acceptance;
+- isolated synthetic resources, namespace and loopback ports;
+- planned actions and persistence/backup requirements;
+- limits, owner/lifetime/deadline and cleanup behavior;
+- no production, real accounts, real money or external client email;
+- what cannot be verified without it.
+Use a valid existing grant only if actual inspected scope/lifetime still covers the work. Otherwise await the founder's explicit approval for that packet while workers continue useful independent work. Do not bury this requirement until the end, repeatedly request the same authorization, or label the blocked tests done. The prior handoff explicitly records no current native grant.
+
+Provider-refused reviews remain unaccepted. Do not route around refusal using another agent, model, tool or misleading framing. Legitimate independent work is allowed within its real scope. If a held check is indispensable, name it as a release/acceptance blocker with lawful next steps rather than extending the hold to every unrelated feature.
+
+During development, run focused checks and current shared regressions for each admitted slice. At the acceptance freeze, run the full agreed commands from inspected repository scripts and required environments, including applicable strict/root/frontend/session types, actual app/Expo build, migration replay/SQL/RPC/pgTAP, permission-negative matrices, genuine isolated full browser journeys, 26-screen visual/behavior/a11y coverage and exact-head CI. Do not invent a command or test total.
+
+Each important boundary fix should retain a failing-old/passing-new regression and applicable negative cases. Browser tests must use the real mounted route and actual integrated adapters in the isolated environment. Mocked data can test a component but cannot certify ownership, persistence, Storage or delivery. Preserve meaningful human usability acceptance as distinct from agent simulation; prepare the tasks and preview, do not fabricate participant results.
+10. Replace “65%” with a live, evidence-backed scoreboard
+Retire the old 65% estimate and stale forecasts. Do not replace them with a new guess. Test totals, commits, lines of code, report count, active workers and authored files are not product completion percentages.
+
+Maintain a compact matrix for all 26 screens and all 48 decisions with separate evidence columns:
+- latest source/candidate;
+- required independent review and its scope;
+- integrated Root commit and dependency fingerprint;
+- actual connected route/handler/persistence chain;
+- actual authorized end-to-end result and failure paths;
+- visual/accessibility result for required viewports;
+- remaining blockers/owner;
+- accepted, or explicitly not accepted.
+These are independent fields, not a summed points score. A read-only/static view can legitimately have no write assertion, but record why a field is not applicable; never mark a required producer or state NA just to increase the fraction. Native filesystem/provider/cross-screen requirements also need their own acceptance rows so passing 26 screenshots cannot complete the whole project.
+
+User-facing reporting should say, from actual evidence:
+- connected screens n/26;
+- current browser-verified screens n/26;
+- accepted decisions n/48;
+- completed end-to-end journeys against a frozen, explicit required list;
+- current live children plus coordinator, and active role→task IDs;
+- exact changes since the previous update: commit, newly working behavior, failure closed or gate crossed;
+- integration-ready queue and the oldest item;
+- remaining critical blockers and the next action/owner.
+Unknown is not audited, not zero and not an invented number. Do not count unchanged previously reported work as today's progress. Preserve historical pass scopes and show newly invalidated evidence when a dependency changed. Link to the current exact PR head/checks, not a green older commit.
+
+Maintain the existing requested reporting cadence and nine feature groups. A status-only automation retains its prescribed no-work scope and format. During active execution, issue useful checkpoint updates without waiting for manual progress requests; do not create additional scheduled automation without authorization.
+No-stall recovery rule
+If two consecutive substantive checkpoints have no integrated behavior/acceptance gate improvement, or an accepted integration-ready slice is still waiting while the coordinator produces more status prose, execute an orchestration review in that turn:
+1. Name the actual bottleneck: failed ownership/dispatch, idle slots, unresolved interface, resource permission, a known defect, reviewer queue, or physical integration drift.
+2. Stop duplicate or obsolete allocations only through the supported mechanism, preserving their work and receipts.
+3. Refill useful ready work, assign the missing owner, or integrate the oldest critical accepted slice.
+4. If a necessary permission/input is genuinely missing, ask exactly for that item and keep other work moving.
+5. Report the corrective action and evidence, not “still 65%.”
+A difficult critical defect can legitimately take more than one checkpoint. Do not sacrifice safety or split trivial commits merely to satisfy the metric. Report its concrete reproduction, attempted correction and actual remaining blocker. The metric should expose lack of coordination, not pressure the team into dishonest progress.
+
+Do not promise “done in a few hours.” Produce current milestones and evidence, not a continually restarted ETA clock.
+11. Keep the execution state durable in GitHub, without creating documentation churn
+Use the existing docs/portal-rebuild/ structure. Do not create a parallel contradictory project status system.
+- Save this continuation prompt and sanitized source/provenance record once, preserving the original approved inputs.
+- Update the existing TASKS.json using its actual schema or a documented compatible migration, never an invented unreadable replacement. Record real IDs, state, model/effort evidence, base/candidate/Root commits, ownership, dependencies and next task.
+- Make CURRENT_STATUS.md begin with one current timestamped snapshot. Move superseded live claims into clearly historical sections or link their immutable records. Do not call old roster counts active or mix multiple “current” heads.
+- Update the existing ACCEPTANCE_MATRIX.md, contracts/addenda only where necessary, workstream registry, execution log and existing PR211 summary as integrated work changes.
+- Each integrated checkpoint records what newly works for a user, relevant screen/decision IDs, exact tests/receipts and what remains blocked. Keep independent verdicts separate from author claims.
+- Keep raw logs, private inputs, credentials, source recordings and protected resource artifacts out of public GitHub. Commit sanitized compact manifests and summaries with authorized evidence references; never bulk-copy foreign evidence archives.
+Documentation supports implementation. Do not use repeated status/report-only commits as a substitute for missing Account, Orders, A07, Sources, notification delivery or external-agent workflows. PR review may keep history while consolidating the top-level current view.
+
+Preserve PR211's existing branch/stack and required review checks. Do not merge PR210/211, change main, rewrite the protected history, or deploy without explicit separate authorization.
+12. Finish conditions and allowed stopping conditions
+Continue autonomous authorized execution across available runtime continuations, refilling productive lanes and integrating results, until the complete approved candidate is delivered or a real blocking authorization/input/runtime constraint prevents further useful work.
+
+Before declaring the implementation complete:
+1. All D01–D48 and later founder addenda are mapped to the actual integrated implementation and scoped passing acceptance, not only a document or interface.
+2. All 26 approved screens plus required secondary states and flows work through the real connected application for entitled roles. No required page remains a placeholder, permanently disabled control or demo-only path.
+3. Sources/photos, Account/export, Orders/returns, A07, notifications and scoped external-agent workflow are actually complete through the boundaries described above.
+4. Required strict/build/unit/integration/SQL/auth/storage/browser/negative/visual/accessibility checks have actual current evidence. Final integrated acceptance and exact-head CI apply to the same candidate; any retained narrow evidence is correctly scoped.
+5. The approved desktop is matched, narrower desktop/mobile works before public release, and the usable preview identifies its source commit, test roles and honest limitations. Do not make a restricted/private preview public without approval.
+6. Existing client data, dates, quotes, publications, instruction lineage and private-share policies are preserved by a verified migration plan/rehearsal. A rollback path exists. Unsupported legacy facts are not reconstructed without evidence.
+7. GitHub has the truthful current status, task roster, acceptance table, review record, reproduction steps and remaining release gates.
+8. Remaining human usability, exact disclosure, credential/scope, provider or release approvals are explicitly marked external. They are not waived or fabricated. “Code complete,” “verified candidate,” “launch approved” and “deployed” are distinct labels and only used when their actual conditions hold.
+Do not declare full completion while indispensable acceptance remains held. If every useful permitted lane is exhausted and one real external gate remains, return a precise partial-completion report: exact integrated head, working flows, remaining tests/authorization, preserved worker/artifact state and smallest required next action. Do not call that a finished product. Do not stop merely because one subagent ended, one review passed, a status update was requested or the rough percentage is unchanged.
+
+Final delivery includes the current PR/head, preview and tested journeys, all-screen/decision acceptance counts with evidence, independent review results, migration/rollback readiness, and explicit external gates. No unsupported time estimate and no requirement that Kanuj manually remind you to refill agents.
+13. Begin now when this goal is invoked
+Reconcile live ownership and the pending Maya integration. Verify every actual Sol/xhigh runtime. Refill the seven bounded child lanes from the real ready queue. Close the earliest useful integrations and missing connected product flows. Keep the roster and acceptance state honest. The target is the previously approved working portal, not another planning or handoff exercise.
+Attached technical custody record
+The bundle includes the exact LOCAL_HANDOFF_20261102.txt snapshot and REVIEW.md. Read the relevant full candidate/compatibility/resource sections before allocating that lane. Do not treat its old pause instruction as a new stop after Kanuj has invoked this continuation, and do not treat its proposed tasks or historical grants as already dispatched or currently authorized. The source snapshot's content, original test failures and later explicit founder decisions remain preserved.
+appendix: exact supplied local handoff
+The following snapshot is retained as evidence. Its temporary pause is superseded only when the user invokes the continuation above. Its local-state claims require current verification, and its resource restrictions are not revoked.
+<local_handoff_snapshot>
+# shelv portal rebuild: complete continuation handoff
+
+
+Snapshot: 2026-11-02T07:19:32.293555+00:00. Owner: Kanuj. Requested explicitly by the user after asking what actually moved and why progress kept being reported as65%.
+GOAL and immediate truth
+Complete the originally approved real connected React/TypeScript shelv portal against all D01-D48, all26 approved screens and required secondary states, then deliver reviewable code and a verified preview. Do not redefine completion around source-only modules, a public demo, green CI, or the easiest passing tests. The user explicitly instructed stop everything and give the handoff, then requested it be ironclad. Implementation, tests, new workers and integrations are stopped. The persistent goal is being marked PAUSED at the user's request, with the full objective preserved. Resume only when the user asks.
+
+The rebuild is incomplete. There is no accepted current full-product preview or release. The shared app has working source chains for important plan/history/advisor flows and the public five-stage Maya shell, but Account, Orders, notifications and A07 remain unmounted at the published checkpoint. Newer candidate implementations and scoped source passes do not contradict that statement. The pending Maya integration is actual local code, not published/CI-accepted code.
+
+The last65% was a carried-forward rough engineering estimate, not a measured completion score. Repeating it without explaining integration debt was misleading. Do not bump it from test counts or agents. The old4-8-more-working-hour preview forecast has slipped and is not a defensible fresh estimate. The5-8-working-day full-scope range is low confidence and has not been re-estimated from an integrated acceptance audit. Do not silently reset either clock.
+
+Last verified child roster: all listed child authors/reviewers have completed. The parent is only finalizing this handoff under the explicit stop request. The native NE4 author was the last active child and just returned. Earlier counts of4,5,7 or8 are historical dispatch snapshots. Finished reviews were not promptly refilled, contrary to the user's later7-8-productive-workflow preference. This was a coordination failure, not proof that dependencies required low utilization. No replacement tasks were actually dispatched in this continuation before the user requested this handoff. Planned reviews or Account slices below have NO task IDs yet.
+Repository, remote and execution identity
+- Repo: KanujVerma/shelv.
+- Shared integration checkout: /Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030.
+- Branch: kanuj/portal-rebuild-integration-20261030.
+- Actual local HEAD, remote branch and PR211 head: 8af746d197b976972d4b16924155afa8c3b32d44. Verified with git status -sb, git log -10 --oneline, git ls-remote origin refs/heads/kanuj/portal-rebuild-integration-20261030 refs/heads/main, and gh pr view 211 --json ....
+- Remote main remains d39a7d4943209080df7c4cf97d85784f462758bf. Do not reset integration to it.
+- PR211: https://github.com/KanujVerma/shelv/pull/211, OPEN, DRAFT, base docs/portal-rebuild-approved-handoff-20261030. It is stacked on the approved documentation branch, not directly on main. PR210 is the related documentation layer. Neither is authorized to merge by this task.
+- At8af all3 checks are SUCCESS: Verify & Build, Database & Integration, Portal build and local journeys. Exact links below. This does not cover the uncommitted Maya projection or candidate branches.
+- T3 parent thread: d632030a-18f7-4dec-a2c9-f5c0418c3fd5. Native goal runtime thread: 01a19a4f-e4ef-7482-9b7c-c41273733c5c. These are different identifiers.
+- Actual coordinator read-only t3_thread_configure returned codex / gpt-6.1-sol / reasoningEffort=xhigh / serviceTier=default, full-access/default. All workers are required to verify the same actual settings and catalog support, not merely repeat the model in a prompt.
+- Registered project ac0af19d-d404-4f53-a870-02bfd76c2a80 has saved defaultModelSelection=null. Null is NOT evidence of a different runtime selection.
+- Explicit Node: /Users/kanuj/.nvm/versions/node/v22.23.0/bin/node. Current portal TS is6.0.3. Use checked-in lockfiles; no install or flag lowering was performed for the corrections here.
+Exact remote checks, verified read-only during this handoff:
+- Verify & Build.
+- Database & Integration.
+- Portal build and local journeys.
+Read order and source of truth
+1. Latest actual user instructions, including the replacement AGENTS.md supplied2 November. Read ~/.agents/WORKFLOW.md, applicable project instructions, and ~/.agents/TSTACK.md for requested PR/review workflows.
+2. [Rebuild entry point](../portal-rebuild/README.md), [GOAL](../portal-rebuild/GOAL.md), [approved decisions](../portal-rebuild/APPROVED_DECISIONS.md), [desktop specification](../portal-rebuild/APPROVED_DESKTOP_SPEC.md), [full manifest](../portal-rebuild/shelv_desktop_design_manifest.json).
+3. [Contracts](../portal-rebuild/IMPLEMENTATION_CONTRACTS.md), [addenda](../portal-rebuild/DECISION_ADDENDA.md), [implementation plan](../portal-rebuild/IMPLEMENTATION_PLAN.md), [acceptance matrix](../portal-rebuild/ACCEPTANCE_MATRIX.md), [workstreams](../portal-rebuild/WORKSTREAMS.md).
+4. Current Git and exact command/review/CI receipts. [TASKS](../portal-rebuild/TASKS.json), [CURRENT_STATUS](../portal-rebuild/CURRENT_STATUS.md), [CONTEXT_SYNC](../CONTEXT_SYNC.md) and [older handoff](2026-11-01-portal-rebuild.md) provide history but contain stale live labels, older heads, old holds and old percentages. They are not a current task roster.
+5. Latest all-screen audit: sole report commit 0d8651debfb9bee711a2696c638b17767e797857, docs/portal-rebuild/research/W7_26_SCREEN_CONNECTIVITY_AUDIT_R2.md in t3-e1dd123f. It maps all26 against frozen8af. It is not yet imported into Root. Read it from immutable Git or the returned checkout. It does not issue product quality/acceptance.
+Figma file WGbMylNV4rPoMw3r0nceaw, consolidated page 498:32, index 504:797, recovery board 504:736. Earlier A/B/C/D explorations are not implementation alternatives. Most frames1440x960; guided Maya1800x960. Native contexts/assets are retained under docs/portal-rebuild/design/; use the Figma skills before live tool calls. No Figma writes were authorized.
+Input provenance, including the file just reattached
+Canonical original: [APPROVED_INPUT.txt](../portal-rebuild/source/APPROVED_INPUT.txt),95388 bytes, SHA256 c45701f9f54fd2b1dbb09bbd7aa2b9b437e9059aa6032b6f39411fe2e7f6efbd. [INPUT_PROVENANCE](../portal-rebuild/INPUT_PROVENANCE.json) records all five normative hashes.
+
+The user just referenced a separately flattened goal file: /Users/kanuj/.t3/userdata/attachments/d632030a-18f7-4dec-a2c9-f5c0418c3fd5-0d7aecf2-1c0f-4351-b683-3443e95d61c6-txt.txt,91897 bytes, SHA256 59bb8fb8673173b78c1f5b3ac99684fcca9b0c944209ea3bb24557100c2d7c53. Its exact bytes are retained in own ignored handoff-20261102/referenced-goal.txt. All48 decision paragraphs match canonical APPROVED_DECISIONS after removing Markdown bold/backticks and normalizing whitespace. The files are not byte-equal. Do not overwrite the original or its hashes, confuse the attachment IDs, or infer a new business decision from the format difference. Preapproval manifest hashes whose actual bytes were never supplied remain declared provenance, not a claim those original files were acquired.
+DECISIONS: settled product and business rules
+Every D01-D48 remains binding; the register is the full wording. The following is an operational digest, not a replacement.
+- One client navigation: your plan, check-ins & history, orders, account; text shelv stays accessible. React/TypeScript, one shared shadcn wrapper layer and Lucide. Same renderer for actual clients, advisor preview and Maya. Plans are data, not per-client generated pages.
+- Lowercase newly authored rebuild UI/guidance; preserve proper names, products, source titles, quoted text and technical notation. No CSS lowercase filter, emoji interface icons, separate per-page design systems or invented dashboard metrics. Keep necessary directions/cautions/financial terms.
+- Desktop first, then narrower desktop and320/390px mobile before release; actual Back/Forward/refresh, selected routine, unsent state, focus/scroll, keyboard, screen-reader semantics, zoom and reduced motion are acceptance requirements.
+- Draft/template/publication are separate. Incomplete drafts can save with honest saving/saved/error/uncertain states. Stable IDs, revision checks, immutable publications and explicit compare/apply imports preserve human changes. Unknown is not confirmed none. Client-visible conclusions and private advisor notes are separate.
+- First publication requires intended assigned client, complete reviewed draft, valid human approval of exact publishable client/content, genuinely verified applicable first service payment, current authority and deliberate command. Payment/approval alone never publishes. Content/reassignment invalidates approval; unrelated payment-ledger changes must not.
+- Initially Kanuj's skincare approval is required; Sami's operations rights and the owner-controlled approval setting do not grant source access or waive independent external-agent authorization. An agent-authored approved flag is never authority.
+- First successful publication starts authoritative service/access/review clocks. Later publications and notification retries do not reset coverage, guarantee or original Start. America/Chicago calendar monthly periods are not90 days. Preserve genuine legacy dates/payments.
+- Product identity, advice choice, quote acceptance, verified funds, order, delivery and actual use are separate. Approval, payment and delivery never Start a product. Self-purchase requires no fake Shelv order/payment. Start/pause/stop/different/unreviewed reports retain actual known/unknown dates and attribution.
+- Maya's actual public source includes morning water rinse, CeraVe PM, sunscreen/optional makeup, conditional evening removal/cleanser/moisturizer. Preserve complete directions and limits; don't invent a morning cleanser or shorten away meaningful instructions. Fictional later events are not observed outcomes.
+- Optional forms/photos remain optional. No-change reviews are valid without a new plan version. Amendments preserve original reports. History groups meaningful events, not autosave noise. Public/private projections remain separated.
+- Human-led cosmetic service: initially adults/Wisconsin, $100 per monthly period, products separate, no mandatory3-month prepayment. First reviewed delivery aim24h/max48 elapsed hours, with actual awaiting-payment blockers disclosed; useful personal response within24 elapsed hours including weekends. No diagnosis/prescription/license claim, clinical score or automatic scheduling escalation.
+- Service guarantee: actual fees paid for first3 monthly periods, including eligible early requests; request through30 calendar days after period3 ends. No photo/adherence/improvement/fourth-payment condition. Initiate repayment within48 elapsed hours after request and necessary details; request is not funds moved. Product/tax/shipping amounts remain separate.
+- Product returns depend on actual seller/item/condition/deadline. Record retailer refund separately from client repayment; initiate repayment within48h of retailer funds. Existing $100 genuine new-referral policy is preserved, partner chooses payee, initiation within48h of verified first$100 service payment, no clawback merely because client refunds. No automatic payouts/analytics project.
+- Ordinary cancellation stops future renewal requests and retains paid coverage. Early departure uses explicitly confirmed support end. Care/history read-only30 days after actual support end, no new care writes/support promise; unfinished order/refund administration separately reachable. Cancellation does not transfer money.
+- Private source storage during service and12 calendar months after actual service end is distinct from publication/history, financial/audit retention and interactive portal access. Unknown obligations cannot become deletion clearance. Uploaded sources are untrusted data, not agent instructions. No training at launch, automatic transcription/recording, blanket agent/raw sharing, or public private-client walkthroughs.
+- External authenticated plan agents must actually be able to read permitted context and create/edit/save/validate drafts through the same underlying operations. Import JSON is fallback, not the complete agent workflow. Task/client/source grants and revocation remain necessary.
+- Public Maya must complete all five stages, exit/explore/replay/reset and safe isolated memory with no business writes. Four real-client private walkthrough shares remain selective/revocable, not public content.
+Later explicit founder decisions, not open questions
+1. Never-started draft audio/transcripts: advisor deletes manually, with actual authorization. No invented abandonment deadline. Started/ended service follows the12-month rule.
+2. Source consent workflow: authorized advisor records actual explicit client confirmation for exact versioned disclosure and separate storage/advice purposes; client can review and withdraw in Account. Existing files, grants or enrollment are not consent. Withdrawal stops affected future operations/pending returns; it is not immediate physical erasure or raw export. Final disclosure words are still not approved merely by choosing this workflow.
+3. After30 days: keep authenticated own-client static final export of last-entitled plan and applicable instructions available. Do not restore interactive care/history or expose private notes/raw sources.
+4. Provider issue: Kanuj has no hardware key/Daybreak Blue enrollment. Neither is an engineering prerequisite. Preserve rejected review evidence, do not disguise/retry/reroute rejected prompts or call them accepted; continue legitimate unblocked work.
+5. Parallelism: original eight was a cap, not eight before dependencies exist. Later user preference is7-8 productive concurrent workflows including coordinator when independent, with a concrete explanation if fewer. Do not count completed tasks, queued ideas, test processes or multiple continuations of one parent as separate workers; do not evade cap via nested agents.
+6. Banked resets: disarmed. No new resource/reset right arises from source allocation, old template, CI green, model grant or this handoff.
+Current implementation state by feature
+Feature	What exists at published8af	Candidate or missing work; acceptance boundary
+Auth/session/shell	Actual retained cookie/session gateway/Vault, audience/owner/expiry/logout/CSRF/currentness; shared shell/navigation and recovery source.	New generic V5/NT1/NT2 candidate not fully admitted; full current browser/role/late-return matrices remain.
+Plans/publication/advisor	Actual directory/editor/draft/import/review/approval/payment/publish source chains and versioned Root contracts/transaction/outbox; owner-policy A08 subset mounted. Historical isolated genuine vertical slice exists at its own heads.	Full templates/checkpoints/agent enrollment/source integration, A06 real delivery, all secondary editor states and current full acceptance incomplete.
+Client plan/use	Shared V3 renderer, routine/product/evidence/decision/use source mounted.	Full actual-current content, long/unknown cases, actual browser navigation and responsive visual acceptance not all complete.
+History/photos	Mounted History/new report/amendment/snapshot source; photo metadata producer integrated.	Complete collection and upload/private-media/C05/C07 composition not admitted; metadata is not bytes or upload.
+Guidance/A07	Reviewed guidance and A07 composition candidates exist; public conclusion/private-note separation.	A07 is still UnavailableModule in published app. Known private-return/provider hold remains, no disguised retry.
+Commerce/Orders	Existing backend/service/payment contracts and unmounted advisor Commerce candidate.	Orders unavailable; AC8 source failure, missing current CAS/evidence/actor/private-quote producers, M63-M65 financial verification and complete returns/refunds remain.
+Source	Pure Source15 and Account contracts, UTF8 inspector; safe consent presentation integrated unmounted.	Kernel persistence candidate corrected for SK1 but unreviewed/unrun. Real credential adapters, storage/formats/inspection/byte egress/rights/lifecycle/cleanup and client Account wiring missing.
+Account/export	Final-export manifest/part/collector/public serializer source and consent presentation integrated.	Account unavailable; profile/contact/verification, own-client cancellation/departure producer, real download/staging/post-window admin and safe legacy R1 producer incomplete.
+Notifications/agents	Root notification handler/worker/outbox/journal source; synthetic filesystem sink only.	New entry and SMTP source candidates just returned; no Root mount/admitted channel, actual delivery/provider/webhook proof, scoped-agent full workflow.
+Maya/visual	Public shared-renderer five-stage shell mounted.	Full form/post-preset candidate now being integrated locally after source R2 PASS. Full D42/browser/frame/a11y/human/mobile acceptance still open.
+
+
+The all26-row audit at0d8651de is authoritative for its frozen8af source inventory. It specifically corrected earlier claims: A08 owner-policy and public Maya ARE mounted; Account/Orders/Notifications/A07 ARE NOT. A component file, parsed route or API name is not a mounted chain.
+IN PROGRESS and AT RISK: shared Root Maya writer
+The active persistent-goal Parent continuation explicitly claimed the bounded17-path Maya projection from b0e3ee5ba667444e477719595c8fc563f6ec6048, after independent R2 79e0a757444dd19275639274fc78650a3e3ee940 scoped PASS. Do not duplicate its imports, edit those paths, run a concurrent Root commit, or revert its dirt.
+
+Root is at8af with16 dirty/untracked paths at this snapshot; the17th target is the already-exact Parent retirement test. Shared changes comprise:
+- Modified: apps/portal/src/features/plan/{ClientPlan.tsx,DecisionControls.tsx,UseReport.tsx,types.ts}; features/walkthrough/maya/{controller.ts,view.tsx}; apps/portal/tests/rebuild-maya-application.test.mjs; rebuild-maya-five-stage-boundary.test.mjs.
+- New: apps/portal/src/features/walkthrough/maya/interactions.ts; rebuild-maya-interactions-{application,boundary,controls,retirement}.test.mjs; rebuild-maya-interactions-compiler.mjs; rebuild-maya-interactions-types.ts; docs/portal-rebuild/research/W3_MAYA_INTERACTIONS_SOURCE.md.
+No App/routes/transport/SQL/config edit is included in that claim. Root already contains the separate original MIF fix 1418d724c704aac51ed1235ed55c71c12f76bcc2; the full candidate must preserve it and its exact test. The owner planned current39, retained210, cold39, strict/frontend/session/UI and main/public compilation, then an ordinary scoped commit. This handoff does not claim those new Root checks completed. Check the owner's actual current receipts before committing. The newly created handoff itself is separate docs dirt and must not be swept into an implementation commit.
+DONE in this continuation: committed correction candidates, not product completion
+NT2 plus decoder: bc5651e6b27cd433851a779e57fc02e8f6a433d2
+Workspace t3-db1106d7, branch t3/notification-auth-transport, clean. Direct parent 2c9633d8401ede2ce1ac6e0943ff62fbcffd38de. Exactly5 owned files: generic session.ts, shared Root concierge-operations/body.ts, NEW tests/portal-cookie-final-return.test.ts, NEW tests/concierge-body-cancellation.test.ts, NEW COORDINATOR_NT2_SOURCE_ADOPTION.md.
+- Generic final return rechecks applicability and caller abort AFTER listener cleanup. Actual session/cookie/native Response/Root payment mapper reproduces original deliberate cleanup-hook defect. Original unchanged independent4: OLD3/4, current4/4. New READ/WRITE14: OLD8 pass/6 fail, current14/14.
+- Shared decoder awaited reader.cancel() on overflow. A pending cleanup hung the unchanged inventory case31; rejected cleanup replaced too_large. Frozen W0 and Root8af preimages are identical. It now initiates cancellation with observed rejection, releases reader and refuses overflow immediately. NEW direct native stream7: OLD3/7, current7/7. Does NOT certify underlying physical cancellation/cleanup.
+- node --experimental-strip-types --test tests/portal-cookie-final-return.test.ts tests/concierge-body-cancellation.test.ts:21/21. Same unchanged inventory transport33/33, retained cookie/Review/App287/287, shared Root handler/runtime35/35. All source/finite synthetic, overlapping groups, not a total full-suite result.
+- Configured frontend/session types0. Actual Root app/test compiler graphs0 only under FOUR exact previously allocated read-only host prerequisites; app1647/test1008 inputs. Four prerequisites: retained annotation, two native signature maps, interleaving selector guard. No flags/declarations erased. Physical Root compilation is NOT claimed.
+- Actual main write:false:2246 inputs/15 outputs before/after, onlyapplication.js differs,14 exact.
+- Raw old inventory erasure remains13/14 because one assertion requires unchanged generic bytes. It was not edited/filtered/waived. Initial aggregate hung; separate45s test-runner diagnostic30 pass/1 cancellation; exact owned runner and child were verified after47min and SIGTERM'd only after diagnosis. Interrupted raw preserved. New33 GREEN uses decoder correction; old author's33 is attributed, not retroactively reproduced.
+- No Root import, new combined R4, full npm/Expo/package, native/browser/Auth/Storage/provider/genuine or release acceptance yet.
+Evidence: t3-db1106d7/.local-artifacts/nt2-coordinator-adoption-20261102/, immutable raw/argv/exits/SHA receipts and final-protection.json. Other2076 starting tracked files/modes exact. Report SHA 62151d04c5843f067489d0337485d6b1c16fc8156239a1408f22fd16d667397e.
+Source SK1: b8a5dac9bb6b6cc69c0d6365d88f71b0b8117218
+Workspace t3-ddfc679e, branch t3/source-consent-kernel, clean. Direct parent frozen 9fe9e5e499443356e71d6123bc7b3da8ff499f43. Exactly the never-applied Source migration plus NEW COORDINATOR_SOURCE_KERNEL_SK1_CORRECTION.md.
+
+Migration 20261102033048_portal_rebuild_source_kernel_v1.sql lines348/350: surround both complete CASE operands in IF conditions with parentheses. Exactly FOUR added bytes, every other byte/limit/branch unchanged. Original R1 static probe copied byte/mode-exact: OLD3 pass/2 fail, current5/5. This is a source-pattern check, NOT PostgreSQL execution. No Source SQL/pgTAP ran. Old Source author131 and strict0 remain attributed.
+
+Old migration SHA 993bc15e7ee4f8726a8806927b4d709437627d96fe8e7e1085d5ee9207b29785; successor 17fbb843c376425f52b5645f9fe8102ff6ce4fa4ef619b68237b9d85c6dbfcf2. Other2085 starting tracked files/modes exact. Evidence .local-artifacts/coordinator-source-sk1-20261102/. NEW complete independent Source R2 required BEFORE Root import; historical R1 FAIL unchanged.
+Candidate and independent-review ledger
+All entries below are unintegrated unless explicitly stated. A report-only commit may safely be considered separately; never cherry-pick its input-import ancestors. Review PASS is always scoped.
+Domain	Frozen candidate / returned checkout	Latest review or terminal state	Next gate
+Full Maya interactions	b0e3ee5ba667444e477719595c8fc563f6ec6048, t3-cbd6646d, clean. Original3 owned commits plus suffix f89352fa attributed Parent test INPUT, b8e20cc6 MIF/cache, a210a3d0 approved compatibility, b0e3ee5b report.	R2 report-only 79e0a757444dd19275639274fc78650a3e3ee940, t3-9978aa8c, scoped Source/SSR SPEC+quality PASS.39 and cold39; approved210/210; client122/guidance99/types/build. Exclude INPUT7feae2ce.	Finish current Root17-target projection/checks/commit; browser/D42/frame/a11y/genuine still open.
+Photo complete consumer	b90646b87f925215ac78d09a23644305574d538d, t3-59696a97, exactlyport/newtest/report; clean.	R6 sole 0b0b7485ee1ec4e123a98aaf7d0444b8c3ce8094, t3-9ac0d034, scoped source/synthetic PASS on exactv1.64+independent9. Exclude INPUT906c804f.	Depends on corrected/admitted shared transport AND explicit facade successor/v2; then C05/C07 wiring/real upload/bytes/Storage/browser.
+Photo transport/facade	Original terminal2c; production99ded4 in t3-db1106d7; now successorbc5651e6 above.	Author33/erasure14 prior evidence is distinct from coordinator current33/rawerasure13/14.	New COMPLETE combined transport/inventory R4, not an inventory-only green.
+Source kernel	INPUT dd13a37e21a53a42b2e90caefa887519f8321d62 exact4model files; early 05e5d968166a6b35acd8ec7b30ceae04ac484719; persistence 9fe9e5e499443356e71d6123bc7b3da8ff499f43; currentb8a5dac9, t3-ddfc679e.	R1 sole 94cae923dae74bd927e29bdfa2ccbfbe38fb64ee, t3-4bb235ab, FAIL SK1/P1. Exclude3 input commits. Broader semantic review stopped.	New Source R2 on COMPLETE Phase1+b8, then separately granted SQL/auth/semantic/genuine gates.
+Advisor Commerce	bc22d694d396d51c8a308de964d81ec0ce90f9b5, t3-63fc65ec,3 owned files, clean.	R8 sole 63ecd5a6539d819955fb937b54b0ade154ad79d7, t3-bbb9008e, FAIL AC8/P2. Original AC1-7 current14/14; broad424/compiler stopped, author424 only attributed. Exclude13 inputs.	Correct AC8 then fresh R9. Missing financial producers/M65/Orders remain independent gaps.
+Native executor	NE3 7a69dafe29cb8c9be7c0a1bfe72c5531cd57839a, new NE4 393419ca528047b7f79ebff78870c06a78427526, t3-35ff2229, clean. Exactlyexecutor/test/reportappend.	R4 sole 831c158cadc7cbb7101e7ee46e094bdf4a87423d, t3-f9601fd1, FAIL NE4/P2; exclude6 inputs. Author successor84/84 pure, source/syntax and bound NE1-3 pass; no native.	NEW independent R5 complete held source/recipe matrix, then NEW exact execution grant. NOT-A-GRANT template has null authorization/task/expiry.
+Notification entry	ceffcb6fa1f7a4978a4a2dda56212253056df3a1, t3-747886d8, clean. Owned suffix ONLY e4efe7c114742e352870d3ff15f9439760e3d17b,ceff; exclude INPUT12452a50.6 owned paths including reportappend.	Author canonical07c4 entry19/19, unchanged feature75/75, independent copied4/4; strict161/frontend253 errors0; browser write:false2152/2, UI11.	NEW independent entry source/lifetime/SSR R1, shared transport admission, then bounded Root Application case.
+SMTP adapter	107a0678c58add60a3b47655ada49d3bb47f243d, t3-4018546f, clean,3 NEW files:mailpitSmtp.ts,test,report.	Author68/68=29 VM SMTP+39 retained, strict226/57own0; Root app/testtypes0. No actual socket/Mailpit/delivery.	NEW independent R1 before worker adapter union/fixed current-context SQL/deadline composition; genuine local queue ACK and no-relay later.
+26-screen audit	Sole 0d8651debfb9bee711a2696c638b17767e797857, t3-e1dd123f, clean, direct8af child.	Research only; all26 mapped,47 citations checked; no application/compiler/browser/SQL executed.	Import only report when Root writer releases; allocate smallest missing Account/export/Source transport seams.
+Legacy R1 final public export	Research sole 1afccad16c453945e3591815df10bf0ec9f4121b, t3-b08e21c9, report W1_FINAL_EXPORT_LEGACY_PUBLIC_PRODUCER.md.	Proposal only: safe typed immutable R1 public reconstruction requires supported exact historical lineage; no implementation or public API pin.	Separate exact design/contract allocation, no widening reviewed R2/V3 v1; missing provenance remains unavailable.
+
+
+Exact findings that must not be lost
+- MIF1/P3, inherited: throwing actual session invalidation observer interrupted retirement; disposed flag blocked retry and old report remained in controller/SSR. Same line old3bd/8ff. Parent1418 and completeb0e correct exception-safe retirement/cache clearing. Original app probe changes only exclusive proof-output filename. Deliberately throwing source proof, NOT naturally throwing mounted subscriber/browser privacy proof.
+- AC8/P2: peer committed status settles actual requestA and clears shared slot; original heldA403 completes, fresh refresh/open/components are ready, but original local writeState='sending' disables selected ActionForm. Explicit task change/cancelConfirmation recovers. Not permanent, not financial/authority loss. Do not retain retracted broader wording.
+- NT2/P2: deliberately wrapped real caller AbortSignal cleanup loses applicability after last decode; decoded private value returned. No successful authority/current port substituted. Newbc fixes source final return; natural mounted/browser reachability unproved.
+- Decoder hang: independent ofNT2; pending stream cancellation on overflow. Correct refusal must not await cleanup; cancellation rejection observed, underlying completion not certified.
+- SK1/P1: bare CASE inside PL/pgSQL IF scanner hits inner THEN at parenthesisdepth0. Parent export1982 had actual PG17.11 oldexit3/new0 grammar proof; that is EXPORT-ONLY attribution, not Source kernel native proof. Sourceb8 onlystatic5/5.
+- NE4/P2: old preflight awaited imports/lstat/socket/ports/mkdir/initialreceipt before deadline/finally.40ms cutoff stillpending76ms, fails183ms,cleanup0. New393 starts whole deadline/finalization before setup and preserves unjoined pending FS/probe targets as UNCERTAIN. It cannot cancel physically uncancellable issued OS work; no unknown resource STOP/adoption/deletion or false absence. Original raw and minimally bound fixture are distinct; private original fixture lacks valid cleanup budget, not a grant.
+Critical frozen pins and compatibility traps
+Notification versus photo source inputs
+There were two conflicting Parent pin messages. The coordinator erroneously confirmed photo74eff as notification17. Latest canonical correction is notification transport07c4 + feature8f9,26 explicit rows in .local-artifacts/portal-rebuild/review-allocations-20261101/notifications-entry-source-pin-v1.json. W2 independently replayed canonical source. Preserve earlier74eff results/setup failures as historical, not current proof. Do not guess target from the latest cumulative report or physical W0 checkout.
+
+Entry API is exactly3 exports: createNotificationsEntry(runtime,navigation), NotificationsEntryView({entry}), readonly NotificationsEntry. Snapshot is readonly {phase:'idle'|'active'|'inactive'|'ended',controller:actual NotificationController|null}; subscribe/startPromise/stop/dispose. Constructor/SSR inert, controller lazy on postcommitstart, one initial load per started lifetime. Canonical route deny-only; navigator WeakMap arbitrates lifetime only, grants no authority; never dispose navigator. Actual controller retains operation/uncertain memory. No Root Application/routes edit in the candidate.
+
+Photo EARLY74eff adapterblob 7887ec53d59931a48ec6971e89aa24a999494a82, SHAb5b312a0...; later99ded adapterblob 7ffa68726c8dab6bc114ec4ad5ebf441e352ea4c, SHA e83f8ac6fdd68e6f1cfdc61e051a6412d1cf74e9551d53f1193565ea96723c7f,4128 bytes. Later facade checks actual READY at private decoder/final return; generic isCurrent alone can accept offline-boundary state. W4b906/R6 use OLDv1 and are not silently corrected by the successor.
+
+Exact Root composed manifests in review-allocations-20261101/:
+- photo_inventory_consumer_composed_source_v1.json: SHA f5a73a62956bb310481a44863d1db9d1308329f4b0a5cf6059ed3b920cf761d1,21 virtual postimages/77 source nodes/6package bindings,276 unique AST edges versus306 declarations including30 duplicates; target74eff.
+- photo_inventory_consumer_composed_source_v2.json: SHA 49c1aa973e3a8d407788bcbdcdd494b511a14fa42b40fabd43f0892c78f09cde; same76 nodes, adapter successor only, target99ded. Not a review of newbc generic/body changes.
+- Root projection SHA acae84d966e149658349ea3a1cf9065512f543068ec7b68e0de6279474b0a543: six runtime postimages, two incompatible native signature maps explicitly excluded. Never import mutable author files or a wholebranch to resolve those maps.
+R6's source fixture had exact89b physical-preimage assumptions that fail on8af before behavior. Approved ignored fact-bound copy rebinds only inventoried preimages/absence and3 import locations to own esbuild/TS/helper. All canonical21 target inputs/predicates/options/ABI/flags unchanged. Raw unmodified failure remains. Unchanged retained aggregate81pass/1startup failure is NOT105green: parallel helper read partially written ssr.cjs, separately diagnosed, not feature acceptance. Earlier author physicalHistory105 is separate.
+Source and final export contracts
+SourceScope remains EXACT {kind:'client',clientId:UUID}|{kind:'draft',draftId:UUID}. Source15 has8 READ/7 WRITE/task0; clients do not gain private Source actions. Separate Account own-client read/withdraw/status remains3 actions. Command RPCs concierge_source_command_v1({p_command}) and concierge_source_account_command_v1({p_command}); fixed request-context lookups have onlyp_request_id, derive actual actor/session/current scope, authorize scope before existence/replay. No caller actor/client/scope selector. Four frozen model blobs are in the R1 report and d0f freeze, unchanged byb8.
+
+Safe actual original Account withdrawal plus canonical hash survives in noncascading tombstone when private result purges. Null never means absent/purged. Exact UTF8 disclosure (BOM/CRLF/scalars), separate append-only immutable draft/published/current policy records, server causal consent/version/CAS and actorUUID collision locks are required. No real policy seed/publish/activation, raw bytes, Storage success or cleanup protocol is implemented by Phase1. Payload formats remain disabled. Full Sources are not narrowed to the UTF8 inspector.
+
+Final-export Root v1 is two fixed READ commands (manifest/part), complete basis/hash/part traversal and public-only serializer. The collector retains one bounded complete unit plus compact state, not whole theoretical aggregate. Actual physical staging/commit/abort and browser Download are not pinned/implemented. Browser click, Blob creation or a fake sink commit cannot prove durable saved delivery. R1 original publications retain7 public recommendation fields, but no publication-to-served-asset-version receipt was found. Current composite, private legacy adoption or human attestation cannot reconstruct unsupported historical public directions. Research proposes separate typed immutable R1 sidecar/profile with actual lineage and capture/seal attribution, otherwise unavailable.200 proposed occurrence references versus oldv1's150 are separate proposals; no silent old protocol bound change. Current asset sizes are not lawful/practical maxima.
+Evidence and compiler custody
+Raw OLD, minimally fact-bound, explicitly approved successor and CURRENT are separate. Maya raw208/210 remains failure, approved a210 successor210/210 is separate; all later original predicates retained. Never say an old fixture passed because current wire did. Physical old photo suites can fail at missing virtual-only input/bootstrap before assertions; report that exactly.
+
+Source callbacks/plainWindow/SSR, closed syntheticHTTP/VM SMTP, actual isolated Node/Auth/SQL, ordinary mounted browser, hosted and release evidence are different. Keep full argv/exit/raw logs. No successful authority/currentness/Root/Vault/operation stubs as genuine proof. Use actual authority with negative hooks where allocated. Do not erase declarations, lower TS flags, replace actualRoot with facades, or use a foreign generated runtime.
+
+Dependency grants are phase-specific. Conditional APFS same-lock clone requires package/four physical lock inputs, tracked91-runtime custody, nonsymlink/device/literal-link inventory and complete byte/mode/link parity BEFORE probes and at terminal. Existing three tracked lockfiles versus four physical own/Parent comparisons are different counts. No install/shim/config bypass. Hash old archives in place, copy only exact executed input/probe/raw/report needed; never recursive foreign-archive copies or foreign execution. Evidence often uses exclusivewx output; replays need a NEW output path, not overwrite. Root4 compiler prerequisites are ignored overlays, not physical source fixes or new authority.
+CI and genuine-resource history
+Recent CI sequence: f402 failed actual migration syntax in export final_export_unit_v1 during Supabase START, not environmental pgTAP failure. Parent1982 added two parentheses. Later b566 migrations/reset succeeded; sole pgTAP inventory assertion expected77 but actual legacy-report setup trigger made78. Parenta23 captures actual postsetup preread snapshot rather than hardcoded head;8af clarifies preserved47assertion sites. Current8af all3CIgreen verified live above. Keep failed logs/merge-tree proofs at .local-artifacts/portal-rebuild/ci-f402-*, ci-b566-parent-20261102/ and associated reports; no blind unchanged rerun or production migration claim.
+
+Historical genuine Node R5 on its ownfc26 source exercised actual Auth/publication/care/logout with synthetic clients; independently corrected observer review later passed its own current9/24. It does NOT accept today's V3/photo/Source/Commerce/Account/provider/App. Prior r1-r4 harness failures remain, including nonexistent auth/logout404 and observer/SQLite capture issues. See CURRENT_STATUS's exact actual-attempt table and W6/W7 genuine reports instead of recomputing from narrative.
+
+R7/R8 and R9 fixtures are stopped/preserved per recorded receipts, with backups/volumes and protected rows. R9 was explicitly stopped before Root Source transition; no R9 reuse or query/reset authority remains. This handoff did NOT inspect/start/query Docker/DB/Auth/Storage. No current native resource grant exists. Notification executor native66/60/50/catalog/Auth/concurrency matrix remains unrun/unaccepted. A NOT-A-GRANT file or old stopped fixture does not authorize native work. New current source review, exact recipe/image/fixture/source and explicit fresh grant are required.
+
+Known provider-refused Guidance private-return and M65 financial reviews remain incomplete with no accepted verdict. Do not conceal, rename or reroute their refused requests. Legitimate unblocked implementation can continue. No hardware key or paid program enrollment is a prerequisite introduced by the project.
+STANDING INSTRUCTIONS and orchestration lessons
+- User authorizes reviewable development commits within this goal, disjoint worktrees, source/isolated synthetic work. No main merge, production deployment, real-client publication/permissions/messages, real funds/orders/fulfillment or banked reset. An active tstack workflow would have its own explicit grants; none of full-send/full-stop was invoked in this continuation.
+- One Root writer for shared contracts, migrations, auth/runtime/routes/layout and release composition. Preserve counterpart work. This T3 parent has had overlapping persistent-provider continuations; never assume that an empty ownership note means Root has no writer. The explicit Maya claim is active; coordinator corrections deliberately used returned clean author worktrees.
+- Verify actual model/effort/default tier live for coordinator and EVERY agent. Do not change config to satisfy an inference. Project null/catalog default are not runtime selections.
+- T3 tool naming changed: current read-only t3_thread_configure({threadId}) replaces unavailable t3_thread_configuration. Omit modelSelection to READ. Discover actual enabled tools, don't force old names.
+- New independent review/re-check means NEW delegate_task, full original brief + all prior reports/findings/objections + exact candidate/manifest. Existing author continuation may use t3_thread_send and receives a NEW actual taskId. Forward literal returned taskId separately immediately. ThreadId/runId/backing ordinal are NOT substitutes.
+- Use T3-managed worktree isolation for background tasks/user model settings; never shell-create a child's checkout. No nested agents. Read a provided thread before answering about it; use its actual returned link in user-facing mentions. Follow delegate next; no busy polling/sleep/watch loops.
+- Parent lost T3 ownership earlier: parent_not_active, zero tasks created by4 failed review starts. Native goal then returned null. The coordinator restored the ORIGINAL full goal and successfully dispatched fresh SourceR1/MayaR2/CommerceR8; no scope/budget reset. Never count old failed dispatch attempts as running tasks. The current native goal is active, but that does not prove eight workers are active.
+- Hourly automation is STATUS ONLY: no tests/services/workers/source/messaging/reset during that requested status turn. Lowercase120-170words, stable9groups, actuallivecount, concrete moved/blocker/ETA evidence. A status restatement is no implementation progress.
+- Async code: capture exact identity/context before await, recheck actual ownership after EVERY await/callback/error/finally and before private return/write. Fencing/clear state BEFORE abort/revoke/notify; isolate throwing/reentrant observers. Lease/currentness does not necessarily mean READY or retained operation applicability.
+- Shared pending Commerce slot is authority, never constructor cache. Exact CAS only empty or same original; clear only same original. WeakMap peers prompt actual reread, not grant authority. Local absent-status observation binds exact original. Genuine received401 still globally retires session; local cleanup/offline denial stays503; no blanket401 heuristic.
+- No SourceReady/self-acceptance from author tests. Do not trade off full UI/product behavior for easier compatibility. Keep unanswered physical/genuine/privacy/business gates explicit.
+NEXT STEP and prioritized continuation
+After the user explicitly resumes, one immediate action: reconcile with the Root Maya ownership claim, preserve its16 dirty paths plus existing17th target, read its new Root proof receipts, then finish that bounded verified integration commit. Do not start a competing Root projection or sweep this handoff into it. If that writer already completed, verify actual Git and move to the review refill below.
+
+Only after that resumed ownership reconciliation, refill productive lanes with fresh exact task IDs and no duplicated authors. NONE of these tasks has started yet:
+1. NEW Source kernel R2 on complete original Phase1 plusb8a5dac9, originalR1/SK1/staticprobe/correction and all frozen requirements. Report-only, no SQL execution.
+2. NEW complete shared notification/generic/inventory R4 onbc5651e6 with all SD1/NT1/AAS5/NT2 history, decoder OLD/current, W0 final complete source pins and compatibility qualifications. Report-only, no admission/resources.
+3. NEW SMTP R1 on107a0678, full original adapter pin/author report/VM tests; preserve worker literal/frozenneutralcodec. No actual socket/queue delivery until later grant.
+4. NEW notification-entry source/lifetime/SSR R1 onceffcb6, exact canonical07c4+8f9/26rows, all pin-conflict history and direct-vs-serialVault distinction. No shared/App fix or globalNT2 acceptance.
+5. NEW native executor R5 on393419ca with NE1-4 original/raw/minimallybound/current plus complete recipe/fixture matrix; source-only until accepted and separately granted.
+6. New Account final-export consumer: bounded NEW app/final-export-request.ts, NEW account/final-export subtree, named tests/report; reuse actual Root collector/serializer, truthful staging/commit/abort; propose exact transport/staging API to Parent BEFORE public exports/shared integration. No App/routes/shared channels/SQL/other Account files silently changed.
+7. New own-client departure read producer: bounded NEW PortalAccountDeparture family + dedicated Root producer/handler/tests/report, no existing service/financial mutation. Derive actual support/read-only/export/admin basis server-side with explicit unknowns, no client selector/date arithmetic authority. Parent must pin seam and sole migration writer BEFORE CLI allocation/body/public exports. This is not a cancellation-write/profile/Source lifecycle scope expansion.
+The Account slices are recommendations from the latest source audit, not already approved APIs or owned claims. Do not invent real download success or final support dates while waiting. A dependency can hold integration but need not block private implementation/tests against an agreed exact contract. Maintain7-8 actual useful workflows where independent, respecting resource capacity and one-writer boundaries. If below target, explain the real cause, not an old label.
+
+Other material next work: AC8 correction and fresh CommerceR9; safe R1 final public export producer design; real Source credential adapter after kernel review; Account/profile/contact/cancellation, Orders and scoped agents; bounded Root notification/photo/A07 mounts after their dependencies clear. The full closure still needs actual isolated authenticated persistence/permissions, real upload/private egress/cleanup, truthful notification sink delivery, ordinary browser navigation/effects/forms, exact26-frame/secondary/desktop/mobile comparison, a11y and representative-human review, full npm/type/Expo/migration/pgTAP/Edge/least-privilege checks, exact-head CI and independent current integrated acceptance. Release authorization is separate.
+OPEN QUESTIONS and limits
+No immediate human decision is blocking the current correction/review/implementation work. Final disclosure wording approval, supported historical R1 public lineage, actual departure/obligation producer facts and any real provider/release credentials are not to be fabricated. Resolve routine engineering with inspected contracts; ask only a new material product/permission/visual question supported by evidence.
+
+This handoff preserves verified present state plus attributed historical facts. It cannot turn missing evidence into zero ambiguity about whether unrun code works. UNKNOWN/UNRUN/HELD are intentional explicit states. Read the immutable exact reports for full historical case matrices; do not relabel the whole project green because this summary has no new finding.
+Handoff custody
+This is a documentation-only local handoff accompanying the user's explicit stop request, not a merge, deployment or proof of completion. The goal is paused, not complete; no continuation or refill is authorized until the user resumes. It is intentionally left uncommitted while another Parent owns dirty Root implementation. No new worker was started for the handoff. Full Git snapshots, attachment bytes, live remote/PR/roster observations and validation are in .local-artifacts/portal-rebuild/handoff-20261102/. Current candidate author/review worktrees were inspected with git status -sb and git log -5 --oneline; relevant candidate heads above are clean. Reverify after resuming because these states can change.
+Exact26-screen resume index
+Screen	Title	Figma node
+C01	your plan · morning	498:85
+C01E	your plan · evening	503:926
+C02	review a recommendation	498:212
+C02D	directions & evidence	499:766
+C03	product details sheet	499:151
+C03D	CeraVe PM reasoning	503:1083
+C04	check-ins & history	498:304
+C05	send an update	499:305
+C06	orders · quote preparation	499:446
+C06D	delivered, not started	503:808
+C07	record actual use	499:584
+C07C	report a CeraVe PM change	503:1174
+C08	account	498:399
+C08C	cancel service	499:927
+C08R	read-only access	504:621
+A00	clients	503:449
+A01	plans	500:299
+A02	plan editor	500:383
+A03	sources & agent changes	500:500
+A04	publication blocked	500:592
+A04P	verify service payment	503:672
+A05	ready to publish	500:686
+A06	published / notification failure	500:779
+A07	review a check-in	500:846
+A08	workspace permissions	503:558
+D01	guided Maya	503:1271
+
+
+All48 decision IDs remain in scope
+- D01: One client experience.
+- D02: Approved baseline, not a new design competition.
+- D03: Full frontend rebuild, bounded backend changes.
+- D04: Enforced consistency.
+- D05: Brand and copy.
+- D06: Icons have consistent meaning.
+- D07: Desktop first, responsive before release.
+- D08: Your plan is useful immediately.
+- D09: Proposals do not become actual use.
+- D10: Detail without a maze.
+- D11: Correct content binding.
+- D12: Check-ins & history.
+- D13: Account.
+- D14: Plan lifecycle.
+- D15: Guided, not forced.
+- D16: Save incomplete work.
+- D17: Unique cases use approved modules.
+- D18: Schedules are authored.
+- D19: External AI workflow.
+- D20: Source and import truth.
+- D21: First-publication gate.
+- D22: Precise approval.
+- D23: Sami and owner authority.
+- D24: First publication starts clocks.
+- D25: Review cadence and service access.
+- D26: Product identity.
+- D27: Choice and self-purchase.
+- D28: No product margin.
+- D29: Quote and payment integrity.
+- D30: Delivery and actual use.
+- D31: Orders survive plan updates.
+- D32: Immutable meaningful history.
+- D33: Automatic notification scope.
+- D34: Reliable event delivery.
+- D35: Existing service terms preserved.
+- D36: Service refund.
+- D37: Product return and referral.
+- D38: Cancellation.
+- D39: Source retention and access.
+- D40: Data use.
+- D41: Truth and scope.
+- D42: Same renderer, isolated demo.
+- D43: Model and agent rules.
+- D44: Parallel ownership.
+- D45: Documentation is a deliverable.
+- D46: Real verification.
+- D47: Cutover, not destructive replacement.
+- D48: Gaps are bounded.
+Actual recent task handles, all terminal
+Full task/run/thread distinction is preserved in the referenced receipts. Do not infer new IDs from these.
+- screen_audit_r2: node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-26-screen-connectivity-audit-20261102-r2; receipt coordinator-active-20261101/refill-active-20261102-0615.json.
+- mailpit_adapter: node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w1-mailpit-notification-adapter-source-20261102-r1; receipt coordinator-active-20261101/refill-active-20261102-0615.json.
+- notifications_entry: node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w2-notification-entry-composition-source-20261102-r1; receipt coordinator-active-20261101/refill-active-20261102-0615.json.
+- native_ne4_fix_current: node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Athread-send%3Aw7-native-preflight-deadline-ne4-source-fix-20261102; receipt coordinator-active-20261101/refill-active-20261102-0615.json.
+- photo_consumer_r6_restored: node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-photo-inventory-consumer-source-review-20261102-r6-restored-parent; receipt coordinator-active-20261101/refill-active-20261102-0615.json.
+- source-kernel restored review: node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-source-kernel-source-review-20261102-r1-restored-parent.
+- maya-interactions restored review: node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-maya-interactions-source-review-20261102-r2-restored-parent.
+- commerce restored review: node:delegated-task:command%3Amcp%3Afab56c32-51e9-4c25-a214-3043797a2822%3Adelegate-task%3Aportal-rebuild-w7-commerce-source-review-20261102-r8-restored-parent.
+The two small coordinator corrections were performed directly in returned author worktrees; no child task was fabricated for them. Candidate commit IDs identify source, not an independent acceptance task.
+Final stop instruction
+The user explicitly said “okay stop evreything and give me the handoff” and “make sure its ironclad and good to go”. This overrides earlier autonomous continuation/refill instructions until a new user resume. Do not start the proposed reviews/Account slices or continue the Maya integration from this handoff alone. Preserve all uncommitted work. PR211 watch is being stopped for handback; the PR stays linked/open/draft. No commit or push was made for this handoff.
+</local_handoff_snapshot>

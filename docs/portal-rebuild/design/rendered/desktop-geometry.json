@@ -1,0 +1,85 @@
+{
+  "sidebar": {
+    "x": 0,
+    "y": 0,
+    "width": 224,
+    "height": 960
+  },
+  "topbar": {
+    "x": 224,
+    "y": 0,
+    "width": 1216,
+    "height": 80
+  },
+  "content": {
+    "x": 224,
+    "y": 80,
+    "width": 1216,
+    "height": 1276
+  },
+  "heading": {
+    "x": 264,
+    "y": 104,
+    "width": 858,
+    "height": 39
+  },
+  "contact": {
+    "x": 20,
+    "y": 740,
+    "width": 184,
+    "height": 129
+  },
+  "identity": {
+    "x": 20,
+    "y": 910,
+    "width": 184,
+    "height": 20
+  },
+  "nav": [
+    {
+      "text": "your plan",
+      "x": 20,
+      "y": 102,
+      "width": 184,
+      "height": 48
+    },
+    {
+      "text": "check-ins & history",
+      "x": 20,
+      "y": 162,
+      "width": 184,
+      "height": 48
+    },
+    {
+      "text": "orders",
+      "x": 20,
+      "y": 222,
+      "width": 184,
+      "height": 48
+    },
+    {
+      "text": "account",
+      "x": 20,
+      "y": 282,
+      "width": 184,
+      "height": 48
+    }
+  ],
+  "button": {
+    "x": 284,
+    "y": 262,
+    "width": 204,
+    "height": 48
+  },
+  "input": {
+    "x": 284,
+    "y": 581,
+    "width": 480,
+    "height": 48
+  },
+  "fonts": {
+    "body": "Inter, sans-serif",
+    "title": "\"Instrument Serif\", Georgia, serif"
+  },
+  "overflow": false
+}

@@ -1,0 +1,92 @@
+Steer the existing Shelv portal rebuild. Continue implementation under the same approved goal. This is a corrective execution instruction, not a request to stop work or produce another status-only report.
+
+I reviewed the current T3 Code state and recent child handoffs. I am concerned about three things:
+
+1. Only one child is visibly running despite numerous recently completed tasks.
+2. The 26-screen and 48-decision acceptance metrics still have not been measured.
+3. Too much effort is going into isolated fixture investigations without demonstrating corresponding end-to-end feature completion.
+
+**First: reconcile execution state.**
+
+Read the actual current T3 goal, parent ownership, task roster, worktrees and Git state. Determine whether the “Goal paused” indicator reflects the current goal or an older retained state. Preserve all work, ownership claims and resource restrictions.
+
+Verify every running worker's actual task ID, model (`gpt-6.1-sol`), `xhigh` reasoning effort and agreed service tier.
+
+**Restore productive parallelism immediately.**
+
+Our target is one coordinator plus up to seven useful concurrent child workflows when independent work is available.
+
+Process completed results and refill freed slots in the same coordination turn. Maintain a ready queue. Do not wait for me to request progress or manually tell you to launch workers.
+
+Do not count terminal agents, intended assignments, failed dispatches or idle threads as running. Do not spawn conflicting writers or invent unnecessary research tasks to fill capacity.
+
+If fewer than seven children can productively execute, identify the exact dependency or ownership restriction and what work could proceed independently.
+
+**Second: establish the real acceptance baseline now.**
+
+Use the existing 26-screen audit and acceptance matrix, reconciled against the ACTUAL CURRENT LOCAL HEAD.
+
+For each of the 26 approved screens, determine:
+
+- Is the route mounted?
+- Is the actual required controller connected?
+- Are required authenticated reads/writes connected to real authorized producers?
+- Is the principal journey implemented?
+- Has it passed current browser testing?
+- What exact gate prevents acceptance?
+
+Report the totals separately:
+
+- Connected screens: X/26.
+- Browser-verified screens: X/26.
+- Verified decisions: X/48.
+- Passing complete journeys: X/10.
+- Fully accepted features since the previous checkpoint.
+
+Don't fabricate totals or reinterpret source-level tests as integrated acceptance. If a category cannot yet be verified, identify its specific missing evidence and owner. The inventory itself must be completed rather than repeatedly left “not measured.”
+
+**Third: rebalance implementation priorities.**
+
+Prioritize getting the actual portal working end to end, especially Account, Orders, Notifications, advisor review and the necessary shared authority/transport connections.
+
+The recent findings must be handled accurately:
+
+- APC3: the profile draft may falsely report “saved” after session suspension. Fix the underlying correctness issue and obtain fresh independent review.
+- Orders SSR OR1: distinguish the likely public-text assertion mismatch from a product defect. Preserve the original failure and verify a narrow correction.
+- G4/G8 compatibility: preserve original failures. Input-only passing experiments are not accepted production fixes.
+- W0 account channels: nine direct tests pass, but existing regression and setup-blocked tests remain. Do not claim the Account route is complete.
+
+Do not loosen tests, bypass actual authority, silently rewrite fixtures, or claim unavailable resources have been exercised.
+
+**Fourth: improve the coordinator's throughput.**
+
+For every completed child deliverable, decide promptly:
+
+1. Does it require correction?
+2. Does it require independent review?
+3. Is it accepted and ready for integration?
+4. What is the next concrete task for that worker slot?
+
+Integrate accepted critical-path work promptly rather than accumulating report-only commits.
+
+Do not spend another long cycle on historical test-fixture analysis unless it is blocking required integration or CI. If it is blocking, identify the exact gate and run the smallest legitimate correction while other workers continue independent feature work.
+
+**Fifth: demonstrate real progress.**
+
+At the end of this coordination turn, report:
+
+- Exact local integration HEAD and latest remote PR HEAD.
+- Number of actually running children, their task IDs and current assignments.
+- The measured screen/decision/journey baseline.
+- The changes integrated since the previous checkpoint that materially improve actual product behavior.
+- The three highest-priority next milestones, their owners and acceptance criteria.
+- Any specific authorization or resource issue requiring me.
+
+After that, KEEP EXECUTING autonomously under the approved goal.
+
+No more unsupported “65%” reports. No status-only loops. No rewriting the project scope. No starting a fresh rebuild.
+
+Maintain the original D01–D48 requirements, all 26 screens, Sol Extra High, independent review, authorization constraints and required genuine end-to-end verification.
+
+The outcome I care about is the complete working portal, not the number of commits, reports or synthetic tests. Improve throughput without lowering correctness.
+

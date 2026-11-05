@@ -1,0 +1,11 @@
+# W5 Commerce transport abort/body finding
+
+Owner: Kanuj. **FAIL / source transport gate withheld. W7-W5-C1, P2.** Head `a590dfd51b069df65f3edf50c50073ca9355f27f`, base `8c5c6b2d72e75f620487f1b2b110655b03551b17`. All five new source/test/report files reviewed, with retained Auth/RPC and body decoder dependencies. Exactly the four reviewed99=603 DTO modules supply the absent shared dependency in an ignored projection. [Pins/results](W5_COMMERCE_A590_FAIL_RESULT.json); [original control archive](../source-controls/W5_C1/README.md).
+
+The runtime awaits provider fetch and then `readConciergeJson(response.body, 2000000)` without an operation-owned abort/deadline race. That decoder awaits each reader result without the request signal. The runtime also lacks a postread abort fence. An aborted operation therefore keeps waiting for a producer-held body; once that body releases, the raw RPC port can fulfill after abort. The handler's later abort check does not make the stalled await settle.
+
+Independent explicit Node22.23.0 original finite tests pass **10/10**. A new actual retained-runtime/RPC regression opens a closed synthetic Response body, waits for its reader, aborts the native controller and expects prompt rejection. It instead remains `waiting` after100ms. The finally block releases/closes the body and joins the operation, which logs `afterAbortAndRelease: fulfilled`. This original regression is **0/1 FAIL**; no browser/server/DB/provider resource was acquired and no financial facts were used.
+
+W5 owns bounded fetch/body/operation settlement and the final stale-result fence, preserving definite401/403, manual redirect refusal and nonblocking remote cancellation. Original10-pass/1-fail evidence stays separate from any new successor. W7 stopped the old candidate's review at this material finding and made no production correction.
+
+This is finite transport lifecycle evidence, not M65, private-return, actual authentication/financial authorization, data leakage, SQL/catalog/policy/legacy proof or complete Commerce acceptance. No such held audit was retried. Actual DTO admission/ordinary imports, shared route registration and business producer/genuine/browser/Figma/a11y gates remain open. No acceptance numerator advances.

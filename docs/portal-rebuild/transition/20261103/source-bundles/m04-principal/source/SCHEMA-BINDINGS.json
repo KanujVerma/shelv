@@ -1,0 +1,86 @@
+{
+  "kind": "SOURCE_DESIGN_ONLY_NO_EXECUTION",
+  "rootCommit": "359c6bf0c759357df648ca441e9e3d1c3d29398c",
+  "pins": [
+    {
+      "path": "supabase/migrations/202609160001_s1_auth_rls_private_storage.sql",
+      "sha256": "919647c5c4b919dddbe94b04cd640629b0b869d3f0b7d33f331a3b7edbb3aec5"
+    },
+    {
+      "path": "supabase/migrations/20260923180000_s_free_1_identity_boundary.sql",
+      "sha256": "cba8aa5b126b4cb01aa32faeeb9eb8bece71a0e3740966584e23dcc4822aeda9"
+    },
+    {
+      "path": "supabase/migrations/20261017190016_concierge_persistence_r1.sql",
+      "sha256": "0a681863f11747a047c7c820128c410db88d37512a3cbae9be195304725ba557"
+    },
+    {
+      "path": "supabase/migrations/20261018234537_concierge_portal_workflows.sql",
+      "sha256": "aaf13096407d1568b0a2d858827e3e4a7511e60012e489c96914c15f1b73a325"
+    },
+    {
+      "path": "supabase/migrations/20261023002407_concierge_advisor_durable_session_context.sql",
+      "sha256": "e019b719464a9c789cea6e2e9ea3a1a1208bfe0bef1c702325db8fa01bd61ec5"
+    },
+    {
+      "path": "supabase/migrations/20261024230528_concierge_founder_admission.sql",
+      "sha256": "4f45572f8e6f7d04e1bb1c4316fd950ef517e78a282b0584ec1f8d239fd97197"
+    },
+    {
+      "path": "supabase/migrations/20261030223603_portal_rebuild_plan_v1.sql",
+      "sha256": "497d85ef3bd81b7085d112be8c751bbeac8925ce5472ad94bdbc520174aa768c"
+    },
+    {
+      "path": "apps/portal/scripts/rebuild-native-cases.mjs",
+      "sha256": "063a33eff6847a4496e71dfdd5d183d1ce24f7eef2582e83ee431a07fe1dddcc"
+    }
+  ],
+  "profiles": "canonical private.handle_auth_user_change trigger, manual profile writes0",
+  "advisors": {
+    "owner": [
+      "active",
+      "can_view",
+      "can_edit",
+      "can_publish",
+      "can_confirm_payments"
+    ],
+    "viewer": [
+      "active",
+      "can_view"
+    ],
+    "bothFalse": [
+      "can_admit_clients"
+    ]
+  },
+  "principals": {
+    "owner": "owner",
+    "viewer": "human",
+    "active": true
+  },
+  "policyCas": {
+    "where": {
+      "singleton": true,
+      "activated": false,
+      "owner_actor_id": null,
+      "revision": 0,
+      "require_kanuj_approval": true
+    },
+    "set": {
+      "activated": true,
+      "owner_actor_id": "actual GoTrue owner id only",
+      "revision": 1,
+      "require_kanuj_approval": true
+    },
+    "rowCount": 1
+  },
+  "rolesReadback": "actual profile/advisor/principal/policy rows, no permission/currentness substitute",
+  "fixedCommandKinds": [
+    "inspect-db",
+    "read-baseline",
+    "read-trigger-profiles",
+    "apply-principals",
+    "read-final"
+  ],
+  "noEffectsForRefusals": "before claim/mutation: none; after actual provider calls: retain actual partial new identities/raw receipts, SQL rollback only does not erase Auth users",
+  "schemaExecution": "UNRUN"
+}

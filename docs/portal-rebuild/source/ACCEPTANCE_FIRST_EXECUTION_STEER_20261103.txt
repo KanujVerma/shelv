@@ -1,0 +1,22 @@
+I am not satisfied with the implementation throughput.
+
+In the last 3h20m, mounted screens moved 21/26 → 24/26, but complete source wiring remained 12/26, browser verification 0/26, accepted decisions 1/48, and complete journeys 0/10.
+
+I recognize that the backend and security work is complex. Do not sacrifice correctness. But mounting three more routes without delivering a single accepted end-to-end journey is not enough progress.
+
+Change the execution strategy now:
+
+1. Verify whether the native goal is actually blocked and whether worker dispatch is functioning. Restore useful parallel execution under the existing goal, respecting ownership and resource restrictions. Target one coordinator plus seven productive Sol xhigh children when independent work is available.
+2. Stop prioritizing report-only investigations unless they directly unblock required integration or CI. Convert reviewed work into mounted functionality and complete browser-tested journeys. Process returned worker results and refill available slots without my intervention.
+3. Prioritize finishing ONE meaningful end-to-end client journey against the current integrated application, using real authorized persistence in an isolated test environment, browser interaction, refresh/recovery, and negative tests. Choose the highest-value feasible journey and state its precise acceptance criteria before executing.
+4. In parallel, continue completing Account, Orders, Notifications, advisor review and the two remaining unmounted screens. Do not allow multiple workers to edit the same shared files. Triage the seven current CI failures without weakening tests.
+5. Update all 26 screen rows individually with separate states for mounted, fully source-wired, browser-verified, and accepted. Do not count a mounted screen as complete.
+6. If real Auth/DB/Storage/browser verification is blocked by a missing resource grant, identify the exact authorization needed immediately. Continue independent work, but don't claim complete acceptance without the required evidence.
+
+Your next progress checkpoint must demonstrate a concrete newly accepted capability, or provide the exact reproducible blocker preventing it. I do not want another multi-hour period ending with only more source-level reports.
+
+Preserve all existing work, approvals, model requirements and independent review. Continue autonomously. Do not restart the project or reset anything.
+
+Give me the actual worker roster and the next connected journey you are completing, then execute it. No need to ask me for routine scheduling decisions.
+
+change goal accordingly
