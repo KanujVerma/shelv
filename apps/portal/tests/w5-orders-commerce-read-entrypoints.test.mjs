@@ -31,7 +31,7 @@ test('older original-quote read cannot claim after currentness starts a newer op
 
 // Owner source schedules: actual native runtime/port/codecs, explicit controller
 // currentness wrapper. No assertion that native isCurrent calls consumers.
-async function entryFixture(t,{paged=true}={}){
+async function entryFixture(t,{paged=true,syntheticRetirement=false}={}){
  const runtime=createApplicationSession({audience:'client',locks:{request:async(_n,_o,run)=>run()},fetcher:async url=>{assert.equal(url,'/api/client/session');return Response.json({signedIn:true,ownerId:owner,generation:1,csrf:'SYNTHETIC-entrypoints',capabilities:{view:true,edit:false,publish:false,confirmPayments:false},idleExpiresAt:'2099-01-01T00:00:00Z',absoluteExpiresAt:'2099-01-02T00:00:00Z'});}});t.after(()=>runtime.dispose());await runtime.restore();
  const qA=await quoteFixture(),qB=await quoteFixture();qB.header.target.quoteId=id(22);qB.header.target.termsHash=await hashFrozenCommerceTerms(qB.header,qB.lines,qB.options);
  const purchase=purchaseFixture(qA),a={kind:'purchase',id:purchase.id,revision:purchase.revision},b={kind:'quote',id:qB.header.target.quoteId,revision:1},original={kind:'quote',id:qA.header.target.quoteId,revision:1};
@@ -39,8 +39,10 @@ async function entryFixture(t,{paged=true}={}){
  const pReq=finiteRequest(qA,{index,detail:purchase}),aReq=finiteRequest(qA,{index}),bReq=finiteRequest(qB,{index}),calls=[],signals=[];let beforeRequest,afterResponse,onCurrent;
  const port=createCommercePort(runtime,{family:'commerce-v1',async execute(c,o){calls.push(c);signals.push(o.signal);await beforeRequest?.(c,o);const raw=await (c.entity?.kind==='purchase'?pReq:c.entity?.id===b.id||c.quote?.target?.quoteId===b.id?bReq:aReq).execute(c,o);afterResponse?.(c,o);return raw;}});
  const native=runtime.getSnapshot().boundary,session={...native,isCurrent(){const callback=onCurrent;onCurrent=undefined;callback?.();return native.isCurrent();}};
- const controller=createOrdersController({port,session,ownerId:owner,mode:'client',contextKey:'entrypoint-source'});t.after(()=>controller.dispose());await controller.refresh();await controller.open(a);calls.length=0;
- return {controller,runtime,calls,signals,a,b,original,qA,arm(callback){onCurrent=callback;},before(callback){beforeRequest=callback;},after(callback){afterResponse=callback;}};
+ let denyOriginal=syntheticRetirement,retired;
+ const controllerPort=syntheticRetirement?{get availability(){return port.availability;},async execute(c,o){if(denyOriginal&&c.action==='read_commerce_detail_v1'&&c.entity.id===original.id){denyOriginal=false;calls.push(c);o.signal.addEventListener('abort',()=>retired?.(),{once:true});const error=new Error('SYNTHETIC consumer-port denial');error.status=403;throw error;}return port.execute(c,o);}}:port;
+ const controller=createOrdersController({port:controllerPort,session,ownerId:owner,mode:'client',contextKey:'entrypoint-source'});t.after(()=>controller.dispose());await controller.refresh();await controller.open(a);calls.length=0;
+ return {controller,runtime,calls,signals,a,b,original,qA,arm(callback){onCurrent=callback;},before(callback){beforeRequest=callback;},after(callback){afterResponse=callback;},onRetiredAbort(callback){retired=callback;}};
 }
 const details=f=>f.calls.filter(c=>c.action==='read_commerce_detail_v1').map(c=>c.entity.id);
 const writeCalls=f=>f.calls.filter(c=>!c.action.startsWith('read_'));
@@ -75,4 +77,15 @@ test('a read-state emission rechecks ownership after its currentness callback',a
  const stop=f.controller.subscribe(()=>{const s=f.controller.getSnapshot();if(started&&s.phase==='ready'&&s.selection?.entity.id===f.original.id)stale++;});t.after(stop);
  await f.controller.openOriginalQuote();assert.ok(newer);await newer;
  assert.equal(stale,0);assert.equal(f.controller.getSnapshot().selection.entity.id,f.b.id);assert.equal(writeCalls(f).length,0);
+});
+
+// Synthetic controller-port denial only. This does not model native Auth/RLS
+// denial handling or confer a fresh permission; normal reads still use the port.
+test('retiring an older failed read cannot clear the next read acquired during cleanup',async t=>{
+ const f=await entryFixture(t,{syntheticRetirement:true});let refreshing,opening,retiring=false,chosen=false;
+ f.onRetiredAbort(()=>{retiring=true;refreshing=f.controller.refresh();});
+ const stop=f.controller.subscribe(()=>{const s=f.controller.getSnapshot();if(retiring&&!chosen&&s.index&&['loading','ready'].includes(s.phase)){chosen=true;opening=f.controller.open(f.b);}});t.after(stop);
+ await f.controller.openOriginalQuote();await refreshing;await opening;
+ assert.equal(chosen,true);assert.equal(f.controller.getSnapshot().selection?.entity.id,f.b.id);assert.ok(f.controller.getSnapshot().index,'the next ready selection must retain its current index');
+ await f.controller.refresh();assert.equal(f.controller.getSnapshot().selection?.entity.id,f.b.id);assert.equal(writeCalls(f).length,0);
 });

@@ -34,11 +34,14 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
   const op=activeWrite;if(!op||op.dispatched)return;writeToken++;activeWrite=null;
   if(state.pending?.command.requestId===op.requestId)emit({pending:null,notice:null});
  }
- function retireView(phase:'ended'|'denied'){
-  cancelUnsent();readToken++;readAbort?.abort();selectedRef=null;
+ function retireView(phase:'ended'|'denied',expectedToken:number){
+  if(!matches(expectedToken))return;
+  const token=++readToken,previous=readAbort;readAbort=null;selectedRef=null;
   state={...state,phase,index:null,selection:null,reviewed:false,notice:state.pending?'uncertain':null};
-  // A current failed READ retires projections, never the original write.
-  listeners.forEach(fn=>fn());
+  // Retire projections before cleanup can acquire a newer read. Keep the
+  // original dispatched write; no older cleanup may erase the next view.
+  try{cancelUnsent();}finally{previous?.abort();}
+  if(matches(token))listeners.forEach(fn=>fn());
  }
  const stop=session.subscribeInvalidation(()=>{
   readToken++;writeToken++;activeWrite=null;readAbort?.abort();selectedRef=null;session.memory?.delete(key);
@@ -61,7 +64,7 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
   if(!matches(token)||abort.signal.aborted)return null;
   return {token,signal:abort.signal};
  }
- function failure(error:unknown,token:number){if(!matches(token))return;const status=(error as {status?:number}).status;if(status===401||status===403){retireView(status===401?'ended':'denied');return;}emit({phase:status===409?'conflict':status===503?(port.availability==='unavailable'?'unavailable':'offline'):'error',selection:null,reviewed:false,notice:status===409?'review-required':null},token);}
+ function failure(error:unknown,token:number){if(!matches(token))return;const status=(error as {status?:number}).status;if(status===401||status===403){retireView(status===401?'ended':'denied',token);return;}emit({phase:status===409?'conflict':status===503?(port.availability==='unavailable'?'unavailable':'offline'):'error',selection:null,reviewed:false,notice:status===409?'review-required':null},token);}
  async function refresh(){
   const claimed=claimRead();if(claimed===null)return;
   const selected=selectedRef,operation=begin(claimed);if(!operation)return;const {token,signal}=operation;
@@ -131,11 +134,11 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
    if(!op.dispatched){emit({pending:null,notice:null});return;}
    if(retry||e.uncertain===true||e.dispatched!==false&&(!e.status||e.status===503)){
     const uncertain={...pending,phase:'uncertain' as const};remember(uncertain);emit({pending:uncertain,reviewed:false,notice:'uncertain'});
-    if((e.status===401||e.status===403)&&viewToken===readToken)retireView(e.status===401?'ended':'denied');
+    if((e.status===401||e.status===403)&&viewToken===readToken)retireView(e.status===401?'ended':'denied',viewToken);
     return;
    }
    remember(null);emit({pending:null,reviewed:false,notice:null});
-   if((e.status===401||e.status===403)&&viewToken===readToken){retireView(e.status===401?'ended':'denied');return;}
+   if((e.status===401||e.status===403)&&viewToken===readToken){retireView(e.status===401?'ended':'denied',viewToken);return;}
    if(e.status===409){emit({notice:'review-required',...(viewToken===readToken?{phase:'conflict' as const,selection:null}:{})});return;}
    if(viewToken===readToken)failure(error,viewToken);
   }finally{
@@ -156,7 +159,7 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
     mapCommerceResult(command,result.receipt,{actorId:ownerId,requestHash:hash});
     remember(null);emit({pending:null,reviewed:false,notice:'acknowledged'});if(viewToken===readToken&&state.phase==='ready')await refresh();
    }else{const next={...pending,status:'absent' as const};remember(next);emit({pending:next,notice:'uncertain'});}
-  }catch(error){if(!applicable())return;const status=(error as {status?:number}).status;const next={...pending,status:'failed' as const};remember(next);emit({pending:next,notice:'status-failed'});if((status===401||status===403)&&viewToken===readToken)retireView(status===401?'ended':'denied');}
+  }catch(error){if(!applicable())return;const status=(error as {status?:number}).status;const next={...pending,status:'failed' as const};remember(next);emit({pending:next,notice:'status-failed'});if((status===401||status===403)&&viewToken===readToken)retireView(status===401?'ended':'denied',viewToken);}
  }
  const mutationReady=()=>live()&&state.phase==='ready'&&mode!=='historical'&&!state.pending;
  return {
