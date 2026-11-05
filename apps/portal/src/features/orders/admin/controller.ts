@@ -41,7 +41,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
  let editCacheKnown=false,expectedEditCache:string|null=null;
  let activeWrite:{token:number;requestId:string;view:number;attempted:boolean;signal:AbortController;prior:ProductQuoteAdminPending|null}|null=null;
  const empty=newProductQuotePreparation();
- let state:ProductQuoteAdminState=copy({phase:request?'initial':'unavailable',index:null,loaded:null,latest:null,preparation:empty,inputs:productQuoteInputs(empty),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,pending:null,receipt:null,error:null,available:!!request,choosingProduct:null,choosingAddress:false});
+ let state:ProductQuoteAdminState=copy({phase:request?'initial':'unavailable',index:null,loaded:null,latest:null,preparation:empty,inputs:productQuoteInputs(empty),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,pending:null,receipt:null,error:null,available:!!request,localEditConflict:false,choosingProduct:null,choosingAddress:false});
  // Creation binding is also used by terminal cache cleanup, never as a
  // replacement for alive/READY or the actual finance-bound operation port.
  function ownerCurrent():boolean {
@@ -120,11 +120,12 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    return emit({preparation,inputs,inputErrors:errors,dirty,reviewed:false},{read,write,view})===true;
   }catch{return false;}
  }
+ function blockLocalEdits(fence?:{read?:number;write?:number;view?:typeof cookie._view}){review=null;emit({localEditConflict:true,reviewed:false,error:409},fence);return false;}
  function rememberEdits(){if(alive())return replaceEditCache({version:1,selectedId,preparation:state.preparation,inputs:state.inputs,base:state.loaded?fingerprint(state.loaded):editBase});return false;}
  function forgetEdits(){return alive()?replaceEditCache(undefined):false;}
  function retire(){
   readToken++;writeToken++;pickerToken++;readAbort?.abort();activeWrite?.signal.abort();activeWrite=null;review=null;selectedId=null;
-  const preparation=newProductQuotePreparation();state=copy({...state,phase:'ended',index:null,loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,pending:null,receipt:null,error:401,choosingProduct:null,choosingAddress:false});notify();
+  const preparation=newProductQuotePreparation();state=copy({...state,phase:'ended',index:null,loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,pending:null,receipt:null,error:401,localEditConflict:false,choosingProduct:null,choosingAddress:false});notify();
  }
  const stopBoundary=boundary?.subscribeInvalidation(retire)??(()=>{});
  const stopRuntime=runtime.subscribe(()=>{
@@ -147,11 +148,11 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
   const status=(error as {status?:unknown}|null)?.status,safe=typeof status==='number'&&[400,401,403,404,409,413,415,429,503].includes(status)?status:503;
   review=null;
   if(safe===401||safe===403){
-   pickerToken++;forgetEdits();const preparation=newProductQuotePreparation();emit({phase:safe===401?'ended':'denied',index:null,loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,error:safe,choosingProduct:null,choosingAddress:false});return;
+   pickerToken++;forgetEdits();const preparation=newProductQuotePreparation();emit({phase:safe===401?'ended':'denied',index:null,loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,error:safe,localEditConflict:false,choosingProduct:null,choosingAddress:false});return;
   }
   emit({phase:safe===409?'conflict':cookie.status==='offline'?'offline':safe===503?'unavailable':'error',reviewed:false,error:safe});
  }
- function writeReady(){return ready()&&!!request&&!activeWrite&&!state.pending&&state.phase==='ready'&&state.index!==null;}
+ function writeReady(){return ready()&&!state.localEditConflict&&!!request&&!activeWrite&&!state.pending&&state.phase==='ready'&&state.index!==null;}
  function cancelUnsent(){
   const op=activeWrite;if(!op||op.attempted)return;
   const prior=op.prior,write=++writeToken;activeWrite=null;op.signal.abort();
@@ -161,13 +162,13 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
  }
  async function refresh(ack?:{command:AdminQuoteWrite;receipt:CommerceReceipt},claimed?:ReadClaim){
   const claim=claimed??claimRead();if(!claim||!request||!readCurrent(claim))return;
-  reconcileEditHandoff();if(!readCurrent(claim))return;
+  if(!reconcileEditHandoff()&&readCurrent(claim))blockLocalEdits(claim);if(!readCurrent(claim))return;
   const previous=readAbort;readAbort=null;
   try{cancelUnsent();}finally{previous?.abort();}
   if(!readCurrent(claim))return;
   const abort=new AbortController(),operation={...claim,signal:abort.signal},token=claim.read;readAbort=abort;
   const current=()=>readCurrent(operation);
-  review=null;pickerToken++;emitRead({phase:'loading',reviewed:false,error:null,choosingProduct:null,choosingAddress:false},operation);
+  review=null;pickerToken++;emitRead({phase:'loading',reviewed:false,error:state.localEditConflict?409:null,choosingProduct:null,choosingAddress:false},operation);
   if(!current())return;
   try{
    const index=await readAdminQuoteIndex(request,{actorId:owner!,clientId},{signal:abort.signal,isApplicable:current});if(!current())return;
@@ -186,9 +187,9 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    }
    if(state.dirty&&base!==null&&fingerprint(loaded)!==base&&!ownSave){emitRead({index,latest:loaded,phase:'conflict',error:409},operation);return;}
    const preparation=state.dirty?state.preparation:canonical,parsed=parseProductQuoteInputs(preparation,state.dirty?state.inputs:productQuoteInputs(canonical)),dirty=!same(parsed.preparation,canonical)||productQuoteHasInputErrors(parsed.errors);
-   editBase=fingerprint(loaded);const published=emitRead({index,loaded,latest:null,preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty,phase:'ready',reviewed:false,error:null},operation);
+   editBase=fingerprint(loaded);const published=emitRead({index,loaded,latest:null,preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty,phase:'ready',reviewed:false,error:state.localEditConflict?409:null},operation);
    if(!published||!current())return;
-   if(dirty)rememberEdits();else forgetEdits();
+   if(!(dirty?rememberEdits():forgetEdits())&&current())blockLocalEdits(operation);
   }catch(error){if(alive()&&token===readToken)fail(error);}
  }
  async function openDraft(id:string){
@@ -239,6 +240,31 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    }}
   }
  }
+ async function recoverLocalEdits(){
+  if(!ready()||!request||!state.localEditConflict||activeWrite||state.pending||state.choosingProduct!==null||state.choosingAddress)return false;
+  const claim=claimRead();if(!claim||!readCurrent(claim))return false;
+  try{
+   const raw=boundary!.memory.get<{version?:unknown;selectedId?:unknown;preparation?:unknown;inputs?:unknown;base?:unknown}>(editKey),wire=editCacheWire(raw);
+   if(raw===undefined){
+    if(!readCurrent(claim)||boundary!.memory.get(editKey)!==undefined)return false;
+    observeEditCache(raw);
+    if(!emitRead({localEditConflict:false,error:null},claim)||!readCurrent(claim))return false;
+    if(state.dirty&&!rememberEdits())return blockLocalEdits(claim);
+    return readCurrent(claim);
+   }
+   requireValue(raw!==null&&raw.version===1&&(raw.selectedId===null||typeof raw.selectedId==='string')&&(raw.base===null||typeof raw.base==='string'));
+   const selected=raw.selectedId===null?null:readUuid(raw.selectedId),base=raw.base as string|null;
+   const preparation=readCommerceShape<ProductQuotePreparation>(raw.preparation,co({body:cDraftBody,lines:ca(cDraftLine,50)}));
+   const parsed=parseProductQuoteInputs(preparation,raw.inputs===undefined?productQuoteInputs(preparation):readProductQuoteInputs(raw.inputs,preparation));
+   if(!readCurrent(claim)||editCacheWire(boundary!.memory.get(editKey))!==wire)return false;
+   // This deliberate local replacement observes the exact retained record.
+   // It supplies no saved-draft/current-finance fact; refresh must read that.
+   observeEditCache(raw);selectedId=selected;editBase=base;editGeneration=0;review=null;pickerToken++;
+   if(!emitRead({localEditConflict:false,loaded:null,latest:null,preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty:true,reviewed:false,phase:'loading',error:null,choosingProduct:null,choosingAddress:false},claim)||!readCurrent(claim))return false;
+   await refresh(undefined,claim);
+   return readCurrent(claim)&&!state.localEditConflict;
+  }catch{if(readCurrent(claim))blockLocalEdits(claim);return false;}
+ }
  async function checkStatus(){
   const pending=state.pending;if(!ready()||!request||activeWrite||!pending?.command||!pending.hash||!pending.requestId||!pending.wire)return;
   const token=++writeToken,view=cookie._view,selected=selectedId,preparation=state.preparation,inputs=state.inputs,loadedTarget=state.loaded?.draft.target??null,edit=editGeneration,controller=new AbortController();
@@ -271,13 +297,13 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
   }catch(error){if(!alive()||writeToken!==token)return;emit({pending:{...pending,status:'failed',phase:'uncertain'}});const status=(error as {status?:number}).status;if(status===401||status===403)fail(error);}
  }
  function mutateInputs(preparation:ProductQuotePreparation,inputs:ProductQuoteInputs){
-  if(!writeReady())return false;const origin=state;if(!reconcileEditHandoff()||state!==origin)return false;const parsed=parseProductQuoteInputs(preparation,inputs);review=null;editGeneration++;
-  emit({preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty:!state.loaded||!same(parsed.preparation,preparationFromRead(state.loaded))||productQuoteHasInputErrors(parsed.errors),reviewed:false,error:null});const remembered=rememberEdits();return remembered&&ready();
+  if(!writeReady())return false;const origin=state,fence={read:readToken,write:writeToken,view:cookie._view};if(!reconcileEditHandoff())return blockLocalEdits(fence);if(state!==origin)return false;const parsed=parseProductQuoteInputs(preparation,inputs);review=null;editGeneration++;
+  emit({preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty:!state.loaded||!same(parsed.preparation,preparationFromRead(state.loaded))||productQuoteHasInputErrors(parsed.errors),reviewed:false,error:null});const remembered=rememberEdits();if(!remembered)blockLocalEdits(fence);return remembered&&ready();
  }
  function mutate(preparation:ProductQuotePreparation){return mutateInputs(preparation,rebaseProductQuoteInputs(state.preparation,state.inputs,preparation));}
  return {
-  clientId, getSnapshot:()=>state,subscribe(fn:()=>void){if(disposed)return()=>{};listeners.add(fn);return()=>listeners.delete(fn);},refresh:()=>refresh(),openDraft,checkStatus,
-  newDraft(){if(!ready()||!request||!state.index||state.phase==='loading'||state.pending||state.dirty||activeWrite)return false;selectedId=null;editBase=null;review=null;pickerToken++;const preparation=newProductQuotePreparation();emit({phase:'ready',loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,error:null,choosingProduct:null,choosingAddress:false});return true;},
+  clientId, getSnapshot:()=>state,subscribe(fn:()=>void){if(disposed)return()=>{};listeners.add(fn);return()=>listeners.delete(fn);},refresh:()=>refresh(),openDraft,checkStatus,recoverLocalEdits,
+  newDraft(){if(!ready()||state.localEditConflict||!request||!state.index||state.phase==='loading'||state.pending||state.dirty||activeWrite)return false;selectedId=null;editBase=null;review=null;pickerToken++;const preparation=newProductQuotePreparation();emit({phase:'ready',loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,error:null,choosingProduct:null,choosingAddress:false});return true;},
   setHeaderInputs(value:ProductQuoteHeaderInputs){try{const header=readProductQuoteHeaderInputs(value);return mutateInputs(state.preparation,{...state.inputs,header});}catch{return false;}},
   setLineInputs(id:string,value:ProductQuoteLineInputs){try{if(!state.preparation.lines.some(line=>line.lineId===id))return false;const line=readProductQuoteLineInputs(value);return mutateInputs(state.preparation,{...state.inputs,lines:{...state.inputs.lines,[id]:line}});}catch{return false;}},
   setBody(body:ProductQuoteDraftBody){try{const parsed=readCommerceShape<ProductQuoteDraftBody>(body,cDraftBody);requireValue(same(parsed.lineIds,state.preparation.body.lineIds));return mutate(copy({...state.preparation,body:parsed}));}catch{return false;}},
@@ -355,9 +381,9 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    review=null;pickerToken++;editGeneration++;forgetEdits();
    emit({preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,error:null,choosingProduct:null,choosingAddress:false});return ready();
   },
-  useLatest(){if(!ready()||state.pending||activeWrite||!state.latest)return false;const loaded=state.latest,preparation=preparationFromRead(loaded);review=null;editBase=fingerprint(loaded);forgetEdits();emit({loaded,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,phase:'ready',error:null});return true;},
+  useLatest(){if(!ready()||state.localEditConflict||state.pending||activeWrite||!state.latest)return false;const loaded=state.latest,preparation=preparationFromRead(loaded);review=null;editBase=fingerprint(loaded);forgetEdits();emit({loaded,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,phase:'ready',error:null});return true;},
   keepLocalWithLatest(){
-   if(!ready()||state.pending||activeWrite||!state.latest)return false;
+   if(!ready()||state.localEditConflict||state.pending||activeWrite||!state.latest)return false;
    const loaded=state.latest,canonical=preparationFromRead(loaded),parsed=parseProductQuoteInputs(state.preparation,state.inputs);
    review=null;pickerToken++;editBase=fingerprint(loaded);
    emit({loaded,latest:null,preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty:!same(parsed.preparation,canonical)||productQuoteHasInputErrors(parsed.errors),reviewed:false,phase:'ready',error:null,choosingProduct:null,choosingAddress:false});rememberEdits();return ready();
@@ -368,7 +394,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    disposed=true;
    const abort=readAbort,op=activeWrite,observers=[...listeners];
    readToken++;writeToken++;pickerToken++;readAbort=null;activeWrite=null;review=null;selectedId=null;editBase=null;listeners.clear();
-   const preparation=newProductQuotePreparation();state=copy({...state,phase:'ended',index:null,loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,pending:null,receipt:null,choosingProduct:null,choosingAddress:false});
+   const preparation=newProductQuotePreparation();state=copy({...state,phase:'ended',index:null,loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,pending:null,receipt:null,localEditConflict:false,choosingProduct:null,choosingAddress:false});
    // State is already terminal before any callback-capable cleanup. Preserve
    // only this still-bound owner's unsent cache, without erasing a replacement
    // written during a relevance callback. Dispatched original custody stays.

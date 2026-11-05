@@ -25,7 +25,7 @@ export type ProductQuoteDraftRead={snapshot:CommerceSnapshot;draft:CommerceDraft
 export type ProductQuoteDraftSelection={entity:CommerceEntityRef;snapshot:CommerceSnapshot};
 export type ProductQuoteAdminPhase='initial'|'loading'|'ready'|'empty'|'unavailable'|'offline'|'conflict'|'denied'|'ended'|'error';
 export type ProductQuoteAdminPending={command:AdminQuoteWrite|null;requestId:string|null;wire:string|null;hash:string|null;phase:'sending'|'uncertain';status:'unchecked'|'absent'|'failed'|'unsupported'};
-export type ProductQuoteAdminState={phase:ProductQuoteAdminPhase;index:ProductQuoteIndex|null;loaded:ProductQuoteDraftRead|null;latest:ProductQuoteDraftRead|null;preparation:ProductQuotePreparation;inputs:ProductQuoteInputs;inputErrors:ProductQuoteInputErrors;dirty:boolean;reviewed:boolean;pending:ProductQuoteAdminPending|null;receipt:CommerceReceipt|null;error:number|null;available:boolean;choosingProduct:string|null;choosingAddress:boolean};
+export type ProductQuoteAdminState={phase:ProductQuoteAdminPhase;index:ProductQuoteIndex|null;loaded:ProductQuoteDraftRead|null;latest:ProductQuoteDraftRead|null;preparation:ProductQuotePreparation;inputs:ProductQuoteInputs;inputErrors:ProductQuoteInputErrors;dirty:boolean;reviewed:boolean;pending:ProductQuoteAdminPending|null;receipt:CommerceReceipt|null;error:number|null;available:boolean;localEditConflict:boolean;choosingProduct:string|null;choosingAddress:boolean};
 export type ProductQuoteAdminControllerOptions={runtime:ApplicationSession;clientId:string;request?:ProductQuoteAdminRequest};
 export type ProductQuotePublishedOption={selection:ProductSelection;identity:CommerceIdentity};
 /** Actual authorized published option binding is supplied by W0, not a raw ID
