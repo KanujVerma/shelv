@@ -28,7 +28,7 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
   return current&&!disposed&&session.key===boundaryKey&&contextKey===context;
  };
  const matches=(token:number)=>live()&&token===readToken;
- const emit=(patch:Partial<OrdersState>)=>{if(!live())return;state={...state,...patch};listeners.forEach(fn=>fn());};
+ const emit=(patch:Partial<OrdersState>,token?:number)=>{if(!live()||(token!==undefined&&token!==readToken))return;state={...state,...patch};listeners.forEach(fn=>fn());};
  function remember(pending:OrdersPending|null){if(!live())return;if(pending)session.memory?.set(key,structuredClone(pending));else session.memory?.delete(key);}
  function cancelUnsent(){
   const op=activeWrite;if(!op||op.dispatched)return;writeToken++;activeWrite=null;
@@ -48,8 +48,8 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
   if(disposed||session.key!==boundaryKey||contextKey!==context)return null;
   const token=++readToken;return matches(token)?token:null;
  }
- function begin(){
-  const token=claimRead();if(token===null)return null;
+ function begin(token:number){
+  if(!matches(token))return null;
   // Reserve this read before cancellation observers can start a newer one.
   // Detach the previous signal so reentry cannot abort it recursively or let
   // this older continuation replace the new owner's controller afterward.
@@ -57,42 +57,47 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
   try{cancelUnsent();}finally{previous?.abort();}
   if(!matches(token))return null;
   const abort=new AbortController();readAbort=abort;
-  emit({phase:'loading',selection:null,reviewed:false,notice:null});
+  emit({phase:'loading',selection:null,reviewed:false,notice:null},token);
   if(!matches(token)||abort.signal.aborted)return null;
   return {token,signal:abort.signal};
  }
- function failure(error:unknown,token:number){if(!matches(token))return;const status=(error as {status?:number}).status;if(status===401||status===403){retireView(status===401?'ended':'denied');return;}emit({phase:status===409?'conflict':status===503?(port.availability==='unavailable'?'unavailable':'offline'):'error',selection:null,reviewed:false,notice:status===409?'review-required':null});}
+ function failure(error:unknown,token:number){if(!matches(token))return;const status=(error as {status?:number}).status;if(status===401||status===403){retireView(status===401?'ended':'denied');return;}emit({phase:status===409?'conflict':status===503?(port.availability==='unavailable'?'unavailable':'offline'):'error',selection:null,reviewed:false,notice:status===409?'review-required':null},token);}
  async function refresh(){
-  const selected=selectedRef,operation=begin();if(!operation)return;const {token,signal}=operation;
+  const claimed=claimRead();if(claimed===null)return;
+  const selected=selectedRef,operation=begin(claimed);if(!operation)return;const {token,signal}=operation;
   try{
    let index=await readOrdersIndex(port,ownerId,null,null,signal);if(!matches(token))return;
    // A selected order may be beyond the first index page. Find its current exact
    // revision before refresh; do not reuse the prior snapshot/terms.
    if(selected){const seen=new Set<string>();while(!index.entries.some(e=>e.entity.kind===selected.kind&&e.entity.id===selected.id)&&index.nextCursor){if(seen.has(index.nextCursor))throw new CommerceError(503);seen.add(index.nextCursor);const page=await readOrdersIndex(port,ownerId,index.snapshot,index.nextCursor,signal);if(!matches(token))return;index={...page,entries:[...index.entries,...page.entries]};}}
-   emit({index,phase:index.entries.length||index.nextCursor?'ready':'empty'});
+   emit({index,phase:index.entries.length||index.nextCursor?'ready':'empty'},token);
    if(!matches(token)||signal.aborted)return;
-   if(selected){const ref=index.entries.find(e=>e.entity.kind===selected.kind&&e.entity.id===selected.id)?.entity;if(ref){const selection=await loadOrdersSelection(port,ref,index.snapshot,ownerId,signal);if(!matches(token))return;emit({selection,phase:'ready',reviewed:false});}}
+   if(selected){const ref=index.entries.find(e=>e.entity.kind===selected.kind&&e.entity.id===selected.id)?.entity;if(ref){const selection=await loadOrdersSelection(port,ref,index.snapshot,ownerId,signal);if(!matches(token))return;emit({selection,phase:'ready',reviewed:false},token);}}
   }catch(error){failure(error,token);}
  }
  async function loadMore(){
   const prior=state.index;if(!prior?.nextCursor)return;
-  const operation=begin();if(!operation)return;const {token,signal}=operation;
-  try{const page=await readOrdersIndex(port,ownerId,prior.snapshot,prior.nextCursor,signal);if(!matches(token))return;const keys=new Set(prior.entries.map(e=>e.entity.kind+':'+e.entity.id));if(page.entries.some(e=>keys.has(e.entity.kind+':'+e.entity.id)))throw new CommerceError(503);emit({index:{...page,entries:[...prior.entries,...page.entries]},phase:'ready'});}catch(error){failure(error,token);}
+  const claimed=claimRead();if(claimed===null)return;
+  const operation=begin(claimed);if(!operation)return;const {token,signal}=operation;
+  try{const page=await readOrdersIndex(port,ownerId,prior.snapshot,prior.nextCursor,signal);if(!matches(token))return;const keys=new Set(prior.entries.map(e=>e.entity.kind+':'+e.entity.id));if(page.entries.some(e=>keys.has(e.entity.kind+':'+e.entity.id)))throw new CommerceError(503);emit({index:{...page,entries:[...prior.entries,...page.entries]},phase:'ready'},token);}catch(error){failure(error,token);}
  }
  async function open(entity:CommerceEntityRef){
   const index=state.index;if(!index||!index.entries.some(e=>e.entity.kind===entity.kind&&e.entity.id===entity.id&&e.entity.revision===entity.revision))return;
-  selectedRef=structuredClone(entity);const operation=begin();if(!operation)return;const {token,signal}=operation;
-  try{const selection=await loadOrdersSelection(port,entity,index.snapshot,ownerId,signal);if(!matches(token))return;emit({selection,phase:'ready'});}catch(error){failure(error,token);}
+  const claimed=claimRead();if(claimed===null)return;
+  const ref=structuredClone(entity);if(!matches(claimed))return;
+  selectedRef=ref;const operation=begin(claimed);if(!operation)return;const {token,signal}=operation;
+  try{const selection=await loadOrdersSelection(port,ref,index.snapshot,ownerId,signal);if(!matches(token))return;emit({selection,phase:'ready'},token);}catch(error){failure(error,token);}
  }
  async function openOriginalQuote(){
-  const prior=state.selection;if(!live()||prior?.detail.kind!=='purchase')return;
+  const prior=state.selection;if(prior?.detail.kind!=='purchase')return;
+  const claimed=claimRead();if(claimed===null)return;
   const expected=prior.detail.quote,ref:CommerceEntityRef={kind:'quote',id:expected.quoteId,revision:expected.quoteVersion};
-  selectedRef=ref;const operation=begin();if(!operation)return;const {token,signal}=operation;
+  selectedRef=ref;const operation=begin(claimed);if(!operation)return;const {token,signal}=operation;
   try{
    const selection=await loadOrdersSelection(port,ref,prior.snapshot,ownerId,signal);if(!matches(token))return;
    const target=selection.quote?.header.target;
    if(!target||target.termsHash!==expected.termsHash||target.quoteId!==expected.quoteId||target.quoteVersion!==expected.quoteVersion)throw new CommerceError(503);
-   emit({selection,phase:'ready',reviewed:false});
+   emit({selection,phase:'ready',reviewed:false},token);
   }catch(error){failure(error,token);}
  }
  function reviewQuote(){if(!live()||state.phase!=='ready'||!state.selection?.quote?.verified||state.pending)return;emit({reviewed:true,notice:null});}
@@ -169,7 +174,7 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
    const token=claimRead();if(token===null)return;
    const previous=readAbort;readAbort=null;selectedRef=null;
    try{cancelUnsent();}finally{previous?.abort();}
-   if(matches(token))emit({selection:null,reviewed:false,phase:state.index?'ready':'initial'});
+   if(matches(token))emit({selection:null,reviewed:false,phase:state.index?'ready':'initial'},token);
   },
   dispose(){
    if(disposed)return;
