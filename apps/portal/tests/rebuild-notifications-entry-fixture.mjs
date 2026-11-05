@@ -29,6 +29,12 @@ async function source() {
   await mkdir(evidence, { recursive: true });
   const result = await build({ absWorkingDir: root, stdin: { contents: `
 export {createNotificationsEntry,NotificationsEntryView} from './apps/portal/src/app/notifications-entry.tsx';
+export {createAdvisorPublicationNotifications} from './apps/portal/src/app/advisor-notifications.ts';
+export {createAdvisorPorts} from './apps/portal/src/app/ports.ts';
+export {createAdvisorController} from './apps/portal/src/features/advisor/controller.ts';
+export {AdvisorWorkspaceNotifications} from './apps/portal/src/app/AdvisorWorkspaceNotifications.tsx';
+export {NavigationProvider} from './apps/portal/src/navigation/react.tsx';
+export {OverlayProvider} from './apps/portal/src/ui/overlay.tsx';
 export {createApplicationSession} from './apps/portal/src/app/session.ts';
 export {createPortalNavigator} from './apps/portal/src/navigation/history.ts';
 export {default as clientGateway,advisorGateway} from './apps/portal/session-integration/runtime/server/gateway.ts';
@@ -72,7 +78,7 @@ function virtualWindow(initial) {
       back() { this.go(-1); }, go(delta) { assert.ok(index + delta >= 0 && index + delta < entries.length); index += delta; setUrl(entries[index].url); for (const f of listeners.get('popstate') ?? []) f(); } } };
 }
 export async function entryFixture(t, { audience = 'client', edit = false, serial = false, initialPath = '/notifications', restore = true } = {}) {
-  const api = await source(), commands = [], steps = [], events = [], queuedWaits = [];
+  const api = await source(), commands = [], steps = [], planSteps = [], planCommands = [], events = [], queuedWaits = [];
   const origin = 'https://portal.goshelv.com', upstream = 'https://snojlbqovlawewwqbviz.supabase.co';
   const owner = id(90), providerSession = id(91); let now = Date.now(), record = null, contextPatch = {}, queued = 0;
   let login = { signedIn: true, ownerId: owner, generation: 1, csrf: 'SYNTHETIC-entry', capabilities: { view: true, edit, publish: false, confirmPayments: false }, idleExpiresAt: '2099-01-01', absoluteExpiresAt: '2099-01-02' };
@@ -106,16 +112,25 @@ export async function entryFixture(t, { audience = 'client', edit = false, seria
     } }) } }; gateway = audience === 'client' ? api.clientGateway : api.advisorGateway;
   }
   const runtime = api.createApplicationSession({ audience, now: () => now, locks: { request: async (_n, _o, run) => run() }, fetcher: async (input, init) => {
-    const u = new URL(String(input), origin); assert.ok([`/api/${audience}/session`, `/api/${audience}/notifications`, `/api/${audience}/logout`].includes(u.pathname));
+    const u = new URL(String(input), origin); assert.ok([`/api/${audience}/session`, `/api/${audience}/notifications`, `/api/${audience}/logout`, ...(audience === 'advisor' && !serial ? ['/api/advisor/plans'] : [])].includes(u.pathname));
     if (serial) { const headers = new Headers(init?.headers); headers.set('Origin', origin); headers.set('Sec-Fetch-Site', 'same-origin'); headers.set('Cookie', `__Host-shelv_${audience}=${'a'.repeat(43)}`); return gateway.fetch(new Request(u, { ...init, headers }), env); }
     if (u.pathname === `/api/${audience}/session`) return Response.json(login);
     if (u.pathname === `/api/${audience}/logout`) return Response.json({ signedOut: true });
+    if (u.pathname === '/api/advisor/plans') {
+      const command = JSON.parse(init.body), step = planSteps.shift();
+      assert.ok(step, 'unexpected plan request'); assert.equal(command.action, step.action); planCommands.push(command);
+      return Response.json(step.body, { status: step.status });
+    }
     return api.handleNotificationRequest(new Request('https://edge.synthetic.invalid', { method: 'POST', headers: { authorization: 'Bearer SYNTHETIC', 'content-type': 'application/json', Origin: origin }, body: init.body, signal: init.signal }), ports);
   } });
   if (restore) await runtime.restore();
   const win = virtualWindow(initialPath), navigation = api.createPortalNavigator(win, { scopeKey: runtime.getSnapshot().boundary?.key ?? 'startup' });
   t.after(() => { navigation.dispose(); runtime.dispose(); });
   return { runtime, navigation, win, commands, events, page, item, receipt, create: () => api.createNotificationsEntry(runtime, navigation),
+    createPublication: (controller, options) => api.createAdvisorPublicationNotifications(runtime, navigation, controller, options),
+    advisor() { const adapter = api.createAdvisorPorts(runtime), controller = api.createAdvisorController({ session: runtime.getSnapshot().boundary, permissions: adapter.permissions, ports: adapter.ports }); t.after(() => { controller.dispose(); adapter.dispose(); }); return controller; },
+    replyPlan(action, body, status = 200) { planSteps.push({ action, body, status }); }, planCommands,
+    workspaceHtml: (controller, route = { name: 'advisor-plans' }) => api.renderToString(api.createElement(api.OverlayProvider, null, api.createElement(api.NavigationProvider, { navigator: navigation }, api.createElement(api.AdvisorWorkspaceNotifications, { runtime, controller, navigation: { route, navigate: next => navigation.navigate(next) } })))),
     html: entry => api.renderToString(api.createElement(api.NotificationsEntryView, { entry })),
     reply(action, body, status = 200, hold = null) { steps.push({ action, body, status, hold }); },
     login(patch) { login = { ...login, ...patch }; }, context(patch) { contextPatch = patch; }, now(value) { now = value; }, record: () => record,

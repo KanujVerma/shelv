@@ -1,0 +1,13 @@
+# W0 corrected standalone notification-owner module
+
+Owner: Kanuj. **PASS for the complete seven-file source/finite-model/ABI module only.** Head `608d7075706560aa2712926a0094f4a1a4a1d57f`, published base `99bf372d32619035a6bc279c37adf86db804033d`. Exact packetc44ea9ea and owned patcheb526e64 match. [Pins and independent results](W0_NOTIFICATION_OWNER_608_RESULT.json).
+
+The complete current module, fixture, tests, ABI and report were reviewed. Only applicable changes in the module: it guards the entire eligibility evaluation, including actual lifetime and the one options-property read. Reentry denies while eligibility is unresolved; the callback cannot supply provisional readiness. Actual runtime/actor/audience/generations/epoch/CSRF and private-core ownership remain independent checks. A strict function-only inverse restores the entire227 module bytes. Existing fixture, ABI and dependency bodies remain unchanged; the new phase control is byte-identical to W7's848d program.
+
+One private unchanged feature controller is retained per actual runtime boundary. View handles clear before replacement observers/cleanup, cannot inject a controller/identity/capability and delegate normal read/write/status/retry to that real feature. Same-session uncertain original custody remains with the private owner. This is a UI lifetime abstraction, not an authentication authenticity API or new permission/transport.
+
+Independent Node22.23.0 standard source/finite suite passes **24/24**,0fail/skip/cancel: retained22 including configured frontend/negative ABI, exact original phase-only control and getter-phase control. All four unmodified configured type graphs independently exit0. The exact92-entry compiler closure is72 Git sources,19 locked npm files and one965-byte export-only stdin whose SHA ebbef6a291c8edbf5ba5acc29d739d6e6d750f54ec6eeeb09a24807350b43130 is now explicit. Browser-target compile passes with25 inputs and no server/handler/AI dependency; no browser execution occurred.
+
+The enclosing base delta has14 paths: seven owned plus seven previously selected W7 failure/ledger records. The latter are separated in the result. Original227 phase0/1 and metadata setup failures remain preserved; W7 did not resume its stopped test/audit or relabel it. NOTIF-RELEVANCE-01 is corrected at this source successor.
+
+Actual inbox/A06 production binding/single-owner lifetime, actual Auth/SQL/RLS/provider/outbox/delivery, browser/Figma/keyboard/focus/zoom/reduced-motion/accessibility and full frames/journeys remain open. EB10 source acceptance is separate. No actual private-payload disclosure/permission proof, held-scope clearance, genuine capability, resource grant or acceptance numerator follows.

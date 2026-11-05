@@ -1,0 +1,200 @@
+{
+  "owner": "Kanuj",
+  "head": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+  "classification": "SOURCE_INTERFACE_INVENTORY_AND_NONRUNNABLE_ELIGIBILITY_REQUIREMENTS_ONLY",
+  "realExecutionEligibility": "INELIGIBLE_REAL_EXECUTION_SOURCE_WORK_ONLY",
+  "sourceStatus": "UNMET_PUBLISHED_ADVISOR_ROUTE_CONTEXT_AND_CURRENT_INTEGRATION_GATES",
+  "refusedExecutionBlocker": {
+    "sourceHead": "44e90f6bd8d68d4411e5fe1c02df418d022cf225",
+    "status": "UNACCEPTED_PROVIDER_REFUSAL_STOPPED",
+    "reference": "PRINCIPAL_44_PROVIDER_REFUSAL.json",
+    "noAlternateMechanismOrSetupAuthorized": true
+  },
+  "separateHeldBlockers": [
+    {
+      "scope": "A07 activation",
+      "status": "HELD_PRESERVED"
+    },
+    {
+      "scope": "HN1",
+      "status": "QUEUED_UNREVIEWED_USER_DO_NOT_START",
+      "isNewProviderRefusal": false
+    }
+  ],
+  "canonicalGenuineGateUnchanged": {
+    "status": "BLOCKED_NO_ELIGIBLE_FRESH_PACKET",
+    "exactBlockedScope": "Fresh principal-dependent actual Auth/persistence/payment-publication/care/report acceptance using the proposed M04 setup path",
+    "sourceHead": "44e90f6bd8d68d4411e5fe1c02df418d022cf225",
+    "reason": "Provider-refused audit at activity370 is STOPPED and unaccepted; user forbids review/test/setup/alternate mechanism. Prior f49 failed. No fresh genuine resource grant exists.",
+    "reference": "PRINCIPAL_44_PROVIDER_REFUSAL.json",
+    "preservedAcceptedEvidence": "M01/M02 terminal saved evidence remains accepted within bounded scope and cannot be reused for fresh execution.",
+    "separatePermittedWork": "Distinct expressly permitted source reviews may continue. Public Maya browser would need actual shell/composition proof and its own admitted packet; it has no current grant."
+  },
+  "preservedHolds": [
+    {
+      "id": "Guidance private-return provider refusal",
+      "status": "HELD_PRESERVED",
+      "rule": "No retry/rephrase/reroute or acceptance inferred."
+    },
+    {
+      "id": "M65 financial provider refusal",
+      "status": "HELD_PRESERVED",
+      "rule": "No retry/rephrase/reroute or acceptance inferred."
+    },
+    {
+      "id": "photo provider refusal",
+      "status": "HELD_PRESERVED",
+      "rule": "No retry/rephrase/reroute or acceptance inferred."
+    },
+    {
+      "id": "A07 dependent provider hold",
+      "status": "HELD_PRESERVED",
+      "rule": "No retry/rephrase/reroute or acceptance inferred."
+    },
+    {
+      "id": "principal v2 signal review at44e90f6b",
+      "status": "UNACCEPTED_PROVIDER_REFUSAL",
+      "rule": "Explicit user boundary: preserve failed audit/partial evidence; no resume/retry/rephrase/reroute/model substitution/nested reviewer. Ordinary A06 message grants no continuation of this scope.",
+      "reportedActivityPosition": 370
+    },
+    {
+      "id": "native photo finding4461800685",
+      "status": "UNACCEPTED_HELD_PHOTO_SCOPE",
+      "rule": "Ownerreportednative8a2 only; no independentverdict/audit/correction/repro/resources or retry/reroute."
+    }
+  ],
+  "sourceInterfaces": {
+    "head": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+    "sourceInterfacePins": [
+      {
+        "path": "apps/portal/src/navigation/routes.ts",
+        "blob": "d220dfcce11c000b1a0b6d1784e3c1604f4018a5",
+        "bytes": 1496,
+        "sha256": "48a7efc90a6b94d062010e30f0a31b99393c85cf14a804b2426d7b62d921032d"
+      },
+      {
+        "path": "apps/portal/site/auth/portal-routes.js",
+        "blob": "8191a06f8e0cbcb52e842d4acd391d96da54129a",
+        "bytes": 8889,
+        "sha256": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5"
+      },
+      {
+        "path": "apps/portal/src/app/Application.tsx",
+        "blob": "4417fa1e14f6ef90603c9766a54d8295768c2569",
+        "bytes": 23387,
+        "sha256": "9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510"
+      },
+      {
+        "path": "apps/portal/src/app/ClientHistory.tsx",
+        "blob": "c785617a45de049b9d11819dd50e20adafdce582",
+        "bytes": 13059,
+        "sha256": "dfa0a29f18c1fa19cba37b53d68a0edda82ad1bff5599f17934ce00ec7703ec5"
+      },
+      {
+        "path": "apps/portal/src/app/client-composition.ts",
+        "blob": "a04bf1b3dd38199a49e1458680468be2cfef7b04",
+        "bytes": 11854,
+        "sha256": "9791f57787725ce7e0e4b6490670ec8955d86670115e7e4d6f8cbd4617bddb6c"
+      },
+      {
+        "path": "apps/portal/src/app/review-request.ts",
+        "blob": "86e9e4dbcefd1cc9a6b4c22d1070fa5589c0791a",
+        "bytes": 2818,
+        "sha256": "66d84f88cc2b2040078dcc0026374d2715e48ff6b8a0d7e3923f72507762c6e0"
+      },
+      {
+        "path": "apps/portal/src/app/advisor-review-request.ts",
+        "blob": "0129eb1f8263da8e03c08c0ed98c5e558eba7b39",
+        "bytes": 3229,
+        "sha256": "1eeaeed5e8caae6e3c0e292c600cd46745a594d84ffa53d259ad6a67c09a0963"
+      },
+      {
+        "path": "apps/portal/site/auth/review-actions.js",
+        "blob": "33a57a1a843d150e26a2ac44383bddecf33b6466",
+        "bytes": 1904,
+        "sha256": "6796d30a8b774559cac3924c9db7c5528358dd672b1cdabe060a428be881fcb4"
+      },
+      {
+        "path": "src/contracts/PortalReview.ts",
+        "blob": "028e6bf3bb293e68a60e472b3b6ee87f522ee3c3",
+        "bytes": 13982,
+        "sha256": "78e06f5af74ad3d17cd5d30e03fce0faca505cb7e5f0e32961dbdb942ff33b74"
+      },
+      {
+        "path": "src/contracts/PortalReviewValues.ts",
+        "blob": "c1e2191cfd0c0b015c31c6e1e4d8066d199d8dd9",
+        "bytes": 3909,
+        "sha256": "cce2545be9626e1a1abf8fb4e6a0e783c53831af9740110db26f37a397457000"
+      },
+      {
+        "path": "apps/portal/src/features/history/types.ts",
+        "blob": "bd9509c5a89335702f39fbcf4945d6e277edd2f6",
+        "bytes": 4374,
+        "sha256": "03c9b80cfff417b1590b7c82e5495d202408582e42ad3be78eb6a2c2723792de"
+      },
+      {
+        "path": "apps/portal/src/features/history/model.ts",
+        "blob": "d0b34d14e03aa1cffc737d866e9b5d0d983d295f",
+        "bytes": 4789,
+        "sha256": "786cf55f9c2d86265ada04ceaff3f50d94da15c24ccfcf9090f654396cf3a07a"
+      },
+      {
+        "path": "apps/portal/src/features/history/controller.ts",
+        "blob": "63ce5bbccba76766f13020441580fc2185da692b",
+        "bytes": 36913,
+        "sha256": "c5329af695d6981bd0a6e1f9f358724e404c061ed5863d4b177ad703ba98d376"
+      },
+      {
+        "path": "apps/portal/src/features/history/History.tsx",
+        "blob": "627f1bd780f5f6a217b5c0379fc92144ecc83661",
+        "bytes": 20401,
+        "sha256": "c644dcfa256bac4a40486ae5fb40ef92d03cbf8569980f4bab92a4a711272fd5"
+      }
+    ],
+    "advisorReviewRouteHasNoApplicationBranch": true,
+    "existingAdvisorRequestFactory": true,
+    "reportContextActionAbsentFromPublishedMetadataAndContract": true,
+    "resolver70MigrationAbsent": "supabase/migrations/20261103194339_portal_rebuild_advisor_report_context_v1.sql",
+    "operationExecuted": false,
+    "sqlOrAuthExecuted": false,
+    "sourceAuditOfHeldScopes": false
+  },
+  "priorScopedReceipts": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/docs/portal-rebuild/w7/reviews/W1_REPORT_CONTEXT_4238.md",
+      "bytes": 2979,
+      "sha256": "d317f4057b0874f208b0603d1b96e9bf400af72515e41e40bfdc58ac2bc254bd",
+      "commit": "b2703c75b5f2588fa2db1f845542c5817ae5ffb2",
+      "sourceHead": "4238ca3061a29569bb2848fede44b0f073723475",
+      "scope": "complete8 SOURCE70, SQL/catalog/Auth/route unrun"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/docs/portal-rebuild/w7/reviews/W2_A07_A89.md",
+      "bytes": 2154,
+      "sha256": "fa48f741bf6cd6ba18f0e546b15892b2e5703c37723814100a255109e9021dd9",
+      "commit": "00a8cadaefad18149cbba17b6160f73c473efe54",
+      "sourceHead": "a89b24be19ccfb334128fe99601b67985b7af5f8",
+      "scope": "permitted public UI/source21/frontend0 only; activation/private-return held"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/docs/portal-rebuild/w7/reviews/W4_LINKAGE_EE0.md",
+      "bytes": 1768,
+      "sha256": "ae841cb7c4ae6cce0cdfa742278507a2fe0baadb887970243bdaeefcbc5d2938",
+      "commit": "39771591fb2922073c881163538a0b1d7f6282b0",
+      "sourceHead": "ee0fddda8b3ad961cf5d3139f887137b328b013b",
+      "scope": "narrow linkage source/SSR4 only"
+    }
+  ],
+  "wireNoPhotoField": "body.photoIds: []",
+  "photoProducerRequiredForThisBoundedSourcePath": false,
+  "photoHoldCleared": false,
+  "sourceWorkMayContinueWithinExplicitPublicSeams": true,
+  "sourceAuditsOrActualAuthorizationProved": false,
+  "realPacketPrepared": false,
+  "principalSetupReviewedOrCreated": false,
+  "resourcesAcquired": false,
+  "sqlAuthStorageBrowserOperations": false,
+  "wholeIntegratedCensus": "NOT_MEASURED",
+  "reportSha256": "3b24ca0519f4888e3aae00099142ba7812319b9283d4863563e9640689b2dc7d",
+  "recordedAt": "2026-11-04T08:37:53.547306+00:00"
+}

@@ -14,6 +14,7 @@ import {
 } from "./rebuild-advisor-dependencies-helper.mjs";
 import { projectClientPlan } from "../../../src/contracts/PortalRebuild.ts";
 import { parseRoute } from "../src/navigation/routes.ts";
+import { publicationDeliveryReadUnavailable } from "./helpers/publication-notification-fixture.mjs";
 export { ids };
 export const portal = path.resolve(import.meta.dirname, ".."),
   origin = "https://shelv-dependencies.local.invalid";
@@ -559,6 +560,20 @@ export async function openDependencyApp(browser, options = {}) {
       ) {
         s.signedIn = false;
         return route.fulfill({ json: { signedOut: true } });
+      }
+      const deliveryRead = publicationDeliveryReadUnavailable({
+        pathname: url.pathname, method: request.method(),
+        csrf: request.headers()["x-shelv-csrf"],
+        command: url.pathname === "/api/advisor/notifications" && request.method() === "POST" ? request.postDataJSON() : null,
+      }, {
+        csrf: s.csrf,
+        publication: [...s.receipts.values()].filter(value => value.command.action === "publish_plan_v1").at(-1)?.result,
+      });
+      if (deliveryRead) {
+        const command = request.postDataJSON();
+        s.calls.push({ url: url.pathname, command, bytes: request.postData() });
+        expectedStatuses.push(deliveryRead.status);
+        return route.fulfill({ status: deliveryRead.status, json: deliveryRead.json });
       }
       if (
         ![

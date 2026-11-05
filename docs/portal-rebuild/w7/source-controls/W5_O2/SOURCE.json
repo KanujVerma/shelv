@@ -1,0 +1,15 @@
+{
+  "owner": "Kanuj",
+  "finding": "W7-W5-O2",
+  "head": "acc76e23c65b2ce59d9d01bbf43392227a9991fd",
+  "base": "df230eca6017f8dd330cceb83eb11b18193937e5",
+  "control": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-acc76/source/apps/portal/tests/w7-orders-use-reference.test.mjs",
+    "archive": "source-controls/W5_O2/w7-orders-use-reference.test.mjs",
+    "bytes": 1887,
+    "sha256": "aa497313fcda3de30d9f146199c906963617da7ff69508ff72b9be9f0d1b0b4a"
+  },
+  "reproduce": "Place exact archived bytes under apps/portal/tests/w7-orders-use-reference.test.mjs in immutableacc export with actualcanonicalRootDTOs/lockedPortalReact. Node22.23.0 --experimental-strip-types --test. No sourceoverride/Auth/browser/DB.",
+  "originalOutcome": "0pass1fail currentpub2purchase acceptsinneruse.product.pub1 asuse-not-reported",
+  "eventProvenance": "Do not require latestEvent publication to match; historicalevent can legitimately differ"
+}

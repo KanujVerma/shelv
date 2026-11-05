@@ -1,0 +1,172 @@
+{
+  "owner": "Kanuj",
+  "head": "8bc1ee73ca1d363aacf12ec870f571e14d419237",
+  "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+  "verdict": "PASS_SCOPED_COMPLETE2_ROUTINE_CSS_SAVED_FRAME_DECLARATION_CORRESPONDENCE_ONLY",
+  "materialFindings": [],
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-routine-8bc/PACKET.json",
+    "bytes": 6340,
+    "sha256": "a0e9ca32320fadb266dc01c4a014fcf548ab74ff39c9132e7ca442bd14d6bda0"
+  },
+  "patchSha256": "ddc8cde887e632a0ca2d5d4ca5b9f0632f8c5841744e4e8a2834c2034e66e32e",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/plan/plan.css",
+      "bytes": 8734,
+      "sha256": "99902a4ac1d3d64924a3048fa5207b1f0dd8fafc3743dd63f82f8fc41324e0ac"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W3.md",
+      "bytes": 21262,
+      "sha256": "3bc057e0110609876a20cd816c166297e9f947348100927efd8dc19122c424d5"
+    }
+  ],
+  "savedReferencePins": [
+    {
+      "path": "docs/portal-rebuild/design/C01-498-85.context.txt",
+      "bytes": 31750,
+      "sha256": "b42efbbd32229ef0c659915be1ac5712b31f7a70fbad83eb5d4b697c790c1056"
+    },
+    {
+      "path": "docs/portal-rebuild/design/C01-498-85.png",
+      "bytes": 138983,
+      "sha256": "4d9e25e9f16ca0c8d356075f5e84d1d86ae38d45d26ec65c40e0fe4c3a651caa"
+    },
+    {
+      "path": "docs/portal-rebuild/design/C01E-503-926.context.txt",
+      "bytes": 29372,
+      "sha256": "ab5d2c6c9dcca3e110c4cf4dfc404c10447824db07315c82668129778e093938"
+    },
+    {
+      "path": "docs/portal-rebuild/design/C01E-503-926.png",
+      "bytes": 132498,
+      "sha256": "88694507cf76ff82b8fc85a47cc772b5081578d99dccf950dcaaa04fd93f6307"
+    }
+  ],
+  "dependencyPins": [
+    {
+      "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+      "bytes": 28358,
+      "sha256": "0dfe4517e70713ec590b725c0777c84dc4f54d85bff7e81992f1d826669a20e1"
+    },
+    {
+      "path": "apps/portal/src/ui/tokens.css",
+      "bytes": 1296,
+      "sha256": "0a1c80284131ae97c6bd7415c619607c2b9b59b14a3a4ed6c8b7feea454f329b"
+    },
+    {
+      "path": "apps/portal/src/ui/foundation.css",
+      "bytes": 7684,
+      "sha256": "9008ea217b5f18e1ae3a7425c7de3dcdf47cf4b38f77254577f28ecba5ec82f8"
+    },
+    {
+      "path": "apps/portal/src/ui/primitives.tsx",
+      "bytes": 7512,
+      "sha256": "990d356778a7c828b85896fb44585df9e07a182687338dd190f2cb129073b925"
+    },
+    {
+      "path": "apps/portal/src/shell/shell.css",
+      "bytes": 4413,
+      "sha256": "0c4329a4faa820724010db4ed8a76cca3825c8c7c4b0284a06891a54257bfcbf"
+    },
+    {
+      "path": "apps/portal/src/shell/PortalShell.tsx",
+      "bytes": 5514,
+      "sha256": "02f529e521bf147de2f4a2bebd81d50e2005b260383ab039ce4d10500f071832"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "bytes": 123808,
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "inverse": {
+    "entireOldCssByteExact": true,
+    "oldCssSha256": "4e9640a6cfe639150a2a9a243650e4863120fcbbdc1eb71599c371278a6bab4f",
+    "newCssSha256": "99902a4ac1d3d64924a3048fa5207b1f0dd8fafc3743dd63f82f8fc41324e0ac"
+  },
+  "verification": {
+    "head": "8bc1ee73ca1d363aacf12ec870f571e14d419237",
+    "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+    "all2Source4Frames7DepsAndRawBuildPinsVerified": true,
+    "wholeOldCssInverseExact": true,
+    "savedContextFollowUpNodes": [
+      "498:204",
+      "503:1013"
+    ],
+    "savedFollowUpGapPx": 12,
+    "savedNumberFont": "Inter:Medium 14px/20px",
+    "sourceGapTokenPx": 12,
+    "sourceNumberWeight": 500,
+    "emittedTargetDeclarationsPresent": true,
+    "font500PackagedStaticOnly": true,
+    "provenanceSourceHead": "8bc1ee73ca1d363aacf12ec870f571e14d419237",
+    "provenanceSourceDirty": false,
+    "buildInputRowsVerified": 2310,
+    "buildGitInputs": 173,
+    "buildLockedNpmInputs": 2137,
+    "buildAssetsVerified": 29,
+    "newW7TestOrBuildRerun": false,
+    "currentDomComputedFontGeometryOrBrowser": false
+  },
+  "emittedCss": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-routine-8bc/EMITTED.css",
+    "bytes": 44425,
+    "sha256": "8fa9ac76984690e371aad6b07aa5e84c00d4e8b440071fce31ae20b0e5febaa8"
+  },
+  "provenance": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-routine-8bc/PROVENANCE.json",
+    "bytes": 474992,
+    "sha256": "307c31852b9cd432c161bdb99cc3c65366d64e441714194f807e7344ddcdb0ec"
+  },
+  "ownerProofHashRowsVerified": [
+    {
+      "path": ".local-artifacts/w3/routine-frame-20261104/OLD-SOURCE-COMPARISON.json",
+      "bytes": 523,
+      "sha256": "d8b230052dbcf3c8121a2466c1edc82f6d47840f54b9ea9fa951a71b23cf77a5"
+    },
+    {
+      "path": ".local-artifacts/w3/routine-frame-20261104/CURRENT-SOURCE-COMPARISON.json",
+      "bytes": 570,
+      "sha256": "8d5ab44ff87ab101ac84fc181fd407338bcf88c432d2f3aa5b68a6dd9745d134"
+    },
+    {
+      "path": ".local-artifacts/w3/routine-frame-20261104/SOURCE-SSR.log",
+      "bytes": 12188,
+      "sha256": "6dc1542520897a45c64a4767da17060f169cc96e0979c11c9a426ad7a61a65eb"
+    },
+    {
+      "path": ".local-artifacts/w3/routine-frame-20261104/UI.log",
+      "bytes": 115,
+      "sha256": "6392de7331e66c3f4f4165a5bca39dadd470fc45c737652af0a4f4520265bddd"
+    },
+    {
+      "path": ".local-artifacts/w3/routine-frame-20261104/TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".local-artifacts/w3/routine-frame-20261104/BUILD.log",
+      "bytes": 178,
+      "sha256": "0efd75a10b853c334913aa46f4e70b7f9ac5fd93c37433ea4256605fe0f138ab"
+    },
+    {
+      "path": ".local-artifacts/w3/routine-frame-20261104/BUILD-EXACT-HEAD.log",
+      "bytes": 178,
+      "sha256": "0efd75a10b853c334913aa46f4e70b7f9ac5fd93c37433ea4256605fe0f138ab"
+    }
+  ],
+  "ownerObservedChecks": {
+    "sourceSsrPass": 45,
+    "frontendExit": 0,
+    "uiStylesheets": 11,
+    "buildExit": 0
+  },
+  "newW7TestOrBuildRun": false,
+  "imagesViewed": "Saved approved reference PNGs only, not current app captures",
+  "currentRenderedVisualComputedFontOrGeometryAcceptance": false,
+  "resourceGrant": null,
+  "recordedAt": "2026-11-04T23:16:18.772155+00:00",
+  "reportSha256": "880829c03de4399a3b11a1feba2c65b0438e22083ee8d6dd827dd585a46967e8"
+}

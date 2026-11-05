@@ -1,0 +1,22 @@
+{
+  "owner": "Kanuj",
+  "scope": "Evidence custody only; no2f2129 rollforward approval",
+  "originalAuthorManifest": {
+    "sha256": "2230fb6ea858ebcec874a74460e1e51bda1470c4c49aee092a1df92717fe8346",
+    "status": "VERIFIED_AT_INTAKE_BUT_EXACT_BYTES_NOT_RETAINED_BY_W7; OWNER_NOW_REPORTS_OVERWRITTEN_MISSING",
+    "preservedRecord": "W6_ADDRESS_8A0_RESULT.json and private PINS.json record contemporaneous hash validation; not a replacement copy"
+  },
+  "independentManifest": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w6-address-8a0/SOURCE-independent-5d9066bcfae3ab4bd8dc96b5479867fa8028d3a80a7048feff95b5aff518dd34.json",
+    "bytes": 436991,
+    "sha256": "5d9066bcfae3ab4bd8dc96b5479867fa8028d3a80a7048feff95b5aff518dd34",
+    "mode": "0400",
+    "meaning": "Actual independently generated W7 compiler manifest, not reconstructed author bytes"
+  },
+  "separateOwnerNewBaseManifest": {
+    "head": "2f2129fedaff234a518963830a21fec55757ef3a",
+    "sha256": "0ecc621593de26801715a027ea73e6311a73c90c4008b05068582a44bc1fdfeb",
+    "status": "OWNER_REPORTED_CURRENT_SEPARATE_NOT_REVIEWED"
+  },
+  "verdictEffect": "Original8a0 SOURCE/pass and own10/closure/type qualifications stay attributed; lost author artifact disclosed, never relabeled/reconstructed; no new base/current acceptance or resource grant"
+}

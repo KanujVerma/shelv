@@ -73,6 +73,9 @@ const empty = (): AdvisorState => ({
   notice: null,
   directory: null,
   clients: null,
+  directoryRead: "idle",
+  clientsRead: "idle",
+  directoryCursor: null,
   view: null,
   local: null,
   context: null,
@@ -99,6 +102,11 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
           context: null,
           dependencies: null,
           publicationNotification: restored.publicationNotification ?? null,
+          directoryRead: restored.directoryRead === "loading"
+            ? "idle" : restored.directoryRead ?? (restored.directory ? "ready" : "idle"),
+          clientsRead: restored.clientsRead === "loading"
+            ? "idle" : restored.clientsRead ?? (restored.clients ? "ready" : "idle"),
+          directoryCursor: restored.directoryCursor ?? null,
           ...(restored.pending
             ? {
                 save: "uncertain",
@@ -292,6 +300,21 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
             })()
           : await ports.plans.execute(command, { signal });
       return current() ? mapPlanResult(result, command) : undefined;
+    });
+  }
+  function failListRead(error: unknown, current: () => boolean,
+    list: "clients" | "directory") {
+    if (!current()) return;
+    const status = (error as { status?: number } | null)?.status;
+    if (!current()) return;
+    if (status === 401) return fail({ status: 401 });
+    if (list === "clients") emit({
+      clientsRead: status === 403 ? "denied" : "error",
+      ...(status === 403 ? { clients: null } : {}),
+    });
+    else emit({
+      directoryRead: status === 403 ? "denied" : "error",
+      ...(status === 403 ? { directory: null, directoryCursor: null } : {}),
     });
   }
   function requireDraft() {
@@ -972,9 +995,12 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
     canApprove,
     canPublish,
     async loadDirectory(cursor: string | null = null) {
-      if (!permissions.view) return deny();
-      const current = beginRead("directory");
+      if (!permissions.view) return emit({ directory: null, directoryCursor: null, directoryRead: "denied" });
+      const current = beginRead("directory"),
+        generation = readGenerations.get("directory"), actor = permissions.actorId;
+      emit({ directoryRead: "loading" });
       try {
+        if (!current()) return;
         const result = await read(
           {
             schemaVersion: 1,
@@ -988,22 +1014,35 @@ export function createAdvisorController(options: AdvisorControllerOptions) {
         if (result && current())
           emit({
             directory: result as PlanDirectory,
-            notice: state.needsComparison ? state.notice : null,
+            directoryRead: "ready", directoryCursor: cursor,
           });
       } catch (e) {
-        if (current()) fail(e, false, true);
+        failListRead(e, current, "directory");
+      } finally {
+        if (live() && readGenerations.get("directory") === generation && state.directoryRead === "loading")
+          emit(permissions.view && permissions.actorId === actor
+            ? { directoryRead: "idle" }
+            : { directoryRead: "denied", directory: null, directoryCursor: null });
       }
     },
     async loadClients() {
-      if (!permissions.view) return deny();
-      const current = beginRead("clients");
+      if (!permissions.view) return emit({ clients: null, clientsRead: "denied" });
+      const current = beginRead("clients"),
+        generation = readGenerations.get("clients"), actor = permissions.actorId;
+      emit({ clientsRead: "loading" });
       try {
+        if (!current()) return;
         const result = await invoke((signal) =>
           ports.clients.execute({ action: "advisor_list" }, { signal }),
         );
-        if (result && current()) emit({ clients: result });
+        if (result && current()) emit({ clients: result, clientsRead: "ready" });
       } catch (e) {
-        if (current()) fail(e, false, true);
+        failListRead(e, current, "clients");
+      } finally {
+        if (live() && readGenerations.get("clients") === generation && state.clientsRead === "loading")
+          emit(permissions.view && permissions.actorId === actor
+            ? { clientsRead: "idle" }
+            : { clientsRead: "denied", clients: null });
       }
     },
     async open(draftId: string) {

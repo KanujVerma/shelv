@@ -8,7 +8,7 @@
 .plan-routine-tabs .shelv-tabs-content {padding-top:0;}
 .plan-routine-row {display:flex;align-items:center;gap:var(--space-16);padding:var(--space-24) 0;border-bottom:1px solid var(--color-line);min-width:0;}
 .plan-routine-row:last-child {border-bottom:0;padding-bottom:0;}
-.plan-row-number {flex:0 0 28px;color:var(--color-muted);font-size:var(--text-label);line-height:var(--line-label);}
+.plan-row-number {flex:0 0 28px;color:var(--color-muted);font-size:var(--text-label);line-height:var(--line-label);font-weight:500;}
 .plan-row-copy {flex:1;min-width:0;display:grid;gap:var(--space-4);}
 .plan-row-copy h3 {font-size:var(--text-body);line-height:var(--line-body);}
 .plan-routine-row>.shelv-button {flex:0 0 80px;}
@@ -27,9 +27,11 @@
 .plan-product-identity h2 {font-size:28px;line-height:34px;}
 .plan-product-compact {gap:var(--space-16);}
 .plan-product-compact h2 {font-size:var(--text-heading);line-height:var(--line-heading);}
+.plan-unpublished-card {gap:var(--space-16);min-width:0;overflow-wrap:anywhere;}
+.plan-unpublished-card>.shelv-badge {justify-self:start;min-width:112px;}
 .plan-proposal {gap:var(--space-12);}
 .plan-proposal>.shelv-badge {width:220px;max-width:100%;}
-.plan-view .plan-follow-up {background:var(--color-successBg);}
+.plan-view .plan-follow-up {background:var(--color-successBg);gap:var(--space-12);}
 .plan-follow-up h2,.plan-review-date {color:var(--color-brand);}
 .plan-review-date {font-size:28px;line-height:34px;font-weight:600;}
 .plan-paused {gap:var(--space-8);}
