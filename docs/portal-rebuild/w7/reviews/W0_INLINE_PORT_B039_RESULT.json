@@ -1,0 +1,257 @@
+{
+  "owner": "Kanuj",
+  "head": "b039b248b448b9d5c26d558138562532aa42eb91",
+  "base": "01b6e5f125f19f2a404bef528c90572e33cb29fe",
+  "verdict": "PASS_SCOPED_COMPLETE_INLINE_PREVIEW_READ_PORT_SOURCE_ONLY",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/app/advisor-inline-preview-request.ts",
+      "bytes": 4414,
+      "sha256": "c854437f79dbe1fae1277ce54cf1a32357bb1ff2c2f82590652ae7198cb0bd58"
+    },
+    {
+      "path": "apps/portal/tests/w0-inline-preview-request.test.mjs",
+      "bytes": 7091,
+      "sha256": "5f88a873a89814fff3073059dde8ae6810ecb024a490d8e2bc610f74447e1b14"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_INLINE_PREVIEW_REQUEST_20261104.md",
+      "bytes": 2635,
+      "sha256": "e0474d7c8bb1f75cd52c1fb099161cd293dd298b40dd26081a6503d7d1658f11"
+    }
+  ],
+  "closurePins": [
+    {
+      "path": "apps/portal/site/auth/commerce-actions.js",
+      "bytes": 1980,
+      "sha256": "795d37a5ec1f6451c4318234f2636e834849c0c1ce0c8fc19815b3c6655d7acc"
+    },
+    {
+      "path": "apps/portal/site/auth/portal-routes.js",
+      "bytes": 8889,
+      "sha256": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5"
+    },
+    {
+      "path": "apps/portal/site/auth/navigation-return.js",
+      "bytes": 3284,
+      "sha256": "aab8c07b9c589e1af4bf521716407e35bb97574664196b3e58b2d1a9485e4dcd"
+    },
+    {
+      "path": "apps/portal/site/auth/plan-actions.js",
+      "bytes": 805,
+      "sha256": "64d758036946cd2fa2109a23e46066e0fa350347e45f84f1861d6d47190a9a23"
+    },
+    {
+      "path": "apps/portal/site/auth/care-actions.js",
+      "bytes": 592,
+      "sha256": "af283c549a1a1b7a404f44c387921991b7cdcd2f52a4a63af3c2e194e737e17b"
+    },
+    {
+      "path": "apps/portal/site/auth/review-actions.js",
+      "bytes": 1904,
+      "sha256": "6796d30a8b774559cac3924c9db7c5528358dd672b1cdabe060a428be881fcb4"
+    },
+    {
+      "path": "apps/portal/site/auth/advisor-cookie-session.js",
+      "bytes": 30545,
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5"
+    },
+    {
+      "path": "apps/portal/src/transport/error.ts",
+      "bytes": 725,
+      "sha256": "1b6be9efd7f110c93d909ee8a2f44e805b3de51f32bfd0715ddf7cdf4c93f034"
+    },
+    {
+      "path": "apps/portal/src/transport/session.ts",
+      "bytes": 10195,
+      "sha256": "deeb60865d92b6a7a0feb1b86a78193a7c093005d0e225cf5554ece1539e46bd"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValues.ts",
+      "bytes": 1206,
+      "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+    },
+    {
+      "path": "src/contracts/ConciergePortalValidation.ts",
+      "bytes": 2880,
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+    },
+    {
+      "path": "src/contracts/ConciergePresentationValidation.ts",
+      "bytes": 11722,
+      "sha256": "b93b9eab1b55cfb828677067990985716e71c23550662a06782038226cdca33a"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "bytes": 12947,
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+    },
+    {
+      "path": "src/contracts/PortalRebuildMapping.ts",
+      "bytes": 10694,
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+    },
+    {
+      "path": "apps/portal/src/features/plan/preview.ts",
+      "bytes": 4046,
+      "sha256": "84de97d3497fa3085c496a6465613ff18f64e1355c9244d54c690305fedd47c1"
+    },
+    {
+      "path": "apps/portal/src/app/preview.ts",
+      "bytes": 2755,
+      "sha256": "1222fffb6752cc09e7bdb78e51b163b9514288cce6620b2f457808114265f689"
+    },
+    {
+      "path": "src/contracts/PortalCareValues.ts",
+      "bytes": 1079,
+      "sha256": "31c485f83a7ce142231dd90da43ad402215078419230248a103e3544a275a404"
+    },
+    {
+      "path": "src/contracts/PortalCareValidation.ts",
+      "bytes": 7336,
+      "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d"
+    },
+    {
+      "path": "src/contracts/PortalReviewValues.ts",
+      "bytes": 3909,
+      "sha256": "cce2545be9626e1a1abf8fb4e6a0e783c53831af9740110db26f37a397457000"
+    },
+    {
+      "path": "src/contracts/PortalReviewValidation.ts",
+      "bytes": 15488,
+      "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+    },
+    {
+      "path": "apps/portal/src/app/advisor-inline-preview-request.ts",
+      "bytes": 4414,
+      "sha256": "c854437f79dbe1fae1277ce54cf1a32357bb1ff2c2f82590652ae7198cb0bd58"
+    }
+  ],
+  "lockPins": [
+    {
+      "path": "package-lock.json",
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "packetSha256": "a598e02d729819ddcc5daa91c040a5e4b866d515254cb0e976c5a4cbd508c8fd",
+  "patchSha256": "6fdabc12421c080097d0e422ff5cb26a8f0def4ef67ba7513c3df5d372e45a15",
+  "independentCommands": [
+    {
+      "name": "CURRENT-15",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--test",
+        "--test-concurrency=1",
+        "apps/portal/tests/w0-inline-preview-request.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-inline-port-b039/source",
+      "exitCode": 0,
+      "sha256": "c299791ef71badb1b3232612e7035e2d0e411e15ca9ffe609556c9c927a61688"
+    },
+    {
+      "name": "TYPES-frontend",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.frontend.json",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-inline-port-b039/source/apps/portal",
+      "exitCode": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "independentResults": {
+    "finiteActualRootRead": {
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "actualConfiguredFrontend": 0,
+    "browserCompileInputs": 21,
+    "browserExecution": "UNRUN"
+  },
+  "authorRawByteHashesVerified": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/INLINE-PORT-ABSENT.log",
+      "bytes": 1149,
+      "sha256": "198261d6337dcca69042ef479eca57a1d573451b46140de0c425bb701fc1bc65"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/INLINE-PORT-INITIAL.log",
+      "bytes": 865,
+      "sha256": "9fe43a27629e7c3893b3d58844a0a9a9815a9c61f9f288f00082a9e8fc7f6afc"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/INLINE-PORT-TYPES-INITIAL.log",
+      "bytes": 124,
+      "sha256": "01a3e0e9e0c9da7cc7184d5889ffe18cf1fd28d5049cd7e892304783a3161118"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/INLINE-PORT-FINITE.log",
+      "bytes": 3081,
+      "sha256": "2de6c6885fb604e38d6d987e471b127949626d485eadd14d4596c882c3d7c8d3"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/INLINE-PORT-FINAL15.log",
+      "bytes": 3456,
+      "sha256": "58269b519304317f09675701658574b8affffc15b34b7f018bffe1159fd8180d"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/INLINE-PORT-TYPES-FINAL.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261103/INLINE-PORT-BROWSER.json",
+      "bytes": 9127,
+      "sha256": "7466eda96d2fe9a743f2f0588d529c83ec0195a971cef6906bc447197e9da477"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-inline-port-b039/PINS.json",
+      "bytes": 7583,
+      "sha256": "a598e02d729819ddcc5daa91c040a5e4b866d515254cb0e976c5a4cbd508c8fd"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-inline-port-b039/COMMANDS.json",
+      "bytes": 1030,
+      "sha256": "e915e7a24f25a21759682d6ca19a9ca87486e0dbb3b2af0e67353783158d203a"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-inline-port-b039/CURRENT-15.log",
+      "bytes": 3555,
+      "sha256": "c299791ef71badb1b3232612e7035e2d0e411e15ca9ffe609556c9c927a61688"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-inline-port-b039/TYPES-frontend.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-inline-port-b039/BROWSER-COMPILE.json",
+      "bytes": 9124,
+      "sha256": "11761a366183bb8635f1332ae805be22578c1a39762f9f1090132b81fa123f17"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-inline-port-b039/COMPILE.log",
+      "bytes": 23,
+      "sha256": "fcc2bfa9c3f105854ed882ddfc4d690f7f7a9d4ff3764ff088bd3ba4ab012836"
+    }
+  ],
+  "scope": "Deny/correlationdecorator requiresRootactualruntime+actualadvisor+SAMEactualeditorplansport+fixeddraft; notgenericpositiveauthoritysource",
+  "limits": [
+    "ExistingbackendVIEWrequiresEDIT unchanged; positivefixturesEDIT, no actualVIEW authorization",
+    "No actualParentmount/W2inlineconsumer3c09/codeRootcurrentpublication/genuine/Sourceegress/browsers/Figma/a11y/fullA02/J01acceptance",
+    "Rootmustsuppliesactualsameplansadapter/controller/lifetime; noadoptionofcurrentfullb039ancestry/stopped01b orotherunreviewedScope",
+    "No Auth/SQL/sourceprivateMedia/financial/delivery/write/navigation/decisionautoselection/resourcegrant orcounteradvance; allholds preserved"
+  ]
+}

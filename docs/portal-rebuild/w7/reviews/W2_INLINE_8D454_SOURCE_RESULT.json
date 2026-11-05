@@ -1,0 +1,309 @@
+{
+  "owner": "Kanuj",
+  "head": "8d454b8015940ed29d2432635251bdbaba8b70da",
+  "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+  "verdict": "PASS_SCOPED_COMPLETE9_INLINE_SOURCE_FINITE_SSR_DEPENDENCY_HELD_CURRENT_PORTAL_FAILED",
+  "materialOwnedFindings": [],
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-inline-8d454/PACKET.json",
+    "bytes": 12244,
+    "sha256": "9d5122f9a935c20313f042cf9b6e2ac472653b4e9629161ac8326a01b229434d"
+  },
+  "patchSha256": "a9154345a4740fd528b6442c92cf7963673a53a9ecce1ece20091f3b4f8dac62",
+  "parents": [
+    "2e8d294d7e5c04f498659e7ffdc662aaa5eb4553",
+    "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c"
+  ],
+  "mergeTree": "0cdcff457c11f34a2852217ef2eae038e5325ec1",
+  "ownedPins": {
+    "apps/portal/src/features/advisor/AdvisorWorkspace.tsx": {
+      "blob": "6d14e6eeb930b770c4b8a646f126a91f1a4f31ab",
+      "sha256": "c20c3397f893f4a56f9b6bbf4474925c3545a535e721d57e7510670562dd405a"
+    },
+    "apps/portal/src/features/advisor/index.ts": {
+      "blob": "8c95cb511480618c27476610b489dd8e2040f828",
+      "sha256": "7dd91464005be3976075f81d00064f186e65b341616116de5c037a1f69533e27"
+    },
+    "apps/portal/src/features/advisor/inline-preview/InlinePreview.tsx": {
+      "blob": "52c4ac7698c7e20a0a3046ab4003fc315e6fbc6e",
+      "sha256": "c37af4805a37ead4e02143dfc3e3582e6110ebeb3e55228794f54e053fe1b8b9"
+    },
+    "apps/portal/src/features/advisor/inline-preview/controller.ts": {
+      "blob": "93f7a4179a02837f178141459543b22e67f325c2",
+      "sha256": "d784356753d935950abc663c2a452ea9682594efe2e1d6cf210e20220c46712b"
+    },
+    "apps/portal/src/features/advisor/inline-preview/types.ts": {
+      "blob": "a1e960be876d076c691b4b347a4bc6f86dcfbc3c",
+      "sha256": "5acff31cfcaac306513cd03be431a1ead84c9d66d553ca85735b72b3bf924c09"
+    },
+    "apps/portal/tests/w2-advisor-inline-preview-view.test.mjs": {
+      "blob": "a25b9781e5539ae95132488a586e803efe2416c2",
+      "sha256": "df5ba77dac0879ba10039264ddfe626a4b978e3c56d96a89ec4be1d659b21c56"
+    },
+    "apps/portal/tests/w2-advisor-inline-preview.test.mjs": {
+      "blob": "4e207ef5460a9fa8dd42800548e1696b29e137f5",
+      "sha256": "60cb2e263ed7a5a7c21a11b312fb57da9b7c8ee92f4bd47a61d1d3653737879d"
+    },
+    "docs/CONTEXT_SYNC.md": {
+      "blob": "d07fdd744e019cf792746483a8ae2d9bf4f09191",
+      "sha256": "d9a3e84060c1698acd2e58fc5881858e46fef358c672130f9bf0d53a6ba8c3dd"
+    },
+    "docs/portal-rebuild/w2/INLINE_PREVIEW_SOURCE_20261103.md": {
+      "blob": "59fc8debe8b6adc988646c7580c17108d1cc3b3e",
+      "sha256": "332bc501b9e0ed52937c4d102ea9e9c9a40bb382aa6e134644b1ba3e0abd09b7"
+    }
+  },
+  "selectedDependencyPins": {
+    "apps/portal/src/app/Application.tsx": {
+      "blob": "4417fa1e14f6ef90603c9766a54d8295768c2569",
+      "sha256": "9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510"
+    },
+    "apps/portal/src/app/AdvisorWorkspaceNotifications.tsx": {
+      "blob": "342e3d53ba2988a8bf5d24c80c02c7a52b20149c",
+      "sha256": "a83ad27c7088b390513a36ad6c74031b0601413a0408118e18c6a246795683f4"
+    },
+    "apps/portal/src/app/notification-owner.ts": {
+      "blob": "ef0e56197c84415d90c23282934ece62205cf8b6",
+      "sha256": "4bbaf0389780a2b4bffcf7250665b1ee79cfc50fbe1cb4b8eae72312c6f82141"
+    },
+    "apps/portal/src/app/session.ts": {
+      "blob": "7ee99d5d0d13d0d316b86b894ec525520616897e",
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    "apps/portal/src/app/ports.ts": {
+      "blob": "04328493e6b6ae5bfb29d180a11fe8d0c1763069",
+      "sha256": "6b99db6882bb26d0c3dd44c18c36f2b010ad609b1b101a21bd0a5ff920a19eaf"
+    },
+    "apps/portal/src/app/preview.ts": {
+      "blob": "868edf7ea0dc23d2f80e115a83f4eeb2cac5e57f",
+      "sha256": "1222fffb6752cc09e7bdb78e51b163b9514288cce6620b2f457808114265f689"
+    },
+    "apps/portal/src/features/advisor/controller.ts": {
+      "blob": "9d10ac02d428a0cf85887c4c0d54c8666a6c9b42",
+      "sha256": "d0bd4ea15c908c9c1e80e303cf52d16c7413326bb4f51d27c7d6856dcae3c990"
+    },
+    "apps/portal/src/features/advisor/types.ts": {
+      "blob": "e761feb255d878d03ef7f72c4f5797bdf1d2ef4d",
+      "sha256": "3ddfcdb186556b09eba06d3eb9a17462e06130149ba0a25ca36a85cf6cc6672c"
+    },
+    "apps/portal/src/features/advisor/PublicationDelivery.tsx": {
+      "blob": "1e5fc50ef82f4fb8728b63d2dc15183b9234bb7c",
+      "sha256": "f70725ea217fb84317f10827f97820be4e69fbbc75e34a5e60208776d485c1c0"
+    },
+    "apps/portal/src/features/notifications/controller.ts": {
+      "blob": "b2dd6ccfdb3282f6c2f8f1e1c7cbaa9b945f591b",
+      "sha256": "685a1c9643c861b362f958bc73fadecb2fc3448d84b11131805899319f529c26"
+    },
+    "apps/portal/src/features/plan/UnpublishedDecisionCard.tsx": {
+      "blob": "8a42b97358bd70ee549da520d9b3233ef3a1d91c",
+      "sha256": "e95b086ea9bb72bb7b1c2e3009875596891b85d5d873617e261497e785bae203"
+    },
+    "apps/portal/src/features/plan/preview.ts": {
+      "blob": "892cbde69601cba3704ce6ade0fbdfb16d095d84",
+      "sha256": "84de97d3497fa3085c496a6465613ff18f64e1355c9244d54c690305fedd47c1"
+    },
+    "src/contracts/PortalRebuild.ts": {
+      "blob": "b1d78b1366aec0117682a5389d9785c9362a5e5d",
+      "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc"
+    },
+    "src/contracts/PortalNotification.ts": {
+      "blob": "b205850326db4558acb7e6a0de23a8dab93f0a1b",
+      "sha256": "4b72ce525d87739514845326b8b77bee4eb641041083f43c946c63f4b8e0ec3f"
+    },
+    "apps/portal/tests/helpers/publication-notification-fixture.mjs": {
+      "blob": "3dee262940d963dceab07f484fbf8d2d5091c210",
+      "sha256": "96588892f6cf0ac2db967be071b5b0bb35c77b98d90ba12f07d162f065c09c55"
+    },
+    "apps/portal/tests/rebuild-advisor-dependencies-browser-helper.mjs": {
+      "blob": "fcaa38f061cc5b2ce8a4f5d4e5316f65402793c6",
+      "sha256": "f5647395e451c309d68e7fe305ca31d9aec86cefa7d736424a1bbf3cf06173a0"
+    },
+    "apps/portal/tests/rebuild-app-browser.test.mjs": {
+      "blob": "fbac0ce3e5d15aee93292366607819401a18d38a",
+      "sha256": "c80ceb266faabe527d8fa133d7edb62ec555ef8b11e18287fe0b03fcc555c37f"
+    },
+    "apps/portal/tests/w0-publication-notification-fixture.test.mjs": {
+      "blob": "acf8a19e410b5d9c09559521488979770ab568e3",
+      "sha256": "909ae235659da195d7121c1c2f9ee8300e64af78751f962062490a64b30e92eb"
+    },
+    "apps/portal/package-lock.json": {
+      "blob": "78bc3f794eac9f8ed627c2af4d20064361f83f35",
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    },
+    "package-lock.json": {
+      "blob": "5e5bbda3690c92d49accc9937dfab45e5e4d01a7",
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    "apps/portal/tsconfig.frontend.json": {
+      "blob": "07246e252fed8da42d1f01fe4f6b98c17f87428d",
+      "sha256": "b930ae73c53ea9dbdd895de85fccbac714e5526ba62a78537d0d72f149437003"
+    }
+  },
+  "selectedPinsNotFullRuntimeCensus": true,
+  "parity": {
+    "old": "2e8d294d7e5c04f498659e7ffdc662aaa5eb4553",
+    "root": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+    "noConflicts": true,
+    "sourceEightExact39c2e": [
+      "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+      "apps/portal/src/features/advisor/index.ts",
+      "apps/portal/src/features/advisor/inline-preview/InlinePreview.tsx",
+      "apps/portal/src/features/advisor/inline-preview/controller.ts",
+      "apps/portal/src/features/advisor/inline-preview/types.ts",
+      "apps/portal/tests/w2-advisor-inline-preview-view.test.mjs",
+      "apps/portal/tests/w2-advisor-inline-preview.test.mjs",
+      "docs/portal-rebuild/w2/INLINE_PREVIEW_SOURCE_20261103.md"
+    ],
+    "sixEntryLinesExact": true,
+    "removingEntryRestoresEntire9cDoc": true,
+    "sixReviewedFixturePaths": [
+      "apps/portal/tests/helpers/publication-notification-fixture.mjs",
+      "apps/portal/tests/rebuild-advisor-dependencies-browser-helper.mjs",
+      "apps/portal/tests/rebuild-app-browser.test.mjs",
+      "apps/portal/tests/w0-publication-notification-fixture.test.mjs",
+      "docs/CONTEXT_SYNC.md",
+      "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_BROWSER_FIXTURE_20261104.md"
+    ],
+    "sixteenW7ExactD73Postimages": [
+      "docs/portal-rebuild/w7/ACCEPTANCE_LEDGER.json",
+      "docs/portal-rebuild/w7/PUBLISHED_E964_SOURCE_REFERENCE.json",
+      "docs/portal-rebuild/w7/REVIEW_QUEUE.json",
+      "docs/portal-rebuild/w7/SESSION_HANDOFF_20261103.md",
+      "docs/portal-rebuild/w7/ci/HOSTED_8F71_EXECUTION_SOURCE_ADDENDUM.md",
+      "docs/portal-rebuild/w7/ci/HOSTED_8F71_EXECUTION_SOURCE_ADDENDUM_RESULT.json",
+      "docs/portal-rebuild/w7/ci/HOSTED_8F71_PORTAL_FAILURE.md",
+      "docs/portal-rebuild/w7/ci/HOSTED_8F71_PORTAL_FAILURE_RESULT.json",
+      "docs/portal-rebuild/w7/reviews/CORRESPONDENCES_E06_ADDRESS8F71.md",
+      "docs/portal-rebuild/w7/reviews/CORRESPONDENCES_E06_ADDRESS8F71_RESULT.json",
+      "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_E964_SOURCE.md",
+      "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_E964_SOURCE_RESULT.json",
+      "docs/portal-rebuild/w7/reviews/W0_INLINE_PORT_B039.md",
+      "docs/portal-rebuild/w7/reviews/W0_INLINE_PORT_B039_RESULT.json",
+      "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_FIXTURE_FC240.md",
+      "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_FIXTURE_FC240_RESULT.json"
+    ],
+    "noLocalRootOrFa3Mix": true
+  },
+  "strictInverses": {
+    "head": "8d454b8015940ed29d2432635251bdbaba8b70da",
+    "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+    "sixWorkspaceUniqueLiteralReversals": true,
+    "entireBaseWorkspaceSha256": "a62f12dd966411184a0b12add5a51bbe8387a5a25db3e98ad5ad1822bfe58fb8",
+    "twoExportsReversalEntireBaseIndex": true,
+    "sixLineEntryRemovalEntireBaseDoc": true,
+    "entrySha256": "fdc33b66fa2539ebc6c61310cbf90a6a111811787e86d7f4f77d6425973c0b71"
+  },
+  "independentSourceCommand": {
+    "argv": [
+      "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "--experimental-strip-types",
+      "--test",
+      "--test-concurrency=1",
+      "apps/portal/tests/w2-advisor-inline-preview.test.mjs",
+      "apps/portal/tests/w2-advisor-inline-preview-view.test.mjs",
+      "apps/portal/tests/w2-advisor-admission.test.mjs",
+      "apps/portal/tests/w2-advisor-directory.test.mjs",
+      "apps/portal/tests/rebuild-advisor-followup.test.mjs",
+      "apps/portal/tests/w2-advisor-service-quote.test.mjs",
+      "apps/portal/tests/w2-advisor-publication-delivery.test.mjs",
+      "apps/portal/tests/w2-advisor-quote-delivery-composition.test.mjs",
+      "apps/portal/tests/w2-advisor-client-workspace.test.mjs",
+      "apps/portal/tests/w2-advisor-client-reentrant.test.mjs",
+      "apps/portal/tests/w2-advisor-client-uuid.test.mjs",
+      "apps/portal/tests/rebuild-advisor-controller.test.mjs",
+      "apps/portal/tests/rebuild-advisor-races.test.mjs",
+      "apps/portal/tests/w0-advisor-service-quote-request.test.mjs",
+      "apps/portal/tests/rebuild-advisor-app-integration.test.mjs",
+      "apps/portal/tests/w0-advisor-client-plans-request.test.mjs",
+      "apps/portal/tests/w0-advisor-client-entry.test.mjs",
+      "apps/portal/tests/w0-advisor-client-entry-preservation.test.mjs",
+      "apps/portal/tests/w0-advisor-client-entry-ssr.test.mjs",
+      "apps/portal/tests/w3-unpublished-card.test.mjs",
+      "apps/portal/tests/w0-publication-notification-fixture.test.mjs"
+    ],
+    "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-inline-8d454/source",
+    "exitCode": 0,
+    "seconds": 5.162,
+    "bytes": 111143,
+    "sha256": "2c12b20accdb3e0e82ad71363949e03bf30655c1e8cd95ae0d746dba829135c4",
+    "browserExecuted": false
+  },
+  "independentFrontend": {
+    "argv": [
+      "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/apps/portal/node_modules/typescript/bin/tsc",
+      "--noEmit",
+      "-p",
+      "apps/portal/tsconfig.frontend.json"
+    ],
+    "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-inline-8d454/source",
+    "exitCode": 0,
+    "raw": {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-inline-8d454/TYPES-frontend.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "completionEvidence": "Joined session56905/toolchunk863079 exit0; no reconstructed console output"
+  },
+  "independentResults": {
+    "sourceFiniteModelSsrMutationAbiPass": 438,
+    "fail": 0,
+    "skip": 0,
+    "cancel": 0,
+    "inlineCasesIncluded": 25,
+    "actualConfiguredFrontendExit": 0,
+    "browserOrHydrationExecution": false
+  },
+  "authorLogsHashVerified": {
+    "fixture-dependency-CURRENT.log": "638cc338664d826a481d0a686514275d0ed7b591449ca4853d47ea1fd7246f65",
+    "fixture-dependency-INSTALL.log": "75816b6e82ad4e23c53d59525b7c84bf84dc60a691dfd1f84d0ffd2cbdfa19ec",
+    "fixture-dependency-TYPES.log": "5e0ce0235c171270fc3458ee5d6ff81aebb122ba9541a84288ff4c00fc92abf4"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-inline-8d454/CURRENT438.json",
+      "bytes": 1756,
+      "sha256": "7b155171a3948b2b73a35ef01c3ba673b829500e86361e7bf5d375c765e0ecf8"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-inline-8d454/CURRENT438.log",
+      "bytes": 111143,
+      "sha256": "2c12b20accdb3e0e82ad71363949e03bf30655c1e8cd95ae0d746dba829135c4"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-inline-8d454/TYPES-frontend.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-inline-8d454/INVERSES.json",
+      "bytes": 430,
+      "sha256": "7f883433361a00d1139aa36d4aa50587a64a1adfcd9dcb927f90385b3bfabdcf"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-inline-8d454/SCOPE-SCAN.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w2-inline-8d454/ARGV.json",
+      "bytes": 1389,
+      "sha256": "ba2f4aa4d75a12cce6f8190a41f592c509d678ae6f1ca357b61d17d97786a2b8"
+    }
+  ],
+  "actualRootInlinePortOrMount": "ABSENT_UNACCEPTED",
+  "b039AndFa3ImplementationAbsent": true,
+  "currentHostedCi": {
+    "status": "FAILED_4031_OF_4032",
+    "report": "ci/HOSTED_8D_PORTAL_FAILURE.md",
+    "executionCheckout": "UNVERIFIED_STEP_ONLY_LOG",
+    "failingSharedAstModelNotIn438Command": true
+  },
+  "integrationReadiness": "DEPENDENCY_HELD_NO_MERGE_OR_RUNTIME_ACTIVATION_GATE",
+  "priorHeldScopesNotResumed": true,
+  "resourceGrant": null,
+  "realExecutionEligibilityUnchanged": true,
+  "counterAdvance": false,
+  "recordedAt": "2026-11-04T09:13:42.061946+00:00",
+  "reportSha256": "3bd0b0bf9137a88205f5f514c34c074f5549a433d7c4a4ac54345d7ae857c297"
+}

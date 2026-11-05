@@ -2,7 +2,7 @@ import { useEffect, useSyncExternalStore } from 'react';
 import type { ApplicationSession } from './session.ts';
 import type { PortalNavigationCore } from '../navigation/react.tsx';
 import { buildRoute, parseRoute } from '../navigation/routes.ts';
-import { createNotificationsController } from '../features/notifications/controller.ts';
+import { createNotificationViewLease } from './notification-owner.ts';
 import { Notifications } from '../features/notifications/Notifications.tsx';
 import type { NotificationController } from '../features/notifications/types.ts';
 import { StatusNotice } from '../ui/index.ts';
@@ -131,19 +131,24 @@ export function createNotificationsEntry(
     attach(runtime.subscribe(reconcile), token);
     attach(boundary!.subscribeInvalidation(reconcile), token);
     if (sequence !== token || !applicable()) { reconcile(); return Promise.resolve(); }
-    const next = createNotificationsController(runtime, { isApplicable: applicable });
-    if (sequence !== token || !applicable()) { next.dispose(); reconcile(); return Promise.resolve(); }
+    const view = createNotificationViewLease(runtime, { isApplicable: applicable });
+    const next = view.controller;
     controller = next;
+    if (!view.start() || sequence !== token || !applicable()) { next.dispose(); reconcile(); return Promise.resolve(); }
     attach(next.subscribe(reconcile), token);
-    snapshot = Object.freeze({ phase: 'active', controller: next });
-    const published = snapshot;
     // Install the promise before observer callbacks so a reentrant start cannot
-    // create a second initial read. The microtask rechecks exact ownership.
+    // create a second initial read. Begin the new read before exposing a core
+    // that may still retain its earlier same-session inbox snapshot.
     const read = Promise.resolve().then(async () => {
-      if (sequence === token && controller === next && applicable()) await next.loadInbox();
+      if (sequence !== token || controller !== next || !applicable()) return;
+      const loading = next.loadInbox();
+      if (sequence === token && controller === next && applicable()) {
+        snapshot = Object.freeze({ phase: 'active', controller: next });
+        emit(snapshot);
+      }
+      await loading;
     });
     initialRead = read;
-    emit(published);
     return read;
   }
   return Object.freeze({

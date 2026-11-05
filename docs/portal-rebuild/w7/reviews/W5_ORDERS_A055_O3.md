@@ -1,0 +1,11 @@
+# W5 Orders O2 successor: full source gate withheld
+
+Owner: Kanuj. **O1 and O2 exact controls pass; complete25-path candidate WITHHELD on a disposal finding.** Head `a05505e60495d5023cd30d6fa4962638a6501f25`, base `f060f225983d388bccf5423983e8e0beca540251`. Full25 pins/patch9cf16ed5 and packeta902df31 match; actual canonical DTO4 equal reviewed99/603, no projection/override. [Exact current results](W5_ORDERS_A055_O3_RESULT.json).
+
+Both unchanged W7 originals pass1/1 separately: O1a44 callback cancellation and O2aa497 current-use publication binding. The new consumer compares the current product reference's version/schema without relabeling older historical events. This closes O2 at source level and preserves O1; old acc/a5 failures were not rerun or relabeled. It is not a full candidate pass.
+
+**W7-W5-O3, P2.** createOrdersController.refresh starts begin/readOrdersIndex without a live/disposed guard. Permanent disposal clears rows and aborts current reads, but a later refresh creates a fresh AbortController and invokes the fixed read again when the shared session remains ready. That contradicts the controller's route-lifetime disposal boundary.
+
+The independent actual Root ApplicationSession/createCommercePort/controller control disposes a newly created controller, awaits refresh and checks its counted fixed request. The request returns a canonical empty Commerce page; final session remains ready and controller stays ended, but fixed calls is1 rather than0. **0/1, exit1.** [Exact inert control](../source-controls/W5_O3/w7-orders-disposed-refresh.test.mjs) and [binding](../source-controls/W5_O3/SOURCE.json) are preserved. No actual network/financial effect, restored private UI, payload disclosure, server-authorization bypass or user-browser reproduction is claimed. The defect is acquisition after consumer disposal, not authority from the still-valid session.
+
+Review stopped here. No independent126-suite/types/build or complete25-source acceptance is claimed. W5 owns a separately frozen complete successor and W7 rechecks independently. Actual Root route/VM/lifetime/namespace/entitlement/typed-write and backend/genuine/visual gates remain open. Accepted M02, original/intermediate failures, CB/M65/Guidance/private-return/photo/principal44 holds and all counters are unchanged. No W7 production correction or resource grant.

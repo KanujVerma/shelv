@@ -1,0 +1,12 @@
+{
+  "owner": "Kanuj",
+  "head": "77defdf4211358ba76f33d68e2c3ad1f7f623e24",
+  "finding": "W7-W5-O4",
+  "proofLevel": "SOURCE_FINITE_FIXED_CALLBACK_ONLY",
+  "programSha256": "02e21032f20ee788e4446a598c6fbf9b9fbe83ebf951fb4fe3f9887fbfa6152e",
+  "binding": "Byte-exact copy under immutable current source apps/portal/tests, with actualRootSDK/port/controller and syntheticclosedHTTP/canonicalemptyresponse; noSourceRoot override",
+  "result": "0/1 expectedfixedcalls1 observed2, stateended/indexnull/cookieREADY",
+  "logSha256": "56327c70d330d40a4f924a2343494db5afded1c365a6990af6c65462732bc934",
+  "resources": "NoactualAuth/SQL/HTTPbank/provider/browser/oldfixture/genuine",
+  "archiveIsNotFixtureGrant": true
+}

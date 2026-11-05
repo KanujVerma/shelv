@@ -1,0 +1,645 @@
+{
+  "owner": "Kanuj",
+  "head": "bb1f96a32195638ef11d4efc3d9551f695784c0c",
+  "base": "d31c901aaed51ae4cc283eec8ea9d2374bd1a88b",
+  "verdict": "WITHHELD_FIRST_MATERIAL_FINDING_O5_COMPLETE28_REVIEW_INCOMPLETE",
+  "finding": {
+    "id": "W7-W5-O5",
+    "priority": "P2",
+    "title": "Unchanged external selection reopens the purchase after legitimate original-quote navigation",
+    "sourcePath": "apps/portal/src/features/orders/OrdersPage.tsx",
+    "sourceLine": 83,
+    "expected": "The internally opened original quote remains visible until an actual external target change or another deliberate navigation",
+    "actual": "Quote loads, then unchanged selected purchase is automatically reopened",
+    "readSequence": [
+      "purchase",
+      "quote",
+      "purchase"
+    ],
+    "writes": 0,
+    "proofLevel": "CONTROLLED_SOURCE_EFFECT_CALLBACK_WITH_REAL_ORDERS_CONTROLLER_PORT_CODECS",
+    "notProved": [
+      "hydrated React/browser",
+      "actual Root Commerce VM reachability",
+      "Auth/financial authority",
+      "private-payload leak"
+    ],
+    "backSeparatelyTested": false
+  },
+  "packetSha256": "5d9c4e6f0cc9c12730f8cff1e58d6aaa18883c558a9ab4264ee86a038d7300de",
+  "patchSha256": "cc28d8126dec1591e19bf0ce7d14cf461e9fef4c9e4db5ec3e2464f05bee6512",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/features/orders/OrderSheets.tsx",
+      "blob": "9281d0e06e7b92881a361a94f2e4da97b5bfde90",
+      "sha256": "80feb45e2361e73da01b2326431653d24cbff9ef6f9d3bf4fb5dab1b35713c54",
+      "bytes": 6802
+    },
+    {
+      "path": "apps/portal/src/features/orders/OrdersPage.tsx",
+      "blob": "c79739b32168e450cbaf592b7332f024d69cc473",
+      "sha256": "09487a0201dd980fabe7e424296f8d911d4c7cf1aa8a173d97391e282fddd685",
+      "bytes": 18736
+    },
+    {
+      "path": "apps/portal/src/features/orders/README.md",
+      "blob": "8af645bb2a0321d028a8dc3fc419d75abdcf2117",
+      "sha256": "b026fd52d2e742f8f86889c17c7985df8089afa2f2a5f5647e26bd7b283474b4",
+      "bytes": 19535
+    },
+    {
+      "path": "apps/portal/src/features/orders/contract.typecheck.ts",
+      "blob": "9668bda6d1a7969ab357ed6e34a0ff610cf2e4dd",
+      "sha256": "40f804136a9681fcb2e70d960f419090e36b735f705ad38a7e7908eb52f22f2c",
+      "bytes": 1112
+    },
+    {
+      "path": "apps/portal/src/features/orders/controller.ts",
+      "blob": "57a4c912e4b60d68060ecd8425d383389903f9d2",
+      "sha256": "53889b48478447f7f5ed5765fbe00a2b1914cbc35f8c1f63ee781104a1704b98",
+      "bytes": 15198
+    },
+    {
+      "path": "apps/portal/src/features/orders/dependencies.ts",
+      "blob": "e465e81ab808b1e7fbb5029c9b0d626467d0ba22",
+      "sha256": "2a3bb9dc4e1726d13056e7f1f148aecd27bc96489d711676601d60a3b8ff3a4f",
+      "bytes": 3721
+    },
+    {
+      "path": "apps/portal/src/features/orders/index.ts",
+      "blob": "e7386f3490e7041892dd1a9a582762430b1b8302",
+      "sha256": "213b2ef70d15279a1847877ee17a92d644ba0cf6aae544ce7f1aec8632c2474c",
+      "bytes": 828
+    },
+    {
+      "path": "apps/portal/src/features/orders/model.ts",
+      "blob": "88bdb8d73db2e60bc001f9abe138e65df9685b44",
+      "sha256": "9fc69f7315eabfa2a2052d9a08d9f39113c592d14a397611a180dd088d4cca07",
+      "bytes": 3952
+    },
+    {
+      "path": "apps/portal/src/features/orders/orders.css",
+      "blob": "3c86e9e8e1826ef09e18cad2caeb5c14876221bf",
+      "sha256": "78f516531c150949a077ad7d584563c7929517765dfe3884f6e0c6140272a590",
+      "bytes": 2876
+    },
+    {
+      "path": "apps/portal/src/features/orders/port.ts",
+      "blob": "1adf5838791a94168781b2fc6f56dd3759f752d9",
+      "sha256": "f529beb8c42de6dd67192c70cce9d0659d764babebd6e7dbf018d7cb17f76480",
+      "bytes": 5883
+    },
+    {
+      "path": "apps/portal/src/features/orders/presentation.tsx",
+      "blob": "e2b39c7cfd5113a0b0a4b7100b4e7d441c88ac08",
+      "sha256": "30fc7f547e09b075249cef85e9c465788d246487d437d3fa263aa4a97ffc24bc",
+      "bytes": 5738
+    },
+    {
+      "path": "apps/portal/src/features/orders/types.ts",
+      "blob": "e09be79bc72601a593ed9c6f6e7631f357c141b5",
+      "sha256": "431a6c7daea6f1b2546df42d91ceee9cf9519125d2b0a8a17febcacb19b146b8",
+      "bytes": 2998
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-build.test.mjs",
+      "blob": "1582f0f4cec2e34ca1ee881602a2b6a75bc3373a",
+      "sha256": "952f1293b6a8f548a1adbc5c034defc0f4b17eec1a4a2c8dd1506237a2e471a3",
+      "bytes": 1082
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cab.test.mjs",
+      "blob": "221ce5e8852573cf3a1b9c918c7095efbdded76b",
+      "sha256": "a6416ca1d7cfe208e2f416661c025f8210bfd3503c5e92e084c09d49107e66a5",
+      "bytes": 12317
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-controller.test.mjs",
+      "blob": "59a140afd9103b91c001bd680c45f70a7dc108ed",
+      "sha256": "45529da6b5aefdb424694f4b7601ca0d0f13356374626c00366b96c59a8af9fd",
+      "bytes": 10937
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu-fixtures.mjs",
+      "blob": "311eb26509005447eef3c11619eecf9683f8d4b9",
+      "sha256": "aa3ed692cf72be1e6c460d7e14bec2961246bfec8ca6f333a0d19fe586b198c4",
+      "bytes": 5953
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu.test.mjs",
+      "blob": "f6250ceb428ed6786b07aceded05e1f3791e716a",
+      "sha256": "11c23fa1801cb3abf394307cde8a2175d131f8f85a6c3b89817723520d97e9b1",
+      "bytes": 16411
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu4-fixtures.mjs",
+      "blob": "17410cb10ea196998f2f7568f5f463dd34dad31a",
+      "sha256": "1899ea22c6d3a32f853e0501e09e8a6c665ad8e5218ac6bb43a02f9bec24d074",
+      "bytes": 1850
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu4.test.mjs",
+      "blob": "c48098ad751716af7e5123e1f6986dd4051ab1d9",
+      "sha256": "cedf4a80dec55775c8bb2cbf731a87a532f3c6a46315d20f6944682e4dbec1f4",
+      "bytes": 9752
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-dispatch-cancellation.test.mjs",
+      "blob": "e0ac04eee1af4aa879340bf4bd4c20789439e982",
+      "sha256": "374fc03f25115d2dcd45a1f9d05cbc092522209368237519042b417f51e7642a",
+      "bytes": 6233
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-disposal.test.mjs",
+      "blob": "e3108dc8a3f6ea8a9f8d8949db2f99da6a2100b4",
+      "sha256": "b8caed77c0e6596fb688e319c1ba6349ea351f3c8b0e55a425692fa3934020d6",
+      "bytes": 5995
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-fixtures.mjs",
+      "blob": "0f25f8e1d862c3f731e945c0d7b2735952760a44",
+      "sha256": "a3dd90632167a29d4132e1b07242419796f05ea928d30ef5bf6592778fb319ea",
+      "bytes": 4918
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-model.test.mjs",
+      "blob": "301545b4ced380c904a421ce9ab06c752ce0c303",
+      "sha256": "a142bda6a28a75a1bc746da145504fa1e575ad93e44c40e968957ae189775d74",
+      "bytes": 4312
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-port.test.mjs",
+      "blob": "936c22368911966b751468ec45f20ab6d92e94d3",
+      "sha256": "06e58eb740e7fac80704921d8942d3391baf859edb7ca11917247f55a5a3bdd8",
+      "bytes": 4923
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-render.test.mjs",
+      "blob": "d3ee571f13ee039f31bceb8d1823061a7f10f015",
+      "sha256": "19d75f90d82d8228dac57eedc9382f3cc4f28ba0bebad2ce211fbbf4efb3583b",
+      "bytes": 11072
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-selection-lifecycle.test.mjs",
+      "blob": "b7d98dda1fbe696e36c7482ffb4d90d5e615d97e",
+      "sha256": "d944673c39985da528cdc7c7dfc53e1a6176472c90316ff0f9607e420f83b3df",
+      "bytes": 7579
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-terminal.test.mjs",
+      "blob": "66822a5650e2172c8f1dd6c19ce664ae7292dd3f",
+      "sha256": "9a655a53b7ada50c452acdfc359d517f40440a0e1b2ed86fe5b807914c6e744c",
+      "bytes": 7247
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-use-reference.test.mjs",
+      "blob": "ff59b28cc74809cb54cd30c48a3dbc1345567fed",
+      "sha256": "90816404b571e9ba80289ecea34d597894b1592a67e618513d63e874c92ca2a7",
+      "bytes": 4891
+    }
+  ],
+  "closurePins": [
+    {
+      "file": "apps/portal/package-lock.json",
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    },
+    {
+      "file": "apps/portal/package.json",
+      "sha256": "294dbd426b9840bd1d524e443edff4ff3c5026b39e9137c9bf897d156715bb02"
+    },
+    {
+      "file": "apps/portal/session-integration/runtime/package-lock.json",
+      "sha256": "4024b48fb339605a438a3bfe68f6e547dade8c86660c6f06b41c278aa2289ba0"
+    },
+    {
+      "file": "apps/portal/session-integration/runtime/package.json",
+      "sha256": "00e05b6bf40fcf7dae06cc190d77325d8bc7236dff639e5aacffe8a498792c7e"
+    },
+    {
+      "file": "apps/portal/site/auth/advisor-cookie-session.js",
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5"
+    },
+    {
+      "file": "apps/portal/site/auth/care-actions.js",
+      "sha256": "af283c549a1a1b7a404f44c387921991b7cdcd2f52a4a63af3c2e194e737e17b"
+    },
+    {
+      "file": "apps/portal/site/auth/client-cookie-session.js",
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0"
+    },
+    {
+      "file": "apps/portal/site/auth/commerce-actions.js",
+      "sha256": "795d37a5ec1f6451c4318234f2636e834849c0c1ce0c8fc19815b3c6655d7acc"
+    },
+    {
+      "file": "apps/portal/site/auth/navigation-return.js",
+      "sha256": "aab8c07b9c589e1af4bf521716407e35bb97574664196b3e58b2d1a9485e4dcd"
+    },
+    {
+      "file": "apps/portal/site/auth/plan-actions.js",
+      "sha256": "64d758036946cd2fa2109a23e46066e0fa350347e45f84f1861d6d47190a9a23"
+    },
+    {
+      "file": "apps/portal/site/auth/portal-routes.js",
+      "sha256": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5"
+    },
+    {
+      "file": "apps/portal/site/auth/review-actions.js",
+      "sha256": "6796d30a8b774559cac3924c9db7c5528358dd672b1cdabe060a428be881fcb4"
+    },
+    {
+      "file": "apps/portal/src/app/retained.ts",
+      "sha256": "146d949005acc395692eca804824c2a67fb0c9bfbe5b0be98d4018f8a265b5a1"
+    },
+    {
+      "file": "apps/portal/src/app/session.ts",
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    {
+      "file": "apps/portal/src/features/orders/OrderSheets.tsx",
+      "sha256": "80feb45e2361e73da01b2326431653d24cbff9ef6f9d3bf4fb5dab1b35713c54"
+    },
+    {
+      "file": "apps/portal/src/features/orders/OrdersPage.tsx",
+      "sha256": "09487a0201dd980fabe7e424296f8d911d4c7cf1aa8a173d97391e282fddd685"
+    },
+    {
+      "file": "apps/portal/src/features/orders/controller.ts",
+      "sha256": "53889b48478447f7f5ed5765fbe00a2b1914cbc35f8c1f63ee781104a1704b98"
+    },
+    {
+      "file": "apps/portal/src/features/orders/dependencies.ts",
+      "sha256": "2a3bb9dc4e1726d13056e7f1f148aecd27bc96489d711676601d60a3b8ff3a4f"
+    },
+    {
+      "file": "apps/portal/src/features/orders/index.ts",
+      "sha256": "213b2ef70d15279a1847877ee17a92d644ba0cf6aae544ce7f1aec8632c2474c"
+    },
+    {
+      "file": "apps/portal/src/features/orders/model.ts",
+      "sha256": "9fc69f7315eabfa2a2052d9a08d9f39113c592d14a397611a180dd088d4cca07"
+    },
+    {
+      "file": "apps/portal/src/features/orders/orders.css",
+      "sha256": "78f516531c150949a077ad7d584563c7929517765dfe3884f6e0c6140272a590"
+    },
+    {
+      "file": "apps/portal/src/features/orders/port.ts",
+      "sha256": "f529beb8c42de6dd67192c70cce9d0659d764babebd6e7dbf018d7cb17f76480"
+    },
+    {
+      "file": "apps/portal/src/features/orders/presentation.tsx",
+      "sha256": "30fc7f547e09b075249cef85e9c465788d246487d437d3fa263aa4a97ffc24bc"
+    },
+    {
+      "file": "apps/portal/src/features/orders/types.ts",
+      "sha256": "431a6c7daea6f1b2546df42d91ceee9cf9519125d2b0a8a17febcacb19b146b8"
+    },
+    {
+      "file": "apps/portal/src/features/plan/UseFacts.tsx",
+      "sha256": "ee297736f27f2f24eb77ecb8baa78543b00a63c7e3d4b4d276e9db3ea6be23a8"
+    },
+    {
+      "file": "apps/portal/src/features/plan/guidancePort.ts",
+      "sha256": "b662e06cb8c7afdbdfd86a0f112c8fb75e76d0dab08eddf6a9b67a3e7cf85cce"
+    },
+    {
+      "file": "apps/portal/src/features/plan/types.ts",
+      "sha256": "fbe01cfc12787827752a40dd264fd59c92d18f7b2da4798fee99c4cde824d095"
+    },
+    {
+      "file": "apps/portal/src/features/plan/useModel.ts",
+      "sha256": "40316bd1f8b4386d4dbf8ef70afc5f84a5ad73f0a673325ea80e7a0eaf390fc9"
+    },
+    {
+      "file": "apps/portal/src/navigation/routes.ts",
+      "sha256": "48a7efc90a6b94d062010e30f0a31b99393c85cf14a804b2426d7b62d921032d"
+    },
+    {
+      "file": "apps/portal/src/transport/error.ts",
+      "sha256": "1b6be9efd7f110c93d909ee8a2f44e805b3de51f32bfd0715ddf7cdf4c93f034"
+    },
+    {
+      "file": "apps/portal/src/transport/session.ts",
+      "sha256": "deeb60865d92b6a7a0feb1b86a78193a7c093005d0e225cf5554ece1539e46bd"
+    },
+    {
+      "file": "apps/portal/src/ui/assets.d.ts",
+      "sha256": "da5bf71d48cf909584a01c80b445f730507068f5b34c920f352e2bfcf0315e4c"
+    },
+    {
+      "file": "apps/portal/src/ui/icons.tsx",
+      "sha256": "3f105dd9e5093041018b55bcce853cc6a095325fb797d7cda673f5cf2c5f2d63"
+    },
+    {
+      "file": "apps/portal/src/ui/index.ts",
+      "sha256": "b44a16821e22ef4d6bb1f4eb9db180bd391a1f2fd97b90a1e75cd8a9a096f3a2"
+    },
+    {
+      "file": "apps/portal/src/ui/overlay-state.ts",
+      "sha256": "30b5a7ea05c0a45036e6b7f9023a9316315b78d9dcfeb78920f30277a6821a67"
+    },
+    {
+      "file": "apps/portal/src/ui/overlay.tsx",
+      "sha256": "281b97d62325283ff72fccd2a2db96e2207b3d63e470a7be554f16b80cd4b3fd"
+    },
+    {
+      "file": "apps/portal/src/ui/primitives.tsx",
+      "sha256": "990d356778a7c828b85896fb44585df9e07a182687338dd190f2cb129073b925"
+    },
+    {
+      "file": "apps/portal/tsconfig.frontend.json",
+      "sha256": "b930ae73c53ea9dbdd895de85fccbac714e5526ba62a78537d0d72f149437003"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "file": "package.json",
+      "sha256": "7da6e48aa5e39a185f10ac117007ee15beb279c4125e1f30f99c92451ff6d968"
+    },
+    {
+      "file": "src/contracts/ConciergePortal.ts",
+      "sha256": "3fbf69f328c73cd10926dd446df4e266393f69e9fc37943888eabc46271c6dcd"
+    },
+    {
+      "file": "src/contracts/ConciergePortalValidation.ts",
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+    },
+    {
+      "file": "src/contracts/ConciergePresentation.ts",
+      "sha256": "c48cc446b71eaa416c1b084af17db1eda033566518ebe2e1259822e825b795cd"
+    },
+    {
+      "file": "src/contracts/ConciergePresentationValidation.ts",
+      "sha256": "b93b9eab1b55cfb828677067990985716e71c23550662a06782038226cdca33a"
+    },
+    {
+      "file": "src/contracts/ConciergeService.ts",
+      "sha256": "bb27d2a38f7d39b90181852d1e005c448df992883cf40623ce6b57c9222bab4a"
+    },
+    {
+      "file": "src/contracts/PortalCare.ts",
+      "sha256": "6c66bcad8909eb843c6cf0c9432721e124c42c157b59db0846a58dacd511c469"
+    },
+    {
+      "file": "src/contracts/PortalCareMapping.ts",
+      "sha256": "675135cbb83611bbc8c63ed2c5a7e33b17a1f16cc1b48839358c1f45672d1439"
+    },
+    {
+      "file": "src/contracts/PortalCareValidation.ts",
+      "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d"
+    },
+    {
+      "file": "src/contracts/PortalCareValues.ts",
+      "sha256": "31c485f83a7ce142231dd90da43ad402215078419230248a103e3544a275a404"
+    },
+    {
+      "file": "src/contracts/PortalCommerce.ts",
+      "sha256": "af2d1316434cca41ab78ae4b3bed54cb3a5a348c8e915caaa2f84c0aac9a2c38"
+    },
+    {
+      "file": "src/contracts/PortalCommerceMapping.ts",
+      "sha256": "79d265ab4963cde159c21ff1138c292c80a5ad8548bb45cd843efbd04b706934"
+    },
+    {
+      "file": "src/contracts/PortalCommerceValidation.ts",
+      "sha256": "32e19f6ab8c85d5f52024ccf8aa114a088de270b005a806e3600191e4cfe7459"
+    },
+    {
+      "file": "src/contracts/PortalCommerceValues.ts",
+      "sha256": "ac8c72ca26be1ab1c4f3275b75260cd78e0cdbbebad26524ad7e442a1bb8d27f"
+    },
+    {
+      "file": "src/contracts/PortalRebuild.ts",
+      "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc"
+    },
+    {
+      "file": "src/contracts/PortalRebuildMapping.ts",
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+    },
+    {
+      "file": "src/contracts/PortalRebuildValidation.ts",
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+    },
+    {
+      "file": "src/contracts/PortalRebuildValues.ts",
+      "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+    },
+    {
+      "file": "src/contracts/PortalReview.ts",
+      "sha256": "78e06f5af74ad3d17cd5d30e03fce0faca505cb7e5f0e32961dbdb942ff33b74"
+    },
+    {
+      "file": "src/contracts/PortalReviewMapping.ts",
+      "sha256": "de2c64e152156656e7748c5f12c49dd115c6bc88411e488d29bde2e0d122a550"
+    },
+    {
+      "file": "src/contracts/PortalReviewValidation.ts",
+      "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+    },
+    {
+      "file": "src/contracts/PortalReviewValues.ts",
+      "sha256": "cce2545be9626e1a1abf8fb4e6a0e783c53831af9740110db26f37a397457000"
+    },
+    {
+      "file": "supabase/functions/concierge-payments/contract.ts",
+      "sha256": "843f746ee73c7a3d38832a75bb7cd4c518fb92d93714438434d7bd15964b75f0"
+    },
+    {
+      "file": "supabase/functions/concierge-payments/methods.ts",
+      "sha256": "136aed10e5a1c2e74b9297a41f13a8698106c32b182bea6ea4ae8d0c0ee57f24"
+    },
+    {
+      "file": "supabase/functions/concierge-payments/types.ts",
+      "sha256": "05263edb7471942b64e151fef23f5a57287511d6e3b2c18974984c5eeeea4b98"
+    }
+  ],
+  "canonicalDTO4": {
+    "PortalCommerce.ts": "af2d1316434cca41ab78ae4b3bed54cb3a5a348c8e915caaa2f84c0aac9a2c38",
+    "PortalCommerceValues.ts": "ac8c72ca26be1ab1c4f3275b75260cd78e0cdbbebad26524ad7e442a1bb8d27f",
+    "PortalCommerceValidation.ts": "32e19f6ab8c85d5f52024ccf8aa114a088de270b005a806e3600191e4cfe7459",
+    "PortalCommerceMapping.ts": "79d265ab4963cde159c21ff1138c292c80a5ad8548bb45cd843efbd04b706934"
+  },
+  "unchangedPriorPostimages": [
+    "apps/portal/src/features/orders/OrderSheets.tsx",
+    "apps/portal/src/features/orders/contract.typecheck.ts",
+    "apps/portal/src/features/orders/controller.ts",
+    "apps/portal/src/features/orders/dependencies.ts",
+    "apps/portal/src/features/orders/index.ts",
+    "apps/portal/src/features/orders/model.ts",
+    "apps/portal/src/features/orders/orders.css",
+    "apps/portal/src/features/orders/port.ts",
+    "apps/portal/src/features/orders/presentation.tsx",
+    "apps/portal/src/features/orders/types.ts",
+    "apps/portal/tests/w5-orders-commerce-build.test.mjs",
+    "apps/portal/tests/w5-orders-commerce-cab.test.mjs",
+    "apps/portal/tests/w5-orders-commerce-controller.test.mjs",
+    "apps/portal/tests/w5-orders-commerce-cu-fixtures.mjs",
+    "apps/portal/tests/w5-orders-commerce-cu.test.mjs",
+    "apps/portal/tests/w5-orders-commerce-cu4-fixtures.mjs",
+    "apps/portal/tests/w5-orders-commerce-cu4.test.mjs",
+    "apps/portal/tests/w5-orders-commerce-dispatch-cancellation.test.mjs",
+    "apps/portal/tests/w5-orders-commerce-disposal.test.mjs",
+    "apps/portal/tests/w5-orders-commerce-fixtures.mjs",
+    "apps/portal/tests/w5-orders-commerce-model.test.mjs",
+    "apps/portal/tests/w5-orders-commerce-port.test.mjs",
+    "apps/portal/tests/w5-orders-commerce-render.test.mjs",
+    "apps/portal/tests/w5-orders-commerce-terminal.test.mjs",
+    "apps/portal/tests/w5-orders-commerce-use-reference.test.mjs"
+  ],
+  "independentCommand": {
+    "argv": [
+      "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+      "--test",
+      "--test-concurrency=1",
+      "apps/portal/tests/w7-orders-original-navigation.test.mjs"
+    ],
+    "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-bb1/source",
+    "exitCode": 1,
+    "tests": 1,
+    "pass": 0,
+    "fail": 1,
+    "skip": 0,
+    "cancel": 0
+  },
+  "control": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/docs/portal-rebuild/w7/source-controls/W5_O5/w7-orders-original-navigation.test.mjs",
+    "bytes": 5873,
+    "sha256": "3e4b8fbcafdbe6d5baeb29294337a375f6669ab111d83f13473355b701d3859c"
+  },
+  "controlOriginal": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-bb1/w7-orders-original-navigation.test.mjs",
+    "bytes": 5873,
+    "sha256": "3e4b8fbcafdbe6d5baeb29294337a375f6669ab111d83f13473355b701d3859c"
+  },
+  "raw": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-bb1/CURRENT-ORIGINAL-NAVIGATION.log",
+    "bytes": 2436,
+    "sha256": "d0964945b77bf3bb47975a5c752b7f6527ed85c6df161392b4f929d49c7cd228"
+  },
+  "setupEvidence": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-bb1/CONTROL-PATH-SETUP-FAILED.log",
+      "bytes": 74,
+      "sha256": "306cf27bebf2981db8e5d47ceb6dff66942072b5373b4d2ad5d8043cd1427598"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-bb1/CONTROL-INVALID-INDEX-STATE-SETUP.log",
+      "bytes": 1860,
+      "sha256": "98821520060075eaad20fb328990e576385ee30936b8dafba0052873f6219fb0"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-bb1/CONTROL-INVALID-INDEX-STATE-SETUP.mjs",
+      "bytes": 5875,
+      "sha256": "afa9cf622b6d120c3487871b93b1410d628da3f066b8a6784c0ba7a9b5006af4"
+    }
+  ],
+  "pinVerification": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-bb1/PIN-VERIFICATION.json",
+    "bytes": 2403,
+    "sha256": "5e054396623411c6682cd878f727935d719436d0e00abd9bffb170c41d101d40"
+  },
+  "authorCurrentRawByteHashesVerified": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/APPLICATION.log",
+      "sha256": "9f40bc26ba2832b4faa33507e8dd07f126e4eaf83e9b95627d4017fa96c6f09d",
+      "bytes": 252
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/CLOSURE-STRICT.log",
+      "sha256": "759924d955117d372e5e0212a94b7bbb9cfc3d78019e1cf1f61c80c94bbb2843",
+      "bytes": 91
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/CURRENT-O1-BYTE-ORIGINAL1.log",
+      "sha256": "e239d47c27812b12951844413480ab0a815f5b70860d6f4b97117d5d4d3d2f56",
+      "bytes": 929
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/CURRENT-O2-BYTE-ORIGINAL1.log",
+      "sha256": "821f699b64a0bcfc9798a3c18f468d8fec21a30c8aacc24e74e4207b4eb34293",
+      "bytes": 902
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/CURRENT-O3-BYTE-ORIGINAL1.log",
+      "sha256": "829ec440fb3dab13f70b3cc13f6a8ed459bc61a17d642a71e69f0e451f521e0c",
+      "bytes": 899
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/CURRENT-O4-BYTE-ORIGINAL1.log",
+      "sha256": "5add2cc51dd2db7b0bc5ebcda2043d675e08710278768f5c09cdd6b9977f1dd5",
+      "bytes": 875
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/CURRENT-OWNED150.log",
+      "sha256": "e5df3d507d671d8c8bab929307ca3a92d4c8d99d813137654bdccfc793eefbbf",
+      "bytes": 45376
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/FROZEN-OWNED150.log",
+      "sha256": "96431cae422d98c483fafa2015e2d79449ccbf6268a90ce8a7d090b6ec79b664",
+      "bytes": 45375
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/NATIVE-P2-CURRENT4.log",
+      "sha256": "c8ee7d74f22e831c79c0ae694a489a0ab97d7665a2820c91e885b27fadc85a0a",
+      "bytes": 1577
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/NATIVE-P2-CURRENT8.log",
+      "sha256": "97da846702514de6129625da5e9e51862a71006e93f041fbc6188736311bedd7",
+      "bytes": 2537
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/NATIVE-P2-E06-RED4.log",
+      "sha256": "77681a442dd3c912b26fb28d71c8d292f476988203bfc985c8e0e49dbe9ae6ba",
+      "bytes": 20605
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/ROOT-NPM.log",
+      "sha256": "488387192107c8ccbe2dbc343dc42fb0851994327739c388297897096449f039",
+      "bytes": 696819
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/TYPES-app.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/TYPES-frontend.log",
+      "sha256": "5e0ce0235c171270fc3458ee5d6ff81aebb122ba9541a84288ff4c00fc92abf4",
+      "bytes": 74
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/TYPES-runtime.log",
+      "sha256": "fd818405d0adf819c6b054f776b50a35b279bc3b3e64d7a9ee207cede024b8f0",
+      "bytes": 166
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/TYPES-tests.log",
+      "sha256": "4d9a002a4bc06fc267986e16b8505d5278453da95f3437a75987164dfe76bced",
+      "bytes": 71
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-selection-r6/UI.log",
+      "sha256": "1580eaf5e9a7a7ff5b1da8a38588855a5f59dd477629e3fde20fa0be2403f003",
+      "bytes": 183
+    }
+  ],
+  "reportSha256": "d6e546851dbb85a34f93d6a34f61ab5085a533f2e4eb2daf62fbdeef4ed5ca95",
+  "stoppedAtFirstMaterialFinding": true,
+  "noFurtherBb1ReviewOrTests": true,
+  "notRunByW7": [
+    "owned150",
+    "standaloneO1_O4",
+    "full typegraphs",
+    "browser-target/full application build",
+    "whole Root suite",
+    "Back navigation",
+    "browser/server/AuthSQL/financial/genuine or held audits"
+  ],
+  "resourceGrant": null,
+  "recordedAt": "2026-11-04T08:03:55.164970+00:00"
+}

@@ -1,0 +1,78 @@
+{
+  "owner": "Kanuj",
+  "associatedHead": "8d454b8015940ed29d2432635251bdbaba8b70da",
+  "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+  "classification": "VERIFIED_FAILED_STEP_RAW_CUSTODY_EXECUTION_CHECKOUT_UNVERIFIED",
+  "ownerReportedJob": 126467820168,
+  "raw": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/ci-custody/8d-current-failure/RAW-22a23038.log",
+    "bytes": 3984726,
+    "sha256": "22a23038c22791265f7478e5d6c241c5f1d6089731df6ef291f1e40e1e34e5b8"
+  },
+  "ownerRawMode": "0600",
+  "ownCopyMode": "0400",
+  "executionCommit": null,
+  "executionParents": null,
+  "executionTree": null,
+  "reason": "Only failed npm-test step log is supplied; no complete checkout/parents/source execution proof",
+  "counts": {
+    "tests": 4032,
+    "pass": 4031,
+    "fail": 1,
+    "skip": 0,
+    "cancel": 0
+  },
+  "failureBlock": [
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6749019Z not ok 1441 - selectors/extra authority are rejected before egress and unknown action/audience/origin/channel remain unexpected",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6749883Z   ---",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6750114Z   duration_ms: 3.535487",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6750350Z   type: 'test'",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6750870Z   location: '/home/runner/work/shelv/shelv/apps/portal/tests/rebuild-app-browser-model.test.mjs:203:1'",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6751419Z   failureType: 'testCodeFailure'",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6751687Z   error: |-",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6752098Z     The input did not match the regular expression /unexpected finite HTTP request/. Input:",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6752528Z     ",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6752873Z     'ReferenceError: publicationDeliveryReadUnavailable is not defined'",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6753572Z     ",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6753847Z   code: 'ERR_ASSERTION'",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6754100Z   name: 'AssertionError'",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6754328Z   expected:",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6754517Z   actual:",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6754837Z   error: 'publicationDeliveryReadUnavailable is not defined'",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6755199Z   name: 'ReferenceError'",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6755426Z   stack: |-",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6756185Z     eval (eval at router (file:///home/runner/work/shelv/shelv/apps/portal/tests/rebuild-app-browser-model.test.mjs:34:10), <anonymous>:275:28)",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6757416Z   operator: 'rejects'",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6757873Z   stack: |-",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6759085Z     async TestContext.<anonymous> (file:///home/runner/work/shelv/shelv/apps/portal/tests/rebuild-app-browser-model.test.mjs:209:5)",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6760168Z     async Test.run (node:internal/test_runner/test:1054:7)",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6760680Z     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)",
+    "Portal build and local journeys\tVerify package and synthetic client journeys\t2026-11-04T08:24:14.6761093Z   ..."
+  ],
+  "authoredSourceComparisons": [
+    {
+      "path": "apps/portal/tests/rebuild-app-browser-model.test.mjs",
+      "bytes": 17636,
+      "sha256": "c860890202c76b91b2dd5b721cb2f2d8d241a624fb991b311659fdb66ddce81c",
+      "scope": "Authored8d/base9c identity only, not executed checkout proof"
+    },
+    {
+      "path": "apps/portal/tests/rebuild-app-browser.test.mjs",
+      "bytes": 44480,
+      "sha256": "c80ceb266faabe527d8fa133d7edb62ec555ef8b11e18287fe0b03fcc555c37f",
+      "scope": "Authored8d/base9c identity only, not executed checkout proof"
+    },
+    {
+      "path": "apps/portal/tests/helpers/publication-notification-fixture.mjs",
+      "bytes": 1809,
+      "sha256": "96588892f6cf0ac2db967be071b5b0bb35c77b98d90ba12f07d162f065c09c55",
+      "scope": "Authored8d/base9c identity only, not executed checkout proof"
+    }
+  ],
+  "diagnosis": "OWNER_SOURCE_HYPOTHESIS_AST_DEPENDENCY_BINDING_MISSING_NOT_W7_REPRODUCED_OR_FIXED",
+  "hostedBrowserCasesClaimedPassed": false,
+  "noSourceChangeOrTestReproduction": true,
+  "resourceGrant": null,
+  "recordedAt": "2026-11-04T09:10:36.950081+00:00",
+  "reportSha256": "435d2b40915ce6469d95ad10d79dcb9bd3164a66962d2a20225aa2c27324fbba"
+}

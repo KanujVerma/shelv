@@ -17,12 +17,12 @@ export function buildNeutralNotificationEmail(context:DeliveryContext,portalOrig
  const c=parseDeliveryContext(context),base=new URL(portalOrigin);requireValue(base.protocol==='https:'&&base.origin===portalOrigin&&!base.username&&!base.password);
  const d=c.event.destination;
  // A07 has no admitted direct resolver. The fixed inbox is an explicit recovery destination.
- const path=d.kind==='plan_version'?`/history/versions/${d.version}`:d.kind==='public_history'?`/history/${encodeURIComponent(`public_${d.recordKind}:${d.recordId}`)}`:'/notifications';
+ const path=d.kind==='plan_version'?`/history/versions/${d.version}`:d.kind==='public_history'?`/history/${encodeURIComponent(`public_${d.recordKind}:${d.recordId}`)}`:d.kind==='unavailable'&&d.reason==='advisor_review_resolution_unavailable'?'/advisor/notifications':'/notifications';
  const link=new URL(path,base).href;
  return {deliveryId:c.deliveryId,to:c.recipient.email,subject:'an update from shelv',link,text:`there is an update in your shelv portal. sign in to view it.\n\n${link}`};
 }
 export function readNeutralNotificationEmail(v:unknown):NeutralNotificationEmail{
  const p=readPlanShape(v,object({deliveryId:uuid,to:{type:'text',max:254,empty:false},subject:en('an update from shelv'),link:{type:'text',max:1000,empty:false},text:{type:'text',max:1200,empty:false}})) as NeutralNotificationEmail;
- const u=new URL(p.link);requireValue(u.protocol==='https:'&&!u.username&&!u.password&&!u.search&&!u.hash&&(/^\/history\/versions\/[1-9][0-9]*$/.test(u.pathname)||/^\/history\/public_(review|instruction|reply)%3A[0-9a-f-]{36}$/.test(u.pathname)||u.pathname==='/notifications'));
+ const u=new URL(p.link);requireValue(u.protocol==='https:'&&!u.username&&!u.password&&!u.search&&!u.hash&&(/^\/history\/versions\/[1-9][0-9]*$/.test(u.pathname)||/^\/history\/public_(review|instruction|reply)%3A[0-9a-f-]{36}$/.test(u.pathname)||u.pathname==='/notifications'||u.pathname==='/advisor/notifications'));
  requireValue(p.text===`there is an update in your shelv portal. sign in to view it.\n\n${p.link}`);return p;
 }

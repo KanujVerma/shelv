@@ -1,0 +1,208 @@
+{
+  "head": "01b6e5f125f19f2a404bef528c90572e33cb29fe",
+  "packetSha256": "09f60089ea2e56be90ff791a7b27c32b96e02d859e3353ab3ae5eb7405b1356a",
+  "ownScopesAllUnchanged": {
+    "NOTIFICATION-COMPOSITION-SOURCE-PACKET.json": {
+      "originalHead": "657705a6aa705d59d8efa0fd95f6d5df41d77ff8",
+      "sourcePins": [
+        {
+          "path": "apps/portal/src/app/AdvisorWorkspaceNotifications.tsx",
+          "bytes": 2179,
+          "sha256": "a83ad27c7088b390513a36ad6c74031b0601413a0408118e18c6a246795683f4"
+        },
+        {
+          "path": "apps/portal/src/app/Application.tsx",
+          "bytes": 23387,
+          "sha256": "9ff9dfb2273ad80262ea00236c04e7671e4dd59d98c737665c05459b94f40510"
+        },
+        {
+          "path": "apps/portal/src/app/advisor-notifications.ts",
+          "bytes": 3078,
+          "sha256": "b7ebf71be7d97c97e7ba255f5b400070c2165e20dff418a45b2c02385ab41310"
+        },
+        {
+          "path": "apps/portal/src/app/notifications-entry.tsx",
+          "bytes": 8464,
+          "sha256": "c9bbb238a557cfea16c0c932f3024c42292f148107ea04915e13ed612466db2d"
+        },
+        {
+          "path": "apps/portal/tests/helpers/self-purchase-application-preimage.mjs",
+          "bytes": 7113,
+          "sha256": "98f069d7ec063bd675c2f6edaf3b013bf25e0fe983b1c2b511708b7e7722999c"
+        },
+        {
+          "path": "apps/portal/tests/rebuild-notifications-entry-fixture.mjs",
+          "bytes": 13841,
+          "sha256": "14c023490411a1f0ba57a43002d3fa732e88b84d82fe6910ec64a3b9bfe495d6"
+        },
+        {
+          "path": "apps/portal/tests/w0-notification-composition-preservation.test.mjs",
+          "bytes": 1324,
+          "sha256": "a5e902972826d350ab66258fb9e6c9be6458fe4de6937130f16f6699206a86c1"
+        },
+        {
+          "path": "apps/portal/tests/w0-notification-composition-types.test.ts",
+          "bytes": 1051,
+          "sha256": "6d972db1ebc9db5ffd37193cdc20d5131cfdfb7b86edc7ac18189240881bbe0e"
+        },
+        {
+          "path": "apps/portal/tests/w0-notification-composition.test.mjs",
+          "bytes": 10430,
+          "sha256": "55e3c87ec93a3553001ee84c7a40367b9b617870e5a4028ca9a57a7d96f0dcde"
+        },
+        {
+          "path": "apps/portal/tests/w0-notification-owner-types.test.mjs",
+          "bytes": 1267,
+          "sha256": "ed939d23d2ebfc644e36d3f5a21695d9e856ace378765789bb620847d34fcc74"
+        },
+        {
+          "path": "apps/portal/tests/w0-notifications-startup-preservation.test.mjs",
+          "bytes": 1240,
+          "sha256": "43347f0dc9c8dd29f6d17f602c9401076b1685225ef2cb023c19ac47c2b2f974"
+        },
+        {
+          "path": "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_COMPOSITION_20261104.md",
+          "bytes": 6209,
+          "sha256": "fcfed329e69924da9f487ca2da867d7807b5c2b58b473421c3d5ab343ef7b406"
+        }
+      ]
+    },
+    "ACCOUNT-ADDRESS-SOURCE-PACKET.json": {
+      "originalHead": "34c7459c8f79599611f1d3adbb7c6509fb2ac740",
+      "sourcePins": [
+        {
+          "path": "apps/portal/src/app/account-address-request.ts",
+          "bytes": 5217,
+          "sha256": "70d1acab8a36ab5a990addc89814dea84e841036b7c9cedc7729d02f1168b6e6"
+        },
+        {
+          "path": "apps/portal/tests/w0-account-address-request.test.mjs",
+          "bytes": 7994,
+          "sha256": "4c9ca716b64808c75c2730083f1b7bbcf452f9eca5b459b3f7f8ff4654ebf4f5"
+        },
+        {
+          "path": "docs/portal-rebuild/eight-threads/W0_ACCOUNT_ADDRESS_REQUEST_20261104.md",
+          "bytes": 3404,
+          "sha256": "792998e21f468ab5f7b57532efb4fdba4f6e05d6fd7e8afeb07709cebb700ab7"
+        }
+      ]
+    },
+    "ADMISSION-ADAPTER-SOURCE-PACKET.json": {
+      "originalHead": "a5b45f9d0936a6c53c5760042ad3a3df315c2606",
+      "sourcePins": [
+        {
+          "path": "apps/portal/src/app/advisor-admission-request.ts",
+          "bytes": 6561,
+          "sha256": "adb4ceb13bf45afdc691a360e3453afa14b244c0f6f823fa2b0fe585a793596d"
+        },
+        {
+          "path": "apps/portal/tests/w0-advisor-admission-request.test.mjs",
+          "bytes": 9249,
+          "sha256": "4a9e8dcfc60fbd827b0af3eca0d62c42da0b919cda5c7e651660ccf35af9f02e"
+        },
+        {
+          "path": "docs/portal-rebuild/eight-threads/W0_ADMISSION_PORTS_20261104.md",
+          "bytes": 2877,
+          "sha256": "9c1cc13eeeb224eb345da60cb5b3499b66fc93e34bd66db6301c2998d207ad5f"
+        }
+      ]
+    }
+  },
+  "extraCurrentSpineTests": [
+    {
+      "path": "apps/portal/tests/w0-admission-adapter-consumer.test.mjs",
+      "bytes": 4292,
+      "sha256": "26aea344d059a065e5f694280a0d4365665898a0a8679ff0ceaa3b85c35472f8"
+    },
+    {
+      "path": "apps/portal/tests/w0-admission-adapter-consumer-types.test.ts",
+      "bytes": 499,
+      "sha256": "d4d9ecd8c66e54e4a1a1b9c27edf098a8f7494fded850cae29abf231d40a1978"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_CURRENT_SPINE_342_20261104.md",
+      "bytes": 2324,
+      "sha256": "a26443395cc0b89fb1ac4716b6ec0e596e8fb1594eefc649ede5601fe3659a2f"
+    }
+  ],
+  "acceptedFeature18Plus13Exact": true,
+  "selectedOld2252Changed": [
+    {
+      "path": "apps/portal/src/features/advisor/controller.ts",
+      "old": "8ec3701b3ed38892eb023719db2a838a96be3c5d568b50870828e318483bc752",
+      "current": "d0bd4ea15c908c9c1e80e303cf52d16c7413326bb4f51d27c7d6856dcae3c990"
+    },
+    {
+      "path": "apps/portal/src/features/advisor/AdvisorWorkspace.tsx",
+      "old": "2069a123ba27219391e4212d536b69c2761a43ecc186c2ab69c7162723be7d17",
+      "current": "a62f12dd966411184a0b12add5a51bbe8387a5a25db3e98ad5ad1822bfe58fb8"
+    }
+  ],
+  "freshEntireGraph": "NOT_YET_COMPILED",
+  "sourceOrRuntimeOverrides": false,
+  "owner": "Kanuj",
+  "verdict": "WITHHELD_CURRENT_SPINE_ADMISSION_ABSENCE_PROOF_GAP",
+  "finding": {
+    "id": "W7-W0-ADMISSION-CURRENT-01",
+    "severity": "P2",
+    "kind": "TEST_EVIDENCE_PATH_NOT_EXERCISED",
+    "path": "apps/portal/tests/w0-admission-adapter-consumer.test.mjs",
+    "case": "uncertain add plus bare absence cannot discard original",
+    "cause": "checkConnection clearscanAddClient; checkStatus requirescurrenttrue so returnswithoutHTTPstatus404",
+    "expectedStatusCalls": 1,
+    "actualStatusCalls": 0,
+    "productionClaim": "NONE; capabilityguardworksasdesigned; no AuthAdmin/backend/securityfailure demonstrated"
+  },
+  "independentResults": {
+    "originalCurrentAdapterPlusConsumer": {
+      "pass": 26,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0
+    },
+    "newSensitivityProgram": {
+      "retainedFourPrefixPass": 4,
+      "newCoverageFail": 1,
+      "combinedPass": 4,
+      "combinedFail": 1
+    },
+    "current157TypesFreshGraph": "NOT_RUN_AFTER_FIRST_MATERIAL_FINDING"
+  },
+  "program": {
+    "path": "source-controls/W0_ADMISSION_CURRENT_01/w7-current-admission-status-coverage.test.mjs",
+    "sha256": "eb5fe10d70d825430c7dd419d8993d6f2a31cfd45d6a0a9a85d4232a8be3963d"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-current-spine-01b/PINS.json",
+      "bytes": 5688,
+      "sha256": "c3dae38832c988cb17096ac6305ec459d0d614252c0eaef57863145fd1b07cb9"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-current-spine-01b/COMMAND-26.json",
+      "bytes": 484,
+      "sha256": "d28f00cfe212d4592465ca1644fbe0a2127e58a9d9f07e41463fc589709b80e1"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-current-spine-01b/CURRENT-26.log",
+      "bytes": 6810,
+      "sha256": "d53ca0e1be56c5c46be517cc95fc23054bb6e92cae878eb6d25677746d1c7189"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-current-spine-01b/W7-COMMAND.json",
+      "bytes": 623,
+      "sha256": "d80bf64aa4ccd01a084cca731a3064917ffa7faa6f1358aae3a69698a4c01634"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-current-spine-01b/W7-STATUS-COVERAGE.log",
+      "bytes": 2790,
+      "sha256": "65c1b7f5e5c11261e240405059e0799474b8d8d22fda57f2d6eccce94f2d1c27"
+    }
+  ],
+  "next": "Ownerensureactualcurrentcapability+same-originalstatus404 isinvoked,assertrequest/callandretainedoriginal/noextraadd; submitnewtest-onlycurrent-spinesuccessor. NoW7product/testfix orold01bresume.",
+  "limits": [
+    "Own657/34/a5 Sourcepasses remain separate/unchanged; currentstaticpostimage18+feature31/selected2252twochangesverified only",
+    "No overallRoot/currentCI/SQL/AuthAdmin/backend/browser/genuine/acceptancecounter/resourcegrant",
+    "Principal44/provider/Source/Guidance/private-return/M65/photo/final-egress andprotectedfixtures unchanged"
+  ]
+}

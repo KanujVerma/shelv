@@ -1,0 +1,237 @@
+{
+  "head": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+  "parent": "686734c6bb51197d93e2c86046f16337223ab1b4",
+  "base": "9c255666e5a8826e32a42fb82ecf4cd2bcc4687c",
+  "source3Exact": [
+    {
+      "path": "apps/portal/tests/rebuild-app-browser-model.test.mjs",
+      "bytes": 17771,
+      "sha256": "fbc8e0e4f5852cf806b84fa9465ec12db4601b41e1aac86b8ee10c16874fbbe6"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_ROUTER_BINDING_20261104.md",
+      "bytes": 2573,
+      "sha256": "8f4d916e77be827c8fb9fba88f4b966a4c15f14131efe687502b49d6bf3ef0c8"
+    },
+    {
+      "path": "docs/CONTEXT_SYNC.md",
+      "bytes": 411204,
+      "sha256": "487a3fd5ec864e91c6f0ce2750828f32d9ea6a7a41c9af99d65fdab07abb8425"
+    }
+  ],
+  "copied23Exact502": [
+    {
+      "path": "docs/portal-rebuild/w7/ACCEPTANCE_LEDGER.json",
+      "bytes": 138124,
+      "sha256": "29f53881fcbbf93ae961cbae9ee5c3d34be3e549a8cafadfd35fa9abddb86cff"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/PUBLISHED_9C255_SOURCE_REFERENCE.json",
+      "bytes": 737,
+      "sha256": "0a6814fc2dfb403340b42bf94e6bfc7cbb7205781462101f3e375054117de26a"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/REVIEW_QUEUE.json",
+      "bytes": 67956,
+      "sha256": "5c50eca1500086230809e585cdf6896399235c060f311b5c01d99ced5e3d5780"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/SESSION_HANDOFF_20261103.md",
+      "bytes": 78027,
+      "sha256": "f9229eb3d47ae12f33d0c9786ca20e80f685e0ad1882adea54d7812f52e90fbc"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/HOSTED_8D_PORTAL_FAILURE.md",
+      "bytes": 2206,
+      "sha256": "435d2b40915ce6469d95ad10d79dcb9bd3164a66962d2a20225aa2c27324fbba"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/HOSTED_8D_PORTAL_FAILURE_RESULT.json",
+      "bytes": 6088,
+      "sha256": "96b7305de67647e5d982c50355fd61ef29e3f9addd65c101bac31b2a792e4b20"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/HOSTED_E06_EXECUTION_SOURCE_CUSTODY.md",
+      "bytes": 2261,
+      "sha256": "e0db8dc96650eda64a200df53f79817ea6ba95b2865cad03e86f7ed9c50852a8"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/HOSTED_E06_EXECUTION_SOURCE_CUSTODY_RESULT.json",
+      "bytes": 6117,
+      "sha256": "b10ccd8ae1d7afc0223831fc6198bcb3ddf3302ed8476ef5a12010d8d5f5e83a"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/HOSTED_E1829_PORTAL_FAILURE.md",
+      "bytes": 3229,
+      "sha256": "5c0f607f1c341dcbcf544bce8bc26f8ae68c35d21519e1331c57b1474df025fc"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/HOSTED_E1829_PORTAL_FAILURE_RESULT.json",
+      "bytes": 9047,
+      "sha256": "9e3968a15b1073db18e9d748c6c9c05772199ea48715b2931e788f48c3fa9109"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_9C255_SOURCE.md",
+      "bytes": 2097,
+      "sha256": "2e83745cb432f90b308f61bdb720c1deb73543d61e35c3413fb4551f81ddfaa2"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_9C255_SOURCE_RESULT.json",
+      "bytes": 6821,
+      "sha256": "c9fcad1ff57a3567c3354ca5d9818cbf841ddfc6d395a7f5dfd89a0810a52ed2"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W2_INLINE_8D454_SOURCE.md",
+      "bytes": 5434,
+      "sha256": "3bd0b0bf9137a88205f5f514c34c074f5549a433d7c4a4ac54345d7ae857c297"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W2_INLINE_8D454_SOURCE_RESULT.json",
+      "bytes": 15440,
+      "sha256": "65aa4b19715bdcc6c487b0ed563b1d0124dfba9818e261b30e86418ba940e074"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W4_NO_PHOTO_39B384_REPORT.md",
+      "bytes": 3306,
+      "sha256": "cd2102f350a97c31c961efe85c20f6858abb9f00e54955904e7f10d30d578609"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W4_NO_PHOTO_39B384_REPORT_RESULT.json",
+      "bytes": 11344,
+      "sha256": "84bf87ab928882cb0f641279719d134e7dadd92a7a19b11d4cf248e67f0b0ffb"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W4_NO_PHOTO_ELIGIBILITY_9C255.md",
+      "bytes": 9191,
+      "sha256": "3b24ca0519f4888e3aae00099142ba7812319b9283d4863563e9640689b2dc7d"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W4_NO_PHOTO_ELIGIBILITY_9C255_RESULT.json",
+      "bytes": 8869,
+      "sha256": "8d5ba6b170966ed47b9871dfee87fd2fd44352ca6840db21d4fe0ac160182c8b"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W5_ORDERS_BB1_O5.md",
+      "bytes": 4484,
+      "sha256": "d6e546851dbb85a34f93d6a34f61ab5085a533f2e4eb2daf62fbdeef4ed5ca95"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W5_ORDERS_BB1_O5_RESULT.json",
+      "bytes": 27044,
+      "sha256": "303549df891495dce292cb318b719dd7a07b61218dbb208879e35034216b190e"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W6_ADDRESS_E1829_CORRESPONDENCE.md",
+      "bytes": 3815,
+      "sha256": "f9f3253e4da7b9a1257dc724b84bf628fe47d38c39cbd3483e332ba4c563e7dd"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W6_ADDRESS_E1829_CORRESPONDENCE_RESULT.json",
+      "bytes": 9132,
+      "sha256": "cb37999b87292a6e24c39d33b73568a3cad22f21d098a68e3c1c6cee5fe5821e"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/source-controls/W5_O5/w7-orders-original-navigation.test.mjs",
+      "bytes": 5873,
+      "sha256": "3e4b8fbcafdbe6d5baeb29294337a375f6669ab111d83f13473355b701d3859c"
+    }
+  ],
+  "W4ReportExact39b": true,
+  "delta27PathsOnly": true,
+  "b039Absent": true,
+  "noRuntimeTestExecuted": true,
+  "owner": "Kanuj",
+  "verdict": "PASS_BOUNDED_PUBLISHED_BINDING_SOURCE_AND_EXACT_DOCUMENT_CORRESPONDENCE_ONLY",
+  "recordedAt": "2026-11-04T09:43:24.885950+00:00",
+  "remoteObservation": {
+    "method": "git ls-remote origin refs/heads/kanuj/portal-rebuild-integration-20261030",
+    "exitCode": 0,
+    "toolChunk": "614ffd"
+  },
+  "copiedW7Snapshot": "502fff67e0f6cc74a36692a0a2c87b9a6c458962",
+  "currentOwnW7SnapshotNotRolledBack": "b2bf1075974d2ee223c868535abb5070e14d578f",
+  "copiedInternalLinks": [
+    {
+      "from": "docs/portal-rebuild/w7/ci/HOSTED_8D_PORTAL_FAILURE.md",
+      "to": "docs/portal-rebuild/w7/ci/HOSTED_8D_PORTAL_FAILURE_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/ci/HOSTED_E06_EXECUTION_SOURCE_CUSTODY.md",
+      "to": "docs/portal-rebuild/w7/ci/HOSTED_E06_EXECUTION_SOURCE_CUSTODY_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/ci/HOSTED_E1829_PORTAL_FAILURE.md",
+      "to": "docs/portal-rebuild/w7/ci/HOSTED_E1829_PORTAL_FAILURE_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/ci/HOSTED_E1829_PORTAL_FAILURE.md",
+      "to": "docs/portal-rebuild/w7/reviews/W6_ADDRESS_E1829_CORRESPONDENCE.md"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_9C255_SOURCE.md",
+      "to": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_9C255_SOURCE_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_9C255_SOURCE.md",
+      "to": "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_FIXTURE_FC240.md"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_9C255_SOURCE.md",
+      "to": "docs/portal-rebuild/w7/reviews/W5_ORDERS_BB1_O5.md"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W2_INLINE_8D454_SOURCE.md",
+      "to": "docs/portal-rebuild/w7/reviews/W2_INLINE_8D454_SOURCE_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W2_INLINE_8D454_SOURCE.md",
+      "to": "docs/portal-rebuild/w7/ci/HOSTED_8D_PORTAL_FAILURE.md"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W4_NO_PHOTO_39B384_REPORT.md",
+      "to": "docs/portal-rebuild/w7/reviews/W4_NO_PHOTO_39B384_REPORT_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W4_NO_PHOTO_39B384_REPORT.md",
+      "to": "docs/portal-rebuild/w7/reviews/W4_NO_PHOTO_ELIGIBILITY_9C255.md"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W4_NO_PHOTO_ELIGIBILITY_9C255.md",
+      "to": "docs/portal-rebuild/w7/reviews/W4_NO_PHOTO_ELIGIBILITY_9C255_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W5_ORDERS_BB1_O5.md",
+      "to": "docs/portal-rebuild/w7/reviews/W5_ORDERS_BB1_O5_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W5_ORDERS_BB1_O5.md",
+      "to": "docs/portal-rebuild/w7/source-controls/W5_O5/w7-orders-original-navigation.test.mjs"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W5_ORDERS_BB1_O5.md",
+      "to": "docs/portal-rebuild/w7/ci/HOSTED_E06_EXECUTION_SOURCE_CUSTODY.md"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W6_ADDRESS_E1829_CORRESPONDENCE.md",
+      "to": "docs/portal-rebuild/w7/reviews/W6_ADDRESS_E1829_CORRESPONDENCE_RESULT.json"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W6_ADDRESS_E1829_CORRESPONDENCE.md",
+      "to": "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_FIXTURE_FC240.md"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W6_ADDRESS_E1829_CORRESPONDENCE.md",
+      "to": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_9C255_SOURCE.md"
+    },
+    {
+      "from": "docs/portal-rebuild/w7/reviews/W6_ADDRESS_E1829_CORRESPONDENCE.md",
+      "to": "docs/portal-rebuild/w7/reviews/CORRESPONDENCES_E06_ADDRESS8F71.md"
+    }
+  ],
+  "sourceGate": "reviews/W0_ROUTER_BINDING_686734.md",
+  "W4ReportSourceFidelity": "reviews/W4_NO_PHOTO_39B384_REPORT.md",
+  "reportSha256": "48f25b96fc0f1c48143bb00bd5b00150e8f0f0f542266b087ac4244556375af3",
+  "noTestOrResourceRerun": true,
+  "noCurrentCiOrGenuineClaim": true,
+  "wholeIntegratedCensus": "NOT_MEASURED"
+}

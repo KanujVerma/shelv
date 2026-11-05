@@ -1,0 +1,15 @@
+{
+  "owner": "Kanuj",
+  "finding": "W7-W5-O3",
+  "head": "a05505e60495d5023cd30d6fa4962638a6501f25",
+  "base": "f060f225983d388bccf5423983e8e0beca540251",
+  "control": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w5-orders-a055/source/apps/portal/tests/w7-orders-disposed-refresh.test.mjs",
+    "archive": "source-controls/W5_O3/w7-orders-disposed-refresh.test.mjs",
+    "bytes": 1538,
+    "sha256": "89605d619d0826fc7abd33fd9e03e9ac7e397fa6ce7149c75f44ae170f4354f3"
+  },
+  "reproduce": "Copy exact archive to apps/portal/tests/w7-orders-disposed-refresh.test.mjs in immutablea055 export/actualRootDTOs/lockedRootPortal deps; Node22.23.0 --experimental-strip-types --test. No realnetwork/browser/DB or currentness substitutions.",
+  "originalOutcome": "0/1 fixedreadcalls1expected0 whileactualsessionready/controllerended",
+  "scope": "Consumerlifecycle/acquisition only, no actualfinancial/privateauthority audit"
+}

@@ -1,0 +1,223 @@
+{
+  "owner": "Kanuj",
+  "card": {
+    "head": "4d36072f9312d29299991edfcaef620ac15dabdd",
+    "base": "99bf372d32619035a6bc279c37adf86db804033d",
+    "reviewedHead": "41d864b077a41568994850dbb6ff27e86c85f9e7",
+    "ownedSourcePins": [
+      {
+        "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+        "bytes": 28358,
+        "sha256": "0dfe4517e70713ec590b725c0777c84dc4f54d85bff7e81992f1d826669a20e1",
+        "gitBlob": "e4ebf48c19d7d5c649ab906c062bd1458996b526"
+      },
+      {
+        "path": "apps/portal/src/features/plan/DecisionChoiceButton.tsx",
+        "bytes": 853,
+        "sha256": "7e09e11c9b529179fdb6f21fa5080e055e5c68738fe3a261c8e80d5094da3db2",
+        "gitBlob": "5566feb6558ddc18801f48e008f65002825e9991"
+      },
+      {
+        "path": "apps/portal/src/features/plan/DecisionControls.tsx",
+        "bytes": 16182,
+        "sha256": "d71fa56c1c100dc03cd3a5f42ed443f8560cd4eed0be72c5f87e8b6d607bd5d3",
+        "gitBlob": "63daf98ba5573c4d7f4ef8411bab81efc975c368"
+      },
+      {
+        "path": "apps/portal/src/features/plan/GuidanceDecisionControls.tsx",
+        "bytes": 5381,
+        "sha256": "128f01ab44a3031b1056dbd2c73c785d85fce3332664fd62a47879c24df3e57d",
+        "gitBlob": "a49672f089f5c9df401fcf633f127a6e983b2753"
+      },
+      {
+        "path": "apps/portal/src/features/plan/ProductIdentity.tsx",
+        "bytes": 865,
+        "sha256": "e19085dc43dd642ae285668b9ca48d207d445b62a417719b9923ef78e5aff9f0",
+        "gitBlob": "b067ea17e69ff75c8a269274f5ced3a317218d8f"
+      },
+      {
+        "path": "apps/portal/src/features/plan/UnpublishedDecisionCard.tsx",
+        "bytes": 2858,
+        "sha256": "e95b086ea9bb72bb7b1c2e3009875596891b85d5d873617e261497e785bae203",
+        "gitBlob": "8a42b97358bd70ee549da520d9b3233ef3a1d91c"
+      },
+      {
+        "path": "apps/portal/src/features/plan/index.ts",
+        "bytes": 910,
+        "sha256": "a890b363c3a03f6d851db5bb3f3bccd28e93c2095c82631c9a6255ba06fe1e3b",
+        "gitBlob": "95945c60cd3151285fbbeacbe2ef1b9dd42ff8c6"
+      },
+      {
+        "path": "apps/portal/src/features/plan/plan.css",
+        "bytes": 8698,
+        "sha256": "4e9640a6cfe639150a2a9a243650e4863120fcbbdc1eb71599c371278a6bab4f",
+        "gitBlob": "a23a58fd08548598055ccedf1694bbb07ecaa433"
+      },
+      {
+        "path": "apps/portal/tests/w3-unpublished-card.test.mjs",
+        "bytes": 7146,
+        "sha256": "578259d0fc2559575a21e3c19567d815beadadd97587439ae441c6d8cd9b4b75",
+        "gitBlob": "da37ce72fb3339fbc7fc587e09c1e8605653e816"
+      },
+      {
+        "path": "apps/portal/tests/w3/tsconfig.unpublished.json",
+        "bytes": 90,
+        "sha256": "58a9cdee2a1e8953140886a1824547ec7514d85668dec0a105713561e86e467f",
+        "gitBlob": "02c89e0a1089803fbcb8fc585a306fc117d41017"
+      },
+      {
+        "path": "apps/portal/tests/w3/unpublished-card-render.tsx",
+        "bytes": 835,
+        "sha256": "6eba3abc401ebd8959badc4211dac42d5c89113c7fd0b581f8d9e23abd167941",
+        "gitBlob": "17341e82a6459b73b0d19696943ce25844f1c2b6"
+      },
+      {
+        "path": "apps/portal/tests/w3/unpublished-card-types.ts",
+        "bytes": 1487,
+        "sha256": "6525ae11703d8a21e8005d76ece4f419bf9102fa349c84d302c2221789c4e441",
+        "gitBlob": "716fb3aba2aad6385f7ec872c77770e4a48ab94c"
+      },
+      {
+        "path": "docs/portal-rebuild/eight-threads/W3_UNPUBLISHED_CARD.md",
+        "bytes": 6747,
+        "sha256": "8d2e794b4948f40272b9aeade60b512530b0fc6497e507810c61459967b23295",
+        "gitBlob": "8f74e2c31826fa6be110a2738a4e2413ef0345e4"
+      }
+    ],
+    "wholeDeltaExact": true,
+    "selectedBrowserCompileClosureOld": {
+      "repository": 35,
+      "lockedNpm": 2121,
+      "total": 2156
+    },
+    "changedRepositoryInputs": [
+      {
+        "path": "apps/portal/site/auth/portal-routes.js",
+        "reviewed41": "2b9faceb7ccc5e700f68b6f6fffc79b5928004050273b88cd5b04dde884645c3",
+        "current4d": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5"
+      },
+      {
+        "path": "apps/portal/src/navigation/routes.ts",
+        "reviewed41": "8ada4a24e8250121f10a6254d4102d26810b0433c20f2efa76060f9cea7e954d",
+        "current4d": "48a7efc90a6b94d062010e30f0a31b99393c85cf14a804b2426d7b62d921032d"
+      },
+      {
+        "path": "apps/portal/src/shell/PortalShell.tsx",
+        "reviewed41": "ee0e67892a4884217a2004df4f573516e1fac3d6bf93237699f6e485efac95d1",
+        "current4d": "02f529e521bf147de2f4a2bebd81d50e2005b260383ab039ce4d10500f071832"
+      }
+    ],
+    "dependencyDisposition": "Two route definitions add advisor-notifications/canonicalizeadvisorinbox; PortalShell exact reviewedcaption samplecontact; no newcard/reader/contract/handler/controllerchange",
+    "runtimeTestsRepeated": false,
+    "browserExecuted": false,
+    "verdict": "PASS_BOUNDED_13_POSTIMAGE_AND_CURRENT_BASE_SOURCE_CORRESPONDENCE_ONLY",
+    "limits": "NoW7currentruntime/ABI/browserreplay; original15/ABI/compile2156 remainattributed41; noW0previewport/W2A02/genuineapproval"
+  },
+  "address": {
+    "head": "85617d0a8f1d1ef028a1c4c2fda877d848ab02a5",
+    "base": "99bf372d32619035a6bc279c37adf86db804033d",
+    "packetSha256": "a24a08e7bfd580e3c4137a66b6f5c6b6bd04f6ff610ee9ef1fcb069f0c930614",
+    "ownedSourcePins": [
+      {
+        "path": "apps/portal/src/features/account/core/AccountAddress.tsx",
+        "bytes": 5749,
+        "sha256": "94b4ac006ce4043f3359f80dbe36a6e804d5ba2146a6a8a9ef09741b4d4b746f",
+        "equal8a0": true
+      },
+      {
+        "path": "apps/portal/src/features/account/core/controller.ts",
+        "bytes": 9135,
+        "sha256": "a6f715bcbe36ff23bcf16f0902da33de7474cfbe658129c1c9efa4506c3e9fa4",
+        "equal8a0": true
+      },
+      {
+        "path": "apps/portal/src/features/account/core/index.ts",
+        "bytes": 196,
+        "sha256": "f001ca5e4401d79e35415abf342b0628d33c6af15509316327fb66cdf3b4ecb2",
+        "equal8a0": true
+      },
+      {
+        "path": "apps/portal/src/features/account/core/model.ts",
+        "bytes": 2793,
+        "sha256": "395b009c405849145bfad3dbd2664f402aa3c508476018c058a36bf6d6338890",
+        "equal8a0": true
+      },
+      {
+        "path": "apps/portal/tests/w6-account-address-authority.test.mjs",
+        "bytes": 2214,
+        "sha256": "39237172883ebd7d08ae08ea745bfb2a457e540a7e3206d016ce2eb96394cf89",
+        "equal8a0": true
+      },
+      {
+        "path": "apps/portal/tests/w6-account-address-fixture.mjs",
+        "bytes": 3509,
+        "sha256": "18e199fc0e83a10d28d329153916aa70215bda8a1ff293af1884878217221e56",
+        "equal8a0": false
+      },
+      {
+        "path": "apps/portal/tests/w6-account-address-inputs/account-address-request.c06.ts.txt",
+        "bytes": 4541,
+        "sha256": "0a718365fd86adb37501c940011474e3b979b9ff405d1c498f9a95cd1e5ef7d6",
+        "equal8a0": true
+      },
+      {
+        "path": "apps/portal/tests/w6-account-address-ssr.test.mjs",
+        "bytes": 3313,
+        "sha256": "d2bcff2ebd6eea8ae3385be9ed5b253b58a26bd21cb179e123292ef6acc86185",
+        "equal8a0": true
+      },
+      {
+        "path": "docs/portal-rebuild/eight-threads/W6_ADDRESS.md",
+        "bytes": 6154,
+        "sha256": "36b31c64c07f5abbecbd348c60ff46a8954807772d24b153974f6b3adae00301",
+        "equal8a0": false
+      }
+    ],
+    "patchSha256": "c7d873f52b64493c5a46f1ed343f2aa960c424ad21cac27a931f32db24cad328",
+    "currentImmutableAuthorManifestSha256": "0ecc621593de26801715a027ea73e6311a73c90c4008b05068582a44bc1fdfeb",
+    "selectedInputs": 2155,
+    "changedSelectedInputs": [
+      "repo:site/auth/portal-routes.js"
+    ],
+    "oldAuthor2230": "LOST_NOT_RECONSTRUCTED",
+    "physicalProduct4CasesAndInertInputExact8a0": true,
+    "verdict": "PASS_COMPLETE9_TEST_CUSTODY_SUCCESSOR_AND_SOURCE_CORRESPONDENCE_DEPENDENCY_HELD",
+    "independentCurrent": "6/6sourcefiniteSSR exit0 nofail/skip/cancel",
+    "helperReview": "Onlymetadata/report change; exclusive content-addressed write, exact existing-byte check, replaceable latestconvenienceexplicit; actualproduct4/scenarioassertions/inertrequest unchanged",
+    "limits": "No actualmissingW0request/typeintegration or newprojectedtypegreen; old8a0fourW7recoverycases/typeprojection remainold; actualAuthSQL/addresshistory/paidorder/download/browser/genuine open"
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/correspondence-99bf/CARD-CORRESPONDENCE.json",
+      "bytes": 4536,
+      "sha256": "b480d4815fb90f04b09d57b2656a3dcc710531522659ce545964e0448014670f"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/correspondence-99bf/W7-CARD-CLOSURE-DIFF-SETUP.json",
+      "bytes": 828,
+      "sha256": "348b03c0e97170dcc366f4b2e3e9b5d05f4cb9b81b95d01d12f2023f91197454"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/correspondence-99bf/ADDRESS-PINS.json",
+      "bytes": 2524,
+      "sha256": "e0583e9cb9f96376f2f8c386de26f18c4ea2d201461f9c9023ed80722c9b7bee"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/correspondence-99bf/ADDRESS-COMMAND.json",
+      "bytes": 475,
+      "sha256": "df08faa492d50632400fcdbc552ae9264c6144229a75cda56eed563b2aed952c"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/correspondence-99bf/ADDRESS-CURRENT.log",
+      "bytes": 1512,
+      "sha256": "baf4cfbafbfe9d8aaaf826b91849d52f8dcbc22b1a6ccb909ed38887e352ca79"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/correspondence-99bf/SOURCE-0ecc621593de26801715a027ea73e6311a73c90c4008b05068582a44bc1fdfeb.json",
+      "bytes": 366677,
+      "sha256": "0ecc621593de26801715a027ea73e6311a73c90c4008b05068582a44bc1fdfeb"
+    }
+  ],
+  "heldScopeRules": "No resource/heldprovider/principal44/Source/private-return/Guidance/M65/photo/final-egress or acceptancecounter grant",
+  "setupQualification": "InitialW7cardclosure expectedtwochangedrepo inputs; indirectportal-routes.js madeactualthree. Comparisonerrorretained/corrected; no candidate code/test changed."
+}

@@ -1,0 +1,652 @@
+{
+  "owner": "Kanuj",
+  "head": "608d7075706560aa2712926a0094f4a1a4a1d57f",
+  "base": "99bf372d32619035a6bc279c37adf86db804033d",
+  "sourcePins": [
+    {
+      "path": "apps/portal/src/app/notification-owner.ts",
+      "bytes": 9308,
+      "sha256": "4bbaf0389780a2b4bffcf7250665b1ee79cfc50fbe1cb4b8eae72312c6f82141"
+    },
+    {
+      "path": "apps/portal/tests/w0-notification-owner-fixture.mjs",
+      "bytes": 8166,
+      "sha256": "c52d3a4433dd5a26fa6898cd176772fb178bd4c0f916b0ef559ee2b63444072a"
+    },
+    {
+      "path": "apps/portal/tests/w0-notification-owner-types.test.mjs",
+      "bytes": 1206,
+      "sha256": "13f87f08e450e8523ffc9132ad4ea51557bd54ec64f7a90a0ce2aa06a9f7184d"
+    },
+    {
+      "path": "apps/portal/tests/w0-notification-owner-types.test.ts",
+      "bytes": 934,
+      "sha256": "e17e9c104064f52a1d624dc7b08e1465272a110398eb2690d16a2a9e28c34f98"
+    },
+    {
+      "path": "apps/portal/tests/w0-notification-owner.test.mjs",
+      "bytes": 11328,
+      "sha256": "9f730a2c8a20dd1e85343280e8e5a150194500b9848134432c3ef36be7fd9a34"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_OWNER_20261104.md",
+      "bytes": 6686,
+      "sha256": "84a5a2178f3fc6fe632178bbbd9c5679fc07180a518e23636b5926479fb85603"
+    },
+    {
+      "path": "apps/portal/tests/w0-notification-owner-relevance-phase.test.mjs",
+      "bytes": 971,
+      "sha256": "848d915c338d4e537fecc1253ff38792ef683eee031ae1a35efe1e15032c3d4a"
+    }
+  ],
+  "compilerInputPins": [
+    {
+      "path": "apps/portal/site/auth/commerce-actions.js",
+      "bytes": 1980,
+      "sha256": "795d37a5ec1f6451c4318234f2636e834849c0c1ce0c8fc19815b3c6655d7acc"
+    },
+    {
+      "path": "apps/portal/site/auth/portal-routes.js",
+      "bytes": 8889,
+      "sha256": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5"
+    },
+    {
+      "path": "apps/portal/site/auth/navigation-return.js",
+      "bytes": 3284,
+      "sha256": "aab8c07b9c589e1af4bf521716407e35bb97574664196b3e58b2d1a9485e4dcd"
+    },
+    {
+      "path": "apps/portal/site/auth/plan-actions.js",
+      "bytes": 805,
+      "sha256": "64d758036946cd2fa2109a23e46066e0fa350347e45f84f1861d6d47190a9a23"
+    },
+    {
+      "path": "apps/portal/site/auth/care-actions.js",
+      "bytes": 592,
+      "sha256": "af283c549a1a1b7a404f44c387921991b7cdcd2f52a4a63af3c2e194e737e17b"
+    },
+    {
+      "path": "apps/portal/site/auth/review-actions.js",
+      "bytes": 1904,
+      "sha256": "6796d30a8b774559cac3924c9db7c5528358dd672b1cdabe060a428be881fcb4"
+    },
+    {
+      "path": "apps/portal/site/auth/advisor-cookie-session.js",
+      "bytes": 30545,
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5"
+    },
+    {
+      "path": "apps/portal/site/auth/client-cookie-session.js",
+      "bytes": 6833,
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0"
+    },
+    {
+      "path": "apps/portal/src/app/retained.ts",
+      "bytes": 1671,
+      "sha256": "146d949005acc395692eca804824c2a67fb0c9bfbe5b0be98d4018f8a265b5a1"
+    },
+    {
+      "path": "apps/portal/src/transport/error.ts",
+      "bytes": 725,
+      "sha256": "1b6be9efd7f110c93d909ee8a2f44e805b3de51f32bfd0715ddf7cdf4c93f034"
+    },
+    {
+      "path": "apps/portal/src/transport/session.ts",
+      "bytes": 10195,
+      "sha256": "deeb60865d92b6a7a0feb1b86a78193a7c093005d0e225cf5554ece1539e46bd"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValues.ts",
+      "bytes": 1206,
+      "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+    },
+    {
+      "path": "src/contracts/ConciergePortalValidation.ts",
+      "bytes": 2880,
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+    },
+    {
+      "path": "src/contracts/ConciergePresentationValidation.ts",
+      "bytes": 11722,
+      "sha256": "b93b9eab1b55cfb828677067990985716e71c23550662a06782038226cdca33a"
+    },
+    {
+      "path": "src/contracts/PortalRebuildValidation.ts",
+      "bytes": 12947,
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+    },
+    {
+      "path": "src/contracts/PortalNotificationValues.ts",
+      "bytes": 1094,
+      "sha256": "5902a0989888fa7dad045cfc205ac85648b659f7189617c3db3db8479fb7eddf"
+    },
+    {
+      "path": "src/contracts/PortalNotificationValidation.ts",
+      "bytes": 4294,
+      "sha256": "fed7b4ad0e8493ae223a39786283b01d0137e083cbad67338f1664aec0d6e27f"
+    },
+    {
+      "path": "src/contracts/PortalNotificationMapping.ts",
+      "bytes": 4137,
+      "sha256": "36c0f8632a823a0ae4e639cb82a59dd2d069a53656e9589452db92aa0ce25dc5"
+    },
+    {
+      "path": "apps/portal/src/app/notification-request.ts",
+      "bytes": 6090,
+      "sha256": "2118ec95a62a3f66dd80fd409862d60f9947c7f97b4ef00736c003e3976611b7"
+    },
+    {
+      "path": "apps/portal/src/navigation/routes.ts",
+      "bytes": 1496,
+      "sha256": "48a7efc90a6b94d062010e30f0a31b99393c85cf14a804b2426d7b62d921032d"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/model.ts",
+      "bytes": 2863,
+      "sha256": "3d8c1fde35feeee1c32952e2c205ae2666044de5f36dbd042a01ab0dce4a2b67"
+    },
+    {
+      "path": "src/contracts/PortalRebuildMapping.ts",
+      "bytes": 10694,
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/recovery.ts",
+      "bytes": 2740,
+      "sha256": "b29a389e016cbab378af68eec37027e6219d12a1e7b6e4437635796a98eeceb5"
+    },
+    {
+      "path": "apps/portal/src/features/notifications/controller.ts",
+      "bytes": 19282,
+      "sha256": "685a1c9643c861b362f958bc73fadecb2fc3448d84b11131805899319f529c26"
+    },
+    {
+      "path": "apps/portal/src/app/notification-owner.ts",
+      "bytes": 9308,
+      "sha256": "4bbaf0389780a2b4bffcf7250665b1ee79cfc50fbe1cb4b8eae72312c6f82141"
+    },
+    {
+      "path": "apps/portal/src/app/session.ts",
+      "bytes": 6061,
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    {
+      "path": "supabase/functions/concierge-operations/body.ts",
+      "bytes": 1045,
+      "sha256": "3ff59a377550c6b1c3864f81d614748b304d9cb89fdb8acef0e124e833215e13"
+    },
+    {
+      "path": "supabase/functions/concierge-notifications/runtime.ts",
+      "bytes": 2536,
+      "sha256": "6ee8b21d118a4a76b60fbf78d02d72b47b743280595753d025165800035e6c02"
+    },
+    {
+      "path": "supabase/functions/concierge-notifications/handler.ts",
+      "bytes": 3931,
+      "sha256": "70f989a0ad493761e5840e155c3e112717ffc9ac222ab1882a1f84d38bad75e8"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/types.ts",
+      "bytes": 2899,
+      "sha256": "ee8458d77329e1f93908a683fca855c56c16344dc6e22aab59c9a6db9f264783"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/navigation-return.ts",
+      "bytes": 361,
+      "sha256": "3949e0b10a967f5b0f9e3875dd11cea799f75bedc5f521ff8f9612ebf2304ce7"
+    },
+    {
+      "path": "src/contracts/PortalCareValues.ts",
+      "bytes": 1079,
+      "sha256": "31c485f83a7ce142231dd90da43ad402215078419230248a103e3544a275a404"
+    },
+    {
+      "path": "src/contracts/PortalReviewValues.ts",
+      "bytes": 3909,
+      "sha256": "cce2545be9626e1a1abf8fb4e6a0e783c53831af9740110db26f37a397457000"
+    },
+    {
+      "path": "src/contracts/PortalCareValidation.ts",
+      "bytes": 7336,
+      "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d"
+    },
+    {
+      "path": "src/contracts/PortalReviewValidation.ts",
+      "bytes": 15488,
+      "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+    },
+    {
+      "path": "src/contracts/PortalCareMapping.ts",
+      "bytes": 9657,
+      "sha256": "675135cbb83611bbc8c63ed2c5a7e33b17a1f16cc1b48839358c1f45672d1439"
+    },
+    {
+      "path": "src/contracts/PortalReviewMapping.ts",
+      "bytes": 35451,
+      "sha256": "de2c64e152156656e7748c5f12c49dd115c6bc88411e488d29bde2e0d122a550"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/review-policy.ts",
+      "bytes": 1787,
+      "sha256": "23d381135f7f3cb9c4baa5b434cc325a9f0e41d3e9dce80e768a2e23efc990c1"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/guidance-policy.ts",
+      "bytes": 1613,
+      "sha256": "9f21f6257c45c1380037bd0e1768cb2cc871b05261043e9fccb423a88fb91801"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/walkthrough-contract.ts",
+      "bytes": 8697,
+      "sha256": "8fc1e03efaed471eb6614e879ef50482454282241cc8d9b2df9fdd9e3b9950e6"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/walkthrough-policy.ts",
+      "bytes": 2392,
+      "sha256": "803c1d112faae88ada0933e09f4e589e91ae8a6ad6a204318f58ab954321b64b"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/plan-policy.ts",
+      "bytes": 1534,
+      "sha256": "1de0a689e0b98aa9364f83bb12f114993bada68b11f8628b6d2d184667b108e5"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/care-policy.ts",
+      "bytes": 1165,
+      "sha256": "10be81bae820875286acec8b4bd79eac77a260fd8eea664c3926451f3c0ecda1"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/policy.ts",
+      "bytes": 13625,
+      "sha256": "f2515052dbebfe883320c26608e956cc728787ace87483fb12765f40b7d3749f"
+    },
+    {
+      "path": "supabase/functions/concierge-checkins/validation.ts",
+      "bytes": 3177,
+      "sha256": "522e48174818f404d883c396ead07554f2194f6689021b5fcd77612e411cfac7"
+    },
+    {
+      "path": "supabase/functions/concierge-checkins/dates.ts",
+      "bytes": 1913,
+      "sha256": "d02e57c631decd37c4fe8100aeee35d3bd11be2c975402cc71bf7cbd41c2b9bb"
+    },
+    {
+      "path": "supabase/functions/concierge-checkins/photos.ts",
+      "bytes": 3166,
+      "sha256": "7b27a1b64592fbd66f18621eba902340624d83763b95e107aabec0ee39311f67"
+    },
+    {
+      "path": "supabase/functions/concierge-checkins/projection.ts",
+      "bytes": 7522,
+      "sha256": "802bb9c7e31fb368478b7d8233af0a3a17ed4ac5bbd3429cc7c4c85233682405"
+    },
+    {
+      "path": "src/contracts/PortalAccountProfileValues.ts",
+      "bytes": 431,
+      "sha256": "26aca8407483a3f9ae9b3dedaa487864c1a69f717e8979eea65c655b373df6e3"
+    },
+    {
+      "path": "src/contracts/PortalAccountProfileValidation.ts",
+      "bytes": 3806,
+      "sha256": "597de8113b9dbb9e0a6dbe947c7d8cd67c69ff587fe3ed3d245c21d0a3c64497"
+    },
+    {
+      "path": "src/contracts/PortalAccountProfileMapping.ts",
+      "bytes": 741,
+      "sha256": "356b42a2ea8f08db390a2bbed2c088e0a1287aebb1bbb1a289ab58321b22de49"
+    },
+    {
+      "path": "src/contracts/PortalAccountContactValues.ts",
+      "bytes": 208,
+      "sha256": "44976d2e2ee4eb857e3169d2a657f54eeb26de7d1ca0ac24577245f890a6afe9"
+    },
+    {
+      "path": "src/contracts/PortalAccountContactValidation.ts",
+      "bytes": 2588,
+      "sha256": "7cfcaf0b2c6554a86a82a24be0ec7929db481932cdb9e38f6f303dec8e210f34"
+    },
+    {
+      "path": "src/contracts/PortalAccountContactMapping.ts",
+      "bytes": 4987,
+      "sha256": "f4773928bf971a7300edf14b6b7efe0412e783df979c892a6430f5e74fd701ae"
+    },
+    {
+      "path": "src/contracts/ConciergeService.ts",
+      "bytes": 13695,
+      "sha256": "bb27d2a38f7d39b90181852d1e005c448df992883cf40623ce6b57c9222bab4a"
+    },
+    {
+      "path": "src/contracts/PortalClientOrdersValues.ts",
+      "bytes": 520,
+      "sha256": "a2c504934c81a59abc3ce945b54cd827cb218b73c466ca530f1419cfce06015d"
+    },
+    {
+      "path": "src/contracts/PortalClientOrdersValidation.ts",
+      "bytes": 4550,
+      "sha256": "192cf3d2cf95c5ff8ae82d0a74c88c57d39a5a5560daead80ae26e1c838cf29e"
+    },
+    {
+      "path": "src/contracts/PortalClientOrdersMapping.ts",
+      "bytes": 626,
+      "sha256": "2c1ffcf698fcd7ee54dd8d68527331d888d600298ed3c2c1c27bb3e45fcb4f13"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/client-policy.ts",
+      "bytes": 8307,
+      "sha256": "cfbe56505313fd77e57c6de5445e37799bf1db00a7555982e35e0565a1184fed"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/gateway.ts",
+      "bytes": 18313,
+      "sha256": "ccd4eac2886ae19d177fc9f4f935aea19481111f4054491726c4374a5414b132"
+    },
+    {
+      "path": "apps/portal/node_modules/tslib/tslib.es6.mjs",
+      "bytes": 17648,
+      "sha256": "0929993220938091ede542d688b0fdb87dad99a7e77678e1983c32d18a503339"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/version.js",
+      "bytes": 581,
+      "sha256": "bb42b97ee74265b7c6def20f785c105d327d6b461f5491eb28d6fbdab2d17a51"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/constants.js",
+      "bytes": 2693,
+      "sha256": "9218c8a8da3825083fcb3b105a8c52c1c5a542a865f5abf2ab5185b7b4beabf9"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/errors.js",
+      "bytes": 10697,
+      "sha256": "3cf62e517139e8e2092891eb990ea32b25b95678a52a63b4b911ec08e363f77a"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/base64url.js",
+      "bytes": 9075,
+      "sha256": "1d97eac773480a5e06ba408f4d746e59b4269a6b8afd22aaad75f5773c7cf9d7"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/helpers.js",
+      "bytes": 24922,
+      "sha256": "56c81a649f079401342c7cf2fc7eff6d7fc5ef1e7460ed9836b8e74dfe19e657"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/fetch.js",
+      "bytes": 9052,
+      "sha256": "50fa4e318e07a49de1179256e3fa3dc927a6a46664386f0baed30ef80f3c1d0b"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/types.js",
+      "bytes": 697,
+      "sha256": "4ba1cf76d3e6b838ad40f6b4ef88845ee054726ddd1f42ebfcdfa9efa23cef43"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/GoTrueAdminApi.js",
+      "bytes": 41480,
+      "sha256": "b2d62d61f2828c8b8f4f3033f885599774daf3e7fc65fdfaa6d0a9baa9ba997e"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/local-storage.js",
+      "bytes": 573,
+      "sha256": "a3c6841d8c4dc24a2c0ac1d238b42a278c7ac05d18a7571db91c3fc140e42d93"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/locks.js",
+      "bytes": 16421,
+      "sha256": "d9ebad87448eb4aa3f1db2453f313377e19c6c144824f502154bcf3b0cd851c3"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/polyfills.js",
+      "bytes": 862,
+      "sha256": "0b5600e6e4cda1f029ec448d93857062731b850424d3b465fa7dae4e5921ae7e"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/web3/ethereum.js",
+      "bytes": 3287,
+      "sha256": "839a33e8225db3da724f25bea5d1b127ba30cb4c272cab30dd9700232ada431d"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/webauthn.errors.js",
+      "bytes": 12037,
+      "sha256": "40cb9a8d5f58c798e4b1ea47774ba29e59a9efb455c6edd4d05c8a38c762cd78"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/lib/webauthn.js",
+      "bytes": 36140,
+      "sha256": "016e06c91127c337b8d0536df280cd57c66c07ec236436a39b8b7083ac308db3"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/GoTrueClient.js",
+      "bytes": 276356,
+      "sha256": "9aad21a85ebe67f5c0fd1c1bc134d8fcf98f9d7a0958c28f5d8de8b54032a864"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/AuthAdminApi.js",
+      "bytes": 309,
+      "sha256": "8e879ad1a0f0ad11923dc1b7bedd7e522532a298025c3fae52669419d342421a"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/AuthClient.js",
+      "bytes": 297,
+      "sha256": "f9dbb30bd5c6511db0c98a24f1f9b077aa2d080505427c93dea757d97d981568"
+    },
+    {
+      "path": "apps/portal/node_modules/@supabase/auth-js/dist/main/index.js",
+      "bytes": 1516,
+      "sha256": "a43ea0c523b8f4f8b8d59bc3b16b9ec9158cad05de53ffc92238fceb26d8bcfd"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/upstream.ts",
+      "bytes": 25765,
+      "sha256": "4fdadd299c719a29ac52520dacf6b7fb225d3cdc1786abd49d0086f272c51282"
+    },
+    {
+      "path": "supabase/functions/concierge-account-profile/body.ts",
+      "bytes": 2774,
+      "sha256": "b87c0ba8b0435458d1020b9589858824fc4c14e8c87e2b55141ca5c9d1a2dfc3"
+    },
+    {
+      "path": "supabase/functions/concierge-account-profile/runtime.ts",
+      "bytes": 5146,
+      "sha256": "fc0d6758842be93e1333fe89de85a24f75b81b2b53922a3abf366ef68d9a288c"
+    },
+    {
+      "path": "supabase/functions/concierge-account-profile/handler.ts",
+      "bytes": 5146,
+      "sha256": "1c67d17f4dbccf5c2c22395c664670eceb5a9d396ce367b315fe7eb0c452e71e"
+    },
+    {
+      "path": "supabase/functions/concierge-client-orders/body.ts",
+      "bytes": 2830,
+      "sha256": "df06fd9432e53ec8c42b6aa0791ba9b87fc3f4e107b1477a67de8c4838e24a4d"
+    },
+    {
+      "path": "supabase/functions/concierge-client-orders/runtime.ts",
+      "bytes": 5293,
+      "sha256": "469af71a9ac045d825396896e8037da8ec80fc209e410a0815c0bd9541eaa08e"
+    },
+    {
+      "path": "supabase/functions/concierge-client-orders/handler.ts",
+      "bytes": 5710,
+      "sha256": "a60fd6a4dfe40232eeec2a74fa85f6003ac45f83ab4c5eab7cc26be7116e1c25"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/account-contact-provider.ts",
+      "bytes": 8144,
+      "sha256": "1309a5a75105c9375a247d8510fb018f525401ab494860dcf2df9217206de2fe"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/own-admin-provider.ts",
+      "bytes": 6542,
+      "sha256": "4dd33c72d5c5a1974046b9f9e813eada5fee38944ee5b6d30d5c31666d4f9b56"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/client-upstream.ts",
+      "bytes": 17837,
+      "sha256": "8db855829807c5f3a0ded68cbd14fa5b80975e26ff9d21eb5b28991bbb11569e"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/credential-envelope.ts",
+      "bytes": 2411,
+      "sha256": "5a7f0daf5bd16d142d86216380bc3efde47f25ca2fe4c8bc49703944a3f72509"
+    },
+    {
+      "path": "apps/portal/session-integration/runtime/server/session-vault.ts",
+      "bytes": 11174,
+      "sha256": "8a04ec017e9eddc3cc61a89d0f27342816fe70d74e1db0ffe5091ca380b4e243"
+    },
+    {
+      "path": "<stdin>",
+      "bytes": 965,
+      "sha256": "ebbef6a291c8edbf5ba5acc29d739d6e6d750f54ec6eeeb09a24807350b43130",
+      "classification": "Literal export-only compiler entry from exact fixture"
+    }
+  ],
+  "compilerInputClasses": {
+    "repo": 72,
+    "nodeModules": 19,
+    "virtual": 1
+  },
+  "lockPins": [
+    {
+      "path": "package-lock.json",
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2",
+      "bytes": 303079
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203",
+      "bytes": 123808
+    }
+  ],
+  "patchSha256": "eb526e64cf228743a6d89fed4c319c6a2d07a8c96ed9cee64e29ea8f745f6d32",
+  "ownerPacketSha256": "c44ea9ea4b18e1eaa0c00064b3a6d7ad66c540237a227bd761d94bff4edcf052",
+  "original848ByteExact": true,
+  "wholeModuleApplicableOnlyInverseExact227": true,
+  "unchangedOriginalSourceFiles": [
+    "apps/portal/tests/w0-notification-owner-fixture.mjs",
+    "apps/portal/tests/w0-notification-owner-types.test.mjs",
+    "apps/portal/tests/w0-notification-owner-types.test.ts"
+  ],
+  "enclosingDeltaPaths": [
+    "apps/portal/src/app/notification-owner.ts",
+    "apps/portal/tests/w0-notification-owner-fixture.mjs",
+    "apps/portal/tests/w0-notification-owner-relevance-phase.test.mjs",
+    "apps/portal/tests/w0-notification-owner-types.test.mjs",
+    "apps/portal/tests/w0-notification-owner-types.test.ts",
+    "apps/portal/tests/w0-notification-owner.test.mjs",
+    "docs/portal-rebuild/eight-threads/W0_NOTIFICATION_OWNER_20261104.md",
+    "docs/portal-rebuild/w7/ACCEPTANCE_LEDGER.json",
+    "docs/portal-rebuild/w7/REVIEW_QUEUE.json",
+    "docs/portal-rebuild/w7/SESSION_HANDOFF_20261103.md",
+    "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_OWNER_227_FAIL.md",
+    "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_OWNER_227_FAIL_RESULT.json",
+    "docs/portal-rebuild/w7/source-controls/W0_NOTIF_RELEVANCE/SOURCE.json",
+    "docs/portal-rebuild/w7/source-controls/W0_NOTIF_RELEVANCE/w7-notification-owner-relevance-phase.test.mjs"
+  ],
+  "outsideOwnedScope": [
+    "docs/portal-rebuild/w7/ACCEPTANCE_LEDGER.json",
+    "docs/portal-rebuild/w7/REVIEW_QUEUE.json",
+    "docs/portal-rebuild/w7/SESSION_HANDOFF_20261103.md",
+    "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_OWNER_227_FAIL.md",
+    "docs/portal-rebuild/w7/reviews/W0_NOTIFICATION_OWNER_227_FAIL_RESULT.json",
+    "docs/portal-rebuild/w7/source-controls/W0_NOTIF_RELEVANCE/SOURCE.json",
+    "docs/portal-rebuild/w7/source-controls/W0_NOTIF_RELEVANCE/w7-notification-owner-relevance-phase.test.mjs"
+  ],
+  "verdict": "PASS_SCOPED_COMPLETE_STANDALONE_NOTIFICATION_OWNER_SOURCE_ONLY",
+  "closedFinding": "W7-W0-NOTIF-RELEVANCE-01",
+  "current": {
+    "tests": 24,
+    "pass": 24,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCode": 0,
+    "node": "v22.23.0",
+    "sourceOverrides": false,
+    "includesByteExact848": true,
+    "includesGetterPhaseControl": true
+  },
+  "configuredTypes": {
+    "root": {
+      "exitCode": 0,
+      "diagnostics": 0
+    },
+    "root-tests": {
+      "exitCode": 0,
+      "diagnostics": 0
+    },
+    "frontend": {
+      "exitCode": 0,
+      "diagnostics": 0
+    },
+    "runtime": {
+      "exitCode": 0,
+      "diagnostics": 0
+    }
+  },
+  "browserCompile": {
+    "inputs": 25,
+    "exitCode": 0,
+    "browserExecuted": false,
+    "noServerHandlerRuntimeOrAIImports": true
+  },
+  "logs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-relevance-608/W7-CURRENT24.log",
+      "bytes": 5636,
+      "sha256": "b8809f0e50813ca9d6335098528096f8821612059cc6409e6ef62404e14a8205",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-relevance-608/CURRENT-EXEC.json",
+      "bytes": 531,
+      "sha256": "7b68d62ea448ddefd1bee9b50f4e96caf0320a230e433587e6a5358454d41e71",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-relevance-608/W7-TYPES-root.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-relevance-608/W7-TYPES-root-tests.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-relevance-608/W7-TYPES-frontend.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-relevance-608/W7-TYPES-runtime.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-relevance-608/TYPES-EXEC.json",
+      "bytes": 987,
+      "sha256": "1d0037a3c7e3c2449ada4e1b0ab37b67954e2730e04b673426b41c4c0f91d5f9",
+      "exitCode": 0
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/reviews/w0-notif-relevance-608/W7-BROWSER-COMPILE.json",
+      "bytes": 12130,
+      "sha256": "d19f7c08b80bccd5aefc2578659d22202db05ebb69c8d2b0f55bdad6c5354fdd",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "StandaloneUIlease module remains unmounted; actualsingleOwner acrossproductionInbox/A06requiresnewcompletecompositiongate",
+    "OneRootgraphactualclasses/closedHTTPincludingserialVault notpermanentAuthSQL/RLS/providerdelivery or genuinebusiness",
+    "Phase-only sourcecorrection, notheldprovider/Guidance/private-return/M65/photo/principal44 auditclearance",
+    "Old2270/1/report/control/setupmetadatafailures unchanged; noold227test/reviewresumed",
+    "Enclosing14delta explicitly7owned+7priorW7failure/ledgerdocs, not14newproductfiles",
+    "No browser/Figma/responsive/a11y/fullscreen/journey/acceptancecounter orresourcegrant"
+  ]
+}

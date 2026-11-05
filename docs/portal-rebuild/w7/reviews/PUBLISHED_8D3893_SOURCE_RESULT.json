@@ -1,0 +1,149 @@
+{
+  "head": "8d3893faba7bd16d8d0f98dda46783d449ae8dd4",
+  "parent": "c75df7f56e3ee63e0847efc3f1d893097df1c294",
+  "base": "94607ac2b52c794570f0ab2cb9d36e2df07bf21c",
+  "source6Exact": [
+    {
+      "path": "apps/portal/tests/w0-advisor-notification-email.test.mjs",
+      "bytes": 4112,
+      "sha256": "b1884d4c99ba1b4007fe11ae6e0c6b8da166a45ad3d9eab959d3dbdc7c6465a6"
+    },
+    {
+      "path": "docs/CONTEXT_SYNC.md",
+      "bytes": 412026,
+      "sha256": "8e5bd37d155496fc462e55ead83668121a507d6b14c75f3dd7a4878d33950f24"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W0_ADVISOR_EMAIL_ROUTING_20261104.md",
+      "bytes": 4038,
+      "sha256": "608cf319202c16b20f6854ad1f228068016d9b0a6f1fd027dae6ff6ff0f4bea8"
+    },
+    {
+      "path": "docs/portal-rebuild/research/W1_ADVISOR_NEUTRAL_EMAIL_20261104.md",
+      "bytes": 5949,
+      "sha256": "24ab24395341f5374f1f1386d7220f7b3682b7a7591821b7616caa37ff7ab6a6"
+    },
+    {
+      "path": "supabase/functions/concierge-notifications/neutralPayload.ts",
+      "bytes": 3200,
+      "sha256": "e86ff766dc9ba39ef5f25d48c5e5879b8985dd51cddccdcf26f3e72931bc527d"
+    },
+    {
+      "path": "tests/portal-notification-worker.test.ts",
+      "bytes": 14500,
+      "sha256": "37d238377d412ba807c1fb264ca469d554e484743843ad3f764864fa37187340"
+    }
+  ],
+  "copied19Exact8046": [
+    {
+      "path": "docs/portal-rebuild/w7/ACCEPTANCE_LEDGER.json",
+      "bytes": 141480,
+      "sha256": "ec7b8703f2babe3b4ec2a40d7bb2965357ae2571b9e1e42a3e383984433c45b9"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/PUBLISHED_94607_SOURCE_REFERENCE.json",
+      "bytes": 631,
+      "sha256": "952bb89f8cf51b72edb7a816206c31d66a964d41a3316552498033adc54f280f"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/REVIEW_QUEUE.json",
+      "bytes": 74363,
+      "sha256": "74281ee0e490d8583da927bc710543c46781056b45f79bb5f0571b542d474ffe"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/SESSION_HANDOFF_20261103.md",
+      "bytes": 85910,
+      "sha256": "e13f676a223324552b696396c6f0fac0705033c5bd1b88e5837c1b2612a633ee"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/RESUME_ARTIFACT_AVAILABILITY_20261104.md",
+      "bytes": 5064,
+      "sha256": "ae6cc3f7f5a99e8cccd1c5bb34e0fb13db5eda1508c4db73216a8021c02a8bc7"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/ci/RESUME_ARTIFACT_AVAILABILITY_20261104_RESULT.json",
+      "bytes": 5363,
+      "sha256": "8e4e816c35c34957a5dc2cae6258e54ade8f4e2168dd55822679924f292e3797"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_94607_SOURCE.md",
+      "bytes": 2099,
+      "sha256": "48f25b96fc0f1c48143bb00bd5b00150e8f0f0f542266b087ac4244556375af3"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/PUBLISHED_SPINE_94607_SOURCE_RESULT.json",
+      "bytes": 9477,
+      "sha256": "fb0d2c14e1050ddc30b6e77c45b7b14b14e48bcb1a4615c84d0ce14dea0d6f91"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W0_ADVISOR_EMAIL_C75_SOURCE.md",
+      "bytes": 3290,
+      "sha256": "4b874eaf590c614464f2b0e55c9c8ec0a7bcf1ad8ef06d9b17f3e29ced1d1ce8"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W0_ADVISOR_EMAIL_C75_SOURCE_RESULT.json",
+      "bytes": 9450,
+      "sha256": "85ed24c0b548d543ea66cb86afc3fbb1ec4330071c5b89e06ee9cc21a8db5f89"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W0_ROUTER_BINDING_686734.md",
+      "bytes": 3434,
+      "sha256": "61d52eb9468f8a099f097a0779fac9bf0d83c714f2f638159ccfadf41748b0ab"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W0_ROUTER_BINDING_686734_RESULT.json",
+      "bytes": 7255,
+      "sha256": "02ebb2f0ed8281a89777708f8ceb6733ce57c4f2af4ca1b185ce27f6ed44fde6"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W1_NEUTRAL_EMAIL_52FA_SOURCE.md",
+      "bytes": 3304,
+      "sha256": "6882f946c5e81150ecd654abfdabfb0031f21c942bfc0e387b9c754dc1578d8e"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W1_NEUTRAL_EMAIL_52FA_SOURCE_RESULT.json",
+      "bytes": 13266,
+      "sha256": "996767614a85f9cc2c6d43802ff5bfe4944ffd8e8fbeb9b88b8c10177db83673"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W2_B7BF_FRESH_CORRESPONDENCE.md",
+      "bytes": 3423,
+      "sha256": "a42436021454daff35b9f167c83db5439b7074f95a0c296f2cbf22ee44700bdd"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W2_B7BF_FRESH_CORRESPONDENCE_RESULT.json",
+      "bytes": 7621,
+      "sha256": "0ba08adb99fb11d325016d9e406d1dd51f4702ea3328213bab769e7ff34e2311"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W5_ORDERS_9AB334_O6.md",
+      "bytes": 4547,
+      "sha256": "84cfc67f09c95d6cdff9adfc7cc0716eba554299975187c201efc1fbef8b01b5"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/reviews/W5_ORDERS_9AB334_O6_RESULT.json",
+      "bytes": 29334,
+      "sha256": "b96a78f5648fe71846037fdd8e6a396c2f2d444540a67c5d859bf0680ae1a4b1"
+    },
+    {
+      "path": "docs/portal-rebuild/w7/source-controls/W5_O6/w7-orders-selection-cancel-mask.test.mjs",
+      "bytes": 5973,
+      "sha256": "e652dc277275445ad309f5dedacab21a65729973ffc1bdbf461a3ab7f7e756a7"
+    }
+  ],
+  "noUnadmittedCodeOrSQLImport": true,
+  "noTestRerun": true,
+  "owner": "Kanuj",
+  "verdict": "PASS_BOUNDED_PUBLISHED_EMAIL_SOURCE_AND_EXACT_DOC_CORRESPONDENCE_ONLY",
+  "recordedAt": "2026-11-04T22:58:23.828873+00:00",
+  "remoteObservation": {
+    "method": "git ls-remote origin exactintegrationbranch",
+    "exitCode": 0,
+    "toolChunk": "a21ecd"
+  },
+  "copiedW7Snapshot": "8046dcca74acce366028ef1e4ecab5b5892a3aca",
+  "noOwnLedgerRollback": true,
+  "reportSha256": "59c9fa48a8e19413a9f9ae4adc0898631d01508e6c831279b2e577e60d88c1a1",
+  "newTestsOrResources": false,
+  "wholeIntegratedCensus": "NOT_MEASURED"
+}
