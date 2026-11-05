@@ -5,7 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
 import {resolve} from 'node:path';
-const {fixture,load,client,draftId,index,draft,detail,components,body}=await import(pathToFileURL(resolve('apps/portal/tests/w5-orders-commerce-admin-helper.mjs')));
+const {fixture,load,client,draftId,index,draft,detail,components,body}=await import(new URL('./w5-orders-commerce-admin-helper.mjs',import.meta.url));
 const {createProductQuoteAdminController}=await load('apps/portal/src/features/orders/admin/controller.ts');
 
 test('replacement after the first final-edit handoff can edit chosen B or exposes a blocked recovery state',async t=>{
@@ -61,10 +61,11 @@ async function firstHandoff(t){
  return {...f,old,next,idB,controller,holdRead(){const h={enter:deferred(),release:deferred()};held=h;return h;},failDetail(){failed=true;}};
 }
 async function renderRecovery(controller){
+ const {fileURLToPath}=await import('node:url'),currentRoot=fileURLToPath(new URL('../../..',import.meta.url));
  const {mkdir,symlink,realpath}=await import('node:fs/promises'),{dirname}=await import('node:path'),{build}=await import('esbuild'),{createElement}=await import('react'),{renderToStaticMarkup}=await import('react-dom/server');
- const home=resolve('.local-artifacts/w5-quote-admin-qa5-r7-20261105/ssr'),out=resolve(home,'runtime/ProductQuoteAdmin.mjs'),modules=resolve('apps/portal/node_modules'),link=resolve(home,'node_modules');
+ const home=resolve(currentRoot,'.local-artifacts/w5-quote-admin-native-r8-20261105/ssr'),out=resolve(home,'runtime/ProductQuoteAdmin.mjs'),modules=resolve(currentRoot,'apps/portal/node_modules'),link=resolve(home,'node_modules');
  await mkdir(dirname(out),{recursive:true});try{await symlink(modules,link,'dir');}catch(e){if(e.code!=='EEXIST')throw e;}assert.equal(await realpath(link),await realpath(modules));
- await build({stdin:{contents:"export {ProductQuoteAdmin} from './features/orders/admin/ProductQuoteAdmin.tsx';export {OverlayProvider} from './ui/index.ts';",resolveDir:resolve('apps/portal/src'),loader:'ts'},outfile:out,bundle:true,platform:'node',format:'esm',jsx:'automatic',packages:'external',loader:{'.css':'empty'},logLevel:'silent'});
+ await build({stdin:{contents:"export {ProductQuoteAdmin} from './features/orders/admin/ProductQuoteAdmin.tsx';export {OverlayProvider} from './ui/index.ts';",resolveDir:resolve(currentRoot,'apps/portal/src'),loader:'ts'},outfile:out,bundle:true,platform:'node',format:'esm',jsx:'automatic',packages:'external',loader:{'.css':'empty'},logLevel:'silent'});
  const m=await import(pathToFileURL(out));return renderToStaticMarkup(createElement(m.OverlayProvider,null,createElement(m.ProductQuoteAdmin,{controller})));
 }
 test('first-edit cache conflict has disabled fields and explicit read-only recovery before later B editing',async t=>{

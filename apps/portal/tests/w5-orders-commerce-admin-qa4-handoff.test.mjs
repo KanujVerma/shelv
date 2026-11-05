@@ -5,7 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
 import {resolve} from 'node:path';
-const {fixture,load,client,draftId,index,draft,detail,components,body}=await import(pathToFileURL(resolve('apps/portal/tests/w5-orders-commerce-admin-helper.mjs')));
+const {fixture,load,client,draftId,index,draft,detail,components,body}=await import(new URL('./w5-orders-commerce-admin-helper.mjs',import.meta.url));
 const {createProductQuoteAdminController}=await load('apps/portal/src/features/orders/admin/controller.ts');
 
 test('replacement constructed during old final edit can persist its later B edits after old terminal cleanup',async t=>{

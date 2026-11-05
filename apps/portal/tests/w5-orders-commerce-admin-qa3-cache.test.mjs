@@ -5,7 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
 import {resolve} from 'node:path';
-const {fixture,load,client,draftId,index,receipt,draft,detail,components,line,option}=await import(pathToFileURL(resolve('apps/portal/tests/w5-orders-commerce-admin-helper.mjs')));
+const {fixture,load,client,draftId,index,receipt,draft,detail,components,line,option}=await import(new URL('./w5-orders-commerce-admin-helper.mjs',import.meta.url));
 const {createProductQuoteAdminController}=await load('apps/portal/src/features/orders/admin/controller.ts');
 
 test('older recovered-creation controller disposal preserves newer replacement draft edits in the same-owner cache',async t=>{
@@ -53,7 +53,7 @@ test('older recovered-creation controller disposal preserves newer replacement d
  assert.equal(recovered.preparation.body.note,'newer draft B unsent edits','terminal older controller must not overwrite a newer current unsent cache');
 });
 
-const {body:canonicalBody}=await import(pathToFileURL(resolve('apps/portal/tests/w5-orders-commerce-admin-helper.mjs')));
+const {body:canonicalBody}=await import(new URL('./w5-orders-commerce-admin-helper.mjs',import.meta.url));
 async function newerCache(t){
  const f=await fixture(t),idB='e0000000-0000-4000-8000-000000000009';
  f.setReply(async command=>{

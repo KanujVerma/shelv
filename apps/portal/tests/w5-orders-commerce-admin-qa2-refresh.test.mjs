@@ -6,7 +6,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
 import {resolve} from 'node:path';
-const {fixture,load,client,draftId,index,receipt,deferred}=await import(pathToFileURL(resolve('apps/portal/tests/w5-orders-commerce-admin-helper.mjs')));
+const {fixture,load,client,draftId,index,receipt,deferred}=await import(new URL('./w5-orders-commerce-admin-helper.mjs',import.meta.url));
 const {createProductQuoteAdminController}=await load('apps/portal/src/features/orders/admin/controller.ts');
 
 test('same-form refresh during creation-status recovery cannot turn the acknowledged original into another create',async t=>{
@@ -52,7 +52,7 @@ test('same-form refresh during creation-status recovery cannot turn the acknowle
 
 // Owner extensions supply canonical detail/components that the exact original
 // intentionally does not. No actual persisted record/finance authority follows.
-const {draft:canonicalDraft,detail:detailEnvelope,components:componentEnvelope,option:manualOption}=await import(pathToFileURL(resolve('apps/portal/tests/w5-orders-commerce-admin-helper.mjs')));
+const {draft:canonicalDraft,detail:detailEnvelope,components:componentEnvelope,option:manualOption}=await import(new URL('./w5-orders-commerce-admin-helper.mjs',import.meta.url));
 async function canonicalRecovery(t){
  const f=await fixture(t),entered=deferred(),release=deferred();let original=null,available=true;
  f.setReply(async command=>{
