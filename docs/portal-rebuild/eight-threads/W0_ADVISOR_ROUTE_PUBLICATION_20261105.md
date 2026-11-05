@@ -1,0 +1,19 @@
+# Advisor-client route recovery: reviewed source publication
+
+Owner: Kanuj. The source parent is `bdc3b972ab50bf8a05355f288d64168c26c52fc5`, based directly on previously published `4f73c28dfb08f9b387d0170028a5f9cbe0af2fdc`. This documentation child selects only that exact reviewed three-file correction, the two exact W7 receipt postimages and this bounded publication/Context record. It does not import private Root ancestry or change an unrelated producer, route, authority or feature.
+
+## Exact gate and scope
+
+[Independent W7 report](../w7/reviews/W0_ADVISOR_CLIENT_ROUTE_BDC3_SOURCE.md) and its [result](../w7/reviews/W0_ADVISOR_CLIENT_ROUTE_BDC3_SOURCE_RESULT.json) are copied byte-for-byte from `0ffc3f69612135f0217c844b638f918b1af16ae3`. The report is3884 bytes/SHA256 `0f4b5ee0524e6ef8f94393dbd1e6904d808c034a2370c05b40f7ee1decb56479`; RESULT14993 bytes/SHA256 `a24713a8d5eb88eeb5f4d6ff34f34c8ad34774a851280be0507e125911409b85`. No older W7 canonical ledger snapshot is selected over the owner's newer records.
+
+All three source postimages/full binary-full-index patch `6539fe01c796470ac0b684d66936b7216e2d51701cd25ddc0d3a4eca18999e34`, twenty unchanged dependency/configuration/lock pins, thirteen owner proofs and the independent five raw check receipts were verified. Removing only the unique validator import and guarded-construction/recovery clause restores the entire original view; the factory and complete EntryView are unchanged. The child changes only four documentation paths, preserving the source parent exactly. Its Context addition is a prefix; removing it restores the entire prior published Context, including the allocated W2 entry.
+
+The correction handles ordinary P2 discussion4476355532. Invalid client UUID input is validated with canonical readUuid before entry construction and renders existing unavailable/open-plans recovery. Valid input retains the original constructor and its own validation. Only the pure validation error is caught; no broader runtime failure, private return, authority or lifetime denial is converted into success. The route parser, shared runtime, contract, registry, gateway, feature controllers and permissions are unchanged.
+
+Independent CURRENT20/20 comprises16 finite actual-session/source/SSR controls plus four lexical preservation controls, not20 genuine requirements. All four UNMODIFIED configured type graphs independently pass. Root read and hashed those five independent raw receipts; it did not rerun them for publication. Saved OLD4f73 remains1pass/1fail invalid_input and was not replayed. The numeric-only fixture's label correction adds no mixed-case coverage. MODULE_TYPELESS warnings remain unsuppressed. No browser/Auth/SQL/provider/private-client/resource action was performed.
+
+## Current and future gates
+
+The previous published4f73 has three completed green hosted jobs, with actual21cba5b/base+4f73/whole-tree equality custody and Portal4329/4329. That does not erase its reproduced SSR failure and is not validation of this new head. Fresh exact published-head hosted/native gates and complete actual checkout/parent/tree custody remain pending. Native4476355532 stays open at publication; source PASS alone is not a resolved thread or a clean native review. PR211 remains draft on PR210 and is not merged.
+
+All68 original migration blobs, workflows, package locks and contracts remain unchanged;69/70/71 remain unadmitted. The separate current resolver proposal carries unrun SQL70 and is not selected into this publication or CI. Actual preview port/mount/lifetime/VIEW/persistence/hydration/Figma/genuine and W4 no-photo resolver/SDK metadata/route/current-care-review-return eligibility remain open. Principal44 refusal STOP/no partial/retry/reroute/alternate/setup, HN1 DO-NOT-START, A07/Guidance/private-return/Source/photo/M65/final-egress/financial/protected-fixture holds, resources and counters are unchanged.
