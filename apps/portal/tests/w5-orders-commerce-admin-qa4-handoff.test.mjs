@@ -42,3 +42,62 @@ test('replacement constructed during old final edit can persist its later B edit
  t.diagnostic(JSON.stringify({oldEditReturned,cookie:f.runtime.cookie.status,oldPhase:old.getSnapshot().phase,initialReplacementNote,currentDraft:next.getSnapshot().loaded.draft.target.draftId,currentNote:next.getSnapshot().preparation.body.note,recoveredNote:recovered.preparation.body.note,nonReadCalls:f.calls.filter(x=>!x.command.action.startsWith('read_')).length}));
  assert.equal(recovered.preparation.body.note,'current replacement B edit','current replacement must not permanently lose cache custody after old final-edit cleanup');
 });
+
+// The original W7 program above remains byte-identical. These are new owner
+// extensions on the R6 successor, never execution of stopped c56.
+async function handoffFixture(t){
+ const f=await fixture(t),idB='e0000000-0000-4000-8000-000000000009';
+ f.setReply(async command=>{
+  if(command.action==='read_advisor_commerce_v1')return Response.json({...index(),entries:[...index().entries,{...index().entries[0],entity:{kind:'quote_draft',id:idB,revision:7},label:'synthetic B'}]});
+  if(command.action==='read_advisor_commerce_detail_v1')return Response.json(command.entity.id===idB?{...detail(),detail:{...draft(),target:{...draft().target,draftId:idB}}}:detail());
+  if(command.action==='read_advisor_quote_components_v1')return Response.json({...components(command),quote:command.quote});
+  throw Error('unexpected finite read-only command');
+ });
+ function controller(){const c=createProductQuoteAdminController({runtime:f.runtime,clientId:client,request:f.request});t.after(()=>c.dispose());return c;}
+ const old=controller();await old.refresh();await old.openDraft(draftId);
+ assert.equal(old.setBody({...body(),note:'previous A cached edit'}),true);
+ return {...f,old,idB,controller};
+}
+test('same-draft final raw fields are reconciled without converting partial money into a fact',async t=>{
+ const f=await handoffFixture(t);let next=null,entered=false;
+ f.old.subscribe(()=>{
+  if(entered||f.old.getSnapshot().inputs.header.note!=='final incomplete A')return;
+  entered=true;next=f.controller();f.old.dispose();
+ });
+ assert.equal(f.old.setHeaderInputs({...f.old.getSnapshot().inputs.header,note:'final incomplete A',taxAmount:'1.'}),false);
+ assert.ok(next);await next.refresh();
+ assert.equal(next.getSnapshot().inputs.header.note,'final incomplete A');
+ assert.equal(next.getSnapshot().inputs.header.taxAmount,'1.');
+ assert.notEqual(next.getSnapshot().inputErrors.header,null);
+ assert.equal(next.getSnapshot().dirty,true);next.dispose();
+ const restored=f.controller();assert.equal(restored.getSnapshot().inputs.header.taxAmount,'1.');
+ assert.equal(restored.getSnapshot().inputs.header.note,'final incomplete A');
+ assert.equal(f.calls.some(x=>!x.command.action.startsWith('read_')),false);
+});
+test('authored old A cannot accept a mutation over the actual newer B cache',async t=>{
+ const f=await handoffFixture(t),next=f.controller();await next.refresh();
+ assert.equal(next.discardLocal(),true);await next.openDraft(f.idB);
+ assert.equal(next.setBody({...body(),note:'new B owns cache'}),true);
+ const before=f.old.getSnapshot();
+ assert.equal(f.old.setBody({...body(),note:'stale A attempted overwrite'}),false);
+ assert.equal(f.old.getSnapshot(),before);
+ assert.equal(f.controller().getSnapshot().preparation.body.note,'new B owns cache');
+ assert.equal(next.setBody({...body(),note:'new B still editable'}),true);f.old.dispose();
+ assert.equal(f.controller().getSnapshot().preparation.body.note,'new B still editable');
+ assert.equal(f.calls.some(x=>!x.command.action.startsWith('read_')),false);
+});
+test('a mutation prepared before final handoff must observe the adopted context before deliberate reapplication',async t=>{
+ const f=await handoffFixture(t);let next=null,refresh=null,entered=false;
+ f.old.subscribe(()=>{
+  if(entered||f.old.getSnapshot().preparation.body.note!=='final A arrived after read start')return;
+  entered=true;next=f.controller();refresh=next.refresh();f.old.dispose();
+ });
+ assert.equal(f.old.setBody({...body(),note:'final A arrived after read start'}),false);
+ await refresh;assert.ok(next);assert.equal(next.getSnapshot().phase,'ready');
+ const staleProposed={...next.getSnapshot().preparation.body,note:'proposed from previous A'};
+ assert.equal(next.setBody(staleProposed),false);
+ assert.equal(next.getSnapshot().preparation.body.note,'final A arrived after read start');
+ assert.equal(next.setBody({...next.getSnapshot().preparation.body,note:'deliberate current A'}),true);
+ assert.equal(f.controller().getSnapshot().preparation.body.note,'deliberate current A');
+ assert.equal(f.calls.some(x=>!x.command.action.startsWith('read_')),false);
+});
