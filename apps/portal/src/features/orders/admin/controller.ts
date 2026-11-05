@@ -97,6 +97,29 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    expectedEditCache=wire;return true;
   }catch{return false;}
  }
+ // A replacement may be constructed before old terminal cleanup retains its
+ // final edit. Only an untouched same-draft/base context can adopt that handoff;
+ // terminal cleanup never adopts and authored work never silently loses custody.
+ function reconcileEditHandoff():boolean {
+  const origin=state,read=readToken,write=writeToken,view=cookie._view;
+  if(!alive()||!boundary||!editCacheKnown)return false;
+  try{
+   const raw=boundary.memory.get<{version?:unknown;selectedId?:unknown;preparation?:unknown;inputs?:unknown;base?:unknown}>(editKey),wire=editCacheWire(raw);
+   if(wire===expectedEditCache)return true;
+   if(editGeneration!==0||activeWrite||state.pending||state.choosingProduct!==null||state.choosingAddress)return false;
+   let preparation:ProductQuotePreparation,inputs:ProductQuoteInputs,errors:ProductQuoteAdminState['inputErrors'],dirty:boolean;
+   if(raw===undefined){preparation=state.loaded?preparationFromRead(state.loaded):newProductQuotePreparation();inputs=productQuoteInputs(preparation);errors={header:null,lines:{}};dirty=false;}
+   else{
+    requireValue(raw!==null&&raw.version===1&&raw.selectedId===selectedId&&raw.base===(state.loaded?fingerprint(state.loaded):editBase));
+    preparation=readCommerceShape<ProductQuotePreparation>(raw.preparation,co({body:cDraftBody,lines:ca(cDraftLine,50)}));
+    const parsed=parseProductQuoteInputs(preparation,raw.inputs===undefined?productQuoteInputs(preparation):readProductQuoteInputs(raw.inputs,preparation));
+    preparation=parsed.preparation;inputs=parsed.inputs;errors=parsed.errors;dirty=true;
+   }
+   if(!alive()||state!==origin||readToken!==read||writeToken!==write||cookie._view!==view||editCacheWire(boundary.memory.get(editKey))!==wire)return false;
+   observeEditCache(raw);
+   return emit({preparation,inputs,inputErrors:errors,dirty,reviewed:false},{read,write,view})===true;
+  }catch{return false;}
+ }
  function rememberEdits(){if(alive())return replaceEditCache({version:1,selectedId,preparation:state.preparation,inputs:state.inputs,base:state.loaded?fingerprint(state.loaded):editBase});return false;}
  function forgetEdits(){return alive()?replaceEditCache(undefined):false;}
  function retire(){
@@ -138,6 +161,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
  }
  async function refresh(ack?:{command:AdminQuoteWrite;receipt:CommerceReceipt},claimed?:ReadClaim){
   const claim=claimed??claimRead();if(!claim||!request||!readCurrent(claim))return;
+  reconcileEditHandoff();if(!readCurrent(claim))return;
   const previous=readAbort;readAbort=null;
   try{cancelUnsent();}finally{previous?.abort();}
   if(!readCurrent(claim))return;
@@ -247,8 +271,8 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
   }catch(error){if(!alive()||writeToken!==token)return;emit({pending:{...pending,status:'failed',phase:'uncertain'}});const status=(error as {status?:number}).status;if(status===401||status===403)fail(error);}
  }
  function mutateInputs(preparation:ProductQuotePreparation,inputs:ProductQuoteInputs){
-  if(!writeReady())return false;const parsed=parseProductQuoteInputs(preparation,inputs);review=null;editGeneration++;
-  emit({preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty:!state.loaded||!same(parsed.preparation,preparationFromRead(state.loaded))||productQuoteHasInputErrors(parsed.errors),reviewed:false,error:null});rememberEdits();return ready();
+  if(!writeReady())return false;const origin=state;if(!reconcileEditHandoff()||state!==origin)return false;const parsed=parseProductQuoteInputs(preparation,inputs);review=null;editGeneration++;
+  emit({preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty:!state.loaded||!same(parsed.preparation,preparationFromRead(state.loaded))||productQuoteHasInputErrors(parsed.errors),reviewed:false,error:null});const remembered=rememberEdits();return remembered&&ready();
  }
  function mutate(preparation:ProductQuotePreparation){return mutateInputs(preparation,rebaseProductQuoteInputs(state.preparation,state.inputs,preparation));}
  return {
@@ -326,7 +350,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
   },
   async retryOriginal(){const pending=state.pending;if(pending?.phase==='uncertain'&&pending.command)await send(pending.command,true);},
   discardLocal(){
-   if(!writeReady())return false;
+   if(!writeReady())return false;reconcileEditHandoff();if(!writeReady())return false;
    const preparation=state.loaded?preparationFromRead(state.loaded):newProductQuotePreparation();
    review=null;pickerToken++;editGeneration++;forgetEdits();
    emit({preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,error:null,choosingProduct:null,choosingAddress:false});return ready();
