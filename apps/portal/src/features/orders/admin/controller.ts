@@ -38,6 +38,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
  const intentKey=`commerce-admin-quote-intent:${owner}:${clientId}`,editKey=`commerce-admin-quote-edit:${owner}:${clientId}`;
  const listeners=new Set<()=>void>();let disposed=false,readToken=0,writeToken=0,pickerToken=0,editGeneration=0,readAbort:AbortController|null=null;
  let selectedId:string|null=null,editBase:string|null=null,review:AdminQuoteIssue|null=null;
+ let editCacheKnown=false,expectedEditCache:string|null=null;
  let activeWrite:{token:number;requestId:string;view:number;attempted:boolean;signal:AbortController;prior:ProductQuoteAdminPending|null}|null=null;
  const empty=newProductQuotePreparation();
  let state:ProductQuoteAdminState=copy({phase:request?'initial':'unavailable',index:null,loaded:null,latest:null,preparation:empty,inputs:productQuoteInputs(empty),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,pending:null,receipt:null,error:null,available:!!request,choosingProduct:null,choosingAddress:false});
@@ -83,7 +84,21 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    return copy({command,requestId:command.requestId,wire:raw.wire,hash:raw.hash,phase:'uncertain',status:'unchecked'});
   }catch{return copy({command:null,requestId:null,wire:typeof raw?.wire==='string'?raw.wire:null,hash:typeof raw?.hash==='string'?raw.hash:null,phase:'uncertain',status:'unsupported'});}
  }
- function rememberEdits(){if(alive())boundary!.memory.set(editKey,copy({version:1,selectedId,preparation:state.preparation,inputs:state.inputs,base:state.loaded?fingerprint(state.loaded):editBase}));}
+ const editCacheWire=(value:unknown)=>value===undefined?null:commerceCanonicalJson(value);
+ function observeEditCache(value:unknown){try{expectedEditCache=editCacheWire(value);editCacheKnown=true;}catch{editCacheKnown=false;}}
+ function replaceEditCache(value:unknown):boolean {
+  if(!boundary||!editCacheKnown)return false;
+  try{
+   const next=value===undefined?undefined:copy(value),wire=editCacheWire(next);
+   // Expected is this controller's last observed/written record, NOT whichever
+   // newer record happens to be present when old cleanup starts.
+   if(editCacheWire(boundary.memory.get(editKey))!==expectedEditCache)return false;
+   if(next===undefined)boundary.memory.delete(editKey);else boundary.memory.set(editKey,next);
+   expectedEditCache=wire;return true;
+  }catch{return false;}
+ }
+ function rememberEdits(){if(alive())return replaceEditCache({version:1,selectedId,preparation:state.preparation,inputs:state.inputs,base:state.loaded?fingerprint(state.loaded):editBase});return false;}
+ function forgetEdits(){return alive()?replaceEditCache(undefined):false;}
  function retire(){
   readToken++;writeToken++;pickerToken++;readAbort?.abort();activeWrite?.signal.abort();activeWrite=null;review=null;selectedId=null;
   const preparation=newProductQuotePreparation();state=copy({...state,phase:'ended',index:null,loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,pending:null,receipt:null,error:401,choosingProduct:null,choosingAddress:false});notify();
@@ -96,6 +111,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
  if(alive()){
   state=copy({...state,pending:storedPending()});
   const saved=boundary!.memory.get<{version:number;selectedId:string|null;preparation:ProductQuotePreparation;inputs?:unknown;base:string|null}>(editKey);
+  observeEditCache(saved);
   if(saved?.version===1)try{
    const preparation=readCommerceShape<ProductQuotePreparation>(saved.preparation,co({body:cDraftBody,lines:ca(cDraftLine,50)}));
    if(saved.selectedId!==null)readUuid(saved.selectedId);requireValue(saved.base===null||typeof saved.base==='string');
@@ -108,7 +124,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
   const status=(error as {status?:unknown}|null)?.status,safe=typeof status==='number'&&[400,401,403,404,409,413,415,429,503].includes(status)?status:503;
   review=null;
   if(safe===401||safe===403){
-   pickerToken++;boundary!.memory.delete(editKey);const preparation=newProductQuotePreparation();emit({phase:safe===401?'ended':'denied',index:null,loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,error:safe,choosingProduct:null,choosingAddress:false});return;
+   pickerToken++;forgetEdits();const preparation=newProductQuotePreparation();emit({phase:safe===401?'ended':'denied',index:null,loaded:null,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,error:safe,choosingProduct:null,choosingAddress:false});return;
   }
   emit({phase:safe===409?'conflict':cookie.status==='offline'?'offline':safe===503?'unavailable':'error',reviewed:false,error:safe});
  }
@@ -148,7 +164,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    const preparation=state.dirty?state.preparation:canonical,parsed=parseProductQuoteInputs(preparation,state.dirty?state.inputs:productQuoteInputs(canonical)),dirty=!same(parsed.preparation,canonical)||productQuoteHasInputErrors(parsed.errors);
    editBase=fingerprint(loaded);const published=emitRead({index,loaded,latest:null,preparation:parsed.preparation,inputs:parsed.inputs,inputErrors:parsed.errors,dirty,phase:'ready',reviewed:false,error:null},operation);
    if(!published||!current())return;
-   if(dirty)rememberEdits();else boundary!.memory.delete(editKey);
+   if(dirty)rememberEdits();else forgetEdits();
   }catch(error){if(alive()&&token===readToken)fail(error);}
  }
  async function openDraft(id:string){
@@ -312,10 +328,10 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
   discardLocal(){
    if(!writeReady())return false;
    const preparation=state.loaded?preparationFromRead(state.loaded):newProductQuotePreparation();
-   review=null;pickerToken++;editGeneration++;boundary!.memory.delete(editKey);
+   review=null;pickerToken++;editGeneration++;forgetEdits();
    emit({preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,error:null,choosingProduct:null,choosingAddress:false});return ready();
   },
-  useLatest(){if(!ready()||state.pending||activeWrite||!state.latest)return false;const loaded=state.latest,preparation=preparationFromRead(loaded);review=null;editBase=fingerprint(loaded);boundary!.memory.delete(editKey);emit({loaded,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,phase:'ready',error:null});return true;},
+  useLatest(){if(!ready()||state.pending||activeWrite||!state.latest)return false;const loaded=state.latest,preparation=preparationFromRead(loaded);review=null;editBase=fingerprint(loaded);forgetEdits();emit({loaded,latest:null,preparation,inputs:productQuoteInputs(preparation),inputErrors:{header:null,lines:{}},dirty:false,reviewed:false,phase:'ready',error:null});return true;},
   keepLocalWithLatest(){
    if(!ready()||state.pending||activeWrite||!state.latest)return false;
    const loaded=state.latest,canonical=preparationFromRead(loaded),parsed=parseProductQuoteInputs(state.preparation,state.inputs);
@@ -332,13 +348,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    // State is already terminal before any callback-capable cleanup. Preserve
    // only this still-bound owner's unsent cache, without erasing a replacement
    // written during a relevance callback. Dispatched original custody stays.
-   if(edits&&boundary)try{
-    const prior=boundary.memory.get(editKey),before=prior===undefined?null:commerceCanonicalJson(prior);
-    if(ownerCurrent()){
-     const current=boundary.memory.get(editKey),after=current===undefined?null:commerceCanonicalJson(current);
-     if(before===after)boundary.memory.set(editKey,edits);
-    }
-   }catch{/* Cache failure cannot reopen a terminal controller. */}
+   if(edits&&boundary)try{if(ownerCurrent())replaceEditCache(edits);}catch{/* Cache failure cannot reopen a terminal controller. */}
    for(const cleanup of [stopBoundary,stopRuntime,()=>abort?.abort(),()=>op?.signal.abort()])try{cleanup();}catch{/* Attempt every remaining cleanup. */}
    for(const fn of observers)try{fn();}catch{/* One observer cannot hide termination from others. */}
   },
