@@ -9,12 +9,18 @@ import {Button,StatusNotice} from '../ui/index.ts';
 import {PublicationAudit} from './PublicationAudit.tsx';
 import {createAdvisorClientEntry} from './advisor-client-entry.ts';
 import type {AdvisorClientEntry} from './advisor-client-entry.ts';
+import {readUuid} from '../../../../src/contracts/ConciergePortalValidation.ts';
 
 type Props={runtime:ApplicationSession;clientId:string;boundary:PlanSessionBoundary;
  publication:ReturnType<typeof createAdvisorPorts>['publication'];adapterCare:ReturnType<typeof createAdvisorPorts>['care'];clientName?:string|null};
 export function AdvisorClientApplication({runtime,clientId,...props}:Props){
  const {navigator,path}=usePortalNavigation();
- const entry=useMemo(()=>createAdvisorClientEntry(runtime,navigator,clientId),[runtime,navigator,clientId,path]);
+ const entry=useMemo(()=>{
+  let id:string;
+  try{id=readUuid(clientId);}catch{return null;}
+  return createAdvisorClientEntry(runtime,navigator,id);
+ },[runtime,navigator,clientId,path]);
+ if(!entry)return <><PageHeader title="client workspace"/><StatusNotice tone="denied" title="client workspace unavailable"/><RouteLink route={{name:'advisor-plans'}}>open plans</RouteLink></>;
  return <AdvisorClientEntryView entry={entry} {...props}/>;
 }
 export function AdvisorClientEntryView({entry,publication,adapterCare,boundary,clientName}:Omit<Props,'runtime'|'clientId'>&{entry:AdvisorClientEntry}){

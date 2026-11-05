@@ -1,0 +1,317 @@
+{
+  "owner": "Kanuj",
+  "head": "bdc3b972ab50bf8a05355f288d64168c26c52fc5",
+  "base": "4f73c28dfb08f9b387d0170028a5f9cbe0af2fdc",
+  "verdict": "PASS_SCOPED_COMPLETE3_SOURCE_FINITE_SESSION_SSR_MALFORMED_CLIENT_ROUTE_RECOVERY_ONLY",
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/SOURCE-PACKET.json",
+    "sha256": "b27307a4aed55793f996141c38031963da00c93e89523a0453f6dee2143556a3",
+    "bytes": 10047
+  },
+  "parents": [
+    "4f73c28dfb08f9b387d0170028a5f9cbe0af2fdc"
+  ],
+  "sourcePins": {
+    "apps/portal/src/app/AdvisorClientEntry.tsx": {
+      "blob": "e31246674589e74baff212f4beb9713087d9a287",
+      "bytes": 2774,
+      "sha256": "47c83f35041f67750e477b26aaf9d2f2488dd8bb78a3cd5d11df6313c636b9b9"
+    },
+    "apps/portal/tests/w0-advisor-client-route-input.test.mjs": {
+      "blob": "b2d3f7d3b8fca198f4d2dad5b05c0974677893f7",
+      "bytes": 2944,
+      "sha256": "040dde96bbcd5765420322f8027b8ee2757cd740705453c920608b3bd485cbaa"
+    },
+    "docs/portal-rebuild/eight-threads/W0_ADVISOR_CLIENT_ROUTE_RECOVERY_20261105.md": {
+      "blob": "e421e8024596d3c14bc09e6c2d06eb9b1f0eb9c8",
+      "bytes": 5039,
+      "sha256": "cf8b023a3c0a2bad0baf6955ea1d3da1c70f830d224f556fb4573b3905d39880"
+    }
+  },
+  "selected20UnchangedPins": {
+    "apps/portal/src/app/advisor-client-entry.ts": {
+      "blob": "3712b545e617ffb89640510322ded5cee06fb240",
+      "bytes": 6386,
+      "sha256": "4500e3fe9e880a42c37fd089b02747990a991edb733c534b1527929b7947edc7"
+    },
+    "apps/portal/src/app/session.ts": {
+      "blob": "7ee99d5d0d13d0d316b86b894ec525520616897e",
+      "bytes": 6061,
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    "apps/portal/src/app/ports.ts": {
+      "blob": "04328493e6b6ae5bfb29d180a11fe8d0c1763069",
+      "bytes": 15627,
+      "sha256": "6b99db6882bb26d0c3dd44c18c36f2b010ad609b1b101a21bd0a5ff920a19eaf"
+    },
+    "apps/portal/src/navigation/history.ts": {
+      "blob": "7a034c8bcaf4ac74e453423f46fc70fbe753e229",
+      "bytes": 11750,
+      "sha256": "8819dd47dd9b966f63e580fbc6a24d77dec98ab64cfd45f4d2c5adb3fd5e52df"
+    },
+    "apps/portal/src/navigation/routes.ts": {
+      "blob": "d220dfcce11c000b1a0b6d1784e3c1604f4018a5",
+      "bytes": 1496,
+      "sha256": "48a7efc90a6b94d062010e30f0a31b99393c85cf14a804b2426d7b62d921032d"
+    },
+    "apps/portal/src/navigation/react.tsx": {
+      "blob": "75ddd6f2f9c82387affd21ddcd65605473fab663",
+      "bytes": 2701,
+      "sha256": "686317041523a29dd750ac5ba88387199b6239634ebae460e5c32617619db7fa"
+    },
+    "src/contracts/ConciergePortalValidation.ts": {
+      "blob": "85a8c8120bcd01f26d19f781494e7beef25fdfb9",
+      "bytes": 2880,
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+    },
+    "apps/portal/src/features/advisor/client-workspace/ClientWorkspace.tsx": {
+      "blob": "37c62de346e33fe1f74094b36ee80dcea44d2980",
+      "bytes": 5104,
+      "sha256": "d2d4dd3331ea80414deb2de3a91390e7a3eb7430a17a0b5eba887a875d4a2dc0"
+    },
+    "apps/portal/src/features/advisor/client-workspace/controller.ts": {
+      "blob": "a8b60c83ca9ea937c7c8685c5c369fd08627eceb",
+      "bytes": 7961,
+      "sha256": "fda63de123e9963f7f7de69eaae30b442d6b53297f32524d943852ffa6a2a706"
+    },
+    "apps/portal/src/features/advisor/client-workspace/types.ts": {
+      "blob": "b08f356bf4dd4d1bb564c1b215a3ff3b2bac5f79",
+      "bytes": 1891,
+      "sha256": "6f7c3edd5f12e2ac0c6421aff279cc345b718f8dcdef8ec31ed1489c69a69e5a"
+    },
+    "apps/portal/tests/w0-advisor-client-entry-ssr.ts": {
+      "blob": "5d1a3ec17b17b5ee39e129b984b1232a3129f62e",
+      "bytes": 307,
+      "sha256": "555953fe3921638b4a3c5e81fd32257998742ff6a6c7e988b281d4e3102e9ff0"
+    },
+    "apps/portal/tests/rebuild-maya-five-stage-build.mjs": {
+      "blob": "90f5032213cc99e61dbfcf6ba75137b5756cd542",
+      "bytes": 660,
+      "sha256": "ffed0de56d6e3a4a5cdc6e37dd1cf1fad4a6ff655290f667773163499ac20817"
+    },
+    "apps/portal/tests/rebuild-app-v3-history-helper.mjs": {
+      "blob": "5b22e53f2dc4ecd860c9ebd78a420c04d82e1251",
+      "bytes": 4244,
+      "sha256": "6e522a91418b8167b1873e51d8a2b2dd20e3555a700d97dacb1d42fb4b8596c4"
+    },
+    "apps/portal/tests/rebuild/advisor-fixture.mjs": {
+      "blob": "6fb7a4cd98e39ab48d1e88e07b895b6d862ca9da",
+      "bytes": 11429,
+      "sha256": "63475f1a03e7ddd8f8d75f13421086b34ed6b88be170a79f16a40d26b77a6954"
+    },
+    "tsconfig.json": {
+      "blob": "0d2ae6b9cad69f84b85e97d2384aaafc64de7c60",
+      "bytes": 367,
+      "sha256": "839640d443d507a73cd896cf31588bc245ad3e507fdb5d24799d385b9b66bdc9"
+    },
+    "tsconfig.tests.json": {
+      "blob": "1c1015c4bae145c604e0859203f024cc17fe0044",
+      "bytes": 241,
+      "sha256": "9e8b67dbfe756ee9bf80f2751f5d61ac9c2346a155e65ee3e68b274b454422fe"
+    },
+    "apps/portal/tsconfig.frontend.json": {
+      "blob": "07246e252fed8da42d1f01fe4f6b98c17f87428d",
+      "bytes": 480,
+      "sha256": "b930ae73c53ea9dbdd895de85fccbac714e5526ba62a78537d0d72f149437003"
+    },
+    "apps/portal/session-integration/runtime/tsconfig.json": {
+      "blob": "cdfbcfc5ae1bd6086a8b1b86da9e61858a503083",
+      "bytes": 318,
+      "sha256": "df00e20423ceac2232e56aed3829a312103c941419eb9540b8e2023cdf1eb379"
+    },
+    "package-lock.json": {
+      "blob": "5e5bbda3690c92d49accc9937dfab45e5e4d01a7",
+      "bytes": 303079,
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    "apps/portal/package-lock.json": {
+      "blob": "78bc3f794eac9f8ed627c2af4d20064361f83f35",
+      "bytes": 123808,
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  },
+  "fullIndexPatch": {
+    "sha256": "6539fe01c796470ac0b684d66936b7216e2d51701cd25ddc0d3a4eca18999e34",
+    "bytes": 10511
+  },
+  "wholeFileInverse": {
+    "wholeInverseMatches": true,
+    "oldSha256": "d2dec030a7dbdcc4e31cd9924639f72be9f72474cd7f6d6287bcefef06fbd19b",
+    "afterSha256": "47c83f35041f67750e477b26aaf9d2f2488dd8bb78a3cd5d11df6313c636b9b9",
+    "uniqueImportCount": 1,
+    "uniqueConstructionRecoveryCount": 1,
+    "entireEntryViewByteEqual": true
+  },
+  "owner13ProofsVerified": {
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/CONFIGURED-GRAPHS.json": {
+      "bytes": 3173,
+      "sha256": "6d743baf35764784e9313bb912c68dacea117755c53893e6a65930e59bbaefe9"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/CURRENT-FINAL-RECEIPT.json": {
+      "bytes": 1024,
+      "sha256": "5681fea7d1fe0730e3cb7b29d92c19d778d8c42072ec81edcd5836ce03f1cfe5"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/CURRENT-FINAL-ROUTE-ENTRY.log": {
+      "bytes": 6710,
+      "sha256": "971c8b393bea9e005a87f0100263be35ed7225e52f1bfa8c79bad18db94f05e9"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/CURRENT-RECEIPT.json": {
+      "bytes": 866,
+      "sha256": "fd222d2bd1c195c20a226187223bf97cc661001d2d54c2e79fc59eedc46f4335"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/CURRENT-ROUTE-ENTRY.log": {
+      "bytes": 6727,
+      "sha256": "0b61a082a2a7a9546aec92cabe83046fbbccda167b6c02a3e66d0afc354cfff2"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/INITIAL-CONTROL.mjs": {
+      "bytes": 2954,
+      "sha256": "89937f604c9c0a3a1315e6db26e6026ffa3253d47ec9b0d717c2c2960ae30c32"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/OLD-4F73-ROUTE-INPUT.log": {
+      "bytes": 4704,
+      "sha256": "4bbce5462d20a0af870e7c7253dc7ada2babb244e1f7a5fdac3f643ccab0ec37"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/OLD-RECEIPT.json": {
+      "bytes": 732,
+      "sha256": "4bdb89985ca4f231f2b60f3360c0a6896735e2f016a52e8e55b0cb259ba33fe9"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/TYPE-FRONTEND.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/TYPE-ROOT.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/TYPE-SESSION.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/TYPE-TESTS.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/Users/kanuj/.t3/worktrees/shelv/kanuj-portal-rebuild-integration-20261030/.local-artifacts/portal-rebuild/w0-20261104-resume/advisor-client-route-recovery/WHOLE-FILE-INVERSE.json": {
+      "bytes": 456,
+      "sha256": "fce61dec1b48e5aca2004b5e72ad55fd5010f2b6484d55bfaacb192f1c4a497f"
+    }
+  },
+  "backup": {
+    "path": "/Users/kanuj/Documents/projects/shelv/.local-artifacts/w0-source-checkpoints/advisor-client-route-bdc3b972-20261105.tar.gz",
+    "sha256": "893cdad2e6fbadc4e8b0e9be5e4da1160ffe1dc468956022de0ca89e21004ef5",
+    "bytes": 15735,
+    "members": 18
+  },
+  "newW7Checks": [
+    {
+      "name": "FOCUSED20",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "--test",
+        "apps/portal/tests/w0-advisor-client-route-input.test.mjs",
+        "apps/portal/tests/w0-advisor-client-entry.test.mjs",
+        "apps/portal/tests/w0-advisor-client-entry-ssr.test.mjs",
+        "apps/portal/tests/w0-advisor-client-entry-preservation.test.mjs"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261105/w0-client-route-bdc/source",
+      "exit": 0,
+      "seconds": 1.182,
+      "raw": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261105/w0-client-route-bdc/FOCUSED20.log",
+      "sha256": "fed6f688ced94e3e82c3dec7d92826c56269bcc7302e85c92021fe0ccf2527f9",
+      "bytes": 6590,
+      "tail": [
+        "  duration_ms: 4.972125",
+        "  type: 'test'",
+        "  ...",
+        "1..20",
+        "# tests 20",
+        "# suites 0",
+        "# pass 20",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# todo 0",
+        "# duration_ms 1007.680834"
+      ]
+    },
+    {
+      "name": "TYPE-ROOT",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261105/w0-client-route-bdc/source",
+      "exit": 0,
+      "seconds": 22.744,
+      "raw": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261105/w0-client-route-bdc/TYPE-ROOT.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tail": []
+    },
+    {
+      "name": "TYPE-TESTS",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "-p",
+        "tsconfig.tests.json",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261105/w0-client-route-bdc/source",
+      "exit": 0,
+      "seconds": 19.689,
+      "raw": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261105/w0-client-route-bdc/TYPE-TESTS.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tail": []
+    },
+    {
+      "name": "TYPE-FRONTEND",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "apps/portal/node_modules/typescript/bin/tsc",
+        "-p",
+        "apps/portal/tsconfig.frontend.json"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261105/w0-client-route-bdc/source",
+      "exit": 0,
+      "seconds": 18.607,
+      "raw": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261105/w0-client-route-bdc/TYPE-FRONTEND.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tail": []
+    },
+    {
+      "name": "TYPE-SESSION",
+      "argv": [
+        "/Users/kanuj/.nvm/versions/node/v22.23.0/bin/node",
+        "apps/portal/node_modules/typescript/bin/tsc",
+        "-p",
+        "apps/portal/session-integration/runtime/tsconfig.json",
+        "--noEmit"
+      ],
+      "cwd": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261105/w0-client-route-bdc/source",
+      "exit": 0,
+      "seconds": 1.979,
+      "raw": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261105/w0-client-route-bdc/TYPE-SESSION.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "tail": []
+    }
+  ],
+  "savedOld": {
+    "pass": 1,
+    "fail": 1,
+    "error": "invalid_input",
+    "rerun": false
+  },
+  "initialUppercaseLabelOnlyCorrectionVerified": true,
+  "mixedCaseUuidCoverageClaimed": false,
+  "physicalPrivateRootAdopted": false,
+  "nativeFindingResolved": false,
+  "newBrowserAuthSqlProviderResources": false,
+  "resourceGrant": null,
+  "reportSha256": "0f4b5ee0524e6ef8f94393dbd1e6904d808c034a2370c05b40f7ee1decb56479",
+  "recordedAt": "2026-11-05T04:01:13.967928+00:00"
+}
