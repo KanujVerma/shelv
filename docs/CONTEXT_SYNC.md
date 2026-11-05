@@ -50,6 +50,12 @@ Owner: Kanuj. Published99bf372d carries eb7513eb complete10 SOURCE82/four graphs
 
 Owner: Kanuj. Published3a905730 has all3 exact-head CI checks successful; original df2303754/1 remains failed. Native review still has open plan SQL, held photo and new ordinary bootstrap audience4462894740. Reviewed client entry35E SOURCE66 and consumed9second blank Preview probe remain separate from actual VIEW, browser, genuine and whole-journey acceptance. See [W0](portal-rebuild/eight-threads/W0.md) and the [canonical W7 ledger](portal-rebuild/w7/ACCEPTANCE_LEDGER.json). Full W0 remains active; no new grant, stopped-fixture reuse or held-principal retry.
 
+## W2 saved decision preview checkpoint, 4 November 2026
+
+Owner: Kanuj. [PR239](https://github.com/KanujVerma/shelv/pull/239), head `39c4bb8608544a94a80701d92830e213b0c71e15`, implements an advisor-owned saved-preview read controller and optional A02 consumer of the admitted shared card. The [pinned source report](https://github.com/KanujVerma/shelv/blob/39c4bb8608544a94a80701d92830e213b0c71e15/docs/portal-rebuild/w2/INLINE_PREVIEW_SOURCE_20261103.md) records exact source binding, unavailable/dirty/denied/offline states and preserved full preview. Owner proof is25 focused cases included in415 covering source/model/SSR cases, frontend/UI/application build0 and all3 same-head CI checks. Complete independent source review and current Root composition remain pending.
+
+W0 still owns the actual fixed preview read, route/session lifetime and mount. Its local `b039b248b448b9d5c26d558138562532aa42eb91` dependency is queued for review and is not published or adopted by W2; absent transport remains unavailable. No live read, Auth/SQL/persistence, hydrated/Figma/accessibility, complete A02/J01 or genuine acceptance is granted. Principal44, Guidance/private-return, M65 and photo holds remain unchanged.
+
 ## W0 shared continuation after8a2
 
 Owner: Kanuj. The W0 receipt records SOURCE-approved corrected Maya73e and self-navigation369, locally integrated reviewed PR227/231/233/219, all4 type graphs0 and unchanged original68 migrations/evidence. Actual public browser/Figma/focus/a11y, Root single notification owner/admission/scoped client/service/resolver/export/contact/billing boundaries and all authenticated/persistence gates remain unfinished. Current complete integrated census is NOT_MEASURED; baseline24mounted/12SOURCEwired and bounded M01/M02 remain attributed to their original evidence.
