@@ -1,0 +1,45 @@
+# Distinct current source generation, 5 November 2026
+
+This new generation starts from published `3f9e2527df9eefcdb3f762c746bd631c9fe6e171` and restores only the allocated Quote Admin source/test postimages from frozen `a9b721ccdb4a36d2471ff98d0b18d8cc88f15b2e`. That original ref stays unchanged. This is source restoration from immutable Git, not recovery of its missing ignored packet or raw logs. The earlier author-evidence section below is historical retained prose; its original raw artifacts are unavailable at the previously reported paths. New commands, results and setup/failure outcomes are recorded separately in this generation's packet and W5 lane report.
+
+The new candidate is unreviewed and unmounted. No current finance authority, namespace, SQL/persistence, provider/funds action, actual Auth/browser/genuine or held audit is inferred. W0 owns actual bound ports/routes/lifetime; W2 owns later A04P composition. No A07, first-service verification/publication, accepted M02 record or financial/Source/principal44 hold is changed.
+
+---
+
+# Product quote administration
+
+Owner: Kanuj (W5). This allocated source consumer is not mounted or an operational finance surface. W2 owns advisor commerce/payment composition at A04P. W0 owns the actual selected-client/live-finance port, parent lifetime, routes and gateway; W1 owns canonical contracts. A07 check-in review, first-service verification, approval and deliberate publication are separate.
+
+## Exported interface
+
+`index.ts` exports `createProductQuoteAdminController({runtime:ApplicationSession,clientId,request?})` and `ProductQuoteAdmin({controller,clientName?,shipping?,onChooseProduct?,onChooseShippingAddress?,onRefreshShipping?,onOpenIssuedQuote?})`, with their exact types. W0 must supply the actual creation-bound client/finance operation port, load/dispose the controller with its real selected-client/runtime lifetime, and retain the shared OverlayProvider. Rendering performs no IO. Client IDs and optional props are correlation/data, never authorization; absent ports/pickers remain unavailable. No caller role or capability flags are accepted.
+
+The closed command union includes complete advisor index/draft/components reads, original request status, and only `save_product_quote_draft_v1`, `save_product_quote_line_v1`, `issue_product_quote_v1`. It adds no provider action, charge, purchase, fulfillment, payout, payment verification, publication or product Start.
+
+## Draft, save and issue
+
+Local preparation reuses the exact W1 draft/line shapes and command parser. Published products come only through the optional actual authorized published-option picker; raw product, publication and address IDs are not form fields. Unknown/not-applicable identity and source facts remain explicit. Decimal USD input converts exactly to cents, without rounding or markup. Checked amounts require their actual checked date; zero is deliberate, blank is unknown. Existing service allocation/period can be retained, never invented.
+
+Raw partial header/line fields stay in captured session memory. Invalid fields cannot serialize old or fabricated financial facts. Header and line saves are separate deliberate actions with exact canonical draft CAS. A new line or removal changes only the unsent working draft until saved; discard restores the last read. Back/close retains raw work; true owner/logout retirement clears private data. A denied read clears the financial projection.
+
+Full canonical pages bind client, snapshot, entity, target and components, and reject duplicate/cyclic/foreign/stale envelopes. A missing stored line remains incomplete. The panel compares starting/current/proposed conflict values and retains incomplete raw fields for inspection. Explicit discard or rebase does not write or approve anything. Issue requires all saved canonical lines, exact publication, server readiness, actual receiving options and a separate human review followed by issue. Local readiness is refusal/intent only; actual port and SQL must recheck authorization and CAS.
+
+Original uncertain UUID/body/hash custody survives same-session refresh/remount. Only original status or exact original retry resolves it; a later draft/quote read does not. Duplicate submissions, canceled retries and old acknowledgements cannot erase newer custody. Historical acknowledgements remain separate from current canonical facts. The explicit issued-quote callback receives only a strict immutable `CommerceQuoteTarget`, supplies no current permission, and cannot infer payment, purchasing, publication or use. Issued review must read its own frozen quote/address through W0's actual authorized binding.
+
+## Shipping and published-product bindings
+
+The optional readonly shipping VM is `{clientId,paymentRevision,shippingAddress:{version,address}|null}`. The pure existing-PaymentV2 projection requires the actual fixed advisor-read command/call metadata and exact canonical draft. Payment JSON has no client ID. Only the selected immutable version in the same authorized response's `shippingAddresses` is eligible; latest/profile/cache fallback is absent. The working-draft presenter requires the actual correlation client, full payment head and exact known selected version. Missing/mismatched data is unavailable, never an inferred no-shipping confirmation.
+
+`onChooseShippingAddress():Promise<ProductQuoteShippingView|null>` is an explicit confirmed-address choice. Only the editable local working draft's version changes. Capture/recheck includes actual owner/READY, client, full index/payment snapshot, exact draft/CAS/read-write identity and raw edit generation before/after await and state observers. Positive version/address is required. Null, absent, malformed, foreign, stale or retired results preserve the prior selection; unknown stays unknown. There is no address/paid-quote write or new finance grant. W0 must retire the controller when its actual selected-client/finance context ends.
+
+`onChooseProduct(lineId):Promise<{selection:ProductSelection,identity:CommerceIdentity}|null>` uses existing canonical types. W0 supplies actual published options. The controller binds exact owner/READY/draft/read-write/preparation/line context, rejects stale callbacks and mixed publications, and preserves unknown/not-applicable identity. Private-draft/raw-ID fallback is absent.
+
+## Author evidence and remaining gates
+
+Current ordinary Root source/model/closed-HTTP/SSR/controlled-field suite: **111/111**, zero failed/skipped/canceled (`CURRENT-UI111-ISOLATED.log`). Explicit Node22.23.0, retained ApplicationSession/cookie/transport and W1 codecs, actual admitted DTOs, no source override. Full frontend strict graph0, owned browser-target build0; no browser was launched. The standard UI guard checks retained site CSS only; the new admin CSS is separately checked with its exported no-new-color predicate.
+
+Historical raw results remain in ignored `.local-artifacts/w5-commerce-admin/`: initial missing model/read/controller/forms/buffers/picker/address/component gates; canceled retry and listener-retirement failures; the Node strip-only class-loading correction; and intermediate setup failures. The new address8 controls first exposed one listener-edit success bug at7/8, then passed. One recursive suspend test setup was terminated before its finite corrected version. Three additional SSR assertions initially failed because shared Radix selected options are not server-rendered; corrected tests inspect the actual controlled Select props separately from SSR output, without claiming hydrated interaction. The initial browser-target check had an author script relative-import setup failure; the corrected command passed. Older scoped counts are historical, not combined unique coverage or current product acceptance.
+
+This full component/controller packet still needs independent W7 source review and exact-head hosted gates before W2/W0 adoption. Source-based task/copy review and the actual browser plan are in ignored `UX-SOURCE-REVIEW.md`. Fresh mounted keyboard/focus/Back/close/narrow-screen/Figma, actual A/B Auth/persistence/finance/no-effects and complete first-service/Commerce journeys remain open. No M02 history/source/evidence/fixture was changed or rerun. No SQL/resource/held M65 audit was authorized or executed.
+
+Manual purchasing, fulfillment/tracking, returns, actual retailer refund versus client repayment, legacy facts, supported guarantees and complete typed-history persistence remain required follow-on scope. This quote authoring packet does not activate any of them.
