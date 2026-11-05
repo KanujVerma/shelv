@@ -97,6 +97,10 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    expectedEditCache=wire;return true;
   }catch{return false;}
  }
+ function editCacheCurrent():boolean {
+  if(!boundary||!editCacheKnown)return false;
+  try{return editCacheWire(boundary.memory.get(editKey))===expectedEditCache;}catch{return false;}
+ }
  // A replacement may be constructed before old terminal cleanup retains its
  // final edit. Only an untouched same-draft/base context can adopt that handoff;
  // terminal cleanup never adopts and authored work never silently loses custody.
@@ -153,6 +157,15 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
   emit({phase:safe===409?'conflict':cookie.status==='offline'?'offline':safe===503?'unavailable':'error',reviewed:false,error:safe});
  }
  function writeReady(){return ready()&&!state.localEditConflict&&!!request&&!activeWrite&&!state.pending&&state.phase==='ready'&&state.index!==null;}
+ function prepareWrite():boolean {
+  if(!writeReady())return false;
+  const origin=state,fence={read:readToken,write:writeToken,view:cookie._view};
+  if(!reconcileEditHandoff())return blockLocalEdits(fence);
+  const allowed=writeReady();
+  // Reconciliation can notify observers and replace the prepared fields. A
+  // deliberate action must observe that replacement before preparing a write.
+  return allowed&&state===origin&&readToken===fence.read&&writeToken===fence.write&&cookie._view===fence.view;
+ }
  function cancelUnsent(){
   const op=activeWrite;if(!op||op.attempted)return;
   const prior=op.prior,write=++writeToken;activeWrite=null;op.signal.abort();
@@ -172,7 +185,11 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
   if(!current())return;
   try{
    const index=await readAdminQuoteIndex(request,{actorId:owner!,clientId},{signal:abort.signal,isApplicable:current});if(!current())return;
-   if(!selectedId){emitRead({index,loaded:null,latest:null,phase:index.entries.length||state.dirty?'ready':'empty'},operation);return;}
+   if(!selectedId){
+    if(!reconcileEditHandoff()&&current())blockLocalEdits(operation);
+    if(!current()||selectedId!==null)return;
+    emitRead({index,loaded:null,latest:null,phase:index.entries.length||state.dirty?'ready':'empty',error:state.localEditConflict?409:null},operation);return;
+   }
    const entity=index.entries.find(entry=>entry.entity.kind==='quote_draft'&&entry.entity.id===selectedId)?.entity;
    if(!entity){emitRead({index,phase:'conflict',latest:null,error:409},operation);return;}
    const loaded=await loadAdminQuoteDraft(request,{actorId:owner!,clientId},{entity,snapshot:index.snapshot},{signal:abort.signal,isApplicable:current});if(!current())return;
@@ -203,7 +220,14 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
   const token=++writeToken,viewToken=readToken,view=cookie._view,preparation=state.preparation,loaded=state.loaded,inputs=state.inputs,selected=selectedId,edit=editGeneration;
   const op={token,requestId:command.requestId,view:viewToken,attempted:false,signal:new AbortController(),prior:retry?state.pending:null};activeWrite=op;
   const owns=()=>alive()&&activeWrite===op&&writeToken===token;
-  const applicable=()=>owns()&&ready()&&cookie._view===view&&!op.signal.signal.aborted&&(op.attempted||readToken===viewToken&&state.preparation===preparation&&state.loaded===loaded);
+  let cacheBlocked=false;
+  const applicable=()=>{
+   if(!owns()||!ready()||cookie._view!==view||op.signal.signal.aborted||(!op.attempted&&(readToken!==viewToken||state.preparation!==preparation||state.loaded!==loaded)))return false;
+   // Exact original retry is immutable custody. Fresh commands must continue
+   // to match the retained working form across digest/transport awaits.
+   if(!retry&&(!editCacheCurrent()||state.localEditConflict)){cacheBlocked=true;return false;}
+   return true;
+  };
   let pending:ProductQuoteAdminPending=copy({command,requestId:command.requestId,wire:JSON.stringify(command),hash:null,phase:'sending',status:'unchecked'});
   emit({pending,reviewed:false,error:null});review=null;
   try{
@@ -246,7 +270,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    if(activeWrite===op){activeWrite=null;if(!op.attempted&&alive()){
     if(op.prior){if(state.pending?.requestId===op.requestId)emit({pending:storedPending()??{...op.prior,phase:'uncertain'}});}
     else{forgetIntent(pending);if(state.pending?.requestId===op.requestId)emit({pending:null});}
-   }}
+   }if(cacheBlocked)blockLocalEdits({write:token,view});}
   }
  }
  async function recoverLocalEdits(){
@@ -294,7 +318,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
      acknowledgedSelection=receipt.entity.id;selectedId=acknowledgedSelection;
      // Retain the known entity binding before dropping original uncertainty,
      // including when its later canonical read is unavailable or interrupted.
-     rememberEdits();follow=sameForm(acknowledgedSelection);
+     if(!rememberEdits())throw Error('unavailable');follow=sameForm(acknowledgedSelection);
     }
     if(!current()||!forgetIntent(pending))return;
     const reconciliationRead=readToken;
@@ -367,13 +391,13 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    }catch{return false;}
    finally{if(alive()&&pickerToken===token)emit({choosingAddress:false});}
   },
-  async saveDraft(){if(!writeReady()||state.inputErrors.header!==null)return;try{await send(buildAdminQuoteDraftSave({clientId,requestId:crypto.randomUUID(),draft:state.loaded?.draft??null,body:state.preparation.body}));}catch{if(alive())emit({error:400});}},
-  async saveLine(id:string){if(!writeReady()||!state.loaded||Object.hasOwn(state.inputErrors.lines,id))return;const line=state.preparation.lines.find(item=>item.lineId===id);if(!line)return;try{await send(buildAdminQuoteLineSave({clientId,requestId:crypto.randomUUID(),draft:state.loaded.draft,line}));}catch{if(alive())emit({error:400});}},
+  async saveDraft(){if(!prepareWrite()||state.inputErrors.header!==null)return;try{await send(buildAdminQuoteDraftSave({clientId,requestId:crypto.randomUUID(),draft:state.loaded?.draft??null,body:state.preparation.body}));}catch{if(alive())emit({error:400});}},
+  async saveLine(id:string){if(!prepareWrite()||!state.loaded||Object.hasOwn(state.inputErrors.lines,id))return;const line=state.preparation.lines.find(item=>item.lineId===id);if(!line)return;try{await send(buildAdminQuoteLineSave({clientId,requestId:crypto.randomUUID(),draft:state.loaded.draft,line}));}catch{if(alive())emit({error:400});}},
   reviewIssue(){
-   if(!writeReady()||productQuoteHasInputErrors(state.inputErrors)||state.choosingProduct!==null||state.choosingAddress||!state.loaded||state.dirty||!state.loaded.options.some(option=>option.available))return false;
+   if(!prepareWrite()||productQuoteHasInputErrors(state.inputErrors)||state.choosingProduct!==null||state.choosingAddress||!state.loaded||state.dirty||!state.loaded.options.some(option=>option.available))return false;
    try{review=buildAdminQuoteIssue({clientId,requestId:crypto.randomUUID(),draft:state.loaded.draft,snapshot:state.loaded.snapshot,lines:state.loaded.lines});emit({reviewed:true,error:null});return ready()&&review!==null&&state.reviewed;}catch{return false;}
   },
-  async issueQuote(){if(!writeReady()||!review||!state.reviewed||!state.loaded||state.dirty)return;const command=review;try{const check=buildAdminQuoteIssue({clientId,requestId:command.requestId,draft:state.loaded.draft,snapshot:state.loaded.snapshot,lines:state.loaded.lines});if(!same(command,check))return;await send(command);}catch{if(alive())emit({error:400});}},
+  async issueQuote(){if(!prepareWrite()||!review||!state.reviewed||!state.loaded||state.dirty)return;const command=review;try{const check=buildAdminQuoteIssue({clientId,requestId:command.requestId,draft:state.loaded.draft,snapshot:state.loaded.snapshot,lines:state.loaded.lines});if(!same(command,check))return;await send(command);}catch{if(alive())emit({error:400});}},
   openIssuedQuote(open?:(target:CommerceQuoteTarget)=>void){
    if(!ready()||!open||state.receipt?.action!=='issue_product_quote_v1'||!state.receipt.quote)return false;
    const receipt=state.receipt;
