@@ -131,7 +131,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
   if(!current())return;
   try{
    const index=await readAdminQuoteIndex(request,{actorId:owner!,clientId},{signal:abort.signal,isApplicable:current});if(!current())return;
-   if(!selectedId){emitRead({index,loaded:null,latest:null,phase:index.entries.length?'ready':'empty'},operation);return;}
+   if(!selectedId){emitRead({index,loaded:null,latest:null,phase:index.entries.length||state.dirty?'ready':'empty'},operation);return;}
    const entity=index.entries.find(entry=>entry.entity.kind==='quote_draft'&&entry.entity.id===selectedId)?.entity;
    if(!entity){emitRead({index,phase:'conflict',latest:null,error:409},operation);return;}
    const loaded=await loadAdminQuoteDraft(request,{actorId:owner!,clientId},{entity,snapshot:index.snapshot},{signal:abort.signal,isApplicable:current});if(!current())return;
@@ -201,7 +201,7 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
  }
  async function checkStatus(){
   const pending=state.pending;if(!ready()||!request||activeWrite||!pending?.command||!pending.hash||!pending.requestId||!pending.wire)return;
-  const token=++writeToken,view=cookie._view,controller=new AbortController();
+  const token=++writeToken,viewToken=readToken,view=cookie._view,selected=selectedId,preparation=state.preparation,inputs=state.inputs,loaded=state.loaded,edit=editGeneration,controller=new AbortController();
   const current=()=>ready()&&writeToken===token&&cookie._view===view&&state.pending?.requestId===pending.requestId&&!controller.signal.aborted;
   try{
    const hash=await hashCommerceCommand(pending.command);if(!current()||hash!==pending.hash||JSON.stringify(pending.command)!==pending.wire)return;
@@ -210,7 +210,14 @@ export function createProductQuoteAdminController({runtime,clientId:inputClientI
    const result=mapCommerceResult(command,raw,{actorId:owner!,requestHash:hash});requireValue('status'in result);
    if(result.status==='committed'){
     const receipt=mapCommerceResult(pending.command,result.receipt,{actorId:owner!,requestHash:hash}) as CommerceReceipt;requireValue(receipt.clientId===clientId);
-    if(!current()||!forgetIntent(pending))return;emit({pending:null,receipt,reviewed:false});await refresh({command:pending.command,receipt});
+    if(!current()||!forgetIntent(pending))return;
+    const follow=readToken===viewToken&&selectedId===selected&&state.preparation===preparation&&state.inputs===inputs&&state.loaded===loaded&&editGeneration===edit;
+    if(follow&&pending.command.action==='save_product_quote_draft_v1'&&pending.command.draftId===null&&selectedId===null)selectedId=receipt.entity.id;
+    const acknowledgedSelection=selectedId;
+    // A recovered creation is not a fresh empty form. Close the write window
+    // before observers run, then read the exact acknowledged draft canonically.
+    emit({pending:null,receipt,reviewed:false,...(follow?{phase:'loading' as const}:{})},{write:token,view});
+    if(follow&&ready()&&writeToken===token&&cookie._view===view&&readToken===viewToken&&selectedId===acknowledgedSelection&&state.preparation===preparation&&state.inputs===inputs&&state.loaded===loaded&&editGeneration===edit)await refresh({command:pending.command,receipt});
    }else emit({pending:{...pending,status:'absent',phase:'uncertain'}});
   }catch(error){if(!alive()||writeToken!==token)return;emit({pending:{...pending,status:'failed',phase:'uncertain'}});const status=(error as {status?:number}).status;if(status===401||status===403)fail(error);}
  }
