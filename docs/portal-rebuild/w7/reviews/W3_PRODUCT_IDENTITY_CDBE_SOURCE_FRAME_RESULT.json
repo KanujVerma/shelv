@@ -1,0 +1,190 @@
+{
+  "owner": "Kanuj",
+  "head": "cdbe0d2646162feb8c13c67c99b5718163c7e6f2",
+  "base": "03ceede4070b87fb60a705e92109a6126cd2b567",
+  "verdict": "PASS_SCOPED_COMPLETE2_PRODUCT_IDENTITY_CSS_SAVED_FRAME_DECLARATION_CORRESPONDENCE_ONLY",
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-cdbe-product-identity/OWNER-PACKET.json",
+    "bytes": 6831,
+    "sha256": "b116d5e4eef215fb07acaf7a43951c18c166a02046b965d853fe1d4bd69ea0bb"
+  },
+  "ownedPaths": [
+    {
+      "path": "apps/portal/src/features/plan/plan.css",
+      "bytes": 8896,
+      "sha256": "188cf70efab26ef940f485989d75917fa2787c8c2aac3ed9c5d2455fa5132b58"
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W3.md",
+      "bytes": 24653,
+      "sha256": "98210991655a4a191811093108835c0c5b7cde86c3fa672b6f379d27b2ceaef8"
+    }
+  ],
+  "approvedReferences": [
+    {
+      "path": "docs/portal-rebuild/design/C03-499-151.context.txt",
+      "bytes": 37105,
+      "sha256": "e6606e46b556934c6c1c15c6ac20d00891f0c5b9f18af3e9c72082ddfc69e15d"
+    },
+    {
+      "path": "docs/portal-rebuild/design/C03-499-151.png",
+      "bytes": 149157,
+      "sha256": "4ce45155f096c19e90d91ca29870728bda50a20d6f26d5096d444ec02d724d6c"
+    },
+    {
+      "path": "docs/portal-rebuild/design/C07-499-584.context.txt",
+      "bytes": 24395,
+      "sha256": "381d439cd5204192bd5b32f14f5bea8f2fd3e8955008d657b11e9288645aa5eb"
+    },
+    {
+      "path": "docs/portal-rebuild/design/C07-499-584.png",
+      "bytes": 97448,
+      "sha256": "d54f05cadf2ba67157c6f8c3694b1c77cf8b879e0823939b7f272d42cccbfc02"
+    },
+    {
+      "path": "docs/portal-rebuild/design/C07C-503-1174.context.txt",
+      "bytes": 23712,
+      "sha256": "f1bc44aef2aa7dd7b4b04a5a937563d2f5c8c23e306ad07e459e6d06866c9f35"
+    },
+    {
+      "path": "docs/portal-rebuild/design/C07C-503-1174.png",
+      "bytes": 98256,
+      "sha256": "27389dfa84c66856d3f7ee78450374f383820988316f3258fcf4fd67f3136e52"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "apps/portal/src/features/plan/ClientPlan.tsx",
+      "bytes": 28358,
+      "sha256": "0dfe4517e70713ec590b725c0777c84dc4f54d85bff7e81992f1d826669a20e1"
+    },
+    {
+      "path": "apps/portal/src/features/plan/ProductIdentity.tsx",
+      "bytes": 865,
+      "sha256": "e19085dc43dd642ae285668b9ca48d207d445b62a417719b9923ef78e5aff9f0"
+    },
+    {
+      "path": "apps/portal/src/features/plan/UseReport.tsx",
+      "bytes": 20348,
+      "sha256": "e41bc6ca4d6f98b5ee29bf5653aee249a58621219f4b7c51730bfdafb0454e4d"
+    },
+    {
+      "path": "apps/portal/src/ui/tokens.css",
+      "bytes": 1296,
+      "sha256": "0a1c80284131ae97c6bd7415c619607c2b9b59b14a3a4ed6c8b7feea454f329b"
+    },
+    {
+      "path": "apps/portal/src/ui/foundation.css",
+      "bytes": 7684,
+      "sha256": "9008ea217b5f18e1ae3a7425c7de3dcdf47cf4b38f77254577f28ecba5ec82f8"
+    },
+    {
+      "path": "apps/portal/src/shell/shell.css",
+      "bytes": 4413,
+      "sha256": "0c4329a4faa820724010db4ed8a76cca3825c8c7c4b0284a06891a54257bfcbf"
+    },
+    {
+      "path": "apps/portal/src/ui/overlay.tsx",
+      "bytes": 4637,
+      "sha256": "281b97d62325283ff72fccd2a2db96e2207b3d63e470a7be554f16b80cd4b3fd"
+    },
+    {
+      "path": "apps/portal/package-lock.json",
+      "bytes": 123808,
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    }
+  ],
+  "patchSha256": "e360245891f4009440de37b23f096a21bbb69847ec5b71abc04d48b92fa53890",
+  "oldCssSha256": "99902a4ac1d3d64924a3048fa5207b1f0dd8fafc3743dd63f82f8fc41324e0ac",
+  "newCssSha256": "188cf70efab26ef940f485989d75917fa2787c8c2aac3ed9c5d2455fa5132b58",
+  "entireOldCssInverseExact": true,
+  "proofs": [
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-cdbe-product-identity/OLD-SOURCE-COMPARISON.json",
+      "bytes": 1158,
+      "sha256": "d95a94a21288ce6e62d7c1982eafe756ace03e9aa0a6ce12293f5576c5b23bb7"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-cdbe-product-identity/SOURCE-SSR.log",
+      "bytes": 14521,
+      "sha256": "05bfc566becabbc09283d673c7bc683664d9b68617337a00890024426eb207ce"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-cdbe-product-identity/TYPES.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-cdbe-product-identity/UI.log",
+      "bytes": 115,
+      "sha256": "6392de7331e66c3f4f4165a5bca39dadd470fc45c737652af0a4f4520265bddd"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-cdbe-product-identity/BUILD-EXACT-HEAD.log",
+      "bytes": 178,
+      "sha256": "0efd75a10b853c334913aa46f4e70b7f9ac5fd93c37433ea4256605fe0f138ab"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-cdbe-product-identity/PROVENANCE.json",
+      "bytes": 474992,
+      "sha256": "8b35c4095081df7cd52b4788afffbff1e4e11aa771f471db32c27fbe946cfcc1"
+    },
+    {
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w3-cdbe-product-identity/EMITTED.css",
+      "bytes": 44601,
+      "sha256": "cdec465718d9bb8207671ff5669214e48bed77e202a854006ea4c8b5cfbdc5be"
+    }
+  ],
+  "verification": {
+    "head": "cdbe0d2646162feb8c13c67c99b5718163c7e6f2",
+    "base": "03ceede4070b87fb60a705e92109a6126cd2b567",
+    "all2PostimagesVerified": true,
+    "all6Refs8DepsVerified": true,
+    "entireOldCSSInverseExact": true,
+    "patchSha256": "e360245891f4009440de37b23f096a21bbb69847ec5b71abc04d48b92fa53890",
+    "sourceDirty": false,
+    "inputCounts": {
+      "git": 173,
+      "lockedNpm": 2137
+    },
+    "all2310InputsVerified": true,
+    "all29AssetsVerified": true,
+    "emittedScopedDeclarations": {
+      ".plan-product-sheet .plan-product-identity .plan-meta": {
+        "font-size": "var(--text-body)",
+        "line-height": "var(--line-body)"
+      },
+      ".plan-use-identity .plan-meta": {
+        "font-weight": "500"
+      }
+    },
+    "savedPNGsLocallyViewed": 3,
+    "newW7SuiteBuildBrowserOrResource": false
+  },
+  "referenceNodes": {
+    "C03": "499:292 Inter Regular16/23",
+    "C07": "499:722 Inter Medium14/20",
+    "C07C": "503:1210 Inter Medium14/20"
+  },
+  "packagedInter400And500Imports": true,
+  "ownerSource54TypesUiBuildNotW7Rerun": true,
+  "currentRenderedFrameAcceptance": false,
+  "newW7TestsBuildBrowserOrResources": false,
+  "mapping": {
+    "frames": [
+      "C03 499:151 metadata499:292",
+      "C07 499:584 metadata499:722",
+      "C07C 503:1174 metadata503:1210"
+    ],
+    "decisions": [
+      "D04",
+      "D10",
+      "D11",
+      "D26"
+    ],
+    "journeys": "J03/J04 supporting source only"
+  },
+  "resourceGrant": null,
+  "reportSha256": "a6ee44e3adc057fce503af493ac4b8a8e3407114a8c340b79edeb299422f7563",
+  "recordedAt": "2026-11-05T00:12:43.394988+00:00"
+}
