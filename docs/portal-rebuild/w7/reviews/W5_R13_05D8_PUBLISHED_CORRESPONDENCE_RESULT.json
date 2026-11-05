@@ -1,0 +1,977 @@
+{
+  "owner": "Kanuj",
+  "head": "05d8bbc0ea81c88b647bc6cdc284cfed0874a8a0",
+  "base": "2fae8269dcd8bd7e9d07a1aadf6e009e70c87ace",
+  "verdict": "PASS_BOUNDED_COMPLETE36_PUBLISHED_SPINE_SOURCE_DEPENDENCY_CORRESPONDENCE_ONLY_DEPENDENCY_HELD",
+  "packet": {
+    "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/OWNER-PACKET.json",
+    "bytes": 60264,
+    "sha256": "0f5727dc48122654ad208d7a5003d0d257a3b0f8584a5e2e26d8fd3d3e306f7a"
+  },
+  "parents": [
+    "ad8a726175e712d7f59125353ca9128bb48ea99b",
+    "2fae8269dcd8bd7e9d07a1aadf6e009e70c87ace"
+  ],
+  "reviewedSourceHead": "ad8a726175e712d7f59125353ca9128bb48ea99b",
+  "reviewedSourceCommit": "27e135bfbe3e485689ab3669555cac0227bad40e",
+  "reviewedSourceReportSha256": "4e2b84068abb9907bd49a648947d1a842fe48e7af49267654f47425a2c45a2e1",
+  "reviewedSourceResultSha256": "cc896beafe061344a367d837aab6aa63274c59f0f7e8b2bde734ab1f33c4938c",
+  "postimages": [
+    {
+      "path": "apps/portal/src/features/orders/OrderSheets.tsx",
+      "blob": "9281d0e06e7b92881a361a94f2e4da97b5bfde90",
+      "sha256": "80feb45e2361e73da01b2326431653d24cbff9ef6f9d3bf4fb5dab1b35713c54",
+      "bytes": 6802
+    },
+    {
+      "path": "apps/portal/src/features/orders/OrdersPage.tsx",
+      "blob": "0cde9a932aa9fd4e99438e49ba196cafdb943e8f",
+      "sha256": "b527fa861bbf1a67072bfe78146593f39eed83c1a3c9eb896150dffd3d0e5897",
+      "bytes": 20940
+    },
+    {
+      "path": "apps/portal/src/features/orders/README.md",
+      "blob": "1da754df04047d713668e052424376d2cfdb76cc",
+      "sha256": "77da63531aadbb0a3a50ead81bf25412c31128be50c0ff479e006ec863277fc3",
+      "bytes": 35673
+    },
+    {
+      "path": "apps/portal/src/features/orders/contract.typecheck.ts",
+      "blob": "9668bda6d1a7969ab357ed6e34a0ff610cf2e4dd",
+      "sha256": "40f804136a9681fcb2e70d960f419090e36b735f705ad38a7e7908eb52f22f2c",
+      "bytes": 1112
+    },
+    {
+      "path": "apps/portal/src/features/orders/controller.ts",
+      "blob": "c00b0b9fb3de6012a52aef57c8020d4d226bac19",
+      "sha256": "4ae1186aedf18c38f0d0e1c5ec5c33320d267adb69a71221dc60855276873bd0",
+      "bytes": 16384
+    },
+    {
+      "path": "apps/portal/src/features/orders/dependencies.ts",
+      "blob": "e465e81ab808b1e7fbb5029c9b0d626467d0ba22",
+      "sha256": "2a3bb9dc4e1726d13056e7f1f148aecd27bc96489d711676601d60a3b8ff3a4f",
+      "bytes": 3721
+    },
+    {
+      "path": "apps/portal/src/features/orders/index.ts",
+      "blob": "e7386f3490e7041892dd1a9a582762430b1b8302",
+      "sha256": "213b2ef70d15279a1847877ee17a92d644ba0cf6aae544ce7f1aec8632c2474c",
+      "bytes": 828
+    },
+    {
+      "path": "apps/portal/src/features/orders/model.ts",
+      "blob": "88bdb8d73db2e60bc001f9abe138e65df9685b44",
+      "sha256": "9fc69f7315eabfa2a2052d9a08d9f39113c592d14a397611a180dd088d4cca07",
+      "bytes": 3952
+    },
+    {
+      "path": "apps/portal/src/features/orders/orders.css",
+      "blob": "3c86e9e8e1826ef09e18cad2caeb5c14876221bf",
+      "sha256": "78f516531c150949a077ad7d584563c7929517765dfe3884f6e0c6140272a590",
+      "bytes": 2876
+    },
+    {
+      "path": "apps/portal/src/features/orders/port.ts",
+      "blob": "1adf5838791a94168781b2fc6f56dd3759f752d9",
+      "sha256": "f529beb8c42de6dd67192c70cce9d0659d764babebd6e7dbf018d7cb17f76480",
+      "bytes": 5883
+    },
+    {
+      "path": "apps/portal/src/features/orders/presentation.tsx",
+      "blob": "e2b39c7cfd5113a0b0a4b7100b4e7d441c88ac08",
+      "sha256": "30fc7f547e09b075249cef85e9c465788d246487d437d3fa263aa4a97ffc24bc",
+      "bytes": 5738
+    },
+    {
+      "path": "apps/portal/src/features/orders/types.ts",
+      "blob": "e09be79bc72601a593ed9c6f6e7631f357c141b5",
+      "sha256": "431a6c7daea6f1b2546df42d91ceee9cf9519125d2b0a8a17febcacb19b146b8",
+      "bytes": 2998
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-build.test.mjs",
+      "blob": "1582f0f4cec2e34ca1ee881602a2b6a75bc3373a",
+      "sha256": "952f1293b6a8f548a1adbc5c034defc0f4b17eec1a4a2c8dd1506237a2e471a3",
+      "bytes": 1082
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cab.test.mjs",
+      "blob": "221ce5e8852573cf3a1b9c918c7095efbdded76b",
+      "sha256": "a6416ca1d7cfe208e2f416661c025f8210bfd3503c5e92e084c09d49107e66a5",
+      "bytes": 12317
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-controller.test.mjs",
+      "blob": "59a140afd9103b91c001bd680c45f70a7dc108ed",
+      "sha256": "45529da6b5aefdb424694f4b7601ca0d0f13356374626c00366b96c59a8af9fd",
+      "bytes": 10937
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu-fixtures.mjs",
+      "blob": "311eb26509005447eef3c11619eecf9683f8d4b9",
+      "sha256": "aa3ed692cf72be1e6c460d7e14bec2961246bfec8ca6f333a0d19fe586b198c4",
+      "bytes": 5953
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu.test.mjs",
+      "blob": "f6250ceb428ed6786b07aceded05e1f3791e716a",
+      "sha256": "11c23fa1801cb3abf394307cde8a2175d131f8f85a6c3b89817723520d97e9b1",
+      "bytes": 16411
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu4-fixtures.mjs",
+      "blob": "17410cb10ea196998f2f7568f5f463dd34dad31a",
+      "sha256": "1899ea22c6d3a32f853e0501e09e8a6c665ad8e5218ac6bb43a02f9bec24d074",
+      "bytes": 1850
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-cu4.test.mjs",
+      "blob": "c48098ad751716af7e5123e1f6986dd4051ab1d9",
+      "sha256": "cedf4a80dec55775c8bb2cbf731a87a532f3c6a46315d20f6944682e4dbec1f4",
+      "bytes": 9752
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-dispatch-cancellation.test.mjs",
+      "blob": "e0ac04eee1af4aa879340bf4bd4c20789439e982",
+      "sha256": "374fc03f25115d2dcd45a1f9d05cbc092522209368237519042b417f51e7642a",
+      "bytes": 6233
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-disposal.test.mjs",
+      "blob": "e3108dc8a3f6ea8a9f8d8949db2f99da6a2100b4",
+      "sha256": "b8caed77c0e6596fb688e319c1ba6349ea351f3c8b0e55a425692fa3934020d6",
+      "bytes": 5995
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-fixtures.mjs",
+      "blob": "0f25f8e1d862c3f731e945c0d7b2735952760a44",
+      "sha256": "a3dd90632167a29d4132e1b07242419796f05ea928d30ef5bf6592778fb319ea",
+      "bytes": 4918
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-model.test.mjs",
+      "blob": "301545b4ced380c904a421ce9ab06c752ce0c303",
+      "sha256": "a142bda6a28a75a1bc746da145504fa1e575ad93e44c40e968957ae189775d74",
+      "bytes": 4312
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-original-navigation.test.mjs",
+      "blob": "03cd1b51514ceaf8ba4a862d7d7bc1c8b3ddf31f",
+      "sha256": "d177af02aeca307e43552c14379597cbd8d7ae42189caf4f8d870d9c39f84bb4",
+      "bytes": 11153
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-port.test.mjs",
+      "blob": "936c22368911966b751468ec45f20ab6d92e94d3",
+      "sha256": "06e58eb740e7fac80704921d8942d3391baf859edb7ca11917247f55a5a3bdd8",
+      "bytes": 4923
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-pure-dismiss.test.mjs",
+      "blob": "e42389e545499768a7fe2ec78ca708f7c0cbb60a",
+      "sha256": "318cd9a55320ff3e61909a93f88579a734240535536415179ccfb929bf95a673",
+      "bytes": 9517
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-read-entrypoints.test.mjs",
+      "blob": "96bf1cdc51e57ad3ea9b84bc30670764d0546c51",
+      "sha256": "ce29aa47f310aa810c11df54520912500d0dd81d8286dacb0471e1f9eaa48b4a",
+      "bytes": 11334
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-read-ownership.test.mjs",
+      "blob": "861f8e9d79f5e25a0c9445a286fc689981361c1d",
+      "sha256": "0713274313b3fdca93a815b49fa25d9a533e3955c7e5fcebc47902a4b567433e",
+      "bytes": 8965
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-render.test.mjs",
+      "blob": "d3ee571f13ee039f31bceb8d1823061a7f10f015",
+      "sha256": "19d75f90d82d8228dac57eedc9382f3cc4f28ba0bebad2ce211fbbf4efb3583b",
+      "bytes": 11072
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-request-mask.test.mjs",
+      "blob": "8412ef25123ab81bd01fff81d49258f36c1a0836",
+      "sha256": "0b7346edc8452421e5e0d2a628e7cfd9b3e616746ea0851b9524d4ec13694a1f",
+      "bytes": 9160
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-selection-lifecycle.test.mjs",
+      "blob": "b7d98dda1fbe696e36c7482ffb4d90d5e615d97e",
+      "sha256": "d944673c39985da528cdc7c7dfc53e1a6176472c90316ff0f9607e420f83b3df",
+      "bytes": 7579
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-sheet-custody.test.mjs",
+      "blob": "1dabfa377d9f91f043ed51c3830b76498b033634",
+      "sha256": "d27cd3647121165f891de03d1442fee63240061aaebb26551b6d71c584d550b8",
+      "bytes": 9376
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-status-lifetime.test.mjs",
+      "blob": "88beee817f41a307668a77ac39598c604233b297",
+      "sha256": "e5c2d6fbb23b02d6172b3544740268a9b64316e2f6e3ca4d6a26cc1e6b0605df",
+      "bytes": 10263
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-terminal.test.mjs",
+      "blob": "66822a5650e2172c8f1dd6c19ce664ae7292dd3f",
+      "sha256": "9a655a53b7ada50c452acdfc359d517f40440a0e1b2ed86fe5b807914c6e744c",
+      "bytes": 7247
+    },
+    {
+      "path": "apps/portal/tests/w5-orders-commerce-use-reference.test.mjs",
+      "blob": "ff59b28cc74809cb54cd30c48a3dbc1345567fed",
+      "sha256": "90816404b571e9ba80289ecea34d597894b1592a67e618513d63e874c92ca2a7",
+      "bytes": 4891
+    },
+    {
+      "path": "docs/portal-rebuild/eight-threads/W5.md",
+      "blob": "3135a2dad89c6c36317ff8df1f476c42b247afff",
+      "sha256": "fe7246c64f0a32e0c9ad5606335ae4277232aa4748ed667cdebde7c504d96498",
+      "bytes": 30739
+    }
+  ],
+  "closure64": [
+    {
+      "file": "apps/portal/package-lock.json",
+      "sha256": "bc914f3a9c9f24e44f02e3cff2804651147385ea5abda58a064531329ef23203"
+    },
+    {
+      "file": "apps/portal/package.json",
+      "sha256": "294dbd426b9840bd1d524e443edff4ff3c5026b39e9137c9bf897d156715bb02"
+    },
+    {
+      "file": "apps/portal/session-integration/runtime/package-lock.json",
+      "sha256": "4024b48fb339605a438a3bfe68f6e547dade8c86660c6f06b41c278aa2289ba0"
+    },
+    {
+      "file": "apps/portal/session-integration/runtime/package.json",
+      "sha256": "00e05b6bf40fcf7dae06cc190d77325d8bc7236dff639e5aacffe8a498792c7e"
+    },
+    {
+      "file": "apps/portal/site/auth/advisor-cookie-session.js",
+      "sha256": "fe54434fe06eac95a5fb136e69ddcf783feef9b5c3fc99810699b4f4b96a8fe5"
+    },
+    {
+      "file": "apps/portal/site/auth/care-actions.js",
+      "sha256": "af283c549a1a1b7a404f44c387921991b7cdcd2f52a4a63af3c2e194e737e17b"
+    },
+    {
+      "file": "apps/portal/site/auth/client-cookie-session.js",
+      "sha256": "87d925e695845fadae93cfd6fad8315c366dfa5bc13ee383d08c103c6d2f6af0"
+    },
+    {
+      "file": "apps/portal/site/auth/commerce-actions.js",
+      "sha256": "795d37a5ec1f6451c4318234f2636e834849c0c1ce0c8fc19815b3c6655d7acc"
+    },
+    {
+      "file": "apps/portal/site/auth/navigation-return.js",
+      "sha256": "aab8c07b9c589e1af4bf521716407e35bb97574664196b3e58b2d1a9485e4dcd"
+    },
+    {
+      "file": "apps/portal/site/auth/plan-actions.js",
+      "sha256": "64d758036946cd2fa2109a23e46066e0fa350347e45f84f1861d6d47190a9a23"
+    },
+    {
+      "file": "apps/portal/site/auth/portal-routes.js",
+      "sha256": "d872b4634adb63744634b219ce4c9c45816a91110769b44a98d51c27f8acfbb5"
+    },
+    {
+      "file": "apps/portal/site/auth/review-actions.js",
+      "sha256": "6796d30a8b774559cac3924c9db7c5528358dd672b1cdabe060a428be881fcb4"
+    },
+    {
+      "file": "apps/portal/src/app/retained.ts",
+      "sha256": "146d949005acc395692eca804824c2a67fb0c9bfbe5b0be98d4018f8a265b5a1"
+    },
+    {
+      "file": "apps/portal/src/app/session.ts",
+      "sha256": "6742d7b2958cd2c89a1c1f9dee34becb9c7b4ad2bba4fd87752dc11458c6cdea"
+    },
+    {
+      "file": "apps/portal/src/features/orders/OrderSheets.tsx",
+      "sha256": "80feb45e2361e73da01b2326431653d24cbff9ef6f9d3bf4fb5dab1b35713c54"
+    },
+    {
+      "file": "apps/portal/src/features/orders/OrdersPage.tsx",
+      "sha256": "b527fa861bbf1a67072bfe78146593f39eed83c1a3c9eb896150dffd3d0e5897"
+    },
+    {
+      "file": "apps/portal/src/features/orders/controller.ts",
+      "sha256": "4ae1186aedf18c38f0d0e1c5ec5c33320d267adb69a71221dc60855276873bd0"
+    },
+    {
+      "file": "apps/portal/src/features/orders/dependencies.ts",
+      "sha256": "2a3bb9dc4e1726d13056e7f1f148aecd27bc96489d711676601d60a3b8ff3a4f"
+    },
+    {
+      "file": "apps/portal/src/features/orders/index.ts",
+      "sha256": "213b2ef70d15279a1847877ee17a92d644ba0cf6aae544ce7f1aec8632c2474c"
+    },
+    {
+      "file": "apps/portal/src/features/orders/model.ts",
+      "sha256": "9fc69f7315eabfa2a2052d9a08d9f39113c592d14a397611a180dd088d4cca07"
+    },
+    {
+      "file": "apps/portal/src/features/orders/orders.css",
+      "sha256": "78f516531c150949a077ad7d584563c7929517765dfe3884f6e0c6140272a590"
+    },
+    {
+      "file": "apps/portal/src/features/orders/port.ts",
+      "sha256": "f529beb8c42de6dd67192c70cce9d0659d764babebd6e7dbf018d7cb17f76480"
+    },
+    {
+      "file": "apps/portal/src/features/orders/presentation.tsx",
+      "sha256": "30fc7f547e09b075249cef85e9c465788d246487d437d3fa263aa4a97ffc24bc"
+    },
+    {
+      "file": "apps/portal/src/features/orders/types.ts",
+      "sha256": "431a6c7daea6f1b2546df42d91ceee9cf9519125d2b0a8a17febcacb19b146b8"
+    },
+    {
+      "file": "apps/portal/src/features/plan/UseFacts.tsx",
+      "sha256": "ee297736f27f2f24eb77ecb8baa78543b00a63c7e3d4b4d276e9db3ea6be23a8"
+    },
+    {
+      "file": "apps/portal/src/features/plan/guidancePort.ts",
+      "sha256": "b662e06cb8c7afdbdfd86a0f112c8fb75e76d0dab08eddf6a9b67a3e7cf85cce"
+    },
+    {
+      "file": "apps/portal/src/features/plan/types.ts",
+      "sha256": "fbe01cfc12787827752a40dd264fd59c92d18f7b2da4798fee99c4cde824d095"
+    },
+    {
+      "file": "apps/portal/src/features/plan/useModel.ts",
+      "sha256": "40316bd1f8b4386d4dbf8ef70afc5f84a5ad73f0a673325ea80e7a0eaf390fc9"
+    },
+    {
+      "file": "apps/portal/src/navigation/routes.ts",
+      "sha256": "48a7efc90a6b94d062010e30f0a31b99393c85cf14a804b2426d7b62d921032d"
+    },
+    {
+      "file": "apps/portal/src/transport/error.ts",
+      "sha256": "1b6be9efd7f110c93d909ee8a2f44e805b3de51f32bfd0715ddf7cdf4c93f034"
+    },
+    {
+      "file": "apps/portal/src/transport/session.ts",
+      "sha256": "deeb60865d92b6a7a0feb1b86a78193a7c093005d0e225cf5554ece1539e46bd"
+    },
+    {
+      "file": "apps/portal/src/ui/assets.d.ts",
+      "sha256": "da5bf71d48cf909584a01c80b445f730507068f5b34c920f352e2bfcf0315e4c"
+    },
+    {
+      "file": "apps/portal/src/ui/icons.tsx",
+      "sha256": "3f105dd9e5093041018b55bcce853cc6a095325fb797d7cda673f5cf2c5f2d63"
+    },
+    {
+      "file": "apps/portal/src/ui/index.ts",
+      "sha256": "b44a16821e22ef4d6bb1f4eb9db180bd391a1f2fd97b90a1e75cd8a9a096f3a2"
+    },
+    {
+      "file": "apps/portal/src/ui/overlay-state.ts",
+      "sha256": "30b5a7ea05c0a45036e6b7f9023a9316315b78d9dcfeb78920f30277a6821a67"
+    },
+    {
+      "file": "apps/portal/src/ui/overlay.tsx",
+      "sha256": "281b97d62325283ff72fccd2a2db96e2207b3d63e470a7be554f16b80cd4b3fd"
+    },
+    {
+      "file": "apps/portal/src/ui/primitives.tsx",
+      "sha256": "990d356778a7c828b85896fb44585df9e07a182687338dd190f2cb129073b925"
+    },
+    {
+      "file": "apps/portal/tsconfig.frontend.json",
+      "sha256": "b930ae73c53ea9dbdd895de85fccbac714e5526ba62a78537d0d72f149437003"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "5c57c9aec9e4585066e032e234d610a77cbffd9a51f82700c158fc37fe01b5c2"
+    },
+    {
+      "file": "package.json",
+      "sha256": "7da6e48aa5e39a185f10ac117007ee15beb279c4125e1f30f99c92451ff6d968"
+    },
+    {
+      "file": "src/contracts/ConciergePortal.ts",
+      "sha256": "3fbf69f328c73cd10926dd446df4e266393f69e9fc37943888eabc46271c6dcd"
+    },
+    {
+      "file": "src/contracts/ConciergePortalValidation.ts",
+      "sha256": "c4928de0fea6095bdb6f7566ecd1dbfb7a09f3f027eba83598a80ed4a92b5697"
+    },
+    {
+      "file": "src/contracts/ConciergePresentation.ts",
+      "sha256": "c48cc446b71eaa416c1b084af17db1eda033566518ebe2e1259822e825b795cd"
+    },
+    {
+      "file": "src/contracts/ConciergePresentationValidation.ts",
+      "sha256": "b93b9eab1b55cfb828677067990985716e71c23550662a06782038226cdca33a"
+    },
+    {
+      "file": "src/contracts/ConciergeService.ts",
+      "sha256": "bb27d2a38f7d39b90181852d1e005c448df992883cf40623ce6b57c9222bab4a"
+    },
+    {
+      "file": "src/contracts/PortalCare.ts",
+      "sha256": "6c66bcad8909eb843c6cf0c9432721e124c42c157b59db0846a58dacd511c469"
+    },
+    {
+      "file": "src/contracts/PortalCareMapping.ts",
+      "sha256": "675135cbb83611bbc8c63ed2c5a7e33b17a1f16cc1b48839358c1f45672d1439"
+    },
+    {
+      "file": "src/contracts/PortalCareValidation.ts",
+      "sha256": "b0ef86f7cffba206db063c332495a526104953da0f5920a40f9b18d1e511d94d"
+    },
+    {
+      "file": "src/contracts/PortalCareValues.ts",
+      "sha256": "31c485f83a7ce142231dd90da43ad402215078419230248a103e3544a275a404"
+    },
+    {
+      "file": "src/contracts/PortalCommerce.ts",
+      "sha256": "af2d1316434cca41ab78ae4b3bed54cb3a5a348c8e915caaa2f84c0aac9a2c38"
+    },
+    {
+      "file": "src/contracts/PortalCommerceMapping.ts",
+      "sha256": "79d265ab4963cde159c21ff1138c292c80a5ad8548bb45cd843efbd04b706934"
+    },
+    {
+      "file": "src/contracts/PortalCommerceValidation.ts",
+      "sha256": "32e19f6ab8c85d5f52024ccf8aa114a088de270b005a806e3600191e4cfe7459"
+    },
+    {
+      "file": "src/contracts/PortalCommerceValues.ts",
+      "sha256": "ac8c72ca26be1ab1c4f3275b75260cd78e0cdbbebad26524ad7e442a1bb8d27f"
+    },
+    {
+      "file": "src/contracts/PortalRebuild.ts",
+      "sha256": "bb6f20d082b1cdf6590822806590957aaa13c33b343a937939d74554c386a1dc"
+    },
+    {
+      "file": "src/contracts/PortalRebuildMapping.ts",
+      "sha256": "ed47ca914b173ad87454c989e447327d9a2fd4540d41a61336f989e2cc0c1c4d"
+    },
+    {
+      "file": "src/contracts/PortalRebuildValidation.ts",
+      "sha256": "0796de1eca955e730f7377be88a5bb17f64f6660f60a5606f6356f89fa3fa9fc"
+    },
+    {
+      "file": "src/contracts/PortalRebuildValues.ts",
+      "sha256": "fa557b44eccceee32d5630393adc3ba83d96c4bda98f27f595ae2a19e8f793c9"
+    },
+    {
+      "file": "src/contracts/PortalReview.ts",
+      "sha256": "78e06f5af74ad3d17cd5d30e03fce0faca505cb7e5f0e32961dbdb942ff33b74"
+    },
+    {
+      "file": "src/contracts/PortalReviewMapping.ts",
+      "sha256": "de2c64e152156656e7748c5f12c49dd115c6bc88411e488d29bde2e0d122a550"
+    },
+    {
+      "file": "src/contracts/PortalReviewValidation.ts",
+      "sha256": "82bafa77fdcface7c4b3445195dc819b6f379d54ab22eb38c712c245c2b49f23"
+    },
+    {
+      "file": "src/contracts/PortalReviewValues.ts",
+      "sha256": "cce2545be9626e1a1abf8fb4e6a0e783c53831af9740110db26f37a397457000"
+    },
+    {
+      "file": "supabase/functions/concierge-payments/contract.ts",
+      "sha256": "843f746ee73c7a3d38832a75bb7cd4c518fb92d93714438434d7bd15964b75f0"
+    },
+    {
+      "file": "supabase/functions/concierge-payments/methods.ts",
+      "sha256": "136aed10e5a1c2e74b9297a41f13a8698106c32b182bea6ea4ae8d0c0ee57f24"
+    },
+    {
+      "file": "supabase/functions/concierge-payments/types.ts",
+      "sha256": "05263edb7471942b64e151fef23f5a57287511d6e3b2c18974984c5eeeea4b98"
+    }
+  ],
+  "actualPublishedShared54Paths": [
+    "apps/portal/package-lock.json",
+    "apps/portal/package.json",
+    "apps/portal/session-integration/runtime/package-lock.json",
+    "apps/portal/session-integration/runtime/package.json",
+    "apps/portal/site/auth/advisor-cookie-session.js",
+    "apps/portal/site/auth/care-actions.js",
+    "apps/portal/site/auth/client-cookie-session.js",
+    "apps/portal/site/auth/commerce-actions.js",
+    "apps/portal/site/auth/navigation-return.js",
+    "apps/portal/site/auth/plan-actions.js",
+    "apps/portal/site/auth/portal-routes.js",
+    "apps/portal/site/auth/review-actions.js",
+    "apps/portal/src/app/retained.ts",
+    "apps/portal/src/app/session.ts",
+    "apps/portal/src/features/plan/UseFacts.tsx",
+    "apps/portal/src/features/plan/guidancePort.ts",
+    "apps/portal/src/features/plan/types.ts",
+    "apps/portal/src/features/plan/useModel.ts",
+    "apps/portal/src/navigation/routes.ts",
+    "apps/portal/src/transport/error.ts",
+    "apps/portal/src/transport/session.ts",
+    "apps/portal/src/ui/assets.d.ts",
+    "apps/portal/src/ui/icons.tsx",
+    "apps/portal/src/ui/index.ts",
+    "apps/portal/src/ui/overlay-state.ts",
+    "apps/portal/src/ui/overlay.tsx",
+    "apps/portal/src/ui/primitives.tsx",
+    "apps/portal/tsconfig.frontend.json",
+    "package-lock.json",
+    "package.json",
+    "src/contracts/ConciergePortal.ts",
+    "src/contracts/ConciergePortalValidation.ts",
+    "src/contracts/ConciergePresentation.ts",
+    "src/contracts/ConciergePresentationValidation.ts",
+    "src/contracts/ConciergeService.ts",
+    "src/contracts/PortalCare.ts",
+    "src/contracts/PortalCareMapping.ts",
+    "src/contracts/PortalCareValidation.ts",
+    "src/contracts/PortalCareValues.ts",
+    "src/contracts/PortalCommerce.ts",
+    "src/contracts/PortalCommerceMapping.ts",
+    "src/contracts/PortalCommerceValidation.ts",
+    "src/contracts/PortalCommerceValues.ts",
+    "src/contracts/PortalRebuild.ts",
+    "src/contracts/PortalRebuildMapping.ts",
+    "src/contracts/PortalRebuildValidation.ts",
+    "src/contracts/PortalRebuildValues.ts",
+    "src/contracts/PortalReview.ts",
+    "src/contracts/PortalReviewMapping.ts",
+    "src/contracts/PortalReviewValidation.ts",
+    "src/contracts/PortalReviewValues.ts",
+    "supabase/functions/concierge-payments/contract.ts",
+    "supabase/functions/concierge-payments/methods.ts",
+    "supabase/functions/concierge-payments/types.ts"
+  ],
+  "fullPatchSha256": "53dec519cebf0b139e0b26d1ff7be9e234425a9630a35f41ee36cef0b0aa84a8",
+  "verification": {
+    "head": "05d8bbc0ea81c88b647bc6cdc284cfed0874a8a0",
+    "base": "2fae8269dcd8bd7e9d07a1aadf6e009e70c87ace",
+    "parents": [
+      "ad8a726175e712d7f59125353ca9128bb48ea99b",
+      "2fae8269dcd8bd7e9d07a1aadf6e009e70c87ace"
+    ],
+    "all36PostimagesExactReviewedAd8": true,
+    "entire36DeltaUnchanged": true,
+    "all64ClosurePinsExactAd8": true,
+    "all54SharedClosureFilesExactPublished2fa": true,
+    "unchangedLocks": 3,
+    "all51EvidenceFilesVerified": true,
+    "backup342649Bytes88MembersVerified": true,
+    "frozenAd8RefUnchanged": true,
+    "e06IsAncestorOf05d": true,
+    "appProvenanceHead": "05d8bbc0ea81c88b647bc6cdc284cfed0874a8a0",
+    "appSourceDirty": false,
+    "appOrdersInputs": [
+      "apps/portal/src/features/orders/read/ClientOrdersView.tsx",
+      "apps/portal/src/features/orders/read/controller.ts",
+      "apps/portal/src/features/orders/read/model.ts"
+    ],
+    "candidateOrdersPageControllerMounted": false,
+    "newW7TestsBuildCompilerOrResourceRun": false,
+    "historicalRawRecovery": false,
+    "resourceGrant": null
+  },
+  "proofCopies": [
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/APPLICATION-ORDERS-SCOPE.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/00-APPLICATION-ORDERS-SCOPE.json",
+      "bytes": 338,
+      "sha256": "6f0cf9e0d79de4c6715ec136505d7a0d31897051d96d1479531275016eb24943"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/APPLICATION-PROVENANCE.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/01-APPLICATION-PROVENANCE.json",
+      "bytes": 474992,
+      "sha256": "46cf38678949f97be6ccb5b4a8434d63e586ef3f54ccedab24454bd0ef886483"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/APPLICATION.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/02-APPLICATION.json",
+      "bytes": 450,
+      "sha256": "6656d4e74cfa7b5f052a8be04164d0741d178dffd6bdd6dcdb3f411e8aac2118"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/APPLICATION.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/03-APPLICATION.log",
+      "bytes": 272,
+      "sha256": "d05eccef996b6d7ec3bfbf7037bfd158b4a293b02f8be76fb68763a65654fffd"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-O1-STANDALONE-ORIGINAL1.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/04-CURRENT-O1-STANDALONE-ORIGINAL1.log",
+      "bytes": 967,
+      "sha256": "c89bc00e916f3079ebe87d9f4410a212a8d1f6bc6a4f811b1da83acf731c6ae9"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-O10-STANDALONE-ORIGINAL1.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/05-CURRENT-O10-STANDALONE-ORIGINAL1.log",
+      "bytes": 1201,
+      "sha256": "e29f1a992a3151cc90047188b435db7f0912916262301dc89badb41c0da10070"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-O11-STANDALONE-ORIGINAL1.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/06-CURRENT-O11-STANDALONE-ORIGINAL1.log",
+      "bytes": 1046,
+      "sha256": "939f20068661663d798ba6dedf23a3a7cf214428c83872501df9607ecd21cbe2"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-O2-STANDALONE-ORIGINAL1.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/07-CURRENT-O2-STANDALONE-ORIGINAL1.log",
+      "bytes": 941,
+      "sha256": "a41b42651f3bc07c9f65208d60ffaec38f954b0abcecb19a81371f6a24886f2a"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-O3-STANDALONE-ORIGINAL1.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/08-CURRENT-O3-STANDALONE-ORIGINAL1.log",
+      "bytes": 939,
+      "sha256": "7054972a58734b8cbc52b25a9ba7baf57bf858595dfac5dcc3448e21617b75f2"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-O4-STANDALONE-ORIGINAL1.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/09-CURRENT-O4-STANDALONE-ORIGINAL1.log",
+      "bytes": 915,
+      "sha256": "2d37dffcd0c4ff062b0a7d62c40d1c9f1e7b393aa13850a1eb6432c2af875c65"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-O5-STANDALONE-ORIGINAL1.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/10-CURRENT-O5-STANDALONE-ORIGINAL1.log",
+      "bytes": 1391,
+      "sha256": "a882186b16fb8c364f2ce7e5837d6b2e2ed5e5a69c82e727da01c9164bdf9041"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-O6-STANDALONE-ORIGINAL1.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/11-CURRENT-O6-STANDALONE-ORIGINAL1.log",
+      "bytes": 1178,
+      "sha256": "cade113e5b1f7c79600d157fc85e8e83b5f093fbbe88632870c9a5977ba39424"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-O7-STANDALONE-ORIGINAL1.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/12-CURRENT-O7-STANDALONE-ORIGINAL1.log",
+      "bytes": 1125,
+      "sha256": "4b428bdcfeb522df623bee99f3b9d86f927d219360ad1cbbb48564268cf4e359"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-O8-STANDALONE-ORIGINAL1.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/13-CURRENT-O8-STANDALONE-ORIGINAL1.log",
+      "bytes": 1024,
+      "sha256": "a98631638cd32a29feda9d0c993282c656f31932a6b0598b8ad943fc7f89b3ed"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-O9-STANDALONE-ORIGINAL1.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/14-CURRENT-O9-STANDALONE-ORIGINAL1.log",
+      "bytes": 1121,
+      "sha256": "23ce946b7eccbddf8fb32874b6929dfaf32a837abb02226ce457d3e8910ea682"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/CURRENT-ORIGINALS.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/15-CURRENT-ORIGINALS.json",
+      "bytes": 9491,
+      "sha256": "130ea669ce7240078d9dabc90031adb7927768d8746bfed145fddf3ff86fb88b"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/FOCUSED-FILES.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/16-FOCUSED-FILES.json",
+      "bytes": 1251,
+      "sha256": "75d290464be2c4813158d01223fa9a8b826ef0f672b620a57f6b9cf723757b7f"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/OWNED.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/17-OWNED.json",
+      "bytes": 1766,
+      "sha256": "3624d5f1167a122971a8d37a7479e7ed1cbfc475052ce8bdde63ad7b7a4caf48"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/OWNED.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/18-OWNED.log",
+      "bytes": 62667,
+      "sha256": "c4e4ea5c3449c8cb47ecc5440366d706ed96f5fd7a044c75189f08588f7ae91f"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/SOURCE-CLOSURE.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/19-SOURCE-CLOSURE.json",
+      "bytes": 9792,
+      "sha256": "6adda2c23c9357b4fde4a4c67a34764704ee522c12bb419ef2a65872bcf5525e"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/STRICT-CLOSURE.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/20-STRICT-CLOSURE.json",
+      "bytes": 607,
+      "sha256": "07e078f6f229418d71bec1b421158439748ada7bffa5e91d89477f02d4061eae"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/STRICT-CLOSURE.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/21-STRICT-CLOSURE.log",
+      "bytes": 91,
+      "sha256": "759924d955117d372e5e0212a94b7bbb9cfc3d78019e1cf1f61c80c94bbb2843"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/TYPES-app.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/22-TYPES-app.json",
+      "bytes": 499,
+      "sha256": "634972f129c099a7478c5df8e2f35ff70feec9c9a1813eefc4c40da5ae741b74"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/TYPES-app.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/23-TYPES-app.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/TYPES-frontend.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/24-TYPES-frontend.json",
+      "bytes": 456,
+      "sha256": "35542da214e3631240963ed8ff2b033759088973cc56ab1fd2cf7172760ccda1"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/TYPES-frontend.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/25-TYPES-frontend.log",
+      "bytes": 74,
+      "sha256": "5e0ce0235c171270fc3458ee5d6ff81aebb122ba9541a84288ff4c00fc92abf4"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/TYPES-runtime.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/26-TYPES-runtime.json",
+      "bytes": 454,
+      "sha256": "00b3fdf7d81d6811d9acb3b46bac5ea9f4c900bbe8a6bca65aee6d28e9d90cbe"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/TYPES-runtime.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/27-TYPES-runtime.log",
+      "bytes": 166,
+      "sha256": "fd818405d0adf819c6b054f776b50a35b279bc3b3e64d7a9ee207cede024b8f0"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/TYPES-tests.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/28-TYPES-tests.json",
+      "bytes": 436,
+      "sha256": "21972d5f3526db7519e602184d571bcc71a5f34ce581f505498986c4a2249588"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/TYPES-tests.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/29-TYPES-tests.log",
+      "bytes": 71,
+      "sha256": "4d9a002a4bc06fc267986e16b8505d5278453da95f3437a75987164dfe76bced"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/UI.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/30-UI.json",
+      "bytes": 423,
+      "sha256": "494998f5153212d6f23440aa70d0fe5e781a242b0a77bfaa5d08c9dfdb949f2c"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/UI.log",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/31-UI.log",
+      "bytes": 183,
+      "sha256": "1580eaf5e9a7a7ff5b1da8a38588855a5f59dd477629e3fde20fa0be2403f003"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/committed-originals/O1.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/32-O1.mjs",
+      "bytes": 1300,
+      "sha256": "a44ce83ad8e4be3292ac9a0fce772bbb602c842798300c3ff021e7f820baf354"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/committed-originals/O10.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/33-O10.mjs",
+      "bytes": 3476,
+      "sha256": "9b44670340bfd83b6ccb29f099206a0c1f15aefe6e9f879f5bf2a3675d54d00b"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/committed-originals/O11.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/34-O11.mjs",
+      "bytes": 3208,
+      "sha256": "895f36a9df74d2b8702f264d0d91749a874bc96914eb0f24905b891422055a3b"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/committed-originals/O2.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/35-O2.mjs",
+      "bytes": 1887,
+      "sha256": "aa497313fcda3de30d9f146199c906963617da7ff69508ff72b9be9f0d1b0b4a"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/committed-originals/O3.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/36-O3.mjs",
+      "bytes": 1538,
+      "sha256": "89605d619d0826fc7abd33fd9e03e9ac7e397fa6ce7149c75f44ae170f4354f3"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/committed-originals/O4.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/37-O4.mjs",
+      "bytes": 1808,
+      "sha256": "02e21032f20ee788e4446a598c6fbf9b9fbe83ebf951fb4fe3f9887fbfa6152e"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/committed-originals/O5.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/38-O5.mjs",
+      "bytes": 5873,
+      "sha256": "3e4b8fbcafdbe6d5baeb29294337a375f6669ab111d83f13473355b701d3859c"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/committed-originals/O6.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/39-O6.mjs",
+      "bytes": 5973,
+      "sha256": "e652dc277275445ad309f5dedacab21a65729973ffc1bdbf461a3ab7f7e756a7"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/committed-originals/O7.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/40-O7.mjs",
+      "bytes": 5669,
+      "sha256": "02a90fbb3741a481526c0b215bdecf910a514b4e39474430ce7ec5533de41188"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/committed-originals/O8.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/41-O8.mjs",
+      "bytes": 5724,
+      "sha256": "a07be94e707676212fb8024fc1b6b5ac176e32f6d20737262a5ceb52c9d05862"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/CURRENT/committed-originals/O9.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/42-O9.mjs",
+      "bytes": 3072,
+      "sha256": "4f05387125dd27a7327095a2d231ef79b83f38f0cb95601b25bcc3a964d72fce"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/FULL36.patch",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/43-FULL36.patch",
+      "bytes": 320569,
+      "sha256": "53dec519cebf0b139e0b26d1ff7be9e234425a9630a35f41ee36cef0b0aa84a8"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/PR240-BEFORE.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/44-PR240-BEFORE.json",
+      "bytes": 18852,
+      "sha256": "a20f1195d6fd2a1f8cc387f4022777eee05e9183432b13f6317c92fc1e73fd85"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/PRE-MERGE-IDENTITY.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/45-PRE-MERGE-IDENTITY.json",
+      "bytes": 1160,
+      "sha256": "bd3e6984553910bb6808e8caa23ea00a7ac0f0397139eaa87b7fbfb78c32ef48"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/ROLLFORWARD-IDENTITY.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/46-ROLLFORWARD-IDENTITY.json",
+      "bytes": 9452,
+      "sha256": "0bba83bb910fcf90a5acc72cc5d538cdb899e70c467382cd67e55008e23a22a4"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/RUN-CURRENT-CHECKS.py",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/47-RUN-CURRENT-CHECKS.py",
+      "bytes": 3522,
+      "sha256": "36fc6ea12710c0ed79cf89335df8d82714376631e8df1bf71baf806ce3cf9292"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/W7-R13-REPORT.md",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/48-W7-R13-REPORT.md",
+      "bytes": 5240,
+      "sha256": "4e2b84068abb9907bd49a648947d1a842fe48e7af49267654f47425a2c45a2e1"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/W7-R13-RESULT.json",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/49-W7-R13-RESULT.json",
+      "bytes": 41831,
+      "sha256": "cc896beafe061344a367d837aab6aa63274c59f0f7e8b2bde734ab1f33c4938c"
+    },
+    {
+      "ownerPath": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-request-mask-r8-resume-20261104/.local-artifacts/w5-orders-r13-published/list-source-closure.mjs",
+      "path": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w7-independent-acceptance-20261103/.local-artifacts/w7/fresh-current-20261104/w5-r13-05d8-correspondence/evidence/50-list-source-closure.mjs",
+      "bytes": 2458,
+      "sha256": "ffaaaa6b05e4518c89a8bf8452debff2fe32da24187516c3a93e671b96dc96a1"
+    }
+  ],
+  "ownerCurrentCheckObservationsNotW7Rerun": [
+    {
+      "name": "OWNED",
+      "exit": 0
+    },
+    {
+      "name": "TYPES-app",
+      "exit": 0
+    },
+    {
+      "name": "TYPES-tests",
+      "exit": 0
+    },
+    {
+      "name": "TYPES-frontend",
+      "exit": 0
+    },
+    {
+      "name": "TYPES-runtime",
+      "exit": 0
+    },
+    {
+      "name": "UI",
+      "exit": 0
+    },
+    {
+      "name": "APPLICATION",
+      "exit": 0
+    },
+    {
+      "name": "STRICT-CLOSURE",
+      "exit": 0
+    }
+  ],
+  "ownerCurrentCounts": {
+    "owned": 198,
+    "originalOverlaps": 11,
+    "totalOverlappingExecutions": 209,
+    "notUniqueRequirements": true
+  },
+  "backupArchive": {
+    "path": "/Users/kanuj/Documents/projects/shelv/.local-artifacts/w5-source-checkpoints/R13-PUBLISHED-05d8bbc0ea81c88b647bc6cdc284cfed0874a8a0-source-evidence.tar.gz",
+    "bytes": 342649,
+    "sha256": "cc4ce669f041817eb4ba50ec27e9e37e367550975269b8612f9b1001fdda9f4f",
+    "members": 88
+  },
+  "newW7TestsTypesBuildRootExpoBrowserOrResources": false,
+  "earlierRootAndExpoStayAttributedAd8": true,
+  "actualRootCandidateOrdersPageMounted": false,
+  "actualNamespaceFinancialOrGenuineAcceptance": false,
+  "priorRootDeadlineUnknown": {
+    "canonicalHistoricalRecord": {
+      "original77FirstIncompleteFailure": {
+        "head": "77defdf4211358ba76f33d68e2c3ad1f7f623e24",
+        "exit": 1,
+        "completeSuite": false,
+        "log": "/Users/kanuj/.t3/worktrees/shelv/kanuj-w5-orders-ui-20261103/.local-artifacts/w5-orders-o3-r4/full-checks/ROOT-NPM.log",
+        "sha256": "3a7006e2cab7146cf2f07b7f977c2ac72f6946445208dc4d3386a5da40bf3f14",
+        "failed": "tests/portal-plan-agent-client.test.ts:154 single absolute deadline spans token, fetch, body and final credential recheck",
+        "expected": "uncertain",
+        "actual": "unavailable",
+        "testUnchangedFromPublishedF060": true,
+        "cause": "UNRESOLVED_UNKNOWN",
+        "noSharedFixOrTargetedAudit": true
+      },
+      "independent77SerializedPass": {
+        "tests": 1941,
+        "pass": 1923,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 18,
+        "todo": 0,
+        "exit": 0,
+        "completeSuite": true,
+        "head": "77defdf4211358ba76f33d68e2c3ad1f7f623e24",
+        "sha256": "d2f0c8c2adc90674fe5ec4ab983f20d25e9ccd5a4a98844623b980daec821e17",
+        "tapSummaries": 214,
+        "rootLoopPrograms": 241,
+        "causeOfFirstFailure": "UNRESOLVED_UNKNOWN; this pass does not explain/relabel it"
+      },
+      "interpretation": "R5 normal wholeRoot pass is a new separate result. No pass explains/relabels original77 deadline uncertain/unavailable failure; cause stillUNKNOWN. No shared code/test/timeout patch or targeted plan-agent/Guidance/old956/held audit rerun."
+    },
+    "oldPrivateRawAvailability": "not present at former ignored checkout paths; no bytes reconstructed",
+    "meaning": "New R8 ordinary Root pass does not explain or relabel old77 deadline failure; no targeted deadline/Guidance/old956/held replay"
+  },
+  "oldRawRecovery": false,
+  "resourceGrant": null,
+  "reportSha256": "3e07c1e7f2f1ee63cbf6c13303037072f56f3d45cbc6664a2abe25eb64eea522",
+  "recordedAt": "2026-11-05T00:59:48.685073+00:00"
+}
