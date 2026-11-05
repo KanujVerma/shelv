@@ -42,6 +42,8 @@ import { ClientAssignment, ClientDirectoryFeedback } from "./ClientAssignment.ts
 import { ClientAdmission } from "./admission/ClientAdmission.tsx";
 import type { AdvisorAdmissionController } from "./admission/types.ts";
 import { FirstServiceQuote } from "./FirstServiceQuote.tsx";
+import { AdvisorInlinePreview } from "./inline-preview/InlinePreview.tsx";
+import type { AdvisorInlinePreviewController } from "./inline-preview/types.ts";
 import { PublicationDelivery } from "./PublicationDelivery.tsx";
 import type { NotificationController } from "../notifications/index.ts";
 
@@ -60,6 +62,7 @@ export interface AdvisorWorkspaceProps {
   /** Actual W0-owned notification controller; never a caller-created authority. */
   publicationNotifications?: NotificationController;
   admission?: AdvisorAdmissionController;
+  inlinePreview?: AdvisorInlinePreviewController;
 }
 const editorSections: readonly {
   section: EditorSection;
@@ -87,6 +90,7 @@ export function AdvisorWorkspace({
   onOpenClient,
   publicationNotifications,
   admission,
+  inlinePreview,
 }: AdvisorWorkspaceProps) {
   const s = useSyncExternalStore(c.subscribe, c.getSnapshot, c.getSnapshot),
     route = navigation.route;
@@ -624,13 +628,9 @@ export function AdvisorWorkspace({
           ) : null}
         </div>
         <aside>
+          <AdvisorInlinePreview controller={inlinePreview} />
           <Panel>
-            <p className="advisor-muted">client preview · unpublished</p>
-            <h2>review the exact saved draft</h2>
-            <p>
-              private facts and source locations are excluded from the client
-              preview.
-            </p>
+            <h2>full client preview</h2>
             {c.hasPreview ? (
               <Button
                 id="advisor-preview-open-plan"
