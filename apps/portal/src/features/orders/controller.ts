@@ -152,7 +152,7 @@ export function createOrdersController({port,session,ownerId,mode,contextKey}:Or
   try{
    const hash=await hashRetainedCommerceCommand(command);if(!applicable())return;
    if(pending.commandHash&&pending.commandHash!==hash)throw new CommerceError(503);
-   const raw=await port.execute({schemaVersion:1,action:'request_status_v1',requestId:command.requestId},{statusIntent:command});if(!applicable())return;
+   const raw=await port.execute({schemaVersion:1,action:'request_status_v1',requestId:command.requestId},{statusIntent:command,isApplicable:applicable});if(!applicable())return;
    const result=mapCommerceResult({schemaVersion:1,action:'request_status_v1',requestId:command.requestId},raw,{actorId:ownerId,requestHash:hash});
    if(!('status'in result))throw new CommerceError(503);
    if(result.status==='committed'){
